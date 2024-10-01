@@ -32,10 +32,7 @@ rustPlatform.buildRustPackage {
   doCheck = false;
 
   buildInputs =
-    lib.optionals stdenv.isDarwin [
-      Security
-      SystemConfiguration
-    ]
+    lib.optionals stdenv.isDarwin [ Security SystemConfiguration ]
     ++ lib.optionals stdenv.isLinux [ openssl ];
 
   passthru = {

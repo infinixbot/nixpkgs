@@ -49,10 +49,7 @@ stdenv.mkDerivation {
               coreutils
               gnugrep
             ]
-            ++ lib.optionals stdenv.isLinux [
-              openresolv
-              iproute2
-            ]
+            ++ lib.optionals stdenv.isLinux [ openresolv iproute2 ]
           )
         }"
     '';

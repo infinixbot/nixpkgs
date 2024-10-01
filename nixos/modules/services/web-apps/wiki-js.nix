@@ -59,12 +59,7 @@ in
           db = {
             type = mkOption {
               default = "postgres";
-              type = types.enum [
-                "postgres"
-                "mysql"
-                "mariadb"
-                "mssql"
-              ];
+              type = types.enum [ "postgres" "mysql" "mariadb" "mssql" ];
               description = ''
                 Database driver to use for persistence. Please note that `sqlite`
                 is currently not supported as the build process for it is currently not implemented

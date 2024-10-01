@@ -61,11 +61,7 @@ stdenv.mkDerivation rec {
     stripJavaArchivesHook
   ];
   buildInputs =
-    lib.optionals stdenv.isLinux [
-      gtk2
-      glib
-      libXtst
-    ]
+    lib.optionals stdenv.isLinux [ gtk2 glib libXtst ]
     ++ lib.optional stdenv.isDarwin Cocoa;
 
   dontWrapGApps = true;

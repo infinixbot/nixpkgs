@@ -161,10 +161,7 @@ let
             ;
 
           mlPlugin = lib.versions.isLe "8.6" coq.coq-version;
-          nativeBuildInputs = lib.optionals withDoc [
-            graphviz
-            lua
-          ];
+          nativeBuildInputs = lib.optionals withDoc [ graphviz lua ];
           buildInputs = [ ncurses ];
           propagatedBuildInputs = mathcomp-deps;
 

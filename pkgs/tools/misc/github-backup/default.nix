@@ -26,10 +26,7 @@ python3Packages.buildPythonApplication rec {
     "--prefix"
     "PATH"
     ":"
-    (lib.makeBinPath [
-      git
-      git-lfs
-    ])
+    (lib.makeBinPath [ git git-lfs ])
   ];
 
   # has no unit tests

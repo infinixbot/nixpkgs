@@ -175,12 +175,7 @@ in
       };
 
       checkReversePath = lib.mkOption {
-        type = lib.types.either lib.types.bool (
-          lib.types.enum [
-            "strict"
-            "loose"
-          ]
-        );
+        type = lib.types.either lib.types.bool (lib.types.enum [ "strict" "loose" ]);
         default = true;
         defaultText = lib.literalMD "`true` except if the iptables based firewall is in use and the kernel lacks rpfilter support";
         example = "loose";

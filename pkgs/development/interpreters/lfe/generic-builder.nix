@@ -97,13 +97,7 @@ buildRebar3 {
     # Add some stuff to PATH so the scripts can run without problems.
     for f in $out/bin/*; do
       wrapProgram $f \
-        --prefix PATH ":" "${
-          makeBinPath [
-            erlang
-            coreutils
-            bash
-          ]
-        }:$out/bin"
+        --prefix PATH ":" "${makeBinPath [ erlang coreutils bash ]}:$out/bin"
       substituteInPlace $f --replace "/usr/bin/env" "${coreutils}/bin/env"
     done
   '';

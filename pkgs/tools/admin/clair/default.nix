@@ -37,12 +37,7 @@ buildGoModule rec {
 
   postInstall = ''
     wrapProgram $out/bin/clair \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          rpm
-          xz
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ rpm xz ]}"
   '';
 
   meta = with lib; {

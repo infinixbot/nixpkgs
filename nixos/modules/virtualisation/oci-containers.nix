@@ -322,10 +322,7 @@ let
         container.imageFile == null && container.imageStream == null
       ) "network-online.target";
       after =
-        lib.optionals (cfg.backend == "docker") [
-          "docker.service"
-          "docker.socket"
-        ]
+        lib.optionals (cfg.backend == "docker") [ "docker.service" "docker.socket" ]
         # if imageFile or imageStream is not set, the service needs the network to download the image from the registry
         ++ lib.optionals (container.imageFile == null && container.imageStream == null) [
           "network-online.target"
@@ -435,10 +432,7 @@ in
   options.virtualisation.oci-containers = {
 
     backend = mkOption {
-      type = types.enum [
-        "podman"
-        "docker"
-      ];
+      type = types.enum [ "podman" "docker" ];
       default = if versionAtLeast config.system.stateVersion "22.05" then "podman" else "docker";
       description = "The underlying Docker implementation to use.";
     };

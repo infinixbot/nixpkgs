@@ -256,10 +256,7 @@ rec {
             package = lib.importJSON packageJSON;
 
             allDependencies = lib.foldl (a: b: a // b) { } (
-              map (field: lib.attrByPath [ field ] { } package) [
-                "dependencies"
-                "devDependencies"
-              ]
+              map (field: lib.attrByPath [ field ] { } package) [ "dependencies" "devDependencies" ]
             );
 
             # { [name: String] : { pname : String, packageJSON : String, ... } } -> { [pname: String] : version } -> [{ pname : String, packageJSON : String, ... }]
@@ -384,12 +381,7 @@ rec {
 
     in
     stdenv.mkDerivation (
-      builtins.removeAttrs attrs [
-        "yarnNix"
-        "pkgConfig"
-        "workspaceDependencies"
-        "packageResolutions"
-      ]
+      builtins.removeAttrs attrs [ "yarnNix" "pkgConfig" "workspaceDependencies" "packageResolutions" ]
       // {
         inherit pname version src;
 

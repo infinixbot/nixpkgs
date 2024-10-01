@@ -53,10 +53,7 @@ stdenv.mkDerivation rec {
       libvorbis
     ]
     ++ lib.optionals stdenv.isLinux [ alsa-lib ]
-    ++ lib.optionals stdenv.isDarwin [
-      Carbon
-      AudioToolbox
-    ];
+    ++ lib.optionals stdenv.isDarwin [ Carbon AudioToolbox ];
 
   enableParallelBuilding = true;
 

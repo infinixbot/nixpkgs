@@ -44,10 +44,7 @@ stdenv.mkDerivation rec {
     lib.optionals withConplay [ perl ]
     ++ lib.optionals withAlsa [ alsa-lib ]
     ++ lib.optionals withPulse [ libpulseaudio ]
-    ++ lib.optionals withCoreAudio [
-      AudioUnit
-      AudioToolbox
-    ]
+    ++ lib.optionals withCoreAudio [ AudioUnit AudioToolbox ]
     ++ lib.optionals withJack [ jack ]
   );
 

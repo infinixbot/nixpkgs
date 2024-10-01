@@ -39,12 +39,7 @@ let
     ]
     ++ optional (zenity != null) zenity
   );
-  rpath = makeLibraryPath [
-    lua
-    freetype
-    openal
-    SDL2
-  ];
+  rpath = makeLibraryPath [ lua freetype openal SDL2 ];
   mkdirp = makeSetupHook {
     name = "openra-mkdirp-hook";
   } ./mkdirp.sh;

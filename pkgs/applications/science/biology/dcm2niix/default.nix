@@ -43,10 +43,7 @@ stdenv.mkDerivation (finalAttrs: {
   nativeBuildInputs = [ cmake ];
   buildInputs =
     lib.optionals batchVersion [ yaml-cpp ]
-    ++ lib.optionals withOpenJpeg [
-      openjpeg
-      openjpeg.dev
-    ];
+    ++ lib.optionals withOpenJpeg [ openjpeg openjpeg.dev ];
 
   cmakeFlags =
     lib.optionals batchVersion [

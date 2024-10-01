@@ -247,10 +247,7 @@ stdenv.mkDerivation rec {
       xgandalf
       pandoc
     ]
-    ++ lib.optionals withGui [
-      gtk3
-      gdk-pixbuf
-    ]
+    ++ lib.optionals withGui [ gtk3 gdk-pixbuf ]
     ++ lib.optionals stdenv.isDarwin [
       argp-standalone
     ]

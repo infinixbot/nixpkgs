@@ -26,11 +26,7 @@ let
         inherit sha256;
       };
 
-      buildInputs = lib.optionals build-manual [
-        fig2dev
-        ghostscript
-        texliveSmall
-      ];
+      buildInputs = lib.optionals build-manual [ fig2dev ghostscript texliveSmall ];
 
       preConfigure = lib.optionalString build-manual ''
         sed -i "s/build_manual=no/build_manual=yes/g" DIST

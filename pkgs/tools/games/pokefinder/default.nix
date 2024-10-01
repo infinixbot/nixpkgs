@@ -58,16 +58,11 @@ stdenv.mkDerivation rec {
       runHook postInstall
     '';
 
-  nativeBuildInputs =
-    [
-      cmake
-      wrapQtAppsHook
-      python3
-    ]
-    ++ lib.optionals (!stdenv.isDarwin) [
-      copyDesktopItems
-      imagemagick
-    ];
+  nativeBuildInputs = [
+    cmake
+    wrapQtAppsHook
+    python3
+  ] ++ lib.optionals (!stdenv.isDarwin) [ copyDesktopItems imagemagick ];
 
   desktopItems = [
     (makeDesktopItem {

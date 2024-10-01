@@ -49,18 +49,12 @@ stdenv.mkDerivation (finalAttrs: {
       libXrandr
       libXinerama
     ]
-    ++ lib.optionals stdenv.isDarwin [
-      Carbon
-      Cocoa
-    ]
+    ++ lib.optionals stdenv.isDarwin [ Carbon Cocoa ]
     ++ lib.optional alsaSupport alsa-lib
     ++ lib.optional pulseSupport libpulseaudio;
 
   propagatedBuildInputs =
-    lib.optionals stdenv.isLinux [
-      libGLU
-      libX11
-    ]
+    lib.optionals stdenv.isLinux [ libGLU libX11 ]
     ++ lib.optionals stdenv.isDarwin [ OpenGL ];
 
   # https://github.com/raysan5/raylib/wiki/CMake-Build-Options

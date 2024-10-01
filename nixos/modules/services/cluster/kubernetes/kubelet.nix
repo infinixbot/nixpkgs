@@ -99,11 +99,7 @@ let
         effect = mkOption {
           description = "Effect of taint.";
           example = "NoSchedule";
-          type = enum [
-            "NoSchedule"
-            "PreferNoSchedule"
-            "NoExecute"
-          ];
+          type = enum [ "NoSchedule" "PreferNoSchedule" "NoExecute" ];
         };
       };
     };

@@ -36,16 +36,11 @@ stdenv.mkDerivation rec {
 
   depsBuildBuild = [ buildPackages.stdenv.cc ];
 
-  nativeBuildInputs =
-    [
-      perl
-      ninja
-      (buildPackages.python3.withPackages (ps: with ps; [ gyp ]))
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      cctools
-      fixDarwinDylibNames
-    ];
+  nativeBuildInputs = [
+    perl
+    ninja
+    (buildPackages.python3.withPackages (ps: with ps; [ gyp ]))
+  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ cctools fixDarwinDylibNames ];
 
   buildInputs = [
     zlib

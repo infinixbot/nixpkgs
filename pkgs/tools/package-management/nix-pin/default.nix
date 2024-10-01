@@ -25,12 +25,7 @@ let
       mkdir "$out"
       cp -r bin share "$out"
       wrapProgram $out/bin/nix-pin \
-        --prefix PATH : "${
-          lib.makeBinPath [
-            nix
-            git
-          ]
-        }"
+        --prefix PATH : "${lib.makeBinPath [ nix git ]}"
     '';
     passthru =
       let

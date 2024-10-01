@@ -56,11 +56,7 @@ in
         type = lib.types.submodule {
           freeformType = argsFormat.type;
           options.Announce = lib.mkOption {
-            type = lib.types.enum [
-              "IPv4"
-              "IPv6"
-              "none"
-            ];
+            type = lib.types.enum [ "IPv4" "IPv6" "none" ];
             default = "none";
             description = "Announce game in LAN using given protocol.";
           };
@@ -149,10 +145,7 @@ in
           + "${pkgs.freeciv}/bin/freeciv-server"
           + " "
           + lib.optionalString (cfg.settings.saves != null) (
-            lib.concatStringsSep " " [
-              "--saves"
-              "${lib.escapeShellArg cfg.settings.saves}/$savedir"
-            ]
+            lib.concatStringsSep " " [ "--saves" "${lib.escapeShellArg cfg.settings.saves}/$savedir" ]
           )
           + " "
           + argsFormat.generate "freeciv-server" (cfg.settings // { saves = null; })

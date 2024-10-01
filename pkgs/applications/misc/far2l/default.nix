@@ -71,20 +71,9 @@ stdenv.mkDerivation rec {
     lib.optional withTTYX libX11
     ++ lib.optional withGUI wxGTK32
     ++ lib.optional withUCD libuchardet
-    ++ lib.optionals withColorer [
-      spdlog
-      xercesc
-    ]
-    ++ lib.optionals withMultiArc [
-      libarchive
-      pcre
-    ]
-    ++ lib.optionals withNetRocks [
-      openssl
-      libssh
-      libnfs
-      neon
-    ]
+    ++ lib.optionals withColorer [ spdlog xercesc ]
+    ++ lib.optionals withMultiArc [ libarchive pcre ]
+    ++ lib.optionals withNetRocks [ openssl libssh libnfs neon ]
     ++ lib.optional (withNetRocks && !stdenv.isDarwin) samba # broken on darwin
     ++ lib.optionals withPython (
       with python3Packages;

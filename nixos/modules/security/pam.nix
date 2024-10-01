@@ -134,10 +134,7 @@ let
     {
 
       imports = [
-        (lib.mkRenamedOptionModule [ "enableKwallet" ] [
-          "kwallet"
-          "enable"
-        ])
+        (lib.mkRenamedOptionModule [ "enableKwallet" ] [ "kwallet" "enable" ])
       ];
 
       options = {
@@ -1483,11 +1480,7 @@ let
 
             type = lib.mkOption {
               description = "Type of this limit";
-              type = enum [
-                "-"
-                "hard"
-                "soft"
-              ];
+              type = enum [ "-" "hard" "soft" ];
               default = "-";
             };
 
@@ -1517,10 +1510,7 @@ let
 
             value = lib.mkOption {
               description = "Value of this limit";
-              type = oneOf [
-                str
-                int
-              ];
+              type = oneOf [ str int ];
             };
           };
         }
@@ -1550,12 +1540,7 @@ in
   meta.maintainers = [ lib.maintainers.majiir ];
 
   imports = [
-    (lib.mkRenamedOptionModule [ "security" "pam" "enableU2F" ] [
-      "security"
-      "pam"
-      "u2f"
-      "enable"
-    ])
+    (lib.mkRenamedOptionModule [ "security" "pam" "enableU2F" ] [ "security" "pam" "u2f" "enable" ])
     (lib.mkRenamedOptionModule [ "security" "pam" "enableSSHAgentAuth" ] [
       "security"
       "pam"
@@ -1765,12 +1750,7 @@ in
 
       control = lib.mkOption {
         default = "sufficient";
-        type = lib.types.enum [
-          "required"
-          "requisite"
-          "sufficient"
-          "lib.optional"
-        ];
+        type = lib.types.enum [ "required" "requisite" "sufficient" "lib.optional" ];
         description = ''
           This option sets pam "control".
           If you want to have multi factor authentication, use "required".
@@ -1807,12 +1787,7 @@ in
 
       control = lib.mkOption {
         default = "sufficient";
-        type = lib.types.enum [
-          "required"
-          "requisite"
-          "sufficient"
-          "optional"
-        ];
+        type = lib.types.enum [ "required" "requisite" "sufficient" "optional" ];
         description = ''
           This option sets pam "control".
           If you want to have multi factor authentication, use "required".
@@ -1998,12 +1973,7 @@ in
 
       control = lib.mkOption {
         default = "sufficient";
-        type = lib.types.enum [
-          "required"
-          "requisite"
-          "sufficient"
-          "optional"
-        ];
+        type = lib.types.enum [ "required" "requisite" "sufficient" "optional" ];
         description = ''
           This option sets pam "control".
           If you want to have multi factor authentication, use "required".
@@ -2035,12 +2005,7 @@ in
       };
       control = lib.mkOption {
         default = "sufficient";
-        type = lib.types.enum [
-          "required"
-          "requisite"
-          "sufficient"
-          "optional"
-        ];
+        type = lib.types.enum [ "required" "requisite" "sufficient" "optional" ];
         description = ''
           This option sets pam "control".
           If you want to have multi factor authentication, use "required".
@@ -2066,10 +2031,7 @@ in
       };
       mode = lib.mkOption {
         default = "client";
-        type = lib.types.enum [
-          "client"
-          "challenge-response"
-        ];
+        type = lib.types.enum [ "client" "challenge-response" ];
         description = ''
           Mode of operation.
 
@@ -2193,10 +2155,7 @@ in
       ++ lib.optional config.users.ldap.enable pam_ldap
       ++ lib.optional config.services.kanidm.enablePam config.services.kanidm.package
       ++ lib.optional config.services.sssd.enable pkgs.sssd
-      ++ lib.optionals config.security.pam.krb5.enable [
-        pam_krb5
-        pam_ccreds
-      ]
+      ++ lib.optionals config.security.pam.krb5.enable [ pam_krb5 pam_ccreds ]
       ++ lib.optionals config.security.pam.enableOTPW [ pkgs.otpw ]
       ++ lib.optionals config.security.pam.oath.enable [ pkgs.oath-toolkit ]
       ++ lib.optionals config.security.pam.p11.enable [ pkgs.pam_p11 ]

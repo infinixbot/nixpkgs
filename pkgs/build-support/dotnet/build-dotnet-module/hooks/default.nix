@@ -45,10 +45,7 @@
     name = "dotnet-fixup-hook";
     substitutions = {
       dotnetRuntime = dotnet-runtime;
-      wrapperPath = lib.makeBinPath [
-        which
-        coreutils
-      ];
+      wrapperPath = lib.makeBinPath [ which coreutils ];
     };
   } ./dotnet-fixup-hook.sh;
 }

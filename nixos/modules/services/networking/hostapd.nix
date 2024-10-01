@@ -55,11 +55,7 @@ let
   extraSettingsFormat = {
     type =
       let
-        singleAtom = types.oneOf [
-          types.bool
-          types.int
-          types.str
-        ];
+        singleAtom = types.oneOf [ types.bool types.int types.str ];
         atom = types.either singleAtom (types.listOf singleAtom) // {
           description = "atom (bool, int or string) or a list of them for duplicate keys";
         };
@@ -262,12 +258,7 @@ in
 
               band = mkOption {
                 default = "2g";
-                type = types.enum [
-                  "2g"
-                  "5g"
-                  "6g"
-                  "60g"
-                ];
+                type = types.enum [ "2g" "5g" "6g" "60g" ];
                 description = ''
                   Specifies the frequency band to use, possible values are 2g for 2.4 GHz,
                   5g for 5 GHz, 6g for 6 GHz and 60g for 60 GHz.
@@ -408,12 +399,7 @@ in
 
                 operatingChannelWidth = mkOption {
                   default = "20or40";
-                  type = types.enum [
-                    "20or40"
-                    "80"
-                    "160"
-                    "80+80"
-                  ];
+                  type = types.enum [ "20or40" "80" "160" "80+80" ];
                   apply =
                     x:
                     getAttr x {
@@ -468,12 +454,7 @@ in
 
                 operatingChannelWidth = mkOption {
                   default = "20or40";
-                  type = types.enum [
-                    "20or40"
-                    "80"
-                    "160"
-                    "80+80"
-                  ];
+                  type = types.enum [ "20or40" "80" "160" "80+80" ];
                   apply =
                     x:
                     getAttr x {
@@ -525,12 +506,7 @@ in
 
                 operatingChannelWidth = mkOption {
                   default = "20or40";
-                  type = types.enum [
-                    "20or40"
-                    "80"
-                    "160"
-                    "80+80"
-                  ];
+                  type = types.enum [ "20or40" "80" "160" "80+80" ];
                   apply =
                     x:
                     getAttr x {
@@ -623,11 +599,7 @@ in
 
                       macAcl = mkOption {
                         default = "deny";
-                        type = types.enum [
-                          "deny"
-                          "allow"
-                          "radius"
-                        ];
+                        type = types.enum [ "deny" "allow" "radius" ];
                         apply =
                           x:
                           getAttr x {
@@ -694,11 +666,7 @@ in
 
                       ignoreBroadcastSsid = mkOption {
                         default = "disabled";
-                        type = types.enum [
-                          "disabled"
-                          "empty"
-                          "clear"
-                        ];
+                        type = types.enum [ "disabled" "empty" "clear" ];
                         apply =
                           x:
                           getAttr x {

@@ -78,12 +78,7 @@ let
       (stdenv.isDarwin && stdenv.isAarch64)
     );
 
-  validAccel = lib.assertOneOf "tabby.featureDevice" featureDevice [
-    "cpu"
-    "rocm"
-    "cuda"
-    "metal"
-  ];
+  validAccel = lib.assertOneOf "tabby.featureDevice" featureDevice [ "cpu" "rocm" "cuda" "metal" ];
 
   # TODO(ghthor): there is a bug here where featureDevice could be cuda, but enableCuda is false
   #  The would result in a startup failure of the service module.
@@ -114,10 +109,7 @@ let
         CoreVideo
         CoreGraphics
       ]
-      ++ optionals enableMetal [
-        Metal
-        MetalKit
-      ]
+      ++ optionals enableMetal [ Metal MetalKit ]
     );
 
   cudaBuildInputs = [ llamaccpPackage ];

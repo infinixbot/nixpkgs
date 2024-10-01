@@ -60,10 +60,7 @@ stdenv.mkDerivation rec {
       pkg-config
       qmake
     ]
-    ++ lib.optionals withGUI [
-      qttools
-      wrapQtAppsHook
-    ]
+    ++ lib.optionals withGUI [ qttools wrapQtAppsHook ]
     ++ lib.optionals withDoc [
       docbook_xml_dtd_45
       docbook_xsl
@@ -101,11 +98,7 @@ stdenv.mkDerivation rec {
 
   makeFlags =
     lib.optional withGUI "gui"
-    ++ lib.optionals withDoc [
-      "gpsbabel.pdf"
-      "gpsbabel.html"
-      "gpsbabel.org"
-    ];
+    ++ lib.optionals withDoc [ "gpsbabel.pdf" "gpsbabel.html" "gpsbabel.org" ];
 
   # Floating point behavior on i686 causes nmea.test failures. Preventing
   # extended precision fixes this problem.

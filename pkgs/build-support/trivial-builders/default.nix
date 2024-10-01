@@ -128,10 +128,7 @@ rec {
             // meta
             // derivationArgs.meta or { };
         }
-        // removeAttrs derivationArgs [
-          "passAsFile"
-          "meta"
-        ]
+        // removeAttrs derivationArgs [ "passAsFile" "meta" ]
       )
       ''
         target=$out${lib.escapeShellArg destination}
@@ -532,15 +529,10 @@ rec {
       ...
     }:
     let
-      args =
-        removeAttrs args_ [
-          "name"
-          "postBuild"
-        ]
-        // {
-          inherit preferLocalBuild allowSubstitutes;
-          passAsFile = [ "paths" ];
-        }; # pass the defaults
+      args = removeAttrs args_ [ "name" "postBuild" ] // {
+        inherit preferLocalBuild allowSubstitutes;
+        passAsFile = [ "paths" ];
+      }; # pass the defaults
     in
     runCommand name args ''
       mkdir -p $out

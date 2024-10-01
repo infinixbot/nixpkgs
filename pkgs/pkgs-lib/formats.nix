@@ -450,11 +450,7 @@ rec {
         else
           abort "formats.elixirConf: should never happen (value = ${value})";
 
-      escapeElixir = lib.escape [
-        "\\"
-        "#"
-        "\""
-      ];
+      escapeElixir = lib.escape [ "\\" "#" "\"" ];
       string = value: "\"${escapeElixir value}\"";
 
       attrs =

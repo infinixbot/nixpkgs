@@ -54,18 +54,12 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      libpng
-      libtiff
-      zlib
-      lcms2
-    ]
-    ++ lib.optionals jpipServerSupport [
-      curl
-      fcgi
-    ]
-    ++ lib.optional (jpipLibSupport) jdk;
+  buildInputs = [
+    libpng
+    libtiff
+    zlib
+    lcms2
+  ] ++ lib.optionals jpipServerSupport [ curl fcgi ] ++ lib.optional (jpipLibSupport) jdk;
 
   doCheck = (!stdenv.isAarch64 && !stdenv.hostPlatform.isPower64); # tests fail on aarch64-linux and powerpc64
   nativeCheckInputs = [ jpylyzer ];

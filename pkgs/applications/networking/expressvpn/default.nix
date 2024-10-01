@@ -14,10 +14,7 @@ let
   pname = "expressvpn";
   clientVersion = "3.52.0";
   clientBuild = "2";
-  version = lib.strings.concatStringsSep "." [
-    clientVersion
-    clientBuild
-  ];
+  version = lib.strings.concatStringsSep "." [ clientVersion clientBuild ];
 
   expressvpnBase = stdenvNoCC.mkDerivation {
     inherit pname version;

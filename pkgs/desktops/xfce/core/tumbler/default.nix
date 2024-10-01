@@ -39,13 +39,7 @@ mkXfceDerivation {
   preFixup = ''
     gappsWrapperArgs+=(
       # Thumbnailers
-      --prefix XDG_DATA_DIRS : "${
-        lib.makeSearchPath "share" [
-          libjxl
-          librsvg
-          webp-pixbuf-loader
-        ]
-      }"
+      --prefix XDG_DATA_DIRS : "${lib.makeSearchPath "share" [ libjxl librsvg webp-pixbuf-loader ]}"
     )
   '';
 

@@ -80,11 +80,7 @@ in
 
       database = {
         type = lib.mkOption {
-          type = lib.types.enum [
-            "sqlite3"
-            "mysql"
-            "postgres"
-          ];
+          type = lib.types.enum [ "sqlite3" "mysql" "postgres" ];
           example = "mysql";
           default = "sqlite3";
           description = "Database engine to use.";

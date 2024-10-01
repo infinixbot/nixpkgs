@@ -218,10 +218,7 @@ in
 
     database = {
       type = mkOption {
-        type = types.enum [
-          "sqlite3"
-          "mysql"
-        ];
+        type = types.enum [ "sqlite3" "mysql" ];
         default = "sqlite3";
         description = "The database provider to use.";
       };

@@ -90,21 +90,10 @@ stdenv.mkDerivation {
     makeWrapper \
       $out/opt/brother/Printers/HL2260D/cupswrapper/brother_lpdwrapper_HL2260D \
       $out/lib/cups/filter/brother_lpdwrapper_HL2260D \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          coreutils
-          gnugrep
-          gnused
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ coreutils gnugrep gnused ]}
 
     wrapProgram $out/opt/brother/Printers/HL2260D/lpd/filter_HL2260D \
-      --prefix PATH ":" ${
-        lib.makeBinPath [
-          ghostscript
-          which
-        ]
-      }
+      --prefix PATH ":" ${lib.makeBinPath [ ghostscript which ]}
   '';
 
   meta = with lib; {

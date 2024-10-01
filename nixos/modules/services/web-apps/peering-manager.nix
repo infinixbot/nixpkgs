@@ -15,10 +15,7 @@ let
     name = "peering-manager-extraConfig.py";
     text = cfg.extraConfig;
   };
-  configFile = pkgs.concatText "configuration.py" [
-    settingsFile
-    extraConfigFile
-  ];
+  configFile = pkgs.concatText "configuration.py" [ settingsFile extraConfigFile ];
 
   pkg =
     (pkgs.peering-manager.overrideAttrs (old: {

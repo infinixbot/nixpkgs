@@ -357,16 +357,9 @@ let
         by the target will be ignored.
       '';
 
-      scheme =
-        mkDefOpt
-          (types.enum [
-            "http"
-            "https"
-          ])
-          "http"
-          ''
-            The URL scheme with which to fetch metrics from targets.
-          '';
+      scheme = mkDefOpt (types.enum [ "http" "https" ]) "http" ''
+        The URL scheme with which to fetch metrics from targets.
+      '';
 
       params = mkOpt (types.attrsOf (types.listOf types.str)) ''
         Optional HTTP URL parameters.
@@ -563,17 +556,10 @@ let
         The Azure environment.
       '';
 
-      authentication_method =
-        mkDefOpt
-          (types.enum [
-            "OAuth"
-            "ManagedIdentity"
-          ])
-          "OAuth"
-          ''
-            The authentication method, either OAuth or ManagedIdentity.
-            See https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview
-          '';
+      authentication_method = mkDefOpt (types.enum [ "OAuth" "ManagedIdentity" ]) "OAuth" ''
+        The authentication method, either OAuth or ManagedIdentity.
+        See https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview
+      '';
 
       subscription_id = mkOption {
         type = types.str;
@@ -737,11 +723,7 @@ let
 
   promTypes.dockerswarm_sd_config = mkDockerSdConfigModule {
     role = mkOption {
-      type = types.enum [
-        "services"
-        "tasks"
-        "nodes"
-      ];
+      type = types.enum [ "services" "tasks" "nodes" ];
       description = ''
         Role of the targets to retrieve. Must be `services`, `tasks`, or `nodes`.
       '';
@@ -757,17 +739,9 @@ let
         '';
       };
 
-      type =
-        mkDefOpt
-          (types.enum [
-            "SRV"
-            "A"
-            "AAAA"
-          ])
-          "SRV"
-          ''
-            The type of DNS query to perform. One of SRV, A, or AAAA.
-          '';
+      type = mkDefOpt (types.enum [ "SRV" "A" "AAAA" ]) "SRV" ''
+        The type of DNS query to perform. One of SRV, A, or AAAA.
+      '';
 
       port = mkOpt types.port ''
         The port number used if the query type is not SRV.
@@ -919,10 +893,7 @@ let
 
   promTypes.hetzner_sd_config = mkSdConfigModule {
     role = mkOption {
-      type = types.enum [
-        "robot"
-        "hcloud"
-      ];
+      type = types.enum [ "robot" "hcloud" ];
       description = ''
         The Hetzner role of entities that should be discovered.
         One of `robot` or `hcloud`.
@@ -1248,17 +1219,9 @@ let
           instead be specified in the relabeling rule.
         '';
 
-        availability =
-          mkDefOpt
-            (types.enum [
-              "public"
-              "admin"
-              "internal"
-            ])
-            "public"
-            ''
-              The availability of the endpoint to connect to. Must be one of public, admin or internal.
-            '';
+        availability = mkDefOpt (types.enum [ "public" "admin" "internal" ]) "public" ''
+          The availability of the endpoint to connect to. Must be one of public, admin or internal.
+        '';
 
         tls_config = mkOpt promTypes.tls_config ''
           TLS configuration.
@@ -1328,10 +1291,7 @@ let
       };
 
       role = mkOption {
-        type = types.enum [
-          "instance"
-          "baremetal"
-        ];
+        type = types.enum [ "instance" "baremetal" ];
         description = ''
           Role of the targets to retrieve. Must be `instance` or `baremetal`.
         '';
@@ -1387,18 +1347,11 @@ let
         '';
       };
 
-      role =
-        mkDefOpt
-          (types.enum [
-            "container"
-            "cn"
-          ])
-          "container"
-          ''
-            The type of targets to discover, can be set to:
-            - "container" to discover virtual machines (SmartOS zones, lx/KVM/bhyve branded zones) running on Triton
-            - "cn" to discover compute nodes (servers/global zones) making up the Triton infrastructure
-          '';
+      role = mkDefOpt (types.enum [ "container" "cn" ]) "container" ''
+        The type of targets to discover, can be set to:
+        - "container" to discover virtual machines (SmartOS zones, lx/KVM/bhyve branded zones) running on Triton
+        - "cn" to discover compute nodes (servers/global zones) making up the Triton infrastructure
+      '';
 
       dns_suffix = mkOption {
         type = types.str;
@@ -1696,10 +1649,7 @@ in
 {
 
   imports = [
-    (mkRenamedOptionModule [ "services" "prometheus2" ] [
-      "services"
-      "prometheus"
-    ])
+    (mkRenamedOptionModule [ "services" "prometheus2" ] [ "services" "prometheus" ])
     (mkRemovedOptionModule [ "services" "prometheus" "environmentFile" ]
       "It has been removed since it was causing issues (https://github.com/NixOS/nixpkgs/issues/126083) and Prometheus now has native support for secret files, i.e. `basic_auth.password_file` and `authorization.credentials_file`."
     )

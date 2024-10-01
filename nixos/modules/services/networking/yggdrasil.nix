@@ -16,11 +16,7 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule [ "services" "yggdrasil" "config" ] [
-      "services"
-      "yggdrasil"
-      "settings"
-    ])
+    (mkRenamedOptionModule [ "services" "yggdrasil" "config" ] [ "services" "yggdrasil" "settings" ])
   ];
 
   options = with types; {

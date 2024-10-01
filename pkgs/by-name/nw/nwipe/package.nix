@@ -38,13 +38,7 @@ stdenv.mkDerivation rec {
 
   postInstall = ''
     wrapProgram $out/bin/nwipe \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          hdparm
-          smartmontools
-          dmidecode
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ hdparm smartmontools dmidecode ]}
   '';
 
   enableParallelBuilding = true;

@@ -21,11 +21,7 @@ let
       ...
     }@attrs:
     let
-      attrs' = builtins.removeAttrs attrs [
-        "version"
-        "hash"
-        "vendorHash"
-      ];
+      attrs' = builtins.removeAttrs attrs [ "version" "hash" "vendorHash" ];
     in
     buildGoModule (
       {

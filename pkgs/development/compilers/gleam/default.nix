@@ -27,12 +27,7 @@ rustPlatform.buildRustPackage rec {
     pkg-config
   ];
 
-  buildInputs =
-    [ openssl ]
-    ++ lib.optionals stdenv.isDarwin [
-      Security
-      SystemConfiguration
-    ];
+  buildInputs = [ openssl ] ++ lib.optionals stdenv.isDarwin [ Security SystemConfiguration ];
 
   cargoHash = "sha256-XKHcA4DSVsWZfUHT6BkRjK0Mzz90E+ohYrtwZKPMtTY=";
 

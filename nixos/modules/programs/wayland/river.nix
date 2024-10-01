@@ -70,10 +70,7 @@ in
         services.displayManager.sessionPackages = lib.optional (cfg.package != null) cfg.package;
 
         # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1050913
-        xdg.portal.config.river.default = lib.mkDefault [
-          "wlr"
-          "gtk"
-        ];
+        xdg.portal.config.river.default = lib.mkDefault [ "wlr" "gtk" ];
       }
 
       (import ./wayland-session.nix {

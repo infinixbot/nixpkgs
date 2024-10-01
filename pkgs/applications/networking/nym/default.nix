@@ -46,12 +46,7 @@ rustPlatform.buildRustPackage {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs =
-    [ openssl ]
-    ++ lib.optionals stdenv.isDarwin [
-      Security
-      CoreServices
-    ];
+  buildInputs = [ openssl ] ++ lib.optionals stdenv.isDarwin [ Security CoreServices ];
 
   checkType = "debug";
 

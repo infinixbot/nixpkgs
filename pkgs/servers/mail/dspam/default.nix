@@ -52,10 +52,7 @@ stdenv.mkDerivation rec {
 
   buildInputs =
     [ perlPackages.perl ]
-    ++ lib.optionals withMySQL [
-      zlib
-      mariadb-connector-c.out
-    ]
+    ++ lib.optionals withMySQL [ zlib mariadb-connector-c.out ]
     ++ lib.optional withPgSQL postgresql
     ++ lib.optional withSQLite sqlite
     ++ lib.optional withDB db;

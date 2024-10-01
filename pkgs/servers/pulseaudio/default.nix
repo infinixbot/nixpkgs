@@ -125,10 +125,7 @@ stdenv.mkDerivation rec {
       fftwFloat
       check
     ]
-    ++ lib.optionals stdenv.isLinux [
-      glib
-      dbus
-    ]
+    ++ lib.optionals stdenv.isLinux [ glib dbus ]
     ++ lib.optionals stdenv.isDarwin [
       AudioUnit
       Cocoa
@@ -150,15 +147,9 @@ stdenv.mkDerivation rec {
         xorg.libXtst
       ]
       ++ lib.optional useSystemd systemd
-      ++ lib.optionals stdenv.isLinux [
-        alsa-lib
-        udev
-      ]
+      ++ lib.optionals stdenv.isLinux [ alsa-lib udev ]
       ++ lib.optional airtunesSupport openssl
-      ++ lib.optionals bluetoothSupport [
-        bluez5
-        sbc
-      ]
+      ++ lib.optionals bluetoothSupport [ bluez5 sbc ]
       # aptX and LDAC codecs are in gst-plugins-bad so far, rtpldacpay is in -good
       ++ lib.optionals (bluetoothSupport && advancedBluetoothCodecs) (
         builtins.attrValues {

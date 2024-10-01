@@ -55,12 +55,7 @@
       }/copilot-language-server'
       orig_size=$(stat --printf=%s $agent)
       patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" $agent
-      patchelf --set-rpath ${
-        lib.makeLibraryPath [
-          glibc
-          gcc-unwrapped
-        ]
-      } $agent
+      patchelf --set-rpath ${lib.makeLibraryPath [ glibc gcc-unwrapped ]} $agent
       chmod +x $agent
       new_size=$(stat --printf=%s $agent)
       var_skip=20

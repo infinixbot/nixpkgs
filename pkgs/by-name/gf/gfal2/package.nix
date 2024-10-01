@@ -97,16 +97,10 @@ stdenv.mkDerivation (finalAttrs: {
       pugixml # Optional, for MDS Cache.
     ]
     ++ lib.optionals finalAttrs.passthru.enablePluginStatus.dcap [ dcap ]
-    ++ lib.optionals finalAttrs.passthru.enablePluginStatus.http [
-      cryptopp
-      davix-copy
-    ]
+    ++ lib.optionals finalAttrs.passthru.enablePluginStatus.http [ cryptopp davix-copy ]
     ++ lib.optionals finalAttrs.passthru.enablePluginStatus.mock [ libuuid ]
     ++ lib.optionals finalAttrs.passthru.enablePluginStatus.sftp [ libssh2 ]
-    ++ lib.optionals finalAttrs.passthru.enablePluginStatus.xrootd [
-      xrootd
-      libuuid
-    ]
+    ++ lib.optionals finalAttrs.passthru.enablePluginStatus.xrootd [ xrootd libuuid ]
   );
 
   cmakeFlags =

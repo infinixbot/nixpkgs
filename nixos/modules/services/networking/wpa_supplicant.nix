@@ -535,13 +535,7 @@ in
     assertions =
       flip mapAttrsToList cfg.networks (
         name: cfg: {
-          assertion =
-            with cfg;
-            count (x: x != null) [
-              psk
-              pskRaw
-              auth
-            ] <= 1;
+          assertion = with cfg; count (x: x != null) [ psk pskRaw auth ] <= 1;
           message = ''options networking.wireless."${name}".{psk,pskRaw,auth} are mutually exclusive'';
         }
       )

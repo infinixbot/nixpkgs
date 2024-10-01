@@ -81,10 +81,7 @@ in
           };
 
           options.log.level = mkOption {
-            type = enum [
-              "INFO"
-              "DEBUG"
-            ];
+            type = enum [ "INFO" "DEBUG" ];
             default = "INFO";
             description = "Log level for Scrutiny.";
           };
@@ -169,10 +166,7 @@ in
             };
 
             options.log.level = mkOption {
-              type = enum [
-                "INFO"
-                "DEBUG"
-              ];
+              type = enum [ "INFO" "DEBUG" ];
               default = "INFO";
               description = "Log level for Scrutiny collector.";
             };

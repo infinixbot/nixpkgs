@@ -20,10 +20,7 @@
 }:
 
 let
-  toolsPath = lib.makeBinPath [
-    mcpp
-    python3
-  ];
+  toolsPath = lib.makeBinPath [ mcpp python3 ];
 in
 stdenv.mkDerivation rec {
   pname = "souffle";

@@ -140,11 +140,7 @@ in
 
       backend = {
         service = lib.mkOption {
-          type = lib.types.enum [
-            "null"
-            "files"
-            "sql"
-          ];
+          type = lib.types.enum [ "null" "files" "sql" ];
           default = "null";
           description = "Service to use to store sms data.";
         };
@@ -177,12 +173,7 @@ in
 
         sql = {
           driver = lib.mkOption {
-            type = lib.types.enum [
-              "native_mysql"
-              "native_pgsql"
-              "odbc"
-              "dbi"
-            ];
+            type = lib.types.enum [ "native_mysql" "native_pgsql" "odbc" "dbi" ];
             description = "DB driver to use";
           };
 

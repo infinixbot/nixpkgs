@@ -83,10 +83,7 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optional pulseSupport libpulseaudio
     ++ lib.optional iwSupport wirelesstools
     ++ lib.optional nlSupport libnl
-    ++ lib.optionals i3Support [
-      jsoncpp
-      i3
-    ];
+    ++ lib.optionals i3Support [ jsoncpp i3 ];
 
   patches = [ ./remove-hardcoded-etc.diff ];
 

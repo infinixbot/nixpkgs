@@ -305,15 +305,7 @@ in
           # attribute, so there is no way to detect this -- we must add it
           # as a special case.  We filter the "test" attribute (only from
           # *cross*-built bootstrapTools) for the same reason.
-          (
-            mapAttrs (
-              _: v:
-              removeAttrs v [
-                "bootstrapTools"
-                "test"
-              ]
-            ) linuxTools
-          );
+          (mapAttrs (_: v: removeAttrs v [ "bootstrapTools" "test" ]) linuxTools);
       freebsd = mapAttrsRecursiveCond (as: !isDerivation as) (
         name: mkBootstrapToolsJob freebsdMeta
       ) freebsdTools;

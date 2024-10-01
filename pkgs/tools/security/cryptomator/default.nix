@@ -61,18 +61,8 @@ maven.buildMavenPackage rec {
       --add-flags "-Dcryptomator.disableUpdateCheck=true" \
       --add-flags "-Dcryptomator.integrationsLinux.trayIconsDir='$out/share/icons/hicolor/symbolic/apps'" \
       --add-flags "--module org.cryptomator.desktop/org.cryptomator.launcher.Cryptomator" \
-      --prefix PATH : "$out/share/cryptomator/libs/:${
-        lib.makeBinPath [
-          jdk
-          glib
-        ]
-      }" \
-      --prefix LD_LIBRARY_PATH : "${
-        lib.makeLibraryPath [
-          fuse3
-          libayatana-appindicator
-        ]
-      }" \
+      --prefix PATH : "$out/share/cryptomator/libs/:${lib.makeBinPath [ jdk glib ]}" \
+      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ fuse3 libayatana-appindicator ]}" \
       --set JAVA_HOME "${jdk.home}"
 
     # install desktop entry and icons

@@ -24,17 +24,9 @@ let
           description = "tuple of" + lib.concatMapStrings (t: " (${t.description})") ts;
         };
       level = ints.unsigned;
-      special = enum [
-        "level auto"
-        "level full-speed"
-        "level disengaged"
-      ];
+      special = enum [ "level auto" "level full-speed" "level disengaged" ];
     in
-    tuple [
-      (either level special)
-      level
-      level
-    ];
+    tuple [ (either level special) level level ];
 
   # sensor or fan config
   sensorType =
@@ -44,12 +36,7 @@ let
       options =
         {
           type = lib.mkOption {
-            type = lib.types.enum [
-              "hwmon"
-              "atasmart"
-              "tpacpi"
-              "nvml"
-            ];
+            type = lib.types.enum [ "hwmon" "atasmart" "tpacpi" "nvml" ];
             description = ''
               The ${name} type, can be
               `hwmon` for standard ${name}s,
@@ -102,14 +89,7 @@ let
   # removes NixOS special and unused attributes
   sensorToConf =
     { type, query, ... }@args:
-    (lib.filterAttrs (
-      k: v:
-      v != null
-      && !(lib.elem k [
-        "type"
-        "query"
-      ])
-    ) args)
+    (lib.filterAttrs (k: v: v != null && !(lib.elem k [ "type" "query" ])) args)
     // {
       "${type}" = query;
     };

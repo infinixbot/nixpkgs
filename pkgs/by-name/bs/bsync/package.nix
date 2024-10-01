@@ -35,14 +35,7 @@ stdenv.mkDerivation {
 
     patchShebangs $out/bin/bsync
     wrapProgram $out/bin/bsync \
-      --prefix PATH ":" ${
-        lib.makeLibraryPath [
-          openssh
-          rsync
-          findutils
-          which
-        ]
-      }
+      --prefix PATH ":" ${lib.makeLibraryPath [ openssh rsync findutils which ]}
 
     runHook postFixup
   '';

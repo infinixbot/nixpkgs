@@ -31,21 +31,13 @@ in
     ] "S3TC support is now always enabled in Mesa.")
     (lib.mkRemovedOptionModule [ "hardware" "opengl" "driSupport" ] "The setting can be removed.")
 
-    (lib.mkRenamedOptionModule [ "hardware" "opengl" "enable" ] [
-      "hardware"
-      "graphics"
-      "enable"
-    ])
+    (lib.mkRenamedOptionModule [ "hardware" "opengl" "enable" ] [ "hardware" "graphics" "enable" ])
     (lib.mkRenamedOptionModule [ "hardware" "opengl" "driSupport32Bit" ] [
       "hardware"
       "graphics"
       "enable32Bit"
     ])
-    (lib.mkRenamedOptionModule [ "hardware" "opengl" "package" ] [
-      "hardware"
-      "graphics"
-      "package"
-    ])
+    (lib.mkRenamedOptionModule [ "hardware" "opengl" "package" ] [ "hardware" "graphics" "package" ])
     (lib.mkRenamedOptionModule [ "hardware" "opengl" "package32" ] [
       "hardware"
       "graphics"

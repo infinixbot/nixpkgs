@@ -25,11 +25,7 @@ qtModule {
       gst-plugins-base
     ]
     # https://github.com/NixOS/nixpkgs/pull/169336 regarding libpulseaudio
-    ++ lib.optionals stdenv.isLinux [
-      libpulseaudio
-      alsa-lib
-      wayland
-    ];
+    ++ lib.optionals stdenv.isLinux [ libpulseaudio alsa-lib wayland ];
   outputs = [
     "bin"
     "dev"

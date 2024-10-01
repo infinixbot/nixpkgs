@@ -99,12 +99,7 @@ stdenv.mkDerivation (
       install -Dm644 desktop/build/libs/desktop-*.jar $out/share/${pname}.jar
       mkdir $out/bin
       makeWrapper ${jre}/bin/java $out/bin/${pname} \
-        --prefix LD_LIBRARY_PATH : ${
-          lib.makeLibraryPath [
-            libGL
-            libpulseaudio
-          ]
-        } \
+        --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ libGL libpulseaudio ]} \
         --add-flags "-jar $out/share/${pname}.jar"
 
       for s in 16 32 48 64 128 256; do

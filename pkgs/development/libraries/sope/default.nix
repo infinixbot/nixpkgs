@@ -39,10 +39,7 @@ gnustep.stdenv.mkDerivation rec {
       openssl
     ]
     ++ lib.optional (openldap != null) openldap
-    ++ lib.optionals (mariadb != null) [
-      libmysqlclient
-      mariadb
-    ]
+    ++ lib.optionals (mariadb != null) [ libmysqlclient mariadb ]
     ++ lib.optional (postgresql != null) postgresql;
 
   # Configure directories where files are installed to. Everything is automatically

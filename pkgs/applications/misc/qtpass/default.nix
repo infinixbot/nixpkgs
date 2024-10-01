@@ -50,14 +50,7 @@ stdenv.mkDerivation rec {
   ];
 
   qtWrapperArgs = [
-    "--suffix PATH : ${
-      lib.makeBinPath [
-        git
-        gnupg
-        pass
-        pwgen
-      ]
-    }"
+    "--suffix PATH : ${lib.makeBinPath [ git gnupg pass pwgen ]}"
   ];
 
   postInstall = ''

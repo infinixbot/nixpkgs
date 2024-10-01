@@ -195,12 +195,7 @@ stdenv.mkDerivation rec {
   dontFixup = true;
 
   pythonPath =
-    optionals (withScripting) [
-      wxPython
-      python.pkgs.six
-      python.pkgs.requests
-    ]
-    ++ addonsDrvs;
+    optionals (withScripting) [ wxPython python.pkgs.six python.pkgs.requests ] ++ addonsDrvs;
 
   nativeBuildInputs = [ makeWrapper ] ++ optionals (withScripting) [ python.pkgs.wrapPython ];
 

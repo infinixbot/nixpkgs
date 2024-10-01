@@ -42,26 +42,21 @@ stdenv.mkDerivation rec {
     wrapGAppsHook3
   ];
 
-  buildInputs =
-    [
-      boost
-      dbus
-      gettext
-      gnutls
-      libfilezilla
-      libidn
-      nettle
-      pugixml
-      sqlite
-      tinyxml
-      wxGTK32
-      gtk3
-      xdg-utils
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      CoreServices
-      Security
-    ];
+  buildInputs = [
+    boost
+    dbus
+    gettext
+    gnutls
+    libfilezilla
+    libidn
+    nettle
+    pugixml
+    sqlite
+    tinyxml
+    wxGTK32
+    gtk3
+    xdg-utils
+  ] ++ lib.optionals stdenv.isDarwin [ CoreServices Security ];
 
   preBuild = lib.optionalString (stdenv.isDarwin) ''
     export MACOSX_DEPLOYMENT_TARGET=11.0

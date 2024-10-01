@@ -69,14 +69,7 @@ stdenv.mkDerivation rec {
   preInstall = ''
     function fixRunPath {
       p=$(patchelf --print-rpath $1)
-      q="$p:${
-        lib.makeLibraryPath [
-          jsoncpp
-          argtable
-          libmicrohttpd
-          curl
-        ]
-      }:$out/lib"
+      q="$p:${lib.makeLibraryPath [ jsoncpp argtable libmicrohttpd curl ]}:$out/lib"
       patchelf --set-rpath $q $1
     }
 

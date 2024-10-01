@@ -93,10 +93,7 @@ in
                 types.submodule {
                   options = {
                     mode = mkOption {
-                      type = types.enum [
-                        "Manual"
-                        "PWM"
-                      ];
+                      type = types.enum [ "Manual" "PWM" ];
                       default = "Manual";
                       example = "PWM";
                       description = "\"PWM\" to enable PWM sync. \"Manual\" to set speed.";

@@ -33,11 +33,7 @@ rustPlatform.buildRustPackage rec {
     makeWrapper
     cmake
   ];
-  buildInputs = lib.optionals stdenv.isDarwin [
-    libiconv
-    CoreServices
-    Security
-  ];
+  buildInputs = lib.optionals stdenv.isDarwin [ libiconv CoreServices Security ];
 
   checkFlags = [
     # test broken with rust 1.69:
@@ -50,12 +46,7 @@ rustPlatform.buildRustPackage rec {
     let
       wrap = exe: ''
         wrapProgram $out/bin/${exe} \
-          --prefix PATH : ${
-            lib.makeBinPath [
-              cargo
-              gcc
-            ]
-          } \
+          --prefix PATH : ${lib.makeBinPath [ cargo gcc ]} \
           --set-default RUST_SRC_PATH "$RUST_SRC_PATH"
       '';
     in

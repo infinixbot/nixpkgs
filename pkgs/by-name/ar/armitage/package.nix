@@ -100,23 +100,13 @@ stdenv.mkDerivation (finalAttrs: {
     substituteInPlace $out/bin/armitage \
       --replace-fail "armitage.jar" "$JAR"
     wrapProgram $out/bin/armitage \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          jdk11
-          metasploit
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ jdk11 metasploit ]}"
 
     install -Dm755 dist/unix/teamserver $out/bin/teamserver
     substituteInPlace $out/bin/teamserver \
       --replace-fail "armitage.jar" "$JAR"
     wrapProgram $out/bin/teamserver \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          jdk11
-          metasploit
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ jdk11 metasploit ]}"
 
     install -Dm444 dist/unix/armitage-logo.png $out/share/pixmaps/armitage.png
     ${lib.optionalString stdenv.isDarwin ''

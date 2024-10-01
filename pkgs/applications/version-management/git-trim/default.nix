@@ -37,16 +37,10 @@ rustPlatform.buildRustPackage rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs =
-    [
-      openssl
-      libgit2
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      IOKit
-      CoreFoundation
-      Security
-    ];
+  buildInputs = [
+    openssl
+    libgit2
+  ] ++ lib.optionals stdenv.isDarwin [ IOKit CoreFoundation Security ];
 
   postInstall = ''
     install -Dm644 -t $out/share/man/man1/ docs/git-trim.1

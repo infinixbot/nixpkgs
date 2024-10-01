@@ -144,30 +144,19 @@ let
       libxml2
     ];
     sensors.buildInputs = lib.optionals stdenv.isLinux [ lm_sensors ];
-    sigrok.buildInputs = lib.optionals stdenv.isLinux [
-      libsigrok
-      udev
-    ];
-    smart.buildInputs = lib.optionals stdenv.isLinux [
-      libatasmart
-      udev
-    ];
+    sigrok.buildInputs = lib.optionals stdenv.isLinux [ libsigrok udev ];
+    smart.buildInputs = lib.optionals stdenv.isLinux [ libatasmart udev ];
     snmp.buildInputs = lib.optionals stdenv.isLinux [ net-snmp ];
     snmp_agent.buildInputs = lib.optionals stdenv.isLinux [ net-snmp ];
     varnish.buildInputs = [
       curl
       varnish
     ];
-    virt.buildInputs =
-      [
-        libvirt
-        libxml2
-        yajl
-      ]
-      ++ lib.optionals stdenv.isLinux [
-        lvm2
-        udev
-      ];
+    virt.buildInputs = [
+      libvirt
+      libxml2
+      yajl
+    ] ++ lib.optionals stdenv.isLinux [ lvm2 udev ];
     write_http.buildInputs = [
       curl
       yajl

@@ -184,141 +184,69 @@ in
         "relogin"
       ]
     )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "sddm"
-        "autoNumlock"
-      ]
-      [
-        "services"
-        "displayManager"
-        "sddm"
-        "autoNumlock"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "sddm"
-        "enable"
-      ]
-      [
-        "services"
-        "displayManager"
-        "sddm"
-        "enable"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "sddm"
-        "enableHidpi"
-      ]
-      [
-        "services"
-        "displayManager"
-        "sddm"
-        "enableHidpi"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "sddm"
-        "extraPackages"
-      ]
-      [
-        "services"
-        "displayManager"
-        "sddm"
-        "extraPackages"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "sddm"
-        "package"
-      ]
-      [
-        "services"
-        "displayManager"
-        "sddm"
-        "package"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "sddm"
-        "settings"
-      ]
-      [
-        "services"
-        "displayManager"
-        "sddm"
-        "settings"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "sddm"
-        "setupScript"
-      ]
-      [
-        "services"
-        "displayManager"
-        "sddm"
-        "setupScript"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "sddm"
-        "stopScript"
-      ]
-      [
-        "services"
-        "displayManager"
-        "sddm"
-        "stopScript"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "sddm"
-        "theme"
-      ]
-      [
-        "services"
-        "displayManager"
-        "sddm"
-        "theme"
-      ]
-    )
+    (mkRenamedOptionModule [
+      "services"
+      "xserver"
+      "displayManager"
+      "sddm"
+      "autoNumlock"
+    ] [ "services" "displayManager" "sddm" "autoNumlock" ])
+    (mkRenamedOptionModule [
+      "services"
+      "xserver"
+      "displayManager"
+      "sddm"
+      "enable"
+    ] [ "services" "displayManager" "sddm" "enable" ])
+    (mkRenamedOptionModule [
+      "services"
+      "xserver"
+      "displayManager"
+      "sddm"
+      "enableHidpi"
+    ] [ "services" "displayManager" "sddm" "enableHidpi" ])
+    (mkRenamedOptionModule [
+      "services"
+      "xserver"
+      "displayManager"
+      "sddm"
+      "extraPackages"
+    ] [ "services" "displayManager" "sddm" "extraPackages" ])
+    (mkRenamedOptionModule [
+      "services"
+      "xserver"
+      "displayManager"
+      "sddm"
+      "package"
+    ] [ "services" "displayManager" "sddm" "package" ])
+    (mkRenamedOptionModule [
+      "services"
+      "xserver"
+      "displayManager"
+      "sddm"
+      "settings"
+    ] [ "services" "displayManager" "sddm" "settings" ])
+    (mkRenamedOptionModule [
+      "services"
+      "xserver"
+      "displayManager"
+      "sddm"
+      "setupScript"
+    ] [ "services" "displayManager" "sddm" "setupScript" ])
+    (mkRenamedOptionModule [
+      "services"
+      "xserver"
+      "displayManager"
+      "sddm"
+      "stopScript"
+    ] [ "services" "displayManager" "sddm" "stopScript" ])
+    (mkRenamedOptionModule [
+      "services"
+      "xserver"
+      "displayManager"
+      "sddm"
+      "theme"
+    ] [ "services" "displayManager" "sddm" "theme" ])
     (mkRenamedOptionModule
       [
         "services"
@@ -343,36 +271,20 @@ in
       "sddm"
       "themes"
     ] "Set the option `services.displayManager.sddm.package' instead.")
-    (mkRenamedOptionModule
-      [
-        "services"
-        "displayManager"
-        "sddm"
-        "autoLogin"
-        "enable"
-      ]
-      [
-        "services"
-        "displayManager"
-        "autoLogin"
-        "enable"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "displayManager"
-        "sddm"
-        "autoLogin"
-        "user"
-      ]
-      [
-        "services"
-        "displayManager"
-        "autoLogin"
-        "user"
-      ]
-    )
+    (mkRenamedOptionModule [
+      "services"
+      "displayManager"
+      "sddm"
+      "autoLogin"
+      "enable"
+    ] [ "services" "displayManager" "autoLogin" "enable" ])
+    (mkRenamedOptionModule [
+      "services"
+      "displayManager"
+      "sddm"
+      "autoLogin"
+      "user"
+    ] [ "services" "displayManager" "autoLogin" "user" ])
     (mkRemovedOptionModule [
       "services"
       "displayManager"

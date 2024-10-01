@@ -65,12 +65,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   configureFlags =
     let
-      excludedPorts =
-        excludePorts
-        ++ (lib.optionals (!withGputils) [
-          "pic14"
-          "pic16"
-        ]);
+      excludedPorts = excludePorts ++ (lib.optionals (!withGputils) [ "pic14" "pic16" ]);
     in
     map (f: "--disable-${f}-port") excludedPorts;
 

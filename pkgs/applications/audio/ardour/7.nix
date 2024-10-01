@@ -118,57 +118,52 @@ stdenv.mkDerivation rec {
     wafHook
   ];
 
-  buildInputs =
-    [
-      alsa-lib
-      aubio
-      boost
-      cairomm
-      cppunit
-      curl
-      dbus
-      ffmpeg
-      fftw
-      fftwSinglePrec
-      flac
-      glibmm
-      gtkmm2
-      itstool
-      libarchive
-      libjack2
-      liblo
-      libogg
-      libpulseaudio
-      librdf_raptor
-      librdf_rasqal
-      libsamplerate
-      libsigcxx
-      libsndfile
-      libusb1
-      libuv
-      libwebsockets
-      libxml2
-      libxslt
-      lilv
-      lrdf
-      lv2
-      pango
-      perl
-      python3
-      readline
-      rubberband
-      serd
-      sord
-      soundtouch
-      sratom
-      suil
-      taglib
-      vamp-plugin-sdk
-    ]
-    ++ lib.optionals videoSupport [
-      harvid
-      xjadeo
-    ];
+  buildInputs = [
+    alsa-lib
+    aubio
+    boost
+    cairomm
+    cppunit
+    curl
+    dbus
+    ffmpeg
+    fftw
+    fftwSinglePrec
+    flac
+    glibmm
+    gtkmm2
+    itstool
+    libarchive
+    libjack2
+    liblo
+    libogg
+    libpulseaudio
+    librdf_raptor
+    librdf_rasqal
+    libsamplerate
+    libsigcxx
+    libsndfile
+    libusb1
+    libuv
+    libwebsockets
+    libxml2
+    libxslt
+    lilv
+    lrdf
+    lv2
+    pango
+    perl
+    python3
+    readline
+    rubberband
+    serd
+    sord
+    soundtouch
+    sratom
+    suil
+    taglib
+    vamp-plugin-sdk
+  ] ++ lib.optionals videoSupport [ harvid xjadeo ];
 
   wafConfigureFlags = [
     "--cxx11"
@@ -202,12 +197,7 @@ stdenv.mkDerivation rec {
     + lib.optionalString videoSupport ''
       # `harvid` and `xjadeo` must be accessible in `PATH` for video to work.
       wrapProgram "$out/bin/ardour${lib.versions.major version}" \
-        --prefix PATH : "${
-          lib.makeBinPath [
-            harvid
-            xjadeo
-          ]
-        }"
+        --prefix PATH : "${lib.makeBinPath [ harvid xjadeo ]}"
     '';
 
   LINKFLAGS = "-lpthread";

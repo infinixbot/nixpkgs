@@ -350,12 +350,7 @@ let
         virtualType = mkOption {
           default = if hasPrefix "tun" name then "tun" else "tap";
           defaultText = literalExpression ''if hasPrefix "tun" name then "tun" else "tap"'';
-          type =
-            with types;
-            enum [
-              "tun"
-              "tap"
-            ];
+          type = with types; enum [ "tun" "tap" ];
           description = ''
             The type of interface to create.
             The default is TUN for an interface name starting
@@ -433,14 +428,8 @@ let
             in
             if bool then "default" else "enabled"
           ))
-          (mkRenamedOptionModule [ "ip4" ] [
-            "ipv4"
-            "addresses"
-          ])
-          (mkRenamedOptionModule [ "ip6" ] [
-            "ipv6"
-            "addresses"
-          ])
+          (mkRenamedOptionModule [ "ip4" ] [ "ipv4" "addresses" ])
+          (mkRenamedOptionModule [ "ip6" ] [ "ipv6" "addresses" ])
           (mkRemovedOptionModule [ "subnetMask" ] ''
             Supply a prefix length instead; use option
             networking.interfaces.<name>.ipv{4,6}.addresses'')
@@ -1196,10 +1185,7 @@ in
                 type = nullOr (submodule {
                   options = {
                     type = mkOption {
-                      type = enum [
-                        "fou"
-                        "gue"
-                      ];
+                      type = enum [ "fou" "gue" ];
                       description = ''
                         Selects encapsulation type. See
                         {manpage}`ip-link(8)` for details.
@@ -1306,14 +1292,7 @@ in
             };
 
             type = mkOption {
-              type =
-                with types;
-                enum [
-                  "tun"
-                  "tap"
-                  "tun6"
-                  "tap6"
-                ];
+              type = with types; enum [ "tun" "tap" "tun6" "tap6" ];
               default = "tap";
               example = "tap";
               apply =

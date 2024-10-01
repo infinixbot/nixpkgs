@@ -300,10 +300,7 @@ let
           libevdev
         ]
         ++ lib.optional systemdSupport systemd
-        ++ lib.optionals cupsSupport [
-          libgcrypt
-          cups
-        ]
+        ++ lib.optionals cupsSupport [ libgcrypt cups ]
         ++ lib.optional pulseSupport libpulseaudio;
 
       buildInputs =
@@ -357,10 +354,7 @@ let
           libevdev
         ]
         ++ lib.optional systemdSupport systemd
-        ++ lib.optionals cupsSupport [
-          libgcrypt
-          cups
-        ]
+        ++ lib.optionals cupsSupport [ libgcrypt cups ]
         ++ lib.optional pulseSupport libpulseaudio;
 
       patches =
@@ -726,11 +720,7 @@ let
         # libpci (from pciutils) is needed by dlopen in angle/src/gpu_info_util/SystemInfo_libpci.cpp
         for chromiumBinary in "$libExecPath/$packageName" "$libExecPath/libGLESv2.so"; do
           patchelf --set-rpath "${
-            lib.makeLibraryPath [
-              libGL
-              vulkan-loader
-              pciutils
-            ]
+            lib.makeLibraryPath [ libGL vulkan-loader pciutils ]
           }:$(patchelf --print-rpath "$chromiumBinary")" "$chromiumBinary"
         done
 

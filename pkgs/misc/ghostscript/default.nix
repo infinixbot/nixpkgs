@@ -113,12 +113,7 @@ stdenv.mkDerivation rec {
       bash
       openjpeg
     ]
-    ++ lib.optionals x11Support [
-      xorg.libICE
-      xorg.libX11
-      xorg.libXext
-      xorg.libXt
-    ]
+    ++ lib.optionals x11Support [ xorg.libICE xorg.libX11 xorg.libXext xorg.libXt ]
     ++ lib.optional cupsSupport cups;
 
   preConfigure = ''

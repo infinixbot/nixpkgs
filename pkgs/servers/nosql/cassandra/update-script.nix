@@ -19,12 +19,7 @@ writeScript "update-cassandra_${generation}" ''
     exit 1
   }
   cd pkgs/servers/nosql/cassandra
-  PATH="${
-    makeBinPath [
-      git
-      gnupg
-    ]
-  }:$PATH"
+  PATH="${makeBinPath [ git gnupg ]}:$PATH"
 
   tmp="$(mktemp -d)"
   cleanup() {

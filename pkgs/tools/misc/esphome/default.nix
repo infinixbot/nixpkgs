@@ -97,14 +97,7 @@ python.pkgs.buildPythonApplication rec {
     # esptool is used in esphome/__main__.py
     # git is used in esphome/writer.py
     # inetutils is used in esphome/dashboard/status/ping.py
-    "--prefix PATH : ${
-      lib.makeBinPath [
-        platformio
-        esptool
-        git
-        inetutils
-      ]
-    }"
+    "--prefix PATH : ${lib.makeBinPath [ platformio esptool git inetutils ]}"
     "--prefix PYTHONPATH : ${python.pkgs.makePythonPath propagatedBuildInputs}" # will show better error messages
     "--prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ stdenv.cc.cc.lib ]}"
     "--set ESPHOME_USE_SUBPROCESS ''"

@@ -25,11 +25,7 @@
   network ? "ethernet",
 }:
 
-assert builtins.elem network [
-  "ethernet"
-  "infiniband"
-  "omnipath"
-];
+assert builtins.elem network [ "ethernet" "infiniband" "omnipath" ];
 
 stdenv.mkDerivation rec {
   pname = "mvapich";
@@ -66,14 +62,8 @@ stdenv.mkDerivation rec {
       openssh
       hwloc
     ]
-    ++ lib.optionals (network == "infiniband") [
-      rdma-core
-      opensm
-    ]
-    ++ lib.optionals (network == "omnipath") [
-      libpsm2
-      libfabric
-    ]
+    ++ lib.optionals (network == "infiniband") [ rdma-core opensm ]
+    ++ lib.optionals (network == "omnipath") [ libpsm2 libfabric ]
     ++ lib.optional useSlurm slurm;
 
   configureFlags =
@@ -93,10 +83,7 @@ stdenv.mkDerivation rec {
       "--with-rdma=gen2"
       "--disable-ibv-dlopen"
     ]
-    ++ lib.optionals (network == "omnipath") [
-      "--with-device=ch3:psm"
-      "--with-psm2=${libpsm2}"
-    ];
+    ++ lib.optionals (network == "omnipath") [ "--with-device=ch3:psm" "--with-psm2=${libpsm2}" ];
 
   doCheck = true;
 

@@ -35,11 +35,7 @@ in
     };
 
     algorithm = lib.mkOption {
-      type = lib.types.enum [
-        "CH"
-        "CoreCH"
-        "MLD"
-      ];
+      type = lib.types.enum [ "CH" "CoreCH" "MLD" ];
       default = "MLD";
       description = "Algorithm to use for the data. Must be one of CH, CoreCH, MLD";
     };

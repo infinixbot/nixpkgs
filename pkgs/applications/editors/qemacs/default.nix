@@ -33,12 +33,7 @@ stdenv.mkDerivation rec {
     which
     texi2html
   ];
-  buildInputs = lib.optionals enableX11 [
-    libpng
-    libX11
-    libXext
-    libXv
-  ];
+  buildInputs = lib.optionals enableX11 [ libpng libX11 libXext libXv ];
 
   enableParallelBuilding = true;
 

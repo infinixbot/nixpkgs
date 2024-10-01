@@ -574,10 +574,7 @@ let
   nsWrap =
     cmd: src: dst:
     let
-      nsList = filter (ns: ns != null) [
-        src
-        dst
-      ];
+      nsList = filter (ns: ns != null) [ src dst ];
       ns = last nsList;
     in
     if (length nsList > 0 && ns != "init") then ''ip netns exec "${ns}" "${cmd}"'' else cmd;

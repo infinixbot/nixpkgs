@@ -26,12 +26,7 @@ rustPlatform.buildRustPackage rec {
 
   postInstall = ''
     wrapProgram $out/bin/comma \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          fzy
-          nix-index-unwrapped
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ fzy nix-index-unwrapped ]}
     ln -s $out/bin/comma $out/bin/,
   '';
 

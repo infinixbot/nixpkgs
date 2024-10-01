@@ -79,12 +79,7 @@ stdenv.mkDerivation rec {
     # WORK_DIR: unfortunately the ikvm related binaries are loaded from
     #           and user configuration is written to files in the CWD
     makeWrapper $out/jre/bin/java $out/bin/IPMIView \
-      --set LD_LIBRARY_PATH "${
-        lib.makeLibraryPath [
-          fontconfig
-          gcc-unwrapped.lib
-        ]
-      }" \
+      --set LD_LIBRARY_PATH "${lib.makeLibraryPath [ fontconfig gcc-unwrapped.lib ]}" \
       --prefix PATH : "$out/jre/bin:${iputils}/bin:${psmisc}/bin" \
       --add-flags "-jar $out/IPMIView20.jar" \
       --run 'WORK_DIR=''${XDG_DATA_HOME:-~/.local/share}/ipmiview

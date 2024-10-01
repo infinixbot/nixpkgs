@@ -230,13 +230,7 @@ stdenv.mkDerivation (
       bison
       python3Minimal
     ] ++ extraNativeBuildInputs;
-    buildInputs =
-      [ linuxHeaders ]
-      ++ lib.optionals withGd [
-        gd
-        libpng
-      ]
-      ++ extraBuildInputs;
+    buildInputs = [ linuxHeaders ] ++ lib.optionals withGd [ gd libpng ] ++ extraBuildInputs;
 
     env = {
       linuxHeaders = lib.optionalString withLinuxHeaders linuxHeaders;

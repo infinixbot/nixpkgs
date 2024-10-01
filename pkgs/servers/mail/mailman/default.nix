@@ -41,10 +41,7 @@ let
               ps.psycopg2
             ]
             ++ lib.optional withHyperkitty mailman-hyperkitty
-            ++ lib.optionals withLDAP [
-              ps.python-ldap
-              ps.django-auth-ldap
-            ]
+            ++ lib.optionals withLDAP [ ps.python-ldap ps.django-auth-ldap ]
           );
           webEnv = self.python3.withPackages (
             ps:
@@ -52,10 +49,7 @@ let
               web
               ps.psycopg2
             ]
-            ++ lib.optionals withLDAP [
-              ps.python-ldap
-              ps.django-auth-ldap
-            ]
+            ++ lib.optionals withLDAP [ ps.python-ldap ps.django-auth-ldap ]
           );
         };
     }

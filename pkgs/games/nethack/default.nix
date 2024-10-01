@@ -41,10 +41,7 @@ let
     else
       "unix";
   userDir = "~/.config/nethack";
-  binPath = lib.makeBinPath [
-    coreutils
-    less
-  ];
+  binPath = lib.makeBinPath [ coreutils less ];
 
 in
 stdenv.mkDerivation rec {
@@ -66,16 +63,8 @@ stdenv.mkDerivation rec {
 
   buildInputs =
     [ ncurses ]
-    ++ lib.optionals x11Mode [
-      libXaw
-      libXext
-      libXpm
-    ]
-    ++ lib.optionals qtMode [
-      gzip
-      qt5.qtbase.bin
-      qt5.qtmultimedia.bin
-    ];
+    ++ lib.optionals x11Mode [ libXaw libXext libXpm ]
+    ++ lib.optionals qtMode [ gzip qt5.qtbase.bin qt5.qtmultimedia.bin ];
 
   nativeBuildInputs =
     [
@@ -83,10 +72,7 @@ stdenv.mkDerivation rec {
       bison
       copyDesktopItems
     ]
-    ++ lib.optionals x11Mode [
-      mkfontdir
-      bdftopcf
-    ]
+    ++ lib.optionals x11Mode [ mkfontdir bdftopcf ]
     ++ lib.optionals qtMode [
       pkg-config
       mkfontdir

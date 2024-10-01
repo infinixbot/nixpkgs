@@ -86,14 +86,7 @@ stdenv.mkDerivation rec {
   postInstall =
     ''
       wrapProgram $out/bin/mod2ogg2.sh \
-        --prefix PATH : $out/bin:${
-          lib.makeBinPath [
-            sox
-            lame
-            flac
-            vorbis-tools
-          ]
-        }
+        --prefix PATH : $out/bin:${lib.makeBinPath [ sox lame flac vorbis-tools ]}
       # This is an old script, don't break expectations by renaming it
       ln -s $out/bin/mod2ogg2{.sh,}
     ''

@@ -277,11 +277,7 @@ in
       };
 
       tlsLevel = lib.mkOption {
-        type = lib.types.enum [
-          "REQUIRED"
-          "OPTIONAL"
-          "DISABLED"
-        ];
+        type = lib.types.enum [ "REQUIRED" "OPTIONAL" "DISABLED" ];
         default = "OPTIONAL";
         description = ''
           SSL/TSL requirement level for BOLT traffic.
@@ -497,11 +493,7 @@ in
                 };
 
                 clientAuth = lib.mkOption {
-                  type = lib.types.enum [
-                    "NONE"
-                    "OPTIONAL"
-                    "REQUIRE"
-                  ];
+                  type = lib.types.enum [ "NONE" "OPTIONAL" "REQUIRE" ];
                   default = "REQUIRE";
                   description = ''
                     The client authentication stance for this policy.

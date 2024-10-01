@@ -44,12 +44,7 @@ rustPlatform.buildRustPackage rec {
 
   postFixup =
     let
-      rpath = lib.makeLibraryPath [
-        libGL
-        vulkan-loader
-        wayland
-        libxkbcommon
-      ];
+      rpath = lib.makeLibraryPath [ libGL vulkan-loader wayland libxkbcommon ];
     in
     ''
       patchelf --set-rpath ${rpath} $out/bin/onagre

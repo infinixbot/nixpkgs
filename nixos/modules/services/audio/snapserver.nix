@@ -216,10 +216,7 @@ in
           attrsOf (submodule {
             options = {
               location = lib.mkOption {
-                type = lib.types.oneOf [
-                  lib.types.path
-                  lib.types.str
-                ];
+                type = lib.types.oneOf [ lib.types.path lib.types.str ];
                 description = ''
                   For type `pipe` or `file`, the path to the pipe or file.
                   For type `librespot`, `airplay` or `process`, the path to the corresponding binary.

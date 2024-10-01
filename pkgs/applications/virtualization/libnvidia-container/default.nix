@@ -118,11 +118,7 @@ stdenv.mkDerivation rec {
   postInstall =
     let
       inherit (addDriverRunpath) driverLink;
-      libraryPath = lib.makeLibraryPath [
-        "$out"
-        driverLink
-        "${driverLink}-32"
-      ];
+      libraryPath = lib.makeLibraryPath [ "$out" driverLink "${driverLink}-32" ];
     in
     ''
       remove-references-to -t "${go}" $out/lib/libnvidia-container-go.so.1.9.0

@@ -99,13 +99,7 @@ in
               '';
             };
             auth = lib.mkOption {
-              type = lib.types.listOf (
-                lib.types.enum [
-                  "none"
-                  "iponly"
-                  "strong"
-                ]
-              );
+              type = lib.types.listOf (lib.types.enum [ "none" "iponly" "strong" ]);
               example = [
                 "iponly"
                 "strong"
@@ -142,10 +136,7 @@ in
                 lib.types.submodule {
                   options = {
                     rule = lib.mkOption {
-                      type = lib.types.enum [
-                        "allow"
-                        "deny"
-                      ];
+                      type = lib.types.enum [ "allow" "deny" ];
                       example = "allow";
                       description = ''
                         ACL rule. The following values are valid:

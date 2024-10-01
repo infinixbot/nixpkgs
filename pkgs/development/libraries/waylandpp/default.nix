@@ -52,15 +52,10 @@ stdenv.mkDerivation rec {
     fontDirectories = [ ];
   });
 
-  nativeBuildInputs =
-    [
-      cmake
-      pkg-config
-    ]
-    ++ lib.optionals docSupport [
-      doxygen
-      graphviz
-    ];
+  nativeBuildInputs = [
+    cmake
+    pkg-config
+  ] ++ lib.optionals docSupport [ doxygen graphviz ];
   buildInputs = [
     pugixml
     wayland
@@ -68,17 +63,12 @@ stdenv.mkDerivation rec {
     libffi
   ];
 
-  outputs =
-    [
-      "bin"
-      "dev"
-      "lib"
-      "out"
-    ]
-    ++ lib.optionals docSupport [
-      "doc"
-      "devman"
-    ];
+  outputs = [
+    "bin"
+    "dev"
+    "lib"
+    "out"
+  ] ++ lib.optionals docSupport [ "doc" "devman" ];
 
   # Resolves the warning "Fontconfig error: No writable cache directories"
   preBuild = ''

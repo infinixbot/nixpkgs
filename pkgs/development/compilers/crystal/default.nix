@@ -239,13 +239,7 @@ let
 
         install -Dm755 .build/crystal $bin/bin/crystal
         wrapProgram $bin/bin/crystal \
-          --suffix PATH : ${
-            lib.makeBinPath [
-              pkg-config
-              llvmPackages.clang
-              which
-            ]
-          } \
+          --suffix PATH : ${lib.makeBinPath [ pkg-config llvmPackages.clang which ]} \
           --suffix CRYSTAL_PATH : lib:$lib/crystal \
           --suffix PKG_CONFIG_PATH : ${
             lib.makeSearchPathOutput "dev" "lib/pkgconfig" finalAttrs.buildInputs

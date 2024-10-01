@@ -11,12 +11,7 @@
 }:
 
 let
-  binPath = lib.makeBinPath [
-    gcc
-    graphviz
-    tk
-    swarm
-  ];
+  binPath = lib.makeBinPath [ gcc graphviz tk swarm ];
 in
 
 stdenv.mkDerivation rec {

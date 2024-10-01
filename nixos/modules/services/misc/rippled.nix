@@ -173,10 +173,7 @@ let
     options = {
       type = lib.mkOption {
         description = "Rippled database type.";
-        type = lib.types.enum [
-          "rocksdb"
-          "nudb"
-        ];
+        type = lib.types.enum [ "rocksdb" "nudb" ];
         default = "rocksdb";
       };
 
@@ -392,11 +389,7 @@ in
 
       logLevel = lib.mkOption {
         description = "Logging verbosity.";
-        type = lib.types.enum [
-          "debug"
-          "error"
-          "info"
-        ];
+        type = lib.types.enum [ "debug" "error" "info" ];
         default = "error";
       };
 

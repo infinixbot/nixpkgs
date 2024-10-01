@@ -35,12 +35,7 @@ buildNimPackage {
 
   postFixup = ''
     wrapProgram $out/bin/nrpl \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          nim
-          tinycc
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ nim tinycc ]}
   '';
 
   meta = with lib; {

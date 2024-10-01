@@ -655,11 +655,7 @@ let
     }@args:
 
     let
-      extraArgs = removeAttrs args [
-        "name"
-        "dependencies"
-        "buildInputs"
-      ];
+      extraArgs = removeAttrs args [ "name" "dependencies" "buildInputs" ];
     in
     stdenv.mkDerivation (
       {

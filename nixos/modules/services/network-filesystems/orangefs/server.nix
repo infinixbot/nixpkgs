@@ -90,12 +90,7 @@ in
       enable = lib.mkEnableOption "OrangeFS server";
 
       logType = lib.mkOption {
-        type =
-          with lib.types;
-          enum [
-            "file"
-            "syslog"
-          ];
+        type = with lib.types; enum [ "file" "syslog" ];
         default = "syslog";
         description = "Destination for log messages.";
       };

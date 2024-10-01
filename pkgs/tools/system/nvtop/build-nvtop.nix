@@ -24,13 +24,7 @@ let
   drm-postFixup = ''
     patchelf \
       --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
-      --set-rpath "${
-        lib.makeLibraryPath [
-          libdrm
-          ncurses
-          udev
-        ]
-      }" \
+      --set-rpath "${lib.makeLibraryPath [ libdrm ncurses udev ]}" \
       $out/bin/nvtop
   '';
   needDrm = (amd || msm || panfrost || panthor);

@@ -74,19 +74,9 @@ buildGoModule rec {
     wrapProgram $out/bin/aerc \
       --prefix PATH : ${lib.makeBinPath [ ncurses ]}
     wrapProgram $out/libexec/aerc/filters/html \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          w3m
-          dante
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ w3m dante ]}
     wrapProgram $out/libexec/aerc/filters/html-unsafe \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          w3m
-          dante
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ w3m dante ]}
     patchShebangs $out/libexec/aerc/filters
   '';
 

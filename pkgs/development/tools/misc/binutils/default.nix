@@ -127,12 +127,7 @@ stdenv.mkDerivation (finalAttrs: {
       perl
     ]
     ++ lib.optionals targetPlatform.isiOS [ autoreconfHook ]
-    ++ lib.optionals buildPlatform.isDarwin [
-      autoconf269
-      automake
-      gettext
-      libtool
-    ]
+    ++ lib.optionals buildPlatform.isDarwin [ autoconf269 automake gettext libtool ]
     ++ lib.optionals targetPlatform.isVc4 [ flex ];
 
   buildInputs = [

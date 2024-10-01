@@ -142,10 +142,7 @@ let
           update =
             addr:
             if isAbsolutePath addr then
-              format.lib.mkTuple [
-                (format.lib.mkAtom ":local")
-                addr
-              ]
+              format.lib.mkTuple [ (format.lib.mkAtom ":local") addr ]
             else
               format.lib.mkRaw (erlAddr addr);
         }
@@ -230,13 +227,7 @@ let
         ${optionalString (isSecret vapid-public) ''
           { test -e ${escapeShellArg vapid-private._secret} && \
             test -e ${escapeShellArg vapid-public._secret}; } || \
-              elixir ${
-                escapeShellArgs [
-                  vapidKeygen
-                  vapid-public._secret
-                  vapid-private._secret
-                ]
-              }
+              elixir ${escapeShellArgs [ vapidKeygen vapid-public._secret vapid-private._secret ]}
         ''}
       '';
   };
@@ -254,12 +245,7 @@ let
 
       cat ${escapeShellArg configFile} >"$tmp"
       ${concatMapStrings (file: ''
-        replace-secret ${
-          escapeShellArgs [
-            (sha256 file)
-            file
-          ]
-        } "$tmp"
+        replace-secret ${escapeShellArgs [ (sha256 file) file ]} "$tmp"
       '') secretPaths}
 
       chown ${escapeShellArg cfg.user}:${escapeShellArg cfg.group} "$tmp"
@@ -270,10 +256,7 @@ let
 
   pgpass =
     let
-      esc = escape [
-        ":"
-        ''\''
-      ];
+      esc = escape [ ":" ''\'' ];
     in
     if (cfg.initDb.password != null) then
       pkgs.writeText "pgpass.conf" ''
@@ -1057,10 +1040,7 @@ in
                 type = types.listOf elixirValue;
                 visible = false;
                 default = with format.lib; [
-                  (mkTuple [
-                    (mkRaw "ExSyslogger")
-                    (mkAtom ":ex_syslogger")
-                  ])
+                  (mkTuple [ (mkRaw "ExSyslogger") (mkAtom ":ex_syslogger") ])
                 ];
               };
 

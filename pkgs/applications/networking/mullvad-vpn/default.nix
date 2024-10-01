@@ -126,12 +126,7 @@ stdenv.mkDerivation {
 
     wrapProgram $out/bin/mullvad-vpn \
       --set MULLVAD_DISABLE_UPDATE_NOTIFICATION 1 \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          coreutils
-          gnugrep
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ coreutils gnugrep ]}
 
     wrapProgram $out/bin/mullvad-daemon \
         --set-default MULLVAD_RESOURCE_DIR "$out/share/mullvad/resources"

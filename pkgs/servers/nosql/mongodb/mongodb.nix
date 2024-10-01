@@ -99,11 +99,7 @@ stdenv.mkDerivation rec {
       snappy
       zlib
     ]
-    ++ lib.optionals stdenv.isDarwin [
-      Security
-      CoreFoundation
-      cctools
-    ]
+    ++ lib.optionals stdenv.isDarwin [ Security CoreFoundation cctools ]
     ++ lib.optional stdenv.isLinux net-snmp
     ++ [ xz ];
 

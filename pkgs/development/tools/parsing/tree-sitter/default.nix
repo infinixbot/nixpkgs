@@ -172,10 +172,7 @@ rustPlatform.buildRustPackage {
 
   cargoHash = "sha256-44FIO0kPso6NxjLwmggsheILba3r9GEhDld2ddt601g=";
 
-  buildInputs = lib.optionals stdenv.isDarwin [
-    Security
-    CoreServices
-  ];
+  buildInputs = lib.optionals stdenv.isDarwin [ Security CoreServices ];
   nativeBuildInputs = [ which ] ++ lib.optionals webUISupport [ emscripten ];
 
   patches = lib.optionals webUISupport [

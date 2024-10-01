@@ -108,10 +108,7 @@ in
       };
 
       phononBackend = mkOption {
-        type = types.enum [
-          "gstreamer"
-          "vlc"
-        ];
+        type = types.enum [ "gstreamer" "vlc" ];
         default = "vlc";
         example = "gstreamer";
         description = "Phonon audio backend to install.";
@@ -202,20 +199,13 @@ in
       "desktopManager"
       "plasma5"
     ])
-    (mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "desktopManager"
-        "plasma5"
-        "excludePackages"
-      ]
-      [
-        "environment"
-        "plasma5"
-        "excludePackages"
-      ]
-    )
+    (mkRenamedOptionModule [
+      "services"
+      "xserver"
+      "desktopManager"
+      "plasma5"
+      "excludePackages"
+    ] [ "environment" "plasma5" "excludePackages" ])
   ];
 
   config = mkMerge [
@@ -345,12 +335,7 @@ in
         ++ lib.optional (cfg.phononBackend == "vlc") pkgs.plasma5Packages.phonon-backend-vlc
 
         # Optional hardware support features
-        ++ lib.optionals config.hardware.bluetooth.enable [
-          bluedevil
-          bluez-qt
-          pkgs.openobex
-          pkgs.obexftp
-        ]
+        ++ lib.optionals config.hardware.bluetooth.enable [ bluedevil bluez-qt pkgs.openobex pkgs.obexftp ]
         ++ lib.optional config.networking.networkmanager.enable plasma-nm
         ++ lib.optional config.hardware.pulseaudio.enable plasma-pa
         ++ lib.optional config.services.pipewire.pulse.enable plasma-pa

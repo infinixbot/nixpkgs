@@ -102,11 +102,7 @@ stdenv.mkDerivation rec {
       libXi
       fontconfig
     ]
-    ++ lib.optionals stdenv.isDarwin [
-      libpcap
-      CoreAudioKit
-      ForceFeedback
-    ];
+    ++ lib.optionals stdenv.isDarwin [ libpcap CoreAudioKit ForceFeedback ];
 
   nativeBuildInputs = [
     copyDesktopItems

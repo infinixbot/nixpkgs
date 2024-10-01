@@ -44,12 +44,7 @@ buildGoModule rec {
       --zsh <($out/bin/lab completion zsh)
     # make xdg-open overrideable at runtime
     wrapProgram $out/bin/lab \
-      --suffix PATH ":" "${
-        lib.makeBinPath [
-          git
-          xdg-utils
-        ]
-      }"
+      --suffix PATH ":" "${lib.makeBinPath [ git xdg-utils ]}"
   '';
 
   meta = with lib; {

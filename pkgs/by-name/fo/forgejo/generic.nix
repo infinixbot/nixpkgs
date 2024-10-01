@@ -87,10 +87,7 @@ buildGoModule rec {
     substituteInPlace modules/setting/server.go --subst-var data
   '';
 
-  tags = lib.optionals sqliteSupport [
-    "sqlite"
-    "sqlite_unlock_notify"
-  ];
+  tags = lib.optionals sqliteSupport [ "sqlite" "sqlite_unlock_notify" ];
 
   ldflags = [
     "-s"
@@ -135,14 +132,7 @@ buildGoModule rec {
     mkdir -p $out
     cp -R ./options/locale $out/locale
     wrapProgram $out/bin/gitea \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          bash
-          git
-          gzip
-          openssh
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ bash git gzip openssh ]}
   '';
 
   # $data is not available in goModules.drv

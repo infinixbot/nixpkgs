@@ -45,20 +45,11 @@ else
     ];
     buildInputs = [ topkg ];
 
-    propagatedBuildInputs =
-      [
-        uchar
-        result
-        gg
-      ]
-      ++ optionals pdfBackend [
-        uutf
-        otfm
-      ]
-      ++ optionals htmlcBackend [
-        js_of_ocaml
-        js_of_ocaml-ppx
-      ];
+    propagatedBuildInputs = [
+      uchar
+      result
+      gg
+    ] ++ optionals pdfBackend [ uutf otfm ] ++ optionals htmlcBackend [ js_of_ocaml js_of_ocaml-ppx ];
 
     strictDeps = true;
 

@@ -41,10 +41,7 @@ python3Packages.buildPythonApplication {
       socat
       vde2
     ]
-    ++ (lib.optionals enableOCR [
-      imagemagick_light
-      tesseract4
-    ])
+    ++ (lib.optionals enableOCR [ imagemagick_light tesseract4 ])
     ++ extraPythonPackages python3Packages;
 
   nativeBuildInputs = [

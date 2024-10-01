@@ -127,12 +127,7 @@ stdenv.mkDerivation rec {
     wrapProgram $out/bin/criu \
       --set-default CR_IPTABLES ${iptables}/bin/iptables \
       --set-default CR_IP_TOOL ${iproute2}/bin/ip \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          gnutar
-          gzip
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ gnutar gzip ]}
     wrapPythonPrograms
   '';
 

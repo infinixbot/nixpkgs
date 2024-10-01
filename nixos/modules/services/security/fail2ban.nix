@@ -53,10 +53,7 @@ let
       );
 
     in
-    pkgs.concatText "jail.local" [
-      configFile
-      (pkgs.writeText "extra-jail.local" extraConfig)
-    ];
+    pkgs.concatText "jail.local" [ configFile (pkgs.writeText "extra-jail.local" extraConfig) ];
 
   pathsConf = pkgs.writeText "paths-nixos.conf" ''
     # NixOS

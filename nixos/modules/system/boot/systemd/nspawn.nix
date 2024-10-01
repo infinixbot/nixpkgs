@@ -78,12 +78,7 @@ let
     (assertValueOneOf "ReadOnly" boolValues)
     (assertValueOneOf "Volatile" (boolValues ++ [ "state" ]))
     (assertValueOneOf "PrivateUsersChown" boolValues)
-    (assertValueOneOf "PrivateUsersOwnership" [
-      "off"
-      "chown"
-      "map"
-      "auto"
-    ])
+    (assertValueOneOf "PrivateUsersOwnership" [ "off" "chown" "map" "auto" ])
   ];
 
   checkNetwork = checkUnitConfig "Network" [

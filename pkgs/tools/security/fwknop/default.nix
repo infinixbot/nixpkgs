@@ -46,16 +46,10 @@ stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs = [ autoreconfHook ];
-  buildInputs =
-    [
-      libpcap
-      texinfo
-    ]
-    ++ lib.optionals gnupgSupport [
-      gnupg
-      gpgme.dev
-    ]
-    ++ lib.optionals wgetSupport [ wget ];
+  buildInputs = [
+    libpcap
+    texinfo
+  ] ++ lib.optionals gnupgSupport [ gnupg gpgme.dev ] ++ lib.optionals wgetSupport [ wget ];
 
   configureFlags =
     [

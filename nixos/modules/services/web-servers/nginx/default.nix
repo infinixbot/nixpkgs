@@ -1150,13 +1150,7 @@ in
               servers = mkOption {
                 type = types.attrsOf (
                   types.submodule {
-                    freeformType = types.attrsOf (
-                      types.oneOf [
-                        types.bool
-                        types.int
-                        types.str
-                      ]
-                    );
+                    freeformType = types.attrsOf (types.oneOf [ types.bool types.int types.str ]);
                     options = {
                       backup = mkOption {
                         type = types.bool;
@@ -1500,24 +1494,14 @@ in
         # New file permissions
         UMask = "0027"; # 0640 / 0750
         # Capabilities
-        AmbientCapabilities =
-          [
-            "CAP_NET_BIND_SERVICE"
-            "CAP_SYS_RESOURCE"
-          ]
-          ++ optionals cfg.enableQuicBPF [
-            "CAP_SYS_ADMIN"
-            "CAP_NET_ADMIN"
-          ];
-        CapabilityBoundingSet =
-          [
-            "CAP_NET_BIND_SERVICE"
-            "CAP_SYS_RESOURCE"
-          ]
-          ++ optionals cfg.enableQuicBPF [
-            "CAP_SYS_ADMIN"
-            "CAP_NET_ADMIN"
-          ];
+        AmbientCapabilities = [
+          "CAP_NET_BIND_SERVICE"
+          "CAP_SYS_RESOURCE"
+        ] ++ optionals cfg.enableQuicBPF [ "CAP_SYS_ADMIN" "CAP_NET_ADMIN" ];
+        CapabilityBoundingSet = [
+          "CAP_NET_BIND_SERVICE"
+          "CAP_SYS_RESOURCE"
+        ] ++ optionals cfg.enableQuicBPF [ "CAP_SYS_ADMIN" "CAP_NET_ADMIN" ];
         # Security
         NoNewPrivileges = true;
         # Sandboxing (sorted by occurrence in https://www.freedesktop.org/software/systemd/man/systemd.exec.html)

@@ -22,10 +22,7 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "unifi-poller" ] [
-      "services"
-      "unpoller"
-    ])
+    (lib.mkRenamedOptionModule [ "services" "unifi-poller" ] [ "services" "unpoller" ])
   ];
 
   options.services.unpoller = {
@@ -219,12 +216,7 @@ in
             '';
           };
           sites = lib.mkOption {
-            type =
-              with lib.types;
-              either (enum [
-                "default"
-                "all"
-              ]) (listOf str);
+            type = with lib.types; either (enum [ "default" "all" ]) (listOf str);
             default = "all";
             description = ''
               List of site names for which statistics should be exported.

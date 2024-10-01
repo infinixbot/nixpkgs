@@ -63,13 +63,7 @@ stdenv.mkDerivation {
     mkdir -p $out
     tar xvf ./build/distributions/signald.tar --strip-components=1 --directory $out/
     wrapProgram $out/bin/signald \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          coreutils
-          findutils
-          gnused
-        ]
-      } \
+      --prefix PATH : ${lib.makeBinPath [ coreutils findutils gnused ]} \
       --set JAVA_HOME "${jre'}"
 
     runHook postInstall

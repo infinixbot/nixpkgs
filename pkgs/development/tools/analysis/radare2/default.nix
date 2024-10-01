@@ -106,11 +106,7 @@ stdenv.mkDerivation (finalAttrs: {
       libuv
       lz4
     ]
-    ++ lib.optionals useX11 [
-      gtkdialog
-      vte
-      gtk2
-    ]
+    ++ lib.optionals useX11 [ gtkdialog vte gtk2 ]
     ++ lib.optionals rubyBindings [ ruby ]
     ++ lib.optionals luaBindings [ lua ];
 

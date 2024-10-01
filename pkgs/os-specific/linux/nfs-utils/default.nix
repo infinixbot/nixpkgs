@@ -28,11 +28,7 @@
 }:
 
 let
-  statdPath = lib.makeBinPath [
-    systemd
-    util-linux
-    coreutils
-  ];
+  statdPath = lib.makeBinPath [ systemd util-linux coreutils ];
 in
 
 stdenv.mkDerivation rec {

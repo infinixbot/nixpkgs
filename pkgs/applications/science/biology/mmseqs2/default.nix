@@ -37,13 +37,7 @@ stdenv.mkDerivation rec {
     ++ lib.optional enableSse4_1 "-DHAVE_SSE4_1=1"
     ++ lib.optional enableMpi "-DHAVE_MPI=1";
 
-  buildInputs =
-    lib.optionals stdenv.cc.isClang [
-      openmp
-      zlib
-      bzip2
-    ]
-    ++ lib.optional enableMpi mpi;
+  buildInputs = lib.optionals stdenv.cc.isClang [ openmp zlib bzip2 ] ++ lib.optional enableMpi mpi;
 
   postInstall = ''
     installShellCompletion --bash --cmd mmseqs $out/util/bash-completion.sh

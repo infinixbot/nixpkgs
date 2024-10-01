@@ -89,10 +89,7 @@ in
       '';
 
       webserver = mkOption {
-        type = types.enum [
-          "nginx"
-          "none"
-        ];
+        type = types.enum [ "nginx" "none" ];
         default = "nginx";
         description = ''
           The webserver to configure for the PHP frontend.

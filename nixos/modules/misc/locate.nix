@@ -14,16 +14,8 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "locate" "period" ] [
-      "services"
-      "locate"
-      "interval"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "locate" "locate" ] [
-      "services"
-      "locate"
-      "package"
-    ])
+    (lib.mkRenamedOptionModule [ "services" "locate" "period" ] [ "services" "locate" "interval" ])
+    (lib.mkRenamedOptionModule [ "services" "locate" "locate" ] [ "services" "locate" "package" ])
     (lib.mkRemovedOptionModule [ "services" "locate" "includeStore" ] "Use services.locate.prunePaths")
   ];
 
@@ -238,17 +230,8 @@ in
         };
       in
       lib.mkIf isMorPLocate {
-        locate = lib.mkMerge [
-          common
-          mlocate
-          plocate
-        ];
-        plocate = lib.mkIf isPLocate (
-          lib.mkMerge [
-            common
-            plocate
-          ]
-        );
+        locate = lib.mkMerge [ common mlocate plocate ];
+        plocate = lib.mkIf isPLocate (lib.mkMerge [ common plocate ]);
       };
 
     environment = {
@@ -288,13 +271,7 @@ in
           let
             toFlags =
               x: lib.optional (cfg.${x} != [ ]) "--${lib.toLower x} '${lib.concatStringsSep " " cfg.${x}}'";
-            args = lib.concatLists (
-              map toFlags [
-                "pruneFS"
-                "pruneNames"
-                "prunePaths"
-              ]
-            );
+            args = lib.concatLists (map toFlags [ "pruneFS" "pruneNames" "prunePaths" ]);
           in
           ''
             exec ${cfg.package}/bin/updatedb \

@@ -245,10 +245,7 @@ stdenv.mkDerivation rec {
     ]
     ++ lib.optionals enableCeph [ ceph ]
     ++ lib.optionals enableGlusterfs [ glusterfs ]
-    ++ lib.optionals enableIscsi [
-      libiscsi
-      openiscsi
-    ]
+    ++ lib.optionals enableIscsi [ libiscsi openiscsi ]
     ++ lib.optionals enableXen [ xen ]
     ++ lib.optionals enableZfs [ zfs ];
 

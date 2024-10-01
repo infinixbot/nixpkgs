@@ -95,13 +95,7 @@ mkDerivation {
     akonadi-search
   ];
   qtWrapperArgs = [
-    ''--prefix PATH : "${
-      lib.makeBinPath [
-        akonadi
-        kdepim-runtime
-        akonadi-search
-      ]
-    }"''
+    ''--prefix PATH : "${lib.makeBinPath [ akonadi kdepim-runtime akonadi-search ]}"''
   ];
 
   meta = with lib; {

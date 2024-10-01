@@ -179,14 +179,8 @@ let
 
         propagatedBuildInputs =
           intra-deps
-          ++ lib.optionals (lib.elem package [
-            "classical"
-            "single"
-          ]) classical-deps
-          ++ lib.optionals (lib.elem package [
-            "analysis"
-            "single"
-          ]) analysis-deps;
+          ++ lib.optionals (lib.elem package [ "classical" "single" ]) classical-deps
+          ++ lib.optionals (lib.elem package [ "analysis" "single" ]) analysis-deps;
 
         preBuild = ''
           cd ${pkgpath}

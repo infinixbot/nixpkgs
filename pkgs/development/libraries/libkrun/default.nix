@@ -54,11 +54,7 @@ stdenv.mkDerivation (finalAttrs: {
       glibc
       glibc.static
     ]
-    ++ lib.optionals withGpu [
-      libepoxy
-      libdrm
-      virglrenderer
-    ]
+    ++ lib.optionals withGpu [ libepoxy libdrm virglrenderer ]
     ++ lib.optional withSound pipewire
     ++ lib.optional sevVariant openssl;
 

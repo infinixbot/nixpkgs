@@ -28,10 +28,7 @@ rustPlatform.buildRustPackage rec {
     perl
     pkg-config
   ];
-  buildInputs = lib.optionals stdenv.isDarwin [
-    CoreServices
-    Security
-  ];
+  buildInputs = lib.optionals stdenv.isDarwin [ CoreServices Security ];
 
   meta = with lib; {
     description = "Cargo subcommand for the client-side Web";

@@ -169,10 +169,7 @@ stdenv.mkDerivation (finalAttrs: {
       SDL2
       libGLU
     ]
-    ++ optionals enableWebService [
-      gsoap
-      zlib
-    ];
+    ++ optionals enableWebService [ gsoap zlib ];
 
   hardeningDisable = [
     "format"

@@ -49,12 +49,7 @@ stdenv.mkDerivation rec {
 
   preFixup = ''
     gappsWrapperArgs+=(
-       --prefix PATH : "${
-         lib.makeBinPath [
-           ffmpeg-full
-           sox
-         ]
-       }"
+       --prefix PATH : "${lib.makeBinPath [ ffmpeg-full sox ]}"
     )
   '';
 

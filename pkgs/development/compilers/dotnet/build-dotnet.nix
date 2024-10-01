@@ -5,11 +5,7 @@
   packages ? null,
 }:
 
-assert builtins.elem type [
-  "aspnetcore"
-  "runtime"
-  "sdk"
-];
+assert builtins.elem type [ "aspnetcore" "runtime" "sdk" ];
 assert if type == "sdk" then packages != null else true;
 
 {
@@ -66,13 +62,7 @@ let
     ''
     + lib.optionalString hasILCompiler ''
       <ItemGroup>
-        <CustomLinkerArg Include="-Wl,-rpath,'${
-          lib.makeLibraryPath [
-            icu
-            zlib
-            openssl
-          ]
-        }'" />
+        <CustomLinkerArg Include="-Wl,-rpath,'${lib.makeLibraryPath [ icu zlib openssl ]}'" />
       </ItemGroup>
     ''
     + lib.optionalString stdenv.isDarwin ''

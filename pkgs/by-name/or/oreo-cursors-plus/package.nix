@@ -23,11 +23,7 @@ stdenvNoCC.mkDerivation {
     hash = "sha256-6oTyOQK7mkr+jWYbPNBlJ4BpT815lNJvsJjzdTmj+68=";
   };
 
-  nativeBuildInputs = lib.optionals (cursorsConf != null) [
-    ruby
-    inkscape
-    xorg.xcursorgen
-  ];
+  nativeBuildInputs = lib.optionals (cursorsConf != null) [ ruby inkscape xorg.xcursorgen ];
 
   # './cursors.conf' contains definitions of cursor variations to generate.
   configurePhase = ''

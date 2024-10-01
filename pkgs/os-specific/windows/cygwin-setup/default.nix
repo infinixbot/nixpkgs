@@ -43,12 +43,7 @@ stdenv.mkDerivation rec {
         propagatedBuildInputs = map mkStatic (o.propagatedBuildInputs or [ ]);
       });
     in
-    map mkStatic [
-      zlib
-      bzip2
-      xz
-      libgcrypt
-    ];
+    map mkStatic [ zlib bzip2 xz libgcrypt ];
 
   configureFlags = [ "--disable-shared" ];
 

@@ -12,12 +12,7 @@ let
   opt = options.networking;
 
   localhostMultiple = lib.any (lib.elem "localhost") (
-    lib.attrValues (
-      removeAttrs cfg.hosts [
-        "127.0.0.1"
-        "::1"
-      ]
-    )
+    lib.attrValues (removeAttrs cfg.hosts [ "127.0.0.1" "::1" ])
   );
 
 in
@@ -203,11 +198,7 @@ in
           pkgs.writeText "string-hosts" (allToString (lib.filterAttrs (_: v: v != [ ]) cfg.hosts));
         extraHosts = pkgs.writeText "extra-hosts" cfg.extraHosts;
       in
-      lib.mkBefore [
-        localhostHosts
-        stringHosts
-        extraHosts
-      ];
+      lib.mkBefore [ localhostHosts stringHosts extraHosts ];
 
     environment.etc =
       {

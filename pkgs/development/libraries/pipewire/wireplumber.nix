@@ -57,12 +57,7 @@ stdenv.mkDerivation rec {
       (python3.pythonOnBuildForHost.withPackages (
         ps:
         with ps;
-        lib.optionals enableDocs [
-          sphinx
-          sphinx-rtd-theme
-          breathe
-        ]
-        ++ lib.optionals enableGI [ lxml ]
+        lib.optionals enableDocs [ sphinx sphinx-rtd-theme breathe ] ++ lib.optionals enableGI [ lxml ]
       ))
     ];
 

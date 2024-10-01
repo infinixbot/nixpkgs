@@ -100,11 +100,7 @@ let
         ++ lib.optional withDrm libdrm
         ++ lib.optional withVidmode libXxf86vm
         ++ lib.optional withQuartz ApplicationServices
-        ++ lib.optionals withCoreLocation [
-          CoreLocation
-          Foundation
-          Cocoa
-        ]
+        ++ lib.optionals withCoreLocation [ CoreLocation Foundation Cocoa ]
         ++ lib.optional withAppIndicator (
           if (pname != "gammastep") then libappindicator else libayatana-appindicator
         );

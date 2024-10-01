@@ -60,10 +60,7 @@ stdenv.mkDerivation rec {
     ]
     # krb5's ./configure does not allow passing --enable-shared and --enable-static at the same time.
     # See https://bbs.archlinux.org/viewtopic.php?pid=1576737#p1576737
-    ++ lib.optionals staticOnly [
-      "--enable-static"
-      "--disable-shared"
-    ]
+    ++ lib.optionals staticOnly [ "--enable-static" "--disable-shared" ]
     ++ lib.optional stdenv.isFreeBSD ''WARN_CFLAGS=''
     ++ lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [
       "krb5_cv_attr_constructor_destructor=yes,yes"

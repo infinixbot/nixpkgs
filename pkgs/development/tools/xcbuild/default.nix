@@ -84,17 +84,11 @@ stdenv.mkDerivation {
     cmake
     ninja
   ];
-  buildInputs =
-    [
-      zlib
-      libxml2
-      libpng
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      CoreServices
-      CoreGraphics
-      ImageIO
-    ];
+  buildInputs = [
+    zlib
+    libxml2
+    libpng
+  ] ++ lib.optionals stdenv.isDarwin [ CoreServices CoreGraphics ImageIO ];
 
   meta = with lib; {
     description = "Xcode-compatible build tool";

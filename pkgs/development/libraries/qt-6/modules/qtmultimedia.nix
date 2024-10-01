@@ -31,10 +31,7 @@ qtModule {
   nativeBuildInputs = [ pkg-config ];
   buildInputs =
     [ ffmpeg_7 ]
-    ++ lib.optionals (!stdenv.hostPlatform.isMinGW) [
-      libunwind
-      orc
-    ]
+    ++ lib.optionals (!stdenv.hostPlatform.isMinGW) [ libunwind orc ]
     ++ lib.optionals stdenv.hostPlatform.isLinux [
       libpulseaudio
       alsa-lib

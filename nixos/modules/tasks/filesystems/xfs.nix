@@ -18,10 +18,7 @@ in
 
     system.fsPackages = [ pkgs.xfsprogs.bin ];
 
-    boot.initrd.availableKernelModules = mkIf inInitrd [
-      "xfs"
-      "crc32c"
-    ];
+    boot.initrd.availableKernelModules = mkIf inInitrd [ "xfs" "crc32c" ];
 
     boot.initrd.extraUtilsCommands = mkIf (inInitrd && !config.boot.initrd.systemd.enable) ''
       copy_bin_and_libs ${pkgs.xfsprogs.bin}/bin/fsck.xfs

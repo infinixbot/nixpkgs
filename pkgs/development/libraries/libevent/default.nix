@@ -31,10 +31,7 @@ stdenv.mkDerivation rec {
 
   configureFlags = lib.flatten [
     (lib.optional (!sslSupport) "--disable-openssl")
-    (lib.optionals static [
-      "--disable-shared"
-      "--with-pic"
-    ])
+    (lib.optionals static [ "--disable-shared" "--with-pic" ])
   ];
 
   preConfigure = lib.optionalString (lib.versionAtLeast stdenv.hostPlatform.darwinMinVersion "11") ''

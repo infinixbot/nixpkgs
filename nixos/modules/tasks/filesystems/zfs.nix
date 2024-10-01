@@ -563,10 +563,7 @@ in
     };
 
     services.zfs.expandOnBoot = mkOption {
-      type = types.either (types.enum [
-        "disabled"
-        "all"
-      ]) (types.listOf types.str);
+      type = types.either (types.enum [ "disabled" "all" ]) (types.listOf types.str);
       default = "disabled";
       example = [
         "tank"
@@ -874,11 +871,7 @@ in
         listToAttrs (
           map createImportService' dataPools
           ++ map createSyncService allPools
-          ++ map createZfsService [
-            "zfs-mount"
-            "zfs-share"
-            "zfs-zed"
-          ]
+          ++ map createZfsService [ "zfs-mount" "zfs-share" "zfs-zed" ]
         );
 
       systemd.targets.zfs-import.wantedBy = [ "zfs.target" ];

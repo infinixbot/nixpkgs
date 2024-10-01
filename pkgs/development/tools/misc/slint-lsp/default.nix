@@ -21,20 +21,15 @@
 }:
 
 let
-  rpathLibs =
-    [
-      fontconfig
-      libGL
-      xorg.libxcb
-      xorg.libX11
-      xorg.libXcursor
-      xorg.libXrandr
-      xorg.libXi
-    ]
-    ++ lib.optionals stdenv.isLinux [
-      libxkbcommon
-      wayland
-    ];
+  rpathLibs = [
+    fontconfig
+    libGL
+    xorg.libxcb
+    xorg.libX11
+    xorg.libXcursor
+    xorg.libXrandr
+    xorg.libXi
+  ] ++ lib.optionals stdenv.isLinux [ libxkbcommon wayland ];
 in
 rustPlatform.buildRustPackage rec {
   pname = "slint-lsp";

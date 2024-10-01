@@ -89,13 +89,7 @@ stdenv.mkDerivation rec {
     # make sure that we don't wrap symlinks (since that changes argv[0] to the -wrapped name)
     find "$out/bin" -type f | while read file; do
       wrapProgram "$file" \
-        --prefix PATH : "${
-          lib.makeBinPath [
-            groff
-            gzip
-            zstd
-          ]
-        }"
+        --prefix PATH : "${lib.makeBinPath [ groff gzip zstd ]}"
     done
   '';
 

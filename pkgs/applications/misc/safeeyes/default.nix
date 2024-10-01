@@ -60,14 +60,7 @@ buildPythonApplication rec {
   preFixup = ''
     makeWrapperArgs+=(
       "''${gappsWrapperArgs[@]}"
-      --prefix PATH : ${
-        lib.makeBinPath [
-          alsa-utils
-          wlrctl
-          xprintidle
-          xprop
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ alsa-utils wlrctl xprintidle xprop ]}
     )
   '';
 

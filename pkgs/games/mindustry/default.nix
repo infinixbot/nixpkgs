@@ -201,13 +201,7 @@ stdenv.mkDerivation {
           makeWrapper ${jdk}/bin/java $out/bin/mindustry \
             --add-flags "-jar $out/share/mindustry.jar" \
             ${lib.optionalString stdenv.isLinux "--suffix PATH : ${lib.makeBinPath [ zenity ]}"} \
-            --suffix LD_LIBRARY_PATH : ${
-              lib.makeLibraryPath [
-                libpulseaudio
-                alsa-lib
-                libjack2
-              ]
-            } \
+            --suffix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ libpulseaudio alsa-lib libjack2 ]} \
             --set ALSA_PLUGIN_DIR ${alsa-plugins}/lib/alsa-lib/''
         + lib.optionalString enableWayland ''
           \

@@ -709,13 +709,7 @@ rec {
           buildCommand = ''
             ${createRootFS}
 
-            PATH=$PATH:${
-              lib.makeBinPath [
-                pkgs.dpkg
-                pkgs.glibc
-                pkgs.xz
-              ]
-            }
+            PATH=$PATH:${lib.makeBinPath [ pkgs.dpkg pkgs.glibc pkgs.xz ]}
 
             # Unpack the .debs.  We do this to prevent pre-install scripts
             # (which have lots of circular dependencies) from barfing.

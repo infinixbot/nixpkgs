@@ -84,11 +84,7 @@ let
 
         dlopen = {
           usePriority = mkOption {
-            type = enum [
-              "required"
-              "recommended"
-              "suggested"
-            ];
+            type = enum [ "required" "recommended" "suggested" ];
             default = "recommended";
             description = ''
               Priority of dlopen ELF notes to include. "required" is
@@ -217,10 +213,9 @@ in
   ]);
 
   initrdStorePath = listOf (
-    coercedTo (oneOf [
-      singleLineStr
-      package
-    ]) (source: { inherit source; }) (submodule initrdStorePathModule)
+    coercedTo (oneOf [ singleLineStr package ]) (source: { inherit source; }) (
+      submodule initrdStorePathModule
+    )
   );
 
   initrdContents = attrsOf (

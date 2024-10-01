@@ -81,10 +81,7 @@ in
             };
 
             DefaultAction = mkOption {
-              type = types.enum [
-                "allow"
-                "deny"
-              ];
+              type = types.enum [ "allow" "deny" ];
               description = ''
                 Default action whether to block or allow application internet
                 access.
@@ -99,12 +96,7 @@ in
             };
 
             ProcMonitorMethod = mkOption {
-              type = types.enum [
-                "ebpf"
-                "proc"
-                "ftrace"
-                "audit"
-              ];
+              type = types.enum [ "ebpf" "proc" "ftrace" "audit" ];
               description = ''
                 Which process monitoring method to use.
               '';
@@ -125,10 +117,7 @@ in
             };
 
             Firewall = mkOption {
-              type = types.enum [
-                "iptables"
-                "nftables"
-              ];
+              type = types.enum [ "iptables" "nftables" ];
               description = ''
                 Which firewall backend to use.
               '';

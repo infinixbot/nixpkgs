@@ -30,10 +30,7 @@ stdenv.mkDerivation rec {
     wrapGAppsHook3
   ];
   buildInputs =
-    lib.optionals withUdisks [
-      udisks
-      glib
-    ]
+    lib.optionals withUdisks [ udisks glib ]
     ++ lib.optional (!withLibui) libX11
     ++ lib.optional withLibui gtk3;
   # libui is bundled with the source of usbimager as a compiled static library

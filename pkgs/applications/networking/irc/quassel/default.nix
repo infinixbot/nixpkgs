@@ -69,15 +69,8 @@ in
       boost
       zlib
     ]
-    ++ lib.optionals buildCore [
-      qtscript
-      qca-qt5
-      openldap
-    ]
-    ++ lib.optionals buildClient [
-      libdbusmenu
-      phonon
-    ]
+    ++ lib.optionals buildCore [ qtscript qca-qt5 openldap ]
+    ++ lib.optionals buildClient [ libdbusmenu phonon ]
     ++ lib.optionals (buildClient && withKDE) [
       extra-cmake-modules
       kconfigwidgets

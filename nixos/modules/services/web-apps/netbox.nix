@@ -15,10 +15,7 @@ let
     name = "netbox-extraConfig.py";
     text = cfg.extraConfig;
   };
-  configFile = pkgs.concatText "configuration.py" [
-    settingsFile
-    extraConfigFile
-  ];
+  configFile = pkgs.concatText "configuration.py" [ settingsFile extraConfigFile ];
 
   pkg =
     (cfg.package.overrideAttrs (old: {

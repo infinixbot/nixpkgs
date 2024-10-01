@@ -100,14 +100,7 @@ stdenv.mkDerivation rec {
   ];
 
   qtWrapperArgs = [
-    "--prefix LD_LIBRARY_PATH : ${
-      lib.makeLibraryPath [
-        libGL
-        libGLU
-        libglut
-        physfs
-      ]
-    }"
+    "--prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ libGL libGLU libglut physfs ]}"
   ];
 
   meta = with lib; {

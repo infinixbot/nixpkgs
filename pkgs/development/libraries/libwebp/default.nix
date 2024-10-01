@@ -68,11 +68,7 @@ stdenv.mkDerivation rec {
   ];
   buildInputs =
     [ ]
-    ++ lib.optionals openglSupport [
-      libglut
-      libGL
-      libGLU
-    ]
+    ++ lib.optionals openglSupport [ libglut libGL libGLU ]
     ++ lib.optionals pngSupport [ libpng ]
     ++ lib.optionals jpegSupport [ libjpeg ]
     ++ lib.optionals tiffSupport [ libtiff ]

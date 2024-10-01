@@ -103,11 +103,7 @@ in
             description = "Enable Captcha.";
           };
           difficulty = mkOption {
-            type = types.enum [
-              "easy"
-              "medium"
-              "hard"
-            ];
+            type = types.enum [ "easy" "medium" "hard" ];
             default = "medium";
             description = "The difficultly of the captcha to solve.";
           };

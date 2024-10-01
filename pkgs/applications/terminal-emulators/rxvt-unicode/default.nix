@@ -65,22 +65,16 @@ stdenv.mkDerivation {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs =
-    [
-      libX11
-      libXt
-      libXft
-      ncurses # required to build the terminfo file
-      fontconfig
-      freetype
-      libXrender
-      libptytty
-    ]
-    ++ lib.optionals perlSupport [
-      perl
-      libXext
-    ]
-    ++ lib.optional gdkPixbufSupport gdk-pixbuf;
+  buildInputs = [
+    libX11
+    libXt
+    libXft
+    ncurses # required to build the terminfo file
+    fontconfig
+    freetype
+    libXrender
+    libptytty
+  ] ++ lib.optionals perlSupport [ perl libXext ] ++ lib.optional gdkPixbufSupport gdk-pixbuf;
 
   outputs = [
     "out"

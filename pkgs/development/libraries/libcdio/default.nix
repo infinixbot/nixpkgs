@@ -45,16 +45,11 @@ stdenv.mkDerivation rec {
     pkg-config
     help2man
   ];
-  buildInputs =
-    [
-      libcddb
-      libiconv
-      ncurses
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      Carbon
-      IOKit
-    ];
+  buildInputs = [
+    libcddb
+    libiconv
+    ncurses
+  ] ++ lib.optionals stdenv.isDarwin [ Carbon IOKit ];
 
   enableParallelBuilding = true;
 

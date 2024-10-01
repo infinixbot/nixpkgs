@@ -418,12 +418,7 @@ in
           };
 
           style = lib.mkOption {
-            type = lib.types.enum [
-              "none"
-              "slight"
-              "medium"
-              "full"
-            ];
+            type = lib.types.enum [ "none" "slight" "medium" "full" ];
             default = "slight";
             description = ''
               Hintstyle is the amount of font reshaping done to line up
@@ -481,12 +476,7 @@ in
 
           lcdfilter = lib.mkOption {
             default = "default";
-            type = lib.types.enum [
-              "none"
-              "default"
-              "light"
-              "legacy"
-            ];
+            type = lib.types.enum [ "none" "default" "light" "legacy" ];
             description = ''
               FreeType LCD filter. At high resolution (> 200 DPI), LCD filtering
               has no visible effect; users of such displays may want to select

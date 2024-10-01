@@ -108,10 +108,7 @@ stdenv.mkDerivation rec {
     ++ lib.optional withPulse libpulseaudio
     ++ lib.optional withFAAD faad2
     ++ lib.optional withOpus libopus
-    ++ lib.optionals withQT [
-      qttools
-      qtbase
-    ]
+    ++ lib.optionals withQT [ qttools qtbase ]
     ++ lib.optional withVPX libvpx;
 
   dontWrapQtApps = true;

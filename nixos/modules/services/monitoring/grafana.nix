@@ -142,10 +142,7 @@ let
         description = "Datasource type. Required.";
       };
       access = mkOption {
-        type = types.enum [
-          "proxy"
-          "direct"
-        ];
+        type = types.enum [ "proxy" "direct" ];
         default = "proxy";
         description = "Access mode. proxy or direct (Server or Browser in the UI). Required.";
       };
@@ -711,12 +708,7 @@ in
             protocol = mkOption {
               description = "Which protocol to listen.";
               default = "http";
-              type = types.enum [
-                "http"
-                "https"
-                "h2"
-                "socket"
-              ];
+              type = types.enum [ "http" "https" "h2" "socket" ];
             };
 
             http_addr = mkOption {
@@ -883,11 +875,7 @@ in
             type = mkOption {
               description = "Database type.";
               default = "sqlite3";
-              type = types.enum [
-                "mysql"
-                "sqlite3"
-                "postgres"
-              ];
+              type = types.enum [ "mysql" "sqlite3" "postgres" ];
             };
 
             host = mkOption {
@@ -987,12 +975,7 @@ in
               '';
               default = null;
               type = types.nullOr (
-                types.enum [
-                  "READ-UNCOMMITTED"
-                  "READ-COMMITTED"
-                  "REPEATABLE-READ"
-                  "SERIALIZABLE"
-                ]
+                types.enum [ "READ-UNCOMMITTED" "READ-COMMITTED" "REPEATABLE-READ" "SERIALIZABLE" ]
               );
             };
 
@@ -1036,10 +1019,7 @@ in
                 [Shared cache](https://www.sqlite.org/sharedcache.html) setting used for connecting to the database.
               '';
               default = "private";
-              type = types.enum [
-                "private"
-                "shared"
-              ];
+              type = types.enum [ "private" "shared" ];
             };
 
             wal = mkOption {
@@ -1132,10 +1112,7 @@ in
                 PostgreSQL, MySQL, and MSSQL data sources do not use the proxy and are therefore unaffected by this setting.
               '';
               default = [ ];
-              type = types.oneOf [
-                types.str
-                (types.listOf types.str)
-              ];
+              type = types.oneOf [ types.str (types.listOf types.str) ];
             };
 
             disable_brute_force_login_protection = mkOption {
@@ -1159,12 +1136,7 @@ in
                 Using value `disabled` does not add any `SameSite` attribute to cookies.
               '';
               default = "lax";
-              type = types.enum [
-                "lax"
-                "strict"
-                "none"
-                "disabled"
-              ];
+              type = types.enum [ "lax" "strict" "none" "disabled" ];
             };
 
             allow_embedding = mkOption {
@@ -1268,10 +1240,7 @@ in
                 Suggested when authentication comes from an IdP.
               '';
               default = [ ];
-              type = types.oneOf [
-                types.str
-                (types.listOf types.str)
-              ];
+              type = types.oneOf [ types.str (types.listOf types.str) ];
             };
 
             csrf_additional_headers = mkOption {
@@ -1280,10 +1249,7 @@ in
                 Suggested to use for if authentication lives behind reverse proxies.
               '';
               default = [ ];
-              type = types.oneOf [
-                types.str
-                (types.listOf types.str)
-              ];
+              type = types.oneOf [ types.str (types.listOf types.str) ];
             };
           };
 
@@ -1357,13 +1323,7 @@ in
             startTLS_policy = mkOption {
               description = "StartTLS policy when connecting to server.";
               default = null;
-              type = types.nullOr (
-                types.enum [
-                  "OpportunisticStartTLS"
-                  "MandatoryStartTLS"
-                  "NoStartTLS"
-                ]
-              );
+              type = types.nullOr (types.enum [ "OpportunisticStartTLS" "MandatoryStartTLS" "NoStartTLS" ]);
             };
           };
 
@@ -1408,11 +1368,7 @@ in
                 The role new users will be assigned for the main organization (if the `auto_assign_org` setting is set to `true`).
               '';
               default = "Viewer";
-              type = types.enum [
-                "Viewer"
-                "Editor"
-                "Admin"
-              ];
+              type = types.enum [ "Viewer" "Editor" "Admin" ];
             };
 
             verify_email_enabled = mkOption {
@@ -1436,11 +1392,7 @@ in
             default_theme = mkOption {
               description = "Sets the default UI theme. `system` matches the user's system theme.";
               default = "dark";
-              type = types.enum [
-                "dark"
-                "light"
-                "system"
-              ];
+              type = types.enum [ "dark" "light" "system" ];
             };
 
             default_language = mkOption {

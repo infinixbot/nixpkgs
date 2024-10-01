@@ -7,23 +7,14 @@
 let
   cfg = config.services.foldingathome;
 
-  args =
-    [
-      "--team"
-      "${toString cfg.team}"
-    ]
-    ++ lib.optionals (cfg.user != null) [
-      "--user"
-      cfg.user
-    ]
-    ++ cfg.extraArgs;
+  args = [
+    "--team"
+    "${toString cfg.team}"
+  ] ++ lib.optionals (cfg.user != null) [ "--user" cfg.user ] ++ cfg.extraArgs;
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "foldingAtHome" ] [
-      "services"
-      "foldingathome"
-    ])
+    (lib.mkRenamedOptionModule [ "services" "foldingAtHome" ] [ "services" "foldingathome" ])
     (lib.mkRenamedOptionModule [ "services" "foldingathome" "nickname" ] [
       "services"
       "foldingathome"

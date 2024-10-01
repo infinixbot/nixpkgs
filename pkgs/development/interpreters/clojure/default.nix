@@ -27,10 +27,7 @@ stdenv.mkDerivation (finalAttrs: {
   # See https://github.com/clojure/brew-install/blob/1.10.3/src/main/resources/clojure/install/linux-install.sh
   installPhase =
     let
-      binPath = lib.makeBinPath [
-        rlwrap
-        jdk
-      ];
+      binPath = lib.makeBinPath [ rlwrap jdk ];
     in
     ''
       runHook preInstall

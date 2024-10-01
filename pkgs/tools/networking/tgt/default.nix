@@ -65,13 +65,7 @@ stdenv.mkDerivation rec {
     substituteInPlace $out/sbin/tgt-admin \
       --replace "#!/usr/bin/perl" "#! ${perl.withPackages (p: [ p.ConfigGeneral ])}/bin/perl"
     wrapProgram $out/sbin/tgt-admin --prefix PATH : \
-      ${
-        lib.makeBinPath [
-          lsof
-          sg3_utils
-          (placeholder "out")
-        ]
-      }
+      ${lib.makeBinPath [ lsof sg3_utils (placeholder "out") ]}
 
     install -D scripts/tgtd.service $out/etc/systemd/system/tgtd.service
     substituteInPlace $out/etc/systemd/system/tgtd.service \

@@ -75,12 +75,7 @@ in
       };
 
       killMode = mkOption {
-        type = types.enum [
-          "control-group"
-          "process"
-          "mixed"
-          "none"
-        ];
+        type = types.enum [ "control-group" "process" "mixed" "none" ];
         description = ''
           The systemd KillMode to use for glusterd.
 

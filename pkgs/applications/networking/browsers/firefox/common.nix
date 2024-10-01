@@ -326,10 +326,7 @@ buildStdenv.mkDerivation {
       which
       wrapGAppsHook3
     ]
-    ++ lib.optionals crashreporterSupport [
-      dump_syms
-      patchelf
-    ]
+    ++ lib.optionals crashreporterSupport [ dump_syms patchelf ]
     ++ lib.optionals pgoSupport [ xvfb-run ]
     ++ extraNativeBuildInputs;
 
@@ -481,10 +478,7 @@ buildStdenv.mkDerivation {
       (enableFeature (!debugBuild && !stdenv.is32bit) "release")
       (enableFeature enableDebugSymbols "debug-symbols")
     ]
-    ++ lib.optionals enableDebugSymbols [
-      "--disable-strip"
-      "--disable-install-strip"
-    ]
+    ++ lib.optionals enableDebugSymbols [ "--disable-strip" "--disable-install-strip" ]
     ++ lib.optional enableOfficialBranding "--enable-official-branding"
     ++ lib.optional (branding != null) "--with-branding=${branding}"
     ++ extraConfigureFlags;
@@ -541,10 +535,7 @@ buildStdenv.mkDerivation {
     ++ lib.optional pulseaudioSupport libpulseaudio # only headers are needed
     ++ lib.optional sndioSupport sndio
     ++ lib.optional gssSupport libkrb5
-    ++ lib.optionals waylandSupport [
-      libxkbcommon
-      libdrm
-    ]
+    ++ lib.optionals waylandSupport [ libxkbcommon libdrm ]
     ++ lib.optional jemallocSupport jemalloc
     ++ extraBuildInputs;
 

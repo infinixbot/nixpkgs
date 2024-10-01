@@ -22,12 +22,7 @@
   enableTrtPlanCache ? false,
 }:
 
-assert lib.assertOneOf "backend" backend [
-  "opencl"
-  "cuda"
-  "tensorrt"
-  "eigen"
-];
+assert lib.assertOneOf "backend" backend [ "opencl" "cuda" "tensorrt" "eigen" ];
 
 # N.b. older versions of cuda toolkit (e.g. 10) do not support newer versions
 # of gcc.  If you need to use cuda10, please override stdenv with gcc8Stdenv
@@ -65,10 +60,7 @@ stdenv.mkDerivation rec {
       cudaPackages.cudatoolkit
       cudaPackages.tensorrt
     ]
-    ++ lib.optionals (backend == "opencl") [
-      opencl-headers
-      ocl-icd
-    ]
+    ++ lib.optionals (backend == "opencl") [ opencl-headers ocl-icd ]
     ++ lib.optionals enableContrib [ openssl ]
     ++ lib.optionals enableTcmalloc [ gperftools ];
 

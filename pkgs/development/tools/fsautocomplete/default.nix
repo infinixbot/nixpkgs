@@ -33,13 +33,7 @@ buildDotnetModule rec {
       --replace TargetFrameworks TargetFramework \
   '';
 
-  dotnet-sdk =
-    with dotnetCorePackages;
-    combinePackages [
-      sdk_6_0
-      sdk_7_0
-      sdk_8_0
-    ];
+  dotnet-sdk = with dotnetCorePackages; combinePackages [ sdk_6_0 sdk_7_0 sdk_8_0 ];
   dotnet-runtime = dotnetCorePackages.sdk_8_0;
 
   projectFile = "src/FsAutoComplete/FsAutoComplete.fsproj";

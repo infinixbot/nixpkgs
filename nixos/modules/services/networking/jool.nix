@@ -57,10 +57,7 @@ let
     freeformType = configFormat.type;
     # Some options with a default value
     options.framework = lib.mkOption {
-      type = lib.types.enum [
-        "netfilter"
-        "iptables"
-      ];
+      type = lib.types.enum [ "netfilter" "iptables" ];
       default = "netfilter";
       description = ''
         The framework to use for attaching Jool's translation to the exist

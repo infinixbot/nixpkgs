@@ -28,10 +28,7 @@ stdenv.mkDerivation rec {
   '';
 
   buildInputs =
-    lib.optionals stdenv.isLinux [
-      systemd
-      parted
-    ]
+    lib.optionals stdenv.isLinux [ systemd parted ]
     ++ lib.optionals stdenv.isDarwin [ argp-standalone ];
 
   buildFlags = [

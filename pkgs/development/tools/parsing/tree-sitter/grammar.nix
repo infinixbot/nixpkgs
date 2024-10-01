@@ -23,10 +23,7 @@ stdenv.mkDerivation (
 
     inherit src version;
 
-    nativeBuildInputs = lib.optionals generate [
-      nodejs
-      tree-sitter
-    ];
+    nativeBuildInputs = lib.optionals generate [ nodejs tree-sitter ];
 
     CFLAGS = [
       "-Isrc"
@@ -72,9 +69,5 @@ stdenv.mkDerivation (
       runHook postInstall
     '';
   }
-  // removeAttrs args [
-    "language"
-    "location"
-    "generate"
-  ]
+  // removeAttrs args [ "language" "location" "generate" ]
 )

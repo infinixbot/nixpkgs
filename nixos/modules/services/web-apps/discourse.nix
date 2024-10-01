@@ -678,17 +678,11 @@ in
       allow_impersonation = true;
     };
 
-    services.redis.servers.discourse =
-      lib.mkIf
-        (lib.elem cfg.redis.host [
-          "localhost"
-          "127.0.0.1"
-        ])
-        {
-          enable = true;
-          bind = cfg.redis.host;
-          port = cfg.backendSettings.redis_port;
-        };
+    services.redis.servers.discourse = lib.mkIf (lib.elem cfg.redis.host [ "localhost" "127.0.0.1" ]) {
+      enable = true;
+      bind = cfg.redis.host;
+      port = cfg.backendSettings.redis_port;
+    };
 
     services.postgresql = lib.mkIf databaseActuallyCreateLocally {
       enable = true;

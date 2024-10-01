@@ -277,10 +277,7 @@ in
         Kubernetes apiserver storage backend.
       '';
       default = "etcd3";
-      type = enum [
-        "etcd2"
-        "etcd3"
-      ];
+      type = enum [ "etcd2" "etcd3" ];
     };
 
     securePort = mkOption {

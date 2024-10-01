@@ -6,10 +6,7 @@
 }:
 
 let
-  excluded = lib.optionals (lib.versions.isEq "8.16" itauto.version) [
-    "arith.v"
-    "refl_bool.v"
-  ];
+  excluded = lib.optionals (lib.versions.isEq "8.16" itauto.version) [ "arith.v" "refl_bool.v" ];
 in
 
 stdenv.mkDerivation {

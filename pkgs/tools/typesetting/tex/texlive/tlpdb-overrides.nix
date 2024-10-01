@@ -346,12 +346,7 @@ lib.recursiveUpdate orig rec {
   '';
 
   pdftex.postFixup = ''
-    sed -i -e '2iPATH="${
-      lib.makeBinPath [
-        coreutils
-        gnused
-      ]
-    }''${PATH:+:$PATH}"' \
+    sed -i -e '2iPATH="${lib.makeBinPath [ coreutils gnused ]}''${PATH:+:$PATH}"' \
       -e 's!^distillerpath="/usr/local/bin"$!distillerpath="${
         lib.makeBinPath [ ghostscript_headless ]
       }"!' \
@@ -434,24 +429,13 @@ lib.recursiveUpdate orig rec {
   texlive-scripts-extra.postFixup = ''
     patch -R "$out"/bin/texlinks < '${./texlinks.diff}'
     sed -i '2iPATH="${lib.makeBinPath [ coreutils ]}''${PATH:+:$PATH}"' "$out"/bin/{allcm,dvired,mkocp,ps2frag}
+    sed -i '2iPATH="${lib.makeBinPath [ coreutils findutils ]}''${PATH:+:$PATH}"' "$out"/bin/allneeded
     sed -i '2iPATH="${
-      lib.makeBinPath [
-        coreutils
-        findutils
-      ]
-    }''${PATH:+:$PATH}"' "$out"/bin/allneeded
-    sed -i '2iPATH="${
-      lib.makeBinPath [
-        coreutils
-        ghostscript_headless
-      ]
+      lib.makeBinPath [ coreutils ghostscript_headless ]
     }''${PATH:+:$PATH}"' "$out"/bin/dvi2fax
     sed -i '2iPATH="${lib.makeBinPath [ gnused ]}''${PATH:+:$PATH}"' "$out"/bin/{kpsetool,texconfig,texconfig-sys}
     sed -i '2iPATH="${
-      lib.makeBinPath [
-        coreutils
-        gnused
-      ]
+      lib.makeBinPath [ coreutils gnused ]
     }''${PATH:+:$PATH}"' "$out"/bin/texconfig-dialog
   '';
 
@@ -550,11 +534,7 @@ lib.recursiveUpdate orig rec {
         --replace-fail 'if (-r "$bindir/$kpsewhichname")' 'if (1)'
       sed -i '2i$ENV{PATH}='"'"'${lib.makeBinPath [ gnupg ]}'"'"' . ($ENV{PATH} ? ":$ENV{PATH}" : '"'''"');' "$out"/bin/tlmgr
       sed -i '2iPATH="${
-        lib.makeBinPath [
-          coreutils
-          gnused
-          tl.kpathsea
-        ]
+        lib.makeBinPath [ coreutils gnused tl.kpathsea ]
       }''${PATH:+:$PATH}"' "$out"/bin/mktexlsr
     '';
 

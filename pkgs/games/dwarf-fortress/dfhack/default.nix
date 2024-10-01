@@ -208,11 +208,7 @@ stdenv.mkDerivation {
     [ zlib ]
     ++ optional isAtLeast50 SDL2
     ++ optional (!isAtLeast50) SDL
-    ++ optionals enableStoneSense [
-      allegro5
-      libGLU
-      libGL
-    ];
+    ++ optionals enableStoneSense [ allegro5 libGLU libGL ];
 
   preConfigure = ''
     # Trick the build system into believing we have .git.
@@ -220,23 +216,18 @@ stdenv.mkDerivation {
     touch .git/index .git/modules/library/xml/index
   '';
 
-  cmakeFlags =
-    [
-      # Race condition in `Generating codegen.out.xml and df/headers` that is fixed when using Ninja.
-      "-GNinja"
-      "-DDFHACK_BUILD_ARCH=${arch}"
+  cmakeFlags = [
+    # Race condition in `Generating codegen.out.xml and df/headers` that is fixed when using Ninja.
+    "-GNinja"
+    "-DDFHACK_BUILD_ARCH=${arch}"
 
-      # Don't download anything.
-      "-DDOWNLOAD_RUBY=OFF"
-      "-DUSE_SYSTEM_SDL2=ON"
+    # Don't download anything.
+    "-DDOWNLOAD_RUBY=OFF"
+    "-DUSE_SYSTEM_SDL2=ON"
 
-      # Ruby support with dfhack is very spotty and was removed in version 50.
-      "-DBUILD_RUBY=OFF"
-    ]
-    ++ optionals enableStoneSense [
-      "-DBUILD_STONESENSE=ON"
-      "-DSTONESENSE_INTERNAL_SO=OFF"
-    ];
+    # Ruby support with dfhack is very spotty and was removed in version 50.
+    "-DBUILD_RUBY=OFF"
+  ] ++ optionals enableStoneSense [ "-DBUILD_STONESENSE=ON" "-DSTONESENSE_INTERNAL_SO=OFF" ];
 
   NIX_CFLAGS_COMPILE = [
     "-Wno-error=deprecated-enum-enum-conversion"

@@ -89,10 +89,7 @@ stdenv.mkDerivation rec {
       libXt
       libXmu
     ]
-    ++ lib.optionals enableHtml [
-      psutils
-      netpbm
-    ]
+    ++ lib.optionals enableHtml [ psutils netpbm ]
     ++ lib.optionals enableIconv [ iconv ]
     ++ lib.optionals enableLibuchardet [ libuchardet ];
 

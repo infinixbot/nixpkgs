@@ -75,11 +75,7 @@ stdenv.mkDerivation rec {
     ++ lib.optionals withWallet [ sqlite ]
     # building with db48 (for legacy descriptor wallet support) is broken on Darwin
     ++ lib.optionals (withWallet && !stdenv.isDarwin) [ db48 ]
-    ++ lib.optionals withGui [
-      qrencode
-      qtbase
-      qttools
-    ];
+    ++ lib.optionals withGui [ qrencode qtbase qttools ];
 
   postInstall =
     ''

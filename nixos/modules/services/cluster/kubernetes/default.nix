@@ -157,12 +157,7 @@ in
         Node role will enable flannel, docker, kubelet and proxy services.
       '';
       default = [ ];
-      type = types.listOf (
-        types.enum [
-          "master"
-          "node"
-        ]
-      );
+      type = types.listOf (types.enum [ "master" "node" ]);
     };
 
     package = mkPackageOption pkgs "kubernetes" { };

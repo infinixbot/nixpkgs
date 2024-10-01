@@ -80,15 +80,7 @@ rec {
       // {
         inherit extraPkgs;
         src = extract (
-          lib.filterAttrs (
-            key: value:
-            builtins.elem key [
-              "name"
-              "pname"
-              "version"
-              "src"
-            ]
-          ) args
+          lib.filterAttrs (key: value: builtins.elem key [ "name" "pname" "version" "src" ]) args
         );
 
         # passthru src to make nix-update work

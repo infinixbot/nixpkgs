@@ -230,12 +230,7 @@ stdenv.mkDerivation rec {
     yasm
   ];
 
-  buildInputs =
-    [ ]
-    ++ optionals unitTestsSupport [
-      coreutils
-      curl
-    ];
+  buildInputs = [ ] ++ optionals unitTestsSupport [ coreutils curl ];
 
   NIX_LDFLAGS = [
     "-lpthread" # fixes linker errors

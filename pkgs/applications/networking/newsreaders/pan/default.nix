@@ -43,18 +43,12 @@ stdenv.mkDerivation rec {
     makeWrapper
   ];
 
-  buildInputs =
-    [
-      gtk3
-      gmime3
-      libnotify
-      gnutls
-    ]
-    ++ lib.optional spellChecking gtkspell3
-    ++ lib.optionals gnomeSupport [
-      libsecret
-      gcr
-    ];
+  buildInputs = [
+    gtk3
+    gmime3
+    libnotify
+    gnutls
+  ] ++ lib.optional spellChecking gtkspell3 ++ lib.optionals gnomeSupport [ libsecret gcr ];
 
   configureFlags = [
     "--with-dbus"

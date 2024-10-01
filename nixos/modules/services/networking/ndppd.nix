@@ -94,11 +94,7 @@ let
         default = null;
       };
       method = mkOption {
-        type = types.enum [
-          "static"
-          "iface"
-          "auto"
-        ];
+        type = types.enum [ "static" "iface" "auto" ];
         description = ''
           static: Immediately answer any Neighbor Solicitation Messages
             (if they match the IP rule).

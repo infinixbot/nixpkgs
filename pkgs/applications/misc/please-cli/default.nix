@@ -26,12 +26,7 @@ stdenv.mkDerivation (finalAttrs: {
     runHook preInstall
     install -Dm555 please.sh "$out/bin/please"
     wrapProgram $out/bin/please \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          curl
-          jq
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ curl jq ]}
     runHook postInstall
   '';
 

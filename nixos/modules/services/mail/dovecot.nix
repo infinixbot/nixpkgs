@@ -237,11 +237,7 @@ let
           description = "The name of the mailbox.";
         };
         auto = mkOption {
-          type = types.enum [
-            "no"
-            "create"
-            "subscribe"
-          ];
+          type = types.enum [ "no" "create" "subscribe" ];
           default = "no";
           example = "subscribe";
           description = "Whether to automatically create or create and subscribe to the mailbox or not.";
@@ -487,12 +483,7 @@ in
 
     pluginSettings = mkOption {
       # types.str does not coerce from packages, like `sievePipeBinScriptDirectory`.
-      type = types.attrsOf (
-        types.oneOf [
-          types.str
-          types.package
-        ]
-      );
+      type = types.attrsOf (types.oneOf [ types.str types.package ]);
       default = { };
       example = literalExpression ''
         {
@@ -551,13 +542,7 @@ in
                   "COPY"
                   "APPEND"
                 ];
-                type = types.listOf (
-                  types.enum [
-                    "APPEND"
-                    "COPY"
-                    "FLAG"
-                  ]
-                );
+                type = types.listOf (types.enum [ "APPEND" "COPY" "FLAG" ]);
               };
 
               before = mkOption {

@@ -26,10 +26,7 @@ in
       };
 
       operation = lib.mkOption {
-        type = lib.types.enum [
-          "switch"
-          "boot"
-        ];
+        type = lib.types.enum [ "switch" "boot" ];
         default = "switch";
         example = "boot";
         description = ''

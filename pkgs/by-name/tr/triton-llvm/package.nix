@@ -164,12 +164,7 @@ stdenv.mkDerivation (finalAttrs: {
       [
         (lib.cmakeBool "CMAKE_CROSSCOMPILING" true)
         (lib.cmakeFeature "CROSS_TOOLCHAIN_FLAGS_NATIVE" (
-          lib.concatStringsSep ";" (
-            lib.concatLists [
-              nativeToolchainFlags
-              nativeInstallFlags
-            ]
-          )
+          lib.concatStringsSep ";" (lib.concatLists [ nativeToolchainFlags nativeInstallFlags ])
         ))
       ]
     );

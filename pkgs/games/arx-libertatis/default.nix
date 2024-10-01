@@ -50,22 +50,16 @@ stdenv.mkDerivation rec {
     optipng
   ] ++ optionals withCrashReporter [ wrapQtAppsHook ];
 
-  buildInputs =
-    [
-      zlib
-      boost
-      openal
-      glm
-      freetype
-      libGLU
-      SDL2
-      libepoxy
-    ]
-    ++ optionals withCrashReporter [
-      qtbase
-      curl
-    ]
-    ++ optionals stdenv.isLinux [ gdb ];
+  buildInputs = [
+    zlib
+    boost
+    openal
+    glm
+    freetype
+    libGLU
+    SDL2
+    libepoxy
+  ] ++ optionals withCrashReporter [ qtbase curl ] ++ optionals stdenv.isLinux [ gdb ];
 
   cmakeFlags = [
     "-DDATA_DIR_PREFIXES=$out/share"

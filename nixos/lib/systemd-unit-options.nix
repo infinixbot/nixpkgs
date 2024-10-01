@@ -90,10 +90,7 @@ rec {
 
     overrideStrategy = mkOption {
       default = "asDropinIfExists";
-      type = types.enum [
-        "asDropinIfExists"
-        "asDropin"
-      ];
+      type = types.enum [ "asDropinIfExists" "asDropin" ];
       description = ''
         Defines how unit configuration is provided for systemd:
 

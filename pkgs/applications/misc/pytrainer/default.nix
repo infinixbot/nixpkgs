@@ -68,10 +68,7 @@ python.pkgs.buildPythonApplication rec {
     "--prefix"
     "PATH"
     ":"
-    (lib.makeBinPath [
-      perl
-      gpsbabel
-    ])
+    (lib.makeBinPath [ perl gpsbabel ])
   ];
 
   nativeCheckInputs =

@@ -34,11 +34,7 @@ rec {
           nativeBuildInputs = [ texLive ] ++ attrs.nativeBuildInputs or [ ];
           text = builtins.toFile "${name}.tex" text;
         }
-        // builtins.removeAttrs attrs [
-          "nativeBuildInputs"
-          "text"
-          "texLive"
-        ]
+        // builtins.removeAttrs attrs [ "nativeBuildInputs" "text" "texLive" ]
       )
       ''
         export HOME="$(mktemp -d)"

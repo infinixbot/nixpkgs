@@ -58,13 +58,7 @@ rustPlatform.buildRustPackage rec {
   '';
 
   postFixup = ''
-    wrapProgram $out/bin/i3status-rs --prefix PATH : ${
-      lib.makeBinPath [
-        iproute2
-        ethtool
-        iw
-      ]
-    }
+    wrapProgram $out/bin/i3status-rs --prefix PATH : ${lib.makeBinPath [ iproute2 ethtool iw ]}
   '';
 
   # Currently no tests are implemented, so we avoid building the package twice

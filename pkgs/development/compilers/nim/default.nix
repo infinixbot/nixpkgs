@@ -288,12 +288,7 @@ in
           "--prefix PATH : ${lib.makeBinPath [ buildPackages.gdb ]}:${placeholder "out"}/bin"
           # Used by nim-gdb
 
-          "--prefix LD_LIBRARY_PATH : ${
-            lib.makeLibraryPath [
-              openssl
-              pcre
-            ]
-          }"
+          "--prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ openssl pcre ]}"
           # These libraries may be referred to by the standard library.
           # This is broken for cross-compilation because the package
           # set will be shifted back by nativeBuildInputs.

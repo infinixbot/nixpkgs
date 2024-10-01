@@ -63,26 +63,19 @@ mkDerivation rec {
     pkg-config
     autoreconfHook
   ];
-  buildInputs =
-    [
-      openssl
-      db48
-      boost
-      zlib
-      zeromq
-      fmt
-      miniupnpc
-      glib
-      protobuf
-      util-linux
-      libevent
-    ]
-    ++ lib.optionals stdenv.isDarwin [ AppKit ]
-    ++ lib.optionals withGui [
-      qtbase
-      qttools
-      qrencode
-    ];
+  buildInputs = [
+    openssl
+    db48
+    boost
+    zlib
+    zeromq
+    fmt
+    miniupnpc
+    glib
+    protobuf
+    util-linux
+    libevent
+  ] ++ lib.optionals stdenv.isDarwin [ AppKit ] ++ lib.optionals withGui [ qtbase qttools qrencode ];
 
   configureFlags =
     [ "--with-boost-libdir=${boost.out}/lib" ]

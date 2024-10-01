@@ -124,11 +124,7 @@ stdenv.mkDerivation rec {
       libGLU
       libGL
     ]
-    ++ lib.optionals (stdenv.isDarwin) [
-      Cocoa
-      CoreSymbolication
-      OpenGL
-    ];
+    ++ lib.optionals (stdenv.isDarwin) [ Cocoa CoreSymbolication OpenGL ];
 
   patches = [
     ./sw_vers.patch

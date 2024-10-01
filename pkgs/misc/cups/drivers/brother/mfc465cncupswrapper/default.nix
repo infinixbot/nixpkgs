@@ -69,11 +69,7 @@ stdenv.mkDerivation rec {
     ln $dir/cupswrapper/brmfc465.ppd $out/share/cups/model
     sed -n '/!ENDOFWFILTER!/,/!ENDOFWFILTER!/p' "$dir/cupswrapper/cupswrappermfc465cn" | sed '1 br; b; :r s/.*/printer_model=mfc465cn; cat <<!ENDOFWFILTER!/'  | bash > $out/lib/cups/filter/brlpdwrappermfc465cn
     sed -i "/#! \/bin\/sh/a PATH=${
-      lib.makeBinPath [
-        coreutils
-        gnused
-        gnugrep
-      ]
+      lib.makeBinPath [ coreutils gnused gnugrep ]
     }:\$PATH" $out/lib/cups/filter/brlpdwrappermfc465cn
     chmod 755 $out/lib/cups/filter/brlpdwrappermfc465cn
   '';

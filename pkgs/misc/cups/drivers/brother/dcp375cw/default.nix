@@ -100,14 +100,7 @@ rec {
 
     installPhase = ''
       for f in $out/opt/brother/Printers/${model}/cupswrapper/cupswrapper${model}; do
-        wrapProgram $f --prefix PATH : ${
-          lib.makeBinPath [
-            coreutils
-            ghostscript
-            gnugrep
-            gnused
-          ]
-        }
+        wrapProgram $f --prefix PATH : ${lib.makeBinPath [ coreutils ghostscript gnugrep gnused ]}
       done
 
       mkdir -p $out/share/cups/model

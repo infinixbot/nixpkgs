@@ -46,11 +46,7 @@ stdenv.mkDerivation (finalAttrs: {
       zlib
     ]
     ++ lib.optionals stdenv.isLinux [ gpm ]
-    ++ lib.optionals enableX11 [
-      libX11
-      libXau
-      libXt
-    ]
+    ++ lib.optionals enableX11 [ libX11 libXau libXt ]
     ++ lib.optionals enableDirectFB [ directfb ];
 
   nativeBuildInputs = [

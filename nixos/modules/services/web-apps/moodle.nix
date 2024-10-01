@@ -144,10 +144,7 @@ in
 
     database = {
       type = mkOption {
-        type = types.enum [
-          "mysql"
-          "pgsql"
-        ];
+        type = types.enum [ "mysql" "pgsql" ];
         default = "mysql";
         description = "Database engine to use.";
       };

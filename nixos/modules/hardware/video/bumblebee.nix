@@ -60,10 +60,7 @@ in
 
       driver = lib.mkOption {
         default = "nvidia";
-        type = lib.types.enum [
-          "nvidia"
-          "nouveau"
-        ];
+        type = lib.types.enum [ "nvidia" "nouveau" ];
         description = ''
           Set driver used by bumblebeed. Supported are nouveau and nvidia.
         '';
@@ -71,12 +68,7 @@ in
 
       pmMethod = lib.mkOption {
         default = "auto";
-        type = lib.types.enum [
-          "auto"
-          "bbswitch"
-          "switcheroo"
-          "none"
-        ];
+        type = lib.types.enum [ "auto" "bbswitch" "switcheroo" "none" ];
         description = ''
           Set preferred power management method for unused card.
         '';

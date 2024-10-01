@@ -58,10 +58,7 @@ let
     # see the option's description below for the
     # handling/transformation of each possible type
     oneOf [
-      (enum [
-        true
-        null
-      ])
+      (enum [ true null ])
       int
       path
       singleLineStr
@@ -120,10 +117,7 @@ let
         a random password will be generated and stored
       '';
       options.passwordaccess = mkOption {
-        type = enum [
-          "generate"
-          "prompt"
-        ];
+        type = enum [ "generate" "prompt" ];
         visible = false;
       };
       options.passworddir = mkOption {

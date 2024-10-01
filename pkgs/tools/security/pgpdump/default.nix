@@ -18,10 +18,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-JKedgHCTDnvLyLR3nGl4XFAaxXDU1TgHrxPMlRFwtBo=";
   };
 
-  buildInputs = lib.optionals supportCompressedPackets [
-    zlib
-    bzip2
-  ];
+  buildInputs = lib.optionals supportCompressedPackets [ zlib bzip2 ];
 
   meta = with lib; {
     description = "PGP packet visualizer";

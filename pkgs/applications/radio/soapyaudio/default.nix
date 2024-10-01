@@ -38,14 +38,8 @@ stdenv.mkDerivation rec {
       libusb1
       soapysdr
     ]
-    ++ lib.optionals stdenv.isLinux [
-      alsa-lib
-      libpulseaudio
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      Accelerate
-      CoreAudio
-    ];
+    ++ lib.optionals stdenv.isLinux [ alsa-lib libpulseaudio ]
+    ++ lib.optionals stdenv.isDarwin [ Accelerate CoreAudio ];
 
   cmakeFlags = [
     "-DSoapySDR_DIR=${soapysdr}/share/cmake/SoapySDR/"

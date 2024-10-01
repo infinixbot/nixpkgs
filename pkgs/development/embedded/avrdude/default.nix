@@ -73,10 +73,7 @@ stdenv.mkDerivation (finalAttrs: {
   #   -DHAVE_LINUXGPIO=ON    because it's incompatible with libgpiod 2.x
   cmakeFlags =
     lib.optionals docSupport [ "-DBUILD_DOC=ON" ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      "-DHAVE_LINUXSPI=ON"
-      "-DHAVE_PARPORT=ON"
-    ];
+    ++ lib.optionals stdenv.hostPlatform.isLinux [ "-DHAVE_LINUXSPI=ON" "-DHAVE_PARPORT=ON" ];
 
   passthru = {
     # Vendored and mutated copy of libelf for avrdudes use.

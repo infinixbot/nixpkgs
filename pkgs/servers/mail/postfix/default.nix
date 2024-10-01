@@ -44,10 +44,7 @@ let
       "-L${libmysqlclient}/lib/mysql"
     ]
     ++ lib.optional withSQLite "-DHAS_SQLITE"
-    ++ lib.optionals withLDAP [
-      "-DHAS_LDAP"
-      "-DUSE_LDAP_SASL"
-    ]
+    ++ lib.optionals withLDAP [ "-DHAS_LDAP" "-DUSE_LDAP_SASL" ]
   );
   auxlibs = lib.concatStringsSep " " (
     [
@@ -153,13 +150,7 @@ stdenv.mkDerivation rec {
     cp -rv installdir/etc $out
     sed -e '/^PATH=/d' -i $out/libexec/postfix/post-install
     wrapProgram $out/libexec/postfix/post-install \
-      --prefix PATH ":" ${
-        lib.makeBinPath [
-          coreutils
-          findutils
-          gnugrep
-        ]
-      }
+      --prefix PATH ":" ${lib.makeBinPath [ coreutils findutils gnugrep ]}
     wrapProgram $out/libexec/postfix/postfix-script \
       --prefix PATH ":" ${
         lib.makeBinPath [

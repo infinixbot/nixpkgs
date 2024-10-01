@@ -30,16 +30,10 @@ stdenv.mkDerivation {
     cmake
     pkg-config
   ];
-  buildInputs =
-    [
-      hackrf
-      soapysdr
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      libobjc
-      IOKit
-      Security
-    ];
+  buildInputs = [
+    hackrf
+    soapysdr
+  ] ++ lib.optionals stdenv.isDarwin [ libobjc IOKit Security ];
 
   cmakeFlags = [ "-DSoapySDR_DIR=${soapysdr}/share/cmake/SoapySDR/" ];
 

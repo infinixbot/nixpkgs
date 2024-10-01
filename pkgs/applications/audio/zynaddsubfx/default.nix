@@ -47,12 +47,7 @@
   ruby,
 }:
 
-assert builtins.any (g: guiModule == g) [
-  "fltk"
-  "ntk"
-  "zest"
-  "off"
-];
+assert builtins.any (g: guiModule == g) [ "fltk" "ntk" "zest" "off" ];
 
 let
   guiName =
@@ -108,28 +103,14 @@ stdenv.mkDerivation rec {
       zlib
     ]
     ++ lib.optionals alsaSupport [ alsa-lib ]
-    ++ lib.optionals dssiSupport [
-      dssi
-      ladspaH
-    ]
+    ++ lib.optionals dssiSupport [ dssi ladspaH ]
     ++ lib.optionals jackSupport [ libjack2 ]
     ++ lib.optionals lashSupport [ lash ]
     ++ lib.optionals portaudioSupport [ portaudio ]
     ++ lib.optionals sndioSupport [ sndio ]
-    ++ lib.optionals (guiModule == "fltk") [
-      fltk
-      libjpeg
-      libXpm
-    ]
-    ++ lib.optionals (guiModule == "ntk") [
-      ntk
-      cairo
-      libXpm
-    ]
-    ++ lib.optionals (guiModule == "zest") [
-      libGL
-      libX11
-    ];
+    ++ lib.optionals (guiModule == "fltk") [ fltk libjpeg libXpm ]
+    ++ lib.optionals (guiModule == "ntk") [ ntk cairo libXpm ]
+    ++ lib.optionals (guiModule == "zest") [ libGL libX11 ];
 
   cmakeFlags =
     [
@@ -162,10 +143,7 @@ stdenv.mkDerivation rec {
         lib.optionals lashSupport [ "PortChecker" ]
 
         # Tests fail on aarch64
-        ++ lib.optionals stdenv.isAarch64 [
-          "MessageTest"
-          "UnisonTest"
-        ];
+        ++ lib.optionals stdenv.isAarch64 [ "MessageTest" "UnisonTest" ];
     in
     ''
       runHook preCheck

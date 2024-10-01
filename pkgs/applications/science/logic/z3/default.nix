@@ -41,10 +41,7 @@ let
         [ python ]
         ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames
         ++ lib.optional javaBindings jdk
-        ++ lib.optionals ocamlBindings [
-          ocaml
-          findlib
-        ];
+        ++ lib.optionals ocamlBindings [ ocaml findlib ];
       propagatedBuildInputs = [ python.pkgs.setuptools ] ++ lib.optionals ocamlBindings [ zarith ];
       enableParallelBuilding = true;
 

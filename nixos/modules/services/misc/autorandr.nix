@@ -112,14 +112,7 @@ let
       };
 
       rotate = lib.mkOption {
-        type = lib.types.nullOr (
-          lib.types.enum [
-            "normal"
-            "left"
-            "right"
-            "inverted"
-          ]
-        );
+        type = lib.types.nullOr (lib.types.enum [ "normal" "left" "right" "inverted" ]);
         description = "Output rotate configuration.";
         default = null;
         example = "left";
@@ -154,10 +147,7 @@ let
           lib.types.submodule {
             options = {
               method = lib.mkOption {
-                type = lib.types.enum [
-                  "factor"
-                  "pixel"
-                ];
+                type = lib.types.enum [ "factor" "pixel" ];
                 description = "Output scaling method.";
                 default = "factor";
                 example = "pixel";

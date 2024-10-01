@@ -40,10 +40,7 @@ buildPythonPackage rec {
     "--prefix"
     "PATH"
     ":"
-    (lib.makeBinPath [
-      glibc
-      binutils
-    ])
+    (lib.makeBinPath [ glibc binutils ])
   ];
 
   postInstall = ''

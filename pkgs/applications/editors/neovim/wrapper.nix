@@ -107,10 +107,7 @@ let
             "NVIM_SYSTEM_RPLUGIN_MANIFEST"
             "${placeholder "out"}/rplugin.vim"
           ]
-          ++ lib.optionals finalAttrs.wrapRc [
-            "--add-flags"
-            "-u ${writeText "init.lua" rcContent}"
-          ]
+          ++ lib.optionals finalAttrs.wrapRc [ "--add-flags" "-u ${writeText "init.lua" rcContent}" ]
           ++ finalAttrs.generatedWrapperArgs;
 
         perlEnv = perl.withPackages (p: [

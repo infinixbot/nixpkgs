@@ -35,12 +35,7 @@ buildGoModule rec {
     # Soft-serve generates git-hooks at run-time.
     # The scripts require git and bash inside the path.
     wrapProgram $out/bin/soft \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          git
-          bash
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ git bash ]}"
   '';
 
   passthru.tests = nixosTests.soft-serve;

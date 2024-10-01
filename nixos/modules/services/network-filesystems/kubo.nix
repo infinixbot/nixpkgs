@@ -25,10 +25,7 @@ let
   # Remove the PeerID (an attribute of "Identity") of the temporary Kubo repo.
   # The "Pinning" section contains the "RemoteServices" section, which would prevent
   # the daemon from starting as that setting can't be changed via ipfs config replace.
-  defaultConfig = builtins.removeAttrs rawDefaultConfig [
-    "Identity"
-    "Pinning"
-  ];
+  defaultConfig = builtins.removeAttrs rawDefaultConfig [ "Identity" "Pinning" ];
 
   customizedConfig = lib.recursiveUpdate defaultConfig cfg.settings;
 
@@ -149,11 +146,7 @@ in
       };
 
       defaultMode = lib.mkOption {
-        type = lib.types.enum [
-          "online"
-          "offline"
-          "norouting"
-        ];
+        type = lib.types.enum [ "online" "offline" "norouting" ];
         default = "online";
         description = "systemd service that is enabled by default";
       };
@@ -188,10 +181,7 @@ in
 
           options = {
             Addresses.API = lib.mkOption {
-              type = lib.types.oneOf [
-                lib.types.str
-                (lib.types.listOf lib.types.str)
-              ];
+              type = lib.types.oneOf [ lib.types.str (lib.types.listOf lib.types.str) ];
               default = [ ];
               description = ''
                 Multiaddr or array of multiaddrs describing the address to serve the local HTTP API on.
@@ -202,10 +192,7 @@ in
             };
 
             Addresses.Gateway = lib.mkOption {
-              type = lib.types.oneOf [
-                lib.types.str
-                (lib.types.listOf lib.types.str)
-              ];
+              type = lib.types.oneOf [ lib.types.str (lib.types.listOf lib.types.str) ];
               default = "/ip4/127.0.0.1/tcp/8080";
               description = "Where the IPFS Gateway can be reached";
             };
@@ -410,10 +397,7 @@ in
           User = cfg.user;
           Group = cfg.group;
           StateDirectory = "";
-          ReadWritePaths = lib.optionals (!cfg.autoMount) [
-            ""
-            cfg.dataDir
-          ];
+          ReadWritePaths = lib.optionals (!cfg.autoMount) [ "" cfg.dataDir ];
           # Make sure the socket units are started before ipfs.service
           Sockets = [
             "ipfs-gateway.socket"
@@ -454,46 +438,14 @@ in
   };
 
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "ipfs" "enable" ] [
-      "services"
-      "kubo"
-      "enable"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "ipfs" "package" ] [
-      "services"
-      "kubo"
-      "package"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "ipfs" "user" ] [
-      "services"
-      "kubo"
-      "user"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "ipfs" "group" ] [
-      "services"
-      "kubo"
-      "group"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "ipfs" "dataDir" ] [
-      "services"
-      "kubo"
-      "dataDir"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "ipfs" "defaultMode" ] [
-      "services"
-      "kubo"
-      "defaultMode"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "ipfs" "autoMount" ] [
-      "services"
-      "kubo"
-      "autoMount"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "ipfs" "autoMigrate" ] [
-      "services"
-      "kubo"
-      "autoMigrate"
-    ])
+    (lib.mkRenamedOptionModule [ "services" "ipfs" "enable" ] [ "services" "kubo" "enable" ])
+    (lib.mkRenamedOptionModule [ "services" "ipfs" "package" ] [ "services" "kubo" "package" ])
+    (lib.mkRenamedOptionModule [ "services" "ipfs" "user" ] [ "services" "kubo" "user" ])
+    (lib.mkRenamedOptionModule [ "services" "ipfs" "group" ] [ "services" "kubo" "group" ])
+    (lib.mkRenamedOptionModule [ "services" "ipfs" "dataDir" ] [ "services" "kubo" "dataDir" ])
+    (lib.mkRenamedOptionModule [ "services" "ipfs" "defaultMode" ] [ "services" "kubo" "defaultMode" ])
+    (lib.mkRenamedOptionModule [ "services" "ipfs" "autoMount" ] [ "services" "kubo" "autoMount" ])
+    (lib.mkRenamedOptionModule [ "services" "ipfs" "autoMigrate" ] [ "services" "kubo" "autoMigrate" ])
     (lib.mkRenamedOptionModule [ "services" "ipfs" "ipfsMountDir" ] [
       "services"
       "kubo"
@@ -529,26 +481,10 @@ in
       "Addresses"
       "Swarm"
     ])
-    (lib.mkRenamedOptionModule [ "services" "ipfs" "enableGC" ] [
-      "services"
-      "kubo"
-      "enableGC"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "ipfs" "emptyRepo" ] [
-      "services"
-      "kubo"
-      "emptyRepo"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "ipfs" "extraConfig" ] [
-      "services"
-      "kubo"
-      "settings"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "ipfs" "extraFlags" ] [
-      "services"
-      "kubo"
-      "extraFlags"
-    ])
+    (lib.mkRenamedOptionModule [ "services" "ipfs" "enableGC" ] [ "services" "kubo" "enableGC" ])
+    (lib.mkRenamedOptionModule [ "services" "ipfs" "emptyRepo" ] [ "services" "kubo" "emptyRepo" ])
+    (lib.mkRenamedOptionModule [ "services" "ipfs" "extraConfig" ] [ "services" "kubo" "settings" ])
+    (lib.mkRenamedOptionModule [ "services" "ipfs" "extraFlags" ] [ "services" "kubo" "extraFlags" ])
     (lib.mkRenamedOptionModule [ "services" "ipfs" "localDiscovery" ] [
       "services"
       "kubo"
@@ -564,11 +500,7 @@ in
       "kubo"
       "startWhenNeeded"
     ])
-    (lib.mkRenamedOptionModule [ "services" "kubo" "extraConfig" ] [
-      "services"
-      "kubo"
-      "settings"
-    ])
+    (lib.mkRenamedOptionModule [ "services" "kubo" "extraConfig" ] [ "services" "kubo" "settings" ])
     (lib.mkRenamedOptionModule [ "services" "kubo" "gatewayAddress" ] [
       "services"
       "kubo"

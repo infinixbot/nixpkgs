@@ -42,12 +42,7 @@ in
 
     services.journald.storage = lib.mkOption {
       default = "persistent";
-      type = lib.types.enum [
-        "persistent"
-        "volatile"
-        "auto"
-        "none"
-      ];
+      type = lib.types.enum [ "persistent" "volatile" "auto" "none" ];
       description = ''
         Controls where to store journal data. See
         {manpage}`journald.conf(5)` for further information.

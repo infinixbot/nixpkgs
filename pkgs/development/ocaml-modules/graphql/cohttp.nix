@@ -28,11 +28,7 @@ buildDunePackage rec {
     ocplib-endian
   ];
 
-  checkInputs = lib.optionals doCheck [
-    alcotest
-    cohttp-lwt-unix
-    graphql-lwt
-  ];
+  checkInputs = lib.optionals doCheck [ alcotest cohttp-lwt-unix graphql-lwt ];
 
   doCheck = true;
 

@@ -29,10 +29,7 @@
 }:
 let
   basename = "streamlink-twitch-gui";
-  runtimeLibs = lib.makeLibraryPath [
-    gtk3-x11
-    libudev0-shim
-  ];
+  runtimeLibs = lib.makeLibraryPath [ gtk3-x11 libudev0-shim ];
   runtimeBins = lib.makeBinPath [ streamlink ];
 
 in

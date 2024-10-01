@@ -106,12 +106,7 @@ mkDerivationWith python3Packages.buildPythonApplication rec {
     makeWrapperArgs+=(
       --set GI_TYPELIB_PATH "$GI_TYPELIB_PATH"
       --set PYTHONPATH "$PYTHONPATH"
-      --prefix PATH : "${
-        lib.makeBinPath [
-          exiftool
-          vmtouch
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ exiftool vmtouch ]}"
       --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ libmediainfo ]}"
       --prefix GST_PLUGIN_SYSTEM_PATH_1_0 : "$GST_PLUGIN_SYSTEM_PATH_1_0"
       "''${qtWrapperArgs[@]}"

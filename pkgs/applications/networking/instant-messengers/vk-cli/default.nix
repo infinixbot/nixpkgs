@@ -42,12 +42,7 @@ stdenv.mkDerivation rec {
   postFixup = ''
     patchelf $out/bin/vk-cli \
       --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
-      --set-rpath "${
-        lib.makeLibraryPath [
-          curl
-          glibc
-        ]
-      }"
+      --set-rpath "${lib.makeLibraryPath [ curl glibc ]}"
   '';
 
   meta = with lib; {

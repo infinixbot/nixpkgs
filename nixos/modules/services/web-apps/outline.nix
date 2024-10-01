@@ -147,10 +147,7 @@ in
       type = lib.types.submodule {
         options = {
           storageType = lib.mkOption {
-            type = lib.types.enum [
-              "local"
-              "s3"
-            ];
+            type = lib.types.enum [ "local" "s3" ];
             description = "File storage type, it can be local or s3.";
             default = "s3";
           };

@@ -16,13 +16,9 @@ let
       al_v4 = builtins.match "([0-9.]+):([0-9]+)($)" addr;
       al_v6 = builtins.match "\\[(.+)]:([0-9]+)(%.*|$)" addr;
       al_portOnly = builtins.match "(^)([0-9]+)" addr;
-      al =
-        lib.findFirst (a: a != null) (throw "services.kresd.*: incorrect address specification '${addr}'")
-          [
-            al_v4
-            al_v6
-            al_portOnly
-          ];
+      al = lib.findFirst (
+        a: a != null
+      ) (throw "services.kresd.*: incorrect address specification '${addr}'") [ al_v4 al_v6 al_portOnly ];
       port = lib.elemAt al 1;
       addrSpec =
         if al_portOnly == null then "'${lib.head al}${lib.elemAt al 2}'" else "{'::', '0.0.0.0'}";

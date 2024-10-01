@@ -65,13 +65,7 @@ stdenv.mkDerivation {
     patchelf --set-interpreter ${stdenv.cc.libc}/lib/ld-linux.so.2 $out/usr/bin/brprintconf_hl3140cw
 
     wrapProgram $out/opt/brother/Printers/hl3140cw/lpd/psconvertij2 \
-      --prefix PATH ":" ${
-        lib.makeBinPath [
-          gnused
-          coreutils
-          gawk
-        ]
-      }
+      --prefix PATH ":" ${lib.makeBinPath [ gnused coreutils gawk ]}
 
     wrapProgram $out/opt/brother/Printers/hl3140cw/lpd/filterhl3140cw \
       --prefix PATH ":" ${
@@ -100,13 +94,7 @@ stdenv.mkDerivation {
     ln -s $out/opt/brother/Printers/hl3140cw/lpd/filterhl3140cw $out/lib/cups/filter/brother_lpdwrapper_hl3140cw
 
     wrapProgram $out/opt/brother/Printers/hl3140cw/cupswrapper/cupswrapperhl3140cw \
-      --prefix PATH ":" ${
-        lib.makeBinPath [
-          gnused
-          coreutils
-          gawk
-        ]
-      }
+      --prefix PATH ":" ${lib.makeBinPath [ gnused coreutils gawk ]}
   '';
 
   meta = {

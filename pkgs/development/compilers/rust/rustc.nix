@@ -322,30 +322,21 @@ stdenv.mkDerivation (finalAttrs: {
   ];
   depsBuildTarget = lib.optionals stdenv.targetPlatform.isMinGW [ bintools ];
 
-  nativeBuildInputs =
-    [
-      file
-      python3
-      rustc
-      cmake
-      which
-      libffi
-      removeReferencesTo
-      pkg-config
-      xz
-    ]
-    ++ optionals fastCross [
-      lndir
-      makeWrapper
-    ];
+  nativeBuildInputs = [
+    file
+    python3
+    rustc
+    cmake
+    which
+    libffi
+    removeReferencesTo
+    pkg-config
+    xz
+  ] ++ optionals fastCross [ lndir makeWrapper ];
 
   buildInputs =
     [ openssl ]
-    ++ optionals stdenv.isDarwin [
-      libiconv
-      Security
-      zlib
-    ]
+    ++ optionals stdenv.isDarwin [ libiconv Security zlib ]
     ++ optional (!withBundledLLVM) llvmShared.lib
     ++ optional (useLLVM && !withBundledLLVM) [
       llvmPackages.libunwind

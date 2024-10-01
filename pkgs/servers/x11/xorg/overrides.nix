@@ -360,10 +360,7 @@ self: super:
       ++
         lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform)
           # checking for /dev/urandom... configure: error: cannot check for file existence when cross compiling
-          [
-            "ac_cv_file__dev_urandom=true"
-            "ac_cv_file__dev_random=true"
-          ];
+          [ "ac_cv_file__dev_urandom=true" "ac_cv_file__dev_random=true" ];
     meta = attrs.meta // {
       mainProgram = "xdm";
     };
@@ -632,10 +629,7 @@ self: super:
     buildInputs =
       attrs.buildInputs
       ++ [ zlib ]
-      ++ lib.optionals stdenv.hostPlatform.isNetBSD [
-        netbsd.libarch
-        netbsd.libpci
-      ];
+      ++ lib.optionals stdenv.hostPlatform.isNetBSD [ netbsd.libarch netbsd.libpci ];
 
     mesonFlags = [
       (lib.mesonOption "pci-ids" "${hwdata}/share/hwdata")
@@ -1413,10 +1407,7 @@ self: super:
         propagatedBuildInputs =
           attrs.propagatedBuildInputs or [ ]
           ++ [ xorg.xauth ]
-          ++ lib.optionals isDarwin [
-            xorg.libX11
-            xorg.xorgproto
-          ];
+          ++ lib.optionals isDarwin [ xorg.libX11 xorg.xorgproto ];
         postFixup = ''
           substituteInPlace $out/bin/startx \
             --replace $out/etc/X11/xinit/xserverrc /etc/X11/xinit/xserverrc \

@@ -55,10 +55,7 @@ stdenv.mkDerivation rec {
       wxGTK32
       yaml-cpp
     ]
-    ++ lib.optionals stdenv.isLinux [
-      alsa-lib
-      udev
-    ]
+    ++ lib.optionals stdenv.isLinux [ alsa-lib udev ]
     ++ lib.optionals stdenv.isDarwin [ Cocoa ]
     ++ lib.optional jackaudioSupport libjack2;
 

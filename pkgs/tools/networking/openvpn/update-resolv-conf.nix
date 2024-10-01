@@ -9,11 +9,7 @@
 }:
 
 let
-  binPath = lib.makeBinPath [
-    coreutils
-    openresolv
-    systemd
-  ];
+  binPath = lib.makeBinPath [ coreutils openresolv systemd ];
 
 in
 stdenv.mkDerivation {

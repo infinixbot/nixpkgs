@@ -40,12 +40,7 @@ stdenv.mkDerivation rec {
 
   postInstall = ''
     wrapProgram $out/bin/linuxdoc \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          groff
-          opensp
-        ]
-      }:$out/bin" \
+      --prefix PATH : "${lib.makeBinPath [ groff opensp ]}:$out/bin" \
       --prefix PERL5LIB : "$out/share/linuxdoc-tools/"
   '';
 

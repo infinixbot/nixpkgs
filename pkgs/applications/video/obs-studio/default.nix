@@ -128,16 +128,10 @@ stdenv.mkDerivation (finalAttrs: {
       uthash
       nv-codec-headers-12
     ]
-    ++ optionals scriptingSupport [
-      luajit
-      python3
-    ]
+    ++ optionals scriptingSupport [ luajit python3 ]
     ++ optional alsaSupport alsa-lib
     ++ optional pulseaudioSupport libpulseaudio
-    ++ optionals pipewireSupport [
-      pipewire
-      libdrm
-    ]
+    ++ optionals pipewireSupport [ pipewire libdrm ]
     ++ optional withFdk fdk_aac;
 
   # Copied from the obs-linuxbrowser

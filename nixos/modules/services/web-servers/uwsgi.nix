@@ -55,10 +55,7 @@ let
             {
               inherit plugins;
             }
-            // removeAttrs c [
-              "type"
-              "pythonPackages"
-            ]
+            // removeAttrs c [ "type" "pythonPackages" ]
             // optionalAttrs (python != null) {
               pyhome = "${pythonEnv}";
               env =
@@ -81,10 +78,7 @@ let
                     paths = mapAttrsToList buildCfg c.vassals;
                   };
             }
-            // removeAttrs c [
-              "type"
-              "vassals"
-            ]
+            // removeAttrs c [ "type" "vassals" ]
           else
             throw "`type` attribute in uWSGI configuration should be either 'normal' or 'emperor'";
       };

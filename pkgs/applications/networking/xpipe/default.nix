@@ -116,21 +116,9 @@ stdenvNoCC.mkDerivation rec {
     mv "$out/opt/$pkg/app/scripts/xpiped_debug.sh" "$out/opt/$pkg/app/scripts/xpiped_debug_raw.sh"
 
     makeShellWrapper "$out/opt/$pkg/app/bin/xpiped_raw" "$out/opt/$pkg/app/bin/xpiped" \
-      --prefix LD_LIBRARY_PATH : "${
-        lib.makeLibraryPath [
-          fontconfig
-          gtk3
-          udev
-        ]
-      }"
+      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ fontconfig gtk3 udev ]}"
     makeShellWrapper "$out/opt/$pkg/app/scripts/xpiped_debug_raw.sh" "$out/opt/$pkg/app/scripts/xpiped_debug.sh" \
-      --prefix LD_LIBRARY_PATH : "${
-        lib.makeLibraryPath [
-          fontconfig
-          gtk3
-          udev
-        ]
-      }"
+      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ fontconfig gtk3 udev ]}"
 
     runHook postInstall
   '';

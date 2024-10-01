@@ -260,10 +260,7 @@ in
         };
 
         options.webserver = mkOption {
-          type = types.enum [
-            "caddy"
-            "nginx"
-          ];
+          type = types.enum [ "caddy" "nginx" ];
           default = "caddy";
           example = "nginx";
           description = ''

@@ -49,12 +49,7 @@ rustPlatform.buildRustPackage rec {
 
   postFixup = lib.optionalString stdenv.isLinux ''
     patchelf $out/bin/cargo-ui \
-      --add-rpath ${
-        lib.makeLibraryPath [
-          fontconfig
-          libGL
-        ]
-      }
+      --add-rpath ${lib.makeLibraryPath [ fontconfig libGL ]}
   '';
 
   env = {

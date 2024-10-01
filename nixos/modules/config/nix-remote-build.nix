@@ -83,11 +83,7 @@ in
                 '';
               };
               protocol = mkOption {
-                type = types.enum [
-                  null
-                  "ssh"
-                  "ssh-ng"
-                ];
+                type = types.enum [ null "ssh" "ssh-ng" ];
                 default = "ssh";
                 example = "ssh-ng";
                 description = ''

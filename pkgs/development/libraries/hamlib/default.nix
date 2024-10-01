@@ -42,28 +42,19 @@ stdenv.mkDerivation rec {
     ++ lib.optionals tclBindings [ tcl ]
     ++ lib.optionals perlBindings [ perl ];
 
-  buildInputs =
-    [
-      gd
-      libxml2
-      libusb-compat-0_1
-      boost
-    ]
-    ++ lib.optionals pythonBindings [
-      python3
-      ncurses
-    ]
-    ++ lib.optionals tclBindings [ tcl ];
+  buildInputs = [
+    gd
+    libxml2
+    libusb-compat-0_1
+    boost
+  ] ++ lib.optionals pythonBindings [ python3 ncurses ] ++ lib.optionals tclBindings [ tcl ];
 
   configureFlags =
     [
       "CC_FOR_BUILD=${stdenv.cc.targetPrefix}cc"
     ]
     ++ lib.optionals perlBindings [ "--with-perl-binding" ]
-    ++ lib.optionals tclBindings [
-      "--with-tcl-binding"
-      "--with-tcl=${tcl}/lib/"
-    ]
+    ++ lib.optionals tclBindings [ "--with-tcl-binding" "--with-tcl=${tcl}/lib/" ]
     ++ lib.optionals pythonBindings [ "--with-python-binding" ];
 
   meta = with lib; {

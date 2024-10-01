@@ -97,11 +97,7 @@ lib.warnIf (useHardenedMalloc != null)
           zlib
         ]
         ++ lib.optionals libnotifySupport [ libnotify ]
-        ++ lib.optionals waylandSupport [
-          libxkbcommon
-          libdrm
-          libGL
-        ]
+        ++ lib.optionals waylandSupport [ libxkbcommon libdrm libGL ]
         ++ lib.optionals pipewireSupport [ pipewire ]
         ++ lib.optionals pulseaudioSupport [ libpulseaudio ]
         ++ lib.optionals libvaSupport [ libva ]

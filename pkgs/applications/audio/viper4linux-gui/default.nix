@@ -73,12 +73,7 @@ stdenv.mkDerivation rec {
   qmakeFlags = [ "V4L_Frontend.pro" ];
 
   qtWrapperArgs = [
-    "--prefix PATH : ${
-      lib.makeBinPath [
-        viper4linux
-        gst_all_1.gstreamer
-      ]
-    }"
+    "--prefix PATH : ${lib.makeBinPath [ viper4linux gst_all_1.gstreamer ]}"
     "--prefix GST_PLUGIN_SYSTEM_PATH_1_0 : ${gstPluginPath}"
   ];
 

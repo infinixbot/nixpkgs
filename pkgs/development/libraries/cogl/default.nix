@@ -99,11 +99,7 @@ stdenv.mkDerivation rec {
     ];
 
   buildInputs =
-    lib.optionals pangoSupport [
-      pango
-      cairo
-      harfbuzz
-    ]
+    lib.optionals pangoSupport [ pango cairo harfbuzz ]
     ++ lib.optionals stdenv.isDarwin [ OpenGL ];
 
   env =

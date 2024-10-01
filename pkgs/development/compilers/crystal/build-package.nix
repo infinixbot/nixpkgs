@@ -33,13 +33,7 @@
   ...
 }@args:
 
-assert (
-  builtins.elem format [
-    "make"
-    "crystal"
-    "shards"
-  ]
-);
+assert (builtins.elem format [ "make" "crystal" "shards" ]);
 let
   mkDerivationArgs = builtins.removeAttrs args [
     "format"
@@ -152,12 +146,7 @@ stdenv.mkDerivation (
         ++ lib.optional (format == "make") "make \${installTargets:-install} $installFlags"
         ++ lib.optionals (format == "crystal") (
           map (bin: ''
-            install -Dm555 ${
-              lib.escapeShellArgs [
-                bin
-                "${placeholder "out"}/bin/${bin}"
-              ]
-            }
+            install -Dm555 ${lib.escapeShellArgs [ bin "${placeholder "out"}/bin/${bin}" ]}
           '') (lib.attrNames crystalBinaries)
         )
         ++ lib.optional (format == "shards") "install -Dm555 bin/* -t $out/bin"

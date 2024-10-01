@@ -68,10 +68,7 @@ buildGoModule rec {
 
   nativeBuildInputs = [ makeWrapper ];
 
-  tags = lib.optionals sqliteSupport [
-    "sqlite"
-    "sqlite_unlock_notify"
-  ];
+  tags = lib.optionals sqliteSupport [ "sqlite" "sqlite_unlock_notify" ];
 
   ldflags = [
     "-s"

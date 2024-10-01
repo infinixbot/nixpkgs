@@ -145,10 +145,7 @@ stdenv.mkDerivation rec {
       curl
       libgcrypt
     ]
-    ++ lib.optionals stdenv.isDarwin [
-      libobjc
-      libresolv
-    ]
+    ++ lib.optionals stdenv.isDarwin [ libobjc libresolv ]
     ++ lib.concatMap (p: p.buildInputs) enabledPlugins
     ++ extraBuildInputs;
 

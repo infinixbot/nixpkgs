@@ -31,14 +31,7 @@ let
       args = cfg.settings.database.args;
     in
     usePostgresql
-    && (
-      !(args ? host)
-      || (elem args.host [
-        "localhost"
-        "127.0.0.1"
-        "::1"
-      ])
-    )
+    && (!(args ? host) || (elem args.host [ "localhost" "127.0.0.1" "::1" ]))
     && config.services.postgresql.enable;
   hasWorkers = cfg.workers != { };
 

@@ -47,10 +47,7 @@ stdenv.mkDerivation {
       (if useOpenSSL then openssl else gnutls)
     ]
     ++ lib.optional stdenv.isDarwin PCSC
-    ++ lib.optionals stdenv.isLinux [
-      p11-kit
-      pcsclite
-    ]
+    ++ lib.optionals stdenv.isLinux [ p11-kit pcsclite ]
     ++ lib.optional useDefaultExternalBrowser xdg-utils;
   nativeBuildInputs = [
     pkg-config

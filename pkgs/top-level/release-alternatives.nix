@@ -127,10 +127,7 @@ let
       "lapack-reference"
       "openblas"
     ]
-    ++ lib.optionals (allowUnfree && system.isx86) [
-      "mkl"
-      "mkl64"
-    ];
+    ++ lib.optionals (allowUnfree && system.isx86) [ "mkl" "mkl64" ];
 
   blas64Providers = [
     "mkl64"

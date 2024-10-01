@@ -194,11 +194,7 @@ in
         };
 
         inactivePenalty = lib.mkOption {
-          type = lib.types.enum [
-            "spectator"
-            "spectator/kick"
-            "kick"
-          ];
+          type = lib.types.enum [ "spectator" "spectator/kick" "kick" ];
           example = "spectator";
           default = "spectator/kick";
           description = ''
@@ -245,11 +241,7 @@ in
         };
 
         skillLevel = lib.mkOption {
-          type = lib.types.enum [
-            "casual"
-            "normal"
-            "competitive"
-          ];
+          type = lib.types.enum [ "casual" "normal" "competitive" ];
           default = "normal";
           description = ''
             The skill level shown in the server browser.
@@ -354,11 +346,7 @@ in
         };
 
         tournamentMode = lib.mkOption {
-          type = lib.types.enum [
-            "disable"
-            "enable"
-            "restrictSpectators"
-          ];
+          type = lib.types.enum [ "disable" "enable" "restrictSpectators" ];
           default = "disable";
           description = ''
             Whether to enable tournament mode. In tournament mode, players join as spectators.

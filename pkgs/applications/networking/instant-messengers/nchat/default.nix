@@ -36,20 +36,14 @@ stdenv.mkDerivation rec {
     gperf
   ];
 
-  buildInputs =
-    [
-      file # for libmagic
-      ncurses
-      openssl
-      readline
-      sqlite
-      zlib
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      AppKit
-      Cocoa
-      Foundation
-    ];
+  buildInputs = [
+    file # for libmagic
+    ncurses
+    openssl
+    readline
+    sqlite
+    zlib
+  ] ++ lib.optionals stdenv.isDarwin [ AppKit Cocoa Foundation ];
 
   cmakeFlags = [
     "-DHAS_WHATSAPP=OFF" # go module build required

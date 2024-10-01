@@ -51,12 +51,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   installTargets = [ "install" ];
   postInstall = ''
-    wrapProgram "$out/bin/feh" --prefix PATH : "${
-      lib.makeBinPath [
-        libjpeg
-        jpegexiforient
-      ]
-    }" \
+    wrapProgram "$out/bin/feh" --prefix PATH : "${lib.makeBinPath [ libjpeg jpegexiforient ]}" \
                                --add-flags '--theme=feh'
   '';
 

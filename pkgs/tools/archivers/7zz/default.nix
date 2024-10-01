@@ -92,10 +92,7 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optionals stdenv.isDarwin [ "MACOSX_DEPLOYMENT_TARGET=10.16" ]
     # it's the compression code with the restriction, see DOC/License.txt
     ++ lib.optionals (!enableUnfree) [ "DISABLE_RAR_COMPRESS=true" ]
-    ++ lib.optionals (stdenv.hostPlatform.isMinGW) [
-      "IS_MINGW=1"
-      "MSYSTEM=1"
-    ];
+    ++ lib.optionals (stdenv.hostPlatform.isMinGW) [ "IS_MINGW=1" "MSYSTEM=1" ];
 
   nativeBuildInputs = lib.optionals useUasm [ uasm ];
 

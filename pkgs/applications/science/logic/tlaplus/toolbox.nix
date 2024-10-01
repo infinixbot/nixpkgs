@@ -67,14 +67,7 @@ stdenv.mkDerivation rec {
     makeShellWrapper $out/toolbox/toolbox $out/bin/tla-toolbox \
       --chdir "$out/toolbox" \
       --add-flags "-data ~/.tla-toolbox" \
-      --prefix LD_LIBRARY_PATH : "${
-        lib.makeLibraryPath [
-          gtk3
-          libXtst
-          glib
-          zlib
-        ]
-      }"  \
+      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ gtk3 libXtst glib zlib ]}"  \
       "''${gappsWrapperArgs[@]}"
 
     echo -e "\nCreating TLA Toolbox icons..."

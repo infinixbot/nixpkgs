@@ -81,10 +81,7 @@ python3Packages.buildPythonApplication rec {
     ''
       wrapProgram $out/bin/pymol \
         --prefix PYTHONPATH : ${
-          lib.makeSearchPathOutput "lib" python3Packages.python.sitePackages [
-            pyqt5
-            pyqt5.pyqt5-sip
-          ]
+          lib.makeSearchPathOutput "lib" python3Packages.python.sitePackages [ pyqt5 pyqt5.pyqt5-sip ]
         }
 
       mkdir -p "$out/share/icons/"

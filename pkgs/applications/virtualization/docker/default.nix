@@ -157,11 +157,7 @@ rec {
           );
 
           extraUserPath = lib.optionals (stdenv.isLinux && !clientOnly) (
-            lib.makeBinPath [
-              rootlesskit
-              slirp4netns
-              fuse-overlayfs
-            ]
+            lib.makeBinPath [ rootlesskit slirp4netns fuse-overlayfs ]
           );
 
           patches =

@@ -22,14 +22,8 @@ let
     ]
     ++ lib.optionals (cfg.authOnce) [ "-1" ]
     ++ lib.optionals (cfg.disableLogging) [ "-q" ]
-    ++ lib.optionals (cfg.outgoingBindIp != null) [
-      "-b"
-      cfg.outgoingBindIp
-    ]
-    ++ lib.optionals (cfg.authUsername != null) [
-      "-u"
-      cfg.authUsername
-    ];
+    ++ lib.optionals (cfg.outgoingBindIp != null) [ "-b" cfg.outgoingBindIp ]
+    ++ lib.optionals (cfg.authUsername != null) [ "-u" cfg.authUsername ];
 in
 {
   options.services.microsocks = {

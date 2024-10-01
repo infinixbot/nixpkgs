@@ -54,18 +54,13 @@ stdenv.mkDerivation {
   ];
 
   strictDeps = true;
-  nativeBuildInputs =
-    [
-      autoreconfHook
-      perl
-      groff
-      texinfo
-      pkg-config
-    ]
-    ++ lib.optionals stdenv.isLinux [
-      util-linux
-      yodl
-    ];
+  nativeBuildInputs = [
+    autoreconfHook
+    perl
+    groff
+    texinfo
+    pkg-config
+  ] ++ lib.optionals stdenv.isLinux [ util-linux yodl ];
 
   buildInputs = [
     ncurses

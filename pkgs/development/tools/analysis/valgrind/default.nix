@@ -65,15 +65,10 @@ stdenv.mkDerivation rec {
 
   # GDB is needed to provide a sane default for `--db-command'.
   # Perl is needed for `callgrind_{annotate,control}'.
-  buildInputs =
-    [
-      gdb
-      perl
-    ]
-    ++ lib.optionals (stdenv.isDarwin) [
-      bootstrap_cmds
-      xnu
-    ];
+  buildInputs = [
+    gdb
+    perl
+  ] ++ lib.optionals (stdenv.isDarwin) [ bootstrap_cmds xnu ];
 
   # Perl is also a native build input.
   nativeBuildInputs = [

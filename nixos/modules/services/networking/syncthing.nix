@@ -158,10 +158,7 @@ let
       */
       (lib.pipe cleanedConfig [
         builtins.attrNames
-        (lib.subtractLists [
-          "folders"
-          "devices"
-        ])
+        (lib.subtractLists [ "folders" "devices" ])
         (map (subOption: ''
           curl -X PUT -d ${
             lib.escapeShellArg (builtins.toJSON cleanedConfig.${subOption})
@@ -416,12 +413,7 @@ in
                       };
 
                       type = mkOption {
-                        type = types.enum [
-                          "sendreceive"
-                          "sendonly"
-                          "receiveonly"
-                          "receiveencrypted"
-                        ];
+                        type = types.enum [ "sendreceive" "sendonly" "receiveonly" "receiveencrypted" ];
                         default = "sendreceive";
                         description = ''
                           Controls how the folder is handled by Syncthing.
@@ -487,12 +479,7 @@ in
                             freeformType = settingsFormat.type;
                             options = {
                               type = mkOption {
-                                type = enum [
-                                  "external"
-                                  "simple"
-                                  "staggered"
-                                  "trashcan"
-                                ];
+                                type = enum [ "external" "simple" "staggered" "trashcan" ];
                                 description = ''
                                   The type of versioning.
                                   See <https://docs.syncthing.net/users/versioning.html>.
@@ -698,14 +685,7 @@ in
       ])
     ]
     ++ map
-      (
-        o:
-        mkRenamedOptionModule [ "services" "syncthing" "declarative" o ] [
-          "services"
-          "syncthing"
-          o
-        ]
-      )
+      (o: mkRenamedOptionModule [ "services" "syncthing" "declarative" o ] [ "services" "syncthing" o ])
       [
         "cert"
         "key"

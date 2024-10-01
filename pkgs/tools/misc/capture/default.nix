@@ -25,12 +25,7 @@ stdenv.mkDerivation {
 
     patchShebangs $out/bin/capture
     wrapProgram $out/bin/capture \
-      --prefix PATH : '${
-        lib.makeBinPath [
-          slop
-          ffmpeg
-        ]
-      }'
+      --prefix PATH : '${lib.makeBinPath [ slop ffmpeg ]}'
   '';
 
   meta = with lib; {

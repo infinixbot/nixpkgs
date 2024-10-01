@@ -33,12 +33,7 @@ beamPackages.mixRelease rec {
 
   postInstall = ''
     wrapProgram $out/bin/livebook \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          elixir
-          erlang
-        ]
-      } \
+      --prefix PATH : ${lib.makeBinPath [ elixir erlang ]} \
       --set MIX_REBAR3 ${rebar3}/bin/rebar3
   '';
 

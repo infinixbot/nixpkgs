@@ -25,11 +25,7 @@ in
     enable = mkEnableOption "support for Intel IPU6/MIPI cameras";
 
     platform = mkOption {
-      type = types.enum [
-        "ipu6"
-        "ipu6ep"
-        "ipu6epmtl"
-      ];
+      type = types.enum [ "ipu6" "ipu6ep" "ipu6epmtl" ];
       description = ''
         Choose the version for your hardware platform.
 

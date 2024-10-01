@@ -47,13 +47,7 @@ stdenv.mkDerivation rec {
   installPhase = ''
     install -D -m755 buck-out/gen/*/programs/buck.pex $out/bin/buck
     wrapProgram $out/bin/buck \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          jdk8
-          watchman
-          python3
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ jdk8 watchman python3 ]}"
   '';
 
   meta = with lib; {

@@ -119,11 +119,7 @@ stdenv.mkDerivation {
   ];
 
   buildInputs = [ nwEnv ];
-  appendRunpaths = map (pkg: (lib.getLib pkg) + "/lib") [
-    nwEnv
-    stdenv.cc.libc
-    stdenv.cc.cc
-  ];
+  appendRunpaths = map (pkg: (lib.getLib pkg) + "/lib") [ nwEnv stdenv.cc.libc stdenv.cc.cc ];
 
   preFixup = ''
     gappsWrapperArgs+=(

@@ -56,10 +56,7 @@ let
 
   nvidiaLibs = lib.makeLibraryPath nvidia_x11s;
 
-  bbdPath = lib.makeBinPath [
-    kmod
-    xorgserver
-  ];
+  bbdPath = lib.makeBinPath [ kmod xorgserver ];
 
   xmodules = lib.concatStringsSep "," (
     map (x: "${x.out or x}/lib/xorg/modules") (

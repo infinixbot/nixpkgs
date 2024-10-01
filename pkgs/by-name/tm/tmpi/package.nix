@@ -37,14 +37,7 @@ stdenv.mkDerivation rec {
     install -m755 tmpi $out/bin/tmpi
 
     wrapProgram $out/bin/tmpi \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          mpi
-          mpich
-          tmux
-          reptyr
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ mpi mpich tmux reptyr ]}
 
     runHook postInstall
   '';

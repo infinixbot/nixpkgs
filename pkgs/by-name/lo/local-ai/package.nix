@@ -60,12 +60,7 @@
 }:
 let
   BUILD_TYPE =
-    assert
-      (lib.count lib.id [
-        with_openblas
-        with_cublas
-        with_clblas
-      ]) <= 1;
+    assert (lib.count lib.id [ with_openblas with_cublas with_clblas ]) <= 1;
     if with_openblas then
       "openblas"
     else if with_cublas then
@@ -99,16 +94,8 @@ let
 
     buildInputs =
       [ ]
-      ++ lib.optionals with_cublas [
-        cuda_cccl
-        cuda_cudart
-        libcublas
-      ]
-      ++ lib.optionals with_clblas [
-        clblast
-        ocl-icd
-        opencl-headers
-      ]
+      ++ lib.optionals with_cublas [ cuda_cccl cuda_cudart libcublas ]
+      ++ lib.optionals with_clblas [ clblast ocl-icd opencl-headers ]
       ++ lib.optionals with_openblas [ openblas.dev ];
 
     nativeBuildInputs = [ cmake ] ++ lib.optionals with_cublas [ cuda_nvcc ];
@@ -330,17 +317,8 @@ let
 
     buildInputs =
       [ ]
-      ++ lib.optionals with_cublas [
-        cuda_cccl
-        cuda_cudart
-        libcublas
-        libcufft
-      ]
-      ++ lib.optionals with_clblas [
-        clblast
-        ocl-icd
-        opencl-headers
-      ]
+      ++ lib.optionals with_cublas [ cuda_cccl cuda_cudart libcublas libcufft ]
+      ++ lib.optionals with_clblas [ clblast ocl-icd opencl-headers ]
       ++ lib.optionals with_openblas [ openblas.dev ];
 
     cmakeFlags = [
@@ -518,16 +496,8 @@ let
 
     buildInputs =
       [ ]
-      ++ lib.optionals with_cublas [
-        cuda_cudart
-        libcublas
-        libcufft
-      ]
-      ++ lib.optionals with_clblas [
-        clblast
-        ocl-icd
-        opencl-headers
-      ]
+      ++ lib.optionals with_cublas [ cuda_cudart libcublas libcufft ]
+      ++ lib.optionals with_clblas [ clblast ocl-icd opencl-headers ]
       ++ lib.optionals with_openblas [ openblas.dev ]
       ++ lib.optionals with_stablediffusion go-stable-diffusion.buildInputs
       ++ lib.optionals with_tts go-piper.buildInputs;
@@ -600,16 +570,10 @@ let
             (lib.getLib libcublas)
             cuda_cudart
           ]
-          ++ lib.optionals with_clblas [
-            clblast
-            ocl-icd
-          ]
+          ++ lib.optionals with_clblas [ clblast ocl-icd ]
           ++ lib.optionals with_openblas [ openblas ]
           ++ lib.optionals with_tts [ piper-phonemize ]
-          ++ lib.optionals (with_tts && enable_upx) [
-            fmt
-            spdlog
-          ];
+          ++ lib.optionals (with_tts && enable_upx) [ fmt spdlog ];
       in
       ''
         wrapProgram $out/bin/${pname} \

@@ -125,10 +125,7 @@ in
       enable = lib.mkEnableOption "Image compression";
 
       algorithm = lib.mkOption {
-        type = lib.types.enum [
-          "zstd"
-          "xz"
-        ];
+        type = lib.types.enum [ "zstd" "xz" ];
         default = "zstd";
         description = "Compression algorithm";
       };

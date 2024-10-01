@@ -49,34 +49,23 @@ args@{
 }:
 
 let
-  fArgs =
-    removeAttrs args [
-      "buildAttrs"
-      "fetchAttrs"
-      "removeRulesCC"
-    ]
-    // {
-      inherit
-        name
-        bazelFlags
-        bazelBuildFlags
-        bazelTestFlags
-        bazelRunFlags
-        runTargetFlags
-        bazelFetchFlags
-        bazelTargets
-        bazelTestTargets
-        bazelRunTarget
-        dontAddBazelOpts
-        ;
-    };
+  fArgs = removeAttrs args [ "buildAttrs" "fetchAttrs" "removeRulesCC" ] // {
+    inherit
+      name
+      bazelFlags
+      bazelBuildFlags
+      bazelTestFlags
+      bazelRunFlags
+      runTargetFlags
+      bazelFetchFlags
+      bazelTargets
+      bazelTestTargets
+      bazelRunTarget
+      dontAddBazelOpts
+      ;
+  };
   fBuildAttrs = fArgs // buildAttrs;
-  fFetchAttrs =
-    fArgs
-    // removeAttrs fetchAttrs [
-      "hash"
-      "sha256"
-    ];
+  fFetchAttrs = fArgs // removeAttrs fetchAttrs [ "hash" "sha256" ];
   bazelCmd =
     {
       cmd,

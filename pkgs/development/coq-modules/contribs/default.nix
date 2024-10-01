@@ -26,11 +26,7 @@ let
                 "${param.version}" = { inherit (param) rev sha256; };
               };
             }
-            // (removeAttrs param [
-              "version"
-              "rev"
-              "sha256"
-            ])
+            // (removeAttrs param [ "version" "rev" "sha256" ])
           )
         );
     in

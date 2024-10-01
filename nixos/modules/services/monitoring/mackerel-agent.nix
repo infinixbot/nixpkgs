@@ -53,22 +53,12 @@ in
 
         options.host_status = {
           on_start = mkOption {
-            type = types.enum [
-              "working"
-              "standby"
-              "maintenance"
-              "poweroff"
-            ];
+            type = types.enum [ "working" "standby" "maintenance" "poweroff" ];
             description = "Host status after agent startup.";
             default = "working";
           };
           on_stop = mkOption {
-            type = types.enum [
-              "working"
-              "standby"
-              "maintenance"
-              "poweroff"
-            ];
+            type = types.enum [ "working" "standby" "maintenance" "poweroff" ];
             description = "Host status after agent shutdown.";
             default = "poweroff";
           };

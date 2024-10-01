@@ -123,10 +123,7 @@ in
       environment = {
         HOME = cfg.userDir;
       };
-      path = lib.optionals cfg.withNpmAndGcc [
-        pkgs.nodePackages.npm
-        pkgs.gcc
-      ];
+      path = lib.optionals cfg.withNpmAndGcc [ pkgs.nodePackages.npm pkgs.gcc ];
       serviceConfig = mkMerge [
         {
           User = cfg.user;

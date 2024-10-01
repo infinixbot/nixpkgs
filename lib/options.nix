@@ -329,12 +329,7 @@ rec {
       (foldl' (
         first: def:
         if def.value != first.value then
-          throw "The option `${showOption loc}' has conflicting definition values:${
-            showDefs [
-              first
-              def
-            ]
-          }\n${prioritySuggestion}"
+          throw "The option `${showOption loc}' has conflicting definition values:${showDefs [ first def ]}\n${prioritySuggestion}"
         else
           first
       ) (head defs) (tail defs)).value;

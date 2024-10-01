@@ -22,10 +22,7 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-+pbFG1SmSO/cnt1e+kel7ereC0I1OCJKKsS0KaJDWdc=";
   };
 
-  patches = lib.optionals withDriver [
-    ./ko-path.diff
-    ./compile-ko.diff
-  ];
+  patches = lib.optionals withDriver [ ./ko-path.diff ./compile-ko.diff ];
 
   postPatch = ''
     substituteInPlace tests/software/util.py \

@@ -37,13 +37,7 @@ stdenv.mkDerivation rec {
 
   postFixup = ''
     wrapProgram $out/bin/rrip_cli \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          cddiscid
-          cdparanoia
-          ruby
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ cddiscid cdparanoia ruby ]}
   '';
 
   meta = with lib; {

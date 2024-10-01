@@ -76,12 +76,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   postInstall = ''
     wrapProgram $out/bin/notion \
-      --prefix PATH ":" "${
-        lib.makeBinPath [
-          xmessage
-          xterm
-        ]
-      }" \
+      --prefix PATH ":" "${lib.makeBinPath [ xmessage xterm ]}" \
   '';
 
   meta = {

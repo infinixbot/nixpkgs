@@ -28,12 +28,7 @@ rustPlatform.buildRustPackage rec {
     asciidoctor
     installShellFiles
   ];
-  buildInputs =
-    [ openssl ]
-    ++ lib.optionals stdenv.isDarwin [
-      Security
-      SystemConfiguration
-    ];
+  buildInputs = [ openssl ] ++ lib.optionals stdenv.isDarwin [ Security SystemConfiguration ];
 
   cargoHash = "sha256-G+vTW3hYNjZN3V5svltbKEeeUEolAVVbTOaAKVHEcUI=";
 

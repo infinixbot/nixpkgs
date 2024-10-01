@@ -44,12 +44,7 @@ stdenv.mkDerivation {
     mkdir -pv $out/bin
     cp -a netbeans $out
     makeWrapper $out/netbeans/bin/netbeans $out/bin/netbeans \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          jdk
-          which
-        ]
-      } \
+      --prefix PATH : ${lib.makeBinPath [ jdk which ]} \
       --prefix JAVA_HOME : ${jdk.home} \
       --add-flags "--jdkhome ${jdk.home} \
       -J-Dawt.useSystemAAFontSettings=on -J-Dswing.aatext=true"

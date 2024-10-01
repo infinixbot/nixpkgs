@@ -42,10 +42,7 @@ in
       };
 
       rateAccuracy = mkOption {
-        type = types.enum [
-          "High"
-          "Low"
-        ];
+        type = types.enum [ "High" "Low" ];
         default = "High";
         description = ''
           To ensure that the actual transmit rate is as close as possible to

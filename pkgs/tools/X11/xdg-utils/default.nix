@@ -155,12 +155,7 @@ let
       prologue = "${writeText "xdg-mime-prologue" ''
         export XDG_DATA_DIRS="$XDG_DATA_DIRS''${XDG_DATA_DIRS:+:}${shared-mime-info}/share"
         export PERL5LIB=${with perlPackages; makePerlPath [ FileMimeInfo ]}
-        export PATH=$PATH:${
-          lib.makeBinPath [
-            coreutils
-            perlPackages.FileMimeInfo
-          ]
-        }
+        export PATH=$PATH:${lib.makeBinPath [ coreutils perlPackages.FileMimeInfo ]}
       ''}";
     }
 
@@ -238,15 +233,7 @@ let
         "cannot:${perl}/bin/perl"
       ];
       prologue = "${writeText "xdg-screensaver-prologue" ''
-        export PERL5LIB=${
-          with perlPackages;
-          makePerlPath [
-            NetDBus
-            XMLTwig
-            XMLParser
-            X11Protocol
-          ]
-        }
+        export PERL5LIB=${with perlPackages; makePerlPath [ NetDBus XMLTwig XMLParser X11Protocol ]}
         export PATH=$PATH:${coreutils}/bin
       ''}";
     }

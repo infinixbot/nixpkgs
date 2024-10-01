@@ -51,16 +51,11 @@ stdenv.mkDerivation (finalAttrs: {
     doxygen
     xorg.xvfb
   ] ++ lib.optional withWaylandTools wayland-scanner;
-  buildInputs =
-    [
-      xkeyboard_config
-      libxcb
-      libxml2
-    ]
-    ++ lib.optionals withWaylandTools [
-      wayland
-      wayland-protocols
-    ];
+  buildInputs = [
+    xkeyboard_config
+    libxcb
+    libxml2
+  ] ++ lib.optionals withWaylandTools [ wayland wayland-protocols ];
   nativeCheckInputs = [ python3 ];
 
   mesonFlags = [

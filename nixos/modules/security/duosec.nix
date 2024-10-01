@@ -33,16 +33,8 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule [ "security" "duosec" "group" ] [
-      "security"
-      "duosec"
-      "groups"
-    ])
-    (mkRenamedOptionModule [ "security" "duosec" "ikey" ] [
-      "security"
-      "duosec"
-      "integrationKey"
-    ])
+    (mkRenamedOptionModule [ "security" "duosec" "group" ] [ "security" "duosec" "groups" ])
+    (mkRenamedOptionModule [ "security" "duosec" "ikey" ] [ "security" "duosec" "integrationKey" ])
     (mkRemovedOptionModule [ "security" "duosec" "skey" ]
       "The insecure security.duosec.skey option has been replaced by a new security.duosec.secretKeyFile option. Use this new option to store a secure copy of your key instead."
     )
@@ -94,10 +86,7 @@ in
       };
 
       failmode = mkOption {
-        type = types.enum [
-          "safe"
-          "secure"
-        ];
+        type = types.enum [ "safe" "secure" ];
         default = "safe";
         description = ''
           On service or configuration errors that prevent Duo

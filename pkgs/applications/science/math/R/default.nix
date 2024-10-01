@@ -70,55 +70,48 @@ stdenv.mkDerivation (finalAttrs: {
   dontUseImakeConfigure = true;
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs =
-    [
-      bzip2
-      gfortran
-      libX11
-      libXmu
-      libXt
-      libXt
-      libjpeg
-      libpng
-      libtiff
-      ncurses
-      pango
-      pcre2
-      perl
-      readline
-      (texliveSmall.withPackages (
-        ps: with ps; [
-          inconsolata
-          helvetic
-          ps.texinfo
-          fancyvrb
-          cm-super
-          rsfs
-        ]
-      ))
-      xz
-      zlib
-      less
-      texinfo
-      graphviz
-      icu
-      bison
-      imake
-      which
-      blas
-      lapack
-      curl
-      tcl
-      tk
-      jdk
-      tzdata
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      Cocoa
-      Foundation
-      libobjc
-      libcxx
-    ];
+  buildInputs = [
+    bzip2
+    gfortran
+    libX11
+    libXmu
+    libXt
+    libXt
+    libjpeg
+    libpng
+    libtiff
+    ncurses
+    pango
+    pcre2
+    perl
+    readline
+    (texliveSmall.withPackages (
+      ps: with ps; [
+        inconsolata
+        helvetic
+        ps.texinfo
+        fancyvrb
+        cm-super
+        rsfs
+      ]
+    ))
+    xz
+    zlib
+    less
+    texinfo
+    graphviz
+    icu
+    bison
+    imake
+    which
+    blas
+    lapack
+    curl
+    tcl
+    tk
+    jdk
+    tzdata
+  ] ++ lib.optionals stdenv.isDarwin [ Cocoa Foundation libobjc libcxx ];
 
   patches = [
     ./no-usr-local-search-paths.patch

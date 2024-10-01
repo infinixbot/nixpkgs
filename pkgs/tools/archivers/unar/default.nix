@@ -55,10 +55,7 @@ stdenv.mkDerivation rec {
       zlib
     ]
     ++ lib.optionals stdenv.isLinux [ gnustep.base ]
-    ++ lib.optionals stdenv.isDarwin [
-      Foundation
-      AppKit
-    ];
+    ++ lib.optionals stdenv.isDarwin [ Foundation AppKit ];
 
   nativeBuildInputs = [
     installShellFiles

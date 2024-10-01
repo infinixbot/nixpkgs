@@ -67,14 +67,7 @@ let
 
   overrideNameserversScript = pkgs.writeScript "02overridedns" ''
     #!/bin/sh
-    PATH=${
-      with pkgs;
-      makeBinPath [
-        gnused
-        gnugrep
-        coreutils
-      ]
-    }
+    PATH=${with pkgs; makeBinPath [ gnused gnugrep coreutils ]}
     tmp=$(mktemp)
     sed '/nameserver /d' /etc/resolv.conf > $tmp
     grep 'nameserver ' /etc/resolv.conf | \
@@ -114,14 +107,7 @@ let
   };
 
   macAddressOptEth = mkOption {
-    type = types.either types.str (
-      types.enum [
-        "permanent"
-        "preserve"
-        "random"
-        "stable"
-      ]
-    );
+    type = types.either types.str (types.enum [ "permanent" "preserve" "random" "stable" ]);
     default = "preserve";
     example = "00:11:22:33:44:55";
     description = ''
@@ -247,10 +233,7 @@ in
       };
 
       dhcp = mkOption {
-        type = types.enum [
-          "dhcpcd"
-          "internal"
-        ];
+        type = types.enum [ "dhcpcd" "internal" ];
         default = "internal";
         description = ''
           Which program (or internal library) should be used for DHCP.
@@ -296,10 +279,7 @@ in
         macAddress = macAddressOptWifi;
 
         backend = mkOption {
-          type = types.enum [
-            "wpa_supplicant"
-            "iwd"
-          ];
+          type = types.enum [ "wpa_supplicant" "iwd" ];
           default = "wpa_supplicant";
           description = ''
             Specify the Wi-Fi backend used for the device.
@@ -326,12 +306,7 @@ in
       };
 
       dns = mkOption {
-        type = types.enum [
-          "default"
-          "dnsmasq"
-          "systemd-resolved"
-          "none"
-        ];
+        type = types.enum [ "default" "dnsmasq" "systemd-resolved" "none" ];
         default = "default";
         description = ''
           Set the DNS (`resolv.conf`) processing mode.
@@ -644,10 +619,7 @@ in
 
     systemd.services.ModemManager = {
       aliases = [ "dbus-org.freedesktop.ModemManager1.service" ];
-      path = lib.optionals (cfg.fccUnlockScripts != [ ]) [
-        pkgs.libqmi
-        pkgs.libmbim
-      ];
+      path = lib.optionals (cfg.fccUnlockScripts != [ ]) [ pkgs.libqmi pkgs.libmbim ];
     };
 
     systemd.services.NetworkManager-dispatcher = {

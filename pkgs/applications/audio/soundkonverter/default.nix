@@ -74,22 +74,10 @@ let
     ++ lib.optional withApe mac
     ++ lib.optional withWavpack wavpack
     ++ lib.optional withUnfreeAac faac
-    ++ lib.optionals withMidi [
-      fluidsynth
-      timidity
-    ]
-    ++ lib.optionals withVorbis [
-      vorbis-tools
-      vorbisgain
-    ]
-    ++ lib.optionals withMp3 [
-      lame
-      mp3gain
-    ]
-    ++ lib.optionals withAac [
-      faad2
-      aacgain
-    ];
+    ++ lib.optionals withMidi [ fluidsynth timidity ]
+    ++ lib.optionals withVorbis [ vorbis-tools vorbisgain ]
+    ++ lib.optionals withMp3 [ lame mp3gain ]
+    ++ lib.optionals withAac [ faad2 aacgain ];
 
 in
 mkDerivation rec {

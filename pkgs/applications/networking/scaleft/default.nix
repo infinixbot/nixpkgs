@@ -22,10 +22,7 @@ stdenv.mkDerivation rec {
     rpmextract
   ];
 
-  libPath = lib.makeLibraryPath [
-    stdenv.cc
-    stdenv.cc.cc.lib
-  ];
+  libPath = lib.makeLibraryPath [ stdenv.cc stdenv.cc.cc.lib ];
 
   buildCommand = ''
     mkdir -p $out/bin/

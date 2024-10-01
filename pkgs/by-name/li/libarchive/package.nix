@@ -94,18 +94,11 @@ stdenv.mkDerivation (finalAttrs: {
       zstd
     ]
     ++ lib.optional stdenv.hostPlatform.isUnix sharutils
-    ++ lib.optionals stdenv.isLinux [
-      acl
-      attr
-      e2fsprogs
-    ]
+    ++ lib.optionals stdenv.isLinux [ acl attr e2fsprogs ]
     ++ lib.optional xarSupport libxml2;
 
   # Without this, pkg-config-based dependencies are unhappy
-  propagatedBuildInputs = lib.optionals stdenv.isLinux [
-    attr
-    acl
-  ];
+  propagatedBuildInputs = lib.optionals stdenv.isLinux [ attr acl ];
 
   configureFlags = lib.optional (!xarSupport) "--without-xml2";
 

@@ -75,10 +75,7 @@ in
 
       authBackend = lib.mkOption {
         default = "storage";
-        type = lib.types.enum [
-          "storage"
-          "pam"
-        ];
+        type = lib.types.enum [ "storage" "pam" ];
         description = ''
           How users are authenticated
             storage -- save passwords internally
@@ -88,11 +85,7 @@ in
 
       authMode = lib.mkOption {
         default = "Open";
-        type = lib.types.enum [
-          "Open"
-          "Closed"
-          "Registered"
-        ];
+        type = lib.types.enum [ "Open" "Closed" "Registered" ];
         description = ''
           The following authentication modes are available:
             Open -- Accept connections from anyone, use NickServ for user authentication.

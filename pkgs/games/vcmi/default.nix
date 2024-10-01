@@ -80,13 +80,7 @@ stdenv.mkDerivation rec {
 
   postFixup = ''
     wrapProgram $out/bin/vcmibuilder \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          innoextract
-          ffmpeg
-          unshield
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ innoextract ffmpeg unshield ]}"
   '';
 
   passthru.tests.version = testers.testVersion {

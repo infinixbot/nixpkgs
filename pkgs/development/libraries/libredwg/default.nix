@@ -63,10 +63,7 @@ stdenv.mkDerivation rec {
   doCheck = !stdenv.isLinux;
 
   # the "xmlsuite" test requires the libxml2 c library as well as the python module
-  nativeCheckInputs = lib.optionals enablePython [
-    libxml2
-    libxml2.dev
-  ];
+  nativeCheckInputs = lib.optionals enablePython [ libxml2 libxml2.dev ];
 
   meta = with lib; {
     description = "Free implementation of the DWG file format";

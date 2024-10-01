@@ -14,8 +14,5 @@ qtModule {
     qtbase
     qtdeclarative
   ];
-  buildInputs = lib.optionals stdenv.hostPlatform.isDarwin [
-    Foundation
-    StoreKit
-  ];
+  buildInputs = lib.optionals stdenv.hostPlatform.isDarwin [ Foundation StoreKit ];
 }

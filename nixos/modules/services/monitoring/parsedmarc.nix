@@ -521,11 +521,7 @@ in
         parsedmarcConfig = ini.generate "parsedmarc.ini" filteredConfig;
         mkSecretReplacement = file: ''
           replace-secret ${
-            lib.escapeShellArgs [
-              (hashString "sha256" file)
-              file
-              "/run/parsedmarc/parsedmarc.ini"
-            ]
+            lib.escapeShellArgs [ (hashString "sha256" file) file "/run/parsedmarc/parsedmarc.ini" ]
           }
         '';
         secretReplacements = lib.concatMapStrings mkSecretReplacement secretPaths;

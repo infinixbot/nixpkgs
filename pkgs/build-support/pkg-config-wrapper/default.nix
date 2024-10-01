@@ -135,12 +135,7 @@ stdenv.mkDerivation {
     let
       pkg-config_ = optionalAttrs (pkg-config != null) pkg-config;
     in
-    (optionalAttrs (pkg-config_ ? meta) (
-      removeAttrs pkg-config.meta [
-        "priority"
-        "mainProgram"
-      ]
-    ))
+    (optionalAttrs (pkg-config_ ? meta) (removeAttrs pkg-config.meta [ "priority" "mainProgram" ]))
     // {
       description = attrByPath [ "meta" "description" ] "pkg-config" pkg-config_ + " (wrapper script)";
       priority = 10;

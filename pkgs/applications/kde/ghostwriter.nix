@@ -35,11 +35,7 @@ mkDerivation {
     "--prefix"
     "PATH"
     ":"
-    (lib.makeBinPath [
-      cmark
-      multimarkdown
-      pandoc
-    ])
+    (lib.makeBinPath [ cmark multimarkdown pandoc ])
   ];
 
   meta = with lib; {

@@ -121,13 +121,7 @@ stdenv.mkDerivation rec {
              scripts/ZoneMinder/lib/ZoneMinder/Memory.pm.in ; do
       substituteInPlace $f \
         --replace '/usr/bin/perl' '${perlBin}' \
-        --replace '/bin:/usr/bin' "$out/bin:${
-          lib.makeBinPath [
-            coreutils
-            procps
-            psmisc
-          ]
-        }"
+        --replace '/bin:/usr/bin' "$out/bin:${lib.makeBinPath [ coreutils procps psmisc ]}"
     done
 
     substituteInPlace scripts/zmdbbackup.in \

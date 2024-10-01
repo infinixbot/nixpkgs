@@ -24,12 +24,7 @@
   callPackage,
 }:
 
-assert lib.elem stdenv.system [
-  "x86_64-linux"
-  "x86_64-darwin"
-  "aarch64-linux"
-  "aarch64-darwin"
-];
+assert lib.elem stdenv.system [ "x86_64-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin" ];
 
 let
   common =
@@ -114,13 +109,7 @@ let
               --set-default HADOOP_HOME $out/\
               --run "test -d /etc/hadoop-conf && export HADOOP_CONF_DIR=\''${HADOOP_CONF_DIR-'/etc/hadoop-conf/'}"\
               --set-default HADOOP_CONF_DIR $out/etc/hadoop/\
-              --prefix PATH : "${
-                lib.makeBinPath [
-                  bash
-                  coreutils
-                  which
-                ]
-              }"\
+              --prefix PATH : "${lib.makeBinPath [ bash coreutils which ]}"\
               --prefix JAVA_LIBRARY_PATH : "${lib.makeLibraryPath finalAttrs.buildInputs}"
           done
         ''

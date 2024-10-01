@@ -354,10 +354,7 @@ in
       };
 
       trust = lib.mkOption {
-        type = lib.types.enum [
-          "allow all"
-          "strict"
-        ];
+        type = lib.types.enum [ "allow all" "strict" ];
         default = "strict";
         description = ''
           Determines how client certificates are validated.

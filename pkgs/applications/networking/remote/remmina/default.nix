@@ -107,11 +107,7 @@ stdenv.mkDerivation (finalAttrs: {
       python3
       wayland
     ]
-    ++ lib.optionals stdenv.isLinux [
-      fuse3
-      libappindicator-gtk3
-      libdbusmenu-gtk3
-    ]
+    ++ lib.optionals stdenv.isLinux [ fuse3 libappindicator-gtk3 libdbusmenu-gtk3 ]
     ++ lib.optionals withLibsecret [ libsecret ]
     ++ lib.optionals withKf5Wallet [ libsForQt5.kwallet ]
     ++ lib.optionals withWebkitGtk [ webkitgtk_4_1 ]

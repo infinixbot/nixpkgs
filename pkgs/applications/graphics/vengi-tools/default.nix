@@ -71,11 +71,7 @@ stdenv.mkDerivation (finalAttrs: {
       SDL2_mixer
     ]
     ++ lib.optional stdenv.isLinux wayland-protocols
-    ++ lib.optionals stdenv.isDarwin [
-      Carbon
-      CoreServices
-      OpenCL
-    ]
+    ++ lib.optionals stdenv.isDarwin [ Carbon CoreServices OpenCL ]
     ++ lib.optional (!stdenv.isDarwin) opencl-headers;
 
   cmakeFlags = lib.optional stdenv.isDarwin "-DCORESERVICES_LIB=${CoreServices}";

@@ -31,10 +31,7 @@ in
     };
 
     theme = mkOption {
-      type = types.enum [
-        "alps"
-        "sourcehut"
-      ];
+      type = types.enum [ "alps" "sourcehut" ];
       default = "sourcehut";
       description = ''
         The frontend's theme to use.

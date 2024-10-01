@@ -21,10 +21,7 @@
         or (abort "should never happen: unknown value type ${builtins.typeOf value}");
 
       # https://www.php.net/manual/en/language.types.string.php#language.types.string.syntax.single
-      escapeSingleQuotedString = lib.escape [
-        "'"
-        "\\"
-      ];
+      escapeSingleQuotedString = lib.escape [ "'" "\\" ];
       string = value: "'${escapeSingleQuotedString value}'";
 
       listContent = values: lib.concatStringsSep ", " (map toPHP values);

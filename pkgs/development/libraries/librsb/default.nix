@@ -45,10 +45,7 @@ stdenv.mkDerivation rec {
   ];
 
   # Ensure C/Fortran code is position-independent.
-  env.NIX_CFLAGS_COMPILE = toString [
-    "-fPIC"
-    "-Ofast"
-  ];
+  env.NIX_CFLAGS_COMPILE = toString [ "-fPIC" "-Ofast" ];
   FCFLAGS = [
     "-fPIC"
     "-Ofast"

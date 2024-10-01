@@ -24,10 +24,7 @@ stdenv.mkDerivation rec {
 
   installPhase =
     let
-      libraryPath = lib.strings.makeLibraryPath [
-        libglvnd
-        libnotify
-      ];
+      libraryPath = lib.strings.makeLibraryPath [ libglvnd libnotify ];
     in
     ''
       runHook preInstall

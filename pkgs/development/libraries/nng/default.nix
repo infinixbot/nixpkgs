@@ -26,12 +26,9 @@ stdenv.mkDerivation rec {
 
   buildInputs = lib.optionals mbedtlsSupport [ mbedtls ];
 
-  cmakeFlags =
-    [ "-G Ninja" ]
-    ++ lib.optionals mbedtlsSupport [
-      "-DMBEDTLS_ROOT_DIR=${mbedtls}"
-      "-DNNG_ENABLE_TLS=ON"
-    ];
+  cmakeFlags = [
+    "-G Ninja"
+  ] ++ lib.optionals mbedtlsSupport [ "-DMBEDTLS_ROOT_DIR=${mbedtls}" "-DNNG_ENABLE_TLS=ON" ];
 
   meta = with lib; {
     homepage = "https://nng.nanomsg.org/";

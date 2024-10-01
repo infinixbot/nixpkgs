@@ -129,39 +129,29 @@ let
           } // (args.meta or { });
 
         }
-        // lib.optionalAttrs
-          (lib.elem language [
-            "is"
-            "nb"
-          ])
-          {
-            # These have Windows-1251 encoded non-ASCII characters,
-            # so need some special handling.
-            unpackPhase = ''
-              runHook preUnpack
+        // lib.optionalAttrs (lib.elem language [ "is" "nb" ]) {
+          # These have Windows-1251 encoded non-ASCII characters,
+          # so need some special handling.
+          unpackPhase = ''
+            runHook preUnpack
 
-              tar -xf $src --strip-components=1 || true
+            tar -xf $src --strip-components=1 || true
 
-              runHook postUnpack
+            runHook postUnpack
+          '';
+
+          postPatch = lib.getAttr language {
+            is = ''
+              cp icelandic.alias íslenska.alias
+              sed -i 's/ .slenska\.alias/ íslenska.alias/g' Makefile.pre
             '';
-
-            postPatch = lib.getAttr language {
-              is = ''
-                cp icelandic.alias íslenska.alias
-                sed -i 's/ .slenska\.alias/ íslenska.alias/g' Makefile.pre
-              '';
-              nb = ''
-                cp bokmal.alias bokmål.alias
-                sed -i 's/ bokm.l\.alias/ bokmål.alias/g' Makefile.pre
-              '';
-            };
-          }
-        // removeAttrs args [
-          "language"
-          "filename"
-          "sha256"
-          "meta"
-        ];
+            nb = ''
+              cp bokmal.alias bokmål.alias
+              sed -i 's/ bokm.l\.alias/ bokmål.alias/g' Makefile.pre
+            '';
+          };
+        }
+        // removeAttrs args [ "language" "filename" "sha256" "meta" ];
     in
     buildDict buildArgs;
 

@@ -80,12 +80,7 @@ stdenv.mkDerivation (finalAttrs: {
       ps = lib.getExe ps;
     });
 
-  outputs =
-    [ "out" ]
-    ++ lib.optionals buildDocs [
-      "man"
-      "info"
-    ];
+  outputs = [ "out" ] ++ lib.optionals buildDocs [ "man" "info" ];
   separateDebugInfo = true;
   setOutputFlags = false;
 

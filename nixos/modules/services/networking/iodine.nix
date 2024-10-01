@@ -27,12 +27,7 @@ in
       "server"
       "domain"
     ])
-    (lib.mkRenamedOptionModule [ "services" "iodined" "ip" ] [
-      "services"
-      "iodine"
-      "server"
-      "ip"
-    ])
+    (lib.mkRenamedOptionModule [ "services" "iodined" "ip" ] [ "services" "iodine" "server" "ip" ])
     (lib.mkRenamedOptionModule [ "services" "iodined" "extraConfig" ] [
       "services"
       "iodine"

@@ -43,24 +43,19 @@ mkDerivation rec {
     wrapGAppsHook3
     qttools
   ];
-  buildInputs =
-    [
-      curl
-      qtbase
-      avahi
-      libX11
-      libXext
-      libXtst
-      libXinerama
-      libXrandr
-      libXdmcp
-      libICE
-      libSM
-    ]
-    ++ lib.optionals withLibei [
-      libei
-      libportal
-    ];
+  buildInputs = [
+    curl
+    qtbase
+    avahi
+    libX11
+    libXext
+    libXtst
+    libXinerama
+    libXrandr
+    libXdmcp
+    libICE
+    libSM
+  ] ++ lib.optionals withLibei [ libei libportal ];
 
   cmakeFlags = [
     "-DINPUTLEAP_REVISION=${builtins.substring 0 8 src.rev}"

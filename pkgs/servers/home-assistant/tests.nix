@@ -145,16 +145,9 @@ lib.listToAttrs (
 
         preCheck =
           old.preCheck
-          +
-            lib.optionalString
-              (builtins.elem component [
-                "emulated_hue"
-                "songpal"
-                "system_log"
-              ])
-              ''
-                patch -p1 < ${./patches/tests-mock-source-ip.patch}
-              '';
+          + lib.optionalString (builtins.elem component [ "emulated_hue" "songpal" "system_log" ]) ''
+            patch -p1 < ${./patches/tests-mock-source-ip.patch}
+          '';
 
         meta = old.meta // {
           broken = lib.elem component [ ];

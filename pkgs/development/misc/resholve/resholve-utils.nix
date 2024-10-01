@@ -85,13 +85,7 @@ rec {
     - claimed by phraseArgs
     - only needed for binlore.collect
   */
-  removeUnneededArgs =
-    value:
-    removeAttrs value [
-      "scripts"
-      "flags"
-      "unresholved"
-    ];
+  removeUnneededArgs = value: removeAttrs value [ "scripts" "flags" "unresholved" ];
 
   # Verify required arguments are present
   validateSolution =

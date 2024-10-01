@@ -185,11 +185,7 @@ in
       };
 
       criticalPowerAction = lib.mkOption {
-        type = lib.types.enum [
-          "PowerOff"
-          "Hibernate"
-          "HybridSleep"
-        ];
+        type = lib.types.enum [ "PowerOff" "Hibernate" "HybridSleep" ];
         default = "HybridSleep";
         description = ''
           The action to take when `timeAction` or

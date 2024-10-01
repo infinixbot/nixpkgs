@@ -37,11 +37,7 @@ stdenv.mkDerivation (finalAttrs: {
       lzo
       openssl
     ]
-    ++ optionals stdenv.isLinux [
-      libcap_ng
-      libnl
-      pam
-    ]
+    ++ optionals stdenv.isLinux [ libcap_ng libnl pam ]
     ++ optional useSystemd systemd
     ++ optional pkcs11Support pkcs11helper;
 

@@ -262,10 +262,7 @@ let
               data.dnsProvider
             ]
             ++ lib.optionals (!data.dnsPropagationCheck) [ "--dns.disable-cp" ]
-            ++ lib.optionals (data.dnsResolver != null) [
-              "--dns.resolvers"
-              data.dnsResolver
-            ]
+            ++ lib.optionals (data.dnsResolver != null) [ "--dns.resolvers" data.dnsResolver ]
           )
         else if data.s3Bucket != null then
           [
@@ -299,10 +296,7 @@ let
           data.keyType
         ]
         ++ protocolOpts
-        ++ lib.optionals (acmeServer != null) [
-          "--server"
-          acmeServer
-        ]
+        ++ lib.optionals (acmeServer != null) [ "--server" acmeServer ]
         ++ lib.concatMap (name: [
           "-d"
           name

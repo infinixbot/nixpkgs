@@ -38,14 +38,8 @@ stdenv.mkDerivation rec {
       gettext
       libuuid
     ]
-    ++ lib.optionals crypto [
-      gnutls
-      libgcrypt
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      macfuse-stubs
-      DiskArbitration
-    ];
+    ++ lib.optionals crypto [ gnutls libgcrypt ]
+    ++ lib.optionals stdenv.isDarwin [ macfuse-stubs DiskArbitration ];
 
   # Note: libgcrypt is listed here non-optionally because its m4 macros are
   # being used in ntfs-3g's configure.ac.

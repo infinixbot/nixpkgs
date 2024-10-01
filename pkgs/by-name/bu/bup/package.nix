@@ -66,12 +66,7 @@ stdenv.mkDerivation {
 
   postInstall = ''
     wrapProgram $out/bin/bup \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          git
-          par2cmdline
-        ]
-      } \
+      --prefix PATH : ${lib.makeBinPath [ git par2cmdline ]} \
       --prefix NIX_PYTHONPATH : ${lib.makeSearchPathOutput "lib" python3.sitePackages pythonDeps}
   '';
 

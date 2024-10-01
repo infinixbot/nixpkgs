@@ -88,12 +88,7 @@ stdenv.mkDerivation (finalAttrs: {
       --set GDK_PIXBUF_MODULE_FILE "$GDK_PIXBUF_MODULE_FILE"
 
     wrapProgram $out/bin/dunstctl \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          coreutils
-          dbus
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ coreutils dbus ]}"
 
     substituteInPlace $out/share/zsh/site-functions/_dunstctl $out/share/fish/vendor_completions.d/{dunstctl,dunstify} \
       --replace-fail "jq" "${lib.getExe jq}"

@@ -61,11 +61,7 @@ stdenv.mkDerivation rec {
     ]
     ++ lib.optionals withWallet [ sqlite ]
     ++ lib.optionals (withWallet && !stdenv.isDarwin) [ db48 ]
-    ++ lib.optionals withGui [
-      qrencode
-      qtbase
-      qttools
-    ];
+    ++ lib.optionals withGui [ qrencode qtbase qttools ];
 
   configureFlags =
     [

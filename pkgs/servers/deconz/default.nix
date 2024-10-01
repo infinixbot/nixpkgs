@@ -71,12 +71,7 @@ stdenv.mkDerivation rec {
         wrapProgram "$p" \
             --set LD_PRELOAD "${libredirect}/lib/libredirect.so" \
             --set NIX_REDIRECTS "/usr/share=$out/share:/usr/bin=$out/bin" \
-            --prefix PATH : "${
-              lib.makeBinPath [
-                gzip
-                gnutar
-              ]
-            }"
+            --prefix PATH : "${lib.makeBinPath [ gzip gnutar ]}"
     done
 
     runHook postInstall

@@ -66,11 +66,7 @@ stdenv.mkDerivation rec {
     ]
     ++ lib.optionals enableCUDA [ cuda ]
     ++ lib.optional (!stdenv.isDarwin) libpfm
-    ++ lib.optionals stdenv.isDarwin [
-      libobjc
-      Cocoa
-      Foundation
-    ];
+    ++ lib.optionals stdenv.isDarwin [ libobjc Cocoa Foundation ];
 
   cmakeFlags =
     let

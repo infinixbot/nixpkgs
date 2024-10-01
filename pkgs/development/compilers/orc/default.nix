@@ -41,16 +41,10 @@ stdenv.mkDerivation rec {
 
   mesonFlags = optionals (!buildDevDoc) [ "-Dgtk_doc=disabled" ];
 
-  nativeBuildInputs =
-    [
-      meson
-      ninja
-    ]
-    ++ optionals buildDevDoc [
-      gtk-doc
-      file
-      docbook_xsl
-    ];
+  nativeBuildInputs = [
+    meson
+    ninja
+  ] ++ optionals buildDevDoc [ gtk-doc file docbook_xsl ];
 
   # https://gitlab.freedesktop.org/gstreamer/orc/-/issues/41
   doCheck =

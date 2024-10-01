@@ -68,14 +68,7 @@ rustPlatform.buildRustPackage rec {
 
   postFixup = lib.optionalString stdenv.isLinux ''
     patchelf $out/bin/sniffnet \
-      --add-rpath ${
-        lib.makeLibraryPath [
-          vulkan-loader
-          xorg.libX11
-          libxkbcommon
-          wayland
-        ]
-      }
+      --add-rpath ${lib.makeLibraryPath [ vulkan-loader xorg.libX11 libxkbcommon wayland ]}
   '';
 
   meta = with lib; {

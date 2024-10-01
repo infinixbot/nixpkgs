@@ -128,21 +128,16 @@ stdenv.mkDerivation rec {
     popd
   '';
 
-  nativeCheckInputs =
-    [
-      bc
-      perl
-      (python3.withPackages (
-        ps: with ps; [
-          numpy
-          scipy
-        ]
-      ))
-    ]
-    ++ lib.optionals withMPI [
-      mpi
-      openssh
-    ];
+  nativeCheckInputs = [
+    bc
+    perl
+    (python3.withPackages (
+      ps: with ps; [
+        numpy
+        scipy
+      ]
+    ))
+  ] ++ lib.optionals withMPI [ mpi openssh ];
 
   checkPhase = ''
     XYCE_BINARY="$(pwd)/src/Xyce"

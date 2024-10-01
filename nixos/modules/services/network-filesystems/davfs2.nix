@@ -24,10 +24,7 @@ let
 
   cfg = config.services.davfs2;
 
-  escapeString = escape [
-    "\""
-    "\\"
-  ];
+  escapeString = escape [ "\"" "\\" ];
 
   formatValue =
     value:

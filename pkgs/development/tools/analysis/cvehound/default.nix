@@ -18,12 +18,7 @@ python3.pkgs.buildPythonApplication rec {
   };
 
   makeWrapperArgs = [
-    "--prefix PATH : ${
-      lib.makeBinPath [
-        coccinelle
-        gnugrep
-      ]
-    }"
+    "--prefix PATH : ${lib.makeBinPath [ coccinelle gnugrep ]}"
   ];
 
   propagatedBuildInputs = with python3.pkgs; [

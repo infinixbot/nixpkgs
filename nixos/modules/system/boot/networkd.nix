@@ -50,11 +50,7 @@ let
           "DUIDType"
           "DUIDRawData"
         ])
-        (assertValueOneOf "ClientIdentifier" [
-          "mac"
-          "duid"
-          "duid-only"
-        ])
+        (assertValueOneOf "ClientIdentifier" [ "mac" "duid" "duid-only" ])
       ];
 
       sectionDHCPv6 = checkUnitConfig "DHCPv6" [
@@ -101,18 +97,11 @@ let
           "TransmitQueues"
           "TransmitQueueLength"
         ])
-        (assertValueOneOf "MACAddressPolicy" [
-          "persistent"
-          "random"
-          "none"
-        ])
+        (assertValueOneOf "MACAddressPolicy" [ "persistent" "random" "none" ])
         (assertMacAddress "MACAddress")
         (assertByteFormat "MTUBytes")
         (assertByteFormat "BitsPerSecond")
-        (assertValueOneOf "Duplex" [
-          "half"
-          "full"
-        ])
+        (assertValueOneOf "Duplex" [ "half" "full" ])
         (assertValueOneOf "AutoNegotiation" boolValues)
         (assertValuesSomeOfOr "WakeOnLan" [
           "phy"
@@ -177,16 +166,8 @@ let
             "Mode"
             "Flags"
           ])
-          (assertValueOneOf "Mode" [
-            "L2"
-            "L3"
-            "L3S"
-          ])
-          (assertValueOneOf "Flags" [
-            "private"
-            "vepa"
-            "bridge"
-          ])
+          (assertValueOneOf "Mode" [ "L2" "L3" "L3S" ])
+          (assertValueOneOf "Flags" [ "private" "vepa" "bridge" ])
         ];
       in
       {
@@ -269,10 +250,7 @@ let
           (assertValueOneOf "MulticastQuerier" boolValues)
           (assertValueOneOf "MulticastSnooping" boolValues)
           (assertValueOneOf "VLANFiltering" boolValues)
-          (assertValueOneOf "VLANProtocol" [
-            "802.1q"
-            "802.ad"
-          ])
+          (assertValueOneOf "VLANProtocol" [ "802.1q" "802.ad" ])
           (assertValueOneOf "STP" boolValues)
           (assertValueOneOf "MulticastIGMPVersion" [
             2
@@ -304,12 +282,7 @@ let
           (assertOnlyFields [
             "Mode"
           ])
-          (assertValueOneOf "Mode" [
-            "private"
-            "vepa"
-            "bridge"
-            "passthru"
-          ])
+          (assertValueOneOf "Mode" [ "private" "vepa" "bridge" "passthru" ])
         ];
 
         sectionVXLAN = checkUnitConfig "VXLAN" [
@@ -391,21 +364,14 @@ let
           (assertRange "TTL" 0 255)
           (assertValueOneOf "DiscoverPathMTU" boolValues)
           (assertValueOneOf "CopyDSCP" boolValues)
-          (assertValueOneOf "Mode" [
-            "ip6ip6"
-            "ipip6"
-            "any"
-          ])
+          (assertValueOneOf "Mode" [ "ip6ip6" "ipip6" "any" ])
           (assertValueOneOf "Independent" boolValues)
           (assertValueOneOf "AssignToLoopback" boolValues)
           (assertValueOneOf "AllowLocalRemote" boolValues)
           (assertValueOneOf "FooOverUDP" boolValues)
           (assertPort "FOUDestinationPort")
           (assertPort "FOUSourcePort")
-          (assertValueOneOf "Encapsulation" [
-            "FooOverUDP"
-            "GenericUDPEncapsulation"
-          ])
+          (assertValueOneOf "Encapsulation" [ "FooOverUDP" "GenericUDPEncapsulation" ])
           (assertValueOneOf "ISATAP" boolValues)
           (assertValueOneOf "SerializeTunneledPackets" boolValues)
           (assertInt "ERSPANIndex")
@@ -419,10 +385,7 @@ let
             "Protocol"
           ])
           (assertPort "Port")
-          (assertValueOneOf "Encapsulation" [
-            "FooOverUDP"
-            "GenericUDPEncapsulation"
-          ])
+          (assertValueOneOf "Encapsulation" [ "FooOverUDP" "GenericUDPEncapsulation" ])
         ];
 
         sectionPeer = checkUnitConfig "Peer" [
@@ -454,10 +417,7 @@ let
           (assertRange "TunnelId" 1 4294967295)
           (assertInt "PeerTunnelId")
           (assertRange "PeerTunnelId" 1 4294967295)
-          (assertValueOneOf "EncapsulationType" [
-            "ip"
-            "udp"
-          ])
+          (assertValueOneOf "EncapsulationType" [ "ip" "udp" ])
           (assertPort "UDPSourcePort")
           (assertPort "UDPDestinationPort")
           (assertValueOneOf "UDPChecksum" boolValues)
@@ -479,10 +439,7 @@ let
           (assertHasField "PeerSessionId")
           (assertInt "PeerSessionId")
           (assertRange "PeerSessionId" 1 4294967295)
-          (assertValueOneOf "Layer2SpecificHeader" [
-            "none"
-            "default"
-          ])
+          (assertValueOneOf "Layer2SpecificHeader" [ "none" "default" ])
         ];
 
         # NOTE The PrivateKey directive is missing on purpose here, please
@@ -559,39 +516,16 @@ let
             "encap2+3"
             "encap3+4"
           ])
-          (assertValueOneOf "LACPTransmitRate" [
-            "slow"
-            "fast"
-          ])
-          (assertValueOneOf "AdSelect" [
-            "stable"
-            "bandwidth"
-            "count"
-          ])
+          (assertValueOneOf "LACPTransmitRate" [ "slow" "fast" ])
+          (assertValueOneOf "AdSelect" [ "stable" "bandwidth" "count" ])
           (assertInt "AdActorSystemPriority")
           (assertRange "AdActorSystemPriority" 1 65535)
           (assertInt "AdUserPortKey")
           (assertRange "AdUserPortKey" 0 1023)
-          (assertValueOneOf "FailOverMACPolicy" [
-            "none"
-            "active"
-            "follow"
-          ])
-          (assertValueOneOf "ARPValidate" [
-            "none"
-            "active"
-            "backup"
-            "all"
-          ])
-          (assertValueOneOf "ARPAllTargets" [
-            "any"
-            "all"
-          ])
-          (assertValueOneOf "PrimaryReselectPolicy" [
-            "always"
-            "better"
-            "failure"
-          ])
+          (assertValueOneOf "FailOverMACPolicy" [ "none" "active" "follow" ])
+          (assertValueOneOf "ARPValidate" [ "none" "active" "backup" "all" ])
+          (assertValueOneOf "ARPAllTargets" [ "any" "all" ])
+          (assertValueOneOf "PrimaryReselectPolicy" [ "always" "better" "failure" ])
           (assertInt "ResendIGMP")
           (assertRange "ResendIGMP" 0 255)
           (assertInt "PacketsPerSlave")
@@ -659,21 +593,14 @@ let
             "GatewayBandwithUp"
             "RoutingAlgorithm"
           ])
-          (assertValueOneOf "GatewayMode" [
-            "off"
-            "client"
-            "server"
-          ])
+          (assertValueOneOf "GatewayMode" [ "off" "client" "server" ])
           (assertValueOneOf "Aggregation" boolValues)
           (assertValueOneOf "BridgeLoopAvoidance" boolValues)
           (assertValueOneOf "DistributedArpTable" boolValues)
           (assertValueOneOf "Fragmentation" boolValues)
           (assertInt "HopPenalty")
           (assertRange "HopPenalty" 0 255)
-          (assertValueOneOf "RoutingAlgorithm" [
-            "batman-v"
-            "batman-iv"
-          ])
+          (assertValueOneOf "RoutingAlgorithm" [ "batman-v" "batman-iv" ])
         ];
       };
 
@@ -822,12 +749,7 @@ let
             "ipv4-fallback"
           ]
         ))
-        (assertValueOneOf "IPv6LinkLocalAddressGenerationMode" [
-          "eui64"
-          "none"
-          "stable-privacy"
-          "random"
-        ])
+        (assertValueOneOf "IPv6LinkLocalAddressGenerationMode" [ "eui64" "none" "stable-privacy" "random" ])
         (assertValueOneOf "IPv4LLRoute" boolValues)
         (assertValueOneOf "DefaultRouteOnDevice" boolValues)
         (assertValueOneOf "LLMNR" (boolValues ++ [ "resolve" ]))
@@ -868,11 +790,7 @@ let
         (assertMinimum "IPv6DuplicateAddressDetection" 0)
         (assertInt "IPv6HopLimit")
         (assertMinimum "IPv6HopLimit" 0)
-        (assertValueOneOf "IPv4ReversePathFilter" [
-          "no"
-          "strict"
-          "loose"
-        ])
+        (assertValueOneOf "IPv4ReversePathFilter" [ "no" "strict" "loose" ])
         (assertValueOneOf "IPv4AcceptLocal" boolValues)
         (assertValueOneOf "IPv4RouteLocalnet" boolValues)
         (assertValueOneOf "IPv4ProxyARP" boolValues)
@@ -918,12 +836,7 @@ let
         ])
         (assertInt "RouteMetric")
         (assertValueOneOf "HomeAddress" boolValues)
-        (assertValueOneOf "DuplicateAddressDetection" [
-          "ipv4"
-          "ipv6"
-          "both"
-          "none"
-        ])
+        (assertValueOneOf "DuplicateAddressDetection" [ "ipv4" "ipv6" "both" "none" ])
         (assertValueOneOf "ManageTemporaryAddress" boolValues)
         (assertValueOneOf "AddPrefixRoute" boolValues)
         (assertValueOneOf "AutoJoin" boolValues)
@@ -958,18 +871,10 @@ let
             (assertPortOrPortRange "SourcePort")
             (assertPortOrPortRange "DestinationPort")
             (assertValueOneOf "InvertRule" boolValues)
-            (assertValueOneOf "Family" [
-              "ipv4"
-              "ipv6"
-              "both"
-            ])
+            (assertValueOneOf "Family" [ "ipv4" "ipv6" "both" ])
             (assertInt "SuppressPrefixLength")
             (assertRange "SuppressPrefixLength" 0 128)
-            (assertValueOneOf "Type" [
-              "blackhole"
-              "unreachable"
-              "prohibit"
-            ])
+            (assertValueOneOf "Type" [ "blackhole" "unreachable" "prohibit" ])
             (assertRange "SuppressInterfaceGroup" 0 2147483647)
           ];
 
@@ -997,11 +902,7 @@ let
         ])
         (assertValueOneOf "GatewayOnLink" boolValues)
         (assertInt "Metric")
-        (assertValueOneOf "IPv6Preference" [
-          "low"
-          "medium"
-          "high"
-        ])
+        (assertValueOneOf "IPv6Preference" [ "low" "medium" "high" ])
         (assertValueOneOf "Scope" [
           "global"
           "site"
@@ -1026,10 +927,7 @@ let
         (assertValueOneOf "FastOpenNoCookie" boolValues)
         (assertValueOneOf "TTLPropagate" boolValues)
         (assertByteFormat "MTUBytes")
-        (assertValueOneOf "IPServiceType" [
-          "CS6"
-          "CS4"
-        ])
+        (assertValueOneOf "IPServiceType" [ "CS6" "CS4" ])
       ];
 
       sectionDHCPv4 = checkUnitConfig "DHCPv4" [
@@ -1080,11 +978,7 @@ let
         (assertValueOneOf "UseGateway" boolValues)
         (assertValueOneOf "UseRoutes" boolValues)
         (assertValueOneOf "UseTimezone" boolValues)
-        (assertValueOneOf "ClientIdentifier" [
-          "mac"
-          "duid"
-          "duid-only"
-        ])
+        (assertValueOneOf "ClientIdentifier" [ "mac" "duid" "duid-only" ])
         (assertInt "IAID")
         (assertValueOneOf "RequestBroadcast" boolValues)
         (assertInt "RouteMetric")
@@ -1094,10 +988,7 @@ let
         (assertPort "ListenPort")
         (assertValueOneOf "SendRelease" boolValues)
         (assertValueOneOf "SendDecline" boolValues)
-        (assertValueOneOf "FallbackLeaseLifetimeSec" [
-          "forever"
-          "infinity"
-        ])
+        (assertValueOneOf "FallbackLeaseLifetimeSec" [ "forever" "infinity" ])
         (assertValueOneOf "Use6RD" boolValues)
       ];
 
@@ -1131,11 +1022,7 @@ let
         (assertValueOneOf "UseDomains" (boolValues ++ [ "route" ]))
         (assertInt "RouteMetric")
         (assertValueOneOf "RapidCommit" boolValues)
-        (assertValueOneOf "WithoutRA" [
-          "no"
-          "solicit"
-          "information-request"
-        ])
+        (assertValueOneOf "WithoutRA" [ "no" "solicit" "information-request" ])
         (assertRange "SendOption" 1 65536)
         (assertInt "IAID")
         (assertValueOneOf "UseDelegatedPrefix" boolValues)
@@ -1349,12 +1236,7 @@ let
         (assertValueOneOf "AllowPortToBeRoot" boolValues)
         (assertValueOneOf "ProxyARP" boolValues)
         (assertValueOneOf "ProxyARPWiFi" boolValues)
-        (assertValueOneOf "MulticastRouter" [
-          "no"
-          "query"
-          "permanent"
-          "temporary"
-        ])
+        (assertValueOneOf "MulticastRouter" [ "no" "query" "permanent" "temporary" ])
         (assertInt "Cost")
         (assertRange "Cost" 1 65535)
         (assertInt "Priority")
@@ -1375,12 +1257,7 @@ let
         (assertRange "VLANId" 0 4094)
         (assertInt "VNI")
         (assertRange "VNI" 1 16777215)
-        (assertValueOneOf "AssociatedWith" [
-          "use"
-          "self"
-          "master"
-          "router"
-        ])
+        (assertValueOneOf "AssociatedWith" [ "use" "self" "master" "router" ])
       ];
 
       sectionBridgeMDB = checkUnitConfigWithLegacyKey "bridgeMDBConfig" "BridgeMDB" [
@@ -1463,10 +1340,7 @@ let
           "Mode"
           "IgnoreUserspaceMulticastGroup"
         ])
-        (assertValueOneOf "Mode" [
-          "datagram"
-          "connected"
-        ])
+        (assertValueOneOf "Mode" [ "datagram" "connected" ])
         (assertValueOneOf "IgnoreUserspaceMulticastGroup" boolValues)
       ];
 
@@ -1475,10 +1349,7 @@ let
           "Parent"
           "Handle"
         ])
-        (assertValueOneOf "Parent" [
-          "clsact"
-          "ingress"
-        ])
+        (assertValueOneOf "Parent" [ "clsact" "ingress" ])
       ];
 
       sectionNetworkEmulator = checkUnitConfig "NetworkEmulator" [
@@ -1606,11 +1477,7 @@ let
         (assertRange "OverheadBytes" (-64) 256)
         (assertInt "MPUBytes")
         (assertRange "MPUBytes" 1 256)
-        (assertValueOneOf "CompensationMode" [
-          "none"
-          "atm"
-          "ptm"
-        ])
+        (assertValueOneOf "CompensationMode" [ "none" "atm" "ptm" ])
         (assertValueOneOf "UseRawPacketSize" boolValues)
         (assertValueOneOf "FlowIsolationMode" [
           "none"

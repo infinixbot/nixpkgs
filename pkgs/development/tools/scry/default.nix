@@ -32,12 +32,7 @@ crystal.buildCrystalPackage rec {
 
   postFixup = ''
     wrapProgram $out/bin/scry \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          crystal
-          coreutils
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ crystal coreutils ]}
   '';
 
   # the binary doesn't take any arguments, so this will hang

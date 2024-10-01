@@ -35,10 +35,7 @@
       "pcre"
       "rawsock"
     ]
-    ++ lib.optionals stdenv.isLinux [
-      "bindings/glibc"
-      "zlib"
-    ]
+    ++ lib.optionals stdenv.isLinux [ "bindings/glibc" "zlib" ]
     ++ lib.optional x11Support "clx/new-clx",
 }:
 

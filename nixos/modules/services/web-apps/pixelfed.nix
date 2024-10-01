@@ -165,10 +165,7 @@ in
         };
 
         type = mkOption {
-          type = types.enum [
-            "mysql"
-            "pgsql"
-          ];
+          type = types.enum [ "mysql" "pgsql" ];
           example = "pgsql";
           default = "mysql";
           description = ''

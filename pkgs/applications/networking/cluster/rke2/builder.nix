@@ -109,13 +109,7 @@ buildGoModule rec {
 
     install -D ./bundle/bin/rke2-killall.sh $out/bin/rke2-killall.sh
     wrapProgram $out/bin/rke2-killall.sh \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          systemd
-          gnugrep
-          gnused
-        ]
-      } \
+      --prefix PATH : ${lib.makeBinPath [ systemd gnugrep gnused ]} \
       --prefix PATH : ${lib.makeBinPath buildInputs}
   '';
 

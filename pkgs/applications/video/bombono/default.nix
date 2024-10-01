@@ -80,13 +80,7 @@ stdenv.mkDerivation {
     # fix iso authoring
     install -Dt  $out/share/bombono/resources/scons_authoring tools/scripts/SConsTwin.py
 
-    wrapProgram $out/bin/bombono-dvd --prefix PATH : ${
-      lib.makeBinPath [
-        ffmpeg_6
-        dvdauthor
-        cdrkit
-      ]
-    }
+    wrapProgram $out/bin/bombono-dvd --prefix PATH : ${lib.makeBinPath [ ffmpeg_6 dvdauthor cdrkit ]}
   '';
 
   meta = with lib; {

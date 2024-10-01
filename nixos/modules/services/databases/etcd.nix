@@ -64,10 +64,7 @@ in
     initialClusterState = lib.mkOption {
       description = "Etcd initial cluster configuration for bootstrapping.";
       default = "new";
-      type = lib.types.enum [
-        "new"
-        "existing"
-      ];
+      type = lib.types.enum [ "new" "existing" ];
     };
 
     initialClusterToken = lib.mkOption {

@@ -37,12 +37,7 @@ stdenv.mkDerivation rec {
 
   buildInputs =
     [ libusb1 ]
-    ++ lib.optionals notWindows [
-      hidapi
-      jimtcl
-      libftdi1
-      libjaylink
-    ]
+    ++ lib.optionals notWindows [ hidapi jimtcl libftdi1 libjaylink ]
     ++
       # tracking issue for v2 api changes https://sourceforge.net/p/openocd/tickets/306/
       lib.optional stdenv.isLinux libgpiod_1;

@@ -33,10 +33,7 @@ stdenv.mkDerivation rec {
     sphinx
   ];
 
-  buildInputs = lib.optionals stdenv.isDarwin [
-    Security
-    libiconv
-  ];
+  buildInputs = lib.optionals stdenv.isDarwin [ Security libiconv ];
 
   makeFlags =
     [

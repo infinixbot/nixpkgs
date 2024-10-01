@@ -16,12 +16,7 @@ let
   confType =
     with types;
     let
-      valueType = oneOf [
-        bool
-        int
-        path
-        str
-      ];
+      valueType = oneOf [ bool int path str ];
     in
     attrsOf (either valueType (listOf valueType));
 

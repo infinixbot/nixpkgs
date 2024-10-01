@@ -171,32 +171,12 @@ stdenv.mkDerivation (finalAttrs: {
           hostname
         ]
       }
-      wrapProgram $out/bin/mysql_config --prefix PATH : ${
-        lib.makeBinPath [
-          coreutils
-          gnused
-        ]
-      }
-      wrapProgram $out/bin/ps_mysqld_helper --prefix PATH : ${
-        lib.makeBinPath [
-          coreutils
-          gnugrep
-        ]
-      }
-      wrapProgram $out/bin/ps-admin --prefix PATH : ${
-        lib.makeBinPath [
-          coreutils
-          gnugrep
-        ]
-      }
+      wrapProgram $out/bin/mysql_config --prefix PATH : ${lib.makeBinPath [ coreutils gnused ]}
+      wrapProgram $out/bin/ps_mysqld_helper --prefix PATH : ${lib.makeBinPath [ coreutils gnugrep ]}
+      wrapProgram $out/bin/ps-admin --prefix PATH : ${lib.makeBinPath [ coreutils gnugrep ]}
     ''
     + lib.optionalString stdenv.isDarwin ''
-      wrapProgram $out/bin/mysqld_multi --prefix PATH : ${
-        lib.makeBinPath [
-          coreutils
-          gnugrep
-        ]
-      }
+      wrapProgram $out/bin/mysqld_multi --prefix PATH : ${lib.makeBinPath [ coreutils gnugrep ]}
     '';
 
   passthru = {

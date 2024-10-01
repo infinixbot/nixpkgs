@@ -53,12 +53,7 @@ buildGoModule rec {
 
   postInstall = ''
     wrapProgram $out/bin/colima \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          lima-drv
-          qemu
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ lima-drv qemu ]}
 
     installShellCompletion --cmd colima \
       --bash <($out/bin/colima completion bash) \

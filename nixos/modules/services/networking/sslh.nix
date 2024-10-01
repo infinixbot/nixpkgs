@@ -22,12 +22,7 @@ in
       "sslh"
       "listenAddresses"
     ])
-    (mkRenamedOptionModule [ "services" "sslh" "timeout" ] [
-      "services"
-      "sslh"
-      "settings"
-      "timeout"
-    ])
+    (mkRenamedOptionModule [ "services" "sslh" "timeout" ] [ "services" "sslh" "settings" "timeout" ])
     (mkRenamedOptionModule [ "services" "sslh" "transparent" ] [
       "services"
       "sslh"
@@ -49,11 +44,7 @@ in
     enable = mkEnableOption "sslh, protocol demultiplexer";
 
     method = mkOption {
-      type = types.enum [
-        "fork"
-        "select"
-        "ev"
-      ];
+      type = types.enum [ "fork" "select" "ev" ];
       default = "fork";
       description = ''
         The method to use for handling connections:

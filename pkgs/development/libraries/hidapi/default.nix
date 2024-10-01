@@ -27,17 +27,11 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs = lib.optionals stdenv.isLinux [
-    libusb1
-    udev
-  ];
+  buildInputs = lib.optionals stdenv.isLinux [ libusb1 udev ];
 
   enableParallelBuilding = true;
 
-  propagatedBuildInputs = lib.optionals stdenv.isDarwin [
-    Cocoa
-    IOKit
-  ];
+  propagatedBuildInputs = lib.optionals stdenv.isDarwin [ Cocoa IOKit ];
 
   passthru.tests.pkg-config = testers.testMetaPkgConfig finalAttrs.finalPackage;
 

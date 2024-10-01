@@ -361,23 +361,14 @@ in
       };
 
       webserver = mkOption {
-        type = types.enum [
-          "apache"
-          "none"
-          "nginx"
-        ];
+        type = types.enum [ "apache" "none" "nginx" ];
         default = "apache";
         description = "Webserver to use.";
       };
 
       database = {
         type = mkOption {
-          type = types.enum [
-            "mysql"
-            "postgres"
-            "mssql"
-            "oracle"
-          ];
+          type = types.enum [ "mysql" "postgres" "mssql" "oracle" ];
           default = "mysql";
           description = "Database engine to use. MySQL/MariaDB is the database of choice by MediaWiki developers.";
         };

@@ -119,12 +119,9 @@ stdenv.mkDerivation (
     # `aarch64-apple-darwin-clang` while using assembler. However, such binary
     # does not exist. So, disable these configure flags on `aarch64-darwin`.
     # See #144785 for details.
-    configurePlatforms =
-      lib.optionals (lib.versionAtLeast version "4.08" && !(stdenv.isDarwin && stdenv.isAarch64))
-        [
-          "host"
-          "target"
-        ];
+    configurePlatforms = lib.optionals (
+      lib.versionAtLeast version "4.08" && !(stdenv.isDarwin && stdenv.isAarch64)
+    ) [ "host" "target" ];
     # x86_64-unknown-linux-musl-ld: -r and -pie may not be used together
     hardeningDisable =
       lib.optional (lib.versionAtLeast version "4.09" && stdenv.hostPlatform.isMusl) "pie"
@@ -149,10 +146,7 @@ stdenv.mkDerivation (
       if useNativeCompilers then [ "nixpkgs_world_bootstrap_world_opt" ] else [ "nixpkgs_world" ];
     buildInputs =
       optional (lib.versionOlder version "4.07") ncurses
-      ++ optionals useX11 [
-        libX11
-        xorgproto
-      ];
+      ++ optionals useX11 [ libX11 xorgproto ];
     propagatedBuildInputs = optional spaceTimeSupport libunwind;
     installTargets = [ "install" ] ++ optional useNativeCompilers "installopt";
     preConfigure =

@@ -35,21 +35,16 @@ stdenv.mkDerivation {
   inherit version srcs;
 
   depsBuildBuild = [ buildPackages.stdenv.cc ];
-  nativeBuildInputs =
-    [
-      autoconf
-      automake
-      flex
-      libxslt
-      libtool_2
-      perl
-      which
-      bison
-    ]
-    ++ optionals withDevdoc [
-      doxygen
-      dblatex
-    ];
+  nativeBuildInputs = [
+    autoconf
+    automake
+    flex
+    libxslt
+    libtool_2
+    perl
+    which
+    bison
+  ] ++ optionals withDevdoc [ doxygen dblatex ];
 
   buildInputs = [ libkrb5 ] ++ optional withNcurses ncurses;
 

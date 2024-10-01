@@ -34,13 +34,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = pinData.serverCargoHash;
 
-  buildInputs =
-    [ postgresql ]
-    ++ lib.optionals stdenv.isDarwin [
-      libiconv
-      Security
-      SystemConfiguration
-    ];
+  buildInputs = [
+    postgresql
+  ] ++ lib.optionals stdenv.isDarwin [ libiconv Security SystemConfiguration ];
 
   # Using OPENSSL_NO_VENDOR is not an option on darwin
   # As of version 0.10.35 rust-openssl looks for openssl on darwin

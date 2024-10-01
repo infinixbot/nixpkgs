@@ -136,10 +136,7 @@ in
             };
             database = {
               engine = lib.mkOption {
-                type = lib.types.enum [
-                  "django.db.backends.sqlite3"
-                  "django.db.backends.postgresql"
-                ];
+                type = lib.types.enum [ "django.db.backends.sqlite3" "django.db.backends.postgresql" ];
                 default = "django.db.backends.sqlite3";
                 description = "The database engine to use.";
               };

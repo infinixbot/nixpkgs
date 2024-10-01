@@ -64,20 +64,8 @@ in
 
     settings =
       let
-        validConfigTypes =
-          with types;
-          oneOf [
-            int
-            str
-            bool
-            float
-          ];
-        collectionTypes =
-          with types;
-          oneOf [
-            validConfigTypes
-            (listOf validConfigTypes)
-          ];
+        validConfigTypes = with types; oneOf [ int str bool float ];
+        collectionTypes = with types; oneOf [ validConfigTypes (listOf validConfigTypes) ];
       in
       mkOption {
         type = with types; attrsOf (nullOr (either collectionTypes (attrsOf collectionTypes)));
@@ -128,12 +116,7 @@ in
 
     services.clight.settings =
       {
-        gamma.temp =
-          with cfg.temperature;
-          mkDefault [
-            day
-            night
-          ];
+        gamma.temp = with cfg.temperature; mkDefault [ day night ];
       }
       // (optionalAttrs (config.location.provider == "manual") {
         daytime.latitude = mkDefault config.location.latitude;

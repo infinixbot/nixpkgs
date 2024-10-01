@@ -32,16 +32,10 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs =
-    [
-      cmake
-      pkg-config
-    ]
-    ++ optionals docSupport [
-      doxygen
-      graphviz
-    ]
-    ++ optionals pythonSupport [ swig ];
+  nativeBuildInputs = [
+    cmake
+    pkg-config
+  ] ++ optionals docSupport [ doxygen graphviz ] ++ optionals pythonSupport [ swig ];
 
   buildInputs = [ libconfuse ] ++ optionals cppSupport [ boost ];
 

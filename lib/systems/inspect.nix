@@ -264,17 +264,11 @@ rec {
           };
         }
       ]
-      ++ map
-        (a: {
-          abi = {
-            abi = a;
-          };
-        })
-        [
-          "n32"
-          "ilp32"
-          "x32"
-        ];
+      ++ map (a: {
+        abi = {
+          abi = a;
+        };
+      }) [ "n32" "ilp32" "x32" ];
     isBigEndian = {
       cpu = {
         significantByte = significantBytes.bigEndian;
@@ -379,13 +373,7 @@ rec {
         muslabin32
         muslabi64
       ];
-    isUClibc =
-      with abis;
-      map (a: { abi = a; }) [
-        uclibc
-        uclibceabi
-        uclibceabihf
-      ];
+    isUClibc = with abis; map (a: { abi = a; }) [ uclibc uclibceabi uclibceabihf ];
 
     isEfi = [
       {

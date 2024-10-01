@@ -121,14 +121,7 @@ stdenv.mkDerivation (finalAttrs: {
     # It checks for it using `which twm`.
     # vncserver needs also needs `xauth` and we add in `xterm` for convenience
     wrapProgram $out/bin/vncserver \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          which
-          xorg.twm
-          xorg.xauth
-          xterm
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ which xorg.twm xorg.xauth xterm ]}
 
     # Patch /usr/bin/perl
     patchShebangs $out/bin/vncserver

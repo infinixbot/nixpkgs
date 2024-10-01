@@ -98,26 +98,17 @@ in
         description = "Defines the type of messages that should be logged and down to which level of importance.";
       };
       options.inotify = mkOption {
-        type = types.enum [
-          "yes"
-          "no"
-        ];
+        type = types.enum [ "yes" "no" ];
         default = "no";
         description = "Whether to enable inotify monitoring to automatically discover new files.";
       };
       options.enable_tivo = mkOption {
-        type = types.enum [
-          "yes"
-          "no"
-        ];
+        type = types.enum [ "yes" "no" ];
         default = "no";
         description = "Support for streaming .jpg and .mp3 files to a TiVo supporting HMO.";
       };
       options.wide_links = mkOption {
-        type = types.enum [
-          "yes"
-          "no"
-        ];
+        type = types.enum [ "yes" "no" ];
         default = "no";
         description = "Set this to yes to allow symlinks that point outside user-defined `media_dir`.";
       };

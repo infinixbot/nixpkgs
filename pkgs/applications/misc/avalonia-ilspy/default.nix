@@ -42,10 +42,7 @@ buildDotnetModule rec {
       copyDesktopItems
       icoutils
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      bintools
-      fixDarwinDylibNames
-    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ bintools fixDarwinDylibNames ]
     ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) [
       autoSignDarwinBinariesHook
     ];

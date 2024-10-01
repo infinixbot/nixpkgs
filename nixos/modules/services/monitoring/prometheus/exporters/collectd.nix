@@ -44,11 +44,7 @@ in
       };
 
       securityLevel = mkOption {
-        type = types.enum [
-          "None"
-          "Sign"
-          "Encrypt"
-        ];
+        type = types.enum [ "None" "Sign" "Encrypt" ];
         default = "None";
         description = ''
           Minimum required security level for accepted packets.
@@ -57,10 +53,7 @@ in
     };
 
     logFormat = mkOption {
-      type = types.enum [
-        "logfmt"
-        "json"
-      ];
+      type = types.enum [ "logfmt" "json" ];
       default = "logfmt";
       example = "json";
       description = ''

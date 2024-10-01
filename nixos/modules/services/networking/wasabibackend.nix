@@ -63,11 +63,7 @@ in
       };
 
       network = mkOption {
-        type = types.enum [
-          "mainnet"
-          "testnet"
-          "regtest"
-        ];
+        type = types.enum [ "mainnet" "testnet" "regtest" ];
         default = "mainnet";
         description = "The network to use for the Wasabi backend service.";
       };

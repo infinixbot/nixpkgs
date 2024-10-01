@@ -28,10 +28,7 @@ makePythonHook {
         labelNum: quote:
         let
           label = "q${toString labelNum}";
-          isSingle = lib.elem quote [
-            "\""
-            "'\"'\"'"
-          ];
+          isSingle = lib.elem quote [ "\"" "'\"'\"'" ];
           endQuote = if isSingle then "[^\\\\]${quote}" else quote;
         in
         ''

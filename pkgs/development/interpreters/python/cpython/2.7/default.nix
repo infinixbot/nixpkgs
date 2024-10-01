@@ -280,11 +280,7 @@ let
       sqlite
       readline
     ]
-    ++ lib.optionals x11Support [
-      tcl
-      tk
-      libX11
-    ]
+    ++ lib.optionals x11Support [ tcl tk libX11 ]
     ++ lib.optional (stdenv.isDarwin && configd != null) configd;
   nativeBuildInputs =
     [ autoreconfHook ]

@@ -85,10 +85,7 @@ stdenv.mkDerivation (finalAttrs: {
       makeWrapper
     ]
     ++ lib.optionals (!stdenv.isDarwin) [ rpcsvc-proto ]
-    ++ lib.optionals stdenv.isDarwin [
-      cctools
-      DarwinTools
-    ];
+    ++ lib.optionals stdenv.isDarwin [ cctools DarwinTools ];
 
   buildInputs =
     [

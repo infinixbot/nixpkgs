@@ -75,11 +75,7 @@ let
 
   levelOption = lib.mkOption {
     default = "server";
-    type = lib.types.enum [
-      "workstation"
-      "server"
-      "paranoid"
-    ];
+    type = lib.types.enum [ "workstation" "server" "paranoid" ];
     description = ''
       Set the logcheck level.
     '';

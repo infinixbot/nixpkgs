@@ -50,13 +50,7 @@ stdenv.mkDerivation rec {
     # incompatibilities with the ZFS kernel module.
     wrapProgram "$out/bin/sanoid" \
       --prefix PERL5LIB : "$PERL5LIB" \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          procps
-          "/run/booted-system/sw"
-          zfs
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ procps "/run/booted-system/sw" zfs ]}"
 
     install -m755 syncoid "$out/bin/syncoid"
     wrapProgram "$out/bin/syncoid" \
@@ -79,12 +73,7 @@ stdenv.mkDerivation rec {
     install -m755 findoid "$out/bin/findoid"
     wrapProgram "$out/bin/findoid" \
       --prefix PERL5LIB : "$PERL5LIB" \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          "/run/booted-system/sw"
-          zfs
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ "/run/booted-system/sw" zfs ]}"
 
     runHook postInstall
   '';

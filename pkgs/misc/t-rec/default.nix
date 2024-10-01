@@ -28,12 +28,7 @@ rustPlatform.buildRustPackage rec {
   };
 
   nativeBuildInputs = [ makeWrapper ];
-  buildInputs =
-    [ imagemagick ]
-    ++ lib.optionals stdenv.isDarwin [
-      libiconv
-      Foundation
-    ];
+  buildInputs = [ imagemagick ] ++ lib.optionals stdenv.isDarwin [ libiconv Foundation ];
 
   postInstall = ''
     wrapProgram "$out/bin/t-rec" --prefix PATH : "${binPath}"

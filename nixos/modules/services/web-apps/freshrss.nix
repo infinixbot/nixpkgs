@@ -86,11 +86,7 @@ in
 
     database = {
       type = mkOption {
-        type = types.enum [
-          "sqlite"
-          "pgsql"
-          "mysql"
-        ];
+        type = types.enum [ "sqlite" "pgsql" "mysql" ];
         default = "sqlite";
         description = "Database type.";
         example = "pgsql";
@@ -169,11 +165,7 @@ in
     };
 
     authType = mkOption {
-      type = types.enum [
-        "form"
-        "http_auth"
-        "none"
-      ];
+      type = types.enum [ "form" "http_auth" "none" ];
       default = "form";
       description = "Authentication type for FreshRSS.";
     };

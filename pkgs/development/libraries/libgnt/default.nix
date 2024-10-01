@@ -34,10 +34,7 @@ stdenv.mkDerivation rec {
       ninja
       pkg-config
     ]
-    ++ lib.optionals buildDocs [
-      gtk-doc
-      docbook-xsl-nons
-    ]
+    ++ lib.optionals buildDocs [ gtk-doc docbook-xsl-nons ]
     ++ lib.optionals (buildDocs && !stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
       mesonEmulatorHook
     ];

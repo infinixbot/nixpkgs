@@ -87,14 +87,8 @@ stdenv.mkDerivation (finalAttrs: {
       dht
       libnatpmp
     ]
-    ++ lib.optionals enableQt [
-      qt5.qttools
-      qt5.qtbase
-    ]
-    ++ lib.optionals enableGTK3 [
-      gtk3
-      xorg.libpthreadstubs
-    ]
+    ++ lib.optionals enableQt [ qt5.qttools qt5.qtbase ]
+    ++ lib.optionals enableGTK3 [ gtk3 xorg.libpthreadstubs ]
     ++ lib.optionals enableSystemd [ systemd ]
     ++ lib.optionals stdenv.isLinux [ inotify-tools ]
     ++ lib.optionals stdenv.isDarwin [ libiconv ];

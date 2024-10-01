@@ -65,13 +65,7 @@ stdenv.mkDerivation {
     patchelf --set-interpreter ${stdenv.cc.libc}/lib/ld-linux.so.2 $out/opt/brother/Printers/HL1110/inf/braddprinter
 
     wrapProgram $out/opt/brother/Printers/HL1110/lpd/psconvert2 \
-    --prefix PATH ":" ${
-      lib.makeBinPath [
-        gnused
-        coreutils
-        gawk
-      ]
-    }
+    --prefix PATH ":" ${lib.makeBinPath [ gnused coreutils gawk ]}
 
     wrapProgram $out/opt/brother/Printers/HL1110/lpd/filter_HL1110 \
     --prefix PATH ":" ${
@@ -96,13 +90,7 @@ stdenv.mkDerivation {
     ln -s $out/opt/brother/Printers/HL1110/cupswrapper/brcupsconfig4 $out/lib/cups/filter/brcupsconfig4
 
     wrapProgram $out/opt/brother/Printers/HL1110/cupswrapper/brother_lpdwrapper_HL1110 \
-    --prefix PATH ":" ${
-      lib.makeBinPath [
-        gnused
-        coreutils
-        gawk
-      ]
-    }
+    --prefix PATH ":" ${lib.makeBinPath [ gnused coreutils gawk ]}
 
   '';
 

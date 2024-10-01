@@ -12,12 +12,7 @@ let
 
   renderOption =
     k: v:
-    if
-      builtins.elem k [
-        "provider"
-        "custom"
-      ]
-    then
+    if builtins.elem k [ "provider" "custom" ] then
       lib.concatStringsSep "\n" (
         lib.mapAttrsToList (name: config: ''
           ${k} ${name} {

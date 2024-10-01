@@ -46,10 +46,7 @@ stdenv.mkDerivation rec {
       libsndfile
       libjack2
     ]
-    ++ lib.optionals stdenv.isLinux [
-      alsa-lib
-      libpulseaudio
-    ]
+    ++ lib.optionals stdenv.isLinux [ alsa-lib libpulseaudio ]
     ++ lib.optionals stdenv.isDarwin [
       AppKit
       AudioUnit

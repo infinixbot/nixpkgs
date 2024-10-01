@@ -132,12 +132,7 @@ stdenv.mkDerivation {
       texinfo
     ]
     ++ lib.optionals targetPlatform.isiOS [ autoreconfHook ]
-    ++ lib.optionals buildPlatform.isDarwin [
-      autoconf269
-      automake
-      gettext
-      libtool
-    ]
+    ++ lib.optionals buildPlatform.isDarwin [ autoconf269 automake gettext libtool ]
     ++ lib.optionals targetPlatform.isVc4 [ flex ];
 
   buildInputs = [
@@ -214,10 +209,7 @@ stdenv.mkDerivation {
       "--program-prefix=${targetPrefix}"
     ]
     ++ lib.optionals withAllTargets [ "--enable-targets=all" ]
-    ++ lib.optionals enableGold [
-      "--enable-gold"
-      "--enable-plugins"
-    ]
+    ++ lib.optionals enableGold [ "--enable-gold" "--enable-plugins" ]
     ++ (
       if enableShared then
         [

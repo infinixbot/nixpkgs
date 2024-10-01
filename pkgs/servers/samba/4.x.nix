@@ -147,33 +147,16 @@ stdenv.mkDerivation (finalAttrs: {
       tdb
       libxcrypt
     ]
-    ++ optionals stdenv.isLinux [
-      liburing
-      systemd
-    ]
+    ++ optionals stdenv.isLinux [ liburing systemd ]
     ++ optionals stdenv.isDarwin [ libiconv ]
-    ++ optionals enableLDAP [
-      openldap.dev
-      python3Packages.markdown
-    ]
-    ++ optionals (!enableLDAP && stdenv.isLinux) [
-      ldb
-      talloc
-      tevent
-    ]
+    ++ optionals enableLDAP [ openldap.dev python3Packages.markdown ]
+    ++ optionals (!enableLDAP && stdenv.isLinux) [ ldb talloc tevent ]
     ++ optional (enablePrinting && stdenv.isLinux) cups
     ++ optional enableMDNS avahi
-    ++ optionals enableDomainController [
-      gpgme
-      lmdb
-      python3Packages.dnspython
-    ]
+    ++ optionals enableDomainController [ gpgme lmdb python3Packages.dnspython ]
     ++ optional enableRegedit ncurses
     ++ optional (enableCephFS && stdenv.isLinux) (lib.getDev ceph)
-    ++ optionals (enableGlusterFS && stdenv.isLinux) [
-      glusterfs
-      libuuid
-    ]
+    ++ optionals (enableGlusterFS && stdenv.isLinux) [ glusterfs libuuid ]
     ++ optional enableAcl acl
     ++ optional enableLibunwind libunwind
     ++ optional enablePam pam;

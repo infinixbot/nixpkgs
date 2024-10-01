@@ -46,13 +46,7 @@ stdenv.mkDerivation rec {
     ln -s $out/opt/brother/Printers/mfcj470dw/lpd/filtermfcj470dw $out/lib/cups/filter/brother_lpdwrapper_mfcj470dw
 
     wrapProgram $out/opt/brother/Printers/mfcj470dw/lpd/psconvertij2 \
-    --prefix PATH ":" ${
-      lib.makeBinPath [
-        gnused
-        coreutils
-        gawk
-      ]
-    }
+    --prefix PATH ":" ${lib.makeBinPath [ gnused coreutils gawk ]}
 
     wrapProgram $out/opt/brother/Printers/mfcj470dw/lpd/filtermfcj470dw \
     --prefix PATH ":" ${

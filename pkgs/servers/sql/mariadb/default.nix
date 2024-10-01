@@ -109,12 +109,7 @@ let
             ]
             ++ (if (lib.versionOlder version "10.6") then [ libaio ] else [ liburing ])
           )
-          ++ lib.optionals stdenv.hostPlatform.isDarwin [
-            CoreServices
-            cctools
-            perl
-            libedit
-          ]
+          ++ lib.optionals stdenv.hostPlatform.isDarwin [ CoreServices cctools perl libedit ]
           ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [ jemalloc ];
 
         prePatch = ''
@@ -191,12 +186,7 @@ let
 
         # perlPackages.DBDmysql is broken on darwin
         postFixup = lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
-          wrapProgram $out/bin/mytop --set PATH ${
-            lib.makeBinPath [
-              less
-              ncurses
-            ]
-          }
+          wrapProgram $out/bin/mytop --set PATH ${lib.makeBinPath [ less ncurses ]}
         '';
 
         passthru.tests =
@@ -280,12 +270,7 @@ let
             ++ lib.optional withNuma numactl
             ++ lib.optionals stdenv.hostPlatform.isLinux [ linux-pam ]
             ++ lib.optional (!stdenv.hostPlatform.isDarwin) mytopEnv
-            ++ lib.optionals withStorageMroonga [
-              kytea
-              libsodium
-              msgpack
-              zeromq
-            ]
+            ++ lib.optionals withStorageMroonga [ kytea libsodium msgpack zeromq ]
             ++ lib.optionals (lib.versionAtLeast common.version "10.7") [ fmt_8 ];
 
           propagatedBuildInputs = lib.optional withNuma numactl;

@@ -46,10 +46,7 @@ in
 
   akku = joinOverrides [
     # uses chez
-    (addToBuildInputs [
-      curl
-      git
-    ])
+    (addToBuildInputs [ curl git ])
     (pkg: old: {
       # bump akku to 1.1.0-unstable-2024-03-03
       src = akku.src;

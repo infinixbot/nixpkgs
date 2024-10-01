@@ -82,15 +82,8 @@ stdenv.mkDerivation rec {
 
   # ncurses is a hidden dependency of waf when checking python
   buildInputs =
-    lib.optionals pythonSupport [
-      castxml
-      ncurses
-    ]
-    ++ lib.optionals enableDoxygen [
-      doxygen
-      graphviz
-      imagemagick
-    ]
+    lib.optionals pythonSupport [ castxml ncurses ]
+    ++ lib.optionals enableDoxygen [ doxygen graphviz imagemagick ]
     ++ lib.optionals withManual [
       dia
       tetex

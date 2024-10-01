@@ -20,15 +20,10 @@ let
     )
   );
 
-  configToml =
-    (removeAttrs cfg.settings [
-      "address"
-      "port"
-    ])
-    // {
-      bind_address = cfg.settings.address + ":" + toString cfg.settings.port;
-      whitelist = cfg.whitelist.enable;
-    };
+  configToml = (removeAttrs cfg.settings [ "address" "port" ]) // {
+    bind_address = cfg.settings.address + ":" + toString cfg.settings.port;
+    whitelist = cfg.whitelist.enable;
+  };
 
   configTomlFile = settingsFormat.generate "Config.toml" configToml;
 in

@@ -147,10 +147,7 @@ stdenv.mkDerivation {
       vulkan-headers
     ]
     ++ lib.optionals (withGtk2 || lib.versionOlder nvidia_x11.settingsVersion "525.53") [ gtk2 ]
-    ++ lib.optionals withGtk3 [
-      gtk3
-      librsvg
-    ];
+    ++ lib.optionals withGtk3 [ gtk3 librsvg ];
 
   installFlags = [ "PREFIX=$(out)" ];
 

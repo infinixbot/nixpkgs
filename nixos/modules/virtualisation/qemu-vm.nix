@@ -322,10 +322,7 @@ in
 {
   imports = [
     ../profiles/qemu-guest.nix
-    (mkRenamedOptionModule [ "virtualisation" "pathsInNixDB" ] [
-      "virtualisation"
-      "additionalPaths"
-    ])
+    (mkRenamedOptionModule [ "virtualisation" "pathsInNixDB" ] [ "virtualisation" "additionalPaths" ])
     (mkRemovedOptionModule [ "virtualisation" "bootDevice" ]
       "This option was renamed to `virtualisation.rootDevice`, as it was incorrectly named and misleading. Take the time to review what you want to do and look at the new options like `virtualisation.{bootLoaderDevice, bootPartition}`, open an issue in case of issues."
     )
@@ -467,12 +464,7 @@ in
             description = "The mount point of the directory inside the virtual machine";
           };
           options.securityModel = mkOption {
-            type = types.enum [
-              "passthrough"
-              "mapped-xattr"
-              "mapped-file"
-              "none"
-            ];
+            type = types.enum [ "passthrough" "mapped-xattr" "mapped-file" "none" ];
             default = "mapped-xattr";
             description = ''
               The security model to use for this share:
@@ -521,10 +513,7 @@ in
       type = types.listOf (
         types.submodule {
           options.from = mkOption {
-            type = types.enum [
-              "host"
-              "guest"
-            ];
+            type = types.enum [ "host" "guest" ];
             default = "host";
             description = ''
               Controls the direction in which the ports are mapped:
@@ -536,10 +525,7 @@ in
             '';
           };
           options.proto = mkOption {
-            type = types.enum [
-              "tcp"
-              "udp"
-            ];
+            type = types.enum [ "tcp" "udp" ];
             default = "tcp";
             description = "The protocol to forward.";
           };
@@ -772,11 +758,7 @@ in
       };
 
       diskInterface = mkOption {
-        type = types.enum [
-          "virtio"
-          "scsi"
-          "ide"
-        ];
+        type = types.enum [ "virtio" "scsi" "ide" ];
         default = "virtio";
         example = "scsi";
         description = "The interface used for the virtual hard disks.";

@@ -183,19 +183,14 @@ let
       # NB: technically, we do not need bash in build inputs since all scripts are
       # wrappers over the corresponding JS scripts. There are some packages though
       # that use bash wrappers, e.g. polaris-web.
-      buildInputs =
-        lib.optionals stdenv.hostPlatform.isDarwin [
-          CoreServices
-          ApplicationServices
-        ]
-        ++ [
-          zlib
-          libuv
-          openssl
-          http-parser
-          icu
-          bash
-        ];
+      buildInputs = lib.optionals stdenv.hostPlatform.isDarwin [ CoreServices ApplicationServices ] ++ [
+        zlib
+        libuv
+        openssl
+        http-parser
+        icu
+        bash
+      ];
 
       nativeBuildInputs =
         [

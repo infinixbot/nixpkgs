@@ -57,14 +57,7 @@ stdenv.mkDerivation rec {
 
     cat > $out/bin/transcrypt-depspathprefix << EOF
     #!${stdenv.shell}
-    echo "${
-      lib.makeBinPath [
-        git
-        openssl
-        coreutils
-        gawk
-      ]
-    }:"
+    echo "${lib.makeBinPath [ git openssl coreutils gawk ]}:"
     EOF
     chmod +x $out/bin/transcrypt-depspathprefix
   '';

@@ -433,10 +433,7 @@ in
               "jibri-auth-secret"
               "jibri-recorder-secret"
             ]
-            ++ (optionals cfg.jigasi.enable [
-              "jigasi-user-secret"
-              "jigasi-component-secret"
-            ])
+            ++ (optionals cfg.jigasi.enable [ "jigasi-user-secret" "jigasi-component-secret" ])
             ++ (optional (cfg.videobridge.passwordFile == null) "videobridge-secret");
         in
         ''

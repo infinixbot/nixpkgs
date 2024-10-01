@@ -42,11 +42,7 @@ stdenv.mkDerivation rec {
           mtools
           ntfs3g
         ]
-        ++ lib.optionals (!stdenv.isDarwin) [
-          cdrkit
-          syslinux
-          fuse3
-        ]
+        ++ lib.optionals (!stdenv.isDarwin) [ cdrkit syslinux fuse3 ]
       );
     in
     ''

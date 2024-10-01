@@ -44,10 +44,7 @@ lib.makeOverridable (
     confPath =
       confDirs
       ++ (map (vendorDir "conf") pluginPkgs)
-      ++ (map (vendorDir "conf") [
-        localFishConfig
-        shellAliasesFishConfig
-      ]);
+      ++ (map (vendorDir "conf") [ localFishConfig shellAliasesFishConfig ]);
 
   in
   writeShellApplication {

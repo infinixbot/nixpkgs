@@ -9,12 +9,7 @@
   makeDesktopItem,
 }:
 let
-  libPath = lib.makeLibraryPath [
-    glib
-    xorg.libX11
-    gtk2
-    cairo
-  ];
+  libPath = lib.makeLibraryPath [ glib xorg.libX11 gtk2 cairo ];
 in
 
 stdenv.mkDerivation rec {

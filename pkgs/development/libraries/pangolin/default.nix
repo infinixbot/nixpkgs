@@ -34,21 +34,16 @@ stdenv.mkDerivation rec {
     doxygen
   ];
 
-  buildInputs =
-    [
-      libGL
-      glew
-      xorg.libX11
-      ffmpeg_7
-      libjpeg
-      libpng
-      libtiff
-      eigen
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      Carbon
-      Cocoa
-    ];
+  buildInputs = [
+    libGL
+    glew
+    xorg.libX11
+    ffmpeg_7
+    libjpeg
+    libpng
+    libtiff
+    eigen
+  ] ++ lib.optionals stdenv.isDarwin [ Carbon Cocoa ];
 
   # The tests use cmake's findPackage to find the installed version of
   # pangolin, which isn't what we want (or available).

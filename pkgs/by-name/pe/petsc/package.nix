@@ -49,10 +49,7 @@ stdenv.mkDerivation rec {
     ]
     ++ lib.optional hdf5-support hdf5
     ++ lib.optional petsc-withp4est p4est
-    ++ lib.optionals withParmetis [
-      metis
-      parmetis
-    ];
+    ++ lib.optionals withParmetis [ metis parmetis ];
 
   prePatch = lib.optionalString stdenv.isDarwin ''
     substituteInPlace config/install.py \

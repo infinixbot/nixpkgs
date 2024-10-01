@@ -54,12 +54,7 @@ let
 
     buildAndTestSubdir = "lib/srv/desktop/rdp/rdpclient";
 
-    buildInputs =
-      [ openssl ]
-      ++ lib.optionals stdenv.isDarwin [
-        CoreFoundation
-        Security
-      ];
+    buildInputs = [ openssl ] ++ lib.optionals stdenv.isDarwin [ CoreFoundation Security ];
     nativeBuildInputs = [ pkg-config ];
 
     # https://github.com/NixOS/nixpkgs/issues/161570 ,
@@ -173,16 +168,10 @@ buildGoModule rec {
     "webassets_embed"
   ] ++ lib.optional withRdpClient "desktop_access_rdp";
 
-  buildInputs =
-    [
-      openssl
-      libfido2
-    ]
-    ++ lib.optionals (stdenv.isDarwin && withRdpClient) [
-      CoreFoundation
-      Security
-      AppKit
-    ];
+  buildInputs = [
+    openssl
+    libfido2
+  ] ++ lib.optionals (stdenv.isDarwin && withRdpClient) [ CoreFoundation Security AppKit ];
   nativeBuildInputs = [
     makeWrapper
     pkg-config

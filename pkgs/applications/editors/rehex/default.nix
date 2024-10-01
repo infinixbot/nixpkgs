@@ -53,11 +53,7 @@ stdenv.mkDerivation rec {
       TemplateToolkit
     ])
     ++ lib.optionals stdenv.isLinux [ gtk3 ]
-    ++ lib.optionals stdenv.isDarwin [
-      Carbon
-      Cocoa
-      IOKit
-    ];
+    ++ lib.optionals stdenv.isDarwin [ Carbon Cocoa IOKit ];
 
   makeFlags = [
     "prefix=${placeholder "out"}"

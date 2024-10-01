@@ -71,16 +71,8 @@ stdenv.mkDerivation rec {
       readline
       easyloggingpp
     ]
-    ++ lib.optionals stdenv.isDarwin [
-      IOKit
-      CoreData
-      PCSC
-    ]
-    ++ lib.optionals trezorSupport [
-      libusb1
-      protobuf
-      python3
-    ];
+    ++ lib.optionals stdenv.isDarwin [ IOKit CoreData PCSC ]
+    ++ lib.optionals trezorSupport [ libusb1 protobuf python3 ];
 
   cmakeFlags =
     [

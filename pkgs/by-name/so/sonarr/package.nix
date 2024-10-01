@@ -153,10 +153,7 @@ buildDotnetModule {
         "--prefix"
         "PATH"
         ":"
-        (lib.makeBinPath [
-          nix
-          prefetch-yarn-deps
-        ])
+        (lib.makeBinPath [ nix prefetch-yarn-deps ])
       ];
     } ./update.py;
   };

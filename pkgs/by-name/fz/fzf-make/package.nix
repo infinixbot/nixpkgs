@@ -27,13 +27,7 @@ rustPlatform.buildRustPackage rec {
   postInstall = ''
     wrapProgram $out/bin/fzf-make \
       --set SHELL ${runtimeShell} \
-      --suffix PATH : ${
-        lib.makeBinPath [
-          bat
-          gnugrep
-          gnumake
-        ]
-      }
+      --suffix PATH : ${lib.makeBinPath [ bat gnugrep gnumake ]}
   '';
 
   meta = {

@@ -50,10 +50,7 @@ stdenv.mkDerivation rec {
       gtk2
       fftw
     ]
-    ++ lib.optionals openglSupport [
-      gnome2.gtkglext
-      libGL
-    ]
+    ++ lib.optionals openglSupport [ gnome2.gtkglext libGL ]
     ++ lib.optional openexrSupport openexr
     ++ lib.optional libXmuSupport xorg.libXmu
     ++ lib.optional fitsSupport cfitsio

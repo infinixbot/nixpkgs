@@ -390,17 +390,11 @@ in
       pkg-config
       gobject-introspection
     ] ++ lib.optionals stdenv.isDarwin [ DarwinTools ];
-    buildInputs =
-      [
-        gtk2
-        pcre
-        pcre2
-      ]
-      ++ lib.optionals stdenv.isLinux [
-        util-linux
-        libselinux
-        libsepol
-      ];
+    buildInputs = [
+      gtk2
+      pcre
+      pcre2
+    ] ++ lib.optionals stdenv.isLinux [ util-linux libselinux libsepol ];
   };
 
   gitlab-markup = attrs: { meta.priority = 1; };
@@ -760,13 +754,7 @@ in
     postFixup = lib.optionalString stdenv.isLinux ''
       soPath="$out/${ruby.gemPath}/gems/mathematical-${attrs.version}/lib/mathematical/mathematical.so"
       rpath="$(patchelf --print-rpath "$soPath")"
-      patchelf --set-rpath "${
-        lib.makeLibraryPath [
-          lasem
-          glib
-          cairo
-        ]
-      }:$rpath" "$soPath"
+      patchelf --set-rpath "${lib.makeLibraryPath [ lasem glib cairo ]}:$rpath" "$soPath"
       patchelf --replace-needed liblasem.so liblasem-0.4.so "$soPath"
     '';
   };
@@ -874,16 +862,10 @@ in
       xorg.libpthreadstubs
       xorg.libXdmcp
     ] ++ lib.optionals stdenv.isDarwin [ DarwinTools ];
-    buildInputs =
-      [
-        libdatrie
-        libthai
-      ]
-      ++ lib.optionals stdenv.isLinux [
-        libselinux
-        libsepol
-        util-linux
-      ];
+    buildInputs = [
+      libdatrie
+      libthai
+    ] ++ lib.optionals stdenv.isLinux [ libselinux libsepol util-linux ];
     propagatedBuildInputs = [
       gobject-introspection
       wrapGAppsHook3

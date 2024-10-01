@@ -49,11 +49,7 @@ stdenv.mkDerivation rec {
   buildInputs =
     lib.optional alsaSupport alsa-lib
     ++ lib.optional jackSupport jack
-    ++ lib.optionals coremidiSupport [
-      CoreMIDI
-      CoreAudio
-      CoreServices
-    ];
+    ++ lib.optionals coremidiSupport [ CoreMIDI CoreAudio CoreServices ];
 
   cmakeFlags = [
     "-DRTMIDI_API_ALSA=${if alsaSupport then "ON" else "OFF"}"

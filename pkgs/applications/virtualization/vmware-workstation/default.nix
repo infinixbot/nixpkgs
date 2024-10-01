@@ -136,11 +136,7 @@ stdenv.mkDerivation rec {
       autoPatchelfHook
       makeWrapper
     ]
-    ++ lib.optionals enableInstaller [
-      bzip2
-      sqlite
-      readline70_compat63
-    ]
+    ++ lib.optionals enableInstaller [ bzip2 sqlite readline70_compat63 ]
     ++ lib.optionals enableMacOSGuests [ unzip ];
 
   src =

@@ -50,12 +50,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   preFixup = ''
     gappsWrapperArgs+=(
-      --prefix PATH : "${
-        lib.makeBinPath [
-          apx
-          gnome-console
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ apx gnome-console ]}"
     )
   '';
 

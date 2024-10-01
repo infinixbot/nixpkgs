@@ -202,10 +202,7 @@ stdenv.mkDerivation rec {
     ++ lib.optional enableMuPDF mupdf_modded
     ++ lib.optional enableDJVU djvulibre
     ++ lib.optional enableGOCR gocr
-    ++ lib.optionals enableTesseract [
-      leptonica_modded
-      tesseract_modded
-    ];
+    ++ lib.optionals enableTesseract [ leptonica_modded tesseract_modded ];
 
   dontUseCmakeBuildDir = true;
 

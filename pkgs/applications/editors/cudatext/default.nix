@@ -25,11 +25,7 @@
   additionalLexers ? [ "Nix" ],
 }:
 
-assert builtins.elem widgetset [
-  "gtk2"
-  "gtk3"
-  "qt5"
-];
+assert builtins.elem widgetset [ "gtk2" "gtk3" "qt5" ];
 
 let
   deps = lib.mapAttrs (

@@ -293,10 +293,7 @@ in
     };
 
     onBoot = mkOption {
-      type = types.enum [
-        "start"
-        "ignore"
-      ];
+      type = types.enum [ "start" "ignore" ];
       default = "start";
       description = ''
         Specifies the action to be done to / on the guests when the host boots.
@@ -308,10 +305,7 @@ in
     };
 
     onShutdown = mkOption {
-      type = types.enum [
-        "shutdown"
-        "suspend"
-      ];
+      type = types.enum [ "shutdown" "suspend" ];
       default = "suspend";
       description = ''
         When shutting down / restarting the host what method should
@@ -488,11 +482,7 @@ in
         Type = "oneshot";
         RuntimeDirectoryPreserve = "yes";
         LogsDirectory = subDirs [ "qemu" ];
-        RuntimeDirectory = subDirs [
-          "nix-emulators"
-          "nix-helpers"
-          "nix-ovmf"
-        ];
+        RuntimeDirectory = subDirs [ "nix-emulators" "nix-helpers" "nix-ovmf" ];
         StateDirectory = subDirs [ "dnsmasq" ];
       };
     };

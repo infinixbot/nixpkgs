@@ -30,15 +30,10 @@ stdenv.mkDerivation rec {
     zip
     wrapGAppsHook3
   ];
-  buildInputs =
-    [
-      wxGTK32
-      gtk3
-    ]
-    ++ lib.optionals contribPlugins [
-      hunspell
-      boost
-    ];
+  buildInputs = [
+    wxGTK32
+    gtk3
+  ] ++ lib.optionals contribPlugins [ hunspell boost ];
   enableParallelBuilding = true;
   patches = [
     ./writable-projects.patch

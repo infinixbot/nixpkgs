@@ -36,10 +36,7 @@ stdenv.mkDerivation rec {
 
   postFixup = ''
     wrapProgram "$out/bin/kotlin-language-server" --set JAVA_HOME ${openjdk} --prefix PATH : ${
-      lib.strings.makeBinPath [
-        openjdk
-        maven
-      ]
+      lib.strings.makeBinPath [ openjdk maven ]
     }
   '';
 

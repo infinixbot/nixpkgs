@@ -174,11 +174,7 @@ in
     ]
     ++ optionalDep withDelta delta
   );
-  batgrep = script "batgrep" [
-    less
-    coreutils
-    ripgrep
-  ];
+  batgrep = script "batgrep" [ less coreutils ripgrep ];
   batman = script "batman" (lib.optionals stdenv.isLinux [ util-linux ]);
   batpipe = script "batpipe" [ less ];
   batwatch = script "batwatch" (

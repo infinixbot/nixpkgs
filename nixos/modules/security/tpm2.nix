@@ -97,10 +97,7 @@ in
           The name of the TPM command transmission interface (TCTI) library to
           use.
         '';
-        type = lib.types.enum [
-          "tabrmd"
-          "device"
-        ];
+        type = lib.types.enum [ "tabrmd" "device" ];
         default = "device";
       };
 

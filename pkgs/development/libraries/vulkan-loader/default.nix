@@ -31,14 +31,9 @@ stdenv.mkDerivation (finalAttrs: {
     cmake
     pkg-config
   ];
-  buildInputs =
-    [ vulkan-headers ]
-    ++ lib.optionals stdenv.isLinux [
-      libX11
-      libxcb
-      libXrandr
-      wayland
-    ];
+  buildInputs = [
+    vulkan-headers
+  ] ++ lib.optionals stdenv.isLinux [ libX11 libxcb libXrandr wayland ];
 
   cmakeFlags =
     [ "-DCMAKE_INSTALL_INCLUDEDIR=${vulkan-headers}/include" ]

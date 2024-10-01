@@ -66,13 +66,7 @@ stdenv.mkDerivation rec {
       --replace 'bin/elasticsearch-keystore' "$out/bin/elasticsearch-keystore"
 
     wrapProgram $out/bin/elasticsearch \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          util-linux
-          coreutils
-          gnugrep
-        ]
-      }" \
+      --prefix PATH : "${lib.makeBinPath [ util-linux coreutils gnugrep ]}" \
       --set JAVA_HOME "${jre_headless}"
 
     wrapProgram $out/bin/elasticsearch-plugin --set JAVA_HOME "${jre_headless}"

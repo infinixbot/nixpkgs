@@ -84,16 +84,9 @@ let
           # upstream for reference.  Last updated for 3.3.
           # When changing the set of sections, also update secAllow above.
           [ (sec_list_fa "id" nix_def "module") ]
-          ++ map (sec_plain nix_def) [
-            "server"
-            "xdp"
-            "control"
-          ]
+          ++ map (sec_plain nix_def) [ "server" "xdp" "control" ]
           ++ [ (sec_list_fa "target" nix_def "log") ]
-          ++ map (sec_plain nix_def) [
-            "statistics"
-            "database"
-          ]
+          ++ map (sec_plain nix_def) [ "statistics" "database" ]
           ++ map (sec_list_fa "id" nix_def) [
             "keystore"
             "key"

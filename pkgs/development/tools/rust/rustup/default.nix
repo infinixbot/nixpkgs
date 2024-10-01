@@ -40,17 +40,10 @@ rustPlatform.buildRustPackage rec {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      (curl.override { inherit openssl; })
-      zlib
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      CoreServices
-      Security
-      libiconv
-      xz
-    ];
+  buildInputs = [
+    (curl.override { inherit openssl; })
+    zlib
+  ] ++ lib.optionals stdenv.isDarwin [ CoreServices Security libiconv xz ];
 
   buildFeatures = [ "no-self-update" ];
 

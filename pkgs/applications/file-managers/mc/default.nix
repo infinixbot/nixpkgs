@@ -45,22 +45,16 @@ stdenv.mkDerivation rec {
       autoSignDarwinBinariesHook
     ];
 
-  buildInputs =
-    [
-      file
-      gettext
-      glib
-      libICE
-      libssh2
-      openssl
-      slang
-      zip
-    ]
-    ++ lib.optionals x11Support [ libX11 ]
-    ++ lib.optionals (!stdenv.isDarwin) [
-      e2fsprogs
-      gpm
-    ];
+  buildInputs = [
+    file
+    gettext
+    glib
+    libICE
+    libssh2
+    openssl
+    slang
+    zip
+  ] ++ lib.optionals x11Support [ libX11 ] ++ lib.optionals (!stdenv.isDarwin) [ e2fsprogs gpm ];
 
   enableParallelBuilding = true;
 

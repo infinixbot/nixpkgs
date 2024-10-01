@@ -7,19 +7,8 @@
 let
   cfgs = config.services.cgit;
 
-  settingType =
-    with lib.types;
-    oneOf [
-      bool
-      int
-      str
-    ];
-  repeatedSettingType =
-    with lib.types;
-    oneOf [
-      settingType
-      (listOf settingType)
-    ];
+  settingType = with lib.types; oneOf [ bool int str ];
+  repeatedSettingType = with lib.types; oneOf [ settingType (listOf settingType) ];
 
   genAttrs' = names: f: lib.listToAttrs (map f names);
 

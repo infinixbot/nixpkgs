@@ -123,12 +123,7 @@ in
     };
 
     preferencesStatus = lib.mkOption {
-      type = lib.types.enum [
-        "default"
-        "locked"
-        "user"
-        "clear"
-      ];
+      type = lib.types.enum [ "default" "locked" "user" "clear" ];
       default = "locked";
       description = ''
         The status of `firefox.preferences`.

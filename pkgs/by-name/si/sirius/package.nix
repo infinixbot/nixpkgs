@@ -36,11 +36,7 @@
   ),
 }:
 
-assert builtins.elem gpuBackend [
-  "none"
-  "cuda"
-  "rocm"
-];
+assert builtins.elem gpuBackend [ "none" "cuda" "rocm" ];
 
 stdenv.mkDerivation rec {
   pname = "SIRIUS";

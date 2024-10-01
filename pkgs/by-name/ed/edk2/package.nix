@@ -201,10 +201,7 @@ let
               runHook postInstall
             '';
           }
-          // removeAttrs attrs [
-            "nativeBuildInputs"
-            "depsBuildBuild"
-          ]
+          // removeAttrs attrs [ "nativeBuildInputs" "depsBuildBuild" ]
         );
     };
   };

@@ -367,10 +367,7 @@ stdenv.mkDerivation (finalAttrs: {
       bashInteractive # for patch shebangs
     ]
 
-    ++ lib.optionals wantGcrypt [
-      libgcrypt
-      libgpg-error
-    ]
+    ++ lib.optionals wantGcrypt [ libgcrypt libgpg-error ]
     ++ lib.optional withTests glib
     ++ lib.optional withAcl acl
     ++ lib.optional withApparmor libapparmor
@@ -393,10 +390,7 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optional withPam pam
     ++ lib.optional withPCRE2 pcre2
     ++ lib.optional withSelinux libselinux
-    ++ lib.optionals withRemote [
-      libmicrohttpd
-      gnutls
-    ]
+    ++ lib.optionals withRemote [ libmicrohttpd gnutls ]
     ++ lib.optionals (withHomed || withCryptsetup) [ p11-kit ]
     ++ lib.optionals (withHomed || withCryptsetup) [ libfido2 ]
     ++ lib.optionals withLibBPF [ libbpf ]
@@ -770,11 +764,7 @@ stdenv.mkDerivation (finalAttrs: {
     export DESTDIR=/
   '';
 
-  mesonInstallTags = lib.optionals buildLibsOnly [
-    "devel"
-    "libudev"
-    "libsystemd"
-  ];
+  mesonInstallTags = lib.optionals buildLibsOnly [ "devel" "libudev" "libsystemd" ];
 
   postInstall =
     lib.optionalString (!buildLibsOnly) ''

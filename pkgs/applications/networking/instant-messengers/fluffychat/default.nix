@@ -15,10 +15,7 @@
 }:
 
 let
-  libwebrtcRpath = lib.makeLibraryPath [
-    mesa
-    libdrm
-  ];
+  libwebrtcRpath = lib.makeLibraryPath [ mesa libdrm ];
   pubspecLock = lib.importJSON ./pubspec.lock.json;
 in
 flutter319.buildFlutterApplication (

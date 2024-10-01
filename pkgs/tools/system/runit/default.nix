@@ -31,10 +31,7 @@ stdenv.mkDerivation rec {
   doCheck = true;
 
   buildInputs =
-    lib.optionals static [
-      stdenv.cc.libc
-      stdenv.cc.libc.static
-    ]
+    lib.optionals static [ stdenv.cc.libc stdenv.cc.libc.static ]
     ++ lib.optional stdenv.isDarwin darwin.apple_sdk.libs.utmp;
 
   postPatch =

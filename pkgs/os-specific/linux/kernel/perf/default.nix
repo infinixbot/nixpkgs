@@ -196,12 +196,7 @@ stdenv.mkDerivation {
     # The embedded Python interpreter will search PATH to calculate the Python path configuration(Should be fixed by upstream).
     # Add python.interpreter to PATH for now.
     wrapProgram $out/bin/perf \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          binutils-unwrapped
-          python3
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ binutils-unwrapped python3 ]}
   '';
 
   meta = with lib; {

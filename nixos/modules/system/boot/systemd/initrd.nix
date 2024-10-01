@@ -243,10 +243,7 @@ in
     };
 
     root = lib.mkOption {
-      type = lib.types.enum [
-        "fstab"
-        "gpt-auto"
-      ];
+      type = lib.types.enum [ "fstab" "gpt-auto" ];
       default = "fstab";
       example = "gpt-auto";
       description = ''
@@ -259,12 +256,7 @@ in
     };
 
     emergencyAccess = mkOption {
-      type =
-        with types;
-        oneOf [
-          bool
-          (nullOr (passwdEntry str))
-        ];
+      type = with types; oneOf [ bool (nullOr (passwdEntry str)) ];
       description = ''
         Set to true for unauthenticated emergency access, and false or
         null for no emergency access.

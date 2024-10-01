@@ -42,14 +42,7 @@ stdenv.mkDerivation rec {
 
   postInstall = ''
     wrapProgram $out/bin/parallel \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          procps
-          perl
-          coreutils
-          gawk
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ procps perl coreutils gawk ]}"
   '';
 
   doCheck = true;

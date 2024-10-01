@@ -59,10 +59,7 @@ with lib;
         '';
       };
       bios = mkOption {
-        type = types.enum [
-          "seabios"
-          "ovmf"
-        ];
+        type = types.enum [ "seabios" "ovmf" ];
         default = "seabios";
         description = ''
           Select BIOS implementation (seabios = Legacy BIOS, ovmf = UEFI).
@@ -150,12 +147,7 @@ with lib;
       '';
     };
     partitionTableType = mkOption {
-      type = types.enum [
-        "efi"
-        "hybrid"
-        "legacy"
-        "legacy+gpt"
-      ];
+      type = types.enum [ "efi" "hybrid" "legacy" "legacy+gpt" ];
       description = ''
         Partition table type to use. See make-disk-image.nix partitionTableType for details.
         Defaults to 'legacy' for 'proxmox.qemuConf.bios="seabios"' (default), other bios values defaults to 'efi'.

@@ -46,14 +46,7 @@ stdenv.mkDerivation rec {
 
   postInstall = ''
     makeWrapper ${./bees-service-wrapper} "$out"/bin/bees-service-wrapper \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          bash
-          coreutils
-          util-linux
-          btrfs-progs
-        ]
-      } \
+      --prefix PATH : ${lib.makeBinPath [ bash coreutils util-linux btrfs-progs ]} \
       --set beesd_bin "$out"/lib/bees/bees
   '';
 

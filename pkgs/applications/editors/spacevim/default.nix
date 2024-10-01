@@ -66,13 +66,7 @@ stdenv.mkDerivation rec {
     # trailing slash very important for SPACEVIMDIR
     makeWrapper "${vim-customized}/bin/vim" "$out/bin/spacevim" \
         --add-flags "-u $out/SpaceVim/vimrc" --set SPACEVIMDIR "${spacevimdir}/" \
-        --prefix PATH : ${
-          lib.makeBinPath [
-            fzf
-            git
-            ripgrep
-          ]
-        }
+        --prefix PATH : ${lib.makeBinPath [ fzf git ripgrep ]}
     runHook postInstall
   '';
 

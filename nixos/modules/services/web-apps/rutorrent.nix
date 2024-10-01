@@ -128,10 +128,7 @@ in
     {
       assertions =
         let
-          usedRpcPlugins = intersectLists cfg.plugins [
-            "httprpc"
-            "rpc"
-          ];
+          usedRpcPlugins = intersectLists cfg.plugins [ "httprpc" "rpc" ];
         in
         [
           {

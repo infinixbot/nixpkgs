@@ -24,10 +24,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-jBUp0jes4wtr8cmqceEBb6noqGkJUHbIfYgWOw5KMF4=";
 
-  buildInputs = lib.optionals stdenv.isDarwin [
-    DiskArbitration
-    Foundation
-  ];
+  buildInputs = lib.optionals stdenv.isDarwin [ DiskArbitration Foundation ];
 
   buildFeatures =
     [ ]

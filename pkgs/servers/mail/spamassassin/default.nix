@@ -120,14 +120,7 @@ perlPackages.buildPerlPackage rec {
       # We don't inherit argv0 so that $^X works properly in e.g. sa-compile
       makeWrapper "${perlPackages.perl}/bin/perl" "$n" \
         --add-flags "-T $perlFlags $orig" \
-        --prefix PATH : ${
-          lib.makeBinPath [
-            gnupg
-            re2c
-            gcc
-            gnumake
-          ]
-        } \
+        --prefix PATH : ${lib.makeBinPath [ gnupg re2c gcc gnumake ]} \
         --prefix C_INCLUDE_PATH : ${lib.makeSearchPathOutput "include" "include" [ libxcrypt ]}
     done
   '';

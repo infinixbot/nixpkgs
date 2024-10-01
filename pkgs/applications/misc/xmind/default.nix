@@ -36,10 +36,7 @@ stdenv.mkDerivation rec {
   dontPatchELF = true;
   dontStrip = true;
 
-  libPath = lib.makeLibraryPath [
-    gtk3
-    libXtst
-  ];
+  libPath = lib.makeLibraryPath [ gtk3 libXtst ];
 
   desktopItem = makeDesktopItem {
     name = "XMind";

@@ -383,15 +383,9 @@ nameDrvAfterAttrName (
 
     fortifyStdenvUnsupp =
       checkTestBin
-        (f2exampleWithStdEnv
-          (stdenvUnsupport [
-            "fortify"
-            "fortify3"
-          ])
-          {
-            hardeningEnable = [ "fortify" ];
-          }
-        )
+        (f2exampleWithStdEnv (stdenvUnsupport [ "fortify" "fortify3" ]) {
+          hardeningEnable = [ "fortify" ];
+        })
         {
           ignoreFortify = false;
           expectFailure = true;

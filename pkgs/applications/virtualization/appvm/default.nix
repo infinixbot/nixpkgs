@@ -37,12 +37,7 @@ buildGoModule rec {
 
   postFixup = ''
     wrapProgram $out/bin/appvm \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          nix
-          virt-manager-without-menu
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ nix virt-manager-without-menu ]}"
   '';
 
   meta = with lib; {

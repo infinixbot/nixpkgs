@@ -35,14 +35,7 @@ stdenv.mkDerivation {
     cp share/zsh.txt $out/share/zsh/site-functions/_cht
 
     wrapProgram "$out/bin/cht.sh" \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          curl
-          rlwrap
-          ncurses
-          xsel
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ curl rlwrap ncurses xsel ]}"
   '';
 
   passthru.updateScript = unstableGitUpdater {

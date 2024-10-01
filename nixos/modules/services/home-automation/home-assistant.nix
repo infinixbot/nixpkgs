@@ -301,12 +301,7 @@ in
               };
 
               unit_system = mkOption {
-                type = types.nullOr (
-                  types.enum [
-                    "metric"
-                    "imperial"
-                  ]
-                );
+                type = types.nullOr (types.enum [ "metric" "imperial" ]);
                 default = null;
                 example = "metric";
                 description = ''
@@ -315,12 +310,7 @@ in
               };
 
               temperature_unit = mkOption {
-                type = types.nullOr (
-                  types.enum [
-                    "C"
-                    "F"
-                  ]
-                );
+                type = types.nullOr (types.enum [ "C" "F" ]);
                 default = null;
                 example = "C";
                 description = ''
@@ -367,10 +357,7 @@ in
             lovelace = {
               # https://www.home-assistant.io/lovelace/dashboards/
               mode = mkOption {
-                type = types.enum [
-                  "yaml"
-                  "storage"
-                ];
+                type = types.enum [ "yaml" "storage" ];
                 default = if cfg.lovelaceConfig != null then "yaml" else "storage";
                 defaultText = literalExpression ''
                   if cfg.lovelaceConfig != null

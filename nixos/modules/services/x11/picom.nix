@@ -62,10 +62,7 @@ in
 {
 
   imports = [
-    (mkAliasOptionModuleMD [ "services" "compton" ] [
-      "services"
-      "picom"
-    ])
+    (mkAliasOptionModuleMD [ "services" "compton" ] [ "services" "picom" ])
     (mkRemovedOptionModule [ "services" "picom" "refreshRate" ] ''
       This option corresponds to `refresh-rate`, which has been unused
       since picom v6 and was subsequently removed by upstream.
@@ -241,12 +238,7 @@ in
     };
 
     backend = mkOption {
-      type = types.enum [
-        "egl"
-        "glx"
-        "xrender"
-        "xr_glx_hybrid"
-      ];
+      type = types.enum [ "egl" "glx" "xrender" "xr_glx_hybrid" ];
       default = "xrender";
       description = ''
         Backend to use: `egl`, `glx`, `xrender` or `xr_glx_hybrid`.
@@ -285,26 +277,13 @@ in
     settings =
       with types;
       let
-        scalar =
-          oneOf [
-            bool
-            int
-            float
-            str
-          ]
-          // {
-            description = "scalar types";
-          };
+        scalar = oneOf [ bool int float str ] // {
+          description = "scalar types";
+        };
 
-        libConfig =
-          oneOf [
-            scalar
-            (listOf libConfig)
-            (attrsOf libConfig)
-          ]
-          // {
-            description = "libconfig type";
-          };
+        libConfig = oneOf [ scalar (listOf libConfig) (attrsOf libConfig) ] // {
+          description = "libconfig type";
+        };
 
         topLevel = attrsOf libConfig // {
           description = ''

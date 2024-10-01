@@ -150,12 +150,7 @@ stdenv.mkDerivation rec {
   postInstall = ''
     wrapProgram $out/bin/anbox \
       --set SDL_VIDEO_X11_WMCLASS "anbox" \
-      --prefix LD_LIBRARY_PATH : ${
-        lib.makeLibraryPath [
-          libGL
-          libglvnd
-        ]
-      } \
+      --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ libGL libglvnd ]} \
       --prefix PATH : ${git}/bin
 
     mkdir -p $out/share/dbus-1/services

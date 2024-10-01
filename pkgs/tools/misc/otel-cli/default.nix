@@ -28,10 +28,7 @@ buildGoModule rec {
     + lib.optionalString (!stdenv.isDarwin) ''
       substituteInPlace main_test.go \
         --replace-fail 'const minimumPath = `/bin:/usr/bin`' 'const minimumPath = `${
-          lib.makeBinPath [
-            getent
-            coreutils
-          ]
+          lib.makeBinPath [ getent coreutils ]
         }`'
     '';
 

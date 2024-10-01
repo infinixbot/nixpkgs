@@ -156,16 +156,11 @@ let
         ++ lib.optionals stdenv'.isLinux [ linux-pam ]
         ++ lib.optionals (!stdenv'.isDarwin) [ libossp_uuid ];
 
-      nativeBuildInputs =
-        [
-          makeWrapper
-          pkg-config
-          removeReferencesTo
-        ]
-        ++ lib.optionals jitSupport [
-          llvmPackages.llvm.dev
-          nukeReferences
-        ];
+      nativeBuildInputs = [
+        makeWrapper
+        pkg-config
+        removeReferencesTo
+      ] ++ lib.optionals jitSupport [ llvmPackages.llvm.dev nukeReferences ];
 
       enableParallelBuilding = true;
 

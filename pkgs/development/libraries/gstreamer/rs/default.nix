@@ -65,24 +65,14 @@ let
     raptorq = [ ];
     reqwest = [ openssl ] ++ lib.optionals stdenv.isDarwin [ Security ];
     rtp = [ ];
-    webrtc =
-      [
-        gst-plugins-bad
-        openssl
-      ]
-      ++ lib.optionals stdenv.isDarwin [
-        Security
-        SystemConfiguration
-      ];
-    webrtchttp =
-      [
-        gst-plugins-bad
-        openssl
-      ]
-      ++ lib.optionals stdenv.isDarwin [
-        Security
-        SystemConfiguration
-      ];
+    webrtc = [
+      gst-plugins-bad
+      openssl
+    ] ++ lib.optionals stdenv.isDarwin [ Security SystemConfiguration ];
+    webrtchttp = [
+      gst-plugins-bad
+      openssl
+    ] ++ lib.optionals stdenv.isDarwin [ Security SystemConfiguration ];
 
     # text
     textahead = [ ];

@@ -18,34 +18,20 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "boot"
-        "initrd"
-        "services"
-        "swraid"
-        "enable"
-      ]
-      [
-        "boot"
-        "swraid"
-        "enable"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "boot"
-        "initrd"
-        "services"
-        "swraid"
-        "mdadmConf"
-      ]
-      [
-        "boot"
-        "swraid"
-        "mdadmConf"
-      ]
-    )
+    (lib.mkRenamedOptionModule [
+      "boot"
+      "initrd"
+      "services"
+      "swraid"
+      "enable"
+    ] [ "boot" "swraid" "enable" ])
+    (lib.mkRenamedOptionModule [
+      "boot"
+      "initrd"
+      "services"
+      "swraid"
+      "mdadmConf"
+    ] [ "boot" "swraid" "mdadmConf" ])
   ];
 
   options.boot.swraid = {

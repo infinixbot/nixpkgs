@@ -47,12 +47,7 @@ in
     };
 
     useRoutingFeatures = mkOption {
-      type = types.enum [
-        "none"
-        "client"
-        "server"
-        "both"
-      ];
+      type = types.enum [ "none" "client" "server" "both" ];
       default = "none";
       example = "server";
       description = ''

@@ -44,12 +44,7 @@ buildGoModule rec {
   postInstall = ''
     for prog in flintlockd flintlock-metrics; do
       wrapProgram "$out/bin/$prog" --prefix PATH : ${
-        lib.makeBinPath [
-          cni-plugins
-          firecracker
-          containerd
-          runc
-        ]
+        lib.makeBinPath [ cni-plugins firecracker containerd runc ]
       }
     done
   '';

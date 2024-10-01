@@ -254,12 +254,7 @@ let
     };
 
     config = {
-      enable = lib.mkDefault (
-        lib.elem cfg.mode [
-          "standalone"
-          "netserver"
-        ]
-      );
+      enable = lib.mkDefault (lib.elem cfg.mode [ "standalone" "netserver" ]);
     };
   };
 
@@ -360,13 +355,7 @@ let
     };
 
     config = {
-      enable = lib.mkDefault (
-        lib.elem cfg.mode [
-          "standalone"
-          "netserver"
-          "netclient"
-        ]
-      );
+      enable = lib.mkDefault (lib.elem cfg.mode [ "standalone" "netserver" "netclient" ]);
       settings = {
         RUN_AS_USER = "root"; # TODO: replace 'root' by another username.
         MINSUPPLIES = lib.mkDefault 1;
@@ -443,12 +432,7 @@ in
 
       mode = lib.mkOption {
         default = "standalone";
-        type = lib.types.enum [
-          "none"
-          "standalone"
-          "netserver"
-          "netclient"
-        ];
+        type = lib.types.enum [ "none" "standalone" "netserver" "netclient" ];
         description = ''
           The MODE determines which part of the NUT is to be started, and
           which configuration files must be modified.

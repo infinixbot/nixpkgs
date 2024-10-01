@@ -49,8 +49,5 @@ home-assistant.python.pkgs.buildPythonPackage (
     } // args.passthru or { };
 
   }
-  // builtins.removeAttrs args [
-    "nativeCheckInputs"
-    "passthru"
-  ]
+  // builtins.removeAttrs args [ "nativeCheckInputs" "passthru" ]
 )

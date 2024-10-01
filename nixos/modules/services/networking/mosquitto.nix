@@ -17,12 +17,7 @@ let
   configKey = lib.types.strMatching "[^\r\n\t ]+";
   optionType =
     with lib.types;
-    oneOf [
-      str
-      path
-      bool
-      int
-    ]
+    oneOf [ str path bool int ]
     // {
       description = "string, path, bool, or integer";
     };
@@ -677,10 +672,7 @@ in
           let
             listenerCredentials =
               listenerScope: listener:
-              usersCredentials listenerScope listener.users [
-                "password"
-                "hashedPassword"
-              ];
+              usersCredentials listenerScope listener.users [ "password" "hashedPassword" ];
           in
           systemdCredentials cfg.listeners listenerCredentials;
 
@@ -688,10 +680,7 @@ in
           let
             listenerCredentials =
               listenerScope: listener:
-              usersCredentials listenerScope listener.users [
-                "passwordFile"
-                "hashedPasswordFile"
-              ];
+              usersCredentials listenerScope listener.users [ "passwordFile" "hashedPasswordFile" ];
           in
           systemdCredentials cfg.listeners listenerCredentials;
 

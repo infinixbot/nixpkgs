@@ -42,18 +42,11 @@ let
     ;
   extraPropagatedBuildInputs =
     [ ]
-    ++ lib.optionals x11Support [
-      libXext
-      libICE
-      libXrandr
-    ]
+    ++ lib.optionals x11Support [ libXext libICE libXrandr ]
     ++ lib.optionals (openglSupport && stdenv.isLinux) [ libGL ]
     # libGLU doesn’t work with Android's SDL
     ++ lib.optionals (openglSupport && stdenv.isLinux && (!stdenv.hostPlatform.isAndroid)) [ libGLU ]
-    ++ lib.optionals (openglSupport && stdenv.isDarwin) [
-      OpenGL
-      GLUT
-    ]
+    ++ lib.optionals (openglSupport && stdenv.isDarwin) [ OpenGL GLUT ]
     ++ lib.optional alsaSupport alsa-lib
     ++ lib.optional pulseaudioSupport libpulseaudio
     ++ lib.optional stdenv.isDarwin Cocoa;

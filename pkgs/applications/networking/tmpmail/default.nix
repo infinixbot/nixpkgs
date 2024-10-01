@@ -34,14 +34,7 @@ stdenvNoCC.mkDerivation rec {
     mkdir -p $out/bin
     install -Dm755 -t $out/bin tmpmail
     installManPage tmpmail.1
-    wrapProgram $out/bin/tmpmail --prefix PATH : ${
-      lib.makeBinPath [
-        w3m
-        curl
-        jq
-        xclip
-      ]
-    }
+    wrapProgram $out/bin/tmpmail --prefix PATH : ${lib.makeBinPath [ w3m curl jq xclip ]}
   '';
 
   meta = with lib; {

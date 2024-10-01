@@ -21,12 +21,7 @@ assert lib.elem lineEditingLibrary [
   "readline"
   "vrl"
 ];
-assert
-  !(lib.elem lineEditingLibrary [
-    "edit"
-    "editline"
-    "vrl"
-  ]); # broken
+assert !(lib.elem lineEditingLibrary [ "edit" "editline" "vrl" ]); # broken
 assert (lineEditingLibrary == "readline") -> readlineSupport;
 stdenv.mkDerivation (finalAttrs: {
   pname = "rc";

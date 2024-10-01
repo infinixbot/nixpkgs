@@ -84,18 +84,8 @@ let
       // meta;
   };
 
-  publicArgs = removeAttrs args [
-    "category"
-    "sha256"
-  ];
+  publicArgs = removeAttrs args [ "category" "sha256" ];
 in
 
-stdenv.mkDerivation (
-  publicArgs
-  // template
-  // concatAttrLists [
-    template
-    args
-  ]
-)
+stdenv.mkDerivation (publicArgs // template // concatAttrLists [ template args ])
 # TODO [ AndersonTorres ]: verify if it allows using hash attribute as an option to sha256

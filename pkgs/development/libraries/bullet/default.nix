@@ -23,15 +23,8 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake ];
   buildInputs =
-    lib.optionals stdenv.isLinux [
-      libGLU
-      libGL
-      libglut
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      Cocoa
-      OpenGL
-    ];
+    lib.optionals stdenv.isLinux [ libGLU libGL libglut ]
+    ++ lib.optionals stdenv.isDarwin [ Cocoa OpenGL ];
 
   postPatch =
     ''

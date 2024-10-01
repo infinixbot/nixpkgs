@@ -102,10 +102,7 @@ let
     pg_ctl stop
   '';
 
-  argsForBuildRustPackage = builtins.removeAttrs args [
-    "postgresql"
-    "useFakeRustfmt"
-  ];
+  argsForBuildRustPackage = builtins.removeAttrs args [ "postgresql" "useFakeRustfmt" ];
 
   # so we don't accidentally `(rustPlatform.buildRustPackage argsForBuildRustPackage) // { ... }` because
   # we forgot parentheses

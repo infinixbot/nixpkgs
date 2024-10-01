@@ -107,17 +107,9 @@ stdenv.mkDerivation rec {
     ++ lib.optionals zlibSupport [
       zlib
     ]
-    ++
-      lib.optionals
-        (lib.any (l: l == optimizationLevel) [
-          "0"
-          "1"
-          "2"
-          "3"
-        ])
-        [
-          boehmgc
-        ]
+    ++ lib.optionals (lib.any (l: l == optimizationLevel) [ "0" "1" "2" "3" ]) [
+      boehmgc
+    ]
     ++ lib.optionals stdenv.isDarwin [
       libunwind
       Security

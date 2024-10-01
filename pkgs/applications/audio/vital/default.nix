@@ -52,12 +52,7 @@ stdenv.mkDerivation (finalAttrs: {
     done
 
     wrapProgram $out/bin/Vital \
-      --prefix LD_LIBRARY_PATH : "${
-        lib.makeLibraryPath [
-          curl
-          libjack2
-        ]
-      }"
+      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ curl libjack2 ]}"
 
     runHook postInstall
   '';

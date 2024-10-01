@@ -1047,10 +1047,7 @@ builtins.intersectAttrs super {
 
   cut-the-crap =
     let
-      path = pkgs.lib.makeBinPath [
-        pkgs.ffmpeg
-        pkgs.youtube-dl
-      ];
+      path = pkgs.lib.makeBinPath [ pkgs.ffmpeg pkgs.youtube-dl ];
     in
     overrideCabal (_drv: {
       postInstall = ''
@@ -1181,12 +1178,7 @@ builtins.intersectAttrs super {
       ${drv.postInstall or ""}
 
       wrapProgram $out/bin/cabal2nix \
-        --prefix PATH ":" "${
-          pkgs.lib.makeBinPath [
-            pkgs.nix
-            pkgs.nix-prefetch-scripts
-          ]
-        }"
+        --prefix PATH ":" "${pkgs.lib.makeBinPath [ pkgs.nix pkgs.nix-prefetch-scripts ]}"
     '';
   }) (justStaticExecutables super.cabal2nix-unstable);
 
@@ -1551,23 +1543,11 @@ builtins.intersectAttrs super {
       disableUnused = with builtins; map disableCabalFlag (filter (n: n != mpiImpl) validMpi);
     in
     lib.pipe (super.mpi-hs_0_7_3_0.override { ompi = pkgs.mpi; }) (
-      [
-        (addTestToolDepends [
-          pkgs.openssh
-          pkgs.mpiCheckPhaseHook
-        ])
-      ]
+      [ (addTestToolDepends [ pkgs.openssh pkgs.mpiCheckPhaseHook ]) ]
       ++ disableUnused
       ++ lib.optional (builtins.elem mpiImpl validMpi) (enableCabalFlag mpiImpl)
     );
-  inherit
-    (lib.mapAttrs (
-      _:
-      addTestToolDepends [
-        pkgs.openssh
-        pkgs.mpiCheckPhaseHook
-      ]
-    ) super)
+  inherit (lib.mapAttrs (_: addTestToolDepends [ pkgs.openssh pkgs.mpiCheckPhaseHook ]) super)
     mpi-hs-store
     mpi-hs-cereal
     mpi-hs-binary

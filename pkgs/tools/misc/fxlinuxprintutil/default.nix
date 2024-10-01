@@ -69,12 +69,7 @@ stdenv.mkDerivation rec {
     mv usr/bin $out
     mv usr/lib $out
 
-    wrapProgram $out/bin/fxlputil --prefix PATH : ${
-      lib.makeBinPath [
-        tcl
-        tk
-      ]
-    }
+    wrapProgram $out/bin/fxlputil --prefix PATH : ${lib.makeBinPath [ tcl tk ]}
   '';
 
   meta = with lib; {

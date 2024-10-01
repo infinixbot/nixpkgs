@@ -122,10 +122,7 @@ stdenv.mkDerivation {
     ]
     ++ cubeb.passthru.backendLibs
     ++ lib.optional faudioSupport faudio
-    ++ lib.optionals waylandSupport [
-      wayland
-      qtwayland
-    ];
+    ++ lib.optionals waylandSupport [ wayland qtwayland ];
 
   preFixup = ''
     qtWrapperArgs+=("''${gappsWrapperArgs[@]}")

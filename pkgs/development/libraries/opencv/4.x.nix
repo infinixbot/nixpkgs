@@ -287,9 +287,8 @@ effectiveStdenv.mkDerivation {
     [
       ./cmake-don-t-use-OpenCVFindOpenEXR.patch
     ]
-    ++ lib.optionals enableContrib
-      [
-      ]
+    ++ lib.optionals enableContrib [
+    ]
     ++ lib.optional enableCuda ./cuda_opt_flow.patch;
 
   # This prevents cmake from using libraries in impure paths (which

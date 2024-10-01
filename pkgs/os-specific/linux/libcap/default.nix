@@ -47,18 +47,13 @@ stdenv.mkDerivation rec {
 
   propagatedBuildInputs = [ attr ];
 
-  makeFlags =
-    [
-      "lib=lib"
-      "PAM_CAP=${if usePam then "yes" else "no"}"
-      "BUILD_CC=$(CC_FOR_BUILD)"
-      "CC:=$(CC)"
-      "CROSS_COMPILE=${stdenv.cc.targetPrefix}"
-    ]
-    ++ lib.optionals isStatic [
-      "SHARED=no"
-      "LIBCSTATIC=yes"
-    ];
+  makeFlags = [
+    "lib=lib"
+    "PAM_CAP=${if usePam then "yes" else "no"}"
+    "BUILD_CC=$(CC_FOR_BUILD)"
+    "CC:=$(CC)"
+    "CROSS_COMPILE=${stdenv.cc.targetPrefix}"
+  ] ++ lib.optionals isStatic [ "SHARED=no" "LIBCSTATIC=yes" ];
 
   postPatch = ''
     patchShebangs ./progs/mkcapshdoc.sh

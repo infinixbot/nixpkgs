@@ -26,11 +26,7 @@ let
       ];
 
       rtdeps =
-        lib.makeLibraryPath [
-          xorg.libXxf86vm
-          xorg.libXext
-          openal
-        ]
+        lib.makeLibraryPath [ xorg.libXxf86vm xorg.libXext openal ]
         + ":"
         + lib.makeSearchPathOutput "lib" "lib64" [ stdenv.cc.cc ];
 

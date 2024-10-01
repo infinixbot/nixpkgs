@@ -159,19 +159,10 @@ stdenv.mkDerivation (finalAttrs: {
       bash
     ]
     ++ lib.optionals perlSupport [ perlPackages.perl ]
-    ++ lib.optionals guiSupport [
-      tcl
-      tk
-    ]
+    ++ lib.optionals guiSupport [ tcl tk ]
     ++ lib.optionals withpcre2 [ pcre2 ]
-    ++ lib.optionals stdenv.isDarwin [
-      Security
-      CoreServices
-    ]
-    ++ lib.optionals withLibsecret [
-      glib
-      libsecret
-    ];
+    ++ lib.optionals stdenv.isDarwin [ Security CoreServices ]
+    ++ lib.optionals withLibsecret [ glib libsecret ];
 
   # required to support pthread_cancel()
   NIX_LDFLAGS =
@@ -201,16 +192,9 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optional (stdenv.buildPlatform == stdenv.hostPlatform) "SHELL_PATH=${stdenv.shell}"
     ++ (if perlSupport then [ "PERL_PATH=${perlPackages.perl}/bin/perl" ] else [ "NO_PERL=1" ])
     ++ (if pythonSupport then [ "PYTHON_PATH=${python3}/bin/python" ] else [ "NO_PYTHON=1" ])
-    ++ lib.optionals stdenv.isSunOS [
-      "INSTALL=install"
-      "NO_INET_NTOP="
-      "NO_INET_PTON="
-    ]
+    ++ lib.optionals stdenv.isSunOS [ "INSTALL=install" "NO_INET_NTOP=" "NO_INET_PTON=" ]
     ++ (if stdenv.isDarwin then [ "NO_APPLE_COMMON_CRYPTO=1" ] else [ "sysconfdir=/etc" ])
-    ++ lib.optionals stdenv.hostPlatform.isMusl [
-      "NO_SYS_POLL_H=1"
-      "NO_GETTEXT=YesPlease"
-    ]
+    ++ lib.optionals stdenv.hostPlatform.isMusl [ "NO_SYS_POLL_H=1" "NO_GETTEXT=YesPlease" ]
     ++ lib.optional withpcre2 "USE_LIBPCRE2=1"
     ++ lib.optional (!nlsSupport) "NO_GETTEXT=1"
     # git-gui refuses to start with the version of tk distributed with

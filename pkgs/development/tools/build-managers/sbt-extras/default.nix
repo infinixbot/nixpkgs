@@ -42,12 +42,7 @@ stdenv.mkDerivation rec {
 
     install bin/sbt $out/bin
 
-    wrapProgram $out/bin/sbt --prefix PATH : ${
-      lib.makeBinPath [
-        which
-        curl
-      ]
-    }
+    wrapProgram $out/bin/sbt --prefix PATH : ${lib.makeBinPath [ which curl ]}
 
     runHook postInstall
   '';

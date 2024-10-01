@@ -60,10 +60,7 @@ stdenv.mkDerivation rec {
     ]
     ++ lib.optional withOpenssl openssl
     ++ lib.optional withLibpsl libpsl
-    ++ lib.optionals stdenv.isDarwin [
-      darwin.apple_sdk.frameworks.CoreServices
-      perlPackages.perl
-    ];
+    ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.CoreServices perlPackages.perl ];
 
   configureFlags =
     [

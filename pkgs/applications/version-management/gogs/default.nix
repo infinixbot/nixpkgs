@@ -43,14 +43,7 @@ buildGoModule rec {
   postInstall = ''
 
     wrapProgram $out/bin/gogs \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          bash
-          git
-          gzip
-          openssh
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ bash git gzip openssh ]}
   '';
 
   meta = with lib; {

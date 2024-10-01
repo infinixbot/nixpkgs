@@ -147,10 +147,7 @@ in
       keyMode = mkOption {
         default = defaultKeyMode;
         example = "vi";
-        type = types.enum [
-          "emacs"
-          "vi"
-        ];
+        type = types.enum [ "emacs" "vi" ];
         description = "VI or Emacs style shortcuts.";
       };
 

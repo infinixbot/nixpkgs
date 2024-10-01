@@ -82,13 +82,7 @@
     };
 
     security.virtualisation.flushL1DataCache = lib.mkOption {
-      type = lib.types.nullOr (
-        lib.types.enum [
-          "never"
-          "cond"
-          "always"
-        ]
-      );
+      type = lib.types.nullOr (lib.types.enum [ "never" "cond" "always" ]);
       default = null;
       description = ''
         Whether the hypervisor should flush the L1 data cache before

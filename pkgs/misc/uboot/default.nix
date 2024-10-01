@@ -150,10 +150,7 @@ let
           }
           // extraMeta;
       }
-      // removeAttrs args [
-        "extraMeta"
-        "pythonScriptsToInstall"
-      ]
+      // removeAttrs args [ "extraMeta" "pythonScriptsToInstall" ]
     )
   );
 in

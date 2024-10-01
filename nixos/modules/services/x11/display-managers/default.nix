@@ -333,20 +333,13 @@ in
       [ "services" "xserver" "displayManager" "desktopManagerHandlesLidAndPower" ]
       "The option is no longer necessary because all display managers have already delegated lid management to systemd."
     )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "job"
-        "logsXsession"
-      ]
-      [
-        "services"
-        "displayManager"
-        "logToFile"
-      ]
-    )
+    (lib.mkRenamedOptionModule [
+      "services"
+      "xserver"
+      "displayManager"
+      "job"
+      "logsXsession"
+    ] [ "services" "displayManager" "logToFile" ])
     (lib.mkRenamedOptionModule [ "services" "xserver" "displayManager" "logToJournal" ] [
       "services"
       "displayManager"

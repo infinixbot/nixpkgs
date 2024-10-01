@@ -56,12 +56,7 @@ stdenv.mkDerivation rec {
 
   postFixup = lib.optionalString withBfbInstall ''
     wrapProgram $out/bin/bfb-install \
-      --set PATH ${
-        lib.makeBinPath [
-          busybox
-          pv
-        ]
-      }
+      --set PATH ${lib.makeBinPath [ busybox pv ]}
   '';
 
   meta = with lib; {

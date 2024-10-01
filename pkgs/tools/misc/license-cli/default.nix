@@ -47,12 +47,7 @@ rustPlatform.buildRustPackage rec {
     install -Dm0755 ./scripts/copy-header -t $out/bin
     wrapProgram $out/bin/copy-header \
       --prefix PATH : "$out/bin" \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          wl-clipboard
-          xclip
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ wl-clipboard xclip ]}
   '';
 
   meta = with lib; {

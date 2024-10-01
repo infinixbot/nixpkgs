@@ -90,12 +90,9 @@ stdenv.mkDerivation rec {
       openssl
       zlib
     ]
-    ++ lib.optionals
-      (stdenv.isDarwin && ((builtins.elem "text-to-speech" apis) || (builtins.elem "*" apis)))
-      [
-        CoreAudio
-        AudioToolbox
-      ];
+    ++ lib.optionals (
+      stdenv.isDarwin && ((builtins.elem "text-to-speech" apis) || (builtins.elem "*" apis))
+    ) [ CoreAudio AudioToolbox ];
 
   # propagation is needed for Security.framework to be available when linking
   propagatedBuildInputs = [ aws-crt-cpp ];

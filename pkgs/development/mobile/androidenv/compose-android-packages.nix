@@ -177,12 +177,7 @@ rec {
       ...
     }@args:
     let
-      extraParams = removeAttrs args [
-        "package"
-        "os"
-        "buildInputs"
-        "patchInstructions"
-      ];
+      extraParams = removeAttrs args [ "package" "os" "buildInputs" "patchInstructions" ];
     in
     deployAndroidPackages (
       {

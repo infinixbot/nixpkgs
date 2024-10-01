@@ -75,10 +75,7 @@ rustPlatform.buildRustPackage rec {
   buildInputs =
     [ openssl ]
     ++ lib.optionals stdenv.isLinux [ rust-jemalloc-sys-unprefixed ]
-    ++ lib.optionals stdenv.isDarwin [
-      Security
-      SystemConfiguration
-    ];
+    ++ lib.optionals stdenv.isDarwin [ Security SystemConfiguration ];
 
   # NOTE: disable building `core`/`std` in wasm environment since rust-src isn't
   # available for `rustc-wasm32`

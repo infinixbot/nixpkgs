@@ -27,11 +27,7 @@ python3.pkgs.buildPythonApplication rec {
     "--prefix"
     "PATH"
     ":"
-    (lib.makeBinPath [
-      nix
-      nix-prefetch-git
-      nixpkgs-review
-    ])
+    (lib.makeBinPath [ nix nix-prefetch-git nixpkgs-review ])
   ];
 
   checkPhase = ''

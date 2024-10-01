@@ -60,10 +60,7 @@ stdenv.mkDerivation rec {
       lcms2
       harfbuzz
     ]
-    ++ lib.optionals stdenv.isLinux [
-      libGLU
-      libGL
-    ]
+    ++ lib.optionals stdenv.isLinux [ libGLU libGL ]
     ++ lib.optionals stdenv.isDarwin [
       darwin.apple_sdk.frameworks.OpenGL
       darwin.apple_sdk.frameworks.Cocoa

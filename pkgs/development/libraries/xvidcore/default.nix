@@ -38,11 +38,7 @@ stdenv.mkDerivation rec {
   buildInputs =
     [ ]
     # Undocumented darwin hack
-    ++ lib.optionals stdenv.isDarwin [
-      autoconf
-      automake
-      libtool
-    ];
+    ++ lib.optionals stdenv.isDarwin [ autoconf automake libtool ];
 
   # Don't remove static libraries (e.g. 'libs/*.a') on darwin.  They're needed to
   # compile ffmpeg (and perhaps other things).

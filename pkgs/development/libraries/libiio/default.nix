@@ -60,10 +60,7 @@ stdenv.mkDerivation rec {
     ]
     ++ lib.optional avahiSupport avahi
     ++ lib.optional stdenv.isLinux libaio
-    ++ lib.optionals stdenv.isDarwin [
-      CFNetwork
-      CoreServices
-    ];
+    ++ lib.optionals stdenv.isDarwin [ CFNetwork CoreServices ];
 
   cmakeFlags =
     [

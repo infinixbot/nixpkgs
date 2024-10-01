@@ -58,10 +58,7 @@ stdenv.mkDerivation rec {
       libGLU
       libGL
     ]
-    ++ lib.optionals (stdenv.isDarwin) [
-      Cocoa
-      OpenGL
-    ];
+    ++ lib.optionals (stdenv.isDarwin) [ Cocoa OpenGL ];
 
   patches = [
     ./sw_vers_root5.patch

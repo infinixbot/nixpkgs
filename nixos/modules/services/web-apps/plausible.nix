@@ -81,11 +81,7 @@ in
     server = {
       disableRegistration = mkOption {
         default = true;
-        type = types.enum [
-          true
-          false
-          "invite_only"
-        ];
+        type = types.enum [ true false "invite_only" ];
         description = ''
           Whether to prohibit creating an account in plausible's UI or allow on `invite_only`.
         '';

@@ -137,13 +137,7 @@ stdenv.mkDerivation rec {
     wrapProgram $out/bin/gnucash-cli "''${gappsWrapperArgs[@]}"
 
     wrapProgram $out/bin/finance-quote-wrapper \
-      --prefix PERL5LIB : "${
-        with perlPackages;
-        makeFullPerlPath [
-          JSONParse
-          FinanceQuote
-        ]
-      }"
+      --prefix PERL5LIB : "${with perlPackages; makeFullPerlPath [ JSONParse FinanceQuote ]}"
   '';
 
   passthru.updateScript = ./update.sh;

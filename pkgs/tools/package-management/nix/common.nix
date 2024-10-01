@@ -109,15 +109,10 @@ let
 
     inherit src patches;
 
-    outputs =
-      [
-        "out"
-        "dev"
-      ]
-      ++ lib.optionals enableDocumentation [
-        "man"
-        "doc"
-      ];
+    outputs = [
+      "out"
+      "dev"
+    ] ++ lib.optionals enableDocumentation [ "man" "doc" ];
 
     hardeningEnable = lib.optionals (!stdenv.isDarwin) [ "pie" ];
 

@@ -17034,12 +17034,7 @@ with self;
         --replace "which('convert')" "\"${pkgs.imagemagick}/bin/convert"\"
     '';
     postInstall = ''
-      wrapProgram $out/bin/ocr --prefix PATH : ${
-        lib.makeBinPath [
-          pkgs.tesseract
-          pkgs.imagemagick
-        ]
-      }
+      wrapProgram $out/bin/ocr --prefix PATH : ${lib.makeBinPath [ pkgs.tesseract pkgs.imagemagick ]}
     '';
     meta = {
       description = "Read an image with tesseract ocr and get output";
@@ -18261,12 +18256,7 @@ with self;
     postInstall = ''
       for file in latexmlc latexmlmath latexmlpost ; do
         # add runtime dependencies that cause silent failures when missing
-        wrapProgram $out/bin/$file --prefix PATH : ${
-          lib.makeBinPath [
-            pkgs.ghostscript
-            pkgs.potrace
-          ]
-        }
+        wrapProgram $out/bin/$file --prefix PATH : ${lib.makeBinPath [ pkgs.ghostscript pkgs.potrace ]}
       done
     '';
     passthru = {
@@ -32295,10 +32285,7 @@ with self;
       ++ lib.optionals stdenv.isDarwin [
         darwin.apple_sdk.frameworks.CoreServices
       ];
-    makeMakerFlags = lib.optionals stdenv.isLinux [
-      "--tclsh=${pkgs.tcl}/bin/tclsh"
-      "--nousestubs"
-    ];
+    makeMakerFlags = lib.optionals stdenv.isLinux [ "--tclsh=${pkgs.tcl}/bin/tclsh" "--nousestubs" ];
     meta = {
       description = "Tcl extension module for Perl";
       license = with lib.licenses; [

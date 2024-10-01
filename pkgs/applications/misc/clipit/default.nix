@@ -46,10 +46,7 @@ stdenv.mkDerivation rec {
     "--prefix"
     "PATH"
     ":"
-    "${lib.makeBinPath [
-      xdotool
-      which
-    ]}"
+    "${lib.makeBinPath [ xdotool which ]}"
   ];
 
   meta = with lib; {

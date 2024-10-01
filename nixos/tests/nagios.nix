@@ -23,11 +23,7 @@ import ./make-test-python.nix (
           # make state transitions faster
           extraConfig.interval_length = "5";
           objectDefs =
-            (map (x: "${pkgs.nagios}/etc/objects/${x}.cfg") [
-              "templates"
-              "timeperiods"
-              "commands"
-            ])
+            (map (x: "${pkgs.nagios}/etc/objects/${x}.cfg") [ "templates" "timeperiods" "commands" ])
             ++ [
               (pkgs.writeText "objects.cfg" ''
                 # notifications are written to /tmp/notifications

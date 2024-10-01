@@ -4607,10 +4607,7 @@ rec {
           let
             features = mergedFeatures."${packageId}" or [ ];
             crateConfig' = crateConfigs."${packageId}";
-            crateConfig = builtins.removeAttrs crateConfig' [
-              "resolvedDefaultFeatures"
-              "devDependencies"
-            ];
+            crateConfig = builtins.removeAttrs crateConfig' [ "resolvedDefaultFeatures" "devDependencies" ];
             devDependencies = lib.optionals (runTests && packageId == rootPackageId) (
               crateConfig'.devDependencies or [ ]
             );
@@ -4781,10 +4778,7 @@ rec {
           features = [ "default" ];
         });
         configs = prefixValues "cargo" crateConfigs;
-        combined = lib.foldAttrs (a: b: a // b) { } [
-          mergedFeatures
-          configs
-        ];
+        combined = lib.foldAttrs (a: b: a // b) { } [ mergedFeatures configs ];
         onlyInCargo = builtins.attrNames (
           lib.filterAttrs (n: v: !(v ? "crate2nix") && (v ? "cargo")) combined
         );

@@ -29,11 +29,7 @@ let
     optionalString
     ;
   runtimePath = makeBinPath (
-    optional tiffSupport libraw
-    ++ optionals jpgSupport [
-      graphicsmagick
-      exiftool
-    ]
+    optional tiffSupport libraw ++ optionals jpgSupport [ graphicsmagick exiftool ]
   );
 in
 stdenv.mkDerivation (finalAttrs: {

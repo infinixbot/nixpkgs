@@ -34,12 +34,7 @@ buildGoModule rec {
     ronn --roff man/actionlint.1.ronn
     installManPage man/actionlint.1
     wrapProgram "$out/bin/actionlint" \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          python3Packages.pyflakes
-          shellcheck
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ python3Packages.pyflakes shellcheck ]}
   '';
 
   ldflags = [

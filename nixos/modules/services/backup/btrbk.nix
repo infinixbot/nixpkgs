@@ -164,11 +164,7 @@ in
       };
       ioSchedulingClass = mkOption {
         description = "IO scheduling class for btrbk (see ionice(1) for a quick description). Applies to local instances, and remote ones connecting by ssh if set to idle.";
-        type = types.enum [
-          "idle"
-          "best-effort"
-          "realtime"
-        ];
+        type = types.enum [ "idle" "best-effort" "realtime" ];
         default = "best-effort";
       };
       instances = mkOption {

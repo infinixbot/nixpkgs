@@ -118,17 +118,11 @@ let
       stdenv.cc.cc.lib
       systemd
     ]
-    ++ lib.optionals (lib.versionAtLeast version "9.0.0") [
-      libdrm
-      mesa
-    ]
+    ++ lib.optionals (lib.versionAtLeast version "9.0.0") [ libdrm mesa ]
     ++ lib.optionals (lib.versionOlder version "10.0.0") [ libXScrnSaver ]
     ++ lib.optionals (lib.versionAtLeast version "11.0.0") [ libxkbcommon ]
     ++ lib.optionals (lib.versionAtLeast version "12.0.0") [ libxshmfence ]
-    ++ lib.optionals (lib.versionAtLeast version "17.0.0") [
-      libGL
-      vulkan-loader
-    ]
+    ++ lib.optionals (lib.versionAtLeast version "17.0.0") [ libGL vulkan-loader ]
   );
 
   linux = finalAttrs: {
@@ -162,13 +156,7 @@ let
 
       # patch libANGLE
       patchelf \
-        --set-rpath "${
-          lib.makeLibraryPath [
-            libGL
-            pciutils
-            vulkan-loader
-          ]
-        }" \
+        --set-rpath "${lib.makeLibraryPath [ libGL pciutils vulkan-loader ]}" \
         $out/libexec/electron/lib*GL*
 
       # replace bundled vulkan-loader

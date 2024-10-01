@@ -81,11 +81,7 @@ stdenv.mkDerivation {
       libedit
       pam
     ]
-    ++ lib.optionals (stdenv.isDarwin) [
-      CoreFoundation
-      Security
-      SystemConfiguration
-    ]
+    ++ lib.optionals (stdenv.isDarwin) [ CoreFoundation Security SystemConfiguration ]
     ++ lib.optionals (withCJSON) [ cjson ]
     ++ lib.optionals (withCapNG) [ libcap_ng ]
     ++ lib.optionals (withMicroHTTPD) [ libmicrohttpd ]

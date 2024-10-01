@@ -112,10 +112,7 @@ stdenv.mkDerivation (finalAttrs: {
       pcre
       libxcrypt
     ]
-    ++ lib.optionals (stdenv.isDarwin && stdenv.isAarch64) [
-      expat
-      zlib
-    ]
+    ++ lib.optionals (stdenv.isDarwin && stdenv.isAarch64) [ expat zlib ]
     ++ lib.optional withPAM pam
     ++ lib.optional withSystemd systemd
     ++ lib.optional withCap libcap

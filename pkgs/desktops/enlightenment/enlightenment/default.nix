@@ -55,10 +55,7 @@ stdenv.mkDerivation rec {
     ]
     ++ lib.optional bluetoothSupport bluez5 # for bluetooth configuration and control
     ++ lib.optional pulseSupport libpulseaudio # for proper audio device control and redirection
-    ++ lib.optionals waylandSupport [
-      wayland-protocols
-      xwayland
-    ];
+    ++ lib.optionals waylandSupport [ wayland-protocols xwayland ];
 
   patches = [
     # Executables cannot be made setuid in nix store. They should be

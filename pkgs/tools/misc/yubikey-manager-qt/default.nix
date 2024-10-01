@@ -71,10 +71,7 @@ mkDerivation rec {
     "--prefix"
     "LD_LIBRARY_PATH"
     ":"
-    (lib.makeLibraryPath [
-      pcsclite
-      yubikey-personalization
-    ])
+    (lib.makeLibraryPath [ pcsclite yubikey-personalization ])
   ];
 
   preFixup = ''

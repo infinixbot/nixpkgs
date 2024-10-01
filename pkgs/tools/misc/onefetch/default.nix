@@ -37,13 +37,7 @@ rustPlatform.buildRustPackage rec {
     pkg-config
   ];
 
-  buildInputs =
-    [ zstd ]
-    ++ lib.optionals stdenv.isDarwin [
-      CoreFoundation
-      libresolv
-      Security
-    ];
+  buildInputs = [ zstd ] ++ lib.optionals stdenv.isDarwin [ CoreFoundation libresolv Security ];
 
   nativeCheckInputs = [
     git

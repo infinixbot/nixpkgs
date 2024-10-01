@@ -134,14 +134,7 @@ in
               '';
             };
             cryptDefault = lib.mkOption {
-              type = lib.types.nullOr (
-                lib.types.enum [
-                  "md5"
-                  "sha256"
-                  "sha512"
-                  "blowfish"
-                ]
-              );
+              type = lib.types.nullOr (lib.types.enum [ "md5" "sha256" "sha512" "blowfish" ]);
               default = null;
               example = "blowfish";
               description = "The default encryption method to use for `passwordCrypt = 1`.";

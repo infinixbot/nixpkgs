@@ -93,19 +93,13 @@ in
           command =
             [ "${cfg.package}/bin/cachix" ]
             ++ (lib.optional cfg.verbose "--verbose")
-            ++ (lib.optionals (cfg.host != null) [
-              "--host"
-              cfg.host
-            ])
+            ++ (lib.optionals (cfg.host != null) [ "--host" cfg.host ])
             ++ [ "watch-store" ]
             ++ (lib.optionals (cfg.compressionLevel != null) [
               "--compression-level"
               (toString cfg.compressionLevel)
             ])
-            ++ (lib.optionals (cfg.jobs != null) [
-              "--jobs"
-              (toString cfg.jobs)
-            ])
+            ++ (lib.optionals (cfg.jobs != null) [ "--jobs" (toString cfg.jobs) ])
             ++ [ cfg.cacheName ];
         in
         ''

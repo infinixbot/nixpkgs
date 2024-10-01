@@ -64,11 +64,7 @@ let
       description = "`sched_cfs_bandwidth_slice_us`.";
     };
     preempt = {
-      type = enum [
-        "none"
-        "voluntary"
-        "full"
-      ];
+      type = enum [ "none" "voluntary" "full" ];
       description = "Preemption mode.";
     };
   };

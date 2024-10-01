@@ -88,11 +88,7 @@ let
               default = 1;
             };
             tls_type = lib.mkOption {
-              type = lib.types.enum [
-                "none"
-                "STARTTLS"
-                "TLS"
-              ];
+              type = lib.types.enum [ "none" "STARTTLS" "TLS" ];
               description = "Type of TLS authentication with the SMTP server";
             };
           };

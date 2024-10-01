@@ -100,10 +100,7 @@ in
 
       database = {
         type = lib.mkOption {
-          type = lib.types.enum [
-            "PostgreSQL"
-            "MySQL"
-          ];
+          type = lib.types.enum [ "PostgreSQL" "MySQL" ];
           default = "PostgreSQL";
           example = "MySQL";
           description = "Database engine to use.";

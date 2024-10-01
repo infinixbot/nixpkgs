@@ -499,11 +499,7 @@ in
 
     config = {
       dbtype = mkOption {
-        type = types.enum [
-          "sqlite"
-          "pgsql"
-          "mysql"
-        ];
+        type = types.enum [ "sqlite" "pgsql" "mysql" ];
         default = "sqlite";
         description = "Database type.";
       };
@@ -777,12 +773,7 @@ in
             '';
           };
           log_type = mkOption {
-            type = types.enum [
-              "errorlog"
-              "file"
-              "syslog"
-              "systemd"
-            ];
+            type = types.enum [ "errorlog" "file" "syslog" "systemd" ];
             default = "syslog";
             description = ''
               Logging backend to use.
@@ -817,11 +808,7 @@ in
             '';
           };
           overwriteprotocol = mkOption {
-            type = types.enum [
-              ""
-              "http"
-              "https"
-            ];
+            type = types.enum [ "" "http" "https" ];
             default = "";
             example = "https";
             description = ''
@@ -1113,18 +1100,12 @@ in
                 exit 1
               fi
 
-              ${concatMapStrings
-                (name: ''
-                  if [ -d "${cfg.home}"/${name} ]; then
-                    echo "Cleaning up ${name}; these are now bundled in the webroot store-path!"
-                    rm -r "${cfg.home}"/${name}
-                  fi
-                '')
-                [
-                  "nix-apps"
-                  "apps"
-                ]
-              }
+              ${concatMapStrings (name: ''
+                if [ -d "${cfg.home}"/${name} ]; then
+                  echo "Cleaning up ${name}; these are now bundled in the webroot store-path!"
+                  rm -r "${cfg.home}"/${name}
+                fi
+              '') [ "nix-apps" "apps" ]}
 
               # Do not install if already installed
               if [[ ! -e ${datadir}/config/config.php ]]; then

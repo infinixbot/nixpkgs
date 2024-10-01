@@ -96,13 +96,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   preFixup = ''
     gappsWrapperArgs+=(--prefix LD_LIBRARY_PATH : "$LD_LIBRARY_PATH")
-    gappsWrapperArgs+=(--prefix PATH : "${
-      lib.makeBinPath [
-        xdg-utils
-        xclip
-        wl-clipboard
-      ]
-    }")
+    gappsWrapperArgs+=(--prefix PATH : "${lib.makeBinPath [ xdg-utils xclip wl-clipboard ]}")
   '';
 
   # prevent corrupting core in exe

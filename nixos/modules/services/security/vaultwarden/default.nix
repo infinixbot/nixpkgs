@@ -68,21 +68,14 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "bitwarden_rs" ] [
-      "services"
-      "vaultwarden"
-    ])
+    (lib.mkRenamedOptionModule [ "services" "bitwarden_rs" ] [ "services" "vaultwarden" ])
   ];
 
   options.services.vaultwarden = {
     enable = lib.mkEnableOption "vaultwarden";
 
     dbBackend = lib.mkOption {
-      type = lib.types.enum [
-        "sqlite"
-        "mysql"
-        "postgresql"
-      ];
+      type = lib.types.enum [ "sqlite" "mysql" "postgresql" ];
       default = "sqlite";
       description = ''
         Which database backend vaultwarden will be using.

@@ -24,12 +24,7 @@ in
         lib.concatStringsSep "," value
       )
     )
-    (lib.mkRenamedOptionModule [ "services" "kavita" "port" ] [
-      "services"
-      "kavita"
-      "settings"
-      "Port"
-    ])
+    (lib.mkRenamedOptionModule [ "services" "kavita" "port" ] [ "services" "kavita" "settings" "Port" ])
   ];
 
   options.services.kavita = {

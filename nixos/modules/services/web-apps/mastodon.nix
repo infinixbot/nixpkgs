@@ -625,11 +625,7 @@ in
           description = ''
             It controls the ElasticSearch indices configuration (number of shards and replica).
           '';
-          type = lib.types.enum [
-            "single_node_cluster"
-            "small_cluster"
-            "large_cluster"
-          ];
+          type = lib.types.enum [ "single_node_cluster" "small_cluster" "large_cluster" ];
           default = "single_node_cluster";
           example = "large_cluster";
         };
@@ -1058,10 +1054,7 @@ in
               inherit (cfg) group;
             };
           })
-          (lib.attrsets.setAttrByPath [ cfg.user "packages" ] [
-            cfg.package
-            pkgs.imagemagick
-          ])
+          (lib.attrsets.setAttrByPath [ cfg.user "packages" ] [ cfg.package pkgs.imagemagick ])
           (lib.mkIf (cfg.redis.createLocally && cfg.redis.enableUnixSocket) {
             ${config.services.mastodon.user}.extraGroups = [ "redis-mastodon" ];
           })
@@ -1069,12 +1062,7 @@ in
 
         users.groups.${cfg.group}.members = lib.optional cfg.configureNginx config.services.nginx.user;
       }
-      {
-        systemd.services = lib.mkMerge [
-          sidekiqUnits
-          streamingUnits
-        ];
-      }
+      { systemd.services = lib.mkMerge [ sidekiqUnits streamingUnits ]; }
     ]
   );
 

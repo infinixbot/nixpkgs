@@ -123,10 +123,7 @@ edk2.mkDerivation projectDscPath (finalAttrs: {
       nasm
       acpica-tools
     ]
-    ++ lib.optionals stdenv.cc.isClang [
-      llvmPackages.bintools
-      llvmPackages.llvm
-    ]
+    ++ lib.optionals stdenv.cc.isClang [ llvmPackages.bintools llvmPackages.llvm ]
     ++ lib.optionals msVarsTemplate [
       python3
       pexpect
@@ -153,16 +150,9 @@ edk2.mkDerivation projectDscPath (finalAttrs: {
     ++ lib.optionals systemManagementModeRequired [ "-D SMM_REQUIRE=TRUE" ]
     ++ lib.optionals fdSize2MB [ "-D FD_SIZE_2MB" ]
     ++ lib.optionals fdSize4MB [ "-D FD_SIZE_4MB" ]
-    ++ lib.optionals httpSupport [
-      "-D NETWORK_HTTP_ENABLE=TRUE"
-      "-D NETWORK_HTTP_BOOT_ENABLE=TRUE"
-    ]
+    ++ lib.optionals httpSupport [ "-D NETWORK_HTTP_ENABLE=TRUE" "-D NETWORK_HTTP_BOOT_ENABLE=TRUE" ]
     ++ lib.optionals tlsSupport [ "-D NETWORK_TLS_ENABLE=TRUE" ]
-    ++ lib.optionals tpmSupport [
-      "-D TPM_ENABLE"
-      "-D TPM2_ENABLE"
-      "-D TPM2_CONFIG_ENABLE"
-    ];
+    ++ lib.optionals tpmSupport [ "-D TPM_ENABLE" "-D TPM2_ENABLE" "-D TPM2_CONFIG_ENABLE" ];
 
   buildConfig = if debug then "DEBUG" else "RELEASE";
   env.NIX_CFLAGS_COMPILE = lib.optionalString stdenv.cc.isClang "-Qunused-arguments";

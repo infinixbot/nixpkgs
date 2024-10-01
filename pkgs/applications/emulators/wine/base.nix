@@ -164,18 +164,9 @@ stdenv.mkDerivation (
             gst-plugins-bad
           ]
         )
-        ++ lib.optionals gtkSupport [
-          pkgs.gtk3
-          pkgs.glib
-        ]
-        ++ lib.optionals openclSupport [
-          pkgs.opencl-headers
-          pkgs.ocl-icd
-        ]
-        ++ lib.optionals tlsSupport [
-          pkgs.openssl
-          pkgs.gnutls
-        ]
+        ++ lib.optionals gtkSupport [ pkgs.gtk3 pkgs.glib ]
+        ++ lib.optionals openclSupport [ pkgs.opencl-headers pkgs.ocl-icd ]
+        ++ lib.optionals tlsSupport [ pkgs.openssl pkgs.gnutls ]
         ++ lib.optionals (openglSupport && !stdenv.isDarwin) [
           pkgs.libGLU
           pkgs.libGL

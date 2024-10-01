@@ -53,12 +53,7 @@ stdenv.mkDerivation rec {
       libstemmer
       cyrus_sasl.dev
     ]
-    ++ lib.optionals (stdenv.isLinux) [
-      systemd
-      pam
-      libcap
-      inotify-tools
-    ]
+    ++ lib.optionals (stdenv.isLinux) [ systemd pam libcap inotify-tools ]
     ++ lib.optional withMySQL libmysqlclient
     ++ lib.optional withPgSQL postgresql
     ++ lib.optional withSQLite sqlite

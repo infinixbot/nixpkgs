@@ -46,15 +46,10 @@ stdenv.mkDerivation (finalAttrs: {
       sed -i '/os-wrappers-test/d' tests/meson.build
     '';
 
-  outputs =
-    [
-      "out"
-      "dev"
-    ]
-    ++ lib.optionals withDocumentation [
-      "doc"
-      "man"
-    ];
+  outputs = [
+    "out"
+    "dev"
+  ] ++ lib.optionals withDocumentation [ "doc" "man" ];
   separateDebugInfo = true;
 
   mesonFlags = [

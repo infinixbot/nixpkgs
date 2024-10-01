@@ -40,13 +40,7 @@ stdenv.mkDerivation rec {
       --replace /usr/bin/perl ${perl}/bin/perl
 
     wrapProgram $dir/cupswrapper/brother_lpdwrapper_MFCL2740DW \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          coreutils
-          gnugrep
-          gnused
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ coreutils gnugrep gnused ]}
 
     mkdir -p $out/lib/cups/filter
     mkdir -p $out/share/cups/model

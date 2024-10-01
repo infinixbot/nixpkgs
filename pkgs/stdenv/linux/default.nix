@@ -833,11 +833,7 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
             ++ lib.optional (gawk.libsigsegv != null) gawk.libsigsegv
           )
           # More complicated cases
-          ++ (map (x: lib.getOutput x (getLibc prevStage)) [
-            "out"
-            "dev"
-            "bin"
-          ])
+          ++ (map (x: lib.getOutput x (getLibc prevStage)) [ "out" "dev" "bin" ])
           ++ [
             linuxHeaders # propagated from .dev
             binutils

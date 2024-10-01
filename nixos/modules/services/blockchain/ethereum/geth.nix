@@ -124,34 +124,19 @@ let
         };
 
         network = lib.mkOption {
-          type = lib.types.nullOr (
-            lib.types.enum [
-              "goerli"
-              "rinkeby"
-              "yolov2"
-              "ropsten"
-            ]
-          );
+          type = lib.types.nullOr (lib.types.enum [ "goerli" "rinkeby" "yolov2" "ropsten" ]);
           default = null;
           description = "The network to connect to. Mainnet (null) is the default ethereum network.";
         };
 
         syncmode = lib.mkOption {
-          type = lib.types.enum [
-            "snap"
-            "fast"
-            "full"
-            "light"
-          ];
+          type = lib.types.enum [ "snap" "fast" "full" "light" ];
           default = "snap";
           description = "Blockchain sync mode.";
         };
 
         gcmode = lib.mkOption {
-          type = lib.types.enum [
-            "full"
-            "archive"
-          ];
+          type = lib.types.enum [ "full" "archive" ];
           default = "full";
           description = "Blockchain garbage collection mode.";
         };

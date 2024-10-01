@@ -57,12 +57,7 @@ stdenv.mkDerivation rec {
 
     chmod +x $out/usr/lib64/cups/filter/brlpdwrappermfc5890cn
     wrapProgram $out/usr/lib64/cups/filter/brlpdwrappermfc5890cn --prefix PATH : ${
-      lib.makeBinPath [
-        coreutils
-        psutils
-        gnugrep
-        gnused
-      ]
+      lib.makeBinPath [ coreutils psutils gnugrep gnused ]
     }
 
     mkdir -p $out/lib/cups/filter

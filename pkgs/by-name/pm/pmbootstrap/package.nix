@@ -111,14 +111,7 @@ python3Packages.buildPythonApplication rec {
     "test_version"
   ];
 
-  makeWrapperArgs = [
-    "--prefix PATH : ${
-      lib.makeBinPath [
-        git
-        openssl
-      ]
-    }"
-  ];
+  makeWrapperArgs = [ "--prefix PATH : ${lib.makeBinPath [ git openssl ]}" ];
 
   passthru.updateScript = gitUpdater { };
 

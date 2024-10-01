@@ -5,10 +5,7 @@
 }:
 let
   version = "2016-01-26";
-  rpath = lib.makeLibraryPath [
-    "$out/lib"
-    "$out/bin"
-  ];
+  rpath = lib.makeLibraryPath [ "$out/lib" "$out/bin" ];
   platform =
     with stdenv;
     if isx86_64 then

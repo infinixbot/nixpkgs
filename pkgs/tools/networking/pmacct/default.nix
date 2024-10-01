@@ -51,11 +51,7 @@ stdenv.mkDerivation rec {
     ++ lib.optional withNflog libnetfilter_log
     ++ lib.optional withSQLite sqlite
     ++ lib.optional withPgSQL postgresql
-    ++ lib.optionals withMysql [
-      libmysqlclient
-      zlib
-      numactl
-    ]
+    ++ lib.optionals withMysql [ libmysqlclient zlib numactl ]
     ++ lib.optional gnutlsSupport gnutls;
 
   MYSQL_CONFIG = lib.optionalString withMysql "${lib.getDev libmysqlclient}/bin/mysql_config";

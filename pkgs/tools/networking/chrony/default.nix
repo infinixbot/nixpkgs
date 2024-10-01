@@ -31,20 +31,14 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs =
-    [
-      gnutls
-      libedit
-      nspr
-      nss
-      readline
-      texinfo
-    ]
-    ++ lib.optionals stdenv.isLinux [
-      libcap
-      libseccomp
-      pps-tools
-    ];
+  buildInputs = [
+    gnutls
+    libedit
+    nspr
+    nss
+    readline
+    texinfo
+  ] ++ lib.optionals stdenv.isLinux [ libcap libseccomp pps-tools ];
 
   configureFlags = [
     "--enable-ntp-signd"

@@ -27,10 +27,7 @@ rustPlatform.buildRustPackage rec {
     makeBinaryWrapper
     installShellFiles
   ];
-  buildInputs = lib.optionals stdenv.isDarwin [
-    libiconv
-    darwin.apple_sdk.frameworks.Security
-  ];
+  buildInputs = lib.optionals stdenv.isDarwin [ libiconv darwin.apple_sdk.frameworks.Security ];
 
   buildNoDefaultFeatures = true;
 

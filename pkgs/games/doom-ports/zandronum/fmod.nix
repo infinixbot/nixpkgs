@@ -9,11 +9,7 @@
 
 let
   bits = lib.optionalString (stdenv.hostPlatform.system == "x86_64-linux") "64";
-  libPath = lib.makeLibraryPath [
-    stdenv.cc.cc
-    alsa-lib
-    libpulseaudio
-  ];
+  libPath = lib.makeLibraryPath [ stdenv.cc.cc alsa-lib libpulseaudio ];
 
 in
 stdenv.mkDerivation rec {

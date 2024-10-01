@@ -53,12 +53,7 @@ in
     };
 
     provider = mkOption {
-      type = types.enum [
-        "local"
-        "s3"
-        "storj"
-        "gdrive"
-      ];
+      type = types.enum [ "local" "s3" "storj" "gdrive" ];
       default = "local";
       description = "Storage providers to use";
     };

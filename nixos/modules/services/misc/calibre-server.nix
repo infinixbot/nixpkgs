@@ -98,11 +98,7 @@ in
         };
 
         mode = lib.mkOption {
-          type = lib.types.enum [
-            "auto"
-            "basic"
-            "digest"
-          ];
+          type = lib.types.enum [ "auto" "basic" "digest" ];
           default = "auto";
           description = ''
             Choose the type of authentication used.

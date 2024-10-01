@@ -83,10 +83,7 @@ in
             '';
           };
           global.database_backend = lib.mkOption {
-            type = lib.types.enum [
-              "sqlite"
-              "rocksdb"
-            ];
+            type = lib.types.enum [ "sqlite" "rocksdb" ];
             default = "sqlite";
             example = "rocksdb";
             description = ''

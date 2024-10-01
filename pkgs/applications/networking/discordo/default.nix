@@ -33,12 +33,7 @@ buildGoModule rec {
 
   postInstall = ''
     wrapProgram $out/bin/discordo \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          xsel
-          wl-clipboard
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ xsel wl-clipboard ]}
   '';
 
   passthru.updateScript = nix-update-script {

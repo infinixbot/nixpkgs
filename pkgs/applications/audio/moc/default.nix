@@ -110,11 +110,7 @@ stdenv.mkDerivation {
     ++ lib.optional midiSupport timidity
     ++ lib.optional modplugSupport libmodplug
     ++ lib.optional mp3Support libmad
-    ++ lib.optionals musepackSupport [
-      libmpc
-      libmpcdec
-      taglib
-    ]
+    ++ lib.optionals musepackSupport [ libmpc libmpcdec taglib ]
     ++ lib.optional vorbisSupport libvorbis
     ++ lib.optional speexSupport speex
     ++ lib.optional ffmpegSupport ffmpeg_7
@@ -123,10 +119,7 @@ stdenv.mkDerivation {
     # Misc
     ++ lib.optional curlSupport curl
     ++ lib.optional samplerateSupport libsamplerate
-    ++ lib.optionals stdenv.isDarwin [
-      libiconv
-      CoreServices
-    ];
+    ++ lib.optionals stdenv.isDarwin [ libiconv CoreServices ];
 
   configureFlags = [
     # Sound sub-systems

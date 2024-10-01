@@ -189,11 +189,7 @@ in
 
     database = {
       type = lib.mkOption {
-        type = enum [
-          "SQLite"
-          "PostgreSQL"
-          "MySQL"
-        ];
+        type = enum [ "SQLite" "PostgreSQL" "MySQL" ];
         default = "SQLite";
         example = "MySQL";
         description = "Database engine to use.";
@@ -261,10 +257,7 @@ in
       };
 
       server = lib.mkOption {
-        type = enum [
-          "nginx"
-          "none"
-        ];
+        type = enum [ "nginx" "none" ];
         default = "nginx";
         description = ''
           The webserver used for the Sympa web interface. Set it to `none` if you want to configure it yourself.
@@ -291,10 +284,7 @@ in
 
     mta = {
       type = lib.mkOption {
-        type = enum [
-          "postfix"
-          "none"
-        ];
+        type = enum [ "postfix" "none" ];
         default = "postfix";
         description = ''
           Mail transfer agent (MTA) integration. Use `none` if you want to configure it yourself.

@@ -17,17 +17,12 @@ stdenv.mkDerivation {
     sha256 = "05sns8h5yspa7xkl81ri7y1yxf5icgsnl497f3xnaryhx11s2rv6";
   };
 
-  nativeBuildInputs =
-    [
-      bdftopcf
-      libfaketime
-      xorg.fonttosfnt
-      xorg.mkfontscale
-    ]
-    ++ lib.optionals stdenv.isLinux [
-      perl
-      kbd
-    ];
+  nativeBuildInputs = [
+    bdftopcf
+    libfaketime
+    xorg.fonttosfnt
+    xorg.mkfontscale
+  ] ++ lib.optionals stdenv.isLinux [ perl kbd ];
 
   postPatch = "patchShebangs .";
 

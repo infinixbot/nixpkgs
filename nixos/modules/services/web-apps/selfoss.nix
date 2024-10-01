@@ -55,11 +55,7 @@ in
 
       database = {
         type = mkOption {
-          type = types.enum [
-            "pgsql"
-            "mysql"
-            "sqlite"
-          ];
+          type = types.enum [ "pgsql" "mysql" "sqlite" ];
           default = "sqlite";
           description = ''
             Database to store feeds. Supported are sqlite, pgsql and mysql.

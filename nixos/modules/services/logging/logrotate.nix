@@ -10,15 +10,7 @@ let
 
   generateLine =
     n: v:
-    if
-      builtins.elem n [
-        "files"
-        "priority"
-        "enable"
-        "global"
-      ]
-      || v == null
-    then
+    if builtins.elem n [ "files" "priority" "enable" "global" ] || v == null then
       null
     else if builtins.elem n [ "frequency" ] then
       "${v}\n"

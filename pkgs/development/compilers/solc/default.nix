@@ -102,14 +102,9 @@ let
           ];
 
         nativeBuildInputs = [ cmake ];
-        buildInputs =
-          [ boost ]
-          ++ lib.optionals z3Support [ z3 ]
-          ++ lib.optionals cvc4Support [
-            cvc4
-            cln
-            gmp
-          ];
+        buildInputs = [
+          boost
+        ] ++ lib.optionals z3Support [ z3 ] ++ lib.optionals cvc4Support [ cvc4 cln gmp ];
         nativeCheckInputs = [
           jq
           ncurses

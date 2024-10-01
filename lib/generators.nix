@@ -542,15 +542,8 @@ rec {
         else if isString v then
           let
             lines = filter (v: !isList v) (split "\n" v);
-            escapeSingleline = escape [
-              "\\"
-              "\""
-              "\${"
-            ];
-            escapeMultiline = replaceStrings [ "\${" "''" ] [
-              "''\${"
-              "'''"
-            ];
+            escapeSingleline = escape [ "\\" "\"" "\${" ];
+            escapeMultiline = replaceStrings [ "\${" "''" ] [ "''\${" "'''" ];
             singlelineResult = "\"" + concatStringsSep "\\n" (map escapeSingleline lines) + "\"";
             multilineResult =
               let

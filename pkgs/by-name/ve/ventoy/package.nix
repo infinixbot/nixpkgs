@@ -34,11 +34,7 @@
   libsForQt5,
 }:
 
-assert lib.elem defaultGuiType [
-  ""
-  "gtk3"
-  "qt5"
-];
+assert lib.elem defaultGuiType [ "" "gtk3" "qt5" ];
 assert defaultGuiType == "gtk3" -> withGtk3;
 assert defaultGuiType == "qt5" -> withQt5;
 

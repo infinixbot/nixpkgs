@@ -26,12 +26,7 @@ in
       description = "Group to own the seatd socket";
     };
     logLevel = mkOption {
-      type = types.enum [
-        "debug"
-        "info"
-        "error"
-        "silent"
-      ];
+      type = types.enum [ "debug" "info" "error" "silent" ];
       default = "info";
       description = "Logging verbosity";
     };

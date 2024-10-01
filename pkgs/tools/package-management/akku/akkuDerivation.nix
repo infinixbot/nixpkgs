@@ -117,10 +117,5 @@ stdenv.mkDerivation (
     } // args.meta or { };
     setupHook = ./setup-hook.sh;
   }
-  // builtins.removeAttrs args [
-    "name"
-    "buildInputs"
-    "meta"
-    "nativeBuildInputs"
-  ]
+  // builtins.removeAttrs args [ "name" "buildInputs" "meta" "nativeBuildInputs" ]
 )

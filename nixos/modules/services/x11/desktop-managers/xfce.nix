@@ -22,21 +22,13 @@ in
     # added 2019-08-18
     # needed to preserve some semblance of UI familarity
     # with original XFCE module
-    (mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "desktopManager"
-        "xfce4-14"
-        "extraSessionCommands"
-      ]
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "sessionCommands"
-      ]
-    )
+    (mkRenamedOptionModule [
+      "services"
+      "xserver"
+      "desktopManager"
+      "xfce4-14"
+      "extraSessionCommands"
+    ] [ "services" "xserver" "displayManager" "sessionCommands" ])
 
     # added 2019-11-04
     # xfce4-14 module removed and promoted to xfce.
@@ -89,21 +81,13 @@ in
         "enableXfwm"
       ]
     )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "desktopManager"
-        "xfce"
-        "extraSessionCommands"
-      ]
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "sessionCommands"
-      ]
-    )
+    (mkRenamedOptionModule [
+      "services"
+      "xserver"
+      "desktopManager"
+      "xfce"
+      "extraSessionCommands"
+    ] [ "services" "xserver" "displayManager" "sessionCommands" ])
     (mkRemovedOptionModule [
       "services"
       "xserver"
@@ -114,20 +98,13 @@ in
 
     # added 2022-06-26
     # thunar has its own module
-    (mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "desktopManager"
-        "xfce"
-        "thunarPlugins"
-      ]
-      [
-        "programs"
-        "thunar"
-        "plugins"
-      ]
-    )
+    (mkRenamedOptionModule [
+      "services"
+      "xserver"
+      "desktopManager"
+      "xfce"
+      "thunarPlugins"
+    ] [ "programs" "thunar" "plugins" ])
   ];
 
   options = {

@@ -153,20 +153,9 @@ in
 
             freeformType =
               let
-                validSettingsPrimitiveTypes = oneOf [
-                  int
-                  str
-                  bool
-                  float
-                ];
-                validSettingsTypes = oneOf [
-                  validSettingsPrimitiveTypes
-                  (listOf validSettingsPrimitiveTypes)
-                ];
-                settingsType = oneOf [
-                  str
-                  (attrsOf validSettingsTypes)
-                ];
+                validSettingsPrimitiveTypes = oneOf [ int str bool float ];
+                validSettingsTypes = oneOf [ validSettingsPrimitiveTypes (listOf validSettingsPrimitiveTypes) ];
+                settingsType = oneOf [ str (attrsOf validSettingsTypes) ];
               in
               attrsOf (oneOf [
                 settingsType

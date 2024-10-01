@@ -66,14 +66,7 @@ buildDotnetModule rec {
     install -Dm444 NickvisionTubeConverter.Shared/Linux/org.nickvision.tubeconverter.desktop.in -T $out/share/applications/org.nickvision.tubeconverter.desktop
   '';
 
-  makeWrapperArgs = [
-    "--prefix PATH : ${
-      lib.makeBinPath [
-        pythonEnv
-        ffmpeg
-      ]
-    }"
-  ];
+  makeWrapperArgs = [ "--prefix PATH : ${lib.makeBinPath [ pythonEnv ffmpeg ]}" ];
 
   passthru.updateScript = ./update.sh;
 

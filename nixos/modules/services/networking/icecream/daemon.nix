@@ -137,26 +137,11 @@ in
             "icecc"
             (toString cfg.nice)
           ]
-          ++ optionals (cfg.schedulerHost != null) [
-            "-s"
-            cfg.schedulerHost
-          ]
-          ++ optionals (cfg.netName != null) [
-            "-n"
-            cfg.netName
-          ]
-          ++ optionals (cfg.cacheLimit != null) [
-            "--cache-limit"
-            (toString cfg.cacheLimit)
-          ]
-          ++ optionals (cfg.maxProcesses != null) [
-            "-m"
-            (toString cfg.maxProcesses)
-          ]
-          ++ optionals (cfg.hostname != null) [
-            "-N"
-            (cfg.hostname)
-          ]
+          ++ optionals (cfg.schedulerHost != null) [ "-s" cfg.schedulerHost ]
+          ++ optionals (cfg.netName != null) [ "-n" cfg.netName ]
+          ++ optionals (cfg.cacheLimit != null) [ "--cache-limit" (toString cfg.cacheLimit) ]
+          ++ optionals (cfg.maxProcesses != null) [ "-m" (toString cfg.maxProcesses) ]
+          ++ optionals (cfg.hostname != null) [ "-N" (cfg.hostname) ]
           ++ optional cfg.noRemote "--no-remote"
           ++ cfg.extraArgs
         );

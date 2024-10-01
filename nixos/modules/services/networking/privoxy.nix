@@ -23,12 +23,7 @@ let
   configType =
     with types;
     let
-      atom = oneOf [
-        int
-        bool
-        str
-        path
-      ];
+      atom = oneOf [ int bool str path ];
     in
     attrsOf (either atom (listOf atom))
     // {

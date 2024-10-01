@@ -16,12 +16,7 @@ bundlerApp {
 
   postBuild = ''
     wrapProgram "$out/bin/fusuma" \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          gnugrep
-          libinput
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ gnugrep libinput ]}
   '';
 
   passthru.updateScript = bundlerUpdateScript "fusuma";

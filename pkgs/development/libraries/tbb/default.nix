@@ -37,10 +37,7 @@ stdenv.mkDerivation rec {
   # Fix build with modern gcc
   # In member function 'void std::__atomic_base<_IntTp>::store(__int_type, std::memory_order) [with _ITp = bool]',
   NIX_CFLAGS_COMPILE =
-    lib.optionals stdenv.cc.isGNU [
-      "-Wno-error=array-bounds"
-      "-Wno-error=stringop-overflow"
-    ]
+    lib.optionals stdenv.cc.isGNU [ "-Wno-error=array-bounds" "-Wno-error=stringop-overflow" ]
     ++
       # error: variable 'val' set but not used
       lib.optionals stdenv.cc.isClang [ "-Wno-error=unused-but-set-variable" ]

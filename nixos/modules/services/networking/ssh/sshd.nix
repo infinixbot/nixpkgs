@@ -178,16 +178,8 @@ in
 
 {
   imports = [
-    (lib.mkAliasOptionModuleMD [ "services" "sshd" "enable" ] [
-      "services"
-      "openssh"
-      "enable"
-    ])
-    (lib.mkAliasOptionModuleMD [ "services" "openssh" "knownHosts" ] [
-      "programs"
-      "ssh"
-      "knownHosts"
-    ])
+    (lib.mkAliasOptionModuleMD [ "services" "sshd" "enable" ] [ "services" "openssh" "enable" ])
+    (lib.mkAliasOptionModuleMD [ "services" "openssh" "knownHosts" ] [ "programs" "ssh" "knownHosts" ])
     (lib.mkRenamedOptionModule [ "services" "openssh" "challengeResponseAuthentication" ] [
       "services"
       "openssh"

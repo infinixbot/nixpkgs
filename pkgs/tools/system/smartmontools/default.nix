@@ -52,10 +52,7 @@ stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs = [ autoreconfHook ];
-  buildInputs = lib.optionals stdenv.isDarwin [
-    IOKit
-    ApplicationServices
-  ];
+  buildInputs = lib.optionals stdenv.isDarwin [ IOKit ApplicationServices ];
   enableParallelBuilding = true;
 
   meta = with lib; {

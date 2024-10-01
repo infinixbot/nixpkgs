@@ -25,12 +25,7 @@ let
 
       miniInit = ''
         #!${pkgs.runtimeShell} -xe
-        export PATH="${
-          lib.makeBinPath [
-            pkgs.coreutils
-            pkgs.util-linux
-          ]
-        }"
+        export PATH="${lib.makeBinPath [ pkgs.coreutils pkgs.util-linux ]}"
 
         mkdir -p /run/dbus /var
         ln -s /run /var

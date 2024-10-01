@@ -209,12 +209,6 @@ rec {
     assert intersectAttrs fArgs hashSet == { };
 
     setFunctionArgs (args: fetcher (normalize args)) (
-      removeAttrs fArgs [
-        "outputHash"
-        "outputHashAlgo"
-      ]
-      // {
-        hash = fArgs.outputHash;
-      }
+      removeAttrs fArgs [ "outputHash" "outputHashAlgo" ] // { hash = fArgs.outputHash; }
     );
 }

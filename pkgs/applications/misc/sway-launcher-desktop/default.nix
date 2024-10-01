@@ -32,12 +32,7 @@ stdenv.mkDerivation rec {
     install -d $out/bin
     install ${pname}.sh $out/bin/${pname}
     wrapProgram $out/bin/${pname} \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          gawk
-          fzf
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ gawk fzf ]}
   '';
 
   meta = with lib; {

@@ -72,10 +72,7 @@ stdenv.mkDerivation rec {
       Cocoa
       libiconv
     ]
-    ++ lib.optionals enablePython [
-      swig
-      python
-    ];
+    ++ lib.optionals enablePython [ swig python ];
 
   disabledTests =
     [

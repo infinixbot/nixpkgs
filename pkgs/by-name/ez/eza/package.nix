@@ -35,12 +35,9 @@ rustPlatform.buildRustPackage rec {
     installShellFiles
     pandoc
   ];
-  buildInputs =
-    [ zlib ]
-    ++ lib.optionals stdenv.isDarwin [
-      libiconv
-      darwin.apple_sdk.frameworks.Security
-    ];
+  buildInputs = [
+    zlib
+  ] ++ lib.optionals stdenv.isDarwin [ libiconv darwin.apple_sdk.frameworks.Security ];
 
   buildNoDefaultFeatures = true;
   buildFeatures = lib.optional gitSupport "git";

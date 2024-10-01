@@ -176,11 +176,7 @@ stdenv.mkDerivation (finalAttrs: {
       gnused
       breezy
     ]
-    ++ lib.optionals stdenv.isLinux [
-      rpm
-      dpkg
-      cdrkit
-    ]
+    ++ lib.optionals stdenv.isLinux [ rpm dpkg cdrkit ]
   );
 
   nativeBuildInputs = [

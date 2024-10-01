@@ -42,10 +42,7 @@ perlPackages.buildPerlPackage rec {
 
     install -D get_iplayer -t $out/bin
     wrapProgram $out/bin/get_iplayer --suffix PATH : ${
-      lib.makeBinPath [
-        atomicparsley
-        ffmpeg
-      ]
+      lib.makeBinPath [ atomicparsley ffmpeg ]
     } --prefix PERL5LIB : $PERL5LIB
     install -Dm444 get_iplayer.1 -t $out/share/man/man1
 

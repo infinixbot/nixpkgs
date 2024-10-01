@@ -48,15 +48,8 @@ stdenv.mkDerivation rec {
     ])
     ++ lib.optional (gtkSupport == "gtk2") gtk2-x11
     ++ lib.optional (gtkSupport == "gtk3") gtk3-x11
-    ++ lib.optionals stdenv.isDarwin [
-      Carbon
-      CoreServices
-      AppKit
-    ]
-    ++ lib.optionals stdenv.isLinux [
-      libcap
-      systemd
-    ]
+    ++ lib.optionals stdenv.isDarwin [ Carbon CoreServices AppKit ]
+    ++ lib.optionals stdenv.isLinux [ libcap systemd ]
     ++ lib.optional withAlsa alsa-lib;
 
   configureFlags =

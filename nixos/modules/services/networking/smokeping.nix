@@ -153,11 +153,7 @@ in
         '';
       };
       linkStyle = mkOption {
-        type = types.enum [
-          "original"
-          "absolute"
-          "relative"
-        ];
+        type = types.enum [ "original" "absolute" "relative" ];
         default = "relative";
         example = "absolute";
         description = "DNS name for the urls generated in the cgi.";

@@ -18,10 +18,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-n4KbKkqAnHDIsXs8A/FE+rCkSKQKr5fv7npJ/X6t0mk=";
 
-  tags = lib.optionals (!enableUnfree) [
-    "oss"
-    "nolimit"
-  ];
+  tags = lib.optionals (!enableUnfree) [ "oss" "nolimit" ];
 
   doCheck = false;
 

@@ -124,10 +124,7 @@ let
               qtwebsockets
               qtwebview
             ]
-            ++ lib.optionals (!stdenv.isDarwin) [
-              qtwayland
-              libglvnd
-            ]
+            ++ lib.optionals (!stdenv.isDarwin) [ qtwayland libglvnd ]
           )
       ) { };
 

@@ -46,49 +46,38 @@ stdenv.mkDerivation rec {
     hash = "sha256-IYJPf/Egh8DJud4gcZmnWpwxsDA2aIx8ucF48KO1f40=";
   };
 
-  nativeBuildInputs =
-    [
-      clang
-      llvm
-      makeWrapper
-      pkg-config
-    ]
-    ++ lib.optionals rustSupport [
-      rustc
-      cargo
-    ];
+  nativeBuildInputs = [
+    clang
+    llvm
+    makeWrapper
+    pkg-config
+  ] ++ lib.optionals rustSupport [ rustc cargo ];
 
   propagatedBuildInputs = with python.pkgs; [
     pyyaml
   ];
 
-  buildInputs =
-    [
-      elfutils
-      jansson
-      libbpf
-      libcap_ng
-      libevent
-      libmagic
-      libmaxminddb
-      libnet
-      libnetfilter_log
-      libnetfilter_queue
-      libnfnetlink
-      libpcap
-      libyaml
-      luajit
-      lz4
-      nspr
-      pcre2
-      python
-      zlib
-    ]
-    ++ lib.optional hyperscanSupport hyperscan
-    ++ lib.optionals redisSupport [
-      redis
-      hiredis
-    ];
+  buildInputs = [
+    elfutils
+    jansson
+    libbpf
+    libcap_ng
+    libevent
+    libmagic
+    libmaxminddb
+    libnet
+    libnetfilter_log
+    libnetfilter_queue
+    libnfnetlink
+    libpcap
+    libyaml
+    luajit
+    lz4
+    nspr
+    pcre2
+    python
+    zlib
+  ] ++ lib.optional hyperscanSupport hyperscan ++ lib.optionals redisSupport [ redis hiredis ];
 
   enableParallelBuilding = true;
 

@@ -42,10 +42,7 @@ stdenv.mkDerivation {
     ]
     ++ lib.optional hostPlatform.isDarwin fixDarwinDylibNames;
 
-  buildInputs = lib.optionals stdenv.hostPlatform.isLinux [
-    libxml2
-    stdenv.cc.cc
-  ];
+  buildInputs = lib.optionals stdenv.hostPlatform.isLinux [ libxml2 stdenv.cc.cc ];
 
   propagatedBuildInputs = [
     curl

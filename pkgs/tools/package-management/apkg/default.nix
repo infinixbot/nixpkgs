@@ -42,12 +42,7 @@ python3Packages.buildPythonApplication rec {
     "--prefix"
     "PATH"
     ":"
-    (lib.makeBinPath [
-      gitMinimal
-      rpm
-      dpkg
-      fakeroot
-    ])
+    (lib.makeBinPath [ gitMinimal rpm dpkg fakeroot ])
   ];
 
   nativeCheckInputs = with python3Packages; [

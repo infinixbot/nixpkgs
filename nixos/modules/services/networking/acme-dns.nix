@@ -94,10 +94,7 @@ in
 
           database = {
             engine = mkOption {
-              type = types.enum [
-                "sqlite3"
-                "postgres"
-              ];
+              type = types.enum [ "sqlite3" "postgres" ];
               description = "Database engine to use.";
               default = "sqlite3";
             };
@@ -133,12 +130,7 @@ in
             };
 
             tls = mkOption {
-              type = types.enum [
-                "letsencrypt"
-                "letsencryptstaging"
-                "cert"
-                "none"
-              ];
+              type = types.enum [ "letsencrypt" "letsencryptstaging" "cert" "none" ];
               description = "TLS backend to use.";
               default = "none";
             };
@@ -146,12 +138,7 @@ in
 
           logconfig = {
             loglevel = mkOption {
-              type = types.enum [
-                "error"
-                "warning"
-                "info"
-                "debug"
-              ];
+              type = types.enum [ "error" "warning" "info" "debug" ];
               description = "Level to log on.";
               default = "info";
             };

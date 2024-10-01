@@ -39,12 +39,7 @@ stdenv.mkDerivation {
         nix.perl-bindings
       ])
     }/bin/starman $out/bin/nix-serve \
-                --prefix PATH : "${
-                  lib.makeBinPath [
-                    bzip2
-                    nix
-                  ]
-                }" \
+                --prefix PATH : "${lib.makeBinPath [ bzip2 nix ]}" \
                 --add-flags $out/libexec/nix-serve/nix-serve.psgi
   '';
 

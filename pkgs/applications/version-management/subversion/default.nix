@@ -64,11 +64,7 @@ let
           "man"
         ];
 
-        nativeBuildInputs = lib.optionals needsAutogen [
-          autoconf
-          libtool
-          python3
-        ];
+        nativeBuildInputs = lib.optionals needsAutogen [ autoconf libtool python3 ];
 
         buildInputs =
           [
@@ -81,16 +77,10 @@ let
             utf8proc
           ]
           ++ lib.optional httpSupport serf
-          ++ lib.optionals pythonBindings [
-            python3
-            py3c
-          ]
+          ++ lib.optionals pythonBindings [ python3 py3c ]
           ++ lib.optional perlBindings perl
           ++ lib.optional saslSupport sasl
-          ++ lib.optionals stdenv.hostPlatform.isDarwin [
-            CoreServices
-            Security
-          ];
+          ++ lib.optionals stdenv.hostPlatform.isDarwin [ CoreServices Security ];
 
         patches = [ ./apr-1.patch ] ++ extraPatches;
 

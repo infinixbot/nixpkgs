@@ -34,13 +34,7 @@ stdenvNoCC.mkDerivation {
     )
     gappsWrapperArgs+=(
       # Thumbnailers
-      --prefix XDG_DATA_DIRS : "${
-        lib.makeSearchPath "share" [
-          gdk-pixbuf
-          librsvg
-          shared-mime-info
-        ]
-      }"
+      --prefix XDG_DATA_DIRS : "${lib.makeSearchPath "share" [ gdk-pixbuf librsvg shared-mime-info ]}"
       "''${makeWrapperArgs[@]}"
     )
     wrapProgram "$out/bin/timeshift" "''${makeWrapperArgs[@]}"

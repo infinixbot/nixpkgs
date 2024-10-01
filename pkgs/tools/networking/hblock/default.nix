@@ -33,14 +33,7 @@ stdenv.mkDerivation rec {
   ];
   postInstall = ''
     wrapProgram "$out/bin/hblock" \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          coreutils
-          curl
-          gnugrep
-          gawk
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ coreutils curl gnugrep gawk ]}
   '';
 
   meta = with lib; {

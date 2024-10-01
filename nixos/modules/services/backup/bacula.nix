@@ -266,10 +266,7 @@ let
         };
 
         monitor = mkOption {
-          type = types.enum [
-            "no"
-            "yes"
-          ];
+          type = types.enum [ "no" "yes" ];
           default = "no";
           example = "yes";
           description = ''

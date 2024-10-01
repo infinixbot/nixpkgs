@@ -47,10 +47,7 @@ python.pkgs.buildPythonApplication rec {
     "--prefix"
     "PATH"
     ":"
-    "${lib.makeBinPath [
-      wkhtmltopdf
-      rtlcss
-    ]}"
+    "${lib.makeBinPath [ wkhtmltopdf rtlcss ]}"
   ];
 
   propagatedBuildInputs = with python.pkgs; [

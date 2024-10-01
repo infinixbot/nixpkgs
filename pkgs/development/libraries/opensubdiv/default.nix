@@ -95,14 +95,10 @@ stdenv.mkDerivation rec {
       "-DGLEW_INCLUDE_DIR=${glew.dev}/include"
       "-DGLEW_LIBRARY=${glew.dev}/lib"
     ]
-    ++
-      lib.optionals cudaSupport
-        [
-        ]
-    ++
-      lib.optionals (!openclSupport)
-        [
-        ];
+    ++ lib.optionals cudaSupport [
+    ]
+    ++ lib.optionals (!openclSupport) [
+    ];
 
   preBuild =
     let

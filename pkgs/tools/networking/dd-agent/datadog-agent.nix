@@ -113,10 +113,7 @@ buildGo121Module rec {
     + lib.optionalString withSystemd ''
       \
            --prefix LD_LIBRARY_PATH : ''
-    + lib.makeLibraryPath [
-      (lib.getLib systemd)
-      rtloader
-    ];
+    + lib.makeLibraryPath [ (lib.getLib systemd) rtloader ];
 
   passthru.tests.version = testers.testVersion {
     package = datadog-agent;

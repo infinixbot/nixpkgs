@@ -72,10 +72,7 @@ in
 
             idBy = mkOption {
               description = "The method to identify the drive.";
-              type = types.enum [
-                "path"
-                "wwn"
-              ];
+              type = types.enum [ "path" "wwn" ];
               default = "path";
             };
           };

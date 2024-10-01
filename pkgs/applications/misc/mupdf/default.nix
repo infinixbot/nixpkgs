@@ -108,14 +108,8 @@ stdenv.mkDerivation rec {
       python3.pkgs.setuptools
       python3.pkgs.libclang
     ]
-    ++ lib.optionals (enablePython) [
-      which
-      swig
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      fixDarwinDylibNames
-      xcbuild
-    ];
+    ++ lib.optionals (enablePython) [ which swig ]
+    ++ lib.optionals stdenv.isDarwin [ fixDarwinDylibNames xcbuild ];
 
   buildInputs =
     [
@@ -126,16 +120,8 @@ stdenv.mkDerivation rec {
       libjpeg
       gumbo
     ]
-    ++ lib.optionals enableX11 [
-      libX11
-      libXext
-      libXi
-      libXrandr
-    ]
-    ++ lib.optionals enableCurl [
-      curl
-      openssl
-    ]
+    ++ lib.optionals enableX11 [ libX11 libXext libXi libXrandr ]
+    ++ lib.optionals enableCurl [ curl openssl ]
     ++ lib.optionals enableGL (
       if stdenv.isDarwin then
         with darwin.apple_sdk.frameworks;
@@ -149,10 +135,7 @@ stdenv.mkDerivation rec {
           libGLU
         ]
     )
-    ++ lib.optionals enableOcr [
-      leptonica
-      tesseract
-    ];
+    ++ lib.optionals enableOcr [ leptonica tesseract ];
   outputs = [
     "bin"
     "dev"

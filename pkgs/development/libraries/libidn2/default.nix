@@ -37,10 +37,7 @@ stdenv.mkDerivation rec {
 
   # The above patch causes the documentation to be regenerated, so the
   # documentation tools are required.
-  nativeBuildInputs = lib.optionals stdenv.isDarwin [
-    help2man
-    texinfo
-  ];
+  nativeBuildInputs = lib.optionals stdenv.isDarwin [ help2man texinfo ];
   buildInputs = [ libunistring ] ++ lib.optional stdenv.isDarwin libiconv;
   depsBuildBuild = [ buildPackages.stdenv.cc ];
 

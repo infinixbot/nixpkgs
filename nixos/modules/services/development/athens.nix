@@ -182,10 +182,7 @@ in
     };
 
     goEnv = lib.mkOption {
-      type = lib.types.enum [
-        "development"
-        "production"
-      ];
+      type = lib.types.enum [ "development" "production" ];
       description = "Specifies the type of environment to run. One of 'development' or 'production'.";
       default = "development";
       example = "production";
@@ -248,10 +245,7 @@ in
     };
 
     cloudRuntime = lib.mkOption {
-      type = lib.types.enum [
-        "GCP"
-        "none"
-      ];
+      type = lib.types.enum [ "GCP" "none" ];
       description = ''
         Specifies the Cloud Provider on which the Proxy/registry is running.
       '';
@@ -431,12 +425,7 @@ in
     };
 
     traceExporter = lib.mkOption {
-      type = lib.types.nullOr (
-        lib.types.enum [
-          "jaeger"
-          "datadog"
-        ]
-      );
+      type = lib.types.nullOr (lib.types.enum [ "jaeger" "datadog" ]);
       description = ''
         Trace exporter to use.
       '';
@@ -510,11 +499,7 @@ in
     };
 
     networkMode = lib.mkOption {
-      type = lib.types.enum [
-        "strict"
-        "offline"
-        "fallback"
-      ];
+      type = lib.types.enum [ "strict" "offline" "fallback" ];
       description = ''
         Configures how Athens will return the results
         of the /list endpoint as it can be assembled from both its own
@@ -555,12 +540,7 @@ in
     };
 
     indexType = lib.mkOption {
-      type = lib.types.enum [
-        "none"
-        "memory"
-        "mysql"
-        "postgres"
-      ];
+      type = lib.types.enum [ "none" "memory" "mysql" "postgres" ];
       description = ''
         Type of index backend Athens will use.
       '';

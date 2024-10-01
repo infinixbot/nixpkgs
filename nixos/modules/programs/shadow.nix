@@ -55,10 +55,7 @@ in
             DEFAULT_HOME = lib.mkOption {
               description = "Indicate if login is allowed if we can't cd to the home directory.";
               default = "yes";
-              type = lib.types.enum [
-                "yes"
-                "no"
-              ];
+              type = lib.types.enum [ "yes" "no" ];
             };
 
             ENCRYPT_METHOD = lib.mkOption {

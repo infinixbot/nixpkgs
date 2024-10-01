@@ -169,10 +169,7 @@ rec {
           # as per https://github.com/luarocks/luarocks/issues/766
           variables = depVariables;
         }
-        // removeAttrs args [
-          "requiredLuaRocks"
-          "externalDeps"
-        ]
+        // removeAttrs args [ "requiredLuaRocks" "externalDeps" ]
       );
     in
     generatedConfig;

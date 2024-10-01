@@ -42,13 +42,9 @@ stdenv.mkDerivation {
     ++ lib.optional stdenv.isDarwin "SYS=darwin"
     ++ lib.optional stdenv.cc.isClang "CC=clang";
 
-  propagatedBuildInputs =
-    [ zlib ]
-    ++ lib.optionals gnutlsSupport [
-      gnutls
-      nettle
-    ]
-    ++ lib.optional opensslSupport openssl;
+  propagatedBuildInputs = [
+    zlib
+  ] ++ lib.optionals gnutlsSupport [ gnutls nettle ] ++ lib.optional opensslSupport openssl;
 
   outputs = [
     "out"

@@ -39,10 +39,7 @@ stdenv.mkDerivation rec {
       fftwFloat
       boost
     ]
-    ++ lib.optionals stdenv.isLinux [
-      opencl-clhpp
-      ocl-icd
-    ]
+    ++ lib.optionals stdenv.isLinux [ opencl-clhpp ocl-icd ]
     ++ lib.optionals stdenv.isDarwin [ OpenCL ];
 
   # https://github.com/clMathLibraries/clFFT/issues/237

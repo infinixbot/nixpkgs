@@ -61,10 +61,7 @@ buildGoModule rec {
   tags = [ "urfave_cli_no_docs" ];
 
   # Fix for usb-related segmentation faults on darwin
-  propagatedBuildInputs = lib.optionals stdenv.isDarwin [
-    libobjc
-    IOKit
-  ];
+  propagatedBuildInputs = lib.optionals stdenv.isDarwin [ libobjc IOKit ];
 
   passthru.tests = { inherit (nixosTests) geth; };
 

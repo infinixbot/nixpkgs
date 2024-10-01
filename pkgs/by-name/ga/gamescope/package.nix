@@ -159,13 +159,7 @@ stdenv.mkDerivation (finalAttrs: {
 
     # --debug-layers flag expects these in the path
     wrapProgram "$out/bin/gamescope" \
-      --prefix PATH : ${
-        with xorg;
-        lib.makeBinPath [
-          xprop
-          xwininfo
-        ]
-      }
+      --prefix PATH : ${with xorg; lib.makeBinPath [ xprop xwininfo ]}
 
     # Install ReShade shaders
     mkdir -p $out/share/gamescope/reshade

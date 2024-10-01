@@ -63,12 +63,7 @@ let
     else
       throw "Unsupported platform for PlayOnLinux: ${stdenv.hostPlatform.system}";
   ld64 = "${stdenv.cc}/nix-support/dynamic-linker";
-  libs =
-    pkgs:
-    lib.makeLibraryPath [
-      xorg.libX11
-      libGL
-    ];
+  libs = pkgs: lib.makeLibraryPath [ xorg.libX11 libGL ];
 
   python = python3.withPackages (
     ps: with ps; [

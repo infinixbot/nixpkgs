@@ -56,12 +56,7 @@ stdenv.mkDerivation rec {
       libdrm
       libva
     ]
-    ++ lib.optionals enableGui [
-      libX11
-      libXext
-      libGL
-      wayland
-    ]
+    ++ lib.optionals enableGui [ libX11 libXext libGL wayland ]
     ++ lib.optional enableHybridCodec vaapi-intel-hybrid;
 
   enableParallelBuilding = true;

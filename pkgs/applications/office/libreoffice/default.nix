@@ -179,11 +179,7 @@
   sonnet ? null,
 }:
 
-assert builtins.elem variant [
-  "fresh"
-  "still"
-  "collabora"
-];
+assert builtins.elem variant [ "fresh" "still" "collabora" ];
 
 let
   inherit (lib)

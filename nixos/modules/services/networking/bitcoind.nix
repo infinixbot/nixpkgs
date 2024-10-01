@@ -134,10 +134,9 @@ let
 
         prune = mkOption {
           type = types.nullOr (
-            types.coercedTo (types.enum [
-              "disable"
-              "manual"
-            ]) (x: if x == "disable" then 0 else 1) types.ints.unsigned
+            types.coercedTo (types.enum [ "disable" "manual" ]) (
+              x: if x == "disable" then 0 else 1
+            ) types.ints.unsigned
           );
           default = null;
           example = 10000;

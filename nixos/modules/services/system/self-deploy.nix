@@ -66,12 +66,7 @@ in
     };
 
     switchCommand = lib.mkOption {
-      type = lib.types.enum [
-        "boot"
-        "switch"
-        "dry-activate"
-        "test"
-      ];
+      type = lib.types.enum [ "boot" "switch" "dry-activate" "test" ];
 
       default = "switch";
 
@@ -81,12 +76,7 @@ in
     };
 
     repository = lib.mkOption {
-      type =
-        with lib.types;
-        oneOf [
-          path
-          str
-        ];
+      type = with lib.types; oneOf [ path str ];
 
       description = ''
         The repository to fetch from. Must be properly formatted for git.

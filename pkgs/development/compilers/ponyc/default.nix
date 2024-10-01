@@ -97,10 +97,7 @@ stdenv.mkDerivation (rec {
     "prefix=${placeholder "out"}"
   ] ++ lib.optionals stdenv.isDarwin ([ "bits=64" ] ++ lib.optional (!lto) "lto=no");
 
-  env.NIX_CFLAGS_COMPILE = toString [
-    "-Wno-error=redundant-move"
-    "-Wno-error=implicit-fallthrough"
-  ];
+  env.NIX_CFLAGS_COMPILE = toString [ "-Wno-error=redundant-move" "-Wno-error=implicit-fallthrough" ];
 
   # make: *** [Makefile:222: test-full-programs-release] Killed: 9
   doCheck = !stdenv.isDarwin;
@@ -113,13 +110,7 @@ stdenv.mkDerivation (rec {
          wrapProgram $out/bin/ponyc \
            --prefix PATH ":" "${stdenv.cc}/bin" \
            --set-default CC "$CC" \
-           --prefix PONYPATH : "${
-             lib.makeLibraryPath [
-               pcre2
-               openssl
-               (placeholder "out")
-             ]
-           }"
+           --prefix PONYPATH : "${lib.makeLibraryPath [ pcre2 openssl (placeholder "out") ]}"
     '';
 
   # Stripping breaks linking for ponyc

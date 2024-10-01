@@ -143,12 +143,7 @@ in
           ExecStart = pkgs.substituteAll {
             src = ./initialize_kasmweb.sh;
             isExecutable = true;
-            binPath = lib.makeBinPath [
-              pkgs.docker
-              pkgs.openssl
-              pkgs.gnused
-              pkgs.yq-go
-            ];
+            binPath = lib.makeBinPath [ pkgs.docker pkgs.openssl pkgs.gnused pkgs.yq-go ];
             runtimeShell = pkgs.runtimeShell;
             kasmweb = pkgs.kasmweb;
             postgresUser = "postgres";

@@ -38,12 +38,7 @@
     buildInputs = [ curl ];
 
     postInstall = ''
-      wrapProgram "$out/bin/prefetch-npm-deps" --prefix PATH : ${
-        lib.makeBinPath [
-          gnutar
-          gzip
-        ]
-      }
+      wrapProgram "$out/bin/prefetch-npm-deps" --prefix PATH : ${lib.makeBinPath [ gnutar gzip ]}
     '';
 
     passthru.tests =

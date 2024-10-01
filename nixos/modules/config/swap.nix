@@ -162,13 +162,7 @@ let
         discardPolicy = mkOption {
           default = null;
           example = "once";
-          type = types.nullOr (
-            types.enum [
-              "once"
-              "pages"
-              "both"
-            ]
-          );
+          type = types.nullOr (types.enum [ "once" "pages" "both" ]);
           description = ''
             Specify the discard policy for the swap device. If "once", then the
             whole swap space is discarded at swapon invocation. If "pages",

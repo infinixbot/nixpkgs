@@ -193,11 +193,7 @@ in
 
         policy = mkOption {
           default = "hard_open";
-          type = types.enum [
-            "hard_open"
-            "hard_init"
-            "soft"
-          ];
+          type = types.enum [ "hard_open" "hard_init" "soft" ];
           description = ''
             Specifies the policy to use for reconnecting to an unavailable
             LDAP server. The default is `hard_open`, which

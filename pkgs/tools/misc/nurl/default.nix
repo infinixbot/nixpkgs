@@ -43,13 +43,7 @@ rustPlatform.buildRustPackage rec {
 
   postInstall = ''
     wrapProgram $out/bin/nurl \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          gitMinimal
-          mercurial
-          nix
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ gitMinimal mercurial nix ]}
     installManPage artifacts/nurl.1
     installShellCompletion artifacts/nurl.{bash,fish} --zsh artifacts/_nurl
   '';

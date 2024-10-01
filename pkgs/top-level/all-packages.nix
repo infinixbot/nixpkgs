@@ -4529,12 +4529,7 @@ with pkgs;
     paths = [ cabal2nix-unwrapped ];
     postBuild = ''
       wrapProgram $out/bin/cabal2nix \
-        --prefix PATH ":" "${
-          lib.makeBinPath [
-            nix
-            nix-prefetch-scripts
-          ]
-        }"
+        --prefix PATH ":" "${lib.makeBinPath [ nix nix-prefetch-scripts ]}"
     '';
   };
 
@@ -22678,12 +22673,7 @@ with pkgs;
   libiconvReal = callPackage ../development/libraries/libiconv { };
 
   iconv =
-    if
-      lib.elem stdenv.hostPlatform.libc [
-        "glibc"
-        "musl"
-      ]
-    then
+    if lib.elem stdenv.hostPlatform.libc [ "glibc" "musl" ] then
       lib.getBin stdenv.cc.libc
     else if stdenv.hostPlatform.isDarwin then
       lib.getBin libiconv
@@ -23283,10 +23273,7 @@ with pkgs;
         py
       ];
       # Avoid update.nix/tests conflicts with libxml2.
-      passthru = builtins.removeAttrs libxml2.passthru [
-        "updateScript"
-        "tests"
-      ];
+      passthru = builtins.removeAttrs libxml2.passthru [ "updateScript" "tests" ];
       # the hook to find catalogs is hidden by buildEnv
       postBuild = ''
         mkdir "$out/nix-support"

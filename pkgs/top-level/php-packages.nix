@@ -933,10 +933,7 @@ lib.makeScope pkgs.newScope (
               name = "xmlreader";
               buildInputs = [ libxml2 ];
               internalDeps = [ php.extensions.dom ];
-              env.NIX_CFLAGS_COMPILE = toString [
-                "-I../.."
-                "-DHAVE_DOM"
-              ];
+              env.NIX_CFLAGS_COMPILE = toString [ "-I../.." "-DHAVE_DOM" ];
               doCheck = false;
               configureFlags = [
                 "--enable-xmlreader"
@@ -996,10 +993,7 @@ lib.makeScope pkgs.newScope (
               ];
               internalDeps = [ php.extensions.dom ];
               doCheck = false;
-              env.NIX_CFLAGS_COMPILE = toString [
-                "-I../.."
-                "-DHAVE_DOM"
-              ];
+              env.NIX_CFLAGS_COMPILE = toString [ "-I../.." "-DHAVE_DOM" ];
               configureFlags = [ "--with-xsl=${libxslt.dev}" ];
             }
             {

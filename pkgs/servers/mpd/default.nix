@@ -155,12 +155,7 @@ let
       # using libmad to decode mp3 files on darwin is causing a segfault -- there
       # is probably a solution, but I'm disabling it for now
       platformMask =
-        lib.optionals stdenv.isDarwin [
-          "mad"
-          "pulse"
-          "jack"
-          "smbclient"
-        ]
+        lib.optionals stdenv.isDarwin [ "mad" "pulse" "jack" "smbclient" ]
         ++ lib.optionals (!stdenv.isLinux) [
           "alsa"
           "pipewire"
@@ -216,10 +211,7 @@ let
           gtest
         ]
         ++ concatAttrVals features_ featureDependencies
-        ++ lib.optionals stdenv.isDarwin [
-          AudioToolbox
-          AudioUnit
-        ];
+        ++ lib.optionals stdenv.isDarwin [ AudioToolbox AudioUnit ];
 
       nativeBuildInputs = [
         meson

@@ -43,12 +43,7 @@ let
     );
 
   cfg = config.services.minetest-server;
-  flag =
-    val: name:
-    lib.optionals (val != null) [
-      "--${name}"
-      "${toString val}"
-    ];
+  flag = val: name: lib.optionals (val != null) [ "--${name}" "${toString val}" ];
 
   flags =
     [

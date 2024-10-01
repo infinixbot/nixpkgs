@@ -63,10 +63,7 @@ in
       };
 
       provider = lib.mkOption {
-        type = lib.types.enum [
-          "manual"
-          "geoclue2"
-        ];
+        type = lib.types.enum [ "manual" "geoclue2" ];
         default = "manual";
         description = ''
           The location provider to use for determining your location. If set to

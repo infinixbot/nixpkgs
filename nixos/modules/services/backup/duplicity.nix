@@ -200,14 +200,8 @@ in
                     cfg.root
                     cfg.targetUrl
                   ]
-                  ++ lib.optionals (cfg.includeFileList != null) [
-                    "--include-filelist"
-                    cfg.includeFileList
-                  ]
-                  ++ lib.optionals (cfg.excludeFileList != null) [
-                    "--exclude-filelist"
-                    cfg.excludeFileList
-                  ]
+                  ++ lib.optionals (cfg.includeFileList != null) [ "--include-filelist" cfg.includeFileList ]
+                  ++ lib.optionals (cfg.excludeFileList != null) [ "--exclude-filelist" cfg.excludeFileList ]
                   ++ concatMap (p: [
                     "--include"
                     p

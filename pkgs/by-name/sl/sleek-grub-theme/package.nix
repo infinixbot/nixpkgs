@@ -6,12 +6,7 @@
   withStyle ? "white", # use override to specify one of "dark" / "orange" / "bigSur"
 }:
 
-assert builtins.any (s: withStyle == s) [
-  "white"
-  "dark"
-  "orange"
-  "bigSur"
-];
+assert builtins.any (s: withStyle == s) [ "white" "dark" "orange" "bigSur" ];
 
 stdenv.mkDerivation {
   pname = "sleek-grub-theme";

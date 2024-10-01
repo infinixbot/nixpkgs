@@ -120,14 +120,8 @@ stdenv.mkDerivation rec {
     ++ lib.optional stdenv.isDarwin openssl
     ++ lib.optional x11Support xclip
     ++ lib.optional waylandSupport wl-clipboard
-    ++ lib.optionals (waylandSupport && dmenuSupport) [
-      ydotool
-      dmenu-wayland
-    ]
-    ++ lib.optionals (x11Support && dmenuSupport) [
-      xdotool
-      dmenu
-    ]
+    ++ lib.optionals (waylandSupport && dmenuSupport) [ ydotool dmenu-wayland ]
+    ++ lib.optionals (x11Support && dmenuSupport) [ xdotool dmenu ]
   );
 
   postFixup =

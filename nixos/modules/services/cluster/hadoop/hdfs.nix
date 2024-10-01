@@ -121,12 +121,7 @@ in
             listOf (submodule {
               options = {
                 type = mkOption {
-                  type = enum [
-                    "SSD"
-                    "DISK"
-                    "ARCHIVE"
-                    "RAM_DISK"
-                  ];
+                  type = enum [ "SSD" "DISK" "ARCHIVE" "RAM_DISK" ];
                   description = ''
                     Storage types ([SSD]/[DISK]/[ARCHIVE]/[RAM_DISK]) for HDFS storage policies.
                   '';

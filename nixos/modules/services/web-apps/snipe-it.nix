@@ -136,10 +136,7 @@ in
 
     mail = {
       driver = mkOption {
-        type = types.enum [
-          "smtp"
-          "sendmail"
-        ];
+        type = types.enum [ "smtp" "sendmail" ];
         default = "smtp";
         description = "Mail driver to use.";
       };

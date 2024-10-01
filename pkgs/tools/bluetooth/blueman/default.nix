@@ -73,13 +73,7 @@ stdenv.mkDerivation rec {
   ];
 
   makeWrapperArgs = [
-    "--prefix PATH ':' ${
-      lib.makeBinPath [
-        dnsmasq
-        dhcpcd
-        iproute2
-      ]
-    }"
+    "--prefix PATH ':' ${lib.makeBinPath [ dnsmasq dhcpcd iproute2 ]}"
     "--suffix PATH ':' ${lib.makeBinPath [ xdg-utils ]}"
   ];
 

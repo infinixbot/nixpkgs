@@ -155,11 +155,7 @@ in
 
       database = {
         type = mkOption {
-          type = enum [
-            "mysql"
-            "mariadb"
-            "postgresql"
-          ];
+          type = enum [ "mysql" "mariadb" "postgresql" ];
           default = "postgresql";
           example = "mariadb";
           description = ''
@@ -380,12 +376,7 @@ in
             };
 
             proxy = mkOption {
-              type = enum [
-                "edge"
-                "reencrypt"
-                "passthrough"
-                "none"
-              ];
+              type = enum [ "edge" "reencrypt" "passthrough" "none" ];
               default = "none";
               example = "edge";
               description = ''
@@ -442,12 +433,7 @@ in
       # connect to it.
       databaseActuallyCreateLocally = cfg.database.createLocally && cfg.database.host == "localhost";
       createLocalPostgreSQL = databaseActuallyCreateLocally && cfg.database.type == "postgresql";
-      createLocalMySQL =
-        databaseActuallyCreateLocally
-        && elem cfg.database.type [
-          "mysql"
-          "mariadb"
-        ];
+      createLocalMySQL = databaseActuallyCreateLocally && elem cfg.database.type [ "mysql" "mariadb" ];
 
       mySqlCaKeystore = pkgs.runCommand "mysql-ca-keystore" { } ''
         ${pkgs.jre}/bin/keytool -importcert -trustcacerts -alias MySQLCACert -file ${cfg.database.caCert} -keystore $out -storepass notsosecretpassword -noprompt

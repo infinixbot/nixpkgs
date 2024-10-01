@@ -344,11 +344,7 @@ runTests {
     {
       expr =
         let
-          composition = composeManyExtensions [
-            f
-            g
-            h
-          ];
+          composition = composeManyExtensions [ f g h ];
           composed = obj.extend composition;
         in
         composed.foo;
@@ -417,29 +413,17 @@ runTests {
   # STRINGS
 
   testConcatMapStrings = {
-    expr = concatMapStrings (x: x + ";") [
-      "a"
-      "b"
-      "c"
-    ];
+    expr = concatMapStrings (x: x + ";") [ "a" "b" "c" ];
     expected = "a;b;c;";
   };
 
   testConcatStringsSep = {
-    expr = concatStringsSep "," [
-      "a"
-      "b"
-      "c"
-    ];
+    expr = concatStringsSep "," [ "a" "b" "c" ];
     expected = "a,b,c";
   };
 
   testConcatLines = {
-    expr = concatLines [
-      "a"
-      "b"
-      "c"
-    ];
+    expr = concatLines [ "a" "b" "c" ];
     expected = "a\nb\nc\n";
   };
 
@@ -481,12 +465,7 @@ runTests {
   };
 
   testMakeIncludePathWithManyString = {
-    expr = (
-      makeIncludePath [
-        "/usr"
-        "/usr/local"
-      ]
-    );
+    expr = (makeIncludePath [ "/usr" "/usr/local" ]);
     expected = "/usr/include:/usr/local/include";
   };
 
@@ -635,11 +614,7 @@ runTests {
   };
 
   testEscapeShellArgs = {
-    expr = strings.escapeShellArgs [
-      "one"
-      "two three"
-      "four'five"
-    ];
+    expr = strings.escapeShellArgs [ "one" "two three" "four'five" ];
     expected = "one 'two three' 'four'\\''five'";
   };
 
@@ -1044,12 +1019,7 @@ runTests {
   # LISTS
 
   testFilter = {
-    expr = filter (x: x != "a") [
-      "a"
-      "b"
-      "c"
-      "a"
-    ];
+    expr = filter (x: x != "a") [ "a" "b" "c" "a" ];
     expected = [
       "b"
       "c"
@@ -1072,14 +1042,7 @@ runTests {
     expected = [ ];
   };
   testIfilter0IndexOnly = {
-    expr = length (
-      ifilter0 (i: v: mod i 2 == 0) [
-        (throw "0")
-        (throw "1")
-        (throw "2")
-        (throw "3")
-      ]
-    );
+    expr = length (ifilter0 (i: v: mod i 2 == 0) [ (throw "0") (throw "1") (throw "2") (throw "3") ]);
     expected = 2;
   };
   testIfilter0All = {
@@ -1492,11 +1455,7 @@ runTests {
   };
 
   testSortOn = {
-    expr = sortOn stringLength [
-      "aa"
-      "b"
-      "cccc"
-    ];
+    expr = sortOn stringLength [ "aa" "b" "cccc" ];
     expected = [
       "b"
       "aa"
@@ -3130,11 +3089,7 @@ runTests {
 
   # The example from the showAttrPath documentation
   testShowAttrPathExample = {
-    expr = showAttrPath [
-      "foo"
-      "10"
-      "bar"
-    ];
+    expr = showAttrPath [ "foo" "10" "bar" ];
     expected = "foo.\"10\".bar";
   };
 
@@ -3661,26 +3616,11 @@ runTests {
     expected = "string or list of boolean";
   };
   testTypeDescriptionOneOfListOfStrOrBool = {
-    expr =
-      (
-        with types;
-        oneOf [
-          (listOf bool)
-          str
-        ]
-      ).description;
+    expr = (with types; oneOf [ (listOf bool) str ]).description;
     expected = "(list of boolean) or string";
   };
   testTypeDescriptionOneOfListOfStrOrBoolOrNumber = {
-    expr =
-      (
-        with types;
-        oneOf [
-          (listOf bool)
-          str
-          number
-        ]
-      ).description;
+    expr = (with types; oneOf [ (listOf bool) str number ]).description;
     expected = "(list of boolean) or string or signed integer or floating point number";
   };
   testTypeDescriptionEitherListOfBoolOrEitherStringOrNumber = {

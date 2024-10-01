@@ -59,12 +59,7 @@ stdenv.mkDerivation rec {
   buildInputs =
     [ udev ]
     ++ lib.optional (!stdenv.hostPlatform.isGnu) argp-standalone
-    ++ lib.optionals withQt [
-      alsa-lib
-      libX11
-      qtbase
-      libGLU
-    ];
+    ++ lib.optionals withQt [ alsa-lib libX11 qtbase libGLU ];
 
   propagatedBuildInputs = [ libjpeg ];
 

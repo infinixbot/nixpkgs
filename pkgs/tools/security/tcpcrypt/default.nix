@@ -30,17 +30,10 @@ stdenv.mkDerivation rec {
     "out"
   ];
   nativeBuildInputs = [ autoreconfHook ];
-  buildInputs =
-    [
-      openssl
-      libpcap
-    ]
-    ++ lib.optionals stdenv.isLinux [
-      libcap
-      libnfnetlink
-      libnetfilter_conntrack
-      libnetfilter_queue
-    ];
+  buildInputs = [
+    openssl
+    libpcap
+  ] ++ lib.optionals stdenv.isLinux [ libcap libnfnetlink libnetfilter_conntrack libnetfilter_queue ];
 
   enableParallelBuilding = true;
 

@@ -45,10 +45,7 @@ stdenv.mkDerivation (finalAttrs: {
       pango
     ]
     ++ lib.optional ncursesSupport ncurses
-    ++ lib.optionals waylandSupport [
-      wayland
-      wayland-protocols
-    ]
+    ++ lib.optionals waylandSupport [ wayland wayland-protocols ]
     ++ lib.optionals x11Support [
       xorg.libX11
       xorg.libXinerama

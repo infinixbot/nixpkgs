@@ -28,19 +28,11 @@ stdenv.mkDerivation (finalAttrs: {
     sed -i -e 's/ macuimaybe//' src/Makefile
   '';
 
-  nativeBuildInputs =
-    [
-      ocamlPackages.ocaml
-      ocamlPackages.findlib
-    ]
-    ++ lib.optionals enableX11 [
-      copyDesktopItems
-      wrapGAppsHook3
-    ];
-  buildInputs = lib.optionals enableX11 [
-    gsettings-desktop-schemas
-    ocamlPackages.lablgtk3
-  ];
+  nativeBuildInputs = [
+    ocamlPackages.ocaml
+    ocamlPackages.findlib
+  ] ++ lib.optionals enableX11 [ copyDesktopItems wrapGAppsHook3 ];
+  buildInputs = lib.optionals enableX11 [ gsettings-desktop-schemas ocamlPackages.lablgtk3 ];
 
   makeFlags = [
     "PREFIX=$(out)"

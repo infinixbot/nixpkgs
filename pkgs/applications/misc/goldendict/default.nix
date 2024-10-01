@@ -71,21 +71,12 @@ stdenv.mkDerivation rec {
       xz
       lzo
     ]
-    ++ lib.optionals stdenv.isLinux [
-      qtx11extras
-      libXtst
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      bzip2
-      libiconv
-    ]
+    ++ lib.optionals stdenv.isLinux [ qtx11extras libXtst ]
+    ++ lib.optionals stdenv.isDarwin [ bzip2 libiconv ]
     ++ lib.optional withCC opencc
     ++ lib.optional withEpwing libeb
     ++ lib.optional withExtraTiff libtiff
-    ++ lib.optionals withFFmpeg [
-      libao
-      ffmpeg
-    ]
+    ++ lib.optionals withFFmpeg [ libao ffmpeg ]
     ++ lib.optional withZim zstd;
 
   qmakeFlags = [

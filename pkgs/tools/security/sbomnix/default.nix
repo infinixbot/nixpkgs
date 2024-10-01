@@ -44,27 +44,11 @@ python.pkgs.buildPythonApplication rec {
 
   postInstall = ''
     wrapProgram $out/bin/sbomnix \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          nix
-          graphviz
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ nix graphviz ]}
     wrapProgram $out/bin/nixgraph \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          nix
-          graphviz
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ nix graphviz ]}
     wrapProgram $out/bin/vulnxscan \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          grype
-          nix
-          vulnix
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ grype nix vulnix ]}
     wrapProgram $out/bin/nix_outdated \
       --prefix PATH : ${lib.makeBinPath [ nix-visualize ]}
     wrapProgram $out/bin/provenance \

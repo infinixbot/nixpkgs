@@ -28,11 +28,7 @@ in
       mode = mkOption {
         description = "Which mode to use";
         default = "boot";
-        type = types.enum [
-          "api"
-          "boot"
-          "quick"
-        ];
+        type = types.enum [ "api" "boot" "quick" ];
       };
 
       debug = mkOption {
@@ -149,10 +145,7 @@ in
                   cfg.kernel
                 ]
                 ++ optional (cfg.initrd != "") cfg.initrd
-                ++ optionals (cfg.cmdLine != "") [
-                  "--cmdline"
-                  cfg.cmdLine
-                ]
+                ++ optionals (cfg.cmdLine != "") [ "--cmdline" cfg.cmdLine ]
               else if cfg.mode == "quick" then
                 [
                   "quick"

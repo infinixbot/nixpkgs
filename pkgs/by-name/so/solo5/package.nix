@@ -65,14 +65,7 @@ stdenv.mkDerivation {
       --replace "cp " "cp --no-preserve=mode "
 
     wrapProgram $out/bin/solo5-virtio-mkimage \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          dosfstools
-          mtools
-          parted
-          syslinux
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ dosfstools mtools parted syslinux ]}
 
     runHook postInstall
   '';

@@ -22,11 +22,7 @@ in
     };
 
     apcupsdNetwork = mkOption {
-      type = types.enum [
-        "tcp"
-        "tcp4"
-        "tcp6"
-      ];
+      type = types.enum [ "tcp" "tcp4" "tcp6" ];
       default = "tcp";
       description = ''
         Network of the apcupsd Network Information Server (NIS): one of "tcp", "tcp4", or "tcp6".

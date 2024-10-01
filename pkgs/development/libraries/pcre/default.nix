@@ -11,12 +11,7 @@
   variant ? null,
 }:
 
-assert lib.elem variant [
-  null
-  "cpp"
-  "pcre16"
-  "pcre32"
-];
+assert lib.elem variant [ null "cpp" "pcre16" "pcre32" ];
 
 stdenv.mkDerivation rec {
   pname =

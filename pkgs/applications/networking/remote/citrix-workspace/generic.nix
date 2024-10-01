@@ -245,12 +245,7 @@ stdenv.mkDerivation rec {
         ln -sf "$ICAInstDir/util/setlog" "$out/bin/citrix-setlog"
       fi
       ${mkWrappers wrapLink toWrap}
-      ${mkWrappers wrap [
-        "PrimaryAuthManager"
-        "ServiceRecord"
-        "AuthManagerDaemon"
-        "util/ctxwebhelper"
-      ]}
+      ${mkWrappers wrap [ "PrimaryAuthManager" "ServiceRecord" "AuthManagerDaemon" "util/ctxwebhelper" ]}
 
       ln -sf $ICAInstDir/util/storebrowse $out/bin/storebrowse
 

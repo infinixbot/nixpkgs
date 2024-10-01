@@ -95,19 +95,9 @@ stdenv.mkDerivation (finalAttrs: {
       libXrandr
       libXdmcp
     ]
-    ++ lib.optionals waylandSupport [
-      libxkbcommon
-      wayland
-      wayland-protocols
-    ]
-    ++ lib.optionals pipewireSupport [
-      pipewire
-      libsamplerate
-    ]
-    ++ lib.optionals pulseSupport [
-      pulseaudio
-      libsamplerate
-    ];
+    ++ lib.optionals waylandSupport [ libxkbcommon wayland wayland-protocols ]
+    ++ lib.optionals pipewireSupport [ pipewire libsamplerate ]
+    ++ lib.optionals pulseSupport [ pulseaudio libsamplerate ];
 
   cmakeFlags =
     [ "-DOPTIMIZE_FOR_NATIVE=OFF" ]

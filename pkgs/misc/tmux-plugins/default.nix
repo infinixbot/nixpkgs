@@ -328,15 +328,7 @@ rec {
       for f in fuzzback.sh preview.sh supported.sh; do
         chmod +x $target/scripts/$f
         wrapProgram $target/scripts/$f \
-          --prefix PATH : ${
-            with pkgs;
-            lib.makeBinPath [
-              coreutils
-              fzf
-              gawk
-              gnused
-            ]
-          }
+          --prefix PATH : ${with pkgs; lib.makeBinPath [ coreutils fzf gawk gnused ]}
       done
     '';
     meta = {

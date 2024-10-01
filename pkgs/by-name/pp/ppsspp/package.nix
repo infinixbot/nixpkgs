@@ -84,10 +84,7 @@ stdenv.mkDerivation (finalAttrs: {
       qtmultimedia
     ]
     ++ lib.optionals enableVulkan [ vulkan-loader ]
-    ++ lib.optionals vulkanWayland [
-      wayland
-      libffi
-    ];
+    ++ lib.optionals vulkanWayland [ wayland libffi ];
 
   cmakeFlags = [
     (lib.cmakeBool "HEADLESS" (!enableQt))

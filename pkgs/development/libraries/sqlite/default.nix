@@ -42,12 +42,7 @@ stdenv.mkDerivation rec {
   separateDebugInfo = stdenv.isLinux;
 
   nativeBuildInputs = [ updateAutotoolsGnuConfigScriptsHook ];
-  buildInputs =
-    [ zlib ]
-    ++ lib.optionals interactive [
-      readline
-      ncurses
-    ];
+  buildInputs = [ zlib ] ++ lib.optionals interactive [ readline ncurses ];
 
   # required for aarch64 but applied for all arches for simplicity
   preConfigure = ''

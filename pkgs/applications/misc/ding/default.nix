@@ -64,12 +64,7 @@ stdenv.mkDerivation rec {
     cp -v ding.desktop $out/share/applications/
 
     wrapProgram $out/bin/ding --prefix PATH : ${
-      lib.makeBinPath [
-        gnugrep
-        aspellEnv
-        tk
-        fortune
-      ]
+      lib.makeBinPath [ gnugrep aspellEnv tk fortune ]
     } --prefix ASPELL_CONF : "\"prefix ${aspellEnv};\""
   '';
 

@@ -72,16 +72,11 @@ in
   };
 
   cargo = attrs: {
-    buildInputs =
-      [
-        openssl
-        zlib
-        curl
-      ]
-      ++ lib.optionals stdenv.isDarwin [
-        CoreFoundation
-        Security
-      ];
+    buildInputs = [
+      openssl
+      zlib
+      curl
+    ] ++ lib.optionals stdenv.isDarwin [ CoreFoundation Security ];
   };
 
   libz-sys = attrs: {

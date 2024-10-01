@@ -53,13 +53,7 @@ python3.pkgs.buildPythonApplication rec {
 
   # feed args to wrapPythonApp
   makeWrapperArgs = [
-    "--prefix PATH : ${
-      lib.makeBinPath [
-        aria2
-        ffmpeg
-        libnotify
-      ]
-    }"
+    "--prefix PATH : ${lib.makeBinPath [ aria2 ffmpeg libnotify ]}"
     "\${qtWrapperArgs[@]}"
   ];
 

@@ -23,14 +23,8 @@ let
       "--port"
       (toString cfg.port)
     ]
-    ++ optionals (cfg.socket != null) [
-      "--interface"
-      cfg.socket
-    ]
-    ++ optionals (cfg.interface != null) [
-      "--interface"
-      cfg.interface
-    ]
+    ++ optionals (cfg.socket != null) [ "--interface" cfg.socket ]
+    ++ optionals (cfg.interface != null) [ "--interface" cfg.interface ]
     ++ [
       "--signal"
       (toString cfg.signal)
@@ -51,10 +45,7 @@ let
       "--max-clients"
       (toString cfg.maxClients)
     ]
-    ++ optionals (cfg.indexFile != null) [
-      "--index"
-      cfg.indexFile
-    ]
+    ++ optionals (cfg.indexFile != null) [ "--index" cfg.indexFile ]
     ++ optionals cfg.enableIPv6 [ "--ipv6" ]
     ++ optionals cfg.enableSSL [
       "--ssl-cert"

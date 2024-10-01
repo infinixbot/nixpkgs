@@ -121,12 +121,7 @@ in
 
   mlPlugin = true;
   nativeBuildInputs = lib.optional recent coq.ocamlPackages.ocamlbuild;
-  propagatedBuildInputs =
-    [ ssreflect ]
-    ++ lib.optionals recent [
-      coq-ext-lib
-      simple-io
-    ];
+  propagatedBuildInputs = [ ssreflect ] ++ lib.optionals recent [ coq-ext-lib simple-io ];
   extraInstallFlags = [ "-f Makefile.coq" ];
 
   enableParallelBuilding = false;

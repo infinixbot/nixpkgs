@@ -30,13 +30,9 @@ stdenv.mkDerivation rec {
     python3
   ];
 
-  buildInputs =
-    [ SDL2 ]
-    ++ lib.optionals stdenv.isLinux [
-      alsa-lib
-      libXext
-    ]
-    ++ lib.optionals stdenv.isDarwin [ Cocoa ];
+  buildInputs = [
+    SDL2
+  ] ++ lib.optionals stdenv.isLinux [ alsa-lib libXext ] ++ lib.optionals stdenv.isDarwin [ Cocoa ];
 
   enableParallelBuilding = true;
 

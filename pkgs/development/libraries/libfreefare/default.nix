@@ -24,16 +24,10 @@ stdenv.mkDerivation {
     autoreconfHook
     pkg-config
   ];
-  buildInputs =
-    [
-      libnfc
-      openssl
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      libobjc
-      IOKit
-      Security
-    ];
+  buildInputs = [
+    libnfc
+    openssl
+  ] ++ lib.optionals stdenv.isDarwin [ libobjc IOKit Security ];
 
   meta = with lib; {
     description = "Libfreefare project aims to provide a convenient API for MIFARE card manipulations";

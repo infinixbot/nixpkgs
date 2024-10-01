@@ -29,10 +29,7 @@ stdenv.mkDerivation rec {
 
   buildInputs =
     lib.optional pulseSupport libpulseaudio
-    ++ lib.optionals jackSupport [
-      libjack2
-      soxr
-    ]
+    ++ lib.optionals jackSupport [ libjack2 soxr ]
     ++ lib.optional alsaSupport alsa-lib
     ++ lib.optional pcapSupport libpcap;
   nativeBuildInputs = [

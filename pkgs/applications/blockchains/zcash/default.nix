@@ -105,13 +105,7 @@ rustPlatform.buildRustPackage.override { inherit stdenv; } rec {
 
   postInstall = ''
     wrapProgram $out/bin/zcash-fetch-params \
-        --set PATH ${
-          lib.makeBinPath [
-            coreutils
-            curl
-            util-linux
-          ]
-        }
+        --set PATH ${lib.makeBinPath [ coreutils curl util-linux ]}
   '';
 
   meta = with lib; {

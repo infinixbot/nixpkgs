@@ -73,14 +73,7 @@ runCommand "systemtap-${kernel.version}-${version}"
     rm $out/bin/stap $out/bin/dtrace
     makeWrapper $stapBuild/bin/stap $out/bin/stap \
       --add-flags "--sysroot ${sysroot}" \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          stdenv.cc.cc
-          stdenv.cc.bintools
-          elfutils
-          gnumake
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ stdenv.cc.cc stdenv.cc.bintools elfutils gnumake ]}
     makeWrapper $stapBuild/bin/dtrace $out/bin/dtrace \
       --prefix PYTHONPATH : ${pypkgs}
   ''

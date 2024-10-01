@@ -21,10 +21,7 @@
 let
   major = "3.12";
   minor = "3";
-  binpath = lib.makeBinPath [
-    dvdauthor
-    vcdimager
-  ];
+  binpath = lib.makeBinPath [ dvdauthor vcdimager ];
 
 in
 stdenv.mkDerivation rec {

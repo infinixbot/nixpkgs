@@ -170,10 +170,7 @@ in
 
       database = {
         type = mkOption {
-          type = types.enum [
-            "pgsql"
-            "mysql"
-          ];
+          type = types.enum [ "pgsql" "mysql" ];
           default = "pgsql";
           description = ''
             Database to store feeds. Supported are pgsql and mysql.
@@ -359,11 +356,7 @@ in
         };
 
         security = mkOption {
-          type = types.enum [
-            ""
-            "ssl"
-            "tls"
-          ];
+          type = types.enum [ "" "ssl" "tls" ];
           default = "";
           description = ''
             Used to select a secure SMTP connection. Allowed values: ssl, tls,
@@ -524,11 +517,7 @@ in
       };
 
       logDestination = mkOption {
-        type = types.enum [
-          ""
-          "sql"
-          "syslog"
-        ];
+        type = types.enum [ "" "sql" "syslog" ];
         default = "sql";
         description = ''
           Log destination to use. Possible values: sql (uses internal logging

@@ -44,13 +44,7 @@ stdenv.mkDerivation rec {
 
   postFixup = ''
     wrapProgram $out/bin/usb_modeswitch_dispatcher \
-      --set PATH ${
-        lib.makeBinPath [
-          util-linux
-          coreutils
-          bash
-        ]
-      }
+      --set PATH ${lib.makeBinPath [ util-linux coreutils bash ]}
   '';
 
   buildInputs = [

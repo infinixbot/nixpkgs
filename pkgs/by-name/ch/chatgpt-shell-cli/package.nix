@@ -37,13 +37,7 @@ stdenv.mkDerivation {
 
   postInstall = ''
     wrapProgram $out/bin/chatgpt.sh \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          jq
-          curl
-          glow
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ jq curl glow ]}
   '';
 
   meta = with lib; {

@@ -20,10 +20,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-275QREIcncgBk4ah/CivSz5N2m6s/XPCfp6JGChpr38=";
 
-  buildInputs = lib.optionals stdenv.isDarwin [
-    libiconv
-    Security
-  ];
+  buildInputs = lib.optionals stdenv.isDarwin [ libiconv Security ];
 
   checkFlags = [ "offline_tests" ];
 

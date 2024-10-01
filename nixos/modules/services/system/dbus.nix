@@ -49,10 +49,7 @@ in
       };
 
       implementation = mkOption {
-        type = types.enum [
-          "dbus"
-          "broker"
-        ];
+        type = types.enum [ "dbus" "broker" ];
         default = "dbus";
         description = ''
           The implementation to use for the message bus defined by the D-Bus specification.
@@ -81,11 +78,7 @@ in
       };
 
       apparmor = mkOption {
-        type = types.enum [
-          "enabled"
-          "disabled"
-          "required"
-        ];
+        type = types.enum [ "enabled" "disabled" "required" ];
         description = ''
           AppArmor mode for dbus.
 

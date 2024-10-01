@@ -42,11 +42,7 @@ let
         };
 
         event = lib.mkOption {
-          type = lib.types.enum [
-            "press"
-            "hold"
-            "release"
-          ];
+          type = lib.types.enum [ "press" "hold" "release" ];
           default = "press";
           description = "Event to match.";
         };

@@ -66,13 +66,7 @@ mkDerivation rec {
   passthru.updateScript = writeScript "${pname}-updater" ''
     #!${stdenv.shell}
     set -eu -o pipefail
-    PATH=${
-      lib.makeBinPath [
-        curl
-        pup
-        common-updater-scripts
-      ]
-    }:$PATH
+    PATH=${lib.makeBinPath [ curl pup common-updater-scripts ]}:$PATH
     latestVersion="$(curl -sS https://www.rescuetime.com/release-notes/linux | pup '.release:first-of-type h2 strong text{}' | tr -d '\n')"
 
     for platform in ${lib.concatStringsSep " " meta.platforms}; do

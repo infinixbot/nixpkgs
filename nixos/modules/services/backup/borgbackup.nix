@@ -283,11 +283,7 @@ let
   };
 
   mkSourceAssertions = name: cfg: {
-    assertion =
-      lib.count isNull [
-        cfg.dumpCommand
-        cfg.paths
-      ] == 1;
+    assertion = lib.count isNull [ cfg.dumpCommand cfg.paths ] == 1;
     message = ''
       Exactly one of borgbackup.jobs.${name}.paths or borgbackup.jobs.${name}.dumpCommand
       must be set.

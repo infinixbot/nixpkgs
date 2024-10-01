@@ -26,11 +26,7 @@ runCommandLocal "${libidn2.pname}-${libidn2.version}"
     patchelf \
       --set-interpreter '${stdenv.cc.bintools.dynamicLinker}' \
       --set-rpath '${
-        lib.concatMapStringsSep ":" (p: lib.getLib p + "/lib") [
-          stdenv.cc.libc
-          libunistring
-          libidn2
-        ]
+        lib.concatMapStringsSep ":" (p: lib.getLib p + "/lib") [ stdenv.cc.libc libunistring libidn2 ]
       }' \
       "$bin"/bin/*
 

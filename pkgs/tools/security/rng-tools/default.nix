@@ -57,20 +57,10 @@ stdenv.mkDerivation rec {
     ]
     ++ lib.optionals stdenv.hostPlatform.isMusl [ argp-standalone ]
     ++ lib.optionals withJitterEntropy [ jitterentropy ]
-    ++ lib.optionals withNistBeacon [
-      curl
-      jansson
-      libxml2
-    ]
-    ++ lib.optionals withPkcs11 [
-      libp11
-      libp11.passthru.openssl
-    ]
+    ++ lib.optionals withNistBeacon [ curl jansson libxml2 ]
+    ++ lib.optionals withPkcs11 [ libp11 libp11.passthru.openssl ]
     ++ lib.optionals withRtlsdr [ rtl-sdr ]
-    ++ lib.optionals withQrypt [
-      curl
-      jansson
-    ];
+    ++ lib.optionals withQrypt [ curl jansson ];
 
   enableParallelBuilding = true;
 

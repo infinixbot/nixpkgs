@@ -102,19 +102,9 @@ stdenv.mkDerivation rec {
     ++ lib.optional (lib.versionAtLeast cudatoolkit.version "10.1" && hasCudnn) cudaPackages.cudnn_7_6
     ++ lib.optional lmdbSupport lmdb
     ++ lib.optional ncclSupport nccl
-    ++ lib.optionals leveldbSupport [
-      leveldb
-      snappy
-    ]
-    ++ lib.optionals pythonSupport [
-      python
-      numpy
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      Accelerate
-      CoreGraphics
-      CoreVideo
-    ];
+    ++ lib.optionals leveldbSupport [ leveldb snappy ]
+    ++ lib.optionals pythonSupport [ python numpy ]
+    ++ lib.optionals stdenv.isDarwin [ Accelerate CoreGraphics CoreVideo ];
 
   propagatedBuildInputs = lib.optionals pythonSupport (
     # requirements.txt

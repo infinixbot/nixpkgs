@@ -58,12 +58,7 @@ python3.pkgs.buildPythonApplication rec {
   ];
 
   makeWrapperArgs = [
-    "--prefix PATH : ${
-      lib.makeBinPath [
-        pngquant
-        resvg
-      ]
-    }"
+    "--prefix PATH : ${lib.makeBinPath [ pngquant resvg ]}"
   ];
 
   preCheck = ''

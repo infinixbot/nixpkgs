@@ -29,13 +29,7 @@ buildGoModule {
 
   postInstall = ''
     wrapProgram $out/bin/owncast \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          bash
-          which
-          ffmpeg
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ bash which ffmpeg ]}
   '';
 
   installCheckPhase = ''

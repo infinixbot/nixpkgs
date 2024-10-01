@@ -12,32 +12,23 @@ let
 
   keyFile = "${cfg.keyPath}/${cfg.selector}.private";
 
-  args =
-    [
-      "-f"
-      "-l"
-      "-p"
-      cfg.socket
-      "-d"
-      cfg.domains
-      "-k"
-      keyFile
-      "-s"
-      cfg.selector
-    ]
-    ++ lib.optionals (cfg.configFile != null) [
-      "-x"
-      cfg.configFile
-    ];
+  args = [
+    "-f"
+    "-l"
+    "-p"
+    cfg.socket
+    "-d"
+    cfg.domains
+    "-k"
+    keyFile
+    "-s"
+    cfg.selector
+  ] ++ lib.optionals (cfg.configFile != null) [ "-x" cfg.configFile ];
 
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "opendkim" "keyFile" ] [
-      "services"
-      "opendkim"
-      "keyPath"
-    ])
+    (lib.mkRenamedOptionModule [ "services" "opendkim" "keyFile" ] [ "services" "opendkim" "keyPath" ])
   ];
 
   ###### interface

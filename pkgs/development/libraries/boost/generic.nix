@@ -298,10 +298,7 @@ stdenv.mkDerivation {
     ++ lib.optional (lib.versionAtLeast version "1.69") zstd
     ++ [ xz ]
     ++ lib.optional enableIcu icu
-    ++ lib.optionals enablePython [
-      libxcrypt
-      python
-    ]
+    ++ lib.optionals enablePython [ libxcrypt python ]
     ++ lib.optional enableNumpy python.pkgs.numpy;
 
   configureScript = "./bootstrap.sh";

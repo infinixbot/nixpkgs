@@ -43,11 +43,7 @@ let
           license,
           ...
         }@args:
-        assert lib.any (x: x == type) [
-          "plugin"
-          "theme"
-          "language"
-        ];
+        assert lib.any (x: x == type) [ "plugin" "theme" "language" ];
         stdenvNoCC.mkDerivation (
           {
             pname = "wordpress-${type}-${pname}";
@@ -88,12 +84,7 @@ let
               runHook postBuild
             '';
           }
-          // removeAttrs args [
-            "type"
-            "pname"
-            "version"
-            "passthru"
-          ]
+          // removeAttrs args [ "type" "pname" "version" "passthru" ]
         )
       ) { };
 

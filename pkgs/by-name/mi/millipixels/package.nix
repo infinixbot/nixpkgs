@@ -66,12 +66,7 @@ stdenv.mkDerivation rec {
 
   postInstall = ''
     wrapProgram $out/bin/millipixels \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          v4l-utils
-          ffmpeg-headless
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ v4l-utils ffmpeg-headless ]}
   '';
 
   meta = with lib; {

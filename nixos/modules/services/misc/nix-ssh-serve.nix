@@ -37,10 +37,7 @@ in
       };
 
       protocol = lib.mkOption {
-        type = lib.types.enum [
-          "ssh"
-          "ssh-ng"
-        ];
+        type = lib.types.enum [ "ssh" "ssh-ng" ];
         default = "ssh";
         description = "The specific Nix-over-SSH protocol to use.";
       };

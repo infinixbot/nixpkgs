@@ -72,12 +72,7 @@ stdenv.mkDerivation rec {
       gnutls
       libpaper
     ]
-    ++ lib.optionals stdenv.isLinux [
-      avahi
-      pam
-      dbus
-      acl
-    ]
+    ++ lib.optionals stdenv.isLinux [ avahi pam dbus acl ]
     ++ lib.optional enableSystemd systemd
     ++ lib.optionals stdenv.isDarwin (
       with darwin;
@@ -89,10 +84,7 @@ stdenv.mkDerivation rec {
 
   propagatedBuildInputs = [ gmp ];
 
-  configurePlatforms = lib.optionals stdenv.isLinux [
-    "build"
-    "host"
-  ];
+  configurePlatforms = lib.optionals stdenv.isLinux [ "build" "host" ];
   configureFlags =
     [
       "--localstatedir=/var"

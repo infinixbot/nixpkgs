@@ -70,11 +70,7 @@ in
       };
 
       syncmode = mkOption {
-        type = types.enum [
-          "fast"
-          "full"
-          "light"
-        ];
+        type = types.enum [ "fast" "full" "light" ];
         default = "full";
         description = "Blockchain sync mode.";
       };

@@ -16,10 +16,7 @@ let
     lib.removeAttrs cfg.settings [ "global" ]
   );
 
-  configFile = pkgs.concatText "smb.conf" [
-    globalConfigFile
-    sharesConfigFile
-  ];
+  configFile = pkgs.concatText "smb.conf" [ globalConfigFile sharesConfigFile ];
 
 in
 
@@ -61,11 +58,7 @@ in
       "global"
       "security"
     ])
-    (lib.mkRenamedOptionModule [ "services" "samba" "shares" ] [
-      "services"
-      "samba"
-      "settings"
-    ])
+    (lib.mkRenamedOptionModule [ "services" "samba" "shares" ] [ "services" "samba" "settings" ])
 
     (lib.mkRenamedOptionModule [ "services" "samba" "enableWinbindd" ] [
       "services"
@@ -155,12 +148,7 @@ in
           freeformType = settingsFormat.type;
           options = {
             global.security = lib.mkOption {
-              type = lib.types.enum [
-                "auto"
-                "user"
-                "domain"
-                "ads"
-              ];
+              type = lib.types.enum [ "auto" "user" "domain" "ads" ];
               default = "user";
               description = "Samba security type.";
             };

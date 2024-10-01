@@ -9,11 +9,7 @@
   stdenv,
 }:
 
-assert lib.elem precision [
-  "single"
-  "double"
-  "long-double"
-];
+assert lib.elem precision [ "single" "double" "long-double" ];
 
 let
   fftw' = fftwMpi.override { inherit precision; };

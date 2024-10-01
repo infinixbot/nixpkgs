@@ -175,39 +175,18 @@ stdenv.mkDerivation rec {
             )
           } \
           --prefix PATH ":" \
-          "${
-            lib.makeBinPath [
-              nettools
-              gnupg
-            ]
-          }"
+          "${lib.makeBinPath [ nettools gnupg ]}"
 
         wrapProgram $out/bin/gpg-key2latex --set PERL5LIB \
           ${perlPackages.makePerlPath GnuPGInterfaceRuntimeDependencies} \
           --prefix PATH ":" \
-          "${
-            lib.makeBinPath [
-              gnupg
-              libpaper
-            ]
-          }"
+          "${lib.makeBinPath [ gnupg libpaper ]}"
 
         wrapProgram $out/bin/gpg-key2ps --prefix PATH ":" \
-          "${
-            lib.makeBinPath [
-              which
-              gnupg
-              libpaper
-            ]
-          }"
+          "${lib.makeBinPath [ which gnupg libpaper ]}"
 
         wrapProgram $out/bin/gpg-mailkeys --prefix PATH ":" \
-          "${
-            lib.makeBinPath [
-              gnupg
-              qprint
-            ]
-          }"
+          "${lib.makeBinPath [ gnupg qprint ]}"
 
         wrapProgram $out/bin/gpgdir --set PERL5LIB \
           ${
@@ -226,12 +205,7 @@ stdenv.mkDerivation rec {
           "${lib.makeBinPath [ gnupg ]}"
 
         wrapProgram $out/bin/gpgparticipants --prefix PATH ":" \
-          "${
-            lib.makeBinPath [
-              getopt
-              gnupg
-            ]
-          }"
+          "${lib.makeBinPath [ getopt gnupg ]}"
 
     #    wrapProgram $out/bin/gpgparticipants-prefill
 

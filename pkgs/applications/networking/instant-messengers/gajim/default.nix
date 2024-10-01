@@ -99,10 +99,7 @@ python3.pkgs.buildPythonApplication rec {
       sqlalchemy
       emoji
     ]
-    ++ lib.optionals enableE2E [
-      pycrypto
-      python-gnupg
-    ]
+    ++ lib.optionals enableE2E [ pycrypto python-gnupg ]
     ++ lib.optional enableRST docutils
     ++ extraPythonPackages python3.pkgs;
 

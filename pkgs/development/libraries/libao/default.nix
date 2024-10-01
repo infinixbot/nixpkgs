@@ -50,15 +50,8 @@ stdenv.mkDerivation rec {
   buildInputs =
     [ ]
     ++ lib.optional usePulseAudio libpulseaudio
-    ++ lib.optionals stdenv.isLinux [
-      alsa-lib
-      libcap
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      CoreAudio
-      CoreServices
-      AudioUnit
-    ];
+    ++ lib.optionals stdenv.isLinux [ alsa-lib libcap ]
+    ++ lib.optionals stdenv.isDarwin [ CoreAudio CoreServices AudioUnit ];
 
   nativeBuildInputs = [
     autoreconfHook

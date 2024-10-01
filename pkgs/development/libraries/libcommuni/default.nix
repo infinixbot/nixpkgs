@@ -37,10 +37,7 @@ stdenv.mkDerivation rec {
       "release"
     ]
     # Build mixes up dylibs/frameworks if one is not explicitly specified.
-    ++ lib.optionals stdenv.isDarwin [
-      "-config"
-      "qt_framework"
-    ];
+    ++ lib.optionals stdenv.isDarwin [ "-config" "qt_framework" ];
 
   dontWrapQtApps = true;
 

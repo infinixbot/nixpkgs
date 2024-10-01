@@ -30,16 +30,8 @@
 
 let
   listToQtVar = suffix: lib.makeSearchPathOutput "bin" suffix;
-  qtPluginPaths = listToQtVar qtbase.qtPluginPrefix [
-    qtbase
-    qtpim
-    qtsvg
-  ];
-  qtQmlPaths = listToQtVar qtbase.qtQmlPrefix [
-    qtdeclarative
-    qtfeedback
-    qtgraphicaleffects
-  ];
+  qtPluginPaths = listToQtVar qtbase.qtPluginPrefix [ qtbase qtpim qtsvg ];
+  qtQmlPaths = listToQtVar qtbase.qtQmlPrefix [ qtdeclarative qtfeedback qtgraphicaleffects ];
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "lomiri-ui-toolkit";

@@ -32,11 +32,7 @@ let
       enable = lib.mkEnableOption "this proxy";
 
       type = lib.mkOption {
-        type = lib.types.enum [
-          "http"
-          "socks4"
-          "socks5"
-        ];
+        type = lib.types.enum [ "http" "socks4" "socks5" ];
         description = "Proxy type.";
       };
 
@@ -69,11 +65,7 @@ in
 
       chain = {
         type = lib.mkOption {
-          type = lib.types.enum [
-            "dynamic"
-            "strict"
-            "random"
-          ];
+          type = lib.types.enum [ "dynamic" "strict" "random" ];
           default = "strict";
           description = ''
             `dynamic` - Each connection will be done via chained proxies

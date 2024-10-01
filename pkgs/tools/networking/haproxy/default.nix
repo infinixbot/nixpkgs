@@ -17,12 +17,7 @@
   pcre2,
 }:
 
-assert lib.assertOneOf "sslLibrary" sslLibrary [
-  "quictls"
-  "openssl"
-  "libressl"
-  "wolfssl"
-];
+assert lib.assertOneOf "sslLibrary" sslLibrary [ "quictls" "openssl" "libressl" "wolfssl" ];
 let
   sslPkgs = {
     inherit quictls openssl libressl;

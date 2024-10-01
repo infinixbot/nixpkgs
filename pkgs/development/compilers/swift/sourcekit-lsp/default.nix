@@ -35,17 +35,12 @@ stdenv.mkDerivation {
     swift
     swiftpm
   ];
-  buildInputs =
-    [
-      Foundation
-      XCTest
-      sqlite
-      ncursesInput
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      CryptoKit
-      LocalAuthentication
-    ];
+  buildInputs = [
+    Foundation
+    XCTest
+    sqlite
+    ncursesInput
+  ] ++ lib.optionals stdenv.isDarwin [ CryptoKit LocalAuthentication ];
 
   configurePhase =
     generated.configure

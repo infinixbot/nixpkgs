@@ -82,10 +82,7 @@ in
             "--keep"
             keep
           ]) cfg.keep)
-          ++ (optionals (cfg.minAge != null) [
-            "--min-age"
-            cfg.minAge
-          ])
+          ++ (optionals (cfg.minAge != null) [ "--min-age" cfg.minAge ])
         );
       };
     };

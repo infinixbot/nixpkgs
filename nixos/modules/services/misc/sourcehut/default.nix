@@ -241,10 +241,7 @@ in
           };
           environment = mkOption {
             description = "Values other than \"production\" adds a banner to each page.";
-            type = types.enum [
-              "development"
-              "production"
-            ];
+            type = types.enum [ "development" "production" ];
             default = "development";
           };
           network-key = mkOption {
@@ -386,10 +383,7 @@ in
               If master and worker are on the same system
               set to `/usr/bin/runner-shell`.
             '';
-            type = types.enum [
-              "/usr/bin/master-shell"
-              "/usr/bin/runner-shell"
-            ];
+            type = types.enum [ "/usr/bin/master-shell" "/usr/bin/runner-shell" ];
             default = "/usr/bin/master-shell";
           };
         };
@@ -580,10 +574,7 @@ in
           };
 
         options."meta.sr.ht" =
-          removeAttrs (commonServiceSettings "meta") [
-            "oauth-client-id"
-            "oauth-client-secret"
-          ]
+          removeAttrs (commonServiceSettings "meta") [ "oauth-client-id" "oauth-client-secret" ]
           // {
             webhooks = mkOption {
               description = "The Redis connection used for the webhooks worker.";
@@ -886,19 +877,13 @@ in
       };
       systemd.tmpfiles.settings."10-sourcehut-gitsrht" = mkIf cfg.git.enable (mkMerge [
         (builtins.listToAttrs (
-          map
-            (name: {
-              name = "/var/log/sourcehut/gitsrht-${name}";
-              value.f = {
-                inherit (cfg.git) user group;
-                mode = "0644";
-              };
-            })
-            [
-              "keys"
-              "shell"
-              "update-hook"
-            ]
+          map (name: {
+            name = "/var/log/sourcehut/gitsrht-${name}";
+            value.f = {
+              inherit (cfg.git) user group;
+              mode = "0644";
+            };
+          }) [ "keys" "shell" "update-hook" ]
         ))
         {
           ${cfg.settings."git.sr.ht".repos}.d = {

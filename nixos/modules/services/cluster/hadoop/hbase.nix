@@ -78,10 +78,7 @@ let
           ]
           ++ cfg.hbase."${name}".extraFlags
           ++ map (x: "--${toLower x} ${toString cfg.hbase.${name}.${x}}") (
-            filter (x: hasAttr x cfg.hbase.${name}) [
-              "port"
-              "infoPort"
-            ]
+            filter (x: hasAttr x cfg.hbase.${name}) [ "port" "infoPort" ]
           )
         );
 

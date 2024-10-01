@@ -21,12 +21,7 @@ nodePkgs."elm-pages".overrideAttrs (old: {
 
   postFixup = ''
     wrapProgram $out/bin/elm-pages --prefix PATH : ${
-      with pkgs.elmPackages;
-      lib.makeBinPath [
-        elm
-        elm-review
-        elm-optimize-level-2
-      ]
+      with pkgs.elmPackages; lib.makeBinPath [ elm elm-review elm-optimize-level-2 ]
     }
   '';
 

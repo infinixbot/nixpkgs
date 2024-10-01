@@ -35,12 +35,7 @@ rustPlatform.buildRustPackage rec {
     # UEFI stub location.
     mv $out/bin/lzbt $out/bin/lzbt-unwrapped
     wrapProgram $out/bin/lzbt-unwrapped \
-      --set PATH ${
-        lib.makeBinPath [
-          binutils-unwrapped
-          sbsigntool
-        ]
-      }
+      --set PATH ${lib.makeBinPath [ binutils-unwrapped sbsigntool ]}
   '';
 
   nativeCheckInputs = [

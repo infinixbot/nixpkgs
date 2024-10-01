@@ -219,11 +219,7 @@ let
             ...
           }@args:
           let
-            args' = builtins.removeAttrs args [
-              "owner"
-              "repo"
-              "rev"
-            ];
+            args' = builtins.removeAttrs args [ "owner" "repo" "rev" ];
             baseUrl = "https://github.com/${owner}/${repo}";
           in
           fetchzip (

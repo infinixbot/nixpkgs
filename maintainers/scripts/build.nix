@@ -30,14 +30,9 @@ let
       file: if builtins.pathExists file then super._internalCallByNamePackageFile file else null;
   };
 
-  nixpkgsArgs =
-    removeAttrs args [
-      "maintainer"
-      "overlays"
-    ]
-    // {
-      overlays = args.overlays or [ ] ++ [ overlay ];
-    };
+  nixpkgsArgs = removeAttrs args [ "maintainer" "overlays" ] // {
+    overlays = args.overlays or [ ] ++ [ overlay ];
+  };
 
   pkgs = import ./../../default.nix nixpkgsArgs;
 

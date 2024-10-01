@@ -151,16 +151,7 @@ let
 in
 with matrix;
 {
-  postgresql = makeAppTest "postgresql" [
-    backend.postgresql
-    listen.tcp
-  ];
-  mysql = makeAppTest "mysql" [
-    backend.mysql
-    listen.tcp
-  ];
-  unix-listener = makeAppTest "unix-listener" [
-    backend.postgresql
-    listen.unix
-  ];
+  postgresql = makeAppTest "postgresql" [ backend.postgresql listen.tcp ];
+  mysql = makeAppTest "mysql" [ backend.mysql listen.tcp ];
+  unix-listener = makeAppTest "unix-listener" [ backend.postgresql listen.unix ];
 }

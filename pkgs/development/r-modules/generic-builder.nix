@@ -27,16 +27,8 @@ stdenv.mkDerivation (
         R
         gettext
       ]
-      ++ lib.optionals requireX [
-        util-linux
-        xvfb-run
-      ]
-      ++ lib.optionals stdenv.isDarwin [
-        Cocoa
-        Foundation
-        gfortran
-        libiconv
-      ];
+      ++ lib.optionals requireX [ util-linux xvfb-run ]
+      ++ lib.optionals stdenv.isDarwin [ Cocoa Foundation gfortran libiconv ];
 
     env.NIX_CFLAGS_COMPILE = lib.optionalString stdenv.isDarwin "-I${lib.getDev libcxx}/include/c++/v1";
 

@@ -95,11 +95,7 @@ in
       };
 
       daemonCPUSchedPolicy = mkOption {
-        type = types.enum [
-          "other"
-          "batch"
-          "idle"
-        ];
+        type = types.enum [ "other" "batch" "idle" ];
         default = "other";
         example = "batch";
         description = ''
@@ -129,10 +125,7 @@ in
       };
 
       daemonIOSchedClass = mkOption {
-        type = types.enum [
-          "best-effort"
-          "idle"
-        ];
+        type = types.enum [ "best-effort" "idle" ];
         default = "best-effort";
         example = "idle";
         description = ''

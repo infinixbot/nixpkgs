@@ -40,12 +40,7 @@ in
     };
 
     vmGeneration = mkOption {
-      type =
-        with types;
-        enum [
-          "v1"
-          "v2"
-        ];
+      type = with types; enum [ "v1" "v2" ];
       default = "v1";
       description = ''
         VM Generation to use.

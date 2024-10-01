@@ -24,10 +24,7 @@ stdenv.mkDerivation rec {
     acl
   ];
 
-  env.NIX_CFLAGS_COMPILE = toString [
-    "-std=gnu90"
-    "-D_GNU_SOURCE"
-  ];
+  env.NIX_CFLAGS_COMPILE = toString [ "-std=gnu90" "-D_GNU_SOURCE" ];
 
   meta = {
     inherit version;

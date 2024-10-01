@@ -53,12 +53,7 @@ let
         dedicatedServer: {
           inherit version;
           src = fetchArmagetron rev hash;
-          extraBuildInputs = lib.optionals (!dedicatedServer) [
-            libpng
-            SDL
-            SDL_image
-            SDL_mixer
-          ];
+          extraBuildInputs = lib.optionals (!dedicatedServer) [ libpng SDL SDL_image SDL_mixer ];
         };
 
       # https://gitlab.com/armagetronad/armagetronad/-/commits/trunk/?ref_type=heads
@@ -95,12 +90,7 @@ let
         dedicatedServer: {
           version = "${latestVersionMajor}-sty+ct+ap-${builtins.substring 0 8 rev}";
           src = fetchArmagetron rev hash;
-          extraBuildInputs = lib.optionals (!dedicatedServer) [
-            libpng
-            SDL
-            SDL_image
-            SDL_mixer
-          ];
+          extraBuildInputs = lib.optionals (!dedicatedServer) [ libpng SDL SDL_image SDL_mixer ];
         };
     };
 

@@ -89,12 +89,7 @@ let
       # The bundled jogl (required for 3D graphics) links to libXxf86vm, and loads libGL at runtime
       # OpenGL versions newer than 3.0 cause "javax.media.opengl.GLException: Not a GL2 implementation"
       makeWrapper "$out/libexec/geogebra/geogebra" "$out/bin/geogebra" \
-        --prefix LD_LIBRARY_PATH : "${
-          lib.makeLibraryPath [
-            libGL
-            xorg.libXxf86vm
-          ]
-        }" \
+        --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ libGL xorg.libXxf86vm ]}" \
         --set MESA_GL_VERSION_OVERRIDE 3.0 \
         --set JAVACMD "${jre}/bin/java" \
         --set GG_PATH "$out/libexec/geogebra" \

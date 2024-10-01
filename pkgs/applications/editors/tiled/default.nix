@@ -16,12 +16,7 @@
 }:
 
 let
-  qtEnv = env "tiled-qt-env" [
-    qtbase
-    qtdeclarative
-    qtsvg
-    qttools
-  ];
+  qtEnv = env "tiled-qt-env" [ qtbase qtdeclarative qtsvg qttools ];
 in
 
 stdenv.mkDerivation rec {

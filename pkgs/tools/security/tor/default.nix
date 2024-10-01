@@ -29,13 +29,7 @@
 }:
 let
   tor-client-auth-gen = writeShellScript "tor-client-auth-gen" ''
-    PATH="${
-      lib.makeBinPath [
-        coreutils
-        gnugrep
-        openssl
-      ]
-    }"
+    PATH="${lib.makeBinPath [ coreutils gnugrep openssl ]}"
     pem="$(openssl genpkey -algorithm x25519)"
 
     printf private_key=descriptor:x25519:
@@ -63,20 +57,14 @@ stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs =
-    [
-      libevent
-      openssl
-      zlib
-      xz
-      zstd
-      scrypt
-    ]
-    ++ lib.optionals stdenv.isLinux [
-      libseccomp
-      systemd
-      libcap
-    ];
+  buildInputs = [
+    libevent
+    openssl
+    zlib
+    xz
+    zstd
+    scrypt
+  ] ++ lib.optionals stdenv.isLinux [ libseccomp systemd libcap ];
 
   patches = [ ./disable-monotonic-timer-tests.patch ];
 

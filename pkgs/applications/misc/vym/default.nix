@@ -52,12 +52,7 @@ stdenv.mkDerivation (finalAttrs: {
   strictDeps = true;
 
   qtWrapperArgs = [
-    "--prefix PATH : ${
-      lib.makeBinPath [
-        unzip
-        zip
-      ]
-    }"
+    "--prefix PATH : ${lib.makeBinPath [ unzip zip ]}"
   ];
 
   meta = {

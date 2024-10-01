@@ -43,11 +43,7 @@ python3.pkgs.buildPythonApplication rec {
     "--prefix"
     "PATH"
     ":"
-    (lib.makeBinPath [
-      dbus
-      signal-cli
-      xclip
-    ])
+    (lib.makeBinPath [ dbus signal-cli xclip ])
   ];
 
   passthru.tests = {

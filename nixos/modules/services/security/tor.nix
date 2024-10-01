@@ -298,15 +298,7 @@ let
         lib.mapAttrs (
           k: v:
           # Not necesssary, but prettier rendering
-          if
-            elem k [
-              "AutomapHostsSuffixes"
-              "DirPolicy"
-              "ExitPolicy"
-              "SocksPolicy"
-            ]
-            && v != [ ]
-          then
+          if elem k [ "AutomapHostsSuffixes" "DirPolicy" "ExitPolicy" "SocksPolicy" ] && v != [ ] then
             concatStringsSep "," v
           else
             v
@@ -323,21 +315,13 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "tor"
-        "client"
-        "dns"
-        "automapHostsSuffixes"
-      ]
-      [
-        "services"
-        "tor"
-        "settings"
-        "AutomapHostsSuffixes"
-      ]
-    )
+    (mkRenamedOptionModule [
+      "services"
+      "tor"
+      "client"
+      "dns"
+      "automapHostsSuffixes"
+    ] [ "services" "tor" "settings" "AutomapHostsSuffixes" ])
     (mkRemovedOptionModule [
       "services"
       "tor"
@@ -470,12 +454,7 @@ in
       "settings"
       "Nickname"
     ])
-    (mkRenamedOptionModule [ "services" "tor" "relay" "port" ] [
-      "services"
-      "tor"
-      "settings"
-      "ORPort"
-    ])
+    (mkRenamedOptionModule [ "services" "tor" "relay" "port" ] [ "services" "tor" "settings" "ORPort" ])
     (mkRenamedOptionModule [ "services" "tor" "relay" "portSpec" ] [
       "services"
       "tor"
@@ -582,12 +561,7 @@ in
         };
 
         role = mkOption {
-          type = types.enum [
-            "exit"
-            "relay"
-            "bridge"
-            "private-bridge"
-          ];
+          type = types.enum [ "exit" "relay" "bridge" "private-bridge" ];
           description = ''
             Your role in Tor network. There're several options:
 
@@ -717,10 +691,7 @@ in
                       {
                         options = {
                           authType = mkOption {
-                            type = types.enum [
-                              "basic"
-                              "stealth"
-                            ];
+                            type = types.enum [ "basic" "stealth" ];
                             description = ''
                               Either `"basic"` for a general-purpose authorization protocol
                               or `"stealth"` for a less scalable protocol
@@ -1276,18 +1247,12 @@ in
         optionalAttrs (cfg.relay.role != "exit") {
           ExitPolicy = mkForce [ "reject *:*" ];
         }
-        //
-          optionalAttrs
-            (elem cfg.relay.role [
-              "bridge"
-              "private-bridge"
-            ])
-            {
-              BridgeRelay = true;
-              ExtORPort.port = mkDefault "auto";
-              ServerTransportPlugin.transports = mkDefault [ "obfs4" ];
-              ServerTransportPlugin.exec = mkDefault "${lib.getExe pkgs.obfs4} managed";
-            }
+        // optionalAttrs (elem cfg.relay.role [ "bridge" "private-bridge" ]) {
+          BridgeRelay = true;
+          ExtORPort.port = mkDefault "auto";
+          ServerTransportPlugin.transports = mkDefault [ "obfs4" ];
+          ServerTransportPlugin.exec = mkDefault "${lib.getExe pkgs.obfs4} managed";
+        }
         // optionalAttrs (cfg.relay.role == "private-bridge") {
           ExtraInfoStatistics = false;
           PublishServerDescriptor = false;

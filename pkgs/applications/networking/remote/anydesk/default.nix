@@ -118,12 +118,7 @@ stdenv.mkDerivation (finalAttrs: {
       $out/bin/anydesk
 
     wrapProgram $out/bin/anydesk \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          lsb-release
-          pciutils
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ lsb-release pciutils ]}
   '';
 
   passthru = {

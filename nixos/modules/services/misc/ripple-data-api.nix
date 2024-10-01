@@ -52,10 +52,7 @@ in
       importMode = mkOption {
         description = "Ripple data api import mode.";
         default = "liveOnly";
-        type = types.enum [
-          "live"
-          "liveOnly"
-        ];
+        type = types.enum [ "live" "liveOnly" ];
       };
 
       minLedger = mkOption {

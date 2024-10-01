@@ -7,21 +7,14 @@
 
 {
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "virtualisation"
-        "containers"
-        "cdi"
-        "dynamic"
-        "nvidia"
-        "enable"
-      ]
-      [
-        "hardware"
-        "nvidia-container-toolkit"
-        "enable"
-      ]
-    )
+    (lib.mkRenamedOptionModule [
+      "virtualisation"
+      "containers"
+      "cdi"
+      "dynamic"
+      "nvidia"
+      "enable"
+    ] [ "hardware" "nvidia-container-toolkit" "enable" ])
   ];
 
   options =
@@ -78,11 +71,7 @@
 
         device-name-strategy = lib.mkOption {
           default = "index";
-          type = lib.types.enum [
-            "index"
-            "uuid"
-            "type-index"
-          ];
+          type = lib.types.enum [ "index" "uuid" "type-index" ];
           description = ''
             Specify the strategy for generating device names,
             passed to `nvidia-ctk cdi generate`. This will affect how

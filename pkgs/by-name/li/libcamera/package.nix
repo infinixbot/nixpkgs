@@ -82,11 +82,7 @@ stdenv.mkDerivation rec {
       gtest
     ]
     ++ lib.optionals withTracing [ lttng-ust ]
-    ++ lib.optionals withQcam [
-      libtiff
-      qt6.qtbase
-      qt6.qttools
-    ];
+    ++ lib.optionals withQcam [ libtiff qt6.qtbase qt6.qttools ];
 
   nativeBuildInputs = [
     meson

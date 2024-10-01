@@ -72,10 +72,7 @@ in
             };
 
             verbosity = mkOption {
-              type = enum [
-                "Verbose"
-                "Quiet"
-              ];
+              type = enum [ "Verbose" "Quiet" ];
               default = "Quiet";
               description = "Verbosity of output produced by the service.";
             };

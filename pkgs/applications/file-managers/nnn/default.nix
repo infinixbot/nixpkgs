@@ -67,10 +67,7 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optionals withPcre [ "O_PCRE=1" ]
     ++ extraMakeFlags;
 
-  binPath = lib.makeBinPath [
-    file
-    which
-  ];
+  binPath = lib.makeBinPath [ file which ];
 
   installTargets = [
     "install"

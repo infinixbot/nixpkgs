@@ -11,14 +11,7 @@ let
   cfg = config.services.pdns-recursor;
 
   oneOrMore = type: with types; either type (listOf type);
-  valueType =
-    with types;
-    oneOf [
-      int
-      str
-      bool
-      path
-    ];
+  valueType = with types; oneOf [ int str bool path ];
   configType = with types; attrsOf (nullOr (oneOrMore valueType));
 
   toBool = val: if val then "yes" else "no";

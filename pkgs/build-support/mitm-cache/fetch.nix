@@ -60,10 +60,7 @@ let
     );
 in
 runCommand name (
-  builtins.removeAttrs attrs [
-    "name"
-    "data"
-  ]
+  builtins.removeAttrs attrs [ "name" "data" ]
   // {
     passthru = (attrs.passthru or { }) // {
       data = writeText "deps.json" (builtins.toJSON data);

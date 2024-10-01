@@ -103,11 +103,7 @@
 let
   inherit (python) stdenv;
 
-  withDistOutput = lib.elem format [
-    "pyproject"
-    "setuptools"
-    "wheel"
-  ];
+  withDistOutput = lib.elem format [ "pyproject" "setuptools" "wheel" ];
 
   name_ = name;
 

@@ -399,18 +399,12 @@ pipe
         hardeningUnsupportedFlags =
           optional ((targetPlatform.isAarch64 && !atLeast9) || !atLeast8) "stackclashprotection"
           ++ optional (!atLeast11) "zerocallusedregs"
-          ++ optionals (!atLeast12) [
-            "fortify3"
-            "trivialautovarinit"
-          ]
+          ++ optionals (!atLeast12) [ "fortify3" "trivialautovarinit" ]
           ++ optional (
             !(atLeast8 && targetPlatform.isLinux && targetPlatform.isx86_64 && targetPlatform.libc == "glibc")
           ) "shadowstack"
           ++ optional (!(atLeast9 && targetPlatform.isLinux && targetPlatform.isAarch64)) "pacret"
-          ++ optionals (langFortran) [
-            "fortify"
-            "format"
-          ];
+          ++ optionals (langFortran) [ "fortify" "format" ];
       };
 
       enableParallelBuilding = true;

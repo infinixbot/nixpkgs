@@ -132,11 +132,7 @@ in
               };
 
               type = mkOption {
-                type = enum [
-                  "api"
-                  "local"
-                  "remote"
-                ];
+                type = enum [ "api" "local" "remote" ];
                 default = "api";
                 description = "Type of  this transport";
               };

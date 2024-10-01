@@ -34,11 +34,7 @@ let
 
           To start XWayland immediately, use `immediate`.
         '';
-        type = lib.types.enum [
-          "true"
-          "false"
-          "immediate"
-        ];
+        type = lib.types.enum [ "true" "false" "immediate" ];
         default = "false";
       };
       cursorTheme = lib.mkOption {
@@ -171,11 +167,7 @@ in
         description = ''
           Configurations for the Phoc compositor.
         '';
-        type = lib.types.oneOf [
-          lib.types.lines
-          lib.types.path
-          phocConfigType
-        ];
+        type = lib.types.oneOf [ lib.types.lines lib.types.path phocConfigType ];
         default = { };
       };
     };

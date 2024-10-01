@@ -26,10 +26,7 @@ stdenv.mkDerivation rec {
     "--localstatedir=$out/var"
   ];
 
-  propagatedBuildInputs = lib.optionals stdenv.isDarwin [
-    libobjc
-    Security
-  ];
+  propagatedBuildInputs = lib.optionals stdenv.isDarwin [ libobjc Security ];
 
   buildInputs = [
     botan2

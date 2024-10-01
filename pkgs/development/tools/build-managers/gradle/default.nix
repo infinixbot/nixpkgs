@@ -120,13 +120,7 @@ rec {
           for variant in "" "-ncurses5" "-ncurses6"; do
             autoPatchelfInJar \
               $out/lib/gradle/lib/native-platform-linux-${arch}$variant-''${nativeVersion}.jar \
-              "${stdenv.cc.cc.lib}/lib64:${
-                lib.makeLibraryPath [
-                  stdenv.cc.cc
-                  ncurses5
-                  ncurses6
-                ]
-              }"
+              "${stdenv.cc.cc.lib}/lib64:${lib.makeLibraryPath [ stdenv.cc.cc ncurses5 ncurses6 ]}"
           done
 
           # The file-events library _seems_ to follow the native-platform version, but

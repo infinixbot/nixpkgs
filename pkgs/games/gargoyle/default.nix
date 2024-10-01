@@ -55,17 +55,12 @@ stdenv.mkDerivation rec {
     pkg-config
   ] ++ lib.optional stdenv.isDarwin cctools;
 
-  buildInputs =
-    [
-      SDL
-      SDL_mixer
-      SDL_sound
-      gtk2
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      smpeg
-      libvorbis
-    ];
+  buildInputs = [
+    SDL
+    SDL_mixer
+    SDL_sound
+    gtk2
+  ] ++ lib.optionals stdenv.isDarwin [ smpeg libvorbis ];
 
   # Workaround build failure on -fno-common toolchains:
   #   ld: build/linux.release/alan3/Location.o:(.bss+0x0): multiple definition of

@@ -19,10 +19,7 @@ in
       protocol = mkOption {
         description = "Grafana protocol.";
         default = "http";
-        type = types.enum [
-          "http"
-          "https"
-        ];
+        type = types.enum [ "http" "https" ];
       };
       addr = mkOption {
         description = "Grafana address.";

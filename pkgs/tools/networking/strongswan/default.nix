@@ -65,21 +65,10 @@ stdenv.mkDerivation rec {
       openssl
       pcsclite
     ]
-    ++ lib.optionals enableTNC [
-      trousers
-      sqlite
-      libxml2
-    ]
-    ++ lib.optionals stdenv.isLinux [
-      systemd.dev
-      pam
-      iptables
-    ]
+    ++ lib.optionals enableTNC [ trousers sqlite libxml2 ]
+    ++ lib.optionals stdenv.isLinux [ systemd.dev pam iptables ]
     ++ lib.optionals stdenv.isDarwin (with darwin.apple_sdk.frameworks; [ SystemConfiguration ])
-    ++ lib.optionals enableNetworkManager [
-      networkmanager
-      glib
-    ];
+    ++ lib.optionals enableNetworkManager [ networkmanager glib ];
 
   patches = [
     ./ext_auth-path.patch
@@ -130,10 +119,7 @@ stdenv.mkDerivation rec {
       "--enable-connmark"
       "--enable-af-alg"
     ]
-    ++ lib.optionals stdenv.isx86_64 [
-      "--enable-aesni"
-      "--enable-rdrand"
-    ]
+    ++ lib.optionals stdenv.isx86_64 [ "--enable-aesni" "--enable-rdrand" ]
     ++ lib.optional (stdenv.hostPlatform.system == "i686-linux") "--enable-padlock"
     ++ lib.optionals enableTNC [
       "--disable-gmp"

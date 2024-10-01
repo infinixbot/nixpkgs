@@ -330,33 +330,28 @@ stdenv.mkDerivation (finalAttrs: {
       libdisplay-info
     ];
 
-  nativeBuildInputs =
-    [
-      cmake
-      doxygen
-      makeWrapper
-      which
-      pkg-config
-      autoconf
-      automake
-      libtool # still needed for some components. Check if that is the case with 19.0
-      jre_headless
-      yasm
-      gettext
-      python3Packages.python
-      flatbuffers
+  nativeBuildInputs = [
+    cmake
+    doxygen
+    makeWrapper
+    which
+    pkg-config
+    autoconf
+    automake
+    libtool # still needed for some components. Check if that is the case with 19.0
+    jre_headless
+    yasm
+    gettext
+    python3Packages.python
+    flatbuffers
 
-      # for TexturePacker
-      giflib
-      zlib
-      libpng
-      libjpeg
-      lzo
-    ]
-    ++ lib.optionals waylandSupport [
-      wayland-protocols
-      waylandpp.bin
-    ];
+    # for TexturePacker
+    giflib
+    zlib
+    libpng
+    libjpeg
+    lzo
+  ] ++ lib.optionals waylandSupport [ wayland-protocols waylandpp.bin ];
 
   depsBuildBuild = [
     buildPackages.stdenv.cc

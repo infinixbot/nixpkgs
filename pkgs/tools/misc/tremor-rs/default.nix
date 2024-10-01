@@ -40,12 +40,7 @@ rustPlatform.buildRustPackage rec {
     rustPlatform.bindgenHook
   ];
 
-  buildInputs =
-    [ openssl ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      Security
-      libiconv
-    ];
+  buildInputs = [ openssl ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ Security libiconv ];
 
   # relax lints to fix an error caused by invalid macro_export
   # error: `log_error` isn't a valid `#[macro_export]` argument

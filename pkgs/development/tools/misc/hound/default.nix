@@ -42,13 +42,7 @@ buildGoModule rec {
   doCheck = false;
 
   postInstall = ''
-    wrapProgram $out/bin/houndd --prefix PATH : ${
-      lib.makeBinPath [
-        mercurial
-        git
-        openssh
-      ]
-    }
+    wrapProgram $out/bin/houndd --prefix PATH : ${lib.makeBinPath [ mercurial git openssh ]}
   '';
 
   passthru.tests = { inherit (nixosTests) hound; };

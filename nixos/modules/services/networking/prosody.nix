@@ -315,12 +315,7 @@ let
           default = "Prosody Chatrooms";
         };
         restrictRoomCreation = mkOption {
-          type = types.enum [
-            true
-            false
-            "admin"
-            "local"
-          ];
+          type = types.enum [ true false "admin" "local" ];
           default = false;
           description = "Restrict room creation to server admins";
         };
@@ -467,12 +462,7 @@ let
       freeformType =
         with types;
         let
-          atom = oneOf [
-            int
-            bool
-            str
-            (listOf atom)
-          ];
+          atom = oneOf [ int bool str (listOf atom) ];
         in
         attrsOf (nullOr atom)
         // {
@@ -784,12 +774,7 @@ in
       };
 
       authentication = mkOption {
-        type = types.enum [
-          "internal_plain"
-          "internal_hashed"
-          "cyrus"
-          "anonymous"
-        ];
+        type = types.enum [ "internal_plain" "internal_hashed" "cyrus" "anonymous" ];
         default = "internal_hashed";
         example = "internal_plain";
         description = "Authentication mechanism used for logins.";

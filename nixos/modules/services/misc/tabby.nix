@@ -60,14 +60,7 @@ in
       };
 
       acceleration = lib.mkOption {
-        type = types.nullOr (
-          types.enum [
-            "cpu"
-            "rocm"
-            "cuda"
-            "metal"
-          ]
-        );
+        type = types.nullOr (types.enum [ "cpu" "rocm" "cuda" "metal" ]);
         default = null;
         example = "rocm";
         description = ''

@@ -135,11 +135,7 @@ in
       serviceConfig = {
         ExecStart = concatStringsSep " " [
           "${cfg.package}/bin/documize"
-          (mkParams false [
-            "db"
-            "dbtype"
-            "port"
-          ])
+          (mkParams false [ "db" "dbtype" "port" ])
           (mkParams true [
             "offline"
             "location"

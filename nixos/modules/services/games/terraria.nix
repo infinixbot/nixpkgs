@@ -107,11 +107,7 @@ in
       };
 
       autoCreatedWorldSize = lib.mkOption {
-        type = lib.types.enum [
-          "small"
-          "medium"
-          "large"
-        ];
+        type = lib.types.enum [ "small" "medium" "large" ];
         default = "medium";
         description = ''
           Specifies the size of the auto-created world if `worldPath` does not

@@ -47,31 +47,24 @@ let
       inherit version;
       pname = "asterisk" + lib.optionalString ldapSupport "-ldap";
 
-      buildInputs =
-        [
-          jansson
-          libedit
-          libxml2
-          libxslt
-          ncurses
-          openssl
-          sqlite
-          dmidecode
-          libuuid
-          newt
-          lua
-          speex
-          srtp
-          wget
-          curl
-          iksemel
-        ]
-        ++ lib.optionals withOpus [
-          libopus
-          opusfile
-          libogg
-        ]
-        ++ lib.optionals ldapSupport [ openldap ];
+      buildInputs = [
+        jansson
+        libedit
+        libxml2
+        libxslt
+        ncurses
+        openssl
+        sqlite
+        dmidecode
+        libuuid
+        newt
+        lua
+        speex
+        srtp
+        wget
+        curl
+        iksemel
+      ] ++ lib.optionals withOpus [ libopus opusfile libogg ] ++ lib.optionals ldapSupport [ openldap ];
       nativeBuildInputs = [
         util-linux
         pkg-config

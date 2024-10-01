@@ -551,13 +551,7 @@ in
       };
 
       aliasMapType = lib.mkOption {
-        type =
-          with lib.types;
-          enum [
-            "hash"
-            "regexp"
-            "pcre"
-          ];
+        type = with lib.types; enum [ "hash" "regexp" "pcre" ];
         default = "hash";
         example = "regexp";
         description = "The format the alias map should have. Use regexp if you want to use regular expressions.";
@@ -636,11 +630,7 @@ in
       };
 
       virtualMapType = lib.mkOption {
-        type = lib.types.enum [
-          "hash"
-          "regexp"
-          "pcre"
-        ];
+        type = lib.types.enum [ "hash" "regexp" "pcre" ];
         default = "hash";
         description = ''
           What type of virtual alias map file to use. Use `"regexp"` for regular expressions.

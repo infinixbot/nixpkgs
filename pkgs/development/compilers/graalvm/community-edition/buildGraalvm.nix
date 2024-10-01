@@ -71,14 +71,7 @@ let
   );
   binPath = lib.makeBinPath (lib.optionals useMusl [ musl-gcc ] ++ [ stdenv.cc ]);
 
-  runtimeLibraryPath = lib.makeLibraryPath (
-    [ cups ]
-    ++ lib.optionals gtkSupport [
-      cairo
-      glib
-      gtk3
-    ]
-  );
+  runtimeLibraryPath = lib.makeLibraryPath ([ cups ] ++ lib.optionals gtkSupport [ cairo glib gtk3 ]);
 
   graalvm-ce = stdenv.mkDerivation (
     {

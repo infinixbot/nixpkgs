@@ -153,11 +153,7 @@ stdenv.mkDerivation rec {
       xorg.libXft
       xorg.libSM
     ]
-    ++ lib.optionals waylandSupport [
-      pango
-      wayland
-      wayland-protocols
-    ]
+    ++ lib.optionals waylandSupport [ pango wayland wayland-protocols ]
     ++ lib.optional xdamageSupport libXdamage
     ++ lib.optional imlib2Support imlib2
     ++ lib.optional luaSupport lua

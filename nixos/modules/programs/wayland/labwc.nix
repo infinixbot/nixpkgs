@@ -21,10 +21,7 @@ in
       {
         environment.systemPackages = [ cfg.package ];
 
-        xdg.portal.config.wlroots.default = lib.mkDefault [
-          "wlr"
-          "gtk"
-        ];
+        xdg.portal.config.wlroots.default = lib.mkDefault [ "wlr" "gtk" ];
 
         # To make a labwc session available for certain DMs like SDDM
         services.displayManager.sessionPackages = [ cfg.package ];

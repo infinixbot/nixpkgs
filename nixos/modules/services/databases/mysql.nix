@@ -282,11 +282,7 @@ in
 
       replication = {
         role = mkOption {
-          type = types.enum [
-            "master"
-            "slave"
-            "none"
-          ];
+          type = types.enum [ "master" "slave" "none" ];
           default = "none";
           description = "Role of the MySQL server instance.";
         };

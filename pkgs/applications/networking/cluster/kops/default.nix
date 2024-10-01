@@ -13,11 +13,7 @@ let
       ...
     }@attrs:
     let
-      attrs' = builtins.removeAttrs attrs [
-        "version"
-        "sha256"
-        "rev"
-      ];
+      attrs' = builtins.removeAttrs attrs [ "version" "sha256" "rev" ];
     in
     buildGoModule {
       pname = "kops";

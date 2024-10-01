@@ -49,12 +49,7 @@ buildGoModule rec {
     ''
     + lib.optionalString stdenv.isLinux ''
       wrapProgram $out/bin/vault \
-        --prefix PATH ${
-          lib.makeBinPath [
-            gawk
-            glibc
-          ]
-        }
+        --prefix PATH ${lib.makeBinPath [ gawk glibc ]}
     '';
 
   passthru.tests = {

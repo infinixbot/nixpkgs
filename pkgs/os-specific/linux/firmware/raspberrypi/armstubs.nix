@@ -37,15 +37,8 @@ stdenv.mkDerivation {
       "OBJCOPY7=${stdenv.cc.targetPrefix}objcopy"
       "OBJDUMP7=${stdenv.cc.targetPrefix}objdump"
     ]
-    ++ optionals (stdenv.isAarch64) [
-      "armstub8.bin"
-      "armstub8-gic.bin"
-    ]
-    ++ optionals (stdenv.isAarch32) [
-      "armstub7.bin"
-      "armstub8-32.bin"
-      "armstub8-32-gic.bin"
-    ];
+    ++ optionals (stdenv.isAarch64) [ "armstub8.bin" "armstub8-gic.bin" ]
+    ++ optionals (stdenv.isAarch32) [ "armstub7.bin" "armstub8-32.bin" "armstub8-32-gic.bin" ];
 
   installPhase = ''
     runHook preInstall

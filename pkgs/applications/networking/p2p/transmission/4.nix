@@ -165,16 +165,10 @@ stdenv.mkDerivation (finalAttrs: {
         qtsvg
       ]
     )
-    ++ optionals enableGTK3 [
-      gtkmm3
-      xorg.libpthreadstubs
-    ]
+    ++ optionals enableGTK3 [ gtkmm3 xorg.libpthreadstubs ]
     ++ optionals enableSystemd [ systemd ]
     ++ optionals stdenv.isLinux [ inotify-tools ]
-    ++ optionals stdenv.isDarwin [
-      libiconv
-      Foundation
-    ];
+    ++ optionals stdenv.isDarwin [ libiconv Foundation ];
 
   postInstall = ''
     mkdir $apparmor

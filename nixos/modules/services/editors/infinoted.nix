@@ -39,11 +39,7 @@ in
     };
 
     securityPolicy = lib.mkOption {
-      type = lib.types.enum [
-        "no-tls"
-        "allow-tls"
-        "require-tls"
-      ];
+      type = lib.types.enum [ "no-tls" "allow-tls" "require-tls" ];
       default = "require-tls";
       description = ''
         How strictly to enforce clients connection with TLS.

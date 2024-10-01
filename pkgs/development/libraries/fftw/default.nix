@@ -13,12 +13,7 @@
   testers,
 }:
 
-assert lib.elem precision [
-  "single"
-  "double"
-  "long-double"
-  "quad-precision"
-];
+assert lib.elem precision [ "single" "double" "long-double" "quad-precision" ];
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "fftw-${precision}";

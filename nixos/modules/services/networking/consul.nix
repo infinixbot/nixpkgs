@@ -82,11 +82,7 @@ in
       };
 
       forceAddrFamily = lib.mkOption {
-        type = lib.types.enum [
-          "any"
-          "ipv4"
-          "ipv6"
-        ];
+        type = lib.types.enum [ "any" "ipv4" "ipv6" ];
         default = "any";
         description = ''
           Whether to bind ipv4/ipv6 or both kind of addresses.

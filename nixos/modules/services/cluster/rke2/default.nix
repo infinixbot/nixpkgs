@@ -16,10 +16,7 @@ in
     package = lib.mkPackageOption pkgs "rke2" { };
 
     role = lib.mkOption {
-      type = lib.types.enum [
-        "server"
-        "agent"
-      ];
+      type = lib.types.enum [ "server" "agent" ];
       description = ''
         Whether rke2 should run as a server or agent.
 

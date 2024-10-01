@@ -44,11 +44,7 @@ rec {
         value
       ];
       value = either (listOf atom) atom;
-      atom = oneOf [
-        int
-        str
-        bool
-      ];
+      atom = oneOf [ int str bool ];
     in
     attrsOf relation;
 
@@ -154,11 +150,7 @@ rec {
           ...
         }:
         let
-          sections = removeAttrs args [
-            "include"
-            "includedir"
-            "module"
-          ];
+          sections = removeAttrs args [ "include" "includedir" "module" ];
         in
         concatStringsSep "\n" (
           filter (x: x != "") [

@@ -33,10 +33,7 @@ in
       '';
     };
     frontendScheme = mkOption {
-      type = types.enum [
-        "http"
-        "https"
-      ];
+      type = types.enum [ "http" "https" ];
       description = ''
         Whether the site is available via http or https.
       '';
@@ -62,11 +59,7 @@ in
     };
     database = {
       type = mkOption {
-        type = types.enum [
-          "sqlite"
-          "mysql"
-          "postgres"
-        ];
+        type = types.enum [ "sqlite" "mysql" "postgres" ];
         example = "postgres";
         default = "sqlite";
         description = "Database engine to use.";

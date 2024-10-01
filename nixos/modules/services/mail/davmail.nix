@@ -10,12 +10,7 @@ let
 
   configType =
     with lib.types;
-    oneOf [
-      (attrsOf configType)
-      str
-      int
-      bool
-    ]
+    oneOf [ (attrsOf configType) str int bool ]
     // {
       description = "davmail config type (str, int, bool or attribute set thereof)";
     };

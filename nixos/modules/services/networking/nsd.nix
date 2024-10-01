@@ -31,10 +31,7 @@ let
     concatStrings (
       mapAttrsToList (keyName: keyOptions: ''
         fakeKey="$(${pkgs.bind}/bin/tsig-keygen -a ${
-          escapeShellArgs [
-            keyOptions.algorithm
-            keyName
-          ]
+          escapeShellArgs [ keyOptions.algorithm keyName ]
         } | grep -oP "\s*secret \"\K.*(?=\";)")"
         sed "s@^\s*include:\s*\"${stateDir}/private/${keyName}\"\$@secret: $fakeKey@" -i $out/nsd.conf
       '') keys

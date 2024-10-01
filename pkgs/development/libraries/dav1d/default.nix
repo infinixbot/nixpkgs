@@ -51,11 +51,7 @@ stdenv.mkDerivation rec {
   buildInputs =
     [ xxHash ]
     ++ lib.optional withExamples SDL2
-    ++ lib.optionals useVulkan [
-      libplacebo
-      vulkan-loader
-      vulkan-headers
-    ];
+    ++ lib.optionals useVulkan [ libplacebo vulkan-loader vulkan-headers ];
 
   mesonFlags = [
     "-Denable_tools=${lib.boolToString withTools}"

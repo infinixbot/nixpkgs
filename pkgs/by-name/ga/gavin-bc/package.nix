@@ -8,11 +8,7 @@
   predefinedBuildType ? "BSD",
 }:
 
-assert lib.elem historyType [
-  "editline"
-  "readline"
-  "internal"
-];
+assert lib.elem historyType [ "editline" "readline" "internal" ];
 assert lib.elem predefinedBuildType [
   "BSD"
   "GNU"

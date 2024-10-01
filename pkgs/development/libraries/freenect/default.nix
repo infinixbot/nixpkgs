@@ -25,19 +25,14 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-PpJGFWrlQ5sK7TJxQNoPujw1MxWRjphvblwOqnF+mSg=";
   };
 
-  buildInputs =
-    [
-      libusb1
-      libglut
-      libGLU
-      libGL
-      libXi
-      libXmu
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      GLUT
-      Cocoa
-    ];
+  buildInputs = [
+    libusb1
+    libglut
+    libGLU
+    libGL
+    libXi
+    libXmu
+  ] ++ lib.optionals stdenv.isDarwin [ GLUT Cocoa ];
 
   nativeBuildInputs = [
     cmake
@@ -45,15 +40,9 @@ stdenv.mkDerivation rec {
   ];
 
   # see https://aur.archlinux.org/cgit/aur.git/commit/PKGBUILD?h=libfreenect&id=0d17db49ba64bcb9e3a4eed61cf55c9a5ceb97f1
-  patchPhase =
-    lib.concatMapStrings
-      (x: ''
-        substituteInPlace ${x} --replace "{GLUT_LIBRARY}" "{GLUT_LIBRARIES}"
-      '')
-      [
-        "examples/CMakeLists.txt"
-        "wrappers/cpp/CMakeLists.txt"
-      ];
+  patchPhase = lib.concatMapStrings (x: ''
+    substituteInPlace ${x} --replace "{GLUT_LIBRARY}" "{GLUT_LIBRARIES}"
+  '') [ "examples/CMakeLists.txt" "wrappers/cpp/CMakeLists.txt" ];
 
   meta = {
     description = "Drivers and libraries for the Xbox Kinect device on Windows, Linux, and macOS";

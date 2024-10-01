@@ -50,13 +50,9 @@ buildGoModule rec {
     phpUnwrapped
     brotli
   ] ++ phpUnwrapped.buildInputs;
-  nativeBuildInputs =
-    [ makeBinaryWrapper ]
-    ++ lib.optionals stdenv.isDarwin [
-      pkg-config
-      cctools
-      darwin.autoSignDarwinBinariesHook
-    ];
+  nativeBuildInputs = [
+    makeBinaryWrapper
+  ] ++ lib.optionals stdenv.isDarwin [ pkg-config cctools darwin.autoSignDarwinBinariesHook ];
 
   subPackages = [ "frankenphp" ];
 

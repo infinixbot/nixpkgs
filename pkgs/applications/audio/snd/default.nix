@@ -30,10 +30,7 @@ stdenv.mkDerivation rec {
       motif
     ]
     ++ lib.optionals stdenv.isLinux [ alsa-lib ]
-    ++ lib.optionals stdenv.isDarwin [
-      CoreServices
-      CoreMIDI
-    ]
+    ++ lib.optionals stdenv.isDarwin [ CoreServices CoreMIDI ]
     ++ (with xorg; [
       libXext
       libXft

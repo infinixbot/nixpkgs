@@ -81,14 +81,8 @@ stdenv.mkDerivation (finalAttrs: {
       protobuf
       python3
     ]
-    ++ lib.optionals enableDocumentation [
-      doxygen
-      graphviz
-    ]
-    ++ lib.optionals enableBPF [
-      libllvm
-      libbpf
-    ];
+    ++ lib.optionals enableDocumentation [ doxygen graphviz ]
+    ++ lib.optionals enableBPF [ libllvm libbpf ];
 
   buildInputs = [
     protobuf

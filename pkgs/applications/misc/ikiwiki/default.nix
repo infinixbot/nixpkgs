@@ -74,11 +74,7 @@ stdenv.mkDerivation rec {
     ++ lib.optionals gitSupport [ git ]
     ++ lib.optionals monotoneSupport [ monotone ]
     ++ lib.optionals bazaarSupport [ breezy ]
-    ++ lib.optionals cvsSupport [
-      cvs
-      cvsps
-      perlPackages.Filechdir
-    ]
+    ++ lib.optionals cvsSupport [ cvs cvsps perlPackages.Filechdir ]
     ++ lib.optionals subversionSupport [ subversion ]
     ++ lib.optionals mercurialSupport [ mercurial ];
 

@@ -60,10 +60,7 @@ stdenv.mkDerivation (finalAttrs: {
       freetype
       libid3tag
     ]
-    ++ optionals x11Support [
-      xorg.libXft
-      xorg.libXext
-    ]
+    ++ optionals x11Support [ xorg.libXft xorg.libXext ]
     ++ optional heifSupport libheif
     ++ optional svgSupport librsvg
     ++ optional webpSupport libwebp

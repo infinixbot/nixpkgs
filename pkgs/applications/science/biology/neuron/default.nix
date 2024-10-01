@@ -29,18 +29,12 @@ stdenv.mkDerivation (finalAttrs: {
   # format is for pythonModule conversion
   format = "other";
 
-  nativeBuildInputs =
-    [
-      cmake
-      bison
-      flex
-      git
-    ]
-    ++ optionals useCore [
-      perl
-      gsl
-    ]
-    ++ optionals stdenv.isDarwin [ xcbuild ];
+  nativeBuildInputs = [
+    cmake
+    bison
+    flex
+    git
+  ] ++ optionals useCore [ perl gsl ] ++ optionals stdenv.isDarwin [ xcbuild ];
 
   buildInputs = optionals useIv [
     xorg.libX11.dev

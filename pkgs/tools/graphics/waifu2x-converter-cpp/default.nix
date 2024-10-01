@@ -35,10 +35,7 @@ stdenv.mkDerivation rec {
     ]
     ++ lib.optional cudaSupport cudatoolkit
     ++ lib.optional stdenv.isDarwin OpenCL
-    ++ lib.optionals stdenv.isLinux [
-      ocl-icd
-      opencl-headers
-    ];
+    ++ lib.optionals stdenv.isLinux [ ocl-icd opencl-headers ];
 
   nativeBuildInputs = [
     cmake

@@ -89,11 +89,7 @@ let
       str
     ]);
     zncAttr = attrsOf (nullOr zncConf);
-    zncAll = oneOf [
-      zncAtom
-      (listOf zncAtom)
-      zncAttr
-    ];
+    zncAll = oneOf [ zncAtom (listOf zncAtom) zncAttr ];
     zncConf = attrsOf (
       zncAll
       // {

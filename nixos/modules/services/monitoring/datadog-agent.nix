@@ -131,14 +131,7 @@ in
     logLevel = mkOption {
       description = "Logging verbosity.";
       default = null;
-      type = types.nullOr (
-        types.enum [
-          "DEBUG"
-          "INFO"
-          "WARN"
-          "ERROR"
-        ]
-      );
+      type = types.nullOr (types.enum [ "DEBUG" "INFO" "WARN" "ERROR" ]);
     };
 
     extraIntegrations = mkOption {

@@ -243,11 +243,7 @@ in
         ]);
         options = {
           DB_CONNECTION = mkOption {
-            type = enum [
-              "sqlite"
-              "pgsql"
-              "mysql"
-            ];
+            type = enum [ "sqlite" "pgsql" "mysql" ];
             default = "sqlite";
             example = "pgsql";
             description = ''
@@ -256,11 +252,7 @@ in
             '';
           };
           APP_ENV = mkOption {
-            type = enum [
-              "local"
-              "production"
-              "testing"
-            ];
+            type = enum [ "local" "production" "testing" ];
             default = "local";
             example = "production";
             description = ''

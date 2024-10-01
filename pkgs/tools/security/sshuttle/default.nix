@@ -53,10 +53,7 @@ python3Packages.buildPythonApplication rec {
             openssh
             procps
           ]
-          ++ lib.optionals stdenv.isLinux [
-            iptables
-            nettools
-          ]
+          ++ lib.optionals stdenv.isLinux [ iptables nettools ]
         )
       }" \
   '';

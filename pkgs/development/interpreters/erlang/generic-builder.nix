@@ -220,12 +220,7 @@ stdenv.mkDerivation (
     # Some erlang bin/ scripts run sed and awk
     postFixup = ''
       wrapProgram $out/lib/erlang/bin/erl --prefix PATH ":" "${gnused}/bin/"
-      wrapProgram $out/lib/erlang/bin/start_erl --prefix PATH ":" "${
-        lib.makeBinPath [
-          gnused
-          gawk
-        ]
-      }"
+      wrapProgram $out/lib/erlang/bin/start_erl --prefix PATH ":" "${lib.makeBinPath [ gnused gawk ]}"
     '';
 
     passthru = {
@@ -236,14 +231,7 @@ stdenv.mkDerivation (
         writeScript "update.sh" ''
           #!${stdenv.shell}
           set -ox errexit
-          PATH=${
-            lib.makeBinPath [
-              common-updater-scripts
-              coreutils
-              git
-              gnused
-            ]
-          }
+          PATH=${lib.makeBinPath [ common-updater-scripts coreutils git gnused ]}
           latest=$(list-git-tags --url=https://github.com/erlang/otp.git | sed -n 's/^OTP-${major}/${major}/p' | sort -V | tail -1)
           if [ "$latest" != "${version}" ]; then
             nixpkgs="$(git rev-parse --show-toplevel)"

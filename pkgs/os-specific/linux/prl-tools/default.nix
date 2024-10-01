@@ -26,10 +26,7 @@ let
   kernelVersion = kernel.modDirVersion;
   kernelDir = "${kernel.dev}/lib/modules/${kernelVersion}";
 
-  libPath = lib.concatStringsSep ":" [
-    "${glib.out}/lib"
-    "${xorg.libXrandr}/lib"
-  ];
+  libPath = lib.concatStringsSep ":" [ "${glib.out}/lib" "${xorg.libXrandr}/lib" ];
   scriptPath = lib.concatStringsSep ":" [
     "${bash}/bin"
     "${cups}/sbin"

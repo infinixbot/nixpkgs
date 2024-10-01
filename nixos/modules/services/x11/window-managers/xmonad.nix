@@ -20,10 +20,7 @@ let
   packages =
     self:
     cfg.extraPackages self
-    ++ optionals cfg.enableContribAndExtras [
-      self.xmonad-contrib
-      self.xmonad-extras
-    ];
+    ++ optionals cfg.enableContribAndExtras [ self.xmonad-contrib self.xmonad-extras ];
 
   xmonad-vanilla = pkgs.xmonad-with-packages.override {
     inherit ghcWithPackages packages;

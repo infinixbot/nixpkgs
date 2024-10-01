@@ -206,10 +206,7 @@ in
   opengl =
     old:
     (addToBuildInputsWithPkgConfig (
-      lib.optionals (!stdenv.isDarwin) [
-        pkgs.libGL
-        pkgs.libGLU
-      ]
+      lib.optionals (!stdenv.isDarwin) [ pkgs.libGL pkgs.libGLU ]
       ++ lib.optionals stdenv.isDarwin [
         pkgs.darwin.apple_sdk.frameworks.Foundation
         pkgs.darwin.apple_sdk.frameworks.OpenGL

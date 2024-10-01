@@ -86,10 +86,7 @@ stdenv.mkDerivation {
   postFixup = ''
     wrapProgram $out/bin/Natron \
       --prefix PYTHONPATH : "${
-        python3.pkgs.makePythonPath [
-          python3.pkgs.qtpy
-          python3.pkgs.pyside2
-        ]
+        python3.pkgs.makePythonPath [ python3.pkgs.qtpy python3.pkgs.pyside2 ]
       }" \
       --set-default OCIO "$out/share/OpenColorIO-Configs/blender/config.ocio"
   '';

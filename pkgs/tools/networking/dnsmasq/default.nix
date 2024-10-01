@@ -96,10 +96,7 @@ stdenv.mkDerivation rec {
       libidn
     ]
     ++ lib.optionals dbusSupport [ dbus ]
-    ++ lib.optionals stdenv.isLinux [
-      libnetfilter_conntrack
-      nftables
-    ];
+    ++ lib.optionals stdenv.isLinux [ libnetfilter_conntrack nftables ];
 
   passthru.tests = {
     prometheus-exporter = nixosTests.prometheus-exporters.dnsmasq;

@@ -80,16 +80,8 @@ mkDerivation rec {
       taglib
       zlib
     ]
-    ++ lib.optionals withGstPlugins [
-      gst-plugins-good
-      gst-plugins-bad
-      gst-plugins-ugly
-    ]
-    ++ lib.optionals withCD [
-      libcddb
-      libcdio
-      libcdio-paranoia
-    ]
+    ++ lib.optionals withGstPlugins [ gst-plugins-good gst-plugins-bad gst-plugins-ugly ]
+    ++ lib.optionals withCD [ libcddb libcdio libcdio-paranoia ]
     ++ lib.optional withGudev libgudev
     ++ lib.optional withKeybinder keybinder3
     ++ lib.optional withLibnotify libnotify

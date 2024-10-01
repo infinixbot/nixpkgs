@@ -53,22 +53,17 @@ qtModule {
     qtsensors
     qtwebchannel
   ] ++ lib.optional stdenv.isDarwin qtmultimedia;
-  buildInputs =
-    [
-      fontconfig
-      libwebp
-      libxml2
-      libxslt
-      sqlite
-      glib
-      gst_all_1.gstreamer
-      gst_all_1.gst-plugins-base
-      hyphen
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      ICU
-      OpenGL
-    ];
+  buildInputs = [
+    fontconfig
+    libwebp
+    libxml2
+    libxslt
+    sqlite
+    glib
+    gst_all_1.gstreamer
+    gst_all_1.gst-plugins-base
+    hyphen
+  ] ++ lib.optionals stdenv.isDarwin [ ICU OpenGL ];
   nativeBuildInputs = [
     bison
     flex

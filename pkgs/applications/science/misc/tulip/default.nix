@@ -40,10 +40,7 @@ stdenv.mkDerivation rec {
       python3
     ]
     ++ lib.optionals stdenv.isDarwin [ llvmPackages.openmp ]
-    ++ lib.optionals stdenv.isLinux [
-      libGLU
-      libGL
-    ];
+    ++ lib.optionals stdenv.isLinux [ libGLU libGL ];
 
   qtWrapperArgs = [ ''--prefix PATH : ${lib.makeBinPath [ python3 ]}'' ];
 

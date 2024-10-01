@@ -30,10 +30,7 @@ stdenv.mkDerivation (finalAttrs: {
       findlib
       ocaml
     ]);
-  buildInputs = lib.optionals stdenv.hostPlatform.isGnu [
-    glibc
-    glibc.static
-  ];
+  buildInputs = lib.optionals stdenv.hostPlatform.isGnu [ glibc glibc.static ];
 
   postPatch = ''
     patchShebangs src/bin2c.pl

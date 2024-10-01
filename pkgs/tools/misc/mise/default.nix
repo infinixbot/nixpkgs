@@ -39,12 +39,7 @@ rustPlatform.buildRustPackage rec {
     installShellFiles
     pkg-config
   ];
-  buildInputs =
-    [ openssl ]
-    ++ lib.optionals stdenv.isDarwin [
-      Security
-      SystemConfiguration
-    ];
+  buildInputs = [ openssl ] ++ lib.optionals stdenv.isDarwin [ Security SystemConfiguration ];
 
   postPatch = ''
     patchShebangs --build \

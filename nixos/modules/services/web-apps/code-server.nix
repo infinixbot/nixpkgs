@@ -77,10 +77,7 @@ in
         description = ''
           The type of authentication to use.
         '';
-        type = lib.types.enum [
-          "none"
-          "password"
-        ];
+        type = lib.types.enum [ "none" "password" ];
       };
 
       hashedPassword = lib.mkOption {

@@ -35,13 +35,7 @@ rustPlatform.buildRustPackage rec {
 
   postFixup = ''
     wrapProgram $out/bin/ivm \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          cargo
-          llvm_16.dev
-          stdenv.cc
-        ]
-      } \
+      --prefix PATH : ${lib.makeBinPath [ cargo llvm_16.dev stdenv.cc ]} \
       --prefix LIBRARY_PATH : ${
         lib.makeLibraryPath [
           libffi

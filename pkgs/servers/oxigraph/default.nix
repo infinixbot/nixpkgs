@@ -24,10 +24,7 @@ rustPlatform.buildRustPackage rec {
   nativeBuildInputs = [
     rustPlatform.bindgenHook
   ];
-  buildInputs = lib.optionals stdenv.isDarwin [
-    IOKit
-    Security
-  ];
+  buildInputs = lib.optionals stdenv.isDarwin [ IOKit Security ];
 
   cargoBuildFlags = [
     "--package"

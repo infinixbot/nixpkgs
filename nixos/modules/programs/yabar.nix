@@ -104,10 +104,7 @@ in
             position = lib.mkOption {
               default = "top";
               example = "bottom";
-              type = lib.types.enum [
-                "top"
-                "bottom"
-              ];
+              type = lib.types.enum [ "top" "bottom" ];
 
               description = ''
                 The position where the bar will be rendered.
@@ -138,11 +135,7 @@ in
                   options.align = lib.mkOption {
                     default = "left";
                     example = "right";
-                    type = lib.types.enum [
-                      "left"
-                      "center"
-                      "right"
-                    ];
+                    type = lib.types.enum [ "left" "center" "right" ];
 
                     description = ''
                       Whether to align the indicator at the left or right of the bar.

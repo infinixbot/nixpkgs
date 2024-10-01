@@ -182,10 +182,7 @@ in
 
       forward = lib.mkOption {
         default = "first";
-        type = lib.types.enum [
-          "first"
-          "only"
-        ];
+        type = lib.types.enum [ "first" "only" ];
         description = ''
           Whether to forward 'first' (try forwarding but lookup directly if forwarding fails) or 'only'.
         '';

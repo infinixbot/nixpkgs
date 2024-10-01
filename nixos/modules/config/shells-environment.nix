@@ -20,10 +20,7 @@ let
         lib.concatMap (profile: map (suffix: "${profile}${suffix}") listSuffixes) cfg.profiles
       );
 
-      allVariables = lib.zipAttrsWith (n: lib.concatLists) [
-        absoluteVariables
-        suffixedVariables
-      ];
+      allVariables = lib.zipAttrsWith (n: lib.concatLists) [ absoluteVariables suffixedVariables ];
 
       exportVariables = lib.mapAttrsToList (
         n: v: ''export ${n}="${lib.concatStringsSep ":" v}"''

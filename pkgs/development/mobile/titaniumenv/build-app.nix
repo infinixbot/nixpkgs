@@ -66,12 +66,7 @@ let
     fi
   '';
 
-  extraArgs = removeAttrs args [
-    "name"
-    "preRebuild"
-    "androidsdkArgs"
-    "xcodewrapperArgs"
-  ];
+  extraArgs = removeAttrs args [ "name" "preRebuild" "androidsdkArgs" "xcodewrapperArgs" ];
 in
 stdenv.mkDerivation (
   {

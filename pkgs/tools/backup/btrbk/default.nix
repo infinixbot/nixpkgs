@@ -57,14 +57,7 @@ stdenv.mkDerivation rec {
     wrapProgram $out/bin/btrbk \
       --set PERL5LIB $PERL5LIB \
       --run 'export program_name=$0' \
-      --prefix PATH ':' "${
-        lib.makeBinPath [
-          btrfs-progs
-          bash
-          mbuffer
-          openssh
-        ]
-      }"
+      --prefix PATH ':' "${lib.makeBinPath [ btrfs-progs bash mbuffer openssh ]}"
   '';
 
   passthru.tests = {

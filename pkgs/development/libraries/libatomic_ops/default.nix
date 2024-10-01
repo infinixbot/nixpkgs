@@ -25,11 +25,7 @@ stdenv.mkDerivation rec {
     "doc"
   ];
 
-  nativeBuildInputs = lib.optionals stdenv.isCygwin [
-    autoconf
-    automake
-    libtool
-  ];
+  nativeBuildInputs = lib.optionals stdenv.isCygwin [ autoconf automake libtool ];
 
   preConfigure = lib.optionalString stdenv.isCygwin ''
     sed -i -e "/libatomic_ops_gpl_la_SOURCES/a libatomic_ops_gpl_la_LIBADD = libatomic_ops.la" src/Makefile.am

@@ -68,13 +68,7 @@ stdenv.mkDerivation rec {
   passthru.updateScript = writeScript "${pname}-updater" ''
     #!${stdenv.shell}
     set -eu -o pipefail
-    PATH=${
-      lib.makeBinPath [
-        curl
-        jq
-        common-updater-scripts
-      ]
-    }:$PATH
+    PATH=${lib.makeBinPath [ curl jq common-updater-scripts ]}:$PATH
 
     plexApiJson=$(curl -sS https://plex.tv/api/downloads/5.json)
     latestVersion="$(echo $plexApiJson | jq .computer.Linux.version | tr -d '"\n')"

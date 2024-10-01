@@ -207,15 +207,9 @@
       ]
       # Incorrect bounds on Cabal in hadrian
       # https://gitlab.haskell.org/ghc/ghc/-/issues/24100
-      ++
-        lib.optionals
-          (lib.elem version [
-            "9.8.1"
-            "9.8.2"
-          ])
-          [
-            ../../tools/haskell/hadrian/hadrian-9.8.1-allow-Cabal-3.10.patch
-          ];
+      ++ lib.optionals (lib.elem version [ "9.8.1" "9.8.2" ]) [
+        ../../tools/haskell/hadrian/hadrian-9.8.1-allow-Cabal-3.10.patch
+      ];
   },
 
   # GHC's build system hadrian built from the GHC-to-build's source tree

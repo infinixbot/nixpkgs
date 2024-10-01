@@ -27,11 +27,7 @@ buildPythonApplication rec {
     "--prefix"
     "PATH"
     ":"
-    (lib.makeBinPath [
-      git
-      breezy
-      subversion
-    ])
+    (lib.makeBinPath [ git breezy subversion ])
   ];
 
   doCheck = false; # requires network

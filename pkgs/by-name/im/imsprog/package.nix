@@ -52,12 +52,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   postFixup = ''
     wrapProgram $out/bin/IMSProg_database_update \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          wget
-          zenity
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ wget zenity ]}"
   '';
 
   meta = {

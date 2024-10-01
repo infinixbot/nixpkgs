@@ -14,12 +14,7 @@ buildGoModule rec {
   nativeBuildInputs = [ makeWrapper ];
 
   postInstall = ''
-    wrapProgram "$out/bin/overmind" --prefix PATH : "${
-      lib.makeBinPath [
-        tmux
-        which
-      ]
-    }"
+    wrapProgram "$out/bin/overmind" --prefix PATH : "${lib.makeBinPath [ tmux which ]}"
   '';
 
   src = fetchFromGitHub {

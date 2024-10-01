@@ -465,11 +465,7 @@ rec {
               "web-progs"
               "synctex"
             ]
-            ++ lib.optionals (!withLuaJIT) [
-              "luajittex"
-              "luajithbtex"
-              "mfluajit"
-            ]
+            ++ lib.optionals (!withLuaJIT) [ "luajittex" "luajithbtex" "mfluajit" ]
           )
       # disable all packages, re-enable upmendex, web2c packages
       ++ [

@@ -166,11 +166,7 @@ in
           };
 
           DB = mkOption {
-            type = types.enum [
-              "sqlite"
-              "postgres"
-              "mysql"
-            ];
+            type = types.enum [ "sqlite" "postgres" "mysql" ];
             default = "sqlite";
             description = "Database engine to use.";
           };

@@ -69,10 +69,7 @@ stdenv.mkDerivation rec {
         libXpm
       ]
     )
-    ++ optionals stdenv.isDarwin [
-      ApplicationServices
-      Foundation
-    ];
+    ++ optionals stdenv.isDarwin [ ApplicationServices Foundation ];
 
   hardeningDisable = [ "fortify" ];
 

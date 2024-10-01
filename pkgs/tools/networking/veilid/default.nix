@@ -40,10 +40,7 @@ rustPlatform.buildRustPackage rec {
     protobuf
   ];
 
-  buildInputs = lib.optionals stdenv.isDarwin [
-    AppKit
-    Security
-  ];
+  buildInputs = lib.optionals stdenv.isDarwin [ AppKit Security ];
 
   cargoBuildFlags = [
     "--workspace"

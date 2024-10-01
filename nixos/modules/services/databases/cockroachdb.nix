@@ -197,10 +197,7 @@ in
       cockroachdb.gid = config.ids.gids.cockroachdb;
     };
 
-    networking.firewall.allowedTCPPorts = lib.optionals cfg.openPorts [
-      cfg.http.port
-      cfg.listen.port
-    ];
+    networking.firewall.allowedTCPPorts = lib.optionals cfg.openPorts [ cfg.http.port cfg.listen.port ];
 
     systemd.services.cockroachdb = {
       description = "CockroachDB Server";

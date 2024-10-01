@@ -56,11 +56,7 @@ in
       "avahi"
       "allowInterfaces"
     ])
-    (lib.mkRenamedOptionModule [ "services" "avahi" "nssmdns" ] [
-      "services"
-      "avahi"
-      "nssmdns4"
-    ])
+    (lib.mkRenamedOptionModule [ "services" "avahi" "nssmdns" ] [ "services" "avahi" "nssmdns4" ])
   ];
 
   options.services.avahi = {

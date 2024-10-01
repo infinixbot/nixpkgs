@@ -78,10 +78,7 @@ rustPlatform.buildRustPackage rec {
     ++ lib.optionals (withAudioBackend == "rodio" && stdenv.isLinux) [ alsa-lib ]
     ++ lib.optionals (withAudioBackend == "portaudio") [ portaudio ]
     ++ lib.optionals (withAudioBackend == "jackaudio") [ libjack2 ]
-    ++ lib.optionals (withAudioBackend == "rodiojack") [
-      alsa-lib
-      libjack2
-    ]
+    ++ lib.optionals (withAudioBackend == "rodiojack") [ alsa-lib libjack2 ]
     ++ lib.optionals (withAudioBackend == "sdl") [ SDL2 ]
     ++ lib.optionals (withAudioBackend == "gstreamer") [
       gst_all_1.gstreamer

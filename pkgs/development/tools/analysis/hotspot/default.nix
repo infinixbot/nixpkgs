@@ -76,12 +76,7 @@ stdenv.mkDerivation rec {
   ];
 
   qtWrapperArgs = [
-    "--suffix PATH : ${
-      lib.makeBinPath [
-        linuxPackages.perf
-        binutils
-      ]
-    }"
+    "--suffix PATH : ${lib.makeBinPath [ linuxPackages.perf binutils ]}"
   ];
 
   preFixup = ''

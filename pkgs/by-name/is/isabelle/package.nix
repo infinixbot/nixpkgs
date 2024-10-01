@@ -79,18 +79,13 @@ stdenv.mkDerivation (finalAttrs: rec {
 
   nativeBuildInputs = [ java ];
 
-  buildInputs =
-    [
-      polyml
-      veriT
-      vampire
-      eprover-ho
-      nettools
-    ]
-    ++ lib.optionals (!stdenv.isDarwin) [
-      java
-      procps
-    ];
+  buildInputs = [
+    polyml
+    veriT
+    vampire
+    eprover-ho
+    nettools
+  ] ++ lib.optionals (!stdenv.isDarwin) [ java procps ];
 
   sourceRoot = "${dirname}${lib.optionalString stdenv.isDarwin ".app"}";
 
@@ -175,10 +170,7 @@ stdenv.mkDerivation (finalAttrs: rec {
       patchelf --set-interpreter $(cat ${stdenv.cc}/nix-support/dynamic-linker) contrib/bash_process-*/$arch/bash_process
       for d in contrib/kodkodi-*/jni/$arch; do
         patchelf --set-rpath "${
-          lib.concatStringsSep ":" [
-            "${java}/lib/openjdk/lib/server"
-            "${stdenv.cc.cc.lib}/lib"
-          ]
+          lib.concatStringsSep ":" [ "${java}/lib/openjdk/lib/server" "${stdenv.cc.cc.lib}/lib" ]
         }" $d/*.so
       done
     ''

@@ -65,13 +65,7 @@ rustPlatform.buildRustPackage rec {
 
   postFixup = ''
     patchelf $out/bin/coppwr \
-      --add-rpath ${
-        lib.makeLibraryPath [
-          libGL
-          libxkbcommon
-          wayland
-        ]
-      }
+      --add-rpath ${lib.makeLibraryPath [ libGL libxkbcommon wayland ]}
   '';
 
   meta = with lib; {

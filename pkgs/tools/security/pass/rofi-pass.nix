@@ -26,10 +26,7 @@
   backend ? "x11",
 }:
 
-assert lib.assertOneOf "backend" backend [
-  "x11"
-  "wayland"
-];
+assert lib.assertOneOf "backend" backend [ "x11" "wayland" ];
 
 stdenv.mkDerivation {
   pname = "rofi-pass";

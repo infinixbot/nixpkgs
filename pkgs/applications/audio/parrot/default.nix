@@ -39,12 +39,7 @@ rustPlatform.buildRustPackage {
 
   postInstall = ''
     wrapProgram $out/bin/parrot \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          ffmpeg
-          yt-dlp
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ ffmpeg yt-dlp ]}
   '';
 
   passthru.updateScript = unstableGitUpdater {

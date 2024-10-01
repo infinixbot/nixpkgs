@@ -89,10 +89,7 @@ stdenv.mkDerivation rec {
     ]
     ++ lib.optionals rpmSupport [ rpm ]
     ++ lib.optionals gstreamerSupport ([ gst_all_1.gstreamer ] ++ gstPlugins gst_all_1)
-    ++ lib.optionals gtkSupport [
-      glib
-      gtk3
-    ]
+    ++ lib.optionals gtkSupport [ glib gtk3 ]
     ++ lib.optionals videoSupport [ libmpeg2 ];
 
   # Checks need to be run after "make install", otherwise plug-ins are not in

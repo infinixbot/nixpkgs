@@ -110,11 +110,7 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = optional stdenv.isLinux autoPatchelfHook;
   buildInputs =
-    optionals isAtLeast50 [
-      SDL2
-      SDL2_image
-      SDL2_mixer
-    ]
+    optionals isAtLeast50 [ SDL2 SDL2_image SDL2_mixer ]
     ++ optional (!isAtLeast50) SDL
     ++ optional enableUnfuck dwarf-fortress-unfuck
     ++ [ stdenv.cc.cc.lib ];

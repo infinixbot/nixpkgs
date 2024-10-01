@@ -25,12 +25,7 @@ stdenv.mkDerivation rec {
   '';
 
   postFixup = ''
-    wrapProgram $out/bin/ktlint --prefix PATH : "${
-      lib.makeBinPath [
-        jre_headless
-        gnused
-      ]
-    }"
+    wrapProgram $out/bin/ktlint --prefix PATH : "${lib.makeBinPath [ jre_headless gnused ]}"
   '';
 
   meta = with lib; {

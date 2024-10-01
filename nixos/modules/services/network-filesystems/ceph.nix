@@ -51,12 +51,7 @@ let
       startLimitBurst =
         if daemonType == "osd" then
           30
-        else if
-          lib.elem daemonType [
-            "mgr"
-            "mds"
-          ]
-        then
+        else if lib.elem daemonType [ "mgr" "mds" ] then
           3
         else
           5;
@@ -166,10 +161,7 @@ in
       };
 
       authClusterRequired = lib.mkOption {
-        type = lib.types.enum [
-          "cephx"
-          "none"
-        ];
+        type = lib.types.enum [ "cephx" "none" ];
         default = "cephx";
         description = ''
           Enables requiring daemons to authenticate with eachother in the cluster.
@@ -177,10 +169,7 @@ in
       };
 
       authServiceRequired = lib.mkOption {
-        type = lib.types.enum [
-          "cephx"
-          "none"
-        ];
+        type = lib.types.enum [ "cephx" "none" ];
         default = "cephx";
         description = ''
           Enables requiring clients to authenticate with the cluster to access services in the cluster (e.g. radosgw, mds or osd).
@@ -188,10 +177,7 @@ in
       };
 
       authClientRequired = lib.mkOption {
-        type = lib.types.enum [
-          "cephx"
-          "none"
-        ];
+        type = lib.types.enum [ "cephx" "none" ];
         default = "cephx";
         description = ''
           Enables requiring the cluster to authenticate itself to the client.

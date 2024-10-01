@@ -32,10 +32,7 @@ stdenv.mkDerivation rec {
   buildInputs =
     [ ncurses ]
     ++ lib.optional stdenv.isDarwin IOKit
-    ++ lib.optionals stdenv.isLinux [
-      libcap
-      libnl
-    ]
+    ++ lib.optionals stdenv.isLinux [ libcap libnl ]
     ++ lib.optional sensorsSupport lm_sensors
     ++ lib.optional systemdSupport systemd;
 

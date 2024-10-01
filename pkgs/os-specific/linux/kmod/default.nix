@@ -50,21 +50,16 @@ stdenv.mkDerivation rec {
   ] ++ lib.optional withDevdoc "devdoc";
 
   strictDeps = true;
-  nativeBuildInputs =
-    [
-      autoconf
-      automake
-      docbook_xsl
-      libtool
-      libxslt
-      pkg-config
+  nativeBuildInputs = [
+    autoconf
+    automake
+    docbook_xsl
+    libtool
+    libxslt
+    pkg-config
 
-      docbook_xml_dtd_42 # for the man pages
-    ]
-    ++ lib.optionals withDevdoc [
-      docbook_xml_dtd_43
-      gtk-doc
-    ];
+    docbook_xml_dtd_42 # for the man pages
+  ] ++ lib.optionals withDevdoc [ docbook_xml_dtd_43 gtk-doc ];
   buildInputs =
     [
       xz

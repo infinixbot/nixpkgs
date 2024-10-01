@@ -70,11 +70,7 @@ in
         freeformType =
           with lib.types;
           let
-            scalars = oneOf [
-              singleLineStr
-              int
-              float
-            ];
+            scalars = oneOf [ singleLineStr int float ];
           in
           attrsOf (oneOf [
             scalars

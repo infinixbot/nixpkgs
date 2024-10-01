@@ -396,20 +396,8 @@ let
         "patches"
       ]
     )
-    // listToAttrs (
-      map (n: nameValuePair n mergeAttrs) [
-        "passthru"
-        "meta"
-        "cfg"
-        "flags"
-      ]
-    )
-    // listToAttrs (
-      map (n: nameValuePair n (a: b: "${a}\n${b}")) [
-        "preConfigure"
-        "postInstall"
-      ]
-    );
+    // listToAttrs (map (n: nameValuePair n mergeAttrs) [ "passthru" "meta" "cfg" "flags" ])
+    // listToAttrs (map (n: nameValuePair n (a: b: "${a}\n${b}")) [ "preConfigure" "postInstall" ]);
 
   nixType =
     x:

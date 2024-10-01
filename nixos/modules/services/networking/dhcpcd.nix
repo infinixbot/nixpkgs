@@ -250,11 +250,7 @@ in
         # dhcpcd doesn't start properly with malloc ∉ [ libc scudo ]
         # see https://github.com/NixOS/nixpkgs/issues/151696
         assertion =
-          dhcpcd.enablePrivSep
-          -> lib.elem config.environment.memoryAllocator.provider [
-            "libc"
-            "scudo"
-          ];
+          dhcpcd.enablePrivSep -> lib.elem config.environment.memoryAllocator.provider [ "libc" "scudo" ];
         message = ''
           dhcpcd with privilege separation is incompatible with chosen system malloc.
             Currently only the `libc` and `scudo` allocators are known to work.

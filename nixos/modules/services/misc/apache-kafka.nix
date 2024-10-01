@@ -53,11 +53,7 @@ in
         freeformType =
           with lib.types;
           let
-            primitive = oneOf [
-              bool
-              int
-              str
-            ];
+            primitive = oneOf [ bool int str ];
           in
           lazyAttrsOf (nullOr (either primitive (listOf primitive)));
 

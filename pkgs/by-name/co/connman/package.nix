@@ -61,14 +61,8 @@ let
     withFeatureAs
     ;
 in
-assert lib.asserts.assertOneOf "firewallType" firewallType [
-  "iptables"
-  "nftables"
-];
-assert lib.asserts.assertOneOf "dnsType" dnsType [
-  "internal"
-  "systemd-resolved"
-];
+assert lib.asserts.assertOneOf "firewallType" firewallType [ "iptables" "nftables" ];
+assert lib.asserts.assertOneOf "dnsType" dnsType [ "internal" "systemd-resolved" ];
 stdenv.mkDerivation (finalAttrs: {
   pname = "connman";
   version = "1.42";
@@ -110,10 +104,7 @@ stdenv.mkDerivation (finalAttrs: {
     ++ optionals (firewallType == "nftables") [ libnftnl ]
     ++ optionals (enableOpenconnect) [ openconnect ]
     ++ optionals (enablePolkit) [ polkit ]
-    ++ optionals (enablePptp) [
-      pptp
-      ppp
-    ];
+    ++ optionals (enablePptp) [ pptp ppp ];
 
   postPatch = ''
     sed -i "s@/usr/bin/file@file@g" ./configure

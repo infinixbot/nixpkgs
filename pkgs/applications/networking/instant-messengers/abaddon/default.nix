@@ -61,12 +61,7 @@ stdenv.mkDerivation rec {
     mkdir $out/bin
     cp abaddon $out/bin
     wrapProgram $out/bin/abaddon \
-      --prefix LD_LIBRARY_PATH : "${
-        lib.makeLibraryPath [
-          alsa-lib
-          libpulseaudio
-        ]
-      }" \
+      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ alsa-lib libpulseaudio ]}" \
       --chdir $out/share/abaddon
 
     runHook postInstall

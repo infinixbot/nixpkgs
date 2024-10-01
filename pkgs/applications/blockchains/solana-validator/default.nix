@@ -96,12 +96,7 @@ rustPlatform.buildRustPackage rec {
       hidapi
     ]
     ++ (lib.optionals stdenv.isLinux [ udev ])
-    ++ lib.optionals stdenv.isDarwin [
-      Security
-      System
-      Libsystem
-      libcxx
-    ];
+    ++ lib.optionals stdenv.isDarwin [ Security System Libsystem libcxx ];
   strictDeps = true;
 
   doCheck = false;

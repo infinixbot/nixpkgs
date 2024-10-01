@@ -113,18 +113,8 @@ assert (
     "bagel"
   ]
 );
-assert (
-  builtins.elem shGaussOrd [
-    "standard"
-    "gaussian"
-  ]
-);
-assert (
-  builtins.elem shellSet [
-    "standard"
-    "orca"
-  ]
-);
+assert (builtins.elem shGaussOrd [ "standard" "gaussian" ]);
+assert (builtins.elem shellSet [ "standard" "orca" ]);
 
 let
   pname = "libint";

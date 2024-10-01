@@ -32,10 +32,7 @@ in
       enable = lib.mkEnableOption "MailHog, web and API based SMTP testing";
 
       storage = lib.mkOption {
-        type = lib.types.enum [
-          "maildir"
-          "memory"
-        ];
+        type = lib.types.enum [ "maildir" "memory" ];
         default = "memory";
         description = "Store mails on disk or in memory.";
       };

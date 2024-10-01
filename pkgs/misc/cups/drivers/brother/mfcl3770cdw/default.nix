@@ -88,13 +88,7 @@ rec {
         --replace "basedir =~" "basedir = \"$basedir\"; #" \
         --replace "PRINTER =~" "PRINTER = \"${model}\"; #"
       wrapProgram $dir/cupswrapper/brother_lpdwrapper_${model} \
-        --prefix PATH : ${
-          lib.makeBinPath [
-            coreutils
-            gnugrep
-            gnused
-          ]
-        }
+        --prefix PATH : ${lib.makeBinPath [ coreutils gnugrep gnused ]}
       mkdir -p $out/lib/cups/filter
       mkdir -p $out/share/cups/model
       ln $dir/cupswrapper/brother_lpdwrapper_${model} $out/lib/cups/filter

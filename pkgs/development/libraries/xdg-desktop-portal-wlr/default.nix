@@ -57,11 +57,7 @@ stdenv.mkDerivation rec {
 
   postInstall = ''
     wrapProgram $out/libexec/xdg-desktop-portal-wlr --prefix PATH ":" ${
-      lib.makeBinPath [
-        bash
-        grim
-        slurp
-      ]
+      lib.makeBinPath [ bash grim slurp ]
     }
   '';
 

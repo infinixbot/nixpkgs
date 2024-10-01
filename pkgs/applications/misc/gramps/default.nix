@@ -67,10 +67,7 @@ buildPythonApplication rec {
       gexiv2
     ]
     # Map support
-    ++ lib.optionals enableOSM [
-      osm-gps-map
-      glib-networking
-    ]
+    ++ lib.optionals enableOSM [ osm-gps-map glib-networking ]
     # Graphviz support
     ++ lib.optional enableGraphviz graphviz
     # Ghostscript support

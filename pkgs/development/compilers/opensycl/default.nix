@@ -77,12 +77,7 @@ stdenv.mkDerivation rec {
   postFixup =
     ''
       wrapProgram $out/bin/syclcc-clang \
-        --prefix PATH : ${
-          lib.makeBinPath [
-            python3
-            lld_15
-          ]
-        } \
+        --prefix PATH : ${lib.makeBinPath [ python3 lld_15 ]} \
         --add-flags "-L${llvmPackages_15.openmp}/lib" \
         --add-flags "-I${llvmPackages_15.openmp.dev}/include" \
     ''

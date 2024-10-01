@@ -182,12 +182,7 @@ in
       };
 
       plugins = mkOption {
-        type = types.listOf (
-          types.oneOf [
-            types.path
-            types.package
-          ]
-        );
+        type = types.listOf (types.oneOf [ types.path types.package ]);
         default = [ ];
         example = "[ ./com.github.moussetc.mattermost.plugin.giphy-2.0.0.tar.gz ]";
         description = ''

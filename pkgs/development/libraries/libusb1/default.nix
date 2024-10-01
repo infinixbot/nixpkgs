@@ -37,11 +37,7 @@ stdenv.mkDerivation rec {
   ] ++ lib.optionals withDocs [ doxygen ];
   propagatedBuildInputs =
     lib.optional enableUdev udev
-    ++ lib.optionals stdenv.isDarwin [
-      libobjc
-      IOKit
-      Security
-    ];
+    ++ lib.optionals stdenv.isDarwin [ libobjc IOKit Security ];
 
   dontDisableStatic = withStatic;
 

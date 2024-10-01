@@ -57,12 +57,7 @@ stdenv.mkDerivation rec {
     cp -ar lib share $out
     chmod +x $out/bin/*
     wrapProgram $out/bin/unifi-video --set JAVA_HOME "${jre8}" --prefix PATH : ${
-      lib.makeBinPath [
-        jre8
-        lsb-release
-        libcap
-        util-linux
-      ]
+      lib.makeBinPath [ jre8 lsb-release libcap util-linux ]
     }
 
     runHook postInstall

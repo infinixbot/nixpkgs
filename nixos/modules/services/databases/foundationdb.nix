@@ -137,13 +137,7 @@ in
     };
 
     class = lib.mkOption {
-      type = lib.types.nullOr (
-        lib.types.enum [
-          "storage"
-          "transaction"
-          "stateless"
-        ]
-      );
+      type = lib.types.nullOr (lib.types.enum [ "storage" "transaction" "stateless" ]);
       default = null;
       description = "Process class";
     };
@@ -340,10 +334,7 @@ in
     };
 
     traceFormat = lib.mkOption {
-      type = lib.types.enum [
-        "xml"
-        "json"
-      ];
+      type = lib.types.enum [ "xml" "json" ];
       default = "xml";
       description = "Trace logging format.";
     };

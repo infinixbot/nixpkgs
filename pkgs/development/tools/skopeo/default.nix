@@ -44,12 +44,7 @@ buildGoModule rec {
     makeWrapper
   ];
 
-  buildInputs =
-    [ gpgme ]
-    ++ lib.optionals stdenv.isLinux [
-      lvm2
-      btrfs-progs
-    ];
+  buildInputs = [ gpgme ] ++ lib.optionals stdenv.isLinux [ lvm2 btrfs-progs ];
 
   buildPhase = ''
     runHook preBuild

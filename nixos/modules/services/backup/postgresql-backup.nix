@@ -132,11 +132,7 @@ in
       };
 
       compression = lib.mkOption {
-        type = lib.types.enum [
-          "none"
-          "gzip"
-          "zstd"
-        ];
+        type = lib.types.enum [ "none" "gzip" "zstd" ];
         default = "gzip";
         description = ''
           The type of compression to use on the generated database dump.

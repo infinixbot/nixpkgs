@@ -91,22 +91,14 @@ stdenv.mkDerivation (finalAttrs: {
     docbook_xml_dtd_43
   ] ++ lib.optional withIntrospection gobject-introspection;
 
-  buildInputs =
-    [
-      glib
-      freetype
-    ]
-    ++ lib.optionals withCoreText [
-      ApplicationServices
-      CoreText
-    ];
+  buildInputs = [
+    glib
+    freetype
+  ] ++ lib.optionals withCoreText [ ApplicationServices CoreText ];
 
   propagatedBuildInputs =
     lib.optional withGraphite2 graphite2
-    ++ lib.optionals withIcu [
-      icu
-      harfbuzz
-    ];
+    ++ lib.optionals withIcu [ icu harfbuzz ];
 
   doCheck = true;
 

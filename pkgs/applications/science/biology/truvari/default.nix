@@ -55,10 +55,7 @@ python3Packages.buildPythonApplication rec {
     "--prefix"
     "PATH"
     ":"
-    (lib.makeBinPath [
-      bcftools
-      htslib
-    ])
+    (lib.makeBinPath [ bcftools htslib ])
   ];
 
   pythonImportsCheck = [ "truvari" ];

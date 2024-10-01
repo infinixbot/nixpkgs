@@ -25,10 +25,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = lib.optionals stdenv.isDarwin [
-    Carbon
-    AppKit
-  ];
+  buildInputs = lib.optionals stdenv.isDarwin [ Carbon AppKit ];
   propagatedBuildInputs = [ glib ];
 
   meta = with lib; {

@@ -14,12 +14,7 @@ let
   kernelItem = types.submodule {
     options = {
       tristate = mkOption {
-        type = types.enum [
-          "y"
-          "m"
-          "n"
-          null
-        ];
+        type = types.enum [ "y" "m" "n" null ];
         default = null;
         internal = true;
         visible = true;

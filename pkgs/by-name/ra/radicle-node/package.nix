@@ -68,14 +68,7 @@ rustPlatform.buildRustPackage rec {
     for program in $out/bin/* ;
     do
       wrapProgram "$program" \
-        --prefix PATH : "${
-          lib.makeBinPath [
-            git
-            man-db
-            openssh
-            xdg-utils
-          ]
-        }"
+        --prefix PATH : "${lib.makeBinPath [ git man-db openssh xdg-utils ]}"
     done
   '';
 

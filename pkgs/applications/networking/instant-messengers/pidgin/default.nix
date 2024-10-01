@@ -88,15 +88,8 @@ let
         python-with-dbus
       ]
       ++ lib.optional withOpenssl openssl
-      ++ lib.optionals withGnutls [
-        gnutls
-        libgcrypt
-      ]
-      ++ lib.optionals stdenv.isLinux [
-        gtk2
-        gtkspell2
-        farstream
-      ]
+      ++ lib.optionals withGnutls [ gnutls libgcrypt ]
+      ++ lib.optionals stdenv.isLinux [ gtk2 gtkspell2 farstream ]
       ++ lib.optional stdenv.isDarwin gtk2-x11;
 
     propagatedBuildInputs =
@@ -130,14 +123,8 @@ let
         "--disable-gevolution"
       ]
       ++ lib.optionals withCyrus_sasl [ "--enable-cyrus-sasl=yes" ]
-      ++ lib.optionals withGnutls [
-        "--enable-gnutls=yes"
-        "--enable-nss=no"
-      ]
-      ++ lib.optionals stdenv.isDarwin [
-        "--disable-gtkspell"
-        "--disable-vv"
-      ]
+      ++ lib.optionals withGnutls [ "--enable-gnutls=yes" "--enable-nss=no" ]
+      ++ lib.optionals stdenv.isDarwin [ "--disable-gtkspell" "--disable-vv" ]
       ++ lib.optionals stdenv.cc.isClang [ "CFLAGS=-Wno-error=int-conversion" ];
 
     enableParallelBuilding = true;

@@ -33,14 +33,7 @@ stdenvNoCC.mkDerivation rec {
   installPhase = ''
     runHook preInstall
     install -D tessen $out/bin/tessen
-    wrapProgram $out/bin/tessen --prefix PATH : ${
-      lib.makeBinPath [
-        bemenu
-        pass
-        wtype
-        wl-clipboard
-      ]
-    }
+    wrapProgram $out/bin/tessen --prefix PATH : ${lib.makeBinPath [ bemenu pass wtype wl-clipboard ]}
     runHook postInstall
   '';
 

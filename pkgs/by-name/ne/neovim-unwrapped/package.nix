@@ -137,14 +137,8 @@ stdenv.mkDerivation (
         tree-sitter
         unibilium
       ]
-      ++ lib.optionals stdenv.isDarwin [
-        libiconv
-        CoreServices
-      ]
-      ++ lib.optionals finalAttrs.finalPackage.doCheck [
-        glibcLocales
-        procps
-      ];
+      ++ lib.optionals stdenv.isDarwin [ libiconv CoreServices ]
+      ++ lib.optionals finalAttrs.finalPackage.doCheck [ glibcLocales procps ];
 
     doCheck = false;
 

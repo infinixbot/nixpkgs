@@ -49,14 +49,7 @@ lib.fix (
         buildEnv ({ inherit (args) name paths; })
         // lib.optionalAttrs (args ? extraOutputsToInstall) { inherit (args) extraOutputsToInstall; }
       ).overrideAttrs
-        (
-          removeAttrs args [
-            "extraOutputsToInstall"
-            "name"
-            "paths"
-            "pkgs"
-          ]
-        );
+        (removeAttrs args [ "extraOutputsToInstall" "name" "paths" "pkgs" ]);
 
     ### texlive.combine backward compatibility
     # if necessary, convert old style { pkgs = [ ... ]; } packages to attribute sets
@@ -78,12 +71,7 @@ lib.fix (
           packages = ensurePkgSets (requiredTeXPackages tl);
           runtime = builtins.partition (
             p:
-            p.outputSpecified or false
-            -> builtins.elem (p.tlOutputName or p.outputName) [
-              "out"
-              "tex"
-              "tlpkg"
-            ]
+            p.outputSpecified or false -> builtins.elem (p.tlOutputName or p.outputName) [ "out" "tex" "tlpkg" ]
           ) packages;
           keySet = p: {
             key =
@@ -204,13 +192,7 @@ lib.fix (
     # and `grep -IR rungs "$TEXMFDIST"`
     # and ignoring luatex, perl, and shell scripts (those must be patched using postFixup)
     needsGhostscript = lib.any (
-      p:
-      lib.elem p.pname [
-        "context"
-        "dvipdfmx"
-        "latex-papersize"
-        "lyluatex"
-      ]
+      p: lib.elem p.pname [ "context" "dvipdfmx" "latex-papersize" "lyluatex" ]
     ) pkgList.bin;
 
     name =

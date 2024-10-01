@@ -74,10 +74,7 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optional withGui qtbase
     ++ lib.optional withPython python3
     ++ lib.optional withBlueshark bluez5
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      Foundation
-      AppKit
-    ];
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ Foundation AppKit ];
 
   makeFlags = [
     "PREFIX=${placeholder "out"}"

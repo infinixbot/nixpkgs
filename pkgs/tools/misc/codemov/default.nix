@@ -43,12 +43,7 @@ rustPlatform.buildRustPackage {
 
   postInstall = ''
     wrapProgram $out/bin/codemov \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          ffmpeg
-          git
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ ffmpeg git ]}
   '';
 
   meta = with lib; {

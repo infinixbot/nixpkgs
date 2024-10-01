@@ -97,10 +97,7 @@ in
           implementation = cfg.package.passthru.implementation or "<NOT SET>";
         in
         {
-          assertion = lib.elem implementation [
-            "krb5"
-            "heimdal"
-          ];
+          assertion = lib.elem implementation [ "krb5" "heimdal" ];
           message = ''
             `security.krb5.package` must be one of:
 

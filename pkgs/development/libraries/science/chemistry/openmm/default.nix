@@ -54,10 +54,7 @@ stdenv.mkDerivation rec {
 
   buildInputs =
     [ fftwSinglePrec ]
-    ++ lib.optionals enableOpencl [
-      ocl-icd
-      opencl-headers
-    ]
+    ++ lib.optionals enableOpencl [ ocl-icd opencl-headers ]
     ++ lib.optional enableCuda cudaPackages.cudatoolkit;
 
   propagatedBuildInputs = lib.optionals enablePython (

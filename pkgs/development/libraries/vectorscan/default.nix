@@ -49,12 +49,7 @@ stdenv.mkDerivation rec {
   cmakeFlags =
     [ (if enableShared then "-DBUILD_SHARED_LIBS=ON" else "BUILD_STATIC_LIBS=ON") ]
     ++ (
-      if
-        lib.elem stdenv.hostPlatform.system [
-          "x86_64-linux"
-          "i686-linux"
-        ]
-      then
+      if lib.elem stdenv.hostPlatform.system [ "x86_64-linux" "i686-linux" ] then
         [
           "-DBUILD_AVX2=ON"
           "-DBUILD_AVX512=ON"

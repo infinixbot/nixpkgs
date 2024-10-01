@@ -24,11 +24,7 @@ stdenv.mkDerivation rec {
     rpmextract
     ncurses5
   ];
-  libPath = lib.makeLibraryPath [
-    stdenv.cc.cc
-    stdenv.cc.libc
-    ncurses5
-  ];
+  libPath = lib.makeLibraryPath [ stdenv.cc.cc stdenv.cc.libc ncurses5 ];
 
   buildCommand = ''
     unzip ${src}

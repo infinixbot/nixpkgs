@@ -48,11 +48,7 @@ stdenv.mkDerivation rec {
   ];
 
   env.CXXFLAGS = toString (
-    lib.optional stdenv.isDarwin [
-      "-faligned-allocation"
-      "-fno-aligned-new"
-      "-fvisibility=hidden"
-    ]
+    lib.optional stdenv.isDarwin [ "-faligned-allocation" "-fno-aligned-new" "-fvisibility=hidden" ]
   );
 
   postBuild = ''

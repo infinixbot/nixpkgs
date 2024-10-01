@@ -150,10 +150,7 @@ in
             };
 
             db_type = mkOption {
-              type = types.enum [
-                "sqlite3"
-                "postgres"
-              ];
+              type = types.enum [ "sqlite3" "postgres" ];
               example = "postgres";
               default = "sqlite3";
               description = "Database engine to use.";
@@ -357,10 +354,7 @@ in
             };
 
             tls_letsencrypt_challenge_type = mkOption {
-              type = types.enum [
-                "TLS-ALPN-01"
-                "HTTP-01"
-              ];
+              type = types.enum [ "TLS-ALPN-01" "HTTP-01" ];
               default = "HTTP-01";
               description = ''
                 Type of ACME challenge to use, currently supported types:
@@ -553,51 +547,27 @@ in
       "oidc"
       "client_secret_path"
     ])
-    (mkRenamedOptionModule
-      [
-        "services"
-        "headscale"
-        "tls"
-        "letsencrypt"
-        "hostname"
-      ]
-      [
-        "services"
-        "headscale"
-        "settings"
-        "tls_letsencrypt_hostname"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "headscale"
-        "tls"
-        "letsencrypt"
-        "challengeType"
-      ]
-      [
-        "services"
-        "headscale"
-        "settings"
-        "tls_letsencrypt_challenge_type"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "headscale"
-        "tls"
-        "letsencrypt"
-        "httpListen"
-      ]
-      [
-        "services"
-        "headscale"
-        "settings"
-        "tls_letsencrypt_listen"
-      ]
-    )
+    (mkRenamedOptionModule [
+      "services"
+      "headscale"
+      "tls"
+      "letsencrypt"
+      "hostname"
+    ] [ "services" "headscale" "settings" "tls_letsencrypt_hostname" ])
+    (mkRenamedOptionModule [
+      "services"
+      "headscale"
+      "tls"
+      "letsencrypt"
+      "challengeType"
+    ] [ "services" "headscale" "settings" "tls_letsencrypt_challenge_type" ])
+    (mkRenamedOptionModule [
+      "services"
+      "headscale"
+      "tls"
+      "letsencrypt"
+      "httpListen"
+    ] [ "services" "headscale" "settings" "tls_letsencrypt_listen" ])
     (mkRenamedOptionModule [ "services" "headscale" "tls" "certFile" ] [
       "services"
       "headscale"

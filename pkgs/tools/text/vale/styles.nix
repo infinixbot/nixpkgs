@@ -36,10 +36,7 @@ let
           maintainers = with lib.maintainers; [ katexochen ];
         } // (args.meta or { });
       }
-      // removeAttrs args [
-        "meta"
-        "name"
-      ]
+      // removeAttrs args [ "meta" "name" ]
     );
 in
 {

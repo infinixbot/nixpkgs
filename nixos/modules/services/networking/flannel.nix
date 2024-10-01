@@ -97,10 +97,7 @@ in
 
     storageBackend = lib.mkOption {
       description = "Determines where flannel stores its configuration at runtime";
-      type = lib.types.enum [
-        "etcd"
-        "kubernetes"
-      ];
+      type = lib.types.enum [ "etcd" "kubernetes" ];
       default = "etcd";
     };
 

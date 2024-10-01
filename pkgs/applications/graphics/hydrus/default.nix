@@ -166,12 +166,7 @@ python3Packages.buildPythonPackage rec {
   dontWrapQtApps = true;
   preFixup = ''
     makeWrapperArgs+=("''${qtWrapperArgs[@]}")
-    makeWrapperArgs+=(--prefix PATH : ${
-      lib.makeBinPath [
-        ffmpeg
-        miniupnpc
-      ]
-    })
+    makeWrapperArgs+=(--prefix PATH : ${lib.makeBinPath [ ffmpeg miniupnpc ]})
   '';
 
   meta = with lib; {

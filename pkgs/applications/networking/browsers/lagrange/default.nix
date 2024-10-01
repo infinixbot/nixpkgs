@@ -44,10 +44,7 @@ stdenv.mkDerivation (finalAttrs: {
       mpg123
       SDL2
     ]
-    ++ lib.optionals enableTUI [
-      ncurses
-      sealcurses
-    ]
+    ++ lib.optionals enableTUI [ ncurses sealcurses ]
     ++ lib.optional stdenv.isDarwin AppKit;
 
   cmakeFlags = lib.optionals enableTUI [

@@ -55,10 +55,7 @@ in
               };
 
               key = mkOption {
-                type = types.oneOf [
-                  types.nonEmptyStr
-                  types.path
-                ];
+                type = types.oneOf [ types.nonEmptyStr types.path ];
                 description = "Path or reference to the host key.";
                 example = "/etc/nebula/host.key";
               };

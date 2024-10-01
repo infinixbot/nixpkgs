@@ -82,22 +82,11 @@ stdenv.mkDerivation rec {
     ++ lib.optional pangoSupport pango
     ++ lib.optional pipewireSupport pipewire
     ++ lib.optional rdpSupport freerdp
-    ++ lib.optionals remotingSupport [
-      gst_all_1.gstreamer
-      gst_all_1.gst-plugins-base
-    ]
+    ++ lib.optionals remotingSupport [ gst_all_1.gstreamer gst_all_1.gst-plugins-base ]
     ++ lib.optional vaapiSupport libva
-    ++ lib.optionals vncSupport [
-      aml
-      neatvnc
-      pam
-    ]
+    ++ lib.optionals vncSupport [ aml neatvnc pam ]
     ++ lib.optional webpSupport libwebp
-    ++ lib.optionals xwaylandSupport [
-      libXcursor
-      xcbutilcursor
-      xwayland
-    ];
+    ++ lib.optionals xwaylandSupport [ libXcursor xcbutilcursor xwayland ];
 
   mesonFlags =
     [

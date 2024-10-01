@@ -51,12 +51,7 @@ buildGoModule rec {
 
   postFixup = ''
     wrapProgram $out/bin/stackit \
-      --suffix PATH : ${
-        lib.makeBinPath [
-          less
-          xdg-utils
-        ]
-      }
+      --suffix PATH : ${lib.makeBinPath [ less xdg-utils ]}
   '';
 
   nativeCheckInputs = [ less ];

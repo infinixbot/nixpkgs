@@ -59,10 +59,7 @@ in
       '';
     };
     protocol = mkOption {
-      type = types.enum [
-        "http"
-        "https"
-      ];
+      type = types.enum [ "http" "https" ];
       default = "http";
       example = "https";
       description = ''

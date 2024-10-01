@@ -50,18 +50,8 @@ stdenv.mkDerivation rec {
         # Which firewall and resolvconf implementations to use should be determined by the
         # environment, we provide the "default" ones as fallback.
         wrapProgram $f \
-          --prefix PATH : ${
-            lib.makeBinPath [
-              procps
-              iproute2
-            ]
-          } \
-          --suffix PATH : ${
-            lib.makeBinPath [
-              iptables
-              openresolv
-            ]
-          }
+          --prefix PATH : ${lib.makeBinPath [ procps iproute2 ]} \
+          --suffix PATH : ${lib.makeBinPath [ iptables openresolv ]}
       done
     ''
     + lib.optionalString stdenv.isDarwin ''

@@ -420,10 +420,7 @@ in
 
       database = {
         type = mkOption {
-          type = types.enum [
-            "mysql"
-            "postgresql"
-          ];
+          type = types.enum [ "mysql" "postgresql" ];
           example = "mysql";
           default = "postgresql";
           description = "Database engine to use.";

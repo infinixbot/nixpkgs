@@ -379,10 +379,7 @@ in
                 [ "${cfg.package}/bin/syncoid" ]
                 ++ lib.optionals c.useCommonArgs cfg.commonArgs
                 ++ lib.optional c.recursive "-r"
-                ++ lib.optionals (c.sshKey != null) [
-                  "--sshkey"
-                  c.sshKey
-                ]
+                ++ lib.optionals (c.sshKey != null) [ "--sshkey" c.sshKey ]
                 ++ c.extraArgs
                 ++ [
                   "--sendoptions"

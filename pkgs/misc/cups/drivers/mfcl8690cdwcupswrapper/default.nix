@@ -39,13 +39,7 @@ stdenv.mkDerivation rec {
       --replace "PRINTER =~" "PRINTER = \"mfcl8690cdw\"; #"
 
     wrapProgram $dir/cupswrapper/brother_lpdwrapper_mfcl8690cdw \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          coreutils
-          gnugrep
-          gnused
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ coreutils gnugrep gnused ]}
 
     mkdir -p $out/lib/cups/filter
     mkdir -p $out/share/cups/model

@@ -40,14 +40,7 @@ buildGoModule rec {
     installShellCompletion --bash --name aptly completion.d/aptly
     installShellCompletion --zsh --name _aptly completion.d/_aptly
     wrapProgram "$out/bin/aptly" \
-      --prefix PATH ":" "${
-        lib.makeBinPath [
-          gnupg
-          bzip2
-          xz
-          graphviz
-        ]
-      }"
+      --prefix PATH ":" "${lib.makeBinPath [ gnupg bzip2 xz graphviz ]}"
   '';
 
   doCheck = false;

@@ -112,12 +112,7 @@ let
         ProtectProc = "invisible";
         #ProtectSystem = "strict";
         RemoveIPC = true;
-        RestrictAddressFamilies =
-          [ "AF_UNIX" ]
-          ++ optionals needNetwork [
-            "AF_INET"
-            "AF_INET6"
-          ];
+        RestrictAddressFamilies = [ "AF_UNIX" ] ++ optionals needNetwork [ "AF_INET" "AF_INET6" ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
         RestrictSUIDSGID = true;
@@ -335,13 +330,7 @@ in
               description = "POP3 URLs to this public-inbox instance";
             };
             options.wwwlisting = mkOption {
-              type =
-                with types;
-                enum [
-                  "all"
-                  "404"
-                  "match=domain"
-                ];
+              type = with types; enum [ "all" "404" "match=domain" ];
               default = "404";
               description = ''
                 Controls which lists (if any) are listed for when the root
@@ -351,12 +340,7 @@ in
           };
         };
         options.publicinboxmda.spamcheck = mkOption {
-          type =
-            with types;
-            enum [
-              "spamc"
-              "none"
-            ];
+          type = with types; enum [ "spamc" "none" ];
           default = "none";
           description = ''
             If set to spamc, {manpage}`public-inbox-watch(1)` will filter spam
@@ -364,12 +348,7 @@ in
           '';
         };
         options.publicinboxwatch.spamcheck = mkOption {
-          type =
-            with types;
-            enum [
-              "spamc"
-              "none"
-            ];
+          type = with types; enum [ "spamc" "none" ];
           default = "none";
           description = ''
             If set to spamc, {manpage}`public-inbox-watch(1)` will filter spam
@@ -441,13 +420,9 @@ in
     };
     networking.firewall = mkIf cfg.openFirewall {
       allowedTCPPorts = mkMerge (
-        map
-          (proto: (mkIf (cfg.${proto}.enable && types.port.check cfg.${proto}.port) [ cfg.${proto}.port ]))
-          [
-            "imap"
-            "http"
-            "nntp"
-          ]
+        map (
+          proto: (mkIf (cfg.${proto}.enable && types.port.check cfg.${proto}.port) [ cfg.${proto}.port ])
+        ) [ "imap" "http" "nntp" ]
       );
     };
     services.postfix = mkIf (cfg.postfix.enable && cfg.mda.enable) {
@@ -489,21 +464,15 @@ in
       };
     };
     systemd.sockets = mkMerge (
-      map
-        (
-          proto:
-          mkIf (cfg.${proto}.enable && cfg.${proto}.port != null) {
-            "public-inbox-${proto}d" = {
-              listenStreams = [ (toString cfg.${proto}.port) ];
-              wantedBy = [ "sockets.target" ];
-            };
-          }
-        )
-        [
-          "imap"
-          "http"
-          "nntp"
-        ]
+      map (
+        proto:
+        mkIf (cfg.${proto}.enable && cfg.${proto}.port != null) {
+          "public-inbox-${proto}d" = {
+            listenStreams = [ (toString cfg.${proto}.port) ];
+            wantedBy = [ "sockets.target" ];
+          };
+        }
+      ) [ "imap" "http" "nntp" ]
     );
     systemd.services = mkMerge [
       (mkIf cfg.imap.enable {
@@ -519,14 +488,8 @@ in
               ExecStart = escapeShellArgs (
                 [ "${cfg.package}/bin/public-inbox-imapd" ]
                 ++ cfg.imap.args
-                ++ optionals (cfg.imap.cert != null) [
-                  "--cert"
-                  cfg.imap.cert
-                ]
-                ++ optionals (cfg.imap.key != null) [
-                  "--key"
-                  cfg.imap.key
-                ]
+                ++ optionals (cfg.imap.cert != null) [ "--cert" cfg.imap.cert ]
+                ++ optionals (cfg.imap.key != null) [ "--key" cfg.imap.key ]
               );
             };
           }
@@ -596,14 +559,8 @@ in
               ExecStart = escapeShellArgs (
                 [ "${cfg.package}/bin/public-inbox-nntpd" ]
                 ++ cfg.nntp.args
-                ++ optionals (cfg.nntp.cert != null) [
-                  "--cert"
-                  cfg.nntp.cert
-                ]
-                ++ optionals (cfg.nntp.key != null) [
-                  "--key"
-                  cfg.nntp.key
-                ]
+                ++ optionals (cfg.nntp.cert != null) [ "--cert" cfg.nntp.cert ]
+                ++ optionals (cfg.nntp.key != null) [ "--key" cfg.nntp.key ]
               );
             };
           }

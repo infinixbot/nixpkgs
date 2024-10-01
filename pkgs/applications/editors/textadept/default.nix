@@ -28,10 +28,7 @@ stdenv.mkDerivation rec {
 
   cmakeFlags =
     lib.optional withQt [ "-DQT=ON" ]
-    ++ lib.optional withCurses [
-      "-DCURSES=ON"
-      "-DQT=OFF"
-    ];
+    ++ lib.optional withCurses [ "-DCURSES=ON" "-DQT=OFF" ];
 
   preConfigure =
     ''

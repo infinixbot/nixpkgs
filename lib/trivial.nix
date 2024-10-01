@@ -740,11 +740,7 @@ in
     # Since Nix 2.23, https://github.com/NixOS/nix/pull/10592
     builtins.warn or (
       let
-        mustAbort = lib.elem (builtins.getEnv "NIX_ABORT_ON_WARN") [
-          "1"
-          "true"
-          "yes"
-        ];
+        mustAbort = lib.elem (builtins.getEnv "NIX_ABORT_ON_WARN") [ "1" "true" "yes" ];
       in
       # Do not eta reduce v, so that we have the same strictness as `builtins.warn`.
       msg: v:

@@ -23,10 +23,7 @@ stdenv.mkDerivation rec {
     makeWrapper
   ];
 
-  libPath = lib.makeLibraryPath [
-    openssl
-    libxcrypt-legacy
-  ];
+  libPath = lib.makeLibraryPath [ openssl libxcrypt-legacy ];
 
   buildCommand = ''
     mkdir -p $out/bin/

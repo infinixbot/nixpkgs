@@ -12,10 +12,7 @@ with lib;
     };
 
     state = mkOption {
-      type = types.enum [
-        "MASTER"
-        "BACKUP"
-      ];
+      type = types.enum [ "MASTER" "BACKUP" ];
       default = "BACKUP";
       description = ''
         Initial state. As soon as the other machine(s) come up, an election will

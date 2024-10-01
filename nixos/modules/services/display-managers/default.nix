@@ -195,76 +195,41 @@ in
       "displayManager"
       "hiddenUsers"
     ])
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "job"
-        "environment"
-      ]
-      [
-        "services"
-        "displayManager"
-        "environment"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "job"
-        "execCmd"
-      ]
-      [
-        "services"
-        "displayManager"
-        "execCmd"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "job"
-        "logToFile"
-      ]
-      [
-        "services"
-        "displayManager"
-        "logToFile"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "job"
-        "logToJournal"
-      ]
-      [
-        "services"
-        "displayManager"
-        "logToJournal"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "job"
-        "preStart"
-      ]
-      [
-        "services"
-        "displayManager"
-        "preStart"
-      ]
-    )
+    (lib.mkRenamedOptionModule [
+      "services"
+      "xserver"
+      "displayManager"
+      "job"
+      "environment"
+    ] [ "services" "displayManager" "environment" ])
+    (lib.mkRenamedOptionModule [
+      "services"
+      "xserver"
+      "displayManager"
+      "job"
+      "execCmd"
+    ] [ "services" "displayManager" "execCmd" ])
+    (lib.mkRenamedOptionModule [
+      "services"
+      "xserver"
+      "displayManager"
+      "job"
+      "logToFile"
+    ] [ "services" "displayManager" "logToFile" ])
+    (lib.mkRenamedOptionModule [
+      "services"
+      "xserver"
+      "displayManager"
+      "job"
+      "logToJournal"
+    ] [ "services" "displayManager" "logToJournal" ])
+    (lib.mkRenamedOptionModule [
+      "services"
+      "xserver"
+      "displayManager"
+      "job"
+      "preStart"
+    ] [ "services" "displayManager" "preStart" ])
     (lib.mkRenamedOptionModule [ "services" "xserver" "displayManager" "sessionData" ] [
       "services"
       "displayManager"

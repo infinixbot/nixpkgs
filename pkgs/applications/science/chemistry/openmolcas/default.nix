@@ -24,10 +24,7 @@
 }:
 
 assert blas-ilp64.isILP64;
-assert lib.elem blas-ilp64.passthru.implementation [
-  "openblas"
-  "mkl"
-];
+assert lib.elem blas-ilp64.passthru.implementation [ "openblas" "mkl" ];
 
 let
   python = python3.withPackages (

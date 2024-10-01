@@ -84,11 +84,7 @@ in
       };
 
       mode = mkOption {
-        type = types.enum [
-          "tcp_only"
-          "tcp_and_udp"
-          "udp_only"
-        ];
+        type = types.enum [ "tcp_only" "tcp_and_udp" "udp_only" ];
         default = "tcp_and_udp";
         description = ''
           Relay protocols.

@@ -63,14 +63,8 @@ let
 
       smartmon = smartmontools.override { inherit enableMail; };
 
-      buildKernel = any (n: n == configFile) [
-        "kernel"
-        "all"
-      ];
-      buildUser = any (n: n == configFile) [
-        "user"
-        "all"
-      ];
+      buildKernel = any (n: n == configFile) [ "kernel" "all" ];
+      buildUser = any (n: n == configFile) [ "user" "all" ];
       isAtLeast22Series = versionAtLeast version "2.2.0";
 
       # XXX: You always want to build kernel modules with the same stdenv as the

@@ -32,21 +32,10 @@ rustPlatform.buildRustPackage rec {
     pkg-config
     makeWrapper
   ];
-  buildInputs =
-    [ openssl ]
-    ++ lib.optionals stdenv.isDarwin [
-      configd
-      Security
-    ];
+  buildInputs = [ openssl ] ++ lib.optionals stdenv.isDarwin [ configd Security ];
 
   postInstall = ''
-    wrapProgram "$out/bin/dmlive" --prefix PATH : "${
-      lib.makeBinPath [
-        mpv
-        ffmpeg
-        nodejs
-      ]
-    }"
+    wrapProgram "$out/bin/dmlive" --prefix PATH : "${lib.makeBinPath [ mpv ffmpeg nodejs ]}"
   '';
 
   meta = with lib; {

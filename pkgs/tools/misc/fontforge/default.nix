@@ -88,15 +88,8 @@ stdenv.mkDerivation rec {
       libxml2
     ]
     ++ lib.optionals withSpiro [ libspiro ]
-    ++ lib.optionals withGUI [
-      gtk3
-      cairo
-      pango
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      Carbon
-      Cocoa
-    ];
+    ++ lib.optionals withGUI [ gtk3 cairo pango ]
+    ++ lib.optionals stdenv.isDarwin [ Carbon Cocoa ];
 
   cmakeFlags =
     [ "-DCMAKE_BUILD_WITH_INSTALL_RPATH=ON" ]

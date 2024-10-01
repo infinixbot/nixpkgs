@@ -24,11 +24,7 @@ in
           lib.types.submodule {
             options = {
               action = lib.mkOption {
-                type = lib.types.enum [
-                  "bounce"
-                  "drop"
-                  "pass"
-                ];
+                type = lib.types.enum [ "bounce" "drop" "pass" ];
                 default = "drop";
                 description = ''
                   Action to take when a virus is detected.

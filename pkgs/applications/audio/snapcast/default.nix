@@ -54,10 +54,7 @@ stdenv.mkDerivation rec {
     ]
     ++ lib.optional pulseaudioSupport libpulseaudio
     ++ lib.optional stdenv.isLinux alsa-lib
-    ++ lib.optionals stdenv.isDarwin [
-      IOKit
-      AudioToolbox
-    ];
+    ++ lib.optionals stdenv.isDarwin [ IOKit AudioToolbox ];
 
   TARGET = lib.optionalString stdenv.isDarwin "MACOS";
 

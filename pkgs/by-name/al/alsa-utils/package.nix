@@ -67,12 +67,7 @@ stdenv.mkDerivation rec {
 
   postFixup = ''
     mv $out/bin/alsa-info.sh $out/bin/alsa-info
-    wrapProgram $out/bin/alsa-info --prefix PATH : "${
-      lib.makeBinPath [
-        which
-        pciutils
-      ]
-    }"
+    wrapProgram $out/bin/alsa-info --prefix PATH : "${lib.makeBinPath [ which pciutils ]}"
     wrapProgram $out/bin/aplay --set-default ALSA_PLUGIN_DIR ${plugin-dir}
   '';
 

@@ -52,11 +52,7 @@ stdenv.mkDerivation rec {
     ++ lib.optional dbusSupport dbus
     ++ lib.optional pipewireSupport pipewire
     ++ lib.optional pulseSupport libpulseaudio
-    ++ lib.optionals stdenv.isDarwin [
-      CoreServices
-      AudioUnit
-      AudioToolbox
-    ];
+    ++ lib.optionals stdenv.isDarwin [ CoreServices AudioUnit AudioToolbox ];
 
   cmakeFlags =
     [

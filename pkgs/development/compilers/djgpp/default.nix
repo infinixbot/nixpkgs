@@ -19,10 +19,7 @@
 let
   s = import ./sources.nix { inherit fetchurl fetchFromGitHub; };
 in
-assert lib.elem targetArchitecture [
-  "i586"
-  "i686"
-];
+assert lib.elem targetArchitecture [ "i586" "i686" ];
 stdenv.mkDerivation rec {
   pname = "djgpp";
   version = s.gccVersion;

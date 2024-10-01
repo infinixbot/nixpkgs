@@ -102,13 +102,7 @@ in
     };
 
     poolConfig = lib.mkOption {
-      type = lib.types.attrsOf (
-        lib.types.oneOf [
-          lib.types.str
-          lib.types.int
-          lib.types.bool
-        ]
-      );
+      type = lib.types.attrsOf (lib.types.oneOf [ lib.types.str lib.types.int lib.types.bool ]);
       default = {
         "pm" = "dynamic";
         "pm.max_children" = 32;

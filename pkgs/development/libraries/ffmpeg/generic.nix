@@ -362,11 +362,7 @@ let
     ;
 in
 
-assert lib.elem ffmpegVariant [
-  "headless"
-  "small"
-  "full"
-];
+assert lib.elem ffmpegVariant [ "headless" "small" "full" ];
 
 # Licensing dependencies
 assert withGPLv3 -> withGPL && withVersion3;
@@ -771,10 +767,7 @@ stdenv.mkDerivation (
       ++ optionals withCodec2 [ codec2 ]
       ++ optionals withCoreImage [ CoreImage ]
       ++ optionals withDav1d [ dav1d ]
-      ++ optionals withDc1394 [
-        libdc1394
-        libraw1394
-      ]
+      ++ optionals withDc1394 [ libdc1394 libraw1394 ]
       ++ optionals withDrm [ libdrm ]
       ++ optionals withDvdnav [ libdvdnav ]
       ++ optionals withDvdread [ libdvdread ]
@@ -804,15 +797,9 @@ stdenv.mkDerivation (
       ++ optionals withMysofa [ libmysofa ]
       ++ optionals withOgg [ libogg ]
       ++ optionals withOpenal [ openal ]
-      ++ optionals withOpencl [
-        ocl-icd
-        opencl-headers
-      ]
+      ++ optionals withOpencl [ ocl-icd opencl-headers ]
       ++ optionals (withOpencoreAmrnb || withOpencoreAmrwb) [ opencore-amr ]
-      ++ optionals withOpengl [
-        libGL
-        libGLU
-      ]
+      ++ optionals withOpengl [ libGL libGLU ]
       ++ optionals withOpenh264 [ openh264 ]
       ++ optionals withOpenjpeg [ openjpeg ]
       ++ optionals withOpenmpt [ libopenmpt ]
@@ -851,10 +838,7 @@ stdenv.mkDerivation (
       ++ optionals withVorbis [ libvorbis ]
       ++ optionals withVpl [ libvpl ]
       ++ optionals withVpx [ libvpx ]
-      ++ optionals withVulkan [
-        vulkan-headers
-        vulkan-loader
-      ]
+      ++ optionals withVulkan [ vulkan-headers vulkan-loader ]
       ++ optionals withWebp [ libwebp ]
       ++ optionals withX264 [ x264 ]
       ++ optionals withX265 [ x265 ]
@@ -862,11 +846,7 @@ stdenv.mkDerivation (
       ++ optionals withXcb [ libxcb ]
       ++ optionals withXevd [ xevd ]
       ++ optionals withXeve [ xeve ]
-      ++ optionals withXlib [
-        libX11
-        libXv
-        libXext
-      ]
+      ++ optionals withXlib [ libX11 libXv libXext ]
       ++ optionals withXml2 [ libxml2 ]
       ++ optionals withXvid [ xvidcore ]
       ++ optionals withZimg [ zimg ]
@@ -899,10 +879,7 @@ stdenv.mkDerivation (
 
     outputs =
       optionals withBin [ "bin" ] # The first output is the one that gets symlinked by default!
-      ++ optionals withLib [
-        "lib"
-        "dev"
-      ]
+      ++ optionals withLib [ "lib" "dev" ]
       ++ optionals withDoc [ "doc" ]
       ++ optionals withManPages [ "man" ]
       ++ [

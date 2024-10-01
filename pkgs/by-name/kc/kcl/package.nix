@@ -51,12 +51,7 @@ buildGoModule rec {
   # env vars https://github.com/kcl-lang/kcl-go/blob/main/pkg/env/env.go#L29
   postFixup = ''
      wrapProgram $out/bin/kcl \
-    --prefix PATH : "${
-      lib.makeBinPath [
-        kclvm
-        kclvm_cli
-      ]
-    }" \
+    --prefix PATH : "${lib.makeBinPath [ kclvm kclvm_cli ]}" \
     --prefix KCL_LIB_HOME : "${lib.makeLibraryPath [ kclvm ]}" \
     --prefix KCL_GO_DISABLE_INSTALL_ARTIFACT : false
   '';

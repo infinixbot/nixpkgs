@@ -174,10 +174,7 @@ let
     gr-audio = {
       runtime =
         [ ]
-        ++ lib.optionals stdenv.isLinux [
-          alsa-lib
-          libjack2
-        ]
+        ++ lib.optionals stdenv.isLinux [ alsa-lib libjack2 ]
         ++ lib.optionals stdenv.isDarwin [ CoreAudio ];
       cmakeEnableFlag = "GR_AUDIO";
     };

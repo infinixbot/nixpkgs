@@ -287,10 +287,7 @@ in
             name
             "${name}/playlists"
           ]
-          ++ lib.optionals (cfg.musicDirectory == "/var/lib/${name}/music") [
-            name
-            "${name}/music"
-          ];
+          ++ lib.optionals (cfg.musicDirectory == "/var/lib/${name}/music") [ name "${name}/music" ];
       };
     };
 

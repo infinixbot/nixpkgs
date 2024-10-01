@@ -58,10 +58,7 @@ let
       "--suffix"
       "PATH"
       ":"
-      "${lib.makeBinPath [
-        coreutils
-        gnugrep
-      ]}"
+      "${lib.makeBinPath [ coreutils gnugrep ]}"
     ]
     ++ lib.optionals unwrapped.kdeIntegration [
       "--prefix"

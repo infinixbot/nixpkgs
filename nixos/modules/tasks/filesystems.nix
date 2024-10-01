@@ -279,12 +279,7 @@ in
           "/bigdisk".label = "bigdisk";
         }
       '';
-      type = types.attrsOf (
-        types.submodule [
-          coreFileSystemOpts
-          fileSystemOpts
-        ]
-      );
+      type = types.attrsOf (types.submodule [ coreFileSystemOpts fileSystemOpts ]);
       description = ''
         The file systems to be mounted.  It must include an entry for
         the root directory (`mountPoint = "/"`).  Each

@@ -77,12 +77,7 @@ stdenv.mkDerivation rec {
 
   postInstall = ''
     wrapProgram $out/bin/wflinfo \
-      --prefix LD_LIBRARY_PATH : ${
-        lib.makeLibraryPath [
-          libGL
-          libglvnd
-        ]
-      }
+      --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ libGL libglvnd ]}
   '';
 
   meta = with lib; {

@@ -35,12 +35,7 @@ stdenv.mkDerivation rec {
 
   preFixup = ''
     gappsWrapperArgs+=(
-      --prefix LD_LIBRARY_PATH : ${
-        lib.makeLibraryPath [
-          glib
-          gtk3
-        ]
-      }
+      --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ glib gtk3 ]}
       --set DEEPGIT_JAVA_HOME ${jre}
     )
     patchShebangs bin/deepgit.sh

@@ -25,10 +25,7 @@ in
   ];
 
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "codimd" ] [
-      "services"
-      "hedgedoc"
-    ])
+    (lib.mkRenamedOptionModule [ "services" "codimd" ] [ "services" "hedgedoc" ])
     (lib.mkRenamedOptionModule [ "services" "hedgedoc" "configuration" ] [
       "services"
       "hedgedoc"

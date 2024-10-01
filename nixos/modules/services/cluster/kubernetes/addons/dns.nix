@@ -55,10 +55,7 @@ in
         See: <https://github.com/kubernetes/kubernetes/blob/master/cluster/addons/addon-manager/README.md>.
       '';
       default = "Reconcile";
-      type = lib.types.enum [
-        "Reconcile"
-        "EnsureExists"
-      ];
+      type = lib.types.enum [ "Reconcile" "EnsureExists" ];
     };
 
     coredns = lib.mkOption {

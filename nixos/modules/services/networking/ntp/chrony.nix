@@ -69,10 +69,7 @@ in
 
       serverOption = mkOption {
         default = "iburst";
-        type = types.enum [
-          "iburst"
-          "offline"
-        ];
+        type = types.enum [ "iburst" "offline" ];
         description = ''
           Set option for server directives.
 

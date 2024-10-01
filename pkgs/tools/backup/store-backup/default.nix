@@ -57,12 +57,7 @@ stdenv.mkDerivation rec {
       -e '1 s@/usr/bin/env perl@${perl.withPackages (p: [ p.DBFile ])}/bin/perl@'
 
     for p in $out/bin/*
-      do wrapProgram "$p" --prefix PATH ":" "${
-        lib.makeBinPath [
-          which
-          bzip2
-        ]
-      }"
+      do wrapProgram "$p" --prefix PATH ":" "${lib.makeBinPath [ which bzip2 ]}"
     done
 
     patchShebangs $out

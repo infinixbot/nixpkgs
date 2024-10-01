@@ -19,10 +19,7 @@ in
       package = lib.mkPackageOption pkgs "frp" { };
 
       role = lib.mkOption {
-        type = lib.types.enum [
-          "server"
-          "client"
-        ];
+        type = lib.types.enum [ "server" "client" ];
         description = ''
           The frp consists of `client` and `server`. The server is usually
           deployed on the machine with a public IP address, and

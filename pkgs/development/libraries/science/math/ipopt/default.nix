@@ -58,10 +58,7 @@ stdenv.mkDerivation rec {
       lapack
     ]
     ++ lib.optionals enableAMPL [ libamplsolver ]
-    ++ lib.optionals enableMUMPS [
-      mumps
-      mpi
-    ]
+    ++ lib.optionals enableMUMPS [ mumps mpi ]
     ++ lib.optionals enableSPRAL [ spral ];
 
   enableParallelBuilding = true;
