@@ -158,7 +158,8 @@ in
       "pgbouncer"
       "verbose"
     ])
-    (lib.mkChangedOptionModule [ "services" "pgbouncer" "syslog" "enable" ]
+    (lib.mkChangedOptionModule
+      [ "services" "pgbouncer" "syslog" "enable" ]
       [
         "services"
         "pgbouncer"

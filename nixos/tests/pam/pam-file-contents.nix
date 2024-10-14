@@ -23,9 +23,10 @@ import ../make-test-python.nix (
         };
       };
 
-    testScript = builtins.replaceStrings [ "@@pam_ccreds@@" "@@pam_krb5@@" ] [
-      pkgs.pam_ccreds.outPath
-      pkgs.pam_krb5.outPath
-    ] (builtins.readFile ./test_chfn.py);
+    testScript =
+      builtins.replaceStrings
+        [ "@@pam_ccreds@@" "@@pam_krb5@@" ]
+        [ pkgs.pam_ccreds.outPath pkgs.pam_krb5.outPath ]
+        (builtins.readFile ./test_chfn.py);
   }
 )

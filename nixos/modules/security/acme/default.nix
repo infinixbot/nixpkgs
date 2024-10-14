@@ -1002,39 +1002,32 @@ in
     (lib.mkRemovedOptionModule [ "security" "acme" "activationDelay" ]
       "This option has been removed. If you want to make sure that something executes before certificates are provisioned, add a RequiredBy=acme-\${cert}.service to the service you want to execute before the cert renewal"
     )
-    (lib.mkChangedOptionModule [ "security" "acme" "validMin" ] [
-      "security"
-      "acme"
-      "defaults"
-      "validMinDays"
-    ] (config: config.security.acme.validMin / (24 * 3600)))
-    (lib.mkChangedOptionModule [ "security" "acme" "validMinDays" ] [
-      "security"
-      "acme"
-      "defaults"
-      "validMinDays"
-    ] (config: config.security.acme.validMinDays))
-    (lib.mkChangedOptionModule [ "security" "acme" "renewInterval" ] [
-      "security"
-      "acme"
-      "defaults"
-      "renewInterval"
-    ] (config: config.security.acme.renewInterval))
+    (lib.mkChangedOptionModule
+      [ "security" "acme" "validMin" ]
+      [ "security" "acme" "defaults" "validMinDays" ]
+      (config: config.security.acme.validMin / (24 * 3600))
+    )
+    (lib.mkChangedOptionModule
+      [ "security" "acme" "validMinDays" ]
+      [ "security" "acme" "defaults" "validMinDays" ]
+      (config: config.security.acme.validMinDays)
+    )
+    (lib.mkChangedOptionModule
+      [ "security" "acme" "renewInterval" ]
+      [ "security" "acme" "defaults" "renewInterval" ]
+      (config: config.security.acme.renewInterval)
+    )
     (lib.mkChangedOptionModule [ "security" "acme" "email" ] [ "security" "acme" "defaults" "email" ] (
       config: config.security.acme.email
     ))
-    (lib.mkChangedOptionModule [ "security" "acme" "server" ] [
-      "security"
-      "acme"
-      "defaults"
-      "server"
-    ] (config: config.security.acme.server))
-    (lib.mkChangedOptionModule [ "security" "acme" "enableDebugLogs" ] [
-      "security"
-      "acme"
-      "defaults"
-      "enableDebugLogs"
-    ] (config: config.security.acme.enableDebugLogs))
+    (lib.mkChangedOptionModule [ "security" "acme" "server" ] [ "security" "acme" "defaults" "server" ]
+      (config: config.security.acme.server)
+    )
+    (lib.mkChangedOptionModule
+      [ "security" "acme" "enableDebugLogs" ]
+      [ "security" "acme" "defaults" "enableDebugLogs" ]
+      (config: config.security.acme.enableDebugLogs)
+    )
   ];
 
   config = lib.mkMerge [

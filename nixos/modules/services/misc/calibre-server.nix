@@ -28,7 +28,8 @@ in
 
 {
   imports = [
-    (lib.mkChangedOptionModule [ "services" "calibre-server" "libraryDir" ]
+    (lib.mkChangedOptionModule
+      [ "services" "calibre-server" "libraryDir" ]
       [ "services" "calibre-server" "libraries" ]
       (
         config:

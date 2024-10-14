@@ -59,18 +59,16 @@ in
       "settings"
       "hostname-strict-backchannel"
     ])
-    (mkChangedOptionModule [ "services" "keycloak" "httpPort" ] [
-      "services"
-      "keycloak"
-      "settings"
-      "http-port"
-    ] (config: builtins.fromJSON config.services.keycloak.httpPort))
-    (mkChangedOptionModule [ "services" "keycloak" "httpsPort" ] [
-      "services"
-      "keycloak"
-      "settings"
-      "https-port"
-    ] (config: builtins.fromJSON config.services.keycloak.httpsPort))
+    (mkChangedOptionModule
+      [ "services" "keycloak" "httpPort" ]
+      [ "services" "keycloak" "settings" "http-port" ]
+      (config: builtins.fromJSON config.services.keycloak.httpPort)
+    )
+    (mkChangedOptionModule
+      [ "services" "keycloak" "httpsPort" ]
+      [ "services" "keycloak" "settings" "https-port" ]
+      (config: builtins.fromJSON config.services.keycloak.httpsPort)
+    )
     (mkRemovedOptionModule [ "services" "keycloak" "frontendUrl" ] ''
       Set `services.keycloak.settings.hostname' and `services.keycloak.settings.http-relative-path' instead.
       NOTE: You likely want to set 'http-relative-path' to '/auth' to keep compatibility with your clients.
