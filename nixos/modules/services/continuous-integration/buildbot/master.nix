@@ -303,11 +303,10 @@ in
   };
 
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "buildbot-master" "bpPort" ] [
-      "services"
-      "buildbot-master"
-      "pbPort"
-    ])
+    (lib.mkRenamedOptionModule
+      [ "services" "buildbot-master" "bpPort" ]
+      [ "services" "buildbot-master" "pbPort" ]
+    )
     (lib.mkRemovedOptionModule [ "services" "buildbot-master" "status" ] ''
       Since Buildbot 0.9.0, status targets are deprecated and ignored.
       Review your configuration and migrate to reporters (available at services.buildbot-master.reporters).

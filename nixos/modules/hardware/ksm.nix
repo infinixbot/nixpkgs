@@ -5,11 +5,7 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule [ "hardware" "enableKSM" ] [
-      "hardware"
-      "ksm"
-      "enable"
-    ])
+    (lib.mkRenamedOptionModule [ "hardware" "enableKSM" ] [ "hardware" "ksm" "enable" ])
   ];
 
   options.hardware.ksm = {

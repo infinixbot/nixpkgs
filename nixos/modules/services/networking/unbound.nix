@@ -361,13 +361,16 @@ in
   };
 
   imports = [
-    (mkRenamedOptionModule [ "services" "unbound" "interfaces" ] [
-      "services"
-      "unbound"
-      "settings"
-      "server"
-      "interface"
-    ])
+    (mkRenamedOptionModule
+      [ "services" "unbound" "interfaces" ]
+      [
+        "services"
+        "unbound"
+        "settings"
+        "server"
+        "interface"
+      ]
+    )
     (mkChangedOptionModule
       [ "services" "unbound" "allowedAccess" ]
       [

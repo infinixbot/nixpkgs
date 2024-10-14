@@ -4,21 +4,9 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule [ "boot" "cleanTmpDir" ] [
-      "boot"
-      "tmp"
-      "cleanOnBoot"
-    ])
-    (lib.mkRenamedOptionModule [ "boot" "tmpOnTmpfs" ] [
-      "boot"
-      "tmp"
-      "useTmpfs"
-    ])
-    (lib.mkRenamedOptionModule [ "boot" "tmpOnTmpfsSize" ] [
-      "boot"
-      "tmp"
-      "tmpfsSize"
-    ])
+    (lib.mkRenamedOptionModule [ "boot" "cleanTmpDir" ] [ "boot" "tmp" "cleanOnBoot" ])
+    (lib.mkRenamedOptionModule [ "boot" "tmpOnTmpfs" ] [ "boot" "tmp" "useTmpfs" ])
+    (lib.mkRenamedOptionModule [ "boot" "tmpOnTmpfsSize" ] [ "boot" "tmp" "tmpfsSize" ])
   ];
 
   options = {

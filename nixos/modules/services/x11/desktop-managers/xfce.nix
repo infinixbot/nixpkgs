@@ -30,12 +30,7 @@ in
         "xfce4-14"
         "extraSessionCommands"
       ]
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "sessionCommands"
-      ]
+      [ "services" "xserver" "displayManager" "sessionCommands" ]
     )
 
     # added 2019-11-04
@@ -97,12 +92,7 @@ in
         "xfce"
         "extraSessionCommands"
       ]
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "sessionCommands"
-      ]
+      [ "services" "xserver" "displayManager" "sessionCommands" ]
     )
     (mkRemovedOptionModule [
       "services"
@@ -122,11 +112,7 @@ in
         "xfce"
         "thunarPlugins"
       ]
-      [
-        "programs"
-        "thunar"
-        "plugins"
-      ]
+      [ "programs" "thunar" "plugins" ]
     )
   ];
 

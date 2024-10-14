@@ -405,21 +405,18 @@ in
       ]
     )
     ++ [
-      (lib.mkRenamedOptionModule [ "services" "xserver" "libinput" "enable" ] [
-        "services"
-        "libinput"
-        "enable"
-      ])
-      (lib.mkRenamedOptionModule [ "services" "xserver" "libinput" "mouse" ] [
-        "services"
-        "libinput"
-        "mouse"
-      ])
-      (lib.mkRenamedOptionModule [ "services" "xserver" "libinput" "touchpad" ] [
-        "services"
-        "libinput"
-        "touchpad"
-      ])
+      (lib.mkRenamedOptionModule
+        [ "services" "xserver" "libinput" "enable" ]
+        [ "services" "libinput" "enable" ]
+      )
+      (lib.mkRenamedOptionModule
+        [ "services" "xserver" "libinput" "mouse" ]
+        [ "services" "libinput" "mouse" ]
+      )
+      (lib.mkRenamedOptionModule
+        [ "services" "xserver" "libinput" "touchpad" ]
+        [ "services" "libinput" "touchpad" ]
+      )
     ];
 
   options = {

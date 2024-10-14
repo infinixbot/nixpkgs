@@ -51,11 +51,7 @@ in
 {
 
   imports = [
-    (mkRenamedOptionModule [ "services" "searx" "configFile" ] [
-      "services"
-      "searx"
-      "settingsFile"
-    ])
+    (mkRenamedOptionModule [ "services" "searx" "configFile" ] [ "services" "searx" "settingsFile" ])
   ];
 
   options = {

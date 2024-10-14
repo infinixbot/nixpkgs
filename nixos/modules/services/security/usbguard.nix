@@ -286,10 +286,9 @@ in
       "usbguard"
       "auditFilePath"
     ] "Removed usbguard module audit log files. Audit logs can be found in the systemd journal.")
-    (mkRenamedOptionModule [ "services" "usbguard" "implictPolicyTarget" ] [
-      "services"
-      "usbguard"
-      "implicitPolicyTarget"
-    ])
+    (mkRenamedOptionModule
+      [ "services" "usbguard" "implictPolicyTarget" ]
+      [ "services" "usbguard" "implicitPolicyTarget" ]
+    )
   ];
 }

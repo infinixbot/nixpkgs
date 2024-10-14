@@ -6,17 +6,19 @@ let
   # this makes error messages more readable during development
   mergeInput =
     name: format: input:
-    format.type.merge [ ] [
-      {
-        # explicitly throw here to trigger the code path that prints the error message for users
-        value =
-          lib.throwIfNot (format.type.check input)
-            (builtins.trace input "definition does not pass the type's check function")
-            input;
-        # inject the name
-        file = "format-test-${name}";
-      }
-    ];
+    format.type.merge
+      [ ]
+      [
+        {
+          # explicitly throw here to trigger the code path that prints the error message for users
+          value =
+            lib.throwIfNot (format.type.check input)
+              (builtins.trace input "definition does not pass the type's check function")
+              input;
+          # inject the name
+          file = "format-test-${name}";
+        }
+      ];
 
   # run a diff between expected and real output
   runDiff =

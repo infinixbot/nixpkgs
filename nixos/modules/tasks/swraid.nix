@@ -26,11 +26,7 @@ in
         "swraid"
         "enable"
       ]
-      [
-        "boot"
-        "swraid"
-        "enable"
-      ]
+      [ "boot" "swraid" "enable" ]
     )
     (lib.mkRenamedOptionModule
       [
@@ -40,11 +36,7 @@ in
         "swraid"
         "mdadmConf"
       ]
-      [
-        "boot"
-        "swraid"
-        "mdadmConf"
-      ]
+      [ "boot" "swraid" "mdadmConf" ]
     )
   ];
 

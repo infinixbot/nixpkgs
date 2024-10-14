@@ -42,11 +42,10 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "bluemap" "resourcepacks" ] [
-      "services"
-      "bluemap"
-      "packs"
-    ])
+    (lib.mkRenamedOptionModule
+      [ "services" "bluemap" "resourcepacks" ]
+      [ "services" "bluemap" "packs" ]
+    )
   ];
 
   options.services.bluemap = {

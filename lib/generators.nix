@@ -547,10 +547,7 @@ rec {
               "\""
               "\${"
             ];
-            escapeMultiline = replaceStrings [ "\${" "''" ] [
-              "''\${"
-              "'''"
-            ];
+            escapeMultiline = replaceStrings [ "\${" "''" ] [ "''\${" "'''" ];
             singlelineResult = "\"" + concatStringsSep "\\n" (map escapeSingleline lines) + "\"";
             multilineResult =
               let

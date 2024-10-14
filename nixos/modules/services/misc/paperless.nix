@@ -114,15 +114,11 @@ in
   ];
 
   imports = [
-    (mkRenamedOptionModule [ "services" "paperless-ng" ] [
-      "services"
-      "paperless"
-    ])
-    (mkRenamedOptionModule [ "services" "paperless" "extraConfig" ] [
-      "services"
-      "paperless"
-      "settings"
-    ])
+    (mkRenamedOptionModule [ "services" "paperless-ng" ] [ "services" "paperless" ])
+    (mkRenamedOptionModule
+      [ "services" "paperless" "extraConfig" ]
+      [ "services" "paperless" "settings" ]
+    )
   ];
 
   options.services.paperless = {

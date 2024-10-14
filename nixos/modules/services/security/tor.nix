@@ -331,12 +331,7 @@ in
         "dns"
         "automapHostsSuffixes"
       ]
-      [
-        "services"
-        "tor"
-        "settings"
-        "AutomapHostsSuffixes"
-      ]
+      [ "services" "tor" "settings" "AutomapHostsSuffixes" ]
     )
     (mkRemovedOptionModule [
       "services"
@@ -371,12 +366,10 @@ in
       "client"
       "socksListenAddressFaster"
     ] "Use services.tor.settings.SOCKSPort instead.")
-    (mkRenamedOptionModule [ "services" "tor" "client" "socksPolicy" ] [
-      "services"
-      "tor"
-      "settings"
-      "SocksPolicy"
-    ])
+    (mkRenamedOptionModule
+      [ "services" "tor" "client" "socksPolicy" ]
+      [ "services" "tor" "settings" "SocksPolicy" ]
+    )
     (mkRemovedOptionModule [
       "services"
       "tor"
@@ -391,72 +384,57 @@ in
       "transparentProxy"
       "listenAddress"
     ] "Use services.tor.settings.TransPort instead.")
-    (mkRenamedOptionModule [ "services" "tor" "controlPort" ] [
-      "services"
-      "tor"
-      "settings"
-      "ControlPort"
-    ])
+    (mkRenamedOptionModule
+      [ "services" "tor" "controlPort" ]
+      [ "services" "tor" "settings" "ControlPort" ]
+    )
     (mkRemovedOptionModule [
       "services"
       "tor"
       "extraConfig"
     ] "Please use services.tor.settings instead.")
-    (mkRenamedOptionModule [ "services" "tor" "hiddenServices" ] [
-      "services"
-      "tor"
-      "relay"
-      "onionServices"
-    ])
-    (mkRenamedOptionModule [ "services" "tor" "relay" "accountingMax" ] [
-      "services"
-      "tor"
-      "settings"
-      "AccountingMax"
-    ])
-    (mkRenamedOptionModule [ "services" "tor" "relay" "accountingStart" ] [
-      "services"
-      "tor"
-      "settings"
-      "AccountingStart"
-    ])
-    (mkRenamedOptionModule [ "services" "tor" "relay" "address" ] [
-      "services"
-      "tor"
-      "settings"
-      "Address"
-    ])
-    (mkRenamedOptionModule [ "services" "tor" "relay" "bandwidthBurst" ] [
-      "services"
-      "tor"
-      "settings"
-      "BandwidthBurst"
-    ])
-    (mkRenamedOptionModule [ "services" "tor" "relay" "bandwidthRate" ] [
-      "services"
-      "tor"
-      "settings"
-      "BandwidthRate"
-    ])
-    (mkRenamedOptionModule [ "services" "tor" "relay" "bridgeTransports" ] [
-      "services"
-      "tor"
-      "settings"
-      "ServerTransportPlugin"
-      "transports"
-    ])
-    (mkRenamedOptionModule [ "services" "tor" "relay" "contactInfo" ] [
-      "services"
-      "tor"
-      "settings"
-      "ContactInfo"
-    ])
-    (mkRenamedOptionModule [ "services" "tor" "relay" "exitPolicy" ] [
-      "services"
-      "tor"
-      "settings"
-      "ExitPolicy"
-    ])
+    (mkRenamedOptionModule
+      [ "services" "tor" "hiddenServices" ]
+      [ "services" "tor" "relay" "onionServices" ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "tor" "relay" "accountingMax" ]
+      [ "services" "tor" "settings" "AccountingMax" ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "tor" "relay" "accountingStart" ]
+      [ "services" "tor" "settings" "AccountingStart" ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "tor" "relay" "address" ]
+      [ "services" "tor" "settings" "Address" ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "tor" "relay" "bandwidthBurst" ]
+      [ "services" "tor" "settings" "BandwidthBurst" ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "tor" "relay" "bandwidthRate" ]
+      [ "services" "tor" "settings" "BandwidthRate" ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "tor" "relay" "bridgeTransports" ]
+      [
+        "services"
+        "tor"
+        "settings"
+        "ServerTransportPlugin"
+        "transports"
+      ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "tor" "relay" "contactInfo" ]
+      [ "services" "tor" "settings" "ContactInfo" ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "tor" "relay" "exitPolicy" ]
+      [ "services" "tor" "settings" "ExitPolicy" ]
+    )
     (mkRemovedOptionModule [
       "services"
       "tor"
@@ -464,24 +442,15 @@ in
       "isBridge"
     ] "Use services.tor.relay.role instead.")
     (mkRemovedOptionModule [ "services" "tor" "relay" "isExit" ] "Use services.tor.relay.role instead.")
-    (mkRenamedOptionModule [ "services" "tor" "relay" "nickname" ] [
-      "services"
-      "tor"
-      "settings"
-      "Nickname"
-    ])
-    (mkRenamedOptionModule [ "services" "tor" "relay" "port" ] [
-      "services"
-      "tor"
-      "settings"
-      "ORPort"
-    ])
-    (mkRenamedOptionModule [ "services" "tor" "relay" "portSpec" ] [
-      "services"
-      "tor"
-      "settings"
-      "ORPort"
-    ])
+    (mkRenamedOptionModule
+      [ "services" "tor" "relay" "nickname" ]
+      [ "services" "tor" "settings" "Nickname" ]
+    )
+    (mkRenamedOptionModule [ "services" "tor" "relay" "port" ] [ "services" "tor" "settings" "ORPort" ])
+    (mkRenamedOptionModule
+      [ "services" "tor" "relay" "portSpec" ]
+      [ "services" "tor" "settings" "ORPort" ]
+    )
   ];
 
   options = {

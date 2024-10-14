@@ -499,16 +499,14 @@ in
   };
 
   imports = [
-    (mkRenamedOptionModule [ "networking" "networkmanager" "packages" ] [
-      "networking"
-      "networkmanager"
-      "plugins"
-    ])
-    (mkRenamedOptionModule [ "networking" "networkmanager" "useDnsmasq" ] [
-      "networking"
-      "networkmanager"
-      "dns"
-    ])
+    (mkRenamedOptionModule
+      [ "networking" "networkmanager" "packages" ]
+      [ "networking" "networkmanager" "plugins" ]
+    )
+    (mkRenamedOptionModule
+      [ "networking" "networkmanager" "useDnsmasq" ]
+      [ "networking" "networkmanager" "dns" ]
+    )
     (mkRemovedOptionModule [ "networking" "networkmanager" "extraConfig" ] ''
       This option was removed in favour of `networking.networkmanager.settings`,
       which accepts structured nix-code equivalent to the ini

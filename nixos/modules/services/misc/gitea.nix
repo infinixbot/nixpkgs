@@ -31,76 +31,106 @@ in
 
 {
   imports = [
-    (mkRenamedOptionModule [ "services" "gitea" "cookieSecure" ] [
-      "services"
-      "gitea"
-      "settings"
-      "session"
-      "COOKIE_SECURE"
-    ])
-    (mkRenamedOptionModule [ "services" "gitea" "disableRegistration" ] [
-      "services"
-      "gitea"
-      "settings"
-      "service"
-      "DISABLE_REGISTRATION"
-    ])
-    (mkRenamedOptionModule [ "services" "gitea" "domain" ] [
-      "services"
-      "gitea"
-      "settings"
-      "server"
-      "DOMAIN"
-    ])
-    (mkRenamedOptionModule [ "services" "gitea" "httpAddress" ] [
-      "services"
-      "gitea"
-      "settings"
-      "server"
-      "HTTP_ADDR"
-    ])
-    (mkRenamedOptionModule [ "services" "gitea" "httpPort" ] [
-      "services"
-      "gitea"
-      "settings"
-      "server"
-      "HTTP_PORT"
-    ])
-    (mkRenamedOptionModule [ "services" "gitea" "log" "level" ] [
-      "services"
-      "gitea"
-      "settings"
-      "log"
-      "LEVEL"
-    ])
-    (mkRenamedOptionModule [ "services" "gitea" "log" "rootPath" ] [
-      "services"
-      "gitea"
-      "settings"
-      "log"
-      "ROOT_PATH"
-    ])
-    (mkRenamedOptionModule [ "services" "gitea" "rootUrl" ] [
-      "services"
-      "gitea"
-      "settings"
-      "server"
-      "ROOT_URL"
-    ])
-    (mkRenamedOptionModule [ "services" "gitea" "ssh" "clonePort" ] [
-      "services"
-      "gitea"
-      "settings"
-      "server"
-      "SSH_PORT"
-    ])
-    (mkRenamedOptionModule [ "services" "gitea" "staticRootPath" ] [
-      "services"
-      "gitea"
-      "settings"
-      "server"
-      "STATIC_ROOT_PATH"
-    ])
+    (mkRenamedOptionModule
+      [ "services" "gitea" "cookieSecure" ]
+      [
+        "services"
+        "gitea"
+        "settings"
+        "session"
+        "COOKIE_SECURE"
+      ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "gitea" "disableRegistration" ]
+      [
+        "services"
+        "gitea"
+        "settings"
+        "service"
+        "DISABLE_REGISTRATION"
+      ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "gitea" "domain" ]
+      [
+        "services"
+        "gitea"
+        "settings"
+        "server"
+        "DOMAIN"
+      ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "gitea" "httpAddress" ]
+      [
+        "services"
+        "gitea"
+        "settings"
+        "server"
+        "HTTP_ADDR"
+      ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "gitea" "httpPort" ]
+      [
+        "services"
+        "gitea"
+        "settings"
+        "server"
+        "HTTP_PORT"
+      ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "gitea" "log" "level" ]
+      [
+        "services"
+        "gitea"
+        "settings"
+        "log"
+        "LEVEL"
+      ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "gitea" "log" "rootPath" ]
+      [
+        "services"
+        "gitea"
+        "settings"
+        "log"
+        "ROOT_PATH"
+      ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "gitea" "rootUrl" ]
+      [
+        "services"
+        "gitea"
+        "settings"
+        "server"
+        "ROOT_URL"
+      ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "gitea" "ssh" "clonePort" ]
+      [
+        "services"
+        "gitea"
+        "settings"
+        "server"
+        "SSH_PORT"
+      ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "gitea" "staticRootPath" ]
+      [
+        "services"
+        "gitea"
+        "settings"
+        "server"
+        "STATIC_ROOT_PATH"
+      ]
+    )
 
     (mkChangedOptionModule
       [ "services" "gitea" "enableUnixSocket" ]

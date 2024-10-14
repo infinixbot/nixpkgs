@@ -47,18 +47,14 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule [ "services" "keycloak" "bindAddress" ] [
-      "services"
-      "keycloak"
-      "settings"
-      "http-host"
-    ])
-    (mkRenamedOptionModule [ "services" "keycloak" "forceBackendUrlToFrontendUrl" ] [
-      "services"
-      "keycloak"
-      "settings"
-      "hostname-strict-backchannel"
-    ])
+    (mkRenamedOptionModule
+      [ "services" "keycloak" "bindAddress" ]
+      [ "services" "keycloak" "settings" "http-host" ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "keycloak" "forceBackendUrlToFrontendUrl" ]
+      [ "services" "keycloak" "settings" "hostname-strict-backchannel" ]
+    )
     (mkChangedOptionModule
       [ "services" "keycloak" "httpPort" ]
       [ "services" "keycloak" "settings" "http-port" ]

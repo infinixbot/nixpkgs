@@ -1170,11 +1170,13 @@ runTests {
   # The accumulator isn't forced deeply
   testFoldl'NonDeep = {
     expr = take 3 (
-      foldl' (acc: el: [ el ] ++ acc) [ (abort "unevaluated list entry") ] [
-        1
-        2
-        3
-      ]
+      foldl' (acc: el: [ el ] ++ acc)
+        [ (abort "unevaluated list entry") ]
+        [
+          1
+          2
+          3
+        ]
     );
     expected = [
       3
@@ -1276,24 +1278,33 @@ runTests {
     expected = false;
   };
   testListHasPrefixLazy = {
-    expr = lists.hasPrefix [ 1 ] [
-      1
-      (abort "lib.lists.hasPrefix is not lazy")
-    ];
+    expr =
+      lists.hasPrefix
+        [ 1 ]
+        [
+          1
+          (abort "lib.lists.hasPrefix is not lazy")
+        ];
     expected = true;
   };
   testListHasPrefixEmptyPrefix = {
-    expr = lists.hasPrefix [ ] [
-      1
-      2
-    ];
+    expr =
+      lists.hasPrefix
+        [ ]
+        [
+          1
+          2
+        ];
     expected = true;
   };
   testListHasPrefixEmptyList = {
-    expr = lists.hasPrefix [
-      1
-      2
-    ] [ ];
+    expr =
+      lists.hasPrefix
+        [
+          1
+          2
+        ]
+        [ ];
     expected = false;
   };
 
@@ -1333,10 +1344,13 @@ runTests {
     expected = false;
   };
   testListRemovePrefixEmptyPrefix = {
-    expr = lists.removePrefix [ ] [
-      1
-      2
-    ];
+    expr =
+      lists.removePrefix
+        [ ]
+        [
+          1
+          2
+        ];
     expected = [
       1
       2
@@ -1345,25 +1359,30 @@ runTests {
   testListRemovePrefixEmptyList = {
     expr =
       (builtins.tryEval (
-        lists.removePrefix [
-          1
-          2
-        ] [ ]
+        lists.removePrefix
+          [
+            1
+            2
+          ]
+          [ ]
       )).success;
     expected = false;
   };
 
   testFoldAttrs = {
-    expr = foldAttrs (n: a: [ n ] ++ a) [ ] [
-      {
-        a = 2;
-        b = 7;
-      }
-      {
-        a = 3;
-        c = 8;
-      }
-    ];
+    expr =
+      foldAttrs (n: a: [ n ] ++ a)
+        [ ]
+        [
+          {
+            a = 2;
+            b = 7;
+          }
+          {
+            a = 3;
+            c = 8;
+          }
+        ];
     expected = {
       a = [
         2
@@ -1433,11 +1452,14 @@ runTests {
     expected = [ ];
   };
   testListCommonPrefixEmpty = {
-    expr = lists.commonPrefix [ ] [
-      1
-      2
-      3
-    ];
+    expr =
+      lists.commonPrefix
+        [ ]
+        [
+          1
+          2
+          3
+        ];
     expected = [ ];
   };
   testListCommonPrefixSame = {
@@ -1460,10 +1482,13 @@ runTests {
     ];
   };
   testListCommonPrefixLazy = {
-    expr = lists.commonPrefix [ 1 ] [
-      1
-      (abort "lib.lists.commonPrefix shouldn't evaluate this")
-    ];
+    expr =
+      lists.commonPrefix
+        [ 1 ]
+        [
+          1
+          (abort "lib.lists.commonPrefix shouldn't evaluate this")
+        ];
     expected = [ 1 ];
   };
   # This would stack overflow if `commonPrefix` were implemented using recursion

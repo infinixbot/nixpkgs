@@ -180,21 +180,18 @@ in
   };
 
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "xserver" "displayManager" "autoLogin" ] [
-      "services"
-      "displayManager"
-      "autoLogin"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "xserver" "displayManager" "defaultSession" ] [
-      "services"
-      "displayManager"
-      "defaultSession"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "xserver" "displayManager" "hiddenUsers" ] [
-      "services"
-      "displayManager"
-      "hiddenUsers"
-    ])
+    (lib.mkRenamedOptionModule
+      [ "services" "xserver" "displayManager" "autoLogin" ]
+      [ "services" "displayManager" "autoLogin" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "services" "xserver" "displayManager" "defaultSession" ]
+      [ "services" "displayManager" "defaultSession" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "services" "xserver" "displayManager" "hiddenUsers" ]
+      [ "services" "displayManager" "hiddenUsers" ]
+    )
     (lib.mkRenamedOptionModule
       [
         "services"
@@ -203,11 +200,7 @@ in
         "job"
         "environment"
       ]
-      [
-        "services"
-        "displayManager"
-        "environment"
-      ]
+      [ "services" "displayManager" "environment" ]
     )
     (lib.mkRenamedOptionModule
       [
@@ -217,11 +210,7 @@ in
         "job"
         "execCmd"
       ]
-      [
-        "services"
-        "displayManager"
-        "execCmd"
-      ]
+      [ "services" "displayManager" "execCmd" ]
     )
     (lib.mkRenamedOptionModule
       [
@@ -231,11 +220,7 @@ in
         "job"
         "logToFile"
       ]
-      [
-        "services"
-        "displayManager"
-        "logToFile"
-      ]
+      [ "services" "displayManager" "logToFile" ]
     )
     (lib.mkRenamedOptionModule
       [
@@ -245,11 +230,7 @@ in
         "job"
         "logToJournal"
       ]
-      [
-        "services"
-        "displayManager"
-        "logToJournal"
-      ]
+      [ "services" "displayManager" "logToJournal" ]
     )
     (lib.mkRenamedOptionModule
       [
@@ -259,22 +240,16 @@ in
         "job"
         "preStart"
       ]
-      [
-        "services"
-        "displayManager"
-        "preStart"
-      ]
+      [ "services" "displayManager" "preStart" ]
     )
-    (lib.mkRenamedOptionModule [ "services" "xserver" "displayManager" "sessionData" ] [
-      "services"
-      "displayManager"
-      "sessionData"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "xserver" "displayManager" "sessionPackages" ] [
-      "services"
-      "displayManager"
-      "sessionPackages"
-    ])
+    (lib.mkRenamedOptionModule
+      [ "services" "xserver" "displayManager" "sessionData" ]
+      [ "services" "displayManager" "sessionData" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "services" "xserver" "displayManager" "sessionPackages" ]
+      [ "services" "displayManager" "sessionPackages" ]
+    )
   ];
 
   config = lib.mkIf cfg.enable {

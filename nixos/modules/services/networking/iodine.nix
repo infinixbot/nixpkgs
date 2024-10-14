@@ -15,30 +15,19 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "iodined" "enable" ] [
-      "services"
-      "iodine"
-      "server"
-      "enable"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "iodined" "domain" ] [
-      "services"
-      "iodine"
-      "server"
-      "domain"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "iodined" "ip" ] [
-      "services"
-      "iodine"
-      "server"
-      "ip"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "iodined" "extraConfig" ] [
-      "services"
-      "iodine"
-      "server"
-      "extraConfig"
-    ])
+    (lib.mkRenamedOptionModule
+      [ "services" "iodined" "enable" ]
+      [ "services" "iodine" "server" "enable" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "services" "iodined" "domain" ]
+      [ "services" "iodine" "server" "domain" ]
+    )
+    (lib.mkRenamedOptionModule [ "services" "iodined" "ip" ] [ "services" "iodine" "server" "ip" ])
+    (lib.mkRenamedOptionModule
+      [ "services" "iodined" "extraConfig" ]
+      [ "services" "iodine" "server" "extraConfig" ]
+    )
     (lib.mkRemovedOptionModule [ "services" "iodined" "client" ] "")
   ];
 

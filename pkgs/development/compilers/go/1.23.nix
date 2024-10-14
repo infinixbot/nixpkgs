@@ -113,11 +113,7 @@ stdenv.mkDerivation (finalAttrs: {
   CXX_FOR_TARGET = if isCross then "${targetCC}/bin/${targetCC.targetPrefix}c++" else null;
 
   GOARM = toString (
-    lib.intersectLists [ (stdenv.hostPlatform.parsed.cpu.version or "") ] [
-      "5"
-      "6"
-      "7"
-    ]
+    lib.intersectLists [ (stdenv.hostPlatform.parsed.cpu.version or "") ] [ "5" "6" "7" ]
   );
   GO386 = "softfloat"; # from Arch: don't assume sse2 on i686
   # Wasi does not support CGO

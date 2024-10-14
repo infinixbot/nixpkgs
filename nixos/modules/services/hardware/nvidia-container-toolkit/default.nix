@@ -16,11 +16,7 @@
         "nvidia"
         "enable"
       ]
-      [
-        "hardware"
-        "nvidia-container-toolkit"
-        "enable"
-      ]
+      [ "hardware" "nvidia-container-toolkit" "enable" ]
     )
   ];
 

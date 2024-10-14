@@ -264,31 +264,26 @@ in
 {
   imports =
     [
-      (lib.mkRenamedOptionModule [ "fonts" "fontconfig" "ultimate" "allowBitmaps" ] [
-        "fonts"
-        "fontconfig"
-        "allowBitmaps"
-      ])
-      (lib.mkRenamedOptionModule [ "fonts" "fontconfig" "ultimate" "allowType1" ] [
-        "fonts"
-        "fontconfig"
-        "allowType1"
-      ])
-      (lib.mkRenamedOptionModule [ "fonts" "fontconfig" "ultimate" "useEmbeddedBitmaps" ] [
-        "fonts"
-        "fontconfig"
-        "useEmbeddedBitmaps"
-      ])
-      (lib.mkRenamedOptionModule [ "fonts" "fontconfig" "ultimate" "forceAutohint" ] [
-        "fonts"
-        "fontconfig"
-        "forceAutohint"
-      ])
-      (lib.mkRenamedOptionModule [ "fonts" "fontconfig" "ultimate" "renderMonoTTFAsBitmap" ] [
-        "fonts"
-        "fontconfig"
-        "renderMonoTTFAsBitmap"
-      ])
+      (lib.mkRenamedOptionModule
+        [ "fonts" "fontconfig" "ultimate" "allowBitmaps" ]
+        [ "fonts" "fontconfig" "allowBitmaps" ]
+      )
+      (lib.mkRenamedOptionModule
+        [ "fonts" "fontconfig" "ultimate" "allowType1" ]
+        [ "fonts" "fontconfig" "allowType1" ]
+      )
+      (lib.mkRenamedOptionModule
+        [ "fonts" "fontconfig" "ultimate" "useEmbeddedBitmaps" ]
+        [ "fonts" "fontconfig" "useEmbeddedBitmaps" ]
+      )
+      (lib.mkRenamedOptionModule
+        [ "fonts" "fontconfig" "ultimate" "forceAutohint" ]
+        [ "fonts" "fontconfig" "forceAutohint" ]
+      )
+      (lib.mkRenamedOptionModule
+        [ "fonts" "fontconfig" "ultimate" "renderMonoTTFAsBitmap" ]
+        [ "fonts" "fontconfig" "renderMonoTTFAsBitmap" ]
+      )
       (lib.mkRemovedOptionModule [ "fonts" "fontconfig" "forceAutohint" ] "")
       (lib.mkRemovedOptionModule [ "fonts" "fontconfig" "renderMonoTTFAsBitmap" ] "")
       (lib.mkRemovedOptionModule [ "fonts" "fontconfig" "dpi" ] "Use display server-specific options")

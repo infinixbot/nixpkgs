@@ -24,11 +24,10 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "yggdrasil" "config" ] [
-      "services"
-      "yggdrasil"
-      "settings"
-    ])
+    (lib.mkRenamedOptionModule
+      [ "services" "yggdrasil" "config" ]
+      [ "services" "yggdrasil" "settings" ]
+    )
   ];
 
   options = {

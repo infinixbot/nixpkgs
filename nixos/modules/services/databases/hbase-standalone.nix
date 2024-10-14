@@ -37,10 +37,7 @@ in
 {
 
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "hbase" ] [
-      "services"
-      "hbase-standalone"
-    ])
+    (lib.mkRenamedOptionModule [ "services" "hbase" ] [ "services" "hbase-standalone" ])
   ];
 
   ###### interface

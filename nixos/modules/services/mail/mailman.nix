@@ -89,12 +89,10 @@ in
   ###### interface
 
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "mailman" "hyperkittyBaseUrl" ] [
-      "services"
-      "mailman"
-      "hyperkitty"
-      "baseUrl"
-    ])
+    (lib.mkRenamedOptionModule
+      [ "services" "mailman" "hyperkittyBaseUrl" ]
+      [ "services" "mailman" "hyperkitty" "baseUrl" ]
+    )
 
     (lib.mkRemovedOptionModule [ "services" "mailman" "hyperkittyApiKey" ] ''
       The Hyperkitty API key is now generated on first run, and not

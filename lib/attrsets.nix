@@ -1545,10 +1545,7 @@ rec {
             f here values
         );
     in
-    f [ ] [
-      rhs
-      lhs
-    ];
+    f [ ] [ rhs lhs ];
 
   /**
     A recursive variant of the update operator ‘//’.  The recursion

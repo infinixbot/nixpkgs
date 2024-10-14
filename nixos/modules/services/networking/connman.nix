@@ -19,10 +19,7 @@ in
   meta.maintainers = with lib.maintainers; [ AndersonTorres ];
 
   imports = [
-    (lib.mkRenamedOptionModule [ "networking" "connman" ] [
-      "services"
-      "connman"
-    ])
+    (lib.mkRenamedOptionModule [ "networking" "connman" ] [ "services" "connman" ])
   ];
 
   ###### interface

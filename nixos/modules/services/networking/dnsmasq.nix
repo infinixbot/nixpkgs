@@ -33,12 +33,10 @@ in
 {
 
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "dnsmasq" "servers" ] [
-      "services"
-      "dnsmasq"
-      "settings"
-      "server"
-    ])
+    (lib.mkRenamedOptionModule
+      [ "services" "dnsmasq" "servers" ]
+      [ "services" "dnsmasq" "settings" "server" ]
+    )
     (lib.mkRemovedOptionModule [
       "services"
       "dnsmasq"

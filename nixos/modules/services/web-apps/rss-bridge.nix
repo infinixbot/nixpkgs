@@ -29,13 +29,16 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule [ "services" "rss-bridge" "whitelist" ] [
-      "services"
-      "rss-bridge"
-      "config"
-      "system"
-      "enabled_bridges"
-    ])
+    (mkRenamedOptionModule
+      [ "services" "rss-bridge" "whitelist" ]
+      [
+        "services"
+        "rss-bridge"
+        "config"
+        "system"
+        "enabled_bridges"
+      ]
+    )
   ];
 
   options = {
