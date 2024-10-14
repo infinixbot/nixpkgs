@@ -226,7 +226,8 @@ in
 
         "homepage-dashboard/bookmarks.yaml".source = settingsFormat.generate "bookmarks.yaml" cfg.bookmarks;
         "homepage-dashboard/docker.yaml".source = settingsFormat.generate "docker.yaml" cfg.docker;
-        "homepage-dashboard/kubernetes.yaml".source = settingsFormat.generate "kubernetes.yaml" cfg.kubernetes;
+        "homepage-dashboard/kubernetes.yaml".source =
+          settingsFormat.generate "kubernetes.yaml" cfg.kubernetes;
         "homepage-dashboard/services.yaml".source = settingsFormat.generate "services.yaml" cfg.services;
         "homepage-dashboard/settings.yaml".source = settingsFormat.generate "settings.yaml" cfg.settings;
         "homepage-dashboard/widgets.yaml".source = settingsFormat.generate "widgets.yaml" cfg.widgets;

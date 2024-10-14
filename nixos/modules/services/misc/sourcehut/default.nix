@@ -1078,7 +1078,8 @@ in
               {
                 # Note that git.sr.ht::dispatch is not a typo,
                 # gitsrht-dispatch always use this section
-                "git.sr.ht::dispatch"."/usr/bin/buildsrht-keys" = mkDefault "${cfg.builds.user}:${cfg.builds.group}";
+                "git.sr.ht::dispatch"."/usr/bin/buildsrht-keys" =
+                  mkDefault "${cfg.builds.user}:${cfg.builds.group}";
               }
               (mkIf cfg.builds.enableWorker {
                 "builds.sr.ht::worker".shell = "/usr/bin/runner-shell";

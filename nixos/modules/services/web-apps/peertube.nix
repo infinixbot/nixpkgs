@@ -684,12 +684,13 @@ in
         };
 
         # Bypass PeerTube for performance reasons.
-        locations."~ ^/client/(assets/images/(icons/icon-36x36\.png|icons/icon-48x48\.png|icons/icon-72x72\.png|icons/icon-96x96\.png|icons/icon-144x144\.png|icons/icon-192x192\.png|icons/icon-512x512\.png|logo\.svg|favicon\.png|default-playlist\.jpg|default-avatar-account\.png|default-avatar-account-48x48\.png|default-avatar-video-channel\.png|default-avatar-video-channel-48x48\.png))$" = {
-          tryFiles = "/client-overrides/$1 /client/$1 $1";
-          priority = 1310;
+        locations."~ ^/client/(assets/images/(icons/icon-36x36\.png|icons/icon-48x48\.png|icons/icon-72x72\.png|icons/icon-96x96\.png|icons/icon-144x144\.png|icons/icon-192x192\.png|icons/icon-512x512\.png|logo\.svg|favicon\.png|default-playlist\.jpg|default-avatar-account\.png|default-avatar-account-48x48\.png|default-avatar-video-channel\.png|default-avatar-video-channel-48x48\.png))$" =
+          {
+            tryFiles = "/client-overrides/$1 /client/$1 $1";
+            priority = 1310;
 
-          extraConfig = nginxCommonHeaders;
-        };
+            extraConfig = nginxCommonHeaders;
+          };
 
         locations."~ ^/client/(.*\.(js|css|png|svg|woff2|otf|ttf|woff|eot))$" = {
           alias = "${cfg.package}/client/dist/$1";

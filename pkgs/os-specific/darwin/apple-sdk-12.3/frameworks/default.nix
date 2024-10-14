@@ -97,7 +97,8 @@ let
 
         propagatedBuildInputs = lib.attrValues deps;
 
-        passthru.tbdRewrites.prefix."${standardFrameworkPath name private}/" = "${self}/Library/Frameworks/${name}.framework/";
+        passthru.tbdRewrites.prefix."${standardFrameworkPath name private}/" =
+          "${self}/Library/Frameworks/${name}.framework/";
 
         meta = with lib; {
           description = "Apple SDK framework ${name}";

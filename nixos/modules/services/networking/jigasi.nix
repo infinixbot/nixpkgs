@@ -239,7 +239,8 @@ in
     environment.etc."jitsi/jigasi/sip-communicator.properties".source = lib.mkDefault "${
       sipCommunicatorPropertiesFile
     }";
-    environment.etc."jitsi/jigasi/logging.properties".source = lib.mkDefault "${stateDir}/logging.properties-journal";
+    environment.etc."jitsi/jigasi/logging.properties".source =
+      lib.mkDefault "${stateDir}/logging.properties-journal";
   };
 
   meta.maintainers = lib.teams.jitsi.members;

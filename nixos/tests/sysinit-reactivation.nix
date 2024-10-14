@@ -7,7 +7,8 @@
 let
   makeGeneration = generation: {
     "${generation}".configuration = {
-      systemd.services.pre-sysinit-before-tmpfiles.environment.USER = lib.mkForce "${generation}-tmpfiles-user";
+      systemd.services.pre-sysinit-before-tmpfiles.environment.USER =
+        lib.mkForce "${generation}-tmpfiles-user";
 
       systemd.services.pre-sysinit-after-tmpfiles.environment = {
         NEEDED_PATH = lib.mkForce "/run/${generation}-needed-by-pre-sysinit-after-tmpfiles";

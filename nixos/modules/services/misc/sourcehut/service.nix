@@ -321,7 +321,8 @@ in
         }
 
         (mkIf cfg.postgresql.enable {
-          "${srv}.sr.ht".connection-string = mkDefault "postgresql:///${srvCfg.postgresql.database}?user=${srvCfg.user}&host=/run/postgresql";
+          "${srv}.sr.ht".connection-string =
+            mkDefault "postgresql:///${srvCfg.postgresql.database}?user=${srvCfg.user}&host=/run/postgresql";
         })
       ];
 

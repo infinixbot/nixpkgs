@@ -54872,16 +54872,17 @@ let
         sha512 = "yS2uJflVQs6n+CyjHoaBmVSqIDevTAWrzMmjG1Gc7h1qQ7uVozNhEPJAwZXWyGQ/Gafo3fCwrcaokezLPupVyQ==";
       };
     };
-    "xmlhttprequest-https://github.com/LearnBoost/node-XMLHttpRequest/archive/0f36d0b5ebc03d85f860d42a64ae9791e1daa433.tar.gz" = {
-      name = "xmlhttprequest";
-      packageName = "xmlhttprequest";
-      version = "1.5.0";
-      src = fetchurl {
-        name = "xmlhttprequest-1.5.0.tar.gz";
-        url = "https://codeload.github.com/LearnBoost/node-XMLHttpRequest/tar.gz/0f36d0b5ebc03d85f860d42a64ae9791e1daa433";
-        sha256 = "28dd0394d85befe8be4e9cd9f6803102780c62cbb09298cb174b52ff9777624f";
+    "xmlhttprequest-https://github.com/LearnBoost/node-XMLHttpRequest/archive/0f36d0b5ebc03d85f860d42a64ae9791e1daa433.tar.gz" =
+      {
+        name = "xmlhttprequest";
+        packageName = "xmlhttprequest";
+        version = "1.5.0";
+        src = fetchurl {
+          name = "xmlhttprequest-1.5.0.tar.gz";
+          url = "https://codeload.github.com/LearnBoost/node-XMLHttpRequest/tar.gz/0f36d0b5ebc03d85f860d42a64ae9791e1daa433";
+          sha256 = "28dd0394d85befe8be4e9cd9f6803102780c62cbb09298cb174b52ff9777624f";
+        };
       };
-    };
     "xmlhttprequest-ssl-1.5.5" = {
       name = "xmlhttprequest-ssl";
       packageName = "xmlhttprequest-ssl";
@@ -82838,485 +82839,484 @@ in
     reconstructLock = true;
   };
   "rust-analyzer-build-deps-../../applications/editors/vscode/extensions/rust-lang.rust-analyzer/build-deps" =
-    nodeEnv.buildNodePackage
-      {
-        name = "rust-analyzer";
-        packageName = "rust-analyzer";
-        version = "0.3.2029";
-        src = ../../applications/editors/vscode/extensions/rust-lang.rust-analyzer/build-deps;
-        dependencies = [
-          sources."@azure/abort-controller-1.1.0"
-          (
-            sources."@azure/core-auth-1.8.0"
-            // {
-              dependencies = [
-                sources."@azure/abort-controller-2.1.2"
-              ];
-            }
-          )
-          (
-            sources."@azure/core-client-1.9.2"
-            // {
-              dependencies = [
-                sources."@azure/abort-controller-2.1.2"
-              ];
-            }
-          )
-          (
-            sources."@azure/core-rest-pipeline-1.17.0"
-            // {
-              dependencies = [
-                sources."@azure/abort-controller-2.1.2"
-              ];
-            }
-          )
-          sources."@azure/core-tracing-1.1.2"
-          (
-            sources."@azure/core-util-1.10.0"
-            // {
-              dependencies = [
-                sources."@azure/abort-controller-2.1.2"
-              ];
-            }
-          )
-          sources."@azure/identity-4.4.1"
-          sources."@azure/logger-1.1.4"
-          sources."@azure/msal-browser-3.24.0"
-          sources."@azure/msal-common-14.15.0"
-          sources."@azure/msal-node-2.14.0"
-          sources."@eslint-community/eslint-utils-4.4.0"
-          sources."@eslint-community/regexpp-4.11.1"
-          (
-            sources."@eslint/eslintrc-2.1.4"
-            // {
-              dependencies = [
-                sources."brace-expansion-1.1.11"
-                sources."minimatch-3.1.2"
-              ];
-            }
-          )
-          sources."@eslint/js-8.57.1"
-          sources."@hpcc-js/wasm-2.22.1"
-          (
-            sources."@humanwhocodes/config-array-0.13.0"
-            // {
-              dependencies = [
-                sources."brace-expansion-1.1.11"
-                sources."minimatch-3.1.2"
-              ];
-            }
-          )
-          sources."@humanwhocodes/module-importer-1.0.1"
-          sources."@humanwhocodes/object-schema-2.0.3"
-          sources."@nodelib/fs.scandir-2.1.5"
-          sources."@nodelib/fs.stat-2.0.5"
-          sources."@nodelib/fs.walk-1.2.8"
-          sources."@tsconfig/strictest-2.0.5"
-          sources."@types/json-schema-7.0.15"
-          sources."@types/node-16.11.68"
-          sources."@types/semver-7.5.8"
-          sources."@types/vscode-1.78.1"
-          sources."@typescript-eslint/eslint-plugin-6.21.0"
-          sources."@typescript-eslint/parser-6.21.0"
-          sources."@typescript-eslint/scope-manager-6.21.0"
-          sources."@typescript-eslint/type-utils-6.21.0"
-          sources."@typescript-eslint/types-6.21.0"
-          (
-            sources."@typescript-eslint/typescript-estree-6.21.0"
-            // {
-              dependencies = [
-                sources."minimatch-9.0.3"
-              ];
-            }
-          )
-          sources."@typescript-eslint/utils-6.21.0"
-          sources."@typescript-eslint/visitor-keys-6.21.0"
-          sources."@ungap/structured-clone-1.2.0"
-          sources."@vscode/test-electron-2.4.1"
-          (
-            sources."@vscode/vsce-2.32.0"
-            // {
-              dependencies = [
-                sources."ansi-styles-3.2.1"
-                sources."brace-expansion-1.1.11"
-                sources."chalk-2.4.2"
-                sources."color-convert-1.9.3"
-                sources."color-name-1.1.3"
-                sources."commander-6.2.1"
-                sources."minimatch-3.1.2"
-              ];
-            }
-          )
-          sources."@vscode/vsce-sign-2.0.4"
-          sources."@vscode/vsce-sign-alpine-arm64-2.0.2"
-          sources."@vscode/vsce-sign-alpine-x64-2.0.2"
-          sources."@vscode/vsce-sign-darwin-arm64-2.0.2"
-          sources."@vscode/vsce-sign-darwin-x64-2.0.2"
-          sources."@vscode/vsce-sign-linux-arm-2.0.2"
-          sources."@vscode/vsce-sign-linux-arm64-2.0.2"
-          sources."@vscode/vsce-sign-linux-x64-2.0.2"
-          sources."@vscode/vsce-sign-win32-arm64-2.0.2"
-          sources."@vscode/vsce-sign-win32-x64-2.0.2"
-          sources."acorn-8.12.1"
-          sources."acorn-jsx-5.3.2"
-          sources."agent-base-7.1.1"
-          sources."ajv-6.12.6"
-          sources."anser-2.1.1"
-          sources."ansi-regex-5.0.1"
-          sources."ansi-styles-4.3.0"
-          sources."argparse-2.0.1"
-          sources."array-union-2.1.0"
-          sources."asynckit-0.4.0"
-          sources."azure-devops-node-api-12.5.0"
-          sources."balanced-match-1.0.2"
-          sources."base64-js-1.5.1"
-          (
-            sources."bl-5.1.0"
-            // {
-              dependencies = [
-                sources."readable-stream-3.6.2"
-              ];
-            }
-          )
-          sources."boolbase-1.0.0"
-          sources."brace-expansion-2.0.1"
-          sources."braces-3.0.3"
-          sources."buffer-6.0.3"
-          sources."buffer-crc32-0.2.13"
-          sources."buffer-equal-constant-time-1.0.1"
-          sources."call-bind-1.0.7"
-          sources."callsites-3.1.0"
-          sources."chalk-5.3.0"
-          sources."cheerio-1.0.0"
-          sources."cheerio-select-2.1.0"
-          sources."ci-info-2.0.0"
-          sources."cli-cursor-4.0.0"
-          sources."cli-spinners-2.9.2"
-          sources."cliui-8.0.1"
-          sources."cockatiel-3.2.1"
-          sources."color-convert-2.0.1"
-          sources."color-name-1.1.4"
-          sources."combined-stream-1.0.8"
-          sources."commander-7.2.0"
-          sources."concat-map-0.0.1"
-          sources."core-util-is-1.0.3"
-          sources."cross-spawn-7.0.3"
-          sources."css-select-5.1.0"
-          sources."css-what-6.1.0"
-          sources."d3-7.9.0"
-          sources."d3-array-3.2.4"
-          sources."d3-axis-3.0.0"
-          sources."d3-brush-3.0.0"
-          sources."d3-chord-3.0.1"
-          sources."d3-color-3.1.0"
-          sources."d3-contour-4.0.2"
-          sources."d3-delaunay-6.0.4"
-          sources."d3-dispatch-3.0.1"
-          sources."d3-drag-3.0.0"
-          sources."d3-dsv-3.0.1"
-          sources."d3-ease-3.0.1"
-          sources."d3-fetch-3.0.1"
-          sources."d3-force-3.0.0"
-          sources."d3-format-3.1.0"
-          sources."d3-geo-3.1.1"
-          sources."d3-graphviz-5.6.0"
-          sources."d3-hierarchy-3.1.2"
-          sources."d3-interpolate-3.0.1"
-          sources."d3-path-3.1.0"
-          sources."d3-polygon-3.0.1"
-          sources."d3-quadtree-3.0.1"
-          sources."d3-random-3.0.1"
-          sources."d3-scale-4.0.2"
-          sources."d3-scale-chromatic-3.1.0"
-          sources."d3-selection-3.0.0"
-          sources."d3-shape-3.2.0"
-          sources."d3-time-3.1.0"
-          sources."d3-time-format-4.1.0"
-          sources."d3-timer-3.0.1"
-          sources."d3-transition-3.0.1"
-          sources."d3-zoom-3.0.0"
-          sources."debug-4.3.7"
-          sources."deep-is-0.1.4"
-          sources."define-data-property-1.1.4"
-          sources."define-lazy-prop-2.0.0"
-          sources."delaunator-5.0.1"
-          sources."delayed-stream-1.0.0"
-          sources."dir-glob-3.0.1"
-          sources."doctrine-3.0.0"
-          sources."dom-serializer-2.0.0"
-          sources."domelementtype-2.3.0"
-          sources."domhandler-5.0.3"
-          sources."domutils-3.1.0"
-          sources."eastasianwidth-0.2.0"
-          sources."ecdsa-sig-formatter-1.0.11"
-          sources."emoji-regex-8.0.0"
-          sources."encoding-sniffer-0.2.0"
-          sources."entities-4.5.0"
-          sources."es-define-property-1.0.0"
-          sources."es-errors-1.3.0"
-          sources."escalade-3.2.0"
-          sources."escape-string-regexp-1.0.5"
-          (
-            sources."eslint-8.57.1"
-            // {
-              dependencies = [
-                sources."brace-expansion-1.1.11"
-                sources."chalk-4.1.2"
-                sources."escape-string-regexp-4.0.0"
-                sources."glob-parent-6.0.2"
-                sources."has-flag-4.0.0"
-                sources."minimatch-3.1.2"
-                sources."supports-color-7.2.0"
-              ];
-            }
-          )
-          sources."eslint-config-prettier-8.10.0"
-          sources."eslint-scope-7.2.2"
-          sources."eslint-visitor-keys-3.4.3"
-          sources."espree-9.6.1"
-          sources."esquery-1.6.0"
-          sources."esrecurse-4.3.0"
-          sources."estraverse-5.3.0"
-          sources."esutils-2.0.3"
-          sources."events-3.3.0"
-          sources."fast-deep-equal-3.1.3"
-          sources."fast-glob-3.3.2"
-          sources."fast-json-stable-stringify-2.1.0"
-          sources."fast-levenshtein-2.0.6"
-          sources."fastq-1.17.1"
-          sources."fd-slicer-1.1.0"
-          sources."file-entry-cache-6.0.1"
-          sources."fill-range-7.1.1"
-          sources."find-up-5.0.0"
-          sources."flat-cache-3.2.0"
-          sources."flatted-3.3.1"
-          sources."follow-redirects-1.15.9"
-          sources."form-data-4.0.0"
-          sources."fs.realpath-1.0.0"
-          sources."function-bind-1.1.2"
-          sources."get-caller-file-2.0.5"
-          sources."get-intrinsic-1.2.4"
-          (
-            sources."glob-7.2.3"
-            // {
-              dependencies = [
-                sources."brace-expansion-1.1.11"
-                sources."minimatch-3.1.2"
-              ];
-            }
-          )
-          sources."glob-parent-5.1.2"
-          sources."globals-13.24.0"
-          sources."globby-11.1.0"
-          sources."gopd-1.0.1"
-          sources."graphemer-1.4.0"
-          sources."has-flag-3.0.0"
-          sources."has-property-descriptors-1.0.2"
-          sources."has-proto-1.0.3"
-          sources."has-symbols-1.0.3"
-          sources."hasown-2.0.2"
-          sources."hosted-git-info-4.1.0"
-          sources."htmlparser2-9.1.0"
-          sources."http-proxy-agent-7.0.2"
-          sources."https-proxy-agent-7.0.5"
-          sources."iconv-lite-0.6.3"
-          sources."ieee754-1.2.1"
-          sources."ignore-5.3.2"
-          sources."immediate-3.0.6"
-          sources."import-fresh-3.3.0"
-          sources."imurmurhash-0.1.4"
-          sources."inflight-1.0.6"
-          sources."inherits-2.0.4"
-          sources."internmap-2.0.3"
-          sources."is-ci-2.0.0"
-          sources."is-docker-2.2.1"
-          sources."is-extglob-2.1.1"
-          sources."is-fullwidth-code-point-3.0.0"
-          sources."is-glob-4.0.3"
-          sources."is-interactive-2.0.0"
-          sources."is-number-7.0.0"
-          sources."is-path-inside-3.0.3"
-          sources."is-unicode-supported-1.3.0"
-          sources."is-wsl-2.2.0"
-          sources."isarray-1.0.0"
-          sources."isexe-2.0.0"
-          sources."js-yaml-4.1.0"
-          sources."json-buffer-3.0.1"
-          sources."json-schema-traverse-0.4.1"
-          sources."json-stable-stringify-without-jsonify-1.0.1"
-          sources."jsonc-parser-3.3.1"
-          (
-            sources."jsonwebtoken-9.0.2"
-            // {
-              dependencies = [
-                sources."jwa-1.4.1"
-                sources."jws-3.2.2"
-              ];
-            }
-          )
-          sources."jszip-3.10.1"
-          sources."jwa-2.0.0"
-          sources."jws-4.0.0"
-          sources."keyv-4.5.4"
-          sources."leven-3.1.0"
-          sources."levn-0.4.1"
-          sources."lie-3.3.0"
-          sources."linkify-it-3.0.3"
-          sources."locate-path-6.0.0"
-          sources."lodash.includes-4.3.0"
-          sources."lodash.isboolean-3.0.3"
-          sources."lodash.isinteger-4.0.4"
-          sources."lodash.isnumber-3.0.3"
-          sources."lodash.isplainobject-4.0.6"
-          sources."lodash.isstring-4.0.1"
-          sources."lodash.merge-4.6.2"
-          sources."lodash.once-4.1.1"
-          sources."log-symbols-5.1.0"
-          sources."lru-cache-6.0.0"
-          (
-            sources."markdown-it-12.3.2"
-            // {
-              dependencies = [
-                sources."entities-2.1.0"
-              ];
-            }
-          )
-          sources."mdurl-1.0.1"
-          sources."merge2-1.4.1"
-          sources."micromatch-4.0.8"
-          sources."mime-1.6.0"
-          sources."mime-db-1.52.0"
-          sources."mime-types-2.1.35"
-          sources."mimic-fn-2.1.0"
-          sources."minimatch-5.1.6"
-          sources."ms-2.1.3"
-          sources."mute-stream-0.0.8"
-          sources."natural-compare-1.4.0"
-          sources."nth-check-2.1.1"
-          sources."object-inspect-1.13.2"
-          sources."once-1.4.0"
-          sources."onetime-5.1.2"
-          sources."open-8.4.2"
-          sources."optionator-0.9.4"
-          (
-            sources."ora-7.0.1"
-            // {
-              dependencies = [
-                sources."ansi-regex-6.1.0"
-                sources."emoji-regex-10.4.0"
-                sources."string-width-6.1.0"
-                sources."strip-ansi-7.1.0"
-              ];
-            }
-          )
-          (
-            sources."ovsx-0.8.4"
-            // {
-              dependencies = [
-                sources."commander-6.2.1"
-              ];
-            }
-          )
-          sources."p-limit-3.1.0"
-          sources."p-locate-5.0.0"
-          sources."pako-1.0.11"
-          sources."parent-module-1.0.1"
-          (
-            sources."parse-semver-1.1.1"
-            // {
-              dependencies = [
-                sources."semver-5.7.2"
-              ];
-            }
-          )
-          sources."parse5-7.1.2"
-          sources."parse5-htmlparser2-tree-adapter-7.0.0"
-          sources."parse5-parser-stream-7.1.2"
-          sources."path-exists-4.0.0"
-          sources."path-is-absolute-1.0.1"
-          sources."path-key-3.1.1"
-          sources."path-type-4.0.0"
-          sources."pend-1.2.0"
-          sources."picomatch-2.3.1"
-          sources."prelude-ls-1.2.1"
-          sources."prettier-3.3.3"
-          sources."process-nextick-args-2.0.1"
-          sources."punycode-2.3.1"
-          sources."qs-6.13.0"
-          sources."queue-microtask-1.2.3"
-          sources."read-1.0.7"
-          sources."readable-stream-2.3.8"
-          sources."require-directory-2.1.1"
-          sources."resolve-from-4.0.0"
-          sources."restore-cursor-4.0.0"
-          sources."reusify-1.0.4"
-          sources."rimraf-3.0.2"
-          sources."robust-predicates-3.0.2"
-          sources."run-parallel-1.2.0"
-          sources."rw-1.3.3"
-          sources."safe-buffer-5.1.2"
-          sources."safer-buffer-2.1.2"
-          sources."sax-1.4.1"
-          sources."semver-7.6.3"
-          sources."set-function-length-1.2.2"
-          sources."setimmediate-1.0.5"
-          sources."shebang-command-2.0.0"
-          sources."shebang-regex-3.0.0"
-          sources."side-channel-1.0.6"
-          sources."signal-exit-3.0.7"
-          sources."slash-3.0.0"
-          sources."stdin-discarder-0.1.0"
-          sources."stoppable-1.1.0"
-          sources."string-width-4.2.3"
-          sources."string_decoder-1.1.1"
-          sources."strip-ansi-6.0.1"
-          sources."strip-json-comments-3.1.1"
-          sources."supports-color-5.5.0"
-          sources."text-table-0.2.0"
-          sources."tmp-0.2.3"
-          sources."to-regex-range-5.0.1"
-          sources."ts-api-utils-1.3.0"
-          sources."tslib-2.7.0"
-          sources."tunnel-0.0.6"
-          sources."type-check-0.4.0"
-          sources."type-fest-0.20.2"
-          sources."typed-rest-client-1.8.11"
-          sources."typescript-5.6.2"
-          sources."uc.micro-1.0.6"
-          sources."underscore-1.13.7"
-          sources."undici-6.19.8"
-          sources."uri-js-4.4.1"
-          sources."url-join-4.0.1"
-          sources."util-deprecate-1.0.2"
-          sources."uuid-8.3.2"
-          sources."vscode-jsonrpc-8.1.0"
-          sources."vscode-languageclient-8.1.0"
-          sources."vscode-languageserver-protocol-3.17.3"
-          sources."vscode-languageserver-types-3.17.3"
-          sources."whatwg-encoding-3.1.1"
-          sources."whatwg-mimetype-4.0.0"
-          sources."which-2.0.2"
-          sources."word-wrap-1.2.5"
-          sources."wrap-ansi-7.0.0"
-          sources."wrappy-1.0.2"
-          sources."xml2js-0.5.0"
-          sources."xmlbuilder-11.0.1"
-          sources."y18n-5.0.8"
-          sources."yallist-4.0.0"
-          sources."yargs-17.7.2"
-          sources."yargs-parser-21.1.1"
-          sources."yauzl-2.10.0"
-          sources."yazl-2.5.1"
-          sources."yocto-queue-0.1.0"
-        ];
-        buildInputs = globalBuildInputs;
-        meta =
-          {
-          };
-        production = true;
-        bypassCache = true;
-        reconstructLock = true;
-      };
+    nodeEnv.buildNodePackage {
+      name = "rust-analyzer";
+      packageName = "rust-analyzer";
+      version = "0.3.2029";
+      src = ../../applications/editors/vscode/extensions/rust-lang.rust-analyzer/build-deps;
+      dependencies = [
+        sources."@azure/abort-controller-1.1.0"
+        (
+          sources."@azure/core-auth-1.8.0"
+          // {
+            dependencies = [
+              sources."@azure/abort-controller-2.1.2"
+            ];
+          }
+        )
+        (
+          sources."@azure/core-client-1.9.2"
+          // {
+            dependencies = [
+              sources."@azure/abort-controller-2.1.2"
+            ];
+          }
+        )
+        (
+          sources."@azure/core-rest-pipeline-1.17.0"
+          // {
+            dependencies = [
+              sources."@azure/abort-controller-2.1.2"
+            ];
+          }
+        )
+        sources."@azure/core-tracing-1.1.2"
+        (
+          sources."@azure/core-util-1.10.0"
+          // {
+            dependencies = [
+              sources."@azure/abort-controller-2.1.2"
+            ];
+          }
+        )
+        sources."@azure/identity-4.4.1"
+        sources."@azure/logger-1.1.4"
+        sources."@azure/msal-browser-3.24.0"
+        sources."@azure/msal-common-14.15.0"
+        sources."@azure/msal-node-2.14.0"
+        sources."@eslint-community/eslint-utils-4.4.0"
+        sources."@eslint-community/regexpp-4.11.1"
+        (
+          sources."@eslint/eslintrc-2.1.4"
+          // {
+            dependencies = [
+              sources."brace-expansion-1.1.11"
+              sources."minimatch-3.1.2"
+            ];
+          }
+        )
+        sources."@eslint/js-8.57.1"
+        sources."@hpcc-js/wasm-2.22.1"
+        (
+          sources."@humanwhocodes/config-array-0.13.0"
+          // {
+            dependencies = [
+              sources."brace-expansion-1.1.11"
+              sources."minimatch-3.1.2"
+            ];
+          }
+        )
+        sources."@humanwhocodes/module-importer-1.0.1"
+        sources."@humanwhocodes/object-schema-2.0.3"
+        sources."@nodelib/fs.scandir-2.1.5"
+        sources."@nodelib/fs.stat-2.0.5"
+        sources."@nodelib/fs.walk-1.2.8"
+        sources."@tsconfig/strictest-2.0.5"
+        sources."@types/json-schema-7.0.15"
+        sources."@types/node-16.11.68"
+        sources."@types/semver-7.5.8"
+        sources."@types/vscode-1.78.1"
+        sources."@typescript-eslint/eslint-plugin-6.21.0"
+        sources."@typescript-eslint/parser-6.21.0"
+        sources."@typescript-eslint/scope-manager-6.21.0"
+        sources."@typescript-eslint/type-utils-6.21.0"
+        sources."@typescript-eslint/types-6.21.0"
+        (
+          sources."@typescript-eslint/typescript-estree-6.21.0"
+          // {
+            dependencies = [
+              sources."minimatch-9.0.3"
+            ];
+          }
+        )
+        sources."@typescript-eslint/utils-6.21.0"
+        sources."@typescript-eslint/visitor-keys-6.21.0"
+        sources."@ungap/structured-clone-1.2.0"
+        sources."@vscode/test-electron-2.4.1"
+        (
+          sources."@vscode/vsce-2.32.0"
+          // {
+            dependencies = [
+              sources."ansi-styles-3.2.1"
+              sources."brace-expansion-1.1.11"
+              sources."chalk-2.4.2"
+              sources."color-convert-1.9.3"
+              sources."color-name-1.1.3"
+              sources."commander-6.2.1"
+              sources."minimatch-3.1.2"
+            ];
+          }
+        )
+        sources."@vscode/vsce-sign-2.0.4"
+        sources."@vscode/vsce-sign-alpine-arm64-2.0.2"
+        sources."@vscode/vsce-sign-alpine-x64-2.0.2"
+        sources."@vscode/vsce-sign-darwin-arm64-2.0.2"
+        sources."@vscode/vsce-sign-darwin-x64-2.0.2"
+        sources."@vscode/vsce-sign-linux-arm-2.0.2"
+        sources."@vscode/vsce-sign-linux-arm64-2.0.2"
+        sources."@vscode/vsce-sign-linux-x64-2.0.2"
+        sources."@vscode/vsce-sign-win32-arm64-2.0.2"
+        sources."@vscode/vsce-sign-win32-x64-2.0.2"
+        sources."acorn-8.12.1"
+        sources."acorn-jsx-5.3.2"
+        sources."agent-base-7.1.1"
+        sources."ajv-6.12.6"
+        sources."anser-2.1.1"
+        sources."ansi-regex-5.0.1"
+        sources."ansi-styles-4.3.0"
+        sources."argparse-2.0.1"
+        sources."array-union-2.1.0"
+        sources."asynckit-0.4.0"
+        sources."azure-devops-node-api-12.5.0"
+        sources."balanced-match-1.0.2"
+        sources."base64-js-1.5.1"
+        (
+          sources."bl-5.1.0"
+          // {
+            dependencies = [
+              sources."readable-stream-3.6.2"
+            ];
+          }
+        )
+        sources."boolbase-1.0.0"
+        sources."brace-expansion-2.0.1"
+        sources."braces-3.0.3"
+        sources."buffer-6.0.3"
+        sources."buffer-crc32-0.2.13"
+        sources."buffer-equal-constant-time-1.0.1"
+        sources."call-bind-1.0.7"
+        sources."callsites-3.1.0"
+        sources."chalk-5.3.0"
+        sources."cheerio-1.0.0"
+        sources."cheerio-select-2.1.0"
+        sources."ci-info-2.0.0"
+        sources."cli-cursor-4.0.0"
+        sources."cli-spinners-2.9.2"
+        sources."cliui-8.0.1"
+        sources."cockatiel-3.2.1"
+        sources."color-convert-2.0.1"
+        sources."color-name-1.1.4"
+        sources."combined-stream-1.0.8"
+        sources."commander-7.2.0"
+        sources."concat-map-0.0.1"
+        sources."core-util-is-1.0.3"
+        sources."cross-spawn-7.0.3"
+        sources."css-select-5.1.0"
+        sources."css-what-6.1.0"
+        sources."d3-7.9.0"
+        sources."d3-array-3.2.4"
+        sources."d3-axis-3.0.0"
+        sources."d3-brush-3.0.0"
+        sources."d3-chord-3.0.1"
+        sources."d3-color-3.1.0"
+        sources."d3-contour-4.0.2"
+        sources."d3-delaunay-6.0.4"
+        sources."d3-dispatch-3.0.1"
+        sources."d3-drag-3.0.0"
+        sources."d3-dsv-3.0.1"
+        sources."d3-ease-3.0.1"
+        sources."d3-fetch-3.0.1"
+        sources."d3-force-3.0.0"
+        sources."d3-format-3.1.0"
+        sources."d3-geo-3.1.1"
+        sources."d3-graphviz-5.6.0"
+        sources."d3-hierarchy-3.1.2"
+        sources."d3-interpolate-3.0.1"
+        sources."d3-path-3.1.0"
+        sources."d3-polygon-3.0.1"
+        sources."d3-quadtree-3.0.1"
+        sources."d3-random-3.0.1"
+        sources."d3-scale-4.0.2"
+        sources."d3-scale-chromatic-3.1.0"
+        sources."d3-selection-3.0.0"
+        sources."d3-shape-3.2.0"
+        sources."d3-time-3.1.0"
+        sources."d3-time-format-4.1.0"
+        sources."d3-timer-3.0.1"
+        sources."d3-transition-3.0.1"
+        sources."d3-zoom-3.0.0"
+        sources."debug-4.3.7"
+        sources."deep-is-0.1.4"
+        sources."define-data-property-1.1.4"
+        sources."define-lazy-prop-2.0.0"
+        sources."delaunator-5.0.1"
+        sources."delayed-stream-1.0.0"
+        sources."dir-glob-3.0.1"
+        sources."doctrine-3.0.0"
+        sources."dom-serializer-2.0.0"
+        sources."domelementtype-2.3.0"
+        sources."domhandler-5.0.3"
+        sources."domutils-3.1.0"
+        sources."eastasianwidth-0.2.0"
+        sources."ecdsa-sig-formatter-1.0.11"
+        sources."emoji-regex-8.0.0"
+        sources."encoding-sniffer-0.2.0"
+        sources."entities-4.5.0"
+        sources."es-define-property-1.0.0"
+        sources."es-errors-1.3.0"
+        sources."escalade-3.2.0"
+        sources."escape-string-regexp-1.0.5"
+        (
+          sources."eslint-8.57.1"
+          // {
+            dependencies = [
+              sources."brace-expansion-1.1.11"
+              sources."chalk-4.1.2"
+              sources."escape-string-regexp-4.0.0"
+              sources."glob-parent-6.0.2"
+              sources."has-flag-4.0.0"
+              sources."minimatch-3.1.2"
+              sources."supports-color-7.2.0"
+            ];
+          }
+        )
+        sources."eslint-config-prettier-8.10.0"
+        sources."eslint-scope-7.2.2"
+        sources."eslint-visitor-keys-3.4.3"
+        sources."espree-9.6.1"
+        sources."esquery-1.6.0"
+        sources."esrecurse-4.3.0"
+        sources."estraverse-5.3.0"
+        sources."esutils-2.0.3"
+        sources."events-3.3.0"
+        sources."fast-deep-equal-3.1.3"
+        sources."fast-glob-3.3.2"
+        sources."fast-json-stable-stringify-2.1.0"
+        sources."fast-levenshtein-2.0.6"
+        sources."fastq-1.17.1"
+        sources."fd-slicer-1.1.0"
+        sources."file-entry-cache-6.0.1"
+        sources."fill-range-7.1.1"
+        sources."find-up-5.0.0"
+        sources."flat-cache-3.2.0"
+        sources."flatted-3.3.1"
+        sources."follow-redirects-1.15.9"
+        sources."form-data-4.0.0"
+        sources."fs.realpath-1.0.0"
+        sources."function-bind-1.1.2"
+        sources."get-caller-file-2.0.5"
+        sources."get-intrinsic-1.2.4"
+        (
+          sources."glob-7.2.3"
+          // {
+            dependencies = [
+              sources."brace-expansion-1.1.11"
+              sources."minimatch-3.1.2"
+            ];
+          }
+        )
+        sources."glob-parent-5.1.2"
+        sources."globals-13.24.0"
+        sources."globby-11.1.0"
+        sources."gopd-1.0.1"
+        sources."graphemer-1.4.0"
+        sources."has-flag-3.0.0"
+        sources."has-property-descriptors-1.0.2"
+        sources."has-proto-1.0.3"
+        sources."has-symbols-1.0.3"
+        sources."hasown-2.0.2"
+        sources."hosted-git-info-4.1.0"
+        sources."htmlparser2-9.1.0"
+        sources."http-proxy-agent-7.0.2"
+        sources."https-proxy-agent-7.0.5"
+        sources."iconv-lite-0.6.3"
+        sources."ieee754-1.2.1"
+        sources."ignore-5.3.2"
+        sources."immediate-3.0.6"
+        sources."import-fresh-3.3.0"
+        sources."imurmurhash-0.1.4"
+        sources."inflight-1.0.6"
+        sources."inherits-2.0.4"
+        sources."internmap-2.0.3"
+        sources."is-ci-2.0.0"
+        sources."is-docker-2.2.1"
+        sources."is-extglob-2.1.1"
+        sources."is-fullwidth-code-point-3.0.0"
+        sources."is-glob-4.0.3"
+        sources."is-interactive-2.0.0"
+        sources."is-number-7.0.0"
+        sources."is-path-inside-3.0.3"
+        sources."is-unicode-supported-1.3.0"
+        sources."is-wsl-2.2.0"
+        sources."isarray-1.0.0"
+        sources."isexe-2.0.0"
+        sources."js-yaml-4.1.0"
+        sources."json-buffer-3.0.1"
+        sources."json-schema-traverse-0.4.1"
+        sources."json-stable-stringify-without-jsonify-1.0.1"
+        sources."jsonc-parser-3.3.1"
+        (
+          sources."jsonwebtoken-9.0.2"
+          // {
+            dependencies = [
+              sources."jwa-1.4.1"
+              sources."jws-3.2.2"
+            ];
+          }
+        )
+        sources."jszip-3.10.1"
+        sources."jwa-2.0.0"
+        sources."jws-4.0.0"
+        sources."keyv-4.5.4"
+        sources."leven-3.1.0"
+        sources."levn-0.4.1"
+        sources."lie-3.3.0"
+        sources."linkify-it-3.0.3"
+        sources."locate-path-6.0.0"
+        sources."lodash.includes-4.3.0"
+        sources."lodash.isboolean-3.0.3"
+        sources."lodash.isinteger-4.0.4"
+        sources."lodash.isnumber-3.0.3"
+        sources."lodash.isplainobject-4.0.6"
+        sources."lodash.isstring-4.0.1"
+        sources."lodash.merge-4.6.2"
+        sources."lodash.once-4.1.1"
+        sources."log-symbols-5.1.0"
+        sources."lru-cache-6.0.0"
+        (
+          sources."markdown-it-12.3.2"
+          // {
+            dependencies = [
+              sources."entities-2.1.0"
+            ];
+          }
+        )
+        sources."mdurl-1.0.1"
+        sources."merge2-1.4.1"
+        sources."micromatch-4.0.8"
+        sources."mime-1.6.0"
+        sources."mime-db-1.52.0"
+        sources."mime-types-2.1.35"
+        sources."mimic-fn-2.1.0"
+        sources."minimatch-5.1.6"
+        sources."ms-2.1.3"
+        sources."mute-stream-0.0.8"
+        sources."natural-compare-1.4.0"
+        sources."nth-check-2.1.1"
+        sources."object-inspect-1.13.2"
+        sources."once-1.4.0"
+        sources."onetime-5.1.2"
+        sources."open-8.4.2"
+        sources."optionator-0.9.4"
+        (
+          sources."ora-7.0.1"
+          // {
+            dependencies = [
+              sources."ansi-regex-6.1.0"
+              sources."emoji-regex-10.4.0"
+              sources."string-width-6.1.0"
+              sources."strip-ansi-7.1.0"
+            ];
+          }
+        )
+        (
+          sources."ovsx-0.8.4"
+          // {
+            dependencies = [
+              sources."commander-6.2.1"
+            ];
+          }
+        )
+        sources."p-limit-3.1.0"
+        sources."p-locate-5.0.0"
+        sources."pako-1.0.11"
+        sources."parent-module-1.0.1"
+        (
+          sources."parse-semver-1.1.1"
+          // {
+            dependencies = [
+              sources."semver-5.7.2"
+            ];
+          }
+        )
+        sources."parse5-7.1.2"
+        sources."parse5-htmlparser2-tree-adapter-7.0.0"
+        sources."parse5-parser-stream-7.1.2"
+        sources."path-exists-4.0.0"
+        sources."path-is-absolute-1.0.1"
+        sources."path-key-3.1.1"
+        sources."path-type-4.0.0"
+        sources."pend-1.2.0"
+        sources."picomatch-2.3.1"
+        sources."prelude-ls-1.2.1"
+        sources."prettier-3.3.3"
+        sources."process-nextick-args-2.0.1"
+        sources."punycode-2.3.1"
+        sources."qs-6.13.0"
+        sources."queue-microtask-1.2.3"
+        sources."read-1.0.7"
+        sources."readable-stream-2.3.8"
+        sources."require-directory-2.1.1"
+        sources."resolve-from-4.0.0"
+        sources."restore-cursor-4.0.0"
+        sources."reusify-1.0.4"
+        sources."rimraf-3.0.2"
+        sources."robust-predicates-3.0.2"
+        sources."run-parallel-1.2.0"
+        sources."rw-1.3.3"
+        sources."safe-buffer-5.1.2"
+        sources."safer-buffer-2.1.2"
+        sources."sax-1.4.1"
+        sources."semver-7.6.3"
+        sources."set-function-length-1.2.2"
+        sources."setimmediate-1.0.5"
+        sources."shebang-command-2.0.0"
+        sources."shebang-regex-3.0.0"
+        sources."side-channel-1.0.6"
+        sources."signal-exit-3.0.7"
+        sources."slash-3.0.0"
+        sources."stdin-discarder-0.1.0"
+        sources."stoppable-1.1.0"
+        sources."string-width-4.2.3"
+        sources."string_decoder-1.1.1"
+        sources."strip-ansi-6.0.1"
+        sources."strip-json-comments-3.1.1"
+        sources."supports-color-5.5.0"
+        sources."text-table-0.2.0"
+        sources."tmp-0.2.3"
+        sources."to-regex-range-5.0.1"
+        sources."ts-api-utils-1.3.0"
+        sources."tslib-2.7.0"
+        sources."tunnel-0.0.6"
+        sources."type-check-0.4.0"
+        sources."type-fest-0.20.2"
+        sources."typed-rest-client-1.8.11"
+        sources."typescript-5.6.2"
+        sources."uc.micro-1.0.6"
+        sources."underscore-1.13.7"
+        sources."undici-6.19.8"
+        sources."uri-js-4.4.1"
+        sources."url-join-4.0.1"
+        sources."util-deprecate-1.0.2"
+        sources."uuid-8.3.2"
+        sources."vscode-jsonrpc-8.1.0"
+        sources."vscode-languageclient-8.1.0"
+        sources."vscode-languageserver-protocol-3.17.3"
+        sources."vscode-languageserver-types-3.17.3"
+        sources."whatwg-encoding-3.1.1"
+        sources."whatwg-mimetype-4.0.0"
+        sources."which-2.0.2"
+        sources."word-wrap-1.2.5"
+        sources."wrap-ansi-7.0.0"
+        sources."wrappy-1.0.2"
+        sources."xml2js-0.5.0"
+        sources."xmlbuilder-11.0.1"
+        sources."y18n-5.0.8"
+        sources."yallist-4.0.0"
+        sources."yargs-17.7.2"
+        sources."yargs-parser-21.1.1"
+        sources."yauzl-2.10.0"
+        sources."yazl-2.5.1"
+        sources."yocto-queue-0.1.0"
+      ];
+      buildInputs = globalBuildInputs;
+      meta =
+        {
+        };
+      production = true;
+      bypassCache = true;
+      reconstructLock = true;
+    };
   sass = nodeEnv.buildNodePackage {
     name = "sass";
     packageName = "sass";

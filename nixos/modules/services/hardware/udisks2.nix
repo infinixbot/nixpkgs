@@ -85,8 +85,10 @@ in
         {
           # We need to make sure /etc/libblockdev/@major_ver@/conf.d is populated to avoid
           # warnings
-          "libblockdev/${majorVer}/conf.d/00-default.cfg".source = "${libblockdev}/etc/libblockdev/${majorVer}/conf.d/00-default.cfg";
-          "libblockdev/${majorVer}/conf.d/10-lvm-dbus.cfg".source = "${libblockdev}/etc/libblockdev/${majorVer}/conf.d/10-lvm-dbus.cfg";
+          "libblockdev/${majorVer}/conf.d/00-default.cfg".source =
+            "${libblockdev}/etc/libblockdev/${majorVer}/conf.d/00-default.cfg";
+          "libblockdev/${majorVer}/conf.d/10-lvm-dbus.cfg".source =
+            "${libblockdev}/etc/libblockdev/${majorVer}/conf.d/10-lvm-dbus.cfg";
         }
       );
 

@@ -87,9 +87,11 @@ in
       group = "ssm-user";
     };
 
-    environment.etc."amazon/ssm/seelog.xml".source = "${cfg.package}/etc/amazon/ssm/seelog.xml.template";
+    environment.etc."amazon/ssm/seelog.xml".source =
+      "${cfg.package}/etc/amazon/ssm/seelog.xml.template";
 
-    environment.etc."amazon/ssm/amazon-ssm-agent.json".source = "${cfg.package}/etc/amazon/ssm/amazon-ssm-agent.json.template";
+    environment.etc."amazon/ssm/amazon-ssm-agent.json".source =
+      "${cfg.package}/etc/amazon/ssm/amazon-ssm-agent.json.template";
 
   };
 }

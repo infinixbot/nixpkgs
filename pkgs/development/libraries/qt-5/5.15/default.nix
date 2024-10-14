@@ -459,7 +459,8 @@ let
               "propagatedBuildInputs"
             else
               "depsTargetTargetPropagated"
-          } = [ qtbase.dev ];
+          } =
+            [ qtbase.dev ];
           substitutions = {
             inherit debug;
             fix_qmake_libtool = ../hooks/fix-qmake-libtool.sh;

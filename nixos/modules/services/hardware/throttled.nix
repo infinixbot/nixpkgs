@@ -34,6 +34,7 @@ in
     hardware.cpu.x86.msr.enable = true;
     # Kernel 5.9 spams warnings whenever userspace writes to CPU MSRs.
     # See https://github.com/erpalma/throttled/issues/215
-    hardware.cpu.x86.msr.settings.allow-writes = lib.mkIf (lib.versionAtLeast config.boot.kernelPackages.kernel.version "5.9") "on";
+    hardware.cpu.x86.msr.settings.allow-writes =
+      lib.mkIf (lib.versionAtLeast config.boot.kernelPackages.kernel.version "5.9") "on";
   };
 }

@@ -1336,23 +1336,25 @@ in
               fastcgi_read_timeout ${builtins.toString cfg.fastcgiTimeout}s;
             '';
           };
-          "~ \\.(?:css|js|mjs|svg|gif|png|jpg|jpeg|ico|wasm|tflite|map|html|ttf|bcmap|mp4|webm|ogg|flac)$".extraConfig = ''
-            try_files $uri /index.php$request_uri;
-            expires 6M;
-            access_log off;
-            location ~ \.mjs$ {
-              default_type text/javascript;
-            }
-            location ~ \.wasm$ {
-              default_type application/wasm;
-            }
-          '';
+          "~ \\.(?:css|js|mjs|svg|gif|png|jpg|jpeg|ico|wasm|tflite|map|html|ttf|bcmap|mp4|webm|ogg|flac)$".extraConfig =
+            ''
+              try_files $uri /index.php$request_uri;
+              expires 6M;
+              access_log off;
+              location ~ \.mjs$ {
+                default_type text/javascript;
+              }
+              location ~ \.wasm$ {
+                default_type application/wasm;
+              }
+            '';
           "~ ^\\/(?:updater|ocs-provider${
             optionalString (!ocmProviderIsNotAStaticDirAnymore) "|ocm-provider"
-          })(?:$|\\/)".extraConfig = ''
-            try_files $uri/ =404;
-            index index.php;
-          '';
+          })(?:$|\\/)".extraConfig =
+            ''
+              try_files $uri/ =404;
+              index index.php;
+            '';
           "/remote" = {
             priority = 1500;
             extraConfig = ''

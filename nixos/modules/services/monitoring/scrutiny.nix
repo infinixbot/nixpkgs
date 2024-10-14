@@ -107,7 +107,8 @@ in
             description = "The port of the InfluxDB instance.";
           };
 
-          options.web.influxdb.tls.insecure_skip_verify = mkEnableOption "skipping TLS verification when connecting to InfluxDB";
+          options.web.influxdb.tls.insecure_skip_verify =
+            mkEnableOption "skipping TLS verification when connecting to InfluxDB";
 
           options.web.influxdb.token = mkOption {
             type = nullOr str;

@@ -399,7 +399,8 @@ in
         "distributed_billing" = cfg.distributedPoller.distributedBilling;
         "distributed_poller_memcached_host" = cfg.distributedPoller.memcachedHost;
         "distributed_poller_memcached_port" = cfg.distributedPoller.memcachedPort;
-        "rrdcached" = "${cfg.distributedPoller.rrdcachedHost}:${toString cfg.distributedPoller.rrdcachedPort}";
+        "rrdcached" =
+          "${cfg.distributedPoller.rrdcachedHost}:${toString cfg.distributedPoller.rrdcachedPort}";
       })
       // (lib.optionalAttrs cfg.useDistributedPollers {
         "distributed_poller" = true;

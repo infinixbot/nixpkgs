@@ -48,7 +48,8 @@ let
       "web files group" = "root";
     };
     "plugin:cgroups" = {
-      "script to get cgroup network interfaces" = "${wrappedPlugins}/libexec/netdata/plugins.d/cgroup-network";
+      "script to get cgroup network interfaces" =
+        "${wrappedPlugins}/libexec/netdata/plugins.d/cgroup-network";
       "use unified cgroups" = "yes";
     };
   };

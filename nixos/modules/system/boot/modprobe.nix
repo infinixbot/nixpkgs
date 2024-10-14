@@ -61,7 +61,8 @@ with lib;
     '';
     environment.etc."modprobe.d/debian.conf".source = pkgs.kmod-debian-aliases;
 
-    environment.etc."modprobe.d/systemd.conf".source = "${config.systemd.package}/lib/modprobe.d/systemd.conf";
+    environment.etc."modprobe.d/systemd.conf".source =
+      "${config.systemd.package}/lib/modprobe.d/systemd.conf";
 
     environment.systemPackages = [ pkgs.kmod ];
 

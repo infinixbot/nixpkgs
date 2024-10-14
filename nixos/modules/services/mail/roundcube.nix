@@ -188,12 +188,13 @@ in
               return 404;
             '';
           };
-          locations."~ ^/(CHANGELOG.md|INSTALL|LICENSE|README.md|SECURITY.md|UPGRADING|composer.json|composer.lock)" = {
-            priority = 3120;
-            extraConfig = ''
-              return 404;
-            '';
-          };
+          locations."~ ^/(CHANGELOG.md|INSTALL|LICENSE|README.md|SECURITY.md|UPGRADING|composer.json|composer.lock)" =
+            {
+              priority = 3120;
+              extraConfig = ''
+                return 404;
+              '';
+            };
           locations."~* \\.php(/|$)" = {
             priority = 3130;
             extraConfig = ''

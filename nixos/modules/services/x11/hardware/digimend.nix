@@ -34,7 +34,8 @@ in
 
     boot.extraModulePackages = [ pkg ];
 
-    environment.etc."X11/xorg.conf.d/50-digimend.conf".source = "${pkg}/usr/share/X11/xorg.conf.d/50-digimend.conf";
+    environment.etc."X11/xorg.conf.d/50-digimend.conf".source =
+      "${pkg}/usr/share/X11/xorg.conf.d/50-digimend.conf";
 
   };
 
