@@ -1,17 +1,30 @@
-{ lib, stdenv, fetchurl, fixDarwinDylibNames, which, dieHook
-, fetchpatch
-, enableShared ? !stdenv.hostPlatform.isStatic
-, enableStatic ? stdenv.hostPlatform.isStatic
-, enableDarwinSandbox ? true
-# for passthru.tests
-, nix
+{
+  lib,
+  stdenv,
+  fetchurl,
+  fixDarwinDylibNames,
+  which,
+  dieHook,
+  fetchpatch,
+  enableShared ? !stdenv.hostPlatform.isStatic,
+  enableStatic ? stdenv.hostPlatform.isStatic,
+  enableDarwinSandbox ? true,
+  # for passthru.tests
+  nix,
 }:
 
 stdenv.mkDerivation rec {
-  pname = "lowdown${lib.optionalString (stdenv.hostPlatform.isDarwin && !enableDarwinSandbox) "-unsandboxed"}";
+  pname = "lowdown${
+    lib.optionalString (stdenv.hostPlatform.isDarwin && !enableDarwinSandbox) "-unsandboxed"
+  }";
   version = "1.1.0";
 
-  outputs = [ "out" "lib" "dev" "man" ];
+  outputs = [
+    "out"
+    "lib"
+    "dev"
+    "man"
+  ];
 
   src = fetchurl {
     url = "https://kristaps.bsd.lv/lowdown/snapshots/lowdown-${version}.tar.gz";
@@ -52,8 +65,10 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [ which dieHook ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [ fixDarwinDylibNames ];
+  nativeBuildInputs = [
+    which
+    dieHook
+  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ fixDarwinDylibNames ];
 
   # The Darwin sandbox calls fail inside Nix builds, presumably due to
   # being nested inside another sandbox.
@@ -74,13 +89,16 @@ stdenv.mkDerivation rec {
     "bins" # prevents shared object from being built unnecessarily
   ];
 
-  installTargets = [
-    "install"
-  ] ++ lib.optionals enableShared [
-    "install_shared"
-  ] ++ lib.optionals enableStatic [
-    "install_static"
-  ];
+  installTargets =
+    [
+      "install"
+    ]
+    ++ lib.optionals enableShared [
+      "install_shared"
+    ]
+    ++ lib.optionals enableStatic [
+      "install_static"
+    ];
 
   postInstall =
     let

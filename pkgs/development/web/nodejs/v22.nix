@@ -1,4 +1,10 @@
-{ callPackage, fetchpatch2, openssl, python3, enableNpm ? true }:
+{
+  callPackage,
+  fetchpatch2,
+  openssl,
+  python3,
+  enableNpm ? true,
+}:
 
 let
   buildNodejs = callPackage ./nodejs.nix {
@@ -6,8 +12,10 @@ let
     python = python3;
   };
 
-  gypPatches = callPackage ./gyp-patches.nix { } ++ [
-  ];
+  gypPatches =
+    callPackage ./gyp-patches.nix { }
+    ++ [
+    ];
 in
 buildNodejs {
   inherit enableNpm;

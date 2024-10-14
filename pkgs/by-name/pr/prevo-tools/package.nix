@@ -1,5 +1,13 @@
-{ lib, stdenv, fetchFromGitHub, autoreconfHook, pkg-config, glib, expat
-, installShellFiles }:
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  autoreconfHook,
+  pkg-config,
+  glib,
+  expat,
+  installShellFiles,
+}:
 
 stdenv.mkDerivation rec {
   pname = "prevo-tools";
@@ -12,16 +20,22 @@ stdenv.mkDerivation rec {
     hash = "sha256-TfgsZidwXewwqGkb31Qv0SrX8wQdPaK7JQA3nB5h2bs=";
   };
 
-  nativeBuildInputs = [ autoreconfHook pkg-config installShellFiles ];
-  buildInputs = [ glib expat ];
+  nativeBuildInputs = [
+    autoreconfHook
+    pkg-config
+    installShellFiles
+  ];
+  buildInputs = [
+    glib
+    expat
+  ];
 
   postInstall = ''
     installShellCompletion --bash src/prevo-completion
   '';
 
   meta = {
-    description =
-      "CLI tools for the offline version of the Esperanto dictionary Reta Vortaro";
+    description = "CLI tools for the offline version of the Esperanto dictionary Reta Vortaro";
     longDescription = ''
       PReVo is the "portable" ReVo, i.e., the offline version
       of the Esperanto dictionary Reta Vortaro.
@@ -33,7 +47,10 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/bpeel/prevodb";
     license = lib.licenses.gpl2Only;
     mainProgram = "prevo";
-    maintainers = with lib.maintainers; [ das-g ehmry ];
+    maintainers = with lib.maintainers; [
+      das-g
+      ehmry
+    ];
     platforms = lib.platforms.unix;
   };
 }

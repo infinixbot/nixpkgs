@@ -1,4 +1,10 @@
-{ callPackage, fetchpatch2, openssl, python3, enableNpm ? true }:
+{
+  callPackage,
+  fetchpatch2,
+  openssl,
+  python3,
+  enableNpm ? true,
+}:
 
 let
   buildNodejs = callPackage ./nodejs.nix {
@@ -27,7 +33,7 @@ buildNodejs {
     (fetchpatch2 {
       url = "https://github.com/nodejs/node/commit/bd42e4c6a73f61f7ee47e4426d86708fd80c6c4f.patch?full_index=1";
       hash = "sha256-bsCLVwK5t8dD+wHd1FlFJ1wpCGtNGcwoOfq4fG5MHfo=";
-      includes = ["test/parallel/test-tls-set-sigalgs.js"];
+      includes = [ "test/parallel/test-tls-set-sigalgs.js" ];
     })
     (fetchpatch2 {
       url = "https://github.com/nodejs/node/commit/e0634f58aba6a1634fe03107d5be849fd008cc02.patch?full_index=1";

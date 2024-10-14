@@ -1,4 +1,11 @@
-{ lib, mkCoqDerivation, coq, parsec, MenhirLib, version ? null }:
+{
+  lib,
+  mkCoqDerivation,
+  coq,
+  parsec,
+  MenhirLib,
+  version ? null,
+}:
 
 mkCoqDerivation {
   pname = "json";
@@ -6,18 +13,31 @@ mkCoqDerivation {
   repo = "coq-json";
   inherit version;
 
-  defaultVersion = let inherit (lib.versions) range; in
+  defaultVersion =
+    let
+      inherit (lib.versions) range;
+    in
     lib.switch coq.coq-version [
-      { case = range "8.14" "8.20"; out = "0.1.3"; }
+      {
+        case = range "8.14" "8.20";
+        out = "0.1.3";
+      }
     ] null;
   release = {
-    "0.1.3".sha256  = "sha256-lElAzW4IuX+BB6ngDjlyKn0MytLRfbhQanB+Lct/WR0=";
+    "0.1.3".sha256 = "sha256-lElAzW4IuX+BB6ngDjlyKn0MytLRfbhQanB+Lct/WR0=";
   };
   releaseRev = v: "v${v}";
 
-  propagatedBuildInputs = [ parsec MenhirLib coq.ocamlPackages.menhir ];
+  propagatedBuildInputs = [
+    parsec
+    MenhirLib
+    coq.ocamlPackages.menhir
+  ];
 
-  buildFlags = [ "MENHIRFLAGS=--coq" "MENHIRFLAGS+=--coq-no-version-check" ];
+  buildFlags = [
+    "MENHIRFLAGS=--coq"
+    "MENHIRFLAGS+=--coq-no-version-check"
+  ];
 
   meta = {
     description = "From JSON to Coq, and vice versa.";

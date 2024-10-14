@@ -1,4 +1,10 @@
-{ lib, buildGo122Module, fetchFromGitHub, nixosTests, nix-update-script }:
+{
+  lib,
+  buildGo122Module,
+  fetchFromGitHub,
+  nixosTests,
+  nix-update-script,
+}:
 # Does not build with Go 1.23
 # FIXME: check again for next release
 buildGo122Module rec {
@@ -14,23 +20,28 @@ buildGo122Module rec {
 
   vendorHash = null;
 
-  subPackages = [
-    "cmd/mimir"
-    "cmd/mimirtool"
-  ] ++ (map (pathName: "tools/${pathName}") [
-    "compaction-planner"
-    "copyblocks"
-    "copyprefix"
-    "delete-objects"
-    "list-deduplicated-blocks"
-    "listblocks"
-    "markblocks"
-    "undelete-blocks"
-  ]);
+  subPackages =
+    [
+      "cmd/mimir"
+      "cmd/mimirtool"
+    ]
+    ++ (map (pathName: "tools/${pathName}") [
+      "compaction-planner"
+      "copyblocks"
+      "copyprefix"
+      "delete-objects"
+      "list-deduplicated-blocks"
+      "listblocks"
+      "markblocks"
+      "undelete-blocks"
+    ]);
 
   passthru = {
     updateScript = nix-update-script {
-      extraArgs = [ "--version-regex" "mimir-([0-9.]+)" ];
+      extraArgs = [
+        "--version-regex"
+        "mimir-([0-9.]+)"
+      ];
     };
     tests = {
       inherit (nixosTests) mimir;
@@ -38,8 +49,10 @@ buildGo122Module rec {
   };
 
   ldflags =
-    let t = "github.com/grafana/mimir/pkg/util/version";
-    in [
+    let
+      t = "github.com/grafana/mimir/pkg/util/version";
+    in
+    [
       ''-extldflags "-static"''
       "-s"
       "-w"
@@ -49,10 +62,12 @@ buildGo122Module rec {
     ];
 
   meta = with lib; {
-    description =
-      "Grafana Mimir provides horizontally scalable, highly available, multi-tenant, long-term storage for Prometheus. ";
+    description = "Grafana Mimir provides horizontally scalable, highly available, multi-tenant, long-term storage for Prometheus. ";
     homepage = "https://github.com/grafana/mimir";
     license = licenses.agpl3Only;
-    maintainers = with maintainers; [ happysalada bryanhonof ];
+    maintainers = with maintainers; [
+      happysalada
+      bryanhonof
+    ];
   };
 }

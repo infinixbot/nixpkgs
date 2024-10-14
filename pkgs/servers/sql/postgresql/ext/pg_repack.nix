@@ -1,9 +1,10 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, postgresql
-, postgresqlTestHook
-, testers
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  postgresql,
+  postgresqlTestHook,
+  testers,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
