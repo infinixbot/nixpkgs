@@ -1,25 +1,26 @@
-{ lib
-, dbus
-, fetchFromGitHub
-, fetchYarnDeps
-, openssl
-, pkg-config
-, freetype
-, libsoup
-, gtk3
-, webkitgtk
-, perl
-, cyrus_sasl
-, stdenv
-, fixup_yarn_lock
-, yarnConfigHook
-, nodejs-slim
-, cargo-tauri
-, cargo
-, rustPlatform
-, rustc
-, jq
-, moreutils
+{
+  lib,
+  dbus,
+  fetchFromGitHub,
+  fetchYarnDeps,
+  openssl,
+  pkg-config,
+  freetype,
+  libsoup,
+  gtk3,
+  webkitgtk,
+  perl,
+  cyrus_sasl,
+  stdenv,
+  fixup_yarn_lock,
+  yarnConfigHook,
+  nodejs-slim,
+  cargo-tauri,
+  cargo,
+  rustPlatform,
+  rustc,
+  jq,
+  moreutils,
 }:
 
 stdenv.mkDerivation rec {

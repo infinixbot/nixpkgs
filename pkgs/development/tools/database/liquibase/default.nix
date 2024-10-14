@@ -1,16 +1,17 @@
-{ lib
-, stdenv
-, fetchurl
-, gitUpdater
-, jre
-, makeWrapper
-, mysqlSupport ? true
-, mysql_jdbc
-, postgresqlSupport ? true
-, postgresql_jdbc
-, redshiftSupport ? true
-, redshift_jdbc
-, liquibase_redshift_extension
+{
+  lib,
+  stdenv,
+  fetchurl,
+  gitUpdater,
+  jre,
+  makeWrapper,
+  mysqlSupport ? true,
+  mysql_jdbc,
+  postgresqlSupport ? true,
+  postgresql_jdbc,
+  redshiftSupport ? true,
+  redshift_jdbc,
+  liquibase_redshift_extension,
 }:
 
 let
@@ -36,11 +37,12 @@ stdenv.mkDerivation (finalAttrs: {
   buildInputs = [ jre ];
 
   installPhase =
-    let addJars = dir: ''
-      for jar in ${dir}/*.jar; do
-        CP="\$CP":"\$jar"
-      done
-    '';
+    let
+      addJars = dir: ''
+        for jar in ${dir}/*.jar; do
+          CP="\$CP":"\$jar"
+        done
+      '';
     in
     ''
       mkdir -p $out

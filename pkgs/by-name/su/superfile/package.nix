@@ -16,14 +16,20 @@ buildGoModule rec {
 
   vendorHash = "sha256-vybe4KNj6ZhvXRTiN7e5+IhOewfK5L2jKPrcdCYGc4k=";
 
-  ldflags = ["-s" "-w"];
+  ldflags = [
+    "-s"
+    "-w"
+  ];
 
   meta = with lib; {
     description = "Pretty fancy and modern terminal file manager";
     homepage = "https://github.com/yorukot/superfile";
     changelog = "https://github.com/yorukot/superfile/blob/${src.rev}/changelog.md";
     license = licenses.mit;
-    maintainers = with maintainers; [momeemt redyf];
+    maintainers = with maintainers; [
+      momeemt
+      redyf
+    ];
     mainProgram = "superfile";
   };
 }

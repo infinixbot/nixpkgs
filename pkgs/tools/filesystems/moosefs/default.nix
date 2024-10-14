@@ -1,11 +1,13 @@
-{ lib, stdenv
-, fetchFromGitHub
-, python3
-, fuse
-, pkg-config
-, libpcap
-, zlib
-, nixosTests
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  python3,
+  fuse,
+  pkg-config,
+  libpcap,
+  zlib,
+  nixosTests,
 }:
 
 stdenv.mkDerivation rec {
@@ -23,12 +25,18 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs =
-    [ fuse libpcap zlib python3 ];
+  buildInputs = [
+    fuse
+    libpcap
+    zlib
+    python3
+  ];
 
   strictDeps = true;
 
-  buildFlags = lib.optionals stdenv.hostPlatform.isDarwin [ "CPPFLAGS=-UHAVE_STRUCT_STAT_ST_BIRTHTIME" ];
+  buildFlags = lib.optionals stdenv.hostPlatform.isDarwin [
+    "CPPFLAGS=-UHAVE_STRUCT_STAT_ST_BIRTHTIME"
+  ];
 
   # Fix the build on macOS with macFUSE installed
   postPatch = lib.optionalString stdenv.hostPlatform.isDarwin ''

@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.boot.initrd.unl0kr;
@@ -13,7 +18,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    meta.maintainers = [];
+    meta.maintainers = [ ];
     assertions = [
       {
         assertion = cfg.enable -> config.boot.initrd.systemd.enable;

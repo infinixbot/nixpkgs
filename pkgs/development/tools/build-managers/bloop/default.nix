@@ -1,11 +1,12 @@
-{ stdenv
-, fetchurl
-, autoPatchelfHook
-, installShellFiles
-, makeWrapper
-, jre
-, lib
-, zlib
+{
+  stdenv,
+  fetchurl,
+  autoPatchelfHook,
+  installShellFiles,
+  makeWrapper,
+  jre,
+  lib,
+  zlib,
 }:
 
 stdenv.mkDerivation rec {
@@ -13,10 +14,14 @@ stdenv.mkDerivation rec {
   version = "2.0.2";
 
   platform =
-    if stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isx86_64 then "x86_64-pc-linux"
-    else if stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isx86_64 then "x86_64-apple-darwin"
-    else if stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64 then "aarch64-apple-darwin"
-    else throw "unsupported platform";
+    if stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isx86_64 then
+      "x86_64-pc-linux"
+    else if stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isx86_64 then
+      "x86_64-apple-darwin"
+    else if stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64 then
+      "aarch64-apple-darwin"
+    else
+      throw "unsupported platform";
 
   bloop-bash = fetchurl {
     url = "https://github.com/scalacenter/bloop/releases/download/v${version}/bash-completions";
@@ -36,16 +41,25 @@ stdenv.mkDerivation rec {
   bloop-binary = fetchurl rec {
     url = "https://github.com/scalacenter/bloop/releases/download/v${version}/bloop-${platform}";
     sha256 =
-      if stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isx86_64 then "sha256-xYVfgi3ANjBiuf4/5FDgSYDL/fPsvuJn4jFxAEVYct4="
-      else if stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isx86_64 then "sha256-lq0S2AsulcUUYDd3qnWonwd/W0/gb7lJwC+QTYTlTdg="
-      else if stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64 then "sha256-e+9Q7xIEsHloaKOj13vZnGs2vulkOJv7tCOuACobHvk="
-      else throw "unsupported platform";
+      if stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isx86_64 then
+        "sha256-xYVfgi3ANjBiuf4/5FDgSYDL/fPsvuJn4jFxAEVYct4="
+      else if stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isx86_64 then
+        "sha256-lq0S2AsulcUUYDd3qnWonwd/W0/gb7lJwC+QTYTlTdg="
+      else if stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64 then
+        "sha256-e+9Q7xIEsHloaKOj13vZnGs2vulkOJv7tCOuACobHvk="
+      else
+        throw "unsupported platform";
   };
 
   dontUnpack = true;
-  nativeBuildInputs = [ installShellFiles makeWrapper ]
-    ++ lib.optional stdenv.hostPlatform.isLinux autoPatchelfHook;
-  buildInputs = [ stdenv.cc.cc.lib zlib ];
+  nativeBuildInputs = [
+    installShellFiles
+    makeWrapper
+  ] ++ lib.optional stdenv.hostPlatform.isLinux autoPatchelfHook;
+  buildInputs = [
+    stdenv.cc.cc.lib
+    zlib
+  ];
   propagatedBuildInputs = [ jre ];
 
   installPhase = ''
@@ -69,7 +83,14 @@ stdenv.mkDerivation rec {
     license = licenses.asl20;
     description = "Scala build server and command-line tool to make the compile and test developer workflows fast and productive in a build-tool-agnostic way";
     mainProgram = "bloop";
-    platforms = [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" ];
-    maintainers = with maintainers; [ kubukoz tomahna ];
+    platforms = [
+      "x86_64-linux"
+      "x86_64-darwin"
+      "aarch64-darwin"
+    ];
+    maintainers = with maintainers; [
+      kubukoz
+      tomahna
+    ];
   };
 }

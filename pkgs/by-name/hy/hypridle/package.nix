@@ -1,14 +1,15 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, pkg-config
-, cmake
-, wayland
-, wayland-protocols
-, wayland-scanner
-, hyprlang
-, sdbus-cpp
-, systemd
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  pkg-config,
+  cmake,
+  wayland,
+  wayland-protocols,
+  wayland-scanner,
+  hyprlang,
+  sdbus-cpp,
+  systemd,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -42,6 +43,9 @@ stdenv.mkDerivation (finalAttrs: {
     license = lib.licenses.bsd3;
     maintainers = with lib.maintainers; [ iogamaster ];
     mainProgram = "hypridle";
-    platforms = [ "aarch64-linux" "x86_64-linux" ];
+    platforms = [
+      "aarch64-linux"
+      "x86_64-linux"
+    ];
   };
 })

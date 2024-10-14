@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   cfg = config.services.bazarr;
 in
@@ -68,7 +73,7 @@ in
     };
 
     users.groups = lib.mkIf (cfg.group == "bazarr") {
-      bazarr = {};
+      bazarr = { };
     };
   };
 }

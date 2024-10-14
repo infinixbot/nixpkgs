@@ -58,22 +58,33 @@ rustPlatform.buildRustPackage {
     rustPlatform.bindgenHook
   ];
 
-  buildInputs = [
-    bzip2
-    openssl
-    sqlite
-    zstd
-  ] ++ lib.optionals stdenv.hostPlatform.isLinux [
-    foundationdb
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [
-    darwin.apple_sdk.frameworks.CoreFoundation
-    darwin.apple_sdk.frameworks.Security
-    darwin.apple_sdk.frameworks.SystemConfiguration
-  ];
+  buildInputs =
+    [
+      bzip2
+      openssl
+      sqlite
+      zstd
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isLinux [
+      foundationdb
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      darwin.apple_sdk.frameworks.CoreFoundation
+      darwin.apple_sdk.frameworks.Security
+      darwin.apple_sdk.frameworks.SystemConfiguration
+    ];
 
   # skip defaults on darwin because foundationdb is not available
   buildNoDefaultFeatures = stdenv.hostPlatform.isDarwin;
-  buildFeatures = lib.optional (stdenv.hostPlatform.isDarwin) [ "sqlite" "postgres" "mysql" "rocks" "elastic" "s3" "redis" ];
+  buildFeatures = lib.optional (stdenv.hostPlatform.isDarwin) [
+    "sqlite"
+    "postgres"
+    "mysql"
+    "rocks"
+    "elastic"
+    "s3"
+    "redis"
+  ];
 
   env = {
     OPENSSL_NO_VENDOR = true;
@@ -159,6 +170,10 @@ rustPlatform.buildRustPackage {
     homepage = "https://github.com/stalwartlabs/mail-server";
     changelog = "https://github.com/stalwartlabs/mail-server/blob/${version}/CHANGELOG";
     license = licenses.agpl3Only;
-    maintainers = with maintainers; [ happysalada onny oddlama ];
+    maintainers = with maintainers; [
+      happysalada
+      onny
+      oddlama
+    ];
   };
 }

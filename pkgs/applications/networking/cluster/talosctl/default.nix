@@ -1,4 +1,9 @@
-{ lib, buildGoModule, fetchFromGitHub, installShellFiles }:
+{
+  lib,
+  buildGoModule,
+  fetchFromGitHub,
+  installShellFiles,
+}:
 
 buildGoModule rec {
   pname = "talosctl";
@@ -13,7 +18,10 @@ buildGoModule rec {
 
   vendorHash = "sha256-9qkealjjdBO659fdWdgFii3ThPRwKpYasB03L3Bktqs=";
 
-  ldflags = [ "-s" "-w" ];
+  ldflags = [
+    "-s"
+    "-w"
+  ];
 
   env.GOWORK = "off";
 

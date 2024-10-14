@@ -56,7 +56,6 @@ buildPythonPackage rec {
       --replace "/usr/bin/env bash" "${bash}/bin/bash"
   '';
 
-
   pythonRelaxDeps = [ "traits" ];
 
   propagatedBuildInputs = [

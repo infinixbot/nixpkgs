@@ -1,14 +1,12 @@
-{ lib
-, stdenv
-, fetchurl
-, fetchpatch
-, openssl
+{
+  lib,
+  stdenv,
+  fetchurl,
+  fetchpatch,
+  openssl,
 }:
 let
-  makefile =
-    if stdenv.hostPlatform.isDarwin
-    then "makefile.mac"
-    else "makefile";
+  makefile = if stdenv.hostPlatform.isDarwin then "makefile.mac" else "makefile";
 in
 stdenv.mkDerivation rec {
   pname = "ibm-sw-tpm2";

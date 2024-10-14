@@ -1,10 +1,11 @@
-{ stdenv
-, lib
-, fetchFromGitHub
-, cmake
-, pkg-config
-, substituteAll
-, addDriverRunpath
+{
+  stdenv,
+  lib,
+  fetchFromGitHub,
+  cmake,
+  pkg-config,
+  substituteAll,
+  addDriverRunpath,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -24,13 +25,13 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   cmakeFlags = [
-      "-DENABLE_DRI3=ON"
-      "-DENABLE_DRM=ON"
-      "-DENABLE_VA=ON"
-      "-DENABLE_WAYLAND=ON"
-      "-DENABLE_X11=ON"
-      "-DINSTALL_EXAMPLE_CODE=OFF"
-      "-DBUILD_TOOLS=OFF"
+    "-DENABLE_DRI3=ON"
+    "-DENABLE_DRM=ON"
+    "-DENABLE_VA=ON"
+    "-DENABLE_WAYLAND=ON"
+    "-DENABLE_X11=ON"
+    "-DINSTALL_EXAMPLE_CODE=OFF"
+    "-DBUILD_TOOLS=OFF"
   ];
 
   patches = [

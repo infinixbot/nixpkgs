@@ -1,15 +1,16 @@
-{ stdenv
-, lib
-, fetchFromGitHub
-, cmake
-, pkg-config
-, alsa-lib
-, ffmpeg
-, kdePackages
-, kdsingleapplication
-, pipewire
-, taglib
-, libvgm
+{
+  stdenv,
+  lib,
+  fetchFromGitHub,
+  cmake,
+  pkg-config,
+  alsa-lib,
+  ffmpeg,
+  kdePackages,
+  kdsingleapplication,
+  pipewire,
+  taglib,
+  libvgm,
 }:
 
 stdenv.mkDerivation (finalAttrs: {

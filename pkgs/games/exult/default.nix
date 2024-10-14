@@ -1,15 +1,16 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, SDL2
-, autoconf
-, automake
-, libogg
-, libtool
-, libvorbis
-, pkg-config
-, zlib
-, enableTools ? false
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  SDL2,
+  autoconf,
+  automake,
+  libogg,
+  libtool,
+  libvorbis,
+  pkg-config,
+  zlib,
+  enableTools ? false,
 }:
 
 stdenv.mkDerivation rec {

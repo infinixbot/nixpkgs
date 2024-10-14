@@ -1,4 +1,11 @@
-{ lib, stdenv, fetchurl, runtimeShell, traceDeps ? false, bash }:
+{
+  lib,
+  stdenv,
+  fetchurl,
+  runtimeShell,
+  traceDeps ? false,
+  bash,
+}:
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "steam-original";
@@ -10,33 +17,37 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-Gia5182s4J4E3Ia1EeC5kjJX9mSltsr+b+1eRtEXtPk=";
   };
 
-  makeFlags = [ "DESTDIR=$(out)" "PREFIX=" ];
+  makeFlags = [
+    "DESTDIR=$(out)"
+    "PREFIX="
+  ];
 
   postInstall =
-  let
-   traceLog = "/tmp/steam-trace-dependencies.log";
-  in ''
-    rm $out/bin/steamdeps
-    ${lib.optionalString traceDeps ''
-      cat > $out/bin/steamdeps <<EOF
-      #!${runtimeShell}
-      echo \$1 >> ${traceLog}
-      cat \$1 >> ${traceLog}
-      echo >> ${traceLog}
-      EOF
-      chmod +x $out/bin/steamdeps
-    ''}
+    let
+      traceLog = "/tmp/steam-trace-dependencies.log";
+    in
+    ''
+      rm $out/bin/steamdeps
+      ${lib.optionalString traceDeps ''
+        cat > $out/bin/steamdeps <<EOF
+        #!${runtimeShell}
+        echo \$1 >> ${traceLog}
+        cat \$1 >> ${traceLog}
+        echo >> ${traceLog}
+        EOF
+        chmod +x $out/bin/steamdeps
+      ''}
 
-    # install udev rules
-    mkdir -p $out/etc/udev/rules.d/
-    cp ./subprojects/steam-devices/*.rules $out/etc/udev/rules.d/
-    substituteInPlace $out/etc/udev/rules.d/60-steam-input.rules \
-      --replace "/bin/sh" "${bash}/bin/bash"
+      # install udev rules
+      mkdir -p $out/etc/udev/rules.d/
+      cp ./subprojects/steam-devices/*.rules $out/etc/udev/rules.d/
+      substituteInPlace $out/etc/udev/rules.d/60-steam-input.rules \
+        --replace "/bin/sh" "${bash}/bin/bash"
 
-    # this just installs a link, "steam.desktop -> /lib/steam/steam.desktop"
-    rm $out/share/applications/steam.desktop
-    sed -e 's,/usr/bin/steam,steam,g' steam.desktop > $out/share/applications/steam.desktop
-  '';
+      # this just installs a link, "steam.desktop -> /lib/steam/steam.desktop"
+      rm $out/share/applications/steam.desktop
+      sed -e 's,/usr/bin/steam,steam,g' steam.desktop > $out/share/applications/steam.desktop
+    '';
 
   passthru.updateScript = ./update-bootstrap.py;
 

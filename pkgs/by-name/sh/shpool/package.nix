@@ -18,7 +18,6 @@ rustPlatform.buildRustPackage rec {
     hash = "sha256-0ykGGzYL29SxxT0etTaBHooIE8NEUJeTIr/6vTBgY0Q=";
   };
 
-
   postPatch = ''
     substituteInPlace systemd/shpool.service \
       --replace-fail '/usr/bin/shpool' "$out/bin/shpool"

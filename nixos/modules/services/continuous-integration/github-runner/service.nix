@@ -1,25 +1,30 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 
 with lib;
 {
   config.assertions = flatten (
-    flip mapAttrsToList config.services.github-runners (name: cfg: map (mkIf cfg.enable) [
-      {
-        assertion = !cfg.noDefaultLabels || (cfg.extraLabels != [ ]);
-        message = "`services.github-runners.${name}`: The `extraLabels` option is mandatory if `noDefaultLabels` is set";
-      }
-      {
-        assertion = cfg.group == null || cfg.user != null;
-        message = ''`services.github-runners.${name}`: Setting `group` while leaving `user` unset runs the service as `root`. If this is really what you want, set `user = "root"` explicitly'';
-      }
-    ])
+    flip mapAttrsToList config.services.github-runners (
+      name: cfg:
+      map (mkIf cfg.enable) [
+        {
+          assertion = !cfg.noDefaultLabels || (cfg.extraLabels != [ ]);
+          message = "`services.github-runners.${name}`: The `extraLabels` option is mandatory if `noDefaultLabels` is set";
+        }
+        {
+          assertion = cfg.group == null || cfg.user != null;
+          message = ''`services.github-runners.${name}`: Setting `group` while leaving `user` unset runs the service as `root`. If this is really what you want, set `user = "root"` explicitly'';
+        }
+      ]
+    )
   );
 
-  config.systemd.services = flip mapAttrs' config.services.github-runners (name: cfg:
+  config.systemd.services = flip mapAttrs' config.services.github-runners (
+    name: cfg:
     let
       svcName = "github-runner-${name}";
       systemdDir = "github-runner/${name}";
@@ -35,29 +40,37 @@ with lib;
 
       workDir = if cfg.workDir == null then runtimeDir else cfg.workDir;
       # Support old github-runner versions which don't have the `nodeRuntimes` arg yet.
-      package = cfg.package.override (old: optionalAttrs (hasAttr "nodeRuntimes" old) { inherit (cfg) nodeRuntimes; });
+      package = cfg.package.override (
+        old: optionalAttrs (hasAttr "nodeRuntimes" old) { inherit (cfg) nodeRuntimes; }
+      );
     in
     nameValuePair svcName {
       description = "GitHub Actions runner";
 
       wantedBy = [ "multi-user.target" ];
       wants = [ "network-online.target" ];
-      after = [ "network.target" "network-online.target" ];
+      after = [
+        "network.target"
+        "network-online.target"
+      ];
 
       environment = {
         HOME = workDir;
         RUNNER_ROOT = stateDir;
       } // cfg.extraEnvironment;
 
-      path = (with pkgs; [
-        bash
-        coreutils
-        git
-        gnutar
-        gzip
-      ]) ++ [
-        config.nix.package
-      ] ++ cfg.extraPackages;
+      path =
+        (with pkgs; [
+          bash
+          coreutils
+          git
+          gnutar
+          gzip
+        ])
+        ++ [
+          config.nix.package
+        ]
+        ++ cfg.extraPackages;
 
       serviceConfig = mkMerge [
         {
@@ -79,15 +92,17 @@ with lib;
               # to contain more than one directory. This causes systemd to set the respective
               # environment variables with the path of all of the given directories, separated
               # by a colon.
-              writeScript = name: lines: pkgs.writeShellScript "${svcName}-${name}.sh" ''
-                set -euo pipefail
+              writeScript =
+                name: lines:
+                pkgs.writeShellScript "${svcName}-${name}.sh" ''
+                  set -euo pipefail
 
-                STATE_DIRECTORY="$1"
-                WORK_DIRECTORY="$2"
-                LOGS_DIRECTORY="$3"
+                  STATE_DIRECTORY="$1"
+                  WORK_DIRECTORY="$2"
+                  LOGS_DIRECTORY="$3"
 
-                ${lines}
-              '';
+                  ${lines}
+                '';
               runnerRegistrationConfig = getAttrs [
                 "ephemeral"
                 "extraLabels"
@@ -97,8 +112,7 @@ with lib;
                 "tokenFile"
                 "url"
                 "workDir"
-              ]
-                cfg;
+              ] cfg;
               newConfigPath = builtins.toFile "${svcName}-config.json" (builtins.toJSON runnerRegistrationConfig);
               currentConfigPath = "$STATE_DIRECTORY/.nixos-current-config.json";
               newConfigTokenPath = "$STATE_DIRECTORY/.new-token";
@@ -151,41 +165,43 @@ with lib;
                 # Always clean workDir
                 find -H "$WORK_DIRECTORY" -mindepth 1 -delete
               '';
-              configureRunner = writeScript "configure" /*bash*/''
-                if [[ -e "${newConfigTokenPath}" ]]; then
-                  echo "Configuring GitHub Actions Runner"
-                  # shellcheck disable=SC2054  # don't complain about commas in --labels
-                  args=(
-                    --unattended
-                    --disableupdate
-                    --work "$WORK_DIRECTORY"
-                    --url ${escapeShellArg cfg.url}
-                    --labels ${escapeShellArg (concatStringsSep "," cfg.extraLabels)}
-                    ${optionalString (cfg.name != null ) "--name ${escapeShellArg cfg.name}"}
-                    ${optionalString cfg.replace "--replace"}
-                    ${optionalString (cfg.runnerGroup != null) "--runnergroup ${escapeShellArg cfg.runnerGroup}"}
-                    ${optionalString cfg.ephemeral "--ephemeral"}
-                    ${optionalString cfg.noDefaultLabels "--no-default-labels"}
-                  )
-                  # If the token file contains a PAT (i.e., it starts with "ghp_" or "github_pat_"), we have to use the --pat option,
-                  # if it is not a PAT, we assume it contains a registration token and use the --token option
-                  token=$(<"${newConfigTokenPath}")
-                  if [[ "$token" =~ ^ghp_* ]] || [[ "$token" =~ ^github_pat_* ]]; then
-                    args+=(--pat "$token")
-                  else
-                    args+=(--token "$token")
-                  fi
-                  ${package}/bin/Runner.Listener configure "''${args[@]}"
-                  # Move the automatically created _diag dir to the logs dir
-                  mkdir -p  "$STATE_DIRECTORY/_diag"
-                  cp    -r  "$STATE_DIRECTORY/_diag/." "$LOGS_DIRECTORY/"
-                  rm    -rf "$STATE_DIRECTORY/_diag/"
-                  # Cleanup token from config
-                  rm "${newConfigTokenPath}"
-                  # Symlink to new config
-                  ln -s '${newConfigPath}' "${currentConfigPath}"
-                fi
-              '';
+              configureRunner =
+                writeScript "configure" # bash
+                  ''
+                    if [[ -e "${newConfigTokenPath}" ]]; then
+                      echo "Configuring GitHub Actions Runner"
+                      # shellcheck disable=SC2054  # don't complain about commas in --labels
+                      args=(
+                        --unattended
+                        --disableupdate
+                        --work "$WORK_DIRECTORY"
+                        --url ${escapeShellArg cfg.url}
+                        --labels ${escapeShellArg (concatStringsSep "," cfg.extraLabels)}
+                        ${optionalString (cfg.name != null) "--name ${escapeShellArg cfg.name}"}
+                        ${optionalString cfg.replace "--replace"}
+                        ${optionalString (cfg.runnerGroup != null) "--runnergroup ${escapeShellArg cfg.runnerGroup}"}
+                        ${optionalString cfg.ephemeral "--ephemeral"}
+                        ${optionalString cfg.noDefaultLabels "--no-default-labels"}
+                      )
+                      # If the token file contains a PAT (i.e., it starts with "ghp_" or "github_pat_"), we have to use the --pat option,
+                      # if it is not a PAT, we assume it contains a registration token and use the --token option
+                      token=$(<"${newConfigTokenPath}")
+                      if [[ "$token" =~ ^ghp_* ]] || [[ "$token" =~ ^github_pat_* ]]; then
+                        args+=(--pat "$token")
+                      else
+                        args+=(--token "$token")
+                      fi
+                      ${package}/bin/Runner.Listener configure "''${args[@]}"
+                      # Move the automatically created _diag dir to the logs dir
+                      mkdir -p  "$STATE_DIRECTORY/_diag"
+                      cp    -r  "$STATE_DIRECTORY/_diag/." "$LOGS_DIRECTORY/"
+                      rm    -rf "$STATE_DIRECTORY/_diag/"
+                      # Cleanup token from config
+                      rm "${newConfigTokenPath}"
+                      # Symlink to new config
+                      ln -s '${newConfigPath}' "${currentConfigPath}"
+                    fi
+                  '';
               setupWorkDir = writeScript "setup-work-dirs" ''
                 # Link _diag dir
                 ln -s "$LOGS_DIRECTORY" "$WORK_DIRECTORY/_diag"
@@ -194,11 +210,22 @@ with lib;
                 ln -s "$STATE_DIRECTORY"/{${lib.concatStringsSep "," runnerCredFiles}} "$WORK_DIRECTORY/"
               '';
             in
-            map (x: "${x} ${escapeShellArgs [ stateDir workDir logsDir ]}") [
-              "+${unconfigureRunner}" # runs as root
-              configureRunner
-              setupWorkDir
-            ];
+            map
+              (
+                x:
+                "${x} ${
+                  escapeShellArgs [
+                    stateDir
+                    workDir
+                    logsDir
+                  ]
+                }"
+              )
+              [
+                "+${unconfigureRunner}" # runs as root
+                configureRunner
+                setupWorkDir
+              ];
 
           # If running in ephemeral mode, restart the service on-exit (i.e., successful de-registration of the runner)
           # to trigger a fresh registration.
@@ -263,7 +290,12 @@ with lib;
             "~setdomainname"
             "~sethostname"
           ];
-          RestrictAddressFamilies = mkBefore [ "AF_INET" "AF_INET6" "AF_UNIX" "AF_NETLINK" ];
+          RestrictAddressFamilies = mkBefore [
+            "AF_INET"
+            "AF_INET6"
+            "AF_UNIX"
+            "AF_NETLINK"
+          ];
 
           BindPaths = lib.optionals (cfg.workDir != null) [ cfg.workDir ];
 

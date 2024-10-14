@@ -1,4 +1,8 @@
-{ lib, buildGoModule, fetchFromGitHub }:
+{
+  lib,
+  buildGoModule,
+  fetchFromGitHub,
+}:
 
 buildGoModule rec {
   pname = "kubelogin";
@@ -11,7 +15,7 @@ buildGoModule rec {
     sha256 = "sha256-DHg46t0gMypK6Nj428gpOMtPuA+XcW4IJU39CHTVGPw=";
   };
 
-  subPackages = ["."];
+  subPackages = [ "." ];
 
   vendorHash = "sha256-gr+SsC7MiLj/MZ8kca5Hcfge+7Pm4y963TfwyKHEhBY=";
 

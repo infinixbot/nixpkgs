@@ -1,17 +1,18 @@
-{ lib
-, fetchFromGitHub
-, stdenv
-, rustc
-, rustPlatform
-, cargo
-, cargo-tauri
-, desktop-file-utils
-, openssl
-, libayatana-appindicator
-, webkitgtk
-, pkg-config
-, pnpm
-, nodejs
+{
+  lib,
+  fetchFromGitHub,
+  stdenv,
+  rustc,
+  rustPlatform,
+  cargo,
+  cargo-tauri,
+  desktop-file-utils,
+  openssl,
+  libayatana-appindicator,
+  webkitgtk,
+  pkg-config,
+  pnpm,
+  nodejs,
 }:
 
 stdenv.mkDerivation (finalAttrs: {

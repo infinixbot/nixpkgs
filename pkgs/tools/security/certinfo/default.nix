@@ -1,4 +1,11 @@
-{ stdenv, lib, buildGoModule, fetchFromGitHub, libX11, darwin }:
+{
+  stdenv,
+  lib,
+  buildGoModule,
+  fetchFromGitHub,
+  libX11,
+  darwin,
+}:
 
 buildGoModule rec {
   pname = "certinfo";
@@ -14,7 +21,8 @@ buildGoModule rec {
   # clipboard functionality not working on Darwin
   doCheck = !(stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64);
 
-  buildInputs = [ ]
+  buildInputs =
+    [ ]
     ++ lib.optionals stdenv.hostPlatform.isLinux [ libX11 ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [ darwin.apple_sdk.frameworks.Cocoa ];
 

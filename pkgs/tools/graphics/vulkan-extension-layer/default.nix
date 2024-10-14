@@ -1,4 +1,18 @@
-{ lib, stdenv, fetchFromGitHub, cmake, pkg-config, writeText, vulkan-headers, vulkan-utility-libraries,  jq, libX11, libXrandr, libxcb, wayland }:
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  cmake,
+  pkg-config,
+  writeText,
+  vulkan-headers,
+  vulkan-utility-libraries,
+  jq,
+  libX11,
+  libXrandr,
+  libxcb,
+  wayland,
+}:
 
 stdenv.mkDerivation rec {
   pname = "vulkan-extension-layer";
@@ -11,9 +25,20 @@ stdenv.mkDerivation rec {
     hash = "sha256-Cz4C8HoyP768H9ZI7Ys9oX3/qEEhz6vfkdKXoVfodT0=";
   };
 
-  nativeBuildInputs = [ cmake pkg-config jq ];
+  nativeBuildInputs = [
+    cmake
+    pkg-config
+    jq
+  ];
 
-  buildInputs = [ vulkan-headers vulkan-utility-libraries libX11 libXrandr libxcb wayland ];
+  buildInputs = [
+    vulkan-headers
+    vulkan-utility-libraries
+    libX11
+    libXrandr
+    libxcb
+    wayland
+  ];
 
   # Help vulkan-loader find the validation layers
   setupHook = writeText "setup-hook" ''
