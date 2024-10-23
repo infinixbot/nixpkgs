@@ -1,11 +1,12 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, pnpm_8
-, nodejs
-, makeBinaryWrapper
-, shellcheck
-, versionCheckHook
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  pnpm_8,
+  nodejs,
+  makeBinaryWrapper,
+  shellcheck,
+  versionCheckHook,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -21,7 +22,12 @@ stdenv.mkDerivation (finalAttrs: {
 
   pnpmWorkspace = "bash-language-server";
   pnpmDeps = pnpm_8.fetchDeps {
-    inherit (finalAttrs) pname version src pnpmWorkspace;
+    inherit (finalAttrs)
+      pname
+      version
+      src
+      pnpmWorkspace
+      ;
     hash = "sha256-W25xehcxncBs9QgQBt17F5YHK0b+GDEmt27XzTkyYWg=";
   };
 

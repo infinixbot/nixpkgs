@@ -1,4 +1,9 @@
-{ stdenv, lib, fetchFromGitHub, nixosTests }:
+{
+  stdenv,
+  lib,
+  fetchFromGitHub,
+  nixosTests,
+}:
 
 stdenv.mkDerivation rec {
   pname = "rss-bridge";
@@ -24,7 +29,10 @@ stdenv.mkDerivation rec {
     description = "RSS feed for websites missing it";
     homepage = "https://github.com/RSS-Bridge/rss-bridge";
     license = licenses.unlicense;
-    maintainers = with maintainers; [ dawidsowa mynacol ];
+    maintainers = with maintainers; [
+      dawidsowa
+      mynacol
+    ];
     platforms = platforms.all;
   };
 }

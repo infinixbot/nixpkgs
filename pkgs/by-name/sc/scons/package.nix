@@ -1,4 +1,8 @@
-{ lib, fetchFromGitHub, python3Packages }:
+{
+  lib,
+  fetchFromGitHub,
+  python3Packages,
+}:
 python3Packages.buildPythonApplication rec {
   pname = "scons";
   version = "4.7.0";

@@ -1,4 +1,8 @@
-{ lib, fetchFromGitHub, ocamlPackages }:
+{
+  lib,
+  fetchFromGitHub,
+  ocamlPackages,
+}:
 
 with ocamlPackages;
 
@@ -9,9 +13,9 @@ buildDunePackage rec {
   minimalOCamlVersion = "4.08";
 
   src = fetchFromGitHub {
-    owner  = "hannesm";
-    repo   = "jackline";
-    rev  = "31b90275a5f848cfc8c4f5b75e7d1933bec37852";
+    owner = "hannesm";
+    repo = "jackline";
+    rev = "31b90275a5f848cfc8c4f5b75e7d1933bec37852";
     hash = "sha256-G2jjsc/i9Qgo0TP+ZE4gB/1cjuZ9l8R7e59K2DGD5GY=";
   };
 

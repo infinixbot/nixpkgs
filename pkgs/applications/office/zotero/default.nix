@@ -1,21 +1,22 @@
-{ lib
-, stdenv
-, fetchurl
-, wrapGAppsHook3
-, makeDesktopItem
-, alsa-lib
-, atk
-, cairo
-, dbus-glib
-, gdk-pixbuf
-, glib
-, gtk3
-, libGL
-, libva
-, xorg
-, mesa
-, pango
-, pciutils
+{
+  lib,
+  stdenv,
+  fetchurl,
+  wrapGAppsHook3,
+  makeDesktopItem,
+  alsa-lib,
+  atk,
+  cairo,
+  dbus-glib,
+  gdk-pixbuf,
+  glib,
+  gtk3,
+  libGL,
+  libva,
+  xorg,
+  mesa,
+  pango,
+  pciutils,
 }:
 
 stdenv.mkDerivation rec {
@@ -30,30 +31,33 @@ stdenv.mkDerivation rec {
   dontPatchELF = true;
   nativeBuildInputs = [ wrapGAppsHook3 ];
 
-  libPath = lib.makeLibraryPath [
-    alsa-lib
-    atk
-    cairo
-    dbus-glib
-    gdk-pixbuf
-    glib
-    gtk3
-    libGL
-    libva
-    xorg.libX11
-    xorg.libXcomposite
-    xorg.libXcursor
-    xorg.libXdamage
-    xorg.libXext
-    xorg.libXfixes
-    xorg.libXi
-    xorg.libXrandr
-    xorg.libXtst
-    xorg.libxcb
-    mesa
-    pango
-    pciutils
-  ] + ":" + lib.makeSearchPathOutput "lib" "lib64" [ stdenv.cc.cc ];
+  libPath =
+    lib.makeLibraryPath [
+      alsa-lib
+      atk
+      cairo
+      dbus-glib
+      gdk-pixbuf
+      glib
+      gtk3
+      libGL
+      libva
+      xorg.libX11
+      xorg.libXcomposite
+      xorg.libXcursor
+      xorg.libXdamage
+      xorg.libXext
+      xorg.libXfixes
+      xorg.libXi
+      xorg.libXrandr
+      xorg.libXtst
+      xorg.libxcb
+      mesa
+      pango
+      pciutils
+    ]
+    + ":"
+    + lib.makeSearchPathOutput "lib" "lib64" [ stdenv.cc.cc ];
 
   desktopItem = makeDesktopItem {
     name = "zotero";
@@ -62,9 +66,15 @@ stdenv.mkDerivation rec {
     comment = meta.description;
     desktopName = "Zotero";
     genericName = "Reference Management";
-    categories = [ "Office" "Database" ];
+    categories = [
+      "Office"
+      "Database"
+    ];
     startupNotify = true;
-    mimeTypes = [ "x-scheme-handler/zotero" "text/plain" ];
+    mimeTypes = [
+      "x-scheme-handler/zotero"
+      "text/plain"
+    ];
   };
 
   installPhase = ''
@@ -111,6 +121,9 @@ stdenv.mkDerivation rec {
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.agpl3Only;
     platforms = [ "x86_64-linux" ];
-    maintainers = with maintainers; [ atila justanotherariel ];
+    maintainers = with maintainers; [
+      atila
+      justanotherariel
+    ];
   };
 }

@@ -1,19 +1,20 @@
-{ lib
-, stdenv
-, fetchFromGitea
-, testers
-, cmake
-, libX11
-, libXext
-, sdbus-cpp
-, udev
-, xcbutilimage
-, coreutils
-, cli11
-, ddcutil
-, fmt
-, nlohmann_json
-, spdlog
+{
+  lib,
+  stdenv,
+  fetchFromGitea,
+  testers,
+  cmake,
+  libX11,
+  libXext,
+  sdbus-cpp,
+  udev,
+  xcbutilimage,
+  coreutils,
+  cli11,
+  ddcutil,
+  fmt,
+  nlohmann_json,
+  spdlog,
 }:
 
 stdenv.mkDerivation (finalAttrs: {

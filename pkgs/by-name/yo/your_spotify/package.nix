@@ -62,7 +62,12 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru = {
     client = callPackage ./client.nix {
-      inherit (finalAttrs) src version offlineCache meta;
+      inherit (finalAttrs)
+        src
+        version
+        offlineCache
+        meta
+        ;
     };
     tests = {
       inherit (nixosTests) your_spotify;

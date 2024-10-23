@@ -1,9 +1,10 @@
-{ lib
-, stdenv
-, cmake
-, fetchFromGitHub
-, postgresql
-, postgresqlTestHook
+{
+  lib,
+  stdenv,
+  cmake,
+  fetchFromGitHub,
+  postgresql,
+  postgresqlTestHook,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -74,6 +75,7 @@ stdenv.mkDerivation (finalAttrs: {
     maintainers = [ ];
     platforms = postgresql.meta.platforms;
     # error: use of undeclared identifier 'aligned_alloc'
-    broken = stdenv.hostPlatform.isDarwin && lib.versionOlder stdenv.hostPlatform.darwinMinVersion "10.13";
+    broken =
+      stdenv.hostPlatform.isDarwin && lib.versionOlder stdenv.hostPlatform.darwinMinVersion "10.13";
   };
 })

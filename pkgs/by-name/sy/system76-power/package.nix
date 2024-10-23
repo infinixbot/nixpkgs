@@ -1,4 +1,11 @@
-{ pkg-config, libusb1, dbus, lib, rustPlatform, fetchFromGitHub }:
+{
+  pkg-config,
+  libusb1,
+  dbus,
+  lib,
+  rustPlatform,
+  fetchFromGitHub,
+}:
 
 rustPlatform.buildRustPackage rec {
   pname = "system76-power";
@@ -12,7 +19,10 @@ rustPlatform.buildRustPackage rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [ dbus libusb1 ];
+  buildInputs = [
+    dbus
+    libusb1
+  ];
 
   cargoLock = {
     lockFile = ./Cargo.lock;
@@ -32,7 +42,10 @@ rustPlatform.buildRustPackage rec {
     mainProgram = "system76-power";
     homepage = "https://github.com/pop-os/system76-power";
     license = licenses.gpl3Plus;
-    platforms = [ "i686-linux" "x86_64-linux" ];
+    platforms = [
+      "i686-linux"
+      "x86_64-linux"
+    ];
     maintainers = [ maintainers.smonson ];
   };
 }
