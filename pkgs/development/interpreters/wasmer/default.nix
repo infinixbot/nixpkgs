@@ -1,15 +1,16 @@
-{ stdenv
-, lib
-, rustPlatform
-, fetchFromGitHub
-, llvmPackages
-, libffi
-, libxml2
-, CoreFoundation
-, SystemConfiguration
-, Security
-, withLLVM ? !(stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64)
-, withSinglepass ? true
+{
+  stdenv,
+  lib,
+  rustPlatform,
+  fetchFromGitHub,
+  llvmPackages,
+  libffi,
+  libxml2,
+  CoreFoundation,
+  SystemConfiguration,
+  Security,
+  withLLVM ? !(stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64),
+  withSinglepass ? true,
 }:
 
 rustPlatform.buildRustPackage rec {
@@ -29,15 +30,17 @@ rustPlatform.buildRustPackage rec {
     rustPlatform.bindgenHook
   ];
 
-  buildInputs = lib.optionals withLLVM [
-    llvmPackages.llvm
-    libffi
-    libxml2
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [
-    CoreFoundation
-    SystemConfiguration
-    Security
-  ];
+  buildInputs =
+    lib.optionals withLLVM [
+      llvmPackages.llvm
+      libffi
+      libxml2
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      CoreFoundation
+      SystemConfiguration
+      Security
+    ];
 
   # check references to `compiler_features` in Makefile on update
   buildFeatures = [
@@ -46,11 +49,14 @@ rustPlatform.buildRustPackage rec {
     "static-artifact-create"
     "wasmer-artifact-load"
     "static-artifact-load"
-  ]
-  ++ lib.optional withLLVM "llvm"
-  ++ lib.optional withSinglepass "singlepass";
+  ] ++ lib.optional withLLVM "llvm" ++ lib.optional withSinglepass "singlepass";
 
-  cargoBuildFlags = [ "--manifest-path" "lib/cli/Cargo.toml" "--bin" "wasmer" ];
+  cargoBuildFlags = [
+    "--manifest-path"
+    "lib/cli/Cargo.toml"
+    "--bin"
+    "wasmer"
+  ];
 
   env.LLVM_SYS_180_PREFIX = lib.optionalString withLLVM llvmPackages.llvm.dev;
 
@@ -69,6 +75,10 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://wasmer.io/";
     license = lib.licenses.mit;
     platforms = with lib.platforms; linux ++ darwin;
-    maintainers = with lib.maintainers; [ Br1ght0ne shamilton nickcao ];
+    maintainers = with lib.maintainers; [
+      Br1ght0ne
+      shamilton
+      nickcao
+    ];
   };
 }
