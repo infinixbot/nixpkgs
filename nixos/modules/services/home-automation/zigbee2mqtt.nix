@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.services.zigbee2mqtt;
 
@@ -7,11 +12,18 @@ let
 
 in
 {
-  meta.maintainers = with lib.maintainers; [ sweber hexa ];
+  meta.maintainers = with lib.maintainers; [
+    sweber
+    hexa
+  ];
 
   imports = [
     # Remove warning before the 21.11 release
-    (lib.mkRenamedOptionModule [ "services" "zigbee2mqtt" "config" ] [ "services" "zigbee2mqtt" "settings" ])
+    (lib.mkRenamedOptionModule [ "services" "zigbee2mqtt" "config" ] [
+      "services"
+      "zigbee2mqtt"
+      "settings"
+    ])
   ];
 
   options.services.zigbee2mqtt = {
@@ -76,7 +88,9 @@ in
 
         # Hardening
         CapabilityBoundingSet = "";
-        DeviceAllow = lib.optionals (lib.hasPrefix "/" cfg.settings.serial.port) [ cfg.settings.serial.port ];
+        DeviceAllow = lib.optionals (lib.hasPrefix "/" cfg.settings.serial.port) [
+          cfg.settings.serial.port
+        ];
         DevicePolicy = "closed";
         LockPersonality = true;
         MemoryDenyWriteExecute = false;

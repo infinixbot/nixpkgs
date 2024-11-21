@@ -1,4 +1,8 @@
-{ lib, buildGoModule, fetchFromGitHub }:
+{
+  lib,
+  buildGoModule,
+  fetchFromGitHub,
+}:
 
 buildGoModule rec {
   pname = "sqldef";
@@ -15,14 +19,21 @@ buildGoModule rec {
 
   vendorHash = "sha256-N9+theiJnDP8Nbe0pcEPpjYcy2YVyueF8Q2bdLCCbEc=";
 
-  ldflags = [ "-s" "-w" "-X main.version=${version}" ];
+  ldflags = [
+    "-s"
+    "-w"
+    "-X main.version=${version}"
+  ];
 
   # The test requires a running database
   doCheck = false;
 
   meta = {
     description = "Idempotent SQL schema management tool";
-    license = with lib.licenses; [ mit /* for everything except parser */ asl20 /* for parser */ ];
+    license = with lib.licenses; [
+      mit # for everything except parser
+      asl20 # for parser
+    ];
     homepage = "https://github.com/sqldef/sqldef";
     changelog = "https://github.com/sqldef/sqldef/blob/v${version}/CHANGELOG.md";
     maintainers = with lib.maintainers; [ kgtkr ];
