@@ -1,22 +1,44 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.services.opendkim;
 
   defaultSock = "local:/run/opendkim/opendkim.sock";
 
-  args = [ "-f" "-l"
-           "-p" cfg.socket
-           "-d" cfg.domains
-           "-k" "${cfg.keyPath}/${cfg.selector}.private"
-           "-s" cfg.selector
-         ] ++ lib.optionals (cfg.configFile != null) [ "-x" cfg.configFile ];
+  args =
+    [
+      "-f"
+      "-l"
+      "-p"
+      cfg.socket
+      "-d"
+      cfg.domains
+      "-k"
+      "${cfg.keyPath}/${cfg.selector}.private"
+      "-s"
+      cfg.selector
+    ]
+    ++ lib.optionals (cfg.configFile != null) [
+      "-x"
+      cfg.configFile
+    ];
 
-  configFile = pkgs.writeText "opendkim.conf"
-    (lib.concatStringsSep "\n" (lib.mapAttrsToList (name: value: "${name} ${value}") cfg.settings));
-in {
+  configFile = pkgs.writeText "opendkim.conf" (
+    lib.concatStringsSep "\n" (lib.mapAttrsToList (name: value: "${name} ${value}") cfg.settings)
+  );
+in
+{
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "opendkim" "keyFile" ] [ "services" "opendkim" "keyPath" ])
+    (lib.mkRenamedOptionModule [ "services" "opendkim" "keyFile" ] [
+      "services"
+      "opendkim"
+      "keyPath"
+    ])
   ];
 
   options = {
@@ -74,9 +96,11 @@ in {
       };
 
       settings = lib.mkOption {
-        type = with lib.types; submodule {
-          freeformType = attrsOf str;
-        };
+        type =
+          with lib.types;
+          submodule {
+            freeformType = attrsOf str;
+          };
         default = { };
         description = "Additional opendkim configuration";
       };
@@ -133,7 +157,7 @@ in {
         StateDirectoryMode = "0700";
         ReadWritePaths = [ cfg.keyPath ];
 
-        AmbientCapabilities = [];
+        AmbientCapabilities = [ ];
         CapabilityBoundingSet = "";
         DevicePolicy = "closed";
         LockPersonality = true;
@@ -152,12 +176,18 @@ in {
         ProtectKernelTunables = true;
         ProtectSystem = "strict";
         RemoveIPC = true;
-        RestrictAddressFamilies = [ "AF_INET" "AF_INET6 AF_UNIX" ];
+        RestrictAddressFamilies = [
+          "AF_INET"
+          "AF_INET6 AF_UNIX"
+        ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
         RestrictSUIDSGID = true;
         SystemCallArchitectures = "native";
-        SystemCallFilter = [ "@system-service" "~@privileged @resources" ];
+        SystemCallFilter = [
+          "@system-service"
+          "~@privileged @resources"
+        ];
         UMask = "0077";
       };
     };

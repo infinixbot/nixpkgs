@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 
@@ -10,9 +15,12 @@ in
 {
 
   imports = [
-    (mkRenamedOptionModule
-      [ "services" "xserver" "windowManager" "fvwm" ]
-      [ "services" "xserver" "windowManager" "fvwm2" ])
+    (mkRenamedOptionModule [ "services" "xserver" "windowManager" "fvwm" ] [
+      "services"
+      "xserver"
+      "windowManager"
+      "fvwm2"
+    ])
   ];
 
   ###### interface
@@ -29,18 +37,16 @@ in
     };
   };
 
-
   ###### implementation
 
   config = mkIf cfg.enable {
-    services.xserver.windowManager.session = singleton
-      { name = "fvwm2";
-        start =
-          ''
-            ${fvwm2}/bin/fvwm &
-            waitPID=$!
-          '';
-      };
+    services.xserver.windowManager.session = singleton {
+      name = "fvwm2";
+      start = ''
+        ${fvwm2}/bin/fvwm &
+        waitPID=$!
+      '';
+    };
 
     environment.systemPackages = [ fvwm2 ];
   };
