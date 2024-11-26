@@ -23,10 +23,9 @@
   };
 
   imports = [
-    (lib.mkRenamedOptionModule [ "hardware" "usbStorage" "manageStartStop" ] [
-      "hardware"
-      "usbStorage"
-      "manageShutdown"
-    ])
+    (lib.mkRenamedOptionModule
+      [ "hardware" "usbStorage" "manageStartStop" ]
+      [ "hardware" "usbStorage" "manageShutdown" ]
+    )
   ];
 }

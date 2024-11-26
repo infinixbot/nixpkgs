@@ -14,12 +14,10 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule [ "services" "prometheus" "xmpp-alerts" "configuration" ] [
-      "services"
-      "prometheus"
-      "xmpp-alerts"
-      "settings"
-    ])
+    (mkRenamedOptionModule
+      [ "services" "prometheus" "xmpp-alerts" "configuration" ]
+      [ "services" "prometheus" "xmpp-alerts" "settings" ]
+    )
   ];
 
   options.services.prometheus.xmpp-alerts = {

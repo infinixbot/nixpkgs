@@ -68,10 +68,7 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "bitwarden_rs" ] [
-      "services"
-      "vaultwarden"
-    ])
+    (lib.mkRenamedOptionModule [ "services" "bitwarden_rs" ] [ "services" "vaultwarden" ])
   ];
 
   options.services.vaultwarden = {

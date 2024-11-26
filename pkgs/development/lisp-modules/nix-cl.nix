@@ -242,11 +242,7 @@ let
           installPhase =
             let
               mkSystemsRegex =
-                systems:
-                concatMapStringsSep "\\|" (replaceStrings [ "." "+" ] [
-                  "[.]"
-                  "[+]"
-                ]) systems;
+                systems: concatMapStringsSep "\\|" (replaceStrings [ "." "+" ] [ "[.]" "[+]" ]) systems;
             in
             ''
               runHook preInstall

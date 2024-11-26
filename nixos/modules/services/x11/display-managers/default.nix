@@ -341,22 +341,16 @@ in
         "job"
         "logsXsession"
       ]
-      [
-        "services"
-        "displayManager"
-        "logToFile"
-      ]
+      [ "services" "displayManager" "logToFile" ]
     )
-    (lib.mkRenamedOptionModule [ "services" "xserver" "displayManager" "logToJournal" ] [
-      "services"
-      "displayManager"
-      "logToJournal"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "xserver" "displayManager" "extraSessionFilesPackages" ] [
-      "services"
-      "displayManager"
-      "sessionPackages"
-    ])
+    (lib.mkRenamedOptionModule
+      [ "services" "xserver" "displayManager" "logToJournal" ]
+      [ "services" "displayManager" "logToJournal" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "services" "xserver" "displayManager" "extraSessionFilesPackages" ]
+      [ "services" "displayManager" "sessionPackages" ]
+    )
   ];
 
 }

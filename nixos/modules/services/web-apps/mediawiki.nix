@@ -518,12 +518,10 @@ in
   };
 
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "mediawiki" "virtualHost" ] [
-      "services"
-      "mediawiki"
-      "httpd"
-      "virtualHost"
-    ])
+    (lib.mkRenamedOptionModule
+      [ "services" "mediawiki" "virtualHost" ]
+      [ "services" "mediawiki" "httpd" "virtualHost" ]
+    )
   ];
 
   # implementation

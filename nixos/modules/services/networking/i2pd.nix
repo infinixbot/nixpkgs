@@ -282,11 +282,7 @@ in
 {
 
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "i2pd" "extIp" ] [
-      "services"
-      "i2pd"
-      "address"
-    ])
+    (lib.mkRenamedOptionModule [ "services" "i2pd" "extIp" ] [ "services" "i2pd" "address" ])
   ];
 
   ###### interface

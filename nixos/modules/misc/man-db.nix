@@ -59,12 +59,10 @@ in
   };
 
   imports = [
-    (lib.mkRenamedOptionModule [ "documentation" "man" "manualPages" ] [
-      "documentation"
-      "man"
-      "man-db"
-      "manualPages"
-    ])
+    (lib.mkRenamedOptionModule
+      [ "documentation" "man" "manualPages" ]
+      [ "documentation" "man" "man-db" "manualPages" ]
+    )
   ];
 
   config = lib.mkIf cfg.enable {

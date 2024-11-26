@@ -433,14 +433,8 @@ let
             in
             if bool then "default" else "enabled"
           ))
-          (mkRenamedOptionModule [ "ip4" ] [
-            "ipv4"
-            "addresses"
-          ])
-          (mkRenamedOptionModule [ "ip6" ] [
-            "ipv6"
-            "addresses"
-          ])
+          (mkRenamedOptionModule [ "ip4" ] [ "ipv4" "addresses" ])
+          (mkRenamedOptionModule [ "ip6" ] [ "ipv6" "addresses" ])
           (mkRemovedOptionModule [ "subnetMask" ] ''
             Supply a prefix length instead; use option
             networking.interfaces.<name>.ipv{4,6}.addresses'')

@@ -197,13 +197,16 @@ in
       "docker"
       "socketActivation"
     ] "This option was removed and socket activation is now always active")
-    (mkAliasOptionModule [ "virtualisation" "docker" "liveRestore" ] [
-      "virtualisation"
-      "docker"
-      "daemon"
-      "settings"
-      "live-restore"
-    ])
+    (mkAliasOptionModule
+      [ "virtualisation" "docker" "liveRestore" ]
+      [
+        "virtualisation"
+        "docker"
+        "daemon"
+        "settings"
+        "live-restore"
+      ]
+    )
   ];
 
   ###### implementation

@@ -61,12 +61,7 @@ in
         "plasma6"
         "enable"
       ]
-      [
-        "services"
-        "desktopManager"
-        "plasma6"
-        "enable"
-      ]
+      [ "services" "desktopManager" "plasma6" "enable" ]
     )
     (lib.mkRenamedOptionModule
       [
@@ -76,12 +71,7 @@ in
         "plasma6"
         "enableQt5Integration"
       ]
-      [
-        "services"
-        "desktopManager"
-        "plasma6"
-        "enableQt5Integration"
-      ]
+      [ "services" "desktopManager" "plasma6" "enableQt5Integration" ]
     )
     (lib.mkRenamedOptionModule
       [
@@ -91,12 +81,7 @@ in
         "plasma6"
         "notoPackage"
       ]
-      [
-        "services"
-        "desktopManager"
-        "plasma6"
-        "notoPackage"
-      ]
+      [ "services" "desktopManager" "plasma6" "notoPackage" ]
     )
   ];
 

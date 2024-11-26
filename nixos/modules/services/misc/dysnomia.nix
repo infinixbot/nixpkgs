@@ -157,10 +157,7 @@ in
   };
 
   imports = [
-    (lib.mkRenamedOptionModule [ "dysnomia" ] [
-      "services"
-      "dysnomia"
-    ])
+    (lib.mkRenamedOptionModule [ "dysnomia" ] [ "services" "dysnomia" ])
   ];
 
   config = lib.mkIf cfg.enable {

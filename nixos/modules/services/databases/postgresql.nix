@@ -85,23 +85,18 @@ in
       "extraConfig"
     ] "Use services.postgresql.settings instead.")
 
-    (mkRenamedOptionModule [ "services" "postgresql" "logLinePrefix" ] [
-      "services"
-      "postgresql"
-      "settings"
-      "log_line_prefix"
-    ])
-    (mkRenamedOptionModule [ "services" "postgresql" "port" ] [
-      "services"
-      "postgresql"
-      "settings"
-      "port"
-    ])
-    (mkRenamedOptionModule [ "services" "postgresql" "extraPlugins" ] [
-      "services"
-      "postgresql"
-      "extensions"
-    ])
+    (mkRenamedOptionModule
+      [ "services" "postgresql" "logLinePrefix" ]
+      [ "services" "postgresql" "settings" "log_line_prefix" ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "postgresql" "port" ]
+      [ "services" "postgresql" "settings" "port" ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "postgresql" "extraPlugins" ]
+      [ "services" "postgresql" "extensions" ]
+    )
   ];
 
   ###### interface

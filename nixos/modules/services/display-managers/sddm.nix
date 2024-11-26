@@ -192,12 +192,7 @@ in
         "sddm"
         "autoNumlock"
       ]
-      [
-        "services"
-        "displayManager"
-        "sddm"
-        "autoNumlock"
-      ]
+      [ "services" "displayManager" "sddm" "autoNumlock" ]
     )
     (mkRenamedOptionModule
       [
@@ -207,12 +202,7 @@ in
         "sddm"
         "enable"
       ]
-      [
-        "services"
-        "displayManager"
-        "sddm"
-        "enable"
-      ]
+      [ "services" "displayManager" "sddm" "enable" ]
     )
     (mkRenamedOptionModule
       [
@@ -222,12 +212,7 @@ in
         "sddm"
         "enableHidpi"
       ]
-      [
-        "services"
-        "displayManager"
-        "sddm"
-        "enableHidpi"
-      ]
+      [ "services" "displayManager" "sddm" "enableHidpi" ]
     )
     (mkRenamedOptionModule
       [
@@ -237,12 +222,7 @@ in
         "sddm"
         "extraPackages"
       ]
-      [
-        "services"
-        "displayManager"
-        "sddm"
-        "extraPackages"
-      ]
+      [ "services" "displayManager" "sddm" "extraPackages" ]
     )
     (mkRenamedOptionModule
       [
@@ -252,12 +232,7 @@ in
         "sddm"
         "package"
       ]
-      [
-        "services"
-        "displayManager"
-        "sddm"
-        "package"
-      ]
+      [ "services" "displayManager" "sddm" "package" ]
     )
     (mkRenamedOptionModule
       [
@@ -267,12 +242,7 @@ in
         "sddm"
         "settings"
       ]
-      [
-        "services"
-        "displayManager"
-        "sddm"
-        "settings"
-      ]
+      [ "services" "displayManager" "sddm" "settings" ]
     )
     (mkRenamedOptionModule
       [
@@ -282,12 +252,7 @@ in
         "sddm"
         "setupScript"
       ]
-      [
-        "services"
-        "displayManager"
-        "sddm"
-        "setupScript"
-      ]
+      [ "services" "displayManager" "sddm" "setupScript" ]
     )
     (mkRenamedOptionModule
       [
@@ -297,12 +262,7 @@ in
         "sddm"
         "stopScript"
       ]
-      [
-        "services"
-        "displayManager"
-        "sddm"
-        "stopScript"
-      ]
+      [ "services" "displayManager" "sddm" "stopScript" ]
     )
     (mkRenamedOptionModule
       [
@@ -312,12 +272,7 @@ in
         "sddm"
         "theme"
       ]
-      [
-        "services"
-        "displayManager"
-        "sddm"
-        "theme"
-      ]
+      [ "services" "displayManager" "sddm" "theme" ]
     )
     (mkRenamedOptionModule
       [
@@ -351,12 +306,7 @@ in
         "autoLogin"
         "enable"
       ]
-      [
-        "services"
-        "displayManager"
-        "autoLogin"
-        "enable"
-      ]
+      [ "services" "displayManager" "autoLogin" "enable" ]
     )
     (mkRenamedOptionModule
       [
@@ -366,12 +316,7 @@ in
         "autoLogin"
         "user"
       ]
-      [
-        "services"
-        "displayManager"
-        "autoLogin"
-        "user"
-      ]
+      [ "services" "displayManager" "autoLogin" "user" ]
     )
     (mkRemovedOptionModule [
       "services"

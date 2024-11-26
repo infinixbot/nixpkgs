@@ -34,12 +34,7 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule [ "programs" "ibus" "plugins" ] [
-      "i18n"
-      "inputMethod"
-      "ibus"
-      "engines"
-    ])
+    (mkRenamedOptionModule [ "programs" "ibus" "plugins" ] [ "i18n" "inputMethod" "ibus" "engines" ])
   ];
 
   options = {

@@ -36,10 +36,7 @@ in
       else
         builtins.fromJSON value
     ))
-    (mkRenamedOptionModule [ "services" "redshift" "provider" ] [
-      "location"
-      "provider"
-    ])
+    (mkRenamedOptionModule [ "services" "redshift" "provider" ] [ "location" "provider" ])
   ];
 
   options.services.redshift = {

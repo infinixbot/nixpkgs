@@ -21,16 +21,11 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule [ "services" "piwik" "enable" ] [
-      "services"
-      "matomo"
-      "enable"
-    ])
-    (mkRenamedOptionModule [ "services" "piwik" "webServerUser" ] [
-      "services"
-      "matomo"
-      "webServerUser"
-    ])
+    (mkRenamedOptionModule [ "services" "piwik" "enable" ] [ "services" "matomo" "enable" ])
+    (mkRenamedOptionModule
+      [ "services" "piwik" "webServerUser" ]
+      [ "services" "matomo" "webServerUser" ]
+    )
     (mkRemovedOptionModule [
       "services"
       "piwik"
@@ -41,16 +36,11 @@ in
       "matomo"
       "phpfpmProcessManagerConfig"
     ] "Use services.phpfpm.pools.<name>.settings")
-    (mkRenamedOptionModule [ "services" "piwik" "nginx" ] [
-      "services"
-      "matomo"
-      "nginx"
-    ])
-    (mkRenamedOptionModule [ "services" "matomo" "periodicArchiveProcessingUrl" ] [
-      "services"
-      "matomo"
-      "hostname"
-    ])
+    (mkRenamedOptionModule [ "services" "piwik" "nginx" ] [ "services" "matomo" "nginx" ])
+    (mkRenamedOptionModule
+      [ "services" "matomo" "periodicArchiveProcessingUrl" ]
+      [ "services" "matomo" "hostname" ]
+    )
   ];
 
   options = {

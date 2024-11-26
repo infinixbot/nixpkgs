@@ -17,12 +17,10 @@ in
 
 {
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "kerberos_server" "realms" ] [
-      "services"
-      "kerberos_server"
-      "settings"
-      "realms"
-    ])
+    (lib.mkRenamedOptionModule
+      [ "services" "kerberos_server" "realms" ]
+      [ "services" "kerberos_server" "settings" "realms" ]
+    )
 
     ./mit.nix
     ./heimdal.nix

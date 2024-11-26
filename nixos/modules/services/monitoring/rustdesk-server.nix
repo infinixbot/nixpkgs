@@ -21,18 +21,14 @@ in
       "rustdesk-server"
       "relayIP"
     ] "This option has been replaced by services.rustdesk-server.signal.relayHosts")
-    (lib.mkRenamedOptionModule [ "services" "rustdesk-server" "extraRelayArgs" ] [
-      "services"
-      "rustdesk-server"
-      "relay"
-      "extraArgs"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "rustdesk-server" "extraSignalArgs" ] [
-      "services"
-      "rustdesk-server"
-      "signal"
-      "extraArgs"
-    ])
+    (lib.mkRenamedOptionModule
+      [ "services" "rustdesk-server" "extraRelayArgs" ]
+      [ "services" "rustdesk-server" "relay" "extraArgs" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "services" "rustdesk-server" "extraSignalArgs" ]
+      [ "services" "rustdesk-server" "signal" "extraArgs" ]
+    )
   ];
 
   options.services.rustdesk-server =

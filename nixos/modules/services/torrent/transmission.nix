@@ -23,17 +23,14 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule [ "services" "transmission" "port" ] [
-      "services"
-      "transmission"
-      "settings"
-      "rpc-port"
-    ])
-    (mkAliasOptionModuleMD [ "services" "transmission" "openFirewall" ] [
-      "services"
-      "transmission"
-      "openPeerPorts"
-    ])
+    (mkRenamedOptionModule
+      [ "services" "transmission" "port" ]
+      [ "services" "transmission" "settings" "rpc-port" ]
+    )
+    (mkAliasOptionModuleMD
+      [ "services" "transmission" "openFirewall" ]
+      [ "services" "transmission" "openPeerPorts" ]
+    )
   ];
   options = {
     services.transmission = {

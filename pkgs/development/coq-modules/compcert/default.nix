@@ -147,8 +147,7 @@ let
   patched_compcert = compcert.overrideAttrs (o: {
     patches =
       with lib.versions;
-      lib.switch
-        [ coq.version o.version ]
+      lib.switch [ coq.version o.version ]
         [
           {
             cases = [

@@ -6,17 +6,19 @@ let
   # this makes error messages more readable during development
   mergeInput =
     name: format: input:
-    format.type.merge [ ] [
-      {
-        # explicitly throw here to trigger the code path that prints the error message for users
-        value =
-          lib.throwIfNot (format.type.check input)
-            (builtins.trace input "definition does not pass the type's check function")
-            input;
-        # inject the name
-        file = "format-test-${name}";
-      }
-    ];
+    format.type.merge
+      [ ]
+      [
+        {
+          # explicitly throw here to trigger the code path that prints the error message for users
+          value =
+            lib.throwIfNot (format.type.check input)
+              (builtins.trace input "definition does not pass the type's check function")
+              input;
+          # inject the name
+          file = "format-test-${name}";
+        }
+      ];
 
   # run a diff between expected and real output
   runDiff =
@@ -276,24 +278,27 @@ runBuildTests {
       listsAsDuplicateKeys = true;
       atomsCoercedToLists = true;
     };
-    input = format.type.merge [ ] [
-      {
-        file = "format-test-inner-iniCoercedDuplicateKeys";
-        value = {
-          foo = {
-            bar = 1;
-          };
-        };
-      }
-      {
-        file = "format-test-inner-iniCoercedDuplicateKeys";
-        value = {
-          foo = {
-            bar = 2;
-          };
-        };
-      }
-    ];
+    input =
+      format.type.merge
+        [ ]
+        [
+          {
+            file = "format-test-inner-iniCoercedDuplicateKeys";
+            value = {
+              foo = {
+                bar = 1;
+              };
+            };
+          }
+          {
+            file = "format-test-inner-iniCoercedDuplicateKeys";
+            value = {
+              foo = {
+                bar = 2;
+              };
+            };
+          }
+        ];
     expected = ''
       [foo]
       bar=1
@@ -306,24 +311,27 @@ runBuildTests {
       listToValue = lib.concatMapStringsSep ", " (lib.generators.mkValueStringDefault { });
       atomsCoercedToLists = true;
     };
-    input = format.type.merge [ ] [
-      {
-        file = "format-test-inner-iniCoercedListToValue";
-        value = {
-          foo = {
-            bar = 1;
-          };
-        };
-      }
-      {
-        file = "format-test-inner-iniCoercedListToValue";
-        value = {
-          foo = {
-            bar = 2;
-          };
-        };
-      }
-    ];
+    input =
+      format.type.merge
+        [ ]
+        [
+          {
+            file = "format-test-inner-iniCoercedListToValue";
+            value = {
+              foo = {
+                bar = 1;
+              };
+            };
+          }
+          {
+            file = "format-test-inner-iniCoercedListToValue";
+            value = {
+              foo = {
+                bar = 2;
+              };
+            };
+          }
+        ];
     expected = ''
       [foo]
       bar=1, 2
@@ -462,34 +470,37 @@ runBuildTests {
       listsAsDuplicateKeys = true;
       atomsCoercedToLists = true;
     };
-    input = format.type.merge [ ] [
-      {
-        file = "format-test-inner-iniWithGlobalCoercedDuplicateKeys";
-        value = {
-          globalSection = {
-            baz = 4;
-          };
-          sections = {
-            foo = {
-              bar = 1;
+    input =
+      format.type.merge
+        [ ]
+        [
+          {
+            file = "format-test-inner-iniWithGlobalCoercedDuplicateKeys";
+            value = {
+              globalSection = {
+                baz = 4;
+              };
+              sections = {
+                foo = {
+                  bar = 1;
+                };
+              };
             };
-          };
-        };
-      }
-      {
-        file = "format-test-inner-iniWithGlobalCoercedDuplicateKeys";
-        value = {
-          globalSection = {
-            baz = 3;
-          };
-          sections = {
-            foo = {
-              bar = 2;
+          }
+          {
+            file = "format-test-inner-iniWithGlobalCoercedDuplicateKeys";
+            value = {
+              globalSection = {
+                baz = 3;
+              };
+              sections = {
+                foo = {
+                  bar = 2;
+                };
+              };
             };
-          };
-        };
-      }
-    ];
+          }
+        ];
     expected = ''
       baz=3
       baz=4
@@ -505,34 +516,37 @@ runBuildTests {
       listToValue = lib.concatMapStringsSep ", " (lib.generators.mkValueStringDefault { });
       atomsCoercedToLists = true;
     };
-    input = format.type.merge [ ] [
-      {
-        file = "format-test-inner-iniWithGlobalCoercedListToValue";
-        value = {
-          globalSection = {
-            baz = 4;
-          };
-          sections = {
-            foo = {
-              bar = 1;
+    input =
+      format.type.merge
+        [ ]
+        [
+          {
+            file = "format-test-inner-iniWithGlobalCoercedListToValue";
+            value = {
+              globalSection = {
+                baz = 4;
+              };
+              sections = {
+                foo = {
+                  bar = 1;
+                };
+              };
             };
-          };
-        };
-      }
-      {
-        file = "format-test-inner-iniWithGlobalCoercedListToValue";
-        value = {
-          globalSection = {
-            baz = 3;
-          };
-          sections = {
-            foo = {
-              bar = 2;
+          }
+          {
+            file = "format-test-inner-iniWithGlobalCoercedListToValue";
+            value = {
+              globalSection = {
+                baz = 3;
+              };
+              sections = {
+                foo = {
+                  bar = 2;
+                };
+              };
             };
-          };
-        };
-      }
-    ];
+          }
+        ];
     expected = ''
       baz=3, 4
 

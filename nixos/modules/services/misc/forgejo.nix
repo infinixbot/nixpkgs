@@ -51,98 +51,134 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule [ "services" "forgejo" "appName" ] [
-      "services"
-      "forgejo"
-      "settings"
-      "DEFAULT"
-      "APP_NAME"
-    ])
+    (mkRenamedOptionModule
+      [ "services" "forgejo" "appName" ]
+      [
+        "services"
+        "forgejo"
+        "settings"
+        "DEFAULT"
+        "APP_NAME"
+      ]
+    )
     (mkRemovedOptionModule [ "services" "forgejo" "extraConfig" ]
       "services.forgejo.extraConfig has been removed. Please use the freeform services.forgejo.settings option instead"
     )
     (mkRemovedOptionModule [ "services" "forgejo" "database" "password" ]
       "services.forgejo.database.password has been removed. Please use services.forgejo.database.passwordFile instead"
     )
-    (mkRenamedOptionModule [ "services" "forgejo" "mailerPasswordFile" ] [
-      "services"
-      "forgejo"
-      "secrets"
-      "mailer"
-      "PASSWD"
-    ])
+    (mkRenamedOptionModule
+      [ "services" "forgejo" "mailerPasswordFile" ]
+      [
+        "services"
+        "forgejo"
+        "secrets"
+        "mailer"
+        "PASSWD"
+      ]
+    )
 
     # copied from services.gitea; remove at some point
-    (mkRenamedOptionModule [ "services" "forgejo" "cookieSecure" ] [
-      "services"
-      "forgejo"
-      "settings"
-      "session"
-      "COOKIE_SECURE"
-    ])
-    (mkRenamedOptionModule [ "services" "forgejo" "disableRegistration" ] [
-      "services"
-      "forgejo"
-      "settings"
-      "service"
-      "DISABLE_REGISTRATION"
-    ])
-    (mkRenamedOptionModule [ "services" "forgejo" "domain" ] [
-      "services"
-      "forgejo"
-      "settings"
-      "server"
-      "DOMAIN"
-    ])
-    (mkRenamedOptionModule [ "services" "forgejo" "httpAddress" ] [
-      "services"
-      "forgejo"
-      "settings"
-      "server"
-      "HTTP_ADDR"
-    ])
-    (mkRenamedOptionModule [ "services" "forgejo" "httpPort" ] [
-      "services"
-      "forgejo"
-      "settings"
-      "server"
-      "HTTP_PORT"
-    ])
-    (mkRenamedOptionModule [ "services" "forgejo" "log" "level" ] [
-      "services"
-      "forgejo"
-      "settings"
-      "log"
-      "LEVEL"
-    ])
-    (mkRenamedOptionModule [ "services" "forgejo" "log" "rootPath" ] [
-      "services"
-      "forgejo"
-      "settings"
-      "log"
-      "ROOT_PATH"
-    ])
-    (mkRenamedOptionModule [ "services" "forgejo" "rootUrl" ] [
-      "services"
-      "forgejo"
-      "settings"
-      "server"
-      "ROOT_URL"
-    ])
-    (mkRenamedOptionModule [ "services" "forgejo" "ssh" "clonePort" ] [
-      "services"
-      "forgejo"
-      "settings"
-      "server"
-      "SSH_PORT"
-    ])
-    (mkRenamedOptionModule [ "services" "forgejo" "staticRootPath" ] [
-      "services"
-      "forgejo"
-      "settings"
-      "server"
-      "STATIC_ROOT_PATH"
-    ])
+    (mkRenamedOptionModule
+      [ "services" "forgejo" "cookieSecure" ]
+      [
+        "services"
+        "forgejo"
+        "settings"
+        "session"
+        "COOKIE_SECURE"
+      ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "forgejo" "disableRegistration" ]
+      [
+        "services"
+        "forgejo"
+        "settings"
+        "service"
+        "DISABLE_REGISTRATION"
+      ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "forgejo" "domain" ]
+      [
+        "services"
+        "forgejo"
+        "settings"
+        "server"
+        "DOMAIN"
+      ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "forgejo" "httpAddress" ]
+      [
+        "services"
+        "forgejo"
+        "settings"
+        "server"
+        "HTTP_ADDR"
+      ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "forgejo" "httpPort" ]
+      [
+        "services"
+        "forgejo"
+        "settings"
+        "server"
+        "HTTP_PORT"
+      ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "forgejo" "log" "level" ]
+      [
+        "services"
+        "forgejo"
+        "settings"
+        "log"
+        "LEVEL"
+      ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "forgejo" "log" "rootPath" ]
+      [
+        "services"
+        "forgejo"
+        "settings"
+        "log"
+        "ROOT_PATH"
+      ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "forgejo" "rootUrl" ]
+      [
+        "services"
+        "forgejo"
+        "settings"
+        "server"
+        "ROOT_URL"
+      ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "forgejo" "ssh" "clonePort" ]
+      [
+        "services"
+        "forgejo"
+        "settings"
+        "server"
+        "SSH_PORT"
+      ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "forgejo" "staticRootPath" ]
+      [
+        "services"
+        "forgejo"
+        "settings"
+        "server"
+        "STATIC_ROOT_PATH"
+      ]
+    )
     (mkChangedOptionModule
       [ "services" "forgejo" "enableUnixSocket" ]
       [

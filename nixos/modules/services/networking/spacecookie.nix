@@ -23,18 +23,14 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule [ "services" "spacecookie" "root" ] [
-      "services"
-      "spacecookie"
-      "settings"
-      "root"
-    ])
-    (mkRenamedOptionModule [ "services" "spacecookie" "hostname" ] [
-      "services"
-      "spacecookie"
-      "settings"
-      "hostname"
-    ])
+    (mkRenamedOptionModule
+      [ "services" "spacecookie" "root" ]
+      [ "services" "spacecookie" "settings" "root" ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "spacecookie" "hostname" ]
+      [ "services" "spacecookie" "settings" "hostname" ]
+    )
   ];
 
   options = {

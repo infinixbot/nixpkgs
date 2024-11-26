@@ -621,20 +621,12 @@ let
 in
 {
   imports = [
-    (mkAliasOptionModuleMD [ "users" "extraUsers" ] [
-      "users"
-      "users"
-    ])
-    (mkAliasOptionModuleMD [ "users" "extraGroups" ] [
-      "users"
-      "groups"
-    ])
-    (mkRenamedOptionModule [ "security" "initialRootPassword" ] [
-      "users"
-      "users"
-      "root"
-      "initialHashedPassword"
-    ])
+    (mkAliasOptionModuleMD [ "users" "extraUsers" ] [ "users" "users" ])
+    (mkAliasOptionModuleMD [ "users" "extraGroups" ] [ "users" "groups" ])
+    (mkRenamedOptionModule
+      [ "security" "initialRootPassword" ]
+      [ "users" "users" "root" "initialHashedPassword" ]
+    )
   ];
 
   ###### interface

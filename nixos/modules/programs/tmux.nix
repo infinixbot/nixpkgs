@@ -242,11 +242,10 @@ in
   };
 
   imports = [
-    (lib.mkRenamedOptionModule [ "programs" "tmux" "extraTmuxConf" ] [
-      "programs"
-      "tmux"
-      "extraConfig"
-    ])
+    (lib.mkRenamedOptionModule
+      [ "programs" "tmux" "extraTmuxConf" ]
+      [ "programs" "tmux" "extraConfig" ]
+    )
   ];
 
   meta.maintainers = with lib.maintainers; [ hxtmdev ];

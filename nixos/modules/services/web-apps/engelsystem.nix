@@ -21,11 +21,10 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule [ "services" "engelsystem" "config" ] [
-      "services"
-      "engelsystem"
-      "settings"
-    ])
+    (mkRenamedOptionModule
+      [ "services" "engelsystem" "config" ]
+      [ "services" "engelsystem" "settings" ]
+    )
   ];
 
   options.services.engelsystem = {

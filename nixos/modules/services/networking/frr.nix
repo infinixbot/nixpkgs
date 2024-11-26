@@ -171,23 +171,14 @@ in
       (lib.mkRemovedOptionModule [ "services" "frr" "zebra" "enable" ] "FRR zebra is always enabled")
     ]
     ++ (map (
-      d:
-      lib.mkRenamedOptionModule [ "services" "frr" d "enable" ] [
-        "services"
-        "frr"
-        "${d}d"
-        "enable"
-      ]
+      d: lib.mkRenamedOptionModule [ "services" "frr" d "enable" ] [ "services" "frr" "${d}d" "enable" ]
     ) renamedServices)
     ++ (map
       (
         d:
-        lib.mkRenamedOptionModule [ "services" "frr" d "extraOptions" ] [
-          "services"
-          "frr"
-          "${d}d"
-          "extraOptions"
-        ]
+        lib.mkRenamedOptionModule
+          [ "services" "frr" d "extraOptions" ]
+          [ "services" "frr" "${d}d" "extraOptions" ]
       )
       (
         renamedServices

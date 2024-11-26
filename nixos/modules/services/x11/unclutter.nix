@@ -78,11 +78,10 @@ in
   };
 
   imports = [
-    (mkRenamedOptionModule [ "services" "unclutter" "threeshold" ] [
-      "services"
-      "unclutter"
-      "threshold"
-    ])
+    (mkRenamedOptionModule
+      [ "services" "unclutter" "threeshold" ]
+      [ "services" "unclutter" "threshold" ]
+    )
   ];
 
   meta.maintainers = with lib.maintainers; [ rnhmjoj ];

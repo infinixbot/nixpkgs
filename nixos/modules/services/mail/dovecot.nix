@@ -277,12 +277,10 @@ in
 {
   imports = [
     (mkRemovedOptionModule [ "services" "dovecot2" "package" ] "")
-    (mkRenamedOptionModule [ "services" "dovecot2" "sieveScripts" ] [
-      "services"
-      "dovecot2"
-      "sieve"
-      "scripts"
-    ])
+    (mkRenamedOptionModule
+      [ "services" "dovecot2" "sieveScripts" ]
+      [ "services" "dovecot2" "sieve" "scripts" ]
+    )
   ];
 
   options.services.dovecot2 = {
