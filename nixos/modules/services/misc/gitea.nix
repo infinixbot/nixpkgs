@@ -102,13 +102,17 @@ in
       "STATIC_ROOT_PATH"
     ])
 
-    (mkChangedOptionModule [ "services" "gitea" "enableUnixSocket" ] [
-      "services"
-      "gitea"
-      "settings"
-      "server"
-      "PROTOCOL"
-    ] (config: if config.services.gitea.enableUnixSocket then "http+unix" else "http"))
+    (mkChangedOptionModule
+      [ "services" "gitea" "enableUnixSocket" ]
+      [
+        "services"
+        "gitea"
+        "settings"
+        "server"
+        "PROTOCOL"
+      ]
+      (config: if config.services.gitea.enableUnixSocket then "http+unix" else "http")
+    )
 
     (mkRemovedOptionModule [ "services" "gitea" "ssh" "enable" ]
       "services.gitea.ssh.enable has been migrated into freeform setting services.gitea.settings.server.DISABLE_SSH. Keep in mind that the setting is inverted"

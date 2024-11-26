@@ -143,13 +143,17 @@ in
       "server"
       "STATIC_ROOT_PATH"
     ])
-    (mkChangedOptionModule [ "services" "forgejo" "enableUnixSocket" ] [
-      "services"
-      "forgejo"
-      "settings"
-      "server"
-      "PROTOCOL"
-    ] (config: if config.services.forgejo.enableUnixSocket then "http+unix" else "http"))
+    (mkChangedOptionModule
+      [ "services" "forgejo" "enableUnixSocket" ]
+      [
+        "services"
+        "forgejo"
+        "settings"
+        "server"
+        "PROTOCOL"
+      ]
+      (config: if config.services.forgejo.enableUnixSocket then "http+unix" else "http")
+    )
     (mkRemovedOptionModule [ "services" "forgejo" "ssh" "enable" ]
       "services.forgejo.ssh.enable has been migrated into freeform setting services.forgejo.settings.server.DISABLE_SSH. Keep in mind that the setting is inverted"
     )

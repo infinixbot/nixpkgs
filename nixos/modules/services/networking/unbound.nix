@@ -368,7 +368,8 @@ in
       "server"
       "interface"
     ])
-    (mkChangedOptionModule [ "services" "unbound" "allowedAccess" ]
+    (mkChangedOptionModule
+      [ "services" "unbound" "allowedAccess" ]
       [
         "services"
         "unbound"

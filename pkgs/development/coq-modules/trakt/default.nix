@@ -18,20 +18,23 @@ mkCoqDerivation {
   inherit version;
   defaultVersion =
     with lib.versions;
-    lib.switch [ coq.version ] [
-      {
-        cases = [ (range "8.15" "8.17") ];
-        out = "1.2";
-      }
-      {
-        cases = [ (isEq "8.13") ];
-        out = "1.2+8.13";
-      }
-      {
-        cases = [ (range "8.13" "8.17") ];
-        out = "1.1";
-      }
-    ] null;
+    lib.switch
+      [ coq.version ]
+      [
+        {
+          cases = [ (range "8.15" "8.17") ];
+          out = "1.2";
+        }
+        {
+          cases = [ (isEq "8.13") ];
+          out = "1.2+8.13";
+        }
+        {
+          cases = [ (range "8.13" "8.17") ];
+          out = "1.1";
+        }
+      ]
+      null;
 
   propagatedBuildInputs = [ coq-elpi ];
 

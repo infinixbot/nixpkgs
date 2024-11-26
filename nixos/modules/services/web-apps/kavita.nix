@@ -14,7 +14,8 @@ let
 in
 {
   imports = [
-    (lib.mkChangedOptionModule [ "services" "kavita" "ipAdresses" ]
+    (lib.mkChangedOptionModule
+      [ "services" "kavita" "ipAdresses" ]
       [ "services" "kavita" "settings" "IpAddresses" ]
       (
         config:

@@ -35,12 +35,11 @@ in
       "transparent"
     ])
     (mkRemovedOptionModule [ "services" "sslh" "appendConfig" ] "Use services.sslh.settings instead")
-    (mkChangedOptionModule [ "services" "sslh" "verbose" ] [
-      "services"
-      "sslh"
-      "settings"
-      "verbose-connections"
-    ] (config: if config.services.sslh.verbose then 1 else 0))
+    (mkChangedOptionModule
+      [ "services" "sslh" "verbose" ]
+      [ "services" "sslh" "settings" "verbose-connections" ]
+      (config: if config.services.sslh.verbose then 1 else 0)
+    )
   ];
 
   meta.buildDocsInSandbox = false;
