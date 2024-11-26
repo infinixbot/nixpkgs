@@ -31,13 +31,7 @@ in
     )
     (lib.mkRenamedOptionModule
       [ "services" "etebase-server" "host" ]
-      [
-        "services"
-        "etebase-server"
-        "settings"
-        "allowed_hosts"
-        "allowed_host1"
-      ]
+      [ "services" "etebase-server" "settings" "allowed_hosts" "allowed_host1" ]
     )
   ];
 

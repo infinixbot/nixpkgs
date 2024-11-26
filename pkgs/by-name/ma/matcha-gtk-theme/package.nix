@@ -18,13 +18,7 @@ in
 lib.checkListOfEnum "${pname}: color variants" [ "standard" "light" "dark" ] colorVariants
   lib.checkListOfEnum
   "${pname}: theme variants"
-  [
-    "aliz"
-    "azul"
-    "sea"
-    "pueril"
-    "all"
-  ]
+  [ "aliz" "azul" "sea" "pueril" "all" ]
   themeVariants
 
   stdenvNoCC.mkDerivation

@@ -64,63 +64,27 @@ in
   imports = [
     (lib.mkRenamedOptionModule
       [ "services" "mbpfan" "pollingInterval" ]
-      [
-        "services"
-        "mbpfan"
-        "settings"
-        "general"
-        "polling_interval"
-      ]
+      [ "services" "mbpfan" "settings" "general" "polling_interval" ]
     )
     (lib.mkRenamedOptionModule
       [ "services" "mbpfan" "maxTemp" ]
-      [
-        "services"
-        "mbpfan"
-        "settings"
-        "general"
-        "max_temp"
-      ]
+      [ "services" "mbpfan" "settings" "general" "max_temp" ]
     )
     (lib.mkRenamedOptionModule
       [ "services" "mbpfan" "lowTemp" ]
-      [
-        "services"
-        "mbpfan"
-        "settings"
-        "general"
-        "low_temp"
-      ]
+      [ "services" "mbpfan" "settings" "general" "low_temp" ]
     )
     (lib.mkRenamedOptionModule
       [ "services" "mbpfan" "highTemp" ]
-      [
-        "services"
-        "mbpfan"
-        "settings"
-        "general"
-        "high_temp"
-      ]
+      [ "services" "mbpfan" "settings" "general" "high_temp" ]
     )
     (lib.mkRenamedOptionModule
       [ "services" "mbpfan" "minFanSpeed" ]
-      [
-        "services"
-        "mbpfan"
-        "settings"
-        "general"
-        "min_fan1_speed"
-      ]
+      [ "services" "mbpfan" "settings" "general" "min_fan1_speed" ]
     )
     (lib.mkRenamedOptionModule
       [ "services" "mbpfan" "maxFanSpeed" ]
-      [
-        "services"
-        "mbpfan"
-        "settings"
-        "general"
-        "max_fan1_speed"
-      ]
+      [ "services" "mbpfan" "settings" "general" "max_fan1_speed" ]
     )
   ];
 

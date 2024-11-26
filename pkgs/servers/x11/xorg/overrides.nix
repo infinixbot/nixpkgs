@@ -653,14 +653,7 @@ self: super:
       platforms =
         lib.fold (os: ps: ps ++ lib.platforms.${os})
           [ ]
-          [
-            "cygwin"
-            "freebsd"
-            "linux"
-            "netbsd"
-            "openbsd"
-            "illumos"
-          ];
+          [ "cygwin" "freebsd" "linux" "netbsd" "openbsd" "illumos" ];
       badPlatforms = [
         # mandatory shared library
         lib.systems.inspect.platformPatterns.isStatic

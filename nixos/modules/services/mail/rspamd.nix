@@ -533,23 +533,11 @@ in
     ] "Socket activation never worked correctly and could at this time not be fixed and so was removed")
     (mkRenamedOptionModule
       [ "services" "rspamd" "bindSocket" ]
-      [
-        "services"
-        "rspamd"
-        "workers"
-        "normal"
-        "bindSockets"
-      ]
+      [ "services" "rspamd" "workers" "normal" "bindSockets" ]
     )
     (mkRenamedOptionModule
       [ "services" "rspamd" "bindUISocket" ]
-      [
-        "services"
-        "rspamd"
-        "workers"
-        "controller"
-        "bindSockets"
-      ]
+      [ "services" "rspamd" "workers" "controller" "bindSockets" ]
     )
     (mkRemovedOptionModule [
       "services"

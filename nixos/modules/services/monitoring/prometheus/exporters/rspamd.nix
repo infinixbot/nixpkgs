@@ -24,26 +24,7 @@ let
     modules.default.metrics =
       (map
         (path: {
-          name = "rspamd_${
-            replaceStrings
-              [
-                "["
-                "."
-                " "
-                "]"
-                "\\"
-                "'"
-              ]
-              [
-                "_"
-                "_"
-                "_"
-                ""
-                ""
-                ""
-              ]
-              path
-          }";
+          name = "rspamd_${replaceStrings [ "[" "." " " "]" "\\" "'" ] [ "_" "_" "_" "" "" "" ] path}";
           path = "{ .${path} }";
           labels = extraLabels;
         })

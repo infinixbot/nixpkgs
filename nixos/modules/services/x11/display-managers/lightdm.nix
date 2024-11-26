@@ -88,14 +88,7 @@ in
     ./lightdm-greeters/slick.nix
     ./lightdm-greeters/mobile.nix
     (mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "lightdm"
-        "autoLogin"
-        "enable"
-      ]
+      [ "services" "xserver" "displayManager" "lightdm" "autoLogin" "enable" ]
       [
         "services"
         "displayManager"
@@ -104,14 +97,7 @@ in
       ]
     )
     (mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "lightdm"
-        "autoLogin"
-        "user"
-      ]
+      [ "services" "xserver" "displayManager" "lightdm" "autoLogin" "user" ]
       [
         "services"
         "displayManager"

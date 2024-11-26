@@ -1021,25 +1021,15 @@ in
                 protection.
               '';
 
-              hw_offload =
-                mkEnumParam
-                  [
-                    "yes"
-                    "no"
-                    "auto"
-                    "crypto"
-                    "packet"
-                  ]
-                  "no"
-                  ''
-                    Enable hardware offload for this CHILD_SA, if supported by the IPsec
-                    implementation. The values `crypto` or `packet` enforce crypto or full
-                    packet offloading and the installation will fail if the selected mode is not
-                    supported by either kernel or device. On Linux, `packet` also offloads
-                    policies, including trap policies. The value `auto` enables full packet
-                    or crypto offloading, if either is supported, but the installation does not
-                    fail otherwise.
-                  '';
+              hw_offload = mkEnumParam [ "yes" "no" "auto" "crypto" "packet" ] "no" ''
+                Enable hardware offload for this CHILD_SA, if supported by the IPsec
+                implementation. The values `crypto` or `packet` enforce crypto or full
+                packet offloading and the installation will fail if the selected mode is not
+                supported by either kernel or device. On Linux, `packet` also offloads
+                policies, including trap policies. The value `auto` enables full packet
+                or crypto offloading, if either is supported, but the installation does not
+                fail otherwise.
+              '';
 
               copy_df = mkYesNoParam yes ''
                 Whether to copy the DF bit to the outer IPv4 header in tunnel mode. This

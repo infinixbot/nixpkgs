@@ -1271,63 +1271,27 @@ in
     '')
     (mkRenamedOptionModule
       [ "services" "nginx" "proxyCache" "inactive" ]
-      [
-        "services"
-        "nginx"
-        "proxyCachePath"
-        ""
-        "inactive"
-      ]
+      [ "services" "nginx" "proxyCachePath" "" "inactive" ]
     )
     (mkRenamedOptionModule
       [ "services" "nginx" "proxyCache" "useTempPath" ]
-      [
-        "services"
-        "nginx"
-        "proxyCachePath"
-        ""
-        "useTempPath"
-      ]
+      [ "services" "nginx" "proxyCachePath" "" "useTempPath" ]
     )
     (mkRenamedOptionModule
       [ "services" "nginx" "proxyCache" "levels" ]
-      [
-        "services"
-        "nginx"
-        "proxyCachePath"
-        ""
-        "levels"
-      ]
+      [ "services" "nginx" "proxyCachePath" "" "levels" ]
     )
     (mkRenamedOptionModule
       [ "services" "nginx" "proxyCache" "keysZoneSize" ]
-      [
-        "services"
-        "nginx"
-        "proxyCachePath"
-        ""
-        "keysZoneSize"
-      ]
+      [ "services" "nginx" "proxyCachePath" "" "keysZoneSize" ]
     )
     (mkRenamedOptionModule
       [ "services" "nginx" "proxyCache" "keysZoneName" ]
-      [
-        "services"
-        "nginx"
-        "proxyCachePath"
-        ""
-        "keysZoneName"
-      ]
+      [ "services" "nginx" "proxyCachePath" "" "keysZoneName" ]
     )
     (mkRenamedOptionModule
       [ "services" "nginx" "proxyCache" "enable" ]
-      [
-        "services"
-        "nginx"
-        "proxyCachePath"
-        ""
-        "enable"
-      ]
+      [ "services" "nginx" "proxyCachePath" "" "enable" ]
     )
   ];
 

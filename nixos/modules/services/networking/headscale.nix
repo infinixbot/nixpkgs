@@ -493,43 +493,19 @@ in
   imports = with lib; [
     (mkRenamedOptionModule
       [ "services" "headscale" "derp" "autoUpdate" ]
-      [
-        "services"
-        "headscale"
-        "settings"
-        "derp"
-        "auto_update_enable"
-      ]
+      [ "services" "headscale" "settings" "derp" "auto_update_enable" ]
     )
     (mkRenamedOptionModule
       [ "services" "headscale" "derp" "paths" ]
-      [
-        "services"
-        "headscale"
-        "settings"
-        "derp"
-        "paths"
-      ]
+      [ "services" "headscale" "settings" "derp" "paths" ]
     )
     (mkRenamedOptionModule
       [ "services" "headscale" "derp" "updateFrequency" ]
-      [
-        "services"
-        "headscale"
-        "settings"
-        "derp"
-        "update_frequency"
-      ]
+      [ "services" "headscale" "settings" "derp" "update_frequency" ]
     )
     (mkRenamedOptionModule
       [ "services" "headscale" "derp" "urls" ]
-      [
-        "services"
-        "headscale"
-        "settings"
-        "derp"
-        "urls"
-      ]
+      [ "services" "headscale" "settings" "derp" "urls" ]
     )
     (mkRenamedOptionModule
       [ "services" "headscale" "ephemeralNodeInactivityTimeout" ]
@@ -537,43 +513,19 @@ in
     )
     (mkRenamedOptionModule
       [ "services" "headscale" "logLevel" ]
-      [
-        "services"
-        "headscale"
-        "settings"
-        "log"
-        "level"
-      ]
+      [ "services" "headscale" "settings" "log" "level" ]
     )
     (mkRenamedOptionModule
       [ "services" "headscale" "openIdConnect" "clientId" ]
-      [
-        "services"
-        "headscale"
-        "settings"
-        "oidc"
-        "client_id"
-      ]
+      [ "services" "headscale" "settings" "oidc" "client_id" ]
     )
     (mkRenamedOptionModule
       [ "services" "headscale" "openIdConnect" "clientSecretFile" ]
-      [
-        "services"
-        "headscale"
-        "settings"
-        "oidc"
-        "client_secret_path"
-      ]
+      [ "services" "headscale" "settings" "oidc" "client_secret_path" ]
     )
     (mkRenamedOptionModule
       [ "services" "headscale" "openIdConnect" "issuer" ]
-      [
-        "services"
-        "headscale"
-        "settings"
-        "oidc"
-        "issuer"
-      ]
+      [ "services" "headscale" "settings" "oidc" "issuer" ]
     )
     (mkRenamedOptionModule
       [ "services" "headscale" "serverUrl" ]
@@ -588,33 +540,15 @@ in
       [ "services" "headscale" "settings" "tls_key_path" ]
     )
     (mkRenamedOptionModule
-      [
-        "services"
-        "headscale"
-        "tls"
-        "letsencrypt"
-        "challengeType"
-      ]
+      [ "services" "headscale" "tls" "letsencrypt" "challengeType" ]
       [ "services" "headscale" "settings" "tls_letsencrypt_challenge_type" ]
     )
     (mkRenamedOptionModule
-      [
-        "services"
-        "headscale"
-        "tls"
-        "letsencrypt"
-        "hostname"
-      ]
+      [ "services" "headscale" "tls" "letsencrypt" "hostname" ]
       [ "services" "headscale" "settings" "tls_letsencrypt_hostname" ]
     )
     (mkRenamedOptionModule
-      [
-        "services"
-        "headscale"
-        "tls"
-        "letsencrypt"
-        "httpListen"
-      ]
+      [ "services" "headscale" "tls" "letsencrypt" "httpListen" ]
       [ "services" "headscale" "settings" "tls_letsencrypt_listen" ]
     )
 

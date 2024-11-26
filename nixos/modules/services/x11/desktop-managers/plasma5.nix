@@ -201,13 +201,7 @@ in
       [ "services" "xserver" "desktopManager" "plasma5" ]
     )
     (mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "desktopManager"
-        "plasma5"
-        "excludePackages"
-      ]
+      [ "services" "xserver" "desktopManager" "plasma5" "excludePackages" ]
       [ "environment" "plasma5" "excludePackages" ]
     )
   ];

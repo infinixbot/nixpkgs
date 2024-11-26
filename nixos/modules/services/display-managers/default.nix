@@ -193,53 +193,23 @@ in
       [ "services" "displayManager" "hiddenUsers" ]
     )
     (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "job"
-        "environment"
-      ]
+      [ "services" "xserver" "displayManager" "job" "environment" ]
       [ "services" "displayManager" "environment" ]
     )
     (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "job"
-        "execCmd"
-      ]
+      [ "services" "xserver" "displayManager" "job" "execCmd" ]
       [ "services" "displayManager" "execCmd" ]
     )
     (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "job"
-        "logToFile"
-      ]
+      [ "services" "xserver" "displayManager" "job" "logToFile" ]
       [ "services" "displayManager" "logToFile" ]
     )
     (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "job"
-        "logToJournal"
-      ]
+      [ "services" "xserver" "displayManager" "job" "logToJournal" ]
       [ "services" "displayManager" "logToJournal" ]
     )
     (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "job"
-        "preStart"
-      ]
+      [ "services" "xserver" "displayManager" "job" "preStart" ]
       [ "services" "displayManager" "preStart" ]
     )
     (lib.mkRenamedOptionModule

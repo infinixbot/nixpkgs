@@ -47,14 +47,7 @@ in
 {
   imports = [
     (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "gdm"
-        "autoLogin"
-        "enable"
-      ]
+      [ "services" "xserver" "displayManager" "gdm" "autoLogin" "enable" ]
       [
         "services"
         "displayManager"
@@ -63,14 +56,7 @@ in
       ]
     )
     (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "gdm"
-        "autoLogin"
-        "user"
-      ]
+      [ "services" "xserver" "displayManager" "gdm" "autoLogin" "user" ]
       [
         "services"
         "displayManager"

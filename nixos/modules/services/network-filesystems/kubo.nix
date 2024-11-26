@@ -466,53 +466,23 @@ in
     (lib.mkRenamedOptionModule [ "services" "ipfs" "autoMigrate" ] [ "services" "kubo" "autoMigrate" ])
     (lib.mkRenamedOptionModule
       [ "services" "ipfs" "ipfsMountDir" ]
-      [
-        "services"
-        "kubo"
-        "settings"
-        "Mounts"
-        "IPFS"
-      ]
+      [ "services" "kubo" "settings" "Mounts" "IPFS" ]
     )
     (lib.mkRenamedOptionModule
       [ "services" "ipfs" "ipnsMountDir" ]
-      [
-        "services"
-        "kubo"
-        "settings"
-        "Mounts"
-        "IPNS"
-      ]
+      [ "services" "kubo" "settings" "Mounts" "IPNS" ]
     )
     (lib.mkRenamedOptionModule
       [ "services" "ipfs" "gatewayAddress" ]
-      [
-        "services"
-        "kubo"
-        "settings"
-        "Addresses"
-        "Gateway"
-      ]
+      [ "services" "kubo" "settings" "Addresses" "Gateway" ]
     )
     (lib.mkRenamedOptionModule
       [ "services" "ipfs" "apiAddress" ]
-      [
-        "services"
-        "kubo"
-        "settings"
-        "Addresses"
-        "API"
-      ]
+      [ "services" "kubo" "settings" "Addresses" "API" ]
     )
     (lib.mkRenamedOptionModule
       [ "services" "ipfs" "swarmAddress" ]
-      [
-        "services"
-        "kubo"
-        "settings"
-        "Addresses"
-        "Swarm"
-      ]
+      [ "services" "kubo" "settings" "Addresses" "Swarm" ]
     )
     (lib.mkRenamedOptionModule [ "services" "ipfs" "enableGC" ] [ "services" "kubo" "enableGC" ])
     (lib.mkRenamedOptionModule [ "services" "ipfs" "emptyRepo" ] [ "services" "kubo" "emptyRepo" ])
@@ -533,53 +503,23 @@ in
     (lib.mkRenamedOptionModule [ "services" "kubo" "extraConfig" ] [ "services" "kubo" "settings" ])
     (lib.mkRenamedOptionModule
       [ "services" "kubo" "gatewayAddress" ]
-      [
-        "services"
-        "kubo"
-        "settings"
-        "Addresses"
-        "Gateway"
-      ]
+      [ "services" "kubo" "settings" "Addresses" "Gateway" ]
     )
     (lib.mkRenamedOptionModule
       [ "services" "kubo" "apiAddress" ]
-      [
-        "services"
-        "kubo"
-        "settings"
-        "Addresses"
-        "API"
-      ]
+      [ "services" "kubo" "settings" "Addresses" "API" ]
     )
     (lib.mkRenamedOptionModule
       [ "services" "kubo" "swarmAddress" ]
-      [
-        "services"
-        "kubo"
-        "settings"
-        "Addresses"
-        "Swarm"
-      ]
+      [ "services" "kubo" "settings" "Addresses" "Swarm" ]
     )
     (lib.mkRenamedOptionModule
       [ "services" "kubo" "ipfsMountDir" ]
-      [
-        "services"
-        "kubo"
-        "settings"
-        "Mounts"
-        "IPFS"
-      ]
+      [ "services" "kubo" "settings" "Mounts" "IPFS" ]
     )
     (lib.mkRenamedOptionModule
       [ "services" "kubo" "ipnsMountDir" ]
-      [
-        "services"
-        "kubo"
-        "settings"
-        "Mounts"
-        "IPNS"
-      ]
+      [ "services" "kubo" "settings" "Mounts" "IPNS" ]
     )
   ];
 }

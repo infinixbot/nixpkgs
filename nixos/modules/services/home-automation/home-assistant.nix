@@ -114,13 +114,7 @@ in
     ] "Components are now parsed from services.home-assistant.config unconditionally")
     (mkRenamedOptionModule
       [ "services" "home-assistant" "port" ]
-      [
-        "services"
-        "home-assistant"
-        "config"
-        "http"
-        "server_port"
-      ]
+      [ "services" "home-assistant" "config" "http" "server_port" ]
     )
   ];
 

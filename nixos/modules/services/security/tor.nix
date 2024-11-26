@@ -324,13 +324,7 @@ in
 {
   imports = [
     (mkRenamedOptionModule
-      [
-        "services"
-        "tor"
-        "client"
-        "dns"
-        "automapHostsSuffixes"
-      ]
+      [ "services" "tor" "client" "dns" "automapHostsSuffixes" ]
       [ "services" "tor" "settings" "AutomapHostsSuffixes" ]
     )
     (mkRemovedOptionModule [
@@ -419,13 +413,7 @@ in
     )
     (mkRenamedOptionModule
       [ "services" "tor" "relay" "bridgeTransports" ]
-      [
-        "services"
-        "tor"
-        "settings"
-        "ServerTransportPlugin"
-        "transports"
-      ]
+      [ "services" "tor" "settings" "ServerTransportPlugin" "transports" ]
     )
     (mkRenamedOptionModule
       [ "services" "tor" "relay" "contactInfo" ]

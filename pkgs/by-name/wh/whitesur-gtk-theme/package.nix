@@ -80,23 +80,11 @@ lib.checkListOfEnum "${pname}: window control buttons variants" [ "normal" "alt"
   (single iconVariant)
   lib.checkListOfEnum
   "${pname}: nautilus style"
-  [
-    "stable"
-    "normal"
-    "mojave"
-    "glassy"
-    "right"
-  ]
+  [ "stable" "normal" "mojave" "glassy" "right" ]
   (single nautilusStyle)
   lib.checkListOfEnum
   "${pname}: panel opacity"
-  [
-    "default"
-    "30"
-    "45"
-    "60"
-    "75"
-  ]
+  [ "default" "30" "45" "60" "75" ]
   (single panelOpacity)
   lib.checkListOfEnum
   "${pname}: panel size"

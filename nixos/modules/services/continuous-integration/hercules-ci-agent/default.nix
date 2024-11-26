@@ -24,13 +24,7 @@ in
     ./common.nix
     (lib.mkRenamedOptionModule
       [ "services" "hercules-ci-agent" "user" ]
-      [
-        "systemd"
-        "services"
-        "hercules-ci-agent"
-        "serviceConfig"
-        "User"
-      ]
+      [ "systemd" "services" "hercules-ci-agent" "serviceConfig" "User" ]
     )
   ];
 

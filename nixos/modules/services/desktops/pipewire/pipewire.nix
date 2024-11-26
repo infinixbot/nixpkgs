@@ -59,14 +59,7 @@ let
   configPackages = cfg.configPackages;
 
   extraConfigPkg =
-    extraConfigPkgFromFiles
-      [
-        "pipewire"
-        "client"
-        "client-rt"
-        "jack"
-        "pipewire-pulse"
-      ]
+    extraConfigPkgFromFiles [ "pipewire" "client" "client-rt" "jack" "pipewire-pulse" ]
       (
         mapToFiles "pipewire" cfg.extraConfig.pipewire
         // mapToFiles "client" cfg.extraConfig.client

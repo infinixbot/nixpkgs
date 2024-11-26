@@ -35,43 +35,19 @@ in
     (mkRemovedOptionModule [ "services" "kubernetes" "apiserver" "publicAddress" ] "")
     (mkRenamedOptionModule
       [ "services" "kubernetes" "etcd" "servers" ]
-      [
-        "services"
-        "kubernetes"
-        "apiserver"
-        "etcd"
-        "servers"
-      ]
+      [ "services" "kubernetes" "apiserver" "etcd" "servers" ]
     )
     (mkRenamedOptionModule
       [ "services" "kubernetes" "etcd" "keyFile" ]
-      [
-        "services"
-        "kubernetes"
-        "apiserver"
-        "etcd"
-        "keyFile"
-      ]
+      [ "services" "kubernetes" "apiserver" "etcd" "keyFile" ]
     )
     (mkRenamedOptionModule
       [ "services" "kubernetes" "etcd" "certFile" ]
-      [
-        "services"
-        "kubernetes"
-        "apiserver"
-        "etcd"
-        "certFile"
-      ]
+      [ "services" "kubernetes" "apiserver" "etcd" "certFile" ]
     )
     (mkRenamedOptionModule
       [ "services" "kubernetes" "etcd" "caFile" ]
-      [
-        "services"
-        "kubernetes"
-        "apiserver"
-        "etcd"
-        "caFile"
-      ]
+      [ "services" "kubernetes" "apiserver" "etcd" "caFile" ]
     )
   ];
 

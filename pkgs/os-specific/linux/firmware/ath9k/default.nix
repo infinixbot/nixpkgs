@@ -67,13 +67,7 @@ stdenv.mkDerivation (finalAttrs: {
       urls-and-hashes = import (./. + "/urls-and-hashes-${finalAttrs.version}.nix");
       make-links =
         pipe
-          [
-            "gcc"
-            "binutils"
-            "gmp"
-            "mpfr"
-            "mpc"
-          ]
+          [ "gcc" "binutils" "gmp" "mpfr" "mpc" ]
           [
             (map (
               vname:

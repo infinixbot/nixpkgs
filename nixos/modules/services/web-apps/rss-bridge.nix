@@ -30,13 +30,7 @@ in
   imports = [
     (mkRenamedOptionModule
       [ "services" "rss-bridge" "whitelist" ]
-      [
-        "services"
-        "rss-bridge"
-        "config"
-        "system"
-        "enabled_bridges"
-      ]
+      [ "services" "rss-bridge" "config" "system" "enabled_bridges" ]
     )
   ];
 

@@ -199,13 +199,7 @@ in
     ] "This option was removed and socket activation is now always active")
     (mkAliasOptionModule
       [ "virtualisation" "docker" "liveRestore" ]
-      [
-        "virtualisation"
-        "docker"
-        "daemon"
-        "settings"
-        "live-restore"
-      ]
+      [ "virtualisation" "docker" "daemon" "settings" "live-restore" ]
     )
   ];
 

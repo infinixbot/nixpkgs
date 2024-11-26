@@ -54,33 +54,15 @@ in
 
   imports = [
     (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "desktopManager"
-        "plasma6"
-        "enable"
-      ]
+      [ "services" "xserver" "desktopManager" "plasma6" "enable" ]
       [ "services" "desktopManager" "plasma6" "enable" ]
     )
     (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "desktopManager"
-        "plasma6"
-        "enableQt5Integration"
-      ]
+      [ "services" "xserver" "desktopManager" "plasma6" "enableQt5Integration" ]
       [ "services" "desktopManager" "plasma6" "enableQt5Integration" ]
     )
     (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "desktopManager"
-        "plasma6"
-        "notoPackage"
-      ]
+      [ "services" "xserver" "desktopManager" "plasma6" "notoPackage" ]
       [ "services" "desktopManager" "plasma6" "notoPackage" ]
     )
   ];

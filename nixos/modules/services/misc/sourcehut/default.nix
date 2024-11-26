@@ -1541,13 +1541,7 @@ in
 
     (mkRenamedOptionModule
       [ "services" "sourcehut" "originBase" ]
-      [
-        "services"
-        "sourcehut"
-        "settings"
-        "sr.ht"
-        "global-domain"
-      ]
+      [ "services" "sourcehut" "settings" "sr.ht" "global-domain" ]
     )
     (mkRenamedOptionModule
       [ "services" "sourcehut" "address" ]
