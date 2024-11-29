@@ -105,9 +105,13 @@ let
         _: provider:
         # use opentofu plugin registry over terraform's
         provider.override (oldArgs: {
-          provider-source-address = lib.replaceStrings [ "https://registry.terraform.io/providers" ] [
-            "registry.opentofu.org"
-          ] oldArgs.homepage;
+          provider-source-address =
+            lib.replaceStrings
+              [ "https://registry.terraform.io/providers" ]
+              [
+                "registry.opentofu.org"
+              ]
+              oldArgs.homepage;
         })
       )
       (
