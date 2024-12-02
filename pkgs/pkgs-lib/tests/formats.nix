@@ -720,16 +720,10 @@ runBuildTests {
         null
         null
       ];
-      mixed =
-        format.lib.mkMixedArray
-          [
-            10
-            3.141
-          ]
-          {
-            str = "foo";
-            attrs.foo = null;
-          };
+      mixed = format.lib.mkMixedArray [ 10 3.141 ] {
+        str = "foo";
+        attrs.foo = null;
+      };
       raw = format.lib.mkRaw "random_function()";
     };
     expected = ''

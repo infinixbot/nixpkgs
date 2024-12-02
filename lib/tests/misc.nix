@@ -257,10 +257,7 @@ runTests {
   testPipeStrings = {
     expr =
       pipe
-        [
-          3
-          4
-        ]
+        [ 3 4 ]
         [
           (map toString)
           (map (s: s + "\n"))
@@ -1170,15 +1167,7 @@ runTests {
 
   # The accumulator isn't forced deeply
   testFoldl'NonDeep = {
-    expr = take 3 (
-      foldl' (acc: el: [ el ] ++ acc)
-        [ (abort "unevaluated list entry") ]
-        [
-          1
-          2
-          3
-        ]
-    );
+    expr = take 3 (foldl' (acc: el: [ el ] ++ acc) [ (abort "unevaluated list entry") ] [ 1 2 3 ]);
     expected = [
       3
       2
@@ -1249,124 +1238,46 @@ runTests {
   ];
 
   testListHasPrefixExample1 = {
-    expr =
-      lists.hasPrefix
-        [
-          1
-          2
-        ]
-        [
-          1
-          2
-          3
-          4
-        ];
+    expr = lists.hasPrefix [ 1 2 ] [ 1 2 3 4 ];
     expected = true;
   };
   testListHasPrefixExample2 = {
-    expr =
-      lists.hasPrefix
-        [
-          0
-          1
-        ]
-        [
-          1
-          2
-          3
-          4
-        ];
+    expr = lists.hasPrefix [ 0 1 ] [ 1 2 3 4 ];
     expected = false;
   };
   testListHasPrefixLazy = {
-    expr =
-      lists.hasPrefix
-        [ 1 ]
-        [
-          1
-          (abort "lib.lists.hasPrefix is not lazy")
-        ];
+    expr = lists.hasPrefix [ 1 ] [ 1 (abort "lib.lists.hasPrefix is not lazy") ];
     expected = true;
   };
   testListHasPrefixEmptyPrefix = {
-    expr =
-      lists.hasPrefix
-        [ ]
-        [
-          1
-          2
-        ];
+    expr = lists.hasPrefix [ ] [ 1 2 ];
     expected = true;
   };
   testListHasPrefixEmptyList = {
-    expr =
-      lists.hasPrefix
-        [
-          1
-          2
-        ]
-        [ ];
+    expr = lists.hasPrefix [ 1 2 ] [ ];
     expected = false;
   };
 
   testListRemovePrefixExample1 = {
-    expr =
-      lists.removePrefix
-        [
-          1
-          2
-        ]
-        [
-          1
-          2
-          3
-          4
-        ];
+    expr = lists.removePrefix [ 1 2 ] [ 1 2 3 4 ];
     expected = [
       3
       4
     ];
   };
   testListRemovePrefixExample2 = {
-    expr =
-      (builtins.tryEval (
-        lists.removePrefix
-          [
-            0
-            1
-          ]
-          [
-            1
-            2
-            3
-            4
-          ]
-      )).success;
+    expr = (builtins.tryEval (lists.removePrefix [ 0 1 ] [ 1 2 3 4 ])).success;
     expected = false;
   };
   testListRemovePrefixEmptyPrefix = {
-    expr =
-      lists.removePrefix
-        [ ]
-        [
-          1
-          2
-        ];
+    expr = lists.removePrefix [ ] [ 1 2 ];
     expected = [
       1
       2
     ];
   };
   testListRemovePrefixEmptyList = {
-    expr =
-      (builtins.tryEval (
-        lists.removePrefix
-          [
-            1
-            2
-          ]
-          [ ]
-      )).success;
+    expr = (builtins.tryEval (lists.removePrefix [ 1 2 ] [ ])).success;
     expected = false;
   };
 
@@ -1395,42 +1306,14 @@ runTests {
   };
 
   testListCommonPrefixExample1 = {
-    expr =
-      lists.commonPrefix
-        [
-          1
-          2
-          3
-          4
-          5
-          6
-        ]
-        [
-          1
-          2
-          4
-          8
-        ];
+    expr = lists.commonPrefix [ 1 2 3 4 5 6 ] [ 1 2 4 8 ];
     expected = [
       1
       2
     ];
   };
   testListCommonPrefixExample2 = {
-    expr =
-      lists.commonPrefix
-        [
-          1
-          2
-          3
-        ]
-        [
-          1
-          2
-          3
-          4
-          5
-        ];
+    expr = lists.commonPrefix [ 1 2 3 ] [ 1 2 3 4 5 ];
     expected = [
       1
       2
@@ -1438,44 +1321,15 @@ runTests {
     ];
   };
   testListCommonPrefixExample3 = {
-    expr =
-      lists.commonPrefix
-        [
-          1
-          2
-          3
-        ]
-        [
-          4
-          5
-          6
-        ];
+    expr = lists.commonPrefix [ 1 2 3 ] [ 4 5 6 ];
     expected = [ ];
   };
   testListCommonPrefixEmpty = {
-    expr =
-      lists.commonPrefix
-        [ ]
-        [
-          1
-          2
-          3
-        ];
+    expr = lists.commonPrefix [ ] [ 1 2 3 ];
     expected = [ ];
   };
   testListCommonPrefixSame = {
-    expr =
-      lists.commonPrefix
-        [
-          1
-          2
-          3
-        ]
-        [
-          1
-          2
-          3
-        ];
+    expr = lists.commonPrefix [ 1 2 3 ] [ 1 2 3 ];
     expected = [
       1
       2
@@ -1483,13 +1337,7 @@ runTests {
     ];
   };
   testListCommonPrefixLazy = {
-    expr =
-      lists.commonPrefix
-        [ 1 ]
-        [
-          1
-          (abort "lib.lists.commonPrefix shouldn't evaluate this")
-        ];
+    expr = lists.commonPrefix [ 1 ] [ 1 (abort "lib.lists.commonPrefix shouldn't evaluate this") ];
     expected = [ 1 ];
   };
   # This would stack overflow if `commonPrefix` were implemented using recursion

@@ -14,9 +14,7 @@ stdenv.mkDerivation (finalAttrs: {
   version = "3.13.0.2505";
 
   src = fetchurl {
-    url = "https://www.unifiedremote.com/static/builds/server/linux-x64/${
-      builtins.elemAt (builtins.splitVersion finalAttrs.version) 3
-    }/urserver-${finalAttrs.version}.tar.gz";
+    url = "https://www.unifiedremote.com/static/builds/server/linux-x64/${builtins.elemAt (builtins.splitVersion finalAttrs.version) 3}/urserver-${finalAttrs.version}.tar.gz";
     hash = "sha256-rklv6Ppha1HhEPunbL8ELYdQ9Z1FN4FrVsNwny3/gA4=";
   };
 

@@ -121,9 +121,7 @@ stdenv.mkDerivation (self: {
   passthru = {
     updateScript = gitUpdater { rev-prefix = "v"; };
     inherit boost;
-    sitePackages = "lib/emilua-${
-      (lib.concatStringsSep "." (lib.take 2 (lib.splitVersion self.version)))
-    }";
+    sitePackages = "lib/emilua-${(lib.concatStringsSep "." (lib.take 2 (lib.splitVersion self.version)))}";
   };
 
   meta = with lib; {

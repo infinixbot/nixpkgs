@@ -55,9 +55,7 @@ let
     fetchurl {
       inherit name sha256;
       # e.g. "23.1std.0.991" -> "23.1std/921"
-      url = "https://downloads.intel.com/akdlm/software/acdsinst/${lib.versions.majorMinor version}std/${
-        lib.elemAt (lib.splitVersion version) 4
-      }/ib_installers/${name}";
+      url = "https://downloads.intel.com/akdlm/software/acdsinst/${lib.versions.majorMinor version}std/${lib.elemAt (lib.splitVersion version) 4}/ib_installers/${name}";
     };
 
   installers = map download (

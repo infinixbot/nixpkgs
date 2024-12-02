@@ -2077,7 +2077,8 @@ rec {
   zip = warn "lib.zip is a deprecated alias of lib.zipAttrsWith." zipAttrsWith;
 
   # DEPRECATED
-  cartesianProductOfSets = warnIf (oldestSupportedReleaseIsAtLeast
-    2405
-  ) "lib.cartesianProductOfSets is a deprecated alias of lib.cartesianProduct." cartesianProduct;
+  cartesianProductOfSets =
+    warnIf (oldestSupportedReleaseIsAtLeast 2405)
+      "lib.cartesianProductOfSets is a deprecated alias of lib.cartesianProduct."
+      cartesianProduct;
 }

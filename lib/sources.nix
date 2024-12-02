@@ -313,9 +313,10 @@ let
 in
 {
 
-  pathType = lib.warnIf (lib.oldestSupportedReleaseIsAtLeast
-    2305
-  ) "lib.sources.pathType has been moved to lib.filesystem.pathType." lib.filesystem.pathType;
+  pathType =
+    lib.warnIf (lib.oldestSupportedReleaseIsAtLeast 2305)
+      "lib.sources.pathType has been moved to lib.filesystem.pathType."
+      lib.filesystem.pathType;
 
   pathIsDirectory =
     lib.warnIf (lib.oldestSupportedReleaseIsAtLeast 2305)
