@@ -359,9 +359,8 @@ rec {
         authors = [
           "Nick Fitzgerald <fitzgen@gmail.com>"
         ];
-        features =
-          {
-          };
+        features = {
+        };
         resolvedDefaultFeatures = [ "default" ];
       };
       "byteorder" = rec {
@@ -415,9 +414,8 @@ rec {
         authors = [
           "RustCrypto Developers"
         ];
-        features =
-          {
-          };
+        features = {
+        };
       };
       "crypto-bigint" = rec {
         crateName = "crypto-bigint";
@@ -2369,9 +2367,8 @@ rec {
           "Jacob Pratt <open-source@jhpratt.dev>"
           "Time contributors"
         ];
-        features =
-          {
-          };
+        features = {
+        };
       };
       "typenum" = rec {
         crateName = "typenum";
@@ -2398,9 +2395,8 @@ rec {
           "kwantam <kwantam@gmail.com>"
           "Manish Goregaokar <manishsmail@gmail.com>"
         ];
-        features =
-          {
-          };
+        features = {
+        };
         resolvedDefaultFeatures = [ "default" ];
       };
       "untrusted" = rec {

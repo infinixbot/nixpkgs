@@ -50,9 +50,8 @@ let
     ];
   };
 
-  extraDisabledTestPaths =
-    {
-    };
+  extraDisabledTestPaths = {
+  };
 
   extraDisabledTests = {
     shell_command = [

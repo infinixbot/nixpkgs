@@ -2090,12 +2090,10 @@ runTests {
 
   testToINIWithGlobalSectionEmpty = {
     expr = generators.toINIWithGlobalSection { } {
-      globalSection =
-        {
-        };
-      sections =
-        {
-        };
+      globalSection = {
+      };
+      sections = {
+      };
     };
     expected = '''';
   };

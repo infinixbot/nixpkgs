@@ -16,10 +16,8 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-3+1ssFyU7SKFJgDYBQY0kVjmTHOD71D2AjnH+4bfLXo=";
   };
 
-  nativeBuildInputs =
-    with python3.pkgs;
-    [
-    ];
+  nativeBuildInputs = with python3.pkgs; [
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     blessed

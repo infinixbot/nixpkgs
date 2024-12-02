@@ -111,9 +111,8 @@ in
           Useful for sending jukebox output to non-default alsa
           devices.
         '';
-        default =
-          [
-          ];
+        default = [
+        ];
         type = lib.types.listOf lib.types.str;
         example = [
           "-Djavax.sound.sampled.Clip='#CODEC [plughw:1,0]'"

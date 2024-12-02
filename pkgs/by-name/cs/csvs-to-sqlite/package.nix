@@ -32,9 +32,8 @@ buildPythonApplication rec {
     })
   ];
 
-  nativeBuildInputs =
-    [
-    ];
+  nativeBuildInputs = [
+  ];
 
   propagatedBuildInputs = [
     click

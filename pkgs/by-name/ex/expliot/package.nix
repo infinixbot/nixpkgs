@@ -41,9 +41,8 @@ buildPythonApplication rec {
     "zeroconf"
   ];
 
-  nativeBuildInputs =
-    [
-    ];
+  nativeBuildInputs = [
+  ];
 
   propagatedBuildInputs = [
     aiocoap

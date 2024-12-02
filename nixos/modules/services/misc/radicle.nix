@@ -328,9 +328,8 @@ in
             home = env.HOME;
             isSystemUser = true;
           };
-          groups.radicle =
-            {
-            };
+          groups.radicle = {
+          };
         };
       }
 

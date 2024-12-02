@@ -82762,9 +82762,8 @@ in
         sources."yocto-queue-0.1.0"
       ];
       buildInputs = globalBuildInputs;
-      meta =
-        {
-        };
+      meta = {
+      };
       production = true;
       bypassCache = true;
       reconstructLock = true;

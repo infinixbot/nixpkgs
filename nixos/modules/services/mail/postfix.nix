@@ -1050,9 +1050,8 @@ in
             virtual = {
               privileged = true;
             };
-            lmtp =
-              {
-              };
+            lmtp = {
+            };
             anvil = {
               maxproc = 1;
             };

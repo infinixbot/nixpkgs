@@ -9831,10 +9831,8 @@ with pkgs;
 
   clucene_core = clucene_core_2;
 
-  clutter-gst =
-    callPackage ../development/libraries/clutter-gst
-      {
-      };
+  clutter-gst = callPackage ../development/libraries/clutter-gst {
+  };
 
   codecserver = callPackage ../applications/audio/codecserver {
     protobuf = protobuf_21;
@@ -16203,10 +16201,8 @@ with pkgs;
 
   ktimetracker = libsForQt5.callPackage ../applications/office/ktimetracker { };
 
-  kubectl-evict-pod =
-    callPackage ../applications/networking/cluster/kubectl-evict-pod
-      {
-      };
+  kubectl-evict-pod = callPackage ../applications/networking/cluster/kubectl-evict-pod {
+  };
 
   kubeval = callPackage ../applications/networking/cluster/kubeval { };
 
@@ -16739,10 +16735,8 @@ with pkgs;
 
   polyphone = qt6.callPackage ../applications/audio/polyphone { };
 
-  roxctl =
-    callPackage ../applications/networking/cluster/roxctl
-      {
-      };
+  roxctl = callPackage ../applications/networking/cluster/roxctl {
+  };
 
   rssguard = libsForQt5.callPackage ../applications/networking/feedreaders/rssguard { };
 
@@ -16925,10 +16919,8 @@ with pkgs;
     sed = gnused;
   };
 
-  pencil =
-    callPackage ../applications/graphics/pencil
-      {
-      };
+  pencil = callPackage ../applications/graphics/pencil {
+  };
 
   petrifoo = callPackage ../applications/audio/petrifoo {
     inherit (gnome2) libgnomecanvas;
@@ -18778,10 +18770,8 @@ with pkgs;
     guile = guile_2_0;
   };
 
-  liquidwar5 =
-    callPackage ../games/liquidwar/5.nix
-      {
-      };
+  liquidwar5 = callPackage ../games/liquidwar/5.nix {
+  };
 
   macopix = callPackage ../games/macopix {
     gtk = gtk2;

@@ -27,9 +27,8 @@ buildPythonPackage rec {
     hash = "sha256-q9PcG836Az+2o1XqeKNh0+z9GN9UGinmGyOAhD5B3Zw=";
   };
 
-  nativeBuildInputs =
-    [
-    ];
+  nativeBuildInputs = [
+  ];
 
   pythonRelaxDeps = [
     "torchvision"

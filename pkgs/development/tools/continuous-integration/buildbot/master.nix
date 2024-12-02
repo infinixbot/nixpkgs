@@ -88,9 +88,8 @@ buildPythonApplication rec {
     hash = "sha256-RPg4eXqpm/F1SSoB4MVo61DgZv/iE2R4VtCkUU69iA8=";
   };
 
-  build-system =
-    [
-    ];
+  build-system = [
+  ];
 
   pythonRelaxDeps = [
     "twisted"

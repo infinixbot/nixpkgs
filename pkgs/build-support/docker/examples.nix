@@ -862,9 +862,8 @@ rec {
       ];
     };
 
-    config =
-      {
-      };
+    config = {
+    };
   };
 
   nix-shell-basic = streamNixShellImage {

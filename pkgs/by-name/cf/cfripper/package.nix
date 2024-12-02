@@ -25,10 +25,8 @@ python3.pkgs.buildPythonApplication rec {
     setuptools-scm
   ];
 
-  nativeBuildInputs =
-    with python3.pkgs;
-    [
-    ];
+  nativeBuildInputs = with python3.pkgs; [
+  ];
 
   dependencies = with python3.pkgs; [
     boto3

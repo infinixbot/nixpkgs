@@ -475,9 +475,8 @@ in
     ) enabledServers;
     users.groups = mapAttrs' (
       name: conf:
-      nameValuePair (redisName name)
-        {
-        }
+      nameValuePair (redisName name) {
+      }
     ) enabledServers;
 
     systemd.services = mapAttrs' (

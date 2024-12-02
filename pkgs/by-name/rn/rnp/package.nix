@@ -34,9 +34,8 @@ stdenv.mkDerivation (finalAttrs: {
     sexpp
   ];
 
-  patches =
-    [
-    ];
+  patches = [
+  ];
 
   cmakeFlags = [
     "-DCMAKE_INSTALL_PREFIX=${placeholder "out"}"

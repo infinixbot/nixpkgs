@@ -346,10 +346,8 @@ let
           unwrapped = neovim-unwrapped;
           initRc = neovimRcContent';
 
-          tests =
-            callPackage ./tests
-              {
-              };
+          tests = callPackage ./tests {
+          };
         };
 
         meta = {

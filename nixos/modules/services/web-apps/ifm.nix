@@ -55,10 +55,8 @@ in
       after = [ "network-online.target" ];
       wantedBy = [ "multi-user.target" ];
 
-      environment =
-        {
-        }
-        // (builtins.mapAttrs (_: val: toString val) cfg.settings);
+      environment = {
+      } // (builtins.mapAttrs (_: val: toString val) cfg.settings);
 
       serviceConfig = {
         DynamicUser = true;

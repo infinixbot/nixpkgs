@@ -868,9 +868,8 @@ let
               inherit (pkgs) openssl;
             }
           else
-            import ../development/ocaml-modules/janestreet
-              {
-              };
+            import ../development/ocaml-modules/janestreet {
+            };
 
         janeStreet_0_15 =
           (lib.makeScope self.newScope (

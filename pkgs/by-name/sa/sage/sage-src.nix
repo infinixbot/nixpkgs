@@ -68,9 +68,8 @@ stdenv.mkDerivation rec {
   # compatible with never dependency versions when possible. All these changes
   # should come from or be proposed to upstream. This list will probably never
   # be empty since dependencies update all the time.
-  packageUpgradePatches =
-    [
-    ];
+  packageUpgradePatches = [
+  ];
 
   patches = nixPatches ++ bugfixPatches ++ packageUpgradePatches;
 

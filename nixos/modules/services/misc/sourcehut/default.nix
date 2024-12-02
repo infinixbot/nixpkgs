@@ -511,10 +511,8 @@ in
           };
         };
 
-        options."hub.sr.ht" =
-          commonServiceSettings "hub"
-          // {
-          };
+        options."hub.sr.ht" = commonServiceSettings "hub" // {
+        };
 
         options."lists.sr.ht" = commonServiceSettings "lists" // {
           allow-new-lists = mkEnableOption "creation of new lists";
@@ -574,10 +572,8 @@ in
           };
         };
 
-        options."man.sr.ht" =
-          commonServiceSettings "man"
-          // {
-          };
+        options."man.sr.ht" = commonServiceSettings "man" // {
+        };
 
         options."meta.sr.ht" =
           removeAttrs (commonServiceSettings "meta") [
@@ -683,10 +679,8 @@ in
           };
         };
 
-        options."paste.sr.ht" =
-          commonServiceSettings "paste"
-          // {
-          };
+        options."paste.sr.ht" = commonServiceSettings "paste" // {
+        };
 
         options."todo.sr.ht" = commonServiceSettings "todo" // {
           notify-from = mkOption {

@@ -23,9 +23,8 @@ buildDunePackage rec {
   ];
 
   doCheck = true;
-  checkInputs =
-    [
-    ];
+  checkInputs = [
+  ];
 
   meta = {
     description = "OCaml Syntax Extension for all Monadic Syntaxes";

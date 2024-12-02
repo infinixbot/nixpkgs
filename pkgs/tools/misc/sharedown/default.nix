@@ -123,10 +123,8 @@ stdenvNoCC.mkDerivation rec {
     description = "Application to save your Sharepoint videos for offline usage";
     homepage = "https://github.com/kylon/Sharedown";
     license = licenses.gpl3Plus;
-    maintainers =
-      with maintainers;
-      [
-      ];
+    maintainers = with maintainers; [
+    ];
     platforms = platforms.unix;
     mainProgram = "Sharedown";
   };

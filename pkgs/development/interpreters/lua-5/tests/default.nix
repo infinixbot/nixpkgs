@@ -75,10 +75,8 @@ pkgs.recurseIntoAttrs ({
 
   checkWrapping =
     pkgs.runCommandLocal "test-${lua.name}-wrapping"
-      (
-        {
-        }
-      )
+      ({
+      })
       (''
         grep -- 'LUA_PATH=' ${wrappedHello}/bin/hello
         touch $out
@@ -104,10 +102,8 @@ pkgs.recurseIntoAttrs ({
 
   checkRelativeImports =
     pkgs.runCommandLocal "test-${lua.name}-relative-imports"
-      (
-        {
-        }
-      )
+      ({
+      })
       (''
         source ${./assert.sh}
 
