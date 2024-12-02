@@ -87,8 +87,9 @@ let
           '';
         };
 
-        pluginRC = lib.foldl (acc: p: if p.config != null then acc ++ [ p.config ] else acc) [
-        ] pluginsNormalized;
+        pluginRC = lib.foldl (
+          acc: p: if p.config != null then acc ++ [ p.config ] else acc
+        ) [ ] pluginsNormalized;
 
         # a limited RC script used only to generate the manifest for remote plugins
         manifestRc = vimUtils.vimrcContent { customRC = ""; };
