@@ -90,11 +90,14 @@ stdenv.mkDerivation rec {
     buildPackages.stdenv.cc
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    autoconf
-    zlib
-  ] ++ lib.optional cupsSupport cups ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames;
+  nativeBuildInputs =
+    [
+      pkg-config
+      autoconf
+      zlib
+    ]
+    ++ lib.optional cupsSupport cups
+    ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames;
 
   buildInputs =
     [

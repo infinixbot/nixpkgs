@@ -108,37 +108,41 @@ mkDerivation rec {
     ninja
   ];
 
-  buildInputs = [
-    draco
-    exiv2
-    fcgi
-    geos
-    gsl
-    hdf5
-    libspatialindex
-    libspatialite
-    libzip
-    netcdf
-    openssl
-    pdal
-    postgresql
-    proj
-    protobuf
-    qca-qt5
-    qscintilla
-    qt3d
-    qtbase
-    qtkeychain
-    qtlocation
-    qtmultimedia
-    qtsensors
-    qtserialport
-    qtxmlpatterns
-    qwt
-    sqlite
-    txt2tags
-    zstd
-  ] ++ lib.optional withGrass grass ++ lib.optional withWebKit qtwebkit ++ pythonBuildInputs;
+  buildInputs =
+    [
+      draco
+      exiv2
+      fcgi
+      geos
+      gsl
+      hdf5
+      libspatialindex
+      libspatialite
+      libzip
+      netcdf
+      openssl
+      pdal
+      postgresql
+      proj
+      protobuf
+      qca-qt5
+      qscintilla
+      qt3d
+      qtbase
+      qtkeychain
+      qtlocation
+      qtmultimedia
+      qtsensors
+      qtserialport
+      qtxmlpatterns
+      qwt
+      sqlite
+      txt2tags
+      zstd
+    ]
+    ++ lib.optional withGrass grass
+    ++ lib.optional withWebKit qtwebkit
+    ++ pythonBuildInputs;
 
   patches = [
     (substituteAll {

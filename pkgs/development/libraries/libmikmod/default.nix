@@ -23,7 +23,8 @@ stdenv.mkDerivation rec {
 
   buildInputs =
     [ texinfo ]
-    ++ optional stdenv.hostPlatform.isLinux alsa-lib ++ optional stdenv.hostPlatform.isDarwin CoreAudio;
+    ++ optional stdenv.hostPlatform.isLinux alsa-lib
+    ++ optional stdenv.hostPlatform.isDarwin CoreAudio;
   propagatedBuildInputs = optional stdenv.hostPlatform.isLinux libpulseaudio;
 
   outputs = [

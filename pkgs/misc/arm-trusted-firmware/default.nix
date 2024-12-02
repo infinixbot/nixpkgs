@@ -64,15 +64,18 @@ let
 
         buildInputs = [ openssl ];
 
-        makeFlags = [
-          "HOSTCC=$(CC_FOR_BUILD)"
-          "M0_CROSS_COMPILE=${pkgsCross.arm-embedded.stdenv.cc.targetPrefix}"
-          "CROSS_COMPILE=${stdenv.cc.targetPrefix}"
-          # binutils 2.39 regression
-          # `warning: /build/source/build/rk3399/release/bl31/bl31.elf has a LOAD segment with RWX permissions`
-          # See also: https://developer.trustedfirmware.org/T996
-          "LDFLAGS=-no-warn-rwx-segments"
-        ] ++ (lib.optional (platform != null) "PLAT=${platform}") ++ extraMakeFlags;
+        makeFlags =
+          [
+            "HOSTCC=$(CC_FOR_BUILD)"
+            "M0_CROSS_COMPILE=${pkgsCross.arm-embedded.stdenv.cc.targetPrefix}"
+            "CROSS_COMPILE=${stdenv.cc.targetPrefix}"
+            # binutils 2.39 regression
+            # `warning: /build/source/build/rk3399/release/bl31/bl31.elf has a LOAD segment with RWX permissions`
+            # See also: https://developer.trustedfirmware.org/T996
+            "LDFLAGS=-no-warn-rwx-segments"
+          ]
+          ++ (lib.optional (platform != null) "PLAT=${platform}")
+          ++ extraMakeFlags;
 
         installPhase = ''
           runHook preInstall

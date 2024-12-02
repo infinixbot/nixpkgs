@@ -79,9 +79,10 @@ stdenv.mkDerivation rec {
     "man"
   ];
 
-  nativeBuildInputs = [
-    cmake
-  ] ++ lib.optional enablePlumed plumed ++ lib.optionals enableCuda [ cudaPackages.cuda_nvcc ];
+  nativeBuildInputs =
+    [ cmake ]
+    ++ lib.optional enablePlumed plumed
+    ++ lib.optionals enableCuda [ cudaPackages.cuda_nvcc ];
 
   buildInputs =
     [

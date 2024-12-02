@@ -74,9 +74,12 @@ in
       serviceConfig = {
         ExecStart =
           let
-            args = [
-              "--video=${cfg.videoDir}"
-            ] ++ optional cfg.enableLirc "--lirc=${config.passthru.lirc.socket}" ++ cfg.extraArguments;
+            args =
+              [
+                "--video=${cfg.videoDir}"
+              ]
+              ++ optional cfg.enableLirc "--lirc=${config.passthru.lirc.socket}"
+              ++ cfg.extraArguments;
           in
           "${cfg.package}/bin/vdr ${lib.escapeShellArgs args}";
         User = cfg.user;

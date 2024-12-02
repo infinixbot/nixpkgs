@@ -57,10 +57,13 @@ stdenv.mkDerivation (finalAttrs: rec {
     hash = "sha256-P1LhUH7V3EtWBXwPHQdN11mCjuyUyVdrtZsUItvC8xU=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ] ++ defaultOptionals ++ lib.optional gtestSupport gtest.dev;
+  nativeBuildInputs =
+    [
+      cmake
+      pkg-config
+    ]
+    ++ defaultOptionals
+    ++ lib.optional gtestSupport gtest.dev;
 
   buildInputs = [
     jsoncpp

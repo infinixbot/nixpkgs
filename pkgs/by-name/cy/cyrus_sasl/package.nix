@@ -54,13 +54,16 @@ stdenv.mkDerivation rec {
     autoreconfHook
     pruneLibtoolFiles
   ] ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames;
-  buildInputs = [
-    openssl
-    db
-    gettext
-    libkrb5
-    libxcrypt
-  ] ++ lib.optional enableLdap openldap ++ lib.optional stdenv.hostPlatform.isLinux pam;
+  buildInputs =
+    [
+      openssl
+      db
+      gettext
+      libkrb5
+      libxcrypt
+    ]
+    ++ lib.optional enableLdap openldap
+    ++ lib.optional stdenv.hostPlatform.isLinux pam;
 
   configureFlags =
     [

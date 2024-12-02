@@ -526,7 +526,8 @@ in
           cfg.qemu.package
           pkgs.netcat
         ] # libvirtd requires qemu-img to manage disk images
-        ++ optional vswitch.enable vswitch.package ++ optional cfg.qemu.swtpm.enable cfg.qemu.swtpm.package;
+        ++ optional vswitch.enable vswitch.package
+        ++ optional cfg.qemu.swtpm.enable cfg.qemu.swtpm.package;
 
       serviceConfig = {
         Type = "notify";

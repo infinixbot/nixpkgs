@@ -40,9 +40,8 @@ stdenv.mkDerivation (finalAttrs: {
     ninja
     python3
   ];
-  buildInputs = [
-    openssl
-  ] ++ lib.optionals withJdbc [ openjdk11 ] ++ lib.optionals withOdbc [ unixODBC ];
+  buildInputs =
+    [ openssl ] ++ lib.optionals withJdbc [ openjdk11 ] ++ lib.optionals withOdbc [ unixODBC ];
 
   cmakeFlags =
     [

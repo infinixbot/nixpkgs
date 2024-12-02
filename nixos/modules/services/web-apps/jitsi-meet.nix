@@ -439,7 +439,8 @@ in
           "jicofo.service"
           "jitsi-videobridge2.service"
         ]
-        ++ (optional cfg.prosody.enable "prosody.service") ++ (optional cfg.jigasi.enable "jigasi.service");
+        ++ (optional cfg.prosody.enable "prosody.service")
+        ++ (optional cfg.jigasi.enable "jigasi.service");
       serviceConfig = {
         Type = "oneshot";
         UMask = "027";

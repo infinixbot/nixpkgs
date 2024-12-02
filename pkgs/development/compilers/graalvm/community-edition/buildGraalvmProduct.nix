@@ -34,9 +34,10 @@ stdenv.mkDerivation (
   {
     pname = product;
 
-    nativeBuildInputs = [
-      makeWrapper
-    ] ++ lib.optional stdenv.hostPlatform.isLinux autoPatchelfHook ++ extraNativeBuildInputs;
+    nativeBuildInputs =
+      [ makeWrapper ]
+      ++ lib.optional stdenv.hostPlatform.isLinux autoPatchelfHook
+      ++ extraNativeBuildInputs;
 
     buildInputs =
       [

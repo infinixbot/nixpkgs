@@ -124,15 +124,18 @@ in
       automake
       help2man
     ];
-    buildInputs = [
-      ncurses
-      libusb-compat-0_1
-      freetype
-      lvm2
-      fuse
-      libtool
-      bash
-    ] ++ lib.optional doCheck qemu ++ lib.optional zfsSupport zfs;
+    buildInputs =
+      [
+        ncurses
+        libusb-compat-0_1
+        freetype
+        lvm2
+        fuse
+        libtool
+        bash
+      ]
+      ++ lib.optional doCheck qemu
+      ++ lib.optional zfsSupport zfs;
 
     strictDeps = true;
 

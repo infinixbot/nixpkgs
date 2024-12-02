@@ -88,10 +88,13 @@ mkDerivation rec {
     rustPlatform.cargoSetupHook
   ];
 
-  buildInputs = [
-    karchive
-    qtwebsockets
-  ] ++ lib.optionals buildClient clientDeps ++ lib.optionals buildServer serverDeps;
+  buildInputs =
+    [
+      karchive
+      qtwebsockets
+    ]
+    ++ lib.optionals buildClient clientDeps
+    ++ lib.optionals buildServer serverDeps;
 
   cmakeFlags = [
     (lib.cmakeFeature "INITSYS" (lib.optionalString withSystemd "systemd"))

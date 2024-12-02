@@ -890,10 +890,14 @@ rec {
     runCommand "merge-docker-images"
       {
         inherit images;
-        nativeBuildInputs = [
-          file
-          jq
-        ] ++ compressors.none.nativeInputs ++ compressors.gz.nativeInputs ++ compressors.zstd.nativeInputs;
+        nativeBuildInputs =
+          [
+            file
+            jq
+          ]
+          ++ compressors.none.nativeInputs
+          ++ compressors.gz.nativeInputs
+          ++ compressors.zstd.nativeInputs;
       }
       ''
         mkdir image inputs

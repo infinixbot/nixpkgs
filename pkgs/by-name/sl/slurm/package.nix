@@ -88,45 +88,51 @@ stdenv.mkDerivation rec {
     python3
     perl
   ];
-  buildInputs = [
-    curl
-    python3
-    munge
-    pam
-    libmysqlclient
-    ncurses
-    lz4
-    rdma-core
-    lua
-    hwloc
-    numactl
-    readline
-    freeipmi
-    shadow.su
-    pmix
-    json_c
-    libjwt
-    libyaml
-    dbus
-    libbpf
-    http-parser
-  ] ++ lib.optionals enableX11 [ xorg.xauth ] ++ lib.optionals enableGtk2 [ gtk2 ];
+  buildInputs =
+    [
+      curl
+      python3
+      munge
+      pam
+      libmysqlclient
+      ncurses
+      lz4
+      rdma-core
+      lua
+      hwloc
+      numactl
+      readline
+      freeipmi
+      shadow.su
+      pmix
+      json_c
+      libjwt
+      libyaml
+      dbus
+      libbpf
+      http-parser
+    ]
+    ++ lib.optionals enableX11 [ xorg.xauth ]
+    ++ lib.optionals enableGtk2 [ gtk2 ];
 
-  configureFlags = [
-    "--with-freeipmi=${freeipmi}"
-    "--with-http-parser=${http-parser}"
-    "--with-hwloc=${lib.getDev hwloc}"
-    "--with-json=${lib.getDev json_c}"
-    "--with-jwt=${libjwt}"
-    "--with-lz4=${lib.getDev lz4}"
-    "--with-munge=${munge}"
-    "--with-yaml=${lib.getDev libyaml}"
-    "--with-ofed=${lib.getDev rdma-core}"
-    "--sysconfdir=/etc/slurm"
-    "--with-pmix=${lib.getDev pmix}"
-    "--with-bpf=${libbpf}"
-    "--without-rpath" # Required for configure to pick up the right dlopen path
-  ] ++ (lib.optional enableGtk2 "--disable-gtktest") ++ (lib.optional (!enableX11) "--disable-x11");
+  configureFlags =
+    [
+      "--with-freeipmi=${freeipmi}"
+      "--with-http-parser=${http-parser}"
+      "--with-hwloc=${lib.getDev hwloc}"
+      "--with-json=${lib.getDev json_c}"
+      "--with-jwt=${libjwt}"
+      "--with-lz4=${lib.getDev lz4}"
+      "--with-munge=${munge}"
+      "--with-yaml=${lib.getDev libyaml}"
+      "--with-ofed=${lib.getDev rdma-core}"
+      "--sysconfdir=/etc/slurm"
+      "--with-pmix=${lib.getDev pmix}"
+      "--with-bpf=${libbpf}"
+      "--without-rpath" # Required for configure to pick up the right dlopen path
+    ]
+    ++ (lib.optional enableGtk2 "--disable-gtktest")
+    ++ (lib.optional (!enableX11) "--disable-x11");
 
   preConfigure = ''
     patchShebangs ./doc/html/shtml2html.py

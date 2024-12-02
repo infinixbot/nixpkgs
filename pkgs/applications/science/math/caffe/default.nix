@@ -60,7 +60,9 @@ stdenv.mkDerivation rec {
       (if pythonSupport then "-Dpython_version=${python.pythonVersion}" else "-DBUILD_python=OFF")
       "-DBLAS=open"
       "-DCPU_ONLY=ON"
-    ] ++ [ "-DUSE_LEVELDB=${toggle leveldbSupport}" ] ++ [ "-DUSE_LMDB=${toggle lmdbSupport}" ];
+    ]
+    ++ [ "-DUSE_LEVELDB=${toggle leveldbSupport}" ]
+    ++ [ "-DUSE_LMDB=${toggle lmdbSupport}" ];
 
   buildInputs =
     [

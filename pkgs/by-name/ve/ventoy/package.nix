@@ -76,10 +76,13 @@ stdenv.mkDerivation (finalAttrs: {
         WebUI/static/js/languages.js tool/languages.json
   '';
 
-  nativeBuildInputs = [
-    autoPatchelfHook
-    makeWrapper
-  ] ++ optionals (withQt5 || withGtk3) [ copyDesktopItems ] ++ optionals withQt5 [ wrapQtAppsHook ];
+  nativeBuildInputs =
+    [
+      autoPatchelfHook
+      makeWrapper
+    ]
+    ++ optionals (withQt5 || withGtk3) [ copyDesktopItems ]
+    ++ optionals withQt5 [ wrapQtAppsHook ];
 
   buildInputs =
     [

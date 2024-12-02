@@ -80,12 +80,15 @@ let
 
   # Those settings are automatically set based on other parts
   # of this module.
-  automaticallySetPluginSettings = [
-    "sieve_plugins"
-    "sieve_extensions"
-    "sieve_global_extensions"
-    "sieve_pipe_bin_dir"
-  ] ++ (builtins.attrNames sieveScriptSettings) ++ (builtins.attrNames imapSieveMailboxSettings);
+  automaticallySetPluginSettings =
+    [
+      "sieve_plugins"
+      "sieve_extensions"
+      "sieve_global_extensions"
+      "sieve_pipe_bin_dir"
+    ]
+    ++ (builtins.attrNames sieveScriptSettings)
+    ++ (builtins.attrNames imapSieveMailboxSettings);
 
   # The idea is to match everything that looks like `$term =`
   # but not `# $term something something`

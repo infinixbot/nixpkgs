@@ -39,22 +39,25 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  buildInputs = [
-    alsa-lib
-    hidapi
-    libusb1
-    libX11
-    libxcb
-    libXrandr
-    flatbuffers
-    protobuf
-    mbedtls
-    python3
-    qtbase
-    qtserialport
-    qtsvg
-    qtx11extras
-  ] ++ lib.optional stdenv.hostPlatform.isLinux libcec ++ lib.optional withRPiDispmanx libraspberrypi;
+  buildInputs =
+    [
+      alsa-lib
+      hidapi
+      libusb1
+      libX11
+      libxcb
+      libXrandr
+      flatbuffers
+      protobuf
+      mbedtls
+      python3
+      qtbase
+      qtserialport
+      qtsvg
+      qtx11extras
+    ]
+    ++ lib.optional stdenv.hostPlatform.isLinux libcec
+    ++ lib.optional withRPiDispmanx libraspberrypi;
 
   nativeBuildInputs = [
     cmake

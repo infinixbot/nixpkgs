@@ -125,9 +125,12 @@ lib.makeOverridable (
         ++ lib.optionals (type != "gem") [ bundler ]
         ++ nativeBuildInputs;
 
-      buildInputs = [
-        ruby
-      ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ libobjc ] ++ buildInputs;
+      buildInputs =
+        [
+          ruby
+        ]
+        ++ lib.optionals stdenv.hostPlatform.isDarwin [ libobjc ]
+        ++ buildInputs;
 
       #name = builtins.trace (attrs.name or "no attr.name" ) "${namePrefix}${gemName}-${version}";
       name = attrs.name or "${namePrefix}${gemName}-${suffix}";

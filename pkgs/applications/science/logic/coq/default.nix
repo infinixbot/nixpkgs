@@ -259,10 +259,13 @@ let
 
     prefixKey = "-prefix ";
 
-    buildFlags = [
-      "revision"
-      "coq"
-    ] ++ lib.optional buildIde "coqide" ++ lib.optional (!coqAtLeast "8.14") "bin/votour";
+    buildFlags =
+      [
+        "revision"
+        "coq"
+      ]
+      ++ lib.optional buildIde "coqide"
+      ++ lib.optional (!coqAtLeast "8.14") "bin/votour";
     enableParallelBuilding = true;
 
     createFindlibDestdir = true;

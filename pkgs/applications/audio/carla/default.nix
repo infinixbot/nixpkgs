@@ -51,15 +51,19 @@ stdenv.mkDerivation (finalAttrs: {
     ]
     ++ lib.optional withFrontend pyqt5;
 
-  buildInputs = [
-    file
-    liblo
-    alsa-lib
-    fluidsynth
-    jack2
-    libpulseaudio
-    libsndfile
-  ] ++ lib.optional withQt qtbase ++ lib.optional withGtk2 gtk2 ++ lib.optional withGtk3 gtk3;
+  buildInputs =
+    [
+      file
+      liblo
+      alsa-lib
+      fluidsynth
+      jack2
+      libpulseaudio
+      libsndfile
+    ]
+    ++ lib.optional withQt qtbase
+    ++ lib.optional withGtk2 gtk2
+    ++ lib.optional withGtk3 gtk3;
 
   propagatedBuildInputs = finalAttrs.pythonPath;
 

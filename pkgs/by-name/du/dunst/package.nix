@@ -74,13 +74,16 @@ stdenv.mkDerivation (finalAttrs: {
     "man"
   ];
 
-  makeFlags = [
-    "PREFIX=$(out)"
-    "VERSION=$(version)"
-    "SYSCONFDIR=$(out)/etc"
-    "SERVICEDIR_DBUS=$(out)/share/dbus-1/services"
-    "SERVICEDIR_SYSTEMD=$(out)/lib/systemd/user"
-  ] ++ lib.optional (!withX11) "X11=0" ++ lib.optional (!withWayland) "WAYLAND=0";
+  makeFlags =
+    [
+      "PREFIX=$(out)"
+      "VERSION=$(version)"
+      "SYSCONFDIR=$(out)/etc"
+      "SERVICEDIR_DBUS=$(out)/share/dbus-1/services"
+      "SERVICEDIR_SYSTEMD=$(out)/lib/systemd/user"
+    ]
+    ++ lib.optional (!withX11) "X11=0"
+    ++ lib.optional (!withWayland) "WAYLAND=0";
 
   postInstall = ''
     wrapProgram $out/bin/dunst \

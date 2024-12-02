@@ -54,15 +54,18 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optional withRuby ruby
     ++ lib.optional withSfsexp makeWrapper;
 
-  buildInputs = [
-    gnupg # undefined dependencies
-    xapian
-    gmime3
-    talloc
-    zlib # dependencies described in INSTALL
-    perl
-    pythonPackages.python
-  ] ++ lib.optional withRuby ruby ++ lib.optional withSfsexp sfsexp;
+  buildInputs =
+    [
+      gnupg # undefined dependencies
+      xapian
+      gmime3
+      talloc
+      zlib # dependencies described in INSTALL
+      perl
+      pythonPackages.python
+    ]
+    ++ lib.optional withRuby ruby
+    ++ lib.optional withSfsexp sfsexp;
 
   postPatch =
     ''
@@ -102,12 +105,15 @@ stdenv.mkDerivation (finalAttrs: {
     cp bindings/python-cffi/_notmuch_config.py ${placeholder "bindingconfig"}/
   '';
 
-  outputs = [
-    "out"
-    "man"
-    "info"
-    "bindingconfig"
-  ] ++ lib.optional withEmacs "emacs" ++ lib.optional withVim "vim";
+  outputs =
+    [
+      "out"
+      "man"
+      "info"
+      "bindingconfig"
+    ]
+    ++ lib.optional withEmacs "emacs"
+    ++ lib.optional withVim "vim";
 
   # if notmuch is built with s-expression support, the testsuite (T-850.sh) only
   # passes if notmuch-git can be executed, so we need to patch its shebang.

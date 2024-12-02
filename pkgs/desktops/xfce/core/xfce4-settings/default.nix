@@ -26,18 +26,21 @@ mkXfceDerivation {
 
   sha256 = "sha256-xiu26B3dbWu+/AtF/iUC6Wo2U5ZZyzN9RfdbBaQRJ1M=";
 
-  buildInputs = [
-    exo
-    garcon
-    glib
-    gtk3
-    libnotify
-    libxfce4ui
-    libxfce4util
-    libxklavier
-    xf86inputlibinput
-    xfconf
-  ] ++ lib.optionals withUpower [ upower ] ++ lib.optionals withColord [ colord ];
+  buildInputs =
+    [
+      exo
+      garcon
+      glib
+      gtk3
+      libnotify
+      libxfce4ui
+      libxfce4util
+      libxklavier
+      xf86inputlibinput
+      xfconf
+    ]
+    ++ lib.optionals withUpower [ upower ]
+    ++ lib.optionals withColord [ colord ];
 
   configureFlags =
     [

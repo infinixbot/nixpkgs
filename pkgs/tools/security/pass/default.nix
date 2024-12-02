@@ -47,9 +47,8 @@ let
   env =
     extensions:
     let
-      selected = [
-        pass
-      ] ++ extensions passExtensions ++ lib.optional tombPluginSupport passExtensions.tomb;
+      selected =
+        [ pass ] ++ extensions passExtensions ++ lib.optional tombPluginSupport passExtensions.tomb;
     in
     buildEnv {
       name = "pass-env";

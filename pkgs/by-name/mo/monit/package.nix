@@ -32,10 +32,13 @@ stdenv.mkDerivation rec {
       darwin.apple_sdk.frameworks.System
     ];
 
-  buildInputs = [
-    zlib.dev
-    libxcrypt
-  ] ++ lib.optionals useSSL [ openssl ] ++ lib.optionals usePAM [ pam ];
+  buildInputs =
+    [
+      zlib.dev
+      libxcrypt
+    ]
+    ++ lib.optionals useSSL [ openssl ]
+    ++ lib.optionals usePAM [ pam ];
 
   configureFlags =
     [

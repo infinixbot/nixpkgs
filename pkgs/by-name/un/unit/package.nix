@@ -72,7 +72,9 @@ stdenv.mkDerivation rec {
       "--user=unit"
       "--group=unit"
     ]
-    ++ optional withSSL "--openssl" ++ optional (!withIPv6) "--no-ipv6" ++ optional withDebug "--debug";
+    ++ optional withSSL "--openssl"
+    ++ optional (!withIPv6) "--no-ipv6"
+    ++ optional withDebug "--debug";
 
   # Optionally add the PHP derivations used so they can be addressed in the configs
   usedPhp81 = optionals withPHP81 php81-unit;

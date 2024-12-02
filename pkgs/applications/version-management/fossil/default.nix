@@ -42,7 +42,8 @@ stdenv.mkDerivation (finalAttrs: {
       which
       ed
     ]
-    ++ lib.optional stdenv.hostPlatform.isDarwin libiconv ++ lib.optional (!withInternalSqlite) sqlite;
+    ++ lib.optional stdenv.hostPlatform.isDarwin libiconv
+    ++ lib.optional (!withInternalSqlite) sqlite;
 
   enableParallelBuilding = true;
 

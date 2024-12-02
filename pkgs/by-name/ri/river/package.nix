@@ -60,10 +60,13 @@ stdenv.mkDerivation (finalAttrs: {
 
   dontConfigure = true;
 
-  zigBuildFlags = [
-    "--system"
-    "${finalAttrs.deps}"
-  ] ++ lib.optional withManpages "-Dman-pages" ++ lib.optional xwaylandSupport "-Dxwayland";
+  zigBuildFlags =
+    [
+      "--system"
+      "${finalAttrs.deps}"
+    ]
+    ++ lib.optional withManpages "-Dman-pages"
+    ++ lib.optional xwaylandSupport "-Dxwayland";
 
   postInstall = ''
     install contrib/river.desktop -Dt $out/share/wayland-sessions

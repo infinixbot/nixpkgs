@@ -117,9 +117,10 @@ in
 stdenv.mkDerivation {
   inherit pname version srcs;
 
-  buildInputs = [
-    (lib.getLib stdenv.cc.cc)
-  ] ++ optional stdenv.hostPlatform.isLinux libaio ++ optional odbcSupport unixODBC;
+  buildInputs =
+    [ (lib.getLib stdenv.cc.cc) ]
+    ++ optional stdenv.hostPlatform.isLinux libaio
+    ++ optional odbcSupport unixODBC;
 
   nativeBuildInputs =
     [

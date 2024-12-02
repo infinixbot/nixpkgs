@@ -53,10 +53,13 @@ stdenv.mkDerivation rec {
     done
   '';
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ] ++ lib.optionals qtClient [ qt5.wrapQtAppsHook ] ++ lib.optionals gtkClient [ wrapGAppsHook3 ];
+  nativeBuildInputs =
+    [
+      autoreconfHook
+      pkg-config
+    ]
+    ++ lib.optionals qtClient [ qt5.wrapQtAppsHook ]
+    ++ lib.optionals gtkClient [ wrapGAppsHook3 ];
 
   buildInputs =
     [

@@ -86,12 +86,15 @@ let
           moveToOutput "lib/libz3java.${stdenv.hostPlatform.extensions.sharedLibrary}" "$java"
         '';
 
-      outputs = [
-        "out"
-        "lib"
-        "dev"
-        "python"
-      ] ++ lib.optional javaBindings "java" ++ lib.optional ocamlBindings "ocaml";
+      outputs =
+        [
+          "out"
+          "lib"
+          "dev"
+          "python"
+        ]
+        ++ lib.optional javaBindings "java"
+        ++ lib.optional ocamlBindings "ocaml";
 
       meta = with lib; {
         description = "High-performance theorem prover and SMT solver";

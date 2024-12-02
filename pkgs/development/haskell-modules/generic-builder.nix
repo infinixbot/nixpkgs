@@ -957,9 +957,8 @@ lib.fix (
             inherit shellHook;
 
             depsBuildBuild = lib.optional isCross ghcEnvForBuild;
-            nativeBuildInputs = [
-              ghcEnv
-            ] ++ optional (allPkgconfigDepends != [ ]) pkg-config ++ collectedToolDepends;
+            nativeBuildInputs =
+              [ ghcEnv ] ++ optional (allPkgconfigDepends != [ ]) pkg-config ++ collectedToolDepends;
             buildInputs = otherBuildInputsSystem;
             LANG = "en_US.UTF-8";
             LOCALE_ARCHIVE = lib.optionalString (

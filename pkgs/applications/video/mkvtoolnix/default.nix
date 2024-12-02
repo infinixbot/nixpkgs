@@ -82,26 +82,29 @@ stdenv.mkDerivation rec {
   ] ++ optionals withGUI [ wrapQtAppsHook ];
 
   # qtbase and qtmultimedia are needed without the GUI
-  buildInputs = [
-    boost
-    expat
-    file
-    flac
-    fmt
-    gmp
-    libdvdread
-    libebml
-    libmatroska
-    libogg
-    libvorbis
-    nlohmann_json
-    pugixml
-    qtbase
-    qtmultimedia
-    utf8cpp
-    xdg-utils
-    zlib
-  ] ++ optionals withGUI [ cmark ] ++ optionals stdenv.hostPlatform.isLinux [ qtwayland ];
+  buildInputs =
+    [
+      boost
+      expat
+      file
+      flac
+      fmt
+      gmp
+      libdvdread
+      libebml
+      libmatroska
+      libogg
+      libvorbis
+      nlohmann_json
+      pugixml
+      qtbase
+      qtmultimedia
+      utf8cpp
+      xdg-utils
+      zlib
+    ]
+    ++ optionals withGUI [ cmark ]
+    ++ optionals stdenv.hostPlatform.isLinux [ qtwayland ];
 
   # autoupdate is not needed but it silences a ton of pointless warnings
   postPatch = ''

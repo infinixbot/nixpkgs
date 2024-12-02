@@ -21,10 +21,13 @@ stdenv.mkDerivation rec {
     hash = "sha256-r9iS+J0uzujT87IxTxvVvy0CIBhyxuNDHlwxCW7KTIs=";
   };
 
-  buildInputs = [
-    postgresql
-    openssl
-  ] ++ lib.optional withLibiodbc libiodbc ++ lib.optional withUnixODBC unixODBC;
+  buildInputs =
+    [
+      postgresql
+      openssl
+    ]
+    ++ lib.optional withLibiodbc libiodbc
+    ++ lib.optional withUnixODBC unixODBC;
 
   passthru = lib.optionalAttrs withUnixODBC {
     fancyName = "PostgreSQL";

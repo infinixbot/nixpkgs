@@ -32,9 +32,10 @@ mkDerivation rec {
 
   sourceRoot = "${src.name}/src";
 
-  qmakeFlags = [
-    "PREFIX=${placeholder "out"}"
-  ] ++ lib.optionals withVLC [ "CONFIG+=unixvlc" ] ++ lib.optionals withMPV [ "CONFIG+=unixmpv" ];
+  qmakeFlags =
+    [ "PREFIX=${placeholder "out"}" ]
+    ++ lib.optionals withVLC [ "CONFIG+=unixvlc" ]
+    ++ lib.optionals withMPV [ "CONFIG+=unixmpv" ];
 
   patches = [
     ./0001-fix-installation-paths.patch

@@ -57,11 +57,14 @@ stdenv.mkDerivation rec {
     cmake
     python3
   ] ++ (lib.optional enableGui wrapQtAppsHook);
-  buildInputs = [
-    boostPython
-    eigen
-    python3Packages.apycula
-  ] ++ (lib.optional enableGui qtbase) ++ (lib.optional stdenv.cc.isClang llvmPackages.openmp);
+  buildInputs =
+    [
+      boostPython
+      eigen
+      python3Packages.apycula
+    ]
+    ++ (lib.optional enableGui qtbase)
+    ++ (lib.optional stdenv.cc.isClang llvmPackages.openmp);
 
   cmakeFlags =
     let

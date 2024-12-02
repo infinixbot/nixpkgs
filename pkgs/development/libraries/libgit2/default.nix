@@ -58,13 +58,16 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs = [
-    zlib
-    libssh2
-    openssl
-    pcre
-    llhttp
-  ] ++ lib.optional withGssapi krb5 ++ lib.optional stdenv.hostPlatform.isDarwin Security;
+  buildInputs =
+    [
+      zlib
+      libssh2
+      openssl
+      pcre
+      llhttp
+    ]
+    ++ lib.optional withGssapi krb5
+    ++ lib.optional stdenv.hostPlatform.isDarwin Security;
 
   propagatedBuildInputs = lib.optional (!stdenv.hostPlatform.isLinux) libiconv;
 

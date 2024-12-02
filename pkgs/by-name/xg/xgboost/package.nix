@@ -76,7 +76,8 @@ effectiveStdenv.mkDerivation rec {
 
   buildInputs =
     [ gtest ]
-    ++ lib.optional cudaSupport cudaPackages.cudatoolkit ++ lib.optional ncclSupport cudaPackages.nccl;
+    ++ lib.optional cudaSupport cudaPackages.cudatoolkit
+    ++ lib.optional ncclSupport cudaPackages.nccl;
 
   propagatedBuildInputs = lib.optionals rLibrary [
     rPackages.data_table

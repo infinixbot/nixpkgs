@@ -113,13 +113,16 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs = [
-    cmocka
-    icu
-    libxkbcommon
-    pango
-    inih
-  ] ++ windowSystems."${withWindowSystem'}" ++ builtins.map (b: backends."${b}") withBackends;
+  buildInputs =
+    [
+      cmocka
+      icu
+      libxkbcommon
+      pango
+      inih
+    ]
+    ++ windowSystems."${withWindowSystem'}"
+    ++ builtins.map (b: backends."${b}") withBackends;
 
   postInstall = ''
     install -Dm644 ../files/imv.desktop $out/share/applications/

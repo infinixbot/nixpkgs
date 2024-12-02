@@ -765,10 +765,13 @@ let
       {
         name = "node-shell-${name}${if version == null then "" else "-${version}"}";
 
-        buildInputs = [
-          python
-          nodejs
-        ] ++ lib.optional (stdenv.hostPlatform.isLinux) pkgs.util-linux ++ buildInputs;
+        buildInputs =
+          [
+            python
+            nodejs
+          ]
+          ++ lib.optional (stdenv.hostPlatform.isLinux) pkgs.util-linux
+          ++ buildInputs;
         buildCommand = ''
           mkdir -p $out/bin
           cat > $out/bin/shell <<EOF

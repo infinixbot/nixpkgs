@@ -88,11 +88,14 @@ let
         ++ lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [ vala ]
         ++ extraNativeBuildInputs;
 
-      buildInputs = [
-        glib
-        libiconv
-        libintl
-      ] ++ lib.optional (withGraphviz) graphviz ++ extraBuildInputs;
+      buildInputs =
+        [
+          glib
+          libiconv
+          libintl
+        ]
+        ++ lib.optional (withGraphviz) graphviz
+        ++ extraBuildInputs;
 
       enableParallelBuilding = true;
 

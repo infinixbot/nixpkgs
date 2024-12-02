@@ -416,16 +416,22 @@ let
 
       renewService = lockfileName: {
         description = "Renew ACME certificate for ${cert}";
-        after = [
-          "network.target"
-          "network-online.target"
-          "acme-fixperms.service"
-          "nss-lookup.target"
-        ] ++ selfsignedDeps ++ lib.optional (cfg.maxConcurrentRenewals > 0) "acme-lockfiles.service";
-        wants = [
-          "network-online.target"
-          "acme-fixperms.service"
-        ] ++ selfsignedDeps ++ lib.optional (cfg.maxConcurrentRenewals > 0) "acme-lockfiles.service";
+        after =
+          [
+            "network.target"
+            "network-online.target"
+            "acme-fixperms.service"
+            "nss-lookup.target"
+          ]
+          ++ selfsignedDeps
+          ++ lib.optional (cfg.maxConcurrentRenewals > 0) "acme-lockfiles.service";
+        wants =
+          [
+            "network-online.target"
+            "acme-fixperms.service"
+          ]
+          ++ selfsignedDeps
+          ++ lib.optional (cfg.maxConcurrentRenewals > 0) "acme-lockfiles.service";
 
         # https://github.com/NixOS/nixpkgs/pull/81371#issuecomment-605526099
         wantedBy = lib.optionals (!config.boot.isContainer) [ "multi-user.target" ];

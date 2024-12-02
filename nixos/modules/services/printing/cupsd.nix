@@ -110,12 +110,15 @@ let
 
   rootdir = pkgs.buildEnv {
     name = "cups-progs";
-    paths = [
-      cupsFilesFile
-      cupsdFile
-      (writeConf "client.conf" cfg.clientConf)
-      (writeConf "snmp.conf" cfg.snmpConf)
-    ] ++ optional cfg.browsed.enable browsedFile ++ cfg.drivers;
+    paths =
+      [
+        cupsFilesFile
+        cupsdFile
+        (writeConf "client.conf" cfg.clientConf)
+        (writeConf "snmp.conf" cfg.snmpConf)
+      ]
+      ++ optional cfg.browsed.enable browsedFile
+      ++ cfg.drivers;
     pathsToLink = [ "/etc/cups" ];
     ignoreCollisions = true;
   };

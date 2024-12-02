@@ -30,14 +30,17 @@ stdenv.mkDerivation (rec {
     pkg-config
     autoreconfHook
   ];
-  buildInputs = [
-    openssl
-    libX11
-    libXcursor
-    libtasn1
-    nettle
-    gnutls
-  ] ++ lib.optional enableCredssp krb5 ++ lib.optional stdenv.hostPlatform.isDarwin libiconv;
+  buildInputs =
+    [
+      openssl
+      libX11
+      libXcursor
+      libtasn1
+      nettle
+      gnutls
+    ]
+    ++ lib.optional enableCredssp krb5
+    ++ lib.optional stdenv.hostPlatform.isDarwin libiconv;
 
   configureFlags = [
     "--with-ipv6"

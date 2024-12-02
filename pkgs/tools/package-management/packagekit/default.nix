@@ -45,16 +45,19 @@ stdenv.mkDerivation rec {
     hash = "sha256-MYZFI1Q90F/AXVSJJBhmw+E7IMLXrdwmSuFJwv5D/z4=";
   };
 
-  buildInputs = [
-    glib
-    polkit
-    python3
-    gst_all_1.gstreamer
-    gst_all_1.gst-plugins-base
-    gtk3
-    sqlite
-    boost
-  ] ++ lib.optional enableSystemd systemd ++ lib.optional enableBashCompletion bash-completion;
+  buildInputs =
+    [
+      glib
+      polkit
+      python3
+      gst_all_1.gstreamer
+      gst_all_1.gst-plugins-base
+      gtk3
+      sqlite
+      boost
+    ]
+    ++ lib.optional enableSystemd systemd
+    ++ lib.optional enableBashCompletion bash-completion;
   nativeBuildInputs = [
     gobject-introspection
     glib

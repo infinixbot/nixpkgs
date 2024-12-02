@@ -120,11 +120,14 @@ let
   mkService =
     keyboard:
     let
-      cmd = [
-        (lib.getExe cfg.package)
-        "--input"
-        ''device-file "${keyboard.device}"''
-      ] ++ cfg.extraArgs ++ [ "${mkCfg keyboard}" ];
+      cmd =
+        [
+          (lib.getExe cfg.package)
+          "--input"
+          ''device-file "${keyboard.device}"''
+        ]
+        ++ cfg.extraArgs
+        ++ [ "${mkCfg keyboard}" ];
     in
     lib.nameValuePair "kmonad-${keyboard.name}" {
       description = "KMonad for ${keyboard.device}";

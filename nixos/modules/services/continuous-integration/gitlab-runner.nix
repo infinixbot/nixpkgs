@@ -761,9 +761,8 @@ in
     systemd.services.gitlab-runner = {
       description = "Gitlab Runner";
       documentation = [ "https://docs.gitlab.com/runner/" ];
-      after = [
-        "network.target"
-      ] ++ optional hasDocker "docker.service" ++ optional hasPodman "podman.service";
+      after =
+        [ "network.target" ] ++ optional hasDocker "docker.service" ++ optional hasPodman "podman.service";
 
       requires = optional hasDocker "docker.service" ++ optional hasPodman "podman.service";
       wantedBy = [ "multi-user.target" ];

@@ -36,11 +36,14 @@ stdenv.mkDerivation rec {
     cmake
   ];
 
-  buildInputs = [
-    curl
-    libtorrent
-    ncurses
-  ] ++ lib.optional jsonRpcSupport nlohmann_json ++ lib.optional xmlRpcSupport xmlrpc_c;
+  buildInputs =
+    [
+      curl
+      libtorrent
+      ncurses
+    ]
+    ++ lib.optional jsonRpcSupport nlohmann_json
+    ++ lib.optional xmlRpcSupport xmlrpc_c;
 
   cmakeFlags =
     [

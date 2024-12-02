@@ -33,12 +33,15 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "libxml2";
   version = "2.13.4";
 
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-    "devdoc"
-  ] ++ lib.optional pythonSupport "py" ++ lib.optional (enableStatic && enableShared) "static";
+  outputs =
+    [
+      "bin"
+      "dev"
+      "out"
+      "devdoc"
+    ]
+    ++ lib.optional pythonSupport "py"
+    ++ lib.optional (enableStatic && enableShared) "static";
   outputMan = "bin";
 
   src = fetchurl {

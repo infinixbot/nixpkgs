@@ -207,15 +207,18 @@ let
         pkg-config
         llvmPackages.llvm
       ];
-      buildInputs = [
-        boehmgc
-        (if lib.versionAtLeast version "1.8" then pcre2 else pcre)
-        libevent
-        libyaml
-        zlib
-        libxml2
-        openssl
-      ] ++ extraBuildInputs ++ lib.optionals stdenv.hostPlatform.isDarwin [ libiconv ];
+      buildInputs =
+        [
+          boehmgc
+          (if lib.versionAtLeast version "1.8" then pcre2 else pcre)
+          libevent
+          libyaml
+          zlib
+          libxml2
+          openssl
+        ]
+        ++ extraBuildInputs
+        ++ lib.optionals stdenv.hostPlatform.isDarwin [ libiconv ];
 
       makeFlags = [
         "CRYSTAL_CONFIG_VERSION=${version}"

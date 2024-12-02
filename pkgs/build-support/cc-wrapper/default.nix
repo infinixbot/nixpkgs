@@ -522,9 +522,8 @@ stdenvNoCC.mkDerivation {
     '';
 
   strictDeps = true;
-  propagatedBuildInputs = [
-    bintools
-  ] ++ extraTools ++ optionals cc.langD or cc.langJava or false [ zlib ];
+  propagatedBuildInputs =
+    [ bintools ] ++ extraTools ++ optionals cc.langD or cc.langJava or false [ zlib ];
   depsTargetTargetPropagated = optional (libcxx != null) libcxx ++ extraPackages;
 
   setupHooks =

@@ -124,9 +124,8 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optional withLdns "--with-ldns"
     ++ extraConfigureFlags;
 
-  ${if stdenv.hostPlatform.isStatic then "NIX_LDFLAGS" else null} = [
-    "-laudit"
-  ] ++ lib.optional withKerberos "-lkeyutils" ++ lib.optional withLdns "-lcrypto";
+  ${if stdenv.hostPlatform.isStatic then "NIX_LDFLAGS" else null} =
+    [ "-laudit" ] ++ lib.optional withKerberos "-lkeyutils" ++ lib.optional withLdns "-lcrypto";
 
   buildFlags = [ "SSH_KEYSIGN=ssh-keysign" ];
 

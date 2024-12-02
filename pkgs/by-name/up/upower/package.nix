@@ -39,10 +39,13 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "upower";
   version = "1.90.4";
 
-  outputs = [
-    "out"
-    "dev"
-  ] ++ lib.optionals withDocs [ "devdoc" ] ++ lib.optionals withIntrospection [ "installedTests" ];
+  outputs =
+    [
+      "out"
+      "dev"
+    ]
+    ++ lib.optionals withDocs [ "devdoc" ]
+    ++ lib.optionals withIntrospection [ "installedTests" ];
 
   src = fetchFromGitLab {
     domain = "gitlab.freedesktop.org";

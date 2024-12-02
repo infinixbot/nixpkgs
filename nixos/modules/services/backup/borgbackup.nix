@@ -154,16 +154,19 @@ let
           ++ lib.optional (isLocalPath cfg.repo) cfg.repo;
         PrivateTmp = cfg.privateTmp;
       };
-      environment = {
-        BORG_REPO = cfg.repo;
-        inherit (cfg)
-          extraArgs
-          extraInitArgs
-          extraCreateArgs
-          extraPruneArgs
-          extraCompactArgs
-          ;
-      } // (mkPassEnv cfg) // cfg.environment;
+      environment =
+        {
+          BORG_REPO = cfg.repo;
+          inherit (cfg)
+            extraArgs
+            extraInitArgs
+            extraCreateArgs
+            extraPruneArgs
+            extraCompactArgs
+            ;
+        }
+        // (mkPassEnv cfg)
+        // cfg.environment;
     };
 
   mkBackupTimers =
@@ -206,9 +209,7 @@ let
     mkWrapperDrv {
       original = lib.getExe config.services.borgbackup.package;
       name = "borg-job-${name}";
-      set = {
-        BORG_REPO = cfg.repo;
-      } // (mkPassEnv cfg) // cfg.environment;
+      set = { BORG_REPO = cfg.repo; } // (mkPassEnv cfg) // cfg.environment;
     };
 
   # Paths listed in ReadWritePaths must exist before service is started

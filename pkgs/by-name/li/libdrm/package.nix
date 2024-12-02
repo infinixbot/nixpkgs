@@ -35,9 +35,10 @@ stdenv.mkDerivation rec {
     ninja
     docutils
   ];
-  buildInputs = [
-    libpthreadstubs
-  ] ++ lib.optional withIntel libpciaccess ++ lib.optional withValgrind valgrind-light;
+  buildInputs =
+    [ libpthreadstubs ]
+    ++ lib.optional withIntel libpciaccess
+    ++ lib.optional withValgrind valgrind-light;
 
   mesonFlags =
     [

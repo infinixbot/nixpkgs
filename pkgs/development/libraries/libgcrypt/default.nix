@@ -39,9 +39,10 @@ stdenv.mkDerivation rec {
 
   depsBuildBuild = [ buildPackages.stdenv.cc ];
 
-  buildInputs = [
-    libgpg-error
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin gettext ++ lib.optional enableCapabilities libcap;
+  buildInputs =
+    [ libgpg-error ]
+    ++ lib.optional stdenv.hostPlatform.isDarwin gettext
+    ++ lib.optional enableCapabilities libcap;
 
   strictDeps = true;
 

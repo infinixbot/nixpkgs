@@ -609,9 +609,10 @@ in
 
     systemd.services.gitea = {
       description = "gitea";
-      after = [
-        "network.target"
-      ] ++ optional usePostgresql "postgresql.service" ++ optional useMysql "mysql.service";
+      after =
+        [ "network.target" ]
+        ++ optional usePostgresql "postgresql.service"
+        ++ optional useMysql "mysql.service";
       requires =
         optional (cfg.database.createDatabase && usePostgresql) "postgresql.service"
         ++ optional (cfg.database.createDatabase && useMysql) "mysql.service";

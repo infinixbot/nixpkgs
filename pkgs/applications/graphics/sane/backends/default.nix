@@ -116,9 +116,10 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  configureFlags = [
-    "--with-lockdir=/var/lock/sane"
-  ] ++ lib.optional (avahi != null) "--with-avahi" ++ lib.optional (libusb1 != null) "--with-usb";
+  configureFlags =
+    [ "--with-lockdir=/var/lock/sane" ]
+    ++ lib.optional (avahi != null) "--with-avahi"
+    ++ lib.optional (libusb1 != null) "--with-usb";
 
   # autoconf check for HAVE_MMAP is never set on cross compilation.
   # The pieusb backend fails compilation if HAVE_MMAP is not set.

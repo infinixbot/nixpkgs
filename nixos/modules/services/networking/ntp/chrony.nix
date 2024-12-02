@@ -36,13 +36,16 @@ let
     ${cfg.extraConfig}
   '';
 
-  chronyFlags = [
-    "-n"
-    "-u"
-    "chrony"
-    "-f"
-    "${configFile}"
-  ] ++ optional cfg.enableMemoryLocking "-m" ++ cfg.extraFlags;
+  chronyFlags =
+    [
+      "-n"
+      "-u"
+      "chrony"
+      "-f"
+      "${configFile}"
+    ]
+    ++ optional cfg.enableMemoryLocking "-m"
+    ++ cfg.extraFlags;
 in
 {
   options = {

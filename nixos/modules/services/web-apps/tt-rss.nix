@@ -657,9 +657,10 @@ in
 
         wantedBy = [ "multi-user.target" ];
         requires = optional mysqlLocal "mysql.service" ++ optional pgsqlLocal "postgresql.service";
-        after = [
-          "network.target"
-        ] ++ optional mysqlLocal "mysql.service" ++ optional pgsqlLocal "postgresql.service";
+        after =
+          [ "network.target" ]
+          ++ optional mysqlLocal "mysql.service"
+          ++ optional pgsqlLocal "postgresql.service";
       };
     };
 

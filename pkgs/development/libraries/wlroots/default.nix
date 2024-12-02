@@ -74,24 +74,27 @@ let
         glslang
       ] ++ extraNativeBuildInputs;
 
-      buildInputs = [
-        libGL
-        libcap
-        libinput
-        libpng
-        libxkbcommon
-        mesa
-        pixman
-        seatd
-        vulkan-loader
-        wayland
-        wayland-protocols
-        xorg.libX11
-        xorg.xcbutilerrors
-        xorg.xcbutilimage
-        xorg.xcbutilrenderutil
-        xorg.xcbutilwm
-      ] ++ lib.optional finalAttrs.enableXWayland xwayland ++ extraBuildInputs;
+      buildInputs =
+        [
+          libGL
+          libcap
+          libinput
+          libpng
+          libxkbcommon
+          mesa
+          pixman
+          seatd
+          vulkan-loader
+          wayland
+          wayland-protocols
+          xorg.libX11
+          xorg.xcbutilerrors
+          xorg.xcbutilimage
+          xorg.xcbutilrenderutil
+          xorg.xcbutilwm
+        ]
+        ++ lib.optional finalAttrs.enableXWayland xwayland
+        ++ extraBuildInputs;
 
       mesonFlags = lib.optional (!finalAttrs.enableXWayland) "-Dxwayland=disabled";
 

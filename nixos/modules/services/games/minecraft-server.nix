@@ -302,9 +302,10 @@ in
       if cfg.declarative then
         {
           allowedUDPPorts = [ serverPort ];
-          allowedTCPPorts = [
-            serverPort
-          ] ++ lib.optional (queryPort != null) queryPort ++ lib.optional (rconPort != null) rconPort;
+          allowedTCPPorts =
+            [ serverPort ]
+            ++ lib.optional (queryPort != null) queryPort
+            ++ lib.optional (rconPort != null) rconPort;
         }
       else
         {
