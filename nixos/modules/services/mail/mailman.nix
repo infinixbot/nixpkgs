@@ -495,15 +495,13 @@ in
         AUTH_LDAP_GROUP_SEARCH = LDAPSearch("${cfg.ldap.groupSearch.ou}",
             ldap.SCOPE_SUBTREE, "${cfg.ldap.groupSearch.query}")
         AUTH_LDAP_USER_ATTR_MAP = {
-          ${
-            lib.concatStrings (
-              lib.flip lib.mapAttrsToList cfg.ldap.attrMap (
-                key: value: ''
-                  "${key}": "${value}",
-                ''
-              )
+          ${lib.concatStrings (
+            lib.flip lib.mapAttrsToList cfg.ldap.attrMap (
+              key: value: ''
+                "${key}": "${value}",
+              ''
             )
-          }
+          )}
         }
         ${lib.optionalString (cfg.ldap.superUserGroup != null) ''
           AUTH_LDAP_USER_FLAGS_BY_GROUP = {

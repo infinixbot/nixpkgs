@@ -390,11 +390,9 @@ let
             echo "ok"
 
             new_iterations="$iterations"
-            ${
-              optionalString (dev.yubikey.iterationStep > 0) ''
-                new_iterations="$(($new_iterations + ${toString dev.yubikey.iterationStep}))"
-              ''
-            }
+            ${optionalString (dev.yubikey.iterationStep > 0) ''
+              new_iterations="$(($new_iterations + ${toString dev.yubikey.iterationStep}))"
+            ''}
 
             new_challenge="$(echo -n $new_salt | openssl-wrap dgst -binary -sha512 | rbtohex)"
 

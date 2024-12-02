@@ -564,11 +564,9 @@ in
                         enable 'Head';
 
                         # Route according to configured domains and root paths.
-                        ${
-                          concatMapStrings (path: ''
-                            mount q(${path}) => sub { $www->call(@_); };
-                          '') cfg.http.mounts
-                        }
+                        ${concatMapStrings (path: ''
+                          mount q(${path}) => sub { $www->call(@_); };
+                        '') cfg.http.mounts}
                       }
                     '')
                   ]
@@ -662,16 +660,14 @@ in
 
                       PI_CONFIG=$conf_dir/conf \
                       ${cfg.package}/bin/public-inbox-init -V2 \
-                        ${
-                          escapeShellArgs (
-                            [
-                              name
-                              "${stateDir}/inboxes/${name}"
-                              inbox.url
-                            ]
-                            ++ inbox.address
-                          )
-                        }
+                        ${escapeShellArgs (
+                          [
+                            name
+                            "${stateDir}/inboxes/${name}"
+                            inbox.url
+                          ]
+                          ++ inbox.address
+                        )}
 
                       rm -rf $conf_dir
                     fi

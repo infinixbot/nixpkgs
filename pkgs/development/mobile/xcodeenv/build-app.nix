@@ -146,12 +146,10 @@ stdenv.mkDerivation (
               <string>manual</string>
               <key>method</key>
               <string>${signMethod}</string>
-              ${
-                lib.optionalString (signMethod == "enterprise" || signMethod == "ad-hoc") ''
-                  <key>compileBitcode</key>
-                  <false/>
-                ''
-              }
+              ${lib.optionalString (signMethod == "enterprise" || signMethod == "ad-hoc") ''
+                <key>compileBitcode</key>
+                <false/>
+              ''}
           </dict>
           </plist>
           EOF

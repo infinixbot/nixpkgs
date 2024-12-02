@@ -113,11 +113,9 @@ let
               ${optionalString (current.config.primary) ''
                 Option "Primary" "true"
               ''}
-              ${
-                optionalString (previous != [ ]) ''
-                  Option "RightOf" "${(head previous).name}"
-                ''
-              }
+              ${optionalString (previous != [ ]) ''
+                Option "RightOf" "${(head previous).name}"
+              ''}
               ${current.config.monitorConfig}
             EndSection
           '';
@@ -953,11 +951,9 @@ in
       ${indent cfg.serverLayoutSection}
         # Reference the Screen sections for each driver.  This will
         # cause the X server to try each in turn.
-        ${
-          flip concatMapStrings (filter (d: d.display) cfg.drivers) (d: ''
-            Screen "Screen-${d.name}[0]"
-          '')
-        }
+        ${flip concatMapStrings (filter (d: d.display) cfg.drivers) (d: ''
+          Screen "Screen-${d.name}[0]"
+        '')}
       EndSection
 
       # For each supported driver, add a "Device" and "Screen"
@@ -977,51 +973,43 @@ in
           Section "Screen"
             Identifier "Screen-${driver.name}[0]"
             Device "Device-${driver.name}[0]"
-            ${
-              optionalString (cfg.monitorSection != "") ''
-                Monitor "Monitor[0]"
-              ''
-            }
+            ${optionalString (cfg.monitorSection != "") ''
+              Monitor "Monitor[0]"
+            ''}
 
           ${indent cfg.screenSection}
           ${indent (driver.screenSection or "")}
 
-            ${
-              optionalString (cfg.defaultDepth != 0) ''
-                DefaultDepth ${toString cfg.defaultDepth}
-              ''
-            }
+            ${optionalString (cfg.defaultDepth != 0) ''
+              DefaultDepth ${toString cfg.defaultDepth}
+            ''}
 
-            ${
-              optionalString
-                (
-                  driver.name != "virtualbox"
-                  && (cfg.resolutions != [ ] || cfg.extraDisplaySettings != "" || cfg.virtualScreen != null)
-                )
-                (
-                  let
-                    f = depth: ''
-                      SubSection "Display"
-                        Depth ${toString depth}
-                        ${
-                          optionalString (cfg.resolutions != [ ])
-                            "Modes ${concatMapStrings (res: ''"${toString res.x}x${toString res.y}"'') cfg.resolutions}"
-                        }
-                      ${indent cfg.extraDisplaySettings}
-                        ${
-                          optionalString (
-                            cfg.virtualScreen != null
-                          ) "Virtual ${toString cfg.virtualScreen.x} ${toString cfg.virtualScreen.y}"
-                        }
-                      EndSubSection
-                    '';
-                  in
-                  concatMapStrings f [
-                    8
-                    16
-                    24
-                  ]
-                )
+            ${optionalString
+              (
+                driver.name != "virtualbox"
+                && (cfg.resolutions != [ ] || cfg.extraDisplaySettings != "" || cfg.virtualScreen != null)
+              )
+              (
+                let
+                  f = depth: ''
+                    SubSection "Display"
+                      Depth ${toString depth}
+                      ${optionalString (cfg.resolutions != [ ])
+                        "Modes ${concatMapStrings (res: ''"${toString res.x}x${toString res.y}"'') cfg.resolutions}"
+                      }
+                    ${indent cfg.extraDisplaySettings}
+                      ${optionalString (
+                        cfg.virtualScreen != null
+                      ) "Virtual ${toString cfg.virtualScreen.x} ${toString cfg.virtualScreen.y}"}
+                    EndSubSection
+                  '';
+                in
+                concatMapStrings f [
+                  8
+                  16
+                  24
+                ]
+              )
             }
 
           EndSection

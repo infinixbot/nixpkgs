@@ -1537,15 +1537,13 @@ in
                 serviceConfig = {
                   ExecStart = ''
                     ${cfg.package}/bin/synapse_worker \
-                      ${
-                        concatMapStringsSep "\n  " (x: "--config-path ${x} \\") (
-                          [
-                            configFile
-                            workerConfigFile
-                          ]
-                          ++ cfg.extraConfigFiles
-                        )
-                      }
+                      ${concatMapStringsSep "\n  " (x: "--config-path ${x} \\") (
+                        [
+                          configFile
+                          workerConfigFile
+                        ]
+                        ++ cfg.extraConfigFiles
+                      )}
                       --keys-directory ${cfg.dataDir}
                   '';
                 };
@@ -1576,9 +1574,9 @@ in
               ];
               ExecStart = ''
                 ${cfg.package}/bin/synapse_homeserver \
-                  ${
-                    concatMapStringsSep "\n  " (x: "--config-path ${x} \\") ([ configFile ] ++ cfg.extraConfigFiles)
-                  }
+                  ${concatMapStringsSep "\n  " (x: "--config-path ${x} \\") (
+                    [ configFile ] ++ cfg.extraConfigFiles
+                  )}
                   --keys-directory ${cfg.dataDir}
               '';
             };

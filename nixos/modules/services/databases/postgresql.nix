@@ -633,11 +633,9 @@ in
           done
 
           if test -e "${cfg.dataDir}/.first_startup"; then
-            ${
-              optionalString (cfg.initialScript != null) ''
-                $PSQL -f "${cfg.initialScript}" -d postgres
-              ''
-            }
+            ${optionalString (cfg.initialScript != null) ''
+              $PSQL -f "${cfg.initialScript}" -d postgres
+            ''}
             rm -f "${cfg.dataDir}/.first_startup"
           fi
         ''

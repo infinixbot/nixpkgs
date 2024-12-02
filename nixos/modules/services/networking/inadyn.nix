@@ -21,7 +21,9 @@ let
       lib.concatStringsSep "\n" (
         lib.mapAttrsToList (name: config: ''
           ${k} ${name} {
-              ${lib.concatStringsSep "\n    " (lib.mapAttrsToList renderOption (lib.filterAttrs nonEmptyValue config))}
+              ${lib.concatStringsSep "\n    " (
+                lib.mapAttrsToList renderOption (lib.filterAttrs nonEmptyValue config)
+              )}
           }'') v
       )
     else if k == "include" then

@@ -30,17 +30,15 @@ let
 
           block-list: [${listKeys cfg.indicators}]
 
-          ${
-            builtins.concatStringsSep "\n" (
-              lib.mapAttrsToList (name: cfg: ''
-                ${name}: {
-                  exec: "${cfg.exec}";
-                  align: "${cfg.align}";
-                  ${mapExtra cfg.extra}
-                };
-              '') cfg.indicators
-            )
-          }
+          ${builtins.concatStringsSep "\n" (
+            lib.mapAttrsToList (name: cfg: ''
+              ${name}: {
+                exec: "${cfg.exec}";
+                align: "${cfg.align}";
+                ${mapExtra cfg.extra}
+              };
+            '') cfg.indicators
+          )}
         };
       '') cfg.bars;
     in

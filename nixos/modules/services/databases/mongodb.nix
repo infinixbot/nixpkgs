@@ -189,11 +189,9 @@ in
         '';
       postStart = ''
         if test -e "${cfg.dbpath}/.first_startup"; then
-          ${
-            optionalString (cfg.initialScript != null) ''
-              ${mongodb}/bin/mongo ${optionalString (cfg.enableAuth) "-u root -p ${cfg.initialRootPassword}"} admin "${cfg.initialScript}"
-            ''
-          }
+          ${optionalString (cfg.initialScript != null) ''
+            ${mongodb}/bin/mongo ${optionalString (cfg.enableAuth) "-u root -p ${cfg.initialRootPassword}"} admin "${cfg.initialScript}"
+          ''}
           rm -f "${cfg.dbpath}/.first_startup"
         fi
       '';

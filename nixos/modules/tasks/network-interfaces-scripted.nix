@@ -639,13 +639,12 @@ let
                   ${optionalString (v.local != null) "local \"${v.local}\""} \
                   ${optionalString (v.ttl != null) "ttl ${toString v.ttl}"} \
                   ${optionalString (v.dev != null) "dev \"${v.dev}\""} \
-                  ${
-                    optionalString (v.encapsulation != null)
-                      "encap ${v.encapsulation.type} encap-dport ${toString v.encapsulation.port} ${
-                        optionalString (
-                          v.encapsulation.sourcePort != null
-                        ) "encap-sport ${toString v.encapsulation.sourcePort}"
-                      }"
+                  ${optionalString (v.encapsulation != null)
+                    "encap ${v.encapsulation.type} encap-dport ${toString v.encapsulation.port} ${
+                      optionalString (
+                        v.encapsulation.sourcePort != null
+                      ) "encap-sport ${toString v.encapsulation.sourcePort}"
+                    }"
                   }
                 ip link set dev "${n}" up
               '';

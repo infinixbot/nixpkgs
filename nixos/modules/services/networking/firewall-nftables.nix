@@ -115,9 +115,9 @@ in
       chain input {
         type filter hook input priority filter; policy drop;
 
-        ${
-          lib.optionalString (ifaceSet != "") ''iifname { ${ifaceSet} } accept comment "trusted interfaces"''
-        }
+        ${lib.optionalString (
+          ifaceSet != ""
+        ) ''iifname { ${ifaceSet} } accept comment "trusted interfaces"''}
 
         # Some ICMPv6 types like NDP is untracked
         ct state vmap {
@@ -131,12 +131,10 @@ in
         ${lib.optionalString cfg.logRefusedConnections ''
           tcp flags syn / fin,syn,rst,ack log level info prefix "refused connection: "
         ''}
-        ${
-          lib.optionalString (cfg.logRefusedPackets && !cfg.logRefusedUnicastsOnly) ''
-            pkttype broadcast log level info prefix "refused broadcast: "
-            pkttype multicast log level info prefix "refused multicast: "
-          ''
-        }
+        ${lib.optionalString (cfg.logRefusedPackets && !cfg.logRefusedUnicastsOnly) ''
+          pkttype broadcast log level info prefix "refused broadcast: "
+          pkttype multicast log level info prefix "refused multicast: "
+        ''}
         ${lib.optionalString cfg.logRefusedPackets ''
           pkttype host log level info prefix "refused packet: "
         ''}
@@ -150,22 +148,20 @@ in
 
       chain input-allow {
 
-        ${
-          lib.concatStrings (
-            lib.mapAttrsToList (
-              iface: cfg:
-              let
-                ifaceExpr = lib.optionalString (iface != "default") "iifname ${iface}";
-                tcpSet = portsToNftSet cfg.allowedTCPPorts cfg.allowedTCPPortRanges;
-                udpSet = portsToNftSet cfg.allowedUDPPorts cfg.allowedUDPPortRanges;
-              in
-              ''
-                ${lib.optionalString (tcpSet != "") "${ifaceExpr} tcp dport { ${tcpSet} } accept"}
-                ${lib.optionalString (udpSet != "") "${ifaceExpr} udp dport { ${udpSet} } accept"}
-              ''
-            ) cfg.allInterfaces
-          )
-        }
+        ${lib.concatStrings (
+          lib.mapAttrsToList (
+            iface: cfg:
+            let
+              ifaceExpr = lib.optionalString (iface != "default") "iifname ${iface}";
+              tcpSet = portsToNftSet cfg.allowedTCPPorts cfg.allowedTCPPortRanges;
+              udpSet = portsToNftSet cfg.allowedUDPPorts cfg.allowedUDPPortRanges;
+            in
+            ''
+              ${lib.optionalString (tcpSet != "") "${ifaceExpr} tcp dport { ${tcpSet} } accept"}
+              ${lib.optionalString (udpSet != "") "${ifaceExpr} udp dport { ${udpSet} } accept"}
+            ''
+          ) cfg.allInterfaces
+        )}
 
         meta l4proto . th dport @temp-ports accept
 

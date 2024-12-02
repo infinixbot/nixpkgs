@@ -68,11 +68,9 @@ import ../make-test-python.nix (
                 -k 'pa$$w0rd' \
                 -m chacha20-ietf-poly1305 \
                 -a nobody \
-                ${
-                  lib.optionalString (plugin != null) ''
-                    --plugin "${plugin}" --plugin-opts "${pluginOpts}"
-                  ''
-                }
+                ${lib.optionalString (plugin != null) ''
+                  --plugin "${plugin}" --plugin-opts "${pluginOpts}"
+                ''}
           '';
         };
       };

@@ -527,23 +527,22 @@ let
     ${updateImpl} fetch-and-check-tree-sitter-repos '{}'
      echo "writing files to ${outputDir}" 1>&2
      mkdir -p "${outputDir}"
-     ${
-       forEachParallel "repos-to-fetch"
-         (writeShellScript "fetch-repo" ''
-           ${updateImpl} fetch-repo "$1"
-         '')
-         (
-           lib.mapAttrsToList (
-             nixRepoAttrName: attrs:
-             attrs
-             // {
-               inherit
-                 nixRepoAttrName
-                 outputDir
-                 ;
-             }
-           ) allGrammars
-         )
+     ${forEachParallel "repos-to-fetch"
+       (writeShellScript "fetch-repo" ''
+         ${updateImpl} fetch-repo "$1"
+       '')
+       (
+         lib.mapAttrsToList (
+           nixRepoAttrName: attrs:
+           attrs
+           // {
+             inherit
+               nixRepoAttrName
+               outputDir
+               ;
+           }
+         ) allGrammars
+       )
      }
      ${updateImpl} print-all-grammars-nix-file "$(< ${
        jsonFile "all-grammars.json" {

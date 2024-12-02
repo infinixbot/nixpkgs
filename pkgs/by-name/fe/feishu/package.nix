@@ -185,9 +185,9 @@ stdenv.mkDerivation {
       wrapProgram $executable \
         --prefix XDG_DATA_DIRS    :  "$XDG_ICON_DIRS:$GSETTINGS_SCHEMAS_PATH" \
         --prefix LD_LIBRARY_PATH  :  ${rpath}:$out/opt/bytedance/feishu:${addDriverRunpath.driverLink}/share \
-        ${
-          lib.optionalString (commandLineArgs != "") "--add-flags ${lib.escapeShellArg commandLineArgs}"
-        }
+        ${lib.optionalString (
+          commandLineArgs != ""
+        ) "--add-flags ${lib.escapeShellArg commandLineArgs}"}
     done
 
     mkdir -p $out/share/icons/hicolor

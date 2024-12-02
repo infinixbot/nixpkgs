@@ -50,19 +50,18 @@ stdenv.mkDerivation (final: {
             rWrapper.override { packages = [ rPackages.rmarkdown ] ++ extraRPackages; }
           }/bin/R"
       } \
-      ${
-        lib.optionalString (python3 != null)
-          "--prefix QUARTO_PYTHON : ${
-            python3.withPackages (
-              ps:
-              with ps;
-              [
-                jupyter
-                ipython
-              ]
-              ++ (extraPythonPackages ps)
-            )
-          }/bin/python3"
+      ${lib.optionalString (python3 != null)
+        "--prefix QUARTO_PYTHON : ${
+          python3.withPackages (
+            ps:
+            with ps;
+            [
+              jupyter
+              ipython
+            ]
+            ++ (extraPythonPackages ps)
+          )
+        }/bin/python3"
       }
   '';
 

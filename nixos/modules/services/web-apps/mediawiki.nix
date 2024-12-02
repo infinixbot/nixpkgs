@@ -124,12 +124,10 @@ let
         ## The URL path to static resources (images, scripts, etc.)
         $wgResourceBasePath = $wgScriptPath;
 
-        ${
-          lib.optionalString (cfg.webserver == "nginx") ''
-            $wgArticlePath = "/wiki/$1";
-            $wgUsePathInfo = true;
-          ''
-        }
+        ${lib.optionalString (cfg.webserver == "nginx") ''
+          $wgArticlePath = "/wiki/$1";
+          $wgUsePathInfo = true;
+        ''}
 
         ## The URL path to the logo.  Make sure you change this from the default,
         ## or else you'll overwrite your logo when you upgrade!
@@ -152,36 +150,28 @@ let
         $wgDBport = "${toString cfg.database.port}";
         $wgDBname = "${cfg.database.name}";
         $wgDBuser = "${cfg.database.user}";
-        ${
-          optionalString (
-            cfg.database.passwordFile != null
-          ) "$wgDBpassword = file_get_contents(\"${cfg.database.passwordFile}\");"
-        }
+        ${optionalString (
+          cfg.database.passwordFile != null
+        ) "$wgDBpassword = file_get_contents(\"${cfg.database.passwordFile}\");"}
 
-        ${
-          optionalString (cfg.database.type == "mysql" && cfg.database.tablePrefix != null) ''
-            # MySQL specific settings
-            $wgDBprefix = "${cfg.database.tablePrefix}";
-          ''
-        }
+        ${optionalString (cfg.database.type == "mysql" && cfg.database.tablePrefix != null) ''
+          # MySQL specific settings
+          $wgDBprefix = "${cfg.database.tablePrefix}";
+        ''}
 
-        ${
-          optionalString (cfg.database.type == "mysql") ''
-            # MySQL table options to use during installation or update
-            $wgDBTableOptions = "ENGINE=InnoDB, DEFAULT CHARSET=binary";
-          ''
-        }
+        ${optionalString (cfg.database.type == "mysql") ''
+          # MySQL table options to use during installation or update
+          $wgDBTableOptions = "ENGINE=InnoDB, DEFAULT CHARSET=binary";
+        ''}
 
         ## Shared memory settings
         $wgMainCacheType = CACHE_NONE;
         $wgMemCachedServers = [];
 
-        ${
-          optionalString (cfg.uploadsDir != null) ''
-            $wgEnableUploads = true;
-            $wgUploadDirectory = "${cfg.uploadsDir}";
-          ''
-        }
+        ${optionalString (cfg.uploadsDir != null) ''
+          $wgEnableUploads = true;
+          $wgUploadDirectory = "${cfg.uploadsDir}";
+        ''}
 
         $wgUseImageMagick = true;
         $wgImageMagickConvertCommand = "${pkgs.imagemagick}/bin/convert";

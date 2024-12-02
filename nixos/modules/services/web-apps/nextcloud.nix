@@ -150,9 +150,9 @@ let
               'use_ssl' => ${boolToString s3.useSsl},
               ${optionalString (s3.region != null) "'region' => '${s3.region}',"}
               'use_path_style' => ${boolToString s3.usePathStyle},
-              ${
-                optionalString (s3.sseCKeyFile != null) "'sse_c_key' => nix_read_secret('${s3.sseCKeyFile}'),"
-              }
+              ${optionalString (
+                s3.sseCKeyFile != null
+              ) "'sse_c_key' => nix_read_secret('${s3.sseCKeyFile}'),"}
             ],
           ]
         '';
@@ -205,13 +205,11 @@ let
         ${optionalString (c.dbhost != null) "'dbhost' => '${c.dbhost}',"}
         ${optionalString (c.dbuser != null) "'dbuser' => '${c.dbuser}',"}
         ${optionalString (c.dbtableprefix != null) "'dbtableprefix' => '${toString c.dbtableprefix}',"}
-        ${
-          optionalString (c.dbpassFile != null) ''
-            'dbpassword' => nix_read_secret(
-              "${c.dbpassFile}"
-            ),
-          ''
-        }
+        ${optionalString (c.dbpassFile != null) ''
+          'dbpassword' => nix_read_secret(
+            "${c.dbpassFile}"
+          ),
+        ''}
         'dbtype' => '${c.dbtype}',
         ${objectstoreConfig}
       ];

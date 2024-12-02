@@ -60,7 +60,9 @@ import ./make-test-python.nix (
             machine.copy_from_host('${test-exec.${pkgs.stdenv.hostPlatform.system}}','test-exec')
             machine.succeed('if test-exec/${exec-name} 2>outfile; then false; else [ $? -eq 127 ];fi')
             machine.succeed('grep -qi nixos outfile')
-            ${if32 "machine.copy_from_host('${test-exec.${pkgs32.stdenv.hostPlatform.system}}','test-exec32')"}
+            ${if32 "machine.copy_from_host('${
+              test-exec.${pkgs32.stdenv.hostPlatform.system}
+            }','test-exec32')"}
             ${if32 "machine.succeed('if test-exec32/${exec-name} 2>outfile32; then false; else [ $? -eq 127 ];fi')"}
             ${if32 "machine.succeed('grep -qi nixos outfile32')"}
 

@@ -133,16 +133,14 @@ in
             -listen_ip="${cfg.listenAddress}" \
             -port="${toString cfg.port}" \
             ${lib.escapeShellArgs cfg.extraOptions} \
-            ${
-              lib.optionalString (cfg.storageDriver != null) ''
-                -storage_driver "${cfg.storageDriver}" \
-                -storage_driver_host "${cfg.storageDriverHost}" \
-                -storage_driver_db "${cfg.storageDriverDb}" \
-                -storage_driver_user "${cfg.storageDriverUser}" \
-                -storage_driver_password "$(cat "${cfg.storageDriverPasswordFile}")" \
-                ${lib.optionalString cfg.storageDriverSecure "-storage_driver_secure"}
-              ''
-            }
+            ${lib.optionalString (cfg.storageDriver != null) ''
+              -storage_driver "${cfg.storageDriver}" \
+              -storage_driver_host "${cfg.storageDriverHost}" \
+              -storage_driver_db "${cfg.storageDriverDb}" \
+              -storage_driver_user "${cfg.storageDriverUser}" \
+              -storage_driver_password "$(cat "${cfg.storageDriverPasswordFile}")" \
+              ${lib.optionalString cfg.storageDriverSecure "-storage_driver_secure"}
+            ''}
         '';
 
         serviceConfig.TimeoutStartSec = 300;

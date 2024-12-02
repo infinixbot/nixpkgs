@@ -76,11 +76,9 @@ let
       }">
         ${mkXmlDoc "type-details" package.type-details}
         ${mkXmlDoc "revision" package.revision-details}
-        ${
-          lib.optionalString (lib.hasAttrByPath [ "dependencies" ] package) (
-            mkXmlDoc "dependencies" package.dependencies
-          )
-        }
+        ${lib.optionalString (lib.hasAttrByPath [ "dependencies" ] package) (
+          mkXmlDoc "dependencies" package.dependencies
+        )}
         <display-name>${package.displayName}</display-name>
         <uses-license ref="${package.license}"/>
       </localPackage>

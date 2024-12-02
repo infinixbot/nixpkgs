@@ -195,9 +195,9 @@ let
         with lib;
         ''
           makeWrapper "${original}" "$out/bin/${name}" \
-            ${
-              lib.concatStringsSep " \\\n " (lib.mapAttrsToList (name: value: ''--set ${name} "${value}"'') set)
-            }
+            ${lib.concatStringsSep " \\\n " (
+              lib.mapAttrsToList (name: value: ''--set ${name} "${value}"'') set
+            )}
         ''
       );
 

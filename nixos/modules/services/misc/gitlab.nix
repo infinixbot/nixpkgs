@@ -260,9 +260,9 @@ let
         ${optionalString (cfg.smtp.username != null) ''user_name: "${cfg.smtp.username}",''}
         ${optionalString (cfg.smtp.passwordFile != null) ''password: "@smtpPassword@",''}
         domain: "${cfg.smtp.domain}",
-        ${
-          optionalString (cfg.smtp.authentication != null) "authentication: :${cfg.smtp.authentication},"
-        }
+        ${optionalString (
+          cfg.smtp.authentication != null
+        ) "authentication: :${cfg.smtp.authentication},"}
         enable_starttls_auto: ${boolToString cfg.smtp.enableStartTLSAuto},
         tls: ${boolToString cfg.smtp.tls},
         ca_file: "/etc/ssl/certs/ca-certificates.crt",
@@ -1436,17 +1436,15 @@ in
 
             rm -f '${cfg.statePath}/config/database.yml'
 
-            ${
-              lib.optionalString (cfg.databasePasswordFile != null) ''
-                db_password="$(<'${cfg.databasePasswordFile}')"
-                export db_password
+            ${lib.optionalString (cfg.databasePasswordFile != null) ''
+              db_password="$(<'${cfg.databasePasswordFile}')"
+              export db_password
 
-                if [[ -z "$db_password" ]]; then
-                  >&2 echo "Database password was an empty string!"
-                  exit 1
-                fi
-              ''
-            }
+              if [[ -z "$db_password" ]]; then
+                >&2 echo "Database password was an empty string!"
+                exit 1
+              fi
+            ''}
 
             # GitLab expects the `production.main` section to be the first entry in the file.
             jq <${pkgs.writeText "database.yml" (builtins.toJSON databaseConfig)} '{

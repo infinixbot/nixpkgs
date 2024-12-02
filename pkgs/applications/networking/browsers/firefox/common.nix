@@ -401,15 +401,14 @@ buildStdenv.mkDerivation {
         configureFlagsArray+=(
           "--enable-profile-generate=cross"
         )
-        ${
-          lib.optionalString stdenv.hostPlatform.isMusl
-            # Set the rpath appropriately for the profiling run
-            # During the profiling run, loading libraries from $out would fail,
-            # since the profiling build has not been installed to $out
-            ''
-              OLD_LDFLAGS="$LDFLAGS"
-              LDFLAGS="-Wl,-rpath,$(pwd)/objdir/dist/${binaryName}"
-            ''
+        ${lib.optionalString stdenv.hostPlatform.isMusl
+          # Set the rpath appropriately for the profiling run
+          # During the profiling run, loading libraries from $out would fail,
+          # since the profiling build has not been installed to $out
+          ''
+            OLD_LDFLAGS="$LDFLAGS"
+            LDFLAGS="-Wl,-rpath,$(pwd)/objdir/dist/${binaryName}"
+          ''
         }
       fi
     ''

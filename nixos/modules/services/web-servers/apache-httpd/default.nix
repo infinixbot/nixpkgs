@@ -265,28 +265,22 @@ let
         concatStringsSep "\n" (
           map (config: ''
             <Location ${config.location}>
-              ${
-                optionalString (config.proxyPass != null) ''
-                  <IfModule mod_proxy.c>
-                      ProxyPass ${config.proxyPass}
-                      ProxyPassReverse ${config.proxyPass}
-                  </IfModule>
-                ''
-              }
-              ${
-                optionalString (config.index != null) ''
-                  <IfModule mod_dir.c>
-                      DirectoryIndex ${config.index}
-                  </IfModule>
-                ''
-              }
-              ${
-                optionalString (config.alias != null) ''
-                  <IfModule mod_alias.c>
-                      Alias "${config.alias}"
-                  </IfModule>
-                ''
-              }
+              ${optionalString (config.proxyPass != null) ''
+                <IfModule mod_proxy.c>
+                    ProxyPass ${config.proxyPass}
+                    ProxyPassReverse ${config.proxyPass}
+                </IfModule>
+              ''}
+              ${optionalString (config.index != null) ''
+                <IfModule mod_dir.c>
+                    DirectoryIndex ${config.index}
+                </IfModule>
+              ''}
+              ${optionalString (config.alias != null) ''
+                <IfModule mod_alias.c>
+                    Alias "${config.alias}"
+                </IfModule>
+              ''}
               ${config.extraConfig}
             </Location>
           '') (sortProperties (mapAttrsToList (k: v: v // { location = k; }) locations))

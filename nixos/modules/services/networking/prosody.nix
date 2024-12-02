@@ -295,9 +295,9 @@ let
       cafile = "/etc/ssl/certs/ca-bundle.crt";
       key = "${o.key}";
       certificate = "${o.cert}";
-      ${
-        concatStringsSep "\n" (mapAttrsToList (name: value: "${name} = ${toLua value};") o.extraOptions)
-      }
+      ${concatStringsSep "\n" (
+        mapAttrsToList (name: value: "${name} = ${toLua value};") o.extraOptions
+      )}
     };
   '';
 
@@ -895,11 +895,9 @@ in
 
         modules_enabled = {
 
-          ${
-            lib.concatStringsSep "\n  " (
-              lib.mapAttrsToList (name: val: optionalString val "${toLua name};") cfg.modules
-            )
-          }
+          ${lib.concatStringsSep "\n  " (
+            lib.mapAttrsToList (name: val: optionalString val "${toLua name};") cfg.modules
+          )}
           ${lib.concatStringsSep "\n" (map (x: "${toLua x};") cfg.package.communityModules)}
           ${lib.concatStringsSep "\n" (map (x: "${toLua x};") cfg.extraModules)}
         };
@@ -956,11 +954,9 @@ in
           Component ${toLua cfg.uploadHttp.domain} "http_upload"
               http_upload_file_size_limit = ${cfg.uploadHttp.uploadFileSizeLimit}
               http_upload_expire_after = ${cfg.uploadHttp.uploadExpireAfter}
-              ${
-                lib.optionalString (
-                  cfg.uploadHttp.userQuota != null
-                ) "http_upload_quota = ${toLua cfg.uploadHttp.userQuota}"
-              }
+              ${lib.optionalString (
+                cfg.uploadHttp.userQuota != null
+              ) "http_upload_quota = ${toLua cfg.uploadHttp.userQuota}"}
               http_upload_path = ${toLua cfg.uploadHttp.httpUploadPath}
         ''}
 

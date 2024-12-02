@@ -43,27 +43,23 @@ let
             dataset
           ]
         } 2> /dev/null; then
-          ${
-            lib.escapeShellArgs [
+          ${lib.escapeShellArgs [
+            "/run/booted-system/sw/bin/zfs"
+            "allow"
+            cfg.user
+            (lib.concatStringsSep "," permissions)
+            dataset
+          ]}
+        ${lib.optionalString ((builtins.dirOf dataset) != ".") ''
+          else
+            ${lib.escapeShellArgs [
               "/run/booted-system/sw/bin/zfs"
               "allow"
               cfg.user
               (lib.concatStringsSep "," permissions)
-              dataset
-            ]
-          }
-        ${lib.optionalString ((builtins.dirOf dataset) != ".") ''
-          else
-            ${
-              lib.escapeShellArgs [
-                "/run/booted-system/sw/bin/zfs"
-                "allow"
-                cfg.user
-                (lib.concatStringsSep "," permissions)
-                # Remove the last part of the path
-                (builtins.dirOf dataset)
-              ]
-            }
+              # Remove the last part of the path
+              (builtins.dirOf dataset)
+            ]}
         ''}
         fi
       ''}"

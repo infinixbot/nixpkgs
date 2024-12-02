@@ -22,14 +22,12 @@ let
             router ${boolToString proxy.router}
             timeout ${toString proxy.timeout}
             ttl ${toString proxy.ttl}
-            ${
-              render proxy.rules (
-                ruleNetworkName: rule: ''
-                  rule ${prefer rule.network ruleNetworkName} {
-                    ${rule.method}${optionalString (rule.method == "iface") " ${rule.interface}"}
-                  }''
-              )
-            }
+            ${render proxy.rules (
+              ruleNetworkName: rule: ''
+                rule ${prefer rule.network ruleNetworkName} {
+                  ${rule.method}${optionalString (rule.method == "iface") " ${rule.interface}"}
+                }''
+            )}
           }''
       )}
     ''

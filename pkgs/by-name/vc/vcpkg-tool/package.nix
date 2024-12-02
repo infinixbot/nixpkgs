@@ -160,9 +160,9 @@ stdenv.mkDerivation (finalAttrs: {
       done
 
       if [ "''${NIX_VCPKG_DEBUG_PRINT_ENVVARS-'false'}" = 'true' ]; then
-        ${
-          lib.concatMapStringsSep "\n" ({ env, ... }: "  " + ''echo "${env} = ''$${env}"'') argsWithDefault
-        }
+        ${lib.concatMapStringsSep "\n" (
+          { env, ... }: "  " + ''echo "${env} = ''$${env}"''
+        ) argsWithDefault}
         echo ""
       fi
 

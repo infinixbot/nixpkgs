@@ -678,23 +678,17 @@ in
                 ${replaceSecretBin} '#lfsjwtsecret#' '${lfsJwtSecret}' '${runConfig}'
               ''}
 
-              ${
-                lib.optionalString (cfg.camoHmacKeyFile != null) ''
-                  ${replaceSecretBin} '#hmackey#' '${cfg.camoHmacKeyFile}' '${runConfig}'
-                ''
-              }
+              ${lib.optionalString (cfg.camoHmacKeyFile != null) ''
+                ${replaceSecretBin} '#hmackey#' '${cfg.camoHmacKeyFile}' '${runConfig}'
+              ''}
 
-              ${
-                lib.optionalString (cfg.mailerPasswordFile != null) ''
-                  ${replaceSecretBin} '#mailerpass#' '${cfg.mailerPasswordFile}' '${runConfig}'
-                ''
-              }
+              ${lib.optionalString (cfg.mailerPasswordFile != null) ''
+                ${replaceSecretBin} '#mailerpass#' '${cfg.mailerPasswordFile}' '${runConfig}'
+              ''}
 
-              ${
-                lib.optionalString (cfg.metricsTokenFile != null) ''
-                  ${replaceSecretBin} '#metricstoken#' '${cfg.metricsTokenFile}' '${runConfig}'
-                ''
-              }
+              ${lib.optionalString (cfg.metricsTokenFile != null) ''
+                ${replaceSecretBin} '#metricstoken#' '${cfg.metricsTokenFile}' '${runConfig}'
+              ''}
               chmod u-w '${runConfig}'
             }
             (umask 027; gitea_setup)

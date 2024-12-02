@@ -136,15 +136,13 @@ let
     flip mapAttrsToList cfg.upstreams (
       name: upstream: ''
         upstream ${name} {
-          ${
-            toString (
-              flip mapAttrsToList upstream.servers (
-                name: server: ''
-                  server ${name} ${concatStringsSep " " (mapAttrsToList toUpstreamParameter server)};
-                ''
-              )
+          ${toString (
+            flip mapAttrsToList upstream.servers (
+              name: server: ''
+                server ${name} ${concatStringsSep " " (mapAttrsToList toUpstreamParameter server)};
+              ''
             )
-          }
+          )}
           ${upstream.extraConfig}
         }
       ''
@@ -185,15 +183,13 @@ let
           http {
             ${commonHttpConfig}
 
-            ${
-              optionalString (cfg.resolver.addresses != [ ]) ''
-                resolver ${toString cfg.resolver.addresses} ${
-                  optionalString (cfg.resolver.valid != "") "valid=${cfg.resolver.valid}"
-                } ${optionalString (!cfg.resolver.ipv4) "ipv4=off"} ${
-                  optionalString (!cfg.resolver.ipv6) "ipv6=off"
-                };
-              ''
-            }
+            ${optionalString (cfg.resolver.addresses != [ ]) ''
+              resolver ${toString cfg.resolver.addresses} ${
+                optionalString (cfg.resolver.valid != "") "valid=${cfg.resolver.valid}"
+              } ${optionalString (!cfg.resolver.ipv4) "ipv4=off"} ${
+                optionalString (!cfg.resolver.ipv6) "ipv6=off"
+              };
+            ''}
             ${upstreamConfig}
 
             ${optionalString cfg.recommendedOptimisation ''
@@ -233,18 +229,17 @@ let
               brotli_types ${lib.concatStringsSep " " compressMimeTypes};
             ''}
 
-            ${
-              optionalString cfg.recommendedGzipSettings
-                # https://docs.nginx.com/nginx/admin-guide/web-server/compression/
-                ''
-                  gzip on;
-                  gzip_static on;
-                  gzip_vary on;
-                  gzip_comp_level 5;
-                  gzip_min_length 256;
-                  gzip_proxied expired no-cache no-store private auth;
-                  gzip_types ${lib.concatStringsSep " " compressMimeTypes};
-                ''
+            ${optionalString cfg.recommendedGzipSettings
+              # https://docs.nginx.com/nginx/admin-guide/web-server/compression/
+              ''
+                gzip on;
+                gzip_static on;
+                gzip_vary on;
+                gzip_comp_level 5;
+                gzip_min_length 256;
+                gzip_proxied expired no-cache no-store private auth;
+                gzip_types ${lib.concatStringsSep " " compressMimeTypes};
+              ''
             }
 
             ${optionalString cfg.recommendedZstdSettings ''
@@ -267,29 +262,21 @@ let
               include ${recommendedProxyConfig};
             ''}
 
-            ${
-              optionalString (cfg.mapHashBucketSize != null) ''
-                map_hash_bucket_size ${toString cfg.mapHashBucketSize};
-              ''
-            }
+            ${optionalString (cfg.mapHashBucketSize != null) ''
+              map_hash_bucket_size ${toString cfg.mapHashBucketSize};
+            ''}
 
-            ${
-              optionalString (cfg.mapHashMaxSize != null) ''
-                map_hash_max_size ${toString cfg.mapHashMaxSize};
-              ''
-            }
+            ${optionalString (cfg.mapHashMaxSize != null) ''
+              map_hash_max_size ${toString cfg.mapHashMaxSize};
+            ''}
 
-            ${
-              optionalString (cfg.serverNamesHashBucketSize != null) ''
-                server_names_hash_bucket_size ${toString cfg.serverNamesHashBucketSize};
-              ''
-            }
+            ${optionalString (cfg.serverNamesHashBucketSize != null) ''
+              server_names_hash_bucket_size ${toString cfg.serverNamesHashBucketSize};
+            ''}
 
-            ${
-              optionalString (cfg.serverNamesHashMaxSize != null) ''
-                server_names_hash_max_size ${toString cfg.serverNamesHashMaxSize};
-              ''
-            }
+            ${optionalString (cfg.serverNamesHashMaxSize != null) ''
+              server_names_hash_max_size ${toString cfg.serverNamesHashMaxSize};
+            ''}
 
             # $connection_upgrade is used for websocket proxying
             map $http_upgrade $connection_upgrade {
@@ -472,46 +459,36 @@ let
         server {
           ${concatMapStringsSep "\n" listenString hostListen}
           server_name ${vhost.serverName} ${concatStringsSep " " vhost.serverAliases};
-          ${
-            optionalString (hasSSL && vhost.http2 && !oldHTTP2) ''
-              http2 on;
-            ''
-          }
-          ${
-            optionalString (hasSSL && vhost.quic) ''
-              http3 ${if vhost.http3 then "on" else "off"};
-              http3_hq ${if vhost.http3_hq then "on" else "off"};
-            ''
-          }
+          ${optionalString (hasSSL && vhost.http2 && !oldHTTP2) ''
+            http2 on;
+          ''}
+          ${optionalString (hasSSL && vhost.quic) ''
+            http3 ${if vhost.http3 then "on" else "off"};
+            http3_hq ${if vhost.http3_hq then "on" else "off"};
+          ''}
           ${optionalString hasSSL ''
             ssl_certificate ${vhost.sslCertificate};
             ssl_certificate_key ${vhost.sslCertificateKey};
           ''}
-          ${
-            optionalString (hasSSL && vhost.sslTrustedCertificate != null) ''
-              ssl_trusted_certificate ${vhost.sslTrustedCertificate};
-            ''
-          }
+          ${optionalString (hasSSL && vhost.sslTrustedCertificate != null) ''
+            ssl_trusted_certificate ${vhost.sslTrustedCertificate};
+          ''}
           ${optionalString vhost.rejectSSL ''
             ssl_reject_handshake on;
           ''}
-          ${
-            optionalString (hasSSL && vhost.kTLS) ''
-              ssl_conf_command Options KTLS;
-            ''
-          }
+          ${optionalString (hasSSL && vhost.kTLS) ''
+            ssl_conf_command Options KTLS;
+          ''}
 
           ${mkBasicAuth vhostName vhost}
 
           ${optionalString (vhost.root != null) "root ${vhost.root};"}
 
-          ${
-            optionalString (vhost.globalRedirect != null) ''
-              location / {
-                return ${toString vhost.redirectCode} http${optionalString hasSSL "s"}://${vhost.globalRedirect}$request_uri;
-              }
-            ''
-          }
+          ${optionalString (vhost.globalRedirect != null) ''
+            location / {
+              return ${toString vhost.redirectCode} http${optionalString hasSSL "s"}://${vhost.globalRedirect}$request_uri;
+            }
+          ''}
           ${acmeLocation}
           ${mkLocations vhost.locations}
 
@@ -525,40 +502,32 @@ let
     concatStringsSep "\n" (
       map (config: ''
         location ${config.location} {
-          ${
-            optionalString (
-              config.proxyPass != null && !cfg.proxyResolveWhileRunning
-            ) "proxy_pass ${config.proxyPass};"
-          }
-          ${
-            optionalString (config.proxyPass != null && cfg.proxyResolveWhileRunning) ''
-              set $nix_proxy_target "${config.proxyPass}";
-              proxy_pass $nix_proxy_target;
-            ''
-          }
+          ${optionalString (
+            config.proxyPass != null && !cfg.proxyResolveWhileRunning
+          ) "proxy_pass ${config.proxyPass};"}
+          ${optionalString (config.proxyPass != null && cfg.proxyResolveWhileRunning) ''
+            set $nix_proxy_target "${config.proxyPass}";
+            proxy_pass $nix_proxy_target;
+          ''}
           ${optionalString config.proxyWebsockets ''
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
             proxy_set_header Connection $connection_upgrade;
           ''}
-          ${
-            concatStringsSep "\n" (
-              mapAttrsToList (n: v: ''fastcgi_param ${n} "${v}";'') (
-                optionalAttrs (config.fastcgiParams != { }) (defaultFastcgiParams // config.fastcgiParams)
-              )
+          ${concatStringsSep "\n" (
+            mapAttrsToList (n: v: ''fastcgi_param ${n} "${v}";'') (
+              optionalAttrs (config.fastcgiParams != { }) (defaultFastcgiParams // config.fastcgiParams)
             )
-          }
+          )}
           ${optionalString (config.index != null) "index ${config.index};"}
           ${optionalString (config.tryFiles != null) "try_files ${config.tryFiles};"}
           ${optionalString (config.root != null) "root ${config.root};"}
           ${optionalString (config.alias != null) "alias ${config.alias};"}
           ${optionalString (config.return != null) "return ${toString config.return};"}
           ${config.extraConfig}
-          ${
-            optionalString (
-              config.proxyPass != null && config.recommendedProxySettings
-            ) "include ${recommendedProxyConfig};"
-          }
+          ${optionalString (
+            config.proxyPass != null && config.recommendedProxySettings
+          ) "include ${recommendedProxyConfig};"}
           ${mkBasicAuth "sublocation" config}
         }
       '') (sortProperties (mapAttrsToList (k: v: v // { location = k; }) locations))

@@ -424,13 +424,11 @@ stdenv.mkDerivation {
 
      patchShebangs .
 
-     ${
-       lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
-         # NOTE: This interferes with ABI stability on Darwin, which uses the system
-         # libraries in the hardcoded path /usr/lib/swift.
-         fixCmakeFiles .
-       ''
-     }
+     ${lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
+       # NOTE: This interferes with ABI stability on Darwin, which uses the system
+       # libraries in the hardcoded path /usr/lib/swift.
+       fixCmakeFiles .
+     ''}
   '';
 
   # > clang-15-unwrapped: error: unsupported option '-fzero-call-used-regs=used-gpr' for target 'arm64-apple-macosx10.9.0'

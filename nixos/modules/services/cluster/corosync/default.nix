@@ -65,39 +65,33 @@ in
       }
 
       nodelist {
-        ${
-          concatMapStrings (
-            {
-              nodeid,
-              name,
-              ring_addrs,
-            }:
-            ''
-              node {
-                nodeid: ${toString nodeid}
-                name: ${name}
-                ${
-                  concatStrings (
-                    imap0 (i: addr: ''
-                      ring${toString i}_addr: ${addr}
-                    '') ring_addrs
-                  )
-                }
-              }
-            ''
-          ) cfg.nodelist
-        }
+        ${concatMapStrings (
+          {
+            nodeid,
+            name,
+            ring_addrs,
+          }:
+          ''
+            node {
+              nodeid: ${toString nodeid}
+              name: ${name}
+              ${concatStrings (
+                imap0 (i: addr: ''
+                  ring${toString i}_addr: ${addr}
+                '') ring_addrs
+              )}
+            }
+          ''
+        ) cfg.nodelist}
       }
 
       quorum {
         # only corosync_votequorum is supported
         provider: corosync_votequorum
         wait_for_all: 0
-        ${
-          optionalString (builtins.length cfg.nodelist < 3) ''
-            two_node: 1
-          ''
-        }
+        ${optionalString (builtins.length cfg.nodelist < 3) ''
+          two_node: 1
+        ''}
       }
 
       logging {

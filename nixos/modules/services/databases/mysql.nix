@@ -443,64 +443,54 @@ in
                 echo "GRANT ALL PRIVILEGES ON *.* TO '${cfg.user}'@'localhost' WITH GRANT OPTION;"
               ) | ${cfg.package}/bin/mysql -u ${superUser} -N
 
-              ${
-                lib.concatMapStrings (database: ''
-                  # Create initial databases
-                  if ! test -e "${cfg.dataDir}/${database.name}"; then
-                      echo "Creating initial database: ${database.name}"
-                      ( echo 'create database `${database.name}`;'
+              ${lib.concatMapStrings (database: ''
+                # Create initial databases
+                if ! test -e "${cfg.dataDir}/${database.name}"; then
+                    echo "Creating initial database: ${database.name}"
+                    ( echo 'create database `${database.name}`;'
 
-                        ${
-                          lib.optionalString (database.schema != null) ''
-                            echo 'use `${database.name}`;'
+                      ${lib.optionalString (database.schema != null) ''
+                        echo 'use `${database.name}`;'
 
-                            # TODO: this silently falls through if database.schema does not exist,
-                            # we should catch this somehow and exit, but can't do it here because we're in a subshell.
-                            if [ -f "${database.schema}" ]
-                            then
-                                cat ${database.schema}
-                            elif [ -d "${database.schema}" ]
-                            then
-                                cat ${database.schema}/mysql-databases/*.sql
-                            fi
-                          ''
-                        }
-                      ) | ${cfg.package}/bin/mysql -u ${superUser} -N
-                  fi
-                '') cfg.initialDatabases
-              }
+                        # TODO: this silently falls through if database.schema does not exist,
+                        # we should catch this somehow and exit, but can't do it here because we're in a subshell.
+                        if [ -f "${database.schema}" ]
+                        then
+                            cat ${database.schema}
+                        elif [ -d "${database.schema}" ]
+                        then
+                            cat ${database.schema}/mysql-databases/*.sql
+                        fi
+                      ''}
+                    ) | ${cfg.package}/bin/mysql -u ${superUser} -N
+                fi
+              '') cfg.initialDatabases}
 
-              ${
-                lib.optionalString (cfg.replication.role == "master") ''
-                  # Set up the replication master
+              ${lib.optionalString (cfg.replication.role == "master") ''
+                # Set up the replication master
 
-                  ( echo "use mysql;"
-                    echo "CREATE USER '${cfg.replication.masterUser}'@'${cfg.replication.slaveHost}' IDENTIFIED WITH mysql_native_password;"
-                    echo "SET PASSWORD FOR '${cfg.replication.masterUser}'@'${cfg.replication.slaveHost}' = PASSWORD('${cfg.replication.masterPassword}');"
-                    echo "GRANT REPLICATION SLAVE ON *.* TO '${cfg.replication.masterUser}'@'${cfg.replication.slaveHost}';"
-                  ) | ${cfg.package}/bin/mysql -u ${superUser} -N
-                ''
-              }
+                ( echo "use mysql;"
+                  echo "CREATE USER '${cfg.replication.masterUser}'@'${cfg.replication.slaveHost}' IDENTIFIED WITH mysql_native_password;"
+                  echo "SET PASSWORD FOR '${cfg.replication.masterUser}'@'${cfg.replication.slaveHost}' = PASSWORD('${cfg.replication.masterPassword}');"
+                  echo "GRANT REPLICATION SLAVE ON *.* TO '${cfg.replication.masterUser}'@'${cfg.replication.slaveHost}';"
+                ) | ${cfg.package}/bin/mysql -u ${superUser} -N
+              ''}
 
-              ${
-                lib.optionalString (cfg.replication.role == "slave") ''
-                  # Set up the replication slave
+              ${lib.optionalString (cfg.replication.role == "slave") ''
+                # Set up the replication slave
 
-                  ( echo "stop slave;"
-                    echo "change master to master_host='${cfg.replication.masterHost}', master_user='${cfg.replication.masterUser}', master_password='${cfg.replication.masterPassword}';"
-                    echo "start slave;"
-                  ) | ${cfg.package}/bin/mysql -u ${superUser} -N
-                ''
-              }
+                ( echo "stop slave;"
+                  echo "change master to master_host='${cfg.replication.masterHost}', master_user='${cfg.replication.masterUser}', master_password='${cfg.replication.masterPassword}';"
+                  echo "start slave;"
+                ) | ${cfg.package}/bin/mysql -u ${superUser} -N
+              ''}
 
-              ${
-                lib.optionalString (cfg.initialScript != null) ''
-                  # Execute initial script
-                  # using toString to avoid copying the file to nix store if given as path instead of string,
-                  # as it might contain credentials
-                  cat ${toString cfg.initialScript} | ${cfg.package}/bin/mysql -u ${superUser} -N
-                ''
-              }
+              ${lib.optionalString (cfg.initialScript != null) ''
+                # Execute initial script
+                # using toString to avoid copying the file to nix store if given as path instead of string,
+                # as it might contain credentials
+                cat ${toString cfg.initialScript} | ${cfg.package}/bin/mysql -u ${superUser} -N
+              ''}
 
               rm ${cfg.dataDir}/mysql_init
           fi
@@ -517,13 +507,11 @@ in
             ( echo "CREATE USER IF NOT EXISTS '${user.name}'@'localhost' IDENTIFIED WITH ${
               if isMariaDB then "unix_socket" else "auth_socket"
             };"
-              ${
-                lib.concatStringsSep "\n" (
-                  lib.mapAttrsToList (database: permission: ''
-                    echo "GRANT ${permission} ON ${database} TO '${user.name}'@'localhost';"
-                  '') user.ensurePermissions
-                )
-              }
+              ${lib.concatStringsSep "\n" (
+                lib.mapAttrsToList (database: permission: ''
+                  echo "GRANT ${permission} ON ${database} TO '${user.name}'@'localhost';"
+                '') user.ensurePermissions
+              )}
             ) | ${cfg.package}/bin/mysql -N
           '') cfg.ensureUsers}
         '';

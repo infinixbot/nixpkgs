@@ -46,9 +46,9 @@ stdenvNoCC.mkDerivation rec {
     mv ${lib.optionalString withElementary "{,e}"}Papirus* $out/share/icons
 
     for theme in $out/share/icons/*; do
-      ${
-        lib.optionalString (color != null) "${papirus-folders}/bin/papirus-folders -t $theme -o -C ${color}"
-      }
+      ${lib.optionalString (
+        color != null
+      ) "${papirus-folders}/bin/papirus-folders -t $theme -o -C ${color}"}
       gtk-update-icon-cache --force $theme
     done
 

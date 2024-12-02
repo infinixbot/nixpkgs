@@ -44,32 +44,28 @@ let
 
         ${optionalString systemdStage1 "boot.initrd.systemd.enable = true;"}
 
-        ${
-          optionalString (bootLoader == "grub") ''
-            boot.loader.grub.extraConfig = "serial; terminal_output serial";
-            ${
-              if grubUseEfi then
-                ''
-                  boot.loader.grub.device = "nodev";
-                  boot.loader.grub.efiSupport = true;
-                  boot.loader.grub.efiInstallAsRemovable = true; # XXX: needed for OVMF?
-                ''
-              else
-                ''
-                  boot.loader.grub.device = "${grubDevice}";
-                  boot.loader.grub.fsIdentifier = "${grubIdentifier}";
-                ''
-            }
+        ${optionalString (bootLoader == "grub") ''
+          boot.loader.grub.extraConfig = "serial; terminal_output serial";
+          ${
+            if grubUseEfi then
+              ''
+                boot.loader.grub.device = "nodev";
+                boot.loader.grub.efiSupport = true;
+                boot.loader.grub.efiInstallAsRemovable = true; # XXX: needed for OVMF?
+              ''
+            else
+              ''
+                boot.loader.grub.device = "${grubDevice}";
+                boot.loader.grub.fsIdentifier = "${grubIdentifier}";
+              ''
+          }
 
-            boot.loader.grub.configurationLimit = 100 + ${toString forceGrubReinstallCount};
-          ''
-        }
+          boot.loader.grub.configurationLimit = 100 + ${toString forceGrubReinstallCount};
+        ''}
 
-        ${
-          optionalString (bootLoader == "systemd-boot") ''
-            boot.loader.systemd-boot.enable = true;
-          ''
-        }
+        ${optionalString (bootLoader == "systemd-boot") ''
+          boot.loader.systemd-boot.enable = true;
+        ''}
 
         boot.initrd.secrets."/etc/secret" = "/etc/nixos/secret";
 

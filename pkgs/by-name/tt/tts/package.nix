@@ -45,19 +45,15 @@ python.pkgs.buildPythonApplication rec {
     in
     ''
       sed -r -i \
-        ${
-          lib.concatStringsSep "\n" (
-            map (package: ''-e 's/${package}\s*[<>=]+.+/${package}/g' \'') relaxedConstraints
-          )
-        }
+        ${lib.concatStringsSep "\n" (
+          map (package: ''-e 's/${package}\s*[<>=]+.+/${package}/g' \'') relaxedConstraints
+        )}
       requirements.txt
 
       sed -r -i \
-        ${
-          lib.concatStringsSep "\n" (
-            map (package: ''-e 's/${package}\s*[<>=]+[^"]+/${package}/g' \'') relaxedConstraints
-          )
-        }
+        ${lib.concatStringsSep "\n" (
+          map (package: ''-e 's/${package}\s*[<>=]+[^"]+/${package}/g' \'') relaxedConstraints
+        )}
       pyproject.toml
       # only used for notebooks and visualization
       sed -r -i -e '/umap-learn/d' requirements.txt

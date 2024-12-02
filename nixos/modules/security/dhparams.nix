@@ -165,21 +165,19 @@ in
               if [ ! -f "$file" ]; then
                 continue
               fi
-              ${
-                lib.concatStrings (
-                  lib.mapAttrsToList (
-                    name:
-                    { bits, path, ... }:
-                    ''
-                      if [ "$file" = ${lib.escapeShellArg path} ] && \
-                         ${pkgs.openssl}/bin/openssl dhparam -in "$file" -text \
-                         | head -n 1 | grep "(${toString bits} bit)" > /dev/null; then
-                        continue
-                      fi
-                    ''
-                  ) cfg.params
-                )
-              }
+              ${lib.concatStrings (
+                lib.mapAttrsToList (
+                  name:
+                  { bits, path, ... }:
+                  ''
+                    if [ "$file" = ${lib.escapeShellArg path} ] && \
+                       ${pkgs.openssl}/bin/openssl dhparam -in "$file" -text \
+                       | head -n 1 | grep "(${toString bits} bit)" > /dev/null; then
+                      continue
+                    fi
+                  ''
+                ) cfg.params
+              )}
               rm "$file"
             done
 

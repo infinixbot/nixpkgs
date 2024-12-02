@@ -70,8 +70,8 @@ symlinkJoin rec {
 
     wrapProgram $out/bin/${sway.meta.mainProgram} \
       ${optionalString withGtkWrapper ''"''${gappsWrapperArgs[@]}"''} \
-      ${
-        optionalString (extraOptions != [ ]) "${concatMapStrings (x: " --add-flags " + x) extraOptions}"
+      ${optionalString (extraOptions != [ ])
+        "${concatMapStrings (x: " --add-flags " + x) extraOptions}"
       }
   '';
 

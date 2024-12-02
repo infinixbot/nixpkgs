@@ -24,33 +24,29 @@ let
       ${fs.extraConfig}
 
       <MetaHandleRanges>
-      ${
-        lib.concatStringsSep "\n" (
-          lib.imap0 (
-            i: alias:
-            let
-              begin = i * handleStep + 3;
-              end = begin + handleStep - 1;
-            in
-            "Range ${alias} ${toString begin}-${toString end}"
-          ) aliases
-        )
-      }
+      ${lib.concatStringsSep "\n" (
+        lib.imap0 (
+          i: alias:
+          let
+            begin = i * handleStep + 3;
+            end = begin + handleStep - 1;
+          in
+          "Range ${alias} ${toString begin}-${toString end}"
+        ) aliases
+      )}
       </MetaHandleRanges>
 
       <DataHandleRanges>
-      ${
-        lib.concatStringsSep "\n" (
-          lib.imap0 (
-            i: alias:
-            let
-              begin = i * handleStep + 3 + (lib.length aliases) * handleStep;
-              end = begin + handleStep - 1;
-            in
-            "Range ${alias} ${toString begin}-${toString end}"
-          ) aliases
-        )
-      }
+      ${lib.concatStringsSep "\n" (
+        lib.imap0 (
+          i: alias:
+          let
+            begin = i * handleStep + 3 + (lib.length aliases) * handleStep;
+            end = begin + handleStep - 1;
+          in
+          "Range ${alias} ${toString begin}-${toString end}"
+        ) aliases
+      )}
       </DataHandleRanges>
 
       <StorageHints>

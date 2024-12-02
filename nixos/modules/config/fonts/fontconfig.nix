@@ -58,15 +58,13 @@ let
       <fontconfig>
         <!-- Font directories -->
         ${lib.concatStringsSep "\n" (map (font: "<dir>${font}</dir>") config.fonts.packages)}
-        ${
-          lib.optionalString (pkgs.stdenv.hostPlatform == pkgs.stdenv.buildPlatform) ''
-            <!-- Pre-generated font caches -->
-            <cachedir>${cache}</cachedir>
-            ${lib.optionalString (pkgs.stdenv.hostPlatform.isx86_64 && cfg.cache32Bit) ''
-              <cachedir>${cache32}</cachedir>
-            ''}
-          ''
-        }
+        ${lib.optionalString (pkgs.stdenv.hostPlatform == pkgs.stdenv.buildPlatform) ''
+          <!-- Pre-generated font caches -->
+          <cachedir>${cache}</cachedir>
+          ${lib.optionalString (pkgs.stdenv.hostPlatform.isx86_64 && cfg.cache32Bit) ''
+            <cachedir>${cache32}</cachedir>
+          ''}
+        ''}
       </fontconfig>
     '';
 
@@ -103,13 +101,11 @@ let
           <alias binding="same">
             <family>${name}</family>
             <prefer>
-            ${
-              lib.concatStringsSep "" (
-                map (font: ''
-                  <family>${font}</family>
-                '') fonts
-              )
-            }
+            ${lib.concatStringsSep "" (
+              map (font: ''
+                <family>${font}</family>
+              '') fonts
+            )}
             </prefer>
           </alias>
         '';

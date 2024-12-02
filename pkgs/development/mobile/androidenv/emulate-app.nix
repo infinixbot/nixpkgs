@@ -133,19 +133,15 @@ stdenv.mkDerivation {
         # Create a virtual android device
         yes "" | ${sdk}/bin/avdmanager create avd --force -n ${deviceName} -k "system-images;android-${platformVersion};${systemImageType};${abiVersion}" -p $ANDROID_AVD_HOME/${deviceName}.avd $NIX_ANDROID_AVD_FLAGS
 
-        ${
-          builtins.concatStringsSep "\n" (
-            lib.mapAttrsToList (configKey: configValue: ''
-              echo "${configKey} = ${configValue}" >> $ANDROID_AVD_HOME/${deviceName}.avd/config.ini
-            '') configOptions
-          )
-        }
+        ${builtins.concatStringsSep "\n" (
+          lib.mapAttrsToList (configKey: configValue: ''
+            echo "${configKey} = ${configValue}" >> $ANDROID_AVD_HOME/${deviceName}.avd/config.ini
+          '') configOptions
+        )}
 
-        ${
-          lib.concatMapStrings (extraAVDFile: ''
-            ln -sf ${extraAVDFile} $ANDROID_AVD_HOME/${deviceName}.avd
-          '') extraAVDFiles
-        }
+        ${lib.concatMapStrings (extraAVDFile: ''
+          ln -sf ${extraAVDFile} $ANDROID_AVD_HOME/${deviceName}.avd
+        '') extraAVDFiles}
     fi
 
     # Launch the emulator
