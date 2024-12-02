@@ -108,7 +108,8 @@ in
       pinentry-program = lib.getExe cfg.agent.pinentryPackage;
     };
 
-    environment.etc."gnupg/gpg-agent.conf".source = agentSettingsFormat.generate "gpg-agent.conf" cfg.agent.settings;
+    environment.etc."gnupg/gpg-agent.conf".source =
+      agentSettingsFormat.generate "gpg-agent.conf" cfg.agent.settings;
 
     # This overrides the systemd user unit shipped with the gnupg package
     systemd.user.services.gpg-agent = {

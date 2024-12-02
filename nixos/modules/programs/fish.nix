@@ -161,10 +161,12 @@ in
 
     environment = lib.mkMerge [
       (lib.mkIf cfg.useBabelfish {
-        etc."fish/setEnvironment.fish".source = babelfishTranslate config.system.build.setEnvironment "setEnvironment";
+        etc."fish/setEnvironment.fish".source =
+          babelfishTranslate config.system.build.setEnvironment "setEnvironment";
         etc."fish/shellInit.fish".source = babelfishTranslate envShellInit "shellInit";
         etc."fish/loginShellInit.fish".source = babelfishTranslate envLoginShellInit "loginShellInit";
-        etc."fish/interactiveShellInit.fish".source = babelfishTranslate envInteractiveShellInit "interactiveShellInit";
+        etc."fish/interactiveShellInit.fish".source =
+          babelfishTranslate envInteractiveShellInit "interactiveShellInit";
       })
 
       (lib.mkIf (!cfg.useBabelfish) {

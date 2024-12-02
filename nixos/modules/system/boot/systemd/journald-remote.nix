@@ -168,6 +168,7 @@ in
       group = "systemd-journal-remote";
     };
 
-    environment.etc."systemd/journal-remote.conf".source = format.generate "journal-remote.conf" cfg.settings;
+    environment.etc."systemd/journal-remote.conf".source =
+      format.generate "journal-remote.conf" cfg.settings;
   };
 }

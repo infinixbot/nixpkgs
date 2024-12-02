@@ -81,7 +81,8 @@ in
         "tlp.conf".text = (mkTlpConfig cfg.settings) + cfg.extraConfig;
       }
       // lib.optionalAttrs enableRDW {
-        "NetworkManager/dispatcher.d/99tlp-rdw-nm".source = "${tlp}/usr/lib/NetworkManager/dispatcher.d/99tlp-rdw-nm";
+        "NetworkManager/dispatcher.d/99tlp-rdw-nm".source =
+          "${tlp}/usr/lib/NetworkManager/dispatcher.d/99tlp-rdw-nm";
       };
 
     environment.systemPackages = [ tlp ];

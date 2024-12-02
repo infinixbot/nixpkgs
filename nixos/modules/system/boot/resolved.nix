@@ -229,7 +229,8 @@ in
           "/etc/systemd/resolved.conf".text = resolvedConf;
         };
 
-        tmpfiles.settings.systemd-resolved-stub."/etc/resolv.conf".L.argument = "/run/systemd/resolve/stub-resolv.conf";
+        tmpfiles.settings.systemd-resolved-stub."/etc/resolv.conf".L.argument =
+          "/run/systemd/resolve/stub-resolv.conf";
 
         additionalUpstreamUnits = [ "systemd-resolved.service" ];
         users.systemd-resolve = { };

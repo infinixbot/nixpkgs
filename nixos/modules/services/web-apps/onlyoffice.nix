@@ -105,10 +105,11 @@ in
         virtualHosts.${cfg.hostname} = {
           locations = {
             # /etc/nginx/includes/ds-docservice.conf
-            "~ ^(\/[\d]+\.[\d]+\.[\d]+[\.|-][\d]+)?\/(web-apps\/apps\/api\/documents\/api\.js)$".extraConfig = ''
-              expires -1;
-              alias ${cfg.package}/var/www/onlyoffice/documentserver/$2;
-            '';
+            "~ ^(\/[\d]+\.[\d]+\.[\d]+[\.|-][\d]+)?\/(web-apps\/apps\/api\/documents\/api\.js)$".extraConfig =
+              ''
+                expires -1;
+                alias ${cfg.package}/var/www/onlyoffice/documentserver/$2;
+              '';
             "~ ^(\/[\d]+\.[\d]+\.[\d]+[\.|-][\d]+)?\/(web-apps)(\/.*\.json)$".extraConfig = ''
               expires 365d;
               error_log /dev/null crit;
@@ -119,10 +120,11 @@ in
               error_log /dev/null crit;
               alias ${cfg.package}/var/www/onlyoffice/documentserver/$2$3;
             '';
-            "~ ^(\/[\d]+\.[\d]+\.[\d]+[\.|-][\d]+)?\/(web-apps|sdkjs|sdkjs-plugins|fonts)(\/.*)$".extraConfig = ''
-              expires 365d;
-              alias ${cfg.package}/var/www/onlyoffice/documentserver/$2$3;
-            '';
+            "~ ^(\/[\d]+\.[\d]+\.[\d]+[\.|-][\d]+)?\/(web-apps|sdkjs|sdkjs-plugins|fonts)(\/.*)$".extraConfig =
+              ''
+                expires 365d;
+                alias ${cfg.package}/var/www/onlyoffice/documentserver/$2$3;
+              '';
             "~* ^(\/cache\/files.*)(\/.*)".extraConfig = ''
               alias /var/lib/onlyoffice/documentserver/App_Data$1;
               add_header Content-Disposition "attachment; filename*=UTF-8''$arg_filename";

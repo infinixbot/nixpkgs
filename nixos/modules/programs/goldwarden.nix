@@ -26,8 +26,10 @@ in
 
     environment = {
       etc = lib.mkIf config.programs.chromium.enable {
-        "chromium/native-messaging-hosts/com.8bit.bitwarden.json".source = "${cfg.package}/etc/chromium/native-messaging-hosts/com.8bit.bitwarden.json";
-        "opt/chrome/native-messaging-hosts/com.8bit.bitwarden.json".source = "${cfg.package}/etc/chrome/native-messaging-hosts/com.8bit.bitwarden.json";
+        "chromium/native-messaging-hosts/com.8bit.bitwarden.json".source =
+          "${cfg.package}/etc/chromium/native-messaging-hosts/com.8bit.bitwarden.json";
+        "opt/chrome/native-messaging-hosts/com.8bit.bitwarden.json".source =
+          "${cfg.package}/etc/chrome/native-messaging-hosts/com.8bit.bitwarden.json";
       };
 
       extraInit = lib.mkIf cfg.useSshAgent ''

@@ -452,7 +452,8 @@ in
       }
       // lib.optionalAttrs config.boot.modprobeConfig.enable {
         # We don't place this into `extraModprobeConfig` so that stage-1 ramdisk doesn't bloat.
-        "modprobe.d/firmware.conf".text = "options firmware_class path=${config.hardware.firmware}/lib/firmware";
+        "modprobe.d/firmware.conf".text =
+          "options firmware_class path=${config.hardware.firmware}/lib/firmware";
       };
 
     system.requiredKernelConfig = with config.lib.kernelConfig; [

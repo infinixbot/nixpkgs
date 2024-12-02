@@ -287,7 +287,8 @@ in
         {
           name = cfg.database.user;
           ensurePermissions = {
-            "${cfg.database.name}.*" = "SELECT, INSERT, UPDATE, DELETE, CREATE, CREATE TEMPORARY TABLES, DROP, INDEX, ALTER";
+            "${cfg.database.name}.*" =
+              "SELECT, INSERT, UPDATE, DELETE, CREATE, CREATE TEMPORARY TABLES, DROP, INDEX, ALTER";
           };
         }
       ];

@@ -65,7 +65,8 @@ let
                 "usershare owner only" = false;
               };
             };
-            systemd.services.samba-smbd.serviceConfig.ExecStartPre = "${pkgs.coreutils}/bin/mkdir -m +t -p ${usersharePath}";
+            systemd.services.samba-smbd.serviceConfig.ExecStartPre =
+              "${pkgs.coreutils}/bin/mkdir -m +t -p ${usersharePath}";
             virtualisation.fileSystems = {
               "/tmp/mnt" = {
                 device = "rpool/root";

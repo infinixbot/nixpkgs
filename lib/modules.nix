@@ -151,7 +151,8 @@ let
                 null # unset => visible
               else
                 "internal"
-            } = true;
+            } =
+              true;
             # TODO: Change the type of this option to a submodule with a
             # freeformType, so that individual arguments can be documented
             # separately
