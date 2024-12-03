@@ -1,4 +1,9 @@
-{ lib, fetchzip, buildGo123Module, nixosTests }:
+{
+  lib,
+  fetchzip,
+  buildGo123Module,
+  nixosTests,
+}:
 
 buildGo123Module rec {
   pname = "traefik";

@@ -1,7 +1,8 @@
-{ lib
-, stdenv
-, fetchzip
-, cmake
+{
+  lib,
+  stdenv,
+  fetchzip,
+  cmake,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -9,8 +10,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "monkeys-audio";
 
   src = fetchzip {
-    url = "https://monkeysaudio.com/files/MAC_${
-      builtins.concatStringsSep "" (lib.strings.splitString "." finalAttrs.version)}_SDK.zip";
+    url = "https://monkeysaudio.com/files/MAC_${builtins.concatStringsSep "" (lib.strings.splitString "." finalAttrs.version)}_SDK.zip";
     hash = "sha256-sI2u+H/ewva9r+g5xSNqal0DMul+a9Y4FV6dEzulvSI=";
     stripRoot = false;
   };
