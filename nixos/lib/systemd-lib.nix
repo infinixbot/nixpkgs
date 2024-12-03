@@ -777,9 +777,9 @@ rec {
           n:
           let
             s = optionalString (env.${n} != null) "Environment=${toJSON "${n}=${env.${n}}"}\n";
+            # systemd max line length is now 1MiB
+            # https://github.com/systemd/systemd/commit/e6dde451a51dc5aaa7f4d98d39b8fe735f73d2af
           in
-          # systemd max line length is now 1MiB
-          # https://github.com/systemd/systemd/commit/e6dde451a51dc5aaa7f4d98d39b8fe735f73d2af
           if stringLength s >= 1048576 then
             throw "The value of the environment variable ‘${n}’ in systemd service ‘${def.name}.service’ is too long."
           else

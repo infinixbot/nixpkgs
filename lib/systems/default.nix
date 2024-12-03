@@ -486,8 +486,8 @@ let
                   }
                   .${cpu.name} or cpu.name;
                 vendor_ = final.rust.platform.vendor;
+                # TODO: deprecate args.rustc in favour of args.rust after 23.05 is EOL.
               in
-              # TODO: deprecate args.rustc in favour of args.rust after 23.05 is EOL.
               args.rust.rustcTarget or args.rustc.config or (
                 # Rust uses `wasm32-wasip?` rather than `wasm32-unknown-wasi`.
                 # We cannot know which subversion does the user want, and

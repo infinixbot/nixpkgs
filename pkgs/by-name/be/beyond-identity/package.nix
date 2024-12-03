@@ -89,8 +89,8 @@ let
         $out/bin/byndid
     '';
   };
+  # /usr/bin/pkcheck is hardcoded in binary - we need FHS
 in
-# /usr/bin/pkcheck is hardcoded in binary - we need FHS
 buildFHSEnv {
   inherit pname version meta;
 

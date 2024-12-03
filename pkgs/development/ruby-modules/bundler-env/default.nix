@@ -60,8 +60,8 @@ let
   # Different use cases should use different variations on this file, rather
   # than the expression trying to deduce a use case.
 
+  # The basicEnv should be put into passthru so that e.g. nix-shell can use it.
 in
-# The basicEnv should be put into passthru so that e.g. nix-shell can use it.
 if pname == null then
   basicEnv // { inherit name basicEnv; }
 else

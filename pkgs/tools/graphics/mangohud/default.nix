@@ -239,10 +239,10 @@ stdenv.mkDerivation (finalAttrs: {
         "i686-linux" = "x86";
       };
       layerPlatform = archMap."${stdenv.hostPlatform.system}" or null;
+      # We need to give the different layers separate names or else the loader
+      # might try the 32-bit one first, fail and not attempt to load the 64-bit
+      # layer under the same name.
     in
-    # We need to give the different layers separate names or else the loader
-    # might try the 32-bit one first, fail and not attempt to load the 64-bit
-    # layer under the same name.
     lib.optionalString (layerPlatform != null) ''
       substituteInPlace $out/share/vulkan/implicit_layer.d/MangoHud.${layerPlatform}.json \
         --replace "VK_LAYER_MANGOHUD_overlay" "VK_LAYER_MANGOHUD_overlay_${toString stdenv.hostPlatform.parsed.cpu.bits}"

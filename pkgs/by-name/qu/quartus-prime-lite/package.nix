@@ -31,8 +31,8 @@ let
     genericName = "Quartus Prime";
     categories = [ "Development" ];
   };
+  # I think questa_fse/linux/vlm checksums itself, so use FHSUserEnv instead of `patchelf`
 in
-# I think questa_fse/linux/vlm checksums itself, so use FHSUserEnv instead of `patchelf`
 buildFHSEnv rec {
   pname = "quartus-prime-lite"; # wrapped
   inherit (unwrapped) version;

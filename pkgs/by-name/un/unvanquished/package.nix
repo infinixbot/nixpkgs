@@ -132,8 +132,8 @@ let
     '';
   };
 
+  # this really is the daemon game engine, the game itself is in the assets
 in
-# this really is the daemon game engine, the game itself is in the assets
 stdenv.mkDerivation rec {
   pname = "unvanquished";
   inherit version src binary-deps-version;

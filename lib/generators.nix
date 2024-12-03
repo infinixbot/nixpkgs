@@ -72,8 +72,8 @@ let
     typeOf
     ;
 
+  ## -- HELPER FUNCTIONS & DEFAULTS --
 in
-## -- HELPER FUNCTIONS & DEFAULTS --
 rec {
   /**
     Convert a value to a sensible default string representation.

@@ -476,8 +476,8 @@ lib.fix (
         allowSubstitutes = true;
         preferLocalBuild = false;
       };
+    # outputsToInstall must be set *after* overrideAttrs (used in buildEnv') or it fails the checkMeta tests
   in
-  # outputsToInstall must be set *after* overrideAttrs (used in buildEnv') or it fails the checkMeta tests
   if __combine || __formatsOf != null then
     out
   else

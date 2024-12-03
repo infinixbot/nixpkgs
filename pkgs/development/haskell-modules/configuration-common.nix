@@ -1129,9 +1129,9 @@ self: super:
           hash = "sha256-R7/+okb6t9DAkPVUV70QdYJW8vRcvBdz4zKJT13jb3A=";
         };
       } super.d-bus;
+      # Add now required extension on recent compilers.
+      # https://github.com/Philonous/d-bus/pull/23
     in
-    # Add now required extension on recent compilers.
-    # https://github.com/Philonous/d-bus/pull/23
     appendPatch (fetchpatch {
       url = "https://github.com/Philonous/d-bus/commit/e5f37900a3a301c41d98bdaa134754894c705681.patch";
       sha256 = "6rQ7H9t483sJe1x95yLPAZ0BKTaRjgqQvvrQv7HkJRE=";
