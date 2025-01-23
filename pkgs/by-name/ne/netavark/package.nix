@@ -1,11 +1,12 @@
-{ lib
-, rustPlatform
-, fetchFromGitHub
-, installShellFiles
-, mandown
-, protobuf
-, nixosTests
-, go-md2man
+{
+  lib,
+  rustPlatform,
+  fetchFromGitHub,
+  installShellFiles,
+  mandown,
+  protobuf,
+  nixosTests,
+  go-md2man,
 }:
 
 rustPlatform.buildRustPackage rec {
@@ -21,7 +22,12 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-8qDeOY4yfDE7YX06W3QKSOws+F53XM8M3dclEbYMRsI=";
 
-  nativeBuildInputs = [ installShellFiles mandown protobuf go-md2man ];
+  nativeBuildInputs = [
+    installShellFiles
+    mandown
+    protobuf
+    go-md2man
+  ];
 
   postBuild = ''
     make -C docs netavark.1

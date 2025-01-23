@@ -1,9 +1,10 @@
-{ lib
-, rustPlatform
-, fetchFromGitHub
-, rust-jemalloc-sys
-, stdenv
-, darwin
+{
+  lib,
+  rustPlatform,
+  fetchFromGitHub,
+  rust-jemalloc-sys,
+  stdenv,
+  darwin,
 }:
 
 rustPlatform.buildRustPackage rec {
@@ -19,11 +20,13 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-Yfk5DGOo3GLHzqJYCFrlLB7soHFI+zBRR93daVOgrmk=";
 
-  buildInputs = [
-    rust-jemalloc-sys
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [
-    darwin.apple_sdk.frameworks.Security
-  ];
+  buildInputs =
+    [
+      rust-jemalloc-sys
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      darwin.apple_sdk.frameworks.Security
+    ];
 
   env.OXC_VERSION = version;
 

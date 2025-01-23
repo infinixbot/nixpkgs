@@ -47,7 +47,7 @@
   configureScript = "./configure.sh";
   dontAddPrefix = true;
 
-  mlPlugin = true;  /* uses coq-bignums.plugin */
+  mlPlugin = true; # uses coq-bignums.plugin
 
   propagatedBuildInputs = [
     bignums
