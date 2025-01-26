@@ -1,4 +1,12 @@
-{ lib, stdenv, fetchFromGitHub, cmake, tzdata, fetchpatch, substituteAll }:
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  cmake,
+  tzdata,
+  fetchpatch,
+  substituteAll,
+}:
 
 stdenv.mkDerivation rec {
   pname = "howard-hinnant-date";
@@ -45,7 +53,10 @@ stdenv.mkDerivation rec {
     "-DUSE_SYSTEM_TZ_DB=true"
   ];
 
-  outputs = [ "out" "dev" ];
+  outputs = [
+    "out"
+    "dev"
+  ];
 
   # fixes "cycle detected in build"
   postInstall = lib.optionalString stdenv.hostPlatform.isWindows ''
