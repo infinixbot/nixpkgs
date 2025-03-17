@@ -25,7 +25,8 @@ let
     "sdk"
     "sqlplus"
     "tools"
-  ] ++ optional odbcSupport "odbc";
+  ]
+  ++ optional odbcSupport "odbc";
 
   # determine the version number, there might be different ones per architecture
   version =

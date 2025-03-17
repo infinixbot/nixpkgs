@@ -56,25 +56,25 @@ stdenv.mkDerivation rec {
     docutils
     wrapGAppsHook4
     pkg-config
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin desktopToDarwinBundle;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin desktopToDarwinBundle;
 
-  buildInputs =
-    [
-      python3
-      libvirt-glib
-      vte
-      dconf
-      gtk-vnc
-      adwaita-icon-theme
-      gsettings-desktop-schemas
-      libosinfo
-      gtksourceview4
-    ]
-    ++ lib.optionals spiceSupport [
-      gst_all_1.gst-plugins-base
-      gst_all_1.gst-plugins-good
-      spice-gtk
-    ];
+  buildInputs = [
+    python3
+    libvirt-glib
+    vte
+    dconf
+    gtk-vnc
+    adwaita-icon-theme
+    gsettings-desktop-schemas
+    libosinfo
+    gtksourceview4
+  ]
+  ++ lib.optionals spiceSupport [
+    gst_all_1.gst-plugins-base
+    gst_all_1.gst-plugins-good
+    spice-gtk
+  ];
   preFixup = ''
     glib-compile-schemas $out/share/gsettings-schemas/${pname}-${version}/glib-2.0/schemas
 

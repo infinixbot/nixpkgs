@@ -78,7 +78,8 @@ stdenv.mkDerivation rec {
     libglut
     physfs
     qtbase
-  ] ++ lib.optional withServer ghc;
+  ]
+  ++ lib.optional withServer ghc;
 
   cmakeFlags = [
     "-DNOVERSIONINFOUPDATE=ON"

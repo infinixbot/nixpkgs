@@ -65,28 +65,27 @@ buildPythonPackage rec {
     ./skip-surface-tests.patch
   ];
 
-  postPatch =
-    ''
-      # cython was pinned to fix windows build hangs (pygame-community/pygame-ce/pull/3015)
-      substituteInPlace pyproject.toml \
-        --replace-fail '"meson<=1.7.0",' '"meson",' \
-        --replace-fail '"meson-python<=0.17.1",' '"meson-python",' \
-        --replace-fail '"ninja<=1.12.1",' "" \
-        --replace-fail '"cython<=3.0.11",' '"cython",' \
-        --replace-fail '"sphinx<=8.1.3",' "" \
-        --replace-fail '"sphinx-autoapi<=3.3.2",' ""
-      substituteInPlace buildconfig/config_{unix,darwin}.py \
-        --replace-fail 'from distutils' 'from setuptools._distutils'
-      substituteInPlace src_py/sysfont.py \
-        --replace-fail 'path="fc-list"' 'path="${fontconfig}/bin/fc-list"' \
-        --replace-fail /usr/X11/bin/fc-list ${fontconfig}/bin/fc-list
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      # flaky
-      rm test/system_test.py
-      substituteInPlace test/meson.build \
-        --replace-fail "'system_test.py'," ""
-    '';
+  postPatch = ''
+    # cython was pinned to fix windows build hangs (pygame-community/pygame-ce/pull/3015)
+    substituteInPlace pyproject.toml \
+      --replace-fail '"meson<=1.7.0",' '"meson",' \
+      --replace-fail '"meson-python<=0.17.1",' '"meson-python",' \
+      --replace-fail '"ninja<=1.12.1",' "" \
+      --replace-fail '"cython<=3.0.11",' '"cython",' \
+      --replace-fail '"sphinx<=8.1.3",' "" \
+      --replace-fail '"sphinx-autoapi<=3.3.2",' ""
+    substituteInPlace buildconfig/config_{unix,darwin}.py \
+      --replace-fail 'from distutils' 'from setuptools._distutils'
+    substituteInPlace src_py/sysfont.py \
+      --replace-fail 'path="fc-list"' 'path="${fontconfig}/bin/fc-list"' \
+      --replace-fail /usr/X11/bin/fc-list ${fontconfig}/bin/fc-list
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    # flaky
+    rm test/system_test.py
+    substituteInPlace test/meson.build \
+      --replace-fail "'system_test.py'," ""
+  '';
 
   nativeBuildInputs = [
     pkg-config
@@ -106,7 +105,8 @@ buildPythonPackage rec {
     SDL2_image
     SDL2_mixer
     SDL2_ttf
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ AppKit ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ AppKit ];
 
   nativeCheckInputs = [
     numpy
@@ -116,13 +116,12 @@ buildPythonPackage rec {
     ${python.pythonOnBuildForHost.interpreter} -m buildconfig.config
   '';
 
-  env =
-    {
-      SDL_CONFIG = "${SDL2.dev}/bin/sdl2-config";
-    }
-    // lib.optionalAttrs stdenv.cc.isClang {
-      NIX_CFLAGS_COMPILE = "-Wno-error=incompatible-function-pointer-types";
-    };
+  env = {
+    SDL_CONFIG = "${SDL2.dev}/bin/sdl2-config";
+  }
+  // lib.optionalAttrs stdenv.cc.isClang {
+    NIX_CFLAGS_COMPILE = "-Wno-error=incompatible-function-pointer-types";
+  };
 
   preCheck = ''
     export HOME=$(mktemp -d)

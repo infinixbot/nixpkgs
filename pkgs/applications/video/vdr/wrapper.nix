@@ -16,7 +16,8 @@ symlinkJoin {
 
   name = "vdr-with-plugins-${lib.getVersion vdr}";
 
-  paths = [ vdr ] ++ plugins;
+  paths = [ vdr ]
+    ++ plugins;
 
   nativeBuildInputs = [ makeWrapper ];
 
@@ -28,7 +29,9 @@ symlinkJoin {
 
   meta = with vdr.meta; {
     inherit license homepage;
-    description =
-      description + " (with plugins: " + lib.concatStringsSep ", " (map (x: "" + x.name) plugins) + ")";
+    description = description
+    + " (with plugins: "
+    + lib.concatStringsSep ", " (map (x: "" + x.name) plugins)
+    + ")";
   };
 }

@@ -163,7 +163,8 @@ stdenv.mkDerivation rec {
     ln -s $build_dir $SGX_SDK/lib64
   '';
 
-  buildFlags = [ "psw_install_pkg" ] ++ lib.optionals debug [ "DEBUG=1" ];
+  buildFlags = [ "psw_install_pkg" ]
+    ++ lib.optionals debug [ "DEBUG=1" ];
 
   installFlags = [
     "-C linux/installer/common/psw/output"

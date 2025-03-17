@@ -29,7 +29,8 @@ buildPythonPackage rec {
 
   build-system = [ setuptools-scm ];
 
-  dependencies = [ pyelftools ] ++ lib.optionals (pythonOlder "3.8") [ importlib-metadata ];
+  dependencies = [ pyelftools ]
+    ++ lib.optionals (pythonOlder "3.8") [ importlib-metadata ];
 
   nativeCheckInputs = [
     pretend

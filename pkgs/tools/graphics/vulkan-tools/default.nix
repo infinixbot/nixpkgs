@@ -74,21 +74,20 @@ stdenv.mkDerivation rec {
 
   env.PKG_CONFIG_WAYLAND_SCANNER_WAYLAND_SCANNER = lib.getExe buildPackages.wayland-scanner;
 
-  cmakeFlags =
-    [
-      # Don't build the mock ICD as it may get used instead of other drivers, if installed
-      "-DBUILD_ICD=OFF"
-      # vulkaninfo loads libvulkan using dlopen, so we have to add it manually to RPATH
-      "-DCMAKE_INSTALL_RPATH=${libraryPath}"
-      "-DGLSLANG_INSTALL_DIR=${glslang}"
-      # Hide dev warnings that are useless for packaging
-      "-Wno-dev"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      "-DMOLTENVK_REPO_ROOT=${moltenvk}/share/vulkan/icd.d"
-      # Don’t build the cube demo because it requires `ibtool`, which is not available in nixpkgs.
-      "-DBUILD_CUBE=OFF"
-    ];
+  cmakeFlags = [
+    # Don't build the mock ICD as it may get used instead of other drivers, if installed
+    "-DBUILD_ICD=OFF"
+    # vulkaninfo loads libvulkan using dlopen, so we have to add it manually to RPATH
+    "-DCMAKE_INSTALL_RPATH=${libraryPath}"
+    "-DGLSLANG_INSTALL_DIR=${glslang}"
+    # Hide dev warnings that are useless for packaging
+    "-Wno-dev"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    "-DMOLTENVK_REPO_ROOT=${moltenvk}/share/vulkan/icd.d"
+    # Don’t build the cube demo because it requires `ibtool`, which is not available in nixpkgs.
+    "-DBUILD_CUBE=OFF"
+  ];
 
   meta = with lib; {
     description = "Khronos official Vulkan Tools and Utilities";

@@ -24,8 +24,7 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   nativeBuildInputs = [ autoreconfHook ];
-  buildInputs =
-    [ ncurses5 ]
+  buildInputs = [ ncurses5 ]
     ++ lib.optionals enableSdl2 [
       SDL2
       SDL2_image

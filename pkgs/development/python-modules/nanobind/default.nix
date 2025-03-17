@@ -61,18 +61,17 @@ buildPythonPackage rec {
     make -j $NIX_BUILD_CORES
   '';
 
-  nativeCheckInputs =
-    [
-      pytestCheckHook
-      numpy
-      scipy
-      torch
-    ]
-    ++ lib.optionals (!(builtins.elem stdenv.hostPlatform.system tensorflow-bin.meta.badPlatforms)) [
-      tensorflow-bin
-      jax
-      jaxlib
-    ];
+  nativeCheckInputs = [
+    pytestCheckHook
+    numpy
+    scipy
+    torch
+  ]
+  ++ lib.optionals (!(builtins.elem stdenv.hostPlatform.system tensorflow-bin.meta.badPlatforms)) [
+    tensorflow-bin
+    jax
+    jaxlib
+  ];
 
   meta = {
     homepage = "https://github.com/wjakob/nanobind";

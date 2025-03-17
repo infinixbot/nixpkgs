@@ -45,23 +45,22 @@ buildPythonPackage {
   ];
 
   # Libraries are not linked correctly.
-  buildInputs =
+  buildInputs = [
+    oneDNN
+    re2
+    onnxruntime.protobuf
+  ]
+  ++ lib.optionals onnxruntime.passthru.cudaSupport (
+    with onnxruntime.passthru.cudaPackages;
     [
-      oneDNN
-      re2
-      onnxruntime.protobuf
+      libcublas # libcublasLt.so.XX libcublas.so.XX
+      libcurand # libcurand.so.XX
+      libcufft # libcufft.so.XX
+      cudnn # libcudnn.soXX
+      cuda_cudart # libcudart.so.XX
+      nccl # libnccl.so.XX
     ]
-    ++ lib.optionals onnxruntime.passthru.cudaSupport (
-      with onnxruntime.passthru.cudaPackages;
-      [
-        libcublas # libcublasLt.so.XX libcublas.so.XX
-        libcurand # libcurand.so.XX
-        libcufft # libcufft.so.XX
-        cudnn # libcudnn.soXX
-        cuda_cudart # libcudart.so.XX
-        nccl # libnccl.so.XX
-      ]
-    );
+  );
 
   propagatedBuildInputs = [
     coloredlogs

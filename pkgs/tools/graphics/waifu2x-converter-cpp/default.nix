@@ -29,16 +29,15 @@ stdenv.mkDerivation rec {
     ./waifu2x_darwin_build.diff
   ];
 
-  buildInputs =
-    [
-      opencv4
-    ]
-    ++ lib.optional cudaSupport cudatoolkit
-    ++ lib.optional stdenv.hostPlatform.isDarwin OpenCL
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      ocl-icd
-      opencl-headers
-    ];
+  buildInputs = [
+    opencv4
+  ]
+  ++ lib.optional cudaSupport cudatoolkit
+  ++ lib.optional stdenv.hostPlatform.isDarwin OpenCL
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    ocl-icd
+    opencl-headers
+  ];
 
   nativeBuildInputs = [
     cmake

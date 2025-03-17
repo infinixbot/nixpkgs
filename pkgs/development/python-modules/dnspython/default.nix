@@ -53,7 +53,8 @@ buildPythonPackage rec {
 
   nativeCheckInputs = [ pytestCheckHook ];
 
-  checkInputs = [ cacert ] ++ optional-dependencies.DNSSEC;
+  checkInputs = [ cacert ]
+    ++ optional-dependencies.DNSSEC;
 
   disabledTests = [
     # dns.exception.SyntaxError: protocol not found

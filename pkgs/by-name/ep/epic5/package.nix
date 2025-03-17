@@ -20,17 +20,16 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-QiD9Lx4IxbR+w0NFw5cANqN9cvu1QR45wQ87zlV8FNU=";
   };
 
-  buildInputs =
-    [
-      openssl
-      ncurses
-      libxcrypt
-      ruby
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      libiconv
-      tcl
-    ];
+  buildInputs = [
+    openssl
+    ncurses
+    libxcrypt
+    ruby
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    libiconv
+    tcl
+  ];
 
   configureFlags = [
     "--with-ipv6"

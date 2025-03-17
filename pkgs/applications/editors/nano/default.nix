@@ -38,8 +38,10 @@ stdenv.mkDerivation rec {
     hash = "sha256-VRtxey4o9+kPdJMjaGobW7vYTPoTkGBNhUo8o3ePER4=";
   };
 
-  nativeBuildInputs = [ texinfo ] ++ lib.optional enableNls gettext;
-  buildInputs = [ ncurses ] ++ lib.optional (!enableTiny) file;
+  nativeBuildInputs = [ texinfo ]
+    ++ lib.optional enableNls gettext;
+  buildInputs = [ ncurses ]
+    ++ lib.optional (!enableTiny) file;
 
   outputs = [
     "out"

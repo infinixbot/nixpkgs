@@ -29,7 +29,8 @@ stdenv.mkDerivation rec {
     nlopt
     boost
     tbb
-  ] ++ lib.optional (!stdenv.hostPlatform.isDarwin) ipopt;
+  ]
+  ++ lib.optional (!stdenv.hostPlatform.isDarwin) ipopt;
 
   cmakeFlags =
     [

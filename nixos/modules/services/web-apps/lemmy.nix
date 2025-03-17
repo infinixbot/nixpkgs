@@ -325,7 +325,8 @@ in
 
           wantedBy = [ "multi-user.target" ];
 
-          after = [ "pict-rs.service" ] ++ lib.optionals cfg.database.createLocally [ "postgresql.service" ];
+          after = [ "pict-rs.service" ]
+            ++ lib.optionals cfg.database.createLocally [ "postgresql.service" ];
 
           requires = lib.optionals cfg.database.createLocally [ "postgresql.service" ];
 

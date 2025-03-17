@@ -37,12 +37,18 @@ buildPythonPackage rec {
   ];
 
   optional-dependencies = {
-    bcrypt = [ asyncssh ] ++ asyncssh.optional-dependencies.bcrypt;
-    fido2 = [ asyncssh ] ++ asyncssh.optional-dependencies.fido2;
-    gssapi = [ asyncssh ] ++ asyncssh.optional-dependencies.gssapi;
-    libnacl = [ asyncssh ] ++ asyncssh.optional-dependencies.libnacl;
-    pkcs11 = [ asyncssh ] ++ asyncssh.optional-dependencies.pkcs11;
-    pyopenssl = [ asyncssh ] ++ asyncssh.optional-dependencies.pyOpenSSL;
+    bcrypt = [ asyncssh ]
+      ++ asyncssh.optional-dependencies.bcrypt;
+    fido2 = [ asyncssh ]
+      ++ asyncssh.optional-dependencies.fido2;
+    gssapi = [ asyncssh ]
+      ++ asyncssh.optional-dependencies.gssapi;
+    libnacl = [ asyncssh ]
+      ++ asyncssh.optional-dependencies.libnacl;
+    pkcs11 = [ asyncssh ]
+      ++ asyncssh.optional-dependencies.pkcs11;
+    pyopenssl = [ asyncssh ]
+      ++ asyncssh.optional-dependencies.pyOpenSSL;
   };
 
   __darwinAllowLocalNetworking = true;
@@ -54,15 +60,14 @@ buildPythonPackage rec {
     pytestCheckHook
   ];
 
-  disabledTests =
-    [
-      # Test requires network access
-      "test_config_expansions"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      # Test fails with sandbox enabled
-      "test_checksum"
-    ];
+  disabledTests = [
+    # Test requires network access
+    "test_config_expansions"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    # Test fails with sandbox enabled
+    "test_checksum"
+  ];
 
   pythonImportsCheck = [ "sshfs" ];
 

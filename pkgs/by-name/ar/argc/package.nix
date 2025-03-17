@@ -26,7 +26,8 @@ rustPlatform.buildRustPackage rec {
   useFetchCargoVendor = true;
   cargoHash = "sha256-uyUwmTDa1RcgQbc/6wMwRK6932CatuGMr0FPd2rAufk=";
 
-  nativeBuildInputs = [ installShellFiles ] ++ lib.optional (!canExecuteHost) buildPackages.argc;
+  nativeBuildInputs = [ installShellFiles ]
+    ++ lib.optional (!canExecuteHost) buildPackages.argc;
 
   postInstall = ''
     ARGC=${if canExecuteHost then ''''${!outputBin}/bin/argc'' else "argc"}
@@ -39,13 +40,12 @@ rustPlatform.buildRustPackage rec {
 
   disallowedReferences = lib.optional (!canExecuteHost) buildPackages.argc;
 
-  env =
-    {
-      LANG = "C.UTF-8";
-    }
-    // lib.optionalAttrs (glibcLocales != null) {
-      LOCALE_ARCHIVE = "${glibcLocales}/lib/locale/locale-archive";
-    };
+  env = {
+    LANG = "C.UTF-8";
+  }
+  // lib.optionalAttrs (glibcLocales != null) {
+    LOCALE_ARCHIVE = "${glibcLocales}/lib/locale/locale-archive";
+  };
 
   passthru = {
     tests = {

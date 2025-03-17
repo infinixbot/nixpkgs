@@ -42,7 +42,8 @@ stdenv.mkDerivation rec {
   outputs = [
     "out"
     "info"
-  ] ++ lib.optional (!interactive) "man";
+  ]
+  ++ lib.optional (!interactive) "man";
 
   strictDeps = true;
 

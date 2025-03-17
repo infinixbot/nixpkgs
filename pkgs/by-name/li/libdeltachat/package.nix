@@ -40,30 +40,28 @@ stdenv.mkDerivation rec {
     hash = "sha256-+j6ENk6wvA3t2I2C8J2tOYJUVSS6s1Wa/8sDwGqF9Ho=";
   };
 
-  nativeBuildInputs =
-    [
-      cmake
-      perl
-      pkg-config
-      rustPlatform.cargoSetupHook
-      cargo
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      fixDarwinDylibNames
-    ];
+  nativeBuildInputs = [
+    cmake
+    perl
+    pkg-config
+    rustPlatform.cargoSetupHook
+    cargo
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    fixDarwinDylibNames
+  ];
 
-  buildInputs =
-    [
-      openssl
-      sqlcipher
-      sqlite
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      darwin.apple_sdk.frameworks.CoreFoundation
-      darwin.apple_sdk.frameworks.Security
-      darwin.apple_sdk.frameworks.SystemConfiguration
-      libiconv
-    ];
+  buildInputs = [
+    openssl
+    sqlcipher
+    sqlite
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    darwin.apple_sdk.frameworks.CoreFoundation
+    darwin.apple_sdk.frameworks.Security
+    darwin.apple_sdk.frameworks.SystemConfiguration
+    libiconv
+  ];
 
   nativeCheckInputs = with rustPlatform; [
     cargoCheckHook

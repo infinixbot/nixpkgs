@@ -49,8 +49,7 @@ pythonPackages.buildPythonApplication rec {
     pipewire
   ];
 
-  propagatedBuildInputs =
-    [ gobject-introspection ]
+  propagatedBuildInputs = [ gobject-introspection ]
     ++ (
       with pythonPackages;
       [

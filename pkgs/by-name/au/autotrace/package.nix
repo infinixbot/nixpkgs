@@ -41,16 +41,15 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      glib
-      imagemagick
-      libpng
-      pstoedit
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      darwin.apple_sdk.frameworks.Foundation
-    ];
+  buildInputs = [
+    glib
+    imagemagick
+    libpng
+    pstoedit
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    darwin.apple_sdk.frameworks.Foundation
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/autotrace/autotrace";

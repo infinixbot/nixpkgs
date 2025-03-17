@@ -35,7 +35,8 @@ stdenv.mkDerivation {
     cmake
     pkg-config
   ];
-  buildInputs = [ ssl_implementation ] ++ additional_buildInputs;
+  buildInputs = [ ssl_implementation ]
+    ++ additional_buildInputs;
 
   passthru = {
     inherit ssl_implementation;

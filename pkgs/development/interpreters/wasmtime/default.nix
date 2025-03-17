@@ -58,22 +58,21 @@ rustPlatform.buildRustPackage rec {
       # error: linker `rust-lld` not found
       !isAarch64;
 
-  postInstall =
-    ''
-      # move libs from out to dev
-      install -d -m 0755 $dev/lib
-      install -m 0644 ''${!outputLib}/lib/* $dev/lib
-      rm -r ''${!outputLib}/lib
+  postInstall = ''
+    # move libs from out to dev
+    install -d -m 0755 $dev/lib
+    install -m 0644 ''${!outputLib}/lib/* $dev/lib
+    rm -r ''${!outputLib}/lib
 
-      install -d -m0755 $dev/include/wasmtime
-      install -m0644 $src/crates/c-api/include/*.h $dev/include
-      install -m0644 $src/crates/c-api/include/wasmtime/*.h $dev/include/wasmtime
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      install_name_tool -id \
-        $dev/lib/libwasmtime.dylib \
-        $dev/lib/libwasmtime.dylib
-    '';
+    install -d -m0755 $dev/include/wasmtime
+    install -m0644 $src/crates/c-api/include/*.h $dev/include
+    install -m0644 $src/crates/c-api/include/wasmtime/*.h $dev/include/wasmtime
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    install_name_tool -id \
+      $dev/lib/libwasmtime.dylib \
+      $dev/lib/libwasmtime.dylib
+  '';
 
   meta = with lib; {
     description = "Standalone JIT-style runtime for WebAssembly, using Cranelift";

@@ -70,7 +70,8 @@ buildPythonPackage rec {
       ];
   };
 
-  nativeCheckInputs = [ unittestCheckHook ] ++ optional-dependencies.open_source_solvers;
+  nativeCheckInputs = [ unittestCheckHook ]
+    ++ optional-dependencies.open_source_solvers;
 
   meta = with lib; {
     changelog = "https://github.com/qpsolvers/qpsolvers/blob/${src.rev}/CHANGELOG.md";

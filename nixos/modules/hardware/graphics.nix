@@ -9,12 +9,14 @@ let
 
   driversEnv = pkgs.buildEnv {
     name = "graphics-drivers";
-    paths = [ cfg.package ] ++ cfg.extraPackages;
+    paths = [ cfg.package ]
+      ++ cfg.extraPackages;
   };
 
   driversEnv32 = pkgs.buildEnv {
     name = "graphics-drivers-32bit";
-    paths = [ cfg.package32 ] ++ cfg.extraPackages32;
+    paths = [ cfg.package32 ]
+      ++ cfg.extraPackages32;
   };
 in
 {

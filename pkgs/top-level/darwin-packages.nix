@@ -74,45 +74,44 @@ makeScopeWithSplicing' {
 
       apple_sdk = apple_sdk_11_0;
 
-      stubs =
-        {
-          inherit apple_sdk apple_sdk_11_0 apple_sdk_12_3;
-          libobjc = self.objc4;
-        }
-        // lib.genAttrs [
-          "CF"
-          "CarbonHeaders"
-          "CommonCrypto"
-          "CoreSymbolication"
-          "IOKit"
-          "Libc"
-          "Libinfo"
-          "Libm"
-          "Libnotify"
-          "Librpcsvc"
-          "Libsystem"
-          "LibsystemCross"
-          "Security"
-          "architecture"
-          "configd"
-          "configdHeaders"
-          "darwin-stubs"
-          "dtrace"
-          "dyld"
-          "eap8021x"
-          "hfs"
-          "hfsHeaders"
-          "launchd"
-          "libclosure"
-          "libdispatch"
-          "libmalloc"
-          "libplatform"
-          "libpthread"
-          "mDNSResponder"
-          "objc4"
-          "ppp"
-          "xnu"
-        ] (mkStub apple_sdk.version);
+      stubs = {
+        inherit apple_sdk apple_sdk_11_0 apple_sdk_12_3;
+        libobjc = self.objc4;
+      }
+      // lib.genAttrs [
+        "CF"
+        "CarbonHeaders"
+        "CommonCrypto"
+        "CoreSymbolication"
+        "IOKit"
+        "Libc"
+        "Libinfo"
+        "Libm"
+        "Libnotify"
+        "Librpcsvc"
+        "Libsystem"
+        "LibsystemCross"
+        "Security"
+        "architecture"
+        "configd"
+        "configdHeaders"
+        "darwin-stubs"
+        "dtrace"
+        "dyld"
+        "eap8021x"
+        "hfs"
+        "hfsHeaders"
+        "launchd"
+        "libclosure"
+        "libdispatch"
+        "libmalloc"
+        "libplatform"
+        "libpthread"
+        "mDNSResponder"
+        "objc4"
+        "ppp"
+        "xnu"
+      ] (mkStub apple_sdk.version);
     in
 
     impure-cmds
@@ -287,7 +286,8 @@ makeScopeWithSplicing' {
             configuration = {
               imports = [
                 ../../nixos/modules/profiles/nix-builder-vm.nix
-              ] ++ modules;
+              ]
+              ++ modules;
 
               # If you need to override this, consider starting with the right Nixpkgs
               # in the first place, ie change `pkgs` in `pkgs.darwin.linux-builder`.

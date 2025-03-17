@@ -31,7 +31,8 @@ buildGoModule rec {
     "cmd/gcrane"
   ];
 
-  outputs = [ "out" ] ++ bins;
+  outputs = [ "out" ]
+    ++ bins;
 
   ldflags =
     let

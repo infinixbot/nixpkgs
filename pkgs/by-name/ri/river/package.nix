@@ -26,7 +26,8 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "river";
   version = "0.3.7";
 
-  outputs = [ "out" ] ++ lib.optionals withManpages [ "man" ];
+  outputs = [ "out" ]
+    ++ lib.optionals withManpages [ "man" ];
 
   src = fetchFromGitea {
     domain = "codeberg.org";
@@ -44,7 +45,8 @@ stdenv.mkDerivation (finalAttrs: {
     wayland-scanner
     xwayland
     zig_0_13.hook
-  ] ++ lib.optional withManpages scdoc;
+  ]
+  ++ lib.optional withManpages scdoc;
 
   buildInputs = [
     libGL
@@ -56,7 +58,8 @@ stdenv.mkDerivation (finalAttrs: {
     wayland
     wayland-protocols
     wlroots_0_18
-  ] ++ lib.optional xwaylandSupport libX11;
+  ]
+  ++ lib.optional xwaylandSupport libX11;
 
   dontConfigure = true;
 

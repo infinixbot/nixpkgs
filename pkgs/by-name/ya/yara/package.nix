@@ -43,14 +43,13 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      pcre
-      protobufc
-    ]
-    ++ lib.optionals withCrypto [ openssl ]
-    ++ lib.optionals enableMagic [ file ]
-    ++ lib.optionals enableCuckoo [ jansson ];
+  buildInputs = [
+    pcre
+    protobufc
+  ]
+  ++ lib.optionals withCrypto [ openssl ]
+  ++ lib.optionals enableMagic [ file ]
+  ++ lib.optionals enableCuckoo [ jansson ];
 
   preConfigure = "./bootstrap.sh";
 

@@ -82,7 +82,8 @@ buildPythonPackage rec {
     snowplow-tracker
     sqlparse
     typing-extensions
-  ] ++ mashumaro.optional-dependencies.msgpack;
+  ]
+  ++ mashumaro.optional-dependencies.msgpack;
 
   # tests exist for the dbt tool but not for this package specifically
   doCheck = false;

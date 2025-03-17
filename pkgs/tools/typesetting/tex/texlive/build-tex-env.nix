@@ -262,8 +262,7 @@ lib.fix (
     };
 
     meta = {
-      description =
-        "TeX Live environment"
+      description = "TeX Live environment"
         + lib.optionalString withDocs " with documentation"
         + lib.optionalString (withDocs && withSources) " and"
         + lib.optionalString withSources " with sources";
@@ -418,7 +417,8 @@ lib.fix (
         # use attrNames, attrValues to ensure the two lists are sorted in the same way
         outputs = [
           "out"
-        ] ++ lib.optionals (!__combine && __formatsOf == null) (builtins.attrNames nonEnvOutputs);
+        ]
+        ++ lib.optionals (!__combine && __formatsOf == null) (builtins.attrNames nonEnvOutputs);
         otherOutputs = lib.optionals (!__combine && __formatsOf == null) (
           builtins.attrValues nonEnvOutputs
         );
@@ -451,7 +451,8 @@ lib.fix (
           gawk
           gnugrep
           gnused
-        ] ++ lib.optional needsGhostscript ghostscript;
+        ]
+        ++ lib.optional needsGhostscript ghostscript;
 
         inherit meta passthru __combine;
         __formatsOf = __formatsOf.pname or null;

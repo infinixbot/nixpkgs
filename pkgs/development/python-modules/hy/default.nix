@@ -31,7 +31,8 @@ buildPythonPackage rec {
 
   build-system = [ setuptools ];
 
-  dependencies = [ funcparserlib ] ++ lib.optionals (pythonOlder "3.9") [ astor ];
+  dependencies = [ funcparserlib ]
+    ++ lib.optionals (pythonOlder "3.9") [ astor ];
 
   nativeCheckInputs = [ pytestCheckHook ];
 

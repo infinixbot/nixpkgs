@@ -503,16 +503,15 @@ in
     environment.systemPackages = [ cfg.package ];
 
     users = {
-      users =
-        {
-          movim = mkIf (cfg.user == "movim") {
-            isSystemUser = true;
-            group = cfg.group;
-          };
-        }
-        // lib.optionalAttrs (cfg.nginx != null) {
-          "${config.services.nginx.user}".extraGroups = [ cfg.group ];
+      users = {
+        movim = mkIf (cfg.user == "movim") {
+          isSystemUser = true;
+          group = cfg.group;
         };
+      }
+      // lib.optionalAttrs (cfg.nginx != null) {
+        "${config.services.nginx.user}".extraGroups = [ cfg.group ];
+      };
       groups = {
         ${cfg.group} = { };
       };
@@ -702,7 +701,8 @@ in
             "listen.group" = cfg.group;
             "listen.mode" = "0660";
             "catch_workers_output" = true;
-          } // cfg.poolConfig;
+          }
+          // cfg.poolConfig;
         };
     };
 
@@ -715,16 +715,15 @@ in
         after = lib.optional cfg.database.createLocally dbService;
         requires = lib.optional cfg.database.createLocally dbService;
 
-        serviceConfig =
-          {
-            Type = "oneshot";
-            User = cfg.user;
-            Group = cfg.group;
-            UMask = "077";
-          }
-          // lib.optionalAttrs (cfg.secretFile != null) {
-            LoadCredential = "env-secrets:${cfg.secretFile}";
-          };
+        serviceConfig = {
+          Type = "oneshot";
+          User = cfg.user;
+          Group = cfg.group;
+          UMask = "077";
+        }
+        // lib.optionalAttrs (cfg.secretFile != null) {
+          LoadCredential = "env-secrets:${cfg.secretFile}";
+        };
 
         script = # sh
           ''
@@ -767,7 +766,8 @@ in
         description = "Movim daemon";
         wantedBy = [ "multi-user.target" ];
         after = [ "movim-data-setup.service" ];
-        requires = [ "movim-data-setup.service" ] ++ lib.optional cfg.database.createLocally dbService;
+        requires = [ "movim-data-setup.service" ]
+          ++ lib.optional cfg.database.createLocally dbService;
         environment = {
           PUBLIC_URL = "//${cfg.domain}";
           WS_PORT = builtins.toString cfg.port;
@@ -783,7 +783,8 @@ in
 
       services.${phpExecutionUnit} = {
         after = [ "movim-data-setup.service" ];
-        requires = [ "movim-data-setup.service" ] ++ lib.optional cfg.database.createLocally dbService;
+        requires = [ "movim-data-setup.service" ]
+          ++ lib.optional cfg.database.createLocally dbService;
       };
 
       tmpfiles.settings."10-movim" = with cfg; {

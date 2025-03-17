@@ -38,7 +38,8 @@ buildPythonPackage rec {
     orjson = [ orjson ];
     msgpack = [ msgpack ];
     yaml = [ pyyaml ];
-    toml = [ tomli-w ] ++ lib.optionals (pythonOlder "3.11") [ tomli ];
+    toml = [ tomli-w ]
+      ++ lib.optionals (pythonOlder "3.11") [ tomli ];
   };
 
   nativeCheckInputs = [
@@ -46,7 +47,8 @@ buildPythonPackage rec {
     pendulum
     pytest-mock
     pytestCheckHook
-  ] ++ lib.flatten (lib.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (lib.attrValues optional-dependencies);
 
   pythonImportsCheck = [ "mashumaro" ];
 

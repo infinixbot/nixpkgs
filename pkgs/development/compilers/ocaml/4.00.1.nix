@@ -37,19 +37,18 @@ stdenv.mkDerivation rec {
   env.NIX_CFLAGS_COMPILE = "-fcommon";
 
   prefixKey = "-prefix ";
-  configureFlags =
-    [ "-no-tk" ]
+  configureFlags = [ "-no-tk" ]
     ++ optionals useX11 [
       "-x11lib"
       libX11
     ];
-  buildFlags =
-    [ "world" ]
+  buildFlags = [ "world" ]
     ++ optionals useNativeCompilers [
       "bootstrap"
       "world.opt"
     ];
-  buildInputs = [ ncurses ] ++ optionals useX11 [ libX11 ];
+  buildInputs = [ ncurses ]
+    ++ optionals useX11 [ libX11 ];
   installTargets = "install" + optionalString useNativeCompilers " installopt";
   preConfigure = ''
     CAT=$(type -tp cat)

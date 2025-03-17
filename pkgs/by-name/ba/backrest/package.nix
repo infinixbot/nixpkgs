@@ -68,8 +68,7 @@ buildGoModule {
 
   checkFlags =
     let
-      skippedTests =
-        [ "TestRunCommand" ]
+      skippedTests = [ "TestRunCommand" ]
         ++ lib.optionals stdenv.hostPlatform.isDarwin [
           "TestBackup" # relies on ionice
           "TestCancelBackup"

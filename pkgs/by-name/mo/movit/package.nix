@@ -31,16 +31,15 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      SDL2
-      fftw
-      gtest
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      darwin.apple_sdk.frameworks.OpenGL
-      darwin.libobjc
-    ];
+  buildInputs = [
+    SDL2
+    fftw
+    gtest
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    darwin.apple_sdk.frameworks.OpenGL
+    darwin.libobjc
+  ];
 
   propagatedBuildInputs = [
     eigen

@@ -31,7 +31,8 @@ buildPythonPackage rec {
     httpx = [ httpx ];
   };
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ optional-dependencies.httpx;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ optional-dependencies.httpx;
 
   pythonImportsCheck = [ "requests_aws4auth" ];
 

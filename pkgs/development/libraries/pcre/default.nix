@@ -19,8 +19,7 @@ assert lib.elem variant [
 ];
 
 stdenv.mkDerivation rec {
-  pname =
-    "pcre"
+  pname = "pcre"
     + lib.optionalString (variant == "cpp") "-cpp"
     + lib.optionalString (variant != "cpp" && variant != null) variant;
   version = "8.45";
@@ -73,13 +72,12 @@ stdenv.mkDerivation rec {
   # XXX: test failure on Cygwin
   # we are running out of stack on both freeBSDs on Hydra
 
-  postFixup =
-    ''
-      moveToOutput bin/pcre-config "$dev"
-    ''
-    + lib.optionalString (variant != null) ''
-      ln -sf -t "$out/lib/" '${pcre.out}'/lib/libpcre{,posix}.{so.*.*.*,*dylib,*a}
-    '';
+  postFixup = ''
+    moveToOutput bin/pcre-config "$dev"
+  ''
+  + lib.optionalString (variant != null) ''
+    ln -sf -t "$out/lib/" '${pcre.out}'/lib/libpcre{,posix}.{so.*.*.*,*dylib,*a}
+  '';
 
   meta = {
     homepage = "http://www.pcre.org/";

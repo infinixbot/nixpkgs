@@ -39,7 +39,8 @@ in
 symlinkJoin {
   name = "retroarch-with-cores-${lib.getVersion retroarch-bare}";
 
-  paths = [ retroarch-bare ] ++ cores;
+  paths = [ retroarch-bare ]
+    ++ cores;
 
   nativeBuildInputs = [ makeBinaryWrapper ];
 
@@ -68,12 +69,11 @@ symlinkJoin {
       platforms
       ;
 
-    longDescription =
-      ''
-        RetroArch is the reference frontend for the libretro API.
-      ''
-      + lib.optionalString (cores != [ ]) ''
-        The following cores are included: ${lib.concatStringsSep ", " (map (c: c.core) cores)}.
-      '';
+    longDescription = ''
+      RetroArch is the reference frontend for the libretro API.
+    ''
+    + lib.optionalString (cores != [ ]) ''
+      The following cores are included: ${lib.concatStringsSep ", " (map (c: c.core) cores)}.
+    '';
   };
 }

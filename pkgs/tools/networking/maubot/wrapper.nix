@@ -37,7 +37,8 @@ let
             (formats.yaml { }).generate "example-config.yaml" (
               lib.recursiveUpdate baseConfig {
                 plugin_directories = lib.optionalAttrs (plugins' != [ ]) {
-                  load = [ "@out@/lib/maubot-plugins" ] ++ (baseConfig.plugin_directories.load or [ ]);
+                  load = [ "@out@/lib/maubot-plugins" ]
+                    ++ (baseConfig.plugin_directories.load or [ ]);
                 };
                 # Normally it should be set to false by default to take it from package
                 # root, but aiohttp doesn't follow symlinks when serving static files

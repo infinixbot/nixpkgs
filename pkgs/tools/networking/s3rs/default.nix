@@ -29,7 +29,8 @@ rustPlatform.buildRustPackage rec {
     perl
     pkg-config
   ];
-  buildInputs = [ openssl ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ Security ];
+  buildInputs = [ openssl ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ Security ];
 
   meta = with lib; {
     description = "S3 cli client with multi configs with diffent provider";

@@ -26,19 +26,18 @@ stdenv.mkDerivation rec {
     hash = "sha256-fOv4Y5kBbZazFNkPrLS3D7LMLLvT/kIYmsCezsl/fxQ=";
   };
 
-  nativeBuildInputs =
-    [
-      appstream
-      blueprint-compiler
-      desktop-file-utils
-      meson
-      ninja
-      pkg-config
-      wrapGAppsHook4
-    ]
-    ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
-      mesonEmulatorHook
-    ];
+  nativeBuildInputs = [
+    appstream
+    blueprint-compiler
+    desktop-file-utils
+    meson
+    ninja
+    pkg-config
+    wrapGAppsHook4
+  ]
+  ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
+    mesonEmulatorHook
+  ];
 
   buildInputs = [
     gtk4

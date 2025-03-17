@@ -47,20 +47,19 @@ buildGoModule rec {
     "-skip=TestRegoTargetWasmAndTargetPluginDisablesIndexingTopdownStages"
   ];
 
-  preCheck =
-    ''
-      # Feed in all but the e2e tests for testing
-      # This is because subPackages above limits what is built to just what we
-      # want but also limits the tests
-      # Also avoid wasm tests on darwin due to wasmtime-go build issues
-      getGoDirs() {
-        go list ./... | grep -v -e e2e ${lib.optionalString stdenv.hostPlatform.isDarwin "-e wasm"}
-      }
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      # remove tests that have "too many open files"/"no space left on device" issues on darwin in hydra
-      rm v1/server/server_test.go
-    '';
+  preCheck = ''
+    # Feed in all but the e2e tests for testing
+    # This is because subPackages above limits what is built to just what we
+    # want but also limits the tests
+    # Also avoid wasm tests on darwin due to wasmtime-go build issues
+    getGoDirs() {
+      go list ./... | grep -v -e e2e ${lib.optionalString stdenv.hostPlatform.isDarwin "-e wasm"}
+    }
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    # remove tests that have "too many open files"/"no space left on device" issues on darwin in hydra
+    rm v1/server/server_test.go
+  '';
 
   postInstall = ''
     installShellCompletion --cmd opa \

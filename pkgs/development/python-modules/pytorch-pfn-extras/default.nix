@@ -54,18 +54,17 @@ buildPythonPackage rec {
 
   pythonImportsCheck = [ "pytorch_pfn_extras" ];
 
-  disabledTests =
-    [
-      # AssertionError: assert 4 == 0
-      # where 4 = <MagicMock id='140733587469184'>.call_count
-      "test_lr_scheduler_wait_for_first_optimizer_step"
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isDarwin) [
-      # torch.distributed is not available on darwin
-      "test_create_distributed_evaluator"
-      "test_distributed_evaluation"
-      "test_distributed_evaluator_progress_bar"
-    ];
+  disabledTests = [
+    # AssertionError: assert 4 == 0
+    # where 4 = <MagicMock id='140733587469184'>.call_count
+    "test_lr_scheduler_wait_for_first_optimizer_step"
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isDarwin) [
+    # torch.distributed is not available on darwin
+    "test_create_distributed_evaluator"
+    "test_distributed_evaluation"
+    "test_distributed_evaluator_progress_bar"
+  ];
 
   disabledTestPaths =
     [

@@ -55,25 +55,24 @@ buildPythonPackage rec {
     hash = "sha256-eqyRiMNMmhg08Pga+AGnhGXfUoTMOuIHEPOEEGboIPE=";
   };
 
-  patches =
-    [
-      (substituteAll {
-        src = ./django_5_set_zoneinfo_dir.patch;
-        zoneinfo = tzdata + "/share/zoneinfo";
-      })
-      # prevent tests from messing with our pythonpath
-      ./django_5_tests_pythonpath.patch
-      # disable test that excpects timezone issues
-      ./django_5_disable_failing_tests.patch
-    ]
-    ++ lib.optionals withGdal [
-      (substituteAll {
-        src = ./django_5_set_geos_gdal_lib.patch;
-        geos = geos;
-        gdal = gdal;
-        extension = stdenv.hostPlatform.extensions.sharedLibrary;
-      })
-    ];
+  patches = [
+    (substituteAll {
+      src = ./django_5_set_zoneinfo_dir.patch;
+      zoneinfo = tzdata + "/share/zoneinfo";
+    })
+    # prevent tests from messing with our pythonpath
+    ./django_5_tests_pythonpath.patch
+    # disable test that excpects timezone issues
+    ./django_5_disable_failing_tests.patch
+  ]
+  ++ lib.optionals withGdal [
+    (substituteAll {
+      src = ./django_5_set_geos_gdal_lib.patch;
+      geos = geos;
+      gdal = gdal;
+      extension = stdenv.hostPlatform.extensions.sharedLibrary;
+    })
+  ];
 
   postPatch = ''
     substituteInPlace pyproject.toml \
@@ -112,7 +111,8 @@ buildPythonPackage rec {
     selenium
     tblib
     tzdata
-  ] ++ lib.flatten (lib.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (lib.attrValues optional-dependencies);
 
   doCheck =
     !stdenv.hostPlatform.isDarwin

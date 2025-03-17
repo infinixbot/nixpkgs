@@ -30,16 +30,15 @@ rustPlatform.buildRustPackage rec {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      alsa-lib
-      xorg.libX11
-      xorg.libXi
-      xorg.libXtst
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      darwin.apple_sdk.frameworks.Security
-    ];
+  buildInputs = [
+    alsa-lib
+    xorg.libX11
+    xorg.libXi
+    xorg.libXtst
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    darwin.apple_sdk.frameworks.Security
+  ];
 
   nativeCheckInputs = [
     unixtools.script

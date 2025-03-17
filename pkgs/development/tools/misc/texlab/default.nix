@@ -28,9 +28,11 @@ rustPlatform.buildRustPackage rec {
   useFetchCargoVendor = true;
   cargoHash = "sha256-omMisd2lY9BPIp/0yJ5Eg3pAIvwIWcEJE0ygTj2yqwo=";
 
-  outputs = [ "out" ] ++ lib.optional (!isCross) "man";
+  outputs = [ "out" ]
+    ++ lib.optional (!isCross) "man";
 
-  nativeBuildInputs = [ installShellFiles ] ++ lib.optional (!isCross) help2man;
+  nativeBuildInputs = [ installShellFiles ]
+    ++ lib.optional (!isCross) help2man;
 
   buildInputs = lib.optionals stdenv.hostPlatform.isDarwin [
     libiconv

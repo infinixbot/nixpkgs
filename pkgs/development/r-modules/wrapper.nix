@@ -11,7 +11,8 @@ symlinkJoin {
   preferLocalBuild = true;
   allowSubstitutes = false;
 
-  buildInputs = [ R ] ++ recommendedPackages ++ packages;
+  buildInputs = [ R ]
+    ++ recommendedPackages ++ packages;
   paths = [ R ];
 
   nativeBuildInputs = [ makeWrapper ];

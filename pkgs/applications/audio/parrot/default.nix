@@ -36,7 +36,8 @@ rustPlatform.buildRustPackage {
   buildInputs = [
     libopus
     openssl
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ Security ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ Security ];
 
   postInstall = ''
     wrapProgram $out/bin/parrot \

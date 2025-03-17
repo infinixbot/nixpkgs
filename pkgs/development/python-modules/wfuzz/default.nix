@@ -53,7 +53,8 @@ buildPythonPackage rec {
     six
     setuptools
     pyparsing
-  ] ++ lib.optionals stdenv.hostPlatform.isWindows [ colorama ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isWindows [ colorama ];
 
   nativeCheckInputs = [
     netaddr

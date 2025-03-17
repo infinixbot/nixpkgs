@@ -62,8 +62,7 @@ stdenv.mkDerivation (finalAttrs: {
     (lib.getLib stdenv.cc.cc)
   ];
 
-  patches =
-    [ ./disable_update_checking.patch ]
+  patches = [ ./disable_update_checking.patch ]
     ++ lib.optional withSystemEquicord (
       replaceVars ./use_system_equicord.patch {
         inherit equicord;

@@ -47,39 +47,37 @@ stdenv.mkDerivation rec {
     ./correct-gir-lib-path.patch
   ];
 
-  nativeBuildInputs =
-    [
-      desktop-file-utils
-      itstool
-      libxml2
-      meson
-      ninja
-      pkg-config
-      python3
-      vala
-      wrapGAppsHook3
-      gtk-doc
-      gobject-introspection
-      docbook-xsl-nons
-    ]
-    ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
-      mesonEmulatorHook
-    ];
+  nativeBuildInputs = [
+    desktop-file-utils
+    itstool
+    libxml2
+    meson
+    ninja
+    pkg-config
+    python3
+    vala
+    wrapGAppsHook3
+    gtk-doc
+    gobject-introspection
+    docbook-xsl-nons
+  ]
+  ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
+    mesonEmulatorHook
+  ];
 
-  buildInputs =
-    [
-      glib
-      gsettings-desktop-schemas
-      gspell
-      gtk3
-      libgedit-amtk
-      libgedit-gtksourceview
-      libgedit-tepl
-      libpeas
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      gtk-mac-integration
-    ];
+  buildInputs = [
+    glib
+    gsettings-desktop-schemas
+    gspell
+    gtk3
+    libgedit-amtk
+    libgedit-gtksourceview
+    libgedit-tepl
+    libpeas
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    gtk-mac-integration
+  ];
 
   postPatch = ''
     chmod +x build-aux/meson/post_install.py

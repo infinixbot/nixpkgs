@@ -93,7 +93,8 @@ buildPythonPackage rec {
     "test_issue1982"
     "test_opener_fsspec_http_fs"
     "test_fsspec_http_msk_sidecar"
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ "test_reproject_error_propagation" ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ "test_reproject_error_propagation" ];
 
   pythonImportsCheck = [ "rasterio" ];
 

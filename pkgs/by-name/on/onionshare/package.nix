@@ -92,13 +92,12 @@ python3Packages.buildPythonApplication rec {
     tor
   ];
 
-  nativeCheckInputs =
-    [
-      versionCheckHook
-    ]
-    ++ (with python3Packages; [
-      pytestCheckHook
-    ]);
+  nativeCheckInputs = [
+    versionCheckHook
+  ]
+  ++ (with python3Packages; [
+    pytestCheckHook
+  ]);
 
   preCheck = ''
     # Tests use the home directory

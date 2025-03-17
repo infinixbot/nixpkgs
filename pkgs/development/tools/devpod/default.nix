@@ -123,21 +123,20 @@ rec {
       # Upstream is not interested in fixing that: https://github.com/loft-sh/devpod/pull/648
       patches = [ ./add-tauri-updater-feature.patch ];
 
-      postPatch =
-        ''
-          ln -s ${devpod}/bin/devpod bin/devpod-cli-${rustTargetPlatformSpec}
-          cp -r ${frontend-build} frontend-build
+      postPatch = ''
+        ln -s ${devpod}/bin/devpod bin/devpod-cli-${rustTargetPlatformSpec}
+        cp -r ${frontend-build} frontend-build
 
-          substituteInPlace tauri.conf.json --replace '"distDir": "../dist",' '"distDir": "frontend-build",'
-        ''
-        + lib.optionalString stdenv.hostPlatform.isLinux ''
-          substituteInPlace $cargoDepsCopy/libappindicator-sys-*/src/lib.rs \
-            --replace "libayatana-appindicator3.so.1" "${libayatana-appindicator}/lib/libayatana-appindicator3.so.1"
+        substituteInPlace tauri.conf.json --replace '"distDir": "../dist",' '"distDir": "frontend-build",'
+      ''
+      + lib.optionalString stdenv.hostPlatform.isLinux ''
+        substituteInPlace $cargoDepsCopy/libappindicator-sys-*/src/lib.rs \
+          --replace "libayatana-appindicator3.so.1" "${libayatana-appindicator}/lib/libayatana-appindicator3.so.1"
 
-          # Since `cargo build` is used instead of `tauri build`, configs are merged manually.
-          jq --slurp '.[0] * .[1]' tauri.conf.json tauri-linux.conf.json >tauri.conf.json.merged
-          mv tauri.conf.json.merged tauri.conf.json
-        '';
+        # Since `cargo build` is used instead of `tauri build`, configs are merged manually.
+        jq --slurp '.[0] * .[1]' tauri.conf.json tauri-linux.conf.json >tauri.conf.json.merged
+        mv tauri.conf.json.merged tauri.conf.json
+      '';
 
       nativeBuildInputs =
         [

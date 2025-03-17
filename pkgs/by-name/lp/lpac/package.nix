@@ -52,7 +52,8 @@ stdenv.mkDerivation (finalAttrs: {
     description = "C-based eUICC LPA";
     homepage = "https://github.com/estkme-group/lpac";
     mainProgram = "lpac";
-    license = [ lib.licenses.agpl3Plus ] ++ optional withLibeuicc lib.licenses.lgpl21Plus;
+    license = [ lib.licenses.agpl3Plus ]
+      ++ optional withLibeuicc lib.licenses.lgpl21Plus;
     maintainers = with lib.maintainers; [ sarcasticadmin ];
     platforms = lib.platforms.all;
   };

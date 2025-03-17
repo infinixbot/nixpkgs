@@ -32,23 +32,22 @@ stdenv.mkDerivation (finalAttrs: {
     help2man
   ];
 
-  buildInputs =
-    [
-      pcsclite
-      qrencode
-      (python3.withPackages (
-        pp: with pp; [
-          pyscard
-          pycrypto
-          pbkdf2
-          pillow
-          gnureadline
-        ]
-      ))
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      darwin.apple_sdk.frameworks.PCSC
-    ];
+  buildInputs = [
+    pcsclite
+    qrencode
+    (python3.withPackages (
+      pp: with pp; [
+        pyscard
+        pycrypto
+        pbkdf2
+        pillow
+        gnureadline
+      ]
+    ))
+  ]
+  ++ lib.optionals stdenv.isDarwin [
+    darwin.apple_sdk.frameworks.PCSC
+  ];
 
   configureFlags = lib.optional stdenv.isDarwin "--enable-infoplist";
 

@@ -122,18 +122,17 @@ let
         # are absolute unless we go out of our way to make them relative (like with CF)
         # TODO: This really wants to be in stdenv/darwin but we don't have hostPlatform
         # there (yet?) so it goes here until then.
-        preHook =
-          preHook
-          + lib.optionalString buildPlatform.isDarwin ''
-            export NIX_DONT_SET_RPATH_FOR_BUILD=1
-          ''
-          + lib.optionalString (hostPlatform.isDarwin || (!hostPlatform.isElf && !hostPlatform.isMacho)) ''
-            export NIX_DONT_SET_RPATH=1
-            export NIX_NO_SELF_RPATH=1
-          ''
-          + lib.optionalString (hostPlatform.isDarwin && hostPlatform.isMacOS) ''
-            export MACOSX_DEPLOYMENT_TARGET=${hostPlatform.darwinMinVersion}
-          ''
+        preHook = preHook
+        + lib.optionalString buildPlatform.isDarwin ''
+          export NIX_DONT_SET_RPATH_FOR_BUILD=1
+        ''
+        + lib.optionalString (hostPlatform.isDarwin || (!hostPlatform.isElf && !hostPlatform.isMacho)) ''
+          export NIX_DONT_SET_RPATH=1
+          export NIX_NO_SELF_RPATH=1
+        ''
+        + lib.optionalString (hostPlatform.isDarwin && hostPlatform.isMacOS) ''
+          export MACOSX_DEPLOYMENT_TARGET=${hostPlatform.darwinMinVersion}
+        ''
         # TODO this should be uncommented, but it causes stupid mass rebuilds due to
         # `pkgsCross.*.buildPackages` not being the same, resulting in cross-compiling
         # for a target rebuilding all of `nativeBuildInputs` for that target.

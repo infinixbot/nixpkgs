@@ -44,7 +44,8 @@ buildPythonPackage rec {
   ];
 
   optional-dependencies = {
-    hiredis = [ redis ] ++ redis.optional-dependencies.hiredis;
+    hiredis = [ redis ]
+      ++ redis.optional-dependencies.hiredis;
   };
 
   pythonImportsCheck = [ "django_redis" ];
@@ -65,7 +66,8 @@ buildPythonPackage rec {
     pytest-django
     pytest-mock
     pytestCheckHook
-  ] ++ lib.flatten (lib.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (lib.attrValues optional-dependencies);
 
   pytestFlagsArray = [
     "-W"

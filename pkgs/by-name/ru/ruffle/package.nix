@@ -87,29 +87,28 @@ rustPlatform.buildRustPackage {
 
   cargoBuildFlags = [ "--workspace" ];
 
-  postInstall =
-    ''
-      # Namespace binaries with "ruffle_"
-      mv $out/bin/exporter $out/bin/ruffle_exporter
-      mv $out/bin/mocket $out/bin/ruffle_mocket
-      mv $out/bin/stub-report $out/bin/ruffle_stub-report
-      mv $out/bin/build_playerglobal $out/bin/ruffle_build_playerglobal
+  postInstall = ''
+    # Namespace binaries with "ruffle_"
+    mv $out/bin/exporter $out/bin/ruffle_exporter
+    mv $out/bin/mocket $out/bin/ruffle_mocket
+    mv $out/bin/stub-report $out/bin/ruffle_stub-report
+    mv $out/bin/build_playerglobal $out/bin/ruffle_build_playerglobal
 
-      # This name is too specific
-      mv $out/bin/ruffle_desktop $out/bin/ruffle
-    ''
-    + lib.optionalString stdenvNoCC.hostPlatform.isLinux ''
-      install -Dm644 desktop/packages/linux/rs.ruffle.Ruffle.desktop \
-                     -t $out/share/applications/
+    # This name is too specific
+    mv $out/bin/ruffle_desktop $out/bin/ruffle
+  ''
+  + lib.optionalString stdenvNoCC.hostPlatform.isLinux ''
+    install -Dm644 desktop/packages/linux/rs.ruffle.Ruffle.desktop \
+                   -t $out/share/applications/
 
-      install -Dm644 desktop/packages/linux/rs.ruffle.Ruffle.svg \
-                     -t $out/share/icons/hicolor/scalable/apps/
+    install -Dm644 desktop/packages/linux/rs.ruffle.Ruffle.svg \
+                   -t $out/share/icons/hicolor/scalable/apps/
 
-      install -Dm644 desktop/packages/linux/rs.ruffle.Ruffle.metainfo.xml \
-                     -t $out/share/metainfo/
+    install -Dm644 desktop/packages/linux/rs.ruffle.Ruffle.metainfo.xml \
+                   -t $out/share/metainfo/
 
-      rm $out/bin/ruffle_web_safari
-    '';
+    rm $out/bin/ruffle_web_safari
+  '';
 
   preFixup = lib.optionalString stdenvNoCC.hostPlatform.isLinux ''
     patchelf $out/bin/ruffle \

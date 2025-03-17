@@ -44,7 +44,8 @@ stdenv.mkDerivation (finalAttrs: {
     "out"
     "dev"
     "man"
-  ] ++ lib.optional withDoc "info"; # it's dev-doc only
+  ]
+  ++ lib.optional withDoc "info"; # it's dev-doc only
   outputBin = "dev"; # fftw-wisdom
 
   nativeBuildInputs = [ gfortran ];

@@ -84,7 +84,8 @@ let
       name = "ultrastar-manager-${name}-plugin-${version}";
       src = patchedSrc;
 
-      buildInputs = [ qmake ] ++ buildInputs;
+      buildInputs = [ qmake ]
+        ++ buildInputs;
 
       postPatch = ''
         sed -e "s|DESTDIR = .*$|DESTDIR = $out|" \

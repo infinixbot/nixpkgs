@@ -44,15 +44,14 @@ stdenv.mkDerivation (finalAttrs: {
       wayland
     ];
 
-  cmakeFlags =
-    [
-      "-DCMAKE_INSTALL_INCLUDEDIR=${vulkan-headers}/include"
-      (lib.cmakeBool "BUILD_WSI_XCB_SUPPORT" enableX11)
-      (lib.cmakeBool "BUILD_WSI_XLIB_SUPPORT" enableX11)
-    ]
-    ++ lib.optional stdenv.hostPlatform.isDarwin "-DSYSCONFDIR=${moltenvk}/share"
-    ++ lib.optional stdenv.hostPlatform.isLinux "-DSYSCONFDIR=${addDriverRunpath.driverLink}/share"
-    ++ lib.optional (stdenv.buildPlatform != stdenv.hostPlatform) "-DUSE_GAS=OFF";
+  cmakeFlags = [
+    "-DCMAKE_INSTALL_INCLUDEDIR=${vulkan-headers}/include"
+    (lib.cmakeBool "BUILD_WSI_XCB_SUPPORT" enableX11)
+    (lib.cmakeBool "BUILD_WSI_XLIB_SUPPORT" enableX11)
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin "-DSYSCONFDIR=${moltenvk}/share"
+  ++ lib.optional stdenv.hostPlatform.isLinux "-DSYSCONFDIR=${addDriverRunpath.driverLink}/share"
+  ++ lib.optional (stdenv.buildPlatform != stdenv.hostPlatform) "-DUSE_GAS=OFF";
 
   outputs = [
     "out"

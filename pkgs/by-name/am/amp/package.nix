@@ -35,20 +35,19 @@ rustPlatform.buildRustPackage rec {
     pkg-config
     python3
   ];
-  buildInputs =
+  buildInputs = [
+    openssl
+    xorg.libxcb
+    libgit2
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin (
+    with darwin.apple_sdk.frameworks;
     [
-      openssl
-      xorg.libxcb
-      libgit2
+      curl
+      Security
+      AppKit
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        curl
-        Security
-        AppKit
-      ]
-    );
+  );
 
   nativeCheckInputs = [
     writableTmpDirAsHomeHook

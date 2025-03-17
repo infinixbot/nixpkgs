@@ -386,30 +386,28 @@ in
               };
             };
 
-            config.environment =
-              {
-                NB_STATE_DIR = client.dir.state;
-                NB_CONFIG = "${client.dir.state}/config.json";
-                NB_DAEMON_ADDR = "unix://${client.dir.runtime}/sock";
-                NB_INTERFACE_NAME = client.interface;
-                NB_LOG_FILE = mkOptionDefault "console";
-                NB_LOG_LEVEL = client.logLevel;
-                NB_SERVICE = client.service.name;
-                NB_WIREGUARD_PORT = toString client.port;
-              }
-              // optionalAttrs (client.dns-resolver.address != null) {
-                NB_DNS_RESOLVER_ADDRESS = "${client.dns-resolver.address}:${builtins.toString client.dns-resolver.port}";
-              };
+            config.environment = {
+              NB_STATE_DIR = client.dir.state;
+              NB_CONFIG = "${client.dir.state}/config.json";
+              NB_DAEMON_ADDR = "unix://${client.dir.runtime}/sock";
+              NB_INTERFACE_NAME = client.interface;
+              NB_LOG_FILE = mkOptionDefault "console";
+              NB_LOG_LEVEL = client.logLevel;
+              NB_SERVICE = client.service.name;
+              NB_WIREGUARD_PORT = toString client.port;
+            }
+            // optionalAttrs (client.dns-resolver.address != null) {
+              NB_DNS_RESOLVER_ADDRESS = "${client.dns-resolver.address}:${builtins.toString client.dns-resolver.port}";
+            };
 
-            config.config =
-              {
-                DisableAutoConnect = !client.autoStart;
-                WgIface = client.interface;
-                WgPort = client.port;
-              }
-              // optionalAttrs (client.dns-resolver.address != null) {
-                CustomDNSAddress = "${client.dns-resolver.address}:${builtins.toString client.dns-resolver.port}";
-              };
+            config.config = {
+              DisableAutoConnect = !client.autoStart;
+              WgIface = client.interface;
+              WgPort = client.port;
+            }
+            // optionalAttrs (client.dns-resolver.address != null) {
+              CustomDNSAddress = "${client.dns-resolver.address}:${builtins.toString client.dns-resolver.port}";
+            };
           }
         )
       );

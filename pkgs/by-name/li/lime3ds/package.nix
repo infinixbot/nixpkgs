@@ -67,51 +67,51 @@ stdenv.mkDerivation (finalAttrs: {
     cmake
     doxygen
     pkg-config
-  ] ++ lib.optionals enableQt [ kdePackages.wrapQtAppsHook ];
+  ]
+  ++ lib.optionals enableQt [ kdePackages.wrapQtAppsHook ];
 
-  buildInputs =
+  buildInputs = [
+    alsa-lib
+    boost
+    catch2_3
+    cryptopp
+    cpp-jwt
+    enet
+    fmt
+    ffmpeg_6-headless
+    httplib
+    inih
+    libGL
+    libjack2
+    libpulseaudio
+    libunwind
+    libusb1
+    nlohmann_json
+    openal
+    openssl
+    pipewire
+    portaudio
+    soundtouch
+    sndio
+    spirv-tools
+    vulkan-headers
+    xorg.libX11
+    xorg.libXext
+    zstd
+  ]
+  ++ optionals enableQt (
+    with kdePackages;
     [
-      alsa-lib
-      boost
-      catch2_3
-      cryptopp
-      cpp-jwt
-      enet
-      fmt
-      ffmpeg_6-headless
-      httplib
-      inih
-      libGL
-      libjack2
-      libpulseaudio
-      libunwind
-      libusb1
-      nlohmann_json
-      openal
-      openssl
-      pipewire
-      portaudio
-      soundtouch
-      sndio
-      spirv-tools
-      vulkan-headers
-      xorg.libX11
-      xorg.libXext
-      zstd
+      qtbase
+      qtmultimedia
+      qttools
+      qtwayland
     ]
-    ++ optionals enableQt (
-      with kdePackages;
-      [
-        qtbase
-        qtmultimedia
-        qttools
-        qtwayland
-      ]
-    )
-    ++ optionals enableSdl2Frontend [ SDL2 ]
-    ++ optionals enableQtTranslations [ kdePackages.qttools ]
-    ++ optionals enableCubeb [ cubeb ]
-    ++ optional useDiscordRichPresence rapidjson;
+  )
+  ++ optionals enableSdl2Frontend [ SDL2 ]
+  ++ optionals enableQtTranslations [ kdePackages.qttools ]
+  ++ optionals enableCubeb [ cubeb ]
+  ++ optional useDiscordRichPresence rapidjson;
 
   patches = [
     # Fix boost errors
@@ -158,23 +158,22 @@ stdenv.mkDerivation (finalAttrs: {
       done
     '';
 
-  cmakeFlags =
-    [
-      (cmakeBool "LIME3DS_USE_PRECOMPILED_HEADERS" false)
-      (cmakeBool "USE_SYSTEM_LIBS" true)
-      (cmakeBool "DISABLE_SYSTEM_DYNARMIC" true)
-      (cmakeBool "DISABLE_SYSTEM_GLSLANG" true)
-      (cmakeBool "DISABLE_SYSTEM_LODEPNG" true)
-      (cmakeBool "DISABLE_SYSTEM_VMA" true)
-      (cmakeBool "DISABLE_SYSTEM_XBYAK" true)
-      (cmakeBool "ENABLE_QT" enableQt)
-      (cmakeBool "ENABLE_SDL2_FRONTEND" enableSdl2Frontend)
-      (cmakeBool "ENABLE_CUBEB" enableCubeb)
-      (cmakeBool "USE_DISCORD_PRESENCE" useDiscordRichPresence)
-    ]
-    ++ optionals enableQt [
-      (cmakeBool "ENABLE_QT_TRANSLATION" enableQtTranslations)
-    ];
+  cmakeFlags = [
+    (cmakeBool "LIME3DS_USE_PRECOMPILED_HEADERS" false)
+    (cmakeBool "USE_SYSTEM_LIBS" true)
+    (cmakeBool "DISABLE_SYSTEM_DYNARMIC" true)
+    (cmakeBool "DISABLE_SYSTEM_GLSLANG" true)
+    (cmakeBool "DISABLE_SYSTEM_LODEPNG" true)
+    (cmakeBool "DISABLE_SYSTEM_VMA" true)
+    (cmakeBool "DISABLE_SYSTEM_XBYAK" true)
+    (cmakeBool "ENABLE_QT" enableQt)
+    (cmakeBool "ENABLE_SDL2_FRONTEND" enableSdl2Frontend)
+    (cmakeBool "ENABLE_CUBEB" enableCubeb)
+    (cmakeBool "USE_DISCORD_PRESENCE" useDiscordRichPresence)
+  ]
+  ++ optionals enableQt [
+    (cmakeBool "ENABLE_QT_TRANSLATION" enableQtTranslations)
+  ];
 
   meta = {
     description = "A Nintendo 3DS emulator based on Citra";

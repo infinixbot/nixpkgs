@@ -28,8 +28,7 @@ rustPlatform.buildRustPackage rec {
   };
 
   nativeBuildInputs = [ makeWrapper ];
-  buildInputs =
-    [ imagemagick ]
+  buildInputs = [ imagemagick ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       libiconv
       Foundation

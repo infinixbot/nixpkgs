@@ -20,7 +20,8 @@ let
         inherit pluginType;
         inherit configurePhase buildPhase buildInputs;
 
-        nativeBuildInputs = [ unzip ] ++ nativeBuildInputs;
+        nativeBuildInputs = [ unzip ]
+          ++ nativeBuildInputs;
 
         installPhase = ''
           runHook preInstall

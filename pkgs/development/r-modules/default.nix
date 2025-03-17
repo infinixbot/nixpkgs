@@ -355,14 +355,13 @@ let
   # `self` is `_self` with overridden packages;
   # packages in `_self` may depends on overridden packages.
   self = (defaultOverrides _self self) // overrides;
-  _self =
-    {
-      inherit buildRPackage;
-    }
-    // mkPackageSet deriveBioc biocPackagesGenerated
-    // mkPackageSet deriveBiocAnn biocAnnotationPackagesGenerated
-    // mkPackageSet deriveBiocExp biocExperimentPackagesGenerated
-    // mkPackageSet deriveCran cranPackagesGenerated;
+  _self = {
+    inherit buildRPackage;
+  }
+  // mkPackageSet deriveBioc biocPackagesGenerated
+  // mkPackageSet deriveBiocAnn biocAnnotationPackagesGenerated
+  // mkPackageSet deriveBiocExp biocExperimentPackagesGenerated
+  // mkPackageSet deriveCran cranPackagesGenerated;
 
   # Takes in a generated JSON file's imported contents
   # and transforms it by swapping each element of the depends array with the dependency's derivation
@@ -613,7 +612,8 @@ let
     ];
     pbdMPI = [ pkgs.mpi ];
     pbdPROF = [ pkgs.mpi ];
-    pbdZMQ = [ pkgs.pkg-config ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ pkgs.which ];
+    pbdZMQ = [ pkgs.pkg-config ]
+      ++ lib.optionals stdenv.hostPlatform.isDarwin [ pkgs.which ];
     pcaL1 = [
       pkgs.pkg-config
       pkgs.clp
@@ -838,7 +838,8 @@ let
       libxml2.dev
     ];
     XLConnect = [ pkgs.jdk ];
-    xml2 = [ pkgs.libxml2.dev ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ pkgs.perl ];
+    xml2 = [ pkgs.libxml2.dev ]
+      ++ lib.optionals stdenv.hostPlatform.isDarwin [ pkgs.perl ];
     XML = with pkgs; [
       libtool
       libxml2.dev
@@ -966,7 +967,8 @@ let
     ];
     nat = [ pkgs.which ];
     nat_templatebrains = [ pkgs.which ];
-    pbdZMQ = [ pkgs.zeromq ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ pkgs.darwin.binutils ];
+    pbdZMQ = [ pkgs.zeromq ]
+      ++ lib.optionals stdenv.hostPlatform.isDarwin [ pkgs.darwin.binutils ];
     bigmemory = lib.optionals stdenv.hostPlatform.isLinux [ pkgs.libuuid.dev ];
     bayesWatch = [ pkgs.boost.dev ];
     clustermq = [ pkgs.pkg-config ];
@@ -1795,7 +1797,8 @@ let
     });
 
     zoomerjoin = old.zoomerjoin.overrideAttrs (attrs: {
-      nativeBuildInputs = [ pkgs.cargo ] ++ attrs.nativeBuildInputs;
+      nativeBuildInputs = [ pkgs.cargo ]
+        ++ attrs.nativeBuildInputs;
       postPatch = "patchShebangs configure";
     });
 
@@ -1842,7 +1845,8 @@ let
     });
 
     rsgeo = old.rsgeo.overrideAttrs (attrs: {
-      nativeBuildInputs = [ pkgs.cargo ] ++ attrs.nativeBuildInputs;
+      nativeBuildInputs = [ pkgs.cargo ]
+        ++ attrs.nativeBuildInputs;
       postPatch = "patchShebangs configure";
     });
 
@@ -2161,7 +2165,8 @@ let
     });
 
     geojsonio = old.geojsonio.overrideAttrs (attrs: {
-      buildInputs = [ cacert ] ++ attrs.buildInputs;
+      buildInputs = [ cacert ]
+        ++ attrs.buildInputs;
     });
 
     immunotation =
@@ -2283,7 +2288,8 @@ let
           bzip2
           icu
           which
-        ] ++ attrs.buildInputs;
+        ]
+        ++ attrs.buildInputs;
         postInstall = ''
           install -d $out/bin $out/share/man/man1
           ln -s ../library/littler/bin/r $out/bin/r
@@ -2306,8 +2312,10 @@ let
         preConfigure = ''
           patchShebangs configure
         '';
-        nativeBuildInputs = [ pkg-config ] ++ attrs.nativeBuildInputs;
-        buildInputs = [ libsodium.dev ] ++ attrs.buildInputs;
+        nativeBuildInputs = [ pkg-config ]
+          ++ attrs.nativeBuildInputs;
+        buildInputs = [ libsodium.dev ]
+          ++ attrs.buildInputs;
       }
     );
 

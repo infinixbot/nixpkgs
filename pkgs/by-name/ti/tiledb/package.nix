@@ -76,7 +76,8 @@ stdenv.mkDerivation rec {
     "-DTILEDB_VCPKG=OFF"
     "-DTILEDB_WEBP=OFF"
     "-DTILEDB_WERROR=OFF"
-  ] ++ lib.optional (!useAVX2) "-DCOMPILER_SUPPORTS_AVX2=FALSE";
+  ]
+  ++ lib.optional (!useAVX2) "-DCOMPILER_SUPPORTS_AVX2=FALSE";
 
   nativeBuildInputs = [
     ep-file-windows
@@ -85,7 +86,8 @@ stdenv.mkDerivation rec {
     cmake
     python3
     doxygen
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames;
 
   nativeCheckInputs = [
     gtest

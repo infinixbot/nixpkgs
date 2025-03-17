@@ -55,30 +55,29 @@ stdenv.mkDerivation rec {
     libxml2
   ];
 
-  cmakeFlags =
-    [
-      "-DLLVM_BUILD_TOOLS=ON"
-      # Install headers as well
-      "-DLLVM_INSTALL_TOOLCHAIN_ONLY=OFF"
-      "-DMLIR_TOOLS_INSTALL_DIR=${placeholder "out"}/bin/"
-      "-DLLVM_ENABLE_IDE=OFF"
-      "-DMLIR_INSTALL_PACKAGE_DIR=${placeholder "dev"}/lib/cmake/mlir"
-      "-DMLIR_INSTALL_CMAKE_DIR=${placeholder "dev"}/lib/cmake/mlir"
-      "-DLLVM_BUILD_TESTS=${if doCheck then "ON" else "OFF"}"
-      "-DLLVM_ENABLE_FFI=ON"
-      "-DLLVM_HOST_TRIPLE=${stdenv.hostPlatform.config}"
-      "-DLLVM_DEFAULT_TARGET_TRIPLE=${stdenv.hostPlatform.config}"
-      "-DLLVM_ENABLE_DUMP=ON"
-      "-DLLVM_TABLEGEN_EXE=${buildLlvmTools.tblgen}/bin/llvm-tblgen"
-      "-DMLIR_TABLEGEN_EXE=${buildLlvmTools.tblgen}/bin/mlir-tblgen"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isStatic [
-      # Disables building of shared libs, -fPIC is still injected by cc-wrapper
-      "-DLLVM_ENABLE_PIC=OFF"
-      "-DLLVM_BUILD_STATIC=ON"
-      "-DLLVM_LINK_LLVM_DYLIB=OFF"
-    ]
-    ++ devExtraCmakeFlags;
+  cmakeFlags = [
+    "-DLLVM_BUILD_TOOLS=ON"
+    # Install headers as well
+    "-DLLVM_INSTALL_TOOLCHAIN_ONLY=OFF"
+    "-DMLIR_TOOLS_INSTALL_DIR=${placeholder "out"}/bin/"
+    "-DLLVM_ENABLE_IDE=OFF"
+    "-DMLIR_INSTALL_PACKAGE_DIR=${placeholder "dev"}/lib/cmake/mlir"
+    "-DMLIR_INSTALL_CMAKE_DIR=${placeholder "dev"}/lib/cmake/mlir"
+    "-DLLVM_BUILD_TESTS=${if doCheck then "ON" else "OFF"}"
+    "-DLLVM_ENABLE_FFI=ON"
+    "-DLLVM_HOST_TRIPLE=${stdenv.hostPlatform.config}"
+    "-DLLVM_DEFAULT_TARGET_TRIPLE=${stdenv.hostPlatform.config}"
+    "-DLLVM_ENABLE_DUMP=ON"
+    "-DLLVM_TABLEGEN_EXE=${buildLlvmTools.tblgen}/bin/llvm-tblgen"
+    "-DMLIR_TABLEGEN_EXE=${buildLlvmTools.tblgen}/bin/mlir-tblgen"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isStatic [
+    # Disables building of shared libs, -fPIC is still injected by cc-wrapper
+    "-DLLVM_ENABLE_PIC=OFF"
+    "-DLLVM_BUILD_STATIC=ON"
+    "-DLLVM_LINK_LLVM_DYLIB=OFF"
+  ]
+  ++ devExtraCmakeFlags;
 
   outputs = [
     "out"

@@ -262,7 +262,8 @@ let
           done
         '';
 
-      outputs = [ "out" ] ++ optionals buildUser [ "dev" ];
+      outputs = [ "out" ]
+        ++ optionals buildUser [ "dev" ];
 
       passthru = {
         inherit kernel;
@@ -283,17 +284,16 @@ let
 
       meta = {
         description = "ZFS Filesystem Linux" + (if buildUser then " Userspace Tools" else " Kernel Module");
-        longDescription =
-          ''
-            ZFS is a filesystem that combines a logical volume manager with a
-            Copy-On-Write filesystem with data integrity detection and repair,
-            snapshotting, cloning, block devices, deduplication, and more.
+        longDescription = ''
+          ZFS is a filesystem that combines a logical volume manager with a
+          Copy-On-Write filesystem with data integrity detection and repair,
+          snapshotting, cloning, block devices, deduplication, and more.
 
-            ${
-              if buildUser then "This is the userspace tools package." else "This is the kernel module package."
-            }
-          ''
-          + extraLongDescription;
+          ${
+            if buildUser then "This is the userspace tools package." else "This is the kernel module package."
+          }
+        ''
+        + extraLongDescription;
         homepage = "https://github.com/openzfs/zfs";
         changelog = "https://github.com/openzfs/zfs/releases/tag/zfs-${version}";
         license = lib.licenses.cddl;

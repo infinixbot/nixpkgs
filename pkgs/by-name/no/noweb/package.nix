@@ -31,7 +31,8 @@ stdenv.mkDerivation (finalAttrs: {
     substituteInPlace Makefile --replace '`./gitversion`' '${finalAttrs.src.rev}'
   '';
 
-  nativeBuildInputs = [ groff ] ++ lib.optionals useIcon [ icon-lang ];
+  nativeBuildInputs = [ groff ]
+    ++ lib.optionals useIcon [ icon-lang ];
   buildInputs = [ nawk ];
 
   preBuild = ''

@@ -76,24 +76,23 @@ stdenv.mkDerivation (finalAttrs: {
       darwin.sigtool
     ];
 
-  buildInputs =
-    [
-      boost
-      glew
-      SDL2
-      SDL2_net
-      libpng
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      libX11
-      libXrandr
-      libXinerama
-      libXcursor
-      libXi
-      libXext
-      libpulseaudio
-      zenity
-    ];
+  buildInputs = [
+    boost
+    glew
+    SDL2
+    SDL2_net
+    libpng
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    libX11
+    libXrandr
+    libXinerama
+    libXcursor
+    libXi
+    libXext
+    libpulseaudio
+    zenity
+  ];
 
   cmakeFlags = [
     (lib.cmakeBool "NON_PORTABLE" true)
@@ -191,7 +190,8 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://github.com/HarbourMasters/Shipwright";
     description = "A PC port of Ocarina of Time with modern controls, widescreen, high-resolution, and more";
     mainProgram = "soh";
-    platforms = [ "x86_64-linux" ] ++ lib.platforms.darwin;
+    platforms = [ "x86_64-linux" ]
+      ++ lib.platforms.darwin;
     maintainers = with lib.maintainers; [
       j0lol
       matteopacini

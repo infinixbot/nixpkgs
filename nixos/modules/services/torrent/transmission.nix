@@ -339,24 +339,24 @@ in
     # when /home/foo is not owned by cfg.user.
     # Note also that using an ExecStartPre= wouldn't work either
     # because BindPaths= needs these directories before.
-    system.activationScripts.transmission-daemon =
-      ''
-        install -d -m 700 -o '${cfg.user}' -g '${cfg.group}' '${cfg.home}/${settingsDir}'
-      ''
-      + optionalString (cfg.downloadDirPermissions != null) ''
-        install -d -m '${cfg.downloadDirPermissions}' -o '${cfg.user}' -g '${cfg.group}' '${cfg.settings.download-dir}'
+    system.activationScripts.transmission-daemon = ''
+      install -d -m 700 -o '${cfg.user}' -g '${cfg.group}' '${cfg.home}/${settingsDir}'
+    ''
+    + optionalString (cfg.downloadDirPermissions != null) ''
+      install -d -m '${cfg.downloadDirPermissions}' -o '${cfg.user}' -g '${cfg.group}' '${cfg.settings.download-dir}'
 
-        ${optionalString cfg.settings.incomplete-dir-enabled ''
-          install -d -m '${cfg.downloadDirPermissions}' -o '${cfg.user}' -g '${cfg.group}' '${cfg.settings.incomplete-dir}'
-        ''}
-        ${optionalString cfg.settings.watch-dir-enabled ''
-          install -d -m '${cfg.downloadDirPermissions}' -o '${cfg.user}' -g '${cfg.group}' '${cfg.settings.watch-dir}'
-        ''}
-      '';
+      ${optionalString cfg.settings.incomplete-dir-enabled ''
+        install -d -m '${cfg.downloadDirPermissions}' -o '${cfg.user}' -g '${cfg.group}' '${cfg.settings.incomplete-dir}'
+      ''}
+      ${optionalString cfg.settings.watch-dir-enabled ''
+        install -d -m '${cfg.downloadDirPermissions}' -o '${cfg.user}' -g '${cfg.group}' '${cfg.settings.watch-dir}'
+      ''}
+    '';
 
     systemd.services.transmission = {
       description = "Transmission BitTorrent Service";
-      after = [ "network.target" ] ++ optional apparmor.enable "apparmor.service";
+      after = [ "network.target" ]
+        ++ optional apparmor.enable "apparmor.service";
       requires = optional apparmor.enable "apparmor.service";
       wantedBy = [ "multi-user.target" ];
 

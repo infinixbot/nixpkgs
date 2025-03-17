@@ -28,7 +28,8 @@ stdenv.mkDerivation {
     substituteInPlace ../config.guess --replace-fail /usr/bin/uname uname
   '';
 
-  configureFlags = [ "--enable-install-libiberty" ] ++ lib.optional (!staticBuild) "--enable-shared";
+  configureFlags = [ "--enable-install-libiberty" ]
+    ++ lib.optional (!staticBuild) "--enable-shared";
 
   postInstall = lib.optionalString (!staticBuild) ''
     cp pic/libiberty.a $out/lib*/libiberty.a

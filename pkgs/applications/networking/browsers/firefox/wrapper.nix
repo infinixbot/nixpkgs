@@ -149,38 +149,36 @@ let
           ) (lib.optionals usesNixExtensions nixExtensions);
 
       enterprisePolicies = {
-        policies =
-          {
-            DisableAppUpdate = true;
+        policies = {
+          DisableAppUpdate = true;
+        }
+        // lib.optionalAttrs usesNixExtensions {
+          ExtensionSettings = {
+            "*" = {
+              blocked_install_message = "You can't have manual extension mixed with nix extensions";
+              installation_mode = "blocked";
+            };
           }
-          // lib.optionalAttrs usesNixExtensions {
-            ExtensionSettings =
-              {
-                "*" = {
-                  blocked_install_message = "You can't have manual extension mixed with nix extensions";
-                  installation_mode = "blocked";
-                };
-              }
-              // lib.foldr (
-                e: ret:
-                ret
-                // {
-                  "${e.extid}" = {
-                    installation_mode = "allowed";
-                  };
-                }
-              ) { } extensions;
+          // lib.foldr (
+            e: ret:
+            ret
+            // {
+              "${e.extid}" = {
+                installation_mode = "allowed";
+              };
+            }
+          ) { } extensions;
 
-            Extensions = {
-              Install = lib.foldr (e: ret: ret ++ [ "${e.outPath}/${e.extid}.xpi" ]) [ ] extensions;
-            };
-          }
-          // lib.optionalAttrs smartcardSupport {
-            SecurityDevices = {
-              "OpenSC PKCS#11 Module" = "opensc-pkcs11.so";
-            };
-          }
-          // extraPolicies;
+          Extensions = {
+            Install = lib.foldr (e: ret: ret ++ [ "${e.outPath}/${e.extid}.xpi" ]) [ ] extensions;
+          };
+        }
+        // lib.optionalAttrs smartcardSupport {
+          SecurityDevices = {
+            "OpenSC PKCS#11 Module" = "opensc-pkcs11.so";
+          };
+        }
+        // extraPolicies;
       };
 
       mozillaCfg = ''
@@ -291,226 +289,224 @@ let
       ];
       buildInputs = [ browser.gtk3 ];
 
-      makeWrapperArgs =
-        [
-          "--prefix"
-          "LD_LIBRARY_PATH"
-          ":"
-          "${finalAttrs.libs}"
+      makeWrapperArgs = [
+        "--prefix"
+        "LD_LIBRARY_PATH"
+        ":"
+        "${finalAttrs.libs}"
 
-          "--suffix"
-          "GTK_PATH"
-          ":"
-          "${lib.concatStringsSep ":" finalAttrs.gtk_modules}"
+        "--suffix"
+        "GTK_PATH"
+        ":"
+        "${lib.concatStringsSep ":" finalAttrs.gtk_modules}"
 
-          "--suffix"
-          "PATH"
-          ":"
-          "${placeholder "out"}/bin"
+        "--suffix"
+        "PATH"
+        ":"
+        "${placeholder "out"}/bin"
 
-          "--set"
-          "MOZ_APP_LAUNCHER"
-          launcherName
+        "--set"
+        "MOZ_APP_LAUNCHER"
+        launcherName
 
-          "--set"
-          "MOZ_LEGACY_PROFILES"
-          "1"
+        "--set"
+        "MOZ_LEGACY_PROFILES"
+        "1"
 
-          "--set"
-          "MOZ_ALLOW_DOWNGRADE"
-          "1"
+        "--set"
+        "MOZ_ALLOW_DOWNGRADE"
+        "1"
 
-          "--suffix"
-          "XDG_DATA_DIRS"
-          ":"
-          "${adwaita-icon-theme}/share"
+        "--suffix"
+        "XDG_DATA_DIRS"
+        ":"
+        "${adwaita-icon-theme}/share"
 
-          "--set-default"
-          "MOZ_ENABLE_WAYLAND"
-          "1"
+        "--set-default"
+        "MOZ_ENABLE_WAYLAND"
+        "1"
 
-        ]
-        ++ lib.optionals (!xdg-utils.meta.broken) [
-          # make xdg-open overrideable at runtime
-          "--suffix"
-          "PATH"
-          ":"
-          "${lib.makeBinPath [ xdg-utils ]}"
+      ]
+      ++ lib.optionals (!xdg-utils.meta.broken) [
+        # make xdg-open overrideable at runtime
+        "--suffix"
+        "PATH"
+        ":"
+        "${lib.makeBinPath [ xdg-utils ]}"
 
-        ]
-        ++ lib.optionals hasMozSystemDirPatch [
-          "--set"
-          "MOZ_SYSTEM_DIR"
-          "${placeholder "out"}/lib/mozilla"
+      ]
+      ++ lib.optionals hasMozSystemDirPatch [
+        "--set"
+        "MOZ_SYSTEM_DIR"
+        "${placeholder "out"}/lib/mozilla"
 
-        ]
-        ++ lib.optionals (!hasMozSystemDirPatch && allNativeMessagingHosts != [ ]) [
+      ]
+      ++ lib.optionals (!hasMozSystemDirPatch && allNativeMessagingHosts != [ ]) [
+        "--run"
+        ''mkdir -p ''${MOZ_HOME:-~/.mozilla}/native-messaging-hosts''
+
+      ]
+      ++ lib.optionals (!hasMozSystemDirPatch) (
+        lib.concatMap (ext: [
           "--run"
-          ''mkdir -p ''${MOZ_HOME:-~/.mozilla}/native-messaging-hosts''
+          ''ln -sfLt ''${MOZ_HOME:-~/.mozilla}/native-messaging-hosts ${ext}/lib/mozilla/native-messaging-hosts/*''
+        ]) allNativeMessagingHosts
+      );
 
-        ]
-        ++ lib.optionals (!hasMozSystemDirPatch) (
-          lib.concatMap (ext: [
-            "--run"
-            ''ln -sfLt ''${MOZ_HOME:-~/.mozilla}/native-messaging-hosts ${ext}/lib/mozilla/native-messaging-hosts/*''
-          ]) allNativeMessagingHosts
-        );
+      buildCommand = ''
+        if [ ! -x "${browser}/bin/${applicationName}" ]
+        then
+            echo "cannot find executable file \`${browser}/bin/${applicationName}'"
+            exit 1
+        fi
 
-      buildCommand =
-        ''
-          if [ ! -x "${browser}/bin/${applicationName}" ]
-          then
-              echo "cannot find executable file \`${browser}/bin/${applicationName}'"
-              exit 1
+        #########################
+        #                       #
+        #   EXTRA PREF CHANGES  #
+        #                       #
+        #########################
+        # Link the runtime. The executable itself has to be copied,
+        # because it will resolve paths relative to its true location.
+        # Any symbolic links have to be replicated as well.
+        cd "${browser}"
+        find . -type d -exec mkdir -p "$out"/{} \;
+
+        find . -type f \( -not -name "${applicationName}" \) -exec ln -sT "${browser}"/{} "$out"/{} \;
+
+        find . -type f \( -name "${applicationName}" -o -name "${applicationName}-bin" \) -print0 | while read -d $'\0' f; do
+          cp -P --no-preserve=mode,ownership --remove-destination "${browser}/$f" "$out/$f"
+          chmod a+rwx "$out/$f"
+        done
+
+        # fix links and absolute references
+
+        find . -type l -print0 | while read -d $'\0' l; do
+          target="$(readlink "$l")"
+          target=''${target/#"${browser}"/"$out"}
+          ln -sfT "$target" "$out/$l"
+        done
+
+        cd "$out"
+
+        # create the wrapper
+
+        executablePrefix="$out/bin"
+        executablePath="$executablePrefix/${applicationName}"
+        oldWrapperArgs=()
+
+        if [[ -L $executablePath ]]; then
+          # Symbolic link: wrap the link's target.
+          oldExe="$(readlink -v --canonicalize-existing "$executablePath")"
+          rm "$executablePath"
+        elif wrapperCmd=$(${buildPackages.makeBinaryWrapper.extractCmd} "$executablePath"); [[ $wrapperCmd ]]; then
+          # If the executable is a binary wrapper, we need to update its target to
+          # point to $out, but we can't just edit the binary in-place because of length
+          # issues. So we extract the command used to create the wrapper and add the
+          # arguments to our wrapper.
+          parseMakeCWrapperCall() {
+            shift # makeCWrapper
+            oldExe=$1; shift
+            oldWrapperArgs=("$@")
+          }
+          eval "parseMakeCWrapperCall ''${wrapperCmd//"${browser}"/"$out"}"
+          rm "$executablePath"
+        else
+          if read -rn2 shebang < "$executablePath" && [[ $shebang == '#!' ]]; then
+            # Shell wrapper: patch in place to point to $out.
+            sed -i "s@${browser}@$out@g" "$executablePath"
           fi
+          # Suffix the executable with -old, because -wrapped might already be used by the old wrapper.
+          oldExe="$executablePrefix/.${applicationName}"-old
+          mv "$executablePath" "$oldExe"
+        fi
 
-          #########################
-          #                       #
-          #   EXTRA PREF CHANGES  #
-          #                       #
-          #########################
-          # Link the runtime. The executable itself has to be copied,
-          # because it will resolve paths relative to its true location.
-          # Any symbolic links have to be replicated as well.
-          cd "${browser}"
-          find . -type d -exec mkdir -p "$out"/{} \;
+        appendToVar makeWrapperArgs --prefix XDG_DATA_DIRS : "$GSETTINGS_SCHEMAS_PATH"
+        concatTo makeWrapperArgs oldWrapperArgs
+        makeWrapper "$oldExe" "''${executablePath}${nameSuffix}" "''${makeWrapperArgs[@]}"
+        #############################
+        #                           #
+        #   END EXTRA PREF CHANGES  #
+        #                           #
+        #############################
 
-          find . -type f \( -not -name "${applicationName}" \) -exec ln -sT "${browser}"/{} "$out"/{} \;
+        if [ -e "${browser}/share/icons" ]; then
+            mkdir -p "$out/share"
+            ln -s "${browser}/share/icons" "$out/share/icons"
+        else
+            for res in 16 32 48 64 128; do
+            mkdir -p "$out/share/icons/hicolor/''${res}x''${res}/apps"
+            icon=$( find "${browser}/lib/" -name "default''${res}.png" )
+              if [ -e "$icon" ]; then ln -s "$icon" \
+                "$out/share/icons/hicolor/''${res}x''${res}/apps/${icon}.png"
+              fi
+            done
+        fi
 
-          find . -type f \( -name "${applicationName}" -o -name "${applicationName}-bin" \) -print0 | while read -d $'\0' f; do
-            cp -P --no-preserve=mode,ownership --remove-destination "${browser}/$f" "$out/$f"
-            chmod a+rwx "$out/$f"
-          done
+        install -D -t $out/share/applications $desktopItem/share/applications/*
 
-          # fix links and absolute references
+      ''
+      + lib.optionalString hasMozSystemDirPatch ''
+        mkdir -p $out/lib/mozilla/native-messaging-hosts
+        for ext in ${toString allNativeMessagingHosts}; do
+            ln -sLt $out/lib/mozilla/native-messaging-hosts $ext/lib/mozilla/native-messaging-hosts/*
+        done
+      ''
+      + ''
 
-          find . -type l -print0 | while read -d $'\0' l; do
-            target="$(readlink "$l")"
-            target=''${target/#"${browser}"/"$out"}
-            ln -sfT "$target" "$out/$l"
-          done
-
-          cd "$out"
-
-          # create the wrapper
-
-          executablePrefix="$out/bin"
-          executablePath="$executablePrefix/${applicationName}"
-          oldWrapperArgs=()
-
-          if [[ -L $executablePath ]]; then
-            # Symbolic link: wrap the link's target.
-            oldExe="$(readlink -v --canonicalize-existing "$executablePath")"
-            rm "$executablePath"
-          elif wrapperCmd=$(${buildPackages.makeBinaryWrapper.extractCmd} "$executablePath"); [[ $wrapperCmd ]]; then
-            # If the executable is a binary wrapper, we need to update its target to
-            # point to $out, but we can't just edit the binary in-place because of length
-            # issues. So we extract the command used to create the wrapper and add the
-            # arguments to our wrapper.
-            parseMakeCWrapperCall() {
-              shift # makeCWrapper
-              oldExe=$1; shift
-              oldWrapperArgs=("$@")
-            }
-            eval "parseMakeCWrapperCall ''${wrapperCmd//"${browser}"/"$out"}"
-            rm "$executablePath"
-          else
-            if read -rn2 shebang < "$executablePath" && [[ $shebang == '#!' ]]; then
-              # Shell wrapper: patch in place to point to $out.
-              sed -i "s@${browser}@$out@g" "$executablePath"
-            fi
-            # Suffix the executable with -old, because -wrapped might already be used by the old wrapper.
-            oldExe="$executablePrefix/.${applicationName}"-old
-            mv "$executablePath" "$oldExe"
-          fi
-
-          appendToVar makeWrapperArgs --prefix XDG_DATA_DIRS : "$GSETTINGS_SCHEMAS_PATH"
-          concatTo makeWrapperArgs oldWrapperArgs
-          makeWrapper "$oldExe" "''${executablePath}${nameSuffix}" "''${makeWrapperArgs[@]}"
-          #############################
-          #                           #
-          #   END EXTRA PREF CHANGES  #
-          #                           #
-          #############################
-
-          if [ -e "${browser}/share/icons" ]; then
-              mkdir -p "$out/share"
-              ln -s "${browser}/share/icons" "$out/share/icons"
-          else
-              for res in 16 32 48 64 128; do
-              mkdir -p "$out/share/icons/hicolor/''${res}x''${res}/apps"
-              icon=$( find "${browser}/lib/" -name "default''${res}.png" )
-                if [ -e "$icon" ]; then ln -s "$icon" \
-                  "$out/share/icons/hicolor/''${res}x''${res}/apps/${icon}.png"
-                fi
-              done
-          fi
-
-          install -D -t $out/share/applications $desktopItem/share/applications/*
-
-        ''
-        + lib.optionalString hasMozSystemDirPatch ''
-          mkdir -p $out/lib/mozilla/native-messaging-hosts
-          for ext in ${toString allNativeMessagingHosts}; do
-              ln -sLt $out/lib/mozilla/native-messaging-hosts $ext/lib/mozilla/native-messaging-hosts/*
-          done
-        ''
-        + ''
-
-          mkdir -p $out/lib/mozilla/pkcs11-modules
-          for ext in ${toString pkcs11Modules}; do
-              ln -sLt $out/lib/mozilla/pkcs11-modules $ext/lib/mozilla/pkcs11-modules/*
-          done
+        mkdir -p $out/lib/mozilla/pkcs11-modules
+        for ext in ${toString pkcs11Modules}; do
+            ln -sLt $out/lib/mozilla/pkcs11-modules $ext/lib/mozilla/pkcs11-modules/*
+        done
 
 
-          #########################
-          #                       #
-          #   EXTRA PREF CHANGES  #
-          #                       #
-          #########################
-          # user customization
-          mkdir -p $out/lib/${libName}
+        #########################
+        #                       #
+        #   EXTRA PREF CHANGES  #
+        #                       #
+        #########################
+        # user customization
+        mkdir -p $out/lib/${libName}
 
-          # creating policies.json
-          mkdir -p "$out/lib/${libName}/distribution"
+        # creating policies.json
+        mkdir -p "$out/lib/${libName}/distribution"
 
-          POL_PATH="$out/lib/${libName}/distribution/policies.json"
-          rm -f "$POL_PATH"
-          cat ${policiesJson} >> "$POL_PATH"
+        POL_PATH="$out/lib/${libName}/distribution/policies.json"
+        rm -f "$POL_PATH"
+        cat ${policiesJson} >> "$POL_PATH"
 
-          extraPoliciesFiles=(${builtins.toString extraPoliciesFiles})
-          for extraPoliciesFile in "''${extraPoliciesFiles[@]}"; do
-            jq -s '.[0] * .[1]' "$POL_PATH" $extraPoliciesFile > .tmp.json
-            mv .tmp.json "$POL_PATH"
-          done
+        extraPoliciesFiles=(${builtins.toString extraPoliciesFiles})
+        for extraPoliciesFile in "''${extraPoliciesFiles[@]}"; do
+          jq -s '.[0] * .[1]' "$POL_PATH" $extraPoliciesFile > .tmp.json
+          mv .tmp.json "$POL_PATH"
+        done
 
-          # preparing for autoconfig
-          mkdir -p "$out/lib/${libName}/defaults/pref"
+        # preparing for autoconfig
+        mkdir -p "$out/lib/${libName}/defaults/pref"
 
-          echo 'pref("general.config.filename", "mozilla.cfg");' > "$out/lib/${libName}/defaults/pref/autoconfig.js"
-          echo 'pref("general.config.obscure_value", 0);' >> "$out/lib/${libName}/defaults/pref/autoconfig.js"
+        echo 'pref("general.config.filename", "mozilla.cfg");' > "$out/lib/${libName}/defaults/pref/autoconfig.js"
+        echo 'pref("general.config.obscure_value", 0);' >> "$out/lib/${libName}/defaults/pref/autoconfig.js"
 
-          cat > "$out/lib/${libName}/mozilla.cfg" << EOF
-          ${mozillaCfg}
-          EOF
+        cat > "$out/lib/${libName}/mozilla.cfg" << EOF
+        ${mozillaCfg}
+        EOF
 
-          extraPrefsFiles=(${builtins.toString extraPrefsFiles})
-          for extraPrefsFile in "''${extraPrefsFiles[@]}"; do
-            cat "$extraPrefsFile" >> "$out/lib/${libName}/mozilla.cfg"
-          done
+        extraPrefsFiles=(${builtins.toString extraPrefsFiles})
+        for extraPrefsFile in "''${extraPrefsFiles[@]}"; do
+          cat "$extraPrefsFile" >> "$out/lib/${libName}/mozilla.cfg"
+        done
 
-          cat >> "$out/lib/${libName}/mozilla.cfg" << EOF
-          ${extraPrefs}
-          EOF
+        cat >> "$out/lib/${libName}/mozilla.cfg" << EOF
+        ${extraPrefs}
+        EOF
 
-          mkdir -p $out/lib/${libName}/distribution/extensions
+        mkdir -p $out/lib/${libName}/distribution/extensions
 
-          #############################
-          #                           #
-          #   END EXTRA PREF CHANGES  #
-          #                           #
-          #############################
-        '';
+        #############################
+        #                           #
+        #   END EXTRA PREF CHANGES  #
+        #                           #
+        #############################
+      '';
 
       preferLocalBuild = true;
 

@@ -38,36 +38,34 @@ stdenv.mkDerivation rec {
   '';
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs =
-    [
-      libjack2
-      ncurses
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      alsa-lib
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      CoreAudio
-      libobjc
-    ]
-    ++ lib.optionals enableVorbis [
-      libvorbis
-    ];
+  buildInputs = [
+    libjack2
+    ncurses
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    alsa-lib
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    CoreAudio
+    libobjc
+  ]
+  ++ lib.optionals enableVorbis [
+    libvorbis
+  ];
 
-  enabledOutputModes =
-    [
-      "jack"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      "oss"
-      "alsa"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      "darwin"
-    ]
-    ++ lib.optionals enableVorbis [
-      "vorbis"
-    ];
+  enabledOutputModes = [
+    "jack"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    "oss"
+    "alsa"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    "darwin"
+  ]
+  ++ lib.optionals enableVorbis [
+    "vorbis"
+  ];
 
   configureFlags =
     [

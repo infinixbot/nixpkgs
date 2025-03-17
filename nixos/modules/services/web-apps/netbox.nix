@@ -22,14 +22,13 @@ let
 
   pkg =
     (cfg.package.overrideAttrs (old: {
-      installPhase =
-        old.installPhase
-        + ''
-          ln -s ${configFile} $out/opt/netbox/netbox/netbox/configuration.py
-        ''
-        + lib.optionalString cfg.enableLdap ''
-          ln -s ${cfg.ldapConfigPath} $out/opt/netbox/netbox/netbox/ldap_config.py
-        '';
+      installPhase = old.installPhase
+      + ''
+        ln -s ${configFile} $out/opt/netbox/netbox/netbox/configuration.py
+      ''
+      + lib.optionalString cfg.enableLdap ''
+        ln -s ${cfg.ldapConfigPath} $out/opt/netbox/netbox/netbox/ldap_config.py
+      '';
     })).override
       {
         inherit (cfg) plugins;
@@ -257,15 +256,14 @@ in
         };
       };
 
-      extraConfig =
-        ''
-          with open("${cfg.secretKeyFile}", "r") as file:
-              SECRET_KEY = file.readline()
-        ''
-        + (lib.optionalString (cfg.keycloakClientSecret != null) ''
-          with open("${cfg.keycloakClientSecret}", "r") as file:
-              SOCIAL_AUTH_KEYCLOAK_SECRET = file.readline()
-        '');
+      extraConfig = ''
+        with open("${cfg.secretKeyFile}", "r") as file:
+            SECRET_KEY = file.readline()
+      ''
+      + (lib.optionalString (cfg.keycloakClientSecret != null) ''
+        with open("${cfg.keycloakClientSecret}", "r") as file:
+            SOCIAL_AUTH_KEYCLOAK_SECRET = file.readline()
+      '');
     };
 
     services.redis.servers.netbox.enable = true;

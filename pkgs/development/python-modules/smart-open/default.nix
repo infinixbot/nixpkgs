@@ -58,7 +58,8 @@ buildPythonPackage rec {
     pytestCheckHook
     responses
     pynacl
-  ] ++ lib.flatten (lib.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (lib.attrValues optional-dependencies);
 
   pytestFlagsArray = [ "smart_open" ];
 

@@ -171,52 +171,51 @@ let
     ];
 
     # Fix FHS paths in tests
-    postPatch =
-      ''
-        # src/fish_tests.cpp
-        sed -i 's|/bin/ls|${coreutils}/bin/ls|' src/fish_tests.cpp
-        sed -i 's|is_potential_path(L"/usr"|is_potential_path(L"/nix"|' src/fish_tests.cpp
-        sed -i 's|L"/bin/echo"|L"${coreutils}/bin/echo"|' src/fish_tests.cpp
-        sed -i 's|L"/bin/c"|L"${coreutils}/bin/c"|' src/fish_tests.cpp
-        sed -i 's|L"/bin/ca"|L"${coreutils}/bin/ca"|' src/fish_tests.cpp
-        # disable flakey test
-        sed -i '/{TEST_GROUP("history_races"), history_tests_t::test_history_races},/d' src/fish_tests.cpp
+    postPatch = ''
+      # src/fish_tests.cpp
+      sed -i 's|/bin/ls|${coreutils}/bin/ls|' src/fish_tests.cpp
+      sed -i 's|is_potential_path(L"/usr"|is_potential_path(L"/nix"|' src/fish_tests.cpp
+      sed -i 's|L"/bin/echo"|L"${coreutils}/bin/echo"|' src/fish_tests.cpp
+      sed -i 's|L"/bin/c"|L"${coreutils}/bin/c"|' src/fish_tests.cpp
+      sed -i 's|L"/bin/ca"|L"${coreutils}/bin/ca"|' src/fish_tests.cpp
+      # disable flakey test
+      sed -i '/{TEST_GROUP("history_races"), history_tests_t::test_history_races},/d' src/fish_tests.cpp
 
-        # tests/checks/cd.fish
-        sed -i 's|/bin/pwd|${coreutils}/bin/pwd|' tests/checks/cd.fish
+      # tests/checks/cd.fish
+      sed -i 's|/bin/pwd|${coreutils}/bin/pwd|' tests/checks/cd.fish
 
-        # tests/checks/redirect.fish
-        sed -i 's|/bin/echo|${coreutils}/bin/echo|' tests/checks/redirect.fish
+      # tests/checks/redirect.fish
+      sed -i 's|/bin/echo|${coreutils}/bin/echo|' tests/checks/redirect.fish
 
-        # tests/checks/vars_as_commands.fish
-        sed -i 's|/usr/bin|${coreutils}/bin|' tests/checks/vars_as_commands.fish
+      # tests/checks/vars_as_commands.fish
+      sed -i 's|/usr/bin|${coreutils}/bin|' tests/checks/vars_as_commands.fish
 
-        # tests/checks/jobs.fish
-        sed -i 's|ps -o stat|${procps}/bin/ps -o stat|' tests/checks/jobs.fish
-        sed -i 's|/bin/echo|${coreutils}/bin/echo|' tests/checks/jobs.fish
+      # tests/checks/jobs.fish
+      sed -i 's|ps -o stat|${procps}/bin/ps -o stat|' tests/checks/jobs.fish
+      sed -i 's|/bin/echo|${coreutils}/bin/echo|' tests/checks/jobs.fish
 
-        # tests/checks/job-control-noninteractive.fish
-        sed -i 's|/bin/echo|${coreutils}/bin/echo|' tests/checks/job-control-noninteractive.fish
+      # tests/checks/job-control-noninteractive.fish
+      sed -i 's|/bin/echo|${coreutils}/bin/echo|' tests/checks/job-control-noninteractive.fish
 
-        # tests/checks/complete.fish
-        sed -i 's|/bin/ls|${coreutils}/bin/ls|' tests/checks/complete.fish
-      ''
-      + lib.optionalString stdenv.hostPlatform.isDarwin ''
-        # Tests use pkill/pgrep which are currently not built on Darwin
-        # See https://github.com/NixOS/nixpkgs/pull/103180
-        rm tests/pexpects/exit.py
-        rm tests/pexpects/job_summary.py
-        rm tests/pexpects/signals.py
+      # tests/checks/complete.fish
+      sed -i 's|/bin/ls|${coreutils}/bin/ls|' tests/checks/complete.fish
+    ''
+    + lib.optionalString stdenv.hostPlatform.isDarwin ''
+      # Tests use pkill/pgrep which are currently not built on Darwin
+      # See https://github.com/NixOS/nixpkgs/pull/103180
+      rm tests/pexpects/exit.py
+      rm tests/pexpects/job_summary.py
+      rm tests/pexpects/signals.py
 
-        # pexpect tests are flaky in general
-        # See https://github.com/fish-shell/fish-shell/issues/8789
-        rm tests/pexpects/bind.py
-      ''
-      + lib.optionalString stdenv.hostPlatform.isLinux ''
-        # pexpect tests are flaky on aarch64-linux (also x86_64-linux)
-        # See https://github.com/fish-shell/fish-shell/issues/8789
-        rm tests/pexpects/exit_handlers.py
-      '';
+      # pexpect tests are flaky in general
+      # See https://github.com/fish-shell/fish-shell/issues/8789
+      rm tests/pexpects/bind.py
+    ''
+    + lib.optionalString stdenv.hostPlatform.isLinux ''
+      # pexpect tests are flaky on aarch64-linux (also x86_64-linux)
+      # See https://github.com/fish-shell/fish-shell/issues/8789
+      rm tests/pexpects/exit_handlers.py
+    '';
 
     outputs = [
       "out"
@@ -234,13 +233,12 @@ let
       pcre2
     ];
 
-    cmakeFlags =
-      [
-        "-DCMAKE_INSTALL_DOCDIR=${placeholder "doc"}/share/doc/fish"
-      ]
-      ++ lib.optionals stdenv.hostPlatform.isDarwin [
-        "-DMAC_CODESIGN_ID=OFF"
-      ];
+    cmakeFlags = [
+      "-DCMAKE_INSTALL_DOCDIR=${placeholder "doc"}/share/doc/fish"
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      "-DMAC_CODESIGN_ID=OFF"
+    ];
 
     # Fish’s test suite needs to be able to look up process information and send signals.
     sandboxProfile = lib.optionalString stdenv.hostPlatform.isDarwin ''
@@ -252,13 +250,12 @@ let
     # Fish needs coreutils as a runtime dependency, and it gets put into
     # CMAKE_PREFIX_PATH, which cmake uses to look up build time programs, so it
     # was clobbering the PATH. It probably needs to be fixed at a lower level.
-    preConfigure =
-      ''
-        patchShebangs ./build_tools/git_version_gen.sh
-      ''
-      + lib.optionalString (stdenv.hostPlatform != stdenv.buildPlatform) ''
-        export CMAKE_PREFIX_PATH=
-      '';
+    preConfigure = ''
+      patchShebangs ./build_tools/git_version_gen.sh
+    ''
+    + lib.optionalString (stdenv.hostPlatform != stdenv.buildPlatform) ''
+      export CMAKE_PREFIX_PATH=
+    '';
 
     # Required binaries during execution
     propagatedBuildInputs = [
@@ -267,7 +264,8 @@ let
       gnused
       groff
       gettext
-    ] ++ lib.optional (!stdenv.hostPlatform.isDarwin) man-db;
+    ]
+    ++ lib.optional (!stdenv.hostPlatform.isDarwin) man-db;
 
     doCheck = true;
 
@@ -281,57 +279,56 @@ let
       make test
     '';
 
-    postInstall =
-      ''
-        sed -r "s|command grep|command ${gnugrep}/bin/grep|" \
-            -i "$out/share/fish/functions/grep.fish"
-        sed -e "s|\|cut|\|${coreutils}/bin/cut|"             \
-            -i "$out/share/fish/functions/fish_prompt.fish"
-        sed -e "s|uname|${coreutils}/bin/uname|"             \
-            -i "$out/share/fish/functions/__fish_pwd.fish"   \
-               "$out/share/fish/functions/prompt_pwd.fish"
-        sed -e "s|sed |${gnused}/bin/sed |"                  \
-            -i "$out/share/fish/functions/alias.fish"        \
-               "$out/share/fish/functions/prompt_pwd.fish"
-        sed -i "s|nroff|${groff}/bin/nroff|"                 \
-               "$out/share/fish/functions/__fish_print_help.fish"
-        sed -e "s|clear;|${lib.getBin ncurses}/bin/clear;|"      \
-            -i "$out/share/fish/functions/fish_default_key_bindings.fish"
-        sed -i "s|/usr/local/sbin /sbin /usr/sbin||"         \
-               $out/share/fish/completions/{sudo.fish,doas.fish}
-        sed -e "s| awk | ${gawk}/bin/awk |"                  \
-            -i $out/share/fish/functions/{__fish_print_packages.fish,__fish_print_addresses.fish,__fish_describe_command.fish,__fish_complete_man.fish,__fish_complete_convert_options.fish} \
-               $out/share/fish/completions/{cwebp,adb,ezjail-admin,grunt,helm,heroku,lsusb,make,p4,psql,rmmod,vim-addons}.fish
+    postInstall = ''
+      sed -r "s|command grep|command ${gnugrep}/bin/grep|" \
+          -i "$out/share/fish/functions/grep.fish"
+      sed -e "s|\|cut|\|${coreutils}/bin/cut|"             \
+          -i "$out/share/fish/functions/fish_prompt.fish"
+      sed -e "s|uname|${coreutils}/bin/uname|"             \
+          -i "$out/share/fish/functions/__fish_pwd.fish"   \
+             "$out/share/fish/functions/prompt_pwd.fish"
+      sed -e "s|sed |${gnused}/bin/sed |"                  \
+          -i "$out/share/fish/functions/alias.fish"        \
+             "$out/share/fish/functions/prompt_pwd.fish"
+      sed -i "s|nroff|${groff}/bin/nroff|"                 \
+             "$out/share/fish/functions/__fish_print_help.fish"
+      sed -e "s|clear;|${lib.getBin ncurses}/bin/clear;|"      \
+          -i "$out/share/fish/functions/fish_default_key_bindings.fish"
+      sed -i "s|/usr/local/sbin /sbin /usr/sbin||"         \
+             $out/share/fish/completions/{sudo.fish,doas.fish}
+      sed -e "s| awk | ${gawk}/bin/awk |"                  \
+          -i $out/share/fish/functions/{__fish_print_packages.fish,__fish_print_addresses.fish,__fish_describe_command.fish,__fish_complete_man.fish,__fish_complete_convert_options.fish} \
+             $out/share/fish/completions/{cwebp,adb,ezjail-admin,grunt,helm,heroku,lsusb,make,p4,psql,rmmod,vim-addons}.fish
 
-      ''
-      + lib.optionalString usePython ''
-        cat > $out/share/fish/functions/__fish_anypython.fish <<EOF
-        function __fish_anypython
-            echo ${python3.interpreter}
-            return 0
-        end
-        EOF
+    ''
+    + lib.optionalString usePython ''
+      cat > $out/share/fish/functions/__fish_anypython.fish <<EOF
+      function __fish_anypython
+          echo ${python3.interpreter}
+          return 0
+      end
+      EOF
 
-      ''
-      + lib.optionalString stdenv.hostPlatform.isLinux ''
-        for cur in $out/share/fish/functions/*.fish; do
-          sed -e "s|/usr/bin/getent|${getent}/bin/getent|" \
-              -i "$cur"
-        done
+    ''
+    + lib.optionalString stdenv.hostPlatform.isLinux ''
+      for cur in $out/share/fish/functions/*.fish; do
+        sed -e "s|/usr/bin/getent|${getent}/bin/getent|" \
+            -i "$cur"
+      done
 
-      ''
-      + lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
-        sed -i "s|Popen(\['manpath'|Popen(\['${man-db}/bin/manpath'|" \
-                "$out/share/fish/tools/create_manpage_completions.py"
-        sed -i "s|command manpath|command ${man-db}/bin/manpath|"     \
-                "$out/share/fish/functions/man.fish"
-      ''
-      + lib.optionalString useOperatingSystemEtc ''
-        tee -a $out/etc/fish/config.fish < ${etcConfigAppendix}
-      ''
-      + ''
-        tee -a $out/share/fish/__fish_build_paths.fish < ${fishPreInitHooks}
-      '';
+    ''
+    + lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
+      sed -i "s|Popen(\['manpath'|Popen(\['${man-db}/bin/manpath'|" \
+              "$out/share/fish/tools/create_manpage_completions.py"
+      sed -i "s|command manpath|command ${man-db}/bin/manpath|"     \
+              "$out/share/fish/functions/man.fish"
+    ''
+    + lib.optionalString useOperatingSystemEtc ''
+      tee -a $out/etc/fish/config.fish < ${etcConfigAppendix}
+    ''
+    + ''
+      tee -a $out/share/fish/__fish_build_paths.fish < ${fishPreInitHooks}
+    '';
 
     meta = with lib; {
       description = "Smart and user-friendly command line shell";

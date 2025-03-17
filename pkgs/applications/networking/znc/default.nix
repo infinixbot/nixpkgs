@@ -40,8 +40,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs =
-    [ openssl ]
+  buildInputs = [ openssl ]
     ++ lib.optional withPerl perl
     ++ lib.optional withPython python3
     ++ lib.optional withTcl tcl

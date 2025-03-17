@@ -31,7 +31,8 @@ rustPlatform.buildRustPackage rec {
   buildInputs = [
     openssl
     xorg.xcbutil
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin AppKit;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin AppKit;
 
   useFetchCargoVendor = true;
   cargoHash = "sha256-NRFTrSH2aorBqsvBOTqfKmer5tXEEF1ZMUtlMfZ6vD8=";

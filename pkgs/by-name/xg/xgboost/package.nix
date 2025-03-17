@@ -68,8 +68,7 @@ effectiveStdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs =
-    [ cmake ]
+  nativeBuildInputs = [ cmake ]
     ++ lib.optionals effectiveStdenv.hostPlatform.isDarwin [ llvmPackages.openmp ]
     ++ lib.optionals cudaSupport [ autoAddDriverRunpath ]
     ++ lib.optionals rLibrary [ R ];
@@ -122,21 +121,20 @@ effectiveStdenv.mkDerivation rec {
     in
     "-${builtins.concatStringsSep ":" filteredTests}";
 
-  installPhase =
-    ''
-      runHook preInstall
-    ''
-    # the R library option builds a completely different binary xgboost.so instead of
-    # libxgboost.so, which isn't full featured for python and CLI
-    + lib.optionalString rLibrary ''
-      mkdir -p $out/library
-      export R_LIBS_SITE="$out/library:$R_LIBS_SITE''${R_LIBS_SITE:+:}"
-    ''
-    + ''
-      cmake --install .
-      cp -r ../rabit/include/rabit $out/include
-      runHook postInstall
-    '';
+  installPhase = ''
+    runHook preInstall
+  ''
+  # the R library option builds a completely different binary xgboost.so instead of
+  # libxgboost.so, which isn't full featured for python and CLI
+  + lib.optionalString rLibrary ''
+    mkdir -p $out/library
+    export R_LIBS_SITE="$out/library:$R_LIBS_SITE''${R_LIBS_SITE:+:}"
+  ''
+  + ''
+    cmake --install .
+    cp -r ../rabit/include/rabit $out/include
+    runHook postInstall
+  '';
 
   postFixup = lib.optionalString rLibrary ''
     if test -e $out/nix-support/propagated-build-inputs; then

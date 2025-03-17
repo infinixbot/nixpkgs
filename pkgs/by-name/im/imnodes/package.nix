@@ -34,8 +34,7 @@ stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs = [ cmake ];
-  buildInputs =
-    [ imgui ]
+  buildInputs = [ imgui ]
     ++ lib.optionals withExamples [
       SDL2
       xorg.libXext

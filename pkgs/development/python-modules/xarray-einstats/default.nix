@@ -39,7 +39,8 @@ buildPythonPackage rec {
     numba = [ numba ];
   };
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ lib.flatten (builtins.attrValues optional-dependencies);
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ lib.flatten (builtins.attrValues optional-dependencies);
 
   pythonImportsCheck = [ "xarray_einstats" ];
 

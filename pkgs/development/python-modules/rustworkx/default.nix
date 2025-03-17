@@ -44,7 +44,8 @@ buildPythonPackage rec {
     setuptools-rust
   ];
 
-  buildInputs = [ numpy ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ libiconv ];
+  buildInputs = [ numpy ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ libiconv ];
 
   nativeCheckInputs = [
     fixtures

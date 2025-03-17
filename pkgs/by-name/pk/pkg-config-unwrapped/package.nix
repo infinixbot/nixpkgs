@@ -42,8 +42,7 @@ stdenv.mkDerivation rec {
 
   buildInputs = [ libiconv ];
 
-  configureFlags =
-    [ "--with-internal-glib" ]
+  configureFlags = [ "--with-internal-glib" ]
     ++ lib.optionals (stdenv.hostPlatform.isSunOS) [
       "--with-libiconv=gnu"
       "--with-system-library-path"

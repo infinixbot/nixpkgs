@@ -37,8 +37,10 @@ stdenv.mkDerivation (finalAttrs: {
     doxygen
     graphviz
     pkg-config
-  ] ++ lib.optional pythonSupport python3Packages.pythonImportsCheckHook;
-  checkInputs = [ eigenrand ] ++ lib.optional pythonSupport python3Packages.pytest;
+  ]
+  ++ lib.optional pythonSupport python3Packages.pythonImportsCheckHook;
+  checkInputs = [ eigenrand ]
+    ++ lib.optional pythonSupport python3Packages.pytest;
   propagatedBuildInputs =
     [
       example-robot-data

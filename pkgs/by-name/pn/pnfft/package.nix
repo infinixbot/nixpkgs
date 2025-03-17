@@ -43,9 +43,11 @@ stdenv.mkDerivation (finalAttrs: {
   configureFlags = [
     "--enable-threads"
     "--enable-portable-binary"
-  ] ++ lib.optional (precision != "double") "--enable-${precision}";
+  ]
+  ++ lib.optional (precision != "double") "--enable-${precision}";
 
-  buildInputs = [ gsl ] ++ lib.optional stdenv.cc.isClang llvmPackages.openmp;
+  buildInputs = [ gsl ]
+    ++ lib.optional stdenv.cc.isClang llvmPackages.openmp;
 
   propagatedBuildInputs = [ pfft' ];
 

@@ -49,33 +49,33 @@ stdenv.mkDerivation rec {
       --replace 'OCIO_ADD_TEST(Config, virtual_display_with_active_displays)' 'static void _skip_virtual_display_with_active_displays()'
   '';
 
-  nativeBuildInputs = [ cmake ] ++ lib.optionals pythonBindings [ python3Packages.python ];
-  buildInputs =
-    [
-      expat
-      yaml-cpp
-      pystring
-      imath
-      minizip-ng
-      zlib
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      glew
-      libglut
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      Carbon
-      GLUT
-      Cocoa
-    ]
-    ++ lib.optionals pythonBindings [
-      python3Packages.python
-      python3Packages.pybind11
-    ]
-    ++ lib.optionals buildApps [
-      lcms2
-      openexr_3
-    ];
+  nativeBuildInputs = [ cmake ]
+    ++ lib.optionals pythonBindings [ python3Packages.python ];
+  buildInputs = [
+    expat
+    yaml-cpp
+    pystring
+    imath
+    minizip-ng
+    zlib
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    glew
+    libglut
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    Carbon
+    GLUT
+    Cocoa
+  ]
+  ++ lib.optionals pythonBindings [
+    python3Packages.python
+    python3Packages.pybind11
+  ]
+  ++ lib.optionals buildApps [
+    lcms2
+    openexr_3
+  ];
 
   cmakeFlags =
     [

@@ -68,6 +68,7 @@ stdenv.mkDerivation rec {
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
     license = lib.licenses.asl20;
     maintainers = with lib.maintainers; [ fabianhjr ];
-    platforms = [ "x86_64-linux" ] ++ lib.platforms.darwin;
+    platforms = [ "x86_64-linux" ]
+      ++ lib.platforms.darwin;
   };
 }

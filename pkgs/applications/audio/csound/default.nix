@@ -40,8 +40,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-NDYltwmjBsX1DWCjy8/4cXMSl3/mK+HaQHSKUmRR9TI=";
   };
 
-  cmakeFlags =
-    [ "-DBUILD_CSOUND_AC=0" ] # fails to find Score.hpp
+  cmakeFlags = [ "-DBUILD_CSOUND_AC=0" ] # fails to find Score.hpp
     ++ lib.optional stdenv.hostPlatform.isDarwin "-DCS_FRAMEWORK_DEST=${placeholder "out"}/lib"
     # Ignore gettext in CMAKE_PREFIX_PATH on cross to prevent find_program picking up the wrong gettext
     ++ lib.optional (

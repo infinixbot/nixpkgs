@@ -140,8 +140,10 @@ in
       description = "Mautrix-Telegram, a Matrix-Telegram hybrid puppeting/relaybot bridge.";
 
       wantedBy = [ "multi-user.target" ];
-      wants = [ "network-online.target" ] ++ cfg.serviceDependencies;
-      after = [ "network-online.target" ] ++ cfg.serviceDependencies;
+      wants = [ "network-online.target" ]
+        ++ cfg.serviceDependencies;
+      after = [ "network-online.target" ]
+        ++ cfg.serviceDependencies;
       path = [
         pkgs.lottieconverter
         pkgs.ffmpeg-headless
@@ -159,20 +161,19 @@ in
       # RuntimeError: Could not determine home directory.
       environment.HOME = dataDir;
 
-      preStart =
-        ''
-          # generate the appservice's registration file if absent
-          if [ ! -f '${registrationFile}' ]; then
-            ${pkgs.mautrix-telegram}/bin/mautrix-telegram \
-              --generate-registration \
-              --config='${settingsFile}' \
-              --registration='${registrationFile}'
-          fi
-        ''
-        + lib.optionalString (pkgs.mautrix-telegram ? alembic) ''
-          # run automatic database init and migration scripts
-          ${pkgs.mautrix-telegram.alembic}/bin/alembic -x config='${settingsFile}' upgrade head
-        '';
+      preStart = ''
+        # generate the appservice's registration file if absent
+        if [ ! -f '${registrationFile}' ]; then
+          ${pkgs.mautrix-telegram}/bin/mautrix-telegram \
+            --generate-registration \
+            --config='${settingsFile}' \
+            --registration='${registrationFile}'
+        fi
+      ''
+      + lib.optionalString (pkgs.mautrix-telegram ? alembic) ''
+        # run automatic database init and migration scripts
+        ${pkgs.mautrix-telegram.alembic}/bin/alembic -x config='${settingsFile}' upgrade head
+      '';
 
       serviceConfig = {
         Type = "simple";

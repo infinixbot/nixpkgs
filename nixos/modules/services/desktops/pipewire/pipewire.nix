@@ -370,7 +370,8 @@ in
       }
     ];
 
-    environment.systemPackages = [ cfg.package ] ++ optional cfg.jack.enable jack-libs;
+    environment.systemPackages = [ cfg.package ]
+      ++ optional cfg.jack.enable jack-libs;
 
     systemd.packages = [ cfg.package ];
 
@@ -462,7 +463,8 @@ in
         extraGroups = [
           "audio"
           "video"
-        ] ++ optional config.security.rtkit.enable "rtkit";
+        ]
+        ++ optional config.security.rtkit.enable "rtkit";
         description = "PipeWire system service user";
         isSystemUser = true;
         home = "/var/lib/pipewire";

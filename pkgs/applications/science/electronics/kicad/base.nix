@@ -98,36 +98,35 @@ stdenv.mkDerivation rec {
     "CFLAGS+=-ggdb"
   ];
 
-  cmakeFlags =
-    [
-      "-DKICAD_USE_EGL=ON"
-      "-DOCC_INCLUDE_DIR=${opencascade-occt}/include/opencascade"
-      # https://gitlab.com/kicad/code/kicad/-/issues/17133
-      "-DCMAKE_CTEST_ARGUMENTS='--exclude-regex;qa_spice'"
-    ]
-    ++ optional (
-      stdenv.hostPlatform.system == "aarch64-linux"
-    ) "-DCMAKE_CTEST_ARGUMENTS=--exclude-regex;'qa_spice|qa_cli'"
-    ++ optional (stable && !withNgspice) "-DKICAD_SPICE=OFF"
-    ++ optionals (!withScripting) [
-      "-DKICAD_SCRIPTING_WXPYTHON=OFF"
-    ]
-    ++ optionals (withI18n) [
-      "-DKICAD_BUILD_I18N=ON"
-    ]
-    ++ optionals (!doInstallCheck) [
-      "-DKICAD_BUILD_QA_TESTS=OFF"
-    ]
-    ++ optionals (debug) [
-      "-DKICAD_STDLIB_DEBUG=ON"
-      "-DKICAD_USE_VALGRIND=ON"
-    ]
-    ++ optionals (sanitizeAddress) [
-      "-DKICAD_SANITIZE_ADDRESS=ON"
-    ]
-    ++ optionals (sanitizeThreads) [
-      "-DKICAD_SANITIZE_THREADS=ON"
-    ];
+  cmakeFlags = [
+    "-DKICAD_USE_EGL=ON"
+    "-DOCC_INCLUDE_DIR=${opencascade-occt}/include/opencascade"
+    # https://gitlab.com/kicad/code/kicad/-/issues/17133
+    "-DCMAKE_CTEST_ARGUMENTS='--exclude-regex;qa_spice'"
+  ]
+  ++ optional (
+    stdenv.hostPlatform.system == "aarch64-linux"
+  ) "-DCMAKE_CTEST_ARGUMENTS=--exclude-regex;'qa_spice|qa_cli'"
+  ++ optional (stable && !withNgspice) "-DKICAD_SPICE=OFF"
+  ++ optionals (!withScripting) [
+    "-DKICAD_SCRIPTING_WXPYTHON=OFF"
+  ]
+  ++ optionals (withI18n) [
+    "-DKICAD_BUILD_I18N=ON"
+  ]
+  ++ optionals (!doInstallCheck) [
+    "-DKICAD_BUILD_QA_TESTS=OFF"
+  ]
+  ++ optionals (debug) [
+    "-DKICAD_STDLIB_DEBUG=ON"
+    "-DKICAD_USE_VALGRIND=ON"
+  ]
+  ++ optionals (sanitizeAddress) [
+    "-DKICAD_SANITIZE_ADDRESS=ON"
+  ]
+  ++ optionals (sanitizeThreads) [
+    "-DKICAD_SANITIZE_THREADS=ON"
+  ];
 
   cmakeBuildType = if debug then "Debug" else "Release";
 
@@ -158,33 +157,32 @@ stdenv.mkDerivation rec {
       pcre2
     ];
 
-  buildInputs =
-    [
-      libGLU
-      libGL
-      zlib
-      libX11
-      wxGTK
-      gtk3
-      pcre
-      libXdmcp
-      gettext
-      glew
-      glm
-      libpthreadstubs
-      cairo
-      curl
-      openssl
-      boost
-      swig
-      python
-      unixODBC
-      libdeflate
-      opencascade-occt
-    ]
-    ++ optional (withScripting) wxPython
-    ++ optional (withNgspice) libngspice
-    ++ optional (debug) valgrind;
+  buildInputs = [
+    libGLU
+    libGL
+    zlib
+    libX11
+    wxGTK
+    gtk3
+    pcre
+    libXdmcp
+    gettext
+    glew
+    glm
+    libpthreadstubs
+    cairo
+    curl
+    openssl
+    boost
+    swig
+    python
+    unixODBC
+    libdeflate
+    opencascade-occt
+  ]
+  ++ optional (withScripting) wxPython
+  ++ optional (withNgspice) libngspice
+  ++ optional (debug) valgrind;
 
   # some ngspice tests attempt to write to $HOME/.cache/
   # this could be and was resolved with XDG_CACHE_HOME = "$TMP";

@@ -22,7 +22,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-utmOKWe2hwRsRWjJCR1jCgwxtih0XAIamUq6TR1Q+Oo=";
   };
 
-  nativeBuildInputs = [ rsync ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ fixDarwinDylibNames ];
+  nativeBuildInputs = [ rsync ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ fixDarwinDylibNames ];
   buildInputs = [
     boost
     fastjet
@@ -31,21 +32,20 @@ stdenv.mkDerivation rec {
     lhapdf
   ];
 
-  configureFlags =
-    [
-      "--enable-shared"
-      "--with-lhapdf6=${lhapdf}"
-    ]
-    ++ (
-      if lib.versions.major hepmc.version == "3" then
-        [
-          "--with-hepmc3=${hepmc}"
-        ]
-      else
-        [
-          "--with-hepmc2=${hepmc}"
-        ]
-    );
+  configureFlags = [
+    "--enable-shared"
+    "--with-lhapdf6=${lhapdf}"
+  ]
+  ++ (
+    if lib.versions.major hepmc.version == "3" then
+      [
+        "--with-hepmc3=${hepmc}"
+      ]
+    else
+      [
+        "--with-hepmc2=${hepmc}"
+      ]
+  );
 
   enableParallelBuilding = true;
 

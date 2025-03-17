@@ -28,7 +28,8 @@ rustPlatform.buildRustPackage rec {
   buildInputs = [
     ncurses
     openssl
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin Security;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin Security;
 
   meta = with lib; {
     description = "Gemini Project client written in Rust with NCurses";

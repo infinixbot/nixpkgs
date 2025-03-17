@@ -28,7 +28,8 @@ rustPlatform.buildRustPackage rec {
   useFetchCargoVendor = true;
   cargoHash = "sha256-xfp+nR4ihaTO4AZHizYg4qqf9MR030Qb5bN2nzhbytQ=";
 
-  nativeBuildInputs = [ rustPlatform.bindgenHook ] ++ lib.optional nvidiaSupport makeWrapper;
+  nativeBuildInputs = [ rustPlatform.bindgenHook ]
+    ++ lib.optional nvidiaSupport makeWrapper;
 
   buildFeatures = lib.optional nvidiaSupport "nvidia";
 

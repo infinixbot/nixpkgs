@@ -70,37 +70,36 @@ buildPythonPackage rec {
     "virtualenv"
   ];
 
-  dependencies =
-    [
-      build
-      cachecontrol
-      cleo
-      dulwich
-      fastjsonschema
-      installer
-      keyring
-      packaging
-      pkginfo
-      platformdirs
-      poetry-core
-      pyproject-hooks
-      requests
-      requests-toolbelt
-      shellingham
-      tomlkit
-      trove-classifiers
-      virtualenv
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isDarwin) [
-      xattr
-    ]
-    ++ lib.optionals (pythonOlder "3.11") [
-      tomli
-    ]
-    ++ lib.optionals (pythonOlder "3.10") [
-      importlib-metadata
-    ]
-    ++ cachecontrol.optional-dependencies.filecache;
+  dependencies = [
+    build
+    cachecontrol
+    cleo
+    dulwich
+    fastjsonschema
+    installer
+    keyring
+    packaging
+    pkginfo
+    platformdirs
+    poetry-core
+    pyproject-hooks
+    requests
+    requests-toolbelt
+    shellingham
+    tomlkit
+    trove-classifiers
+    virtualenv
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isDarwin) [
+    xattr
+  ]
+  ++ lib.optionals (pythonOlder "3.11") [
+    tomli
+  ]
+  ++ lib.optionals (pythonOlder "3.10") [
+    importlib-metadata
+  ]
+  ++ cachecontrol.optional-dependencies.filecache;
 
   postInstall = ''
     installShellCompletion --cmd poetry \

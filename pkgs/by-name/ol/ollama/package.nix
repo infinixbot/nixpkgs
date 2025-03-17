@@ -151,21 +151,20 @@ goBuild {
     }
     // lib.optionalAttrs enableCuda { CUDA_PATH = cudaPath; };
 
-  nativeBuildInputs =
-    [
-      cmake
-      gitMinimal
-    ]
-    ++ lib.optionals enableRocm [
-      rocmPackages.llvm.bintools
-      rocmLibs
-    ]
-    ++ lib.optionals enableCuda [ cudaPackages.cuda_nvcc ]
-    ++ lib.optionals (enableRocm || enableCuda) [
-      makeWrapper
-      autoAddDriverRunpath
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin metalFrameworks;
+  nativeBuildInputs = [
+    cmake
+    gitMinimal
+  ]
+  ++ lib.optionals enableRocm [
+    rocmPackages.llvm.bintools
+    rocmLibs
+  ]
+  ++ lib.optionals enableCuda [ cudaPackages.cuda_nvcc ]
+  ++ lib.optionals (enableRocm || enableCuda) [
+    makeWrapper
+    autoAddDriverRunpath
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin metalFrameworks;
 
   buildInputs =
     lib.optionals enableRocm (rocmLibs ++ [ libdrm ])
@@ -231,25 +230,24 @@ goBuild {
   doInstallCheck = true;
 
   passthru = {
-    tests =
-      {
-        inherit ollama;
-        version = testers.testVersion {
-          inherit version;
-          package = ollama;
-        };
-      }
-      // lib.optionalAttrs stdenv.hostPlatform.isLinux {
-        inherit ollama-rocm ollama-cuda;
-        service = nixosTests.ollama;
-        service-cuda = nixosTests.ollama-cuda;
-        service-rocm = nixosTests.ollama-rocm;
+    tests = {
+      inherit ollama;
+      version = testers.testVersion {
+        inherit version;
+        package = ollama;
       };
-  } // lib.optionalAttrs (!enableRocm && !enableCuda) { updateScript = nix-update-script { }; };
+    }
+    // lib.optionalAttrs stdenv.hostPlatform.isLinux {
+      inherit ollama-rocm ollama-cuda;
+      service = nixosTests.ollama;
+      service-cuda = nixosTests.ollama-cuda;
+      service-rocm = nixosTests.ollama-rocm;
+    };
+  }
+  // lib.optionalAttrs (!enableRocm && !enableCuda) { updateScript = nix-update-script { }; };
 
   meta = {
-    description =
-      "Get up and running with large language models locally"
+    description = "Get up and running with large language models locally"
       + lib.optionalString rocmRequested ", using ROCm for AMD GPU acceleration"
       + lib.optionalString cudaRequested ", using CUDA for NVIDIA GPU acceleration";
     homepage = "https://github.com/ollama/ollama";

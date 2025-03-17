@@ -63,7 +63,8 @@ buildPythonPackage rec {
     ];
   };
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ optional-dependencies.test;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ optional-dependencies.test;
 
   doCheck = false; # all test files try to download data
 

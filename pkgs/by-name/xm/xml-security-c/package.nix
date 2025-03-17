@@ -34,17 +34,16 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      xalanc
-      xercesc
-      openssl
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      CoreFoundation
-      CoreServices
-      SystemConfiguration
-    ];
+  buildInputs = [
+    xalanc
+    xercesc
+    openssl
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    CoreFoundation
+    CoreServices
+    SystemConfiguration
+  ];
 
   meta = {
     homepage = "https://shibboleth.atlassian.net/wiki/spaces/DEV/pages/3726671873/Santuario";

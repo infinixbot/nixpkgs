@@ -33,7 +33,8 @@ buildPythonPackage rec {
 
   pythonImportsCheck = [ snakeLibName ];
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ optional-dependencies.cli;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ optional-dependencies.cli;
 
   disabledTests = [
     "test_generate_categories" # touches network

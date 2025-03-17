@@ -285,7 +285,8 @@ in
   };
   config = mkIf (sshEnabled || serviceEnabled) {
 
-    environment.systemPackages = [ pkgs.btrbk ] ++ cfg.extraPackages;
+    environment.systemPackages = [ pkgs.btrbk ]
+      ++ cfg.extraPackages;
 
     security.sudo.extraRules = mkIf (sudo_doas == "sudo") [ sudoRule ];
     security.sudo-rs.extraRules = mkIf (sudo_doas == "sudo") [ sudoRule ];

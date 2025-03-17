@@ -12,7 +12,8 @@ in
 symlinkJoin {
   name = "pidgin-with-plugins-${pidgin.version}";
 
-  paths = [ pidgin ] ++ plugins;
+  paths = [ pidgin ]
+    ++ plugins;
 
   nativeBuildInputs = [ makeWrapper ];
 

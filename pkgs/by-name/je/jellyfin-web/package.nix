@@ -40,10 +40,10 @@ buildNpmPackage rec {
 
   npmBuildScript = [ "build:production" ];
 
-  nativeBuildInputs = [ pkg-config ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ xcbuild ];
+  nativeBuildInputs = [ pkg-config ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ xcbuild ];
 
-  buildInputs =
-    [ pango ]
+  buildInputs = [ pango ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       giflib
     ];

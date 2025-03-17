@@ -20,7 +20,8 @@ buildGoModule rec {
 
   tags = (lib.optional (!withTensorflow) "noguesser");
 
-  buildInputs = [ sqlite ] ++ (lib.optional withTensorflow libtensorflow);
+  buildInputs = [ sqlite ]
+    ++ (lib.optional withTensorflow libtensorflow);
 
   meta = {
     description = "passwordless, anonymous SSH-powered pastebin with a human-friendly TUI and web UI";

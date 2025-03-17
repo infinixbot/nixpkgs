@@ -28,7 +28,8 @@ buildPythonPackage rec {
 
   build-system = [ setuptools ];
 
-  dependencies = [ json-stream-rs-tokenizer ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ iconv ];
+  dependencies = [ json-stream-rs-tokenizer ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ iconv ];
 
   optional-dependencies = {
     httpx = [ httpx ];

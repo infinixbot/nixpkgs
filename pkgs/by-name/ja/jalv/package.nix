@@ -39,19 +39,18 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optionals (!useQt) [ wrapGAppsHook3 ]
     ++ lib.optionals useQt [ libsForQt5.wrapQtAppsHook ];
 
-  buildInputs =
-    [
-      lilv
-      lv2
-      portaudio
-      serd
-      sord
-      sratom
-      suil
-    ]
-    ++ lib.optionals (!useJack) [ portaudio ]
-    ++ lib.optionals useJack [ libjack2 ]
-    ++ lib.optionals useQt [ libsForQt5.qtbase ];
+  buildInputs = [
+    lilv
+    lv2
+    portaudio
+    serd
+    sord
+    sratom
+    suil
+  ]
+  ++ lib.optionals (!useJack) [ portaudio ]
+  ++ lib.optionals useJack [ libjack2 ]
+  ++ lib.optionals useQt [ libsForQt5.qtbase ];
 
   mesonFlags = [
     (lib.mesonEnable "portaudio" (!useJack))

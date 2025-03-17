@@ -44,22 +44,21 @@ rustPlatform.buildRustPackage {
     ++ lib.optionals (withDefaultFeatures && stdenv.hostPlatform.isLinux) [ python3 ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [ rustPlatform.bindgenHook ];
 
-  buildInputs =
-    [
-      openssl
-      zstd
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      zlib
-      Libsystem
-      Security
-    ]
-    ++ lib.optionals (withDefaultFeatures && stdenv.hostPlatform.isLinux) [ xorg.libX11 ]
-    ++ lib.optionals (withDefaultFeatures && stdenv.hostPlatform.isDarwin) [
-      AppKit
-      nghttp2
-      libgit2
-    ];
+  buildInputs = [
+    openssl
+    zstd
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    zlib
+    Libsystem
+    Security
+  ]
+  ++ lib.optionals (withDefaultFeatures && stdenv.hostPlatform.isLinux) [ xorg.libX11 ]
+  ++ lib.optionals (withDefaultFeatures && stdenv.hostPlatform.isDarwin) [
+    AppKit
+    nghttp2
+    libgit2
+  ];
 
   buildNoDefaultFeatures = !withDefaultFeatures;
   buildFeatures = additionalFeatures [ ];

@@ -18,7 +18,8 @@ symlinkJoin {
 
   nativeBuildInputs = [ makeWrapper ];
 
-  paths = [ kakoune ] ++ requestedPlugins;
+  paths = [ kakoune ]
+    ++ requestedPlugins;
 
   postBuild = ''
     # create a directory for bins that kakoune needs

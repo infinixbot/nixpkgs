@@ -31,9 +31,8 @@ let
 in
 deployAndroidPackage rec {
   inherit package os;
-  nativeBuildInputs = [
-    makeWrapper
-  ] ++ lib.optionals stdenv.hostPlatform.isLinux [ autoPatchelfHook ];
+  nativeBuildInputs = [ makeWrapper ]
+    ++ lib.optionals stdenv.hostPlatform.isLinux [ autoPatchelfHook ];
   autoPatchelfIgnoreMissingDeps = [ "*" ];
   buildInputs = lib.optionals (os == "linux") [
     pkgs.zlib

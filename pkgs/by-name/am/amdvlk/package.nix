@@ -36,40 +36,38 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-snwNyi/8voptLhZkXLK0QNh7pKo4SFx1iQojNzVr1Ms=";
   };
 
-  buildInputs =
-    [
-      expat
-      libdrm
-      ncurses
-      openssl
-      wayland
-      zlib
-    ]
-    ++ (with xorg; [
-      libX11
-      libxcb
-      xcbproto
-      libXext
-      libXrandr
-      libXft
-      libxshmfence
-    ]);
+  buildInputs = [
+    expat
+    libdrm
+    ncurses
+    openssl
+    wayland
+    zlib
+  ]
+  ++ (with xorg; [
+    libX11
+    libxcb
+    xcbproto
+    libXext
+    libXrandr
+    libXft
+    libxshmfence
+  ]);
 
-  nativeBuildInputs =
-    [
-      cmake
-      directx-shader-compiler
-      glslang
-      ninja
-      patchelf
-      perl
-      pkg-config
-      python3
-    ]
-    ++ (with python3.pkgs; [
-      jinja2
-      ruamel-yaml
-    ]);
+  nativeBuildInputs = [
+    cmake
+    directx-shader-compiler
+    glslang
+    ninja
+    patchelf
+    perl
+    pkg-config
+    python3
+  ]
+  ++ (with python3.pkgs; [
+    jinja2
+    ruamel-yaml
+  ]);
 
   rpath = lib.makeLibraryPath (
     [

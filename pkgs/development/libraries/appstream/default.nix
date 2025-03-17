@@ -70,57 +70,54 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  nativeBuildInputs =
-    [
-      meson
-      ninja
-      pkg-config
-      cmake
-      gettext
-      libxslt
-      xmlto
-      docbook-xsl-nons
-      docbook_xml_dtd_45
-      gobject-introspection
-      itstool
-      vala
-      gperf
-    ]
-    ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
-      mesonEmulatorHook
-      appstream
-    ];
+  nativeBuildInputs = [
+    meson
+    ninja
+    pkg-config
+    cmake
+    gettext
+    libxslt
+    xmlto
+    docbook-xsl-nons
+    docbook_xml_dtd_45
+    gobject-introspection
+    itstool
+    vala
+    gperf
+  ]
+  ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
+    mesonEmulatorHook
+    appstream
+  ];
 
-  buildInputs =
-    [
-      libstemmer
-      pcre
-      glib
-      xapian
-      libxml2
-      libxmlb
-      libyaml
-      curl
-      cairo
-      gdk-pixbuf
-      pango
-      librsvg
-    ]
-    ++ lib.optionals withSystemd [
-      systemd
-    ];
+  buildInputs = [
+    libstemmer
+    pcre
+    glib
+    xapian
+    libxml2
+    libxmlb
+    libyaml
+    curl
+    cairo
+    gdk-pixbuf
+    pango
+    librsvg
+  ]
+  ++ lib.optionals withSystemd [
+    systemd
+  ];
 
-  mesonFlags =
-    [
-      "-Dapidocs=false"
-      "-Ddocs=false"
-      "-Dvapi=true"
-      "-Dinstalled_test_prefix=${placeholder "installedTests"}"
-      "-Dcompose=true"
-    ]
-    ++ lib.optionals (!withSystemd) [
-      "-Dsystemd=false"
-    ];
+  mesonFlags = [
+    "-Dapidocs=false"
+    "-Ddocs=false"
+    "-Dvapi=true"
+    "-Dinstalled_test_prefix=${placeholder "installedTests"}"
+    "-Dcompose=true"
+  ]
+  ++ lib.optionals (!withSystemd) [
+    "-Dsystemd=false"
+  ];
 
   passthru.tests = {
     installed-tests = nixosTests.installed-tests.appstream;

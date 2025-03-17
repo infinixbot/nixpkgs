@@ -92,7 +92,8 @@ let
         libxml2
         pcre2
         libargon2
-      ] ++ lib.optional stdenv.hostPlatform.isLinux systemd;
+      ]
+      ++ lib.optional stdenv.hostPlatform.isLinux systemd;
     }
   ];
   enabledPlugins = builtins.filter (p: p.enabled) plugins;
@@ -116,7 +117,8 @@ stdenv.mkDerivation rec {
   outputs = [
     "out"
     "man"
-  ] ++ map (p: p.name) enabledPlugins;
+  ]
+  ++ map (p: p.name) enabledPlugins;
 
   cmakeFlags =
     [
@@ -132,25 +134,25 @@ stdenv.mkDerivation rec {
     cmake
     pkg-config
     asciidoctor
-  ] ++ lib.optional enableTests cpputest;
-  buildInputs =
-    [
-      ncurses
-      openssl
-      aspell
-      cjson
-      gnutls
-      gettext
-      zlib
-      curl
-      libgcrypt
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      libobjc
-      libresolv
-    ]
-    ++ lib.concatMap (p: p.buildInputs) enabledPlugins
-    ++ extraBuildInputs;
+  ]
+  ++ lib.optional enableTests cpputest;
+  buildInputs = [
+    ncurses
+    openssl
+    aspell
+    cjson
+    gnutls
+    gettext
+    zlib
+    curl
+    libgcrypt
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    libobjc
+    libresolv
+  ]
+  ++ lib.concatMap (p: p.buildInputs) enabledPlugins
+  ++ extraBuildInputs;
 
   env.NIX_CFLAGS_COMPILE =
     "-I${python}/include/${python.libPrefix}"

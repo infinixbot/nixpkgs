@@ -384,129 +384,122 @@ in
             proxyPass = "http://frigate-go2rtc/api/ws";
             proxyWebsockets = true;
             recommendedProxySettings = true;
-            extraConfig =
-              nginxAuthRequest
-              + nginxProxySettings
-              + ''
-                limit_except GET {
-                    deny  all;
-                }
-              '';
+            extraConfig = nginxAuthRequest
+            + nginxProxySettings
+            + ''
+              limit_except GET {
+                  deny  all;
+              }
+            '';
           };
           "/live/webrtc/api/ws" = {
             proxyPass = "http://frigate-go2rtc/api/ws";
             proxyWebsockets = true;
             recommendedProxySettings = true;
-            extraConfig =
-              nginxAuthRequest
-              + nginxProxySettings
-              + ''
-                limit_except GET {
-                    deny  all;
-                }
-              '';
+            extraConfig = nginxAuthRequest
+            + nginxProxySettings
+            + ''
+              limit_except GET {
+                  deny  all;
+              }
+            '';
           };
           # pass through go2rtc player
           "/live/webrtc/webrtc.html" = {
             proxyPass = "http://frigate-go2rtc/webrtc.html";
             recommendedProxySettings = true;
-            extraConfig =
-              nginxAuthRequest
-              + nginxProxySettings
-              + ''
-                limit_except GET {
-                    deny  all;
-                }
-              '';
+            extraConfig = nginxAuthRequest
+            + nginxProxySettings
+            + ''
+              limit_except GET {
+                  deny  all;
+              }
+            '';
           };
           # frontend uses this to fetch the version
           "/api/go2rtc/api" = {
             proxyPass = "http://frigate-go2rtc/api";
             recommendedProxySettings = true;
-            extraConfig =
-              nginxAuthRequest
-              + nginxProxySettings
-              + ''
-                limit_except GET {
-                    deny  all;
-                }
-              '';
+            extraConfig = nginxAuthRequest
+            + nginxProxySettings
+            + ''
+              limit_except GET {
+                  deny  all;
+              }
+            '';
           };
           # integrationn uses this to add webrtc candidate
           "/api/go2rtc/webrtc" = {
             proxyPass = "http://frigate-go2rtc/api/webrtc";
             proxyWebsockets = true;
             recommendedProxySettings = true;
-            extraConfig =
-              nginxAuthRequest
-              + nginxProxySettings
-              + ''
-                limit_except GET {
-                    deny  all;
-                }
-              '';
+            extraConfig = nginxAuthRequest
+            + nginxProxySettings
+            + ''
+              limit_except GET {
+                  deny  all;
+              }
+            '';
           };
           "~* /api/.*\\.(jpg|jpeg|png|webp|gif)$" = {
             proxyPass = "http://frigate-api";
             recommendedProxySettings = true;
-            extraConfig =
-              nginxAuthRequest
-              + nginxProxySettings
-              + ''
-                rewrite ^/api/(.*)$ $1 break;
-              '';
+            extraConfig = nginxAuthRequest
+            + nginxProxySettings
+            + ''
+              rewrite ^/api/(.*)$ $1 break;
+            '';
           };
           "/api/" = {
             proxyPass = "http://frigate-api/";
             recommendedProxySettings = true;
-            extraConfig =
-              nginxAuthRequest
-              + nginxProxySettings
-              + ''
-                add_header Cache-Control "no-store";
-                expires off;
+            extraConfig = nginxAuthRequest
+            + nginxProxySettings
+            + ''
+              add_header Cache-Control "no-store";
+              expires off;
 
-                proxy_cache frigate_api_cache;
-                proxy_cache_lock on;
-                proxy_cache_use_stale updating;
-                proxy_cache_valid 200 5s;
-                proxy_cache_bypass $http_x_cache_bypass;
-                proxy_no_cache $should_not_cache;
-                add_header X-Cache-Status $upstream_cache_status;
+              proxy_cache frigate_api_cache;
+              proxy_cache_lock on;
+              proxy_cache_use_stale updating;
+              proxy_cache_valid 200 5s;
+              proxy_cache_bypass $http_x_cache_bypass;
+              proxy_no_cache $should_not_cache;
+              add_header X-Cache-Status $upstream_cache_status;
 
-                location /api/vod/ {
-                    ${nginxAuthRequest}
-                    proxy_pass http://frigate-api/vod/;
-                    proxy_cache off;
-                    add_header Cache-Control "no-store";
-                    ${nginxProxySettings}
-                }
+              location /api/vod/ {
+                  ${nginxAuthRequest}
+                  proxy_pass http://frigate-api/vod/;
+                  proxy_cache off;
+                  add_header Cache-Control "no-store";
+                  ${nginxProxySettings}
+              }
 
-                location /api/login {
-                    auth_request off;
-                    rewrite ^/api(/.*)$ $1 break;
-                    proxy_pass http://frigate-api;
-                    ${nginxProxySettings}
-                }
+              location /api/login {
+                  auth_request off;
+                  rewrite ^/api(/.*)$ $1 break;
+                  proxy_pass http://frigate-api;
+                  ${nginxProxySettings}
+              }
 
-                location /api/stats {
-                    ${nginxAuthRequest}
-                    access_log off;
-                    rewrite ^/api/(.*)$ $1 break;
-                    add_header Cache-Control "no-store";
-                    proxy_pass http://frigate-api;
-                    ${nginxProxySettings}
-                }
+              location /api/stats {
+                  ${nginxAuthRequest}
+                  access_log off;
+                  rewrite ^/api/(.*)$ $1 break;
+                  add_header Cache-Control "no-store";
+                  proxy_pass http://frigate-api;
+                  ${nginxProxySettings}
+              }
 
-                location /api/version {
-                    ${nginxAuthRequest}
-                    access_log off;
-                    rewrite ^/api/(.*)$ $1 break;
-                    add_header Cache-Control "no-store";
-                    proxy_pass http://frigate-api;
-                    ${nginxProxySettings}
-                }
-              '';
+              location /api/version {
+                  ${nginxAuthRequest}
+                  access_log off;
+                  rewrite ^/api/(.*)$ $1 break;
+                  add_header Cache-Control "no-store";
+                  proxy_pass http://frigate-api;
+                  ${nginxProxySettings}
+              }
+            '';
           };
           "/assets/" = {
             root = cfg.package.web;
@@ -644,7 +637,8 @@ in
 
         User = "frigate";
         Group = "frigate";
-        SupplementaryGroups = [ "render" ] ++ optionals withCoral [ "coral" ];
+        SupplementaryGroups = [ "render" ]
+          ++ optionals withCoral [ "coral" ];
 
         AmbientCapabilities = optionals (elem cfg.vaapiDriver [
           "i965"

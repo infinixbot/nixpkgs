@@ -29,7 +29,8 @@ rustPlatform.buildRustPackage rec {
     openssl
     curl
     sqlite
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin Security;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin Security;
 
   postInstall = ''
     substituteInPlace command-not-found.sh \

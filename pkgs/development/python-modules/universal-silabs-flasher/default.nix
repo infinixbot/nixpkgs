@@ -59,7 +59,8 @@ buildPythonPackage rec {
     pyserial-asyncio-fast
     typing-extensions
     zigpy
-  ] ++ lib.optionals (stdenv.hostPlatform.isLinux) [ libgpiod ];
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isLinux) [ libgpiod ];
 
   nativeCheckInputs = [
     pytestCheckHook

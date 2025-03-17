@@ -227,7 +227,8 @@ in
     environment = {
       etc."tmux.conf".text = tmuxConf;
 
-      systemPackages = [ cfg.package ] ++ cfg.plugins;
+      systemPackages = [ cfg.package ]
+        ++ cfg.plugins;
 
       variables = {
         TMUX_TMPDIR = lib.optional cfg.secureSocket ''''${XDG_RUNTIME_DIR:-"/run/user/$(id -u)"}'';

@@ -43,8 +43,7 @@ rustPlatform.buildRustPackage rec {
     pkg-config
   ];
 
-  buildInputs =
-    [ openssl ]
+  buildInputs = [ openssl ]
     ++ lib.optional sqliteSupport sqlite
     ++ lib.optional postgresqlSupport libpq
     ++ lib.optionals mysqlSupport [

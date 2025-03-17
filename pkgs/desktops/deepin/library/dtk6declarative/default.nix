@@ -33,8 +33,7 @@ stdenv.mkDerivation (finalAttrs: {
     qt6Packages.wrapQtAppsHook
   ];
 
-  propagatedBuildInputs =
-    [ dtk6gui ]
+  propagatedBuildInputs = [ dtk6gui ]
     ++ (with qt6Packages; [
       qtbase
       qtdeclarative

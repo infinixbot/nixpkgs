@@ -77,67 +77,65 @@ stdenv.mkDerivation (finalAttrs: {
       makeWrapper
     ];
 
-  buildInputs =
-    [
-      at-spi2-core
-      curl
-      dbus
-      flac
-      gitMinimal
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isx86_64) [
-      AppKit
-    ]
-    ++ [
-      gtk3
-      glew
-      jasper
-      libGLU
-      libarchive
-      libdatrie
-      libepoxy
-      libexif
-      libogg
-      libopus
-      libsndfile
-      libthai
-      libunarr
-      libusb1
-      libvorbis
-      libxkbcommon
-      lz4
-      libmpg123
-      pcre
-      pcre2
-      portaudio
-      rapidjson
-      sqlite
-      tinyxml
-      wxGTK32
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      alsa-utils
-      libselinux
-      libsepol
-      util-linux
-      xorg.libXdmcp
-      xorg.libXtst
-    ]
-    ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform elfutils) [
-      elfutils
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      lame
-    ];
+  buildInputs = [
+    at-spi2-core
+    curl
+    dbus
+    flac
+    gitMinimal
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isx86_64) [
+    AppKit
+  ]
+  ++ [
+    gtk3
+    glew
+    jasper
+    libGLU
+    libarchive
+    libdatrie
+    libepoxy
+    libexif
+    libogg
+    libopus
+    libsndfile
+    libthai
+    libunarr
+    libusb1
+    libvorbis
+    libxkbcommon
+    lz4
+    libmpg123
+    pcre
+    pcre2
+    portaudio
+    rapidjson
+    sqlite
+    tinyxml
+    wxGTK32
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    alsa-utils
+    libselinux
+    libsepol
+    util-linux
+    xorg.libXdmcp
+    xorg.libXtst
+  ]
+  ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform elfutils) [
+    elfutils
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    lame
+  ];
 
-  cmakeFlags =
-    [
-      "-DOCPN_BUNDLE_DOCS=true"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      # Override OpenCPN platform detection.
-      "-DOCPN_TARGET_TUPLE=unknown;unknown;${stdenv.hostPlatform.linuxArch}"
-    ];
+  cmakeFlags = [
+    "-DOCPN_BUNDLE_DOCS=true"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    # Override OpenCPN platform detection.
+    "-DOCPN_TARGET_TUPLE=unknown;unknown;${stdenv.hostPlatform.linuxArch}"
+  ];
 
   env.NIX_CFLAGS_COMPILE = toString (
     lib.optionals (!stdenv.hostPlatform.isx86) [

@@ -59,43 +59,41 @@ mkDerivation rec {
     "-DBUILD_PSIMEDIA=${if enablePsiMedia then "ON" else "OFF"}"
   ];
 
-  nativeBuildInputs =
-    [
-      cmake
-      qttools
-    ]
-    ++ lib.optionals enablePsiMedia [
-      pkg-config
-    ];
+  nativeBuildInputs = [
+    cmake
+    qttools
+  ]
+  ++ lib.optionals enablePsiMedia [
+    pkg-config
+  ];
 
-  buildInputs =
-    [
-      qtbase
-      qtmultimedia
-      qtimageformats
-      qtx11extras
-      libidn
-      qca-qt5
-      libXScrnSaver
-      hunspell
-      libsecret
-      libgcrypt
-      libotr
-      html-tidy
-      libgpg-error
-      libsignal-protocol-c
-      usrsctp
-    ]
-    ++ lib.optionals voiceMessagesSupport [
-      gst_all_1.gst-plugins-base
-      gst_all_1.gst-plugins-good
-    ]
-    ++ lib.optionals (chatType == "webkit") [
-      qtwebkit
-    ]
-    ++ lib.optionals (chatType == "webengine") [
-      qtwebengine
-    ];
+  buildInputs = [
+    qtbase
+    qtmultimedia
+    qtimageformats
+    qtx11extras
+    libidn
+    qca-qt5
+    libXScrnSaver
+    hunspell
+    libsecret
+    libgcrypt
+    libotr
+    html-tidy
+    libgpg-error
+    libsignal-protocol-c
+    usrsctp
+  ]
+  ++ lib.optionals voiceMessagesSupport [
+    gst_all_1.gst-plugins-base
+    gst_all_1.gst-plugins-good
+  ]
+  ++ lib.optionals (chatType == "webkit") [
+    qtwebkit
+  ]
+  ++ lib.optionals (chatType == "webengine") [
+    qtwebengine
+  ];
 
   preFixup = lib.optionalString voiceMessagesSupport ''
     qtWrapperArgs+=(

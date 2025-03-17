@@ -78,20 +78,19 @@ lib.makeOverridable (
         passthru = {
           inherit scriptName;
         };
-        meta =
-          {
-            platforms = lib.platforms.all;
-          }
-          // (
-            let
-              pos =
-                if (args.meta or { }) ? description then
-                  builtins.unsafeGetAttrPos "description" args.meta
-                else
-                  builtins.unsafeGetAttrPos "pname" args;
-            in
-            lib.optionalAttrs (pos != null) { position = "${pos.file}:${toString pos.line}"; }
-          );
+        meta = {
+          platforms = lib.platforms.all;
+        }
+        // (
+          let
+            pos =
+              if (args.meta or { }) ? description then
+                builtins.unsafeGetAttrPos "description" args.meta
+              else
+                builtins.unsafeGetAttrPos "pname" args;
+          in
+          lib.optionalAttrs (pos != null) { position = "${pos.file}:${toString pos.line}"; }
+        );
       }
     )
   )

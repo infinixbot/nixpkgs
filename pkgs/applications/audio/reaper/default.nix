@@ -68,14 +68,13 @@ stdenv.mkDerivation rec {
 
   sourceRoot = lib.optionalString stdenv.hostPlatform.isDarwin "Reaper.app";
 
-  buildInputs =
-    [
-      (lib.getLib stdenv.cc.cc) # reaper and libSwell need libstdc++.so.6
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      gtk3
-      alsa-lib
-    ];
+  buildInputs = [
+    (lib.getLib stdenv.cc.cc) # reaper and libSwell need libstdc++.so.6
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    gtk3
+    alsa-lib
+  ];
 
   runtimeDependencies =
     lib.optionals stdenv.hostPlatform.isLinux [

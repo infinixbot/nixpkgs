@@ -30,20 +30,19 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      libftdi1
-      libusb1
-    ]
-    ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
-      pciutils
-    ]
-    ++ lib.optionals (withJlink) [
-      libjaylink
-    ]
-    ++ lib.optionals (withGpio) [
-      libgpiod
-    ];
+  buildInputs = [
+    libftdi1
+    libusb1
+  ]
+  ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
+    pciutils
+  ]
+  ++ lib.optionals (withJlink) [
+    libjaylink
+  ]
+  ++ lib.optionals (withGpio) [
+    libgpiod
+  ];
 
   meta = with lib; {
     homepage = "https://flashprog.org";

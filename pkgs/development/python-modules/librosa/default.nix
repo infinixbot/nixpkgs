@@ -99,7 +99,8 @@ buildPythonPackage rec {
     resampy
     samplerate
     writableTmpDirAsHomeHook
-  ] ++ optional-dependencies.matplotlib;
+  ]
+  ++ optional-dependencies.matplotlib;
 
   disabledTests =
     [

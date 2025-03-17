@@ -27,13 +27,15 @@ stdenv.mkDerivation rec {
       hash = "sha256-49fT/L4BNzMYnq1SXhFMgSDLybLkz6KSbgKmUpZZu08=";
       stripLen = 1;
     })
-  ] ++ lib.optional (!opensslSupport) ./0002-disable-openssl.patch;
+  ]
+  ++ lib.optional (!opensslSupport) ./0002-disable-openssl.patch;
 
   buildInputs = [
     bzip2
     lzo
     zlib
-  ] ++ lib.optional (opensslSupport) openssl_1_1;
+  ]
+  ++ lib.optional (opensslSupport) openssl_1_1;
 
   makeFlags = [ "PREFIX=$(out)" ];
 

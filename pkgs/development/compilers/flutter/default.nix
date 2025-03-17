@@ -91,7 +91,8 @@ let
   flutterVersions = lib.mapAttrs' (
     version: _:
     let
-      versionDir = ./versions + "/${version}";
+      versionDir = ./versions
+        + "/${version}";
       data = lib.importJSON (versionDir + "/data.json");
     in
     lib.nameValuePair "v${version}" (

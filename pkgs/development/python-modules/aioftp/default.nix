@@ -37,7 +37,8 @@ buildPythonPackage rec {
     pytest-cov-stub
     pytestCheckHook
     trustme
-  ] ++ lib.flatten (builtins.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (builtins.attrValues optional-dependencies);
 
   disabledTests = lib.optionals stdenv.hostPlatform.isDarwin [
     # uses 127.0.0.2, which macos doesn't like

@@ -23,8 +23,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-+fKvHrApDXm94LItXv+xSDIE5zD7rTY5IeNSuzQglpg=";
   };
 
-  buildInputs =
-    [ ncurses ]
+  buildInputs = [ ncurses ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       libiconv
       IOKit

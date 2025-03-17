@@ -28,8 +28,7 @@ stdenv.mkDerivation rec {
     which
     wrapGAppsHook3
   ];
-  buildInputs =
-    [ boost ]
+  buildInputs = [ boost ]
     ++ (with perlPackages; [
       perl
       EncodeLocale

@@ -69,13 +69,12 @@ rustPlatform.buildRustPackage rec {
   doInstallCheck = true;
 
   passthru = {
-    tests =
-      {
-        inherit ruff-lsp;
-      }
-      // lib.optionalAttrs stdenv.hostPlatform.isLinux {
-        nixos-test-driver-busybox = nixosTests.nixos-test-driver.busybox;
-      };
+    tests = {
+      inherit ruff-lsp;
+    }
+    // lib.optionalAttrs stdenv.hostPlatform.isLinux {
+      nixos-test-driver-busybox = nixosTests.nixos-test-driver.busybox;
+    };
     updateScript = nix-update-script { };
   };
 

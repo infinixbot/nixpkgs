@@ -36,7 +36,8 @@ buildPythonPackage rec {
     fodt = [ python-magic ];
   };
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ optional-dependencies.fodt;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ optional-dependencies.fodt;
 
   pythonImportsCheck = [ "relatorio" ];
 

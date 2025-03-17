@@ -104,87 +104,86 @@ let
       PROC_VMCORE = yes;
     };
 
-    power-management =
-      {
-        CPU_FREQ_DEFAULT_GOV_SCHEDUTIL = yes;
-        CPU_FREQ_GOV_SCHEDUTIL = yes;
-        PM_DEBUG = yes;
-        PM_ADVANCED_DEBUG = yes;
-        PM_WAKELOCKS = yes;
-        POWERCAP = yes;
-        # ACPI Firmware Performance Data Table Support
-        ACPI_FPDT = whenAtLeast "5.12" (option yes);
-        # ACPI Heterogeneous Memory Attribute Table Support
-        ACPI_HMAT = option yes;
-        # ACPI Platform Error Interface
-        ACPI_APEI = (option yes);
-        # APEI Generic Hardware Error Source
-        ACPI_APEI_GHES = (option yes);
+    power-management = {
+      CPU_FREQ_DEFAULT_GOV_SCHEDUTIL = yes;
+      CPU_FREQ_GOV_SCHEDUTIL = yes;
+      PM_DEBUG = yes;
+      PM_ADVANCED_DEBUG = yes;
+      PM_WAKELOCKS = yes;
+      POWERCAP = yes;
+      # ACPI Firmware Performance Data Table Support
+      ACPI_FPDT = whenAtLeast "5.12" (option yes);
+      # ACPI Heterogeneous Memory Attribute Table Support
+      ACPI_HMAT = option yes;
+      # ACPI Platform Error Interface
+      ACPI_APEI = (option yes);
+      # APEI Generic Hardware Error Source
+      ACPI_APEI_GHES = (option yes);
 
-        # Enable lazy RCUs for power savings:
-        # https://lore.kernel.org/rcu/20221019225138.GA2499943@paulmck-ThinkPad-P17-Gen-1/
-        # RCU_LAZY depends on RCU_NOCB_CPU depends on NO_HZ_FULL
-        # depends on HAVE_VIRT_CPU_ACCOUNTING_GEN depends on 64BIT,
-        # so we can't force-enable this
-        RCU_LAZY = whenAtLeast "6.2" (option yes);
+      # Enable lazy RCUs for power savings:
+      # https://lore.kernel.org/rcu/20221019225138.GA2499943@paulmck-ThinkPad-P17-Gen-1/
+      # RCU_LAZY depends on RCU_NOCB_CPU depends on NO_HZ_FULL
+      # depends on HAVE_VIRT_CPU_ACCOUNTING_GEN depends on 64BIT,
+      # so we can't force-enable this
+      RCU_LAZY = whenAtLeast "6.2" (option yes);
 
-        # Auto suspend Bluetooth devices at idle
-        BT_HCIBTUSB_AUTOSUSPEND = yes;
+      # Auto suspend Bluetooth devices at idle
+      BT_HCIBTUSB_AUTOSUSPEND = yes;
 
-        # Expose cpufreq stats in sysfs
-        CPU_FREQ_STAT = yes;
+      # Expose cpufreq stats in sysfs
+      CPU_FREQ_STAT = yes;
 
-        # Enable CPU energy model for scheduling
-        ENERGY_MODEL = whenAtLeast "5.0" yes;
+      # Enable CPU energy model for scheduling
+      ENERGY_MODEL = whenAtLeast "5.0" yes;
 
-        # Enable thermal interface netlink API
-        THERMAL_NETLINK = whenAtLeast "5.9" yes;
+      # Enable thermal interface netlink API
+      THERMAL_NETLINK = whenAtLeast "5.9" yes;
 
-        # Prefer power-efficient workqueue implementation to per-CPU workqueues,
-        # which is slightly slower, but improves battery life.
-        # This is opt-in per workqueue, and can be disabled globally with a kernel command line option.
-        WQ_POWER_EFFICIENT_DEFAULT = yes;
+      # Prefer power-efficient workqueue implementation to per-CPU workqueues,
+      # which is slightly slower, but improves battery life.
+      # This is opt-in per workqueue, and can be disabled globally with a kernel command line option.
+      WQ_POWER_EFFICIENT_DEFAULT = yes;
 
-        # Default SATA link power management to "medium with device initiated PM"
-        # for some extra power savings.
-        SATA_MOBILE_LPM_POLICY = whenAtLeast "5.18" (freeform "3");
+      # Default SATA link power management to "medium with device initiated PM"
+      # for some extra power savings.
+      SATA_MOBILE_LPM_POLICY = whenAtLeast "5.18" (freeform "3");
 
-        # GPIO power management
-        POWER_RESET_GPIO = option yes;
-        POWER_RESET_GPIO_RESTART = option yes;
+      # GPIO power management
+      POWER_RESET_GPIO = option yes;
+      POWER_RESET_GPIO_RESTART = option yes;
 
-        # Enable Pulse-Width-Modulation support, commonly used for fan and backlight.
-        PWM = yes;
-      }
-      // lib.optionalAttrs (stdenv.hostPlatform.isx86) {
-        INTEL_IDLE = yes;
-        INTEL_RAPL = module;
-        X86_INTEL_LPSS = yes;
-        X86_INTEL_PSTATE = yes;
-        X86_AMD_PSTATE = whenAtLeast "5.17" yes;
-        # Intel DPTF (Dynamic Platform and Thermal Framework) Support
-        ACPI_DPTF = whenAtLeast "5.10" yes;
+      # Enable Pulse-Width-Modulation support, commonly used for fan and backlight.
+      PWM = yes;
+    }
+    // lib.optionalAttrs (stdenv.hostPlatform.isx86) {
+      INTEL_IDLE = yes;
+      INTEL_RAPL = module;
+      X86_INTEL_LPSS = yes;
+      X86_INTEL_PSTATE = yes;
+      X86_AMD_PSTATE = whenAtLeast "5.17" yes;
+      # Intel DPTF (Dynamic Platform and Thermal Framework) Support
+      ACPI_DPTF = whenAtLeast "5.10" yes;
 
-        # Required to bring up some Bay Trail devices properly
-        I2C = yes;
-        I2C_DESIGNWARE_CORE = yes;
-        I2C_DESIGNWARE_PLATFORM = yes;
-        PMIC_OPREGION = whenAtLeast "5.10" yes;
-        INTEL_SOC_PMIC = whenAtLeast "5.10" yes;
-        BYTCRC_PMIC_OPREGION = whenAtLeast "5.10" yes;
-        CHTCRC_PMIC_OPREGION = whenAtLeast "5.10" yes;
-        XPOWER_PMIC_OPREGION = whenAtLeast "5.10" yes;
-        BXT_WC_PMIC_OPREGION = whenAtLeast "5.10" yes;
-        INTEL_SOC_PMIC_CHTWC = whenAtLeast "5.10" yes;
-        CHT_WC_PMIC_OPREGION = whenAtLeast "5.10" yes;
-        INTEL_SOC_PMIC_CHTDC_TI = whenAtLeast "5.10" yes;
-        CHT_DC_TI_PMIC_OPREGION = whenAtLeast "5.10" yes;
-        MFD_TPS68470 = whenBetween "5.10" "5.13" yes;
-        TPS68470_PMIC_OPREGION = whenAtLeast "5.10" yes;
+      # Required to bring up some Bay Trail devices properly
+      I2C = yes;
+      I2C_DESIGNWARE_CORE = yes;
+      I2C_DESIGNWARE_PLATFORM = yes;
+      PMIC_OPREGION = whenAtLeast "5.10" yes;
+      INTEL_SOC_PMIC = whenAtLeast "5.10" yes;
+      BYTCRC_PMIC_OPREGION = whenAtLeast "5.10" yes;
+      CHTCRC_PMIC_OPREGION = whenAtLeast "5.10" yes;
+      XPOWER_PMIC_OPREGION = whenAtLeast "5.10" yes;
+      BXT_WC_PMIC_OPREGION = whenAtLeast "5.10" yes;
+      INTEL_SOC_PMIC_CHTWC = whenAtLeast "5.10" yes;
+      CHT_WC_PMIC_OPREGION = whenAtLeast "5.10" yes;
+      INTEL_SOC_PMIC_CHTDC_TI = whenAtLeast "5.10" yes;
+      CHT_DC_TI_PMIC_OPREGION = whenAtLeast "5.10" yes;
+      MFD_TPS68470 = whenBetween "5.10" "5.13" yes;
+      TPS68470_PMIC_OPREGION = whenAtLeast "5.10" yes;
 
-        # Enable Intel thermal hardware feedback
-        INTEL_HFI_THERMAL = whenAtLeast "5.18" yes;
-      };
+      # Enable Intel thermal hardware feedback
+      INTEL_HFI_THERMAL = whenAtLeast "5.18" yes;
+    };
 
     external-firmware = {
       # Support drivers that need external firmware.
@@ -203,27 +202,26 @@ let
       CC_OPTIMIZE_FOR_SIZE = no;
     };
 
-    memory =
-      {
-        DAMON = whenAtLeast "5.15" yes;
-        DAMON_VADDR = whenAtLeast "5.15" yes;
-        DAMON_PADDR = whenAtLeast "5.16" yes;
-        DAMON_SYSFS = whenAtLeast "5.18" yes;
-        DAMON_DBGFS = whenBetween "5.15" "6.9" yes;
-        DAMON_RECLAIM = whenAtLeast "5.16" yes;
-        DAMON_LRU_SORT = whenAtLeast "6.0" yes;
-        # Support recovering from memory failures on systems with ECC and MCA recovery.
-        MEMORY_FAILURE = yes;
+    memory = {
+      DAMON = whenAtLeast "5.15" yes;
+      DAMON_VADDR = whenAtLeast "5.15" yes;
+      DAMON_PADDR = whenAtLeast "5.16" yes;
+      DAMON_SYSFS = whenAtLeast "5.18" yes;
+      DAMON_DBGFS = whenBetween "5.15" "6.9" yes;
+      DAMON_RECLAIM = whenAtLeast "5.16" yes;
+      DAMON_LRU_SORT = whenAtLeast "6.0" yes;
+      # Support recovering from memory failures on systems with ECC and MCA recovery.
+      MEMORY_FAILURE = yes;
 
-        # Collect ECC errors and retire pages that fail too often
-        RAS_CEC = lib.mkIf stdenv.hostPlatform.isx86 yes;
-      }
-      // lib.optionalAttrs (stdenv.hostPlatform.is32bit) {
-        # Enable access to the full memory range (aka PAE) on 32-bit architectures
-        # This check isn't super accurate but it's close enough
-        HIGHMEM = option yes;
-        BOUNCE = option yes;
-      };
+      # Collect ECC errors and retire pages that fail too often
+      RAS_CEC = lib.mkIf stdenv.hostPlatform.isx86 yes;
+    }
+    // lib.optionalAttrs (stdenv.hostPlatform.is32bit) {
+      # Enable access to the full memory range (aka PAE) on 32-bit architectures
+      # This check isn't super accurate but it's close enough
+      HIGHMEM = option yes;
+      BOUNCE = option yes;
+    };
 
     memtest = {
       MEMTEST = yes;
@@ -258,135 +256,134 @@ let
       NUMA_BALANCING = option yes;
     };
 
-    networking =
-      {
-        NET = yes;
-        IP_ADVANCED_ROUTER = yes;
-        IP_PNP = no;
-        IP_ROUTE_MULTIPATH = yes;
-        IP_VS_PROTO_TCP = yes;
-        IP_VS_PROTO_UDP = yes;
-        IP_VS_PROTO_ESP = yes;
-        IP_VS_PROTO_AH = yes;
-        IP_VS_IPV6 = yes;
-        IP_DCCP_CCID3 = no; # experimental
-        CLS_U32_PERF = yes;
-        CLS_U32_MARK = yes;
-        BPF_JIT = whenPlatformHasEBPFJit yes;
-        BPF_JIT_ALWAYS_ON = whenPlatformHasEBPFJit no; # whenPlatformHasEBPFJit yes; # see https://github.com/NixOS/nixpkgs/issues/79304
-        HAVE_EBPF_JIT = whenPlatformHasEBPFJit yes;
-        BPF_STREAM_PARSER = yes;
-        XDP_SOCKETS = yes;
-        XDP_SOCKETS_DIAG = yes;
-        WAN = yes;
-        TCP_CONG_ADVANCED = yes;
-        TCP_CONG_CUBIC = yes; # This is the default congestion control algorithm since 2.6.19
-        # Required by systemd per-cgroup firewalling
-        CGROUP_BPF = option yes;
-        CGROUP_NET_PRIO = yes; # Required by systemd
-        IP_ROUTE_VERBOSE = yes;
-        IP_MROUTE = yes;
-        IP_MROUTE_MULTIPLE_TABLES = yes;
-        IP_MULTICAST = yes;
-        IP_MULTIPLE_TABLES = yes;
-        IPV6 = yes;
-        IPV6_ROUTER_PREF = yes;
-        IPV6_ROUTE_INFO = yes;
-        IPV6_OPTIMISTIC_DAD = yes;
-        IPV6_MULTIPLE_TABLES = yes;
-        IPV6_SUBTREES = yes;
-        IPV6_MROUTE = yes;
-        IPV6_MROUTE_MULTIPLE_TABLES = yes;
-        IPV6_PIMSM_V2 = yes;
-        IPV6_FOU_TUNNEL = module;
-        IPV6_SEG6_LWTUNNEL = yes;
-        IPV6_SEG6_HMAC = yes;
-        IPV6_SEG6_BPF = yes;
-        NET_CLS_BPF = module;
-        NET_ACT_BPF = module;
-        NET_SCHED = yes;
-        L2TP_V3 = yes;
-        L2TP_IP = module;
-        L2TP_ETH = module;
-        BRIDGE_VLAN_FILTERING = yes;
-        BONDING = module;
-        NET_L3_MASTER_DEV = option yes;
-        NET_FOU_IP_TUNNELS = option yes;
-        IP_NF_TARGET_REDIRECT = module;
-        NETKIT = whenAtLeast "6.7" yes;
+    networking = {
+      NET = yes;
+      IP_ADVANCED_ROUTER = yes;
+      IP_PNP = no;
+      IP_ROUTE_MULTIPATH = yes;
+      IP_VS_PROTO_TCP = yes;
+      IP_VS_PROTO_UDP = yes;
+      IP_VS_PROTO_ESP = yes;
+      IP_VS_PROTO_AH = yes;
+      IP_VS_IPV6 = yes;
+      IP_DCCP_CCID3 = no; # experimental
+      CLS_U32_PERF = yes;
+      CLS_U32_MARK = yes;
+      BPF_JIT = whenPlatformHasEBPFJit yes;
+      BPF_JIT_ALWAYS_ON = whenPlatformHasEBPFJit no; # whenPlatformHasEBPFJit yes; # see https://github.com/NixOS/nixpkgs/issues/79304
+      HAVE_EBPF_JIT = whenPlatformHasEBPFJit yes;
+      BPF_STREAM_PARSER = yes;
+      XDP_SOCKETS = yes;
+      XDP_SOCKETS_DIAG = yes;
+      WAN = yes;
+      TCP_CONG_ADVANCED = yes;
+      TCP_CONG_CUBIC = yes; # This is the default congestion control algorithm since 2.6.19
+      # Required by systemd per-cgroup firewalling
+      CGROUP_BPF = option yes;
+      CGROUP_NET_PRIO = yes; # Required by systemd
+      IP_ROUTE_VERBOSE = yes;
+      IP_MROUTE = yes;
+      IP_MROUTE_MULTIPLE_TABLES = yes;
+      IP_MULTICAST = yes;
+      IP_MULTIPLE_TABLES = yes;
+      IPV6 = yes;
+      IPV6_ROUTER_PREF = yes;
+      IPV6_ROUTE_INFO = yes;
+      IPV6_OPTIMISTIC_DAD = yes;
+      IPV6_MULTIPLE_TABLES = yes;
+      IPV6_SUBTREES = yes;
+      IPV6_MROUTE = yes;
+      IPV6_MROUTE_MULTIPLE_TABLES = yes;
+      IPV6_PIMSM_V2 = yes;
+      IPV6_FOU_TUNNEL = module;
+      IPV6_SEG6_LWTUNNEL = yes;
+      IPV6_SEG6_HMAC = yes;
+      IPV6_SEG6_BPF = yes;
+      NET_CLS_BPF = module;
+      NET_ACT_BPF = module;
+      NET_SCHED = yes;
+      L2TP_V3 = yes;
+      L2TP_IP = module;
+      L2TP_ETH = module;
+      BRIDGE_VLAN_FILTERING = yes;
+      BONDING = module;
+      NET_L3_MASTER_DEV = option yes;
+      NET_FOU_IP_TUNNELS = option yes;
+      IP_NF_TARGET_REDIRECT = module;
+      NETKIT = whenAtLeast "6.7" yes;
 
-        PPP_MULTILINK = yes; # PPP multilink support
-        PPP_FILTER = yes;
+      PPP_MULTILINK = yes; # PPP multilink support
+      PPP_FILTER = yes;
 
-        # needed for iwd WPS support (wpa_supplicant replacement)
-        KEY_DH_OPERATIONS = yes;
+      # needed for iwd WPS support (wpa_supplicant replacement)
+      KEY_DH_OPERATIONS = yes;
 
-        # needed for nftables
-        # Networking Options
-        NETFILTER = yes;
-        NETFILTER_ADVANCED = yes;
-        # Core Netfilter Configuration
-        NF_CONNTRACK_ZONES = yes;
-        NF_CONNTRACK_EVENTS = yes;
-        NF_CONNTRACK_TIMEOUT = yes;
-        NF_CONNTRACK_TIMESTAMP = yes;
-        NETFILTER_NETLINK_GLUE_CT = yes;
-        NF_TABLES_INET = yes;
-        NF_TABLES_NETDEV = yes;
-        NFT_REJECT_NETDEV = whenAtLeast "5.11" module;
+      # needed for nftables
+      # Networking Options
+      NETFILTER = yes;
+      NETFILTER_ADVANCED = yes;
+      # Core Netfilter Configuration
+      NF_CONNTRACK_ZONES = yes;
+      NF_CONNTRACK_EVENTS = yes;
+      NF_CONNTRACK_TIMEOUT = yes;
+      NF_CONNTRACK_TIMESTAMP = yes;
+      NETFILTER_NETLINK_GLUE_CT = yes;
+      NF_TABLES_INET = yes;
+      NF_TABLES_NETDEV = yes;
+      NFT_REJECT_NETDEV = whenAtLeast "5.11" module;
 
-        # IP: Netfilter Configuration
-        NF_TABLES_IPV4 = yes;
-        NF_TABLES_ARP = yes;
-        # IPv6: Netfilter Configuration
-        NF_TABLES_IPV6 = yes;
-        # Bridge Netfilter Configuration
-        NF_TABLES_BRIDGE = module;
-        # Expose some debug info
-        NF_CONNTRACK_PROCFS = yes;
-        NF_FLOW_TABLE_PROCFS = whenAtLeast "6.0" yes;
+      # IP: Netfilter Configuration
+      NF_TABLES_IPV4 = yes;
+      NF_TABLES_ARP = yes;
+      # IPv6: Netfilter Configuration
+      NF_TABLES_IPV6 = yes;
+      # Bridge Netfilter Configuration
+      NF_TABLES_BRIDGE = module;
+      # Expose some debug info
+      NF_CONNTRACK_PROCFS = yes;
+      NF_FLOW_TABLE_PROCFS = whenAtLeast "6.0" yes;
 
-        # needed for `dropwatch`
-        # Builtin-only since https://github.com/torvalds/linux/commit/f4b6bcc7002f0e3a3428bac33cf1945abff95450
-        NET_DROP_MONITOR = yes;
+      # needed for `dropwatch`
+      # Builtin-only since https://github.com/torvalds/linux/commit/f4b6bcc7002f0e3a3428bac33cf1945abff95450
+      NET_DROP_MONITOR = yes;
 
-        # needed for ss
-        # Use a lower priority to allow these options to be overridden in hardened/config.nix
-        INET_DIAG = lib.mkDefault module;
-        INET_TCP_DIAG = lib.mkDefault module;
-        INET_UDP_DIAG = lib.mkDefault module;
-        INET_RAW_DIAG = lib.mkDefault module;
-        INET_DIAG_DESTROY = lib.mkDefault yes;
+      # needed for ss
+      # Use a lower priority to allow these options to be overridden in hardened/config.nix
+      INET_DIAG = lib.mkDefault module;
+      INET_TCP_DIAG = lib.mkDefault module;
+      INET_UDP_DIAG = lib.mkDefault module;
+      INET_RAW_DIAG = lib.mkDefault module;
+      INET_DIAG_DESTROY = lib.mkDefault yes;
 
-        # IPsec over TCP
-        INET_ESPINTCP = whenAtLeast "5.8" yes;
-        INET6_ESPINTCP = whenAtLeast "5.8" yes;
+      # IPsec over TCP
+      INET_ESPINTCP = whenAtLeast "5.8" yes;
+      INET6_ESPINTCP = whenAtLeast "5.8" yes;
 
-        # enable multipath-tcp
-        MPTCP = whenAtLeast "5.6" yes;
-        MPTCP_IPV6 = whenAtLeast "5.6" yes;
-        INET_MPTCP_DIAG = whenAtLeast "5.9" (lib.mkDefault module);
+      # enable multipath-tcp
+      MPTCP = whenAtLeast "5.6" yes;
+      MPTCP_IPV6 = whenAtLeast "5.6" yes;
+      INET_MPTCP_DIAG = whenAtLeast "5.9" (lib.mkDefault module);
 
-        # Kernel TLS
-        TLS = module;
-        TLS_DEVICE = yes;
+      # Kernel TLS
+      TLS = module;
+      TLS_DEVICE = yes;
 
-        # infiniband
-        INFINIBAND = module;
-        INFINIBAND_IPOIB = module;
-        INFINIBAND_IPOIB_CM = yes;
+      # infiniband
+      INFINIBAND = module;
+      INFINIBAND_IPOIB = module;
+      INFINIBAND_IPOIB_CM = yes;
 
-        # Enable debugfs for wireless drivers
-        CFG80211_DEBUGFS = yes;
-        MAC80211_DEBUGFS = yes;
-      }
-      // lib.optionalAttrs (stdenv.hostPlatform.system == "aarch64-linux") {
-        # Not enabled by default, hides modules behind it
-        NET_VENDOR_MEDIATEK = yes;
-        # Enable SoC interface for MT7915 module, required for MT798X.
-        MT7986_WMAC = whenBetween "5.18" "6.6" yes;
-        MT798X_WMAC = whenAtLeast "6.6" yes;
-      };
+      # Enable debugfs for wireless drivers
+      CFG80211_DEBUGFS = yes;
+      MAC80211_DEBUGFS = yes;
+    }
+    // lib.optionalAttrs (stdenv.hostPlatform.system == "aarch64-linux") {
+      # Not enabled by default, hides modules behind it
+      NET_VENDOR_MEDIATEK = yes;
+      # Enable SoC interface for MT7915 module, required for MT798X.
+      MT7986_WMAC = whenBetween "5.18" "6.6" yes;
+      MT798X_WMAC = whenAtLeast "6.6" yes;
+    };
 
     wireless = {
       CFG80211_WEXT = option yes; # Without it, ipw2200 drivers don't build
@@ -561,61 +558,60 @@ let
       DRM_PANIC_SCREEN_QR_CODE = whenAtLeast "6.12" yes;
     };
 
-    sound =
+    sound = {
+      SND_DYNAMIC_MINORS = yes;
+      SND_AC97_POWER_SAVE = yes; # AC97 Power-Saving Mode
+      # 10s for the idle timeout, Fedora does 1, Arch does 10.
+      # The kernel says we should do 10.
+      # Read: https://docs.kernel.org/sound/designs/powersave.html
+      SND_AC97_POWER_SAVE_DEFAULT = freeform "10";
+      SND_HDA_POWER_SAVE_DEFAULT = freeform "10";
+      SND_HDA_INPUT_BEEP = yes; # Support digital beep via input layer
+      SND_HDA_RECONFIG = yes; # Support reconfiguration of jack functions
+      # Support configuring jack functions via fw mechanism at boot
+      SND_HDA_PATCH_LOADER = yes;
+      SND_HDA_CODEC_CA0132_DSP = whenOlder "5.7" yes; # Enable DSP firmware loading on Creative Soundblaster Z/Zx/ZxR/Recon
+      SND_HDA_CODEC_CS8409 = whenAtLeast "6.6" module; # Cirrus Logic HDA Bridge CS8409
+      SND_OSSEMUL = yes;
+      SND_USB_CAIAQ_INPUT = yes;
+      SND_USB_AUDIO_MIDI_V2 = whenAtLeast "6.5" yes;
+      # Enable Sound Open Firmware support
+    }
+    // lib.optionalAttrs
+      (stdenv.hostPlatform.system == "x86_64-linux" && lib.versionAtLeast version "5.5")
       {
-        SND_DYNAMIC_MINORS = yes;
-        SND_AC97_POWER_SAVE = yes; # AC97 Power-Saving Mode
-        # 10s for the idle timeout, Fedora does 1, Arch does 10.
-        # The kernel says we should do 10.
-        # Read: https://docs.kernel.org/sound/designs/powersave.html
-        SND_AC97_POWER_SAVE_DEFAULT = freeform "10";
-        SND_HDA_POWER_SAVE_DEFAULT = freeform "10";
-        SND_HDA_INPUT_BEEP = yes; # Support digital beep via input layer
-        SND_HDA_RECONFIG = yes; # Support reconfiguration of jack functions
-        # Support configuring jack functions via fw mechanism at boot
-        SND_HDA_PATCH_LOADER = yes;
-        SND_HDA_CODEC_CA0132_DSP = whenOlder "5.7" yes; # Enable DSP firmware loading on Creative Soundblaster Z/Zx/ZxR/Recon
-        SND_HDA_CODEC_CS8409 = whenAtLeast "6.6" module; # Cirrus Logic HDA Bridge CS8409
-        SND_OSSEMUL = yes;
-        SND_USB_CAIAQ_INPUT = yes;
-        SND_USB_AUDIO_MIDI_V2 = whenAtLeast "6.5" yes;
-        # Enable Sound Open Firmware support
-      }
-      // lib.optionalAttrs
-        (stdenv.hostPlatform.system == "x86_64-linux" && lib.versionAtLeast version "5.5")
-        {
-          SND_SOC_INTEL_SOUNDWIRE_SOF_MACH = whenAtLeast "5.10" module;
-          SND_SOC_INTEL_USER_FRIENDLY_LONG_NAMES = whenAtLeast "5.10" yes; # dep of SOF_MACH
-          SND_SOC_SOF_INTEL_SOUNDWIRE_LINK = whenBetween "5.10" "5.11" yes; # dep of SOF_MACH
-          SND_SOC_SOF_TOPLEVEL = yes;
-          SND_SOC_SOF_ACPI = module;
-          SND_SOC_SOF_PCI = module;
-          SND_SOC_SOF_APOLLOLAKE = whenAtLeast "5.12" module;
-          SND_SOC_SOF_APOLLOLAKE_SUPPORT = whenOlder "5.12" yes;
-          SND_SOC_SOF_CANNONLAKE = whenAtLeast "5.12" module;
-          SND_SOC_SOF_CANNONLAKE_SUPPORT = whenOlder "5.12" yes;
-          SND_SOC_SOF_COFFEELAKE = whenAtLeast "5.12" module;
-          SND_SOC_SOF_COFFEELAKE_SUPPORT = whenOlder "5.12" yes;
-          SND_SOC_SOF_COMETLAKE = whenAtLeast "5.12" module;
-          SND_SOC_SOF_COMETLAKE_H_SUPPORT = whenOlder "5.8" yes;
-          SND_SOC_SOF_COMETLAKE_LP_SUPPORT = whenOlder "5.12" yes;
-          SND_SOC_SOF_ELKHARTLAKE = whenAtLeast "5.12" module;
-          SND_SOC_SOF_ELKHARTLAKE_SUPPORT = whenOlder "5.12" yes;
-          SND_SOC_SOF_GEMINILAKE = whenAtLeast "5.12" module;
-          SND_SOC_SOF_GEMINILAKE_SUPPORT = whenOlder "5.12" yes;
-          SND_SOC_SOF_HDA_AUDIO_CODEC = yes;
-          SND_SOC_SOF_HDA_COMMON_HDMI_CODEC = whenOlder "5.7" yes;
-          SND_SOC_SOF_HDA_LINK = yes;
-          SND_SOC_SOF_ICELAKE = whenAtLeast "5.12" module;
-          SND_SOC_SOF_ICELAKE_SUPPORT = whenOlder "5.12" yes;
-          SND_SOC_SOF_INTEL_TOPLEVEL = yes;
-          SND_SOC_SOF_JASPERLAKE = whenAtLeast "5.12" module;
-          SND_SOC_SOF_JASPERLAKE_SUPPORT = whenOlder "5.12" yes;
-          SND_SOC_SOF_MERRIFIELD = whenAtLeast "5.12" module;
-          SND_SOC_SOF_MERRIFIELD_SUPPORT = whenOlder "5.12" yes;
-          SND_SOC_SOF_TIGERLAKE = whenAtLeast "5.12" module;
-          SND_SOC_SOF_TIGERLAKE_SUPPORT = whenOlder "5.12" yes;
-        };
+        SND_SOC_INTEL_SOUNDWIRE_SOF_MACH = whenAtLeast "5.10" module;
+        SND_SOC_INTEL_USER_FRIENDLY_LONG_NAMES = whenAtLeast "5.10" yes; # dep of SOF_MACH
+        SND_SOC_SOF_INTEL_SOUNDWIRE_LINK = whenBetween "5.10" "5.11" yes; # dep of SOF_MACH
+        SND_SOC_SOF_TOPLEVEL = yes;
+        SND_SOC_SOF_ACPI = module;
+        SND_SOC_SOF_PCI = module;
+        SND_SOC_SOF_APOLLOLAKE = whenAtLeast "5.12" module;
+        SND_SOC_SOF_APOLLOLAKE_SUPPORT = whenOlder "5.12" yes;
+        SND_SOC_SOF_CANNONLAKE = whenAtLeast "5.12" module;
+        SND_SOC_SOF_CANNONLAKE_SUPPORT = whenOlder "5.12" yes;
+        SND_SOC_SOF_COFFEELAKE = whenAtLeast "5.12" module;
+        SND_SOC_SOF_COFFEELAKE_SUPPORT = whenOlder "5.12" yes;
+        SND_SOC_SOF_COMETLAKE = whenAtLeast "5.12" module;
+        SND_SOC_SOF_COMETLAKE_H_SUPPORT = whenOlder "5.8" yes;
+        SND_SOC_SOF_COMETLAKE_LP_SUPPORT = whenOlder "5.12" yes;
+        SND_SOC_SOF_ELKHARTLAKE = whenAtLeast "5.12" module;
+        SND_SOC_SOF_ELKHARTLAKE_SUPPORT = whenOlder "5.12" yes;
+        SND_SOC_SOF_GEMINILAKE = whenAtLeast "5.12" module;
+        SND_SOC_SOF_GEMINILAKE_SUPPORT = whenOlder "5.12" yes;
+        SND_SOC_SOF_HDA_AUDIO_CODEC = yes;
+        SND_SOC_SOF_HDA_COMMON_HDMI_CODEC = whenOlder "5.7" yes;
+        SND_SOC_SOF_HDA_LINK = yes;
+        SND_SOC_SOF_ICELAKE = whenAtLeast "5.12" module;
+        SND_SOC_SOF_ICELAKE_SUPPORT = whenOlder "5.12" yes;
+        SND_SOC_SOF_INTEL_TOPLEVEL = yes;
+        SND_SOC_SOF_JASPERLAKE = whenAtLeast "5.12" module;
+        SND_SOC_SOF_JASPERLAKE_SUPPORT = whenOlder "5.12" yes;
+        SND_SOC_SOF_MERRIFIELD = whenAtLeast "5.12" module;
+        SND_SOC_SOF_MERRIFIELD_SUPPORT = whenOlder "5.12" yes;
+        SND_SOC_SOF_TIGERLAKE = whenAtLeast "5.12" module;
+        SND_SOC_SOF_TIGERLAKE_SUPPORT = whenOlder "5.12" yes;
+      };
 
     usb = {
       USB = yes; # compile USB core into kernel, so we can use USB_SERIAL_CONSOLE before modules
@@ -1003,25 +999,24 @@ let
     };
 
     # Disable various self-test modules that have no use in a production system
-    tests =
-      {
-        # This menu disables all/most of them on >= 4.16
-        RUNTIME_TESTING_MENU = option no;
-      }
-      // {
-        CRC32_SELFTEST = option no;
-        CRYPTO_TEST = option no;
-        EFI_TEST = option no;
-        GLOB_SELFTEST = option no;
-        LOCK_TORTURE_TEST = option no;
-        MTD_TESTS = option no;
-        NOTIFIER_ERROR_INJECTION = option no;
-        RCU_PERF_TEST = whenOlder "5.9" no;
-        RCU_SCALE_TEST = whenAtLeast "5.10" no;
-        TEST_ASYNC_DRIVER_PROBE = option no;
-        WW_MUTEX_SELFTEST = option no;
-        XZ_DEC_TEST = option no;
-      };
+    tests = {
+      # This menu disables all/most of them on >= 4.16
+      RUNTIME_TESTING_MENU = option no;
+    }
+    // {
+      CRC32_SELFTEST = option no;
+      CRYPTO_TEST = option no;
+      EFI_TEST = option no;
+      GLOB_SELFTEST = option no;
+      LOCK_TORTURE_TEST = option no;
+      MTD_TESTS = option no;
+      NOTIFIER_ERROR_INJECTION = option no;
+      RCU_PERF_TEST = whenOlder "5.9" no;
+      RCU_SCALE_TEST = whenAtLeast "5.10" no;
+      TEST_ASYNC_DRIVER_PROBE = option no;
+      WW_MUTEX_SELFTEST = option no;
+      XZ_DEC_TEST = option no;
+    };
 
     criu = {
       # Unconditionally enabled, because it is required for CRIU and

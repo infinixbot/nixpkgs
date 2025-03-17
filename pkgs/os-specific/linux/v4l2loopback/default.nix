@@ -32,7 +32,8 @@ stdenv.mkDerivation {
     sed -i '/depmod/d' Makefile
   '';
 
-  nativeBuildInputs = [ kmod ] ++ kernel.moduleBuildDependencies;
+  nativeBuildInputs = [ kmod ]
+    ++ kernel.moduleBuildDependencies;
 
   postInstall = ''
     make install-utils PREFIX=$bin

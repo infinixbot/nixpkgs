@@ -73,28 +73,27 @@ stdenv.mkDerivation (
 
     sourceRoot = lib.optional (lib.versionAtLeast release_version "13") "${src.name}/${pname}";
 
-    nativeBuildInputs =
-      [
-        cmake
-        python3
-        which
-        swig
-        lit
-        makeWrapper
-        lua5_3
-      ]
-      ++ lib.optionals enableManpages [
-        python3.pkgs.sphinx
-      ]
-      ++ lib.optionals (lib.versionOlder release_version "18" && enableManpages) [
-        python3.pkgs.recommonmark
-      ]
-      ++ lib.optionals (lib.versionAtLeast release_version "18" && enableManpages) [
-        python3.pkgs.myst-parser
-      ]
-      ++ lib.optionals (lib.versionAtLeast release_version "14") [
-        ninja
-      ];
+    nativeBuildInputs = [
+      cmake
+      python3
+      which
+      swig
+      lit
+      makeWrapper
+      lua5_3
+    ]
+    ++ lib.optionals enableManpages [
+      python3.pkgs.sphinx
+    ]
+    ++ lib.optionals (lib.versionOlder release_version "18" && enableManpages) [
+      python3.pkgs.recommonmark
+    ]
+    ++ lib.optionals (lib.versionAtLeast release_version "18" && enableManpages) [
+      python3.pkgs.myst-parser
+    ]
+    ++ lib.optionals (lib.versionAtLeast release_version "14") [
+      ninja
+    ];
 
     buildInputs =
       [
@@ -116,60 +115,58 @@ stdenv.mkDerivation (
 
     hardeningDisable = [ "format" ];
 
-    cmakeFlags =
+    cmakeFlags = [
+      "-DLLDB_INCLUDE_TESTS=${if doCheck then "YES" else "NO"}"
+      "-DLLVM_ENABLE_RTTI=OFF"
+      "-DClang_DIR=${lib.getDev libclang}/lib/cmake"
+      "-DLLVM_EXTERNAL_LIT=${lit}/bin/lit"
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      "-DLLDB_USE_SYSTEM_DEBUGSERVER=ON"
+    ]
+    ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
+      "-DLLDB_CODESIGN_IDENTITY=" # codesigning makes nondeterministic
+    ]
+    ++ lib.optionals (lib.versionAtLeast release_version "17") [
+      "-DCLANG_RESOURCE_DIR=../../../../${lib.getLib libclang}"
+    ]
+    ++ lib.optionals enableManpages (
       [
-        "-DLLDB_INCLUDE_TESTS=${if doCheck then "YES" else "NO"}"
-        "-DLLVM_ENABLE_RTTI=OFF"
-        "-DClang_DIR=${lib.getDev libclang}/lib/cmake"
-        "-DLLVM_EXTERNAL_LIT=${lit}/bin/lit"
+        "-DLLVM_ENABLE_SPHINX=ON"
+        "-DSPHINX_OUTPUT_MAN=ON"
+        "-DSPHINX_OUTPUT_HTML=OFF"
       ]
-      ++ lib.optionals stdenv.hostPlatform.isDarwin [
-        "-DLLDB_USE_SYSTEM_DEBUGSERVER=ON"
+      ++ lib.optionals (lib.versionAtLeast release_version "15") [
+        # docs reference `automodapi` but it's not added to the extensions list when
+        # only building the manpages:
+        # https://github.com/llvm/llvm-project/blob/af6ec9200b09039573d85e349496c4f5b17c3d7f/lldb/docs/conf.py#L54
+        #
+        # so, we just ignore the resulting errors
+        "-DSPHINX_WARNINGS_AS_ERRORS=OFF"
       ]
-      ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
-        "-DLLDB_CODESIGN_IDENTITY=" # codesigning makes nondeterministic
-      ]
-      ++ lib.optionals (lib.versionAtLeast release_version "17") [
-        "-DCLANG_RESOURCE_DIR=../../../../${lib.getLib libclang}"
-      ]
-      ++ lib.optionals enableManpages (
-        [
-          "-DLLVM_ENABLE_SPHINX=ON"
-          "-DSPHINX_OUTPUT_MAN=ON"
-          "-DSPHINX_OUTPUT_HTML=OFF"
-        ]
-        ++ lib.optionals (lib.versionAtLeast release_version "15") [
-          # docs reference `automodapi` but it's not added to the extensions list when
-          # only building the manpages:
-          # https://github.com/llvm/llvm-project/blob/af6ec9200b09039573d85e349496c4f5b17c3d7f/lldb/docs/conf.py#L54
-          #
-          # so, we just ignore the resulting errors
-          "-DSPHINX_WARNINGS_AS_ERRORS=OFF"
-        ]
-      )
-      ++ lib.optionals doCheck [
-        "-DLLDB_TEST_C_COMPILER=${stdenv.cc}/bin/${stdenv.cc.targetPrefix}cc"
-        "-DLLDB_TEST_CXX_COMPILER=${stdenv.cc}/bin/${stdenv.cc.targetPrefix}c++"
-      ]
-      ++ devExtraCmakeFlags;
+    )
+    ++ lib.optionals doCheck [
+      "-DLLDB_TEST_C_COMPILER=${stdenv.cc}/bin/${stdenv.cc.targetPrefix}cc"
+      "-DLLDB_TEST_CXX_COMPILER=${stdenv.cc}/bin/${stdenv.cc.targetPrefix}c++"
+    ]
+    ++ devExtraCmakeFlags;
 
     doCheck = false;
     doInstallCheck = lib.versionOlder release_version "15";
 
     # TODO: cleanup with mass-rebuild
-    installCheckPhase =
-      ''
-        if [ ! -e ''${!outputLib}/${python3.sitePackages}/lldb/_lldb*.so ] ; then
-            echo "ERROR: python files not installed where expected!";
-            return 1;
-        fi
-      '' # Something lua is built on older versions but this file doesn't exist.
-      + lib.optionalString (lib.versionAtLeast release_version "14") ''
-        if [ ! -e "''${!outputLib}/lib/lua/${lua5_3.luaversion}/lldb.so" ] ; then
-            echo "ERROR: lua files not installed where expected!";
-            return 1;
-        fi
-      '';
+    installCheckPhase = ''
+      if [ ! -e ''${!outputLib}/${python3.sitePackages}/lldb/_lldb*.so ] ; then
+          echo "ERROR: python files not installed where expected!";
+          return 1;
+      fi
+    '' # Something lua is built on older versions but this file doesn't exist.
+    + lib.optionalString (lib.versionAtLeast release_version "14") ''
+      if [ ! -e "''${!outputLib}/lib/lua/${lua5_3.luaversion}/lldb.so" ] ; then
+          echo "ERROR: lua files not installed where expected!";
+          return 1;
+      fi
+    '';
 
     postInstall = ''
       wrapProgram $out/bin/lldb --prefix PYTHONPATH : ''${!outputLib}/${python3.sitePackages}/

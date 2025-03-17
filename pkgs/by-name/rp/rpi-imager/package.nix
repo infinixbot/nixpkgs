@@ -39,21 +39,20 @@ stdenv.mkDerivation (finalAttrs: {
     util-linux
   ];
 
-  buildInputs =
-    [
-      curl
-      libarchive
-      qt5.qtbase
-      qt5.qtdeclarative
-      qt5.qtgraphicaleffects
-      qt5.qtquickcontrols2
-      qt5.qtsvg
-      qt5.qttools
-      xz
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      qt5.qtwayland
-    ];
+  buildInputs = [
+    curl
+    libarchive
+    qt5.qtbase
+    qt5.qtdeclarative
+    qt5.qtgraphicaleffects
+    qt5.qtquickcontrols2
+    qt5.qtsvg
+    qt5.qttools
+    xz
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    qt5.qtwayland
+  ];
 
   # Disable telemetry and update check.
   cmakeFlags = lib.optionals (!enableTelemetry) [

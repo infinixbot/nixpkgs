@@ -354,8 +354,7 @@ stdenvNoCC.mkDerivation {
 
   preferLocalBuild = true;
 
-  outputs =
-    [ "out" ]
+  outputs = [ "out" ]
     ++ optionals propagateDoc [
       "man"
       "info"
@@ -532,23 +531,22 @@ stdenvNoCC.mkDerivation {
     [ bintools ] ++ extraTools ++ optionals cc.langD or cc.langJava or false [ zlib ];
   depsTargetTargetPropagated = optional (libcxx != null) libcxx ++ extraPackages;
 
-  setupHooks =
-    [
-      ../setup-hooks/role.bash
-    ]
-    ++ optional (cc.langC or true) ./setup-hook.sh
-    ++ optional (cc.langFortran or false) ./fortran-hook.sh
-    ++ optional (targetPlatform.isWindows) (
-      stdenvNoCC.mkDerivation {
-        name = "win-dll-hook.sh";
-        dontUnpack = true;
-        installPhase = ''
-          echo addToSearchPath "LINK_DLL_FOLDERS" "${cc_solib}/lib" > $out
-          echo addToSearchPath "LINK_DLL_FOLDERS" "${cc_solib}/lib64" >> $out
-          echo addToSearchPath "LINK_DLL_FOLDERS" "${cc_solib}/lib32" >> $out
-        '';
-      }
-    );
+  setupHooks = [
+    ../setup-hooks/role.bash
+  ]
+  ++ optional (cc.langC or true) ./setup-hook.sh
+  ++ optional (cc.langFortran or false) ./fortran-hook.sh
+  ++ optional (targetPlatform.isWindows) (
+    stdenvNoCC.mkDerivation {
+      name = "win-dll-hook.sh";
+      dontUnpack = true;
+      installPhase = ''
+        echo addToSearchPath "LINK_DLL_FOLDERS" "${cc_solib}/lib" > $out
+        echo addToSearchPath "LINK_DLL_FOLDERS" "${cc_solib}/lib64" >> $out
+        echo addToSearchPath "LINK_DLL_FOLDERS" "${cc_solib}/lib32" >> $out
+      '';
+    }
+  );
 
   postFixup =
     # Ensure flags files exists, as some other programs cat them. (That these

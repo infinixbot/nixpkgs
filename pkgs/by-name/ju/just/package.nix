@@ -72,7 +72,8 @@ rustPlatform.buildRustPackage rec {
 
   cargoBuildFlags = [
     "--package=just"
-  ] ++ (lib.optionals withDocumentation [ "--package=generate-book" ]);
+  ]
+  ++ (lib.optionals withDocumentation [ "--package=generate-book" ]);
 
   checkFlags = [
     "--skip=backticks::trailing_newlines_are_stripped" # Wants to use python3 as alternate shell
@@ -83,16 +84,15 @@ rustPlatform.buildRustPackage rec {
     "--skip=shebang::run_shebang" # test case very rarely fails with "Text file busy"
   ];
 
-  postInstall =
-    lib.optionalString withDocumentation ''
-      $out/bin/generate-book
-      rm $out/bin/generate-book
-      # No linkcheck in sandbox
-      echo 'optional = true' >> book/en/book.toml
-      mdbook build book/en
-      mkdir -p $doc/share/doc/$name
-      mv ./book/en/build/html $doc/share/doc/$name
-    ''
+  postInstall = lib.optionalString withDocumentation ''
+    $out/bin/generate-book
+    rm $out/bin/generate-book
+    # No linkcheck in sandbox
+    echo 'optional = true' >> book/en/book.toml
+    mdbook build book/en
+    mkdir -p $doc/share/doc/$name
+    mv ./book/en/build/html $doc/share/doc/$name
+  ''
     + lib.optionalString installManPages ''
       $out/bin/just --man > ./just.1
       installManPage ./just.1

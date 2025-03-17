@@ -344,7 +344,8 @@ in
     (mkIf config.boot.kernel.enable {
       system.build = { inherit kernel; };
 
-      system.modulesTree = [ kernel ] ++ config.boot.extraModulePackages;
+      system.modulesTree = [ kernel ]
+        ++ config.boot.extraModulePackages;
 
       # Not required for, e.g., containers as they don't have their own kernel or initrd.
       # They boot directly into stage 2.
@@ -378,8 +379,7 @@ in
 
       # Implement consoleLogLevel both in early boot and using sysctl
       # (so you don't need to reboot to have changes take effect).
-      boot.kernelParams =
-        [ "loglevel=${toString config.boot.consoleLogLevel}" ]
+      boot.kernelParams = [ "loglevel=${toString config.boot.consoleLogLevel}" ]
         ++ optionals config.boot.vesa [
           "vga=0x317"
           "nomodeset"

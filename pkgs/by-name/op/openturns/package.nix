@@ -40,7 +40,8 @@ stdenv.mkDerivation (finalAttrs: {
 
   nativeBuildInputs = [
     cmake
-  ] ++ lib.optionals enablePython [ python3Packages.sphinx ];
+  ]
+  ++ lib.optionals enablePython [ python3Packages.sphinx ];
 
   buildInputs =
     [

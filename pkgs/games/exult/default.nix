@@ -43,16 +43,15 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      SDL2
-      libogg
-      libvorbis
-      zlib
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      AudioUnit
-    ];
+  buildInputs = [
+    SDL2
+    libogg
+    libvorbis
+    zlib
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    AudioUnit
+  ];
 
   enableParallelBuilding = true;
 

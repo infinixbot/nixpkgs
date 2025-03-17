@@ -211,92 +211,91 @@ let
     unstable = pkgs.releaseTools.aggregate {
       name = "nixpkgs-${jobs.tarball.version}";
       meta.description = "Release-critical builds for the Nixpkgs unstable channel";
-      constituents =
-        [
-          jobs.tarball
-          jobs.release-checks
-          jobs.metrics
-          jobs.manual
-          jobs.lib-tests
-          jobs.pkgs-lib-tests
-          jobs.stdenv.x86_64-linux
-          jobs.cargo.x86_64-linux
-          jobs.go.x86_64-linux
-          jobs.linux.x86_64-linux
-          jobs.nix.x86_64-linux
-          jobs.pandoc.x86_64-linux
-          jobs.python3.x86_64-linux
-          # Needed by contributors to test PRs (by inclusion of the PR template)
-          jobs.nixpkgs-review.x86_64-linux
-          # Needed for support
-          jobs.nix-info.x86_64-linux
-          jobs.nix-info-tested.x86_64-linux
-          # Ensure that X11/GTK are in order.
-          jobs.firefox-unwrapped.x86_64-linux
-          jobs.cachix.x86_64-linux
-          jobs.devenv.x86_64-linux
+      constituents = [
+        jobs.tarball
+        jobs.release-checks
+        jobs.metrics
+        jobs.manual
+        jobs.lib-tests
+        jobs.pkgs-lib-tests
+        jobs.stdenv.x86_64-linux
+        jobs.cargo.x86_64-linux
+        jobs.go.x86_64-linux
+        jobs.linux.x86_64-linux
+        jobs.nix.x86_64-linux
+        jobs.pandoc.x86_64-linux
+        jobs.python3.x86_64-linux
+        # Needed by contributors to test PRs (by inclusion of the PR template)
+        jobs.nixpkgs-review.x86_64-linux
+        # Needed for support
+        jobs.nix-info.x86_64-linux
+        jobs.nix-info-tested.x86_64-linux
+        # Ensure that X11/GTK are in order.
+        jobs.firefox-unwrapped.x86_64-linux
+        jobs.cachix.x86_64-linux
+        jobs.devenv.x86_64-linux
 
-          /*
-            TODO: re-add tests; context: https://github.com/NixOS/nixpkgs/commit/36587a587ab191eddd868179d63c82cdd5dee21b
+        /*
+          TODO: re-add tests; context: https://github.com/NixOS/nixpkgs/commit/36587a587ab191eddd868179d63c82cdd5dee21b
 
-            jobs.tests.cc-wrapper.default.x86_64-linux
+          jobs.tests.cc-wrapper.default.x86_64-linux
 
-            # broken see issue #40038
+          # broken see issue #40038
 
-            jobs.tests.cc-wrapper.llvmPackages.clang.x86_64-linux
-            jobs.tests.cc-wrapper.llvmPackages.libcxx.x86_64-linux
-            jobs.tests.cc-multilib-gcc.x86_64-linux
-            jobs.tests.cc-multilib-clang.x86_64-linux
-            jobs.tests.stdenv-inputs.x86_64-linux
-            jobs.tests.stdenv.hooks.patch-shebangs.x86_64-linux
-          */
-        ]
-        ++ collect isDerivation jobs.stdenvBootstrapTools
-        ++ optionals supportDarwin.x86_64 [
-          jobs.stdenv.x86_64-darwin
-          jobs.cargo.x86_64-darwin
-          jobs.cachix.x86_64-darwin
-          jobs.devenv.x86_64-darwin
-          jobs.go.x86_64-darwin
-          jobs.python3.x86_64-darwin
-          jobs.nixpkgs-review.x86_64-darwin
-          jobs.nix.x86_64-darwin
-          jobs.nix-info.x86_64-darwin
-          jobs.nix-info-tested.x86_64-darwin
-          jobs.git.x86_64-darwin
-          jobs.mariadb.x86_64-darwin
-          jobs.vim.x86_64-darwin
-          jobs.inkscape.x86_64-darwin
-          jobs.qt5.qtmultimedia.x86_64-darwin
-          jobs.darwin.linux-builder.x86_64-darwin
-          /*
-            jobs.tests.cc-wrapper.default.x86_64-darwin
-            jobs.tests.cc-wrapper.llvmPackages.clang.x86_64-darwin
-            jobs.tests.cc-wrapper.llvmPackages.libcxx.x86_64-darwin
-            jobs.tests.stdenv-inputs.x86_64-darwin
-            jobs.tests.macOSSierraShared.x86_64-darwin
-            jobs.tests.stdenv.hooks.patch-shebangs.x86_64-darwin
-          */
-        ]
-        ++ optionals supportDarwin.aarch64 [
-          jobs.stdenv.aarch64-darwin
-          jobs.cargo.aarch64-darwin
-          jobs.cachix.aarch64-darwin
-          jobs.devenv.aarch64-darwin
-          jobs.go.aarch64-darwin
-          jobs.python3.aarch64-darwin
-          jobs.nixpkgs-review.aarch64-darwin
-          jobs.nix.aarch64-darwin
-          jobs.nix-info.aarch64-darwin
-          jobs.nix-info-tested.aarch64-darwin
-          jobs.git.aarch64-darwin
-          jobs.mariadb.aarch64-darwin
-          jobs.vim.aarch64-darwin
-          jobs.inkscape.aarch64-darwin
-          jobs.qt5.qtmultimedia.aarch64-darwin
-          jobs.darwin.linux-builder.aarch64-darwin
-          # consider adding tests, as suggested above for x86_64-darwin
-        ];
+          jobs.tests.cc-wrapper.llvmPackages.clang.x86_64-linux
+          jobs.tests.cc-wrapper.llvmPackages.libcxx.x86_64-linux
+          jobs.tests.cc-multilib-gcc.x86_64-linux
+          jobs.tests.cc-multilib-clang.x86_64-linux
+          jobs.tests.stdenv-inputs.x86_64-linux
+          jobs.tests.stdenv.hooks.patch-shebangs.x86_64-linux
+        */
+      ]
+      ++ collect isDerivation jobs.stdenvBootstrapTools
+      ++ optionals supportDarwin.x86_64 [
+        jobs.stdenv.x86_64-darwin
+        jobs.cargo.x86_64-darwin
+        jobs.cachix.x86_64-darwin
+        jobs.devenv.x86_64-darwin
+        jobs.go.x86_64-darwin
+        jobs.python3.x86_64-darwin
+        jobs.nixpkgs-review.x86_64-darwin
+        jobs.nix.x86_64-darwin
+        jobs.nix-info.x86_64-darwin
+        jobs.nix-info-tested.x86_64-darwin
+        jobs.git.x86_64-darwin
+        jobs.mariadb.x86_64-darwin
+        jobs.vim.x86_64-darwin
+        jobs.inkscape.x86_64-darwin
+        jobs.qt5.qtmultimedia.x86_64-darwin
+        jobs.darwin.linux-builder.x86_64-darwin
+        /*
+          jobs.tests.cc-wrapper.default.x86_64-darwin
+          jobs.tests.cc-wrapper.llvmPackages.clang.x86_64-darwin
+          jobs.tests.cc-wrapper.llvmPackages.libcxx.x86_64-darwin
+          jobs.tests.stdenv-inputs.x86_64-darwin
+          jobs.tests.macOSSierraShared.x86_64-darwin
+          jobs.tests.stdenv.hooks.patch-shebangs.x86_64-darwin
+        */
+      ]
+      ++ optionals supportDarwin.aarch64 [
+        jobs.stdenv.aarch64-darwin
+        jobs.cargo.aarch64-darwin
+        jobs.cachix.aarch64-darwin
+        jobs.devenv.aarch64-darwin
+        jobs.go.aarch64-darwin
+        jobs.python3.aarch64-darwin
+        jobs.nixpkgs-review.aarch64-darwin
+        jobs.nix.aarch64-darwin
+        jobs.nix-info.aarch64-darwin
+        jobs.nix-info-tested.aarch64-darwin
+        jobs.git.aarch64-darwin
+        jobs.mariadb.aarch64-darwin
+        jobs.vim.aarch64-darwin
+        jobs.inkscape.aarch64-darwin
+        jobs.qt5.qtmultimedia.aarch64-darwin
+        jobs.darwin.linux-builder.aarch64-darwin
+        # consider adding tests, as suggested above for x86_64-darwin
+      ];
     };
 
     stdenvBootstrapTools = genAttrs bootstrapConfigs (

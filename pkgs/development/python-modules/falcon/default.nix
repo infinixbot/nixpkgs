@@ -41,7 +41,8 @@ buildPythonPackage rec {
     hash = "sha256-umNuHyZrdDGyrhQEG9+f08D4Wwrz6bVJ6ysw8pfbHv4=";
   };
 
-  build-system = [ setuptools ] ++ lib.optionals (!isPyPy) [ cython ];
+  build-system = [ setuptools ]
+    ++ lib.optionals (!isPyPy) [ cython ];
 
   __darwinAllowLocalNetworking = true;
 
@@ -74,19 +75,19 @@ buildPythonPackage rec {
     msgpack
     mujson
     ujson
-  ] ++ lib.optionals (pythonOlder "3.10") [ testtools ];
+  ]
+  ++ lib.optionals (pythonOlder "3.10") [ testtools ];
 
   pytestFlagsArray = [ "tests" ];
 
-  disabledTestPaths =
-    [
-      # needs a running server
-      "tests/asgi/test_asgi_servers.py"
-    ]
-    ++ lib.optionals (pythonAtLeast "3.12") [
-      # ModuleNotFoundError: No module named 'distutils'
-      "tests/asgi/test_cythonized_asgi.py"
-    ];
+  disabledTestPaths = [
+    # needs a running server
+    "tests/asgi/test_asgi_servers.py"
+  ]
+  ++ lib.optionals (pythonAtLeast "3.12") [
+    # ModuleNotFoundError: No module named 'distutils'
+    "tests/asgi/test_cythonized_asgi.py"
+  ];
 
   meta = with lib; {
     changelog = "https://falcon.readthedocs.io/en/stable/changes/${version}.html";

@@ -59,7 +59,8 @@ buildPythonPackage rec {
       --replace "path = None" 'path = os.environ["PATH"] + ":${lib.makeBinPath compression-utilities}"'
   '';
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ compression-utilities;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ compression-utilities;
 
   disabledTests = [
     "test_unzip"
@@ -70,7 +71,8 @@ buildPythonPackage rec {
     "test_7z_file"
     "test_7za_file"
     "test_p7azip"
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ "test_ar" ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ "test_ar" ];
 
   meta = with lib; {
     description = "portable archive file manager";

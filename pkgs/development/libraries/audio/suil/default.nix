@@ -57,8 +57,7 @@ stdenv.mkDerivation rec {
     (mesonEnable "x11" withX11)
   ];
 
-  buildInputs =
-    [ lv2 ]
+  buildInputs = [ lv2 ]
     ++ lib.optionals withGtk2 [ gtk2 ]
     ++ lib.optionals withGtk3 [ gtk3 ]
     ++ lib.optionals withQt5 (

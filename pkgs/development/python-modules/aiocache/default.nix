@@ -46,7 +46,8 @@ buildPythonPackage rec {
     pytest-cov-stub
     pytest-mock
     pytestCheckHook
-  ] ++ lib.flatten (lib.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (lib.attrValues optional-dependencies);
 
   pytestFlagsArray = [
     "-W"
@@ -55,15 +56,14 @@ buildPythonPackage rec {
     "--deselect=tests/ut/backends/test_redis.py::TestRedisBackend::test_close"
   ];
 
-  disabledTests =
-    [
-      # Test calls apache benchmark and fails, no usable output
-      "test_concurrency_error_rates"
-    ]
-    ++ lib.optionals (pythonAtLeast "3.13") [
-      # https://github.com/aio-libs/aiocache/issues/863
-      "test_cache_write_doesnt_wait_for_future"
-    ];
+  disabledTests = [
+    # Test calls apache benchmark and fails, no usable output
+    "test_concurrency_error_rates"
+  ]
+  ++ lib.optionals (pythonAtLeast "3.13") [
+    # https://github.com/aio-libs/aiocache/issues/863
+    "test_cache_write_doesnt_wait_for_future"
+  ];
 
   disabledTestPaths = [
     # Benchmark and performance tests are not relevant for Nixpkgs

@@ -33,17 +33,17 @@ stdenv.mkDerivation (finalAttrs: {
 
   sourceRoot = "${finalAttrs.src.name}/runtimes";
 
-  nativeBuildInputs =
-    [
-      cmake
-      python3
-    ]
-    ++ (lib.optional (lib.versionAtLeast release_version "15") ninja)
-    ++ (lib.optional isFullBuild python3Packages.pyyaml);
+  nativeBuildInputs = [
+    cmake
+    python3
+  ]
+  ++ (lib.optional (lib.versionAtLeast release_version "15") ninja)
+  ++ (lib.optional isFullBuild python3Packages.pyyaml);
 
   buildInputs = lib.optional isFullBuild linuxHeaders;
 
-  outputs = [ "out" ] ++ (lib.optional isFullBuild "dev");
+  outputs = [ "out" ]
+    ++ (lib.optional isFullBuild "dev");
 
   postUnpack = lib.optionalString isFullBuild ''
     patchShebangs $sourceRoot/../$pname/utils/hdrgen/main.py

@@ -2067,7 +2067,8 @@ in
         SystemCallFilter = [
           "@system-service"
           "~@privileged"
-        ] ++ lib.optionals (cfg.settings.server.protocol == "socket") [ "@chown" ];
+        ]
+        ++ lib.optionals (cfg.settings.server.protocol == "socket") [ "@chown" ];
         UMask = "0027";
       };
       preStart = ''

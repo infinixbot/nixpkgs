@@ -61,7 +61,8 @@ stdenv.mkDerivation rec {
     "man"
   ];
 
-  nativeBuildInputs = [ pkg-config ] ++ lib.optionals (enableApp) [ installShellFiles ];
+  nativeBuildInputs = [ pkg-config ]
+    ++ lib.optionals (enableApp) [ installShellFiles ];
 
   buildInputs =
     lib.optionals enableApp [
@@ -104,10 +105,9 @@ stdenv.mkDerivation rec {
     substituteInPlace ./config.guess --replace-fail /usr/bin/uname uname
   '';
 
-  postInstall =
-    lib.optionalString (enableApp) ''
-      installShellCompletion --bash doc/bash_completion/{h2load,nghttp,nghttpd,nghttpx}
-    ''
+  postInstall = lib.optionalString (enableApp) ''
+    installShellCompletion --bash doc/bash_completion/{h2load,nghttp,nghttpd,nghttpx}
+  ''
     + lib.optionalString (!enableApp) ''
       rm -r $out/bin
     ''

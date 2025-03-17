@@ -67,17 +67,16 @@ stdenv.mkDerivation (finalAttrs: {
     ]);
 
   doCheck = true;
-  nativeCheckInputs =
-    [
-      python3
-      which
-    ]
-    ++ lib.optional enableValgrindCheck valgrind
-    ++ lib.optional fuseSupport fuse3
-    ++ lib.filter (lib.meta.availableOn stdenv.buildPlatform) [
-      erofs-utils
-      fsverity-utils
-    ];
+  nativeCheckInputs = [
+    python3
+    which
+  ]
+  ++ lib.optional enableValgrindCheck valgrind
+  ++ lib.optional fuseSupport fuse3
+  ++ lib.filter (lib.meta.availableOn stdenv.buildPlatform) [
+    erofs-utils
+    fsverity-utils
+  ];
 
   mesonCheckFlags = lib.optionals enableValgrindCheck "--setup=valgrind";
 

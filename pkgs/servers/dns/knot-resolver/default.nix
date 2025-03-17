@@ -119,28 +119,26 @@ let # un-indented, over the whole file
       ] # dnstap support
     ;
 
-    mesonFlags =
-      [
-        "-Dkeyfile_default=${dns-root-data}/root.ds"
-        "-Droot_hints=${dns-root-data}/root.hints"
-        "-Dinstall_kresd_conf=disabled" # not really useful; examples are inside share/doc/
-        "-Dmalloc=jemalloc"
-        "--default-library=static" # not used by anyone
-      ]
-      ++ optional doInstallCheck "-Dunit_tests=enabled"
-      ++ optional doInstallCheck "-Dconfig_tests=enabled"
-      ++ optional stdenv.hostPlatform.isLinux "-Dsystemd_files=enabled" # used by NixOS service
+    mesonFlags = [
+      "-Dkeyfile_default=${dns-root-data}/root.ds"
+      "-Droot_hints=${dns-root-data}/root.hints"
+      "-Dinstall_kresd_conf=disabled" # not really useful; examples are inside share/doc/
+      "-Dmalloc=jemalloc"
+      "--default-library=static" # not used by anyone
+    ]
+    ++ optional doInstallCheck "-Dunit_tests=enabled"
+    ++ optional doInstallCheck "-Dconfig_tests=enabled"
+    ++ optional stdenv.hostPlatform.isLinux "-Dsystemd_files=enabled" # used by NixOS service
     #"-Dextra_tests=enabled" # not suitable as in-distro tests; many deps, too.
     ;
 
-    postInstall =
-      ''
-        rm "$out"/lib/libkres.a
-        rm "$out"/lib/knot-resolver/upgrade-4-to-5.lua # not meaningful on NixOS
-      ''
-      + optionalString stdenv.hostPlatform.isLinux ''
-        rm -r "$out"/lib/sysusers.d/ # ATM more likely to harm than help
-      '';
+    postInstall = ''
+      rm "$out"/lib/libkres.a
+      rm "$out"/lib/knot-resolver/upgrade-4-to-5.lua # not meaningful on NixOS
+    ''
+    + optionalString stdenv.hostPlatform.isLinux ''
+      rm -r "$out"/lib/sysusers.d/ # ATM more likely to harm than help
+    '';
 
     doInstallCheck = with stdenv; hostPlatform == buildPlatform;
     nativeInstallCheckInputs = [

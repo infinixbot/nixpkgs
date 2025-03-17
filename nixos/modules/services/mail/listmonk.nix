@@ -193,7 +193,8 @@ in
 
     systemd.services.listmonk = {
       description = "Listmonk - newsletter and mailing list manager";
-      after = [ "network.target" ] ++ lib.optional cfg.database.createLocally "postgresql.service";
+      after = [ "network.target" ]
+        ++ lib.optional cfg.database.createLocally "postgresql.service";
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         Type = "exec";

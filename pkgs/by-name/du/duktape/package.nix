@@ -19,7 +19,8 @@ stdenv.mkDerivation (finalAttrs: {
 
   nativeBuildInputs = [
     validatePkgConfig
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ fixDarwinDylibNames ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ fixDarwinDylibNames ];
 
   buildPhase = ''
     make -f Makefile.sharedlibrary

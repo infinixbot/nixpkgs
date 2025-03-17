@@ -85,50 +85,50 @@ stdenv'.mkDerivation (finalAttrs: {
     makeWrapper
     go
     ninja
-  ] ++ lib.optionals withCups [ cups.dev ];
+  ]
+  ++ lib.optionals withCups [ cups.dev ];
   # bash is only used to rewrite shebangs
-  buildInputs =
+  buildInputs = [
+    bash
+    curl
+    jemalloc
+    json_c
+    libuv
+    zlib
+    libyaml
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin (
+    with darwin.apple_sdk.frameworks;
     [
-      bash
-      curl
-      jemalloc
-      json_c
-      libuv
-      zlib
-      libyaml
+      CoreFoundation
+      IOKit
+      libossp_uuid
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        CoreFoundation
-        IOKit
-        libossp_uuid
-      ]
-    )
-    ++ lib.optionals (stdenv.hostPlatform.isLinux) [
-      libcap
-      libuuid
-      lm_sensors
-    ]
-    ++ lib.optionals withCups [ cups ]
-    ++ lib.optionals withDBengine [ lz4 ]
-    ++ lib.optionals withIpmi [ freeipmi ]
-    ++ lib.optionals withNetfilter [
-      libmnl
-      libnetfilter_acct
-    ]
-    ++ lib.optionals withConnPubSub [
-      google-cloud-cpp
-      grpc
-    ]
-    ++ lib.optionals withConnPrometheus [ snappy ]
-    ++ lib.optionals withEbpf [
-      libelf
-      libbpf
-    ]
-    ++ lib.optionals (withCloud || withConnPrometheus) [ protobuf ]
-    ++ lib.optionals withSystemdJournal [ systemd ]
-    ++ lib.optionals withSsl [ openssl ];
+  )
+  ++ lib.optionals (stdenv.hostPlatform.isLinux) [
+    libcap
+    libuuid
+    lm_sensors
+  ]
+  ++ lib.optionals withCups [ cups ]
+  ++ lib.optionals withDBengine [ lz4 ]
+  ++ lib.optionals withIpmi [ freeipmi ]
+  ++ lib.optionals withNetfilter [
+    libmnl
+    libnetfilter_acct
+  ]
+  ++ lib.optionals withConnPubSub [
+    google-cloud-cpp
+    grpc
+  ]
+  ++ lib.optionals withConnPrometheus [ snappy ]
+  ++ lib.optionals withEbpf [
+    libelf
+    libbpf
+  ]
+  ++ lib.optionals (withCloud || withConnPrometheus) [ protobuf ]
+  ++ lib.optionals withSystemdJournal [ systemd ]
+  ++ lib.optionals withSsl [ openssl ];
 
   patches = [
     # Allow ndsudo to use non-hardcoded `PATH`
@@ -149,46 +149,45 @@ stdenv'.mkDerivation (finalAttrs: {
   donStrip = withDebug;
   env.NIX_CFLAGS_COMPILE = lib.optionalString withDebug "-O1 -ggdb -DNETDATA_INTERNAL_CHECKS=1";
 
-  postInstall =
-    ''
-      # Relocate one folder above.
-      mv $out/usr/* $out/
-    ''
-    + lib.optionalString (stdenv.hostPlatform.isLinux) ''
-      # rename this plugin so netdata will look for setuid wrapper
-      mv $out/libexec/netdata/plugins.d/apps.plugin \
-         $out/libexec/netdata/plugins.d/apps.plugin.org
-      mv $out/libexec/netdata/plugins.d/cgroup-network \
-         $out/libexec/netdata/plugins.d/cgroup-network.org
-      mv $out/libexec/netdata/plugins.d/perf.plugin \
-         $out/libexec/netdata/plugins.d/perf.plugin.org
-      mv $out/libexec/netdata/plugins.d/slabinfo.plugin \
-         $out/libexec/netdata/plugins.d/slabinfo.plugin.org
-      mv $out/libexec/netdata/plugins.d/debugfs.plugin \
-         $out/libexec/netdata/plugins.d/debugfs.plugin.org
-      ${lib.optionalString withSystemdJournal ''
-        mv $out/libexec/netdata/plugins.d/systemd-journal.plugin \
-           $out/libexec/netdata/plugins.d/systemd-journal.plugin.org
-      ''}
-      ${lib.optionalString withIpmi ''
-        mv $out/libexec/netdata/plugins.d/freeipmi.plugin \
-           $out/libexec/netdata/plugins.d/freeipmi.plugin.org
-      ''}
-      ${lib.optionalString withNetworkViewer ''
-        mv $out/libexec/netdata/plugins.d/network-viewer.plugin \
-           $out/libexec/netdata/plugins.d/network-viewer.plugin.org
-      ''}
-      ${lib.optionalString (!withCloudUi) ''
-        rm -rf $out/share/netdata/web/index.html
-        cp $out/share/netdata/web/v1/index.html $out/share/netdata/web/index.html
-      ''}
-      ${lib.optionalString withNdsudo ''
-        mv $out/libexec/netdata/plugins.d/ndsudo \
-          $out/libexec/netdata/plugins.d/ndsudo.org
+  postInstall = ''
+    # Relocate one folder above.
+    mv $out/usr/* $out/
+  ''
+  + lib.optionalString (stdenv.hostPlatform.isLinux) ''
+    # rename this plugin so netdata will look for setuid wrapper
+    mv $out/libexec/netdata/plugins.d/apps.plugin \
+       $out/libexec/netdata/plugins.d/apps.plugin.org
+    mv $out/libexec/netdata/plugins.d/cgroup-network \
+       $out/libexec/netdata/plugins.d/cgroup-network.org
+    mv $out/libexec/netdata/plugins.d/perf.plugin \
+       $out/libexec/netdata/plugins.d/perf.plugin.org
+    mv $out/libexec/netdata/plugins.d/slabinfo.plugin \
+       $out/libexec/netdata/plugins.d/slabinfo.plugin.org
+    mv $out/libexec/netdata/plugins.d/debugfs.plugin \
+       $out/libexec/netdata/plugins.d/debugfs.plugin.org
+    ${lib.optionalString withSystemdJournal ''
+      mv $out/libexec/netdata/plugins.d/systemd-journal.plugin \
+         $out/libexec/netdata/plugins.d/systemd-journal.plugin.org
+    ''}
+    ${lib.optionalString withIpmi ''
+      mv $out/libexec/netdata/plugins.d/freeipmi.plugin \
+         $out/libexec/netdata/plugins.d/freeipmi.plugin.org
+    ''}
+    ${lib.optionalString withNetworkViewer ''
+      mv $out/libexec/netdata/plugins.d/network-viewer.plugin \
+         $out/libexec/netdata/plugins.d/network-viewer.plugin.org
+    ''}
+    ${lib.optionalString (!withCloudUi) ''
+      rm -rf $out/share/netdata/web/index.html
+      cp $out/share/netdata/web/v1/index.html $out/share/netdata/web/index.html
+    ''}
+    ${lib.optionalString withNdsudo ''
+      mv $out/libexec/netdata/plugins.d/ndsudo \
+        $out/libexec/netdata/plugins.d/ndsudo.org
 
-        ln -s /var/lib/netdata/ndsudo/ndsudo $out/libexec/netdata/plugins.d/ndsudo
-      ''}
-    '';
+      ln -s /var/lib/netdata/ndsudo/ndsudo $out/libexec/netdata/plugins.d/ndsudo
+    ''}
+  '';
 
   preConfigure = ''
     export GOCACHE=$TMPDIR/go-cache
@@ -286,7 +285,8 @@ stdenv'.mkDerivation (finalAttrs: {
     description = "Real-time performance monitoring tool";
     homepage = "https://www.netdata.cloud/";
     changelog = "https://github.com/netdata/netdata/releases/tag/v${version}";
-    license = [ licenses.gpl3Plus ] ++ lib.optionals (withCloudUi) [ licenses.ncul1 ];
+    license = [ licenses.gpl3Plus ]
+      ++ lib.optionals (withCloudUi) [ licenses.ncul1 ];
     platforms = platforms.unix;
     maintainers = with maintainers; [
       mkg20001

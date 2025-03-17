@@ -66,8 +66,7 @@ rustPlatform.buildRustPackage {
     pkg-config
   ];
 
-  buildInputs =
-    [ openssl ]
+  buildInputs = [ openssl ]
     ++ lib.optionals stdenv.hostPlatform.isLinux [
       glib-networking
       libsoup_2_4

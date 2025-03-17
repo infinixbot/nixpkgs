@@ -106,7 +106,8 @@ stdenv.mkDerivation (finalAttrs: {
     wayland
     wayland-protocols
     (wlroots_0_17.override { inherit (finalAttrs) enableXWayland; })
-  ] ++ lib.optionals finalAttrs.enableXWayland [ xcbutilwm ];
+  ]
+  ++ lib.optionals finalAttrs.enableXWayland [ xcbutilwm ];
 
   mesonFlags =
     let

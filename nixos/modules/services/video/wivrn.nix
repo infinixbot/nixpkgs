@@ -188,7 +188,8 @@ in
             XRT_COMPOSITOR_LOG = "debug";
             XRT_PRINT_OPTIONS = "on";
             IPC_EXIT_ON_DISCONNECT = "off";
-          } // cfg.monadoEnvironment;
+          }
+          // cfg.monadoEnvironment;
           serviceConfig = {
             ExecStart = serverExec;
             # Hardening options
@@ -220,7 +221,8 @@ in
             RestartSec = 0;
             PrivateTmp = true;
           };
-          path = [ applicationPackage ] ++ cfg.extraPackages;
+          path = [ applicationPackage ]
+            ++ cfg.extraPackages;
         };
       };
     };

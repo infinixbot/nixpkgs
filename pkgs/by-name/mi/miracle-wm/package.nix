@@ -39,15 +39,14 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-LPcVLpskpmHc8EzdNqMT6BnbY8Le/BVojpXPIqy6tGI=";
   };
 
-  postPatch =
-    ''
-      substituteInPlace CMakeLists.txt \
-        --replace-fail 'DESTINATION /usr/lib' 'DESTINATION ''${CMAKE_INSTALL_LIBDIR}'
-    ''
-    + lib.optionalString (!finalAttrs.finalPackage.doCheck) ''
-      substituteInPlace CMakeLists.txt \
-        --replace-fail 'add_subdirectory(tests/)' ""
-    '';
+  postPatch = ''
+    substituteInPlace CMakeLists.txt \
+      --replace-fail 'DESTINATION /usr/lib' 'DESTINATION ''${CMAKE_INSTALL_LIBDIR}'
+  ''
+  + lib.optionalString (!finalAttrs.finalPackage.doCheck) ''
+    substituteInPlace CMakeLists.txt \
+      --replace-fail 'add_subdirectory(tests/)' ""
+  '';
 
   strictDeps = true;
 

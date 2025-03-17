@@ -34,7 +34,8 @@ buildPythonPackage rec {
     rich = [ rich ];
   };
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ lib.flatten (lib.attrValues optional-dependencies);
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ lib.flatten (lib.attrValues optional-dependencies);
 
   pythonImportsCheck = [ "catppuccin" ];
 

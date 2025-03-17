@@ -56,7 +56,8 @@ let
         src = fetchurl { inherit url hash; };
         passthru = {
           updateScript = extensionUpdateScript { inherit pname; };
-        } // args.passthru or { };
+        }
+        // args.passthru or { };
         meta = {
           inherit description;
           inherit (azure-cli.meta) platforms maintainers;
@@ -64,7 +65,8 @@ let
           changelog = "https://github.com/Azure/azure-cli-extensions/blob/main/src/${pname}/HISTORY.rst";
           license = lib.licenses.mit;
           sourceProvenance = [ lib.sourceTypes.fromSource ];
-        } // args.meta or { };
+        }
+        // args.meta or { };
       }
       // (removeAttrs args [
         "url"
@@ -246,13 +248,12 @@ py.pkgs.toPythonApplication (
       ]
       ++ lib.concatMap (extension: extension.propagatedBuildInputs) withExtensions;
 
-    postInstall =
-      lib.optionalString (stdenvNoCC.buildPlatform.canExecute stdenvNoCC.hostPlatform) ''
-        installShellCompletion --cmd az \
-          --bash <(register-python-argcomplete az --shell bash) \
-          --zsh <(register-python-argcomplete az --shell zsh) \
-          --fish <(register-python-argcomplete az --shell fish)
-      ''
+    postInstall = lib.optionalString (stdenvNoCC.buildPlatform.canExecute stdenvNoCC.hostPlatform) ''
+      installShellCompletion --cmd az \
+        --bash <(register-python-argcomplete az --shell bash) \
+        --zsh <(register-python-argcomplete az --shell zsh) \
+        --fish <(register-python-argcomplete az --shell fish)
+    ''
       + lib.optionalString withImmutableConfig ''
         export HOME=$TMPDIR
         $out/bin/az --version
@@ -269,19 +270,18 @@ py.pkgs.toPythonApplication (
 
     # wrap the executable so that the python packages are available
     # it's just a shebang script which calls `python -m azure.cli "$@"`
-    postFixup =
-      ''
-        wrapProgram $out/bin/az \
-      ''
-      + lib.optionalString withImmutableConfig ''
-        --set AZURE_IMMUTABLE_DIR $out/etc/azure \
-      ''
-      + lib.optionalString (withExtensions != [ ]) ''
-        --set AZURE_EXTENSION_DIR ${extensionDir} \
-      ''
-      + ''
-        --set PYTHONPATH "${python3.pkgs.makePythonPath propagatedBuildInputs}:$out/${python3.sitePackages}"
-      '';
+    postFixup = ''
+      wrapProgram $out/bin/az \
+    ''
+    + lib.optionalString withImmutableConfig ''
+      --set AZURE_IMMUTABLE_DIR $out/etc/azure \
+    ''
+    + lib.optionalString (withExtensions != [ ]) ''
+      --set AZURE_EXTENSION_DIR ${extensionDir} \
+    ''
+    + ''
+      --set PYTHONPATH "${python3.pkgs.makePythonPath propagatedBuildInputs}:$out/${python3.sitePackages}"
+    '';
 
     doInstallCheck = true;
     installCheckPhase = ''

@@ -71,45 +71,44 @@ buildPythonApplication rec {
       vendorHash = "sha256-Yahn+nlarPy4Yf1QmDminnHDqbe0+iJ6IsUKF0tioK4=";
     }).goModules;
 
-  buildInputs =
-    [
-      harfbuzz
-      ncurses
-      simde
-      lcms2
-      librsync
-      matplotlib
-      openssl.dev
-      xxHash
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      Cocoa
-      Kernel
-      UniformTypeIdentifiers
-      UserNotifications
-      libpng
-      python3
-      zlib
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isx86_64) [
-      Libsystem
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      fontconfig
-      libunistring
-      libcanberra
-      libX11
-      libXrandr
-      libXinerama
-      libXcursor
-      libxkbcommon
-      libXi
-      libXext
-      wayland-protocols
-      wayland
-      dbus
-      libGL
-    ];
+  buildInputs = [
+    harfbuzz
+    ncurses
+    simde
+    lcms2
+    librsync
+    matplotlib
+    openssl.dev
+    xxHash
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    Cocoa
+    Kernel
+    UniformTypeIdentifiers
+    UserNotifications
+    libpng
+    python3
+    zlib
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isx86_64) [
+    Libsystem
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    fontconfig
+    libunistring
+    libcanberra
+    libX11
+    libXrandr
+    libXinerama
+    libXcursor
+    libxkbcommon
+    libXi
+    libXext
+    wayland-protocols
+    wayland
+    dbus
+    libGL
+  ];
 
   nativeBuildInputs =
     [
@@ -212,19 +211,18 @@ buildPythonApplication rec {
       runHook postBuild
     '';
 
-  nativeCheckInputs =
-    [
-      pillow
+  nativeCheckInputs = [
+    pillow
 
-      # Shells needed for shell integration tests
-      bashInteractive
-      zsh
-      fish
-    ]
-    ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
-      # integration tests need sudo
-      sudo
-    ];
+    # Shells needed for shell integration tests
+    bashInteractive
+    zsh
+    fish
+  ]
+  ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
+    # integration tests need sudo
+    sudo
+  ];
 
   # skip failing tests due to darwin sandbox
   preCheck = lib.optionalString stdenv.hostPlatform.isDarwin ''

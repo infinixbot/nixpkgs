@@ -32,23 +32,22 @@ stdenv.mkDerivation rec {
     makeWrapper
     pkg-config
   ];
-  buildInputs =
+  buildInputs = [
+    zlib
+    ghostscript
+    imagemagick
+    plotutils
+    gd
+    libjpeg
+    libwebp
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin (
+    with darwin.apple_sdk.frameworks;
     [
-      zlib
-      ghostscript
-      imagemagick
-      plotutils
-      gd
-      libjpeg
-      libwebp
+      libiconv
+      ApplicationServices
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        libiconv
-        ApplicationServices
-      ]
-    );
+  );
 
   # '@LIBPNG_LDFLAGS@' is no longer substituted by autoconf (the code is commented out)
   # so we need to remove it from the pkg-config file as well

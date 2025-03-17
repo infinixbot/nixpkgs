@@ -31,7 +31,8 @@ let
         doxygen
       ];
 
-      buildInputs = [ zlib ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ Foundation ];
+      buildInputs = [ zlib ]
+        ++ lib.optionals stdenv.hostPlatform.isDarwin [ Foundation ];
 
       doInstallCheck = true;
 

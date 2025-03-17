@@ -27,7 +27,8 @@ buildPythonPackage rec {
     Security
   ];
 
-  nativeBuildInputs = [ cmake ] ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [ perl ];
+  nativeBuildInputs = [ cmake ]
+    ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [ perl ];
 
   dontUseCmakeConfigure = true;
 

@@ -566,14 +566,14 @@ in
         # provide settings via env vars to allow overriding default settings.
         environment = {
           HOME = "%S/dependency-track";
-        } // renderSettings cfg.settings;
+        }
+        // renderSettings cfg.settings;
         serviceConfig = {
           User = "dependency-track";
           Group = "dependency-track";
           DynamicUser = true;
           StateDirectory = "dependency-track";
-          LoadCredential =
-            [ "db_password:${cfg.database.passwordFile}" ]
+          LoadCredential = [ "db_password:${cfg.database.passwordFile}" ]
             ++ lib.optional cfg.settings."alpine.ldap.enabled"
               "ldap_bind_password:${cfg.ldap.bindPasswordFile}";
         };

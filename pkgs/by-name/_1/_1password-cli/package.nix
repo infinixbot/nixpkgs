@@ -18,7 +18,8 @@ let
       args = {
         url = "https://cache.agilebits.com/dist/1P/op2/pkg/v${version}/op_${srcPlatform}_v${version}.${extension}";
         inherit hash;
-      } // lib.optionalAttrs (extension == "zip") { stripRoot = false; };
+      }
+      // lib.optionalAttrs (extension == "zip") { stripRoot = false; };
     in
     if extension == "zip" then fetchzip args else fetchurl args;
 
@@ -48,7 +49,8 @@ stdenv.mkDerivation {
   nativeBuildInputs = [
     installShellFiles
     versionCheckHook
-  ] ++ lib.optional stdenv.hostPlatform.isLinux autoPatchelfHook;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isLinux autoPatchelfHook;
 
   buildInputs = lib.optionals stdenv.hostPlatform.isDarwin [
     xar

@@ -22,12 +22,12 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     cmake
     ninja
-  ] ++ lib.optionals mbedtlsSupport [ mbedtls ];
+  ]
+  ++ lib.optionals mbedtlsSupport [ mbedtls ];
 
   buildInputs = lib.optionals mbedtlsSupport [ mbedtls ];
 
-  cmakeFlags =
-    [ "-G Ninja" ]
+  cmakeFlags = [ "-G Ninja" ]
     ++ lib.optionals mbedtlsSupport [
       "-DMBEDTLS_ROOT_DIR=${mbedtls}"
       "-DNNG_ENABLE_TLS=ON"

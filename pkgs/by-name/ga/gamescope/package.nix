@@ -90,26 +90,25 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  nativeBuildInputs =
-    [
-      meson
-      pkg-config
-      ninja
-      wayland-scanner
-      # For `libdisplay-info`
-      python3
-      hwdata
-      edid-decode
-      # For OpenVR
-      cmake
+  nativeBuildInputs = [
+    meson
+    pkg-config
+    ninja
+    wayland-scanner
+    # For `libdisplay-info`
+    python3
+    hwdata
+    edid-decode
+    # For OpenVR
+    cmake
 
-      # calls git describe to encode its own version into the build
-      (buildPackages.writeShellScriptBin "git" "echo ${finalAttrs.version}")
-    ]
-    ++ lib.optionals enableExecutable [
-      makeBinaryWrapper
-      glslang
-    ];
+    # calls git describe to encode its own version into the build
+    (buildPackages.writeShellScriptBin "git" "echo ${finalAttrs.version}")
+  ]
+  ++ lib.optionals enableExecutable [
+    makeBinaryWrapper
+    glslang
+  ];
 
   buildInputs =
     [

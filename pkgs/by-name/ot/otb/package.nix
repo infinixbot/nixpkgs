@@ -87,7 +87,8 @@ stdenv.mkDerivation (finalAttrs: {
     perl
     swig
     tinyxml
-  ] ++ optionals enablePython ([ python3 ] ++ pythonInputs);
+  ]
+  ++ optionals enablePython ([ python3 ] ++ pythonInputs);
 
   doInstallCheck = false;
 

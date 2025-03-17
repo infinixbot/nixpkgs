@@ -47,7 +47,8 @@ stdenv.mkDerivation (finalAttrs: {
     qt6.qtmultimedia
     qt6.qtcharts
     qt6.qtwayland
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ darwin.apple_sdk.frameworks.Cocoa ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ darwin.apple_sdk.frameworks.Cocoa ];
 
   env.NIX_CFLAGS_COMPILE = "-DSHOTCUT_NOUPGRADE";
 

@@ -58,7 +58,8 @@ buildPythonPackage rec {
     pot
     pytestCheckHook
     tf-keras
-  ] ++ lib.flatten (builtins.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (builtins.attrValues optional-dependencies);
 
   disabledTests = [
     # Issues with array

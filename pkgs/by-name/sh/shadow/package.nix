@@ -63,8 +63,7 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs =
-    [ libxcrypt ]
+  buildInputs = [ libxcrypt ]
     ++ lib.optional (pam != null && stdenv.hostPlatform.isLinux) pam
     ++ lib.optional withLibbsd libbsd
     ++ lib.optional withTcb tcb;

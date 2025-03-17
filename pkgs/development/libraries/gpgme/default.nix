@@ -57,7 +57,8 @@ stdenv.mkDerivation rec {
     libassuan
     libgpg-error
     pth
-  ] ++ lib.optionals (qtbase != null) [ qtbase ];
+  ]
+  ++ lib.optionals (qtbase != null) [ qtbase ];
 
   nativeCheckInputs = [ which ];
 

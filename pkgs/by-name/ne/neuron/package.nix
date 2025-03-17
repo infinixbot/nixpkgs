@@ -48,25 +48,24 @@ stdenv.mkDerivation (finalAttrs: {
     xorg.libXext.dev
   ];
 
-  propagatedBuildInputs =
-    [
-      readline
-      python3
-      python3.pkgs.wheel
-      python3.pkgs.setuptools
-      python3.pkgs.scikit-build
-      python3.pkgs.matplotlib
-    ]
-    ++ optionals useMpi [
-      mpi
-    ]
-    ++ optionals useMpi [
-      python3.pkgs.mpi4py
-    ]
-    ++ optionals useRx3d [
-      python3.pkgs.cython_0 # NOTE: cython<3 is required as of 8.2.6
-      python3.pkgs.numpy
-    ];
+  propagatedBuildInputs = [
+    readline
+    python3
+    python3.pkgs.wheel
+    python3.pkgs.setuptools
+    python3.pkgs.scikit-build
+    python3.pkgs.matplotlib
+  ]
+  ++ optionals useMpi [
+    mpi
+  ]
+  ++ optionals useMpi [
+    python3.pkgs.mpi4py
+  ]
+  ++ optionals useRx3d [
+    python3.pkgs.cython_0 # NOTE: cython<3 is required as of 8.2.6
+    python3.pkgs.numpy
+  ];
 
   # Patch build shells for cmake (bin, src, cmake) and submodules (external)
   postPatch = ''

@@ -26,7 +26,8 @@ let
   package = if cfg.buildMinimalPackage then minimalPackage else cfg.package;
 
   minimalPackage = cfg.package.override {
-    enabledPlugins = [ "syslog" ] ++ builtins.attrNames cfg.plugins;
+    enabledPlugins = [ "syslog" ]
+      ++ builtins.attrNames cfg.plugins;
   };
 
 in

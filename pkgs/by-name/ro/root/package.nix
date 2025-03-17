@@ -125,39 +125,38 @@ stdenv.mkDerivation rec {
       libGL
     ];
 
-  preConfigure =
-    ''
-      for path in builtins/*; do
-        if [[ "$path" != "builtins/openui5" ]] && [[ "$path" != "builtins/rendercore" ]]; then
-          rm -rf "$path"
-        fi
-      done
-      substituteInPlace cmake/modules/SearchInstalledSoftware.cmake \
-        --replace-fail 'set(lcgpackages ' '#set(lcgpackages '
+  preConfigure = ''
+    for path in builtins/*; do
+      if [[ "$path" != "builtins/openui5" ]] && [[ "$path" != "builtins/rendercore" ]]; then
+        rm -rf "$path"
+      fi
+    done
+    substituteInPlace cmake/modules/SearchInstalledSoftware.cmake \
+      --replace-fail 'set(lcgpackages ' '#set(lcgpackages '
 
-      # Make sure that clad is not downloaded when building
-      substituteInPlace interpreter/cling/tools/plugins/clad/CMakeLists.txt \
-        --replace-fail 'UPDATE_COMMAND ""' 'DOWNLOAD_COMMAND "" UPDATE_COMMAND ""'
-      # Make sure that clad is finding the right llvm version
-      substituteInPlace interpreter/cling/tools/plugins/clad/CMakeLists.txt \
-        --replace-fail '-DLLVM_DIR=''${LLVM_BINARY_DIR}' '-DLLVM_DIR=''${LLVM_CMAKE_PATH}'
+    # Make sure that clad is not downloaded when building
+    substituteInPlace interpreter/cling/tools/plugins/clad/CMakeLists.txt \
+      --replace-fail 'UPDATE_COMMAND ""' 'DOWNLOAD_COMMAND "" UPDATE_COMMAND ""'
+    # Make sure that clad is finding the right llvm version
+    substituteInPlace interpreter/cling/tools/plugins/clad/CMakeLists.txt \
+      --replace-fail '-DLLVM_DIR=''${LLVM_BINARY_DIR}' '-DLLVM_DIR=''${LLVM_CMAKE_PATH}'
 
-      substituteInPlace interpreter/llvm-project/clang/tools/driver/CMakeLists.txt \
-        --replace-fail 'add_clang_symlink(''${link} clang)' ""
+    substituteInPlace interpreter/llvm-project/clang/tools/driver/CMakeLists.txt \
+      --replace-fail 'add_clang_symlink(''${link} clang)' ""
 
-      patchShebangs cmake/unix/
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      # Eliminate impure reference to /System/Library/PrivateFrameworks
-      substituteInPlace core/macosx/CMakeLists.txt \
-        --replace-fail "-F/System/Library/PrivateFrameworks " ""
-    ''
-    +
-      lib.optionalString
-        (stdenv.hostPlatform.isDarwin && lib.versionAtLeast stdenv.hostPlatform.darwinMinVersion "11")
-        ''
-          MACOSX_DEPLOYMENT_TARGET=10.16
-        '';
+    patchShebangs cmake/unix/
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    # Eliminate impure reference to /System/Library/PrivateFrameworks
+    substituteInPlace core/macosx/CMakeLists.txt \
+      --replace-fail "-F/System/Library/PrivateFrameworks " ""
+  ''
+  +
+    lib.optionalString
+      (stdenv.hostPlatform.isDarwin && lib.versionAtLeast stdenv.hostPlatform.darwinMinVersion "11")
+      ''
+        MACOSX_DEPLOYMENT_TARGET=10.16
+      '';
 
   cmakeFlags =
     [

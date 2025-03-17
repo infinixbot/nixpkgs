@@ -58,8 +58,7 @@ effectiveStdenv.mkDerivation (finalAttrs: {
 
   pythonInputs = builtins.attrValues { inherit (python3Packages) tkinter customtkinter packaging; };
 
-  buildInputs =
-    [ tk ]
+  buildInputs = [ tk ]
     ++ finalAttrs.pythonInputs
     ++ lib.optionals stdenv.hostPlatform.isDarwin [ apple-sdk_12 ]
     ++ lib.optionals cublasSupport [

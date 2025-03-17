@@ -42,7 +42,8 @@ stdenv.mkDerivation rec {
     libGL
     libXfixes
     xinput
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin CoreServices;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin CoreServices;
 
   doCheck = true;
 

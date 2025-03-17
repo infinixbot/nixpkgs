@@ -29,19 +29,18 @@ stdenv.mkDerivation rec {
 
   env.NIX_LDFLAGS = "-lhamlib";
 
-  buildInputs =
-    [
-      qtbase
-      qtcharts
-      qtwebengine
-      qtserialport
-      qtwebchannel
-      hamlib
-      qtkeychain
-    ]
-    ++ (lib.optionals stdenv.hostPlatform.isDarwin [
-      cups
-    ]);
+  buildInputs = [
+    qtbase
+    qtcharts
+    qtwebengine
+    qtserialport
+    qtwebchannel
+    hamlib
+    qtkeychain
+  ]
+  ++ (lib.optionals stdenv.hostPlatform.isDarwin [
+    cups
+  ]);
 
   nativeBuildInputs = [
     wrapQtAppsHook

@@ -70,10 +70,10 @@ effectiveStdenv.mkDerivation (finalAttrs: {
     autoconf
     automake
     libtool
-  ] ++ optionals enableCuda [ cuda_nvcc ];
+  ]
+  ++ optionals enableCuda [ cuda_nvcc ];
 
-  buildInputs =
-    [ ucx ]
+  buildInputs = [ ucx ]
     ++ optionals enableCuda [
       cuda_cccl
       cuda_cudart

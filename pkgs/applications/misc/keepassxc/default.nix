@@ -71,20 +71,19 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  cmakeFlags =
-    [
-      "-DKEEPASSXC_BUILD_TYPE=Release"
-      "-DWITH_GUI_TESTS=ON"
-      "-DWITH_XC_UPDATECHECK=OFF"
-    ]
-    ++ (lib.optional (!withKeePassX11) "-DWITH_XC_X11=OFF")
-    ++ (lib.optional (withKeePassFDOSecrets && stdenv.hostPlatform.isLinux) "-DWITH_XC_FDOSECRETS=ON")
-    ++ (lib.optional (withKeePassYubiKey && stdenv.hostPlatform.isLinux) "-DWITH_XC_YUBIKEY=ON")
-    ++ (lib.optional withKeePassBrowser "-DWITH_XC_BROWSER=ON")
-    ++ (lib.optional withKeePassBrowserPasskeys "-DWITH_XC_BROWSER_PASSKEYS=ON")
-    ++ (lib.optional withKeePassKeeShare "-DWITH_XC_KEESHARE=ON")
-    ++ (lib.optional withKeePassNetworking "-DWITH_XC_NETWORKING=ON")
-    ++ (lib.optional withKeePassSSHAgent "-DWITH_XC_SSHAGENT=ON");
+  cmakeFlags = [
+    "-DKEEPASSXC_BUILD_TYPE=Release"
+    "-DWITH_GUI_TESTS=ON"
+    "-DWITH_XC_UPDATECHECK=OFF"
+  ]
+  ++ (lib.optional (!withKeePassX11) "-DWITH_XC_X11=OFF")
+  ++ (lib.optional (withKeePassFDOSecrets && stdenv.hostPlatform.isLinux) "-DWITH_XC_FDOSECRETS=ON")
+  ++ (lib.optional (withKeePassYubiKey && stdenv.hostPlatform.isLinux) "-DWITH_XC_YUBIKEY=ON")
+  ++ (lib.optional withKeePassBrowser "-DWITH_XC_BROWSER=ON")
+  ++ (lib.optional withKeePassBrowserPasskeys "-DWITH_XC_BROWSER_PASSKEYS=ON")
+  ++ (lib.optional withKeePassKeeShare "-DWITH_XC_KEESHARE=ON")
+  ++ (lib.optional withKeePassNetworking "-DWITH_XC_NETWORKING=ON")
+  ++ (lib.optional withKeePassSSHAgent "-DWITH_XC_SSHAGENT=ON");
 
   doCheck = true;
   checkPhase = ''
@@ -106,16 +105,16 @@ stdenv.mkDerivation rec {
     wrapQtAppsHook
     qttools
     pkg-config
-  ] ++ lib.optional (!stdenv.hostPlatform.isDarwin) wrapGAppsHook3;
+  ]
+  ++ lib.optional (!stdenv.hostPlatform.isDarwin) wrapGAppsHook3;
 
   dontWrapGApps = true;
-  preFixup =
-    ''
-      qtWrapperArgs+=("''${gappsWrapperArgs[@]}")
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      wrapQtApp "$out/Applications/KeePassXC.app/Contents/MacOS/KeePassXC"
-    '';
+  preFixup = ''
+    qtWrapperArgs+=("''${gappsWrapperArgs[@]}")
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    wrapQtApp "$out/Applications/KeePassXC.app/Contents/MacOS/KeePassXC"
+  '';
 
   # See https://github.com/keepassxreboot/keepassxc/blob/cd7a53abbbb81e468efb33eb56eefc12739969b8/src/browser/NativeMessageInstaller.cpp#L317
   postInstall = lib.optionalString withKeePassBrowser ''
@@ -123,26 +122,25 @@ stdenv.mkDerivation rec {
     substituteAll "${./firefox-native-messaging-host.json}" "$out/lib/mozilla/native-messaging-hosts/org.keepassxc.keepassxc_browser.json"
   '';
 
-  buildInputs =
-    [
-      curl
-      botan3
-      kio
-      libXi
-      libXtst
-      libargon2
-      minizip
-      pcsclite
-      qrencode
-      qtbase
-      qtsvg
-      readline
-      zlib
-    ]
-    ++ lib.optional (stdenv.hostPlatform.isDarwin && withKeePassTouchID) LocalAuthentication
-    ++ lib.optional stdenv.hostPlatform.isDarwin qtmacextras
-    ++ lib.optional stdenv.hostPlatform.isLinux libusb1
-    ++ lib.optional withKeePassX11 qtx11extras;
+  buildInputs = [
+    curl
+    botan3
+    kio
+    libXi
+    libXtst
+    libargon2
+    minizip
+    pcsclite
+    qrencode
+    qtbase
+    qtsvg
+    readline
+    zlib
+  ]
+  ++ lib.optional (stdenv.hostPlatform.isDarwin && withKeePassTouchID) LocalAuthentication
+  ++ lib.optional stdenv.hostPlatform.isDarwin qtmacextras
+  ++ lib.optional stdenv.hostPlatform.isLinux libusb1
+  ++ lib.optional withKeePassX11 qtx11extras;
 
   passthru.tests = nixosTests.keepassxc;
 

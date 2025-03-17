@@ -64,7 +64,8 @@ buildPythonPackage rec {
 
   optional-dependencies =
     let
-      dask-dataframe = [ dask ] ++ dask.optional-dependencies.dataframe;
+      dask-dataframe = [ dask ]
+        ++ dask.optional-dependencies.dataframe;
       extras = {
         strategies = [ hypothesis ];
         hypotheses = [ scipy ];
@@ -104,7 +105,8 @@ buildPythonPackage rec {
     pytest-asyncio
     joblib
     pyarrow
-  ] ++ optional-dependencies.all;
+  ]
+  ++ optional-dependencies.all;
 
   pytestFlagsArray = [
     # KeyError: 'dask'

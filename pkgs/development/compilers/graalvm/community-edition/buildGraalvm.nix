@@ -117,7 +117,8 @@ let
       nativeBuildInputs = [
         unzip
         makeWrapper
-      ] ++ lib.optional stdenv.hostPlatform.isLinux autoPatchelfHook;
+      ]
+      ++ lib.optional stdenv.hostPlatform.isLinux autoPatchelfHook;
 
       propagatedBuildInputs = [
         setJavaClassPath
@@ -248,7 +249,8 @@ let
           ./update.sh
           "graalvm-ce"
         ];
-      } // (args.passhtru or { });
+      }
+      // (args.passhtru or { });
 
       meta =
         with lib;

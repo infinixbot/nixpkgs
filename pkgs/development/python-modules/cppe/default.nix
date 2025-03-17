@@ -40,7 +40,8 @@ buildPythonPackage rec {
 
   format = "setuptools";
 
-  buildInputs = [ pybind11 ] ++ lib.optional stdenv.cc.isClang llvmPackages.openmp;
+  buildInputs = [ pybind11 ]
+    ++ lib.optional stdenv.cc.isClang llvmPackages.openmp;
 
   NIX_CFLAGS_LINK = lib.optional stdenv.cc.isClang "-lomp";
 

@@ -32,7 +32,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-y7f+imMH9c5TOgXN7XC7k8O6BjlaubbQB+tTt12AX1s=";
   };
 
-  outputs = [ "out" ] ++ lib.optional withUtils "lib" ++ [ "dev" ];
+  outputs = [ "out" ]
+    ++ lib.optional withUtils "lib" ++ [ "dev" ];
 
   configureFlags = (
     if withUtils then
@@ -54,7 +55,8 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     pkg-config
     perl
-  ] ++ lib.optional withQt wrapQtAppsHook;
+  ]
+  ++ lib.optional withQt wrapQtAppsHook;
 
   buildInputs =
     [ udev ]

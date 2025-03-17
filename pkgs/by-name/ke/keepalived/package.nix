@@ -25,17 +25,16 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-Faj7fgCYdjZ8yPH/GrDG9t+O1n+h/9lHCE7vMe4kROQ=";
   };
 
-  buildInputs =
-    [
-      file
-      libmnl
-      libnftnl
-      libnl
-      openssl
-    ]
-    ++ lib.optionals withNetSnmp [
-      net-snmp
-    ];
+  buildInputs = [
+    file
+    libmnl
+    libnftnl
+    libnl
+    openssl
+  ]
+  ++ lib.optionals withNetSnmp [
+    net-snmp
+  ];
 
   enableParallelBuilding = true;
 
@@ -46,13 +45,12 @@ stdenv.mkDerivation rec {
     autoreconfHook
   ];
 
-  configureFlags =
-    [
-      "--enable-sha1"
-    ]
-    ++ lib.optionals withNetSnmp [
-      "--enable-snmp"
-    ];
+  configureFlags = [
+    "--enable-sha1"
+  ]
+  ++ lib.optionals withNetSnmp [
+    "--enable-snmp"
+  ];
 
   meta = with lib; {
     homepage = "https://keepalived.org";

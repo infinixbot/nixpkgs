@@ -36,21 +36,20 @@ rustPlatform.buildRustPackage rec {
     gnupg
   ];
 
-  buildInputs =
+  buildInputs = [
+    openssl
+    sqlite
+    pcsclite
+    nettle
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin (
+    with darwin.apple_sdk.frameworks;
     [
-      openssl
-      sqlite
-      pcsclite
-      nettle
+      PCSC
+      Security
+      SystemConfiguration
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        PCSC
-        Security
-        SystemConfiguration
-      ]
-    );
+  );
 
   # Most tests rely on gnupg being able to write to /run/user
   # gnupg refuses to respect the XDG_RUNTIME_DIR variable, so we skip the tests

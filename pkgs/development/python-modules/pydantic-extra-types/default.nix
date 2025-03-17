@@ -45,7 +45,8 @@ buildPythonPackage rec {
 
   pythonImportsCheck = [ "pydantic_extra_types" ];
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ optional-dependencies.all;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ optional-dependencies.all;
 
   disabledTests = [
     # outdated jsonschema fixture

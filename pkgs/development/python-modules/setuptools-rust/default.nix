@@ -47,8 +47,7 @@ buildPythonPackage rec {
       format = "setuptools";
       buildAndTestSubdir = null;
 
-      nativeBuildInputs =
-        [ setuptools-rust ]
+      nativeBuildInputs = [ setuptools-rust ]
         ++ [
           rustPlatform.cargoSetupHook
           cargo

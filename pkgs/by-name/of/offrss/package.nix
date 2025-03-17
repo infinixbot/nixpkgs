@@ -30,17 +30,16 @@ stdenv.mkDerivation rec {
   #     offrss.o:offrss.h:75: first defined here
   env.NIX_CFLAGS_COMPILE = "-fcommon";
 
-  configurePhase =
-    ''
-      substituteInPlace Makefile \
-        --replace '$(CC) $(CFLAGS) $(LDFLAGS)' '$(CXX) $(CFLAGS) $(LDFLAGS)'
-    ''
-    + lib.optionalString (!stdenv.hostPlatform.isLinux) ''
-      sed 's/#EXTRA/EXTRA/' -i Makefile
-    ''
-    + lib.optionalString (stdenv.hostPlatform != stdenv.buildPlatform) ''
-      sed 's/^PDF/#PDF/' -i Makefile
-    '';
+  configurePhase = ''
+    substituteInPlace Makefile \
+      --replace '$(CC) $(CFLAGS) $(LDFLAGS)' '$(CXX) $(CFLAGS) $(LDFLAGS)'
+  ''
+  + lib.optionalString (!stdenv.hostPlatform.isLinux) ''
+    sed 's/#EXTRA/EXTRA/' -i Makefile
+  ''
+  + lib.optionalString (stdenv.hostPlatform != stdenv.buildPlatform) ''
+    sed 's/^PDF/#PDF/' -i Makefile
+  '';
 
   src = fetchurl {
     url = "http://vicerveza.homeunix.net/~viric/soft/offrss/offrss-${version}.tar.gz";

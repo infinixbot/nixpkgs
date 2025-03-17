@@ -98,34 +98,33 @@ stdenv.mkDerivation {
     wrapGAppsHook3
   ];
 
-  buildInputs =
-    [
-      qtbase
-      qtmultimedia
-      openal
-      glew
-      vulkan-headers
-      vulkan-loader
-      libpng
-      ffmpeg
-      libevdev
-      zlib
-      libusb1
-      curl
-      wolfssl
-      python3
-      pugixml
-      SDL2
-      flatbuffers
-      llvm_16
-      libSM
-    ]
-    ++ cubeb.passthru.backendLibs
-    ++ lib.optional faudioSupport faudio
-    ++ lib.optionals waylandSupport [
-      wayland
-      qtwayland
-    ];
+  buildInputs = [
+    qtbase
+    qtmultimedia
+    openal
+    glew
+    vulkan-headers
+    vulkan-loader
+    libpng
+    ffmpeg
+    libevdev
+    zlib
+    libusb1
+    curl
+    wolfssl
+    python3
+    pugixml
+    SDL2
+    flatbuffers
+    llvm_16
+    libSM
+  ]
+  ++ cubeb.passthru.backendLibs
+  ++ lib.optional faudioSupport faudio
+  ++ lib.optionals waylandSupport [
+    wayland
+    qtwayland
+  ];
 
   preFixup = ''
     qtWrapperArgs+=("''${gappsWrapperArgs[@]}")

@@ -21,7 +21,8 @@ stdenv.mkDerivation {
   version = why3.version;
 
   nativeBuildInputs = [ makeWrapper ];
-  buildInputs = [ why3 ] ++ provers;
+  buildInputs = [ why3 ]
+    ++ provers;
 
   dontUnpack = true;
 

@@ -3127,19 +3127,18 @@ let
     };
 
   renderConfig = def: {
-    text =
-      ''
-        [Network]
-        ${attrsToSection def.networkConfig}
-      ''
-      + optionalString (def.dhcpV4Config != { }) ''
-        [DHCPv4]
-        ${attrsToSection def.dhcpV4Config}
-      ''
-      + optionalString (def.dhcpV6Config != { }) ''
-        [DHCPv6]
-        ${attrsToSection def.dhcpV6Config}
-      '';
+    text = ''
+      [Network]
+      ${attrsToSection def.networkConfig}
+    ''
+    + optionalString (def.dhcpV4Config != { }) ''
+      [DHCPv4]
+      ${attrsToSection def.dhcpV4Config}
+    ''
+    + optionalString (def.dhcpV6Config != { }) ''
+      [DHCPv6]
+      ${attrsToSection def.dhcpV6Config}
+    '';
   };
 
   mkUnitFiles =

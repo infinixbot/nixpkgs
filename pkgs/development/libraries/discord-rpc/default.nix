@@ -26,7 +26,8 @@ stdenv.mkDerivation rec {
 
   buildInputs = [
     rapidjson
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin AppKit;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin AppKit;
 
   cmakeFlags = [
     "-DBUILD_SHARED_LIBS=true"

@@ -24,8 +24,7 @@ ocamlPackages.buildDunePackage rec {
     pkg-config
   ];
 
-  buildInputs =
-    [ libdrm ]
+  buildInputs = [ libdrm ]
     ++ (with ocamlPackages; [
       dune-configurator
       eio_main

@@ -29,8 +29,7 @@ python3Packages.buildPythonApplication rec {
 
   nativeBuildInputs = [ cmake ];
 
-  propagatedBuildInputs =
-    [ anki ]
+  propagatedBuildInputs = [ anki ]
     ++ (with python3Packages; [
       beartype
       click

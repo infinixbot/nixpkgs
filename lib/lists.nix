@@ -1232,7 +1232,10 @@ rec {
     # Slow, but short. Can be made a bit faster with an explicit stack.
     else
       # there are no cycles
-      { result = [ dfsthis.minimal ] ++ toporest.result; };
+      {
+        result = [ dfsthis.minimal ]
+          ++ toporest.result;
+      };
 
   /**
     Sort a list based on a comparator function which compares two

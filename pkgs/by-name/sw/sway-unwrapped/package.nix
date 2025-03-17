@@ -96,26 +96,25 @@ stdenv.mkDerivation (finalAttrs: {
     scdoc
   ];
 
-  buildInputs =
-    [
-      libGL
-      wayland
-      libxkbcommon
-      pcre2
-      json_c
-      libevdev
-      pango
-      cairo
-      libinput
-      gdk-pixbuf
-      librsvg
-      wayland-protocols
-      libdrm
-      (wlroots.override { inherit (finalAttrs) enableXWayland; })
-    ]
-    ++ lib.optionals finalAttrs.enableXWayland [
-      xorg.xcbutilwm
-    ];
+  buildInputs = [
+    libGL
+    wayland
+    libxkbcommon
+    pcre2
+    json_c
+    libevdev
+    pango
+    cairo
+    libinput
+    gdk-pixbuf
+    librsvg
+    wayland-protocols
+    libdrm
+    (wlroots.override { inherit (finalAttrs) enableXWayland; })
+  ]
+  ++ lib.optionals finalAttrs.enableXWayland [
+    xorg.xcbutilwm
+  ];
 
   mesonFlags =
     let

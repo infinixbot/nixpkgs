@@ -207,34 +207,33 @@ lib.makeOverridable (
         inherit src;
 
         depsBuildBuild = [ buildPackages.stdenv.cc ];
-        nativeBuildInputs =
-          [
-            bison
-            flex
-            perl
-            bc
-            nettools
-            openssl
-            rsync
-            gmp
-            libmpc
-            mpfr
-            elfutils
-            zstd
-            python3Minimal
-            kmod
-            hexdump
-          ]
-          ++ optional needsUbootTools ubootTools
-          ++ optionals (lib.versionAtLeast version "5.2") [
-            cpio
-            pahole
-            zlib
-          ]
-          ++ optionals withRust [
-            rustc
-            rust-bindgen
-          ];
+        nativeBuildInputs = [
+          bison
+          flex
+          perl
+          bc
+          nettools
+          openssl
+          rsync
+          gmp
+          libmpc
+          mpfr
+          elfutils
+          zstd
+          python3Minimal
+          kmod
+          hexdump
+        ]
+        ++ optional needsUbootTools ubootTools
+        ++ optionals (lib.versionAtLeast version "5.2") [
+          cpio
+          pahole
+          zlib
+        ]
+        ++ optionals withRust [
+          rustc
+          rust-bindgen
+        ];
 
         RUST_LIB_SRC = lib.optionalString withRust rustPlatform.rustLibSrc;
 
@@ -324,18 +323,17 @@ lib.makeOverridable (
           cd $buildRoot
         '';
 
-        buildFlags =
-          [
-            "KBUILD_BUILD_VERSION=1-NixOS"
-            kernelConf.target
-            "vmlinux" # for "perf" and things like that
-          ]
-          ++ optional isModular "modules"
-          ++ optionals buildDTBs [
-            "dtbs"
-            "DTC_FLAGS=-@"
-          ]
-          ++ extraMakeFlags;
+        buildFlags = [
+          "KBUILD_BUILD_VERSION=1-NixOS"
+          kernelConf.target
+          "vmlinux" # for "perf" and things like that
+        ]
+        ++ optional isModular "modules"
+        ++ optionals buildDTBs [
+          "dtbs"
+          "DTC_FLAGS=-@"
+        ]
+        ++ extraMakeFlags;
 
         installFlags =
           [
@@ -525,24 +523,24 @@ lib.makeOverridable (
             ]
             ++ lib.optional (lib.versionOlder version "5.19") "loongarch64-linux";
           timeout = 14400; # 4 hours
-        } // extraMeta;
+        }
+        // extraMeta;
       };
 
     # Absolute paths for compilers avoid any PATH-clobbering issues.
-    commonMakeFlags =
-      [
-        "ARCH=${stdenv.hostPlatform.linuxArch}"
-        "CROSS_COMPILE=${stdenv.cc.targetPrefix}"
-      ]
-      ++ lib.optionals (stdenv.isx86_64 && stdenv.cc.bintools.isLLVM) [
-        # The wrapper for ld.lld breaks linking the kernel. We use the
-        # unwrapped linker as workaround. See:
-        #
-        # https://github.com/NixOS/nixpkgs/issues/321667
-        "LD=${stdenv.cc.bintools.bintools}/bin/${stdenv.cc.targetPrefix}ld"
-      ]
-      ++ (stdenv.hostPlatform.linux-kernel.makeFlags or [ ])
-      ++ extraMakeFlags;
+    commonMakeFlags = [
+      "ARCH=${stdenv.hostPlatform.linuxArch}"
+      "CROSS_COMPILE=${stdenv.cc.targetPrefix}"
+    ]
+    ++ lib.optionals (stdenv.isx86_64 && stdenv.cc.bintools.isLLVM) [
+      # The wrapper for ld.lld breaks linking the kernel. We use the
+      # unwrapped linker as workaround. See:
+      #
+      # https://github.com/NixOS/nixpkgs/issues/321667
+      "LD=${stdenv.cc.bintools.bintools}/bin/${stdenv.cc.targetPrefix}ld"
+    ]
+    ++ (stdenv.hostPlatform.linux-kernel.makeFlags or [ ])
+    ++ extraMakeFlags;
   in
 
   stdenv.mkDerivation (
@@ -564,7 +562,8 @@ lib.makeOverridable (
 
         makeFlags = [
           "O=$(buildRoot)"
-        ] ++ commonMakeFlags;
+        ]
+        ++ commonMakeFlags;
 
         passthru = { inherit commonMakeFlags; };
 

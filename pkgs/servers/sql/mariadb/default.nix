@@ -93,29 +93,28 @@ let
           ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames
           ++ lib.optional (!stdenv.hostPlatform.isDarwin) makeWrapper;
 
-        buildInputs =
+        buildInputs = [
+          libiconv
+          ncurses
+          zlib
+          pcre2
+          openssl
+          curl
+        ]
+        ++ lib.optionals stdenv.hostPlatform.isLinux (
           [
-            libiconv
-            ncurses
-            zlib
-            pcre2
-            openssl
-            curl
+            libkrb5
+            systemd
           ]
-          ++ lib.optionals stdenv.hostPlatform.isLinux (
-            [
-              libkrb5
-              systemd
-            ]
-            ++ (if (lib.versionOlder version "10.6") then [ libaio ] else [ liburing ])
-          )
-          ++ lib.optionals stdenv.hostPlatform.isDarwin [
-            CoreServices
-            cctools
-            perl
-            libedit
-          ]
-          ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [ jemalloc ];
+          ++ (if (lib.versionOlder version "10.6") then [ libaio ] else [ liburing ])
+        )
+        ++ lib.optionals stdenv.hostPlatform.isDarwin [
+          CoreServices
+          cctools
+          perl
+          libedit
+        ]
+        ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [ jemalloc ];
 
         prePatch = ''
           sed -i 's,[^"]*/var/log,/var/log,g' storage/mroonga/vendor/groonga/CMakeLists.txt
@@ -131,54 +130,53 @@ let
             !stdenv.hostPlatform.isLinux && lib.versionAtLeast version "10.6"
           ) ./patch/macos-MDEV-26769-regression-fix.patch;
 
-        cmakeFlags =
-          [
-            "-DBUILD_CONFIG=mysql_release"
-            "-DMANUFACTURER=nixos.org"
-            "-DDEFAULT_CHARSET=utf8mb4"
-            "-DDEFAULT_COLLATION=utf8mb4_unicode_ci"
-            "-DSECURITY_HARDENED=ON"
+        cmakeFlags = [
+          "-DBUILD_CONFIG=mysql_release"
+          "-DMANUFACTURER=nixos.org"
+          "-DDEFAULT_CHARSET=utf8mb4"
+          "-DDEFAULT_COLLATION=utf8mb4_unicode_ci"
+          "-DSECURITY_HARDENED=ON"
 
-            "-DINSTALL_UNIX_ADDRDIR=/run/mysqld/mysqld.sock"
-            "-DINSTALL_BINDIR=bin"
-            "-DINSTALL_DOCDIR=share/doc/mysql"
-            "-DINSTALL_DOCREADMEDIR=share/doc/mysql"
-            "-DINSTALL_INCLUDEDIR=include/mysql"
-            "-DINSTALL_LIBDIR=lib"
-            "-DINSTALL_PLUGINDIR=lib/mysql/plugin"
-            "-DINSTALL_INFODIR=share/mysql/docs"
-            "-DINSTALL_MANDIR=share/man"
-            "-DINSTALL_MYSQLSHAREDIR=share/mysql"
-            "-DINSTALL_SCRIPTDIR=bin"
-            "-DINSTALL_SUPPORTFILESDIR=share/doc/mysql"
-            "-DINSTALL_MYSQLTESTDIR=OFF"
-            "-DINSTALL_SQLBENCHDIR=OFF"
-            "-DINSTALL_PAMDIR=share/pam/lib/security"
-            "-DINSTALL_PAMDATADIR=share/pam/etc/security"
+          "-DINSTALL_UNIX_ADDRDIR=/run/mysqld/mysqld.sock"
+          "-DINSTALL_BINDIR=bin"
+          "-DINSTALL_DOCDIR=share/doc/mysql"
+          "-DINSTALL_DOCREADMEDIR=share/doc/mysql"
+          "-DINSTALL_INCLUDEDIR=include/mysql"
+          "-DINSTALL_LIBDIR=lib"
+          "-DINSTALL_PLUGINDIR=lib/mysql/plugin"
+          "-DINSTALL_INFODIR=share/mysql/docs"
+          "-DINSTALL_MANDIR=share/man"
+          "-DINSTALL_MYSQLSHAREDIR=share/mysql"
+          "-DINSTALL_SCRIPTDIR=bin"
+          "-DINSTALL_SUPPORTFILESDIR=share/doc/mysql"
+          "-DINSTALL_MYSQLTESTDIR=OFF"
+          "-DINSTALL_SQLBENCHDIR=OFF"
+          "-DINSTALL_PAMDIR=share/pam/lib/security"
+          "-DINSTALL_PAMDATADIR=share/pam/etc/security"
 
-            "-DWITH_ZLIB=system"
-            "-DWITH_SSL=system"
-            "-DWITH_PCRE=system"
-            "-DWITH_SAFEMALLOC=OFF"
-            "-DWITH_UNIT_TESTS=OFF"
-            "-DEMBEDDED_LIBRARY=OFF"
-          ]
-          ++ lib.optionals stdenv.hostPlatform.isDarwin [
-            # On Darwin without sandbox, CMake will find the system java and attempt to build with java support, but
-            # then it will fail during the actual build. Let's just disable the flag explicitly until someone decides
-            # to pass in java explicitly.
-            "-DCONNECT_WITH_JDBC=OFF"
-            "-DCURSES_LIBRARY=${ncurses.out}/lib/libncurses.dylib"
-          ]
-          ++ lib.optionals (stdenv.hostPlatform.isDarwin && lib.versionAtLeast version "10.6") [
-            # workaround for https://jira.mariadb.org/browse/MDEV-29925
-            "-Dhave_C__Wl___as_needed="
-          ]
-          ++ lib.optionals isCross [
-            # revisit this if nixpkgs supports any architecture whose stack grows upwards
-            "-DSTACK_DIRECTION=-1"
-            "-DCMAKE_CROSSCOMPILING_EMULATOR=${stdenv.hostPlatform.emulator buildPackages}"
-          ];
+          "-DWITH_ZLIB=system"
+          "-DWITH_SSL=system"
+          "-DWITH_PCRE=system"
+          "-DWITH_SAFEMALLOC=OFF"
+          "-DWITH_UNIT_TESTS=OFF"
+          "-DEMBEDDED_LIBRARY=OFF"
+        ]
+        ++ lib.optionals stdenv.hostPlatform.isDarwin [
+          # On Darwin without sandbox, CMake will find the system java and attempt to build with java support, but
+          # then it will fail during the actual build. Let's just disable the flag explicitly until someone decides
+          # to pass in java explicitly.
+          "-DCONNECT_WITH_JDBC=OFF"
+          "-DCURSES_LIBRARY=${ncurses.out}/lib/libncurses.dylib"
+        ]
+        ++ lib.optionals (stdenv.hostPlatform.isDarwin && lib.versionAtLeast version "10.6") [
+          # workaround for https://jira.mariadb.org/browse/MDEV-29925
+          "-Dhave_C__Wl___as_needed="
+        ]
+        ++ lib.optionals isCross [
+          # revisit this if nixpkgs supports any architecture whose stack grows upwards
+          "-DSTACK_DIRECTION=-1"
+          "-DCMAKE_CROSSCOMPILING_EMULATOR=${stdenv.hostPlatform.emulator buildPackages}"
+        ];
 
         postInstall = lib.optionalString (!withEmbedded) ''
           # Remove Development components. Need to use libmysqlclient.
@@ -336,21 +334,20 @@ let
             patchShebangs scripts/mytop.sh
           '';
 
-          postInstall =
-            common.postInstall
-            + ''
-              rm -r "$out"/share/aclocal
-              chmod +x "$out"/bin/wsrep_sst_common
-              rm -f "$out"/bin/{mariadb-client-test,mariadb-test,mysql_client_test,mysqltest}
-            ''
-            + lib.optionalString withStorageMroonga ''
-              mv "$out"/share/{groonga,groonga-normalizer-mysql} "$out"/share/doc/mysql
-            ''
-            + lib.optionalString (!stdenv.hostPlatform.isDarwin && lib.versionAtLeast common.version "10.4") ''
-              mv "$out"/OFF/suite/plugins/pam/pam_mariadb_mtr.so "$out"/share/pam/lib/security
-              mv "$out"/OFF/suite/plugins/pam/mariadb_mtr "$out"/share/pam/etc/security
-              rm -r "$out"/OFF
-            '';
+          postInstall = common.postInstall
+          + ''
+            rm -r "$out"/share/aclocal
+            chmod +x "$out"/bin/wsrep_sst_common
+            rm -f "$out"/bin/{mariadb-client-test,mariadb-test,mysql_client_test,mysqltest}
+          ''
+          + lib.optionalString withStorageMroonga ''
+            mv "$out"/share/{groonga,groonga-normalizer-mysql} "$out"/share/doc/mysql
+          ''
+          + lib.optionalString (!stdenv.hostPlatform.isDarwin && lib.versionAtLeast common.version "10.4") ''
+            mv "$out"/OFF/suite/plugins/pam/pam_mariadb_mtr.so "$out"/share/pam/lib/security
+            mv "$out"/OFF/suite/plugins/pam/mariadb_mtr "$out"/share/pam/etc/security
+            rm -r "$out"/OFF
+          '';
 
           CXXFLAGS = lib.optionalString stdenv.hostPlatform.isi686 "-fpermissive";
         }

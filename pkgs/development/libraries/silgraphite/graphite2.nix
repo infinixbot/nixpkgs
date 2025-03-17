@@ -30,8 +30,7 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
     cmake
   ];
-  buildInputs =
-    [ freetype ]
+  buildInputs = [ freetype ]
     ++ lib.optional (stdenv.targetPlatform.useLLVM or false) (
       llvmPackages.compiler-rt.override {
         doFakeLibgcc = true;

@@ -36,8 +36,7 @@ let
   */
   enableCmakeFeature = p: if (p == null || p == false) then "OFF" else "ON";
 
-  defaultOptionals =
-    [ protobuf ]
+  defaultOptionals = [ protobuf ]
     ++ lib.optional snappySupport snappy.dev
     ++ lib.optional zlibSupport zlib
     ++ lib.optional zstdSupport zstd
@@ -69,7 +68,8 @@ stdenv.mkDerivation (finalAttrs: rec {
     jsoncpp
     openssl
     curl
-  ] ++ defaultOptionals;
+  ]
+  ++ defaultOptionals;
 
   cmakeFlags = [
     "-DBUILD_TESTS=${enableCmakeFeature gtestSupport}"

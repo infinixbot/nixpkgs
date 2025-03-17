@@ -21,8 +21,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-XOu//yY5CnnzjvGu7IIC5GvecYsnZQV3Y2wvGVTwWzU=";
   };
 
-  nativeBuildInputs =
-    [ cmake ]
+  nativeBuildInputs = [ cmake ]
     ++ lib.optionals enablePython (
       with python3Packages;
       [

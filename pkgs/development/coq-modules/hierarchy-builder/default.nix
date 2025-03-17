@@ -87,8 +87,14 @@ hb.overrideAttrs (
   }
   // (
     if lib.versions.isGe "1.1.0" o.version || o.version == "dev" then
-      { installFlags = [ "DESTDIR=$(out)" ] ++ o.installFlags; }
+      {
+        installFlags = [ "DESTDIR=$(out)" ]
+          ++ o.installFlags;
+      }
     else
-      { installFlags = [ "VFILES=structures.v" ] ++ o.installFlags; }
+      {
+        installFlags = [ "VFILES=structures.v" ]
+          ++ o.installFlags;
+      }
   )
 )

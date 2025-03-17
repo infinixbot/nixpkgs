@@ -32,7 +32,8 @@ let
     kbd:
     pkgs.buildEnv {
       name = "console-env";
-      paths = [ kbd ] ++ cfg.packages;
+      paths = [ kbd ]
+        ++ cfg.packages;
       pathsToLink = [
         "/share/consolefonts"
         "/share/consoletrans"

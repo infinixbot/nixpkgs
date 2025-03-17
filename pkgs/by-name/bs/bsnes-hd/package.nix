@@ -53,21 +53,20 @@ stdenv.mkDerivation {
       makeWrapper
     ];
 
-  buildInputs =
-    [
-      SDL2
-      libao
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      libX11
-      libXv
-      udev
-      gtk3
-      gtksourceview3
-      alsa-lib
-      openal
-      libpulseaudio
-    ];
+  buildInputs = [
+    SDL2
+    libao
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    libX11
+    libXv
+    udev
+    gtk3
+    gtksourceview3
+    alsa-lib
+    openal
+    libpulseaudio
+  ];
 
   makeFlags =
     [

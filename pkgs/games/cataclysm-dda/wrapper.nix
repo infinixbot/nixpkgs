@@ -18,7 +18,8 @@ else
   symlinkJoin {
     name = unwrapped.name + "-with-mods";
 
-    paths = [ unwrapped ] ++ mods;
+    paths = [ unwrapped ]
+      ++ mods;
 
     nativeBuildInputs = [ makeWrapper ];
 

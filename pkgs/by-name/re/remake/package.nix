@@ -26,7 +26,8 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     pkg-config
   ];
-  buildInputs = [ readline ] ++ lib.optionals guileSupport [ guile ];
+  buildInputs = [ readline ]
+    ++ lib.optionals guileSupport [ guile ];
 
   # make check fails, see https://github.com/rocky/remake/issues/117
 

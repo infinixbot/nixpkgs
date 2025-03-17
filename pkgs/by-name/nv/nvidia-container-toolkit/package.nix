@@ -98,22 +98,21 @@ buildGoModule rec {
       "${builtins.concatStringsSep "|" skippedTests}"
     ];
 
-  postInstall =
-    ''
-      wrapProgram $out/bin/nvidia-container-runtime-hook \
-        --prefix PATH : ${libnvidia-container}/bin
+  postInstall = ''
+    wrapProgram $out/bin/nvidia-container-runtime-hook \
+      --prefix PATH : ${libnvidia-container}/bin
 
-      mkdir -p $tools/bin
-      mv $out/bin/{containerd,crio,docker,nvidia-toolkit,toolkit} $tools/bin
-    ''
-    + lib.optionalString (configTemplate != null || configTemplatePath != null) ''
-      mkdir -p $out/etc/nvidia-container-runtime
+    mkdir -p $tools/bin
+    mv $out/bin/{containerd,crio,docker,nvidia-toolkit,toolkit} $tools/bin
+  ''
+  + lib.optionalString (configTemplate != null || configTemplatePath != null) ''
+    mkdir -p $out/etc/nvidia-container-runtime
 
-      cp ${configToml} $out/etc/nvidia-container-runtime/config.toml
+    cp ${configToml} $out/etc/nvidia-container-runtime/config.toml
 
-      substituteInPlace $out/etc/nvidia-container-runtime/config.toml \
-        --subst-var-by glibcbin ${lib.getBin glibc}
-    '';
+    substituteInPlace $out/etc/nvidia-container-runtime/config.toml \
+      --subst-var-by glibcbin ${lib.getBin glibc}
+  '';
 
   meta = with lib; {
     homepage = "https://gitlab.com/nvidia/container-toolkit/container-toolkit";

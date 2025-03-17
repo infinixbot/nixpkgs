@@ -31,28 +31,29 @@ stdenv.mkDerivation rec {
     hash = "sha256-IocNb+skeK22F85PCaeHrdry0mDFqKp7F9iJqWLF5C4=";
   };
 
-  buildInputs = [ ncurses ] ++ lib.optional withSystemd systemd;
+  buildInputs = [ ncurses ]
+    ++ lib.optional withSystemd systemd;
   nativeBuildInputs = [
     pkg-config
     autoreconfHook
   ];
 
-  makeFlags = [ "usrbin_execdir=$(out)/bin" ] ++ lib.optionals watchOnly [ "src/watch" ];
+  makeFlags = [ "usrbin_execdir=$(out)/bin" ]
+    ++ lib.optionals watchOnly [ "src/watch" ];
 
   enableParallelBuilding = true;
 
   # Too red; 8bit support for fixing https://github.com/NixOS/nixpkgs/issues/275220
-  configureFlags =
-    [
-      "--disable-modern-top"
-      "--enable-watch8bit"
-    ]
-    ++ lib.optional withSystemd "--with-systemd"
-    ++ lib.optional stdenv.hostPlatform.isMusl "--disable-w"
-    ++ lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
-      "ac_cv_func_malloc_0_nonnull=yes"
-      "ac_cv_func_realloc_0_nonnull=yes"
-    ];
+  configureFlags = [
+    "--disable-modern-top"
+    "--enable-watch8bit"
+  ]
+  ++ lib.optional withSystemd "--with-systemd"
+  ++ lib.optional stdenv.hostPlatform.isMusl "--disable-w"
+  ++ lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
+    "ac_cv_func_malloc_0_nonnull=yes"
+    "ac_cv_func_realloc_0_nonnull=yes"
+  ];
 
   installPhase = lib.optionalString watchOnly ''
     install -m 0755 -D src/watch $out/bin/watch

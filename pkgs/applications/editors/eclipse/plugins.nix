@@ -26,7 +26,8 @@ rec {
 
         passthru = {
           isEclipsePlugin = true;
-        } // passthru;
+        }
+        // passthru;
       }
     );
 
@@ -52,7 +53,8 @@ rec {
     buildEclipsePluginBase (
       attrs
       // {
-        srcs = [ srcFeature ] ++ pSrcs;
+        srcs = [ srcFeature ]
+          ++ pSrcs;
 
         buildCommand = ''
           dropinDir="$out/eclipse/dropins/${name}"

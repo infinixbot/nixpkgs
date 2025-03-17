@@ -255,26 +255,25 @@ rec {
         bits = 64;
       };
     };
-    isILP32 =
+    isILP32 = [
+      {
+        cpu = {
+          family = "wasm";
+          bits = 32;
+        };
+      }
+    ]
+    ++ map
+      (a: {
+        abi = {
+          abi = a;
+        };
+      })
       [
-        {
-          cpu = {
-            family = "wasm";
-            bits = 32;
-          };
-        }
-      ]
-      ++ map
-        (a: {
-          abi = {
-            abi = a;
-          };
-        })
-        [
-          "n32"
-          "ilp32"
-          "x32"
-        ];
+        "n32"
+        "ilp32"
+        "x32"
+      ];
     isBigEndian = {
       cpu = {
         significantByte = significantBytes.bigEndian;

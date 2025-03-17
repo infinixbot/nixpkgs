@@ -11,8 +11,10 @@ let
       args
       // {
         pname = "${pluginName}";
-        nativeBuildInputs = [ pkg-config ] ++ args.nativeBuildInputs or [ ];
-        buildInputs = [ hyprland ] ++ hyprland.buildInputs ++ (args.buildInputs or [ ]);
+        nativeBuildInputs = [ pkg-config ]
+          ++ args.nativeBuildInputs or [ ];
+        buildInputs = [ hyprland ]
+          ++ hyprland.buildInputs ++ (args.buildInputs or [ ]);
         meta = args.meta // {
           description = args.meta.description or "";
           longDescription =

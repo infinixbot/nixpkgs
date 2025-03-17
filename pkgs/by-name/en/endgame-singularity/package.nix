@@ -27,7 +27,8 @@ in
 python3.pkgs.buildPythonApplication rec {
   inherit pname version;
 
-  srcs = [ main_src ] ++ lib.optional enableDefaultMusicPack music_src;
+  srcs = [ main_src ]
+    ++ lib.optional enableDefaultMusicPack music_src;
   sourceRoot = main_src.name;
 
   nativeBuildInputs = [ unzip ]; # The music is zipped

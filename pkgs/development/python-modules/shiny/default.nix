@@ -103,7 +103,8 @@ buildPythonPackage rec {
     pytest-rerunfailures
     pandas
     polars
-  ] ++ lib.flatten (lib.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (lib.attrValues optional-dependencies);
 
   env.SSL_CERT_FILE = "${cacert}/etc/ssl/certs/ca-bundle.crt";
 

@@ -87,58 +87,55 @@ stdenv.mkDerivation (finalAttrs: {
 
   dontWrapGApps = true;
 
-  nativeBuildInputs =
-    [
-      wrapQtAppsHook
-      cmake
-      qttools
-      pkg-config
-      ninja
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      # Since https://github.com/musescore/MuseScore/pull/13847/commits/685ac998
-      # GTK3 is needed for file dialogs. Fixes crash with No GSettings schemas error.
-      wrapGAppsHook3
-    ];
+  nativeBuildInputs = [
+    wrapQtAppsHook
+    cmake
+    qttools
+    pkg-config
+    ninja
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    # Since https://github.com/musescore/MuseScore/pull/13847/commits/685ac998
+    # GTK3 is needed for file dialogs. Fixes crash with No GSettings schemas error.
+    wrapGAppsHook3
+  ];
 
-  buildInputs =
-    [
-      libjack2
-      freetype
-      lame
-      libogg
-      libpulseaudio
-      libsndfile
-      libvorbis
-      portaudio
-      portmidi
-      flac
-      libopusenc
-      libopus
-      tinyxml-2
-      qtbase
-      qtdeclarative
-      qt5compat
-      qtsvg
-      qtscxml
-      qtnetworkauth
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      alsa-lib
-      qtwayland
-    ];
+  buildInputs = [
+    libjack2
+    freetype
+    lame
+    libogg
+    libpulseaudio
+    libsndfile
+    libvorbis
+    portaudio
+    portmidi
+    flac
+    libopusenc
+    libopus
+    tinyxml-2
+    qtbase
+    qtdeclarative
+    qt5compat
+    qtsvg
+    qtscxml
+    qtnetworkauth
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    alsa-lib
+    qtwayland
+  ];
 
-  postInstall =
-    ''
-      # Remove unneeded bundled libraries and headers
-      rm -r $out/{include,lib}
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      mkdir -p "$out/Applications"
-      mv "$out/mscore.app" "$out/Applications/mscore.app"
-      mkdir -p $out/bin
-      ln -s $out/Applications/mscore.app/Contents/MacOS/mscore $out/bin/mscore
-    '';
+  postInstall = ''
+    # Remove unneeded bundled libraries and headers
+    rm -r $out/{include,lib}
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    mkdir -p "$out/Applications"
+    mv "$out/mscore.app" "$out/Applications/mscore.app"
+    mkdir -p $out/bin
+    ln -s $out/Applications/mscore.app/Contents/MacOS/mscore $out/bin/mscore
+  '';
 
   # muse-sounds-manager installs Muse Sounds sampler libMuseSamplerCoreLib.so.
   # It requires that argv0 of the calling process ends with "/mscore" or "/MuseScore-4".

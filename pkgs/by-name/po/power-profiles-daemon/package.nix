@@ -44,33 +44,32 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-kX8adu+GXxkaHtARUKp51K3Jf9xO+l12vctsJzIavyM=";
   };
 
-  nativeBuildInputs =
-    [
-      pkg-config
-      meson
-      ninja
-      gettext
-      gtk-doc
-      docbook-xsl-nons
-      docbook_xml_dtd_412
-      libxml2 # for xmllint for stripping GResources
-      libxslt # for xsltproc for building docs
-      gobject-introspection
-      wrapGAppsNoGuiHook
-      # checkInput but checked for during the configuring
-      (python3.pythonOnBuildForHost.withPackages (
-        ps: with ps; [
-          pygobject3
-          dbus-python
-          python-dbusmock
-          argparse-manpage
-          shtab
-        ]
-      ))
-    ]
-    ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
-      mesonEmulatorHook
-    ];
+  nativeBuildInputs = [
+    pkg-config
+    meson
+    ninja
+    gettext
+    gtk-doc
+    docbook-xsl-nons
+    docbook_xml_dtd_412
+    libxml2 # for xmllint for stripping GResources
+    libxslt # for xsltproc for building docs
+    gobject-introspection
+    wrapGAppsNoGuiHook
+    # checkInput but checked for during the configuring
+    (python3.pythonOnBuildForHost.withPackages (
+      ps: with ps; [
+        pygobject3
+        dbus-python
+        python-dbusmock
+        argparse-manpage
+        shtab
+      ]
+    ))
+  ]
+  ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
+    mesonEmulatorHook
+  ];
 
   buildInputs = [
     bash-completion

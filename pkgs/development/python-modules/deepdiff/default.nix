@@ -74,7 +74,8 @@ buildPythonPackage rec {
     tomli-w
     polars
     pandas
-  ] ++ optional-dependencies.cli;
+  ]
+  ++ optional-dependencies.cli;
 
   disabledTests = [
     # not compatible with pydantic 2.x

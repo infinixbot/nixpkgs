@@ -62,8 +62,7 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs =
-    [ wrapGAppsHook3 ]
+  nativeBuildInputs = [ wrapGAppsHook3 ]
     ++ (with ocamlPackages; [
       ocaml
       findlib

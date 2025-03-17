@@ -2369,7 +2369,8 @@ runTests {
         emptystring = "";
         string = "fn\${o}\"r\\d";
         newlinestring = "\n";
-        path = /. + "/foo";
+        path = /.
+          + "/foo";
         null_ = null;
         function = x: x;
         functionArgs =
@@ -2531,7 +2532,8 @@ runTests {
           emptystring = "";
           string = "fn\${o}\"r\\d";
           newlinestring = "\n";
-          path = /. + "/foo";
+          path = /.
+            + "/foo";
           null_ = null;
           list = [
             3
@@ -2563,7 +2565,8 @@ runTests {
           emptystring = "";
           string = "fn\${o}\"r\\d";
           newlinestring = "\n";
-          path = /. + "/foo";
+          path = /.
+            + "/foo";
           null_ = null;
           list = [
             3

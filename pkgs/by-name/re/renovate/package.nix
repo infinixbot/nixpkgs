@@ -36,7 +36,8 @@ stdenv.mkDerivation (finalAttrs: {
     pnpm_9.configHook
     python3
     yq-go
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin xcbuild;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin xcbuild;
 
   pnpmDeps = pnpm_9.fetchDeps {
     inherit (finalAttrs) pname version src;

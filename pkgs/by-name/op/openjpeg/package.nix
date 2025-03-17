@@ -78,7 +78,8 @@ stdenv.mkDerivation rec {
     "-DBUILD_VIEWER=OFF"
     "-DBUILD_JAVA=OFF"
     (lib.cmakeBool "BUILD_TESTING" doCheck)
-  ] ++ lib.optional doCheck "-DOPJ_DATA_ROOT=${test-data}";
+  ]
+  ++ lib.optional doCheck "-DOPJ_DATA_ROOT=${test-data}";
 
   nativeBuildInputs = [
     cmake

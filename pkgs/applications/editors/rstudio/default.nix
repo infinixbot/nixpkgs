@@ -70,18 +70,17 @@ stdenv.mkDerivation rec {
     hash = "sha256-j258eW1MYQrB6kkpjyolXdNuwQ3zSWv9so4q0QLsZuw=";
   };
 
-  nativeBuildInputs =
-    [
-      cmake
-      ant
-      jdk
-      nodejs
-      yarn
-      yarnConfigHook
-    ]
-    ++ lib.optionals (!server) [
-      libsForQt5.wrapQtAppsHook
-    ];
+  nativeBuildInputs = [
+    cmake
+    ant
+    jdk
+    nodejs
+    yarn
+    yarnConfigHook
+  ]
+  ++ lib.optionals (!server) [
+    libsForQt5.wrapQtAppsHook
+  ];
 
   buildInputs =
     [
@@ -103,20 +102,19 @@ stdenv.mkDerivation rec {
       libsForQt5.qtwebchannel
     ];
 
-  cmakeFlags =
-    [
-      (lib.cmakeFeature "RSTUDIO_TARGET" (if server then "Server" else "Desktop"))
-      (lib.cmakeBool "RSTUDIO_USE_SYSTEM_SOCI" true)
-      (lib.cmakeBool "RSTUDIO_USE_SYSTEM_BOOST" true)
-      (lib.cmakeBool "RSTUDIO_USE_SYSTEM_YAML_CPP" true)
-      (lib.cmakeBool "RSTUDIO_DISABLE_CHECK_FOR_UPDATES" true)
-      (lib.cmakeBool "QUARTO_ENABLED" true)
-      (lib.cmakeFeature "CMAKE_INSTALL_PREFIX" "${placeholder "out"}/lib/rstudio")
-    ]
-    ++ lib.optionals (!server) [
-      (lib.cmakeFeature "QT_QMAKE_EXECUTABLE" "${libsForQt5.qmake}/bin/qmake")
-      (lib.cmakeBool "RSTUDIO_INSTALL_FREEDESKTOP" true)
-    ];
+  cmakeFlags = [
+    (lib.cmakeFeature "RSTUDIO_TARGET" (if server then "Server" else "Desktop"))
+    (lib.cmakeBool "RSTUDIO_USE_SYSTEM_SOCI" true)
+    (lib.cmakeBool "RSTUDIO_USE_SYSTEM_BOOST" true)
+    (lib.cmakeBool "RSTUDIO_USE_SYSTEM_YAML_CPP" true)
+    (lib.cmakeBool "RSTUDIO_DISABLE_CHECK_FOR_UPDATES" true)
+    (lib.cmakeBool "QUARTO_ENABLED" true)
+    (lib.cmakeFeature "CMAKE_INSTALL_PREFIX" "${placeholder "out"}/lib/rstudio")
+  ]
+  ++ lib.optionals (!server) [
+    (lib.cmakeFeature "QT_QMAKE_EXECUTABLE" "${libsForQt5.qmake}/bin/qmake")
+    (lib.cmakeBool "RSTUDIO_INSTALL_FREEDESKTOP" true)
+  ];
 
   patches = [
     # Hack RStudio to only use the input R and provided libclang.

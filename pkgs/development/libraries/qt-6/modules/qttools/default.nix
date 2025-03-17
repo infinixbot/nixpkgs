@@ -19,7 +19,8 @@ qtModule {
   propagatedBuildInputs = [
     qtbase
     qtdeclarative
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ cups ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ cups ];
   patches = [
     ./paths.patch
   ];

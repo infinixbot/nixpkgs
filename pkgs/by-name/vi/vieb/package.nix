@@ -29,7 +29,8 @@ buildNpmPackage rec {
   dontNpmBuild = true;
   env.ELECTRON_SKIP_BINARY_DOWNLOAD = 1;
 
-  nativeBuildInputs = [ makeWrapper ] ++ lib.optional stdenv.hostPlatform.isAarch64 python3;
+  nativeBuildInputs = [ makeWrapper ]
+    ++ lib.optional stdenv.hostPlatform.isAarch64 python3;
 
   desktopItem = makeDesktopItem {
     name = "vieb";

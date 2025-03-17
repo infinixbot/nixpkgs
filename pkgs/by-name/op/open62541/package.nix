@@ -43,40 +43,39 @@ stdenv.mkDerivation (finalAttrs: {
     fetchSubmodules = true;
   };
 
-  cmakeFlags =
+  cmakeFlags = [
+    (lib.cmakeFeature "OPEN62541_VERSION" finalAttrs.src.rev)
+    (lib.cmakeFeature "UA_NAMESPACE_ZERO" "FULL")
+    (lib.cmakeBool "BUILD_SHARED_LIBS" (!stdenv.hostPlatform.isStatic))
+
+    # Note comment near doCheck
+    (lib.cmakeBool "UA_BUILD_UNIT_TESTS" finalAttrs.finalPackage.doCheck)
+    (lib.cmakeBool "UA_ENABLE_ALLOW_REUSEADDR" finalAttrs.finalPackage.doCheck)
+
+    (lib.cmakeBool "UA_BUILD_EXAMPLES" withExamples)
+  ]
+  ++ lib.optionals (withEncryption != false) [
+    (lib.cmakeFeature "UA_ENABLE_ENCRYPTION" (lib.toUpper withEncryption))
+  ];
+
+  nativeBuildInputs = [
+    cmake
+    pkg-config
+    python3Packages.python
+  ]
+  ++ lib.optionals withDoc (
+    with python3Packages;
     [
-      (lib.cmakeFeature "OPEN62541_VERSION" finalAttrs.src.rev)
-      (lib.cmakeFeature "UA_NAMESPACE_ZERO" "FULL")
-      (lib.cmakeBool "BUILD_SHARED_LIBS" (!stdenv.hostPlatform.isStatic))
-
-      # Note comment near doCheck
-      (lib.cmakeBool "UA_BUILD_UNIT_TESTS" finalAttrs.finalPackage.doCheck)
-      (lib.cmakeBool "UA_ENABLE_ALLOW_REUSEADDR" finalAttrs.finalPackage.doCheck)
-
-      (lib.cmakeBool "UA_BUILD_EXAMPLES" withExamples)
+      sphinx
+      sphinx_rtd_theme
+      graphviz-nox
     ]
-    ++ lib.optionals (withEncryption != false) [
-      (lib.cmakeFeature "UA_ENABLE_ENCRYPTION" (lib.toUpper withEncryption))
-    ];
-
-  nativeBuildInputs =
-    [
-      cmake
-      pkg-config
-      python3Packages.python
-    ]
-    ++ lib.optionals withDoc (
-      with python3Packages;
-      [
-        sphinx
-        sphinx_rtd_theme
-        graphviz-nox
-      ]
-    );
+  );
 
   buildInputs = lib.optional (withEncryption != false) encryptionBackend;
 
-  buildFlags = [ "all" ] ++ lib.optional withDoc "doc";
+  buildFlags = [ "all" ]
+    ++ lib.optional withDoc "doc";
 
   # Tests must normally be disabled because they require
   # -DUA_ENABLE_ALLOW_REUSEADDR=ON. The option must not be used in production,

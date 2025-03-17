@@ -42,14 +42,16 @@ stdenv.mkDerivation (finalAttrs: {
     autoreconfHook
     pkg-config
     perl
-  ] ++ lib.optionals withCyrusSaslXoauth2 [ makeWrapper ];
+  ]
+  ++ lib.optionals withCyrusSaslXoauth2 [ makeWrapper ];
   buildInputs = [
     perl538Packages.TimeDate
     openssl
     db
     cyrus_sasl
     zlib
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ Security ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ Security ];
 
   postInstall = lib.optionalString withCyrusSaslXoauth2 ''
     wrapProgram "$out/bin/mbsync" \

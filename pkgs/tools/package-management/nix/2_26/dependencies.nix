@@ -98,7 +98,8 @@ let
     nativeBuildInputs = [
       pkgs.buildPackages.meson
       pkgs.buildPackages.ninja
-    ] ++ prevAttrs.nativeBuildInputs or [ ];
+    ]
+    ++ prevAttrs.nativeBuildInputs or [ ];
     mesonCheckFlags = prevAttrs.mesonCheckFlags or [ ] ++ [
       "--print-errorlogs"
     ];
@@ -128,7 +129,8 @@ let
   bsdNoLinkAsNeeded =
     finalAttrs: prevAttrs:
     lib.optionalAttrs stdenv.hostPlatform.isBSD {
-      mesonFlags = [ (lib.mesonBool "b_asneeded" false) ] ++ prevAttrs.mesonFlags or [ ];
+      mesonFlags = [ (lib.mesonBool "b_asneeded" false) ]
+        ++ prevAttrs.mesonFlags or [ ];
     };
 
   miscGoodPractice = finalAttrs: prevAttrs: {

@@ -38,8 +38,7 @@ python3.pkgs.buildPythonApplication rec {
     rich
   ];
 
-  nativeCheckInputs =
-    [ git ]
+  nativeCheckInputs = [ git ]
     ++ (with python3.pkgs; [
       jsonschema
       pyfakefs

@@ -202,7 +202,8 @@ stdenv.mkDerivation rec {
     ]
     ++ addonsDrvs;
 
-  nativeBuildInputs = [ makeWrapper ] ++ optionals (withScripting) [ python.pkgs.wrapPython ];
+  nativeBuildInputs = [ makeWrapper ]
+    ++ optionals (withScripting) [ python.pkgs.wrapPython ];
 
   # KICAD7_TEMPLATE_DIR only works with a single path (it does not handle : separated paths)
   # but it's used to find both the templates and the symbol/footprint library tables

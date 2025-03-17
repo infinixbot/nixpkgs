@@ -20,13 +20,12 @@ stdenv.mkDerivation (finalAttrs: {
 
   inherit unwrapped;
 
-  nativeBuildInputs =
-    [
-      wrapQtAppsHook
-    ]
-    ++ lib.optionals withWebkit [
-      wrapGAppsHook3
-    ];
+  nativeBuildInputs = [
+    wrapQtAppsHook
+  ]
+  ++ lib.optionals withWebkit [
+    wrapGAppsHook3
+  ];
 
   buildInputs =
     [

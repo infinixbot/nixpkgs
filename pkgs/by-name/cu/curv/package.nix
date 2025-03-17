@@ -37,26 +37,25 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      boost
-      eigen
-      glm
-      libGL
-      libpng
-      openexr
-      tbb
-      xorg.libX11
-      xorg.libXcursor
-      xorg.libXext
-      xorg.libXi
-      xorg.libXinerama
-      xorg.libXrandr
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      ilmbase
-      llvmPackages.openmp
-    ];
+  buildInputs = [
+    boost
+    eigen
+    glm
+    libGL
+    libpng
+    openexr
+    tbb
+    xorg.libX11
+    xorg.libXcursor
+    xorg.libXext
+    xorg.libXi
+    xorg.libXinerama
+    xorg.libXrandr
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    ilmbase
+    llvmPackages.openmp
+  ];
 
   # GPU tests do not work in sandbox, instead we do this for sanity
   checkPhase = ''

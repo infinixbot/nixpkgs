@@ -35,8 +35,7 @@ stdenv.mkDerivation (finalAttrs: {
     })
   ];
 
-  cmakeFlags =
-    [ (lib.cmakeBool "ENABLE_MODTOOL" enableModTool) ]
+  cmakeFlags = [ (lib.cmakeBool "ENABLE_MODTOOL" enableModTool) ]
     ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) [
       # offset 14335 in1: -1.03372 in2: -1.03371 tolerance was: 1e-05
       # volk_32f_log2_32f: fail on arch neon

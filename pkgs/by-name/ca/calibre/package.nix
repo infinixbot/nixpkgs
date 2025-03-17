@@ -54,7 +54,8 @@ stdenv.mkDerivation (finalAttrs: {
       url = "https://raw.githubusercontent.com/debian-calibre/calibre/debian/${finalAttrs.version}+ds-1/debian/patches/hardening/0007-Hardening-Qt-code.patch";
       hash = "sha256-9hi4T9LB7aklWASMR8hIuKBgZm2arDvORfmk9S8wgCA=";
     })
-  ] ++ lib.optional (!unrarSupport) ./dont_build_unrar_plugin.patch;
+  ]
+  ++ lib.optional (!unrarSupport) ./dont_build_unrar_plugin.patch;
 
   prePatch = ''
     sed -i "s@\[tool.sip.project\]@[tool.sip.project]\nsip-include-dirs = [\"${python3Packages.pyqt6}/${python3Packages.python.sitePackages}/PyQt6/bindings\"]@g" \
@@ -143,7 +144,8 @@ stdenv.mkDerivation (finalAttrs: {
       ++ lib.optional unrarSupport unrardll
     ))
     xdg-utils
-  ] ++ lib.optional speechSupport speechd-minimal;
+  ]
+  ++ lib.optional speechSupport speechd-minimal;
 
   installPhase = ''
     runHook preInstall

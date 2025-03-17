@@ -32,14 +32,13 @@ stdenv.mkDerivation (finalAttrs: {
 
   LIBRARY_PATH = "${stdenv.cc.libc}/lib";
 
-  nativeBuildInputs =
-    [
-      gnat
-    ]
-    ++ lib.optionals (backend == "gcc") [
-      texinfo
-      makeWrapper
-    ];
+  nativeBuildInputs = [
+    gnat
+  ]
+  ++ lib.optionals (backend == "gcc") [
+    texinfo
+    makeWrapper
+  ];
   buildInputs =
     [
       zlib
@@ -52,21 +51,19 @@ stdenv.mkDerivation (finalAttrs: {
       mpfr
       libmpc
     ];
-  propagatedBuildInputs =
-    [
-    ]
-    ++ lib.optionals (backend == "llvm" || backend == "gcc") [
-      zlib
-    ];
+  propagatedBuildInputs = [
+  ]
+  ++ lib.optionals (backend == "llvm" || backend == "gcc") [
+    zlib
+  ];
 
-  preConfigure =
-    ''
-      # If llvm 7.0 works, 7.x releases should work too.
-      sed -i 's/check_version  7.0/check_version  7/g' configure
-    ''
-    + lib.optionalString (backend == "gcc") ''
-      ${gnutar}/bin/tar -xf ${gcc-unwrapped.src}
-    '';
+  preConfigure = ''
+    # If llvm 7.0 works, 7.x releases should work too.
+    sed -i 's/check_version  7.0/check_version  7/g' configure
+  ''
+  + lib.optionalString (backend == "gcc") ''
+    ${gnutar}/bin/tar -xf ${gcc-unwrapped.src}
+  '';
 
   configureFlags =
     [
@@ -111,13 +108,12 @@ stdenv.mkDerivation (finalAttrs: {
       }
   '';
 
-  hardeningDisable =
-    [
-    ]
-    ++ lib.optionals (backend == "gcc") [
-      # GCC compilation fails with format errors
-      "format"
-    ];
+  hardeningDisable = [
+  ]
+  ++ lib.optionals (backend == "gcc") [
+    # GCC compilation fails with format errors
+    "format"
+  ];
 
   enableParallelBuilding = true;
 

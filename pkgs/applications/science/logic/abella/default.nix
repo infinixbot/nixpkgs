@@ -17,8 +17,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  nativeBuildInputs =
-    [ rsync ]
+  nativeBuildInputs = [ rsync ]
     ++ (with ocamlPackages; [
       ocaml
       dune_3

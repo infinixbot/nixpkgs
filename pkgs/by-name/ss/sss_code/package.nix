@@ -29,7 +29,8 @@ rustPlatform.buildRustPackage rec {
     "sss_code"
   ];
 
-  nativeBuildInputs = [ pkg-config ] ++ lib.optionals stdenv.buildPlatform.isDarwin [ libiconv ];
+  nativeBuildInputs = [ pkg-config ]
+    ++ lib.optionals stdenv.buildPlatform.isDarwin [ libiconv ];
 
   buildInputs = [
     fontconfig

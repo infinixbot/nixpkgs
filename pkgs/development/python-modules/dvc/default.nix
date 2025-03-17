@@ -83,52 +83,51 @@ buildPythonPackage rec {
 
   build-system = [ setuptools-scm ];
 
-  dependencies =
-    [
-      appdirs
-      colorama
-      configobj
-      distro
-      dpath
-      dvc-data
-      dvc-http
-      dvc-render
-      dvc-studio-client
-      dvc-task
-      flatten-dict
-      flufl-lock
-      funcy
-      grandalf
-      gto
-      hydra-core
-      iterative-telemetry
-      networkx
-      packaging
-      pathspec
-      platformdirs
-      psutil
-      pydot
-      pygtrie
-      pyparsing
-      requests
-      rich
-      ruamel-yaml
-      scmrepo
-      shortuuid
-      shtab
-      tabulate
-      tomlkit
-      tqdm
-      typing-extensions
-      voluptuous
-      zc-lockfile
-    ]
-    ++ lib.optionals enableGoogle optional-dependencies.gs
-    ++ lib.optionals enableAWS optional-dependencies.s3
-    ++ lib.optionals enableAzure optional-dependencies.azure
-    ++ lib.optionals enableSSH optional-dependencies.ssh
-    ++ lib.optionals (pythonOlder "3.8") [ importlib-metadata ]
-    ++ lib.optionals (pythonOlder "3.9") [ importlib-resources ];
+  dependencies = [
+    appdirs
+    colorama
+    configobj
+    distro
+    dpath
+    dvc-data
+    dvc-http
+    dvc-render
+    dvc-studio-client
+    dvc-task
+    flatten-dict
+    flufl-lock
+    funcy
+    grandalf
+    gto
+    hydra-core
+    iterative-telemetry
+    networkx
+    packaging
+    pathspec
+    platformdirs
+    psutil
+    pydot
+    pygtrie
+    pyparsing
+    requests
+    rich
+    ruamel-yaml
+    scmrepo
+    shortuuid
+    shtab
+    tabulate
+    tomlkit
+    tqdm
+    typing-extensions
+    voluptuous
+    zc-lockfile
+  ]
+  ++ lib.optionals enableGoogle optional-dependencies.gs
+  ++ lib.optionals enableAWS optional-dependencies.s3
+  ++ lib.optionals enableAzure optional-dependencies.azure
+  ++ lib.optionals enableSSH optional-dependencies.ssh
+  ++ lib.optionals (pythonOlder "3.8") [ importlib-metadata ]
+  ++ lib.optionals (pythonOlder "3.9") [ importlib-resources ];
 
   optional-dependencies = {
     azure = [ dvc-azure ];

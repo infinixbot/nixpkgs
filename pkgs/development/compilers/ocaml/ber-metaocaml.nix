@@ -46,7 +46,8 @@ stdenv.mkDerivation rec {
   configureFlags = optionals useX11 [ "--enable-flambda" ];
 
   dontStrip = true;
-  buildInputs = [ ncurses ] ++ optionals useX11 x11deps;
+  buildInputs = [ ncurses ]
+    ++ optionals useX11 x11deps;
 
   postConfigure = ''
     tar -xvzf $metaocaml

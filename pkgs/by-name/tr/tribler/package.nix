@@ -34,8 +34,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   buildInputs = [ python3.pkgs.python ];
 
-  pythonPath =
-    [ libtorrent ]
+  pythonPath = [ libtorrent ]
     ++ (with python3.pkgs; [
       # requirements-core.txt
       aiohttp

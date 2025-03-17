@@ -49,7 +49,8 @@ stdenv.mkDerivation (
 
     sourceRoot = "${src.name}/${pname}";
 
-    nativeBuildInputs = [ cmake ] ++ lib.optional (lib.versionAtLeast release_version "15") ninja;
+    nativeBuildInputs = [ cmake ]
+      ++ lib.optional (lib.versionAtLeast release_version "15") ninja;
     buildInputs = [
       libllvm
       libxml2

@@ -272,17 +272,16 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
           strictDeps = true;
           version = "bootstrapFiles";
           enableParallelBuilding = true;
-          buildCommand =
-            ''
-              mkdir -p $out
-              ln -s ${bootstrapTools}/lib $out/lib
-            ''
-            + lib.optionalString (localSystem.libc == "glibc") ''
-              ln -s ${bootstrapTools}/include-glibc $out/include
-            ''
-            + lib.optionalString (localSystem.libc == "musl") ''
-              ln -s ${bootstrapTools}/include-libc $out/include
-            '';
+          buildCommand = ''
+            mkdir -p $out
+            ln -s ${bootstrapTools}/lib $out/lib
+          ''
+          + lib.optionalString (localSystem.libc == "glibc") ''
+            ln -s ${bootstrapTools}/include-glibc $out/include
+          ''
+          + lib.optionalString (localSystem.libc == "musl") ''
+            ln -s ${bootstrapTools}/include-libc $out/include
+          '';
           passthru.isFromBootstrapFiles = true;
         };
         gcc-unwrapped = bootstrapTools;

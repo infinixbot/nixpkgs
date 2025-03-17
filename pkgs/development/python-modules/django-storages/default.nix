@@ -69,7 +69,8 @@ buildPythonPackage rec {
     moto
     pytestCheckHook
     rsa
-  ] ++ lib.flatten (builtins.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (builtins.attrValues optional-dependencies);
 
   checkInputs = [ pynacl ];
 

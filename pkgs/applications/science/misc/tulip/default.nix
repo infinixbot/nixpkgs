@@ -28,7 +28,8 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     cmake
     wrapQtAppsHook
-  ] ++ lib.optionals stdenv.hostPlatform.isLinux [ autoPatchelfHook ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [ autoPatchelfHook ];
 
   buildInputs =
     [

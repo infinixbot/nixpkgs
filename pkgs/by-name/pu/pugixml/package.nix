@@ -19,7 +19,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-xxtJr9VeBPxpxWJaDGO635+Ch7ZS6t6VyuXEio+ogZ8=";
   };
 
-  outputs = [ "out" ] ++ lib.optionals shared [ "dev" ];
+  outputs = [ "out" ]
+    ++ lib.optionals shared [ "dev" ];
 
   nativeBuildInputs = [
     cmake

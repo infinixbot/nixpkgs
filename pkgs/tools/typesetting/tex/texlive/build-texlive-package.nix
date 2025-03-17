@@ -103,22 +103,21 @@ let
     ++ lib.optional hasInfo "info";
   outputDrvs = lib.getAttrs outputs containers;
 
-  passthru =
-    {
-      # metadata
-      inherit pname;
-      revision = toString revision + extraRevision;
-      version = version + extraVersion;
-      # containers behave like specified outputs
-      outputSpecified = true;
-    }
-    // lib.optionalAttrs (args ? deps) { tlDeps = args.deps; }
-    // lib.optionalAttrs (args ? fontMaps) { inherit (args) fontMaps; }
-    // lib.optionalAttrs (args ? formats) { inherit (args) formats; }
-    // lib.optionalAttrs (args ? hyphenPatterns) { inherit (args) hyphenPatterns; }
-    // lib.optionalAttrs (args ? postactionScript) { inherit (args) postactionScript; }
-    // lib.optionalAttrs hasSource { inherit (containers) texsource; }
-    // lib.optionalAttrs (!hasRunfiles) { tex = fakeTeX; };
+  passthru = {
+    # metadata
+    inherit pname;
+    revision = toString revision + extraRevision;
+    version = version + extraVersion;
+    # containers behave like specified outputs
+    outputSpecified = true;
+  }
+  // lib.optionalAttrs (args ? deps) { tlDeps = args.deps; }
+  // lib.optionalAttrs (args ? fontMaps) { inherit (args) fontMaps; }
+  // lib.optionalAttrs (args ? formats) { inherit (args) formats; }
+  // lib.optionalAttrs (args ? hyphenPatterns) { inherit (args) hyphenPatterns; }
+  // lib.optionalAttrs (args ? postactionScript) { inherit (args) postactionScript; }
+  // lib.optionalAttrs hasSource { inherit (containers) texsource; }
+  // lib.optionalAttrs (!hasRunfiles) { tex = fakeTeX; };
 
   # build run, doc, source, tlpkg containers
   mkContainer =

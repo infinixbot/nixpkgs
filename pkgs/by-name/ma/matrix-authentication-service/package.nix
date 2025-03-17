@@ -44,18 +44,18 @@ rustPlatform.buildRustPackage rec {
     npmHooks.npmConfigHook
     nodejs
     (python3.withPackages (ps: [ ps.setuptools ])) # Used by gyp
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin cctools; # libtool used by gyp;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin cctools; # libtool used by gyp;
 
-  buildInputs =
-    [
-      sqlite
-      zstd
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      darwin.apple_sdk_11_0.frameworks.CoreFoundation
-      darwin.apple_sdk_11_0.frameworks.Security
-      darwin.apple_sdk_11_0.frameworks.SystemConfiguration
-    ];
+  buildInputs = [
+    sqlite
+    zstd
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    darwin.apple_sdk_11_0.frameworks.CoreFoundation
+    darwin.apple_sdk_11_0.frameworks.Security
+    darwin.apple_sdk_11_0.frameworks.SystemConfiguration
+  ];
 
   env = {
     ZSTD_SYS_USE_PKG_CONFIG = true;

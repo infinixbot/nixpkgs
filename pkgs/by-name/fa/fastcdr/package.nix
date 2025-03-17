@@ -30,16 +30,16 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optional (finalAttrs.finalPackage.doCheck) "-DBUILD_TESTING=ON"
     ++ lib.optional withDocs "-DBUILD_DOCUMENTATION=ON";
 
-  outputs = [ "out" ] ++ lib.optional withDocs "doc";
+  outputs = [ "out" ]
+    ++ lib.optional withDocs "doc";
 
-  nativeBuildInputs =
-    [
-      cmake
-    ]
-    ++ lib.optionals withDocs [
-      doxygen
-      graphviz-nox
-    ];
+  nativeBuildInputs = [
+    cmake
+  ]
+  ++ lib.optionals withDocs [
+    doxygen
+    graphviz-nox
+  ];
 
   doCheck = true;
 

@@ -88,7 +88,8 @@ stdenv.mkDerivation (finalAttrs: {
     (lib.withFeature icuSupport "icu")
     (lib.withFeature pythonSupport "python")
     (lib.optionalString pythonSupport "PYTHON=${python.pythonOnBuildForHost.interpreter}")
-  ] ++ lib.optional enableHttp "--with-http";
+  ]
+  ++ lib.optional enableHttp "--with-http";
 
   installFlags = lib.optionals pythonSupport [
     "pythondir=\"${placeholder "py"}/${python.sitePackages}\""
@@ -110,14 +111,13 @@ stdenv.mkDerivation (finalAttrs: {
     substituteInPlace python/libxml2mod.la --replace-fail "$dev/${python.sitePackages}" "$py/${python.sitePackages}"
   '';
 
-  postFixup =
-    ''
-      moveToOutput bin/xml2-config "$dev"
-      moveToOutput lib/xml2Conf.sh "$dev"
-    ''
-    + lib.optionalString (enableStatic && enableShared) ''
-      moveToOutput lib/libxml2.a "$static"
-    '';
+  postFixup = ''
+    moveToOutput bin/xml2-config "$dev"
+    moveToOutput lib/xml2Conf.sh "$dev"
+  ''
+  + lib.optionalString (enableStatic && enableShared) ''
+    moveToOutput lib/libxml2.a "$static"
+  '';
 
   passthru = {
     inherit pythonSupport;

@@ -32,7 +32,8 @@ buildPythonPackage rec {
 
   build-system = [ setuptools ];
 
-  buildInputs = [ llvm ] ++ lib.optionals withStaticLLVM [ libxml2.dev ];
+  buildInputs = [ llvm ]
+    ++ lib.optionals withStaticLLVM [ libxml2.dev ];
 
   postPatch = lib.optionalString withStaticLLVM ''
     substituteInPlace ffi/build.py --replace-fail "--system-libs --libs all" "--system-libs --libs --link-static all"

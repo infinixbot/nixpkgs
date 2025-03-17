@@ -48,14 +48,13 @@ stdenv.mkDerivation rec {
     rustc
   ];
 
-  buildInputs =
-    [
-      libadwaita
-      libxml2
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      darwin.apple_sdk.frameworks.Foundation
-    ];
+  buildInputs = [
+    libadwaita
+    libxml2
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    darwin.apple_sdk.frameworks.Foundation
+  ];
 
   env.NIX_CFLAGS_COMPILE = toString (
     lib.optionals stdenv.hostPlatform.isDarwin [

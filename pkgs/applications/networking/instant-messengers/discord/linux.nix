@@ -192,10 +192,9 @@ stdenv.mkDerivation rec {
     runHook postInstall
   '';
 
-  postInstall =
-    lib.strings.optionalString withOpenASAR ''
-      cp -f ${openasar} $out/opt/${binaryName}/resources/app.asar
-    ''
+  postInstall = lib.strings.optionalString withOpenASAR ''
+    cp -f ${openasar} $out/opt/${binaryName}/resources/app.asar
+  ''
     + lib.strings.optionalString withVencord ''
       mv $out/opt/${binaryName}/resources/app.asar $out/opt/${binaryName}/resources/_app.asar
       mkdir $out/opt/${binaryName}/resources/app.asar

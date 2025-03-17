@@ -40,20 +40,19 @@ buildPythonPackage rec {
 
   build-system = [ poetry-core ];
 
-  dependencies =
-    [
-      markdown-it-py
-      platformdirs
-      rich
-      typing-extensions
-    ]
-    ++ markdown-it-py.optional-dependencies.plugins
-    ++ markdown-it-py.optional-dependencies.linkify;
+  dependencies = [
+    markdown-it-py
+    platformdirs
+    rich
+    typing-extensions
+  ]
+  ++ markdown-it-py.optional-dependencies.plugins ++ markdown-it-py.optional-dependencies.linkify;
 
   optional-dependencies = {
     syntax = [
       tree-sitter
-    ] ++ lib.optionals (!tree-sitter-languages.meta.broken) [ tree-sitter-languages ];
+    ]
+    ++ lib.optionals (!tree-sitter-languages.meta.broken) [ tree-sitter-languages ];
   };
 
   nativeCheckInputs = [
@@ -75,24 +74,23 @@ buildPythonPackage rec {
     "tests/test_focus.py"
   ];
 
-  disabledTests =
-    [
-      # Assertion issues
-      "test_textual_env_var"
+  disabledTests = [
+    # Assertion issues
+    "test_textual_env_var"
 
-      # Requirements for tests are not quite ready
-      "test_register_language"
+    # Requirements for tests are not quite ready
+    "test_register_language"
 
-      # Requires python bindings for tree-sitter languages
-      # https://github.com/Textualize/textual/issues/5449
-      "test_setting_unknown_language"
-      "test_update_highlight_query"
-    ]
-    ++ lib.optionals (pythonAtLeast "3.13") [
-      # https://github.com/Textualize/textual/issues/5327
-      "test_cursor_page_up"
-      "test_cursor_page_down"
-    ];
+    # Requires python bindings for tree-sitter languages
+    # https://github.com/Textualize/textual/issues/5449
+    "test_setting_unknown_language"
+    "test_update_highlight_query"
+  ]
+  ++ lib.optionals (pythonAtLeast "3.13") [
+    # https://github.com/Textualize/textual/issues/5327
+    "test_cursor_page_up"
+    "test_cursor_page_down"
+  ];
 
   # Some tests in groups require state from previous tests
   # See https://github.com/Textualize/textual/issues/4924#issuecomment-2304889067

@@ -53,8 +53,7 @@ stdenv.mkDerivation rec {
     updateAutotoolsGnuConfigScriptsHook
     unzip
   ];
-  buildInputs =
-    [ zlib ]
+  buildInputs = [ zlib ]
     ++ lib.optionals interactive [
       readline
       ncurses
@@ -65,7 +64,8 @@ stdenv.mkDerivation rec {
     patchShebangs configure
   '';
 
-  configureFlags = [ "--enable-threadsafe" ] ++ lib.optional interactive "--enable-readline";
+  configureFlags = [ "--enable-threadsafe" ]
+    ++ lib.optional interactive "--enable-readline";
 
   env.NIX_CFLAGS_COMPILE = toString ([
     "-DSQLITE_ENABLE_COLUMN_METADATA"

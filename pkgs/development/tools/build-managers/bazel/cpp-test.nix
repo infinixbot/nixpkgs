@@ -47,22 +47,21 @@ let
     name = "${bazel.pname}-test-cpp";
     inherit workspaceDir;
     bazelPkg = bazel;
-    bazelScript =
-      ''
-        ${bazel}/bin/bazel build //... \
-          --verbose_failures \
-          --distdir=${distDir} \
-          --curses=no \
-          ${extraBazelArgs} \
-      ''
-      + lib.optionalString (stdenv.hostPlatform.isDarwin) ''
-        --cxxopt=-x --cxxopt=c++ --host_cxxopt=-x --host_cxxopt=c++ \
-        --linkopt=-stdlib=libc++ --host_linkopt=-stdlib=libc++ \
-      ''
-      + lib.optionalString (stdenv.hostPlatform.isDarwin && Foundation != null) ''
-        --linkopt=-Wl,-F${Foundation}/Library/Frameworks \
-        --linkopt=-L${darwin.libobjc}/lib \
-      '';
+    bazelScript = ''
+      ${bazel}/bin/bazel build //... \
+        --verbose_failures \
+        --distdir=${distDir} \
+        --curses=no \
+        ${extraBazelArgs} \
+    ''
+    + lib.optionalString (stdenv.hostPlatform.isDarwin) ''
+      --cxxopt=-x --cxxopt=c++ --host_cxxopt=-x --host_cxxopt=c++ \
+      --linkopt=-stdlib=libc++ --host_linkopt=-stdlib=libc++ \
+    ''
+    + lib.optionalString (stdenv.hostPlatform.isDarwin && Foundation != null) ''
+      --linkopt=-Wl,-F${Foundation}/Library/Frameworks \
+      --linkopt=-L${darwin.libobjc}/lib \
+    '';
   };
 
 in

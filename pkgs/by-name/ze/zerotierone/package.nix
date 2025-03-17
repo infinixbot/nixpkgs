@@ -75,17 +75,16 @@ stdenv.mkDerivation {
     rustc
   ];
 
-  buildInputs =
-    [
-      lzo
-      openssl
-      zlib
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      libiconv
-      darwin.apple_sdk.frameworks.SystemConfiguration
-      darwin.apple_sdk.frameworks.CoreServices
-    ];
+  buildInputs = [
+    lzo
+    openssl
+    zlib
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    libiconv
+    darwin.apple_sdk.frameworks.SystemConfiguration
+    darwin.apple_sdk.frameworks.CoreServices
+  ];
 
   enableParallelBuilding = true;
 

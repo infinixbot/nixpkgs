@@ -116,8 +116,10 @@ in
       description = "A bridge between Matrix and Discord.";
 
       wantedBy = [ "multi-user.target" ];
-      wants = [ "network-online.target" ] ++ cfg.serviceDependencies;
-      after = [ "network-online.target" ] ++ cfg.serviceDependencies;
+      wants = [ "network-online.target" ]
+        ++ cfg.serviceDependencies;
+      after = [ "network-online.target" ]
+        ++ cfg.serviceDependencies;
 
       preStart = ''
         if [ ! -f '${registrationFile}' ]; then

@@ -76,7 +76,8 @@ stdenv.mkDerivation rec {
         ];
 
   nativeBuildInputs = [ m4 ];
-  buildInputs = [ cdrtools ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ IOKit ];
+  buildInputs = [ cdrtools ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ IOKit ];
 
   makeFlags = [
     "prefix=${placeholder "out"}"

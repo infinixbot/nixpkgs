@@ -53,36 +53,35 @@ stdenv.mkDerivation rec {
     (lib.getDev qttools)
   ];
 
-  buildInputs =
-    [
-      boost186 # uses boost/asio/io_service.hpp
-      libgcrypt
-      libgpg-error
-      libsodium
-      miniupnpc
-      qtbase
-      qtdeclarative
-      qtgraphicaleffects
-      qtmultimedia
-      qtquickcontrols
-      qtquickcontrols2
-      qtxmlpatterns
-      quirc
-      randomx
-      rapidjson
-      unbound
-      zeromq
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [ qtmacextras ]
-    ++ lib.optionals trezorSupport [
-      hidapi
-      libusb1
-      protobuf_21
-      python3
-    ]
-    ++ lib.optionals (trezorSupport && stdenv.hostPlatform.isLinux) [
-      udev
-    ];
+  buildInputs = [
+    boost186 # uses boost/asio/io_service.hpp
+    libgcrypt
+    libgpg-error
+    libsodium
+    miniupnpc
+    qtbase
+    qtdeclarative
+    qtgraphicaleffects
+    qtmultimedia
+    qtquickcontrols
+    qtquickcontrols2
+    qtxmlpatterns
+    quirc
+    randomx
+    rapidjson
+    unbound
+    zeromq
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ qtmacextras ]
+  ++ lib.optionals trezorSupport [
+    hidapi
+    libusb1
+    protobuf_21
+    python3
+  ]
+  ++ lib.optionals (trezorSupport && stdenv.hostPlatform.isLinux) [
+    udev
+  ];
 
   postUnpack = ''
     # copy monero sources here
@@ -113,8 +112,7 @@ stdenv.mkDerivation rec {
       --replace 'add_subdirectory(external)' ""
   '';
 
-  cmakeFlags =
-    [ "-DARCH=default" ]
+  cmakeFlags = [ "-DARCH=default" ]
     ++ lib.optional trezorSupport [
       # fix build on recent gcc versions
       "-DCMAKE_CXX_FLAGS=-fpermissive"

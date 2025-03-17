@@ -40,7 +40,8 @@ let
     pname = "alt-ergo-parsers";
     inherit version src;
     nativeBuildInputs = [ ocamlPackages.menhir ];
-    propagatedBuildInputs = [ alt-ergo-lib ] ++ (with ocamlPackages; [ psmt2-frontend ]);
+    propagatedBuildInputs = [ alt-ergo-lib ]
+      ++ (with ocamlPackages; [ psmt2-frontend ]);
   };
 in
 
@@ -50,9 +51,9 @@ ocamlPackages.buildDunePackage {
 
   nativeBuildInputs = [
     ocamlPackages.menhir
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ darwin.sigtool ];
-  propagatedBuildInputs =
-    [ alt-ergo-parsers ]
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ darwin.sigtool ];
+  propagatedBuildInputs = [ alt-ergo-parsers ]
     ++ (with ocamlPackages; [
       cmdliner
       dune-site

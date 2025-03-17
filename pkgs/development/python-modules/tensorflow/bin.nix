@@ -89,7 +89,8 @@ buildPythonPackage rec {
     tensorflow-estimator-bin
     tensorboard
     h5py
-  ] ++ lib.optional (!isPy3k) mock;
+  ]
+  ++ lib.optional (!isPy3k) mock;
 
   build-system =
     [

@@ -33,7 +33,8 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     which
     dieHook
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ fixDarwinDylibNames ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ fixDarwinDylibNames ];
 
   # The Darwin sandbox calls fail inside Nix builds, presumably due to
   # being nested inside another sandbox.

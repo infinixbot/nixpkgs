@@ -8,5 +8,6 @@
 symlinkJoin {
   name = "kdevelop-with-plugins";
 
-  paths = [ kdevelop-unwrapped ] ++ (lib.optionals (plugins != null) plugins);
+  paths = [ kdevelop-unwrapped ]
+    ++ (lib.optionals (plugins != null) plugins);
 }

@@ -102,7 +102,8 @@ buildPythonPackage rec {
     pytest-selenium
     pytestCheckHook
     webdriver-manager
-  ] ++ lib.flatten (builtins.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (builtins.attrValues optional-dependencies);
 
   preCheck = ''
     export HOME=$(mktemp -d)

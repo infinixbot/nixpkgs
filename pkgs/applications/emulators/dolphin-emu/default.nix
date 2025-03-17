@@ -68,15 +68,14 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  nativeBuildInputs =
-    [
-      cmake
-      pkg-config
-      wrapQtAppsHook
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      xcbuild # for plutil
-    ];
+  nativeBuildInputs = [
+    cmake
+    pkg-config
+    wrapQtAppsHook
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    xcbuild # for plutil
+  ];
 
   buildInputs =
     [
@@ -131,23 +130,22 @@ stdenv.mkDerivation (finalAttrs: {
       VideoToolbox
     ];
 
-  cmakeFlags =
-    [
-      "-DDISTRIBUTOR=NixOS"
-      "-DDOLPHIN_WC_REVISION=${finalAttrs.src.rev}"
-      "-DDOLPHIN_WC_DESCRIBE=${finalAttrs.version}"
-      "-DDOLPHIN_WC_BRANCH=master"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      "-DOSX_USE_DEFAULT_SEARCH_PATH=True"
-      "-DUSE_BUNDLED_MOLTENVK=OFF"
-      "-DMACOS_CODE_SIGNING=OFF"
-      # Bundles the application folder into a standalone executable, so we cannot devendor libraries
-      "-DSKIP_POSTPROCESS_BUNDLE=ON"
-      # Needs xcode so compilation fails with it enabled. We would want the version to be fixed anyways.
-      # Note: The updater isn't available on linux, so we don't need to disable it there.
-      "-DENABLE_AUTOUPDATE=OFF"
-    ];
+  cmakeFlags = [
+    "-DDISTRIBUTOR=NixOS"
+    "-DDOLPHIN_WC_REVISION=${finalAttrs.src.rev}"
+    "-DDOLPHIN_WC_DESCRIBE=${finalAttrs.version}"
+    "-DDOLPHIN_WC_BRANCH=master"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    "-DOSX_USE_DEFAULT_SEARCH_PATH=True"
+    "-DUSE_BUNDLED_MOLTENVK=OFF"
+    "-DMACOS_CODE_SIGNING=OFF"
+    # Bundles the application folder into a standalone executable, so we cannot devendor libraries
+    "-DSKIP_POSTPROCESS_BUNDLE=ON"
+    # Needs xcode so compilation fails with it enabled. We would want the version to be fixed anyways.
+    # Note: The updater isn't available on linux, so we don't need to disable it there.
+    "-DENABLE_AUTOUPDATE=OFF"
+  ];
 
   qtWrapperArgs = lib.optionals stdenv.hostPlatform.isLinux [
     "--prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ vulkan-loader ]}"

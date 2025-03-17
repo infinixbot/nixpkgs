@@ -16,13 +16,12 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "hiprand";
   version = "6.0.2";
 
-  outputs =
-    [
-      "out"
-    ]
-    ++ lib.optionals buildTests [
-      "test"
-    ];
+  outputs = [
+    "out"
+  ]
+  ++ lib.optionals buildTests [
+    "test"
+  ];
 
   src = fetchFromGitHub {
     owner = "ROCm";
@@ -37,7 +36,8 @@ stdenv.mkDerivation (finalAttrs: {
     clr
   ];
 
-  buildInputs = [ rocrand ] ++ (lib.optionals buildTests [ gtest ]);
+  buildInputs = [ rocrand ]
+    ++ (lib.optionals buildTests [ gtest ]);
 
   cmakeFlags =
     [

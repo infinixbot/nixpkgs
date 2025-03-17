@@ -50,14 +50,16 @@ buildPythonPackage rec {
     ];
     elastic = [ elasticsearch ];
     geoip = [ maxminddb ];
-    avro = [ fastavro ] ++ fastavro.optional-dependencies.snappy;
+    avro = [ fastavro ]
+      ++ fastavro.optional-dependencies.snappy;
     splunk = [ httpx ];
   };
 
   nativeCheckInputs = [
     elastic-transport
     pytest7CheckHook
-  ] ++ lib.flatten (builtins.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (builtins.attrValues optional-dependencies);
 
   pythonImportsCheck = [ "flow.record" ];
 

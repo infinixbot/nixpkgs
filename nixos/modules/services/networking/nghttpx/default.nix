@@ -72,7 +72,8 @@ let
       # the default behavior of turning on TLS.
       params1 = lib.remove "tls" params0;
 
-      sections = [ host ] ++ params1;
+      sections = [ host ]
+        ++ params1;
       formattedSections = lib.concatStringsSep ";" sections;
     in
     "frontend=${formattedSections}";

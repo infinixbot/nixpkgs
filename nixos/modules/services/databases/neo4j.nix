@@ -642,7 +642,8 @@ in
     let
       # Assertion helpers
       policyNameList = lib.attrNames cfg.ssl.policies;
-      validPolicyNameList = [ "legacy" ] ++ policyNameList;
+      validPolicyNameList = [ "legacy" ]
+        ++ policyNameList;
       validPolicyNameString = lib.concatStringsSep ", " validPolicyNameList;
 
       # Capture various directories left at their default so they can be created.

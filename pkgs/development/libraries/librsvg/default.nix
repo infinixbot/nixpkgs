@@ -47,14 +47,13 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "librsvg";
   version = "2.58.3";
 
-  outputs =
-    [
-      "out"
-      "dev"
-    ]
-    ++ lib.optionals withIntrospection [
-      "devdoc"
-    ];
+  outputs = [
+    "out"
+    "dev"
+  ]
+  ++ lib.optionals withIntrospection [
+    "devdoc"
+  ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/librsvg/${lib.versions.majorMinor finalAttrs.version}/librsvg-${finalAttrs.version}.tar.xz";
@@ -74,35 +73,33 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  nativeBuildInputs =
-    [
-      gdk-pixbuf
-      installShellFiles
-      pkg-config
-      rustc
-      cargo-auditable-cargo-wrapper
-      python3Packages.docutils
-      vala
-      rustPlatform.cargoSetupHook
-    ]
-    ++ lib.optionals withIntrospection [
-      gobject-introspection
-      gi-docgen
-    ];
+  nativeBuildInputs = [
+    gdk-pixbuf
+    installShellFiles
+    pkg-config
+    rustc
+    cargo-auditable-cargo-wrapper
+    python3Packages.docutils
+    vala
+    rustPlatform.cargoSetupHook
+  ]
+  ++ lib.optionals withIntrospection [
+    gobject-introspection
+    gi-docgen
+  ];
 
-  buildInputs =
-    [
-      libxml2
-      bzip2
-      pango
-      libintl
-      vala # for share/vala/Makefile.vapigen
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      ApplicationServices
-      Foundation
-      libobjc
-    ];
+  buildInputs = [
+    libxml2
+    bzip2
+    pango
+    libintl
+    vala # for share/vala/Makefile.vapigen
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    ApplicationServices
+    Foundation
+    libobjc
+  ];
 
   propagatedBuildInputs = [
     glib
@@ -141,33 +138,31 @@ stdenv.mkDerivation (finalAttrs: {
   # relevant loader.cache here.
   # The loaders.cache can be used by setting GDK_PIXBUF_MODULE_FILE to
   # point to this file in a wrapper.
-  postConfigure =
-    ''
-      GDK_PIXBUF=$out/lib/gdk-pixbuf-2.0/2.10.0
-      mkdir -p $GDK_PIXBUF/loaders
-      sed -i gdk-pixbuf-loader/Makefile \
-        -e "s#gdk_pixbuf_moduledir = .*#gdk_pixbuf_moduledir = $GDK_PIXBUF/loaders#" \
-        -e "s#gdk_pixbuf_cache_file = .*#gdk_pixbuf_cache_file = $GDK_PIXBUF/loaders.cache#" \
-        -e "s#\$(GDK_PIXBUF_QUERYLOADERS)#GDK_PIXBUF_MODULEDIR=$GDK_PIXBUF/loaders \$(GDK_PIXBUF_QUERYLOADERS)#"
+  postConfigure = ''
+    GDK_PIXBUF=$out/lib/gdk-pixbuf-2.0/2.10.0
+    mkdir -p $GDK_PIXBUF/loaders
+    sed -i gdk-pixbuf-loader/Makefile \
+      -e "s#gdk_pixbuf_moduledir = .*#gdk_pixbuf_moduledir = $GDK_PIXBUF/loaders#" \
+      -e "s#gdk_pixbuf_cache_file = .*#gdk_pixbuf_cache_file = $GDK_PIXBUF/loaders.cache#" \
+      -e "s#\$(GDK_PIXBUF_QUERYLOADERS)#GDK_PIXBUF_MODULEDIR=$GDK_PIXBUF/loaders \$(GDK_PIXBUF_QUERYLOADERS)#"
 
-      # Fix thumbnailer path
-      sed -e "s#@bindir@\(/gdk-pixbuf-thumbnailer\)#${gdk-pixbuf}/bin\1#g" \
-          -i gdk-pixbuf-loader/librsvg.thumbnailer.in
+    # Fix thumbnailer path
+    sed -e "s#@bindir@\(/gdk-pixbuf-thumbnailer\)#${gdk-pixbuf}/bin\1#g" \
+        -i gdk-pixbuf-loader/librsvg.thumbnailer.in
 
-      # 'error: linker `cc` not found' when cross-compiling
-      export RUSTFLAGS="-Clinker=$CC"
+    # 'error: linker `cc` not found' when cross-compiling
+    export RUSTFLAGS="-Clinker=$CC"
+  ''
+  + lib.optionalString
+    (
+      (stdenv.buildPlatform != stdenv.hostPlatform)
+      && (stdenv.hostPlatform.emulatorAvailable buildPackages)
+    )
     ''
-    +
-      lib.optionalString
-        (
-          (stdenv.buildPlatform != stdenv.hostPlatform)
-          && (stdenv.hostPlatform.emulatorAvailable buildPackages)
-        )
-        ''
-          # the replacement is the native conditional
-          substituteInPlace gdk-pixbuf-loader/Makefile \
-            --replace 'RUN_QUERY_LOADER_TEST = false' 'RUN_QUERY_LOADER_TEST = test -z "$(DESTDIR)"' \
-        '';
+      # the replacement is the native conditional
+      substituteInPlace gdk-pixbuf-loader/Makefile \
+        --replace 'RUN_QUERY_LOADER_TEST = false' 'RUN_QUERY_LOADER_TEST = test -z "$(DESTDIR)"' \
+    '';
 
   # Not generated when cross compiling.
   postInstall =

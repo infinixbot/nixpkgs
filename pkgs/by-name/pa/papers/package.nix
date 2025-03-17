@@ -78,32 +78,31 @@ stdenv.mkDerivation (finalAttrs: {
     rustPlatform.cargoSetupHook
   ];
 
-  buildInputs =
-    [
-      dbus # only needed to find the service directory
-      djvulibre
-      exempi
-      gdk-pixbuf
-      glib
-      gtk4
-      gsettings-desktop-schemas
-      libadwaita
-      libarchive
-      libgxps
-      librsvg
-      libspectre
-      pango
-      poppler
-    ]
-    ++ lib.optionals withLibsecret [
-      libsecret
-    ]
-    ++ lib.optionals supportNautilus [
-      nautilus
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      darwin.apple_sdk.frameworks.Foundation
-    ];
+  buildInputs = [
+    dbus # only needed to find the service directory
+    djvulibre
+    exempi
+    gdk-pixbuf
+    glib
+    gtk4
+    gsettings-desktop-schemas
+    libadwaita
+    libarchive
+    libgxps
+    librsvg
+    libspectre
+    pango
+    poppler
+  ]
+  ++ lib.optionals withLibsecret [
+    libsecret
+  ]
+  ++ lib.optionals supportNautilus [
+    nautilus
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    darwin.apple_sdk.frameworks.Foundation
+  ];
 
   mesonFlags =
     [
@@ -121,15 +120,14 @@ stdenv.mkDerivation (finalAttrs: {
       --replace-fail '=papers-thumbnailer' "=$out/bin/papers-thumbnailer"
   '';
 
-  preFixup =
-    ''
-      gappsWrapperArgs+=(
-        --prefix XDG_DATA_DIRS : "${shared-mime-info}/share"
-      )
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      install_name_tool -add_rpath "$out/lib" "$out/bin/papers"
-    '';
+  preFixup = ''
+    gappsWrapperArgs+=(
+      --prefix XDG_DATA_DIRS : "${shared-mime-info}/share"
+    )
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    install_name_tool -add_rpath "$out/lib" "$out/bin/papers"
+  '';
 
   postFixup = ''
     # Cannot be in postInstall, otherwise _multioutDocs hook in preFixup will move right back.

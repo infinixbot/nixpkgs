@@ -730,28 +730,27 @@ in
 
   hardenedPackagesFor = kernel: overrides: packagesFor (hardenedKernelFor kernel overrides);
 
-  vanillaPackages =
-    {
-      # recurse to build modules for the kernels
-      linux_5_4 = recurseIntoAttrs (packagesFor kernels.linux_5_4);
-      linux_5_10 = recurseIntoAttrs (packagesFor kernels.linux_5_10);
-      linux_5_15 = recurseIntoAttrs (packagesFor kernels.linux_5_15);
-      linux_6_1 = recurseIntoAttrs (packagesFor kernels.linux_6_1);
-      linux_6_6 = recurseIntoAttrs (packagesFor kernels.linux_6_6);
-      linux_6_11 = recurseIntoAttrs (packagesFor kernels.linux_6_11);
-      linux_6_12 = recurseIntoAttrs (packagesFor kernels.linux_6_12);
-      linux_6_13 = recurseIntoAttrs (packagesFor kernels.linux_6_13);
-    }
-    // lib.optionalAttrs config.allowAliases {
-      linux_4_14 = throw "linux 4.14 was removed because it will reach its end of life within 23.11"; # Added 2023-10-11
-      linux_4_19 = throw "linux 4.19 was removed because it will reach its end of life within 24.11"; # Added 2024-09-21
-      linux_6_4 = throw "linux 6.4 was removed because it reached its end of life upstream"; # Added 2023-10-02
-      linux_6_5 = throw "linux 6.5 was removed because it reached its end of life upstream"; # Added 2024-02-28
-      linux_6_7 = throw "linux 6.7 was removed because it reached its end of life upstream"; # Added 2024-04-04
-      linux_6_8 = throw "linux 6.8 was removed because it reached its end of life upstream"; # Added 2024-08-02
-      linux_6_9 = throw "linux 6.9 was removed because it reached its end of life upstream"; # Added 2024-08-02
-      linux_6_10 = throw "linux 6.10 was removed because it reached its end of life upstream"; # Added 2024-10-23
-    };
+  vanillaPackages = {
+    # recurse to build modules for the kernels
+    linux_5_4 = recurseIntoAttrs (packagesFor kernels.linux_5_4);
+    linux_5_10 = recurseIntoAttrs (packagesFor kernels.linux_5_10);
+    linux_5_15 = recurseIntoAttrs (packagesFor kernels.linux_5_15);
+    linux_6_1 = recurseIntoAttrs (packagesFor kernels.linux_6_1);
+    linux_6_6 = recurseIntoAttrs (packagesFor kernels.linux_6_6);
+    linux_6_11 = recurseIntoAttrs (packagesFor kernels.linux_6_11);
+    linux_6_12 = recurseIntoAttrs (packagesFor kernels.linux_6_12);
+    linux_6_13 = recurseIntoAttrs (packagesFor kernels.linux_6_13);
+  }
+  // lib.optionalAttrs config.allowAliases {
+    linux_4_14 = throw "linux 4.14 was removed because it will reach its end of life within 23.11"; # Added 2023-10-11
+    linux_4_19 = throw "linux 4.19 was removed because it will reach its end of life within 24.11"; # Added 2024-09-21
+    linux_6_4 = throw "linux 6.4 was removed because it reached its end of life upstream"; # Added 2023-10-02
+    linux_6_5 = throw "linux 6.5 was removed because it reached its end of life upstream"; # Added 2024-02-28
+    linux_6_7 = throw "linux 6.7 was removed because it reached its end of life upstream"; # Added 2024-04-04
+    linux_6_8 = throw "linux 6.8 was removed because it reached its end of life upstream"; # Added 2024-08-02
+    linux_6_9 = throw "linux 6.9 was removed because it reached its end of life upstream"; # Added 2024-08-02
+    linux_6_10 = throw "linux 6.10 was removed because it reached its end of life upstream"; # Added 2024-10-23
+  };
 
   rtPackages = {
     # realtime kernel packages
@@ -811,17 +810,16 @@ in
     }
   );
 
-  packageAliases =
-    {
-      linux_default = packages.linux_6_12;
-      # Update this when adding the newest kernel major version!
-      linux_latest = packages.linux_6_13;
-      linux_rt_default = packages.linux_rt_5_15;
-      linux_rt_latest = packages.linux_rt_6_6;
-    }
-    // lib.optionalAttrs config.allowAliases {
-      linux_mptcp = throw "'linux_mptcp' has been moved to https://github.com/teto/mptcp-flake";
-    };
+  packageAliases = {
+    linux_default = packages.linux_6_12;
+    # Update this when adding the newest kernel major version!
+    linux_latest = packages.linux_6_13;
+    linux_rt_default = packages.linux_rt_5_15;
+    linux_rt_latest = packages.linux_rt_6_6;
+  }
+  // lib.optionalAttrs config.allowAliases {
+    linux_mptcp = throw "'linux_mptcp' has been moved to https://github.com/teto/mptcp-flake";
+  };
 
   manualConfig = callPackage ../os-specific/linux/kernel/manual-config.nix { };
 
@@ -856,8 +854,7 @@ in
     }:
     stdenvNoCC.mkDerivation {
       inherit name src;
-      depsBuildBuild =
-        [ buildPackages.stdenv.cc ]
+      depsBuildBuild = [ buildPackages.stdenv.cc ]
         ++ lib.optionals (lib.versionAtLeast version "4.16") [
           buildPackages.bison
           buildPackages.flex

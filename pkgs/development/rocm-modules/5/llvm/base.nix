@@ -62,7 +62,8 @@ let
     else
       throw "Unsupported ROCm LLVM platform";
   inferNativeTarget = t: if t == "NATIVE" then llvmNativeTarget else t;
-  llvmTargetsToBuild' = [ "AMDGPU" ] ++ builtins.map inferNativeTarget llvmTargetsToBuild;
+  llvmTargetsToBuild' = [ "AMDGPU" ]
+    ++ builtins.map inferNativeTarget llvmTargetsToBuild;
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "rocm-llvm-${targetName}";
@@ -89,23 +90,22 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-0+lJnDiMntxCYbZBCSWvHOcKXexFfEzRfb49QbfOmK8=";
   };
 
-  nativeBuildInputs =
-    [
-      pkg-config
-      cmake
-      ninja
-      git
-      (python3Packages.python.withPackages (p: [ p.setuptools ]))
-    ]
-    ++ lib.optionals (buildDocs || buildMan) [
-      doxygen
-      sphinx
-      python3Packages.recommonmark
-    ]
-    ++ lib.optionals (buildTests && !finalAttrs.passthru.isLLVM) [
-      lit
-    ]
-    ++ extraNativeBuildInputs;
+  nativeBuildInputs = [
+    pkg-config
+    cmake
+    ninja
+    git
+    (python3Packages.python.withPackages (p: [ p.setuptools ]))
+  ]
+  ++ lib.optionals (buildDocs || buildMan) [
+    doxygen
+    sphinx
+    python3Packages.recommonmark
+  ]
+  ++ lib.optionals (buildTests && !finalAttrs.passthru.isLLVM) [
+    lit
+  ]
+  ++ extraNativeBuildInputs;
 
   buildInputs = [
     libxml2
@@ -113,7 +113,8 @@ stdenv.mkDerivation (finalAttrs: {
     libedit
     libffi
     mpfr
-  ] ++ extraBuildInputs;
+  ]
+  ++ extraBuildInputs;
 
   propagatedBuildInputs = lib.optionals finalAttrs.passthru.isLLVM [
     zlib
@@ -122,42 +123,40 @@ stdenv.mkDerivation (finalAttrs: {
 
   sourceRoot = "${finalAttrs.src.name}/${targetDir}";
 
-  cmakeFlags =
-    [
-      "-DLLVM_TARGETS_TO_BUILD=${builtins.concatStringsSep ";" llvmTargetsToBuild'}"
-    ]
-    ++ lib.optionals (finalAttrs.passthru.isLLVM && targetProjects != [ ]) [
-      "-DLLVM_ENABLE_PROJECTS=${lib.concatStringsSep ";" targetProjects}"
-    ]
-    ++
-      lib.optionals ((finalAttrs.passthru.isLLVM || targetDir == "runtimes") && targetRuntimes != [ ])
-        [
-          "-DLLVM_ENABLE_RUNTIMES=${lib.concatStringsSep ";" targetRuntimes}"
-        ]
-    ++ lib.optionals finalAttrs.passthru.isLLVM [
-      "-DLLVM_INSTALL_UTILS=ON"
-      "-DLLVM_INSTALL_GTEST=ON"
-    ]
-    ++ lib.optionals (buildDocs || buildMan) [
-      "-DLLVM_INCLUDE_DOCS=ON"
-      "-DLLVM_BUILD_DOCS=ON"
-      # "-DLLVM_ENABLE_DOXYGEN=ON" Way too slow, only uses one core
-      "-DLLVM_ENABLE_SPHINX=ON"
-      "-DSPHINX_OUTPUT_HTML=ON"
-      "-DSPHINX_OUTPUT_MAN=ON"
-      "-DSPHINX_WARNINGS_AS_ERRORS=OFF"
-    ]
-    ++ lib.optionals buildTests [
-      "-DLLVM_INCLUDE_TESTS=ON"
-      "-DLLVM_BUILD_TESTS=ON"
-      "-DLLVM_EXTERNAL_LIT=${lit}/bin/.lit-wrapped"
-    ]
-    ++ extraCMakeFlags;
+  cmakeFlags = [
+    "-DLLVM_TARGETS_TO_BUILD=${builtins.concatStringsSep ";" llvmTargetsToBuild'}"
+  ]
+  ++ lib.optionals (finalAttrs.passthru.isLLVM && targetProjects != [ ]) [
+    "-DLLVM_ENABLE_PROJECTS=${lib.concatStringsSep ";" targetProjects}"
+  ]
+  ++
+    lib.optionals ((finalAttrs.passthru.isLLVM || targetDir == "runtimes") && targetRuntimes != [ ])
+      [
+        "-DLLVM_ENABLE_RUNTIMES=${lib.concatStringsSep ";" targetRuntimes}"
+      ]
+  ++ lib.optionals finalAttrs.passthru.isLLVM [
+    "-DLLVM_INSTALL_UTILS=ON"
+    "-DLLVM_INSTALL_GTEST=ON"
+  ]
+  ++ lib.optionals (buildDocs || buildMan) [
+    "-DLLVM_INCLUDE_DOCS=ON"
+    "-DLLVM_BUILD_DOCS=ON"
+    # "-DLLVM_ENABLE_DOXYGEN=ON" Way too slow, only uses one core
+    "-DLLVM_ENABLE_SPHINX=ON"
+    "-DSPHINX_OUTPUT_HTML=ON"
+    "-DSPHINX_OUTPUT_MAN=ON"
+    "-DSPHINX_WARNINGS_AS_ERRORS=OFF"
+  ]
+  ++ lib.optionals buildTests [
+    "-DLLVM_INCLUDE_TESTS=ON"
+    "-DLLVM_BUILD_TESTS=ON"
+    "-DLLVM_EXTERNAL_LIT=${lit}/bin/.lit-wrapped"
+  ]
+  ++ extraCMakeFlags;
 
-  postPatch =
-    lib.optionalString finalAttrs.passthru.isLLVM ''
-      patchShebangs lib/OffloadArch/make_generated_offload_arch_h.sh
-    ''
+  postPatch = lib.optionalString finalAttrs.passthru.isLLVM ''
+    patchShebangs lib/OffloadArch/make_generated_offload_arch_h.sh
+  ''
     + lib.optionalString (buildTests && finalAttrs.passthru.isLLVM) ''
       # FileSystem permissions tests fail with various special bits
       rm test/tools/llvm-objcopy/ELF/mirror-permissions-unix.test

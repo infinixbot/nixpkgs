@@ -331,22 +331,21 @@ stdenv.mkDerivation (finalAttrs: {
     inherit branch;
 
     description = "Type-1 hypervisor intended for embedded and hyperscale use cases";
-    longDescription =
-      ''
-        The Xen Project Hypervisor is a virtualisation technology defined as a *type-1
-        hypervisor*, which allows multiple virtual machines, known as domains, to run
-        concurrently with the host on the physical machine. On a typical *type-2
-        hypervisor*, the virtual machines run as applications on top of the
-        host. NixOS runs as the privileged **Domain 0**, and can paravirtualise or fully
-        virtualise **Unprivileged Domains**.
+    longDescription = ''
+      The Xen Project Hypervisor is a virtualisation technology defined as a *type-1
+      hypervisor*, which allows multiple virtual machines, known as domains, to run
+      concurrently with the host on the physical machine. On a typical *type-2
+      hypervisor*, the virtual machines run as applications on top of the
+      host. NixOS runs as the privileged **Domain 0**, and can paravirtualise or fully
+      virtualise **Unprivileged Domains**.
 
-        Use with the `qemu_xen` package.
-      ''
-      + "\nIncludes:\n* `xen.efi`: The Xen Project's [EFI binary](https://xenbits.xenproject.org/docs/${branch}-testing/misc/efi.html), available on the `boot` output of this package."
-      + optionalString withFlask "\n* `xsm-flask`: The [FLASK Xen Security Module](https://wiki.xenproject.org/wiki/Xen_Security_Modules_:_XSM-FLASK). The `xenpolicy-${upstreamVersion}` file is available on the `boot` output of this package."
-      + optionalString withSeaBIOS "\n* `seabios`: Support for the SeaBIOS boot firmware on HVM domains."
-      + optionalString withOVMF "\n* `ovmf`: Support for the OVMF UEFI boot firmware on HVM domains."
-      + optionalString withIPXE "\n* `ipxe`: Support for the iPXE boot firmware on HVM domains.";
+      Use with the `qemu_xen` package.
+    ''
+    + "\nIncludes:\n* `xen.efi`: The Xen Project's [EFI binary](https://xenbits.xenproject.org/docs/${branch}-testing/misc/efi.html), available on the `boot` output of this package."
+    + optionalString withFlask "\n* `xsm-flask`: The [FLASK Xen Security Module](https://wiki.xenproject.org/wiki/Xen_Security_Modules_:_XSM-FLASK). The `xenpolicy-${upstreamVersion}` file is available on the `boot` output of this package."
+    + optionalString withSeaBIOS "\n* `seabios`: Support for the SeaBIOS boot firmware on HVM domains."
+    + optionalString withOVMF "\n* `ovmf`: Support for the OVMF UEFI boot firmware on HVM domains."
+    + optionalString withIPXE "\n* `ipxe`: Support for the iPXE boot firmware on HVM domains.";
 
     homepage = "https://xenproject.org/";
     downloadPage = "https://downloads.xenproject.org/release/xen/${version}/";
@@ -370,5 +369,6 @@ stdenv.mkDerivation (finalAttrs: {
 
     platforms = [ isLinux ];
     badPlatforms = [ isAarch64 ];
-  } // meta;
+  }
+  // meta;
 })

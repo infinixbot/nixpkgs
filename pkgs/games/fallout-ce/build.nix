@@ -55,7 +55,8 @@ stdenv.mkDerivation {
     ;
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [ SDL2 ] ++ extraBuildInputs;
+  buildInputs = [ SDL2 ]
+    ++ extraBuildInputs;
   hardeningDisable = [ "format" ];
   cmakeBuildType = "RelWithDebInfo";
 

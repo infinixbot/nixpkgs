@@ -48,8 +48,7 @@ buildPythonPackage rec {
     hash = "sha256-fHp5Rh2Mzn62ZUoVHETl/6kZ6Iztxkd5mjxira7NVBU=";
   };
 
-  nativeBuildInputs =
-    [ cffi ]
+  nativeBuildInputs = [ cffi ]
     ++ (with rustPlatform; [
       cargoSetupHook
       maturinBuildHook

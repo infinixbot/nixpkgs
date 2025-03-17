@@ -64,7 +64,8 @@ buildGoModule rec {
       (python3.withPackages (ps: [ ps.distutils ]))
       git
       # @esfx/equatable@npm:1.0.2 fails to build on darwin as it requires `xcbuild`
-    ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ xcbuild.xcbuild ];
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ xcbuild.xcbuild ];
     buildPhase = ''
       runHook preBuild
       export HOME="$(mktemp -d)"
@@ -106,7 +107,8 @@ buildGoModule rec {
     # required to run old node-gyp
     (python3.withPackages (ps: [ ps.distutils ]))
     faketty
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ xcbuild.xcbuild ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ xcbuild.xcbuild ];
 
   postConfigure = ''
     # Generate DI code that's required to compile the package.

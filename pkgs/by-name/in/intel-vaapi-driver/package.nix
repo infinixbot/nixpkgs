@@ -41,7 +41,8 @@ stdenv.mkDerivation {
   configureFlags = [
     (lib.enableFeature enableGui "x11")
     (lib.enableFeature enableGui "wayland")
-  ] ++ lib.optional enableHybridCodec "--enable-hybrid-codec";
+  ]
+  ++ lib.optional enableHybridCodec "--enable-hybrid-codec";
 
   nativeBuildInputs = [
     autoreconfHook

@@ -93,7 +93,8 @@ buildPythonPackage rec {
     polars
     pytestCheckHook
     tqdm
-  ] ++ optional-dependencies.torch;
+  ]
+  ++ optional-dependencies.torch;
 
   preCheck = ''
     cd python/tests

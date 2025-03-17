@@ -57,7 +57,8 @@ rustPlatform.buildRustPackage rec {
     cmake
     pkg-config
     rustPlatform.bindgenHook
-  ] ++ lib.optionals stdenv.hostPlatform.isLinux [ python3 ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [ python3 ];
 
   preCheck = ''
     export HOME=$TMPDIR

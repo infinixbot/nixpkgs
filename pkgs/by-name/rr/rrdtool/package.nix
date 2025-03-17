@@ -38,19 +38,18 @@ perl.pkgs.toPerlModule (
       autoreconfHook
     ];
 
-    buildInputs =
-      [
-        gettext
-        perl
-        libxml2
-        pango
-        cairo
-        groff
-      ]
-      ++ lib.optionals stdenv.hostPlatform.isDarwin [
-        tcl
-        darwin.apple_sdk.frameworks.ApplicationServices
-      ];
+    buildInputs = [
+      gettext
+      perl
+      libxml2
+      pango
+      cairo
+      groff
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      tcl
+      darwin.apple_sdk.frameworks.ApplicationServices
+    ];
 
     postInstall = ''
       # for munin and rrdtool support

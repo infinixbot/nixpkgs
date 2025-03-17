@@ -287,28 +287,27 @@ let
             data.webroot
           ];
 
-      commonOpts =
-        [
-          "--accept-tos" # Checking the option is covered by the assertions
-          "--path"
-          "."
-          "-d"
-          data.domain
-          "--email"
-          data.email
-          "--key-type"
-          data.keyType
-        ]
-        ++ protocolOpts
-        ++ lib.optionals (acmeServer != null) [
-          "--server"
-          acmeServer
-        ]
-        ++ lib.concatMap (name: [
-          "-d"
-          name
-        ]) extraDomains
-        ++ data.extraLegoFlags;
+      commonOpts = [
+        "--accept-tos" # Checking the option is covered by the assertions
+        "--path"
+        "."
+        "-d"
+        data.domain
+        "--email"
+        data.email
+        "--key-type"
+        data.keyType
+      ]
+      ++ protocolOpts
+      ++ lib.optionals (acmeServer != null) [
+        "--server"
+        acmeServer
+      ]
+      ++ lib.concatMap (name: [
+        "-d"
+        name
+      ]) extraDomains
+      ++ data.extraLegoFlags;
 
       # Although --must-staple is common to both modes, it is not declared as a
       # mode-agnostic argument in lego and thus must come after the mode.
@@ -365,11 +364,13 @@ let
         after = [
           "acme-selfsigned-ca.service"
           "acme-fixperms.service"
-        ] ++ lib.optional (cfg.maxConcurrentRenewals > 0) "acme-lockfiles.service";
+        ]
+        ++ lib.optional (cfg.maxConcurrentRenewals > 0) "acme-lockfiles.service";
         requires = [
           "acme-selfsigned-ca.service"
           "acme-fixperms.service"
-        ] ++ lib.optional (cfg.maxConcurrentRenewals > 0) "acme-lockfiles.service";
+        ]
+        ++ lib.optional (cfg.maxConcurrentRenewals > 0) "acme-lockfiles.service";
 
         path = with pkgs; [ minica ];
 

@@ -46,7 +46,8 @@ buildPythonPackage rec {
     packaging
     radio-beam
     tqdm
-  ] ++ dask.optional-dependencies.array;
+  ]
+  ++ dask.optional-dependencies.array;
 
   nativeCheckInputs = [
     aplpy

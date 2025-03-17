@@ -131,24 +131,23 @@ stdenv.mkDerivation (
         };
       };
 
-    buildInputs =
-      [
-        libuv
-        libvterm-neovim
-        # This is actually a c library, hence it's not included in neovimLuaEnv,
-        # see:
-        # https://github.com/luarocks/luarocks/issues/1402#issuecomment-1080616570
-        # and it's definition at: pkgs/development/lua-modules/overrides.nix
-        lua.pkgs.libluv
-        msgpack-c
-        neovimLuaEnv
-        tree-sitter
-        unibilium
-      ]
-      ++ lib.optionals finalAttrs.finalPackage.doCheck [
-        glibcLocales
-        procps
-      ];
+    buildInputs = [
+      libuv
+      libvterm-neovim
+      # This is actually a c library, hence it's not included in neovimLuaEnv,
+      # see:
+      # https://github.com/luarocks/luarocks/issues/1402#issuecomment-1080616570
+      # and it's definition at: pkgs/development/lua-modules/overrides.nix
+      lua.pkgs.libluv
+      msgpack-c
+      neovimLuaEnv
+      tree-sitter
+      unibilium
+    ]
+    ++ lib.optionals finalAttrs.finalPackage.doCheck [
+      glibcLocales
+      procps
+    ];
 
     doCheck = false;
 
@@ -190,7 +189,8 @@ stdenv.mkDerivation (
         -e "s|\$<TARGET_FILE:nvim|\${stdenv.hostPlatform.emulator buildPackages} &|g"
     '';
     # check that the above patching actually works
-    disallowedRequisites = [ stdenv.cc ] ++ lib.optional (lua != codegenLua) codegenLua;
+    disallowedRequisites = [ stdenv.cc ]
+      ++ lib.optional (lua != codegenLua) codegenLua;
 
     cmakeFlags =
       [
@@ -207,24 +207,23 @@ stdenv.mkDerivation (
         "-DLUA_PRG=${neovimLuaEnvOnBuild}/bin/luajit"
       ];
 
-    preConfigure =
-      ''
-        mkdir -p $out/lib/nvim/parser
-      ''
-      + lib.concatStrings (
-        lib.mapAttrsToList (language: grammar: ''
-          ln -s \
-            ${
-              tree-sitter.buildGrammar {
-                inherit (grammar) src;
-                version = "neovim-${finalAttrs.version}";
-                language = grammar.language or language;
-                location = grammar.location or null;
-              }
-            }/parser \
-            $out/lib/nvim/parser/${language}.so
-        '') finalAttrs.treesitter-parsers
-      );
+    preConfigure = ''
+      mkdir -p $out/lib/nvim/parser
+    ''
+    + lib.concatStrings (
+      lib.mapAttrsToList (language: grammar: ''
+        ln -s \
+          ${
+            tree-sitter.buildGrammar {
+              inherit (grammar) src;
+              version = "neovim-${finalAttrs.version}";
+              language = grammar.language or language;
+              location = grammar.location or null;
+            }
+          }/parser \
+          $out/lib/nvim/parser/${language}.so
+      '') finalAttrs.treesitter-parsers
+    );
 
     shellHook = ''
       export VIMRUNTIME=$PWD/runtime

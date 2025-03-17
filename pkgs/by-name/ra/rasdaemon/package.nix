@@ -54,7 +54,8 @@ stdenv.mkDerivation rec {
         DBDSQLite
       ]
     ))
-  ] ++ lib.optionals (!stdenv.hostPlatform.isAarch64) [ dmidecode ];
+  ]
+  ++ lib.optionals (!stdenv.hostPlatform.isAarch64) [ dmidecode ];
 
   configureFlags = [
     "--sysconfdir=/etc"
@@ -100,16 +101,15 @@ stdenv.mkDerivation rec {
     install -Dm 0755 contrib/edac-tests $inject/bin/edac-tests
   '';
 
-  postFixup =
-    ''
-      # Fix dmidecode and modprobe paths
-      substituteInPlace $out/bin/ras-mc-ctl \
-        --replace 'find_prog ("modprobe")  or exit (1)' '"${kmod}/bin/modprobe"'
-    ''
-    + lib.optionalString (!stdenv.hostPlatform.isAarch64) ''
-      substituteInPlace $out/bin/ras-mc-ctl \
-        --replace 'find_prog ("dmidecode")' '"${dmidecode}/bin/dmidecode"'
-    '';
+  postFixup = ''
+    # Fix dmidecode and modprobe paths
+    substituteInPlace $out/bin/ras-mc-ctl \
+      --replace 'find_prog ("modprobe")  or exit (1)' '"${kmod}/bin/modprobe"'
+  ''
+  + lib.optionalString (!stdenv.hostPlatform.isAarch64) ''
+    substituteInPlace $out/bin/ras-mc-ctl \
+      --replace 'find_prog ("dmidecode")' '"${dmidecode}/bin/dmidecode"'
+  '';
 
   passthru.tests = nixosTests.rasdaemon;
 

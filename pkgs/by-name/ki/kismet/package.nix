@@ -53,22 +53,21 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs =
-    [
-      autoreconfHook
-      pkg-config
-      protobuf
-      protobufc
-    ]
-    ++ lib.optionals withPython [
-      (python3.withPackages (ps: [
-        ps.numpy
-        ps.protobuf
-        ps.pyserial
-        ps.setuptools
-        ps.websockets
-      ]))
-    ];
+  nativeBuildInputs = [
+    autoreconfHook
+    pkg-config
+    protobuf
+    protobufc
+  ]
+  ++ lib.optionals withPython [
+    (python3.withPackages (ps: [
+      ps.numpy
+      ps.protobuf
+      ps.pyserial
+      ps.setuptools
+      ps.websockets
+    ]))
+  ];
 
   buildInputs =
     [
@@ -95,19 +94,18 @@ stdenv.mkDerivation rec {
       lm_sensors
     ];
 
-  configureFlags =
-    [
-      "--disable-wifi-coconut" # Until https://github.com/kismetwireless/kismet/issues/478
-    ]
-    ++ lib.optionals (!withNetworkManager) [
-      "--disable-libnm"
-    ]
-    ++ lib.optionals (!withPython) [
-      "--disable-python-tools"
-    ]
-    ++ lib.optionals (!withSensors) [
-      "--disable-lmsensors"
-    ];
+  configureFlags = [
+    "--disable-wifi-coconut" # Until https://github.com/kismetwireless/kismet/issues/478
+  ]
+  ++ lib.optionals (!withNetworkManager) [
+    "--disable-libnm"
+  ]
+  ++ lib.optionals (!withPython) [
+    "--disable-python-tools"
+  ]
+  ++ lib.optionals (!withSensors) [
+    "--disable-lmsensors"
+  ];
 
   enableParallelBuilding = true;
 

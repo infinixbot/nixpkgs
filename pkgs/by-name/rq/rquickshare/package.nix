@@ -82,8 +82,7 @@ rustPlatform.buildRustPackage rec {
     wrapGAppsHook4
   ];
 
-  buildInputs =
-    [ openssl ]
+  buildInputs = [ openssl ]
     ++ lib.optionals stdenv.hostPlatform.isLinux [
       glib-networking
       libayatana-appindicator

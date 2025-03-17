@@ -29,16 +29,15 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      freetype
-      lua5_4
-      pcre2
-      SDL2
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      Foundation
-    ];
+  buildInputs = [
+    freetype
+    lua5_4
+    pcre2
+    SDL2
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    Foundation
+  ];
 
   mesonFlags = [
     "-Duse_system_lua=true"

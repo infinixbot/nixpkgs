@@ -40,11 +40,13 @@ buildPythonPackage rec {
       --replace 'version = "0.0.0-dev"' 'version = "${version}"'
   '';
 
-  propagatedBuildInputs = [ snowballstemmer ] ++ lib.optionals (pythonOlder "3.11") [ tomli ];
+  propagatedBuildInputs = [ snowballstemmer ]
+    ++ lib.optionals (pythonOlder "3.11") [ tomli ];
 
   optional-dependencies.toml = [ tomli ];
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ optional-dependencies.toml;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ optional-dependencies.toml;
 
   disabledTestPaths = [
     "src/tests/test_integration.py" # runs pip install

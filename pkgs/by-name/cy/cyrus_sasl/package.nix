@@ -53,7 +53,8 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     autoreconfHook
     pruneLibtoolFiles
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames;
   buildInputs =
     [
       openssl

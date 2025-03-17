@@ -31,8 +31,10 @@ let
       tryOnce = builtins.tryEval (normalise str);
       tryTwice = builtins.tryEval (normalise tryOnce.value);
 
-      absConcatOrig = /. + ("/" + str);
-      absConcatNormalised = /. + ("/" + tryOnce.value);
+      absConcatOrig = /.
+        + ("/" + str);
+      absConcatNormalised = /.
+        + ("/" + tryOnce.value);
     in
     # Check the lib.path.subpath.normalise property to only error on invalid subpaths
     assert assertMsg (

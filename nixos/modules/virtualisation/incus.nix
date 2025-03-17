@@ -314,7 +314,8 @@ in
       "xt_CHECKSUM"
       "xt_MASQUERADE"
       "vhost_vsock"
-    ] ++ lib.optionals nvidiaEnabled [ "nvidia_uvm" ];
+    ]
+    ++ lib.optionals nvidiaEnabled [ "nvidia_uvm" ];
 
     environment.systemPackages = [
       cfg.clientPackage
@@ -350,12 +351,14 @@ in
         "network-online.target"
         "lxcfs.service"
         "incus.socket"
-      ] ++ lib.optionals config.virtualisation.vswitch.enable [ "ovs-vswitchd.service" ];
+      ]
+      ++ lib.optionals config.virtualisation.vswitch.enable [ "ovs-vswitchd.service" ];
 
       requires = [
         "lxcfs.service"
         "incus.socket"
-      ] ++ lib.optionals config.virtualisation.vswitch.enable [ "ovs-vswitchd.service" ];
+      ]
+      ++ lib.optionals config.virtualisation.vswitch.enable [ "ovs-vswitchd.service" ];
 
       wants = [ "network-online.target" ];
 

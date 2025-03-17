@@ -42,7 +42,8 @@ buildPythonPackage rec {
     psycopg2
     pytestCheckHook
     pytest-django
-  ] ++ optional-dependencies.Base64ImageField;
+  ]
+  ++ optional-dependencies.Base64ImageField;
 
   pythonImportsCheck = [ "drf_extra_fields" ];
 

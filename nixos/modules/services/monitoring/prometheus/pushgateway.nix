@@ -148,8 +148,7 @@ in
     assertions = [
       {
         assertion = !lib.hasPrefix "/" cfg.stateDir;
-        message =
-          "The option services.prometheus.pushgateway.stateDir"
+        message = "The option services.prometheus.pushgateway.stateDir"
           + " shouldn't be an absolute directory."
           + " It should be a directory relative to /var/lib.";
       }

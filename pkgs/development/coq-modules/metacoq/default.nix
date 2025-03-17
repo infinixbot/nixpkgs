@@ -148,7 +148,8 @@ let
             propagatedBuildInputs = [
               equations
               coq.ocamlPackages.zarith
-            ] ++ metacoq-deps;
+            ]
+            ++ metacoq-deps;
 
             patchPhase =
               if lib.versionAtLeast coq.coq-version "8.17" || coq.coq-version == "dev" then
@@ -173,8 +174,7 @@ let
                   sed -i -e 's/mv $i $newi;/mv $i tmp; mv tmp $newi;/' ./template-coq/gen-src/to-lower.sh ./pcuic/clean_extraction.sh ./safechecker/clean_extraction.sh ./erasure/clean_extraction.sh
                 '';
 
-            configurePhase =
-              lib.optionalString (package == "all") pkgallMake
+            configurePhase = lib.optionalString (package == "all") pkgallMake
               + ''
                 touch ${pkgpath}/metacoq-config
               ''

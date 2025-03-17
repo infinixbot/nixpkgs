@@ -24,19 +24,18 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "rocalution";
   version = "5.7.1";
 
-  outputs =
-    [
-      "out"
-    ]
-    ++ lib.optionals buildTests [
-      "test"
-    ]
-    ++ lib.optionals buildBenchmarks [
-      "benchmark"
-    ]
-    ++ lib.optionals buildSamples [
-      "sample"
-    ];
+  outputs = [
+    "out"
+  ]
+  ++ lib.optionals buildTests [
+    "test"
+  ]
+  ++ lib.optionals buildBenchmarks [
+    "benchmark"
+  ]
+  ++ lib.optionals buildSamples [
+    "sample"
+  ];
 
   src = fetchFromGitHub {
     owner = "ROCm";
@@ -52,49 +51,46 @@ stdenv.mkDerivation (finalAttrs: {
     git
   ];
 
-  buildInputs =
-    [
-      rocblas
-      rocsparse
-      rocprim
-      rocrand
-      openmp
-      openmpi
-    ]
-    ++ lib.optionals buildTests [
-      gtest
-    ];
+  buildInputs = [
+    rocblas
+    rocsparse
+    rocprim
+    rocrand
+    openmp
+    openmpi
+  ]
+  ++ lib.optionals buildTests [
+    gtest
+  ];
 
-  cmakeFlags =
-    [
-      "-DCMAKE_CXX_COMPILER=hipcc"
-      "-DROCM_PATH=${clr}"
-      "-DHIP_ROOT_DIR=${clr}"
-      "-DSUPPORT_HIP=ON"
-      "-DSUPPORT_OMP=ON"
-      "-DSUPPORT_MPI=ON"
-      "-DBUILD_CLIENTS_SAMPLES=${if buildSamples then "ON" else "OFF"}"
-      # Manually define CMAKE_INSTALL_<DIR>
-      # See: https://github.com/NixOS/nixpkgs/pull/197838
-      "-DCMAKE_INSTALL_BINDIR=bin"
-      "-DCMAKE_INSTALL_LIBDIR=lib"
-      "-DCMAKE_INSTALL_INCLUDEDIR=include"
-    ]
-    ++ lib.optionals (gpuTargets != [ ]) [
-      "-DAMDGPU_TARGETS=${lib.strings.concatStringsSep ";" gpuTargets}"
-    ]
-    ++ lib.optionals buildTests [
-      "-DBUILD_CLIENTS_TESTS=ON"
-    ]
-    ++ lib.optionals buildBenchmarks [
-      "-DBUILD_CLIENTS_BENCHMARKS=ON"
-    ];
+  cmakeFlags = [
+    "-DCMAKE_CXX_COMPILER=hipcc"
+    "-DROCM_PATH=${clr}"
+    "-DHIP_ROOT_DIR=${clr}"
+    "-DSUPPORT_HIP=ON"
+    "-DSUPPORT_OMP=ON"
+    "-DSUPPORT_MPI=ON"
+    "-DBUILD_CLIENTS_SAMPLES=${if buildSamples then "ON" else "OFF"}"
+    # Manually define CMAKE_INSTALL_<DIR>
+    # See: https://github.com/NixOS/nixpkgs/pull/197838
+    "-DCMAKE_INSTALL_BINDIR=bin"
+    "-DCMAKE_INSTALL_LIBDIR=lib"
+    "-DCMAKE_INSTALL_INCLUDEDIR=include"
+  ]
+  ++ lib.optionals (gpuTargets != [ ]) [
+    "-DAMDGPU_TARGETS=${lib.strings.concatStringsSep ";" gpuTargets}"
+  ]
+  ++ lib.optionals buildTests [
+    "-DBUILD_CLIENTS_TESTS=ON"
+  ]
+  ++ lib.optionals buildBenchmarks [
+    "-DBUILD_CLIENTS_BENCHMARKS=ON"
+  ];
 
-  postInstall =
-    lib.optionalString buildTests ''
-      mkdir -p $test/bin
-      mv $out/bin/rocalution-test $test/bin
-    ''
+  postInstall = lib.optionalString buildTests ''
+    mkdir -p $test/bin
+    mv $out/bin/rocalution-test $test/bin
+  ''
     + lib.optionalString buildBenchmarks ''
       mkdir -p $benchmark/bin
       mv $out/bin/rocalution-bench $benchmark/bin

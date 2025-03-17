@@ -71,7 +71,8 @@ stdenv.mkDerivation (finalAttrs: {
       "i686-linux"
       "powerpc64le-linux"
       "s390x-linux"
-    ] ++ platforms.darwin;
+    ]
+    ++ platforms.darwin;
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     mainProgram = "ibmcloud";
   };

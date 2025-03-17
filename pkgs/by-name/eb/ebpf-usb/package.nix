@@ -21,8 +21,7 @@ python3Packages.buildPythonApplication rec {
     "--set PYTHONUNBUFFERED 1"
   ];
 
-  pythonPath =
-    [ bcc ]
+  pythonPath = [ bcc ]
     ++ (with python3Packages; [
       hexdump
     ]);

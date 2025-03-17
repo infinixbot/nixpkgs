@@ -54,22 +54,21 @@ stdenv.mkDerivation (finalAttrs: {
     })
   ];
 
-  postPatch =
-    ''
-      substituteInPlace doc/CMakeLists.txt \
-        --replace 'DESTINATION share/''${CMAKE_PROJECT_NAME}/doc' 'DESTINATION ''${CMAKE_INSTALL_DOCDIR}'
+  postPatch = ''
+    substituteInPlace doc/CMakeLists.txt \
+      --replace 'DESTINATION share/''${CMAKE_PROJECT_NAME}/doc' 'DESTINATION ''${CMAKE_INSTALL_DOCDIR}'
 
-      # Warning on aarch64-linux breaks build due to -Werror
-      substituteInPlace CMakeLists.txt \
-        --replace '-Werror' ""
+    # Warning on aarch64-linux breaks build due to -Werror
+    substituteInPlace CMakeLists.txt \
+      --replace '-Werror' ""
 
-      # pkg-config output patching hook expects prefix variable here
-      substituteInPlace data/dbus-cpp.pc.in \
-        --replace 'includedir=''${exec_prefix}' 'includedir=''${prefix}'
-    ''
-    + lib.optionalString (!finalAttrs.finalPackage.doCheck) ''
-      sed -i -e '/add_subdirectory(tests)/d' CMakeLists.txt
-    '';
+    # pkg-config output patching hook expects prefix variable here
+    substituteInPlace data/dbus-cpp.pc.in \
+      --replace 'includedir=''${exec_prefix}' 'includedir=''${prefix}'
+  ''
+  + lib.optionalString (!finalAttrs.finalPackage.doCheck) ''
+    sed -i -e '/add_subdirectory(tests)/d' CMakeLists.txt
+  '';
 
   strictDeps = true;
 

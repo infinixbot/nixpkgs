@@ -41,19 +41,18 @@ stdenv.mkDerivation rec {
     groff
   ];
 
-  buildInputs =
-    [
-      (cyrus_sasl.override {
-        inherit openssl;
-      })
-      libsodium
-      libtool
-      openssl
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isLinux) [
-      libxcrypt # causes linking issues on *-darwin
-      systemdMinimal
-    ];
+  buildInputs = [
+    (cyrus_sasl.override {
+      inherit openssl;
+    })
+    libsodium
+    libtool
+    openssl
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isLinux) [
+    libxcrypt # causes linking issues on *-darwin
+    systemdMinimal
+  ];
 
   preConfigure = lib.optionalString (lib.versionAtLeast stdenv.hostPlatform.darwinMinVersion "11") ''
     MACOSX_DEPLOYMENT_TARGET=10.16

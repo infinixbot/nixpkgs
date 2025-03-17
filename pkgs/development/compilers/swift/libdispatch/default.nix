@@ -23,8 +23,7 @@ stdenv.mkDerivation {
     "man"
   ];
 
-  nativeBuildInputs =
-    [ cmake ]
+  nativeBuildInputs = [ cmake ]
     ++ lib.optionals useSwift [
       ninja
       swift

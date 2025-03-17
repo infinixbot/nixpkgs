@@ -87,19 +87,18 @@ let
     fi
   '';
 
-  deps =
-    {
-      CAPSTONE = capstone;
-      LLVM = llvm;
-      YARA = yaracpp;
-      YARAMOD = yaramod;
-      SUPPORT_PKG = retdec-support;
-    }
-    // lib.optionalAttrs enableTests {
-      KEYSTONE = keystone;
-      # nixpkgs googletest is used
-      # GOOGLETEST = googletest;
-    };
+  deps = {
+    CAPSTONE = capstone;
+    LLVM = llvm;
+    YARA = yaracpp;
+    YARAMOD = yaramod;
+    SUPPORT_PKG = retdec-support;
+  }
+  // lib.optionalAttrs enableTests {
+    KEYSTONE = keystone;
+    # nixpkgs googletest is used
+    # GOOGLETEST = googletest;
+  };
 
   # overwrite install-share.py to copy instead of download.
   # we use this so the copy happens at the right time in the build,
@@ -162,13 +161,15 @@ stdenv.mkDerivation (self: {
     libffi
     libxml2
     zlib
-  ] ++ lib.optional self.doInstallCheck gtest;
+  ]
+  ++ lib.optional self.doInstallCheck gtest;
 
   cmakeFlags = [
     (lib.cmakeBool "RETDEC_TESTS" self.doInstallCheck) # build tests
     (lib.cmakeBool "RETDEC_DEV_TOOLS" buildDevTools) # build tools e.g. capstone2llvmir, retdectool
     (lib.cmakeBool "RETDEC_COMPILE_YARA" compileYaraPatterns) # build and install compiled patterns
-  ] ++ lib.mapAttrsToList (k: v: lib.cmakeFeature "${k}_URL" "${v}") deps;
+  ]
+  ++ lib.mapAttrsToList (k: v: lib.cmakeFeature "${k}_URL" "${v}") deps;
 
   preConfigure =
     lib.concatStringsSep "\n" (lib.mapAttrsToList check-dep deps)

@@ -20,7 +20,8 @@ symlinkJoin {
   # $out (which NIX_RZ_PREFIX will be set to) must always contain Rizin
   # files, even if we only wrap Cutter - so for Cutter, include Rizin to
   # symlinkJoin paths.
-  paths = [ unwrapped ] ++ lib.optional isCutter rizin ++ plugins;
+  paths = [ unwrapped ]
+    ++ lib.optional isCutter rizin ++ plugins;
 
   nativeBuildInputs = [ makeWrapper ];
 

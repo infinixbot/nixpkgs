@@ -29,7 +29,8 @@ buildPythonPackage rec {
   dependencies = [
     aiohttp
     gql
-  ] ++ gql.optional-dependencies.websockets;
+  ]
+  ++ gql.optional-dependencies.websockets;
 
   nativeCheckInputs = [
     pytest-asyncio

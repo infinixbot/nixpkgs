@@ -20,26 +20,24 @@ stdenv.mkDerivation rec {
     hash = "sha256-N+WizF7R23GUtCBvGggoONag5F53ugKHaxWP67i7hO8=";
   };
 
-  nativeBuildInputs =
-    [ copyDesktopItems ]
+  nativeBuildInputs = [ copyDesktopItems ]
     ++ (with libsForQt5.qt5; [
       qmake
       qttools
       wrapQtAppsHook
     ]);
 
-  buildInputs =
-    [
-      readline
-      tcl
-      python3
-    ]
-    ++ (with libsForQt5.qt5; [
-      qtbase
-      qtsvg
-      qtdeclarative
-      qtscript
-    ]);
+  buildInputs = [
+    readline
+    tcl
+    python3
+  ]
+  ++ (with libsForQt5.qt5; [
+    qtbase
+    qtsvg
+    qtdeclarative
+    qtscript
+  ]);
 
   qmakeFlags = [ "./SQLiteStudio3" ];
 

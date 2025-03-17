@@ -70,7 +70,8 @@ let
 
         patches = [
           ./0001-configs-rpi-allow-for-bigger-kernels.patch
-        ] ++ extraPatches;
+        ]
+        ++ extraPatches;
 
         postPatch = ''
           ${lib.concatMapStrings (script: ''
@@ -95,7 +96,8 @@ let
           swig
           which # for scripts/dtc-version.sh
           perl # for oid build (secureboot)
-        ] ++ lib.optionals (!crossTools) toolsDeps;
+        ]
+        ++ lib.optionals (!crossTools) toolsDeps;
         depsBuildBuild = [ buildPackages.stdenv.cc ];
         buildInputs = lib.optionals crossTools toolsDeps;
 
@@ -106,7 +108,8 @@ let
         makeFlags = [
           "DTC=${lib.getExe buildPackages.dtc}"
           "CROSS_COMPILE=${stdenv.cc.targetPrefix}"
-        ] ++ extraMakeFlags;
+        ]
+        ++ extraMakeFlags;
 
         passAsFile = [ "extraConfig" ];
 

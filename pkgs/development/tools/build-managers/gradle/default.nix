@@ -69,14 +69,13 @@ rec {
 
       dontBuild = true;
 
-      nativeBuildInputs =
-        [
-          makeWrapper
-          unzip
-        ]
-        ++ lib.optionals stdenv.hostPlatform.isLinux [
-          autoPatchelfHook
-        ];
+      nativeBuildInputs = [
+        makeWrapper
+        unzip
+      ]
+      ++ lib.optionals stdenv.hostPlatform.isLinux [
+        autoPatchelfHook
+      ];
 
       buildInputs = [
         stdenv.cc.cc
@@ -277,24 +276,23 @@ rec {
           mitm-cache
         ];
 
-        passthru =
-          {
-            fetchDeps = callPackage ./fetch-deps.nix { inherit mitm-cache; };
-            inherit (gradle) jdk tests;
-            unwrapped = gradle;
-          }
-          // lib.optionalAttrs (updateAttrPath != null) {
-            updateScript = nix-update-script {
-              attrPath = updateAttrPath;
-              extraArgs = [
-                "--url=https://github.com/gradle/gradle"
-                # Gradle’s .0 releases are tagged as `vX.Y.0`, but the actual
-                # release version omits the `.0`, so we’ll wanto to only capture
-                # the version up but not including the the trailing `.0`.
-                "--version-regex=^v(\\d+\\.\\d+(?:\\.[1-9]\\d?)?)(\\.0)?$"
-              ];
-            };
+        passthru = {
+          fetchDeps = callPackage ./fetch-deps.nix { inherit mitm-cache; };
+          inherit (gradle) jdk tests;
+          unwrapped = gradle;
+        }
+        // lib.optionalAttrs (updateAttrPath != null) {
+          updateScript = nix-update-script {
+            attrPath = updateAttrPath;
+            extraArgs = [
+              "--url=https://github.com/gradle/gradle"
+              # Gradle’s .0 releases are tagged as `vX.Y.0`, but the actual
+              # release version omits the `.0`, so we’ll wanto to only capture
+              # the version up but not including the the trailing `.0`.
+              "--version-regex=^v(\\d+\\.\\d+(?:\\.[1-9]\\d?)?)(\\.0)?$"
+            ];
           };
+        };
 
         meta = gradle.meta // {
           # prefer normal gradle/mitm-cache over this wrapper, this wrapper only provides the setup hook

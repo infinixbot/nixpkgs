@@ -47,7 +47,8 @@ stdenv.mkDerivation (finalAttrs: {
     cmake
     doxygen
     validatePkgConfig
-  ] ++ lib.optionals finalAttrs.finalPackage.doCheck [ ruby ];
+  ]
+  ++ lib.optionals finalAttrs.finalPackage.doCheck [ ruby ];
 
   cmakeFlags = [ "-DBUILD_TESTING=${if finalAttrs.finalPackage.doCheck then "ON" else "OFF"}" ];
 

@@ -21,8 +21,7 @@ buildDunePackage rec {
     hash = "sha256-jIxxqBVWphWYyLh+24rTxk4WWfPPdGCvNdevFJEKw70=";
   };
 
-  buildInputs =
-    [ dune-configurator ]
+  buildInputs = [ dune-configurator ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       Accelerate
       CoreAudio

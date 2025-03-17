@@ -38,18 +38,17 @@ stdenv.mkDerivation (finalAttrs: {
     ./libtiff-4.4.0.diff
   ];
 
-  postPatch =
-    ''
-      # To support cross compilation, use the correct `pkg-config`.
-      substituteInPlace Makefile.fip \
-        --replace "pkg-config" "$PKG_CONFIG"
-      substituteInPlace Makefile.gnu \
-        --replace "pkg-config" "$PKG_CONFIG"
-    ''
-    + lib.optionalString (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) ''
-      # Upstream Makefile hardcodes i386 and x86_64 architectures only
-      substituteInPlace Makefile.osx --replace "x86_64" "arm64"
-    '';
+  postPatch = ''
+    # To support cross compilation, use the correct `pkg-config`.
+    substituteInPlace Makefile.fip \
+      --replace "pkg-config" "$PKG_CONFIG"
+    substituteInPlace Makefile.gnu \
+      --replace "pkg-config" "$PKG_CONFIG"
+  ''
+  + lib.optionalString (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) ''
+    # Upstream Makefile hardcodes i386 and x86_64 architectures only
+    substituteInPlace Makefile.osx --replace "x86_64" "arm64"
+  '';
 
   nativeBuildInputs =
     [

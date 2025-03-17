@@ -100,14 +100,13 @@ stdenv.mkDerivation {
       --replace-fail "1.9.2" ${version}
   '';
 
-  postConfigure =
-    ''
-      cp -r ${nodeDeps}/lib/node_modules .
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      export HOME="$TMPDIR/home"
-      mkdir $HOME
-    '';
+  postConfigure = ''
+    cp -r ${nodeDeps}/lib/node_modules .
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    export HOME="$TMPDIR/home"
+    mkdir $HOME
+  '';
 
   cmakeFlags = [
     # Do not append timestamp to version.

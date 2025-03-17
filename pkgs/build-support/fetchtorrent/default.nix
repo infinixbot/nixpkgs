@@ -47,8 +47,7 @@ in
 runCommand name
   {
     inherit meta;
-    nativeBuildInputs =
-      [ cacert ]
+    nativeBuildInputs = [ cacert ]
       ++ (
         if (backend == "transmission") then
           [ transmission_3_noSystemd ]

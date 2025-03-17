@@ -43,15 +43,14 @@ let
       sha256 = "sha256-8xvY8XYZJa/gAVcxR+ffpE8naUTbGyM8AyAdpG6nKtA=";
     };
 
-    postPatch =
-      ''
-        substituteInPlace src/client/curl/qcurl.c \
-          --replace "\"libcurl.so.3\", \"libcurl.so.4\"" "\"${curl.out}/lib/libcurl.so\", \"libcurl.so.3\", \"libcurl.so.4\""
-      ''
-      + lib.optionalString (openalSupport && !stdenv.hostPlatform.isDarwin) ''
-        substituteInPlace Makefile \
-          --replace "\"libopenal.so.1\"" "\"${openal}/lib/libopenal.so.1\""
-      '';
+    postPatch = ''
+      substituteInPlace src/client/curl/qcurl.c \
+        --replace "\"libcurl.so.3\", \"libcurl.so.4\"" "\"${curl.out}/lib/libcurl.so\", \"libcurl.so.3\", \"libcurl.so.4\""
+    ''
+    + lib.optionalString (openalSupport && !stdenv.hostPlatform.isDarwin) ''
+      substituteInPlace Makefile \
+        --replace "\"libopenal.so.1\"" "\"${openal}/lib/libopenal.so.1\""
+    '';
 
     buildInputs =
       [

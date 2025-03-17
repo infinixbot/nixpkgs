@@ -71,26 +71,25 @@ stdenv.mkDerivation (finalAttrs: {
     python3
   ];
 
-  buildInputs =
-    [
-      miniz
-      lz4
-      libxml2
-      spirv-headers
-    ]
-    ++ (lib.optionals stdenv.hostPlatform.isLinux [
-      libX11
-    ])
-    ++ (lib.optionals withLLVM [
-      # Slang only supports LLVM 13:
-      # https://github.com/shader-slang/slang/blob/master/docs/building.md#llvm-support
-      llvmPackages_13.llvm
-      llvmPackages_13.libclang
-    ])
-    ++ (lib.optionals withGlslang [
-      # SPIRV-tools is included in glslang.
-      glslang
-    ]);
+  buildInputs = [
+    miniz
+    lz4
+    libxml2
+    spirv-headers
+  ]
+  ++ (lib.optionals stdenv.hostPlatform.isLinux [
+    libX11
+  ])
+  ++ (lib.optionals withLLVM [
+    # Slang only supports LLVM 13:
+    # https://github.com/shader-slang/slang/blob/master/docs/building.md#llvm-support
+    llvmPackages_13.llvm
+    llvmPackages_13.libclang
+  ])
+  ++ (lib.optionals withGlslang [
+    # SPIRV-tools is included in glslang.
+    glslang
+  ]);
 
   separateDebugInfo = true;
 

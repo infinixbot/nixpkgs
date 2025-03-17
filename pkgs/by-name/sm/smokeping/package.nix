@@ -25,8 +25,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  propagatedBuildInputs =
-    [ rrdtool ]
+  propagatedBuildInputs = [ rrdtool ]
     ++ (with perlPackages; [
       perl
       FCGI

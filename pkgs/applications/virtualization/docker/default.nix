@@ -159,8 +159,7 @@ rec {
             libtool
             installShellFiles
           ];
-          buildInputs =
-            [ sqlite ]
+          buildInputs = [ sqlite ]
             ++ lib.optional withLvm lvm2
             ++ lib.optional withBtrfs btrfs-progs
             ++ lib.optional withSystemd systemd
@@ -286,15 +285,14 @@ rec {
             glibc.static
           ];
 
-        postPatch =
-          ''
-            patchShebangs man scripts/build/
-            substituteInPlace ./scripts/build/.variables --replace-fail "set -eu" ""
-          ''
-          + lib.optionalString (plugins != [ ]) ''
-            substituteInPlace ./cli-plugins/manager/manager_unix.go --replace-fail /usr/libexec/docker/cli-plugins \
-                "${pluginsRef}/libexec/docker/cli-plugins"
-          '';
+        postPatch = ''
+          patchShebangs man scripts/build/
+          substituteInPlace ./scripts/build/.variables --replace-fail "set -eu" ""
+        ''
+        + lib.optionalString (plugins != [ ]) ''
+          substituteInPlace ./cli-plugins/manager/manager_unix.go --replace-fail /usr/libexec/docker/cli-plugins \
+              "${pluginsRef}/libexec/docker/cli-plugins"
+        '';
 
         # Keep eyes on BUILDTIME format - https://github.com/docker/cli/blob/${version}/scripts/build/.variables
         buildPhase = ''
@@ -313,29 +311,28 @@ rec {
 
         outputs = [ "out" ];
 
-        installPhase =
-          ''
-            install -Dm755 ./build/docker $out/libexec/docker/docker
+        installPhase = ''
+          install -Dm755 ./build/docker $out/libexec/docker/docker
 
-            makeWrapper $out/libexec/docker/docker $out/bin/docker \
-              --prefix PATH : "$out/libexec/docker:$extraPath"
-          ''
-          + lib.optionalString (!clientOnly) ''
-            # symlink docker daemon to docker cli derivation
-            ln -s ${moby}/bin/dockerd $out/bin/dockerd
-            ln -s ${moby}/bin/dockerd-rootless $out/bin/dockerd-rootless
+          makeWrapper $out/libexec/docker/docker $out/bin/docker \
+            --prefix PATH : "$out/libexec/docker:$extraPath"
+        ''
+        + lib.optionalString (!clientOnly) ''
+          # symlink docker daemon to docker cli derivation
+          ln -s ${moby}/bin/dockerd $out/bin/dockerd
+          ln -s ${moby}/bin/dockerd-rootless $out/bin/dockerd-rootless
 
-            # systemd
-            mkdir -p $out/etc/systemd/system
-            ln -s ${moby}/etc/systemd/system/docker.service $out/etc/systemd/system/docker.service
-            ln -s ${moby}/etc/systemd/system/docker.socket $out/etc/systemd/system/docker.socket
-          ''
-          + ''
-            # completion (cli)
-            installShellCompletion --bash ./contrib/completion/bash/docker
-            installShellCompletion --fish ./contrib/completion/fish/docker.fish
-            installShellCompletion --zsh  ./contrib/completion/zsh/_docker
-          '';
+          # systemd
+          mkdir -p $out/etc/systemd/system
+          ln -s ${moby}/etc/systemd/system/docker.service $out/etc/systemd/system/docker.service
+          ln -s ${moby}/etc/systemd/system/docker.socket $out/etc/systemd/system/docker.socket
+        ''
+        + ''
+          # completion (cli)
+          installShellCompletion --bash ./contrib/completion/bash/docker
+          installShellCompletion --fish ./contrib/completion/fish/docker.fish
+          installShellCompletion --zsh  ./contrib/completion/zsh/_docker
+        '';
 
         passthru = {
           # Exposed for tarsum build on non-linux systems (build-support/docker/default.nix)

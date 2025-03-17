@@ -195,8 +195,7 @@ let
     inherit (stdenv.hostPlatform) system;
     inherit i686bundled;
 
-    outputs =
-      [ "out" ]
+    outputs = [ "out" ]
       ++ lib.optional i686bundled "lib32"
       ++ lib.optional (!libsOnly) "bin"
       ++ lib.optional (!libsOnly && firmware) "firmware";
@@ -232,7 +231,8 @@ let
       which
       libarchive
       jq
-    ] ++ lib.optionals (!libsOnly) kernel.moduleBuildDependencies;
+    ]
+    ++ lib.optionals (!libsOnly) kernel.moduleBuildDependencies;
 
     disallowedReferences = lib.optionals (!libsOnly) [ kernel.dev ];
 

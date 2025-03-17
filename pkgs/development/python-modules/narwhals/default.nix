@@ -41,7 +41,8 @@ buildPythonPackage rec {
     # cudf = [ cudf ];
     dask = [
       dask
-    ] ++ dask.optional-dependencies.dataframe;
+    ]
+    ++ dask.optional-dependencies.dataframe;
     # modin = [ modin ];
     pandas = [ pandas ];
     polars = [ polars ];
@@ -53,7 +54,8 @@ buildPythonPackage rec {
     hypothesis
     pytest-env
     pytestCheckHook
-  ] ++ lib.flatten (builtins.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (builtins.attrValues optional-dependencies);
 
   pythonImportsCheck = [ "narwhals" ];
 

@@ -42,15 +42,14 @@ buildPythonPackage rec {
     export HOME=$TMPDIR
   '';
 
-  disabledTests =
-    [
-      "test_diagram"
-      "test_ordered_with_graph"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      # Upstream issue https://github.com/pygraphviz/pygraphviz/issues/441
-      "test_binary_stream"
-    ];
+  disabledTests = [
+    "test_diagram"
+    "test_ordered_with_graph"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    # Upstream issue https://github.com/pygraphviz/pygraphviz/issues/441
+    "test_binary_stream"
+  ];
 
   pythonImportsCheck = [ "transitions" ];
 

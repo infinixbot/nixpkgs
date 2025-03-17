@@ -83,7 +83,8 @@ stdenv.mkDerivation {
     qtwayland
     qtmultimedia
     qttools
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin CoreFoundation;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin CoreFoundation;
 
   meta = with lib; {
     description = "Professional open-source NLE video editor";

@@ -26,7 +26,8 @@ buildPythonPackage rec {
 
   build-system = [ setuptools ];
 
-  dependencies = [ pyserial ] ++ lib.optionals (pythonAtLeast "3.13") [ standard-telnetlib ];
+  dependencies = [ pyserial ]
+    ++ lib.optionals (pythonAtLeast "3.13") [ standard-telnetlib ];
 
   nativeCheckInputs = [ pytestCheckHook ];
 

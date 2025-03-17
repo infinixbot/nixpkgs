@@ -55,7 +55,8 @@ stdenv.mkDerivation (finalAttrs: {
       }"
   '';
 
-  nativeBuildInputs = [ installShellFiles ] ++ lib.optionals (pkgConfigLibs != [ ]) [ pkg-config ];
+  nativeBuildInputs = [ installShellFiles ]
+    ++ lib.optionals (pkgConfigLibs != [ ]) [ pkg-config ];
 
   buildInputs =
     lib.optionals enableXwinGraphics [ libX11 ]

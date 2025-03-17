@@ -42,21 +42,20 @@ buildPythonPackage rec {
 
   buildInputs = [ ncurses ];
 
-  dependencies =
-    [
-      distutils
-      packaging
-      setuptools
-    ]
-    ++ lib.optionals (pythonOlder "3.11") [
-      tomli
-    ]
-    ++ lib.optionals (pythonOlder "3.10") [
-      importlib-metadata
-      typing-extensions
-    ]
-    ++ lib.optional stdenv.hostPlatform.isLinux filelock
-    ++ lib.optional stdenv.hostPlatform.isDarwin dmgbuild;
+  dependencies = [
+    distutils
+    packaging
+    setuptools
+  ]
+  ++ lib.optionals (pythonOlder "3.11") [
+    tomli
+  ]
+  ++ lib.optionals (pythonOlder "3.10") [
+    importlib-metadata
+    typing-extensions
+  ]
+  ++ lib.optional stdenv.hostPlatform.isLinux filelock
+  ++ lib.optional stdenv.hostPlatform.isDarwin dmgbuild;
 
   makeWrapperArgs = [
     "--prefix"

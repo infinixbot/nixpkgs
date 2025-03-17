@@ -55,64 +55,62 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  nativeBuildInputs =
-    [
-      cmake
-      pkg-config
-      which
-      makeWrapper
-    ]
-    ++ lib.optionals cudaSupport [
-      cudaPackages.cuda_nvcc
-    ]
-    ++ lib.optionals enablePython [
-      python3
-      swig
-    ]
-    ++ lib.optionals (qt != null) [
-      qt.wrapQtAppsHook
-    ];
+  nativeBuildInputs = [
+    cmake
+    pkg-config
+    which
+    makeWrapper
+  ]
+  ++ lib.optionals cudaSupport [
+    cudaPackages.cuda_nvcc
+  ]
+  ++ lib.optionals enablePython [
+    python3
+    swig
+  ]
+  ++ lib.optionals (qt != null) [
+    qt.wrapQtAppsHook
+  ];
 
-  buildInputs =
-    [
-      (opencv4.override { inherit ffmpeg; })
-      ffmpeg
-      fftw
-      frei0r
-      libdv
-      libjack2
-      libsamplerate
-      libvorbis
-      libxml2
-      movit
-      rtaudio
-      rubberband
-      sox
-      vid-stab
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      darwin.apple_sdk_11_0.frameworks.Accelerate
-    ]
-    ++ lib.optionals cudaSupport [
-      cudaPackages.cuda_cudart
-    ]
-    ++ lib.optionals enableJackrack [
-      glib
-      ladspa-sdk
-      ladspaPlugins
-    ]
-    ++ lib.optionals (qt != null) [
-      qt.qtbase
-      qt.qtsvg
-      (qt.qt5compat or null)
-      libarchive
-    ]
-    ++ lib.optionals enableSDL1 [
-      SDL
-    ]
-    ++ lib.optionals enableSDL2 [
-      SDL2
-    ];
+  buildInputs = [
+    (opencv4.override { inherit ffmpeg; })
+    ffmpeg
+    fftw
+    frei0r
+    libdv
+    libjack2
+    libsamplerate
+    libvorbis
+    libxml2
+    movit
+    rtaudio
+    rubberband
+    sox
+    vid-stab
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    darwin.apple_sdk_11_0.frameworks.Accelerate
+  ]
+  ++ lib.optionals cudaSupport [
+    cudaPackages.cuda_cudart
+  ]
+  ++ lib.optionals enableJackrack [
+    glib
+    ladspa-sdk
+    ladspaPlugins
+  ]
+  ++ lib.optionals (qt != null) [
+    qt.qtbase
+    qt.qtsvg
+    (qt.qt5compat or null)
+    libarchive
+  ]
+  ++ lib.optionals enableSDL1 [
+    SDL
+  ]
+  ++ lib.optionals enableSDL2 [
+    SDL2
+  ];
 
   outputs = [
     "out"

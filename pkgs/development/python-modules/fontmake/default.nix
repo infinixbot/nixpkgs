@@ -42,17 +42,16 @@ buildPythonPackage rec {
     setuptools-scm
   ];
 
-  dependencies =
-    [
-      fontmath
-      fonttools
-      glyphslib
-      ufo2ft
-      ufolib2
-    ]
-    ++ fonttools.optional-dependencies.ufo
-    ++ fonttools.optional-dependencies.lxml
-    ++ fonttools.optional-dependencies.unicode;
+  dependencies = [
+    fontmath
+    fonttools
+    glyphslib
+    ufo2ft
+    ufolib2
+  ]
+  ++ fonttools.optional-dependencies.ufo
+  ++ fonttools.optional-dependencies.lxml
+  ++ fonttools.optional-dependencies.unicode;
 
   optional-dependencies = {
     pathops = [ skia-pathops ];
@@ -61,7 +60,8 @@ buildPythonPackage rec {
     repacker = fonttools.optional-dependencies.repacker;
   };
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ optional-dependencies.autohint;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ optional-dependencies.autohint;
 
   pythonImportsCheck = [ "fontmake" ];
 

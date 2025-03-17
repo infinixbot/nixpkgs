@@ -56,7 +56,8 @@ stdenv.mkDerivation (finalAttrs: {
     })
     # See discussion in https://github.com/NixOS/nixpkgs/pull/16966
     ./dont_create_privsep_path.patch
-  ] ++ extraPatches;
+  ]
+  ++ extraPatches;
 
   postPatch =
     # On Hydra this makes installation fail (sometimes?),
@@ -76,16 +77,15 @@ stdenv.mkDerivation (finalAttrs: {
     # https://github.com/NixOS/nixpkgs/pull/107606
     ++ lib.optional withKerberos pkgs.krb5
     ++ extraNativeBuildInputs;
-  buildInputs =
-    [
-      zlib
-      libedit
-    ]
-    ++ [ (if linkOpenssl then openssl else libxcrypt) ]
-    ++ lib.optional withFIDO libfido2
-    ++ lib.optional withKerberos krb5
-    ++ lib.optional withLdns ldns
-    ++ lib.optional withPAM pam;
+  buildInputs = [
+    zlib
+    libedit
+  ]
+  ++ [ (if linkOpenssl then openssl else libxcrypt) ]
+  ++ lib.optional withFIDO libfido2
+  ++ lib.optional withKerberos krb5
+  ++ lib.optional withLdns ldns
+  ++ lib.optional withPAM pam;
 
   preConfigure = ''
     # Setting LD causes `configure' and `make' to disagree about which linker
@@ -101,29 +101,28 @@ stdenv.mkDerivation (finalAttrs: {
 
   # I set --disable-strip because later we strip anyway. And it fails to strip
   # properly when cross building.
-  configureFlags =
-    [
-      "--sbindir=\${out}/bin"
-      "--localstatedir=/var"
-      "--with-pid-dir=/run"
-      "--with-mantype=man"
-      "--with-libedit=yes"
-      "--disable-strip"
-      (lib.withFeature withPAM "pam")
-      (lib.enableFeature dsaKeysSupport "dsa-keys")
-    ]
-    ++ lib.optional (etcDir != null) "--sysconfdir=${etcDir}"
-    ++ lib.optional (!withSecurityKey) "--disable-security-key"
-    ++ lib.optional withFIDO "--with-security-key-builtin=yes"
-    ++ lib.optional withKerberos (
-      assert krb5 != null;
-      "--with-kerberos5=${lib.getDev krb5}"
-    )
-    ++ lib.optional stdenv.hostPlatform.isDarwin "--disable-libutil"
-    ++ lib.optional (!linkOpenssl) "--without-openssl"
-    ++ lib.optional withLdns "--with-ldns"
-    ++ lib.optional stdenv.hostPlatform.isOpenBSD "--with-bsd-auth"
-    ++ extraConfigureFlags;
+  configureFlags = [
+    "--sbindir=\${out}/bin"
+    "--localstatedir=/var"
+    "--with-pid-dir=/run"
+    "--with-mantype=man"
+    "--with-libedit=yes"
+    "--disable-strip"
+    (lib.withFeature withPAM "pam")
+    (lib.enableFeature dsaKeysSupport "dsa-keys")
+  ]
+  ++ lib.optional (etcDir != null) "--sysconfdir=${etcDir}"
+  ++ lib.optional (!withSecurityKey) "--disable-security-key"
+  ++ lib.optional withFIDO "--with-security-key-builtin=yes"
+  ++ lib.optional withKerberos (
+    assert krb5 != null;
+    "--with-kerberos5=${lib.getDev krb5}"
+  )
+  ++ lib.optional stdenv.hostPlatform.isDarwin "--disable-libutil"
+  ++ lib.optional (!linkOpenssl) "--without-openssl"
+  ++ lib.optional withLdns "--with-ldns"
+  ++ lib.optional stdenv.hostPlatform.isOpenBSD "--with-bsd-auth"
+  ++ extraConfigureFlags;
 
   ${if stdenv.hostPlatform.isStatic then "NIX_LDFLAGS" else null} =
     [ "-laudit" ] ++ lib.optional withKerberos "-lkeyutils" ++ lib.optional withLdns "-lcrypto";
@@ -136,7 +135,8 @@ stdenv.mkDerivation (finalAttrs: {
 
   doCheck = false;
   enableParallelChecking = false;
-  nativeCheckInputs = [ openssl ] ++ lib.optional (!stdenv.hostPlatform.isDarwin) hostname;
+  nativeCheckInputs = [ openssl ]
+    ++ lib.optional (!stdenv.hostPlatform.isDarwin) hostname;
   preCheck = lib.optionalString (stdenv.hostPlatform == stdenv.buildPlatform) ''
     # construct a dummy HOME
     export HOME=$(realpath ../dummy-home)

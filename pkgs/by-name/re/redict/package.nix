@@ -44,8 +44,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs =
-    [ lua ]
+  buildInputs = [ lua ]
     ++ lib.optional useSystemJemalloc jemalloc
     ++ lib.optional withSystemd systemd
     ++ lib.optionals tlsSupport [ openssl ];
@@ -55,8 +54,7 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   # More cross-compiling fixes.
-  makeFlags =
-    [ "PREFIX=${placeholder "out"}" ]
+  makeFlags = [ "PREFIX=${placeholder "out"}" ]
     ++ lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [
       "AR=${stdenv.cc.targetPrefix}ar"
       "RANLIB=${stdenv.cc.targetPrefix}ranlib"
@@ -77,7 +75,8 @@ stdenv.mkDerivation (finalAttrs: {
     which
     tcl
     ps
-  ] ++ lib.optionals stdenv.hostPlatform.isStatic [ getconf ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isStatic [ getconf ];
 
   checkPhase = ''
     runHook preCheck

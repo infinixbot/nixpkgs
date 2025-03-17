@@ -34,22 +34,22 @@ buildPythonPackage rec {
   ];
 
   optional-dependencies = {
-    postgres = [ psycopg ] ++ psycopg.optional-dependencies.pool;
+    postgres = [ psycopg ]
+      ++ psycopg.optional-dependencies.pool;
     mysql = [ asyncmy ];
     sqlite = [ aiosqlite ];
   };
 
-  nativeCheckInputs =
-    [
-      pytestCheckHook
-      pytest-asyncio
-      pytest-cov-stub
-    ]
-    ++ (with optional-dependencies; [
-      postgres
-      mysql
-      sqlite
-    ]);
+  nativeCheckInputs = [
+    pytestCheckHook
+    pytest-asyncio
+    pytest-cov-stub
+  ]
+  ++ (with optional-dependencies; [
+    postgres
+    mysql
+    sqlite
+  ]);
 
   pythonImportsCheck = [ "mayim" ];
 

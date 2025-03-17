@@ -81,16 +81,15 @@ rustPlatform.buildRustPackage rec {
 
   passthru = {
     updateScript = nix-update-script { };
-    tests =
-      {
-        version = testers.testVersion {
-          inherit version;
-          package = conduwuit;
-        };
-      }
-      // lib.optionalAttrs stdenv.hostPlatform.isLinux {
-        inherit (nixosTests) conduwuit;
+    tests = {
+      version = testers.testVersion {
+        inherit version;
+        package = conduwuit;
       };
+    }
+    // lib.optionalAttrs stdenv.hostPlatform.isLinux {
+      inherit (nixosTests) conduwuit;
+    };
   };
 
   meta = {

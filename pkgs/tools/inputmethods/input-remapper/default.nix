@@ -45,16 +45,15 @@ in
     hash = "sha256-rwlVGF/cWSv6Bsvhrs6nMDQ8avYT80aasrhWyQv55/A=";
   };
 
-  postPatch =
-    ''
-      # fix FHS paths
-      substituteInPlace inputremapper/configs/data.py \
-        --replace "/usr/share"  "$out/usr/share"
-    ''
-    + lib.optionalString withDebugLogLevel ''
-      # if debugging
-      substituteInPlace inputremapper/logger.py --replace "logger.setLevel(logging.INFO)"  "logger.setLevel(logging.DEBUG)"
-    '';
+  postPatch = ''
+    # fix FHS paths
+    substituteInPlace inputremapper/configs/data.py \
+      --replace "/usr/share"  "$out/usr/share"
+  ''
+  + lib.optionalString withDebugLogLevel ''
+    # if debugging
+    substituteInPlace inputremapper/logger.py --replace "logger.setLevel(logging.INFO)"  "logger.setLevel(logging.DEBUG)"
+  '';
 
   doCheck = withDoCheck;
   nativeCheckInputs = [
@@ -115,7 +114,8 @@ in
     glib
     gobject-introspection
     pygobject3
-  ] ++ maybeXmodmap;
+  ]
+  ++ maybeXmodmap;
 
   propagatedBuildInputs = [
     setuptools # needs pkg_resources

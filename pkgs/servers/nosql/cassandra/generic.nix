@@ -45,7 +45,8 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ python311Packages.wrapPython ];
 
-  buildInputs = [ python311Packages.python ] ++ pythonPath;
+  buildInputs = [ python311Packages.python ]
+    ++ pythonPath;
 
   installPhase = ''
     runHook preInstall

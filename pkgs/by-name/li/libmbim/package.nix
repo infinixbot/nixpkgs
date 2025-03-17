@@ -25,7 +25,8 @@ stdenv.mkDerivation rec {
   outputs = [
     "out"
     "dev"
-  ] ++ lib.optionals withDocs [ "man" ];
+  ]
+  ++ lib.optionals withDocs [ "man" ];
 
   src = fetchFromGitLab {
     domain = "gitlab.freedesktop.org";

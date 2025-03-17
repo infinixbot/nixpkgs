@@ -40,18 +40,17 @@ stdenv.mkDerivation {
   nativeBuildInputs = [
     autoreconfHook
     pkg-config
-  ] ++ lib.optionals enableConduits [ bison ];
+  ]
+  ++ lib.optionals enableConduits [ bison ];
 
-  buildInputs =
-    [ popt ]
+  buildInputs = [ popt ]
     ++ lib.optionals bluezSupport [ bluez ]
     ++ lib.optionals enableLibpng [ libpng ]
     ++ lib.optionals enableLibusb [ libusb-compat-0_1 ]
     ++ lib.optionals readlineSupport [ readline ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin (with darwin.apple_sdk.frameworks; [ IOKit ]);
 
-  configureFlags =
-    [ "--with-libiconv" ]
+  configureFlags = [ "--with-libiconv" ]
     ++ lib.optionals enableConduits [ "--enable-conduits" ]
     ++ lib.optionals enableLibpng [ "--enable-libpng" ]
     ++ lib.optionals enableLibusb [ "--enable-libusb" ];

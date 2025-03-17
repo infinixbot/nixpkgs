@@ -54,7 +54,8 @@ buildPythonPackage rec {
     pytestCheckHook
     zstandard
     zstd
-  ] ++ lib.flatten (builtins.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (builtins.attrValues optional-dependencies);
 
   pythonImportsCheck = [ "ratarmountcore" ];
 

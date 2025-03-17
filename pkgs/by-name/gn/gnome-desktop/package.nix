@@ -86,15 +86,14 @@ stdenv.mkDerivation rec {
     gsettings-desktop-schemas
   ];
 
-  mesonFlags =
-    [
-      "-Dgtk_doc=true"
-      "-Ddesktop_docs=false"
-      (lib.mesonEnable "systemd" withSystemd)
-    ]
-    ++ lib.optionals (!stdenv.hostPlatform.isLinux) [
-      "-Dudev=disabled"
-    ];
+  mesonFlags = [
+    "-Dgtk_doc=true"
+    "-Ddesktop_docs=false"
+    (lib.mesonEnable "systemd" withSystemd)
+  ]
+  ++ lib.optionals (!stdenv.hostPlatform.isLinux) [
+    "-Dudev=disabled"
+  ];
 
   separateDebugInfo = stdenv.hostPlatform.isLinux;
 

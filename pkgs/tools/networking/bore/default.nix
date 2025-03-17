@@ -38,7 +38,8 @@ rustPlatform.buildRustPackage rec {
 
   nativeBuildInputs = [
     installShellFiles
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin rustPlatform.bindgenHook;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin rustPlatform.bindgenHook;
 
   buildInputs = lib.optionals stdenv.hostPlatform.isDarwin [
     Libsystem

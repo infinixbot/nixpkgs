@@ -26,7 +26,8 @@ let
 
       build-system = [ setuptools ];
 
-      dependencies = [ boto3 ] ++ lib.optionals (pythonOlder "3.12") [ typing-extensions ];
+      dependencies = [ boto3 ]
+        ++ lib.optionals (pythonOlder "3.12") [ typing-extensions ];
 
       # Project has no tests
       doCheck = false;

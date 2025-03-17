@@ -26,7 +26,8 @@ let
     # "Keep this aligned with the project dependencies."
     build-system = dependencies;
 
-    dependencies = [ setuptools ] ++ lib.optionals (pythonOlder "3.11") [ tomli ];
+    dependencies = [ setuptools ]
+      ++ lib.optionals (pythonOlder "3.11") [ tomli ];
 
     optional-dependencies = {
       scripts = [ click ];

@@ -28,15 +28,14 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-Y7Vn9KaZjEJ29o2GouNl5B/svAtJ24El9WYgXHhnxho=";
   };
 
-  nativeBuildInputs =
-    [
-      cmake
-      ninja
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isUnix [
-      pkg-config
-      validatePkgConfig
-    ];
+  nativeBuildInputs = [
+    cmake
+    ninja
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isUnix [
+    pkg-config
+    validatePkgConfig
+  ];
 
   buildInputs =
     [

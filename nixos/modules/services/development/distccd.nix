@@ -114,7 +114,8 @@ in
 
   config = lib.mkIf cfg.enable {
     networking.firewall = lib.mkIf cfg.openFirewall {
-      allowedTCPPorts = [ cfg.port ] ++ lib.optionals cfg.stats.enable [ cfg.stats.port ];
+      allowedTCPPorts = [ cfg.port ]
+        ++ lib.optionals cfg.stats.enable [ cfg.stats.port ];
     };
 
     systemd.services.distccd = {

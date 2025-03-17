@@ -57,7 +57,8 @@ buildPythonPackage rec {
     ++ cachecontrol.optional-dependencies.filecache
     ++ lib.optionals (pythonOlder "3.9") [ importlib-resources ];
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ optional-dependencies.pycodegen;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ optional-dependencies.pycodegen;
 
   preCheck = ''
     rm tox.ini

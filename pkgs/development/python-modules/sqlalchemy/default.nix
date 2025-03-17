@@ -57,7 +57,8 @@ buildPythonPackage rec {
     sed -i '/tag_build = dev/d' setup.cfg
   '';
 
-  nativeBuildInputs = [ setuptools ] ++ lib.optionals (!isPyPy) [ cython ];
+  nativeBuildInputs = [ setuptools ]
+    ++ lib.optionals (!isPyPy) [ cython ];
 
   propagatedBuildInputs = [
     greenlet
@@ -79,18 +80,22 @@ buildPythonPackage rec {
     oracle_oracledb = [ oracledb ];
     postgresql = [ psycopg2 ];
     postgresql_pg8000 = [ pg8000 ];
-    postgresql_asyncpg = [ asyncpg ] ++ self.asyncio;
+    postgresql_asyncpg = [ asyncpg ]
+      ++ self.asyncio;
     postgresql_psycopg2binary = [ psycopg2 ];
     postgresql_psycopg2cffi = [ psycopg2cffi ];
     postgresql_psycopg = [ psycopg ];
     postgresql_psycopgbinary = [ psycopg ];
     pymysql = [ pymysql ];
-    aiomysql = [ aiomysql ] ++ self.asyncio;
-    asyncmy = [ asyncmy ] ++ self.asyncio;
+    aiomysql = [ aiomysql ]
+      ++ self.asyncio;
+    asyncmy = [ asyncmy ]
+      ++ self.asyncio;
     aiosqlite = [
       aiosqlite
       typing-extensions
-    ] ++ self.asyncio;
+    ]
+    ++ self.asyncio;
     sqlcipher = [
       # TODO: sqlcipher3
     ];

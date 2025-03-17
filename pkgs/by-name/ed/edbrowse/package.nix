@@ -49,20 +49,19 @@ stdenv.mkDerivation (finalAttrs: {
     which
   ];
 
-  buildInputs =
-    [
-      curl
-      duktape
-      html-tidy
-      openssl
-      pcre
-      perl
-      quickjs
-      readline
-    ]
-    ++ lib.optionals withODBC [
-      unixODBC
-    ];
+  buildInputs = [
+    curl
+    duktape
+    html-tidy
+    openssl
+    pcre
+    perl
+    quickjs
+    readline
+  ]
+  ++ lib.optionals withODBC [
+    unixODBC
+  ];
 
   makeFlags = [
     "PREFIX=${placeholder "out"}"

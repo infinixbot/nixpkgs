@@ -20,8 +20,7 @@ stdenv.mkDerivation rec {
     (lib.getOutput "static" stdenv.cc.libc)
   ];
   makeFlags = [ "PREFIX=$(out)" ];
-  preConfigure =
-    ""
+  preConfigure = ""
     + (lib.optionalString (
       rcinit != null
     ) ''sed -re 's@(rcinitcmd[^"]*")[^"]*"@\1${rcinit}"@' -i config.def.h; '')

@@ -56,7 +56,8 @@ buildPythonPackage rec {
     wheel
   ];
 
-  buildInputs = [ zlib ] ++ lib.optionals stdenv.cc.isClang [ llvmPackages.openmp ];
+  buildInputs = [ zlib ]
+    ++ lib.optionals stdenv.cc.isClang [ llvmPackages.openmp ];
 
   dependencies = [
     netcdf4

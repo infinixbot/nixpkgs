@@ -46,8 +46,7 @@ stdenv.mkDerivation rec {
     ninja
   ];
 
-  buildInputs =
-    [ ffmpeg ]
+  buildInputs = [ ffmpeg ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin (
       with darwin.apple_sdk.frameworks;
       [

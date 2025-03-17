@@ -116,27 +116,26 @@ rustPlatform.buildRustPackage rec {
   ];
 
   # All of these tests require network access
-  checkFlags =
-    [
-      "--skip basic"
-      "--skip deposit_tree::cache_consistency"
-      "--skip deposit_tree::double_update"
-      "--skip deposit_tree::updating"
-      "--skip eth1_cache::big_skip"
-      "--skip eth1_cache::double_update"
-      "--skip eth1_cache::pruning"
-      "--skip eth1_cache::simple_scenario"
-      "--skip fast::deposit_cache_query"
-      "--skip http::incrementing_deposits"
-      "--skip persist::test_persist_caches"
-      "--skip service::tests::tests::test_dht_persistence"
-      "--skip time::test::test_reinsertion_updates_timeout"
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isAarch64 && stdenv.hostPlatform.isDarwin) [
-      "--skip subnet_service::tests::attestation_service::test_subscribe_same_subnet_several_slots_apart"
-      "--skip subnet_service::tests::sync_committee_service::same_subscription_with_lower_until_epoch"
-      "--skip subnet_service::tests::sync_committee_service::subscribe_and_unsubscribe"
-    ];
+  checkFlags = [
+    "--skip basic"
+    "--skip deposit_tree::cache_consistency"
+    "--skip deposit_tree::double_update"
+    "--skip deposit_tree::updating"
+    "--skip eth1_cache::big_skip"
+    "--skip eth1_cache::double_update"
+    "--skip eth1_cache::pruning"
+    "--skip eth1_cache::simple_scenario"
+    "--skip fast::deposit_cache_query"
+    "--skip http::incrementing_deposits"
+    "--skip persist::test_persist_caches"
+    "--skip service::tests::tests::test_dht_persistence"
+    "--skip time::test::test_reinsertion_updates_timeout"
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isAarch64 && stdenv.hostPlatform.isDarwin) [
+    "--skip subnet_service::tests::attestation_service::test_subscribe_same_subnet_several_slots_apart"
+    "--skip subnet_service::tests::sync_committee_service::same_subscription_with_lower_until_epoch"
+    "--skip subnet_service::tests::sync_committee_service::subscribe_and_unsubscribe"
+  ];
 
   nativeCheckInputs = [
     libpq

@@ -29,14 +29,13 @@ rustPlatform.buildRustPackage rec {
 
   doCheck = false;
 
-  buildInputs =
-    [
-      openssl
-      zlib
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      Security
-    ];
+  buildInputs = [
+    openssl
+    zlib
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    Security
+  ];
 
   nativeBuildInputs = [
     pkg-config

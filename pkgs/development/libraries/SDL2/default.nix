@@ -104,8 +104,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   depsBuildBuild = [ pkg-config ];
 
-  nativeBuildInputs =
-    [ pkg-config ]
+  nativeBuildInputs = [ pkg-config ]
     ++ lib.optionals waylandSupport [
       wayland
       wayland-scanner
@@ -150,8 +149,7 @@ stdenv.mkDerivation (finalAttrs: {
       libgbm
     ];
 
-  buildInputs =
-    [ libiconv ]
+  buildInputs = [ libiconv ]
     ++ finalAttrs.dlopenBuildInputs
     ++ lib.optional ibusSupport ibus
     ++ lib.optionals waylandSupport [ wayland-protocols ]
@@ -166,8 +164,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   enableParallelBuilding = true;
 
-  configureFlags =
-    [ "--disable-oss" ]
+  configureFlags = [ "--disable-oss" ]
     ++ lib.optional (!x11Support) "--without-x"
     ++ lib.optional alsaSupport "--with-alsa-prefix=${alsa-lib.out}/lib"
     ++ lib.optional stdenv.hostPlatform.isWindows "--disable-video-opengles"

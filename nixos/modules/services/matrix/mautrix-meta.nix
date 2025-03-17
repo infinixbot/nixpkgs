@@ -225,8 +225,7 @@ in
 
                 serviceDependencies = lib.mkOption {
                   type = lib.types.listOf lib.types.str;
-                  default =
-                    [ config.registrationServiceUnit ]
+                  default = [ config.registrationServiceUnit ]
                     ++ (lib.lists.optional upperConfig.services.matrix-synapse.enable upperConfig.services.matrix-synapse.serviceUnit)
                     ++ (lib.lists.optional upperConfig.services.matrix-conduit.enable "matrix-conduit.service")
                     ++ (lib.lists.optional upperConfig.services.dendrite.enable "dendrite.service");
@@ -529,8 +528,10 @@ in
           lib.nameValuePair "${metaName name}" {
             description = "Mautrix-Meta bridge - ${metaName name}";
             wantedBy = [ "multi-user.target" ];
-            wants = [ "network-online.target" ] ++ cfg.serviceDependencies;
-            after = [ "network-online.target" ] ++ cfg.serviceDependencies;
+            wants = [ "network-online.target" ]
+              ++ cfg.serviceDependencies;
+            after = [ "network-online.target" ]
+              ++ cfg.serviceDependencies;
 
             serviceConfig = {
               Type = "simple";

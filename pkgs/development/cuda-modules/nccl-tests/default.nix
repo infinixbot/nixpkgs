@@ -41,8 +41,7 @@ backendStdenv.mkDerivation (finalAttrs: {
     ++ lib.optionals (lib.versionOlder cudaVersion "11.4") [ cudatoolkit ]
     ++ lib.optionals (lib.versionAtLeast cudaVersion "11.4") [ cuda_nvcc ];
 
-  buildInputs =
-    [ nccl ]
+  buildInputs = [ nccl ]
     ++ lib.optionals (lib.versionOlder cudaVersion "11.4") [ cudatoolkit ]
     ++ lib.optionals (lib.versionAtLeast cudaVersion "11.4") [
       cuda_nvcc # crt/host_config.h
@@ -53,8 +52,7 @@ backendStdenv.mkDerivation (finalAttrs: {
     ]
     ++ lib.optionals mpiSupport [ mpi ];
 
-  makeFlags =
-    [ "NCCL_HOME=${nccl}" ]
+  makeFlags = [ "NCCL_HOME=${nccl}" ]
     ++ lib.optionals (lib.versionOlder cudaVersion "11.4") [ "CUDA_HOME=${cudatoolkit}" ]
     ++ lib.optionals (lib.versionAtLeast cudaVersion "11.4") [ "CUDA_HOME=${cuda_nvcc}" ]
     ++ lib.optionals mpiSupport [ "MPI=1" ];

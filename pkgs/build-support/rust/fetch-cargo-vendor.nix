@@ -58,15 +58,14 @@ let
 
       impureEnvVars = lib.fetchers.proxyImpureEnvVars;
 
-      nativeBuildInputs =
-        [
-          fetchCargoVendorUtil
-          cacert
-        ]
-        ++ lib.optionals allowGitDependencies [
-          nix-prefetch-git
-        ]
-        ++ nativeBuildInputs;
+      nativeBuildInputs = [
+        fetchCargoVendorUtil
+        cacert
+      ]
+      ++ lib.optionals allowGitDependencies [
+        nix-prefetch-git
+      ]
+      ++ nativeBuildInputs;
 
       buildPhase = ''
         runHook preBuild

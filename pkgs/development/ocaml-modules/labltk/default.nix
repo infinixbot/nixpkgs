@@ -102,7 +102,8 @@ param.stdenv.mkDerivation rec {
   buildInputs = [
     tcl
     tk
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ Cocoa ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ Cocoa ];
 
   configureFlags = [
     "--use-findlib"

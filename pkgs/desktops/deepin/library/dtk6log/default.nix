@@ -32,7 +32,8 @@ stdenv.mkDerivation (finalAttrs: {
   buildInputs = [
     qt6Packages.qtbase
     spdlog
-  ] ++ lib.optional withSystemd systemd;
+  ]
+  ++ lib.optional withSystemd systemd;
 
   cmakeFlags = [
     (lib.cmakeBool "BUILD_WITH_QT6" true)

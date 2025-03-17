@@ -55,7 +55,8 @@ buildPythonPackage rec {
   buildInputs = [
     opencl-headers
     pybind11
-  ] ++ os-specific-buildInputs;
+  ]
+  ++ os-specific-buildInputs;
 
   dependencies = [
     numpy

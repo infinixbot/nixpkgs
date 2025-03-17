@@ -84,7 +84,8 @@ stdenv.mkDerivation ({
 
   ERLC_OPTS =
     let
-      erlc_opts = [ "deterministic" ] ++ optional debugInfo "debug_info";
+      erlc_opts = [ "deterministic" ]
+        ++ optional debugInfo "debug_info";
     in
     "[${concatStringsSep "," erlc_opts}]";
 

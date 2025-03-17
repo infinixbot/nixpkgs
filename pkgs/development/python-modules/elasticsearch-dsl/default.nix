@@ -31,7 +31,8 @@ buildPythonPackage rec {
   ];
 
   optional-dependencies = {
-    async = [ elasticsearch ] ++ elasticsearch.optional-dependencies.async;
+    async = [ elasticsearch ]
+      ++ elasticsearch.optional-dependencies.async;
   };
 
   # ImportError: No module named test_elasticsearch_dsl

@@ -51,24 +51,23 @@ stdenv.mkDerivation rec {
     blueprint-compiler
   ];
 
-  buildInputs =
+  buildInputs = [
+    cairo
+    gdk-pixbuf
+    glib
+    gtk4
+    libadwaita
+    openssl
+    pango
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin (
+    with darwin.apple_sdk.frameworks;
     [
-      cairo
-      gdk-pixbuf
-      glib
-      gtk4
-      libadwaita
-      openssl
-      pango
+      CoreFoundation
+      Foundation
+      Security
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        CoreFoundation
-        Foundation
-        Security
-      ]
-    );
+  );
 
   # Darwin needs to link against gettext from nixpkgs instead of the one vendored by gettext-sys
   # because the vendored copy does not build with newer versions of clang.

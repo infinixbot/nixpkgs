@@ -70,34 +70,33 @@ stdenv.mkDerivation rec {
     ]
   );
 
-  cmakeFlags =
-    [
-      "-DBUILD_TESTING=ON"
-      "-DOPENMM_BUILD_AMOEBA_PLUGIN=ON"
-      "-DOPENMM_BUILD_CPU_LIB=ON"
-      "-DOPENMM_BUILD_C_AND_FORTRAN_WRAPPERS=ON"
-      "-DOPENMM_BUILD_DRUDE_PLUGIN=ON"
-      "-DOPENMM_BUILD_PME_PLUGIN=ON"
-      "-DOPENMM_BUILD_RPMD_PLUGIN=ON"
-      "-DOPENMM_BUILD_SHARED_LIB=ON"
-    ]
-    ++ lib.optionals enablePython [
-      "-DOPENMM_BUILD_PYTHON_WRAPPERS=ON"
-    ]
-    ++ lib.optionals enableOpencl [
-      "-DOPENMM_BUILD_OPENCL_LIB=ON"
-      "-DOPENMM_BUILD_AMOEBA_OPENCL_LIB=ON"
-      "-DOPENMM_BUILD_DRUDE_OPENCL_LIB=ON"
-      "-DOPENMM_BUILD_RPMD_OPENCL_LIB=ON"
-    ]
-    ++ lib.optionals enableCuda [
-      "-DCUDA_SDK_ROOT_DIR=${cudaPackages.cudatoolkit}"
-      "-DOPENMM_BUILD_AMOEBA_CUDA_LIB=ON"
-      "-DOPENMM_BUILD_CUDA_LIB=ON"
-      "-DOPENMM_BUILD_DRUDE_CUDA_LIB=ON"
-      "-DOPENMM_BUILD_RPMD_CUDA_LIB=ON"
-      "-DCMAKE_LIBRARY_PATH=${cudaPackages.cudatoolkit}/lib64/stubs"
-    ];
+  cmakeFlags = [
+    "-DBUILD_TESTING=ON"
+    "-DOPENMM_BUILD_AMOEBA_PLUGIN=ON"
+    "-DOPENMM_BUILD_CPU_LIB=ON"
+    "-DOPENMM_BUILD_C_AND_FORTRAN_WRAPPERS=ON"
+    "-DOPENMM_BUILD_DRUDE_PLUGIN=ON"
+    "-DOPENMM_BUILD_PME_PLUGIN=ON"
+    "-DOPENMM_BUILD_RPMD_PLUGIN=ON"
+    "-DOPENMM_BUILD_SHARED_LIB=ON"
+  ]
+  ++ lib.optionals enablePython [
+    "-DOPENMM_BUILD_PYTHON_WRAPPERS=ON"
+  ]
+  ++ lib.optionals enableOpencl [
+    "-DOPENMM_BUILD_OPENCL_LIB=ON"
+    "-DOPENMM_BUILD_AMOEBA_OPENCL_LIB=ON"
+    "-DOPENMM_BUILD_DRUDE_OPENCL_LIB=ON"
+    "-DOPENMM_BUILD_RPMD_OPENCL_LIB=ON"
+  ]
+  ++ lib.optionals enableCuda [
+    "-DCUDA_SDK_ROOT_DIR=${cudaPackages.cudatoolkit}"
+    "-DOPENMM_BUILD_AMOEBA_CUDA_LIB=ON"
+    "-DOPENMM_BUILD_CUDA_LIB=ON"
+    "-DOPENMM_BUILD_DRUDE_CUDA_LIB=ON"
+    "-DOPENMM_BUILD_RPMD_CUDA_LIB=ON"
+    "-DCMAKE_LIBRARY_PATH=${cudaPackages.cudatoolkit}/lib64/stubs"
+  ];
 
   postInstall = lib.strings.optionalString enablePython ''
     export OPENMM_LIB_PATH=$out/lib

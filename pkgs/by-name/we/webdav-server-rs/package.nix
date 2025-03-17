@@ -24,11 +24,13 @@ rustPlatform.buildRustPackage rec {
   useFetchCargoVendor = true;
   cargoHash = "sha256-0Ee0L3gKNP1O3SFkImBzQrT1fgnWFrrW8owxEM1dUYQ=";
 
-  buildInputs = [ libtirpc ] ++ lib.optional enablePAM pam;
+  buildInputs = [ libtirpc ]
+    ++ lib.optional enablePAM pam;
   nativeBuildInputs = [ rpcsvc-proto ];
 
   buildNoDefaultFeatures = true;
-  buildFeatures = [ "quota" ] ++ lib.optional enablePAM "pam";
+  buildFeatures = [ "quota" ]
+    ++ lib.optional enablePAM "pam";
 
   postPatch = ''
     substituteInPlace fs_quota/build.rs \

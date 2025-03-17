@@ -55,7 +55,8 @@ buildPythonPackage rec {
     ];
   };
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ optional-dependencies.pixeldata;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ optional-dependencies.pixeldata;
 
   # Setting $HOME to prevent pytest to try to create a folder inside
   # /homeless-shelter which is read-only.

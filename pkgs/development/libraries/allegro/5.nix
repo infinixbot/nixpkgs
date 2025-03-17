@@ -54,43 +54,42 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      enet
-      flac
-      freetype
-      gtk3
-      libGL
-      libGLU
-      libjpeg
-      libopus
-      libpng
-      libtheora
-      libvorbis
-      libwebp
-      openal
-      pcre
-      physfs
-      texinfo
-      zlib
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      alsa-lib
-      libpthreadstubs
-      libpulseaudio
-      libX11
-      libXcursor
-      libXdmcp
-      libXext
-      libXfixes
-      libXi
-      libXpm
-      libXt
-      libXxf86dga
-      libXxf86misc
-      libXxf86vm
-      xorgproto
-    ];
+  buildInputs = [
+    enet
+    flac
+    freetype
+    gtk3
+    libGL
+    libGLU
+    libjpeg
+    libopus
+    libpng
+    libtheora
+    libvorbis
+    libwebp
+    openal
+    pcre
+    physfs
+    texinfo
+    zlib
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    alsa-lib
+    libpthreadstubs
+    libpulseaudio
+    libX11
+    libXcursor
+    libXdmcp
+    libXext
+    libXfixes
+    libXi
+    libXpm
+    libXt
+    libXxf86dga
+    libXxf86misc
+    libXxf86vm
+    xorgproto
+  ];
 
   postPatch = ''
     sed -e 's@/XInput2.h@/XI2.h@g' -i CMakeLists.txt "src/"*.c

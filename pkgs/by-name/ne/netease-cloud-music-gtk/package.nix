@@ -50,20 +50,19 @@ stdenv.mkDerivation (finalAttrs: {
     rustc
   ];
 
-  buildInputs =
-    [
-      openssl
-      dbus
-      libadwaita
-      glib-networking
-    ]
-    ++ (with gst_all_1; [
-      gstreamer
-      gst-plugins-base
-      gst-plugins-good
-      gst-plugins-bad
-      gst-plugins-ugly
-    ]);
+  buildInputs = [
+    openssl
+    dbus
+    libadwaita
+    glib-networking
+  ]
+  ++ (with gst_all_1; [
+    gstreamer
+    gst-plugins-base
+    gst-plugins-good
+    gst-plugins-bad
+    gst-plugins-ugly
+  ]);
 
   meta = {
     description = "Rust + GTK based netease cloud music player";

@@ -110,8 +110,7 @@ in
         XDG_RUNTIME_DIR = "/run/${name}";
       };
       serviceConfig = {
-        ExecStart =
-          "${lib.getExe cfg.package}"
+        ExecStart = "${lib.getExe cfg.package}"
           + " -platform minimal"
           + " --http-listen=${cfg.listenAddress}"
           + " --http-port=${toString cfg.httpPort}"

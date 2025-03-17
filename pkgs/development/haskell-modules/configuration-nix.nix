@@ -112,11 +112,10 @@ builtins.intersectAttrs super {
 
   # Test suite needs executable
   agda2lagda = overrideCabal (drv: {
-    preCheck =
-      ''
-        export PATH="$PWD/dist/build/agda2lagda:$PATH"
-      ''
-      + drv.preCheck or "";
+    preCheck = ''
+      export PATH="$PWD/dist/build/agda2lagda:$PATH"
+    ''
+    + drv.preCheck or "";
   }) super.agda2lagda;
 
   # - Disable scrypt support since the library used only works on x86 due to SSE2:
@@ -684,11 +683,10 @@ builtins.intersectAttrs super {
 
   tasty-discover = overrideCabal (drv: {
     # Depends on itself for testing
-    preBuild =
-      ''
-        export PATH="$PWD/dist/build/tasty-discover:$PATH"
-      ''
-      + (drv.preBuild or "");
+    preBuild = ''
+      export PATH="$PWD/dist/build/tasty-discover:$PATH"
+    ''
+    + (drv.preBuild or "");
   }) super.tasty-discover;
 
   # GLUT uses `dlopen` to link to freeglut, so we need to set the RUNPATH correctly for
@@ -954,23 +952,23 @@ builtins.intersectAttrs super {
         # Ensure git-annex uses the exact same coreutils it saw at build-time.
         # This is especially important on Darwin but also in Linux environments
         # where non-GNU coreutils are used by default.
-        postFixup =
-          ''
-            wrapProgram $out/bin/git-annex \
-              --prefix PATH : "${
-                pkgs.lib.makeBinPath (
-                  with pkgs;
-                  [
-                    coreutils
-                    lsof
-                  ]
-                )
-              }"
-          ''
-          + (drv.postFixup or "");
+        postFixup = ''
+          wrapProgram $out/bin/git-annex \
+            --prefix PATH : "${
+              pkgs.lib.makeBinPath (
+                with pkgs;
+                [
+                  coreutils
+                  lsof
+                ]
+              )
+            }"
+        ''
+        + (drv.postFixup or "");
         buildTools = [
           pkgs.buildPackages.makeWrapper
-        ] ++ (drv.buildTools or [ ]);
+        ]
+        ++ (drv.buildTools or [ ]);
 
         # Git annex provides a restricted login shell. Setting
         # passthru.shellPath here allows a user's login shell to be set to
@@ -1191,37 +1189,35 @@ builtins.intersectAttrs super {
 
   # tests need to execute the built executable
   stutter = overrideCabal (drv: {
-    preCheck =
-      ''
-        export PATH=dist/build/stutter:$PATH
-      ''
-      + (drv.preCheck or "");
+    preCheck = ''
+      export PATH=dist/build/stutter:$PATH
+    ''
+    + (drv.preCheck or "");
   }) super.stutter;
 
   # Install man page and generate shell completions
   pinboard-notes-backup = overrideCabal (drv: {
-    postInstall =
-      ''
-        install -D man/pnbackup.1 $out/share/man/man1/pnbackup.1
-      ''
-      + (drv.postInstall or "");
+    postInstall = ''
+      install -D man/pnbackup.1 $out/share/man/man1/pnbackup.1
+    ''
+    + (drv.postInstall or "");
   }) (self.generateOptparseApplicativeCompletions [ "pnbackup" ] super.pinboard-notes-backup);
 
   # Pass the correct libarchive into the package.
   streamly-archive = super.streamly-archive.override { archive = pkgs.libarchive; };
 
   hlint = overrideCabal (drv: {
-    postInstall =
-      ''
-        install -Dm644 data/hlint.1 -t "$out/share/man/man1"
-      ''
-      + drv.postInstall or "";
+    postInstall = ''
+      install -Dm644 data/hlint.1 -t "$out/share/man/man1"
+    ''
+    + drv.postInstall or "";
   }) super.hlint;
 
   taglib = overrideCabal (drv: {
     librarySystemDepends = [
       pkgs.zlib
-    ] ++ (drv.librarySystemDepends or [ ]);
+    ]
+    ++ (drv.librarySystemDepends or [ ]);
   }) super.taglib;
 
   # random 1.2.0 has tests that indirectly depend on
@@ -1267,11 +1263,10 @@ builtins.intersectAttrs super {
 
   # Make tophat find itself for _compiling_ its test suite
   tophat = overrideCabal (drv: {
-    postPatch =
-      ''
-        sed -i 's|"tophat"|"./dist/build/tophat/tophat"|' app-test-bin/*.hs
-      ''
-      + (drv.postPatch or "");
+    postPatch = ''
+      sed -i 's|"tophat"|"./dist/build/tophat/tophat"|' app-test-bin/*.hs
+    ''
+    + (drv.postPatch or "");
   }) super.tophat;
 
   # Runtime dependencies and CLI completion
@@ -1314,11 +1309,10 @@ builtins.intersectAttrs super {
     # the HOME directory, so that must be set in order to generate completions.
     # https://github.com/cdepillabout/cloudy/issues/10
     (overrideCabal (oldAttrs: {
-      postInstall =
-        ''
-          export HOME=$TMPDIR
-        ''
-        + (oldAttrs.postInstall or "");
+      postInstall = ''
+        export HOME=$TMPDIR
+      ''
+      + (oldAttrs.postInstall or "");
     }))
     (self.generateOptparseApplicativeCompletions [ "cloudy" ])
   ];
@@ -1381,24 +1375,23 @@ builtins.intersectAttrs super {
     justStaticExecutables (
       overrideCabal (drv: {
         # use vanilla Setup.hs
-        preCompileBuildDriver =
-          ''
-            cat > Setup.hs << EOF
-            module Main where
-            import Distribution.Simple
-            main = defaultMain
-            EOF
-          ''
-          + (drv.preCompileBuildDriver or "");
+        preCompileBuildDriver = ''
+          cat > Setup.hs << EOF
+          module Main where
+          import Distribution.Simple
+          main = defaultMain
+          EOF
+        ''
+        + (drv.preCompileBuildDriver or "");
         # install man page
         buildTools = [
           pkgs.buildPackages.installShellFiles
-        ] ++ (drv.buildTools or [ ]);
-        postInstall =
-          ''
-            installManPage man/atsfmt.1
-          ''
-          + (drv.postInstall or "");
+        ]
+        ++ (drv.buildTools or [ ]);
+        postInstall = ''
+          installManPage man/atsfmt.1
+        ''
+        + (drv.postInstall or "");
       }) super.ats-format
     )
   );
@@ -1424,16 +1417,15 @@ builtins.intersectAttrs super {
   # version and sort -V to compare against our minimum version. If the
   # Kernel turns out to be older, we disable the test suite.
   procex = overrideCabal (drv: {
-    postConfigure =
-      ''
-        minimumKernel=5.9
-        higherVersion=`printf "%s\n%s\n" "$minimumKernel" "$(uname -r)" | sort -rV | head -n1`
-        if [[ "$higherVersion" = "$minimumKernel" ]]; then
-          echo "Used Kernel doesn't support close_range, disabling tests"
-          unset doCheck
-        fi
-      ''
-      + (drv.postConfigure or "");
+    postConfigure = ''
+      minimumKernel=5.9
+      higherVersion=`printf "%s\n%s\n" "$minimumKernel" "$(uname -r)" | sort -rV | head -n1`
+      if [[ "$higherVersion" = "$minimumKernel" ]]; then
+        echo "Used Kernel doesn't support close_range, disabling tests"
+        unset doCheck
+      fi
+    ''
+    + (drv.postConfigure or "");
   }) super.procex;
 
   # Test suite wants to run main executable
@@ -1480,7 +1472,8 @@ builtins.intersectAttrs super {
         src = ./patches/graphviz-hardcode-graphviz-store-path.patch;
         inherit (pkgs) graphviz;
       })
-    ] ++ (drv.patches or [ ]);
+    ]
+    ++ (drv.patches or [ ]);
   }) super.graphviz;
 
   # Test suite requires AWS access which requires both a network
@@ -1492,7 +1485,8 @@ builtins.intersectAttrs super {
     testFlags = [
       "-p"
       "!/Can be used with http-client/"
-    ] ++ drv.testFlags or [ ];
+    ]
+    ++ drv.testFlags or [ ];
   }) super.http-api-data-qq;
 
   # Test have become more fussy in >= 2.0. We need to have which available for
@@ -1559,7 +1553,8 @@ builtins.intersectAttrs super {
   cabal-install = overrideCabal (old: {
     executableToolDepends = [
       pkgs.buildPackages.makeWrapper
-    ] ++ old.buildToolDepends or [ ];
+    ]
+    ++ old.buildToolDepends or [ ];
     postInstall =
       old.postInstall
       + ''

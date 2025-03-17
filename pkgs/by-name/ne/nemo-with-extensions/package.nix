@@ -28,7 +28,8 @@ in
 symlinkJoin {
   name = "nemo-with-extensions-${nemo.version}";
 
-  paths = [ nemo ] ++ selectedExtensions;
+  paths = [ nemo ]
+    ++ selectedExtensions;
 
   nativeBuildInputs = [ makeWrapper ];
 

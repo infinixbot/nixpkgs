@@ -37,7 +37,8 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     lhapdf # lhapdf-config
     yoda # yoda-config
-  ] ++ lib.optional withPython python;
+  ]
+  ++ lib.optional withPython python;
 
   buildInputs =
     [
@@ -49,13 +50,12 @@ stdenv.mkDerivation rec {
     ++ lib.optional (withPython && python.isPy3k) ncurses;
 
   propagatedNativeBuildInputs = lib.optional withPython [ swig ];
-  propagatedBuildInputs =
-    [
-      zlib
-    ]
-    ++ lib.optional withPython [
-      python.pkgs.distutils
-    ];
+  propagatedBuildInputs = [
+    zlib
+  ]
+  ++ lib.optional withPython [
+    python.pkgs.distutils
+  ];
 
   preConfigure = ''
     substituteInPlace ./fastnlotoolkit/Makefile.in \
@@ -68,7 +68,8 @@ stdenv.mkDerivation rec {
 
   configureFlags = [
     "--with-yoda=${yoda}"
-  ] ++ lib.optional withPython "--enable-pyext";
+  ]
+  ++ lib.optional withPython "--enable-pyext";
 
   strictDeps = true;
 

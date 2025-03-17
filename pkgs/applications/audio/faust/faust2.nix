@@ -223,7 +223,8 @@ let
           makeWrapper
         ];
 
-        propagatedBuildInputs = [ faust ] ++ propagatedBuildInputs;
+        propagatedBuildInputs = [ faust ]
+          ++ propagatedBuildInputs;
 
         libPath = lib.makeLibraryPath propagatedBuildInputs;
 

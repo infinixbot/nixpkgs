@@ -28,7 +28,8 @@ stdenv.mkDerivation {
     copyDesktopItems
     makeWrapper
   ];
-  buildInputs = [ love ] ++ lib.optional withMods lovely-injector;
+  buildInputs = [ love ]
+    ++ lib.optional withMods lovely-injector;
   dontUnpack = true;
   desktopItems = [
     (makeDesktopItem {

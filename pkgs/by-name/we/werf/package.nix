@@ -36,49 +36,46 @@ buildGoModule rec {
 
   env.CGO_ENABLED = if stdenv.hostPlatform.isLinux then 1 else 0;
 
-  ldflags =
-    [
-      "-s"
-      "-w"
-      "-X github.com/werf/werf/v2/pkg/werf.Version=v${version}"
-    ]
-    ++ lib.optionals (env.CGO_ENABLED == 1) [
-      "-extldflags=-static"
-      "-linkmode external"
-    ];
+  ldflags = [
+    "-s"
+    "-w"
+    "-X github.com/werf/werf/v2/pkg/werf.Version=v${version}"
+  ]
+  ++ lib.optionals (env.CGO_ENABLED == 1) [
+    "-extldflags=-static"
+    "-linkmode external"
+  ];
 
-  tags =
-    [
-      "containers_image_openpgp"
-      "dfrunmount"
-      "dfrunnetwork"
-      "dfrunsecurity"
-      "dfssh"
-    ]
-    ++ lib.optionals (env.CGO_ENABLED == 1) [
-      "cni"
-      "exclude_graphdriver_devicemapper"
-      "netgo"
-      "no_devmapper"
-      "osusergo"
-      "static_build"
-    ];
+  tags = [
+    "containers_image_openpgp"
+    "dfrunmount"
+    "dfrunnetwork"
+    "dfrunsecurity"
+    "dfssh"
+  ]
+  ++ lib.optionals (env.CGO_ENABLED == 1) [
+    "cni"
+    "exclude_graphdriver_devicemapper"
+    "netgo"
+    "no_devmapper"
+    "osusergo"
+    "static_build"
+  ];
 
-  preCheck =
-    ''
-      # Test all packages.
-      unset subPackages
+  preCheck = ''
+    # Test all packages.
+    unset subPackages
 
-      # Remove tests that require external services, usually a Docker daemon.
-      rm -rf \
-        integration/suites \
-        pkg/true_git/*_test.go \
-        test/e2e
-    ''
-    + lib.optionalString (env.CGO_ENABLED == 0) ''
-      # A workaround for osusergo.
-      export USER=nixbld
-    '';
+    # Remove tests that require external services, usually a Docker daemon.
+    rm -rf \
+      integration/suites \
+      pkg/true_git/*_test.go \
+      test/e2e
+  ''
+  + lib.optionalString (env.CGO_ENABLED == 0) ''
+    # A workaround for osusergo.
+    export USER=nixbld
+  '';
 
   doInstallCheck = true;
 

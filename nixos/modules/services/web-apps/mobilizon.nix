@@ -325,8 +325,9 @@ in
         let
           # Taken from here:
           # https://framagit.org/framasoft/mobilizon/-/blob/1.0.7/lib/mix/tasks/mobilizon/instance.ex#L132-133
-          genSecret =
-            "IO.puts(:crypto.strong_rand_bytes(64)" + "|> Base.encode64()" + "|> binary_part(0, 64))";
+          genSecret = "IO.puts(:crypto.strong_rand_bytes(64)"
+            + "|> Base.encode64()"
+            + "|> binary_part(0, 64))";
 
           # Taken from here:
           # https://github.com/elixir-lang/elixir/blob/v1.11.3/lib/mix/lib/mix/release.ex#L499

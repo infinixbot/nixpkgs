@@ -40,42 +40,40 @@ stdenv.mkDerivation rec {
     "dev"
   ];
 
-  nativeBuildInputs =
-    [
-      meson
-      ninja
-      pkg-config
-      python3
-      bzip2
-      wayland-scanner
-    ]
-    ++ lib.optionals enableDocumentation [
-      hotdoc
-    ];
+  nativeBuildInputs = [
+    meson
+    ninja
+    pkg-config
+    python3
+    bzip2
+    wayland-scanner
+  ]
+  ++ lib.optionals enableDocumentation [
+    hotdoc
+  ];
 
-  buildInputs =
-    [
-      gstreamer
-      gst-plugins-base
-      gst-plugins-bad
-      libva
-      wayland
-      wayland-protocols
-      libdrm
-      udev
-      xorg.libX11
-      xorg.libXext
-      xorg.libXv
-      xorg.libXrandr
-      xorg.libSM
-      xorg.libICE
-      nasm
-      libvpx
-    ]
-    ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
-      libGL
-      libGLU
-    ];
+  buildInputs = [
+    gstreamer
+    gst-plugins-base
+    gst-plugins-bad
+    libva
+    wayland
+    wayland-protocols
+    libdrm
+    udev
+    xorg.libX11
+    xorg.libXext
+    xorg.libXv
+    xorg.libXrandr
+    xorg.libSM
+    xorg.libICE
+    nasm
+    libvpx
+  ]
+  ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
+    libGL
+    libGLU
+  ];
 
   strictDeps = true;
 

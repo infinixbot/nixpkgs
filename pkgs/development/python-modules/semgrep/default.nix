@@ -77,18 +77,17 @@ buildPythonPackage rec {
 
   doCheck = true;
 
-  nativeCheckInputs =
-    [
-      git
-      pytestCheckHook
-    ]
-    ++ (with pythonPackages; [
-      flaky
-      pytest-snapshot
-      pytest-mock
-      pytest-freezegun
-      types-freezegun
-    ]);
+  nativeCheckInputs = [
+    git
+    pytestCheckHook
+  ]
+  ++ (with pythonPackages; [
+    flaky
+    pytest-snapshot
+    pytest-mock
+    pytest-freezegun
+    types-freezegun
+  ]);
 
   disabledTestPaths = [
     "tests/default/e2e"

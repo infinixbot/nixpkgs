@@ -48,7 +48,8 @@ buildPythonPackage rec {
   optional-dependencies = rec {
     all = dicom ++ dicomfs ++ minc2 ++ spm ++ zstd;
     dicom = [ pydicom ];
-    dicomfs = [ pillow ] ++ dicom;
+    dicomfs = [ pillow ]
+      ++ dicom;
     minc2 = [ h5py ];
     spm = [ scipy ];
     zstd = [
@@ -62,7 +63,8 @@ buildPythonPackage rec {
     pytest-httpserver
     pytest-xdist
     pytest7CheckHook
-  ] ++ optional-dependencies.all;
+  ]
+  ++ optional-dependencies.all;
 
   preCheck = ''
     export PATH=$out/bin:$PATH

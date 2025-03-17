@@ -19,14 +19,13 @@ stdenv.mkDerivation rec {
     hash = "sha256-ZlQ2WVTToT0OMxK6brsHnchxDwAR5n1wdtZtkTTgWV4=";
   };
 
-  nativeBuildInputs =
-    [
-      cmake
-      pkg-config
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      cctools
-    ];
+  nativeBuildInputs = [
+    cmake
+    pkg-config
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    cctools
+  ];
 
   buildInputs = lib.optionals stdenv.hostPlatform.isDarwin [ IOKit ];
 

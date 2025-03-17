@@ -49,31 +49,30 @@ stdenv.mkDerivation rec {
   '';
 
   nativeBuildInputs = [ ed ];
-  buildInputs =
-    [
-      perl
-      which
-    ]
-    ++ (
-      if !stdenv.hostPlatform.isDarwin then
-        [
-          fontconfig
-          freetype # fontsrv uses these
-          libX11
-          libXext
-          libXt
-          xorgproto
-        ]
-      else
-        [
-          Carbon
-          Cocoa
-          IOKit
-          Metal
-          QuartzCore
-          DarwinTools
-        ]
-    );
+  buildInputs = [
+    perl
+    which
+  ]
+  ++ (
+    if !stdenv.hostPlatform.isDarwin then
+      [
+        fontconfig
+        freetype # fontsrv uses these
+        libX11
+        libXext
+        libXt
+        xorgproto
+      ]
+    else
+      [
+        Carbon
+        Cocoa
+        IOKit
+        Metal
+        QuartzCore
+        DarwinTools
+      ]
+  );
 
   configurePhase = ''
     runHook preConfigure

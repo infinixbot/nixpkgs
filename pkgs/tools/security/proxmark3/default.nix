@@ -59,25 +59,25 @@ stdenv.mkDerivation (finalAttrs: {
   nativeBuildInputs = [
     pkg-config
     gcc-arm-embedded
-  ] ++ lib.optional withGui wrapQtAppsHook;
-  buildInputs =
-    [
-      readline
-      bzip2
-      openssl
-      jansson
-      gd
-      lz4
-      whereami
-      lua
-    ]
-    ++ lib.optional withGui qtbase
-    ++ lib.optional withPython python3
-    ++ lib.optional withBlueshark bluez5
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      Foundation
-      AppKit
-    ];
+  ]
+  ++ lib.optional withGui wrapQtAppsHook;
+  buildInputs = [
+    readline
+    bzip2
+    openssl
+    jansson
+    gd
+    lz4
+    whereami
+    lua
+  ]
+  ++ lib.optional withGui qtbase
+  ++ lib.optional withPython python3
+  ++ lib.optional withBlueshark bluez5
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    Foundation
+    AppKit
+  ];
 
   makeFlags =
     [

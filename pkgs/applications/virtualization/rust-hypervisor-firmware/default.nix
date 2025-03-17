@@ -8,7 +8,8 @@
 let
   arch = stdenv.hostPlatform.qemuArch;
 
-  target = ./. + "/${arch}-unknown-none.json";
+  target = ./.
+    + "/${arch}-unknown-none.json";
 
 in
 

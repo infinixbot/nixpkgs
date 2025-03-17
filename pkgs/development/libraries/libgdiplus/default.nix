@@ -60,7 +60,8 @@ stdenv.mkDerivation (finalAttrs: {
     libpng
     libXrender
     libexif
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin Carbon;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin Carbon;
 
   postInstall = lib.optionalString stdenv.hostPlatform.isDarwin ''
     ln -s $out/lib/libgdiplus.0.dylib $out/lib/libgdiplus.so

@@ -46,15 +46,14 @@ stdenv.mkDerivation (finalAttrs: {
       sed -i '/os-wrappers-test/d' tests/meson.build
     '';
 
-  outputs =
-    [
-      "out"
-      "dev"
-    ]
-    ++ lib.optionals withDocumentation [
-      "doc"
-      "man"
-    ];
+  outputs = [
+    "out"
+    "dev"
+  ]
+  ++ lib.optionals withDocumentation [
+    "doc"
+    "man"
+  ];
   separateDebugInfo = true;
 
   mesonFlags = [
@@ -67,22 +66,21 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  nativeBuildInputs =
-    [
-      meson
-      pkg-config
-      ninja
-      wayland-scanner
-    ]
-    ++ lib.optionals withDocumentation [
-      (graphviz-nox.override { pango = null; }) # To avoid an infinite recursion
-      doxygen
-      libxslt
-      xmlto
-      python3
-      docbook_xml_dtd_45
-      docbook_xsl
-    ];
+  nativeBuildInputs = [
+    meson
+    pkg-config
+    ninja
+    wayland-scanner
+  ]
+  ++ lib.optionals withDocumentation [
+    (graphviz-nox.override { pango = null; }) # To avoid an infinite recursion
+    doxygen
+    libxslt
+    xmlto
+    python3
+    docbook_xml_dtd_45
+    docbook_xsl
+  ];
 
   buildInputs =
     [

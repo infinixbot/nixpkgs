@@ -22,15 +22,14 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-72B8+qv9N2fUC5ueMgMvdIvuvE1oaDH2ER4OaPvRtGk=";
   };
 
-  nativeBuildInputs =
-    [
-      bison
-      flex
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      darwin.apple_sdk.frameworks.DiskArbitration
-      darwin.apple_sdk.frameworks.System
-    ];
+  nativeBuildInputs = [
+    bison
+    flex
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    darwin.apple_sdk.frameworks.DiskArbitration
+    darwin.apple_sdk.frameworks.System
+  ];
 
   buildInputs =
     [

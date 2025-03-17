@@ -39,8 +39,7 @@ stdenv.mkDerivation rec {
     talloc
   ];
 
-  configureFlags =
-    [ "ROOTSBINDIR=$(out)/sbin" ]
+  configureFlags = [ "ROOTSBINDIR=$(out)/sbin" ]
     ++ lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
       # AC_FUNC_MALLOC is broken on cross builds.
       "ac_cv_func_malloc_0_nonnull=yes"

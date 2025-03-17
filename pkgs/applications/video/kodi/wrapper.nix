@@ -33,7 +33,8 @@ in
 buildEnv {
   name = "${kodi.name}-env";
 
-  paths = [ kodi ] ++ addons;
+  paths = [ kodi ]
+    ++ addons;
   pathsToLink = [ "/share" ];
 
   nativeBuildInputs = [ makeWrapper ];

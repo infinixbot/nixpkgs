@@ -127,16 +127,15 @@ let
     !stdenv.hostPlatform.isDarwin && lib.versionOlder "${majorVersion}.${minorVersion}" "11.4";
   useSharedSQLite = lib.versionAtLeast version "22.5";
 
-  sharedLibDeps =
-    {
-      inherit openssl zlib libuv;
-    }
-    // (lib.optionalAttrs useSharedHttpParser {
-      inherit http-parser;
-    })
-    // (lib.optionalAttrs useSharedSQLite {
-      inherit sqlite;
-    });
+  sharedLibDeps = {
+    inherit openssl zlib libuv;
+  }
+  // (lib.optionalAttrs useSharedHttpParser {
+    inherit http-parser;
+  })
+  // (lib.optionalAttrs useSharedSQLite {
+    inherit sqlite;
+  });
 
   copyLibHeaders = map (name: "${lib.getDev sharedLibDeps.${name}}/include/*") (
     builtins.attrNames sharedLibDeps
@@ -230,39 +229,38 @@ let
       setOutputFlags = false;
       moveToDev = false;
 
-      configureFlags =
-        [
-          "--ninja"
-          "--with-intl=system-icu"
-          "--openssl-use-def-ca-store"
-          "--no-cross-compiling"
-          "--dest-os=${destOS}"
-          "--dest-cpu=${destCPU}"
-        ]
-        ++ lib.optionals (destARMFPU != null) [ "--with-arm-fpu=${destARMFPU}" ]
-        ++ lib.optionals (destARMFloatABI != null) [ "--with-arm-float-abi=${destARMFloatABI}" ]
-        ++ lib.optionals (!canExecute) [
-          # Node.js requires matching bitness between build and host platforms, e.g.
-          # for V8 startup snapshot builder (see tools/snapshot) and some other
-          # tools. We apply a patch that runs these tools using a host platform
-          # emulator and avoid cross-compiling altogether (from the build system’s
-          # perspective).
-          "--emulator=${emulator}"
-        ]
-        ++ lib.optionals (lib.versionOlder version "19") [ "--without-dtrace" ]
-        ++ lib.optionals (!enableNpm) [ "--without-npm" ]
-        ++ lib.concatMap (name: [
-          "--shared-${name}"
-          "--shared-${name}-libpath=${lib.getLib sharedLibDeps.${name}}/lib"
-          /**
-            Closure notes: we explicitly avoid specifying --shared-*-includes,
-            as that would put the paths into bin/nodejs.
-            Including pkg-config in build inputs would also have the same effect!
+      configureFlags = [
+        "--ninja"
+        "--with-intl=system-icu"
+        "--openssl-use-def-ca-store"
+        "--no-cross-compiling"
+        "--dest-os=${destOS}"
+        "--dest-cpu=${destCPU}"
+      ]
+      ++ lib.optionals (destARMFPU != null) [ "--with-arm-fpu=${destARMFPU}" ]
+      ++ lib.optionals (destARMFloatABI != null) [ "--with-arm-float-abi=${destARMFloatABI}" ]
+      ++ lib.optionals (!canExecute) [
+        # Node.js requires matching bitness between build and host platforms, e.g.
+        # for V8 startup snapshot builder (see tools/snapshot) and some other
+        # tools. We apply a patch that runs these tools using a host platform
+        # emulator and avoid cross-compiling altogether (from the build system’s
+        # perspective).
+        "--emulator=${emulator}"
+      ]
+      ++ lib.optionals (lib.versionOlder version "19") [ "--without-dtrace" ]
+      ++ lib.optionals (!enableNpm) [ "--without-npm" ]
+      ++ lib.concatMap (name: [
+        "--shared-${name}"
+        "--shared-${name}-libpath=${lib.getLib sharedLibDeps.${name}}/lib"
+        /**
+          Closure notes: we explicitly avoid specifying --shared-*-includes,
+          as that would put the paths into bin/nodejs.
+          Including pkg-config in build inputs would also have the same effect!
 
-            FIXME: the statement above is outdated, we have to include pkg-config
-            in build inputs for system-icu.
-          */
-        ]) (builtins.attrNames sharedLibDeps);
+          FIXME: the statement above is outdated, we have to include pkg-config
+          in build inputs for system-icu.
+        */
+      ]) (builtins.attrNames sharedLibDeps);
 
       configurePlatforms = [ ];
 

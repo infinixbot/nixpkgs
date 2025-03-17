@@ -347,7 +347,8 @@ in
       ];
       conflicts = [ "shutdown.target" ];
 
-      path = [ cfg.package ] ++ cfg.extraPackages;
+      path = [ cfg.package ]
+        ++ cfg.extraPackages;
 
       # FIXME: this module may also try to load kernel modules, but
       # containers don't have CAP_SYS_MODULE.  So the host system had

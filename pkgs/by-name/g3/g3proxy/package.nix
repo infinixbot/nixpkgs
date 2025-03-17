@@ -43,14 +43,13 @@ rustPlatform.buildRustPackage rec {
     cmake
   ];
 
-  buildInputs =
-    [
-      c-ares
-      lua5_4
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      darwin.apple_sdk.frameworks.Security
-    ];
+  buildInputs = [
+    c-ares
+    lua5_4
+  ]
+  ++ lib.optionals stdenv.isDarwin [
+    darwin.apple_sdk.frameworks.Security
+  ];
 
   meta = {
     description = "Enterprise-oriented Generic Proxy Solutions";

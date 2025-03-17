@@ -85,13 +85,12 @@ in
       stateDirectory = "/var/lib/transfer.sh";
     in
     mkIf cfg.enable {
-      services.transfer-sh.settings =
-        {
-          LISTENER = mkDefault ":8080";
-        }
-        // optionalAttrs localProvider {
-          BASEDIR = mkDefault stateDirectory;
-        };
+      services.transfer-sh.settings = {
+        LISTENER = mkDefault ":8080";
+      }
+      // optionalAttrs localProvider {
+        BASEDIR = mkDefault stateDirectory;
+      };
 
       systemd.services.transfer-sh = {
         after = [ "network.target" ];

@@ -39,7 +39,8 @@ let
         username = cfg.databaseUsername;
         encoding = "utf8";
         pool = cfg.databasePool;
-      } // cfg.extraDatabaseConfig;
+      }
+      // cfg.extraDatabaseConfig;
     in
     {
       production =
@@ -141,15 +142,14 @@ let
       omniauth.enabled = false;
       shared.path = "${cfg.statePath}/shared";
       gitaly.client_path = "${cfg.packages.gitaly}/bin";
-      backup =
-        {
-          gitaly_backup_path = "${cfg.packages.gitaly}/bin/gitaly-backup";
-          path = cfg.backup.path;
-          keep_time = cfg.backup.keepTime;
-        }
-        // (optionalAttrs (cfg.backup.uploadOptions != { }) {
-          upload = cfg.backup.uploadOptions;
-        });
+      backup = {
+        gitaly_backup_path = "${cfg.packages.gitaly}/bin/gitaly-backup";
+        path = cfg.backup.path;
+        keep_time = cfg.backup.keepTime;
+      }
+      // (optionalAttrs (cfg.backup.uploadOptions != { }) {
+        upload = cfg.backup.uploadOptions;
+      });
       gitlab_shell = {
         path = "${cfg.packages.gitlab-shell}";
         hooks_path = "${cfg.statePath}/shell/hooks";
@@ -206,8 +206,7 @@ let
     }
     // cfg.extraEnv;
 
-  runtimeDeps =
-    [ git ]
+  runtimeDeps = [ git ]
     ++ (with pkgs; [
       nodejs
       gzip
@@ -1371,8 +1370,7 @@ in
     systemd.services.gitlab-config = {
       wantedBy = [ "gitlab.target" ];
       partOf = [ "gitlab.target" ];
-      path =
-        [ git ]
+      path = [ git ]
         ++ (with pkgs; [
           jq
           openssl
@@ -1538,7 +1536,8 @@ in
         "gitlab-config.service"
         "gitlab-db-config.service"
       ];
-      wants = [ "redis-gitlab.service" ] ++ optional (cfg.databaseHost == "") "postgresql.service";
+      wants = [ "redis-gitlab.service" ]
+        ++ optional (cfg.databaseHost == "") "postgresql.service";
       wantedBy = [ "gitlab.target" ];
       partOf = [ "gitlab.target" ];
       environment =
@@ -1548,8 +1547,7 @@ in
           SIDEKIQ_MEMORY_KILLER_GRACE_TIME = cfg.sidekiq.memoryKiller.graceTime;
           SIDEKIQ_MEMORY_KILLER_SHUTDOWN_WAIT = cfg.sidekiq.memoryKiller.shutdownWait;
         });
-      path =
-        [ git ]
+      path = [ git ]
         ++ (with pkgs; [
           postgresqlPackage
           ruby
@@ -1600,8 +1598,7 @@ in
       bindsTo = [ "gitlab-config.service" ];
       wantedBy = [ "gitlab.target" ];
       partOf = [ "gitlab.target" ];
-      path =
-        [ git ]
+      path = [ git ]
         ++ (with pkgs; [
           openssh
           gzip
@@ -1705,8 +1702,7 @@ in
       after = [ "network.target" ];
       wantedBy = [ "gitlab.target" ];
       partOf = [ "gitlab.target" ];
-      path =
-        [ git ]
+      path = [ git ]
         ++ (with pkgs; [
           remarshal
           exiftool
@@ -1733,15 +1729,14 @@ in
           json2toml "${cfg.statePath}/config/gitlab-workhorse.json" "${cfg.statePath}/config/gitlab-workhorse.toml"
           rm "${cfg.statePath}/config/gitlab-workhorse.json"
         '';
-        ExecStart =
-          "${cfg.packages.gitlab-workhorse}/bin/${optionalString (lib.versionAtLeast (lib.getVersion cfg.packages.gitlab-workhorse) "16.10") "gitlab-"}workhorse "
-          + "-listenUmask 0 "
-          + "-listenNetwork unix "
-          + "-listenAddr /run/gitlab/gitlab-workhorse.socket "
-          + "-authSocket ${gitlabSocket} "
-          + "-documentRoot ${cfg.packages.gitlab}/share/gitlab/public "
-          + "-config ${cfg.statePath}/config/gitlab-workhorse.toml "
-          + "-secretPath ${cfg.statePath}/.gitlab_workhorse_secret";
+        ExecStart = "${cfg.packages.gitlab-workhorse}/bin/${optionalString (lib.versionAtLeast (lib.getVersion cfg.packages.gitlab-workhorse) "16.10") "gitlab-"}workhorse "
+        + "-listenUmask 0 "
+        + "-listenNetwork unix "
+        + "-listenAddr /run/gitlab/gitlab-workhorse.socket "
+        + "-authSocket ${gitlabSocket} "
+        + "-documentRoot ${cfg.packages.gitlab}/share/gitlab/public "
+        + "-config ${cfg.statePath}/config/gitlab-workhorse.toml "
+        + "-secretPath ${cfg.statePath}/.gitlab_workhorse_secret";
       };
     };
 
@@ -1781,12 +1776,12 @@ in
         "gitlab-config.service"
         "gitlab-db-config.service"
       ];
-      wants = [ "redis-gitlab.service" ] ++ optional (cfg.databaseHost == "") "postgresql.service";
+      wants = [ "redis-gitlab.service" ]
+        ++ optional (cfg.databaseHost == "") "postgresql.service";
       requiredBy = [ "gitlab.target" ];
       partOf = [ "gitlab.target" ];
       environment = gitlabEnv;
-      path =
-        [ git ]
+      path = [ git ]
         ++ (with pkgs; [
           postgresqlPackage
           openssh
@@ -1820,14 +1815,13 @@ in
       after = [ "gitlab.service" ];
       bindsTo = [ "gitlab.service" ];
       startAt = cfg.backup.startAt;
-      environment =
-        {
-          RAILS_ENV = "production";
-          CRON = "1";
-        }
-        // optionalAttrs (stringLength cfg.backup.skip > 0) {
-          SKIP = cfg.backup.skip;
-        };
+      environment = {
+        RAILS_ENV = "production";
+        CRON = "1";
+      }
+      // optionalAttrs (stringLength cfg.backup.skip > 0) {
+        SKIP = cfg.backup.skip;
+      };
       serviceConfig = {
         User = cfg.user;
         Group = cfg.group;

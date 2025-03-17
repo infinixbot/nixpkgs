@@ -118,7 +118,8 @@ in
       source = "${lib.getBin pkgs.firejail}/bin/firejail";
     };
 
-    environment.systemPackages = [ pkgs.firejail ] ++ [ wrappedBins ];
+    environment.systemPackages = [ pkgs.firejail ]
+      ++ [ wrappedBins ];
   };
 
   meta.maintainers = with lib.maintainers; [ peterhoeg ];

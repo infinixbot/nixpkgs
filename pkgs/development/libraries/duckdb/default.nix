@@ -43,17 +43,16 @@ stdenv.mkDerivation (finalAttrs: {
   buildInputs =
     [ openssl ] ++ lib.optionals withJdbc [ openjdk11 ] ++ lib.optionals withOdbc [ unixODBC ];
 
-  cmakeFlags =
-    [
-      "-DDUCKDB_EXTENSION_CONFIGS=${finalAttrs.src}/.github/config/in_tree_extensions.cmake"
-      "-DBUILD_ODBC_DRIVER=${enableFeature withOdbc}"
-      "-DJDBC_DRIVER=${enableFeature withJdbc}"
-      "-DOVERRIDE_GIT_DESCRIBE=v${finalAttrs.version}-0-g${finalAttrs.rev}"
-    ]
-    ++ lib.optionals finalAttrs.doInstallCheck [
-      # development settings
-      "-DBUILD_UNITTESTS=ON"
-    ];
+  cmakeFlags = [
+    "-DDUCKDB_EXTENSION_CONFIGS=${finalAttrs.src}/.github/config/in_tree_extensions.cmake"
+    "-DBUILD_ODBC_DRIVER=${enableFeature withOdbc}"
+    "-DJDBC_DRIVER=${enableFeature withJdbc}"
+    "-DOVERRIDE_GIT_DESCRIBE=v${finalAttrs.version}-0-g${finalAttrs.rev}"
+  ]
+  ++ lib.optionals finalAttrs.doInstallCheck [
+    # development settings
+    "-DBUILD_UNITTESTS=ON"
+  ];
 
   doInstallCheck = true;
 

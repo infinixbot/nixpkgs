@@ -74,18 +74,17 @@ let
       ./opencl-headers-dir.patch
     ];
 
-    postPatch =
-      ''
-        # fix not be able to find clang from PATH
-        substituteInPlace cl_headers/CMakeLists.txt \
-          --replace " NO_DEFAULT_PATH" ""
-      ''
-      + lib.optionalString stdenv.hostPlatform.isDarwin ''
-        # Uses linker flags that are not supported on Darwin.
-        sed -i -e '/SET_LINUX_EXPORTS_FILE/d' CMakeLists.txt
-        substituteInPlace CMakeLists.txt \
-          --replace '-Wl,--no-undefined' ""
-      '';
+    postPatch = ''
+      # fix not be able to find clang from PATH
+      substituteInPlace cl_headers/CMakeLists.txt \
+        --replace " NO_DEFAULT_PATH" ""
+    ''
+    + lib.optionalString stdenv.hostPlatform.isDarwin ''
+      # Uses linker flags that are not supported on Darwin.
+      sed -i -e '/SET_LINUX_EXPORTS_FILE/d' CMakeLists.txt
+      substituteInPlace CMakeLists.txt \
+        --replace '-Wl,--no-undefined' ""
+    '';
   };
 in
 

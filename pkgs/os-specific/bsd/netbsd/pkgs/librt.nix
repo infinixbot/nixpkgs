@@ -14,7 +14,8 @@ mkDerivation {
     "man"
   ];
 
-  extraPaths = [ libcMinimal.path ] ++ libcMinimal.extraPaths;
+  extraPaths = [ libcMinimal.path ]
+    ++ libcMinimal.extraPaths;
 
   inherit (libcMinimal) postPatch;
 

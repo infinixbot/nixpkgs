@@ -174,7 +174,8 @@ rustPlatform.buildRustPackage {
   cargoHash = "sha256-wrMqeJxOj9Jp3luy6ir6UzNQClRglqP8pfoqWk+Ky+w=";
 
   buildInputs = [ installShellFiles ];
-  nativeBuildInputs = [ which ] ++ lib.optionals webUISupport [ emscripten ];
+  nativeBuildInputs = [ which ]
+    ++ lib.optionals webUISupport [ emscripten ];
 
   patches = lib.optionals (!webUISupport) [
     (substitute {
@@ -196,24 +197,23 @@ rustPlatform.buildRustPackage {
     bash ./script/build-wasm --debug
   '';
 
-  postInstall =
-    ''
-      PREFIX=$out make install
-      ${lib.optionalString (!enableShared) "rm $out/lib/*.so{,.*}"}
-      ${lib.optionalString (!enableStatic) "rm $out/lib/*.a"}
-    ''
-    + lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
-      installShellCompletion --cmd tree-sitter \
-        --bash <("$out/bin/tree-sitter" complete --shell bash) \
-        --zsh <("$out/bin/tree-sitter" complete --shell zsh) \
-        --fish <("$out/bin/tree-sitter" complete --shell fish)
-    ''
-    + lib.optionalString (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
-      installShellCompletion --cmd tree-sitter \
-        --bash "${buildPackages.tree-sitter}"/share/bash-completion/completions/*.bash \
-        --zsh "${buildPackages.tree-sitter}"/share/zsh/site-functions/* \
-        --fish "${buildPackages.tree-sitter}"/share/fish/*/*
-    '';
+  postInstall = ''
+    PREFIX=$out make install
+    ${lib.optionalString (!enableShared) "rm $out/lib/*.so{,.*}"}
+    ${lib.optionalString (!enableStatic) "rm $out/lib/*.a"}
+  ''
+  + lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
+    installShellCompletion --cmd tree-sitter \
+      --bash <("$out/bin/tree-sitter" complete --shell bash) \
+      --zsh <("$out/bin/tree-sitter" complete --shell zsh) \
+      --fish <("$out/bin/tree-sitter" complete --shell fish)
+  ''
+  + lib.optionalString (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
+    installShellCompletion --cmd tree-sitter \
+      --bash "${buildPackages.tree-sitter}"/share/bash-completion/completions/*.bash \
+      --zsh "${buildPackages.tree-sitter}"/share/zsh/site-functions/* \
+      --fish "${buildPackages.tree-sitter}"/share/fish/*/*
+  '';
 
   # test result: FAILED. 120 passed; 13 failed; 0 ignored; 0 measured; 0 filtered out
   doCheck = false;

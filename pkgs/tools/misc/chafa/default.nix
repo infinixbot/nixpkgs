@@ -42,7 +42,8 @@ stdenv.mkDerivation rec {
   buildInputs = [
     glib
     imagemagick
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin Foundation;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin Foundation;
 
   patches = [ ./xmlcatalog_patch.patch ];
 

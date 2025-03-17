@@ -95,48 +95,46 @@ stdenv.mkDerivation rec {
     autoPatchelfHook
   ];
 
-  buildInputs =
-    [
-      blas-ilp64.passthru.provider
-      hdf5-cpp
-      python
-      armadillo
-      libxc
-      gsl.dev
-      boost
-    ]
-    ++ lib.optionals enableMpi [
-      mpi
-      globalarrays
-    ];
+  buildInputs = [
+    blas-ilp64.passthru.provider
+    hdf5-cpp
+    python
+    armadillo
+    libxc
+    gsl.dev
+    boost
+  ]
+  ++ lib.optionals enableMpi [
+    mpi
+    globalarrays
+  ];
 
   passthru = lib.optionalAttrs enableMpi { inherit mpi; };
 
-  cmakeFlags =
-    [
-      "-DOPENMP=ON"
-      "-DTOOLS=ON"
-      "-DHDF5=ON"
-      "-DFDE=ON"
-      "-DEXTERNAL_LIBXC=${lib.getDev libxc}"
-      (lib.strings.cmakeBool "DMRG" enableQcmaquis)
-      (lib.strings.cmakeBool "NEVPT2" enableQcmaquis)
-      "-DCMAKE_SKIP_BUILD_RPATH=ON"
-      (lib.strings.cmakeBool "BUILD_STATIC_LIBS" stdenv.hostPlatform.isStatic)
-      (lib.strings.cmakeBool "BUILD_SHARED_LIBS" (!stdenv.hostPlatform.isStatic))
-    ]
-    ++ lib.optionals (blas-ilp64.passthru.implementation == "openblas") [
-      "-DOPENBLASROOT=${blas-ilp64.passthru.provider.dev}"
-      "-DLINALG=OpenBLAS"
-    ]
-    ++ lib.optionals (blas-ilp64.passthru.implementation == "mkl") [
-      "-DMKLROOT=${blas-ilp64.passthru.provider}"
-      "-DLINALG=MKL"
-    ]
-    ++ lib.optionals enableMpi [
-      "-DGA=ON"
-      "-DMPI=ON"
-    ];
+  cmakeFlags = [
+    "-DOPENMP=ON"
+    "-DTOOLS=ON"
+    "-DHDF5=ON"
+    "-DFDE=ON"
+    "-DEXTERNAL_LIBXC=${lib.getDev libxc}"
+    (lib.strings.cmakeBool "DMRG" enableQcmaquis)
+    (lib.strings.cmakeBool "NEVPT2" enableQcmaquis)
+    "-DCMAKE_SKIP_BUILD_RPATH=ON"
+    (lib.strings.cmakeBool "BUILD_STATIC_LIBS" stdenv.hostPlatform.isStatic)
+    (lib.strings.cmakeBool "BUILD_SHARED_LIBS" (!stdenv.hostPlatform.isStatic))
+  ]
+  ++ lib.optionals (blas-ilp64.passthru.implementation == "openblas") [
+    "-DOPENBLASROOT=${blas-ilp64.passthru.provider.dev}"
+    "-DLINALG=OpenBLAS"
+  ]
+  ++ lib.optionals (blas-ilp64.passthru.implementation == "mkl") [
+    "-DMKLROOT=${blas-ilp64.passthru.provider}"
+    "-DLINALG=MKL"
+  ]
+  ++ lib.optionals enableMpi [
+    "-DGA=ON"
+    "-DMPI=ON"
+  ];
 
   preConfigure = lib.optionalString enableMpi ''
     export GAROOT=${globalarrays};

@@ -15,38 +15,37 @@ let
   enableRedis = !(cfg.settings ? PAPERLESS_REDIS);
   redisServer = config.services.redis.servers.paperless;
 
-  env =
-    {
-      PAPERLESS_DATA_DIR = cfg.dataDir;
-      PAPERLESS_MEDIA_ROOT = cfg.mediaDir;
-      PAPERLESS_CONSUMPTION_DIR = cfg.consumptionDir;
-      PAPERLESS_THUMBNAIL_FONT_NAME = defaultFont;
-      GUNICORN_CMD_ARGS = "--bind=${cfg.address}:${toString cfg.port}";
-    }
-    // lib.optionalAttrs (config.time.timeZone != null) {
-      PAPERLESS_TIME_ZONE = config.time.timeZone;
-    }
-    // lib.optionalAttrs enableRedis {
-      PAPERLESS_REDIS = "unix://${redisServer.unixSocket}";
-    }
-    // lib.optionalAttrs (cfg.settings.PAPERLESS_ENABLE_NLTK or true) {
-      PAPERLESS_NLTK_DIR = pkgs.symlinkJoin {
-        name = "paperless_ngx_nltk_data";
-        paths = cfg.package.nltkData;
-      };
-    }
-    // lib.optionalAttrs (cfg.openMPThreadingWorkaround) {
-      OMP_NUM_THREADS = "1";
-    }
-    // (lib.mapAttrs (
-      _: s:
-      if (lib.isAttrs s || lib.isList s) then
-        builtins.toJSON s
-      else if lib.isBool s then
-        lib.boolToString s
-      else
-        toString s
-    ) cfg.settings);
+  env = {
+    PAPERLESS_DATA_DIR = cfg.dataDir;
+    PAPERLESS_MEDIA_ROOT = cfg.mediaDir;
+    PAPERLESS_CONSUMPTION_DIR = cfg.consumptionDir;
+    PAPERLESS_THUMBNAIL_FONT_NAME = defaultFont;
+    GUNICORN_CMD_ARGS = "--bind=${cfg.address}:${toString cfg.port}";
+  }
+  // lib.optionalAttrs (config.time.timeZone != null) {
+    PAPERLESS_TIME_ZONE = config.time.timeZone;
+  }
+  // lib.optionalAttrs enableRedis {
+    PAPERLESS_REDIS = "unix://${redisServer.unixSocket}";
+  }
+  // lib.optionalAttrs (cfg.settings.PAPERLESS_ENABLE_NLTK or true) {
+    PAPERLESS_NLTK_DIR = pkgs.symlinkJoin {
+      name = "paperless_ngx_nltk_data";
+      paths = cfg.package.nltkData;
+    };
+  }
+  // lib.optionalAttrs (cfg.openMPThreadingWorkaround) {
+    OMP_NUM_THREADS = "1";
+  }
+  // (lib.mapAttrs (
+    _: s:
+    if (lib.isAttrs s || lib.isList s) then
+      builtins.toJSON s
+    else if lib.isBool s then
+      lib.boolToString s
+    else
+      toString s
+  ) cfg.settings);
 
   manage = pkgs.writeShellScript "manage" ''
     set -o allexport # Export the following env vars
@@ -410,46 +409,45 @@ in
           };
           environment = env;
 
-          preStart =
-            ''
-              ln -sf ${manage} ${cfg.dataDir}/paperless-manage
+          preStart = ''
+            ln -sf ${manage} ${cfg.dataDir}/paperless-manage
 
-              # Auto-migrate on first run or if the package has changed
-              versionFile="${cfg.dataDir}/src-version"
-              version=$(cat "$versionFile" 2>/dev/null || echo 0)
+            # Auto-migrate on first run or if the package has changed
+            versionFile="${cfg.dataDir}/src-version"
+            version=$(cat "$versionFile" 2>/dev/null || echo 0)
 
-              if [[ $version != ${cfg.package.version} ]]; then
-                ${cfg.package}/bin/paperless-ngx migrate
+            if [[ $version != ${cfg.package.version} ]]; then
+              ${cfg.package}/bin/paperless-ngx migrate
 
-                # Parse old version string format for backwards compatibility
-                version=$(echo "$version" | grep -ohP '[^-]+$')
+              # Parse old version string format for backwards compatibility
+              version=$(echo "$version" | grep -ohP '[^-]+$')
 
-                versionLessThan() {
-                  target=$1
-                  [[ $({ echo "$version"; echo "$target"; } | sort -V | head -1) != "$target" ]]
-                }
+              versionLessThan() {
+                target=$1
+                [[ $({ echo "$version"; echo "$target"; } | sort -V | head -1) != "$target" ]]
+              }
 
-                if versionLessThan 1.12.0; then
-                  # Reindex documents as mentioned in https://github.com/paperless-ngx/paperless-ngx/releases/tag/v1.12.1
-                  echo "Reindexing documents, to allow searching old comments. Required after the 1.12.x upgrade."
-                  ${cfg.package}/bin/paperless-ngx document_index reindex
-                fi
-
-                echo ${cfg.package.version} > "$versionFile"
+              if versionLessThan 1.12.0; then
+                # Reindex documents as mentioned in https://github.com/paperless-ngx/paperless-ngx/releases/tag/v1.12.1
+                echo "Reindexing documents, to allow searching old comments. Required after the 1.12.x upgrade."
+                ${cfg.package}/bin/paperless-ngx document_index reindex
               fi
-            ''
-            + lib.optionalString (cfg.passwordFile != null) ''
-              export PAPERLESS_ADMIN_USER="''${PAPERLESS_ADMIN_USER:-admin}"
-              PAPERLESS_ADMIN_PASSWORD=$(cat "$CREDENTIALS_DIRECTORY/PAPERLESS_ADMIN_PASSWORD")
-              export PAPERLESS_ADMIN_PASSWORD
-              superuserState="$PAPERLESS_ADMIN_USER:$PAPERLESS_ADMIN_PASSWORD"
-              superuserStateFile="${cfg.dataDir}/superuser-state"
 
-              if [[ $(cat "$superuserStateFile" 2>/dev/null) != "$superuserState" ]]; then
-                ${cfg.package}/bin/paperless-ngx manage_superuser
-                echo "$superuserState" > "$superuserStateFile"
-              fi
-            '';
+              echo ${cfg.package.version} > "$versionFile"
+            fi
+          ''
+          + lib.optionalString (cfg.passwordFile != null) ''
+            export PAPERLESS_ADMIN_USER="''${PAPERLESS_ADMIN_USER:-admin}"
+            PAPERLESS_ADMIN_PASSWORD=$(cat "$CREDENTIALS_DIRECTORY/PAPERLESS_ADMIN_PASSWORD")
+            export PAPERLESS_ADMIN_PASSWORD
+            superuserState="$PAPERLESS_ADMIN_USER:$PAPERLESS_ADMIN_PASSWORD"
+            superuserStateFile="${cfg.dataDir}/superuser-state"
+
+            if [[ $(cat "$superuserStateFile" 2>/dev/null) != "$superuserState" ]]; then
+              ${cfg.package}/bin/paperless-ngx manage_superuser
+              echo "$superuserState" > "$superuserStateFile"
+            fi
+          '';
           requires = lib.optional cfg.database.createLocally "postgresql.service";
           after =
             lib.optional enableRedis "redis-paperless.service"
@@ -459,9 +457,8 @@ in
         systemd.services.paperless-task-queue = {
           description = "Paperless Celery Workers";
           requires = lib.optional cfg.database.createLocally "postgresql.service";
-          after = [
-            "paperless-scheduler.service"
-          ] ++ lib.optional cfg.database.createLocally "postgresql.service";
+          after = [ "paperless-scheduler.service" ]
+            ++ lib.optional cfg.database.createLocally "postgresql.service";
           serviceConfig = defaultServiceConfig // {
             User = cfg.user;
             ExecStart = "${cfg.package}/bin/celery --app paperless worker --loglevel INFO";
@@ -480,9 +477,8 @@ in
           # during migrations
           bindsTo = [ "paperless-scheduler.service" ];
           requires = lib.optional cfg.database.createLocally "postgresql.service";
-          after = [
-            "paperless-scheduler.service"
-          ] ++ lib.optional cfg.database.createLocally "postgresql.service";
+          after = [ "paperless-scheduler.service" ]
+            ++ lib.optional cfg.database.createLocally "postgresql.service";
           serviceConfig = defaultServiceConfig // {
             User = cfg.user;
             ExecStart = "${cfg.package}/bin/paperless-ngx document_consumer";
@@ -501,9 +497,8 @@ in
           # during migrations
           bindsTo = [ "paperless-scheduler.service" ];
           requires = lib.optional cfg.database.createLocally "postgresql.service";
-          after = [
-            "paperless-scheduler.service"
-          ] ++ lib.optional cfg.database.createLocally "postgresql.service";
+          after = [ "paperless-scheduler.service" ]
+            ++ lib.optional cfg.database.createLocally "postgresql.service";
           # Setup PAPERLESS_SECRET_KEY.
           # If this environment variable is left unset, paperless-ngx defaults
           # to a well-known value, which is insecure.

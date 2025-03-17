@@ -51,22 +51,20 @@ let
 
     inherit patchFlags patches;
 
-    preConfigure =
-      ''
-        sed -i -e "s|/bin/sh|${stdenv.shell}|" configure
+    preConfigure = ''
+      sed -i -e "s|/bin/sh|${stdenv.shell}|" configure
 
-        # $(includedir) is different from $(prefix)/include due to multiple outputs
-        sed -i -e 's|^\(CPPFLAGS = .*\) -I\$(prefix)/include|\1 -I$(includedir)|' config/Makefile.inc.in
-      ''
-      + lib.optionalString stdenv.hostPlatform.isAarch32 ''
-        # From https://archlinuxarm.org/packages/armv7h/icu/files/icudata-stdlibs.patch
-        sed -e 's/LDFLAGSICUDT=-nodefaultlibs -nostdlib/LDFLAGSICUDT=/' -i config/mh-linux
-      '';
+      # $(includedir) is different from $(prefix)/include due to multiple outputs
+      sed -i -e 's|^\(CPPFLAGS = .*\) -I\$(prefix)/include|\1 -I$(includedir)|' config/Makefile.inc.in
+    ''
+    + lib.optionalString stdenv.hostPlatform.isAarch32 ''
+      # From https://archlinuxarm.org/packages/armv7h/icu/files/icudata-stdlibs.patch
+      sed -e 's/LDFLAGSICUDT=-nodefaultlibs -nostdlib/LDFLAGSICUDT=/' -i config/mh-linux
+    '';
 
     dontDisableStatic = withStatic;
 
-    configureFlags =
-      [ "--disable-debug" ]
+    configureFlags = [ "--disable-debug" ]
       ++ lib.optional (stdenv.hostPlatform.isFreeBSD || stdenv.hostPlatform.isDarwin) "--enable-rpath"
       ++ lib.optional (
         stdenv.buildPlatform != stdenv.hostPlatform
@@ -94,22 +92,21 @@ let
     outputs = [
       "out"
       "dev"
-    ] ++ lib.optional withStatic "static";
+    ]
+    ++ lib.optional withStatic "static";
     outputBin = "dev";
 
-    nativeBuildInputs =
-      [ updateAutotoolsGnuConfigScriptsHook ]
+    nativeBuildInputs = [ updateAutotoolsGnuConfigScriptsHook ]
       ++
       # FIXME: This fixes dylib references in the dylibs themselves, but
       # not in the programs in $out/bin.
       lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames;
 
     # remove dependency on bootstrap-tools in early stdenv build
-    postInstall =
-      lib.optionalString withStatic ''
-        mkdir -p $static/lib
-        mv -v lib/*.a $static/lib
-      ''
+    postInstall = lib.optionalString withStatic ''
+      mkdir -p $static/lib
+      mv -v lib/*.a $static/lib
+    ''
       + lib.optionalString stdenv.hostPlatform.isDarwin ''
         sed -i 's/INSTALL_CMD=.*install/INSTALL_CMD=install/' $out/lib/icu/${lib.versions.majorMinor version}/pkgdata.inc
       ''

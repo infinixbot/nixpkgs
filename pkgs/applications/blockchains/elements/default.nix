@@ -43,17 +43,16 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs =
-    [
-      autoreconfHook
-      pkg-config
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [ util-linux ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [ hexdump ]
-    ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) [
-      autoSignDarwinBinariesHook
-    ]
-    ++ lib.optionals withGui [ wrapQtAppsHook ];
+  nativeBuildInputs = [
+    autoreconfHook
+    pkg-config
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [ util-linux ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ hexdump ]
+  ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) [
+    autoSignDarwinBinariesHook
+  ]
+  ++ lib.optionals withGui [ wrapQtAppsHook ];
 
   buildInputs =
     [
@@ -73,22 +72,21 @@ stdenv.mkDerivation rec {
       qttools
     ];
 
-  configureFlags =
-    [
-      "--with-boost-libdir=${boost.out}/lib"
-      "--disable-bench"
-    ]
-    ++ lib.optionals (!doCheck) [
-      "--disable-tests"
-      "--disable-gui-tests"
-    ]
-    ++ lib.optionals (!withWallet) [
-      "--disable-wallet"
-    ]
-    ++ lib.optionals withGui [
-      "--with-gui=qt5"
-      "--with-qt-bindir=${qtbase.dev}/bin:${qttools.dev}/bin"
-    ];
+  configureFlags = [
+    "--with-boost-libdir=${boost.out}/lib"
+    "--disable-bench"
+  ]
+  ++ lib.optionals (!doCheck) [
+    "--disable-tests"
+    "--disable-gui-tests"
+  ]
+  ++ lib.optionals (!withWallet) [
+    "--disable-wallet"
+  ]
+  ++ lib.optionals withGui [
+    "--with-gui=qt5"
+    "--with-qt-bindir=${qtbase.dev}/bin:${qttools.dev}/bin"
+  ];
 
   # fix "Killed: 9  test/test_bitcoin"
   # https://github.com/NixOS/nixpkgs/issues/179474

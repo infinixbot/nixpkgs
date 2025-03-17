@@ -5,5 +5,12 @@ in
   callPackage,
 }:
 builtins.mapAttrs (
-  _: info: callPackage ./build.nix (info // { mvnDeps = ./. + "/${info.mvnDeps}"; })
+  _: info:
+  callPackage ./build.nix (
+    info
+    // {
+      mvnDeps = ./.
+        + "/${info.mvnDeps}";
+    }
+  )
 ) ides

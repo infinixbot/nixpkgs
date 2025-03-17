@@ -50,7 +50,8 @@ buildPythonPackage rec {
     readme = [
       docutils
       readme-renderer
-    ] ++ readme-renderer.optional-dependencies.md;
+    ]
+    ++ readme-renderer.optional-dependencies.md;
   };
 
   postPatch = ''

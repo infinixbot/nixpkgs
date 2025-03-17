@@ -161,7 +161,8 @@ stdenv.mkDerivation (finalAttrs: {
     llvm
     openssl
     xar
-  ] ++ lib.optionals stdenv.hostPlatform.isLinux [ libdispatch ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [ libdispatch ];
 
   # Note for overrides: ld64 cannot be built as a debug build because of UB in its iteration implementations,
   # which trigger libc++ debug assertions due to trying to take the address of the first element of an emtpy vector.
@@ -170,7 +171,8 @@ stdenv.mkDerivation (finalAttrs: {
   mesonFlags = [
     (lib.mesonOption "b_ndebug" "if-release")
     (lib.mesonOption "default_library" (if stdenv.hostPlatform.isStatic then "static" else "shared"))
-  ] ++ lib.optionals (targetPrefix != "") [ (lib.mesonOption "target_prefix" targetPrefix) ];
+  ]
+  ++ lib.optionals (targetPrefix != "") [ (lib.mesonOption "target_prefix" targetPrefix) ];
 
   doInstallCheck = stdenv.buildPlatform.canExecute stdenv.hostPlatform;
 

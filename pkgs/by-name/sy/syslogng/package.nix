@@ -88,34 +88,33 @@ stdenv.mkDerivation (finalAttrs: {
     python3Packages.setuptools
   ];
 
-  buildInputs =
-    [
-      libcap
-      curl
-      openssl
-      eventlog
-      glib
-      py
-      systemd
-      riemann_c_client
-      protobufc
-      pcre
-      libnet
-      json_c
-      libuuid
-      libivykis
-      mongoc
-      rabbitmq-c
-      libesmtp
-      pcre2
-      paho-mqtt-c
-      hiredis
-      rdkafka
-    ]
-    ++ (lib.optionals withGrpc [
-      protobuf
-      grpc
-    ]);
+  buildInputs = [
+    libcap
+    curl
+    openssl
+    eventlog
+    glib
+    py
+    systemd
+    riemann_c_client
+    protobufc
+    pcre
+    libnet
+    json_c
+    libuuid
+    libivykis
+    mongoc
+    rabbitmq-c
+    libesmtp
+    pcre2
+    paho-mqtt-c
+    hiredis
+    rdkafka
+  ]
+  ++ (lib.optionals withGrpc [
+    protobuf
+    grpc
+  ]);
 
   configureFlags = [
     "--enable-manpages"
@@ -132,7 +131,8 @@ stdenv.mkDerivation (finalAttrs: {
     "--with-systemd-journal=system"
     "--with-systemdsystemunitdir=$(out)/etc/systemd/system"
     "--without-compile-date"
-  ] ++ (lib.optionals withGrpc [ "--enable-grpc" ]);
+  ]
+  ++ (lib.optionals withGrpc [ "--enable-grpc" ]);
 
   outputs = [
     "out"

@@ -27,27 +27,25 @@ rustPlatform.buildRustPackage rec {
     makeWrapper
   ];
 
-  buildInputs =
+  buildInputs = [
+    openssl
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin (
+    with darwin.apple_sdk.frameworks;
     [
-      openssl
+      SystemConfiguration
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        SystemConfiguration
-      ]
-    );
+  );
 
-  checkFlags =
-    [
-      # The following tests are reaching to the network.
-      "--skip=vale::tests"
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isAarch64) [
-      # This test does not account for the existence of aarch64-linux machines,
-      # despite upstream shipping artifacts for that architecture
-      "--skip=utils::tests::arch"
-    ];
+  checkFlags = [
+    # The following tests are reaching to the network.
+    "--skip=vale::tests"
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isAarch64) [
+    # This test does not account for the existence of aarch64-linux machines,
+    # despite upstream shipping artifacts for that architecture
+    "--skip=utils::tests::arch"
+  ];
 
   env.OPENSSL_NO_VENDOR = true;
 

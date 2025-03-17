@@ -51,16 +51,15 @@ stdenv.mkDerivation rec {
     "dev"
   ];
 
-  nativeBuildInputs =
-    [
-      autoreconfHook
-      doxygen
-      pkg-config
-    ]
-    ++ lib.optionals enableCuda [
-      cudaPackages.cuda_nvcc
-      autoAddDriverRunpath
-    ];
+  nativeBuildInputs = [
+    autoreconfHook
+    doxygen
+    pkg-config
+  ]
+  ++ lib.optionals enableCuda [
+    cudaPackages.cuda_nvcc
+    autoAddDriverRunpath
+  ];
 
   buildInputs =
     [

@@ -58,11 +58,10 @@ else
 
     strictDeps = true;
 
-    buildPhase =
-      topkg.buildPhase
-      + " --with-otfm ${lib.boolToString pdfBackend}"
-      + " --with-brr ${lib.boolToString htmlcBackend}"
-      + " --with-cairo2 false";
+    buildPhase = topkg.buildPhase
+    + " --with-otfm ${lib.boolToString pdfBackend}"
+    + " --with-brr ${lib.boolToString htmlcBackend}"
+    + " --with-cairo2 false";
 
     inherit (topkg) installPhase;
 

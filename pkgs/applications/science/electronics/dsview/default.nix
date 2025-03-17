@@ -37,7 +37,8 @@ stdenv.mkDerivation rec {
     cmake
     pkg-config
     wrapQtAppsHook
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin desktopToDarwinBundle;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin desktopToDarwinBundle;
 
   buildInputs = [
     boost
@@ -47,7 +48,8 @@ stdenv.mkDerivation rec {
     libusb1
     libzip
     python3
-  ] ++ lib.optional stdenv.hostPlatform.isLinux qtwayland;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isLinux qtwayland;
 
   meta = with lib; {
     description = "GUI program for supporting various instruments from DreamSourceLab, including logic analyzer, oscilloscope, etc";

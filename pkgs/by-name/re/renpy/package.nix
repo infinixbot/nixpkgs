@@ -43,29 +43,28 @@ stdenv.mkDerivation (finalAttrs: {
     python.pkgs.setuptools
   ];
 
-  buildInputs =
-    [
-      ffmpeg
-      freetype
-      fribidi
-      glew
-      harfbuzz
-      libGL
-      libGLU
-      libpng
-      SDL2
-      zlib
-    ]
-    ++ (with python.pkgs; [
-      ecdsa
-      future
-      pefile
-      pygame-sdl2
-      python
-      requests
-      six
-      tkinter
-    ]);
+  buildInputs = [
+    ffmpeg
+    freetype
+    fribidi
+    glew
+    harfbuzz
+    libGL
+    libGLU
+    libpng
+    SDL2
+    zlib
+  ]
+  ++ (with python.pkgs; [
+    ecdsa
+    future
+    pefile
+    pygame-sdl2
+    python
+    requests
+    six
+    tkinter
+  ]);
 
   RENPY_DEPS_INSTALL = lib.concatStringsSep "::" [
     ffmpeg.lib
@@ -86,7 +85,8 @@ stdenv.mkDerivation (finalAttrs: {
   patches = [
     ./shutup-erofs-errors.patch
     ./5687.patch
-  ] ++ lib.optional withoutSteam ./noSteam.patch;
+  ]
+  ++ lib.optional withoutSteam ./noSteam.patch;
 
   postPatch = ''
     cp tutorial/game/tutorial_director.rpy{m,}

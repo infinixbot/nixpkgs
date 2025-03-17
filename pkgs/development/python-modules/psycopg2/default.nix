@@ -45,7 +45,8 @@ buildPythonPackage rec {
     sphinx-better-theme
   ];
 
-  buildInputs = [ postgresql ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ openssl ];
+  buildInputs = [ postgresql ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ openssl ];
 
   sphinxRoot = "doc/src";
 

@@ -58,21 +58,20 @@ buildPythonPackage rec {
 
   pythonImportsCheck = [ "pyray" ];
 
-  buildInputs =
-    [
-      glfw
-      libffi
-      raylib
-      physac
-      raygui
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      OpenGL
-      Cocoa
-      IOKit
-      CoreFoundation
-      CoreVideo
-    ];
+  buildInputs = [
+    glfw
+    libffi
+    raylib
+    physac
+    raygui
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    OpenGL
+    Cocoa
+    IOKit
+    CoreFoundation
+    CoreVideo
+  ];
 
   meta = {
     description = "Python CFFI bindings for Raylib";

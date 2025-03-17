@@ -20,7 +20,8 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [ SDL2 ] ++ lib.optional stdenv.hostPlatform.isLinux alsa-lib;
+  buildInputs = [ SDL2 ]
+    ++ lib.optional stdenv.hostPlatform.isLinux alsa-lib;
 
   postInstall = ''
     install -Dm444 "$src/release/other/Freedesktop.org Resources/ProTracker 2 clone.desktop" \

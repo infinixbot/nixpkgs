@@ -50,8 +50,7 @@ stdenv.mkDerivation rec {
     ./mariadb.patch
   ];
 
-  buildInputs =
-    [ perlPackages.perl ]
+  buildInputs = [ perlPackages.perl ]
     ++ lib.optionals withMySQL [
       zlib
       mariadb-connector-c.out

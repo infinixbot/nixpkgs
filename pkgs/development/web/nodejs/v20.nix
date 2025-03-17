@@ -50,5 +50,6 @@ buildNodejs {
       stripLen = 1;
       hash = "sha256-6y3aEqxNC4iTQEv1oewodJrhOHxjp5xZMq1P1QL94Rg=";
     })
-  ] ++ gypPatches;
+  ]
+  ++ gypPatches;
 }

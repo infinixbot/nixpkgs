@@ -19,15 +19,15 @@ stdenv.mkDerivation {
 
   hardeningDisable = [ "pic" ];
 
-  nativeBuildInputs = [ bc ] ++ kernel.moduleBuildDependencies;
+  nativeBuildInputs = [ bc ]
+    ++ kernel.moduleBuildDependencies;
 
-  makeFlags =
-    [
-      "ARCH=${stdenv.hostPlatform.linuxArch}"
-    ]
-    ++ lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
-      "CROSS_COMPILE=${stdenv.cc.targetPrefix}"
-    ];
+  makeFlags = [
+    "ARCH=${stdenv.hostPlatform.linuxArch}"
+  ]
+  ++ lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
+    "CROSS_COMPILE=${stdenv.cc.targetPrefix}"
+  ];
 
   postPatch = ''
     substituteInPlace ./Makefile \

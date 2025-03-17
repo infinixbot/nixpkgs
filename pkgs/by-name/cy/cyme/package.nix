@@ -25,27 +25,25 @@ rustPlatform.buildRustPackage rec {
   useFetchCargoVendor = true;
   cargoHash = "sha256-eUBhMI/ff99SEU76yYvCzEvyLHtQqXgk/bHqmxPQlnc=";
 
-  nativeBuildInputs =
-    [
-      pkg-config
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      darwin.DarwinTools
-    ];
+  nativeBuildInputs = [
+    pkg-config
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    darwin.DarwinTools
+  ];
 
   buildInputs = [
     libusb1
   ];
 
-  checkFlags =
-    [
-      # doctest that requires access outside sandbox
-      "--skip=udev::hwdb::get"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      # system_profiler is not available in the sandbox
-      "--skip=test_run"
-    ];
+  checkFlags = [
+    # doctest that requires access outside sandbox
+    "--skip=udev::hwdb::get"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    # system_profiler is not available in the sandbox
+    "--skip=test_run"
+  ];
 
   passthru = {
     updateScript = nix-update-script { };

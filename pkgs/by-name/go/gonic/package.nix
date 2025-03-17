@@ -37,14 +37,13 @@ buildGoModule rec {
 
   # TODO(Profpatsch): write a test for transcoding support,
   # since it is prone to break
-  postPatch =
-    lib.optionalString transcodingSupport ''
-      substituteInPlace \
-        transcode/transcode.go \
-        --replace-fail \
-          '`ffmpeg' \
-          '`${lib.getBin ffmpeg}/bin/ffmpeg'
-    ''
+  postPatch = lib.optionalString transcodingSupport ''
+    substituteInPlace \
+      transcode/transcode.go \
+      --replace-fail \
+        '`ffmpeg' \
+        '`${lib.getBin ffmpeg}/bin/ffmpeg'
+  ''
     + ''
       substituteInPlace \
         jukebox/jukebox.go \

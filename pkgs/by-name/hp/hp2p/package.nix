@@ -25,8 +25,7 @@ stdenv.mkDerivation rec {
     automake
     python3Packages.wrapPython
   ];
-  buildInputs =
-    [ mpi ]
+  buildInputs = [ mpi ]
     ++ (with python3Packages; [
       python
       plotly

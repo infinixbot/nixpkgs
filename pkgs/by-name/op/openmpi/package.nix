@@ -85,35 +85,33 @@ stdenv.mkDerivation (finalAttrs: {
     SOURCE_DATE_EPOCH = "0";
   };
 
-  outputs =
-    [ "out" ]
+  outputs = [ "out" ]
     ++ lib.optionals stdenv.hostPlatform.isLinux [
       "man"
       "dev"
     ];
 
-  buildInputs =
-    [
-      zlib
-      libevent
-      hwloc
-      prrte
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      libnl
-      numactl
-      pmix
-      ucx
-      ucc
-    ]
-    ++ lib.optionals cudaSupport [ cudaPackages.cuda_cudart ]
-    ++ lib.optionals (stdenv.hostPlatform.isLinux || stdenv.hostPlatform.isFreeBSD) [ rdma-core ]
-    # needed for internal pmix
-    ++ lib.optionals (!stdenv.hostPlatform.isLinux) [ python3 ]
-    ++ lib.optionals fabricSupport [
-      libpsm2
-      libfabric
-    ];
+  buildInputs = [
+    zlib
+    libevent
+    hwloc
+    prrte
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    libnl
+    numactl
+    pmix
+    ucx
+    ucc
+  ]
+  ++ lib.optionals cudaSupport [ cudaPackages.cuda_cudart ]
+  ++ lib.optionals (stdenv.hostPlatform.isLinux || stdenv.hostPlatform.isFreeBSD) [ rdma-core ]
+  # needed for internal pmix
+  ++ lib.optionals (!stdenv.hostPlatform.isLinux) [ python3 ]
+  ++ lib.optionals fabricSupport [
+    libpsm2
+    libfabric
+  ];
 
   nativeBuildInputs =
     [
@@ -143,7 +141,8 @@ stdenv.mkDerivation (finalAttrs: {
     (lib.withFeatureAs fabricSupport "ofi" (lib.getDev libfabric))
     # The flag --without-ofi-libdir is not supported from some reason, so we
     # don't use lib.withFeatureAs
-  ] ++ lib.optionals fabricSupport [ "--with-ofi-libdir=${lib.getLib libfabric}/lib" ];
+  ]
+  ++ lib.optionals fabricSupport [ "--with-ofi-libdir=${lib.getLib libfabric}/lib" ];
 
   enableParallelBuilding = true;
 
@@ -157,41 +156,39 @@ stdenv.mkDerivation (finalAttrs: {
           "shmem"
           "osh"
         ];
-        s =
-          [
-            "CC"
-            "c++"
-            "cxx"
-            "cc"
-          ]
-          ++ lib.optionals fortranSupport [
-            "f77"
-            "f90"
-            "fort"
-          ];
+        s = [
+          "CC"
+          "c++"
+          "cxx"
+          "cc"
+        ]
+        ++ lib.optionals fortranSupport [
+          "f77"
+          "f90"
+          "fort"
+        ];
       };
-      wrapperDataSubstitutions =
-        {
-          # The attr key is the filename prefix. The list's 1st value is the
-          # compiler=_ line that should be replaced by a compiler=#2 string, where
-          # #2 is the 2nd value in the list.
-          "cc" = [
-            "gcc"
-            "${targetPackages.stdenv.cc}/bin/${targetPackages.stdenv.cc.targetPrefix}cc"
-          ];
-          "c++" = [
-            "g++"
-            "${targetPackages.stdenv.cc}/bin/${targetPackages.stdenv.cc.targetPrefix}c++"
-          ];
-        }
-        // lib.optionalAttrs fortranSupport {
-          "fort" = [
-            "gfortran"
-            "${targetPackages.gfortran or gfortran}/bin/${
-              targetPackages.gfortran.targetPrefix or gfortran.targetPrefix
-            }gfortran"
-          ];
-        };
+      wrapperDataSubstitutions = {
+        # The attr key is the filename prefix. The list's 1st value is the
+        # compiler=_ line that should be replaced by a compiler=#2 string, where
+        # #2 is the 2nd value in the list.
+        "cc" = [
+          "gcc"
+          "${targetPackages.stdenv.cc}/bin/${targetPackages.stdenv.cc.targetPrefix}cc"
+        ];
+        "c++" = [
+          "g++"
+          "${targetPackages.stdenv.cc}/bin/${targetPackages.stdenv.cc.targetPrefix}c++"
+        ];
+      }
+      // lib.optionalAttrs fortranSupport {
+        "fort" = [
+          "gfortran"
+          "${targetPackages.gfortran or gfortran}/bin/${
+            targetPackages.gfortran.targetPrefix or gfortran.targetPrefix
+          }gfortran"
+        ];
+      };
       # The -wrapper-data.txt files that are not symlinks, need to be iterated as
       # well, here they start withw ${part1}${part2}, and we use
       # lib.mapCartesianProduct as well.

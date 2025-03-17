@@ -31,7 +31,8 @@ buildPythonPackage rec {
 
   build-system = [ pdm-backend ];
 
-  dependencies = [ quart ] ++ lib.optionals (pythonOlder "3.10") [ typing-extensions ];
+  dependencies = [ quart ]
+    ++ lib.optionals (pythonOlder "3.10") [ typing-extensions ];
 
   pythonImportsCheck = [ "quart_cors" ];
 

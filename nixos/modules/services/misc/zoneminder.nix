@@ -344,7 +344,8 @@ in
           procps
           psmisc
         ];
-        after = [ "nginx.service" ] ++ lib.optional cfg.database.createLocally "mysql.service";
+        after = [ "nginx.service" ]
+          ++ lib.optional cfg.database.createLocally "mysql.service";
         wantedBy = [ "multi-user.target" ];
         restartTriggers = [
           defaultsFile

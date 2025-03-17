@@ -80,7 +80,8 @@ stdenv.mkDerivation {
     })
 
     ./use-ax-check-compile-flag.patch
-  ] ++ lib.optional pulseSupport ./pulseaudio.patch;
+  ]
+  ++ lib.optional pulseSupport ./pulseaudio.patch;
 
   postPatch = ''
     rm m4/*

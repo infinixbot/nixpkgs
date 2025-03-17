@@ -196,7 +196,8 @@ in
       serviceConfig = {
         DynamicUser = true;
         ExecStart = "${lib.getExe cfg.package} ${args}";
-        AmbientCapabilities = [ "CAP_NET_BIND_SERVICE" ] ++ lib.optionals cfg.allowDHCP [ "CAP_NET_RAW" ];
+        AmbientCapabilities = [ "CAP_NET_BIND_SERVICE" ]
+          ++ lib.optionals cfg.allowDHCP [ "CAP_NET_RAW" ];
         Restart = "always";
         RestartSec = 10;
         RuntimeDirectory = "AdGuardHome";

@@ -36,10 +36,10 @@ stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs = [ texliveFull ]; # scheme-full needed for ucs package
-  buildInputs = [ xercesc ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ libiconv ];
+  buildInputs = [ xercesc ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ libiconv ];
 
-  buildFlags =
-    [ "doc" ]
+  buildFlags = [ "doc" ]
     ++ (
       if stdenv.hostPlatform.isDarwin then
         [

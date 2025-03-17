@@ -55,16 +55,15 @@ stdenv.mkDerivation (finalAttrs: {
       qt5compat
     ];
 
-  qmakeFlags =
-    [
-      "CONFIG+=system_rtaudio"
-      "CONFIG+=system_rtmidi"
-    ]
-    ++ lib.optionals (stdenv.cc.isClang || (lib.versionAtLeast qtbase.version "6.0")) [
-      # Clang is extra-strict about some deprecations
-      # Latest Qt6 deprecated QCheckBox::stateChanged(int)
-      "CONFIG+=no_warnings_are_errors"
-    ];
+  qmakeFlags = [
+    "CONFIG+=system_rtaudio"
+    "CONFIG+=system_rtmidi"
+  ]
+  ++ lib.optionals (stdenv.cc.isClang || (lib.versionAtLeast qtbase.version "6.0")) [
+    # Clang is extra-strict about some deprecations
+    # Latest Qt6 deprecated QCheckBox::stateChanged(int)
+    "CONFIG+=no_warnings_are_errors"
+  ];
 
   postConfigure = "make qmake_all";
 

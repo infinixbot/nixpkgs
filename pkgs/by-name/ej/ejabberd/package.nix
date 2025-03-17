@@ -154,8 +154,7 @@ stdenv.mkDerivation (finalAttrs: {
     })
   ];
 
-  buildInputs =
-    [ beamPackages.erlang ]
+  buildInputs = [ beamPackages.erlang ]
     ++ builtins.attrValues beamDeps
     ++ lib.optional withMysql allBeamDeps.p1_mysql
     ++ lib.optional withPgsql allBeamDeps.p1_pgsql
@@ -195,7 +194,8 @@ stdenv.mkDerivation (finalAttrs: {
     (lib.enableFeature withLua "lua")
     (lib.enableFeature withTools "tools")
     (lib.enableFeature withRedis "redis")
-  ] ++ lib.optional withSqlite "--with-sqlite3=${sqlite.dev}";
+  ]
+  ++ lib.optional withSqlite "--with-sqlite3=${sqlite.dev}";
 
   enableParallelBuilding = true;
 

@@ -39,8 +39,7 @@ rustPlatform.buildRustPackage rec {
     pkg-config
   ];
 
-  buildInputs =
-    [ zstd ]
+  buildInputs = [ zstd ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       libresolv
     ];

@@ -71,7 +71,8 @@ let
 
       configureScript = "../../../../platforms/unix/config/configure";
 
-      configureFlags = [ "--with-scriptname=${scriptName}" ] ++ configureFlags;
+      configureFlags = [ "--with-scriptname=${scriptName}" ]
+        ++ configureFlags;
 
       buildFlags = [ "all" ];
 

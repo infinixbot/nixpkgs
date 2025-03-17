@@ -479,13 +479,12 @@ in
           openssh
         ];
 
-        preStart =
-          lib.optionalString cfg.pure ''
-            echo Resetting znapzend zetups
-            ${pkgs.znapzend}/bin/znapzendzetup list \
-              | grep -oP '(?<=\*\*\* backup plan: ).*(?= \*\*\*)' \
-              | xargs -I{} ${pkgs.znapzend}/bin/znapzendzetup delete "{}"
-          ''
+        preStart = lib.optionalString cfg.pure ''
+          echo Resetting znapzend zetups
+          ${pkgs.znapzend}/bin/znapzendzetup list \
+            | grep -oP '(?<=\*\*\* backup plan: ).*(?= \*\*\*)' \
+            | xargs -I{} ${pkgs.znapzend}/bin/znapzendzetup delete "{}"
+        ''
           + lib.concatStringsSep "\n" (
             lib.mapAttrsToList (dataset: config: ''
               echo Importing znapzend zetup ${config} for dataset ${dataset}

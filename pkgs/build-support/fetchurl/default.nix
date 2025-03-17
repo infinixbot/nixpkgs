@@ -209,7 +209,8 @@ stdenvNoCC.mkDerivation (
   // {
     builder = ./builder.sh;
 
-    nativeBuildInputs = [ curl ] ++ nativeBuildInputs;
+    nativeBuildInputs = [ curl ]
+      ++ nativeBuildInputs;
 
     urls = urls_;
 
@@ -266,6 +267,7 @@ stdenvNoCC.mkDerivation (
     inherit meta;
     passthru = {
       inherit url;
-    } // passthru;
+    }
+    // passthru;
   }
 )

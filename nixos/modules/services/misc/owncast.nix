@@ -97,7 +97,8 @@ in
     users.groups = lib.mkIf (cfg.group == "owncast") { owncast = { }; };
 
     networking.firewall = lib.mkIf cfg.openFirewall {
-      allowedTCPPorts = [ cfg.rtmp-port ] ++ lib.optional (cfg.listen != "127.0.0.1") cfg.port;
+      allowedTCPPorts = [ cfg.rtmp-port ]
+        ++ lib.optional (cfg.listen != "127.0.0.1") cfg.port;
     };
 
   };

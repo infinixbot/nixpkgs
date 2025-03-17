@@ -103,7 +103,8 @@ stdenvNoCC.mkDerivation (
     nativeBuildInputs = [
       perl
       cpio
-    ] ++ lib.optional makeUInitrd ubootTools;
+    ]
+    ++ lib.optional makeUInitrd ubootTools;
 
     compress = "${_compressorExecutable} ${lib.escapeShellArgs _compressorArgsReal}";
 

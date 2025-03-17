@@ -69,7 +69,8 @@ rustPlatform.buildRustPackage rec {
 
   nativeBuildInputs = [
     installShellFiles
-  ] ++ lib.optionals stdenv.hostPlatform.isLinux [ pkg-config ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [ pkg-config ];
   buildInputs =
     if stdenv.hostPlatform.isDarwin then
       [

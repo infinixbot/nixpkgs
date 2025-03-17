@@ -48,7 +48,8 @@ stdenv.mkDerivation rec {
     libXext
     libXmu
     libXi
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin darwin.apple_sdk.frameworks.Cocoa;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin darwin.apple_sdk.frameworks.Cocoa;
 
   NIX_CFLAGS_COMPILE = [ "-fpermissive" ];
 

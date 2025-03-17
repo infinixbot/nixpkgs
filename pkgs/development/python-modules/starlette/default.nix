@@ -42,7 +42,8 @@ buildPythonPackage rec {
 
   build-system = [ hatchling ];
 
-  dependencies = [ anyio ] ++ lib.optionals (pythonOlder "3.10") [ typing-extensions ];
+  dependencies = [ anyio ]
+    ++ lib.optionals (pythonOlder "3.10") [ typing-extensions ];
 
   optional-dependencies.full = [
     itsdangerous
@@ -56,7 +57,8 @@ buildPythonPackage rec {
     pytestCheckHook
     trio
     typing-extensions
-  ] ++ lib.flatten (lib.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (lib.attrValues optional-dependencies);
 
   pytestFlagsArray = [
     "-W"

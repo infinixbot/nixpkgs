@@ -22,13 +22,12 @@ mkDerivation rec {
     sha256 = "sha256-Wra+PvORsvSJD4Y4z4rd3Urn5eG3tEBK+YsIlIaWFe4=";
   };
 
-  nativeBuildInputs =
-    [
-      cmake
-    ]
-    ++ lib.optionals (withGstreamer || withOmemo) [
-      pkg-config
-    ];
+  nativeBuildInputs = [
+    cmake
+  ]
+  ++ lib.optionals (withGstreamer || withOmemo) [
+    pkg-config
+  ];
   buildInputs =
     lib.optionals withGstreamer (
       with gst_all_1;

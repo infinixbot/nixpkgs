@@ -187,32 +187,31 @@ in
       make dist
     '';
 
-    configureFlags =
-      [
-        "--enable-grub-mount" # dep of os-prober
-      ]
-      ++ lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
-        # grub doesn't do cross-compilation as usual and tries to use unprefixed
-        # tools to target the host. Provide toolchain information explicitly for
-        # cross builds.
-        #
-        # Ref: # https://github.com/buildroot/buildroot/blob/master/boot/grub2/grub2.mk#L108
-        "TARGET_CC=${stdenv.cc.targetPrefix}cc"
-        "TARGET_NM=${stdenv.cc.targetPrefix}nm"
-        "TARGET_OBJCOPY=${stdenv.cc.targetPrefix}objcopy"
-        "TARGET_RANLIB=${stdenv.cc.targetPrefix}ranlib"
-        "TARGET_STRIP=${stdenv.cc.targetPrefix}strip"
-      ]
-      ++ lib.optional zfsSupport "--enable-libzfs"
-      ++ lib.optionals efiSupport [
-        "--with-platform=efi"
-        "--target=${efiSystemsBuild.${stdenv.hostPlatform.system}.target}"
-        "--program-prefix="
-      ]
-      ++ lib.optionals xenSupport [
-        "--with-platform=xen"
-        "--target=${efiSystemsBuild.${stdenv.hostPlatform.system}.target}"
-      ];
+    configureFlags = [
+      "--enable-grub-mount" # dep of os-prober
+    ]
+    ++ lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
+      # grub doesn't do cross-compilation as usual and tries to use unprefixed
+      # tools to target the host. Provide toolchain information explicitly for
+      # cross builds.
+      #
+      # Ref: # https://github.com/buildroot/buildroot/blob/master/boot/grub2/grub2.mk#L108
+      "TARGET_CC=${stdenv.cc.targetPrefix}cc"
+      "TARGET_NM=${stdenv.cc.targetPrefix}nm"
+      "TARGET_OBJCOPY=${stdenv.cc.targetPrefix}objcopy"
+      "TARGET_RANLIB=${stdenv.cc.targetPrefix}ranlib"
+      "TARGET_STRIP=${stdenv.cc.targetPrefix}strip"
+    ]
+    ++ lib.optional zfsSupport "--enable-libzfs"
+    ++ lib.optionals efiSupport [
+      "--with-platform=efi"
+      "--target=${efiSystemsBuild.${stdenv.hostPlatform.system}.target}"
+      "--program-prefix="
+    ]
+    ++ lib.optionals xenSupport [
+      "--with-platform=xen"
+      "--target=${efiSystemsBuild.${stdenv.hostPlatform.system}.target}"
+    ];
 
     # save target that grub is compiled for
     grubTarget =

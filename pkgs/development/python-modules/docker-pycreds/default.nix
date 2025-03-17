@@ -24,8 +24,7 @@ buildPythonPackage rec {
     setuptools
   ];
 
-  dependencies =
-    [ six ]
+  dependencies = [ six ]
     ++ lib.optionals (pythonAtLeast "3.12") [
       distutils
     ];

@@ -154,7 +154,8 @@ in
     systemd.services.ntopng = {
       description = "Ntopng Network Monitor";
       requires = optional createRedis redisService;
-      after = [ "network.target" ] ++ optional createRedis redisService;
+      after = [ "network.target" ]
+        ++ optional createRedis redisService;
       wantedBy = [ "multi-user.target" ];
       serviceConfig.ExecStart = "${pkgs.ntopng}/bin/ntopng ${configFile}";
       unitConfig.Documentation = "man:ntopng(8)";

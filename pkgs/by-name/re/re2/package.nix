@@ -41,10 +41,10 @@ stdenv.mkDerivation (finalAttrs: {
     gtest
   ];
 
-  propagatedBuildInputs = [ abseil-cpp ] ++ lib.optionals (!stdenv.hostPlatform.isStatic) [ icu ];
+  propagatedBuildInputs = [ abseil-cpp ]
+    ++ lib.optionals (!stdenv.hostPlatform.isStatic) [ icu ];
 
-  cmakeFlags =
-    [ (lib.cmakeBool "RE2_BUILD_TESTING" true) ]
+  cmakeFlags = [ (lib.cmakeBool "RE2_BUILD_TESTING" true) ]
     ++ lib.optionals (!stdenv.hostPlatform.isStatic) [
       (lib.cmakeBool "RE2_USE_ICU" true)
       (lib.cmakeBool "BUILD_SHARED_LIBS" true)

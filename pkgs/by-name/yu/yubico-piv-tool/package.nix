@@ -47,7 +47,8 @@ stdenv.mkDerivation (finalAttrs: {
   buildInputs = [
     openssl
     zlib
-  ] ++ (if withApplePCSC then [ darwin.apple_sdk.frameworks.PCSC ] else [ pcsclite ]);
+  ]
+  ++ (if withApplePCSC then [ darwin.apple_sdk.frameworks.PCSC ] else [ pcsclite ]);
 
   cmakeFlags = [
     (lib.cmakeBool "GENERATE_MAN_PAGES" true)

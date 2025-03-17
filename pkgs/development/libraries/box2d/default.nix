@@ -40,24 +40,23 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      libGLU
-      libGL
-      libglut
-      libX11
-      libXcursor
-      libXinerama
-      libXrandr
-      xorgproto
-      libXi
-    ]
-    ++ optionals stdenv.hostPlatform.isDarwin [
-      Carbon
-      Cocoa
-      Kernel
-      OpenGL
-    ];
+  buildInputs = [
+    libGLU
+    libGL
+    libglut
+    libX11
+    libXcursor
+    libXinerama
+    libXrandr
+    xorgproto
+    libXi
+  ]
+  ++ optionals stdenv.hostPlatform.isDarwin [
+    Carbon
+    Cocoa
+    Kernel
+    OpenGL
+  ];
 
   cmakeFlags = [
     (cmakeBool "BOX2D_BUILD_UNIT_TESTS" finalAttrs.finalPackage.doCheck)

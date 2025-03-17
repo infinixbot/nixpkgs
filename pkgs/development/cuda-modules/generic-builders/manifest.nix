@@ -99,7 +99,8 @@ backendStdenv.mkDerivation (finalAttrs: {
       additionalOutputs =
         if redistArch == "unsupported" then possibleOutputs else builtins.filter hasOutput possibleOutputs;
       # The out output is special -- it's the default output and we always include it.
-      outputs = [ "out" ] ++ additionalOutputs;
+      outputs = [ "out" ]
+        ++ additionalOutputs;
     in
     outputs;
 

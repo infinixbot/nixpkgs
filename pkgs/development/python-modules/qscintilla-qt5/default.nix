@@ -35,30 +35,30 @@ buildPythonPackage rec {
     pythonPackages.setuptools
   ];
   buildInputs = [ qtbase ];
-  propagatedBuildInputs = [ pyqt5 ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ qtmacextras ];
+  propagatedBuildInputs = [ pyqt5 ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ qtmacextras ];
 
   dontWrapQtApps = true;
 
-  postPatch =
-    ''
-      cd Python
-      cp pyproject-qt5.toml pyproject.toml
-      echo '[tool.sip.project]' >> pyproject.toml
-      echo 'sip-include-dirs = [ "${pyqt5}/${python.sitePackages}/PyQt5/bindings"]' \
-         >> pyproject.toml
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      substituteInPlace project.py \
-        --replace \
-        "if self.project.qsci_external_lib:
-                  if self.qsci_features_dir is not None:" \
-        "if self.project.qsci_external_lib:
-                  self.builder_settings.append('QT += widgets')
+  postPatch = ''
+    cd Python
+    cp pyproject-qt5.toml pyproject.toml
+    echo '[tool.sip.project]' >> pyproject.toml
+    echo 'sip-include-dirs = [ "${pyqt5}/${python.sitePackages}/PyQt5/bindings"]' \
+       >> pyproject.toml
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    substituteInPlace project.py \
+      --replace \
+      "if self.project.qsci_external_lib:
+                if self.qsci_features_dir is not None:" \
+      "if self.project.qsci_external_lib:
+                self.builder_settings.append('QT += widgets')
 
-                  self.builder_settings.append('QT += printsupport')
+                self.builder_settings.append('QT += printsupport')
 
-                  if self.qsci_features_dir is not None:"
-    '';
+                if self.qsci_features_dir is not None:"
+  '';
 
   dontConfigure = true;
 

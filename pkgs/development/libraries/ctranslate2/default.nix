@@ -38,13 +38,12 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  nativeBuildInputs =
-    [
-      cmake
-    ]
-    ++ lib.optionals withCUDA [
-      cudaPackages.cuda_nvcc
-    ];
+  nativeBuildInputs = [
+    cmake
+  ]
+  ++ lib.optionals withCUDA [
+    cudaPackages.cuda_nvcc
+  ];
 
   cmakeFlags = [
     # https://opennmt.net/CTranslate2/installation.html#build-options
@@ -57,7 +56,8 @@ stdenv.mkDerivation rec {
     "-DWITH_OPENBLAS=${cmakeBool withOpenblas}"
     "-DWITH_RUY=${cmakeBool withRuy}"
     "-DWITH_MKL=${cmakeBool withMkl}"
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin "-DWITH_ACCELERATE=ON";
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin "-DWITH_ACCELERATE=ON";
 
   buildInputs =
     lib.optionals withMkl [

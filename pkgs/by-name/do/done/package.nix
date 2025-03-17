@@ -48,18 +48,17 @@ stdenv.mkDerivation rec {
     wrapGAppsHook4
   ];
 
-  buildInputs =
-    [
-      gdk-pixbuf
-      gtk4
-      libadwaita
-      libsecret
-      openssl
-      sqlite
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      darwin.apple_sdk.frameworks.AppKit
-    ];
+  buildInputs = [
+    gdk-pixbuf
+    gtk4
+    libadwaita
+    libsecret
+    openssl
+    sqlite
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    darwin.apple_sdk.frameworks.AppKit
+  ];
 
   env = lib.optionalAttrs stdenv.hostPlatform.isDarwin {
     GETTEXT_DIR = gettext;

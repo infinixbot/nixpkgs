@@ -40,7 +40,8 @@ stdenv.mkDerivation (finalAttrs: {
   outputs = [
     "out"
     "dev"
-  ] ++ lib.optionals withDocumentation [ "doc" ];
+  ]
+  ++ lib.optionals withDocumentation [ "doc" ];
 
   patches = [
     # This change seems incomplete, potentially breaks things on systems that don't use AppArmor mediation
@@ -72,18 +73,17 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  nativeBuildInputs =
-    [
-      cmake
-      pkg-config
-      validatePkgConfig
-      wrapQtAppsHook
-    ]
-    ++ lib.optionals withDocumentation [
-      doxygen
-      graphviz
-      qttools # qdoc
-    ];
+  nativeBuildInputs = [
+    cmake
+    pkg-config
+    validatePkgConfig
+    wrapQtAppsHook
+  ]
+  ++ lib.optionals withDocumentation [
+    doxygen
+    graphviz
+    qttools # qdoc
+  ];
 
   buildInputs = [
     boost
@@ -110,7 +110,8 @@ stdenv.mkDerivation (finalAttrs: {
     (lib.cmakeBool "ENABLE_WERROR" false)
   ];
 
-  makeTargets = [ "all" ] ++ lib.optionals withDocumentation [ "doc" ];
+  makeTargets = [ "all" ]
+    ++ lib.optionals withDocumentation [ "doc" ];
 
   doCheck = stdenv.buildPlatform.canExecute stdenv.hostPlatform;
 

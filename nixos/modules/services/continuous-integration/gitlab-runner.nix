@@ -68,8 +68,7 @@ let
   configPath = ''"$HOME"/.gitlab-runner/config.toml'';
   configureScript = pkgs.writeShellApplication {
     name = "gitlab-runner-configure";
-    runtimeInputs =
-      [ cfg.package ]
+    runtimeInputs = [ cfg.package ]
       ++ (with pkgs; [
         bash
         gawk
@@ -783,24 +782,23 @@ in
         ++ cfg.extraPackages;
 
       reloadIfChanged = true;
-      serviceConfig =
-        {
-          # Set `DynamicUser` under `systemd.services.gitlab-runner.serviceConfig`
-          # to `lib.mkForce false` in your configuration to run this service as root.
-          # You can also set `User` and `Group` options to run this service as desired user.
-          # Make sure to restart service or changes won't apply.
-          DynamicUser = true;
-          StateDirectory = "gitlab-runner";
-          SupplementaryGroups = optional hasDocker "docker" ++ optional hasPodman "podman";
-          ExecStartPre = "!${configureScript}/bin/gitlab-runner-configure";
-          ExecStart = "${startScript}/bin/gitlab-runner-start";
-          ExecReload = "!${configureScript}/bin/gitlab-runner-configure";
-        }
-        // optionalAttrs cfg.gracefulTermination {
-          TimeoutStopSec = "${cfg.gracefulTimeout}";
-          KillSignal = "SIGQUIT";
-          KillMode = "process";
-        };
+      serviceConfig = {
+        # Set `DynamicUser` under `systemd.services.gitlab-runner.serviceConfig`
+        # to `lib.mkForce false` in your configuration to run this service as root.
+        # You can also set `User` and `Group` options to run this service as desired user.
+        # Make sure to restart service or changes won't apply.
+        DynamicUser = true;
+        StateDirectory = "gitlab-runner";
+        SupplementaryGroups = optional hasDocker "docker" ++ optional hasPodman "podman";
+        ExecStartPre = "!${configureScript}/bin/gitlab-runner-configure";
+        ExecStart = "${startScript}/bin/gitlab-runner-start";
+        ExecReload = "!${configureScript}/bin/gitlab-runner-configure";
+      }
+      // optionalAttrs cfg.gracefulTermination {
+        TimeoutStopSec = "${cfg.gracefulTimeout}";
+        KillSignal = "SIGQUIT";
+        KillMode = "process";
+      };
     };
     # Enable periodic clear-docker-cache script
     systemd.services.gitlab-runner-clear-docker-cache =

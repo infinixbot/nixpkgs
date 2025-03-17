@@ -35,7 +35,8 @@ stdenv.mkDerivation rec {
 
   configureFlags = [
     "--enable-mpers=check"
-  ] ++ lib.optional stdenv.cc.isClang "CFLAGS=-Wno-unused-function";
+  ]
+  ++ lib.optional stdenv.cc.isClang "CFLAGS=-Wno-unused-function";
 
   passthru.updateScript = gitUpdater {
     # No nicer place to find latest release.

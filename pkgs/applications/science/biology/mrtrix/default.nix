@@ -35,25 +35,25 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     eigen
     makeWrapper
-  ] ++ lib.optional withGui qt5.wrapQtAppsHook;
+  ]
+  ++ lib.optional withGui qt5.wrapQtAppsHook;
 
-  buildInputs =
-    [
-      ants
-      python
-      fftw
-      libtiff
-      libpng
-      zlib
-    ]
-    ++ lib.optionals withGui [
-      libGL
-      libGLU
-      libX11
-      libXext
-      qt5.qtbase
-      qt5.qtsvg
-    ];
+  buildInputs = [
+    ants
+    python
+    fftw
+    libtiff
+    libpng
+    zlib
+  ]
+  ++ lib.optionals withGui [
+    libGL
+    libGLU
+    libX11
+    libXext
+    qt5.qtbase
+    qt5.qtsvg
+  ];
 
   nativeInstallCheckInputs = [ bc ];
 

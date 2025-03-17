@@ -46,10 +46,13 @@ stdenv.mkDerivation (
       php
       autoreconfHook
       re2c
-    ] ++ nativeBuildInputs;
-    buildInputs = [ php ] ++ peclDeps ++ buildInputs;
+    ]
+    ++ nativeBuildInputs;
+    buildInputs = [ php ]
+      ++ peclDeps ++ buildInputs;
 
-    makeFlags = [ "EXTENSION_DIR=$(out)/lib/php/extensions" ] ++ makeFlags;
+    makeFlags = [ "EXTENSION_DIR=$(out)/lib/php/extensions" ]
+      ++ makeFlags;
 
     autoreconfPhase = ''
       phpize

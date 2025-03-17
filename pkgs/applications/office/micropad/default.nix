@@ -39,7 +39,8 @@ stdenv.mkDerivation (finalAttrs: {
     yarnBuildHook
     copyDesktopItems
     makeWrapper
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ desktopToDarwinBundle ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ desktopToDarwinBundle ];
 
   installPhase = ''
     runHook preInstall

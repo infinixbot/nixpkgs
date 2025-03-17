@@ -51,24 +51,22 @@ stdenv.mkDerivation rec {
     docbook_xml_dtd_412
   ];
 
-  buildInputs =
-    [
-      glib
-      libxml2
-      libsoup_2_4
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      Foundation
-      AppKit
-    ];
+  buildInputs = [
+    glib
+    libxml2
+    libsoup_2_4
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    Foundation
+    AppKit
+  ];
 
-  configureFlags =
-    [
-      "PKG_CONFIG=${buildPackages.pkg-config}/bin/${buildPackages.pkg-config.targetPrefix}pkg-config"
-    ]
-    ++ lib.optionals (stdenv.buildPlatform == stdenv.hostPlatform) [
-      "--enable-gtk-doc"
-    ];
+  configureFlags = [
+    "PKG_CONFIG=${buildPackages.pkg-config}/bin/${buildPackages.pkg-config.targetPrefix}pkg-config"
+  ]
+  ++ lib.optionals (stdenv.buildPlatform == stdenv.hostPlatform) [
+    "--enable-gtk-doc"
+  ];
 
   doCheck = true;
 

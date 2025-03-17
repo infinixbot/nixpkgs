@@ -159,16 +159,15 @@ buildPythonApplication rec {
     export PATH="$out/bin:$PATH"
   '';
 
-  passthru =
-    {
-      inherit withPlugins python;
-      updateScript = ./update.sh;
-    }
-    // lib.optionalAttrs stdenv.hostPlatform.isLinux {
-      tests = {
-        inherit (nixosTests) buildbot;
-      };
+  passthru = {
+    inherit withPlugins python;
+    updateScript = ./update.sh;
+  }
+  // lib.optionalAttrs stdenv.hostPlatform.isLinux {
+    tests = {
+      inherit (nixosTests) buildbot;
     };
+  };
 
   meta = with lib; {
     description = "Open-source continuous integration framework for automating software build, test, and release processes";

@@ -32,18 +32,17 @@ rustPlatform.buildRustPackage rec {
     installShellFiles
   ];
 
-  buildInputs =
+  buildInputs = [
+    oniguruma
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin (
+    with darwin.apple_sdk.frameworks;
     [
-      oniguruma
+      AppKit
+      CoreServices
+      SystemConfiguration
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        AppKit
-        CoreServices
-        SystemConfiguration
-      ]
-    );
+  );
 
   postInstall = ''
     installManPage docs/build/man/man1/tpnote.1

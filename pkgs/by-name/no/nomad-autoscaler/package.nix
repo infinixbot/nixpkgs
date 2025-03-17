@@ -120,7 +120,8 @@ let
     f:
     buildEnv {
       name = "nomad-autoscaler-env";
-      paths = [ package.bin ] ++ f plugins;
+      paths = [ package.bin ]
+        ++ f plugins;
     };
 in
 package

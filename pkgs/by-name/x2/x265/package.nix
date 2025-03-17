@@ -71,7 +71,8 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     cmake
     nasm
-  ] ++ lib.optionals (numaSupport) [ numactl ];
+  ]
+  ++ lib.optionals (numaSupport) [ numactl ];
 
   cmakeFlags =
     [

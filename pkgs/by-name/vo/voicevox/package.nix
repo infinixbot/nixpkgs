@@ -42,13 +42,12 @@ buildNpmPackage rec {
   # unlock very specific node version bounds specified by upstream
   npmInstallFlags = [ "--engine-strict=false" ];
 
-  nativeBuildInputs =
-    [
-      makeWrapper
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      copyDesktopItems
-    ];
+  nativeBuildInputs = [
+    makeWrapper
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    copyDesktopItems
+  ];
 
   env.ELECTRON_SKIP_BINARY_DOWNLOAD = "1";
 

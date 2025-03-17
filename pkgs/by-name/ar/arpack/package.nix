@@ -69,19 +69,18 @@ stdenv.mkDerivation (finalAttrs: {
     FFLAGS = "-ff2c -fno-second-underscore";
   };
 
-  cmakeFlags =
-    [
-      (lib.cmakeBool "BUILD_SHARED_LIBS" stdenv.hostPlatform.hasSharedLibraries)
-      (lib.cmakeBool "EIGEN" true)
-      (lib.cmakeBool "EXAMPLES" finalAttrs.doCheck)
-      (lib.cmakeBool "ICB" true)
-      (lib.cmakeBool "INTERFACE64" (!useAccel && blas.isILP64))
-      (lib.cmakeBool "MPI" useMpi)
-      (lib.cmakeBool "TESTS" finalAttrs.doCheck)
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      "-DBLA_VENDOR=${if useAccel then "Apple" else "Generic"}"
-    ];
+  cmakeFlags = [
+    (lib.cmakeBool "BUILD_SHARED_LIBS" stdenv.hostPlatform.hasSharedLibraries)
+    (lib.cmakeBool "EIGEN" true)
+    (lib.cmakeBool "EXAMPLES" finalAttrs.doCheck)
+    (lib.cmakeBool "ICB" true)
+    (lib.cmakeBool "INTERFACE64" (!useAccel && blas.isILP64))
+    (lib.cmakeBool "MPI" useMpi)
+    (lib.cmakeBool "TESTS" finalAttrs.doCheck)
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    "-DBLA_VENDOR=${if useAccel then "Apple" else "Generic"}"
+  ];
 
   passthru = {
     isILP64 = !useAccel && blas.isILP64;

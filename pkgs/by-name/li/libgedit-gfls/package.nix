@@ -32,18 +32,17 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-kMkqEly8RDc5eKqUupQD4tkVIXxL1rt4e/OCAPoutIg=";
   };
 
-  nativeBuildInputs =
-    [
-      docbook-xsl-nons
-      gobject-introspection
-      gtk-doc
-      meson
-      ninja
-      pkg-config
-    ]
-    ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
-      mesonEmulatorHook
-    ];
+  nativeBuildInputs = [
+    docbook-xsl-nons
+    gobject-introspection
+    gtk-doc
+    meson
+    ninja
+    pkg-config
+  ]
+  ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
+    mesonEmulatorHook
+  ];
 
   buildInputs = [
     gtk3

@@ -2,7 +2,8 @@
 { lib }:
 let
   commonH = hashTypes: rec {
-    hashNames = [ "hash" ] ++ hashTypes;
+    hashNames = [ "hash" ]
+      ++ hashTypes;
     hashSet = lib.genAttrs hashNames (lib.const { });
   };
 

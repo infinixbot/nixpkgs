@@ -40,7 +40,8 @@ maven.buildMavenPackage rec {
     graalvmPackages.graalvm-ce
     installShellFiles
     makeWrapper
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ darwin.apple_sdk_11_0.frameworks.Foundation ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ darwin.apple_sdk_11_0.frameworks.Foundation ];
 
   mvnDepsParameters = mvnParameters;
   mvnParameters = lib.concatStringsSep " " [
@@ -76,27 +77,26 @@ maven.buildMavenPackage rec {
     runHook postInstall
   '';
 
-  passthru =
-    {
-      updateScript = nix-update-script { };
-    }
-    // (lib.optionalAttrs (!stdenv.hostPlatform.isDarwin) {
-      tests.version = testers.testVersion {
-        # `java` or `JAVA_HOME` is required to run mvnd
-        # presumably the user already has a JDK installed if they're using maven; don't pull in an unnecessary runtime dependency
-        package =
-          runCommand "mvnd"
-            {
-              inherit version;
-              nativeBuildInputs = [ makeWrapper ];
-            }
-            ''
-              mkdir -p $out/bin
-              makeWrapper ${mvnd}/bin/mvnd $out/bin/mvnd \
-                --suffix PATH : ${lib.makeBinPath [ mvnJdk ]}
-            '';
-      };
-    });
+  passthru = {
+    updateScript = nix-update-script { };
+  }
+  // (lib.optionalAttrs (!stdenv.hostPlatform.isDarwin) {
+    tests.version = testers.testVersion {
+      # `java` or `JAVA_HOME` is required to run mvnd
+      # presumably the user already has a JDK installed if they're using maven; don't pull in an unnecessary runtime dependency
+      package =
+        runCommand "mvnd"
+          {
+            inherit version;
+            nativeBuildInputs = [ makeWrapper ];
+          }
+          ''
+            mkdir -p $out/bin
+            makeWrapper ${mvnd}/bin/mvnd $out/bin/mvnd \
+              --suffix PATH : ${lib.makeBinPath [ mvnJdk ]}
+          '';
+    };
+  });
 
   meta = {
     description = "The Apache Maven Daemon";

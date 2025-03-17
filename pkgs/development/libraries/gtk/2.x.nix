@@ -67,46 +67,44 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  patches =
-    [
-      ./patches/2.0-immodules.cache.patch
-      ./patches/gtk2-theme-paths.patch
-      (fetchpatch {
-        # https://gitlab.gnome.org/GNOME/gtk/-/issues/6786
-        name = "CVE-2024-6655.patch";
-        url = "https://gitlab.gnome.org/GNOME/gtk/-/commit/3bbf0b6176d42836d23c36a6ac410e807ec0a7a7.patch";
-        hash = "sha256-mstOPk9NNpUwScrdEbvGhmAv8jlds3SBdj53T0q33vM=";
-      })
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      ./patches/2.0-gnome_bugzilla_557780_306776_freeciv_darwin.patch
-      ./patches/2.0-darwin-x11.patch
-      # Fixes an incompatible function pointer conversion and implicit int errors with clang 16.
-      ./patches/2.0-clang.patch
-    ];
+  patches = [
+    ./patches/2.0-immodules.cache.patch
+    ./patches/gtk2-theme-paths.patch
+    (fetchpatch {
+      # https://gitlab.gnome.org/GNOME/gtk/-/issues/6786
+      name = "CVE-2024-6655.patch";
+      url = "https://gitlab.gnome.org/GNOME/gtk/-/commit/3bbf0b6176d42836d23c36a6ac410e807ec0a7a7.patch";
+      hash = "sha256-mstOPk9NNpUwScrdEbvGhmAv8jlds3SBdj53T0q33vM=";
+    })
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    ./patches/2.0-gnome_bugzilla_557780_306776_freeciv_darwin.patch
+    ./patches/2.0-darwin-x11.patch
+    # Fixes an incompatible function pointer conversion and implicit int errors with clang 16.
+    ./patches/2.0-clang.patch
+  ];
 
-  propagatedBuildInputs =
-    [
-      atk
-      cairo
-      gdk-pixbuf
-      glib
-      pango
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isLinux || stdenv.hostPlatform.isDarwin) [
-      libXcomposite
-      libXcursor
-      libXi
-      libXrandr
-      libXrender
-    ]
-    ++ lib.optional xineramaSupport libXinerama
-    ++ lib.optional cupsSupport cups
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      libXdamage
-      AppKit
-      Cocoa
-    ];
+  propagatedBuildInputs = [
+    atk
+    cairo
+    gdk-pixbuf
+    glib
+    pango
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isLinux || stdenv.hostPlatform.isDarwin) [
+    libXcomposite
+    libXcursor
+    libXi
+    libXrandr
+    libXrender
+  ]
+  ++ lib.optional xineramaSupport libXinerama
+  ++ lib.optional cupsSupport cups
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    libXdamage
+    AppKit
+    Cocoa
+  ];
 
   preConfigure = lib.optionalString (
     stdenv.hostPlatform.isDarwin && lib.versionAtLeast stdenv.hostPlatform.darwinMinVersion "11"
@@ -176,14 +174,13 @@ stdenv.mkDerivation (finalAttrs: {
       raskin
     ];
     platforms = lib.platforms.all;
-    pkgConfigModules =
-      [
-        "gdk-2.0"
-        "gtk+-2.0"
-      ]
-      ++ lib.optionals (gdktarget == "x11") [
-        "gdk-x11-2.0"
-        "gtk+-x11-2.0"
-      ];
+    pkgConfigModules = [
+      "gdk-2.0"
+      "gtk+-2.0"
+    ]
+    ++ lib.optionals (gdktarget == "x11") [
+      "gdk-x11-2.0"
+      "gtk+-x11-2.0"
+    ];
   };
 })

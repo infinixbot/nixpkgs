@@ -46,21 +46,20 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      perl
-      flex
-      bison
-      readline
-      libexif
-    ]
-    ++ lib.optional x11Support SDL
-    ++ lib.optional svgSupport inkscape
-    ++ lib.optional asciiArtSupport aalib
-    ++ lib.optional gifSupport giflib
-    ++ lib.optional tiffSupport libtiff
-    ++ lib.optional jpegSupport libjpeg
-    ++ lib.optional pngSupport libpng;
+  buildInputs = [
+    perl
+    flex
+    bison
+    readline
+    libexif
+  ]
+  ++ lib.optional x11Support SDL
+  ++ lib.optional svgSupport inkscape
+  ++ lib.optional asciiArtSupport aalib
+  ++ lib.optional gifSupport giflib
+  ++ lib.optional tiffSupport libtiff
+  ++ lib.optional jpegSupport libjpeg
+  ++ lib.optional pngSupport libpng;
 
   env.NIX_CFLAGS_COMPILE = lib.optionalString x11Support "-lSDL";
 

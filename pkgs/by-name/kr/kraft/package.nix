@@ -24,13 +24,12 @@ buildGoModule rec {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      gpgme
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      btrfs-progs
-    ];
+  buildInputs = [
+    gpgme
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    btrfs-progs
+  ];
 
   vendorHash = "sha256-uyoIlNhgL684f+3+I4CFc+iuMRdI5WAUr7dWr0Bt6bA=";
 

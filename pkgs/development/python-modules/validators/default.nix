@@ -25,10 +25,12 @@ buildPythonPackage rec {
   build-system = [ setuptools ];
 
   optional-dependencies = {
-    crypto-eth-addresses = [ eth-hash ] ++ eth-hash.optional-dependencies.pycryptodome;
+    crypto-eth-addresses = [ eth-hash ]
+      ++ eth-hash.optional-dependencies.pycryptodome;
   };
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ lib.flatten (lib.attrValues optional-dependencies);
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ lib.flatten (lib.attrValues optional-dependencies);
 
   pythonImportsCheck = [ "validators" ];
 

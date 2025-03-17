@@ -32,7 +32,8 @@ buildPythonPackage rec {
   # make sense without either of the two optional dependencies. Since, in
   # Nixpkgs, phonenumberslite depends on phonenumbers, add the latter
   # unconditionally.
-  dependencies = [ django ] ++ optional-dependencies.phonenumbers;
+  dependencies = [ django ]
+    ++ optional-dependencies.phonenumbers;
 
   nativeCheckInputs = [
     babel

@@ -21,7 +21,8 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "libnvme";
   version = "1.11.1";
 
-  outputs = [ "out" ] ++ lib.optionals withDocs [ "man" ];
+  outputs = [ "out" ]
+    ++ lib.optionals withDocs [ "man" ];
 
   src = fetchFromGitHub {
     owner = "linux-nvme";

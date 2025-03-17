@@ -45,7 +45,8 @@ let
     symlinkJoin {
       name = "rxvt-unicode-${rxvt-unicode-unwrapped.version}";
 
-      paths = [ rxvt-unicode-unwrapped ] ++ plugins ++ extraDeps;
+      paths = [ rxvt-unicode-unwrapped ]
+        ++ plugins ++ extraDeps;
 
       nativeBuildInputs = [ makeWrapper ];
 

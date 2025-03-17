@@ -68,7 +68,8 @@ buildPythonPackage rec {
     installShellFiles
     makeWrapper
   ];
-  buildInputs = [ zip ] ++ lib.optional generateManPage pandoc;
+  buildInputs = [ zip ]
+    ++ lib.optional generateManPage pandoc;
   propagatedBuildInputs = lib.optional hlsEncryptedSupport pycryptodome;
 
   # Ensure these utilities are available in $PATH:

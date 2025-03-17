@@ -57,7 +57,8 @@ stdenv.mkDerivation rec {
     (lib.enableFeature stdenv.hostPlatform.isLinux "sysfsgpio")
     (lib.enableFeature isWindows "internal-jimtcl")
     (lib.enableFeature isWindows "internal-libjaylink")
-  ] ++ map (hardware: "--enable-${hardware}") extraHardwareSupport;
+  ]
+  ++ map (hardware: "--enable-${hardware}") extraHardwareSupport;
 
   enableParallelBuilding = true;
 

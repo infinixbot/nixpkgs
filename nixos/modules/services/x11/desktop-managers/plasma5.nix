@@ -210,23 +210,22 @@ in
     # Common Plasma dependencies
     (mkIf (cfg.enable || cfg.mobile.enable || cfg.bigscreen.enable) {
 
-      security.wrappers =
-        {
-          kwin_wayland = {
-            owner = "root";
-            group = "root";
-            capabilities = "cap_sys_nice+ep";
-            source = "${getBin pkgs.plasma5Packages.kwin}/bin/kwin_wayland";
-          };
-        }
-        // optionalAttrs (!cfg.runUsingSystemd) {
-          start_kdeinit = {
-            setuid = true;
-            owner = "root";
-            group = "root";
-            source = "${getBin pkgs.plasma5Packages.kinit}/libexec/kf5/start_kdeinit";
-          };
+      security.wrappers = {
+        kwin_wayland = {
+          owner = "root";
+          group = "root";
+          capabilities = "cap_sys_nice+ep";
+          source = "${getBin pkgs.plasma5Packages.kwin}/bin/kwin_wayland";
         };
+      }
+      // optionalAttrs (!cfg.runUsingSystemd) {
+        start_kdeinit = {
+          setuid = true;
+          owner = "root";
+          group = "root";
+          source = "${getBin pkgs.plasma5Packages.kinit}/libexec/kf5/start_kdeinit";
+        };
+      };
 
       qt.enable = true;
 

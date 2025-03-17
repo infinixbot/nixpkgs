@@ -33,7 +33,8 @@ assert lib.versions.majorMinor wineUnstable.version == lib.versions.majorMinor p
     perl
     python3
     gitMinimal
-  ] ++ self.nativeBuildInputs;
+  ]
+  ++ self.nativeBuildInputs;
 
   prePatch =
     self.prePatch or ""

@@ -156,16 +156,15 @@ stdenv.mkDerivation (finalAttrs: {
     )
   '';
 
-  mesonFlags =
-    [
-      "-Dwith_wayland=enabled"
-      "-Duse_system_spdlog=enabled"
-      "-Dtests=disabled" # amdgpu test segfaults in nix sandbox
-    ]
-    ++ lib.optionals gamescopeSupport [
-      "-Dmangoapp=true"
-      "-Dmangohudctl=true"
-    ];
+  mesonFlags = [
+    "-Dwith_wayland=enabled"
+    "-Duse_system_spdlog=enabled"
+    "-Dtests=disabled" # amdgpu test segfaults in nix sandbox
+  ]
+  ++ lib.optionals gamescopeSupport [
+    "-Dmangoapp=true"
+    "-Dmangohudctl=true"
+  ];
 
   nativeBuildInputs = [
     addDriverRunpath
@@ -183,18 +182,17 @@ stdenv.mkDerivation (finalAttrs: {
     wayland
   ];
 
-  buildInputs =
-    [
-      dbus
-      nlohmann_json
-      spdlog
-    ]
-    ++ lib.optionals gamescopeSupport [
-      glew
-      glfw
-      xorg.libXrandr
-      libxkbcommon
-    ];
+  buildInputs = [
+    dbus
+    nlohmann_json
+    spdlog
+  ]
+  ++ lib.optionals gamescopeSupport [
+    glew
+    glfw
+    xorg.libXrandr
+    libxkbcommon
+  ];
 
   doCheck = true;
 

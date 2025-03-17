@@ -24,7 +24,8 @@ stdenv.mkDerivation rec {
   ];
   buildInputs = [
     libjack2
-  ] ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform alsa-lib) [ alsa-lib ];
+  ]
+  ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform alsa-lib) [ alsa-lib ];
 
   configureFlags = [
     "--disable-mac-universal"
@@ -46,17 +47,16 @@ stdenv.mkDerivation rec {
   '';
 
   # not sure why, but all the headers seem to be installed by the make install
-  installPhase =
-    ''
-      make install
-    ''
-    + lib.optionalString (lib.meta.availableOn stdenv.hostPlatform alsa-lib) ''
-      # fixup .pc file to find alsa library
-      sed -i "s|-lasound|-L${alsa-lib.out}/lib -lasound|" "$out/lib/pkgconfig/"*.pc
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      cp include/pa_mac_core.h $out/include/pa_mac_core.h
-    '';
+  installPhase = ''
+    make install
+  ''
+  + lib.optionalString (lib.meta.availableOn stdenv.hostPlatform alsa-lib) ''
+    # fixup .pc file to find alsa library
+    sed -i "s|-lasound|-L${alsa-lib.out}/lib -lasound|" "$out/lib/pkgconfig/"*.pc
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    cp include/pa_mac_core.h $out/include/pa_mac_core.h
+  '';
 
   meta = with lib; {
     description = "Portable cross-platform Audio API";

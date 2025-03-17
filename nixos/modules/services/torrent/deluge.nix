@@ -235,7 +235,8 @@ in
       after = [ "network.target" ];
       description = "Deluge BitTorrent Daemon";
       wantedBy = [ "multi-user.target" ];
-      path = [ cfg.package ] ++ cfg.extraPackages;
+      path = [ cfg.package ]
+        ++ cfg.extraPackages;
       serviceConfig = {
         ExecStart = ''
           ${cfg.package}/bin/deluged \

@@ -55,15 +55,14 @@ stdenv.mkDerivation rec {
       --replace "/Applications" "${placeholder "out"}/Applications"
   '';
 
-  nativeBuildInputs =
-    [
-      cmake
-      pkg-config
-      wrapGAppsHook3
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      makeWrapper
-    ];
+  nativeBuildInputs = [
+    cmake
+    pkg-config
+    wrapGAppsHook3
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    makeWrapper
+  ];
 
   buildInputs =
     [
@@ -100,16 +99,15 @@ stdenv.mkDerivation rec {
       gtk-mac-integration
     ];
 
-  cmakeFlags =
-    [
-      "-DPROC_TARGET_NUMBER=2"
-      "-DCACHE_NAME_SUFFIX=\"\""
-      "-DWITH_SYSTEM_LIBRAW=\"ON\""
-      "-DWITH_JXL=\"ON\""
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      "-DCMAKE_OSX_DEPLOYMENT_TARGET=${stdenv.hostPlatform.darwinMinVersion}"
-    ];
+  cmakeFlags = [
+    "-DPROC_TARGET_NUMBER=2"
+    "-DCACHE_NAME_SUFFIX=\"\""
+    "-DWITH_SYSTEM_LIBRAW=\"ON\""
+    "-DWITH_JXL=\"ON\""
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    "-DCMAKE_OSX_DEPLOYMENT_TARGET=${stdenv.hostPlatform.darwinMinVersion}"
+  ];
 
   CMAKE_CXX_FLAGS = toString [
     "-std=c++11"

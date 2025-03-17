@@ -29,13 +29,12 @@ rustPlatform.buildRustPackage rec {
     cmake
   ];
 
-  buildInputs =
-    [
-      zlib
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      darwin.apple_sdk.frameworks.SystemConfiguration
-    ];
+  buildInputs = [
+    zlib
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    darwin.apple_sdk.frameworks.SystemConfiguration
+  ];
 
   checkFlags = [
     # requires internet access

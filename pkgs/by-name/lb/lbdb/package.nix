@@ -36,8 +36,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-uqaiO2E5TXkreyIeGWHZulcQYUyTJOj1mzXBJsK0504=";
   };
 
-  buildInputs =
-    [ perl' ]
+  buildInputs = [ perl' ]
     ++ lib.optional (!stdenv.hostPlatform.isDarwin) bsd-finger
     ++ lib.optional withAbook abook
     ++ lib.optional withGnupg gnupg

@@ -81,7 +81,8 @@ rustPlatform.buildRustPackage rec {
     zlib
     zstd
     _7zz
-  ] ++ lib.optionals enableUnfree [ unrar ];
+  ]
+  ++ lib.optionals enableUnfree [ unrar ];
 
   # skip broken tests
   checkFlags =

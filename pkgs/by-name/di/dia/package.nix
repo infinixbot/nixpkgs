@@ -55,19 +55,18 @@ stdenv.mkDerivation {
       gtk-mac-integration-gtk3
     ];
 
-  nativeBuildInputs =
-    [
-      appstream-glib
-      desktop-file-utils
-      intltool
-      meson
-      ninja
-      pkg-config
-      wrapGAppsHook3
-    ]
-    ++ lib.optionals withDocs [
-      dblatex
-    ];
+  nativeBuildInputs = [
+    appstream-glib
+    desktop-file-utils
+    intltool
+    meson
+    ninja
+    pkg-config
+    wrapGAppsHook3
+  ]
+  ++ lib.optionals withDocs [
+    dblatex
+  ];
 
   meta = with lib; {
     description = "Gnome Diagram drawing software";

@@ -32,14 +32,13 @@ buildGoModule rec {
 
   vendorHash = "sha256-1oFBV7D7JgOt5yYAxVvC4vL4ccFv3JrNngZbo+5pzrk=";
 
-  nativeBuildInputs =
-    [
-      pkg-config
-      copyDesktopItems
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      desktopToDarwinBundle
-    ];
+  nativeBuildInputs = [
+    pkg-config
+    copyDesktopItems
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    desktopToDarwinBundle
+  ];
 
   buildInputs = lib.optionals (!stdenv.hostPlatform.isDarwin) [
     wayland

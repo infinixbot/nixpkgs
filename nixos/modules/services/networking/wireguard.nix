@@ -568,7 +568,8 @@ let
     nameValuePair "wireguard-${name}" rec {
       description = "WireGuard Tunnel - ${name}";
       wantedBy = [ "multi-user.target" ];
-      wants = [ "wireguard-${name}.service" ] ++ map mkPeerUnit values.peers;
+      wants = [ "wireguard-${name}.service" ]
+        ++ map mkPeerUnit values.peers;
       after = wants;
     };
 

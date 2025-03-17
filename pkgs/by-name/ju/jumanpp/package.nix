@@ -39,7 +39,8 @@ stdenv.mkDerivation rec {
   cmakeFlags = [ "-DJPP_ENABLE_TESTS=OFF" ];
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [ protobuf ] ++ lib.optional stdenv.hostPlatform.isDarwin libiconv;
+  buildInputs = [ protobuf ]
+    ++ lib.optional stdenv.hostPlatform.isDarwin libiconv;
 
   meta = with lib; {
     description = "Japanese morphological analyser using a recurrent neural network language model (RNNLM)";

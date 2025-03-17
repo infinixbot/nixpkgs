@@ -67,27 +67,27 @@ stdenv.mkDerivation rec {
     "-DUSE_GLPK=ON"
     "-DUSE_SCIP=OFF"
     "-DPython3_EXECUTABLE=${python.pythonOnBuildForHost.interpreter}"
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ "-DCMAKE_MACOSX_RPATH=OFF" ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ "-DCMAKE_MACOSX_RPATH=OFF" ];
 
   strictDeps = true;
 
-  nativeBuildInputs =
-    [
-      cmake
-      ensureNewerSourcesForZipFilesHook
-      pkg-config
-      python.pythonOnBuildForHost
-      swig
-      unzip
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      DarwinTools
-    ]
-    ++ (with python.pythonOnBuildForHost.pkgs; [
-      pip
-      mypy-protobuf
-      mypy
-    ]);
+  nativeBuildInputs = [
+    cmake
+    ensureNewerSourcesForZipFilesHook
+    pkg-config
+    python.pythonOnBuildForHost
+    swig
+    unzip
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    DarwinTools
+  ]
+  ++ (with python.pythonOnBuildForHost.pkgs; [
+    pip
+    mypy-protobuf
+    mypy
+  ]);
   buildInputs = [
     abseil-cpp
     bzip2

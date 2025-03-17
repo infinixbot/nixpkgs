@@ -166,17 +166,16 @@ buildPythonPackage rec {
     pool = [ psycopg-pool ];
   };
 
-  nativeCheckInputs =
-    [
-      anyio
-      pproxy
-      pytest-randomly
-      pytestCheckHook
-      postgresql
-    ]
-    ++ lib.optional (stdenv.hostPlatform.isLinux) postgresqlTestHook
-    ++ optional-dependencies.c
-    ++ optional-dependencies.pool;
+  nativeCheckInputs = [
+    anyio
+    pproxy
+    pytest-randomly
+    pytestCheckHook
+    postgresql
+  ]
+  ++ lib.optional (stdenv.hostPlatform.isLinux) postgresqlTestHook
+  ++ optional-dependencies.c
+  ++ optional-dependencies.pool;
 
   env = {
     postgresqlEnableTCP = 1;
@@ -184,13 +183,12 @@ buildPythonPackage rec {
     PGDATABASE = "psycopg";
   };
 
-  preCheck =
-    ''
-      cd ..
-    ''
-    + lib.optionalString (stdenv.hostPlatform.isLinux) ''
-      export PSYCOPG_TEST_DSN="host=/build/run/postgresql user=$PGUSER"
-    '';
+  preCheck = ''
+    cd ..
+  ''
+  + lib.optionalString (stdenv.hostPlatform.isLinux) ''
+    export PSYCOPG_TEST_DSN="host=/build/run/postgresql user=$PGUSER"
+  '';
 
   disabledTests = [
     # don't depend on mypy for tests

@@ -1205,7 +1205,8 @@ in
     # residing outside of the chroot.
     systemd.services.akkoma-config = {
       description = "Akkoma social network configuration";
-      reloadTriggers = [ configFile ] ++ secretPaths;
+      reloadTriggers = [ configFile ]
+        ++ secretPaths;
 
       unitConfig.PropagatesReloadTo = [ "akkoma.service" ];
       serviceConfig = {

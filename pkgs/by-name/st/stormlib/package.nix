@@ -24,15 +24,14 @@ stdenv.mkDerivation (finalAttrs: {
     cmake
   ];
 
-  buildInputs =
-    [
-      bzip2
-      libtomcrypt
-      zlib
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      darwin.apple_sdk.frameworks.Carbon
-    ];
+  buildInputs = [
+    bzip2
+    libtomcrypt
+    zlib
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    darwin.apple_sdk.frameworks.Carbon
+  ];
 
   cmakeFlags = [
     (lib.cmakeBool "BUILD_SHARED_LIBS" (!stdenv.hostPlatform.isStatic))

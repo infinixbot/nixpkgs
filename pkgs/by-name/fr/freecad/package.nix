@@ -172,7 +172,8 @@ freecad-utils.makeCustomizable (
     qtWrapperArgs = [
       "--set COIN_GL_NO_CURRENT_CONTEXT_CHECK 1"
       "--prefix PATH : ${libredwg}/bin"
-    ] ++ lib.optionals (!withWayland) [ "--set QT_QPA_PLATFORM xcb" ];
+    ]
+    ++ lib.optionals (!withWayland) [ "--set QT_QPA_PLATFORM xcb" ];
 
     postFixup = ''
       mv $out/share/doc $out

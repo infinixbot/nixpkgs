@@ -44,35 +44,34 @@
 
   # Note: the hardening flags are part of the bintools-wrapper, rather than
   # the cc-wrapper, because a few of them are handled by the linker.
-  defaultHardeningFlags ?
-    [
-      "bindnow"
-      "format"
-      "fortify"
-      "fortify3"
-      "pic"
-      "relro"
-      "stackprotector"
-      "strictoverflow"
-      "zerocallusedregs"
+  defaultHardeningFlags ? [
+    "bindnow"
+    "format"
+    "fortify"
+    "fortify3"
+    "pic"
+    "relro"
+    "stackprotector"
+    "strictoverflow"
+    "zerocallusedregs"
+  ]
+  ++ lib.optional (
+    with stdenvNoCC;
+    lib.any (x: x) [
+      # OpenBSD static linking requires PIE
+      (with targetPlatform; isOpenBSD && isStatic)
+      (lib.all (x: x) [
+        # Musl-based platforms will keep "pie", other platforms will not.
+        # If you change this, make sure to update section `{#sec-hardening-in-nixpkgs}`
+        # in the nixpkgs manual to inform users about the defaults.
+        (targetPlatform.libc == "musl")
+        # Except when:
+        #    - static aarch64, where compilation works, but produces segfaulting dynamically linked binaries.
+        #    - static armv7l, where compilation fails.
+        (!(targetPlatform.isAarch && targetPlatform.isStatic))
+      ])
     ]
-    ++ lib.optional (
-      with stdenvNoCC;
-      lib.any (x: x) [
-        # OpenBSD static linking requires PIE
-        (with targetPlatform; isOpenBSD && isStatic)
-        (lib.all (x: x) [
-          # Musl-based platforms will keep "pie", other platforms will not.
-          # If you change this, make sure to update section `{#sec-hardening-in-nixpkgs}`
-          # in the nixpkgs manual to inform users about the defaults.
-          (targetPlatform.libc == "musl")
-          # Except when:
-          #    - static aarch64, where compilation works, but produces segfaulting dynamically linked binaries.
-          #    - static armv7l, where compilation fails.
-          (!(targetPlatform.isAarch && targetPlatform.isStatic))
-        ])
-      ]
-    ) "pie",
+  ) "pie",
 }:
 
 assert propagateDoc -> bintools ? man;
@@ -184,7 +183,8 @@ stdenvNoCC.mkDerivation {
 
   preferLocalBuild = true;
 
-  outputs = [ "out" ] ++ optionals propagateDoc ([ "man" ] ++ optional (bintools ? info) "info");
+  outputs = [ "out" ]
+    ++ optionals propagateDoc ([ "man" ] ++ optional (bintools ? info) "info");
 
   passthru = {
     inherit targetPrefix suffixSalt;

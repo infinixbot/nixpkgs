@@ -151,12 +151,12 @@ stdenv.mkDerivation {
     gmp
     readline
     libedit
-  ] ++ optionalDependencies;
+  ]
+  ++ optionalDependencies;
 
   hardeningDisable = [ "format" ];
 
-  cmakeFlags =
-    [ "-DSWIPL_INSTALL_IN_LIB=ON" ]
+  cmakeFlags = [ "-DSWIPL_INSTALL_IN_LIB=ON" ]
     ++ lib.optionals (!withNativeCompiler) [
       # without these options, the build will embed full compiler paths
       "-DSWIPL_CC=${if stdenv.hostPlatform.isDarwin then "clang" else "gcc"}"

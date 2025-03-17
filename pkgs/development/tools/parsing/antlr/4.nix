@@ -188,7 +188,8 @@ in
       version = "4.9.3";
       sourceSha256 = "1af3cfqwk7lq1b5qsh1am0922fyhy7wmlpnrqdnvch3zzza9n1qm";
       jarSha256 = "0dnz2x54kigc58bxnynjhmr5iq49f938vj6p50gdir1xdna41kdg";
-      extraCppBuildInputs = [ utf8cpp ] ++ lib.optional stdenv.hostPlatform.isLinux libuuid;
+      extraCppBuildInputs = [ utf8cpp ]
+        ++ lib.optional stdenv.hostPlatform.isLinux libuuid;
       extraCppCmakeFlags = [
         "-DCMAKE_CXX_FLAGS='-I${lib.getDev utf8cpp}/include/utf8cpp'"
       ];

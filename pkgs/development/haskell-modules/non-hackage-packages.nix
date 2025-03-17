@@ -7,7 +7,8 @@ let
   pathsByName = lib.concatMapAttrs (
     name: type:
     lib.optionalAttrs (type == "regular" && hasSuffix ".nix" name) {
-      ${removeSuffix ".nix" name} = ./replacements-by-name + "/${name}";
+      ${removeSuffix ".nix" name} = ./replacements-by-name
+        + "/${name}";
     }
   ) (builtins.readDir ./replacements-by-name);
 in

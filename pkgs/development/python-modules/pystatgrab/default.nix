@@ -39,7 +39,8 @@ buildPythonPackage rec {
 
   buildInputs = [
     libstatgrab
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin (with darwin.apple_sdk.frameworks; [ IOKit ]);
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin (with darwin.apple_sdk.frameworks; [ IOKit ]);
 
   nativeCheckInputs = [ unittestCheckHook ];
 

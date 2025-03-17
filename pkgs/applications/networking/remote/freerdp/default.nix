@@ -60,20 +60,19 @@
 
 let
   cmFlag = flag: if flag then "ON" else "OFF";
-  disabledTests =
-    [
-      # this one is probably due to our sandbox
-      {
-        dir = "libfreerdp/crypto/test";
-        file = "Test_x509_cert_info.c";
-      }
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      {
-        dir = "winpr/libwinpr/sysinfo/test";
-        file = "TestGetComputerName.c";
-      }
-    ];
+  disabledTests = [
+    # this one is probably due to our sandbox
+    {
+      dir = "libfreerdp/crypto/test";
+      file = "Test_x509_cert_info.c";
+    }
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    {
+      dir = "winpr/libwinpr/sysinfo/test";
+      file = "TestGetComputerName.c";
+    }
+  ];
 
   inherit (lib) optionals;
 
@@ -105,81 +104,79 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  postPatch =
-    ''
-      export HOME=$TMP
+  postPatch = ''
+    export HOME=$TMP
 
-      # skip NIB file generation on darwin
-      sed -z 's/NIB file generation.*//' -i client/Mac{,/cli}/CMakeLists.txt
+    # skip NIB file generation on darwin
+    sed -z 's/NIB file generation.*//' -i client/Mac{,/cli}/CMakeLists.txt
 
-      # failing test(s)
-      ${lib.concatMapStringsSep "\n" (e: ''
-        substituteInPlace ${e.dir}/CMakeLists.txt \
-          --replace ${e.file} ""
-        rm ${e.dir}/${e.file}
-      '') disabledTests}
+    # failing test(s)
+    ${lib.concatMapStringsSep "\n" (e: ''
+      substituteInPlace ${e.dir}/CMakeLists.txt \
+        --replace ${e.file} ""
+      rm ${e.dir}/${e.file}
+    '') disabledTests}
 
-      substituteInPlace "libfreerdp/freerdp.pc.in" \
-        --replace "Requires:" "Requires: @WINPR_PKG_CONFIG_FILENAME@"
-    ''
-    + lib.optionalString (pcsclite != null) ''
-      substituteInPlace "winpr/libwinpr/smartcard/smartcard_pcsc.c" \
-        --replace "libpcsclite.so" "${lib.getLib pcsclite}/lib/libpcsclite.so"
-    ''
-    + lib.optionalString nocaps ''
-      substituteInPlace "libfreerdp/locale/keyboard_xkbfile.c" \
-        --replace "RDP_SCANCODE_CAPSLOCK" "RDP_SCANCODE_LCONTROL"
-    '';
+    substituteInPlace "libfreerdp/freerdp.pc.in" \
+      --replace "Requires:" "Requires: @WINPR_PKG_CONFIG_FILENAME@"
+  ''
+  + lib.optionalString (pcsclite != null) ''
+    substituteInPlace "winpr/libwinpr/smartcard/smartcard_pcsc.c" \
+      --replace "libpcsclite.so" "${lib.getLib pcsclite}/lib/libpcsclite.so"
+  ''
+  + lib.optionalString nocaps ''
+    substituteInPlace "libfreerdp/locale/keyboard_xkbfile.c" \
+      --replace "RDP_SCANCODE_CAPSLOCK" "RDP_SCANCODE_LCONTROL"
+  '';
 
-  buildInputs =
-    [
-      cairo
-      cups
-      faad2
-      ffmpeg
-      glib
-      gst-plugins-base
-      gst-plugins-good
-      gstreamer
-      libX11
-      libXcursor
-      libXdamage
-      libXdmcp
-      libXext
-      libXi
-      libXinerama
-      libXrandr
-      libXrender
-      libXtst
-      libXv
-      libjpeg_turbo
-      libpulseaudio
-      libunwind
-      libusb1
-      libxkbcommon
-      libxkbfile
-      openh264
-      openssl
-      orc
-      pcre2
-      pcsclite
-      zlib
-    ]
-    ++ optionals stdenv.hostPlatform.isLinux [
-      alsa-lib
-      systemd
-      wayland
-    ]
-    ++ optionals stdenv.hostPlatform.isDarwin [
-      AudioToolbox
-      AVFoundation
-      Carbon
-      Cocoa
-      CoreMedia
-    ]
-    ++ optionals withUnfree [
-      faac
-    ];
+  buildInputs = [
+    cairo
+    cups
+    faad2
+    ffmpeg
+    glib
+    gst-plugins-base
+    gst-plugins-good
+    gstreamer
+    libX11
+    libXcursor
+    libXdamage
+    libXdmcp
+    libXext
+    libXi
+    libXinerama
+    libXrandr
+    libXrender
+    libXtst
+    libXv
+    libjpeg_turbo
+    libpulseaudio
+    libunwind
+    libusb1
+    libxkbcommon
+    libxkbfile
+    openh264
+    openssl
+    orc
+    pcre2
+    pcsclite
+    zlib
+  ]
+  ++ optionals stdenv.hostPlatform.isLinux [
+    alsa-lib
+    systemd
+    wayland
+  ]
+  ++ optionals stdenv.hostPlatform.isDarwin [
+    AudioToolbox
+    AVFoundation
+    Carbon
+    Cocoa
+    CoreMedia
+  ]
+  ++ optionals withUnfree [
+    faac
+  ];
 
   nativeBuildInputs = [
     cmake
@@ -192,28 +189,27 @@ stdenv.mkDerivation rec {
   doCheck = true;
 
   # https://github.com/FreeRDP/FreeRDP/issues/8526#issuecomment-1357134746
-  cmakeFlags =
-    [
-      "-Wno-dev"
-      "-DCMAKE_INSTALL_LIBDIR=lib"
-      "-DDOCBOOKXSL_DIR=${docbook-xsl-nons}/xml/xsl/docbook"
-    ]
-    ++ lib.mapAttrsToList (k: v: "-D${k}=${cmFlag v}") {
-      BUILD_TESTING = false; # false is recommended by upstream
-      WITH_CAIRO = (cairo != null);
-      WITH_CUPS = (cups != null);
-      WITH_FAAC = (withUnfree && faac != null);
-      WITH_FAAD2 = (faad2 != null);
-      WITH_JPEG = (libjpeg_turbo != null);
-      WITH_OPENH264 = (openh264 != null);
-      WITH_OSS = false;
-      WITH_MANPAGES = withManPages;
-      WITH_PCSC = (pcsclite != null);
-      WITH_PULSE = (libpulseaudio != null);
-      WITH_SERVER = buildServer;
-      WITH_VAAPI = false; # false is recommended by upstream
-      WITH_X11 = true;
-    };
+  cmakeFlags = [
+    "-Wno-dev"
+    "-DCMAKE_INSTALL_LIBDIR=lib"
+    "-DDOCBOOKXSL_DIR=${docbook-xsl-nons}/xml/xsl/docbook"
+  ]
+  ++ lib.mapAttrsToList (k: v: "-D${k}=${cmFlag v}") {
+    BUILD_TESTING = false; # false is recommended by upstream
+    WITH_CAIRO = (cairo != null);
+    WITH_CUPS = (cups != null);
+    WITH_FAAC = (withUnfree && faac != null);
+    WITH_FAAD2 = (faad2 != null);
+    WITH_JPEG = (libjpeg_turbo != null);
+    WITH_OPENH264 = (openh264 != null);
+    WITH_OSS = false;
+    WITH_MANPAGES = withManPages;
+    WITH_PCSC = (pcsclite != null);
+    WITH_PULSE = (libpulseaudio != null);
+    WITH_SERVER = buildServer;
+    WITH_VAAPI = false; # false is recommended by upstream
+    WITH_X11 = true;
+  };
 
   env.NIX_CFLAGS_COMPILE = toString (
     lib.optionals stdenv.hostPlatform.isDarwin [

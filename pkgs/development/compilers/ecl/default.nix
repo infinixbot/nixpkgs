@@ -38,18 +38,17 @@ stdenv.mkDerivation rec {
     texinfo
     makeWrapper
   ];
-  propagatedBuildInputs =
-    [
-      libffi
-      gmp
-      mpfr
-      cc
-      # replaces ecl's own gc which other packages can depend on, thus propagated
-    ]
-    ++ lib.optionals useBoehmgc [
-      # replaces ecl's own gc which other packages can depend on, thus propagated
-      boehmgc
-    ];
+  propagatedBuildInputs = [
+    libffi
+    gmp
+    mpfr
+    cc
+    # replaces ecl's own gc which other packages can depend on, thus propagated
+  ]
+  ++ lib.optionals useBoehmgc [
+    # replaces ecl's own gc which other packages can depend on, thus propagated
+    boehmgc
+  ];
 
   patches = [
     # https://gitlab.com/embeddable-common-lisp/ecl/-/merge_requests/1

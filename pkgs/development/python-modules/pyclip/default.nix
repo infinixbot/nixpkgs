@@ -28,8 +28,7 @@ buildPythonPackage rec {
       --replace docs/README.md README.md
   '';
 
-  nativeCheckInputs =
-    [ pytest ]
+  nativeCheckInputs = [ pytest ]
     ++ lib.optionals stdenv.hostPlatform.isLinux [
       xclip
       xvfb-run

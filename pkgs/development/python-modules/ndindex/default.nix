@@ -52,7 +52,8 @@ buildPythonPackage rec {
     pytest-cov-stub
     pytestCheckHook
     sympy
-  ] ++ optional-dependencies.arrays;
+  ]
+  ++ optional-dependencies.arrays;
 
   meta = with lib; {
     description = "";

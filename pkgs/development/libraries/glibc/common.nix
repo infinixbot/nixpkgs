@@ -158,46 +158,45 @@ stdenv.mkDerivation (
         EOF
       '';
 
-    configureFlags =
-      [
-        "-C"
-        "--enable-add-ons"
-        "--sysconfdir=/etc"
-        "--enable-stack-protector=strong"
-        "--enable-bind-now"
-        (lib.withFeatureAs withLinuxHeaders "headers" "${linuxHeaders}/include")
-        (lib.enableFeature profilingLibraries "profile")
-        "--enable-fortify-source"
-      ]
-      ++ lib.optionals (stdenv.hostPlatform.isx86 || stdenv.hostPlatform.isAarch64) [
-        # This feature is currently supported on
-        # i386, x86_64 and x32 with binutils 2.29 or later,
-        # and on aarch64 with binutils 2.30 or later.
-        # https://sourceware.org/glibc/wiki/PortStatus
-        "--enable-static-pie"
-      ]
-      ++ lib.optionals (enableCET != false) [
-        # Enable Intel Control-flow Enforcement Technology (CET) support
-        "--enable-cet${if builtins.isString enableCET then "=${enableCET}" else ""}"
-      ]
-      ++ lib.optionals withLinuxHeaders [
-        "--enable-kernel=3.10.0" # RHEL 7 and derivatives, seems oldest still supported kernel
-      ]
-      ++ lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
-        (lib.flip lib.withFeature "fp" (
-          stdenv.hostPlatform.gcc.float or (stdenv.hostPlatform.parsed.abi.float or "hard") == "soft"
-        ))
-        "--with-__thread"
-      ]
-      ++ lib.optionals (stdenv.hostPlatform == stdenv.buildPlatform && stdenv.hostPlatform.isAarch32) [
-        "--host=arm-linux-gnueabi"
-        "--build=arm-linux-gnueabi"
+    configureFlags = [
+      "-C"
+      "--enable-add-ons"
+      "--sysconfdir=/etc"
+      "--enable-stack-protector=strong"
+      "--enable-bind-now"
+      (lib.withFeatureAs withLinuxHeaders "headers" "${linuxHeaders}/include")
+      (lib.enableFeature profilingLibraries "profile")
+      "--enable-fortify-source"
+    ]
+    ++ lib.optionals (stdenv.hostPlatform.isx86 || stdenv.hostPlatform.isAarch64) [
+      # This feature is currently supported on
+      # i386, x86_64 and x32 with binutils 2.29 or later,
+      # and on aarch64 with binutils 2.30 or later.
+      # https://sourceware.org/glibc/wiki/PortStatus
+      "--enable-static-pie"
+    ]
+    ++ lib.optionals (enableCET != false) [
+      # Enable Intel Control-flow Enforcement Technology (CET) support
+      "--enable-cet${if builtins.isString enableCET then "=${enableCET}" else ""}"
+    ]
+    ++ lib.optionals withLinuxHeaders [
+      "--enable-kernel=3.10.0" # RHEL 7 and derivatives, seems oldest still supported kernel
+    ]
+    ++ lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
+      (lib.flip lib.withFeature "fp" (
+        stdenv.hostPlatform.gcc.float or (stdenv.hostPlatform.parsed.abi.float or "hard") == "soft"
+      ))
+      "--with-__thread"
+    ]
+    ++ lib.optionals (stdenv.hostPlatform == stdenv.buildPlatform && stdenv.hostPlatform.isAarch32) [
+      "--host=arm-linux-gnueabi"
+      "--build=arm-linux-gnueabi"
 
-        # To avoid linking with -lgcc_s (dynamic link)
-        # so the glibc does not depend on its compiler store path
-        "libc_cv_as_needed=no"
-      ]
-      ++ lib.optional withGd "--with-gd";
+      # To avoid linking with -lgcc_s (dynamic link)
+      # so the glibc does not depend on its compiler store path
+      "libc_cv_as_needed=no"
+    ]
+    ++ lib.optional withGd "--with-gd";
 
     makeFlags =
       (args.makeFlags or [ ])
@@ -233,9 +232,9 @@ stdenv.mkDerivation (
     nativeBuildInputs = [
       bison
       python3Minimal
-    ] ++ extraNativeBuildInputs;
-    buildInputs =
-      [ linuxHeaders ]
+    ]
+    ++ extraNativeBuildInputs;
+    buildInputs = [ linuxHeaders ]
       ++ lib.optionals withGd [
         gd
         libpng
@@ -274,51 +273,50 @@ stdenv.mkDerivation (
       };
 
       # Remove absolute paths from `configure' & co.; build out-of-tree.
-      preConfigure =
-        ''
-          export PWD_P=$(type -tP pwd)
-          for i in configure io/ftwtest-sh; do
-              # Can't use substituteInPlace here because replace hasn't been
-              # built yet in the bootstrap.
-              sed -i "$i" -e "s^/bin/pwd^$PWD_P^g"
-          done
+      preConfigure = ''
+        export PWD_P=$(type -tP pwd)
+        for i in configure io/ftwtest-sh; do
+            # Can't use substituteInPlace here because replace hasn't been
+            # built yet in the bootstrap.
+            sed -i "$i" -e "s^/bin/pwd^$PWD_P^g"
+        done
 
-          mkdir ../build
-          cd ../build
+        mkdir ../build
+        cd ../build
 
-          configureScript="`pwd`/../$sourceRoot/configure"
-        ''
-        + lib.optionalString (stdenv.hostPlatform != stdenv.buildPlatform) ''
-          sed -i s/-lgcc_eh//g "../$sourceRoot/Makeconfig"
+        configureScript="`pwd`/../$sourceRoot/configure"
+      ''
+      + lib.optionalString (stdenv.hostPlatform != stdenv.buildPlatform) ''
+        sed -i s/-lgcc_eh//g "../$sourceRoot/Makeconfig"
 
-          cat > config.cache << "EOF"
-          libc_cv_forced_unwind=yes
-          libc_cv_c_cleanup=yes
-          libc_cv_gnu89_inline=yes
-          EOF
+        cat > config.cache << "EOF"
+        libc_cv_forced_unwind=yes
+        libc_cv_c_cleanup=yes
+        libc_cv_gnu89_inline=yes
+        EOF
 
-          # ./configure has logic like
-          #
-          #     AR=`$CC -print-prog-name=ar`
-          #
-          # This searches various directories in the gcc and its wrapper. In nixpkgs,
-          # this returns the bare string "ar", which is build ar. This can result as
-          # a build failure with the following message:
-          #
-          #     libc_pic.a: error adding symbols: archive has no index; run ranlib to add one
-          #
-          # (Observed cross compiling from aarch64-linux -> armv7l-linux).
-          #
-          # Nixpkgs passes a correct value for AR and friends, so to use the correct
-          # set of tools, we only need to delete this special handling.
-          sed -i \
-            -e '/^AR=/d' \
-            -e '/^AS=/d' \
-            -e '/^LD=/d' \
-            -e '/^OBJCOPY=/d' \
-            -e '/^OBJDUMP=/d' \
-            $configureScript
-        '';
+        # ./configure has logic like
+        #
+        #     AR=`$CC -print-prog-name=ar`
+        #
+        # This searches various directories in the gcc and its wrapper. In nixpkgs,
+        # this returns the bare string "ar", which is build ar. This can result as
+        # a build failure with the following message:
+        #
+        #     libc_pic.a: error adding symbols: archive has no index; run ranlib to add one
+        #
+        # (Observed cross compiling from aarch64-linux -> armv7l-linux).
+        #
+        # Nixpkgs passes a correct value for AR and friends, so to use the correct
+        # set of tools, we only need to delete this special handling.
+        sed -i \
+          -e '/^AR=/d' \
+          -e '/^AS=/d' \
+          -e '/^LD=/d' \
+          -e '/^OBJCOPY=/d' \
+          -e '/^OBJDUMP=/d' \
+          $configureScript
+      '';
 
       preBuild = lib.optionalString withGd "unset NIX_DONT_SET_RPATH";
 

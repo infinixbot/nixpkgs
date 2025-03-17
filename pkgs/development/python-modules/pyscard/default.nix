@@ -30,32 +30,32 @@ buildPythonPackage rec {
 
   build-system = [ setuptools ];
 
-  nativeBuildInputs = [ swig ] ++ lib.optionals (!withApplePCSC) [ pkg-config ];
+  nativeBuildInputs = [ swig ]
+    ++ lib.optionals (!withApplePCSC) [ pkg-config ];
 
   buildInputs = if withApplePCSC then [ PCSC ] else [ pcsclite ];
 
   nativeCheckInputs = [ pytestCheckHook ];
 
-  postPatch =
-    ''
-      substituteInPlace pyproject.toml \
-        --replace-fail 'requires = ["setuptools","swig"]' 'requires = ["setuptools"]'
-    ''
-    + (
-      if withApplePCSC then
-        ''
-          substituteInPlace src/smartcard/scard/winscarddll.c \
-            --replace-fail "/System/Library/Frameworks/PCSC.framework/PCSC" \
-                      "${PCSC}/Library/Frameworks/PCSC.framework/PCSC"
-        ''
-      else
-        ''
-          substituteInPlace setup.py --replace-fail "pkg-config" "$PKG_CONFIG"
-          substituteInPlace src/smartcard/scard/winscarddll.c \
-            --replace-fail "libpcsclite.so.1" \
-                      "${lib.getLib pcsclite}/lib/libpcsclite${stdenv.hostPlatform.extensions.sharedLibrary}"
-        ''
-    );
+  postPatch = ''
+    substituteInPlace pyproject.toml \
+      --replace-fail 'requires = ["setuptools","swig"]' 'requires = ["setuptools"]'
+  ''
+  + (
+    if withApplePCSC then
+      ''
+        substituteInPlace src/smartcard/scard/winscarddll.c \
+          --replace-fail "/System/Library/Frameworks/PCSC.framework/PCSC" \
+                    "${PCSC}/Library/Frameworks/PCSC.framework/PCSC"
+      ''
+    else
+      ''
+        substituteInPlace setup.py --replace-fail "pkg-config" "$PKG_CONFIG"
+        substituteInPlace src/smartcard/scard/winscarddll.c \
+          --replace-fail "libpcsclite.so.1" \
+                    "${lib.getLib pcsclite}/lib/libpcsclite${stdenv.hostPlatform.extensions.sharedLibrary}"
+      ''
+  );
 
   meta = {
     description = "Smartcard library for python";

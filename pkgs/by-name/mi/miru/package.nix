@@ -16,7 +16,8 @@ let
     ];
     mainProgram = "miru";
 
-    platforms = [ "x86_64-linux" ] ++ lib.platforms.darwin;
+    platforms = [ "x86_64-linux" ]
+      ++ lib.platforms.darwin;
     sourceProvenance = [ lib.sourceTypes.binaryNativeCode ];
 
     longDescription = ''

@@ -58,15 +58,14 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  configureFlags =
-    [
-      "--enable-gfanlib"
-      "--with-ntl=${ntl}"
-      "--with-flint=${flint3}"
-    ]
-    ++ lib.optionals enableDocs [
-      "--enable-doc-build"
-    ];
+  configureFlags = [
+    "--enable-gfanlib"
+    "--with-ntl=${ntl}"
+    "--with-flint=${flint3}"
+  ]
+  ++ lib.optionals enableDocs [
+    "--enable-doc-build"
+  ];
 
   prePatch = ''
     # don't let the tests depend on `hostname`
@@ -123,21 +122,20 @@ stdenv.mkDerivation rec {
 
   doCheck = true; # very basic checks, does not test any libraries
 
-  installPhase =
-    ''
-      # clean up any artefacts a previous non-sandboxed docbuild may have left behind
-      rm /tmp/conic.log /tmp/conic.tex /tmp/tropicalcurve*.tex || true
-      make install
-    ''
-    + lib.optionalString enableDocs ''
-      # Sage uses singular.info, which is not installed by default
-      mkdir -p $out/share/info
-      cp doc/singular.info $out/share/info
-    ''
-    + ''
-      # Make sure patchelf picks up the right libraries
-      rm -rf libpolys factory resources omalloc Singular
-    '';
+  installPhase = ''
+    # clean up any artefacts a previous non-sandboxed docbuild may have left behind
+    rm /tmp/conic.log /tmp/conic.tex /tmp/tropicalcurve*.tex || true
+    make install
+  ''
+  + lib.optionalString enableDocs ''
+    # Sage uses singular.info, which is not installed by default
+    mkdir -p $out/share/info
+    cp doc/singular.info $out/share/info
+  ''
+  + ''
+    # Make sure patchelf picks up the right libraries
+    rm -rf libpolys factory resources omalloc Singular
+  '';
 
   # singular tests are a bit complicated, see
   # https://github.com/Singular/Singular/tree/spielwiese/Tst

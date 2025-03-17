@@ -115,7 +115,8 @@ let
     paks:
     buildEnv {
       inherit (binaries) name;
-      paths = [ binaries ] ++ paks;
+      paths = [ binaries ]
+        ++ paks;
       postBuild = ''
         rm "$out/bin" && mkdir "$out/bin"
         cat > "$out/bin/simutrans" <<EOF

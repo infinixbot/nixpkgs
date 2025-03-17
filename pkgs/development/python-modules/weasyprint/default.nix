@@ -62,7 +62,8 @@ buildPythonPackage rec {
     pyphen
     tinycss2
     tinyhtml5
-  ] ++ fonttools.optional-dependencies.woff;
+  ]
+  ++ fonttools.optional-dependencies.woff;
 
   nativeCheckInputs = [
     pytest-cov-stub

@@ -67,14 +67,13 @@ clangStdenv.mkDerivation (finalAttrs: {
   # FORTIFY_SOURCE breaks libc_shim and the project will fail to compile
   hardeningDisable = [ "fortify" ];
 
-  nativeBuildInputs =
-    [
-      cmake
-      pkg-config
-    ]
-    ++ lib.optionals (withQtWebview || withQtErrorWindow) [
-      qt6.wrapQtAppsHook
-    ];
+  nativeBuildInputs = [
+    cmake
+    pkg-config
+  ]
+  ++ lib.optionals (withQtWebview || withQtErrorWindow) [
+    qt6.wrapQtAppsHook
+  ];
 
   buildInputs =
     [

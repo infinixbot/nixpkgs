@@ -154,8 +154,7 @@ let
     name: dev:
     assert name == dev.name;
     let
-      csopen =
-        "cryptsetup luksOpen ${dev.device} ${dev.name}"
+      csopen = "cryptsetup luksOpen ${dev.device} ${dev.name}"
         + optionalString dev.allowDiscards " --allow-discards"
         + optionalString dev.bypassWorkqueues " --perf-no_read_workqueue --perf-no_write_workqueue"
         + optionalString (dev.header != null) " --header=${dev.header}";
@@ -1134,17 +1133,16 @@ in
     ];
 
     # Some modules that may be needed for mounting anything ciphered
-    boot.initrd.availableKernelModules =
-      [
-        "dm_mod"
-        "dm_crypt"
-        "cryptd"
-        "input_leds"
-      ]
-      ++ luks.cryptoModules
-      # workaround until https://marc.info/?l=linux-crypto-vger&m=148783562211457&w=4 is merged
-      # remove once 'modprobe --show-depends xts' shows ecb as a dependency
-      ++ (optional (builtins.elem "xts" luks.cryptoModules) "ecb");
+    boot.initrd.availableKernelModules = [
+      "dm_mod"
+      "dm_crypt"
+      "cryptd"
+      "input_leds"
+    ]
+    ++ luks.cryptoModules
+    # workaround until https://marc.info/?l=linux-crypto-vger&m=148783562211457&w=4 is merged
+    # remove once 'modprobe --show-depends xts' shows ecb as a dependency
+    ++ (optional (builtins.elem "xts" luks.cryptoModules) "ecb");
 
     # copy the cryptsetup binary and it's dependencies
     boot.initrd.extraUtilsCommands =
@@ -1226,14 +1224,13 @@ in
         "cryptsetup.target"
         "remote-cryptsetup.target"
       ];
-      storePaths =
-        [
-          "${config.boot.initrd.systemd.package}/bin/systemd-cryptsetup"
-          "${config.boot.initrd.systemd.package}/lib/systemd/system-generators/systemd-cryptsetup-generator"
-        ]
-        ++ lib.optionals config.boot.initrd.systemd.tpm2.enable [
-          "${config.boot.initrd.systemd.package}/lib/cryptsetup/libcryptsetup-token-systemd-tpm2.so"
-        ];
+      storePaths = [
+        "${config.boot.initrd.systemd.package}/bin/systemd-cryptsetup"
+        "${config.boot.initrd.systemd.package}/lib/systemd/system-generators/systemd-cryptsetup-generator"
+      ]
+      ++ lib.optionals config.boot.initrd.systemd.tpm2.enable [
+        "${config.boot.initrd.systemd.package}/lib/cryptsetup/libcryptsetup-token-systemd-tpm2.so"
+      ];
 
     };
     # We do this because we need the udev rules from the package
@@ -1266,7 +1263,8 @@ in
             after = [
               "systemd-modules-load.service"
               "tpm2.target"
-            ] ++ optional clevis.useTang "network-online.target";
+            ]
+            ++ optional clevis.useTang "network-online.target";
             script = ''
               mkdir -p /clevis-${name}
               mount -t ramfs none /clevis-${name}

@@ -62,7 +62,8 @@ let
     # optional:
     libmicrohttpd # HTTP admin api
     libsodium # ext-auth support
-  ] ++ lib.optional withSystemd systemd;
+  ]
+  ++ lib.optional withSystemd systemd;
 
 in
 mkDerivation rec {

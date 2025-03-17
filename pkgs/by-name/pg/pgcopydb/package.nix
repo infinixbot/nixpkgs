@@ -28,18 +28,17 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      libkrb5
-      openssl
-      postgresql
-      readline
-      sqlite
-      zlib
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      pam
-    ];
+  buildInputs = [
+    libkrb5
+    openssl
+    postgresql
+    readline
+    sqlite
+    zlib
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    pam
+  ];
 
   hardeningDisable = [ "format" ];
 

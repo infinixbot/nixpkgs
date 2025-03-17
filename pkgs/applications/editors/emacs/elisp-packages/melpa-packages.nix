@@ -176,8 +176,7 @@ let
                 popd
               '';
 
-              postInstall =
-                (old.postInstall or "")
+              postInstall = (old.postInstall or "")
                 + "\n"
                 + ''
                   install -m=755 -D sqlite/emacsql-sqlite \
@@ -199,8 +198,7 @@ let
                 popd
               '';
 
-              postInstall =
-                (old.postInstall or "")
+              postInstall = (old.postInstall or "")
                 + "\n"
                 + ''
                   install -m=755 -D sqlite/emacsql-sqlite \
@@ -296,8 +294,7 @@ let
               make -j$NIX_BUILD_CORES
             '';
 
-            postInstall =
-              (old.postInstall or "")
+            postInstall = (old.postInstall or "")
               + "\n"
               + ''
                 install hotfuzz-module.so $out/share/emacs/site-lisp/elpa/hotfuzz-*
@@ -354,8 +351,7 @@ let
                 $CC -shared -o jinx-mod${libExt} jinx-mod.c -lenchant-2
               '';
 
-              postInstall =
-                (old.postInstall or "")
+              postInstall = (old.postInstall or "")
                 + "\n"
                 + ''
                   outd=$(echo $out/share/emacs/site-lisp/elpa/jinx-*)
@@ -376,8 +372,7 @@ let
               make
             '';
 
-            postInstall =
-              (old.postInstall or "")
+            postInstall = (old.postInstall or "")
               + "\n"
               + ''
                 outd=$out/share/emacs/site-lisp/elpa/sqlite3-*
@@ -576,8 +571,7 @@ let
               popd
             '';
 
-            postInstall =
-              (old.postInstall or "")
+            postInstall = (old.postInstall or "")
               + "\n"
               + ''
                 mkdir -p $out/bin
@@ -652,8 +646,7 @@ let
               pkgs.libtool
               (pkgs.zeromq.override { enableDrafts = true; })
             ];
-            postInstall =
-              (old.postInstall or "")
+            postInstall = (old.postInstall or "")
               + "\n"
               + ''
                 mv $EZMQ_LIBDIR/emacs-zmq.* $out/share/emacs/site-lisp/elpa/zmq-*
@@ -748,8 +741,7 @@ let
             ];
             # we need the proper out directory to exist, so we do this in the
             # postInstall instead of postBuild
-            postInstall =
-              (old.postInstall or "")
+            postInstall = (old.postInstall or "")
               + "\n"
               + ''
                 make
@@ -810,8 +802,7 @@ let
                   + ''
                     $CXX -O3 -framework CoreServices -framework Foundation osx-dictionary.m -o osx-dictionary-cli
                   '';
-                postInstall =
-                  (old.postInstall or "")
+                postInstall = (old.postInstall or "")
                   + "\n"
                   + ''
                     outd=$out/share/emacs/site-lisp/elpa/osx-dictionary-*
@@ -833,11 +824,10 @@ let
 
           ac-php-core = super.ac-php-core.overrideAttrs (old: {
             # empty file causing native-compiler-error-empty-byte
-            preBuild =
-              ''
-                rm --verbose ac-php-comm-tags-data.el
-              ''
-              + old.preBuild or "";
+            preBuild = ''
+              rm --verbose ac-php-comm-tags-data.el
+            ''
+            + old.preBuild or "";
           });
 
           # Optimizer error: too much on the stack
@@ -1109,14 +1099,13 @@ let
           edts = ignoreCompilationError (mkHome super.edts); # elisp error
 
           eimp = super.eimp.overrideAttrs (old: {
-            postPatch =
-              old.postPatch or ""
-              + "\n"
-              + ''
-                substituteInPlace eimp.el --replace-fail \
-                  '(defcustom eimp-mogrify-program "mogrify"' \
-                  '(defcustom eimp-mogrify-program "${pkgs.imagemagick}/bin/mogrify"'
-              '';
+            postPatch = old.postPatch or ""
+            + "\n"
+            + ''
+              substituteInPlace eimp.el --replace-fail \
+                '(defcustom eimp-mogrify-program "mogrify"' \
+                '(defcustom eimp-mogrify-program "${pkgs.imagemagick}/bin/mogrify"'
+            '';
           });
 
           ein = ignoreCompilationError super.ein; # elisp error
@@ -1592,12 +1581,11 @@ let
 
           # TODO report to upstream
           realgud-lldb = super.realgud-lldb.overrideAttrs (old: {
-            preBuild =
-              old.preBuild or ""
-              + "\n"
-              + ''
-                rm --verbose cask-install.el
-              '';
+            preBuild = old.preBuild or ""
+            + "\n"
+            + ''
+              rm --verbose cask-install.el
+            '';
           });
 
           # empty .yas-compiled-snippets.el causing native-compiler-error-empty-byte

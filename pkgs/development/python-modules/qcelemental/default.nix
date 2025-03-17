@@ -47,7 +47,8 @@ buildPythonPackage rec {
     ];
   };
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ lib.flatten (lib.attrValues optional-dependencies);
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ lib.flatten (lib.attrValues optional-dependencies);
 
   pythonImportsCheck = [ "qcelemental" ];
 

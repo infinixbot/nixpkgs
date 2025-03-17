@@ -83,23 +83,22 @@ let
       --replace "/usr/include/linux/capability.h" "${linuxHeaders}/include/linux/capability.h"
   '';
 
-  patches =
-    [
-      ./0001-aa-remove-unknown_empty-ruleset.patch
+  patches = [
+    ./0001-aa-remove-unknown_empty-ruleset.patch
 
-      (fetchpatch {
-        name = "basename.patch";
-        url = "https://gitlab.com/apparmor/apparmor/-/commit/7fb040bde69ebdfce48cf1a01c1a62fd4f8eef0a.patch";
-        hash = "sha256-RZ04nfcV8hTd2CO3mYcfOGCLke8+FhV7DPfmDqSSdWk=";
-      })
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isMusl [
-      (fetchpatch {
-        url = "https://git.alpinelinux.org/aports/plain/testing/apparmor/0003-Added-missing-typedef-definitions-on-parser.patch?id=74b8427cc21f04e32030d047ae92caa618105b53";
-        name = "0003-Added-missing-typedef-definitions-on-parser.patch";
-        sha256 = "0yyaqz8jlmn1bm37arggprqz0njb4lhjni2d9c8qfqj0kll0bam0";
-      })
-    ];
+    (fetchpatch {
+      name = "basename.patch";
+      url = "https://gitlab.com/apparmor/apparmor/-/commit/7fb040bde69ebdfce48cf1a01c1a62fd4f8eef0a.patch";
+      hash = "sha256-RZ04nfcV8hTd2CO3mYcfOGCLke8+FhV7DPfmDqSSdWk=";
+    })
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isMusl [
+    (fetchpatch {
+      url = "https://git.alpinelinux.org/aports/plain/testing/apparmor/0003-Added-missing-typedef-definitions-on-parser.patch?id=74b8427cc21f04e32030d047ae92caa618105b53";
+      name = "0003-Added-missing-typedef-definitions-on-parser.patch";
+      sha256 = "0yyaqz8jlmn1bm37arggprqz0njb4lhjni2d9c8qfqj0kll0bam0";
+    })
+  ];
 
   python = python3.withPackages (ps: with ps; [ setuptools ]);
 
@@ -130,7 +129,8 @@ let
       ncurses
       which
       perl
-    ] ++ lib.optional withPython python;
+    ]
+    ++ lib.optional withPython python;
 
     buildInputs = [ libxcrypt ] ++ lib.optional withPerl perl ++ lib.optional withPython python;
 
@@ -154,7 +154,8 @@ let
       (lib.withFeature withPython "python")
     ];
 
-    outputs = [ "out" ] ++ lib.optional withPython "python";
+    outputs = [ "out" ]
+      ++ lib.optional withPython "python";
 
     postInstall = lib.optionalString withPython ''
       mkdir -p $python/lib
@@ -197,21 +198,20 @@ let
       python.pkgs.psutil
     ];
 
-    prePatch =
-      prePatchCommon
-      +
-        # Do not build vim file
-        lib.optionalString stdenv.hostPlatform.isMusl ''
-          sed -i ./utils/Makefile -e "/\<vim\>/d"
-        ''
-      + ''
-        sed -i -E 's/^(DESTDIR|BINDIR|PYPREFIX)=.*//g' ./utils/Makefile
+    prePatch = prePatchCommon
+    +
+      # Do not build vim file
+      lib.optionalString stdenv.hostPlatform.isMusl ''
+        sed -i ./utils/Makefile -e "/\<vim\>/d"
+      ''
+    + ''
+      sed -i -E 's/^(DESTDIR|BINDIR|PYPREFIX)=.*//g' ./utils/Makefile
 
-        sed -i utils/aa-unconfined -e "/my_env\['PATH'\]/d"
+      sed -i utils/aa-unconfined -e "/my_env\['PATH'\]/d"
 
-        substituteInPlace utils/aa-remove-unknown \
-         --replace "/lib/apparmor/rc.apparmor.functions" "${apparmor-parser}/lib/apparmor/rc.apparmor.functions"
-      '';
+      substituteInPlace utils/aa-remove-unknown \
+       --replace "/lib/apparmor/rc.apparmor.functions" "${apparmor-parser}/lib/apparmor/rc.apparmor.functions"
+    '';
     inherit patches;
     postPatch = "cd ./utils";
     makeFlags = [ "LANGS=" ];

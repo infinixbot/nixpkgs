@@ -105,35 +105,34 @@ effectiveStdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  patches =
-    [
-      # If you stumble on these patches trying to update onnxruntime, check
-      # `git blame` and ping the introducers.
+  patches = [
+    # If you stumble on these patches trying to update onnxruntime, check
+    # `git blame` and ping the introducers.
 
-      # Context: we want the upstream to
-      # - always try find_package first (FIND_PACKAGE_ARGS),
-      # - use MakeAvailable instead of the low-level Populate,
-      # - use Eigen3::Eigen as the target name (as declared by libeigen/eigen).
-      ./0001-eigen-allow-dependency-injection.patch
-      # Incorporate a patch that has landed upstream which exposes new
-      # 'abseil-cpp' libraries & modifies the 're2' CMakeLists to fix a
-      # configuration error that around missing 'gmock' exports.
-      #
-      # TODO: Check if it can be dropped after 1.19.0
-      # https://github.com/microsoft/onnxruntime/commit/b522df0ae477e59f60acbe6c92c8a64eda96cace
-      ./update-re2.patch
-      # fix `error: template-id not allowed for constructor in C++20`
-      (fetchpatch2 {
-        name = "suppress-gcc-warning-in-TreeEnsembleAggregator.patch";
-        url = "https://github.com/microsoft/onnxruntime/commit/10883d7997ed4b53f989a49bd4387c5769fbd12f.patch?full_index=1";
-        hash = "sha256-NgvuCHE7axaUtZIjtQvDpagr+QtHdyL7xXkPQwZbhvY=";
-      })
-    ]
-    ++ lib.optionals cudaSupport [
-      # We apply the referenced 1064.patch ourselves to our nix dependency.
-      #  FIND_PACKAGE_ARGS for CUDA was added in https://github.com/microsoft/onnxruntime/commit/87744e5 so it might be possible to delete this patch after upgrading to 1.17.0
-      ./nvcc-gsl.patch
-    ];
+    # Context: we want the upstream to
+    # - always try find_package first (FIND_PACKAGE_ARGS),
+    # - use MakeAvailable instead of the low-level Populate,
+    # - use Eigen3::Eigen as the target name (as declared by libeigen/eigen).
+    ./0001-eigen-allow-dependency-injection.patch
+    # Incorporate a patch that has landed upstream which exposes new
+    # 'abseil-cpp' libraries & modifies the 're2' CMakeLists to fix a
+    # configuration error that around missing 'gmock' exports.
+    #
+    # TODO: Check if it can be dropped after 1.19.0
+    # https://github.com/microsoft/onnxruntime/commit/b522df0ae477e59f60acbe6c92c8a64eda96cace
+    ./update-re2.patch
+    # fix `error: template-id not allowed for constructor in C++20`
+    (fetchpatch2 {
+      name = "suppress-gcc-warning-in-TreeEnsembleAggregator.patch";
+      url = "https://github.com/microsoft/onnxruntime/commit/10883d7997ed4b53f989a49bd4387c5769fbd12f.patch?full_index=1";
+      hash = "sha256-NgvuCHE7axaUtZIjtQvDpagr+QtHdyL7xXkPQwZbhvY=";
+    })
+  ]
+  ++ lib.optionals cudaSupport [
+    # We apply the referenced 1064.patch ourselves to our nix dependency.
+    #  FIND_PACKAGE_ARGS for CUDA was added in https://github.com/microsoft/onnxruntime/commit/87744e5 so it might be possible to delete this patch after upgrading to 1.17.0
+    ./nvcc-gsl.patch
+  ];
 
   nativeBuildInputs =
     [
@@ -156,67 +155,66 @@ effectiveStdenv.mkDerivation rec {
       cudaPackages.cuda_nvcc
     ];
 
-  buildInputs =
+  buildInputs = [
+    cpuinfo
+    eigen
+    glibcLocales
+    libpng
+    nlohmann_json
+    microsoft-gsl
+    pytorch_clog
+    zlib
+  ]
+  ++ lib.optionals pythonSupport (
+    with python3Packages;
     [
-      cpuinfo
-      eigen
-      glibcLocales
-      libpng
-      nlohmann_json
-      microsoft-gsl
-      pytorch_clog
-      zlib
+      numpy
+      pybind11
+      packaging
     ]
-    ++ lib.optionals pythonSupport (
-      with python3Packages;
-      [
-        numpy
-        pybind11
-        packaging
-      ]
-    )
-    ++ lib.optionals effectiveStdenv.hostPlatform.isDarwin [
-      Foundation
-      libiconv
+  )
+  ++ lib.optionals effectiveStdenv.hostPlatform.isDarwin [
+    Foundation
+    libiconv
+  ]
+  ++ lib.optionals cudaSupport (
+    with cudaPackages;
+    [
+      cuda_cccl # cub/cub.cuh
+      libcublas # cublas_v2.h
+      libcurand # curand.h
+      libcusparse # cusparse.h
+      libcufft # cufft.h
+      cudnn # cudnn.h
+      cuda_cudart
     ]
-    ++ lib.optionals cudaSupport (
+    ++ lib.optionals (cudaSupport && ncclSupport) (
       with cudaPackages;
       [
-        cuda_cccl # cub/cub.cuh
-        libcublas # cublas_v2.h
-        libcurand # curand.h
-        libcusparse # cusparse.h
-        libcufft # cufft.h
-        cudnn # cudnn.h
-        cuda_cudart
+        nccl
       ]
-      ++ lib.optionals (cudaSupport && ncclSupport) (
-        with cudaPackages;
-        [
-          nccl
-        ]
-      )
-    );
+    )
+  );
 
-  nativeCheckInputs =
+  nativeCheckInputs = [
+    gtest
+  ]
+  ++ lib.optionals pythonSupport (
+    with python3Packages;
     [
-      gtest
+      pytest
+      sympy
+      onnx
     ]
-    ++ lib.optionals pythonSupport (
-      with python3Packages;
-      [
-        pytest
-        sympy
-        onnx
-      ]
-    );
+  );
 
   # TODO: build server, and move .so's to lib output
   # Python's wheel is stored in a separate dist output
   outputs = [
     "out"
     "dev"
-  ] ++ lib.optionals pythonSupport [ "dist" ];
+  ]
+  ++ lib.optionals pythonSupport [ "dist" ];
 
   enableParallelBuilding = true;
 
@@ -263,20 +261,19 @@ effectiveStdenv.mkDerivation rec {
 
   requiredSystemFeatures = lib.optionals cudaSupport [ "big-parallel" ];
 
-  postPatch =
-    ''
-      substituteInPlace cmake/libonnxruntime.pc.cmake.in \
-        --replace-fail '$'{prefix}/@CMAKE_INSTALL_ @CMAKE_INSTALL_
+  postPatch = ''
+    substituteInPlace cmake/libonnxruntime.pc.cmake.in \
+      --replace-fail '$'{prefix}/@CMAKE_INSTALL_ @CMAKE_INSTALL_
 
-      # https://github.com/microsoft/onnxruntime/blob/c4f3742bb456a33ee9c826ce4e6939f8b84ce5b0/onnxruntime/core/platform/env.h#L249
-      substituteInPlace onnxruntime/core/platform/env.h --replace-fail \
-        "GetRuntimePath() const { return PathString(); }" \
-        "GetRuntimePath() const { return PathString(\"$out/lib/\"); }"
-    ''
-    + lib.optionalString (effectiveStdenv.hostPlatform.system == "aarch64-linux") ''
-      # https://github.com/NixOS/nixpkgs/pull/226734#issuecomment-1663028691
-      rm -v onnxruntime/test/optimizer/nhwc_transformer_test.cc
-    '';
+    # https://github.com/microsoft/onnxruntime/blob/c4f3742bb456a33ee9c826ce4e6939f8b84ce5b0/onnxruntime/core/platform/env.h#L249
+    substituteInPlace onnxruntime/core/platform/env.h --replace-fail \
+      "GetRuntimePath() const { return PathString(); }" \
+      "GetRuntimePath() const { return PathString(\"$out/lib/\"); }"
+  ''
+  + lib.optionalString (effectiveStdenv.hostPlatform.system == "aarch64-linux") ''
+    # https://github.com/NixOS/nixpkgs/pull/226734#issuecomment-1663028691
+    rm -v onnxruntime/test/optimizer/nhwc_transformer_test.cc
+  '';
 
   postBuild = lib.optionalString pythonSupport ''
     ${python3Packages.python.interpreter} ../setup.py bdist_wheel

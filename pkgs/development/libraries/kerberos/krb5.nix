@@ -84,8 +84,7 @@ stdenv.mkDerivation rec {
     # Provides the mig command used by the build scripts
     ++ lib.optional stdenv.hostPlatform.isDarwin bootstrap_cmds;
 
-  buildInputs =
-    [ openssl ]
+  buildInputs = [ openssl ]
     ++ lib.optionals (
       stdenv.hostPlatform.isLinux
       && stdenv.hostPlatform.libc != "bionic"

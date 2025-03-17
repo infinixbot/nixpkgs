@@ -54,15 +54,14 @@ stdenv.mkDerivation rec {
     sed -i 's/$(hostname)/hostname/' host/utilities/bladeRF-cli/src/cmd/doc/generate.bash
   '';
 
-  cmakeFlags =
-    [
-      "-DBUILD_DOCUMENTATION=ON"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      "-DUDEV_RULES_PATH=etc/udev/rules.d"
-      "-DINSTALL_UDEV_RULES=ON"
-      "-DBLADERF_GROUP=bladerf"
-    ];
+  cmakeFlags = [
+    "-DBUILD_DOCUMENTATION=ON"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    "-DUDEV_RULES_PATH=etc/udev/rules.d"
+    "-DINSTALL_UDEV_RULES=ON"
+    "-DBLADERF_GROUP=bladerf"
+  ];
 
   env = lib.optionalAttrs stdenv.cc.isClang {
     NIX_CFLAGS_COMPILE = "-Wno-error=unused-but-set-variable";

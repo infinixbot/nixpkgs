@@ -28,7 +28,8 @@ let
       version = "1.2.0";
       format = "pyproject";
 
-      outputs = [ "out" ] ++ lib.optional (pname == "wasmer") "testsout";
+      outputs = [ "out" ]
+        ++ lib.optional (pname == "wasmer") "testsout";
 
       src = fetchFromGitHub {
         owner = "wasmerio";

@@ -47,7 +47,8 @@ buildPythonPackage rec {
   propagatedBuildInputs = [
     cairo
     cffi
-  ] ++ lib.optional withXcffib xcffib;
+  ]
+  ++ lib.optional withXcffib xcffib;
 
   nativeCheckInputs = [
     numpy

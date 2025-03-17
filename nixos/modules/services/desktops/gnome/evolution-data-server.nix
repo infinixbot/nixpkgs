@@ -56,7 +56,8 @@
       (lib.mkIf config.programs.evolution.enable {
         services.gnome.evolution-data-server = {
           enable = true;
-          plugins = [ pkgs.evolution ] ++ config.programs.evolution.plugins;
+          plugins = [ pkgs.evolution ]
+            ++ config.programs.evolution.plugins;
         };
         services.gnome.gnome-keyring.enable = true;
       })

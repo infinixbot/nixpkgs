@@ -50,7 +50,8 @@ buildPythonPackage rec {
     tornado
     pytest-asyncio
     pytestCheckHook
-  ] ++ lib.flatten (builtins.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (builtins.attrValues optional-dependencies);
 
   doCheck = !stdenv.hostPlatform.isDarwin;
 

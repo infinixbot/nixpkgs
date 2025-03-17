@@ -51,15 +51,13 @@ buildPythonPackage rec {
     hash = "sha256-fetJX6HQxRZ/Az7rJeU9S+s8ttgNPnJEvTLfzGt4xjk=";
   };
 
-  nativeBuildInputs =
-    [ pkg-config ]
+  nativeBuildInputs = [ pkg-config ]
     ++ (with rustPlatform; [
       cargoSetupHook
       maturinBuildHook
     ]);
 
-  buildInputs =
-    [ openssl ]
+  buildInputs = [ openssl ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       libiconv
       CoreFoundation

@@ -42,8 +42,7 @@ buildPythonPackage rec {
     requests
   ];
 
-  disabledTests =
-    [ "test_block_network_with_allowed_hosts" ]
+  disabledTests = [ "test_block_network_with_allowed_hosts" ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       # Missing socket.AF_NETLINK
       "test_other_socket"

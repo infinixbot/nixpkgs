@@ -36,13 +36,12 @@ python3Packages.buildPythonApplication rec {
     python3Packages.argcomplete
   ];
 
-  nativeBuildInputs =
-    [
-      installShellFiles
-    ]
-    ++ lib.optionals withAutocomplete [
-      python3Packages.argcomplete
-    ];
+  nativeBuildInputs = [
+    installShellFiles
+  ]
+  ++ lib.optionals withAutocomplete [
+    python3Packages.argcomplete
+  ];
 
   nativeCheckInputs = [
     versionCheckHook

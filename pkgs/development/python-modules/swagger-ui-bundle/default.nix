@@ -26,7 +26,8 @@ buildPythonPackage rec {
 
   nativeBuildInputs = [ poetry-core ];
 
-  propagatedBuildInputs = [ jinja2 ] ++ lib.optionals (pythonOlder "3.9") [ importlib-resources ];
+  propagatedBuildInputs = [ jinja2 ]
+    ++ lib.optionals (pythonOlder "3.9") [ importlib-resources ];
 
   # package contains no tests
   doCheck = false;

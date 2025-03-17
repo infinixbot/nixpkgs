@@ -90,7 +90,8 @@ let
       pkg-config
       versioneer
       wheel
-    ] ++ versioneer.optional-dependencies.toml;
+    ]
+    ++ versioneer.optional-dependencies.toml;
 
     enableParallelBuilding = true;
 
@@ -168,23 +169,22 @@ let
       doCheck = true;
     });
 
-    nativeCheckInputs =
-      [
-        glibcLocales
-        hypothesis
-        pytest-asyncio
-        pytest-xdist
-        pytestCheckHook
-      ]
-      ++ lib.flatten (lib.attrValues optional-dependencies)
-      ++ lib.optionals (stdenv.hostPlatform.isLinux) [
-        # for locale executable
-        glibc
-      ]
-      ++ lib.optionals (stdenv.hostPlatform.isDarwin) [
-        # for locale executable
-        adv_cmds
-      ];
+    nativeCheckInputs = [
+      glibcLocales
+      hypothesis
+      pytest-asyncio
+      pytest-xdist
+      pytestCheckHook
+    ]
+    ++ lib.flatten (lib.attrValues optional-dependencies)
+    ++ lib.optionals (stdenv.hostPlatform.isLinux) [
+      # for locale executable
+      glibc
+    ]
+    ++ lib.optionals (stdenv.hostPlatform.isDarwin) [
+      # for locale executable
+      adv_cmds
+    ];
 
     # don't max out build cores, it breaks tests
     dontUsePytestXdist = true;

@@ -20,7 +20,8 @@ stdenv.mkDerivation rec {
     pkg-config
     makeWrapper
   ];
-  buildInputs = [ ntfs3g ] ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [ fuse3 ];
+  buildInputs = [ ntfs3g ]
+    ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [ fuse3 ];
 
   src = fetchurl {
     url = "https://wimlib.net/downloads/${pname}-${version}.tar.gz";

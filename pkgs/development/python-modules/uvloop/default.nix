@@ -46,8 +46,7 @@ buildPythonPackage rec {
 
   env.LIBUV_CONFIGURE_HOST = stdenv.hostPlatform.config;
 
-  buildInputs =
-    [ libuv ]
+  buildInputs = [ libuv ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       CoreServices
       ApplicationServices
@@ -87,16 +86,15 @@ buildPythonPackage rec {
     "tests/test_sourcecode.py"
   ];
 
-  preCheck =
-    ''
-      # force using installed/compiled uvloop
-      rm -rf uvloop
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      # Work around "OSError: AF_UNIX path too long"
-      # https://github.com/MagicStack/uvloop/issues/463
-      export TMPDIR="/tmp"
-    '';
+  preCheck = ''
+    # force using installed/compiled uvloop
+    rm -rf uvloop
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    # Work around "OSError: AF_UNIX path too long"
+    # https://github.com/MagicStack/uvloop/issues/463
+    export TMPDIR="/tmp"
+  '';
 
   pythonImportsCheck = [
     "uvloop"

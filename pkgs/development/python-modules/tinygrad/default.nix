@@ -106,13 +106,12 @@ buildPythonPackage rec {
     triton = [ triton ];
   };
 
-  pythonImportsCheck =
-    [
-      "tinygrad"
-    ]
-    ++ lib.optionals cudaSupport [
-      "tinygrad.runtime.ops_nv"
-    ];
+  pythonImportsCheck = [
+    "tinygrad"
+  ]
+  ++ lib.optionals cudaSupport [
+    "tinygrad.runtime.ops_nv"
+  ];
 
   nativeCheckInputs = [
     blobfile
@@ -133,62 +132,62 @@ buildPythonPackage rec {
     torch
     tqdm
     transformers
-  ] ++ networkx.optional-dependencies.extra;
+  ]
+  ++ networkx.optional-dependencies.extra;
 
   preCheck = ''
     export HOME=$(mktemp -d)
   '';
 
-  disabledTests =
-    [
-      # Fixed in https://github.com/tinygrad/tinygrad/pull/7792
-      # TODO: re-enable at next release
-      "test_kernel_cache_in_action"
+  disabledTests = [
+    # Fixed in https://github.com/tinygrad/tinygrad/pull/7792
+    # TODO: re-enable at next release
+    "test_kernel_cache_in_action"
 
-      # Require internet access
-      "test_benchmark_openpilot_model"
-      "test_bn_alone"
-      "test_bn_linear"
-      "test_bn_mnist"
-      "test_car"
-      "test_chicken"
-      "test_chicken_bigbatch"
-      "test_conv_mnist"
-      "testCopySHMtoDefault"
-      "test_data_parallel_resnet"
-      "test_e2e_big"
-      "test_fetch_small"
-      "test_huggingface_enet_safetensors"
-      "test_index_mnist"
-      "test_linear_mnist"
-      "test_load_convnext"
-      "test_load_enet"
-      "test_load_enet_alt"
-      "test_load_llama2bfloat"
-      "test_load_resnet"
-      "test_mnist_val"
-      "test_openpilot_model"
-      "test_resnet"
-      "test_shufflenet"
-      "test_transcribe_batch12"
-      "test_transcribe_batch21"
-      "test_transcribe_file1"
-      "test_transcribe_file2"
-      "test_transcribe_long"
-      "test_transcribe_long_no_batch"
-      "test_vgg7"
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.system == "aarch64-linux") [
-      # Fixed in https://github.com/tinygrad/tinygrad/pull/7796
-      # TODO: re-enable at next release
-      "test_interpolate_bilinear"
+    # Require internet access
+    "test_benchmark_openpilot_model"
+    "test_bn_alone"
+    "test_bn_linear"
+    "test_bn_mnist"
+    "test_car"
+    "test_chicken"
+    "test_chicken_bigbatch"
+    "test_conv_mnist"
+    "testCopySHMtoDefault"
+    "test_data_parallel_resnet"
+    "test_e2e_big"
+    "test_fetch_small"
+    "test_huggingface_enet_safetensors"
+    "test_index_mnist"
+    "test_linear_mnist"
+    "test_load_convnext"
+    "test_load_enet"
+    "test_load_enet_alt"
+    "test_load_llama2bfloat"
+    "test_load_resnet"
+    "test_mnist_val"
+    "test_openpilot_model"
+    "test_resnet"
+    "test_shufflenet"
+    "test_transcribe_batch12"
+    "test_transcribe_batch21"
+    "test_transcribe_file1"
+    "test_transcribe_file2"
+    "test_transcribe_long"
+    "test_transcribe_long_no_batch"
+    "test_vgg7"
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.system == "aarch64-linux") [
+    # Fixed in https://github.com/tinygrad/tinygrad/pull/7796
+    # TODO: re-enable at next release
+    "test_interpolate_bilinear"
 
-      # Fail with AssertionError
-      "test_casts_from"
-      "test_casts_to"
-      "test_int8"
-      "test_int8_to_uint16_negative"
-    ];
+    # Fail with AssertionError
+    "test_casts_from"
+    "test_casts_to"
+    "test_int8"
+    "test_int8_to_uint16_negative"
+  ];
 
   disabledTestPaths = [
     # Require internet access

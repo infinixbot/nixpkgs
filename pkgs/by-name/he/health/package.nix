@@ -46,16 +46,15 @@ stdenv.mkDerivation rec {
     blueprint-compiler
   ];
 
-  buildInputs =
-    [
-      libadwaita
-      libsecret
-      tinysparql
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      darwin.apple_sdk.frameworks.Security
-      darwin.apple_sdk.frameworks.Foundation
-    ];
+  buildInputs = [
+    libadwaita
+    libsecret
+    tinysparql
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    darwin.apple_sdk.frameworks.Security
+    darwin.apple_sdk.frameworks.Foundation
+  ];
 
   env.NIX_CFLAGS_COMPILE = toString (
     lib.optionals stdenv.cc.isClang [

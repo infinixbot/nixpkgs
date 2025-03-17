@@ -23,29 +23,28 @@ stdenv.mkDerivation rec {
 
   dontConfigure = true;
 
-  preBuild =
-    ''
-      makeFlagsArray=(
-        CC="gcc"
-        RM="rm"
-        SHELL="sh"
-        "all"
-      )
-    ''
-    + (
-      if stdenv.hostPlatform.isx86_64 then
-        ''
+  preBuild = ''
+    makeFlagsArray=(
+      CC="gcc"
+      RM="rm"
+      SHELL="sh"
+      "all"
+    )
+  ''
+  + (
+    if stdenv.hostPlatform.isx86_64 then
+      ''
+        makeFlagsArray+=(
+          CFLAGS="-fcommon -O -DFOUR -m64"
+        );
+      ''
+    else
+      ''
           makeFlagsArray+=(
-            CFLAGS="-fcommon -O -DFOUR -m64"
-          );
-        ''
-      else
-        ''
-            makeFlagsArray+=(
-              CFLAGS="-fcommon -O -DFOUR"
-          );
-        ''
-    );
+            CFLAGS="-fcommon -O -DFOUR"
+        );
+      ''
+  );
 
   installPhase = ''
     mkdir -p $out/bin

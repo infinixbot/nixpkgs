@@ -99,48 +99,46 @@ mkDerivation rec {
     wrapGAppsHook3
   ];
 
-  buildInputs =
-    [
-      eigen
-      boost
-      glew
-      opencsg
-      cgal
-      mpfr
-      gmp
-      glib
-      harfbuzz
-      lib3mf
-      libzip
-      double-conversion
-      freetype
-      fontconfig
-      qtbase
-      qtmultimedia
-      qscintilla
-      cairo
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      libGLU
-      libGL
-      wayland
-      wayland-protocols
-      qtwayland
-    ]
-    ++ lib.optional stdenv.hostPlatform.isDarwin qtmacextras
-    ++ lib.optional spacenavSupport libspnav;
+  buildInputs = [
+    eigen
+    boost
+    glew
+    opencsg
+    cgal
+    mpfr
+    gmp
+    glib
+    harfbuzz
+    lib3mf
+    libzip
+    double-conversion
+    freetype
+    fontconfig
+    qtbase
+    qtmultimedia
+    qscintilla
+    cairo
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    libGLU
+    libGL
+    wayland
+    wayland-protocols
+    qtwayland
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin qtmacextras
+  ++ lib.optional spacenavSupport libspnav;
 
-  qmakeFlags =
-    [
-      "VERSION=${version}"
-      "LIB3MF_INCLUDEPATH=${lib3mf.dev}/include/lib3mf/Bindings/Cpp"
-      "LIB3MF_LIBPATH=${lib3mf}/lib"
-    ]
-    ++ lib.optionals spacenavSupport [
-      "ENABLE_SPNAV=1"
-      "SPNAV_INCLUDEPATH=${libspnav}/include"
-      "SPNAV_LIBPATH=${libspnav}/lib"
-    ];
+  qmakeFlags = [
+    "VERSION=${version}"
+    "LIB3MF_INCLUDEPATH=${lib3mf.dev}/include/lib3mf/Bindings/Cpp"
+    "LIB3MF_LIBPATH=${lib3mf}/lib"
+  ]
+  ++ lib.optionals spacenavSupport [
+    "ENABLE_SPNAV=1"
+    "SPNAV_INCLUDEPATH=${libspnav}/include"
+    "SPNAV_LIBPATH=${libspnav}/lib"
+  ];
 
   enableParallelBuilding = true;
 

@@ -19,7 +19,8 @@ rustPlatform.buildRustPackage rec {
     hash = "sha256-dmR49yyErahOUxR9pGW1oYy8Wq5SWOprK317u+JPBv4=";
   };
 
-  buildInputs = [ openssl ] ++ lib.optional stdenv.hostPlatform.isDarwin Security;
+  buildInputs = [ openssl ]
+    ++ lib.optional stdenv.hostPlatform.isDarwin Security;
 
   nativeBuildInputs = [ pkg-config ];
 

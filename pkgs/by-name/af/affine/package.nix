@@ -98,22 +98,21 @@ stdenv.mkDerivation (finalAttrs: {
     outputHashMode = "recursive";
     outputHash = "sha256-OuBxx0nrZ/KVFD1JinjBBXiQUcePWx5zRACld1CoHX0=";
   };
-  nativeBuildInputs =
-    [
-      nodejs
-      yarn
-      cargo
-      rustc
-      findutils
-      zip
-      jq
-      rsync
-      writableTmpDirAsHomeHook
-    ]
-    ++ lib.optionals hostPlatform.isLinux [
-      copyDesktopItems
-      makeWrapper
-    ];
+  nativeBuildInputs = [
+    nodejs
+    yarn
+    cargo
+    rustc
+    findutils
+    zip
+    jq
+    rsync
+    writableTmpDirAsHomeHook
+  ]
+  ++ lib.optionals hostPlatform.isLinux [
+    copyDesktopItems
+    makeWrapper
+  ];
 
   # force yarn install run in CI mode
   env.CI = "1";

@@ -59,7 +59,8 @@ buildPythonPackage rec {
     rustc
   ];
 
-  buildInputs = [ openssl ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ Security ];
+  buildInputs = [ openssl ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ Security ];
 
   propagatedBuildInputs = [ msgpack ];
 

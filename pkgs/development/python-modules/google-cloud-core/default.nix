@@ -34,7 +34,8 @@ buildPythonPackage rec {
   nativeCheckInputs = [
     mock
     pytestCheckHook
-  ] ++ optional-dependencies.grpc;
+  ]
+  ++ optional-dependencies.grpc;
 
   # prevent google directory from shadowing google imports
   preCheck = ''

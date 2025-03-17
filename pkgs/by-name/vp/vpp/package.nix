@@ -79,7 +79,8 @@ stdenv.mkDerivation rec {
   cmakeFlags = [
     "-DVPP_PLATFORM=default"
     "-DVPP_LIBRARY_DIR=lib"
-  ] ++ lib.optional enableDpdk "-DVPP_USE_SYSTEM_DPDK=ON";
+  ]
+  ++ lib.optional enableDpdk "-DVPP_USE_SYSTEM_DPDK=ON";
 
   nativeBuildInputs =
     [

@@ -42,60 +42,57 @@
   enablePatentEncumberedCodecs ? true,
   withValgrind ? lib.meta.availableOn stdenv.hostPlatform valgrind-light,
 
-  galliumDrivers ?
+  galliumDrivers ? [
+    "d3d12" # WSL emulated GPU (aka Dozen)
+    "iris" # new Intel (Broadwell+)
+    "llvmpipe" # software renderer
+    "nouveau" # Nvidia
+    "r300" # very old AMD
+    "r600" # less old AMD
+    "radeonsi" # new AMD (GCN+)
+    "softpipe" # older software renderer
+    "svga" # VMWare virtualized GPU
+    "virgl" # QEMU virtualized GPU (aka VirGL)
+    "zink" # generic OpenGL over Vulkan, experimental
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isAarch64 || stdenv.hostPlatform.isAarch32) [
+    "etnaviv" # Vivante GPU designs (mostly NXP/Marvell SoCs)
+    "freedreno" # Qualcomm Adreno (all Qualcomm SoCs)
+    "lima" # ARM Mali 4xx
+    "panfrost" # ARM Mali Midgard and up (T/G series)
+    "vc4" # Broadcom VC4 (Raspberry Pi 0-3)
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isAarch64 [
+    "tegra" # Nvidia Tegra SoCs
+    "v3d" # Broadcom VC5 (Raspberry Pi 4)
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isx86 [
+    "crocus" # Intel legacy, x86 only
+    "i915" # Intel extra legacy, x86 only
+  ],
+  vulkanDrivers ? [
+    "amd" # AMD (aka RADV)
+    "intel" # new Intel (aka ANV)
+    "microsoft-experimental" # WSL virtualized GPU (aka DZN/Dozen)
+    "nouveau" # Nouveau (aka NVK)
+    "swrast" # software renderer (aka Lavapipe)
+  ]
+  ++ lib.optionals
+    (stdenv.hostPlatform.isAarch -> lib.versionAtLeast stdenv.hostPlatform.parsed.cpu.version "6")
     [
-      "d3d12" # WSL emulated GPU (aka Dozen)
-      "iris" # new Intel (Broadwell+)
-      "llvmpipe" # software renderer
-      "nouveau" # Nvidia
-      "r300" # very old AMD
-      "r600" # less old AMD
-      "radeonsi" # new AMD (GCN+)
-      "softpipe" # older software renderer
-      "svga" # VMWare virtualized GPU
-      "virgl" # QEMU virtualized GPU (aka VirGL)
-      "zink" # generic OpenGL over Vulkan, experimental
+      # QEMU virtualized GPU (aka VirGL)
+      # Requires ATOMIC_INT_LOCK_FREE == 2.
+      "virtio"
     ]
-    ++ lib.optionals (stdenv.hostPlatform.isAarch64 || stdenv.hostPlatform.isAarch32) [
-      "etnaviv" # Vivante GPU designs (mostly NXP/Marvell SoCs)
-      "freedreno" # Qualcomm Adreno (all Qualcomm SoCs)
-      "lima" # ARM Mali 4xx
-      "panfrost" # ARM Mali Midgard and up (T/G series)
-      "vc4" # Broadcom VC4 (Raspberry Pi 0-3)
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isAarch64 [
-      "tegra" # Nvidia Tegra SoCs
-      "v3d" # Broadcom VC5 (Raspberry Pi 4)
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isx86 [
-      "crocus" # Intel legacy, x86 only
-      "i915" # Intel extra legacy, x86 only
-    ],
-  vulkanDrivers ?
-    [
-      "amd" # AMD (aka RADV)
-      "intel" # new Intel (aka ANV)
-      "microsoft-experimental" # WSL virtualized GPU (aka DZN/Dozen)
-      "nouveau" # Nouveau (aka NVK)
-      "swrast" # software renderer (aka Lavapipe)
-    ]
-    ++
-      lib.optionals
-        (stdenv.hostPlatform.isAarch -> lib.versionAtLeast stdenv.hostPlatform.parsed.cpu.version "6")
-        [
-          # QEMU virtualized GPU (aka VirGL)
-          # Requires ATOMIC_INT_LOCK_FREE == 2.
-          "virtio"
-        ]
-    ++ lib.optionals stdenv.hostPlatform.isAarch64 [
-      "broadcom" # Broadcom VC5 (Raspberry Pi 4, aka V3D)
-      "freedreno" # Qualcomm Adreno (all Qualcomm SoCs)
-      "imagination-experimental" # PowerVR Rogue (currently N/A)
-      "panfrost" # ARM Mali Midgard and up (T/G series)
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isx86 [
-      "intel_hasvk" # Intel Haswell/Broadwell, "legacy" Vulkan driver (https://www.phoronix.com/news/Intel-HasVK-Drop-Dead-Code)
-    ],
+  ++ lib.optionals stdenv.hostPlatform.isAarch64 [
+    "broadcom" # Broadcom VC5 (Raspberry Pi 4, aka V3D)
+    "freedreno" # Qualcomm Adreno (all Qualcomm SoCs)
+    "imagination-experimental" # PowerVR Rogue (currently N/A)
+    "panfrost" # ARM Mali Midgard and up (T/G series)
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isx86 [
+    "intel_hasvk" # Intel Haswell/Broadwell, "legacy" Vulkan driver (https://www.phoronix.com/news/Intel-HasVK-Drop-Dead-Code)
+  ],
   eglPlatforms ? [
     "x11"
     "wayland"
@@ -303,35 +300,34 @@ stdenv.mkDerivation {
     buildPackages.stdenv.cc
   ];
 
-  nativeBuildInputs =
-    [
-      meson
-      pkg-config
-      ninja
-      intltool
-      bison
-      flex
-      file
-      python3Packages.python
-      python3Packages.packaging
-      python3Packages.pycparser
-      python3Packages.mako
-      python3Packages.ply
-      python3Packages.pyyaml
-      jdupes
-      # Use bin output from glslang to not propagate the dev output at
-      # the build time with the host glslang.
-      (lib.getBin glslang)
-      rustc
-      rust-bindgen
-      rust-cbindgen
-      rustPlatform.bindgenHook
-      wayland-scanner
-    ]
-    ++ lib.optionals needNativeCLC [
-      # `or null` to not break eval with `attribute missing` on darwin to linux cross
-      (buildPackages.mesa.driversdev or null)
-    ];
+  nativeBuildInputs = [
+    meson
+    pkg-config
+    ninja
+    intltool
+    bison
+    flex
+    file
+    python3Packages.python
+    python3Packages.packaging
+    python3Packages.pycparser
+    python3Packages.mako
+    python3Packages.ply
+    python3Packages.pyyaml
+    jdupes
+    # Use bin output from glslang to not propagate the dev output at
+    # the build time with the host glslang.
+    (lib.getBin glslang)
+    rustc
+    rust-bindgen
+    rust-cbindgen
+    rustPlatform.bindgenHook
+    wayland-scanner
+  ]
+  ++ lib.optionals needNativeCLC [
+    # `or null` to not break eval with `attribute missing` on darwin to linux cross
+    (buildPackages.mesa.driversdev or null)
+  ];
 
   disallowedRequisites = lib.optionals needNativeCLC [
     (buildPackages.mesa.driversdev or null)

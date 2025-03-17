@@ -14,7 +14,8 @@ stdenv.mkDerivation {
 
   src = null;
 
-  paths = [ budgie-desktop ] ++ plugins;
+  paths = [ budgie-desktop ]
+    ++ plugins;
 
   passAsFile = [ "paths" ];
 

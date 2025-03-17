@@ -29,14 +29,13 @@ rustPlatform.buildRustPackage rec {
     rustPlatform.bindgenHook
   ];
 
-  buildInputs =
-    [
-      alsa-lib
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      darwin.apple_sdk.frameworks.CoreAudio
-      darwin.apple_sdk.frameworks.CoreFoundation
-    ];
+  buildInputs = [
+    alsa-lib
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    darwin.apple_sdk.frameworks.CoreAudio
+    darwin.apple_sdk.frameworks.CoreFoundation
+  ];
 
   passthru.tests.version = testers.testVersion {
     package = porsmo;

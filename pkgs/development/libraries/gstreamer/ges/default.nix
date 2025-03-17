@@ -33,19 +33,18 @@ stdenv.mkDerivation rec {
     hash = "sha256-bwCxG05eNMKjLWTfUh3Kd1GdYm/MXjhjwCGL0SNn4XQ=";
   };
 
-  nativeBuildInputs =
-    [
-      meson
-      ninja
-      pkg-config
-      gettext
-      gobject-introspection
-      python3
-      flex
-    ]
-    ++ lib.optionals enableDocumentation [
-      hotdoc
-    ];
+  nativeBuildInputs = [
+    meson
+    ninja
+    pkg-config
+    gettext
+    gobject-introspection
+    python3
+    flex
+  ]
+  ++ lib.optionals enableDocumentation [
+    hotdoc
+  ];
 
   buildInputs = [
     bash-completion

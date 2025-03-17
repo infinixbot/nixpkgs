@@ -32,7 +32,8 @@ buildPythonPackage rec {
 
   nativeBuildInputs = [ setuptools ];
 
-  propagatedBuildInputs = [ packaging ] ++ lib.optionals (pythonOlder "3.8") [ cached-property ];
+  propagatedBuildInputs = [ packaging ]
+    ++ lib.optionals (pythonOlder "3.8") [ cached-property ];
 
   optional-dependencies = {
     cli = [ click ];
@@ -41,7 +42,8 @@ buildPythonPackage rec {
   nativeCheckInputs = [
     pytest-timeout
     pytestCheckHook
-  ] ++ lib.flatten (builtins.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (builtins.attrValues optional-dependencies);
 
   pythonImportsCheck = [ "pythonfinder" ];
 

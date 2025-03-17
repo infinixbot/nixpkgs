@@ -64,7 +64,8 @@ buildPythonPackage rec {
 
   stdenv = python.stdenv;
 
-  outputs = [ "out" ] ++ lib.optional withDocs "doc";
+  outputs = [ "out" ]
+    ++ lib.optional withDocs "doc";
 
   patches = [
     (fetchpatch {
@@ -122,33 +123,32 @@ buildPythonPackage rec {
     ]
     ++ lib.optionals withUsdView [ qt6.wrapQtAppsHook ];
 
-  buildInputs =
-    [
-      alembic.dev
-      bison
-      draco
-      embree
-      flex
-      imath
-      materialx
-      opencolorio
-      openimageio
-      opensubdiv
-      ptex
-      tbb
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      libGL
-      libX11
-      libXt
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin (with darwin.apple_sdk_11_0.frameworks; [ Cocoa ])
-    ++ lib.optionals withOsl [ osl ]
-    ++ lib.optionals withUsdView [ qt6.qtbase ]
-    ++ lib.optionals (withUsdView && stdenv.hostPlatform.isLinux) [
-      qt6.qtbase
-      qt6.qtwayland
-    ];
+  buildInputs = [
+    alembic.dev
+    bison
+    draco
+    embree
+    flex
+    imath
+    materialx
+    opencolorio
+    openimageio
+    opensubdiv
+    ptex
+    tbb
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    libGL
+    libX11
+    libXt
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin (with darwin.apple_sdk_11_0.frameworks; [ Cocoa ])
+  ++ lib.optionals withOsl [ osl ]
+  ++ lib.optionals withUsdView [ qt6.qtbase ]
+  ++ lib.optionals (withUsdView && stdenv.hostPlatform.isLinux) [
+    qt6.qtbase
+    qt6.qtwayland
+  ];
 
   propagatedBuildInputs =
     [
@@ -169,16 +169,15 @@ buildPythonPackage rec {
     "pxr.Usd"
   ];
 
-  postInstall =
-    ''
-      # Make python lib properly accessible
-      target_dir=$out/${python.sitePackages}
-      mkdir -p $(dirname $target_dir)
-      mv $out/lib/python $target_dir
-    ''
-    + lib.optionalString withDocs ''
-      mv $out/docs $doc
-    '';
+  postInstall = ''
+    # Make python lib properly accessible
+    target_dir=$out/${python.sitePackages}
+    mkdir -p $(dirname $target_dir)
+    mv $out/lib/python $target_dir
+  ''
+  + lib.optionalString withDocs ''
+    mv $out/docs $doc
+  '';
 
   meta = {
     description = "Universal Scene Description";

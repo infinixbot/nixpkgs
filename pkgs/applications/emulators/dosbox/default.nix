@@ -39,24 +39,23 @@ stdenv.mkDerivation rec {
     graphicsmagick
   ];
 
-  buildInputs =
-    [
-      SDL
-      SDL_net
-      SDL_sound
-      libpng
-    ]
-    ++ (
-      if stdenv.hostPlatform.isDarwin then
-        [
-          OpenGL
-        ]
-      else
-        [
-          libGL
-          libGLU
-        ]
-    );
+  buildInputs = [
+    SDL
+    SDL_net
+    SDL_sound
+    libpng
+  ]
+  ++ (
+    if stdenv.hostPlatform.isDarwin then
+      [
+        OpenGL
+      ]
+    else
+      [
+        libGL
+        libGLU
+      ]
+  );
 
   # Tests for SDL_net.h for modem & IPX support, not automatically picked up due to being in SDL subdirectory
   env.NIX_CFLAGS_COMPILE = "-I${lib.getDev SDL_net}/include/SDL";

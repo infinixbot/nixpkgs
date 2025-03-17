@@ -27,18 +27,17 @@ stdenv.mkDerivation rec {
     hash = "sha256-mn2WUf/VL75SEqjkhSo82weePSI/xVBOalCwupbNIKE=";
   };
 
-  nativeBuildInputs =
-    [
-      pkg-config
-    ]
-    ++ [
-      (buildPackages.python3.withPackages (
-        ps: with ps; [
-          sphinx
-          sphinx-rtd-theme
-        ]
-      ))
-    ];
+  nativeBuildInputs = [
+    pkg-config
+  ]
+  ++ [
+    (buildPackages.python3.withPackages (
+      ps: with ps; [
+        sphinx
+        sphinx-rtd-theme
+      ]
+    ))
+  ];
 
   buildInputs = [
     acl

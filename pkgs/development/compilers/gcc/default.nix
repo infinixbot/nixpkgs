@@ -214,7 +214,8 @@ pipe
         "out"
         "man"
         "info"
-      ] ++ optional (!langJit) "lib";
+      ]
+      ++ optional (!langJit) "lib";
 
       setOutputFlags = false;
 
@@ -224,83 +225,83 @@ pipe
         "format"
         "pie"
         "stackclashprotection"
-      ] ++ optionals (is11 && langAda) [ "fortify3" ];
+      ]
+      ++ optionals (is11 && langAda) [ "fortify3" ];
 
-      postPatch =
-        ''
-          configureScripts=$(find . -name configure)
-          for configureScript in $configureScripts; do
-            patchShebangs $configureScript
-          done
-        ''
-        # Copy the precompiled `gcc/gengtype-lex.cc` from the 14.2.0 tarball.
-        # Since the `gcc/gengtype-lex.l` file didn’t change between 14.2.0
-        # and 14-2024116, this is safe. If it changes and we update the
-        # snapshot, we might need to vendor the compiled output in Nixpkgs.
-        #
-        # TODO: Remove this before 25.05.
-        + optionalString (version == "14-20241116") ''
-          cksum -c <<EOF
-          SHA256 (gcc/gengtype-lex.l) = 05acceeda02e673eaef47d187d3a68a1632508112fbe31b5dc2b0a898998d7ec
-          EOF
+      postPatch = ''
+        configureScripts=$(find . -name configure)
+        for configureScript in $configureScripts; do
+          patchShebangs $configureScript
+        done
+      ''
+      # Copy the precompiled `gcc/gengtype-lex.cc` from the 14.2.0 tarball.
+      # Since the `gcc/gengtype-lex.l` file didn’t change between 14.2.0
+      # and 14-2024116, this is safe. If it changes and we update the
+      # snapshot, we might need to vendor the compiled output in Nixpkgs.
+      #
+      # TODO: Remove this before 25.05.
+      + optionalString (version == "14-20241116") ''
+        cksum -c <<EOF
+        SHA256 (gcc/gengtype-lex.l) = 05acceeda02e673eaef47d187d3a68a1632508112fbe31b5dc2b0a898998d7ec
+        EOF
 
-          (XZ_OPT="--threads=$NIX_BUILD_CORES" xz -d < ${
-            fetchurl {
-              url = "mirror://gcc/releases/gcc-14.2.0/gcc-14.2.0.tar.xz";
-              hash = "sha256-p7Obxpy/niWCbFpgqyZHcAH3wI2FzsBLwOKcq+1vPMk=";
-            }
-          }; true) | tar xf - \
-            --mode=+w \
-            --warning=no-timestamp \
-            --strip-components=1 \
-            gcc-14.2.0/gcc/gengtype-lex.cc
+        (XZ_OPT="--threads=$NIX_BUILD_CORES" xz -d < ${
+          fetchurl {
+            url = "mirror://gcc/releases/gcc-14.2.0/gcc-14.2.0.tar.xz";
+            hash = "sha256-p7Obxpy/niWCbFpgqyZHcAH3wI2FzsBLwOKcq+1vPMk=";
+          }
+        }; true) | tar xf - \
+          --mode=+w \
+          --warning=no-timestamp \
+          --strip-components=1 \
+          gcc-14.2.0/gcc/gengtype-lex.cc
 
-          # Make sure Make knows it’s up‐to‐date.
-          touch gcc/gengtype-lex.cc
-        ''
-        # This should kill all the stdinc frameworks that gcc and friends like to
-        # insert into default search paths.
-        + optionalString hostPlatform.isDarwin ''
-          substituteInPlace gcc/config/darwin-c.c${optionalString atLeast12 "c"} \
-            --replace 'if (stdinc)' 'if (0)'
+        # Make sure Make knows it’s up‐to‐date.
+        touch gcc/gengtype-lex.cc
+      ''
+      # This should kill all the stdinc frameworks that gcc and friends like to
+      # insert into default search paths.
+      + optionalString hostPlatform.isDarwin ''
+        substituteInPlace gcc/config/darwin-c.c${optionalString atLeast12 "c"} \
+          --replace 'if (stdinc)' 'if (0)'
 
-          substituteInPlace libgcc/config/t-slibgcc-darwin \
-            --replace "-install_name @shlib_slibdir@/\$(SHLIB_INSTALL_NAME)" "-install_name ''${!outputLib}/lib/\$(SHLIB_INSTALL_NAME)"
+        substituteInPlace libgcc/config/t-slibgcc-darwin \
+          --replace "-install_name @shlib_slibdir@/\$(SHLIB_INSTALL_NAME)" "-install_name ''${!outputLib}/lib/\$(SHLIB_INSTALL_NAME)"
 
-          substituteInPlace libgfortran/configure \
-            --replace "-install_name \\\$rpath/\\\$soname" "-install_name ''${!outputLib}/lib/\\\$soname"
-        ''
-        + (optionalString (targetPlatform != hostPlatform || stdenv.cc.libc != null)
-          # On NixOS, use the right path to the dynamic linker instead of
-          # `/lib/ld*.so'.
+        substituteInPlace libgfortran/configure \
+          --replace "-install_name \\\$rpath/\\\$soname" "-install_name ''${!outputLib}/lib/\\\$soname"
+      ''
+      + (optionalString (targetPlatform != hostPlatform || stdenv.cc.libc != null)
+        # On NixOS, use the right path to the dynamic linker instead of
+        # `/lib/ld*.so'.
+        (
+          let
+            libc = if libcCross != null then libcCross else stdenv.cc.libc;
+          in
           (
-            let
-              libc = if libcCross != null then libcCross else stdenv.cc.libc;
-            in
-            (
-              ''
-                echo "fixing the {GLIBC,UCLIBC,MUSL}_DYNAMIC_LINKER macros..."
-                for header in "gcc/config/"*-gnu.h "gcc/config/"*"/"*.h
-                do
-                  grep -q _DYNAMIC_LINKER "$header" || continue
-                  echo "  fixing $header..."
-                  sed -i "$header" \
-                      -e 's|define[[:blank:]]*\([UCG]\+\)LIBC_DYNAMIC_LINKER\([0-9]*\)[[:blank:]]"\([^\"]\+\)"$|define \1LIBC_DYNAMIC_LINKER\2 "${libc.out}\3"|g' \
-                      -e 's|define[[:blank:]]*MUSL_DYNAMIC_LINKER\([0-9]*\)[[:blank:]]"\([^\"]\+\)"$|define MUSL_DYNAMIC_LINKER\1 "${libc.out}\2"|g'
-                  done
-              ''
-              + optionalString (targetPlatform.libc == "musl") ''
-                sed -i gcc/config/linux.h -e '1i#undef LOCAL_INCLUDE_DIR'
-              ''
-            )
+            ''
+              echo "fixing the {GLIBC,UCLIBC,MUSL}_DYNAMIC_LINKER macros..."
+              for header in "gcc/config/"*-gnu.h "gcc/config/"*"/"*.h
+              do
+                grep -q _DYNAMIC_LINKER "$header" || continue
+                echo "  fixing $header..."
+                sed -i "$header" \
+                    -e 's|define[[:blank:]]*\([UCG]\+\)LIBC_DYNAMIC_LINKER\([0-9]*\)[[:blank:]]"\([^\"]\+\)"$|define \1LIBC_DYNAMIC_LINKER\2 "${libc.out}\3"|g' \
+                    -e 's|define[[:blank:]]*MUSL_DYNAMIC_LINKER\([0-9]*\)[[:blank:]]"\([^\"]\+\)"$|define MUSL_DYNAMIC_LINKER\1 "${libc.out}\2"|g'
+                done
+            ''
+            + optionalString (targetPlatform.libc == "musl") ''
+              sed -i gcc/config/linux.h -e '1i#undef LOCAL_INCLUDE_DIR'
+            ''
           )
         )
-        + optionalString targetPlatform.isAvr (''
-          makeFlagsArray+=(
-             '-s' # workaround for hitting hydra log limit
-             'LIMITS_H_TEST=false'
-          )
-        '');
+      )
+      + optionalString targetPlatform.isAvr (''
+        makeFlagsArray+=(
+           '-s' # workaround for hitting hydra log limit
+           'LIMITS_H_TEST=false'
+        )
+      '');
 
       inherit
         noSysDirs

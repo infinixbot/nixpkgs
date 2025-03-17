@@ -78,19 +78,18 @@ buildPythonPackage rec {
     rm -r textnets
   '';
 
-  disabledTests =
-    [
-      # Test fails: Throws a UserWarning asking the user to install `textnets[fca]`.
-      "test_context"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      # MemoryError: ("cairo returned CAIRO_STATUS_NO_MEMORY: b'out of memory'", 1)
-      "test_plot_backbone"
-      "test_plot_filtered"
-      "test_plot_layout"
-      "test_plot_projected"
-      "test_plot_scaled"
-    ];
+  disabledTests = [
+    # Test fails: Throws a UserWarning asking the user to install `textnets[fca]`.
+    "test_context"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    # MemoryError: ("cairo returned CAIRO_STATUS_NO_MEMORY: b'out of memory'", 1)
+    "test_plot_backbone"
+    "test_plot_filtered"
+    "test_plot_layout"
+    "test_plot_projected"
+    "test_plot_scaled"
+  ];
 
   meta = {
     description = "Text analysis with networks";

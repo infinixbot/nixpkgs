@@ -97,8 +97,7 @@ import ./make-test-python.nix (
   # 1 -- simulates the internal network
   # 2 -- simulates the external network
   {
-    name =
-      "nat"
+    name = "nat"
       + (lib.optionalString nftables "Nftables")
       + (if withFirewall then "WithFirewall" else "Standalone");
     meta = with pkgs.lib.maintainers; {

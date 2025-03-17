@@ -82,7 +82,8 @@ stdenv.mkDerivation {
   nativeBuildInputs = [
     autoPatchelfHook
     makeWrapper
-  ] ++ lib.optional cudaSupport addDriverRunpath;
+  ]
+  ++ lib.optional cudaSupport addDriverRunpath;
 
   buildInputs =
     [
@@ -136,29 +137,28 @@ stdenv.mkDerivation {
     ])
     ++ lib.optional cudaSupport cudaEnv;
 
-  wrapProgramFlags =
-    [
-      "--prefix LD_LIBRARY_PATH : ${
-        lib.makeLibraryPath [
-          dbus
-          gcc-unwrapped.lib
-          zlib
-        ]
-      }"
-      "--prefix PATH : ${lib.makeBinPath [ stdenv.cc ]}"
-      # Fix libQt errors - #96490
-      "--set USE_WOLFRAM_LD_LIBRARY_PATH 1"
-      # Fix xkeyboard config path for Qt
-      "--set QT_XKB_CONFIG_ROOT ${xkeyboard_config}/share/X11/xkb"
-      # if wayland isn't supported we fail over to xcb
-      # see https://github.com/qt/qtbase/blob/35d0f012ee9b95e8cf3563a41d710ff3c023d841/src/gui/kernel/qguiapplication.cpp#L1218
-      "--set QT_QPA_PLATFORM wayland;xcb"
-    ]
-    ++ lib.optionals cudaSupport [
-      "--set CUDA_PATH ${cudaEnv}"
-      "--set NVIDIA_DRIVER_LIBRARY_PATH ${addDriverRunpath.driverLink}/lib/libnvidia-tls.so"
-      "--set CUDA_LIBRARY_PATH ${addDriverRunpath.driverLink}/lib/libcuda.so"
-    ];
+  wrapProgramFlags = [
+    "--prefix LD_LIBRARY_PATH : ${
+      lib.makeLibraryPath [
+        dbus
+        gcc-unwrapped.lib
+        zlib
+      ]
+    }"
+    "--prefix PATH : ${lib.makeBinPath [ stdenv.cc ]}"
+    # Fix libQt errors - #96490
+    "--set USE_WOLFRAM_LD_LIBRARY_PATH 1"
+    # Fix xkeyboard config path for Qt
+    "--set QT_XKB_CONFIG_ROOT ${xkeyboard_config}/share/X11/xkb"
+    # if wayland isn't supported we fail over to xcb
+    # see https://github.com/qt/qtbase/blob/35d0f012ee9b95e8cf3563a41d710ff3c023d841/src/gui/kernel/qguiapplication.cpp#L1218
+    "--set QT_QPA_PLATFORM wayland;xcb"
+  ]
+  ++ lib.optionals cudaSupport [
+    "--set CUDA_PATH ${cudaEnv}"
+    "--set NVIDIA_DRIVER_LIBRARY_PATH ${addDriverRunpath.driverLink}/lib/libnvidia-tls.so"
+    "--set CUDA_LIBRARY_PATH ${addDriverRunpath.driverLink}/lib/libcuda.so"
+  ];
 
   unpackPhase = ''
     runHook preUnpack

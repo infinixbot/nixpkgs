@@ -150,34 +150,35 @@ in
 
     environment.etc."moonraker.cfg".source =
       let
-        forcedConfig =
-          {
-            server = {
-              host = cfg.address;
-              port = cfg.port;
-              klippy_uds_address = cfg.klipperSocket;
-            };
-            machine = {
-              validate_service = false;
-            };
-          }
-          // (lib.optionalAttrs (cfg.configDir != null) {
-            file_manager = {
-              config_path = cfg.configDir;
-            };
-          });
+        forcedConfig = {
+          server = {
+            host = cfg.address;
+            port = cfg.port;
+            klippy_uds_address = cfg.klipperSocket;
+          };
+          machine = {
+            validate_service = false;
+          };
+        }
+        // (lib.optionalAttrs (cfg.configDir != null) {
+          file_manager = {
+            config_path = cfg.configDir;
+          };
+        });
         fullConfig = lib.recursiveUpdate cfg.settings forcedConfig;
       in
       format.generate "moonraker.cfg" fullConfig;
 
     systemd.tmpfiles.rules = [
       "d '${cfg.stateDir}' - ${cfg.user} ${cfg.group} - -"
-    ] ++ lib.optional (cfg.configDir != null) "d '${cfg.configDir}' - ${cfg.user} ${cfg.group} - -";
+    ]
+    ++ lib.optional (cfg.configDir != null) "d '${cfg.configDir}' - ${cfg.user} ${cfg.group} - -";
 
     systemd.services.moonraker = {
       description = "Moonraker, an API web server for Klipper";
       wantedBy = [ "multi-user.target" ];
-      after = [ "network.target" ] ++ lib.optional config.services.klipper.enable "klipper.service";
+      after = [ "network.target" ]
+        ++ lib.optional config.services.klipper.enable "klipper.service";
 
       # Moonraker really wants its own config to be writable...
       script = ''

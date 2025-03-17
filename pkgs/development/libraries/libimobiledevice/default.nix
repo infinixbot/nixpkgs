@@ -48,19 +48,18 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  propagatedBuildInputs =
-    [
-      openssl
-      libgcrypt
-      libplist
-      libtasn1
-      libusbmuxd
-      libimobiledevice-glue
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      SystemConfiguration
-      CoreFoundation
-    ];
+  propagatedBuildInputs = [
+    openssl
+    libgcrypt
+    libplist
+    libtasn1
+    libusbmuxd
+    libimobiledevice-glue
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    SystemConfiguration
+    CoreFoundation
+  ];
 
   outputs = [
     "out"

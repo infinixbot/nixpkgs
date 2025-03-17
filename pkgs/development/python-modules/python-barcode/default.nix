@@ -33,7 +33,8 @@ buildPythonPackage rec {
       --replace "--no-cov-on-fail" ""
   '';
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ optional-dependencies.images;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ optional-dependencies.images;
 
   pythonImportsCheck = [ "barcode" ];
 

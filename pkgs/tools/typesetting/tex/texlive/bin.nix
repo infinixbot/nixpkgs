@@ -131,7 +131,8 @@ let
     "luahbtex"
     "upmendex"
     "xetex"
-  ] ++ lib.optional withLuaJIT "luajittex";
+  ]
+  ++ lib.optional withLuaJIT "luajittex";
   binPackages = lib.getAttrs (corePackages ++ coreBigPackages) tlpdb;
 
   common = {
@@ -150,26 +151,25 @@ let
       hash = "sha256-ZCoZAO0qGWPWW72BJOi5P7/A/qEm+SY3PQyLbx+e3pY=";
     };
 
-    prePatch =
-      ''
-        for i in texk/kpathsea/mktex*; do
-          sed -i '/^mydir=/d' "$i"
-        done
+    prePatch = ''
+      for i in texk/kpathsea/mktex*; do
+        sed -i '/^mydir=/d' "$i"
+      done
 
-        # ST_NLINK_TRICK causes kpathsea to treat folders with no real subfolders
-        # as leaves, even if they contain symlinks to other folders; must be
-        # disabled to work correctly with the nix store", see section 5.3.6
-        # “Subdirectory expansion” of the kpathsea manual
-        # http://mirrors.ctan.org/systems/doc/kpathsea/kpathsea.pdf for more
-        # details
-        sed -i '/^#define ST_NLINK_TRICK/d' texk/kpathsea/config.h
-      ''
-      +
-        # when cross compiling, we must use himktables from PATH
-        # (i.e. from buildPackages.texlive.bin.core.dev)
-        lib.optionalString (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
-          sed -i 's|\./himktables|himktables|' texk/web2c/Makefile.in
-        '';
+      # ST_NLINK_TRICK causes kpathsea to treat folders with no real subfolders
+      # as leaves, even if they contain symlinks to other folders; must be
+      # disabled to work correctly with the nix store", see section 5.3.6
+      # “Subdirectory expansion” of the kpathsea manual
+      # http://mirrors.ctan.org/systems/doc/kpathsea/kpathsea.pdf for more
+      # details
+      sed -i '/^#define ST_NLINK_TRICK/d' texk/kpathsea/config.h
+    ''
+    +
+    # when cross compiling, we must use himktables from PATH
+    # (i.e. from buildPackages.texlive.bin.core.dev)
+    lib.optionalString (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
+      sed -i 's|\./himktables|himktables|' texk/web2c/Makefile.in
+    '';
 
     configureFlags =
       [
@@ -256,24 +256,24 @@ rec {
       "dev"
       "man"
       "info"
-    ] ++ (builtins.map (builtins.replaceStrings [ "-" ] [ "_" ]) corePackages);
+    ]
+    ++ (builtins.map (builtins.replaceStrings [ "-" ] [ "_" ]) corePackages);
 
-    nativeBuildInputs =
+    nativeBuildInputs = [
+      pkg-config
+    ]
+    ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) (
+      with texlive.bin.core;
       [
-        pkg-config
+        # configure: error: tangle was not found but is required when cross-compiling.
+        # dev (himktables) is used when building hitex to generate the additional source file hitables.c
+        web # tangle
+        cweb # ctangle
+        omegaware # otangle
+        tie # tie see "Building TeX Live" 6.4.2 Cross problems
+        dev # himktables
       ]
-      ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) (
-        with texlive.bin.core;
-        [
-          # configure: error: tangle was not found but is required when cross-compiling.
-          # dev (himktables) is used when building hitex to generate the additional source file hitables.c
-          web # tangle
-          cweb # ctangle
-          omegaware # otangle
-          tie # tie see "Building TeX Live" 6.4.2 Cross problems
-          dev # himktables
-        ]
-      );
+    );
 
     buildInputs = [
       # teckit
@@ -491,28 +491,27 @@ rec {
 
     doCheck = false; # fails
 
-    outputs =
-      [
-        "out"
-        "dev"
-        "man"
-        "info"
-      ]
-      ++ (builtins.map (builtins.replaceStrings [ "-" ] [ "_" ]) coreBigPackages)
-      # some outputs of metapost, omegaware are for ptex/uptex
-      ++ [
-        "ptex"
-        "uptex"
-      ]
-      # unavoidable duplicates from core
-      ++ [
-        "ctie"
-        "cweb"
-        "omegaware"
-        "texlive_scripts_extra"
-        "tie"
-        "web"
-      ];
+    outputs = [
+      "out"
+      "dev"
+      "man"
+      "info"
+    ]
+    ++ (builtins.map (builtins.replaceStrings [ "-" ] [ "_" ]) coreBigPackages)
+    # some outputs of metapost, omegaware are for ptex/uptex
+    ++ [
+      "ptex"
+      "uptex"
+    ]
+    # unavoidable duplicates from core
+    ++ [
+      "ctie"
+      "cweb"
+      "omegaware"
+      "texlive_scripts_extra"
+      "tie"
+      "web"
+    ];
     postInstall =
       common.moveBins
       + ''
@@ -734,22 +733,21 @@ rec {
     inherit (common) src;
 
     nativeBuildInputs = [ pkg-config ];
-    buildInputs =
-      [
-        core # kpathsea
-        freetype
-        ghostscript
-      ]
-      ++ (with xorg; [
-        libX11
-        libXaw
-        libXi
-        libXpm
-        libXmu
-        libXaw
-        libXext
-        libXfixes
-      ]);
+    buildInputs = [
+      core # kpathsea
+      freetype
+      ghostscript
+    ]
+    ++ (with xorg; [
+      libX11
+      libXaw
+      libXi
+      libXpm
+      libXmu
+      libXaw
+      libXext
+      libXfixes
+    ]);
 
     preConfigure = "cd texk/xdvik";
 

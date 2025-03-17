@@ -56,33 +56,31 @@ rustPlatform.buildRustPackage rec {
 
   buildFeatures = [ "external-harfbuzz" ];
 
-  buildInputs =
+  buildInputs = [
+    icu
+    fontconfig
+    harfbuzzFull
+    openssl
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin (
+    with darwin.apple_sdk.frameworks;
     [
-      icu
-      fontconfig
-      harfbuzzFull
-      openssl
+      ApplicationServices
+      Cocoa
+      Foundation
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        ApplicationServices
-        Cocoa
-        Foundation
-      ]
-    );
+  );
 
-  postInstall =
-    ''
-      # Makes it possible to automatically use the V2 CLI API
-      ln -s $out/bin/tectonic $out/bin/nextonic
-    ''
-    + lib.optionalString stdenv.hostPlatform.isLinux ''
-      substituteInPlace dist/appimage/tectonic.desktop \
-        --replace Exec=tectonic Exec=$out/bin/tectonic
-      install -D dist/appimage/tectonic.desktop -t $out/share/applications/
-      install -D dist/appimage/tectonic.svg -t $out/share/icons/hicolor/scalable/apps/
-    '';
+  postInstall = ''
+    # Makes it possible to automatically use the V2 CLI API
+    ln -s $out/bin/tectonic $out/bin/nextonic
+  ''
+  + lib.optionalString stdenv.hostPlatform.isLinux ''
+    substituteInPlace dist/appimage/tectonic.desktop \
+      --replace Exec=tectonic Exec=$out/bin/tectonic
+    install -D dist/appimage/tectonic.desktop -t $out/share/applications/
+    install -D dist/appimage/tectonic.svg -t $out/share/icons/hicolor/scalable/apps/
+  '';
 
   doCheck = true;
 

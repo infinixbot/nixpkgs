@@ -45,12 +45,12 @@ in
 
       environment = {
         CONFIG_VOLUME = "/var/lib/whoogle-search";
-      } // cfg.extraEnv;
+      }
+      // cfg.extraEnv;
 
       serviceConfig = {
         Type = "simple";
-        ExecStart =
-          "${lib.getExe pkgs.whoogle-search}"
+        ExecStart = "${lib.getExe pkgs.whoogle-search}"
           + " --host '${cfg.listenAddress}'"
           + " --port '${builtins.toString cfg.port}'";
         ExecReload = "${pkgs.coreutils}/bin/kill -HUP $MAINPID";

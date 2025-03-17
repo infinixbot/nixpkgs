@@ -61,30 +61,29 @@ stdenv.mkDerivation rec {
     ++ lib.optionals qtClient [ qt5.wrapQtAppsHook ]
     ++ lib.optionals gtkClient [ wrapGAppsHook3 ];
 
-  buildInputs =
-    [
-      lua5_3
-      zlib
-      bzip2
-      curl
-      xz
-      gettext
-      libiconv
-      icu
-    ]
-    ++ [
-      SDL2
-      SDL2_mixer
-      SDL2_image
-      SDL2_ttf
-      SDL2_gfx
-      freetype
-      fluidsynth
-    ]
-    ++ lib.optionals gtkClient [ gtk3 ]
-    ++ lib.optionals qtClient [ qt5.qtbase ]
-    ++ lib.optional server readline
-    ++ lib.optional enableSqlite sqlite;
+  buildInputs = [
+    lua5_3
+    zlib
+    bzip2
+    curl
+    xz
+    gettext
+    libiconv
+    icu
+  ]
+  ++ [
+    SDL2
+    SDL2_mixer
+    SDL2_image
+    SDL2_ttf
+    SDL2_gfx
+    freetype
+    fluidsynth
+  ]
+  ++ lib.optionals gtkClient [ gtk3 ]
+  ++ lib.optionals qtClient [ qt5.qtbase ]
+  ++ lib.optional server readline
+  ++ lib.optional enableSqlite sqlite;
 
   dontWrapQtApps = true;
   dontWrapGApps = true;
@@ -94,8 +93,7 @@ stdenv.mkDerivation rec {
   preConfigure = ''
     export CPPFLAGS="$(echo $SDL2_PATH | sed 's#/nix/store/#-I/nix/store/#g')"
   '';
-  configureFlags =
-    [ "--enable-shared" ]
+  configureFlags = [ "--enable-shared" ]
     ++ lib.optionals sdl2Client [
       "--enable-client=sdl2"
       "--enable-sdl-mixer=sdl2"

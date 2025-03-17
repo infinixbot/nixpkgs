@@ -29,24 +29,23 @@ stdenv.mkDerivation rec {
     autoreconfHook
     pkg-config
   ];
-  buildInputs =
+  buildInputs = [
+    boost
+    fcgi
+    openssl
+    opensaml-cpp
+    log4shib
+    xercesc
+    xml-security-c
+    xml-tooling-c
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin (
+    with darwin.apple_sdk.frameworks;
     [
-      boost
-      fcgi
-      openssl
-      opensaml-cpp
-      log4shib
-      xercesc
-      xml-security-c
-      xml-tooling-c
+      CoreServices
+      SystemConfiguration
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        CoreServices
-        SystemConfiguration
-      ]
-    );
+  );
 
   configureFlags = [
     "--without-apxs"

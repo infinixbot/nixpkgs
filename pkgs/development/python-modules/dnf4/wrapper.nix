@@ -27,7 +27,8 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [ wrapPython ];
 
-  propagatedBuildInputs = [ dnf4-unwrapped ] ++ plugins;
+  propagatedBuildInputs = [ dnf4-unwrapped ]
+    ++ plugins;
 
   makeWrapperArgs = lib.optional (
     plugins != [ ]

@@ -70,29 +70,27 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-QKydqpkqG7znBEdtVEayC2SyNGU8tQX6AfxdeJN8tDg=";
   };
 
-  postPatch =
-    ''
-      mkdir src/private
-      substituteInPlace scripts/build/macOS/fix_bundle.py \
-        --replace-fail "path.startswith('/usr/lib/')" "path.startswith('${builtins.storeDir}')"
-    ''
-    + lib.optionalString stdenv.hostPlatform.isLinux ''
-      substituteInPlace libraries/lib-files/FileNames.cpp \
-        --replace-fail /usr/include/linux/magic.h ${linuxHeaders}/include/linux/magic.h
-    '';
+  postPatch = ''
+    mkdir src/private
+    substituteInPlace scripts/build/macOS/fix_bundle.py \
+      --replace-fail "path.startswith('/usr/lib/')" "path.startswith('${builtins.storeDir}')"
+  ''
+  + lib.optionalString stdenv.hostPlatform.isLinux ''
+    substituteInPlace libraries/lib-files/FileNames.cpp \
+      --replace-fail /usr/include/linux/magic.h ${linuxHeaders}/include/linux/magic.h
+  '';
 
-  nativeBuildInputs =
-    [
-      cmake
-      gettext
-      pkg-config
-      python3
-      makeWrapper
-      wrapGAppsHook3
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      linuxHeaders
-    ];
+  nativeBuildInputs = [
+    cmake
+    gettext
+    pkg-config
+    python3
+    makeWrapper
+    wrapGAppsHook3
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    linuxHeaders
+  ];
 
   buildInputs =
     [

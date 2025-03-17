@@ -28,7 +28,8 @@ stdenv.mkDerivation rec {
   outputs = [
     "out"
     "dev"
-  ] ++ lib.optional withIntrospection "devdoc";
+  ]
+  ++ lib.optional withIntrospection "devdoc";
 
   src = fetchurl {
     url = "mirror://gnome/sources/${pname}/${lib.versions.majorMinor version}/${pname}-${version}.tar.xz";
@@ -53,14 +54,13 @@ stdenv.mkDerivation rec {
       mesonEmulatorHook
     ];
 
-  buildInputs =
-    [
-      glib
-      libevdev
-    ]
-    ++ lib.optionals withIntrospection [
-      libgudev
-    ];
+  buildInputs = [
+    glib
+    libevdev
+  ]
+  ++ lib.optionals withIntrospection [
+    libgudev
+  ];
 
   mesonFlags = [
     (lib.mesonBool "doc" withIntrospection)

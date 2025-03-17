@@ -52,8 +52,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ which ];
 
-  buildInputs =
-    [ pcre2.dev ]
+  buildInputs = [ pcre2.dev ]
     ++ optionals withPython3 [
       python3
       ncurses
@@ -65,16 +64,13 @@ stdenv.mkDerivation rec {
     ++ optional withRuby_3_2 ruby_3_2
     ++ optional withSSL openssl;
 
-  configureFlags =
-    [
-      "--control=unix:/run/unit/control.unit.sock"
-      "--pid=/run/unit/unit.pid"
-      "--user=unit"
-      "--group=unit"
-    ]
-    ++ optional withSSL "--openssl"
-    ++ optional (!withIPv6) "--no-ipv6"
-    ++ optional withDebug "--debug";
+  configureFlags = [
+    "--control=unix:/run/unit/control.unit.sock"
+    "--pid=/run/unit/unit.pid"
+    "--user=unit"
+    "--group=unit"
+  ]
+  ++ optional withSSL "--openssl" ++ optional (!withIPv6) "--no-ipv6" ++ optional withDebug "--debug";
 
   # Optionally add the PHP derivations used so they can be addressed in the configs
   usedPhp81 = optionals withPHP81 php81-unit;

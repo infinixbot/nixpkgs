@@ -107,7 +107,8 @@ let
           path = escapeURL cfg.database.name;
           query = {
             host = cfg.database.socketPath;
-          } // cfg.database.extraConnectionOptions;
+          }
+          // cfg.database.extraConnectionOptions;
         }
       else
         mkDatabaseUri {
@@ -172,7 +173,8 @@ let
     else
       stdenv.mkDerivation {
         name = "${cfg.package.name}-plugins";
-        nativeBuildInputs = [ autoPatchelfHook ] ++ mattermostPluginDerivations;
+        nativeBuildInputs = [ autoPatchelfHook ]
+          ++ mattermostPluginDerivations;
         buildInputs = [ cfg.package ];
         installPhase = ''
           mkdir -p $out
@@ -774,43 +776,42 @@ in
         };
       };
 
-      systemd.tmpfiles.rules =
-        [
-          "d ${cfg.dataDir} 0750 ${cfg.user} ${cfg.group} - -"
-          "d ${cfg.logDir} 0750 ${cfg.user} ${cfg.group} - -"
-          "d ${cfg.configDir} 0750 ${cfg.user} ${cfg.group} - -"
-          "d ${mutableDataDir} 0750 ${cfg.user} ${cfg.group} - -"
+      systemd.tmpfiles.rules = [
+        "d ${cfg.dataDir} 0750 ${cfg.user} ${cfg.group} - -"
+        "d ${cfg.logDir} 0750 ${cfg.user} ${cfg.group} - -"
+        "d ${cfg.configDir} 0750 ${cfg.user} ${cfg.group} - -"
+        "d ${mutableDataDir} 0750 ${cfg.user} ${cfg.group} - -"
 
-          # Make sure tempDir exists and is not a symlink.
-          "R- ${tempDir} - - - - -"
-          "d= ${tempDir} 0750 ${cfg.user} ${cfg.group} - -"
+        # Make sure tempDir exists and is not a symlink.
+        "R- ${tempDir} - - - - -"
+        "d= ${tempDir} 0750 ${cfg.user} ${cfg.group} - -"
 
-          # Ensure that pluginDir is a directory, as it could be a symlink on prior versions.
-          "r- ${pluginDir} - - - - -"
-          "d= ${pluginDir} 0750 ${cfg.user} ${cfg.group} - -"
+        # Ensure that pluginDir is a directory, as it could be a symlink on prior versions.
+        "r- ${pluginDir} - - - - -"
+        "d= ${pluginDir} 0750 ${cfg.user} ${cfg.group} - -"
 
-          # Ensure that the plugin directories exist.
-          "d= ${mattermostConf.PluginSettings.Directory} 0750 ${cfg.user} ${cfg.group} - -"
-          "d= ${mattermostConf.PluginSettings.ClientDirectory} 0750 ${cfg.user} ${cfg.group} - -"
+        # Ensure that the plugin directories exist.
+        "d= ${mattermostConf.PluginSettings.Directory} 0750 ${cfg.user} ${cfg.group} - -"
+        "d= ${mattermostConf.PluginSettings.ClientDirectory} 0750 ${cfg.user} ${cfg.group} - -"
 
-          # Link in some of the immutable data directories.
-          "L+ ${cfg.dataDir}/bin - - - - ${cfg.package}/bin"
-          "L+ ${cfg.dataDir}/fonts - - - - ${cfg.package}/fonts"
-          "L+ ${cfg.dataDir}/i18n - - - - ${cfg.package}/i18n"
-          "L+ ${cfg.dataDir}/templates - - - - ${cfg.package}/templates"
-          "L+ ${cfg.dataDir}/client - - - - ${cfg.package}/client"
-        ]
-        ++ (
-          if mattermostPlugins == null then
-            # Create the plugin tarball directory if it's a symlink.
-            [
-              "r- ${cfg.dataDir}/plugins - - - - -"
-              "d= ${cfg.dataDir}/plugins 0750 ${cfg.user} ${cfg.group} - -"
-            ]
-          else
-            # Symlink the plugin tarball directory, removing anything existing.
-            [ "L+ ${cfg.dataDir}/plugins - - - - ${mattermostPlugins}" ]
-        );
+        # Link in some of the immutable data directories.
+        "L+ ${cfg.dataDir}/bin - - - - ${cfg.package}/bin"
+        "L+ ${cfg.dataDir}/fonts - - - - ${cfg.package}/fonts"
+        "L+ ${cfg.dataDir}/i18n - - - - ${cfg.package}/i18n"
+        "L+ ${cfg.dataDir}/templates - - - - ${cfg.package}/templates"
+        "L+ ${cfg.dataDir}/client - - - - ${cfg.package}/client"
+      ]
+      ++ (
+        if mattermostPlugins == null then
+          # Create the plugin tarball directory if it's a symlink.
+          [
+            "r- ${cfg.dataDir}/plugins - - - - -"
+            "d= ${cfg.dataDir}/plugins 0750 ${cfg.user} ${cfg.group} - -"
+          ]
+        else
+          # Symlink the plugin tarball directory, removing anything existing.
+          [ "L+ ${cfg.dataDir}/plugins - - - - ${mattermostPlugins}" ]
+      );
 
       systemd.services.mattermost = rec {
         description = "Mattermost chat service";
@@ -830,49 +831,48 @@ in
           cfg.environment
         ];
 
-        preStart =
-          ''
-            dataDir=${escapeShellArg cfg.dataDir}
-            configDir=${escapeShellArg cfg.configDir}
-            logDir=${escapeShellArg cfg.logDir}
-            package=${escapeShellArg cfg.package}
-            nixConfig=${escapeShellArg mattermostConfJSON}
-          ''
-          + optionalString (versionAtLeast config.system.stateVersion "25.05") ''
-            # Migrate configs in the pre-25.05 directory structure.
-            oldConfig="$dataDir/config/config.json"
-            newConfig="$configDir/config.json"
-            if [ "$oldConfig" != "$newConfig" ] && [ -f "$oldConfig" ] && [ ! -f "$newConfig" ]; then
-              # Migrate the legacy config location to the new config location
-              echo "Moving legacy config at $oldConfig to $newConfig" >&2
-              mkdir -p "$configDir"
-              mv "$oldConfig" "$newConfig"
-              touch "$configDir/.initial-created"
-            fi
+        preStart = ''
+          dataDir=${escapeShellArg cfg.dataDir}
+          configDir=${escapeShellArg cfg.configDir}
+          logDir=${escapeShellArg cfg.logDir}
+          package=${escapeShellArg cfg.package}
+          nixConfig=${escapeShellArg mattermostConfJSON}
+        ''
+        + optionalString (versionAtLeast config.system.stateVersion "25.05") ''
+          # Migrate configs in the pre-25.05 directory structure.
+          oldConfig="$dataDir/config/config.json"
+          newConfig="$configDir/config.json"
+          if [ "$oldConfig" != "$newConfig" ] && [ -f "$oldConfig" ] && [ ! -f "$newConfig" ]; then
+            # Migrate the legacy config location to the new config location
+            echo "Moving legacy config at $oldConfig to $newConfig" >&2
+            mkdir -p "$configDir"
+            mv "$oldConfig" "$newConfig"
+            touch "$configDir/.initial-created"
+          fi
 
-            # Logs too.
-            oldLogs="$dataDir/logs"
-            newLogs="$logDir"
-            if [ "$oldLogs" != "$newLogs" ] && [ -d "$oldLogs" ]; then
-              # Migrate the legacy log location to the new log location.
-              # Allow this to fail if there aren't any logs to move.
-              echo "Moving legacy logs at $oldLogs to $newLogs" >&2
-              mkdir -p "$newLogs"
-              mv "$oldLogs"/* "$newLogs" || true
-            fi
-          ''
-          + optionalString (!cfg.mutableConfig) ''
+          # Logs too.
+          oldLogs="$dataDir/logs"
+          newLogs="$logDir"
+          if [ "$oldLogs" != "$newLogs" ] && [ -d "$oldLogs" ]; then
+            # Migrate the legacy log location to the new log location.
+            # Allow this to fail if there aren't any logs to move.
+            echo "Moving legacy logs at $oldLogs to $newLogs" >&2
+            mkdir -p "$newLogs"
+            mv "$oldLogs"/* "$newLogs" || true
+          fi
+        ''
+        + optionalString (!cfg.mutableConfig) ''
+          ${getExe pkgs.jq} -s '.[0] * .[1]' "$package/config/config.json" "$nixConfig" > "$configDir/config.json"
+        ''
+        + optionalString cfg.mutableConfig ''
+          if [ ! -e "$configDir/.initial-created" ]; then
             ${getExe pkgs.jq} -s '.[0] * .[1]' "$package/config/config.json" "$nixConfig" > "$configDir/config.json"
-          ''
-          + optionalString cfg.mutableConfig ''
-            if [ ! -e "$configDir/.initial-created" ]; then
-              ${getExe pkgs.jq} -s '.[0] * .[1]' "$package/config/config.json" "$nixConfig" > "$configDir/config.json"
-              touch "$configDir/.initial-created"
-            fi
-          ''
-          + optionalString (cfg.mutableConfig && cfg.preferNixConfig) ''
-            echo "$(${getExe pkgs.jq} -s '.[0] * .[1]' "$configDir/config.json" "$nixConfig")" > "$configDir/config.json"
-          '';
+            touch "$configDir/.initial-created"
+          fi
+        ''
+        + optionalString (cfg.mutableConfig && cfg.preferNixConfig) ''
+          echo "$(${getExe pkgs.jq} -s '.[0] * .[1]' "$configDir/config.json" "$nixConfig")" > "$configDir/config.json"
+        '';
 
         serviceConfig = mkMerge [
           {

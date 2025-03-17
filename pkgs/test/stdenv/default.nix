@@ -98,7 +98,8 @@ let
           string = "testing-string";
         };
 
-        passAsFile = [ "buildCommand" ] ++ lib.optionals (extraAttrs ? extraTest) [ "extraTest" ];
+        passAsFile = [ "buildCommand" ]
+          ++ lib.optionals (extraAttrs ? extraTest) [ "extraTest" ];
         buildCommand = ''
           declare -p string
           appendToVar string hello
@@ -147,7 +148,8 @@ let
           "d"
         ];
 
-        passAsFile = [ "buildCommand" ] ++ lib.optionals (extraAttrs ? extraTest) [ "extraTest" ];
+        passAsFile = [ "buildCommand" ]
+          ++ lib.optionals (extraAttrs ? extraTest) [ "extraTest" ];
         buildCommand = ''
           declare -A associativeArray=(["X"]="Y")
           [[ $(concatTo nowhere associativeArray 2>&1) =~ "trying to use" ]] || (echo "concatTo did not throw concatenating associativeArray" && false)

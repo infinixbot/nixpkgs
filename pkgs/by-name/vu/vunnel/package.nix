@@ -53,8 +53,7 @@ python3.pkgs.buildPythonApplication rec {
     zstandard
   ];
 
-  nativeCheckInputs =
-    [ git ]
+  nativeCheckInputs = [ git ]
     ++ (with python3.pkgs; [
       jsonschema
       pytest-mock

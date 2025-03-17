@@ -34,7 +34,8 @@ rustPlatform.buildRustPackage {
 
   OPENSSL_NO_VENDOR = true;
 
-  nativeBuildInputs = [ installShellFiles ] ++ lib.optional stdenv.hostPlatform.isLinux pkg-config;
+  nativeBuildInputs = [ installShellFiles ]
+    ++ lib.optional stdenv.hostPlatform.isLinux pkg-config;
 
   buildInputs =
     lib.optional stdenv.hostPlatform.isLinux openssl

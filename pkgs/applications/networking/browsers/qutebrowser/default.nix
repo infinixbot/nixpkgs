@@ -52,14 +52,13 @@ python3.pkgs.buildPythonApplication {
   # Needs tox
   doCheck = false;
 
-  buildInputs =
-    [
-      qtbase
-      glib-networking
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      qtwayland
-    ];
+  buildInputs = [
+    qtbase
+    glib-networking
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    qtwayland
+  ];
 
   build-system = with python3.pkgs; [
     setuptools
@@ -99,15 +98,14 @@ python3.pkgs.buildPythonApplication {
 
   dontWrapQtApps = true;
 
-  postPatch =
-    ''
-      substituteInPlace qutebrowser/misc/quitter.py --subst-var-by qutebrowser "$out/bin/qutebrowser"
+  postPatch = ''
+    substituteInPlace qutebrowser/misc/quitter.py --subst-var-by qutebrowser "$out/bin/qutebrowser"
 
-      sed -i "s,/usr,$out,g" qutebrowser/utils/standarddir.py
-    ''
-    + lib.optionalString withPdfReader ''
-      sed -i "s,/usr/share/pdf.js,${pdfjs},g" qutebrowser/browser/pdfjs.py
-    '';
+    sed -i "s,/usr,$out,g" qutebrowser/utils/standarddir.py
+  ''
+  + lib.optionalString withPdfReader ''
+    sed -i "s,/usr/share/pdf.js,${pdfjs},g" qutebrowser/browser/pdfjs.py
+  '';
 
   installPhase = ''
     runHook preInstall

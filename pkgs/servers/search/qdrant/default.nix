@@ -31,15 +31,14 @@ rustPlatform.buildRustPackage rec {
     };
   };
 
-  buildInputs =
-    [
-      openssl
-      rust-jemalloc-sys
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      Security
-      SystemConfiguration
-    ];
+  buildInputs = [
+    openssl
+    rust-jemalloc-sys
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    Security
+    SystemConfiguration
+  ];
 
   nativeBuildInputs = [
     protobuf

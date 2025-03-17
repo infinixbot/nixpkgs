@@ -65,7 +65,8 @@ stdenv.mkDerivation (finalAttrs: {
     curlpp
   ];
 
-  cmakeFlags = [ "-Wno-dev" ] ++ lib.optionals buildDayZLauncher [ "-DBUILD_DAYZ_LAUNCHER=ON" ];
+  cmakeFlags = [ "-Wno-dev" ]
+    ++ lib.optionals buildDayZLauncher [ "-DBUILD_DAYZ_LAUNCHER=ON" ];
 
   meta = {
     homepage = "https://github.com/muttleyxd/arma3-unix-launcher/";

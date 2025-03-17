@@ -38,7 +38,8 @@ buildPythonPackage rec {
     "doc"
   ];
 
-  build-system = [ poetry-core ] ++ optional-dependencies.docs;
+  build-system = [ poetry-core ]
+    ++ optional-dependencies.docs;
 
   optional-dependencies = {
     docs = [

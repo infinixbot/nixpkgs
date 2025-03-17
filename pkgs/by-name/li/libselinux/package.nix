@@ -27,7 +27,8 @@ stdenv.mkDerivation (
       "out"
       "dev"
       "man"
-    ] ++ lib.optional enablePython "py";
+    ]
+    ++ lib.optional enablePython "py";
 
     src = fetchurl {
       url = "${se_url}/${version}/libselinux-${version}.tar.gz";
@@ -67,22 +68,22 @@ stdenv.mkDerivation (
       })
     ];
 
-    nativeBuildInputs =
-      [
-        pkg-config
-        python3
-      ]
-      ++ lib.optionals enablePython [
-        python3Packages.pip
-        python3Packages.setuptools
-        python3Packages.wheel
-        swig
-      ];
+    nativeBuildInputs = [
+      pkg-config
+      python3
+    ]
+    ++ lib.optionals enablePython [
+      python3Packages.pip
+      python3Packages.setuptools
+      python3Packages.wheel
+      swig
+    ];
     buildInputs = [
       libsepol
       pcre2
       fts
-    ] ++ lib.optionals enablePython [ python3 ];
+    ]
+    ++ lib.optionals enablePython [ python3 ];
 
     # drop fortify here since package uses it by default, leading to compile error:
     # command-line>:0:0: error: "_FORTIFY_SOURCE" redefined [-Werror]
@@ -90,37 +91,37 @@ stdenv.mkDerivation (
 
     env.NIX_CFLAGS_COMPILE = "-Wno-error -D_FILE_OFFSET_BITS=64";
 
-    makeFlags =
-      [
-        "PREFIX=$(out)"
-        "INCDIR=$(dev)/include/selinux"
-        "INCLUDEDIR=$(dev)/include"
-        "MAN3DIR=$(man)/share/man/man3"
-        "MAN5DIR=$(man)/share/man/man5"
-        "MAN8DIR=$(man)/share/man/man8"
-        "SBINDIR=$(bin)/sbin"
-        "SHLIBDIR=$(out)/lib"
+    makeFlags = [
+      "PREFIX=$(out)"
+      "INCDIR=$(dev)/include/selinux"
+      "INCLUDEDIR=$(dev)/include"
+      "MAN3DIR=$(man)/share/man/man3"
+      "MAN5DIR=$(man)/share/man/man5"
+      "MAN8DIR=$(man)/share/man/man8"
+      "SBINDIR=$(bin)/sbin"
+      "SHLIBDIR=$(out)/lib"
 
-        "LIBSEPOLA=${lib.getLib libsepol}/lib/libsepol.a"
-        "ARCH=${stdenv.hostPlatform.linuxArch}"
-      ]
-      ++ lib.optionals (fts != null) [
-        "FTS_LDLIBS=-lfts"
-      ]
-      ++ lib.optionals stdenv.hostPlatform.isStatic [
-        "DISABLE_SHARED=y"
-      ]
-      ++ lib.optionals enablePython [
-        "PYTHON=${python3.pythonOnBuildForHost.interpreter}"
-        "PYTHONLIBDIR=$(py)/${python3.sitePackages}"
-        "PYTHON_SETUP_ARGS=--no-build-isolation"
-      ];
+      "LIBSEPOLA=${lib.getLib libsepol}/lib/libsepol.a"
+      "ARCH=${stdenv.hostPlatform.linuxArch}"
+    ]
+    ++ lib.optionals (fts != null) [
+      "FTS_LDLIBS=-lfts"
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isStatic [
+      "DISABLE_SHARED=y"
+    ]
+    ++ lib.optionals enablePython [
+      "PYTHON=${python3.pythonOnBuildForHost.interpreter}"
+      "PYTHONLIBDIR=$(py)/${python3.sitePackages}"
+      "PYTHON_SETUP_ARGS=--no-build-isolation"
+    ];
 
     preInstall = lib.optionalString enablePython ''
       mkdir -p $py/${python3.sitePackages}/selinux
     '';
 
-    installTargets = [ "install" ] ++ lib.optional enablePython "install-pywrap";
+    installTargets = [ "install" ]
+      ++ lib.optional enablePython "install-pywrap";
 
     meta = removeAttrs libsepol.meta [ "outputsToInstall" ] // {
       description = "SELinux core library";

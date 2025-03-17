@@ -53,11 +53,10 @@ let
 
       inherit patches;
 
-      postPatch =
-        ''
-          cd ${name}
-        ''
-        + extraPostPatch;
+      postPatch = ''
+        cd ${name}
+      ''
+      + extraPostPatch;
 
       nativeBuildInputs = [
         autoconf
@@ -69,7 +68,8 @@ let
         gettext
       ];
 
-      buildInputs = [ gawk ] ++ extraBuildInputs;
+      buildInputs = [ gawk ]
+        ++ extraBuildInputs;
       propagatedBuildInputs = lib.optional is_extension gawkextlib;
 
       setupHook = if is_extension then ./setup-hook.sh else null;
@@ -95,7 +95,8 @@ let
         license = lib.licenses.gpl3Plus;
         platforms = lib.platforms.unix;
         maintainers = with lib.maintainers; [ tomberek ];
-      } // lib.optionalAttrs (broken != null) { inherit broken; };
+      }
+      // lib.optionalAttrs (broken != null) { inherit broken; };
     }
   );
   gawkextlib = buildExtension {

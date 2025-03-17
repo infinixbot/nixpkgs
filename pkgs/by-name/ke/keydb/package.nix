@@ -46,16 +46,15 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optionals tlsSupport [ openssl ]
     ++ lib.optionals withSystemd [ systemd ];
 
-  makeFlags =
-    [
-      "PREFIX=${placeholder "out"}"
-      "AR=${stdenv.cc.targetPrefix}ar"
-      "RANLIB=${stdenv.cc.targetPrefix}ranlib"
-      "USEASM=${if stdenv.hostPlatform.isx86_64 then "true" else "false"}"
-    ]
-    ++ lib.optionals (!tlsSupport) [ "BUILD_TLS=no" ]
-    ++ lib.optionals withSystemd [ "USE_SYSTEMD=yes" ]
-    ++ lib.optionals (!stdenv.hostPlatform.isx86_64) [ "MALLOC=libc" ];
+  makeFlags = [
+    "PREFIX=${placeholder "out"}"
+    "AR=${stdenv.cc.targetPrefix}ar"
+    "RANLIB=${stdenv.cc.targetPrefix}ranlib"
+    "USEASM=${if stdenv.hostPlatform.isx86_64 then "true" else "false"}"
+  ]
+  ++ lib.optionals (!tlsSupport) [ "BUILD_TLS=no" ]
+  ++ lib.optionals withSystemd [ "USE_SYSTEMD=yes" ]
+  ++ lib.optionals (!stdenv.hostPlatform.isx86_64) [ "MALLOC=libc" ];
 
   enableParallelBuilding = true;
 

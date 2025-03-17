@@ -31,7 +31,8 @@ let
       path_ =
         (p: if lib.head p == "" then lib.tail p else p) # ~ drop final slash if any
           (lib.reverseList (lib.splitString "/" url));
-      path = [ (lib.removeSuffix "/" (lib.head path_)) ] ++ (lib.tail path_);
+      path = [ (lib.removeSuffix "/" (lib.head path_)) ]
+        ++ (lib.tail path_);
     in
     # ../repo/trunk -> repo
     if fst path == "trunk" then
@@ -59,7 +60,8 @@ else
       cacert
       subversion
       glibcLocales
-    ] ++ lib.optional sshSupport openssh;
+    ]
+    ++ lib.optional sshSupport openssh;
 
     SVN_SSH = if sshSupport then "${buildPackages.openssh}/bin/ssh" else null;
 

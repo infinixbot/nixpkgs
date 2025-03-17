@@ -38,35 +38,33 @@ stdenv.mkDerivation (finalAttrs: {
     ./patches/001-dont-rebuild-on-install.patch
   ];
 
-  nativeBuildInputs =
-    [
-      autoPatchelfHook
-      pkg-config
-      which
-      wrapGAppsHook3
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      libicns
-    ];
+  nativeBuildInputs = [
+    autoPatchelfHook
+    pkg-config
+    which
+    wrapGAppsHook3
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    libicns
+  ];
 
-  buildInputs =
-    [
-      SDL2
-      libao
-      librashader
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      alsa-lib
-      gtk3
-      gtksourceview3
-      libGL
-      libGLU
-      libX11
-      libXv
-      libpulseaudio
-      openal
-      udev
-    ];
+  buildInputs = [
+    SDL2
+    libao
+    librashader
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    alsa-lib
+    gtk3
+    gtksourceview3
+    libGL
+    libGLU
+    libX11
+    libXv
+    libpulseaudio
+    openal
+    udev
+  ];
 
   appendRunpaths = [
     (lib.makeLibraryPath [

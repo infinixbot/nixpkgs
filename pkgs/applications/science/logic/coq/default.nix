@@ -138,7 +138,8 @@ let
   ocamlNativeBuildInputs = [
     ocamlPackages.ocaml
     ocamlPackages.findlib
-  ] ++ lib.optional (coqAtLeast "8.14") ocamlPackages.dune_3;
+  ]
+  ++ lib.optional (coqAtLeast "8.14") ocamlPackages.dune_3;
   ocamlPropagatedBuildInputs =
     [ ]
     ++ lib.optional (!coqAtLeast "8.10") ocamlPackages.camlp5
@@ -208,14 +209,12 @@ let
       '';
     };
 
-    nativeBuildInputs =
-      [ pkg-config ]
+    nativeBuildInputs = [ pkg-config ]
       ++ ocamlNativeBuildInputs
       ++ lib.optional buildIde copyDesktopItems
       ++ lib.optional (buildIde && coqAtLeast "8.10") wrapGAppsHook3
       ++ lib.optional (!coqAtLeast "8.6") gnumake42;
-    buildInputs =
-      [ ncurses ]
+    buildInputs = [ ncurses ]
       ++ lib.optionals buildIde (
         if coqAtLeast "8.10" then
           [

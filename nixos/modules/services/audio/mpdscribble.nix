@@ -202,7 +202,8 @@ in
 
   config = lib.mkIf cfg.enable {
     systemd.services.mpdscribble = {
-      after = [ "network.target" ] ++ (lib.optional localMpd "mpd.service");
+      after = [ "network.target" ]
+        ++ (lib.optional localMpd "mpd.service");
       description = "mpdscribble mpd scrobble client";
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {

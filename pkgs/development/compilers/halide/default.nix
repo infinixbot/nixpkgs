@@ -146,17 +146,16 @@ stdenv.mkDerivation (finalAttrs: {
     ]
     ++ lib.optionals wasmSupport [ wabt ];
 
-  nativeBuildInputs =
-    [
-      cmake
-      flatbuffers
-      removeReferencesTo
-      ninja
-    ]
-    ++ lib.optionals pythonSupport [
-      python3Packages.python
-      python3Packages.pybind11
-    ];
+  nativeBuildInputs = [
+    cmake
+    flatbuffers
+    removeReferencesTo
+    ninja
+  ]
+  ++ lib.optionals pythonSupport [
+    python3Packages.python
+    python3Packages.pybind11
+  ];
 
   propagatedBuildInputs = lib.optionals pythonSupport [
     python3Packages.numpy

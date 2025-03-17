@@ -54,7 +54,8 @@ buildPythonPackage rec {
 
   optional-dependencies.pygments = [ pygments ];
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ optional-dependencies.pygments;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ optional-dependencies.pygments;
 
   pythonImportsCheck = [ "explorerscript" ];
 

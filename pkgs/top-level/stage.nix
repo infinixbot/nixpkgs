@@ -231,7 +231,8 @@ let
         (self': super': {
           pkgsLLVM = super';
         })
-      ] ++ overlays;
+      ]
+      ++ overlays;
       # Bootstrap a cross stdenv using the LLVM toolchain.
       # This is currently not possible when compiling natively,
       # so we don't need to check hostPlatform != buildPlatform.
@@ -246,7 +247,8 @@ let
         (self': super': {
           pkgsLLVMLibc = super';
         })
-      ] ++ overlays;
+      ]
+      ++ overlays;
       # Bootstrap a cross stdenv using LLVM libc.
       # This is currently not possible when compiling natively,
       # so we don't need to check hostPlatform != buildPlatform.
@@ -261,7 +263,8 @@ let
         (self': super': {
           pkgsArocc = super';
         })
-      ] ++ overlays;
+      ]
+      ++ overlays;
       # Bootstrap a cross stdenv using the Aro C compiler.
       # This is currently not possible when compiling natively,
       # so we don't need to check hostPlatform != buildPlatform.
@@ -276,7 +279,8 @@ let
         (self': super': {
           pkgsZig = super';
         })
-      ] ++ overlays;
+      ]
+      ++ overlays;
       # Bootstrap a cross stdenv using the Zig toolchain.
       # This is currently not possible when compiling natively,
       # so we don't need to check hostPlatform != buildPlatform.
@@ -296,7 +300,8 @@ let
             (self': super': {
               pkgsMusl = super';
             })
-          ] ++ overlays;
+          ]
+          ++ overlays;
           ${if stdenv.hostPlatform == stdenv.buildPlatform then "localSystem" else "crossSystem"} = {
             config = lib.systems.parse.tripleFromSystem (makeMuslParsedPlatform stdenv.hostPlatform.parsed);
           };
@@ -313,7 +318,8 @@ let
             (self': super': {
               pkgsi686Linux = super';
             })
-          ] ++ overlays;
+          ]
+          ++ overlays;
           ${if stdenv.hostPlatform == stdenv.buildPlatform then "localSystem" else "crossSystem"} = {
             config = lib.systems.parse.tripleFromSystem (
               stdenv.hostPlatform.parsed
@@ -334,7 +340,8 @@ let
             (self': super': {
               pkgsx86_64Darwin = super';
             })
-          ] ++ overlays;
+          ]
+          ++ overlays;
           localSystem = {
             config = lib.systems.parse.tripleFromSystem (
               stdenv.hostPlatform.parsed
@@ -381,7 +388,8 @@ let
         (self': super': {
           pkgsStatic = super';
         })
-      ] ++ overlays;
+      ]
+      ++ overlays;
       crossSystem = {
         isStatic = true;
         config = lib.systems.parse.tripleFromSystem (
@@ -423,7 +431,8 @@ let
             pcre16 = super'.pcre16.override { enableJit = false; };
           }
         )
-      ] ++ overlays;
+      ]
+      ++ overlays;
     };
   };
 

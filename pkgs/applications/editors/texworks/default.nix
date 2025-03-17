@@ -33,16 +33,15 @@ stdenv.mkDerivation rec {
     wrapQtAppsHook
   ];
 
-  buildInputs =
-    [
-      hunspell
-      poppler
-      qt5compat
-      qttools
-    ]
-    ++ lib.optional withLua lua
-    ++ lib.optional withPython python3
-    ++ lib.optional stdenv.hostPlatform.isLinux qtwayland;
+  buildInputs = [
+    hunspell
+    poppler
+    qt5compat
+    qttools
+  ]
+  ++ lib.optional withLua lua
+  ++ lib.optional withPython python3
+  ++ lib.optional stdenv.hostPlatform.isLinux qtwayland;
 
   cmakeFlags =
     [

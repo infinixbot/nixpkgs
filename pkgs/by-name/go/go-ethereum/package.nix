@@ -32,7 +32,8 @@ buildGoModule rec {
 
   doCheck = false;
 
-  outputs = [ "out" ] ++ bins;
+  outputs = [ "out" ]
+    ++ bins;
 
   # Move binaries to separate outputs and symlink them back to $out
   postInstall = lib.concatStringsSep "\n" (

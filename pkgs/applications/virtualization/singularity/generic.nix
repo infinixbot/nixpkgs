@@ -166,18 +166,17 @@ in
 
   configureScript = "./mconfig";
 
-  configureFlags =
-    [
-      "--localstatedir=${
-        if externalLocalStateDir != null then externalLocalStateDir else "${placeholder "out"}/var/lib"
-      }"
-      "--runstatedir=/var/run"
-    ]
-    ++ lib.optional (!enableSeccomp) "--without-seccomp"
-    ++ lib.optional (enableSuid != defaultToSuid) (
-      if enableSuid then "--with-suid" else "--without-suid"
-    )
-    ++ extraConfigureFlags;
+  configureFlags = [
+    "--localstatedir=${
+      if externalLocalStateDir != null then externalLocalStateDir else "${placeholder "out"}/var/lib"
+    }"
+    "--runstatedir=/var/run"
+  ]
+  ++ lib.optional (!enableSeccomp) "--without-seccomp"
+  ++ lib.optional (enableSuid != defaultToSuid) (
+    if enableSuid then "--with-suid" else "--without-suid"
+  )
+  ++ extraConfigureFlags;
 
   # causes redefinition of _FORTIFY_SOURCE
   hardeningDisable = [ "fortify3" ];
@@ -195,7 +194,8 @@ in
     mount # mount
     squashfsTools # mksquashfs unsquashfs # Make / unpack squashfs image
     squashfuse # squashfuse_ll squashfuse # Mount (without unpacking) a squashfs image without privileges
-  ] ++ lib.optional enableNvidiaContainerCli nvidia-docker;
+  ]
+  ++ lib.optional enableNvidiaContainerCli nvidia-docker;
 
   postPatch = ''
     if [[ ! -e .git || ! -e VERSION ]]; then
@@ -306,7 +306,8 @@ in
       ShamrockLee
     ];
     mainProgram = projectName;
-  } // extraMeta;
+  }
+  // extraMeta;
 }).overrideAttrs
   (
     finalAttrs: prevAttrs: {

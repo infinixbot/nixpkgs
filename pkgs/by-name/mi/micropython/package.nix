@@ -51,8 +51,7 @@ stdenv.mkDerivation rec {
 
   __darwinAllowLocalNetworking = true; # needed for select_poll_eintr test
 
-  skippedTests =
-    " -e select_poll_fd"
+  skippedTests = " -e select_poll_fd"
     + lib.optionalString (
       stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64
     ) " -e ffi_callback -e float_parse -e float_parse_doubleproc"

@@ -66,17 +66,16 @@ jdk.overrideAttrs (
       else
         ":installers:linux:universal:tar:packageBuildResults";
 
-    postBuild =
-      ''
-        # Prepare for the installPhase so that it looks like if a normal
-        # OpenJDK had been built.
-        dir=build/jdkImageName/images
-        mkdir -p $dir
-        file=$(find ./installers -name 'amazon-corretto-${version}*.tar.gz')
-        tar -xzf $file -C $dir
-        mv $dir/amazon-corretto-* $dir/jdk
-      ''
-      + oldAttrs.postBuild or "";
+    postBuild = ''
+      # Prepare for the installPhase so that it looks like if a normal
+      # OpenJDK had been built.
+      dir=build/jdkImageName/images
+      mkdir -p $dir
+      file=$(find ./installers -name 'amazon-corretto-${version}*.tar.gz')
+      tar -xzf $file -C $dir
+      mv $dir/amazon-corretto-* $dir/jdk
+    ''
+    + oldAttrs.postBuild or "";
 
     installPhase =
       oldAttrs.installPhase

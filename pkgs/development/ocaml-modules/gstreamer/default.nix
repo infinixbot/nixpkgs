@@ -23,8 +23,7 @@ buildDunePackage rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs =
-    [ dune-configurator ]
+  buildInputs = [ dune-configurator ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       AppKit
       Foundation

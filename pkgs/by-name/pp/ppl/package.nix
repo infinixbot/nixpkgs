@@ -42,8 +42,7 @@ stdenv.mkDerivation {
   ];
   propagatedBuildInputs = [ gmpxx ];
 
-  configureFlags =
-    [ "--disable-watchdog" ]
+  configureFlags = [ "--disable-watchdog" ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       "CPPFLAGS=-fexceptions"
       "--disable-ppl_lcdd"

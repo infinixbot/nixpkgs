@@ -29,7 +29,8 @@ buildPythonPackage rec {
 
   build-system = [ flit-core ];
 
-  dependencies = [ apispec ] ++ apispec.optional-dependencies.yaml;
+  dependencies = [ apispec ]
+    ++ apispec.optional-dependencies.yaml;
 
   nativeCheckInputs = [
     aiohttp

@@ -37,18 +37,18 @@ stdenv.mkDerivation rec {
     autoreconfHook
   ];
 
-  passthru =
-    {
-      updateScript = nix-update-script { };
-    }
-    // lib.optionalAttrs withUnixODBC {
-      fancyName = "PostgreSQL";
-      driver = "lib/psqlodbcw.so";
-    };
+  passthru = {
+    updateScript = nix-update-script { };
+  }
+  // lib.optionalAttrs withUnixODBC {
+    fancyName = "PostgreSQL";
+    driver = "lib/psqlodbcw.so";
+  };
 
   configureFlags = [
     "--with-libpq=${lib.getDev libpq}"
-  ] ++ lib.optional withLibiodbc "--with-iodbc=${libiodbc}";
+  ]
+  ++ lib.optional withLibiodbc "--with-iodbc=${libiodbc}";
 
   meta = with lib; {
     homepage = "https://odbc.postgresql.org/";

@@ -89,30 +89,29 @@ stdenv.mkDerivation (finalAttrs: {
       darwin.DarwinTools
     ];
 
-  buildInputs =
-    [
-      curl
-      libedit
-      libssh
-      lz4
-      openssl
-      protobuf
-      readline
-      zlib
-      zstd
-      libevent
-      icu
-      re2
-      ncurses
-      libfido2
-      cyrus_sasl
-      openldap
-      python3
-      antlr.runtime.cpp
-    ]
-    ++ pythonDeps
-    ++ lib.optionals stdenv.hostPlatform.isLinux [ libtirpc ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [ darwin.libutil ];
+  buildInputs = [
+    curl
+    libedit
+    libssh
+    lz4
+    openssl
+    protobuf
+    readline
+    zlib
+    zstd
+    libevent
+    icu
+    re2
+    ncurses
+    libfido2
+    cyrus_sasl
+    openldap
+    python3
+    antlr.runtime.cpp
+  ]
+  ++ pythonDeps
+  ++ lib.optionals stdenv.hostPlatform.isLinux [ libtirpc ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ darwin.libutil ];
 
   preConfigure = ''
     # Build MySQL

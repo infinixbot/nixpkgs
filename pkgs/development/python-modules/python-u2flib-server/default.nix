@@ -42,7 +42,8 @@ buildPythonPackage rec {
     "u2flib_server.u2f"
   ];
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ optional-dependencies.u2f_server;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ optional-dependencies.u2f_server;
 
   meta = with lib; {
     description = "Python based U2F server library";

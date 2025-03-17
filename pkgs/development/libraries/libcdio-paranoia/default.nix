@@ -25,8 +25,7 @@ stdenv.mkDerivation rec {
     autoreconfHook
     pkg-config
   ];
-  buildInputs =
-    [ libcdio ]
+  buildInputs = [ libcdio ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       libiconv
       IOKit

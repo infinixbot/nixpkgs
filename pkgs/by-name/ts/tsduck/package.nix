@@ -67,7 +67,8 @@ stdenv.mkDerivation rec {
     "NOPCSC=1"
     "NORIST=1"
     "NOVATEK=1"
-  ] ++ installFlags;
+  ]
+  ++ installFlags;
 
   checkTarget = "test";
   doCheck = true;

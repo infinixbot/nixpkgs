@@ -19,7 +19,8 @@ buildPythonPackage rec {
   };
 
   nativeCheckInputs = [ pytest ];
-  propagatedBuildInputs = [ click ] ++ lib.optional (!isPy3k) futures;
+  propagatedBuildInputs = [ click ]
+    ++ lib.optional (!isPy3k) futures;
 
   checkPhase = ''
     py.test

@@ -32,7 +32,8 @@ buildGoModule rec {
     "-X go.szostok.io/version.version=v${version}"
   ];
 
-  nativeBuildInputs = [ installShellFiles ] ++ lib.optional (pluginsDir != null) makeWrapper;
+  nativeBuildInputs = [ installShellFiles ]
+    ++ lib.optional (pluginsDir != null) makeWrapper;
 
   postInstall =
     lib.optionalString (pluginsDir != null) ''

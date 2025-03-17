@@ -38,14 +38,13 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   src = unwrapped;
   dontUnpack = true;
 
-  setupHooks =
-    [
-      ./dotnet-setup-hook.sh
-    ]
-    ++ lib.optional (type == "sdk") (substituteAll {
-      src = ./dotnet-sdk-setup-hook.sh;
-      inherit lndir xmlstarlet;
-    });
+  setupHooks = [
+    ./dotnet-setup-hook.sh
+  ]
+  ++ lib.optional (type == "sdk") (substituteAll {
+    src = ./dotnet-sdk-setup-hook.sh;
+    inherit lndir xmlstarlet;
+  });
 
   propagatedSandboxProfile = toString unwrapped.__propagatedSandboxProfile;
 
@@ -53,7 +52,8 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   nativeBuildInputs = [ installShellFiles ];
 
-  outputs = [ "out" ] ++ lib.optional (unwrapped ? man) "man";
+  outputs = [ "out" ]
+    ++ lib.optional (unwrapped ? man) "man";
 
   installPhase = ''
     runHook preInstall
@@ -110,8 +110,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
               propagatedSandboxProfile = toString sdk.__propagatedSandboxProfile;
               unpackPhase =
                 let
-                  unpackArgs =
-                    [ template ]
+                  unpackArgs = [ template ]
                     ++ lib.optionals (lang != null) [
                       "-lang"
                       lang
@@ -136,7 +135,8 @@ stdenvNoCC.mkDerivation (finalAttrs: {
               (
                 {
                   src = built;
-                  nativeBuildInputs = [ built ] ++ runInputs;
+                  nativeBuildInputs = [ built ]
+                    ++ runInputs;
                   passthru = {
                     inherit built;
                   };
@@ -217,21 +217,20 @@ stdenvNoCC.mkDerivation (finalAttrs: {
               name = "aot";
               stdenv = if stdenv.hostPlatform.isDarwin then swiftPackages.stdenv else stdenv;
               usePackageSource = true;
-              buildInputs =
+              buildInputs = [
+                zlib
+              ]
+              ++ lib.optional stdenv.hostPlatform.isDarwin (
+                with darwin;
+                with apple_sdk.frameworks;
                 [
-                  zlib
+                  swiftPackages.swift
+                  Foundation
+                  CryptoKit
+                  GSS
+                  ICU
                 ]
-                ++ lib.optional stdenv.hostPlatform.isDarwin (
-                  with darwin;
-                  with apple_sdk.frameworks;
-                  [
-                    swiftPackages.swift
-                    Foundation
-                    CryptoKit
-                    GSS
-                    ICU
-                  ]
-                );
+              );
               build = ''
                 dotnet restore -p:PublishAot=true
                 dotnet publish -p:PublishAot=true -o $out/bin

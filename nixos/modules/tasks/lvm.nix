@@ -149,8 +149,9 @@ in
       environment.systemPackages = [ pkgs.vdo ];
     })
     (mkIf (cfg.dmeventd.enable || cfg.boot.thin.enable) {
-      boot.initrd.systemd.contents."/etc/lvm/lvm.conf".text =
-        optionalString (config.boot.initrd.services.lvm.enable && cfg.boot.thin.enable) (
+      boot.initrd.systemd.contents."/etc/lvm/lvm.conf".text = optionalString
+        (config.boot.initrd.services.lvm.enable && cfg.boot.thin.enable)
+        (
           concatMapStringsSep "\n" (bin: "global/${bin}_executable = /bin/${bin}") [
             "thin_check"
             "thin_dump"

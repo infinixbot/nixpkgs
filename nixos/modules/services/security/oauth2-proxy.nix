@@ -625,8 +625,10 @@ in
         description = "OAuth2 Proxy";
         path = [ cfg.package ];
         wantedBy = [ "multi-user.target" ];
-        wants = [ "network-online.target" ] ++ lib.optionals needsKeycloak [ "keycloak.service" ];
-        after = [ "network-online.target" ] ++ lib.optionals needsKeycloak [ "keycloak.service" ];
+        wants = [ "network-online.target" ]
+          ++ lib.optionals needsKeycloak [ "keycloak.service" ];
+        after = [ "network-online.target" ]
+          ++ lib.optionals needsKeycloak [ "keycloak.service" ];
         restartTriggers = [ cfg.keyFile ];
         serviceConfig = {
           User = "oauth2-proxy";

@@ -72,56 +72,54 @@ stdenv.mkDerivation rec {
     wxGTK'
   ];
 
-  buildInputs =
-    [
-      binutils
-      (boost186.override {
-        enableShared = true;
-        enableStatic = false;
-        extraFeatures = [
-          "log"
-          "thread"
-          "filesystem"
-        ];
-      })
-      boost186.dev
-      cereal
-      cgal
-      curl
-      dbus
-      eigen
-      expat
-      ffmpeg
-      gcc-unwrapped
-      glew
-      glfw
-      glib
-      glib-networking
-      gmp
-      gst_all_1.gstreamer
-      gst_all_1.gst-plugins-base
-      gst_all_1.gst-plugins-bad
-      gst_all_1.gst-plugins-good
-      gtk3
-      hicolor-icon-theme
-      ilmbase
-      libpng
-      mesa
-      mesa.osmesa
-      mesa.drivers
-      mpfr
-      nlopt
-      opencascade-occt_7_6
-      openvdb
-      pcre
-      tbb_2021_11
-      webkitgtk_4_0
-      wxGTK'
-      xorg.libX11
-      opencv
-    ]
-    ++ lib.optionals withSystemd [ systemd ]
-    ++ checkInputs;
+  buildInputs = [
+    binutils
+    (boost186.override {
+      enableShared = true;
+      enableStatic = false;
+      extraFeatures = [
+        "log"
+        "thread"
+        "filesystem"
+      ];
+    })
+    boost186.dev
+    cereal
+    cgal
+    curl
+    dbus
+    eigen
+    expat
+    ffmpeg
+    gcc-unwrapped
+    glew
+    glfw
+    glib
+    glib-networking
+    gmp
+    gst_all_1.gstreamer
+    gst_all_1.gst-plugins-base
+    gst_all_1.gst-plugins-bad
+    gst_all_1.gst-plugins-good
+    gtk3
+    hicolor-icon-theme
+    ilmbase
+    libpng
+    mesa
+    mesa.osmesa
+    mesa.drivers
+    mpfr
+    nlopt
+    opencascade-occt_7_6
+    openvdb
+    pcre
+    tbb_2021_11
+    webkitgtk_4_0
+    wxGTK'
+    xorg.libX11
+    opencv
+  ]
+  ++ lib.optionals withSystemd [ systemd ] ++ checkInputs;
 
   patches = [
     # Fix for webkitgtk linking

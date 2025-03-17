@@ -164,7 +164,8 @@ buildPythonPackage rec {
       ];
       fairscale = [ fairscale ];
       optuna = [ optuna ];
-      ray = [ ray ] ++ ray.optional-dependencies.tune;
+      ray = [ ray ]
+        ++ ray.optional-dependencies.tune;
       # sigopt = [ sigopt ];
       # integrations = ray ++ optuna ++ sigopt;
       serving = [
@@ -174,12 +175,15 @@ buildPythonPackage rec {
         starlette
       ];
       audio = audio;
-      speech = [ torchaudio ] ++ audio;
-      torch-speech = [ torchaudio ] ++ audio;
+      speech = [ torchaudio ]
+        ++ audio;
+      torch-speech = [ torchaudio ]
+        ++ audio;
       tf-speech = audio;
       flax-speech = audio;
       timm = [ timm ];
-      torch-vision = [ torchvision ] ++ vision;
+      torch-vision = [ torchvision ]
+        ++ vision;
       # natten = [ natten ];
       # codecarbon = [ codecarbon ];
       video = [

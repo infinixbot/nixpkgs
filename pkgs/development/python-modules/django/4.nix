@@ -56,43 +56,41 @@ buildPythonPackage rec {
     hash = "sha256-aOTfZDJsEfWHXxkvTgyc2E9ye3LpzHG1bJTo40Dke4I=";
   };
 
-  patches =
-    [
-      (substituteAll {
-        src = ./django_4_set_zoneinfo_dir.patch;
-        zoneinfo = tzdata + "/share/zoneinfo";
-      })
-      # make sure the tests don't remove packages from our pythonpath
-      # and disable failing tests
-      ./django_4_tests.patch
-    ]
-    ++ lib.optionals withGdal [
-      (substituteAll {
-        src = ./django_4_set_geos_gdal_lib.patch;
-        geos = geos;
-        gdal = gdal;
-        extension = stdenv.hostPlatform.extensions.sharedLibrary;
-      })
-    ];
+  patches = [
+    (substituteAll {
+      src = ./django_4_set_zoneinfo_dir.patch;
+      zoneinfo = tzdata + "/share/zoneinfo";
+    })
+    # make sure the tests don't remove packages from our pythonpath
+    # and disable failing tests
+    ./django_4_tests.patch
+  ]
+  ++ lib.optionals withGdal [
+    (substituteAll {
+      src = ./django_4_set_geos_gdal_lib.patch;
+      geos = geos;
+      gdal = gdal;
+      extension = stdenv.hostPlatform.extensions.sharedLibrary;
+    })
+  ];
 
-  postPatch =
-    ''
-      substituteInPlace tests/utils_tests/test_autoreload.py \
-        --replace "/usr/bin/python" "${python.interpreter}"
-    ''
-    + lib.optionalString (pythonAtLeast "3.12" && stdenv.hostPlatform.system == "aarch64-linux") ''
-      # Test regression after xz was reverted from 5.6.0 to 5.4.6
-      # https://hydra.nixos.org/build/254630990
-      substituteInPlace tests/view_tests/tests/test_debug.py \
-        --replace-fail "test_files" "dont_test_files"
-    ''
-    + lib.optionalString (pythonAtLeast "3.13") ''
-      # Fixed CommandTypes.test_help_default_options_with_custom_arguments test on Python 3.13+.
-      # https://github.com/django/django/commit/3426a5c33c36266af42128ee9eca4921e68ea876
-      substituteInPlace tests/admin_scripts/tests.py --replace-fail \
-        "test_help_default_options_with_custom_arguments" \
-        "dont_test_help_default_options_with_custom_arguments"
-    '';
+  postPatch = ''
+    substituteInPlace tests/utils_tests/test_autoreload.py \
+      --replace "/usr/bin/python" "${python.interpreter}"
+  ''
+  + lib.optionalString (pythonAtLeast "3.12" && stdenv.hostPlatform.system == "aarch64-linux") ''
+    # Test regression after xz was reverted from 5.6.0 to 5.4.6
+    # https://hydra.nixos.org/build/254630990
+    substituteInPlace tests/view_tests/tests/test_debug.py \
+      --replace-fail "test_files" "dont_test_files"
+  ''
+  + lib.optionalString (pythonAtLeast "3.13") ''
+    # Fixed CommandTypes.test_help_default_options_with_custom_arguments test on Python 3.13+.
+    # https://github.com/django/django/commit/3426a5c33c36266af42128ee9eca4921e68ea876
+    substituteInPlace tests/admin_scripts/tests.py --replace-fail \
+      "test_help_default_options_with_custom_arguments" \
+      "dont_test_help_default_options_with_custom_arguments"
+  '';
 
   nativeBuildInputs = [ setuptools ];
 
@@ -123,7 +121,8 @@ buildPythonPackage rec {
     selenium
     tblib
     tzdata
-  ] ++ lib.flatten (lib.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (lib.attrValues optional-dependencies);
 
   doCheck =
     !stdenv.hostPlatform.isDarwin

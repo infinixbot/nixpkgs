@@ -68,7 +68,8 @@ else
       ocamlbuild
       topkg
     ];
-    buildInputs = [ topkg ] ++ optional_buildInputs;
+    buildInputs = [ topkg ]
+      ++ optional_buildInputs;
     propagatedBuildInputs = [ result ];
 
     strictDeps = true;

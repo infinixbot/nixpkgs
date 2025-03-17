@@ -31,27 +31,26 @@ stdenv.mkDerivation rec {
     hash = "sha256-qpQ1WFWqq4FzeN0Yy8ke3mOYtGXmK998yZAy9OTBGq4=";
   };
 
-  buildInputs =
-    [
-      fftw
-      iniparser
-      libpulseaudio
-      libtool
-      ncurses
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      alsa-lib
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      portaudio
-    ]
-    ++ lib.optionals withSDL2 [
-      libGL
-      SDL2
-    ]
-    ++ lib.optionals withPipewire [
-      pipewire
-    ];
+  buildInputs = [
+    fftw
+    iniparser
+    libpulseaudio
+    libtool
+    ncurses
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    alsa-lib
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    portaudio
+  ]
+  ++ lib.optionals withSDL2 [
+    libGL
+    SDL2
+  ]
+  ++ lib.optionals withPipewire [
+    pipewire
+  ];
 
   nativeBuildInputs = [
     autoreconfHook

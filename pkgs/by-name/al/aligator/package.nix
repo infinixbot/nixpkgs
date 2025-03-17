@@ -41,8 +41,10 @@ stdenv.mkDerivation (finalAttrs: {
     cmake
     graphviz
     pkg-config
-  ] ++ lib.optional pythonSupport python3Packages.pythonImportsCheckHook;
-  buildInputs = [ fmt ] ++ lib.optional stdenv.hostPlatform.isDarwin llvmPackages.openmp;
+  ]
+  ++ lib.optional pythonSupport python3Packages.pythonImportsCheckHook;
+  buildInputs = [ fmt ]
+    ++ lib.optional stdenv.hostPlatform.isDarwin llvmPackages.openmp;
   propagatedBuildInputs =
     [ suitesparse ]
     ++ lib.optionals pythonSupport [
@@ -56,26 +58,24 @@ stdenv.mkDerivation (finalAttrs: {
       pinocchio
       proxsuite-nlp
     ];
-  checkInputs =
-    [ gbenchmark ]
+  checkInputs = [ gbenchmark ]
     ++ lib.optionals pythonSupport [
       python3Packages.matplotlib
       python3Packages.pytest
     ];
 
-  cmakeFlags =
-    [
-      (lib.cmakeBool "BUILD_PYTHON_INTERFACE" pythonSupport)
-      (lib.cmakeBool "BUILD_WITH_PINOCCHIO_SUPPORT" true)
-      (lib.cmakeBool "BUILD_CROCODDYL_COMPAT" true)
-      (lib.cmakeBool "BUILD_WITH_OPENMP_SUPPORT" true)
-      (lib.cmakeBool "BUILD_WITH_CHOLMOD_SUPPORT" true)
-      (lib.cmakeBool "GENERATE_PYTHON_STUBS" false) # this need git at configure time
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isDarwin && pythonSupport) [
-      # ignore one failing test for now
-      (lib.cmakeFeature "CMAKE_CTEST_ARGUMENTS" "--exclude-regex;aligator-test-py-integrators")
-    ];
+  cmakeFlags = [
+    (lib.cmakeBool "BUILD_PYTHON_INTERFACE" pythonSupport)
+    (lib.cmakeBool "BUILD_WITH_PINOCCHIO_SUPPORT" true)
+    (lib.cmakeBool "BUILD_CROCODDYL_COMPAT" true)
+    (lib.cmakeBool "BUILD_WITH_OPENMP_SUPPORT" true)
+    (lib.cmakeBool "BUILD_WITH_CHOLMOD_SUPPORT" true)
+    (lib.cmakeBool "GENERATE_PYTHON_STUBS" false) # this need git at configure time
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isDarwin && pythonSupport) [
+    # ignore one failing test for now
+    (lib.cmakeFeature "CMAKE_CTEST_ARGUMENTS" "--exclude-regex;aligator-test-py-integrators")
+  ];
 
   # Fontconfig error: Cannot load default config file: No such file: (null)
   env.FONTCONFIG_FILE = "${fontconfig.out}/etc/fonts/fonts.conf";

@@ -39,15 +39,14 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-qxmjm4tgpCnfJ2SqUXndk6y0MsPJUKHvjv/3Uc0smr4=";
   };
 
-  nativeBuildInputs =
-    [
-      cmake
-      rocm-cmake
-      clr
-    ]
-    ++ lib.optionals (buildTests || buildBenchmarks) [
-      gfortran
-    ];
+  nativeBuildInputs = [
+    cmake
+    rocm-cmake
+    clr
+  ]
+  ++ lib.optionals (buildTests || buildBenchmarks) [
+    gfortran
+  ];
 
   buildInputs =
     [
@@ -62,31 +61,29 @@ stdenv.mkDerivation (finalAttrs: {
       lapack-reference
     ];
 
-  cmakeFlags =
-    [
-      "-DCMAKE_CXX_COMPILER=hipcc"
-      "-DCMAKE_CXX_FLAGS=-Wno-switch" # Way too many warnings
-      # Manually define CMAKE_INSTALL_<DIR>
-      # See: https://github.com/NixOS/nixpkgs/pull/197838
-      "-DCMAKE_INSTALL_BINDIR=bin"
-      "-DCMAKE_INSTALL_LIBDIR=lib"
-      "-DCMAKE_INSTALL_INCLUDEDIR=include"
-    ]
-    ++ lib.optionals (gpuTargets != [ ]) [
-      "-DAMDGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}"
-    ]
-    ++ lib.optionals buildTests [
-      "-DBUILD_CLIENTS_TESTS=ON"
-    ]
-    ++ lib.optionals buildBenchmarks [
-      "-DBUILD_CLIENTS_BENCHMARKS=ON"
-    ];
+  cmakeFlags = [
+    "-DCMAKE_CXX_COMPILER=hipcc"
+    "-DCMAKE_CXX_FLAGS=-Wno-switch" # Way too many warnings
+    # Manually define CMAKE_INSTALL_<DIR>
+    # See: https://github.com/NixOS/nixpkgs/pull/197838
+    "-DCMAKE_INSTALL_BINDIR=bin"
+    "-DCMAKE_INSTALL_LIBDIR=lib"
+    "-DCMAKE_INSTALL_INCLUDEDIR=include"
+  ]
+  ++ lib.optionals (gpuTargets != [ ]) [
+    "-DAMDGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}"
+  ]
+  ++ lib.optionals buildTests [
+    "-DBUILD_CLIENTS_TESTS=ON"
+  ]
+  ++ lib.optionals buildBenchmarks [
+    "-DBUILD_CLIENTS_BENCHMARKS=ON"
+  ];
 
-  postInstall =
-    lib.optionalString buildTests ''
-      mkdir -p $test/bin
-      mv $out/bin/rocsolver-test $test/bin
-    ''
+  postInstall = lib.optionalString buildTests ''
+    mkdir -p $test/bin
+    mv $out/bin/rocsolver-test $test/bin
+  ''
     + lib.optionalString buildBenchmarks ''
       mkdir -p $benchmark/bin
       mv $out/bin/rocsolver-bench $benchmark/bin

@@ -98,17 +98,16 @@ stdenv.mkDerivation rec {
       mesonEmulatorHook
     ];
 
-  buildInputs =
-    [
-      expat
-      pam
-      dbus
-      duktape
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      # On Linux, fall back to elogind when systemd support is off.
-      (if useSystemd then systemdMinimal else elogind)
-    ];
+  buildInputs = [
+    expat
+    pam
+    dbus
+    duktape
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    # On Linux, fall back to elogind when systemd support is off.
+    (if useSystemd then systemdMinimal else elogind)
+  ];
 
   propagatedBuildInputs = [
     glib # in .pc Requires
@@ -127,38 +126,36 @@ stdenv.mkDerivation rec {
     ))
   ];
 
-  env =
-    {
-      PKG_CONFIG_SYSTEMD_SYSTEMDSYSTEMUNITDIR = "${placeholder "out"}/lib/systemd/system";
-      PKG_CONFIG_SYSTEMD_SYSUSERS_DIR = "${placeholder "out"}/lib/sysusers.d";
+  env = {
+    PKG_CONFIG_SYSTEMD_SYSTEMDSYSTEMUNITDIR = "${placeholder "out"}/lib/systemd/system";
+    PKG_CONFIG_SYSTEMD_SYSUSERS_DIR = "${placeholder "out"}/lib/sysusers.d";
 
-      # HACK: We want to install policy files files to $out/share but polkit
-      # should read them from /run/current-system/sw/share on a NixOS system.
-      # Similarly for config files in /etc.
-      # With autotools, it was possible to override Make variables
-      # at install time but Meson does not support this
-      # so we need to convince it to install all files to a temporary
-      # location using DESTDIR and then move it to proper one in postInstall.
-      DESTDIR = "dest";
-    }
-    // lib.optionalAttrs (stdenv.cc.isGNU || stdenv.cc.isClang) {
-      NIX_CFLAGS_COMPILE = "-Wno-error=implicit-function-declaration";
-    };
+    # HACK: We want to install policy files files to $out/share but polkit
+    # should read them from /run/current-system/sw/share on a NixOS system.
+    # Similarly for config files in /etc.
+    # With autotools, it was possible to override Make variables
+    # at install time but Meson does not support this
+    # so we need to convince it to install all files to a temporary
+    # location using DESTDIR and then move it to proper one in postInstall.
+    DESTDIR = "dest";
+  }
+  // lib.optionalAttrs (stdenv.cc.isGNU || stdenv.cc.isClang) {
+    NIX_CFLAGS_COMPILE = "-Wno-error=implicit-function-declaration";
+  };
 
-  mesonFlags =
-    [
-      "--datadir=${system}/share"
-      "--sysconfdir=/etc"
-      "-Dpolkitd_user=polkituser" # TODO? <nixos> config.ids.uids.polkituser
-      "-Dos_type=redhat" # only affects PAM includes
-      "-Dintrospection=${lib.boolToString withIntrospection}"
-      "-Dtests=${lib.boolToString doCheck}"
-      "-Dgtk_doc=${lib.boolToString withIntrospection}"
-      "-Dman=true"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      "-Dsession_tracking=${if useSystemd then "libsystemd-login" else "libelogind"}"
-    ];
+  mesonFlags = [
+    "--datadir=${system}/share"
+    "--sysconfdir=/etc"
+    "-Dpolkitd_user=polkituser" # TODO? <nixos> config.ids.uids.polkituser
+    "-Dos_type=redhat" # only affects PAM includes
+    "-Dintrospection=${lib.boolToString withIntrospection}"
+    "-Dtests=${lib.boolToString doCheck}"
+    "-Dgtk_doc=${lib.boolToString withIntrospection}"
+    "-Dman=true"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    "-Dsession_tracking=${if useSystemd then "libsystemd-login" else "libelogind"}"
+  ];
 
   inherit doCheck;
 

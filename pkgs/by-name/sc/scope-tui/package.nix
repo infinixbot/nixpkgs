@@ -23,7 +23,8 @@ rustPlatform.buildRustPackage {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [ alsa-lib ] ++ lib.optionals withPulseaudio [ libpulseaudio ];
+  buildInputs = [ alsa-lib ]
+    ++ lib.optionals withPulseaudio [ libpulseaudio ];
 
   buildFeatures = lib.optionals withPulseaudio [ "pulseaudio" ];
 

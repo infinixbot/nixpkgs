@@ -28,7 +28,8 @@ buildDunePackage rec {
   propagatedBuildInputs = [
     lapack
     blas
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ darwin.apple_sdk.frameworks.Accelerate ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ darwin.apple_sdk.frameworks.Accelerate ];
 
   meta = with lib; {
     homepage = "https://mmottl.github.io/lacaml";

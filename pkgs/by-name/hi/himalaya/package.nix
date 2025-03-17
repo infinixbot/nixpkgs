@@ -50,9 +50,8 @@ rustPlatform.buildRustPackage {
   buildNoDefaultFeatures = noDefaultFeatures;
   buildFeatures = features;
 
-  nativeBuildInputs = [
-    pkg-config
-  ] ++ lib.optional (installManPages || installShellCompletions) installShellFiles;
+  nativeBuildInputs = [ pkg-config ]
+    ++ lib.optional (installManPages || installShellCompletions) installShellFiles;
 
   buildInputs =
     [ ]

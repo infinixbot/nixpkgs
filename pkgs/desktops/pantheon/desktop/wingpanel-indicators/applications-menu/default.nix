@@ -46,25 +46,24 @@ stdenv.mkDerivation rec {
     vala
   ];
 
-  buildInputs =
-    [
-      granite
-      gtk3
-      json-glib
-      libgee
-      libhandy
-      libsoup_2_4
-      switchboard-with-plugs
-      wingpanel
-      zeitgeist
-    ]
-    ++
-    # applications-menu has a plugin to search switchboard plugins
-    # see https://github.com/NixOS/nixpkgs/issues/100209
-    # wingpanel's wrapper will need to pick up the fact that
-    # applications-menu needs a version of switchboard with all
-    # its plugins for search.
-    switchboard-with-plugs.buildInputs;
+  buildInputs = [
+    granite
+    gtk3
+    json-glib
+    libgee
+    libhandy
+    libsoup_2_4
+    switchboard-with-plugs
+    wingpanel
+    zeitgeist
+  ]
+  ++
+  # applications-menu has a plugin to search switchboard plugins
+  # see https://github.com/NixOS/nixpkgs/issues/100209
+  # wingpanel's wrapper will need to pick up the fact that
+  # applications-menu needs a version of switchboard with all
+  # its plugins for search.
+  switchboard-with-plugs.buildInputs;
 
   mesonFlags = [
     "--sysconfdir=${placeholder "out"}/etc"

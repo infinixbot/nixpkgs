@@ -346,7 +346,8 @@ in
         "listen.group" = group;
         "listen.mode" = "0660";
         "catch_workers_output" = "yes";
-      } // cfg.poolConfig;
+      }
+      // cfg.poolConfig;
     };
 
     systemd.services.phpfpm-pixelfed.after = [ "pixelfed-data-setup.service" ];
@@ -366,8 +367,7 @@ in
         "network.target"
         "pixelfed-data-setup.service"
       ];
-      requires =
-        [ "pixelfed-data-setup.service" ]
+      requires = [ "pixelfed-data-setup.service" ]
         ++ (lib.optional cfg.database.createLocally dbService)
         ++ (lib.optional cfg.redis.createLocally redisService);
       wantedBy = [ "multi-user.target" ];

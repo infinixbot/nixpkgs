@@ -83,7 +83,8 @@ stdenv.mkDerivation rec {
     boost186
     openssl
     systemd
-  ] ++ lib.optional withPostgresql libpq;
+  ]
+  ++ lib.optional withPostgresql libpq;
 
   nativeBuildInputs = [
     cmake

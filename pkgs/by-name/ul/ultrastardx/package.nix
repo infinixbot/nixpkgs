@@ -63,7 +63,8 @@ stdenv.mkDerivation rec {
   buildInputs = [
     fpc
     libpng
-  ] ++ sharedLibs;
+  ]
+  ++ sharedLibs;
 
   postPatch = ''
     substituteInPlace src/config.inc.in \

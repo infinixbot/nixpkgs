@@ -122,43 +122,42 @@ stdenv.mkDerivation (finalAttrs: {
     })
   ];
 
-  postPatch =
-    ''
-      # Part of greeter fix, applies separately due to merge conflicts
-      substituteInPlace data/lomiri-greeter.desktop.in.in \
-        --replace-fail '@CMAKE_INSTALL_FULL_BINDIR@/lomiri-greeter-wrapper @CMAKE_INSTALL_FULL_BINDIR@/lomiri --mode=greeter' '@CMAKE_INSTALL_FULL_BINDIR@/lomiri --mode=greeter' \
-        --replace-fail 'X-LightDM-Session-Type=mir' 'X-LightDM-Session-Type=wayland'
+  postPatch = ''
+    # Part of greeter fix, applies separately due to merge conflicts
+    substituteInPlace data/lomiri-greeter.desktop.in.in \
+      --replace-fail '@CMAKE_INSTALL_FULL_BINDIR@/lomiri-greeter-wrapper @CMAKE_INSTALL_FULL_BINDIR@/lomiri --mode=greeter' '@CMAKE_INSTALL_FULL_BINDIR@/lomiri --mode=greeter' \
+      --replace-fail 'X-LightDM-Session-Type=mir' 'X-LightDM-Session-Type=wayland'
 
-      # Written with a different qtmir branch in mind, but different branch breaks compat with some patches
-      substituteInPlace CMakeLists.txt \
-        --replace-fail 'qt5mir2server' 'qtmirserver'
+    # Written with a different qtmir branch in mind, but different branch breaks compat with some patches
+    substituteInPlace CMakeLists.txt \
+      --replace-fail 'qt5mir2server' 'qtmirserver'
 
-      # Need to replace prefix
-      substituteInPlace data/systemd-user/CMakeLists.txt \
-        --replace-fail 'pkg_get_variable(SYSTEMD_USER_UNIT_DIR systemd systemd_user_unit_dir)' 'pkg_get_variable(SYSTEMD_USER_UNIT_DIR systemd systemd_user_unit_dir DEFINE_VARIABLES prefix=''${CMAKE_INSTALL_PREFIX})'
+    # Need to replace prefix
+    substituteInPlace data/systemd-user/CMakeLists.txt \
+      --replace-fail 'pkg_get_variable(SYSTEMD_USER_UNIT_DIR systemd systemd_user_unit_dir)' 'pkg_get_variable(SYSTEMD_USER_UNIT_DIR systemd systemd_user_unit_dir DEFINE_VARIABLES prefix=''${CMAKE_INSTALL_PREFIX})'
 
-      # Don't embed full paths into regular desktop files (but do embed them into lightdm greeter one)
-      substituteInPlace data/{indicators-client,lomiri}.desktop.in.in \
-        --replace-fail '@CMAKE_INSTALL_FULL_BINDIR@/' ""
+    # Don't embed full paths into regular desktop files (but do embed them into lightdm greeter one)
+    substituteInPlace data/{indicators-client,lomiri}.desktop.in.in \
+      --replace-fail '@CMAKE_INSTALL_FULL_BINDIR@/' ""
 
-      # Exclude tests that don't compile (Mir headers these relied on were removed in mir 2.9)
-      # fatal error: mirtest/mir/test/doubles/stub_surface.h: No such file or directory
-      substituteInPlace tests/mocks/CMakeLists.txt \
-        --replace-fail 'add_subdirectory(QtMir/Application)' ""
+    # Exclude tests that don't compile (Mir headers these relied on were removed in mir 2.9)
+    # fatal error: mirtest/mir/test/doubles/stub_surface.h: No such file or directory
+    substituteInPlace tests/mocks/CMakeLists.txt \
+      --replace-fail 'add_subdirectory(QtMir/Application)' ""
 
-      # NixOS-ify
+    # NixOS-ify
 
-      # Use Nix flake instead of Canonical's Ubuntu logo
-      rm qml/Launcher/graphics/home.svg
-      ln -s ${nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake-white.svg qml/Launcher/graphics/home.svg
+    # Use Nix flake instead of Canonical's Ubuntu logo
+    rm qml/Launcher/graphics/home.svg
+    ln -s ${nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake-white.svg qml/Launcher/graphics/home.svg
 
-      # Look up default wallpaper in current system
-      substituteInPlace plugins/Utils/constants.cpp \
-        --replace-fail '/usr/share/backgrounds' '/run/current-system/sw/share/wallpapers'
-    ''
-    + lib.optionalString finalAttrs.finalPackage.doCheck ''
-      patchShebangs tests/whitespace/check_whitespace.py
-    '';
+    # Look up default wallpaper in current system
+    substituteInPlace plugins/Utils/constants.cpp \
+      --replace-fail '/usr/share/backgrounds' '/run/current-system/sw/share/wallpapers'
+  ''
+  + lib.optionalString finalAttrs.finalPackage.doCheck ''
+    patchShebangs tests/whitespace/check_whitespace.py
+  '';
 
   nativeBuildInputs = [
     cmake

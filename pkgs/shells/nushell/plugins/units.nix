@@ -22,7 +22,8 @@ rustPlatform.buildRustPackage rec {
   useFetchCargoVendor = true;
   cargoHash = "sha256-8TYqvg+g9VmzbNwOGLfE274r1dvlKiMovJCciVgc+yw=";
 
-  nativeBuildInputs = [ pkg-config ] ++ lib.optionals stdenv.cc.isClang [ rustPlatform.bindgenHook ];
+  nativeBuildInputs = [ pkg-config ]
+    ++ lib.optionals stdenv.cc.isClang [ rustPlatform.bindgenHook ];
   buildInputs = lib.optionals stdenv.hostPlatform.isDarwin [
     IOKit
     Foundation

@@ -19,8 +19,7 @@ python3.pkgs.buildPythonApplication rec {
 
   build-system = with python3.pkgs; [ setuptools ];
 
-  dependencies =
-    [ samba ]
+  dependencies = [ samba ]
     ++ (with python3.pkgs; [
       impacket
       ldap3

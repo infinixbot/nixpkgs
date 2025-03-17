@@ -63,7 +63,8 @@ buildPythonPackage rec {
 
   pythonImportsCheck = [ "corner" ];
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ corner.optional-dependencies.test;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ corner.optional-dependencies.test;
 
   # matplotlib.testing.exceptions.ImageComparisonFailure: images not close
   disabledTests = [

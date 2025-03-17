@@ -38,16 +38,15 @@ rustPlatform.buildRustPackage rec {
     };
   };
 
-  nativeBuildInputs =
-    [
-      which
-      python39
-      nodejs
-      pkg-config
-    ]
-    ++
-    # for flock
-    lib.optional stdenv.hostPlatform.isLinux util-linux;
+  nativeBuildInputs = [
+    which
+    python39
+    nodejs
+    pkg-config
+  ]
+  ++
+  # for flock
+  lib.optional stdenv.hostPlatform.isLinux util-linux;
 
   buildInputs = [
     libuv

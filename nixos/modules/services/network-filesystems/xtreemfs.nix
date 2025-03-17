@@ -79,8 +79,10 @@ let
   optionalDir = lib.optionals cfg.dir.enable [ "xtreemfs-dir.service" ];
 
   systemdOptionalDependencies = {
-    after = [ "network.target" ] ++ optionalDir;
-    wantedBy = [ "multi-user.target" ] ++ optionalDir;
+    after = [ "network.target" ]
+      ++ optionalDir;
+    wantedBy = [ "multi-user.target" ]
+      ++ optionalDir;
   };
 
 in

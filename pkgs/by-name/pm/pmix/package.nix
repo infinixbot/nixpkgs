@@ -31,7 +31,8 @@ stdenv.mkDerivation (finalAttrs: {
     fetchSubmodules = true;
   };
 
-  outputs = [ "out" ] ++ lib.optionals stdenv.hostPlatform.isLinux [ "dev" ];
+  outputs = [ "out" ]
+    ++ lib.optionals stdenv.hostPlatform.isLinux [ "dev" ];
 
   postPatch = ''
     patchShebangs ./autogen.pl

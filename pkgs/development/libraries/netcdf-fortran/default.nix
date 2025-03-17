@@ -22,17 +22,16 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ gfortran ];
-  buildInputs =
-    [
-      netcdf
-      hdf5
-      curl
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      CoreFoundation
-      CoreServices
-      SystemConfiguration
-    ];
+  buildInputs = [
+    netcdf
+    hdf5
+    curl
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    CoreFoundation
+    CoreServices
+    SystemConfiguration
+  ];
   env.NIX_LDFLAGS = toString (
     lib.optionals stdenv.hostPlatform.isDarwin [
       "-F${CoreServices}/Library/Frameworks"

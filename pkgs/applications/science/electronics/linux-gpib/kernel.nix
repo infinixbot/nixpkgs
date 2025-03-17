@@ -17,7 +17,8 @@ stdenv.mkDerivation (
       sed -i 's@/sbin/depmod -A@@g' Makefile
     '';
 
-    buildInputs = [ pahole ] ++ kernel.moduleBuildDependencies;
+    buildInputs = [ pahole ]
+      ++ kernel.moduleBuildDependencies;
 
     makeFlags = [
       "LINUX_SRCDIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"

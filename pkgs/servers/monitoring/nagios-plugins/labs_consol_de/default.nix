@@ -22,7 +22,8 @@ let
     stdenv.mkDerivation {
       inherit pname version src;
 
-      buildInputs = [ perlPackages.perl ] ++ buildInputs;
+      buildInputs = [ perlPackages.perl ]
+        ++ buildInputs;
 
       nativeBuildInputs = [
         autoreconfHook

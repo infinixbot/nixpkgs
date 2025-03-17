@@ -75,7 +75,8 @@ lib.checkListOfEnum "${pname}: button size variants" [ "standard" "small" ] butt
   rec {
     inherit pname version;
 
-    srcs = [ main_src ] ++ lib.optional wallpapers wallpapers_src;
+    srcs = [ main_src ]
+      ++ lib.optional wallpapers wallpapers_src;
 
     sourceRoot = main_src.name;
 

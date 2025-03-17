@@ -61,7 +61,8 @@ buildDunePackage rec {
     })
   ];
 
-  nativeBuildInputs = [ makeWrapper ] ++ runtimeInputs;
+  nativeBuildInputs = [ makeWrapper ]
+    ++ runtimeInputs;
   buildInputs = [
     curly
     fmt
@@ -82,7 +83,8 @@ buildDunePackage rec {
     odoc
     gitMinimal
   ];
-  checkInputs = [ alcotest ] ++ runtimeInputs;
+  checkInputs = [ alcotest ]
+    ++ runtimeInputs;
   doCheck = true;
 
   postPatch = ''

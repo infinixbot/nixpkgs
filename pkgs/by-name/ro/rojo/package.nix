@@ -30,14 +30,13 @@ rustPlatform.buildRustPackage rec {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      openssl
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      CoreServices
-      SystemConfiguration
-    ];
+  buildInputs = [
+    openssl
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    CoreServices
+    SystemConfiguration
+  ];
 
   # reqwest's native-tls-vendored feature flag uses vendored openssl. this disables that
   OPENSSL_NO_VENDOR = "1";

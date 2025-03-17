@@ -80,43 +80,42 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
     autoreconfHook
   ];
-  buildInputs =
-    [
-      unixtools.xxd
-      pcre2
-      flex
-      valgrind
-      fig2dev
-      perl
-      cyrus_sasl.dev
-      icu
-      jansson
-      libbsd
-      libuuid
-      openssl
-      zlib
-      bison
-      libsrs2
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [ libcap ]
-    ++ lib.optionals (enableHttp || enableCalalarmd || enableJMAP) [
-      brotli.dev
-      libical.dev
-      libxml2.dev
-      nghttp2.dev
-      shapelib
-    ]
-    ++ lib.optionals enableJMAP [
-      libchardet
-      wslay
-    ]
-    ++ lib.optionals enableXapian [
-      rsync
-      xapian
-    ]
-    ++ lib.optionals withMySQL [ libmysqlclient ]
-    ++ lib.optionals withPgSQL [ libpq ]
-    ++ lib.optionals withSQLite [ sqlite ];
+  buildInputs = [
+    unixtools.xxd
+    pcre2
+    flex
+    valgrind
+    fig2dev
+    perl
+    cyrus_sasl.dev
+    icu
+    jansson
+    libbsd
+    libuuid
+    openssl
+    zlib
+    bison
+    libsrs2
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [ libcap ]
+  ++ lib.optionals (enableHttp || enableCalalarmd || enableJMAP) [
+    brotli.dev
+    libical.dev
+    libxml2.dev
+    nghttp2.dev
+    shapelib
+  ]
+  ++ lib.optionals enableJMAP [
+    libchardet
+    wslay
+  ]
+  ++ lib.optionals enableXapian [
+    rsync
+    xapian
+  ]
+  ++ lib.optionals withMySQL [ libmysqlclient ]
+  ++ lib.optionals withPgSQL [ libpq ]
+  ++ lib.optionals withSQLite [ sqlite ];
 
   enableParallelBuilding = true;
 

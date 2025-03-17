@@ -40,7 +40,8 @@ let
     ${cfg.extraConfig}
   '';
 
-  allConfigPaths = [ configFile ] ++ cfg.extraSettingsPaths;
+  allConfigPaths = [ configFile ]
+    ++ cfg.extraSettingsPaths;
   configOptions = lib.escapeShellArgs (
     lib.optional cfg.dev "-dev"
     ++ lib.optional (cfg.dev && cfg.devRootTokenID != null) "-dev-root-token-id=${cfg.devRootTokenID}"
@@ -224,11 +225,10 @@ in
       description = "Vault server daemon";
 
       wantedBy = [ "multi-user.target" ];
-      after =
-        [
-          "network.target"
-        ]
-        ++ lib.optional (config.services.consul.enable && cfg.storageBackend == "consul") "consul.service";
+      after = [
+        "network.target"
+      ]
+      ++ lib.optional (config.services.consul.enable && cfg.storageBackend == "consul") "consul.service";
 
       restartIfChanged = false; # do not restart on "nixos-rebuild switch". It would seal the storage and disrupt the clients.
 

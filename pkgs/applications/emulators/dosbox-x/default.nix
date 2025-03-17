@@ -43,30 +43,28 @@ stdenv.mkDerivation (finalAttrs: {
   # iconutil is unavailable, replace with png2icns from libicns
   # Patch bad hardcoded compiler
   # Don't mess with codesign, doesn't seem to work?
-  postPatch =
-    ''
-      substituteInPlace Makefile.am \
-        --replace-fail 'sips' '## sips' \
-        --replace-fail 'iconutil -c icns -o contrib/macos/dosbox.icns src/dosbox.iconset' 'png2icns contrib/macos/dosbox.icns contrib/macos/dosbox-x.png' \
-        --replace-fail 'g++' "$CXX" \
-        --replace-fail 'codesign' '## codesign'
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      patchShebangs appbundledeps.py
-    '';
+  postPatch = ''
+    substituteInPlace Makefile.am \
+      --replace-fail 'sips' '## sips' \
+      --replace-fail 'iconutil -c icns -o contrib/macos/dosbox.icns src/dosbox.iconset' 'png2icns contrib/macos/dosbox.icns contrib/macos/dosbox-x.png' \
+      --replace-fail 'g++' "$CXX" \
+      --replace-fail 'codesign' '## codesign'
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    patchShebangs appbundledeps.py
+  '';
 
   strictDeps = true;
 
-  nativeBuildInputs =
-    [
-      autoreconfHook
-      makeWrapper
-      pkg-config
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      libicns
-      python3
-    ];
+  nativeBuildInputs = [
+    autoreconfHook
+    makeWrapper
+    pkg-config
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    libicns
+    python3
+  ];
 
   buildInputs =
     [

@@ -113,7 +113,8 @@ let
       '';
     };
 
-    nativeBuildInputs = [ pkg-config ] ++ ocamlNativeBuildInputs;
+    nativeBuildInputs = [ pkg-config ]
+      ++ ocamlNativeBuildInputs;
     buildInputs = [ ncurses ];
 
     propagatedBuildInputs = ocamlPropagatedBuildInputs;

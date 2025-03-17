@@ -29,7 +29,8 @@ pythonPackages.buildPythonApplication rec {
     matplotlib
   ];
 
-  buildInputs = [ zlib ] ++ pythonPath;
+  buildInputs = [ zlib ]
+    ++ pythonPath;
 
   dontConfigure = true;
 

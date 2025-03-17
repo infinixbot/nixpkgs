@@ -21,8 +21,7 @@ buildNpmPackage rec {
     hash = "sha256-/OdSV/wTrs6roiPiSQCqCLrlWtkB11gm3DM7r7B4HUU=";
   };
 
-  nativeBuildInputs =
-    [ makeWrapper ]
+  nativeBuildInputs = [ makeWrapper ]
     ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
       imagemagick # for icon resizing
       copyDesktopItems

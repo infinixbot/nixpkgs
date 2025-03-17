@@ -29,7 +29,8 @@ buildPythonPackage rec {
     hatchling
   ];
 
-  propagatedBuildInputs = [ httpx ] ++ httpx.optional-dependencies.http2;
+  propagatedBuildInputs = [ httpx ]
+    ++ httpx.optional-dependencies.http2;
 
   nativeCheckInputs = [
     pytestCheckHook

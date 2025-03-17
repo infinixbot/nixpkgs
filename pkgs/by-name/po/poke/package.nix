@@ -46,23 +46,21 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  nativeBuildInputs =
-    [
-      pkg-config
-      texinfo
-    ]
-    ++ lib.optionals (!isCross) [
-      help2man
-    ];
+  nativeBuildInputs = [
+    pkg-config
+    texinfo
+  ]
+  ++ lib.optionals (!isCross) [
+    help2man
+  ];
 
-  buildInputs =
-    [
-      boehmgc
-      readline
-    ]
-    ++ lib.optional nbdSupport libnbd
-    ++ lib.optional textStylingSupport gettext
-    ++ lib.optional finalAttrs.finalPackage.doCheck dejagnu;
+  buildInputs = [
+    boehmgc
+    readline
+  ]
+  ++ lib.optional nbdSupport libnbd
+  ++ lib.optional textStylingSupport gettext
+  ++ lib.optional finalAttrs.finalPackage.doCheck dejagnu;
 
   configureFlags = [
     # libpoke depends on $datadir/poke, so we specify the datadir in

@@ -26,7 +26,8 @@ buildDunePackage rec {
   buildInputs = [
     cairo
     dune-configurator
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ ApplicationServices ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ ApplicationServices ];
 
   doCheck =
     !(

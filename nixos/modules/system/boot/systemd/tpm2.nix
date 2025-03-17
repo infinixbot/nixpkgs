@@ -64,8 +64,7 @@
           "systemd-tpm2-setup-early.service"
         ];
 
-        boot.initrd.availableKernelModules =
-          [ "tpm-tis" ]
+        boot.initrd.availableKernelModules = [ "tpm-tis" ]
           ++ lib.optional (
             !(pkgs.stdenv.hostPlatform.isRiscV64 || pkgs.stdenv.hostPlatform.isArmv7)
           ) "tpm-crb";

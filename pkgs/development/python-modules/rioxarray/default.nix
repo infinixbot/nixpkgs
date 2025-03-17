@@ -48,8 +48,7 @@ buildPythonPackage rec {
     pytestCheckHook
   ];
 
-  disabledTests =
-    [ "test_clip_geojson__no_drop" ]
+  disabledTests = [ "test_clip_geojson__no_drop" ]
     ++ lib.optionals
       (stdenv.hostPlatform.system == "aarch64-linux" || stdenv.hostPlatform.system == "aarch64-darwin")
       [

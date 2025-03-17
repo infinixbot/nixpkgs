@@ -23,7 +23,8 @@ stdenv.mkDerivation rec {
     asciidoc
     gettext
   ];
-  buildInputs = [ ncurses ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ gettext ];
+  buildInputs = [ ncurses ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ gettext ];
 
   meta = with lib; {
     homepage = "https://yash.osdn.jp/index.html.en";

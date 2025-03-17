@@ -51,7 +51,8 @@ stdenv.mkDerivation (
       nodejs
       makeWrapper
       jq
-    ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ desktopToDarwinBundle ];
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ desktopToDarwinBundle ];
 
     inherit seshat;
 

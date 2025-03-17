@@ -821,8 +821,7 @@ in
               config.services.prometheus.globalConfig.external_labels == null
               || config.services.prometheus.globalConfig.external_labels == { }
             );
-          message =
-            "services.thanos.sidecar requires uniquely identifying external labels "
+          message = "services.thanos.sidecar requires uniquely identifying external labels "
             + "to be configured in the Prometheus server. "
             + "Please set services.prometheus.globalConfig.external_labels.";
         }

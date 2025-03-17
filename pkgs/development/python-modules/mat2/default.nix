@@ -34,27 +34,26 @@ buildPythonPackage rec {
     hash = "sha256-ivFgH/88DBucZRaO/OMsLlwJCjv/VQXb6AiKWhZ8XH0=";
   };
 
-  patches =
-    [
-      # hardcode paths to some binaries
-      (replaceVars ./paths.patch {
-        exiftool = lib.getExe exiftool;
-        ffmpeg = lib.getExe ffmpeg;
-        kdialog = if dolphinIntegration then lib.getExe kdePackages.kdialog else null;
-        # replaced in postPatch
-        mat2 = null;
-        mat2svg = null;
-      })
-      # the executable shouldn't be called .mat2-wrapped
-      ./executable-name.patch
-      # hardcode path to mat2 executable
-      ./tests.patch
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isLinux) [
-      (replaceVars ./bubblewrap-path.patch {
-        bwrap = lib.getExe bubblewrap;
-      })
-    ];
+  patches = [
+    # hardcode paths to some binaries
+    (replaceVars ./paths.patch {
+      exiftool = lib.getExe exiftool;
+      ffmpeg = lib.getExe ffmpeg;
+      kdialog = if dolphinIntegration then lib.getExe kdePackages.kdialog else null;
+      # replaced in postPatch
+      mat2 = null;
+      mat2svg = null;
+    })
+    # the executable shouldn't be called .mat2-wrapped
+    ./executable-name.patch
+    # hardcode path to mat2 executable
+    ./tests.patch
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isLinux) [
+    (replaceVars ./bubblewrap-path.patch {
+      bwrap = lib.getExe bubblewrap;
+    })
+  ];
 
   postPatch = ''
     substituteInPlace dolphin/mat2.desktop \
@@ -81,14 +80,13 @@ buildPythonPackage rec {
     pycairo
   ];
 
-  postInstall =
-    ''
-      install -Dm 444 data/mat2.svg -t "$out/share/icons/hicolor/scalable/apps"
-      install -Dm 444 doc/mat2.1 -t "$out/share/man/man1"
-    ''
-    + lib.optionalString dolphinIntegration ''
-      install -Dm 444 dolphin/mat2.desktop -t "$out/share/kservices5/ServiceMenus"
-    '';
+  postInstall = ''
+    install -Dm 444 data/mat2.svg -t "$out/share/icons/hicolor/scalable/apps"
+    install -Dm 444 doc/mat2.1 -t "$out/share/man/man1"
+  ''
+  + lib.optionalString dolphinIntegration ''
+    install -Dm 444 dolphin/mat2.desktop -t "$out/share/kservices5/ServiceMenus"
+  '';
 
   nativeCheckInputs = [ pytestCheckHook ];
 

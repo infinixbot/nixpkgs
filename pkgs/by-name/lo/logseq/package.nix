@@ -50,41 +50,40 @@ stdenv.mkDerivation (
     dontConfigure = true;
     dontBuild = true;
 
-    installPhase =
+    installPhase = ''
+      runHook preInstall
+    ''
+    + lib.optionalString stdenv.hostPlatform.isLinux (
+      let
+        appimageContents = appimageTools.extract { inherit pname src version; };
+      in
       ''
-        runHook preInstall
+        mkdir -p $out/bin $out/share/logseq $out/share/applications
+        cp -a ${appimageContents}/{locales,resources} $out/share/logseq
+        cp -a ${appimageContents}/Logseq.desktop $out/share/applications/logseq.desktop
+
+        # remove the `git` in `dugite` because we want the `git` in `nixpkgs`
+        chmod +w -R $out/share/logseq/resources/app/node_modules/dugite/git
+        chmod +w $out/share/logseq/resources/app/node_modules/dugite
+        rm -rf $out/share/logseq/resources/app/node_modules/dugite/git
+        chmod -w $out/share/logseq/resources/app/node_modules/dugite
+
+        mkdir -p $out/share/pixmaps
+        ln -s $out/share/logseq/resources/app/icons/logseq.png $out/share/pixmaps/logseq.png
+
+        substituteInPlace $out/share/applications/logseq.desktop \
+          --replace Exec=Logseq Exec=logseq \
+          --replace Icon=Logseq Icon=logseq
       ''
-      + lib.optionalString stdenv.hostPlatform.isLinux (
-        let
-          appimageContents = appimageTools.extract { inherit pname src version; };
-        in
-        ''
-          mkdir -p $out/bin $out/share/logseq $out/share/applications
-          cp -a ${appimageContents}/{locales,resources} $out/share/logseq
-          cp -a ${appimageContents}/Logseq.desktop $out/share/applications/logseq.desktop
-
-          # remove the `git` in `dugite` because we want the `git` in `nixpkgs`
-          chmod +w -R $out/share/logseq/resources/app/node_modules/dugite/git
-          chmod +w $out/share/logseq/resources/app/node_modules/dugite
-          rm -rf $out/share/logseq/resources/app/node_modules/dugite/git
-          chmod -w $out/share/logseq/resources/app/node_modules/dugite
-
-          mkdir -p $out/share/pixmaps
-          ln -s $out/share/logseq/resources/app/icons/logseq.png $out/share/pixmaps/logseq.png
-
-          substituteInPlace $out/share/applications/logseq.desktop \
-            --replace Exec=Logseq Exec=logseq \
-            --replace Icon=Logseq Icon=logseq
-        ''
-      )
-      + lib.optionalString stdenv.hostPlatform.isDarwin ''
-        mkdir -p $out/{Applications/Logseq.app,bin}
-        cp -R . $out/Applications/Logseq.app
-        makeWrapper $out/Applications/Logseq.app/Contents/MacOS/Logseq $out/bin/logseq
-      ''
-      + ''
-        runHook postInstall
-      '';
+    )
+    + lib.optionalString stdenv.hostPlatform.isDarwin ''
+      mkdir -p $out/{Applications/Logseq.app,bin}
+      cp -R . $out/Applications/Logseq.app
+      makeWrapper $out/Applications/Logseq.app/Contents/MacOS/Logseq $out/bin/logseq
+    ''
+    + ''
+      runHook postInstall
+    '';
 
     postFixup = lib.optionalString stdenv.hostPlatform.isLinux ''
       # set the env "LOCAL_GIT_DIRECTORY" for dugite so that we can use the git in nixpkgs
@@ -103,7 +102,8 @@ stdenv.mkDerivation (
       license = lib.licenses.agpl3Plus;
       sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
       maintainers = with lib.maintainers; [ cheeseecake ];
-      platforms = [ "x86_64-linux" ] ++ lib.platforms.darwin;
+      platforms = [ "x86_64-linux" ]
+        ++ lib.platforms.darwin;
       mainProgram = "logseq";
     };
   }

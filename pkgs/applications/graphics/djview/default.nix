@@ -42,7 +42,8 @@ mkDerivation rec {
     qtbase
     xorg.libXt
     libtiff
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin darwin.apple_sdk.frameworks.AGL;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin darwin.apple_sdk.frameworks.AGL;
 
   preConfigure = ''
     NOCONFIGURE=1 ./autogen.sh
@@ -54,7 +55,8 @@ mkDerivation rec {
     "--with-x"
     "--with-tiff"
     "--disable-nsdejavu" # 2023-11-14: modern browsers have dropped support for NPAPI
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin "--enable-mac";
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin "--enable-mac";
 
   meta = with lib; {
     broken = stdenv.hostPlatform.isDarwin;

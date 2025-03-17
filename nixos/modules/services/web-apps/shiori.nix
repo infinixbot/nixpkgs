@@ -65,13 +65,12 @@ in
         "postgresql.service"
         "mysql.service"
       ];
-      environment =
-        {
-          SHIORI_DIR = "/var/lib/shiori";
-        }
-        // lib.optionalAttrs (cfg.databaseUrl != null) {
-          SHIORI_DATABASE_URL = cfg.databaseUrl;
-        };
+      environment = {
+        SHIORI_DIR = "/var/lib/shiori";
+      }
+      // lib.optionalAttrs (cfg.databaseUrl != null) {
+        SHIORI_DATABASE_URL = cfg.databaseUrl;
+      };
 
       serviceConfig = {
         ExecStart = "${cfg.package}/bin/shiori server --address '${cfg.address}' --port '${toString cfg.port}' --webroot '${cfg.webRoot}'";

@@ -127,27 +127,25 @@ stdenv.mkDerivation {
   ];
 
   # Fixup for the python test runners
-  postPatch =
-    ''
-      patchShebangs ./testing/run_{tests,summarize}.py
-    ''
-    + lib.optionalString (strings.versionOlder version "2.9.0") ''
-      substituteInPlace ./testing/run_tests.py \
-        --replace-fail \
-          "print >>sys.stderr, cmdp, \"doesn't exist (original name: \" + cmd + \", precision: \" + precision + \")\"" \
-          "print(f\"{cmdp} doesn't exist (original name: {cmd}, precision: {precision})\", file=sys.stderr)"
-    '';
+  postPatch = ''
+    patchShebangs ./testing/run_{tests,summarize}.py
+  ''
+  + lib.optionalString (strings.versionOlder version "2.9.0") ''
+    substituteInPlace ./testing/run_tests.py \
+      --replace-fail \
+        "print >>sys.stderr, cmdp, \"doesn't exist (original name: \" + cmd + \", precision: \" + precision + \")\"" \
+        "print(f\"{cmdp} doesn't exist (original name: {cmd}, precision: {precision})\", file=sys.stderr)"
+  '';
 
-  nativeBuildInputs =
-    [
-      autoPatchelfHook
-      cmake
-      ninja
-      gfortran
-    ]
-    ++ lists.optionals cudaSupport [
-      effectiveCudaPackages.cuda_nvcc
-    ];
+  nativeBuildInputs = [
+    autoPatchelfHook
+    cmake
+    ninja
+    gfortran
+  ]
+  ++ lists.optionals cudaSupport [
+    effectiveCudaPackages.cuda_nvcc
+  ];
 
   buildInputs =
     [

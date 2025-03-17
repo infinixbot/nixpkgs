@@ -36,7 +36,8 @@ rustPlatform.buildRustPackage rec {
   buildInputs = [
     libgpg-error
     gpgme
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ Security ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ Security ];
 
   postInstall = ''
     installManPage man/*.1

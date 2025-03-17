@@ -19,7 +19,8 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [ itk ] ++ lib.optional stdenv.hostPlatform.isDarwin Cocoa;
+  buildInputs = [ itk ]
+    ++ lib.optional stdenv.hostPlatform.isDarwin Cocoa;
 
   cmakeFlags = [ "-DCONVERT3D_USE_ITK_REMOTE_MODULES=OFF" ];
 

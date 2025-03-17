@@ -75,5 +75,6 @@ buildNodejs {
       url = "https://github.com/nodejs/node/commit/f270462c09ddfd770291a7c8a2cd204b2c63d730.patch?full_index=1";
       hash = "sha256-Err0i5g7WtXcnhykKgrS3ocX7/3oV9UrT0SNeRtMZNU=";
     })
-  ] ++ gypPatches;
+  ]
+  ++ gypPatches;
 }

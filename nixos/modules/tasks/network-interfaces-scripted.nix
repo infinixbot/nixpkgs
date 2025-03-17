@@ -136,7 +136,8 @@ let
             filter (i: !(hasAttr i.name cfg.bridges)) interfaces
           );
           conflicts = [ "shutdown.target" ];
-          wantedBy = [ "multi-user.target" ] ++ optional hasDefaultGatewaySet "network-online.target";
+          wantedBy = [ "multi-user.target" ]
+            ++ optional hasDefaultGatewaySet "network-online.target";
 
           unitConfig.ConditionCapability = "CAP_NET_ADMIN";
 
@@ -222,7 +223,8 @@ let
             # there may need ip addresses configured
             before = [ "network-setup.service" ];
             bindsTo = deviceDependency i.name;
-            after = [ "network-pre.target" ] ++ (deviceDependency i.name);
+            after = [ "network-pre.target" ]
+              ++ (deviceDependency i.name);
             serviceConfig.Type = "oneshot";
             serviceConfig.RemainAfterExit = true;
             # Restart rather than stop+start this unit to prevent the
@@ -333,9 +335,9 @@ let
                 (subsystemDevice n)
               ];
               bindsTo = deps ++ optional v.rstp "mstpd.service";
-              partOf = [ "network-setup.service" ] ++ optional v.rstp "mstpd.service";
-              after =
-                [ "network-pre.target" ]
+              partOf = [ "network-setup.service" ]
+                ++ optional v.rstp "mstpd.service";
+              after = [ "network-pre.target" ]
                 ++ deps
                 ++ optional v.rstp "mstpd.service"
                 ++ map (i: "network-addresses-${i}.service") v.interfaces;
@@ -434,17 +436,20 @@ let
               wantedBy = [
                 "network-setup.service"
                 (subsystemDevice n)
-              ] ++ internalConfigs;
+              ]
+              ++ internalConfigs;
               # before = [ "network-setup.service" ];
               # should work without internalConfigs dependencies because address/link configuration depends
               # on the device, which is created by ovs-vswitchd with type=internal, but it does not...
-              before = [ "network-setup.service" ] ++ internalConfigs;
+              before = [ "network-setup.service" ]
+                ++ internalConfigs;
               partOf = [ "network-setup.service" ]; # shutdown the bridge when network is shutdown
               bindsTo = [ "ovs-vswitchd.service" ]; # requires ovs-vswitchd to be alive at all times
               after = [
                 "network-pre.target"
                 "ovs-vswitchd.service"
-              ] ++ deps; # start switch after physical interfaces and vswitch daemon
+              ]
+              ++ deps; # start switch after physical interfaces and vswitch daemon
               wants = deps; # if one or more interface fails, the switch should continue to run
               serviceConfig.Type = "oneshot";
               serviceConfig.RemainAfterExit = true;
@@ -554,7 +559,8 @@ let
                 (subsystemDevice n)
               ];
               bindsTo = deps;
-              after = [ "network-pre.target" ] ++ deps;
+              after = [ "network-pre.target" ]
+                ++ deps;
               before = [ "network-setup.service" ];
               serviceConfig.Type = "oneshot";
               serviceConfig.RemainAfterExit = true;
@@ -597,7 +603,8 @@ let
                 (subsystemDevice n)
               ];
               bindsTo = deps;
-              after = [ "network-pre.target" ] ++ deps;
+              after = [ "network-pre.target" ]
+                ++ deps;
               before = [ "network-setup.service" ];
               serviceConfig.Type = "oneshot";
               serviceConfig.RemainAfterExit = true;
@@ -626,7 +633,8 @@ let
                 (subsystemDevice n)
               ];
               bindsTo = deps;
-              after = [ "network-pre.target" ] ++ deps;
+              after = [ "network-pre.target" ]
+                ++ deps;
               before = [ "network-setup.service" ];
               serviceConfig.Type = "oneshot";
               serviceConfig.RemainAfterExit = true;
@@ -668,7 +676,8 @@ let
                 (subsystemDevice n)
               ];
               bindsTo = deps;
-              after = [ "network-pre.target" ] ++ deps;
+              after = [ "network-pre.target" ]
+                ++ deps;
               before = [ "network-setup.service" ];
               serviceConfig.Type = "oneshot";
               serviceConfig.RemainAfterExit = true;
@@ -703,7 +712,8 @@ let
               ];
               bindsTo = deps;
               partOf = [ "network-setup.service" ];
-              after = [ "network-pre.target" ] ++ deps;
+              after = [ "network-pre.target" ]
+                ++ deps;
               before = [ "network-setup.service" ];
               serviceConfig.Type = "oneshot";
               serviceConfig.RemainAfterExit = true;

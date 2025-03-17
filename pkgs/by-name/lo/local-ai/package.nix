@@ -114,7 +114,8 @@ let
       ]
       ++ lib.optionals with_openblas [ openblas.dev ];
 
-    nativeBuildInputs = [ cmake ] ++ lib.optionals with_cublas [ cuda_nvcc ];
+    nativeBuildInputs = [ cmake ]
+      ++ lib.optionals with_cublas [ cuda_nvcc ];
 
     dontUseCmakeConfigure = true;
 
@@ -293,7 +294,8 @@ let
     nativeBuildInputs = [
       cmake
       pkg-config
-    ] ++ lib.optionals with_cublas [ cuda_nvcc ];
+    ]
+    ++ lib.optionals with_cublas [ cuda_nvcc ];
 
     buildInputs =
       [ ]
@@ -471,21 +473,20 @@ let
 
     env.NIX_CFLAGS_COMPILE = lib.optionalString with_stablediffusion " -isystem ${opencv}/include/opencv4";
 
-    postPatch =
-      ''
-        # TODO: add silero-vad
-        sed -i Makefile \
-          -e '/mod download/ d' \
-          -e '/^ALL_GRPC_BACKENDS+=backend-assets\/grpc\/llama-cpp-fallback/ d' \
-          -e '/^ALL_GRPC_BACKENDS+=backend-assets\/grpc\/llama-cpp-avx/ d' \
-          -e '/^ALL_GRPC_BACKENDS+=backend-assets\/grpc\/llama-cpp-cuda/ d' \
-          -e '/^ALL_GRPC_BACKENDS+=backend-assets\/grpc\/silero-vad/ d' \
+    postPatch = ''
+      # TODO: add silero-vad
+      sed -i Makefile \
+        -e '/mod download/ d' \
+        -e '/^ALL_GRPC_BACKENDS+=backend-assets\/grpc\/llama-cpp-fallback/ d' \
+        -e '/^ALL_GRPC_BACKENDS+=backend-assets\/grpc\/llama-cpp-avx/ d' \
+        -e '/^ALL_GRPC_BACKENDS+=backend-assets\/grpc\/llama-cpp-cuda/ d' \
+        -e '/^ALL_GRPC_BACKENDS+=backend-assets\/grpc\/silero-vad/ d' \
 
-      ''
-      + lib.optionalString with_cublas ''
-        sed -i Makefile \
-          -e '/^CGO_LDFLAGS_WHISPER?=/ s;$;-L${libcufft}/lib -L${cuda_cudart}/lib;'
-      '';
+    ''
+    + lib.optionalString with_cublas ''
+      sed -i Makefile \
+        -e '/^CGO_LDFLAGS_WHISPER?=/ s;$;-L${libcufft}/lib -L${cuda_cudart}/lib;'
+    '';
 
     postConfigure =
       prepare-sources

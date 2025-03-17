@@ -28,7 +28,8 @@ stdenv.mkDerivation rec {
     "out"
     "dev"
     "man"
-  ] ++ lib.optional enablePython "py";
+  ]
+  ++ lib.optional enablePython "py";
 
   strictDeps = true;
 
@@ -36,13 +37,15 @@ stdenv.mkDerivation rec {
     bison
     flex
     pkg-config
-  ] ++ lib.optional enablePython swig;
+  ]
+  ++ lib.optional enablePython swig;
   buildInputs = [
     libsepol
     libselinux
     bzip2
     audit
-  ] ++ lib.optional enablePython python;
+  ]
+  ++ lib.optional enablePython python;
 
   makeFlags = [
     "PREFIX=$(out)"
@@ -65,7 +68,8 @@ stdenv.mkDerivation rec {
   # cc1: all warnings being treated as errors
   env.NIX_CFLAGS_COMPILE = toString [ "-Wno-error=clobbered" ];
 
-  installTargets = [ "install" ] ++ lib.optionals enablePython [ "install-pywrap" ];
+  installTargets = [ "install" ]
+    ++ lib.optionals enablePython [ "install-pywrap" ];
 
   enableParallelBuilding = true;
 

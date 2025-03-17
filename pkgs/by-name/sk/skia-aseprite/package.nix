@@ -102,7 +102,8 @@ clangStdenv.mkDerivation (finalAttrs: {
     runHook postInstall
   '';
 
-  passthru.updateScript = [ ./update.sh ] ++ builtins.attrNames depSrcs;
+  passthru.updateScript = [ ./update.sh ]
+    ++ builtins.attrNames depSrcs;
 
   meta = {
     description = "Complete 2D graphic library for drawing Text, Geometries, and Images (Aseprite's fork)";

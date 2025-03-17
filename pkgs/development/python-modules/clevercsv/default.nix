@@ -51,7 +51,8 @@ buildPythonPackage rec {
     ];
   };
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ optional-dependencies.full;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ optional-dependencies.full;
 
   pythonImportsCheck = [
     "clevercsv"

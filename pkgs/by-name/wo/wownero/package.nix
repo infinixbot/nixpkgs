@@ -60,19 +60,18 @@ stdenv.mkDerivation rec {
     python3
   ];
 
-  buildInputs =
-    [
-      boost186
-      libsodium
-      openssl
-      rapidjson
-      readline
-      unbound
-      zeromq
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      darwin.apple_sdk.frameworks.IOKit
-    ];
+  buildInputs = [
+    boost186
+    libsodium
+    openssl
+    rapidjson
+    readline
+    unbound
+    zeromq
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    darwin.apple_sdk.frameworks.IOKit
+  ];
 
   postUnpack = ''
     rm -r $sourceRoot/external/miniupnp

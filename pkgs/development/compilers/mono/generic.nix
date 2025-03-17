@@ -57,31 +57,29 @@ stdenv.mkDerivation rec {
     which
     gnumake42
   ];
-  buildInputs =
-    [
-      glib
-      gettext
-      libgdiplus
-      libX11
-      ncurses
-      zlib
-      bash
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      Foundation
-      libobjc
-    ];
+  buildInputs = [
+    glib
+    gettext
+    libgdiplus
+    libX11
+    ncurses
+    zlib
+    bash
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    Foundation
+    libobjc
+  ];
 
-  configureFlags =
-    [
-      "--x-includes=${libX11.dev}/include"
-      "--x-libraries=${libX11.out}/lib"
-      "--with-libgdiplus=${libgdiplus}/lib/libgdiplus.so"
-    ]
-    ++ lib.optionals withLLVM [
-      "--enable-llvm"
-      "--with-llvm=${llvm}"
-    ];
+  configureFlags = [
+    "--x-includes=${libX11.dev}/include"
+    "--x-libraries=${libX11.out}/lib"
+    "--with-libgdiplus=${libgdiplus}/lib/libgdiplus.so"
+  ]
+  ++ lib.optionals withLLVM [
+    "--enable-llvm"
+    "--with-llvm=${llvm}"
+  ];
 
   configurePhase = ''
     patchShebangs autogen.sh mcs/build/start-compiler-server.sh
@@ -90,18 +88,18 @@ stdenv.mkDerivation rec {
 
   # We want pkg-config to take priority over the dlls in the Mono framework and the GAC
   # because we control pkg-config
-  patches = [ ./pkgconfig-before-gac.patch ] ++ extraPatches;
+  patches = [ ./pkgconfig-before-gac.patch ]
+    ++ extraPatches;
 
   # Patch all the necessary scripts. Also, if we're using LLVM, we fix the default
   # LLVM path to point into the Mono LLVM build, since it's private anyway.
-  preBuild =
-    ''
-      makeFlagsArray=(INSTALL=`type -tp install`)
-      substituteInPlace mcs/class/corlib/System/Environment.cs --replace /usr/share "$out/share"
-    ''
-    + lib.optionalString withLLVM ''
-      substituteInPlace mono/mini/aot-compiler.c --replace "llvm_path = g_strdup (\"\")" "llvm_path = g_strdup (\"${llvm}/bin/\")"
-    '';
+  preBuild = ''
+    makeFlagsArray=(INSTALL=`type -tp install`)
+    substituteInPlace mcs/class/corlib/System/Environment.cs --replace /usr/share "$out/share"
+  ''
+  + lib.optionalString withLLVM ''
+    substituteInPlace mono/mini/aot-compiler.c --replace "llvm_path = g_strdup (\"\")" "llvm_path = g_strdup (\"${llvm}/bin/\")"
+  '';
 
   # Fix mono DLLMap so it can find libX11 to run winforms apps
   # libgdiplus is correctly handled by the --with-libgdiplus configure flag

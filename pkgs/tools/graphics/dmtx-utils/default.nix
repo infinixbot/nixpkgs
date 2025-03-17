@@ -28,7 +28,8 @@ stdenv.mkDerivation rec {
   buildInputs = [
     libdmtx
     imagemagick
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin Foundation;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin Foundation;
 
   meta = {
     description = "Data matrix command-line utilities";

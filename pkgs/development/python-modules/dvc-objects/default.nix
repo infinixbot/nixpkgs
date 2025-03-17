@@ -34,7 +34,8 @@ buildPythonPackage rec {
 
   nativeBuildInputs = [ setuptools-scm ];
 
-  propagatedBuildInputs = [ fsspec ] ++ lib.optionals (pythonOlder "3.12") [ funcy ];
+  propagatedBuildInputs = [ fsspec ]
+    ++ lib.optionals (pythonOlder "3.12") [ funcy ];
 
   nativeCheckInputs = [
     pytest-asyncio

@@ -243,7 +243,8 @@ let
     ++ lib.optional (commit == "true") "--commit"
     ++ lib.optional (skip-prompt == "true") "--skip-prompt";
 
-  args = [ packagesJson ] ++ optionalArgs;
+  args = [ packagesJson ]
+    ++ optionalArgs;
 
 in
 pkgs.stdenv.mkDerivation {

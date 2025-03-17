@@ -65,18 +65,17 @@ stdenv.mkDerivation (finalAttrs: {
       --replace-fail '"libpulse.so.0"' '"${lib.getLib libpulseaudio}/lib/libpulse.so.0"'
   '';
 
-  nativeBuildInputs =
-    [
-      pkg-config
-      cmake
-      ninja
-      python3
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      # to build bundled libdispatch
-      clang
-      gobject-introspection
-    ];
+  nativeBuildInputs = [
+    pkg-config
+    cmake
+    ninja
+    python3
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    # to build bundled libdispatch
+    clang
+    gobject-introspection
+  ];
 
   buildInputs =
     [

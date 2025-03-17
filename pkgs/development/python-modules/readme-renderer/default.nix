@@ -44,7 +44,8 @@ buildPythonPackage rec {
 
   optional-dependencies.md = [ cmarkgfm ];
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ optional-dependencies.md;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ optional-dependencies.md;
 
   disabledTests = [
     "test_rst_fixtures"

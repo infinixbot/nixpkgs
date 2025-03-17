@@ -71,7 +71,8 @@ buildPythonPackage rec {
     "mpire"
   ];
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ optional-dependencies.testing;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ optional-dependencies.testing;
 
   pytestFlagsArray = [ "tests" ];
 

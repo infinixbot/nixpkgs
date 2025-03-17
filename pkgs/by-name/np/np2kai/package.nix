@@ -145,21 +145,20 @@ stdenv.mkDerivation rec {
     sha256 = "0kxysxhx6jyk82mx30ni0ydzmwdcbnlxlnarrlq018rsnwb4md72";
   };
 
-  configurePhase =
-    ''
-      export GIT_VERSION=${builtins.substring 0 7 src.rev}
-    ''
-    + optionalString enableParallelBuilding ''
-      appendToVar buildFlags "-j$NIX_BUILD_CORES"
-    ''
-    + optionalString enableX11 ''
-      cd x11
-      substituteInPlace Makefile.am \
-        --replace 'GIT_VERSION :=' 'GIT_VERSION ?='
-      ./autogen.sh ${x11ConfigureFlags}
-      ./configure ${x11ConfigureFlags}
-      cd ..
-    '';
+  configurePhase = ''
+    export GIT_VERSION=${builtins.substring 0 7 src.rev}
+  ''
+  + optionalString enableParallelBuilding ''
+    appendToVar buildFlags "-j$NIX_BUILD_CORES"
+  ''
+  + optionalString enableX11 ''
+    cd x11
+    substituteInPlace Makefile.am \
+      --replace 'GIT_VERSION :=' 'GIT_VERSION ?='
+    ./autogen.sh ${x11ConfigureFlags}
+    ./configure ${x11ConfigureFlags}
+    cd ..
+  '';
 
   nativeBuildInputs =
     sdlDepsBuildonly

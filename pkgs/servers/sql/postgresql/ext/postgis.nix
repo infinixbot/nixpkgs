@@ -69,7 +69,8 @@ buildPostgresqlExtension (finalAttrs: {
     pkg-config
     protobufc
     which
-  ] ++ lib.optional jitSupport llvm;
+  ]
+  ++ lib.optional jitSupport llvm;
   dontDisableStatic = true;
 
   nativeCheckInputs = [
@@ -93,7 +94,8 @@ buildPostgresqlExtension (finalAttrs: {
     "--with-gdalconfig=${gdal}/bin/gdal-config"
     "--with-jsondir=${json_c.dev}"
     "--disable-extension-upgrades-install"
-  ] ++ lib.optional withSfcgal "--with-sfcgal=${sfcgal}/bin/sfcgal-config";
+  ]
+  ++ lib.optional withSfcgal "--with-sfcgal=${sfcgal}/bin/sfcgal-config";
 
   makeFlags = [
     "PERL=${perl}/bin/perl"

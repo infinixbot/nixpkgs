@@ -22,7 +22,8 @@ buildPecl {
     hash = "sha256-WeTl+/OVcXFl39qfYoYRk2MQ7PYKlbjHxddp/kFov6g=";
   };
 
-  buildInputs = [ pcre2 ] ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [ valgrind ];
+  buildInputs = [ pcre2 ]
+    ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [ valgrind ];
 
   # tests require internet access
   doCheck = false;

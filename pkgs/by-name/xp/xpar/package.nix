@@ -19,7 +19,8 @@ stdenv.mkDerivation (finalAttrs: {
 
   nativeBuildInputs = [
     autoreconfHook
-  ] ++ lib.optionals stdenv.hostPlatform.isx86_64 [ nasm ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isx86_64 [ nasm ];
 
   configureFlags =
     [

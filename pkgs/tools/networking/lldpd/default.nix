@@ -20,19 +20,18 @@ stdenv.mkDerivation rec {
     hash = "sha256-+H3zFj1eUTjakB0FWzhACXhdHrUP2xeiNDkQ/PMKmX8=";
   };
 
-  configureFlags =
-    [
-      "--localstatedir=/var"
-      "--enable-pie"
-      "--with-snmp"
-      "--with-systemdsystemunitdir=\${out}/lib/systemd/system"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      "--with-launchddaemonsdir=no"
-      "--with-privsep-chroot=/var/empty"
-      "--with-privsep-group=nogroup"
-      "--with-privsep-user=nobody"
-    ];
+  configureFlags = [
+    "--localstatedir=/var"
+    "--enable-pie"
+    "--with-snmp"
+    "--with-systemdsystemunitdir=\${out}/lib/systemd/system"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    "--with-launchddaemonsdir=no"
+    "--with-privsep-chroot=/var/empty"
+    "--with-privsep-group=nogroup"
+    "--with-privsep-user=nobody"
+  ];
 
   nativeBuildInputs = [
     pkg-config
@@ -43,7 +42,8 @@ stdenv.mkDerivation rec {
     readline
     net-snmp
     openssl
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ Foundation ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ Foundation ];
 
   enableParallelBuilding = true;
 

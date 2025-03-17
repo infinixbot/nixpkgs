@@ -25,9 +25,11 @@ rustPlatform.buildRustPackage rec {
   useFetchCargoVendor = true;
   cargoHash = "sha256-vVRFS7o0zV+ek9ho+URks6peOryMpFCE1sDzN9g7uH0=";
 
-  nativeBuildInputs = [ pkg-config ] ++ lib.optionals stdenv.isDarwin [ darwin.DarwinTools ];
+  nativeBuildInputs = [ pkg-config ]
+    ++ lib.optionals stdenv.isDarwin [ darwin.DarwinTools ];
 
-  buildInputs = [ solc ] ++ lib.optionals stdenv.isDarwin [ libusb1 ];
+  buildInputs = [ solc ]
+    ++ lib.optionals stdenv.isDarwin [ libusb1 ];
 
   # Tests are run upstream, and many perform I/O
   # incompatible with the nix build sandbox.

@@ -178,10 +178,9 @@ let
 
     # Xonotic needs to find libcurl.so at runtime for map downloads
     dontPatchELF = true;
-    postFixup =
-      lib.optionalString withDedicated ''
-        patchelf --add-needed ${curl.out}/lib/libcurl.so $out/bin/xonotic-dedicated
-      ''
+    postFixup = lib.optionalString withDedicated ''
+      patchelf --add-needed ${curl.out}/lib/libcurl.so $out/bin/xonotic-dedicated
+    ''
       + lib.optionalString withGLX ''
         patchelf \
             --add-needed ${curl.out}/lib/libcurl.so \

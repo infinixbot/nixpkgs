@@ -147,24 +147,23 @@ stdenv.mkDerivation rec {
     autoreconfHook
   ];
 
-  buildInputs =
-    [
-      libdaemon
-      dbus
-      glib
-      expat
-      libiconv
-      libevent
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isFreeBSD [
-      libpcap
-    ]
-    ++ lib.optionals gtk3Support [
-      gtk3
-    ]
-    ++ lib.optionals qt5Support [
-      qt5
-    ];
+  buildInputs = [
+    libdaemon
+    dbus
+    glib
+    expat
+    libiconv
+    libevent
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isFreeBSD [
+    libpcap
+  ]
+  ++ lib.optionals gtk3Support [
+    gtk3
+  ]
+  ++ lib.optionals qt5Support [
+    qt5
+  ];
 
   propagatedBuildInputs = lib.optionals withPython (
     with python.pkgs;

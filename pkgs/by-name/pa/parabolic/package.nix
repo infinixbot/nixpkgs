@@ -77,8 +77,7 @@ stdenv.mkDerivation (finalAttrs: {
     (lib.cmakeFeature "UI_PLATFORM" uiPlatform)
   ];
 
-  preFixup =
-    lib.optionalString (uiPlatform == "gnome") "gappsWrapperArgs"
+  preFixup = lib.optionalString (uiPlatform == "gnome") "gappsWrapperArgs"
     + lib.optionalString (uiPlatform == "qt") "qtWrapperArgs"
     + "+=(--prefix PATH : ${
       lib.makeBinPath [

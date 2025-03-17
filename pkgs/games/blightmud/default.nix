@@ -39,8 +39,7 @@ rustPlatform.buildRustPackage rec {
     rustPlatform.bindgenHook
   ];
 
-  buildInputs =
-    [ openssl ]
+  buildInputs = [ openssl ]
     ++ lib.optionals (withTTS && stdenv.hostPlatform.isLinux) [ speechd-minimal ]
     ++ lib.optionals stdenv.hostPlatform.isLinux [ alsa-lib ]
     ++ lib.optionals (withTTS && stdenv.hostPlatform.isDarwin) [

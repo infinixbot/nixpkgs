@@ -40,21 +40,20 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-m4ATWpAZxIBp1X0cNeyNGmt6aIBo/cHH+DpOMkLia0E=";
   };
 
-  patches =
-    [
-      ./vulkan_icd.patch
-      ./redirect-bugtracker.patch
-      ./remove-flatpak-check.patch
-      ./remove-core-tab.patch
-    ]
-    ++ (
-      if removeWarningPopup then
-        [ ./remove-unsupported-warning.patch ]
-      else
-        [
-          ./warn-unsupported.patch
-        ]
-    );
+  patches = [
+    ./vulkan_icd.patch
+    ./redirect-bugtracker.patch
+    ./remove-flatpak-check.patch
+    ./remove-core-tab.patch
+  ]
+  ++ (
+    if removeWarningPopup then
+      [ ./remove-unsupported-warning.patch ]
+    else
+      [
+        ./warn-unsupported.patch
+      ]
+  );
 
   # https://github.com/bottlesdevs/Bottles/wiki/Packaging
   nativeBuildInputs = [

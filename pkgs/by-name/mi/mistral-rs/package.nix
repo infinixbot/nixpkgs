@@ -91,7 +91,8 @@ rustPlatform.buildRustPackage rec {
   nativeBuildInputs = [
     pkg-config
     python3
-  ] ++ lib.optionals cudaSupport [ cudaPackages.cuda_nvcc ];
+  ]
+  ++ lib.optionals cudaSupport [ cudaPackages.cuda_nvcc ];
 
   buildInputs =
     [
@@ -111,32 +112,31 @@ rustPlatform.buildRustPackage rec {
     ++ lib.optionals mklSupport [ "mkl" ]
     ++ lib.optionals (stdenv.hostPlatform.isDarwin && metalSupport) [ "metal" ];
 
-  env =
-    {
-      SWAGGER_UI_DOWNLOAD_URL =
-        let
-          # When updating:
-          # - Look for the version of `utoipa-swagger-ui` at:
-          #   https://github.com/EricLBuehler/mistral.rs/blob/v<MISTRAL-RS-VERSION>/mistralrs-server/Cargo.toml
-          # - Look at the corresponding version of `swagger-ui` at:
-          #   https://github.com/juhaku/utoipa/blob/utoipa-swagger-ui-<UTOPIA-SWAGGER-UI-VERSION>/utoipa-swagger-ui/build.rs#L21-L22
-          swaggerUiVersion = "5.17.12";
+  env = {
+    SWAGGER_UI_DOWNLOAD_URL =
+      let
+        # When updating:
+        # - Look for the version of `utoipa-swagger-ui` at:
+        #   https://github.com/EricLBuehler/mistral.rs/blob/v<MISTRAL-RS-VERSION>/mistralrs-server/Cargo.toml
+        # - Look at the corresponding version of `swagger-ui` at:
+        #   https://github.com/juhaku/utoipa/blob/utoipa-swagger-ui-<UTOPIA-SWAGGER-UI-VERSION>/utoipa-swagger-ui/build.rs#L21-L22
+        swaggerUiVersion = "5.17.12";
 
-          swaggerUi = fetchurl {
-            url = "https://github.com/swagger-api/swagger-ui/archive/refs/tags/v${swaggerUiVersion}.zip";
-            hash = "sha256-HK4z/JI+1yq8BTBJveYXv9bpN/sXru7bn/8g5mf2B/I=";
-          };
-        in
-        "file://${swaggerUi}";
+        swaggerUi = fetchurl {
+          url = "https://github.com/swagger-api/swagger-ui/archive/refs/tags/v${swaggerUiVersion}.zip";
+          hash = "sha256-HK4z/JI+1yq8BTBJveYXv9bpN/sXru7bn/8g5mf2B/I=";
+        };
+      in
+      "file://${swaggerUi}";
 
-      RUSTONIG_SYSTEM_LIBONIG = true;
-    }
-    // (lib.optionalAttrs cudaSupport {
-      CUDA_COMPUTE_CAP = cudaCapability';
+    RUSTONIG_SYSTEM_LIBONIG = true;
+  }
+  // (lib.optionalAttrs cudaSupport {
+    CUDA_COMPUTE_CAP = cudaCapability';
 
-      # Apparently, cudart is enough: No need to provide the entire cudaPackages.cudatoolkit derivation.
-      CUDA_TOOLKIT_ROOT_DIR = lib.getDev cudaPackages.cuda_cudart;
-    });
+    # Apparently, cudart is enough: No need to provide the entire cudaPackages.cudatoolkit derivation.
+    CUDA_TOOLKIT_ROOT_DIR = lib.getDev cudaPackages.cuda_cudart;
+  });
 
   NVCC_PREPEND_FLAGS = lib.optionals cudaSupport [
     "-I${lib.getDev cudaPackages.cuda_cudart}/include"

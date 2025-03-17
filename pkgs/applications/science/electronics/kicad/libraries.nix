@@ -16,8 +16,7 @@ let
 
       src = libSrc name;
 
-      nativeBuildInputs =
-        [ cmake ]
+      nativeBuildInputs = [ cmake ]
         ++ lib.optionals (name == "packages3d") [
           stepreduce
           parallel

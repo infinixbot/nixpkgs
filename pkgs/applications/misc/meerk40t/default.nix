@@ -19,13 +19,12 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-dybmbmEvvTka0wMBIUDYemqDaCvG9odgCbIWYhROJLI=";
   };
 
-  nativeBuildInputs =
-    [
-      wrapGAppsHook3
-    ]
-    ++ (with python3Packages; [
-      setuptools
-    ]);
+  nativeBuildInputs = [
+    wrapGAppsHook3
+  ]
+  ++ (with python3Packages; [
+    setuptools
+  ]);
 
   # prevent double wrapping
   dontWrapGApps = true;

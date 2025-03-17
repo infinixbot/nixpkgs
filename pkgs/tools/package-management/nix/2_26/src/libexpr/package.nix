@@ -69,13 +69,15 @@ mkMesonLibrary (finalAttrs: {
     nix-util
     nix-store
     nix-fetchers
-  ] ++ finalAttrs.passthru.externalPropagatedBuildInputs;
+  ]
+  ++ finalAttrs.passthru.externalPropagatedBuildInputs;
 
   # Hack for sake of the dev shell
   passthru.externalPropagatedBuildInputs = [
     boost
     nlohmann_json
-  ] ++ lib.optional enableGC boehmgc;
+  ]
+  ++ lib.optional enableGC boehmgc;
 
   preConfigure =
     # "Inline" .version so it's not a symlink, and includes the suffix.

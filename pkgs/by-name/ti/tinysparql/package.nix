@@ -79,22 +79,21 @@ stdenv.mkDerivation (finalAttrs: {
       mesonEmulatorHook
     ];
 
-  buildInputs =
-    [
-      glib
-      libxml2
-      sqlite
-      icu
-      libsoup_3
-      libuuid
-      json-glib
-      avahi
-      libstemmer
-      dbus
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      systemd
-    ];
+  buildInputs = [
+    glib
+    libxml2
+    sqlite
+    icu
+    libsoup_3
+    libuuid
+    json-glib
+    avahi
+    libstemmer
+    dbus
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    systemd
+  ];
 
   nativeCheckInputs = [
     dbus

@@ -55,7 +55,8 @@ stdenvNoCC.mkDerivation {
   pname = "${targetPrefix}cctools-binutils-darwin";
   inherit (cctools) version;
 
-  outputs = [ "out" ] ++ lib.optional enableManpages "man";
+  outputs = [ "out" ]
+    ++ lib.optional enableManpages "man";
 
   strictDeps = true;
 

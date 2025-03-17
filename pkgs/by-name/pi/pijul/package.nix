@@ -30,21 +30,20 @@ rustPlatform.buildRustPackage rec {
     installShellFiles
     pkg-config
   ];
-  buildInputs =
+  buildInputs = [
+    openssl
+    libsodium
+    xxHash
+  ]
+  ++ (lib.optionals gitImportSupport [ libgit2 ])
+  ++ (lib.optionals stdenv.hostPlatform.isDarwin (
+    with darwin.apple_sdk.frameworks;
     [
-      openssl
-      libsodium
-      xxHash
+      CoreServices
+      Security
+      SystemConfiguration
     ]
-    ++ (lib.optionals gitImportSupport [ libgit2 ])
-    ++ (lib.optionals stdenv.hostPlatform.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        CoreServices
-        Security
-        SystemConfiguration
-      ]
-    ));
+  ));
 
   buildFeatures = lib.optional gitImportSupport "git";
 

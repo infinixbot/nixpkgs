@@ -54,32 +54,31 @@ stdenv.mkDerivation rec {
     ]
     ++ optionals pythonSupport [ swig ];
 
-  buildInputs = [ libconfuse ] ++ optionals cppSupport [ boost ];
+  buildInputs = [ libconfuse ]
+    ++ optionals cppSupport [ boost ];
 
-  cmakeFlags =
-    [
-      "-DFTDIPP=${onOff cppSupport}"
-      "-DBUILD_TESTS=${onOff cppSupport}"
-      "-DLINK_PYTHON_LIBRARY=${onOff pythonSupport}"
-      "-DPYTHON_BINDINGS=${onOff pythonSupport}"
-      "-DDOCUMENTATION=${onOff docSupport}"
-    ]
-    ++ lib.optionals pythonSupport [
-      "-DPYTHON_EXECUTABLE=${python3.pythonOnBuildForHost.interpreter}"
-      "-DPYTHON_LIBRARY=${python3}/lib/libpython${python3.pythonVersion}${stdenv.hostPlatform.extensions.sharedLibrary}"
-    ];
+  cmakeFlags = [
+    "-DFTDIPP=${onOff cppSupport}"
+    "-DBUILD_TESTS=${onOff cppSupport}"
+    "-DLINK_PYTHON_LIBRARY=${onOff pythonSupport}"
+    "-DPYTHON_BINDINGS=${onOff pythonSupport}"
+    "-DDOCUMENTATION=${onOff docSupport}"
+  ]
+  ++ lib.optionals pythonSupport [
+    "-DPYTHON_EXECUTABLE=${python3.pythonOnBuildForHost.interpreter}"
+    "-DPYTHON_LIBRARY=${python3}/lib/libpython${python3.pythonVersion}${stdenv.hostPlatform.extensions.sharedLibrary}"
+  ];
 
   propagatedBuildInputs = [ libusb1 ];
 
-  postInstall =
-    ''
-      mkdir -p "$out/etc/udev/rules.d/"
-      cp ../packages/99-libftdi.rules "$out/etc/udev/rules.d/"
-    ''
-    + optionalString docSupport ''
-      cp -r doc/man "$out/share/"
-      cp -r doc/html "$out/share/doc/libftdi1/"
-    '';
+  postInstall = ''
+    mkdir -p "$out/etc/udev/rules.d/"
+    cp ../packages/99-libftdi.rules "$out/etc/udev/rules.d/"
+  ''
+  + optionalString docSupport ''
+    cp -r doc/man "$out/share/"
+    cp -r doc/html "$out/share/doc/libftdi1/"
+  '';
 
   meta = with lib; {
     description = "Library to talk to FTDI chips using libusb";

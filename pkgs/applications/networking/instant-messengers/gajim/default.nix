@@ -49,25 +49,24 @@ python3.pkgs.buildPythonApplication rec {
 
   format = "pyproject";
 
-  buildInputs =
-    [
-      gtk3
-      adwaita-icon-theme
-      gtksourceview4
-      glib-networking
-    ]
-    ++ lib.optionals enableJingle [
-      farstream
-      gstreamer
-      gst-plugins-base
-      gst-libav
-      gst-plugins-good
-      libnice
-    ]
-    ++ lib.optional enableSecrets libsecret
-    ++ lib.optional enableSpelling gspell
-    ++ lib.optional enableUPnP gupnp-igd
-    ++ lib.optional enableAppIndicator libappindicator-gtk3;
+  buildInputs = [
+    gtk3
+    adwaita-icon-theme
+    gtksourceview4
+    glib-networking
+  ]
+  ++ lib.optionals enableJingle [
+    farstream
+    gstreamer
+    gst-plugins-base
+    gst-libav
+    gst-plugins-good
+    libnice
+  ]
+  ++ lib.optional enableSecrets libsecret
+  ++ lib.optional enableSpelling gspell
+  ++ lib.optional enableUPnP gupnp-igd
+  ++ lib.optional enableAppIndicator libappindicator-gtk3;
 
   nativeBuildInputs = [
     gettext

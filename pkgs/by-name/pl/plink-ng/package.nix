@@ -19,8 +19,7 @@ stdenv.mkDerivation rec {
     sha256 = "1zhffjbwpd50dxywccbnv1rxy9njwz73l4awc5j7i28rgj3davcq";
   };
 
-  buildInputs =
-    [ zlib ]
+  buildInputs = [ zlib ]
     ++ (
       if stdenv.hostPlatform.isDarwin then
         [ darwin.apple_sdk.frameworks.Accelerate ]

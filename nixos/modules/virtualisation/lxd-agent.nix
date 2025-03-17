@@ -60,8 +60,7 @@ in
     systemd.services.lxd-agent = {
       enable = true;
       wantedBy = [ "multi-user.target" ];
-      before =
-        [ "shutdown.target" ]
+      before = [ "shutdown.target" ]
         ++ lib.optionals config.services.cloud-init.enable [
           "cloud-init.target"
           "cloud-init.service"

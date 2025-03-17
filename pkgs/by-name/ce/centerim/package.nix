@@ -27,7 +27,8 @@ stdenv.mkDerivation rec {
     curl
     ncurses
     libjpeg
-  ] ++ lib.optional withGpg gpgme;
+  ]
+  ++ lib.optional withGpg gpgme;
 
   preConfigure = ''
     ${gnused}/bin/sed -i '1,1i#include <stdio.h>' libicq2000/libicq2000/sigslot.h

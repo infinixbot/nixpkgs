@@ -127,7 +127,8 @@ stdenv.mkDerivation {
     "--enable-256-color"
     (lib.enableFeature perlSupport "perl")
     (lib.enableFeature unicode3Support "unicode3")
-  ] ++ lib.optional emojiSupport "--enable-wide-glyphs";
+  ]
+  ++ lib.optional emojiSupport "--enable-wide-glyphs";
 
   LDFLAGS = [
     "-lfontconfig"
@@ -136,18 +137,17 @@ stdenv.mkDerivation {
   ];
   CFLAGS = [ "-I${freetype.dev}/include/freetype2" ];
 
-  preConfigure =
-    ''
-      # without this the terminfo won't be compiled by tic, see man tic
-      mkdir -p $terminfo/share/terminfo
-      export TERMINFO=$terminfo/share/terminfo
-    ''
-    + lib.optionalString perlSupport ''
-      # make urxvt find its perl file lib/perl5/site_perl
-      # is added to PERL5LIB automatically
-      mkdir -p $out/$(dirname ${perl.libPrefix})
-      ln -s $out/lib/urxvt $out/${perl.libPrefix}
-    '';
+  preConfigure = ''
+    # without this the terminfo won't be compiled by tic, see man tic
+    mkdir -p $terminfo/share/terminfo
+    export TERMINFO=$terminfo/share/terminfo
+  ''
+  + lib.optionalString perlSupport ''
+    # make urxvt find its perl file lib/perl5/site_perl
+    # is added to PERL5LIB automatically
+    mkdir -p $out/$(dirname ${perl.libPrefix})
+    ln -s $out/lib/urxvt $out/${perl.libPrefix}
+  '';
 
   postInstall = ''
     mkdir -p $out/nix-support

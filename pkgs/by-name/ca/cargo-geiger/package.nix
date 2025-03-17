@@ -34,8 +34,7 @@ rustPlatform.buildRustPackage rec {
     ./allow-warnings.patch
   ];
 
-  buildInputs =
-    [ openssl ]
+  buildInputs = [ openssl ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin (
       with darwin.apple_sdk.frameworks;
       [

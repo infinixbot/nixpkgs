@@ -42,7 +42,8 @@ stdenv.mkDerivation rec {
     openssl
     bash-completion
     perl
-  ] ++ lib.optional withUtempter libutempter;
+  ]
+  ++ lib.optional withUtempter libutempter;
 
   strictDeps = true;
 
@@ -67,7 +68,8 @@ stdenv.mkDerivation rec {
       --subst-var-by mosh-client "$out/bin/mosh-client"
   '';
 
-  configureFlags = [ "--enable-completion" ] ++ lib.optional withUtempter "--with-utempter";
+  configureFlags = [ "--enable-completion" ]
+    ++ lib.optional withUtempter "--with-utempter";
 
   postInstall = ''
     wrapProgram $out/bin/mosh --prefix PERL5LIB : $PERL5LIB

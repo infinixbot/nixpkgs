@@ -550,10 +550,9 @@ in
         assertion =
           cfg.database.ignorePostgresqlVersion
           || (databaseActuallyCreateLocally -> upstreamPostgresqlVersion == postgresqlVersion);
-        message =
-          "The PostgreSQL version recommended for use with Discourse is ${upstreamPostgresqlVersion}, you're using ${postgresqlVersion}. "
-          + "Either update your PostgreSQL package to the correct version or set services.discourse.database.ignorePostgresqlVersion. "
-          + "See https://nixos.org/manual/nixos/stable/index.html#module-postgresql for details on how to upgrade PostgreSQL.";
+        message = "The PostgreSQL version recommended for use with Discourse is ${upstreamPostgresqlVersion}, you're using ${postgresqlVersion}. "
+        + "Either update your PostgreSQL package to the correct version or set services.discourse.database.ignorePostgresqlVersion. "
+        + "See https://nixos.org/manual/nixos/stable/index.html#module-postgresql for details on how to upgrade PostgreSQL.";
       }
     ];
 
@@ -733,14 +732,13 @@ in
         "postgresql.service"
         "discourse-postgresql.service"
       ];
-      bindsTo =
-        [
-          "redis-discourse.service"
-        ]
-        ++ lib.optionals (cfg.database.host == null) [
-          "postgresql.service"
-          "discourse-postgresql.service"
-        ];
+      bindsTo = [
+        "redis-discourse.service"
+      ]
+      ++ lib.optionals (cfg.database.host == null) [
+        "postgresql.service"
+        "discourse-postgresql.service"
+      ];
       path = cfg.package.runtimeDeps ++ [
         postgresqlPackage
         pkgs.replace-secret
@@ -1122,16 +1120,15 @@ in
       };
     };
 
-    users.users =
-      {
-        discourse = {
-          group = "discourse";
-          isSystemUser = true;
-        };
-      }
-      // (lib.optionalAttrs cfg.nginx.enable {
-        ${config.services.nginx.user}.extraGroups = [ "discourse" ];
-      });
+    users.users = {
+      discourse = {
+        group = "discourse";
+        isSystemUser = true;
+      };
+    }
+    // (lib.optionalAttrs cfg.nginx.enable {
+      ${config.services.nginx.user}.extraGroups = [ "discourse" ];
+    });
 
     users.groups = {
       discourse = { };

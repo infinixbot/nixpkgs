@@ -8,8 +8,9 @@
   withIntel ? true,
 }:
 mkDerivation rec {
-  pname =
-    "drm-kmod-firmware" + lib.optionalString withAmd "-amd" + lib.optionalString withIntel "-intel";
+  pname = "drm-kmod-firmware"
+    + lib.optionalString withAmd "-amd"
+    + lib.optionalString withIntel "-intel";
 
   version = "20230625_8";
 

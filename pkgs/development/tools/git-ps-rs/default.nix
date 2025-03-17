@@ -28,7 +28,8 @@ rustPlatform.buildRustPackage rec {
   buildInputs = [
     openssl
     dbus
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ Security ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ Security ];
 
   meta = with lib; {
     description = "Tool for working with a stack of patches";

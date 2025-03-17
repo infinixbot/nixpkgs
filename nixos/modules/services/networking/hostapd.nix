@@ -1018,88 +1018,87 @@ in
                         );
                       in
                       {
-                        settings =
-                          {
-                            ssid = bssCfg.ssid;
-                            utf8_ssid = bssCfg.utf8Ssid;
+                        settings = {
+                          ssid = bssCfg.ssid;
+                          utf8_ssid = bssCfg.utf8Ssid;
 
-                            logger_syslog = mkDefault (-1);
-                            logger_syslog_level = bssCfg.logLevel;
-                            logger_stdout = mkDefault (-1);
-                            logger_stdout_level = bssCfg.logLevel;
-                            ctrl_interface = mkDefault "/run/hostapd";
-                            ctrl_interface_group = bssCfg.group;
+                          logger_syslog = mkDefault (-1);
+                          logger_syslog_level = bssCfg.logLevel;
+                          logger_stdout = mkDefault (-1);
+                          logger_stdout_level = bssCfg.logLevel;
+                          ctrl_interface = mkDefault "/run/hostapd";
+                          ctrl_interface_group = bssCfg.group;
 
-                            macaddr_acl = bssCfg.macAcl;
+                          macaddr_acl = bssCfg.macAcl;
 
-                            ignore_broadcast_ssid = bssCfg.ignoreBroadcastSsid;
+                          ignore_broadcast_ssid = bssCfg.ignoreBroadcastSsid;
 
-                            # IEEE 802.11i (authentication) related configuration
-                            # Encrypt management frames to protect against deauthentication and similar attacks
-                            ieee80211w = mkDefault 1;
-                            sae_require_mfp = mkDefault 1;
+                          # IEEE 802.11i (authentication) related configuration
+                          # Encrypt management frames to protect against deauthentication and similar attacks
+                          ieee80211w = mkDefault 1;
+                          sae_require_mfp = mkDefault 1;
 
-                            # Only allow WPA by default and disable insecure WEP
-                            auth_algs = mkDefault 1;
-                            # Always enable QoS, which is required for 802.11n and above
-                            wmm_enabled = mkDefault true;
-                            ap_isolate = bssCfg.apIsolate;
+                          # Only allow WPA by default and disable insecure WEP
+                          auth_algs = mkDefault 1;
+                          # Always enable QoS, which is required for 802.11n and above
+                          wmm_enabled = mkDefault true;
+                          ap_isolate = bssCfg.apIsolate;
 
-                            sae_password = flip map bssCfg.authentication.saePasswords (
-                              entry:
-                              entry.password
-                              + optionalString (entry.mac != null) "|mac=${entry.mac}"
-                              + optionalString (entry.vlanid != null) "|vlanid=${toString entry.vlanid}"
-                              + optionalString (entry.pk != null) "|pk=${entry.pk}"
-                              + optionalString (entry.id != null) "|id=${entry.id}"
-                            );
-                          }
-                          // optionalAttrs (bssCfg.bssid != null) {
-                            bssid = bssCfg.bssid;
-                          }
-                          //
-                            optionalAttrs
-                              (bssCfg.macAllow != [ ] || bssCfg.macAllowFile != null || bssCfg.authentication.saeAddToMacAllow)
-                              {
-                                accept_mac_file = "/run/hostapd/${bssCfg._module.args.name}.mac.allow";
-                              }
-                          // optionalAttrs (bssCfg.macDeny != [ ] || bssCfg.macDenyFile != null) {
-                            deny_mac_file = "/run/hostapd/${bssCfg._module.args.name}.mac.deny";
-                          }
-                          // optionalAttrs (bssCfg.authentication.mode == "none") {
-                            wpa = mkDefault 0;
-                          }
-                          // optionalAttrs (bssCfg.authentication.mode == "wpa3-sae") {
-                            wpa = 2;
-                            wpa_key_mgmt = "SAE";
-                            # Derive PWE using both hunting-and-pecking loop and hash-to-element
-                            sae_pwe = 2;
-                            # Prevent downgrade attacks by indicating to clients that they should
-                            # disable any transition modes from now on.
-                            transition_disable = "0x01";
-                          }
-                          // optionalAttrs (bssCfg.authentication.mode == "wpa3-sae-transition") {
-                            wpa = 2;
-                            wpa_key_mgmt = "WPA-PSK-SHA256 SAE";
-                          }
-                          // optionalAttrs (bssCfg.authentication.mode == "wpa2-sha1") {
-                            wpa = 2;
-                            wpa_key_mgmt = "WPA-PSK";
-                          }
-                          // optionalAttrs (bssCfg.authentication.mode == "wpa2-sha256") {
-                            wpa = 2;
-                            wpa_key_mgmt = "WPA-PSK-SHA256";
-                          }
-                          // optionalAttrs (bssCfg.authentication.mode != "none") {
-                            wpa_pairwise = pairwiseCiphers;
-                            rsn_pairwise = pairwiseCiphers;
-                          }
-                          // optionalAttrs (bssCfg.authentication.wpaPassword != null) {
-                            wpa_passphrase = bssCfg.authentication.wpaPassword;
-                          }
-                          // optionalAttrs (bssCfg.authentication.wpaPskFile != null) {
-                            wpa_psk_file = toString bssCfg.authentication.wpaPskFile;
-                          };
+                          sae_password = flip map bssCfg.authentication.saePasswords (
+                            entry:
+                            entry.password
+                            + optionalString (entry.mac != null) "|mac=${entry.mac}"
+                            + optionalString (entry.vlanid != null) "|vlanid=${toString entry.vlanid}"
+                            + optionalString (entry.pk != null) "|pk=${entry.pk}"
+                            + optionalString (entry.id != null) "|id=${entry.id}"
+                          );
+                        }
+                        // optionalAttrs (bssCfg.bssid != null) {
+                          bssid = bssCfg.bssid;
+                        }
+                        //
+                          optionalAttrs
+                            (bssCfg.macAllow != [ ] || bssCfg.macAllowFile != null || bssCfg.authentication.saeAddToMacAllow)
+                            {
+                              accept_mac_file = "/run/hostapd/${bssCfg._module.args.name}.mac.allow";
+                            }
+                        // optionalAttrs (bssCfg.macDeny != [ ] || bssCfg.macDenyFile != null) {
+                          deny_mac_file = "/run/hostapd/${bssCfg._module.args.name}.mac.deny";
+                        }
+                        // optionalAttrs (bssCfg.authentication.mode == "none") {
+                          wpa = mkDefault 0;
+                        }
+                        // optionalAttrs (bssCfg.authentication.mode == "wpa3-sae") {
+                          wpa = 2;
+                          wpa_key_mgmt = "SAE";
+                          # Derive PWE using both hunting-and-pecking loop and hash-to-element
+                          sae_pwe = 2;
+                          # Prevent downgrade attacks by indicating to clients that they should
+                          # disable any transition modes from now on.
+                          transition_disable = "0x01";
+                        }
+                        // optionalAttrs (bssCfg.authentication.mode == "wpa3-sae-transition") {
+                          wpa = 2;
+                          wpa_key_mgmt = "WPA-PSK-SHA256 SAE";
+                        }
+                        // optionalAttrs (bssCfg.authentication.mode == "wpa2-sha1") {
+                          wpa = 2;
+                          wpa_key_mgmt = "WPA-PSK";
+                        }
+                        // optionalAttrs (bssCfg.authentication.mode == "wpa2-sha256") {
+                          wpa = 2;
+                          wpa_key_mgmt = "WPA-PSK-SHA256";
+                        }
+                        // optionalAttrs (bssCfg.authentication.mode != "none") {
+                          wpa_pairwise = pairwiseCiphers;
+                          rsn_pairwise = pairwiseCiphers;
+                        }
+                        // optionalAttrs (bssCfg.authentication.wpaPassword != null) {
+                          wpa_passphrase = bssCfg.authentication.wpaPassword;
+                        }
+                        // optionalAttrs (bssCfg.authentication.wpaPskFile != null) {
+                          wpa_psk_file = toString bssCfg.authentication.wpaPskFile;
+                        };
 
                         dynamicConfigScripts =
                           let

@@ -79,28 +79,27 @@ import ../make-test-python.nix (
           package = if lts then pkgs.incus-lts else pkgs.incus;
 
           preseed = {
-            networks =
-              [
-                {
-                  name = "incusbr0";
-                  type = "bridge";
-                  config = {
-                    "ipv4.address" = "10.0.10.1/24";
-                    "ipv4.nat" = "true";
-                  };
-                }
-              ]
-              ++ lib.optionals networkOvs [
-                {
-                  name = "ovsbr0";
-                  type = "bridge";
-                  config = {
-                    "bridge.driver" = "openvswitch";
-                    "ipv4.address" = "10.0.20.1/24";
-                    "ipv4.nat" = "true";
-                  };
-                }
-              ];
+            networks = [
+              {
+                name = "incusbr0";
+                type = "bridge";
+                config = {
+                  "ipv4.address" = "10.0.10.1/24";
+                  "ipv4.nat" = "true";
+                };
+              }
+            ]
+            ++ lib.optionals networkOvs [
+              {
+                name = "ovsbr0";
+                type = "bridge";
+                config = {
+                  "bridge.driver" = "openvswitch";
+                  "ipv4.address" = "10.0.20.1/24";
+                  "ipv4.nat" = "true";
+                };
+              }
+            ];
             profiles = [
               {
                 name = "default";

@@ -226,19 +226,18 @@ let
       version = "2.0.21-RC";
     in
     fetchurl {
-      url =
-        repoUrl
-        + "/"
-        + groupId
-        + "/"
-        + artefactId
-        + "/"
-        + version
-        + "/"
-        + artefactId
-        + "-"
-        + version
-        + ".jar";
+      url = repoUrl
+      + "/"
+      + groupId
+      + "/"
+      + artefactId
+      + "/"
+      + version
+      + "/"
+      + artefactId
+      + "-"
+      + version
+      + ".jar";
       hash = "sha256-jFjxP1LGjrvc1x2XqF5gg/SeKdSFNefxABBlrYl81zA=";
     };
 

@@ -33,14 +33,13 @@ buildNpmPackage rec {
   npmDepsHash = "sha256-qgg/dpkBAbOgBeGC0BiKQTyLsOOKwfsJD3fhs/cXYHo=";
   npmFlags = [ "--legacy-peer-deps" ];
 
-  nativeBuildInputs =
-    [
-      pkg-config
-    ]
-    ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
-      makeWrapper
-      copyDesktopItems
-    ];
+  nativeBuildInputs = [
+    pkg-config
+  ]
+  ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
+    makeWrapper
+    copyDesktopItems
+  ];
 
   buildInputs = [
     pixman

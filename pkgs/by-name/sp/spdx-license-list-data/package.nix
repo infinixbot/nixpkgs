@@ -28,7 +28,8 @@ stdenvNoCC.mkDerivation rec {
     "text"
   ];
 
-  outputs = [ "out" ] ++ _types;
+  outputs = [ "out" ]
+    ++ _types;
 
   dontPatch = true;
   dontConfigure = true;

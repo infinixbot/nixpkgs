@@ -55,20 +55,19 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs =
-    [
-      meson
-      ninja
-      gettext
-      glib
-      pkg-config
-      libxslt
-      python3
-    ]
-    ++ lib.optionals withIntrospection [
-      gobject-introspection
-      vala
-    ];
+  nativeBuildInputs = [
+    meson
+    ninja
+    gettext
+    glib
+    pkg-config
+    libxslt
+    python3
+  ]
+  ++ lib.optionals withIntrospection [
+    gobject-introspection
+    vala
+  ];
 
   buildInputs =
     [

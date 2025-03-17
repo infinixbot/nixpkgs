@@ -44,7 +44,8 @@ stdenv.mkDerivation rec {
     ./darwin.patch
   ];
 
-  nativeBuildInputs = [ m4 ] ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames;
+  nativeBuildInputs = [ m4 ]
+    ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames;
 
   postInstall = lib.optionalString stdenv.hostPlatform.isDarwin ''
     fixDarwinDylibNames $out/lib/libmilter.*.1

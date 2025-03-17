@@ -40,22 +40,23 @@ stdenv.mkDerivation rec {
         'cmake_minimum_required(VERSION 2.8.12)' 'cmake_minimum_required(VERSION 3.1.0)'
   '';
 
-  nativeBuildInputs = [ cmake ] ++ lib.optional enableGUI wrapQtAppsHook;
+  nativeBuildInputs = [ cmake ]
+    ++ lib.optional enableGUI wrapQtAppsHook;
 
   cmakeFlags = [
     "-DSYSTEM_XPDFRC=/etc/xpdfrc"
     "-DA4_PAPER=ON"
     "-DOPI_SUPPORT=ON"
-  ] ++ lib.optional (!enablePrinting) "-DXPDFWIDGET_PRINTING=OFF";
+  ]
+  ++ lib.optional (!enablePrinting) "-DXPDFWIDGET_PRINTING=OFF";
 
-  buildInputs =
-    [
-      zlib
-      libpng
-    ]
-    ++ lib.optional enableGUI qtbase
-    ++ lib.optional enablePrinting cups
-    ++ lib.optional enablePDFtoPPM freetype;
+  buildInputs = [
+    zlib
+    libpng
+  ]
+  ++ lib.optional enableGUI qtbase
+  ++ lib.optional enablePrinting cups
+  ++ lib.optional enablePDFtoPPM freetype;
 
   desktopItem = makeDesktopItem {
     name = "xpdf";

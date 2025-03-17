@@ -35,21 +35,20 @@ stdenv.mkDerivation rec {
     autoreconfHook
   ];
 
-  buildInputs =
-    [
-      curl
-      leptonica
-      libarchive
-      libpng
-      libtiff
-      icu
-      pango
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      Accelerate
-      CoreGraphics
-      CoreVideo
-    ];
+  buildInputs = [
+    curl
+    leptonica
+    libarchive
+    libpng
+    libtiff
+    icu
+    pango
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    Accelerate
+    CoreGraphics
+    CoreVideo
+  ];
 
   passthru.updateScript = nix-update-script { };
   meta = {

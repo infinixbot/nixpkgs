@@ -74,24 +74,23 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-VDYUSpWYAdJ63SKVCO26DVAC3RtZM7otqN0sYUA6DBQ=";
   };
 
-  nativeBuildInputs =
-    [
-      pkg-config
-      cmake
-      rocm-cmake
-      clr
-      clang-tools-extra
-      python3Packages.python
-    ]
-    ++ lib.optionals buildDocs [
-      latex
-      doxygen
-      sphinx
-      docutils
-      ghostscript
-      python3Packages.sphinx-rtd-theme
-      python3Packages.breathe
-    ];
+  nativeBuildInputs = [
+    pkg-config
+    cmake
+    rocm-cmake
+    clr
+    clang-tools-extra
+    python3Packages.python
+  ]
+  ++ lib.optionals buildDocs [
+    latex
+    doxygen
+    sphinx
+    docutils
+    ghostscript
+    python3Packages.sphinx-rtd-theme
+    python3Packages.breathe
+  ];
 
   buildInputs = [
     openmp
@@ -124,31 +123,30 @@ stdenv.mkDerivation (finalAttrs: {
     "-DGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}"
   ];
 
-  postPatch =
-    ''
-      # We need to not use hipcc and define the CXXFLAGS manually due to `undefined hidden symbol: tensorflow:: ...`
-      export CXXFLAGS+="--rocm-path=${clr} --rocm-device-lib-path=${rocm-device-libs}/amdgcn/bitcode"
-      patchShebangs tools
+  postPatch = ''
+    # We need to not use hipcc and define the CXXFLAGS manually due to `undefined hidden symbol: tensorflow:: ...`
+    export CXXFLAGS+="--rocm-path=${clr} --rocm-device-lib-path=${rocm-device-libs}/amdgcn/bitcode"
+    patchShebangs tools
 
-      # `error: '__clang_hip_runtime_wrapper.h' file not found [clang-diagnostic-error]`
-      substituteInPlace CMakeLists.txt \
-        --replace "set(MIGRAPHX_TIDY_ERRORS ALL)" ""
+    # `error: '__clang_hip_runtime_wrapper.h' file not found [clang-diagnostic-error]`
+    substituteInPlace CMakeLists.txt \
+      --replace "set(MIGRAPHX_TIDY_ERRORS ALL)" ""
 
-      # JIT library was removed from composable_kernel...
-      # https://github.com/ROCm/composable_kernel/issues/782
-      substituteInPlace src/targets/gpu/CMakeLists.txt \
-        --replace " COMPONENTS jit_library" "" \
-        --replace " composable_kernel::jit_library" "" \
-        --replace "if(WIN32)" "if(TRUE)"
-    ''
-    + lib.optionalString (!buildDocs) ''
-      substituteInPlace CMakeLists.txt \
-        --replace "add_subdirectory(doc)" ""
-    ''
-    + lib.optionalString (!buildTests) ''
-      substituteInPlace CMakeLists.txt \
-        --replace "add_subdirectory(test)" ""
-    '';
+    # JIT library was removed from composable_kernel...
+    # https://github.com/ROCm/composable_kernel/issues/782
+    substituteInPlace src/targets/gpu/CMakeLists.txt \
+      --replace " COMPONENTS jit_library" "" \
+      --replace " composable_kernel::jit_library" "" \
+      --replace "if(WIN32)" "if(TRUE)"
+  ''
+  + lib.optionalString (!buildDocs) ''
+    substituteInPlace CMakeLists.txt \
+      --replace "add_subdirectory(doc)" ""
+  ''
+  + lib.optionalString (!buildTests) ''
+    substituteInPlace CMakeLists.txt \
+      --replace "add_subdirectory(test)" ""
+  '';
 
   # Unfortunately, it seems like we have to call make on this manually
   preInstall = lib.optionalString buildDocs ''

@@ -52,17 +52,16 @@ stdenv.mkDerivation rec {
     gfortran
   ];
 
-  buildInputs =
-    [
-      blas
-      mpi
-    ]
-    ++ lib.optional (gpuBackend == "cuda") cudaPackages.cudatoolkit
-    ++ lib.optionals (gpuBackend == "rocm") [
-      rocmPackages.clr
-      rocmPackages.rocblas
-    ]
-    ++ lib.optional stdenv.hostPlatform.isDarwin llvmPackages.openmp;
+  buildInputs = [
+    blas
+    mpi
+  ]
+  ++ lib.optional (gpuBackend == "cuda") cudaPackages.cudatoolkit
+  ++ lib.optionals (gpuBackend == "rocm") [
+    rocmPackages.clr
+    rocmPackages.rocblas
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin llvmPackages.openmp;
 
   cmakeFlags =
     [

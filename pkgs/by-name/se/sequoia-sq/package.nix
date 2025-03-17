@@ -34,19 +34,18 @@ rustPlatform.buildRustPackage rec {
     installShellFiles
   ];
 
-  buildInputs =
+  buildInputs = [
+    openssl
+    sqlite
+    nettle
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin (
+    with darwin.apple_sdk.frameworks;
     [
-      openssl
-      sqlite
-      nettle
+      Security
+      SystemConfiguration
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        Security
-        SystemConfiguration
-      ]
-    );
+  );
 
   checkFlags = [
     # https://gitlab.com/sequoia-pgp/sequoia-sq/-/issues/297

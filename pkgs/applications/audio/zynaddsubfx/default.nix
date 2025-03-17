@@ -100,36 +100,35 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      fftw
-      liblo
-      minixml
-      zlib
-    ]
-    ++ lib.optionals alsaSupport [ alsa-lib ]
-    ++ lib.optionals dssiSupport [
-      dssi
-      ladspaH
-    ]
-    ++ lib.optionals jackSupport [ libjack2 ]
-    ++ lib.optionals lashSupport [ lash ]
-    ++ lib.optionals portaudioSupport [ portaudio ]
-    ++ lib.optionals sndioSupport [ sndio ]
-    ++ lib.optionals (guiModule == "fltk") [
-      fltk
-      libjpeg
-      libXpm
-    ]
-    ++ lib.optionals (guiModule == "ntk") [
-      ntk
-      cairo
-      libXpm
-    ]
-    ++ lib.optionals (guiModule == "zest") [
-      libGL
-      libX11
-    ];
+  buildInputs = [
+    fftw
+    liblo
+    minixml
+    zlib
+  ]
+  ++ lib.optionals alsaSupport [ alsa-lib ]
+  ++ lib.optionals dssiSupport [
+    dssi
+    ladspaH
+  ]
+  ++ lib.optionals jackSupport [ libjack2 ]
+  ++ lib.optionals lashSupport [ lash ]
+  ++ lib.optionals portaudioSupport [ portaudio ]
+  ++ lib.optionals sndioSupport [ sndio ]
+  ++ lib.optionals (guiModule == "fltk") [
+    fltk
+    libjpeg
+    libXpm
+  ]
+  ++ lib.optionals (guiModule == "ntk") [
+    ntk
+    cairo
+    libXpm
+  ]
+  ++ lib.optionals (guiModule == "zest") [
+    libGL
+    libX11
+  ];
 
   cmakeFlags =
     [

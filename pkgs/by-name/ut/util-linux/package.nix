@@ -49,34 +49,32 @@ stdenv.mkDerivation rec {
   # the greater util-linux toolset.
   # Compatibility is maintained by symlinking the binaries from the
   # smaller outputs in the bin output.
-  outputs =
-    [
-      "bin"
-      "dev"
-      "out"
-      "lib"
-      "man"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [ "mount" ]
-    ++ [ "login" ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [ "swap" ];
+  outputs = [
+    "bin"
+    "dev"
+    "out"
+    "lib"
+    "man"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [ "mount" ]
+  ++ [ "login" ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [ "swap" ];
   separateDebugInfo = true;
 
-  postPatch =
-    ''
-      patchShebangs tests/run.sh
+  postPatch = ''
+    patchShebangs tests/run.sh
 
-      substituteInPlace sys-utils/eject.c \
-        --replace "/bin/umount" "$bin/bin/umount"
-    ''
-    + lib.optionalString shadowSupport ''
-      substituteInPlace include/pathnames.h \
-        --replace "/bin/login" "${shadow}/bin/login"
-    ''
-    + lib.optionalString stdenv.hostPlatform.isFreeBSD ''
-      substituteInPlace lib/c_strtod.c --replace-fail __APPLE__ __FreeBSD__
-      sed -E -i -e '/_POSIX_C_SOURCE/d' -e '/_XOPEN_SOURCE/d' misc-utils/hardlink.c
-    '';
+    substituteInPlace sys-utils/eject.c \
+      --replace "/bin/umount" "$bin/bin/umount"
+  ''
+  + lib.optionalString shadowSupport ''
+    substituteInPlace include/pathnames.h \
+      --replace "/bin/login" "${shadow}/bin/login"
+  ''
+  + lib.optionalString stdenv.hostPlatform.isFreeBSD ''
+    substituteInPlace lib/c_strtod.c --replace-fail __APPLE__ __FreeBSD__
+    sed -E -i -e '/_POSIX_C_SOURCE/d' -e '/_XOPEN_SOURCE/d' misc-utils/hardlink.c
+  '';
 
   # !!! It would be better to obtain the path to the mount helpers
   # (/sbin/mount.*) through an environment variable, but that's
@@ -115,28 +113,27 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     pkg-config
     installShellFiles
-  ] ++ lib.optionals translateManpages [ po4a ];
+  ]
+  ++ lib.optionals translateManpages [ po4a ];
 
-  buildInputs =
-    [
-      zlib
-      libxcrypt
-    ]
-    ++ lib.optionals pamSupport [ pam ]
-    ++ lib.optionals capabilitiesSupport [ libcap_ng ]
-    ++ lib.optionals ncursesSupport [ ncurses ]
-    ++ lib.optionals systemdSupport [ systemd ];
+  buildInputs = [
+    zlib
+    libxcrypt
+  ]
+  ++ lib.optionals pamSupport [ pam ]
+  ++ lib.optionals capabilitiesSupport [ libcap_ng ]
+  ++ lib.optionals ncursesSupport [ ncurses ]
+  ++ lib.optionals systemdSupport [ systemd ];
 
   doCheck = false; # "For development purpose only. Don't execute on production system!"
 
   enableParallelBuilding = true;
 
-  postInstall =
-    lib.optionalString stdenv.hostPlatform.isLinux ''
-      moveToOutput bin/mount "$mount"
-      moveToOutput bin/umount "$mount"
-      ln -svf "$mount/bin/"* $bin/bin/
-    ''
+  postInstall = lib.optionalString stdenv.hostPlatform.isLinux ''
+    moveToOutput bin/mount "$mount"
+    moveToOutput bin/umount "$mount"
+    ln -svf "$mount/bin/"* $bin/bin/
+  ''
     + ''
 
       moveToOutput sbin/nologin "$login"

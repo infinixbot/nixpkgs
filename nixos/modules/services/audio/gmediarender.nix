@@ -79,8 +79,7 @@ in
           User = "gmediarender";
           Group = "gmediarender";
           SupplementaryGroups = [ "audio" ];
-          ExecStart =
-            "${cfg.package}/bin/gmediarender "
+          ExecStart = "${cfg.package}/bin/gmediarender "
             + lib.optionalString (cfg.audioDevice != null) (
               "--gstout-audiodevice=${utils.escapeSystemdExecArg cfg.audioDevice} "
             )

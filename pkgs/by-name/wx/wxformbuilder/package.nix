@@ -48,14 +48,13 @@ stdenv.mkDerivation (finalAttrs: {
       shared-mime-info
     ];
 
-  buildInputs =
-    [
-      boost
-      wxGTK32
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      darwin.apple_sdk.frameworks.Cocoa
-    ];
+  buildInputs = [
+    boost
+    wxGTK32
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    darwin.apple_sdk.frameworks.Cocoa
+  ];
 
   postInstall = lib.optionalString stdenv.hostPlatform.isDarwin ''
     mkdir -p $out/{Applications,bin}

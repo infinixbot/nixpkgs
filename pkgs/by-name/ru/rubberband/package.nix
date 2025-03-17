@@ -30,23 +30,22 @@ stdenv.mkDerivation rec {
     ninja
     jdk_headless
   ];
-  buildInputs =
+  buildInputs = [
+    libsamplerate
+    libsndfile
+    fftw
+    vamp-plugin-sdk
+    ladspaH
+    lv2
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin (
+    with darwin.apple_sdk.frameworks;
     [
-      libsamplerate
-      libsndfile
-      fftw
-      vamp-plugin-sdk
-      ladspaH
-      lv2
+      Accelerate
+      CoreGraphics
+      CoreVideo
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        Accelerate
-        CoreGraphics
-        CoreVideo
-      ]
-    );
+  );
   makeFlags = [ "AR:=$(AR)" ];
 
   # TODO: package boost-test, so we can run the test suite. (Currently it fails

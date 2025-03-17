@@ -52,7 +52,8 @@ buildPythonPackage rec {
       apscheduler
       pytz
     ];
-    passport = [ cryptography ] ++ lib.optionals (pythonAtLeast "3.13") [ cffi ];
+    passport = [ cryptography ]
+      ++ lib.optionals (pythonAtLeast "3.13") [ cffi ];
     rate-limiter = [ aiolimiter ];
     socks = httpx.optional-dependencies.socks;
     webhooks = [ tornado ];
@@ -65,7 +66,8 @@ buildPythonPackage rec {
     pytest-timeout
     pytest-xdist
     pytestCheckHook
-  ] ++ optional-dependencies.all;
+  ]
+  ++ optional-dependencies.all;
 
   pythonImportsCheck = [ "telegram" ];
 

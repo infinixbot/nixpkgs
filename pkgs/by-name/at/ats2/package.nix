@@ -56,7 +56,8 @@ stdenv.mkDerivation rec {
 
   setupHook =
     let
-      hookFiles = [ ./setup-hook.sh ] ++ lib.optional withContrib ./setup-contrib-hook.sh;
+      hookFiles = [ ./setup-hook.sh ]
+        ++ lib.optional withContrib ./setup-contrib-hook.sh;
     in
     builtins.toFile "setupHook.sh" (lib.concatMapStringsSep "\n" builtins.readFile hookFiles);
 

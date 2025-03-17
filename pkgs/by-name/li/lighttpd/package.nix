@@ -53,28 +53,26 @@ stdenv.mkDerivation rec {
     autoreconfHook
     pkg-config
   ];
-  buildInputs =
-    [
-      pcre2
-      pcre2.dev
-      libxml2
-      zlib
-      bzip2
-      which
-      file
-      openssl
-    ]
-    ++ lib.optional enableDbi libdbi
-    ++ lib.optional enableMagnet lua5_1
-    ++ lib.optional enableMysql libmysqlclient
-    ++ lib.optional enableLdap openldap
-    ++ lib.optional enablePam linux-pam
-    ++ lib.optional enableSasl cyrus_sasl
-    ++ lib.optional enableWebDAV sqlite
-    ++ lib.optional enableWebDAV libuuid;
+  buildInputs = [
+    pcre2
+    pcre2.dev
+    libxml2
+    zlib
+    bzip2
+    which
+    file
+    openssl
+  ]
+  ++ lib.optional enableDbi libdbi
+  ++ lib.optional enableMagnet lua5_1
+  ++ lib.optional enableMysql libmysqlclient
+  ++ lib.optional enableLdap openldap
+  ++ lib.optional enablePam linux-pam
+  ++ lib.optional enableSasl cyrus_sasl
+  ++ lib.optional enableWebDAV sqlite
+  ++ lib.optional enableWebDAV libuuid;
 
-  configureFlags =
-    [ "--with-openssl" ]
+  configureFlags = [ "--with-openssl" ]
     ++ lib.optional enableDbi "--with-dbi"
     ++ lib.optional enableMagnet "--with-lua"
     ++ lib.optional enableMysql "--with-mysql"

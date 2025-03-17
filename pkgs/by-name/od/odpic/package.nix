@@ -26,7 +26,8 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames;
 
-  buildInputs = [ oracle-instantclient ] ++ lib.optionals stdenv.hostPlatform.isLinux [ libaio ];
+  buildInputs = [ oracle-instantclient ]
+    ++ lib.optionals stdenv.hostPlatform.isLinux [ libaio ];
 
   dontPatchELF = true;
   makeFlags = [

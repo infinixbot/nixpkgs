@@ -46,8 +46,7 @@ stdenv.mkDerivation rec {
     cp ./ImageLOL $out/bin
   '';
 
-  cmakeFlags =
-    [ (lib.cmakeFeature "CMAKE_C_FLAGS" "-std=gnu90") ]
+  cmakeFlags = [ (lib.cmakeFeature "CMAKE_C_FLAGS" "-std=gnu90") ]
     ++ lib.optional (
       stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64
     ) "-DPNG_ARM_NEON=off";

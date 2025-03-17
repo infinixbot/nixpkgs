@@ -17,8 +17,7 @@ stdenv.mkDerivation rec {
     sha256 = "13l39f6k6gff30hsgh0wa2z422g9pyl91rh8a8zz6f34k2sxaxii";
   };
 
-  buildInputs =
-    [ libusb-compat-0_1 ]
+  buildInputs = [ libusb-compat-0_1 ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       libobjc
       Security
@@ -29,7 +28,8 @@ stdenv.mkDerivation rec {
 
   configureFlags = [
     "ac_cv_prog_HAVELIBUSB=${lib.getExe' (lib.getDev libusb-compat-0_1) "libusb-config"}"
-  ] ++ lib.optional (!stdenv.hostPlatform.isDarwin) "--with-async-mode";
+  ]
+  ++ lib.optional (!stdenv.hostPlatform.isDarwin) "--with-async-mode";
 
   # allow async mode. from ubuntu. see:
   #   https://bazaar.launchpad.net/~ubuntu-branches/ubuntu/trusty/libftdi/trusty/view/head:/debian/patches/04_async_mode.diff

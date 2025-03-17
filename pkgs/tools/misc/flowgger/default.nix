@@ -26,7 +26,8 @@ rustPlatform.buildRustPackage rec {
     capnproto
   ];
 
-  buildInputs = [ openssl ] ++ lib.optional stdenv.hostPlatform.isDarwin CoreServices;
+  buildInputs = [ openssl ]
+    ++ lib.optional stdenv.hostPlatform.isDarwin CoreServices;
 
   checkFlags = [
     # test failed

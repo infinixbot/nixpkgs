@@ -42,12 +42,14 @@ buildPythonPackage rec {
     yaml = [ ruamel-yaml ];
     ruamel-yaml = [ ruamel-yaml ];
     PyYAML = [ pyyaml ];
-    tomli = [ tomli-w ] ++ lib.optionals (pythonOlder "3.11") [ tomli ];
+    tomli = [ tomli-w ]
+      ++ lib.optionals (pythonOlder "3.11") [ tomli ];
     toml = [ toml ];
     msgpack = [ msgpack ];
   };
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ optional-dependencies.all;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ optional-dependencies.all;
 
   pythonImportsCheck = [ "box" ];
 

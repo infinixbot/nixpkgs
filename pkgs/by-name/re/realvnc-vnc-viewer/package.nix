@@ -20,7 +20,8 @@ let
       emilytrau
       onedragon
     ];
-    platforms = [ "x86_64-linux" ] ++ lib.platforms.darwin;
+    platforms = [ "x86_64-linux" ]
+      ++ lib.platforms.darwin;
     mainProgram = "vncviewer";
   };
 in

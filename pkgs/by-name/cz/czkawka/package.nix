@@ -45,22 +45,21 @@ let
       wrapGAppsHook4
     ];
 
-    buildInputs =
+    buildInputs = [
+      atk
+      cairo
+      gdk-pixbuf
+      glib
+      gtk4
+      pango
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin (
+      with darwin.apple_sdk.frameworks;
       [
-        atk
-        cairo
-        gdk-pixbuf
-        glib
-        gtk4
-        pango
+        AppKit
+        Foundation
       ]
-      ++ lib.optionals stdenv.hostPlatform.isDarwin (
-        with darwin.apple_sdk.frameworks;
-        [
-          AppKit
-          Foundation
-        ]
-      );
+    );
 
     nativeCheckInputs = [ xvfb-run ];
 

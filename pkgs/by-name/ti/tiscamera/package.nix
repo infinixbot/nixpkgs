@@ -52,23 +52,22 @@ stdenv.mkDerivation rec {
       --replace "typically /usr/share/theimagingsource/tiscamera/uvc-extension/" ""
   '';
 
-  nativeBuildInputs =
-    [
-      cmake
-      pkg-config
-      wrapGAppsHook3
-      gobject-introspection
-    ]
-    ++ lib.optionals withDoc [
-      sphinx
-      graphviz
-    ]
-    ++ lib.optionals withAravis [
-      meson
-    ]
-    ++ lib.optionals withGui [
-      qt5.wrapQtAppsHook
-    ];
+  nativeBuildInputs = [
+    cmake
+    pkg-config
+    wrapGAppsHook3
+    gobject-introspection
+  ]
+  ++ lib.optionals withDoc [
+    sphinx
+    graphviz
+  ]
+  ++ lib.optionals withAravis [
+    meson
+  ]
+  ++ lib.optionals withGui [
+    qt5.wrapQtAppsHook
+  ];
 
   buildInputs =
     [

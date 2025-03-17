@@ -33,20 +33,18 @@ buildPythonPackage rec {
     hash = "sha256-uH7LDezHZrD1zeWMDzrZZALGf0oocIVZl68MactBFGQ=";
   };
 
-  propagatedBuildInputs =
-    [
-      layoutparser
-      python-multipart
-      huggingface-hub
-      opencv-python
-      onnxruntime
-      transformers
-      # detectron2 # fails to build
-      # paddleocr # 3.12 not yet supported
-      # yolox
-    ]
-    ++ layoutparser.optional-dependencies.layoutmodels
-    ++ layoutparser.optional-dependencies.tesseract;
+  propagatedBuildInputs = [
+    layoutparser
+    python-multipart
+    huggingface-hub
+    opencv-python
+    onnxruntime
+    transformers
+    # detectron2 # fails to build
+    # paddleocr # 3.12 not yet supported
+    # yolox
+  ]
+  ++ layoutparser.optional-dependencies.layoutmodels ++ layoutparser.optional-dependencies.tesseract;
 
   nativeCheckInputs = [
     pytestCheckHook

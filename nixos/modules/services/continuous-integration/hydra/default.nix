@@ -18,18 +18,17 @@ let
     HYDRA_DATA = "${baseDir}";
   };
 
-  env =
-    {
-      NIX_REMOTE = "daemon";
-      PGPASSFILE = "${baseDir}/pgpass";
-      NIX_REMOTE_SYSTEMS = lib.concatStringsSep ":" cfg.buildMachinesFiles;
-    }
-    // lib.optionalAttrs (cfg.smtpHost != null) {
-      EMAIL_SENDER_TRANSPORT = "SMTP";
-      EMAIL_SENDER_TRANSPORT_host = cfg.smtpHost;
-    }
-    // hydraEnv
-    // cfg.extraEnv;
+  env = {
+    NIX_REMOTE = "daemon";
+    PGPASSFILE = "${baseDir}/pgpass";
+    NIX_REMOTE_SYSTEMS = lib.concatStringsSep ":" cfg.buildMachinesFiles;
+  }
+  // lib.optionalAttrs (cfg.smtpHost != null) {
+    EMAIL_SENDER_TRANSPORT = "SMTP";
+    EMAIL_SENDER_TRANSPORT_host = cfg.smtpHost;
+  }
+  // hydraEnv
+  // cfg.extraEnv;
 
   serverEnv =
     env
@@ -404,8 +403,7 @@ in
       };
       restartTriggers = [ hydraConf ];
       serviceConfig = {
-        ExecStart =
-          "@${hydra-package}/bin/hydra-server hydra-server -f -h '${cfg.listenHost}' "
+        ExecStart = "@${hydra-package}/bin/hydra-server hydra-server -f -h '${cfg.listenHost}' "
           + "-p ${toString cfg.port} --min_spare_servers ${toString cfg.minSpareServers} --max_spare_servers ${toString cfg.maxSpareServers} "
           + "--max_servers ${toString cfg.maxServers} --max_requests 100 ${lib.optionalString cfg.debugServer "-d"}";
         User = "hydra-www";

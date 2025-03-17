@@ -69,14 +69,13 @@ stdenv.mkDerivation (finalAttrs: {
 
   cmakeBuildType = "Release";
 
-  cmakeFlags =
-    [
-      (lib.cmakeBool "BESPOKE_SYSTEM_PYBIND11" true)
-      (lib.cmakeBool "BESPOKE_SYSTEM_JSONCPP" true)
-    ]
-    ++ lib.optionals enableVST2 [
-      (lib.cmakeFeature "BESPOKE_VST2_SDK_LOCATION" "${vst2-sdk}")
-    ];
+  cmakeFlags = [
+    (lib.cmakeBool "BESPOKE_SYSTEM_PYBIND11" true)
+    (lib.cmakeBool "BESPOKE_SYSTEM_JSONCPP" true)
+  ]
+  ++ lib.optionals enableVST2 [
+    (lib.cmakeFeature "BESPOKE_VST2_SDK_LOCATION" "${vst2-sdk}")
+  ];
 
   strictDeps = true;
 

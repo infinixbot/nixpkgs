@@ -43,22 +43,21 @@ stdenv.mkDerivation (finalAttrs: {
     libsForQt5.wrapQtAppsHook
   ];
 
-  buildInputs =
-    [
-      jsoncpp
-      libarchive
-      libcpr
-      libloot
-      lz4
-      pugixml
+  buildInputs = [
+    jsoncpp
+    libarchive
+    libcpr
+    libloot
+    lz4
+    pugixml
 
-      libsForQt5.qtbase
-      libsForQt5.qtsvg
-      libsForQt5.qtwayland
-    ]
-    ++ lib.optionals withUnrar [
-      unrar
-    ];
+    libsForQt5.qtbase
+    libsForQt5.qtsvg
+    libsForQt5.qtwayland
+  ]
+  ++ lib.optionals withUnrar [
+    unrar
+  ];
 
   cmakeFlags =
     [

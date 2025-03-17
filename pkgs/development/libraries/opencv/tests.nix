@@ -41,7 +41,8 @@ let
     "photo"
     "stitching"
     "video"
-  ] ++ lib.optionals (!stdenv.hostPlatform.isAarch64 && enableGStreamer) [ "gapi" ];
+  ]
+  ++ lib.optionals (!stdenv.hostPlatform.isAarch64 && enableGStreamer) [ "gapi" ];
   testRunner = lib.optionalString (!stdenv.hostPlatform.isDarwin) "${lib.getExe xvfb-run} -a ";
   testsPreparation = ''
     touch $out

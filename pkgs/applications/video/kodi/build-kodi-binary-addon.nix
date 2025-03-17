@@ -25,19 +25,22 @@ toKodiAddon (
 
       dontStrip = true;
 
-      nativeBuildInputs = [ cmake ] ++ extraNativeBuildInputs;
+      nativeBuildInputs = [ cmake ]
+        ++ extraNativeBuildInputs;
       buildInputs = [
         kodi
         kodi-platform
         libcec_platform
-      ] ++ extraBuildInputs;
+      ]
+      ++ extraBuildInputs;
 
       inherit extraRuntimeDependencies;
 
       # disables check ensuring install prefix is that of kodi
       cmakeFlags = [
         "-DOVERRIDE_PATHS=1"
-      ] ++ extraCMakeFlags;
+      ]
+      ++ extraCMakeFlags;
 
       # kodi checks for addon .so libs existance in the addon folder (share/...)
       # and the non-wrapped kodi lib/... folder before even trying to dlopen

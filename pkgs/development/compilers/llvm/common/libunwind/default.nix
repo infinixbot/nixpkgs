@@ -78,8 +78,7 @@ stdenv.mkDerivation (
       "dev"
     ];
 
-    nativeBuildInputs =
-      [ cmake ]
+    nativeBuildInputs = [ cmake ]
       ++ lib.optionals (lib.versionAtLeast release_version "15") [
         ninja
         python3

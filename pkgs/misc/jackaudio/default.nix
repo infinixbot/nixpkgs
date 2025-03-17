@@ -64,27 +64,27 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
     python
     wafHook
-  ] ++ lib.optionals (optDbus != null) [ makeWrapper ];
-  buildInputs =
-    [
-      libsamplerate
-      libsndfile
-      readline
-      eigen
-      celt
-      optDbus
-      optPythonDBus
-      optLibffado
-      optAlsaLib
-      optLibopus
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      aften
-      AudioUnit
-      CoreAudio
-      Accelerate
-      libobjc
-    ];
+  ]
+  ++ lib.optionals (optDbus != null) [ makeWrapper ];
+  buildInputs = [
+    libsamplerate
+    libsndfile
+    readline
+    eigen
+    celt
+    optDbus
+    optPythonDBus
+    optLibffado
+    optAlsaLib
+    optLibopus
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    aften
+    AudioUnit
+    CoreAudio
+    Accelerate
+    libobjc
+  ];
 
   patches = [
     (fetchpatch2 {
@@ -99,14 +99,13 @@ stdenv.mkDerivation (finalAttrs: {
     patchShebangs --build svnversion_regenerate.sh
   '';
 
-  wafConfigureFlags =
-    [
-      "--classic"
-      "--autostart=${if (optDbus != null) then "dbus" else "classic"}"
-    ]
-    ++ lib.optional (optDbus != null) "--dbus"
-    ++ lib.optional (optLibffado != null) "--firewire"
-    ++ lib.optional (optAlsaLib != null) "--alsa";
+  wafConfigureFlags = [
+    "--classic"
+    "--autostart=${if (optDbus != null) then "dbus" else "classic"}"
+  ]
+  ++ lib.optional (optDbus != null) "--dbus"
+  ++ lib.optional (optLibffado != null) "--firewire"
+  ++ lib.optional (optAlsaLib != null) "--alsa";
 
   postInstall = (
     if libOnly then

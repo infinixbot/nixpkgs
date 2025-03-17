@@ -36,19 +36,18 @@ stdenv.mkDerivation (finalAttrs: {
     qt6.wrapQtAppsHook
   ];
 
-  buildInputs =
-    [
-      boost
-      libtorrent-rasterbar
-      openssl
-      qt6.qtbase
-      qt6.qtsvg
-      qt6.qttools
-      zlib
-    ]
-    ++ lib.optionals guiSupport [ dbus ]
-    ++ lib.optionals (guiSupport && stdenv.hostPlatform.isLinux) [ qt6.qtwayland ]
-    ++ lib.optionals trackerSearch [ python3 ];
+  buildInputs = [
+    boost
+    libtorrent-rasterbar
+    openssl
+    qt6.qtbase
+    qt6.qtsvg
+    qt6.qttools
+    zlib
+  ]
+  ++ lib.optionals guiSupport [ dbus ]
+  ++ lib.optionals (guiSupport && stdenv.hostPlatform.isLinux) [ qt6.qtwayland ]
+  ++ lib.optionals trackerSearch [ python3 ];
 
   cmakeFlags =
     [ "-DVERBOSE_CONFIGURE=ON" ]

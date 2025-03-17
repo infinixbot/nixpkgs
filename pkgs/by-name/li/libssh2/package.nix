@@ -36,7 +36,8 @@ stdenv.mkDerivation rec {
   ];
 
   propagatedBuildInputs = [ openssl ]; # see Libs: in libssh2.pc
-  buildInputs = [ zlib ] ++ lib.optional stdenv.hostPlatform.isMinGW windows.mingw_w64;
+  buildInputs = [ zlib ]
+    ++ lib.optional stdenv.hostPlatform.isMinGW windows.mingw_w64;
 
   passthru.tests = {
     inherit

@@ -122,18 +122,17 @@ php.buildComposerProject2 (finalAttrs: {
       --replace-fail "Imagick::ALPHACHANNEL_ACTIVATE" "Imagick::ALPHACHANNEL_ON"
   '';
 
-  preBuild =
-    lib.optionalString minify.script.enable
-      # sh
-      ''
-        find ./public -type f -iname "*.js" -print0 \
-          | xargs -0 -n 1 -P $NIX_BUILD_CORES ${writeShellScript "movim_script_minify" ''
-            file="$1"
-            tmp="$(mktemp)"
-            esbuild $file --minify --target=${lib.escapeShellArg minify.script.target} --outfile=$tmp
-            [ "$(stat -c %s $tmp)" -lt "$(stat -c %s $file)" ] && mv $tmp $file
-          ''}
-      ''
+  preBuild = lib.optionalString minify.script.enable
+    # sh
+    ''
+      find ./public -type f -iname "*.js" -print0 \
+        | xargs -0 -n 1 -P $NIX_BUILD_CORES ${writeShellScript "movim_script_minify" ''
+          file="$1"
+          tmp="$(mktemp)"
+          esbuild $file --minify --target=${lib.escapeShellArg minify.script.target} --outfile=$tmp
+          [ "$(stat -c %s $tmp)" -lt "$(stat -c %s $file)" ] && mv $tmp $file
+        ''}
+    ''
     +
       lib.optionalString minify.style.enable
         # sh

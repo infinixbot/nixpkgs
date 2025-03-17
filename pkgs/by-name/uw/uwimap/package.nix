@@ -21,7 +21,8 @@ stdenv.mkDerivation rec {
     "CC=${stdenv.cc.targetPrefix}cc"
     "RANLIB=${stdenv.cc.targetPrefix}ranlib"
     (if stdenv.hostPlatform.isDarwin then "osx" else "lnp") # Linux with PAM modules;
-  ] ++ lib.optional stdenv.hostPlatform.isx86_64 "EXTRACFLAGS=-fPIC"; # -fPIC is required to compile php with imap on x86_64 systems
+  ]
+  ++ lib.optional stdenv.hostPlatform.isx86_64 "EXTRACFLAGS=-fPIC"; # -fPIC is required to compile php with imap on x86_64 systems
 
   hardeningDisable = [ "format" ];
 

@@ -118,39 +118,37 @@ libBuildHelper.extendMkDerivation' genericBuild (
         if unstableVersionInNixFormat then date + "." + time else finalAttrs.version
       );
 
-    preUnpack =
-      ''
-            mkdir -p "$NIX_BUILD_TOP/recipes"
-            recipeFile="$NIX_BUILD_TOP/recipes/$ename"
-            if [ -r "$recipe" ]; then
-              ln -s "$recipe" "$recipeFile"
-              nixInfoLog "link recipe"
-            elif [ -n "$recipe" ]; then
-              printf "%s" "$recipe" > "$recipeFile"
-              nixInfoLog "write recipe"
-            else
-              cat > "$recipeFile" <<'EOF'
-        (${finalAttrs.ename} :fetcher git :url "" ${
-          lib.optionalString (finalAttrs.files != null) ":files ${finalAttrs.files}"
-        })
-        EOF
-              nixInfoLog "use default recipe"
-            fi
-            nixInfoLog "recipe content:" "$(< $recipeFile)"
-            unset -v recipeFile
+    preUnpack = ''
+          mkdir -p "$NIX_BUILD_TOP/recipes"
+          recipeFile="$NIX_BUILD_TOP/recipes/$ename"
+          if [ -r "$recipe" ]; then
+            ln -s "$recipe" "$recipeFile"
+            nixInfoLog "link recipe"
+          elif [ -n "$recipe" ]; then
+            printf "%s" "$recipe" > "$recipeFile"
+            nixInfoLog "write recipe"
+          else
+            cat > "$recipeFile" <<'EOF'
+      (${finalAttrs.ename} :fetcher git :url "" ${
+        lib.optionalString (finalAttrs.files != null) ":files ${finalAttrs.files}"
+      })
+      EOF
+            nixInfoLog "use default recipe"
+          fi
+          nixInfoLog "recipe content:" "$(< $recipeFile)"
+          unset -v recipeFile
 
-            ln -s "$packageBuild" "$NIX_BUILD_TOP/package-build"
+          ln -s "$packageBuild" "$NIX_BUILD_TOP/package-build"
 
-            mkdir -p "$NIX_BUILD_TOP/packages"
-      ''
-      + preUnpack;
+          mkdir -p "$NIX_BUILD_TOP/packages"
+    ''
+    + preUnpack;
 
-    postUnpack =
-      ''
-        mkdir -p "$NIX_BUILD_TOP/working"
-        ln -s "$NIX_BUILD_TOP/$sourceRoot" "$NIX_BUILD_TOP/working/$ename"
-      ''
-      + postUnpack;
+    postUnpack = ''
+      mkdir -p "$NIX_BUILD_TOP/working"
+      ln -s "$NIX_BUILD_TOP/$sourceRoot" "$NIX_BUILD_TOP/working/$ename"
+    ''
+    + postUnpack;
 
     buildPhase =
       args.buildPhase or ''
@@ -193,7 +191,8 @@ libBuildHelper.extendMkDerivation' genericBuild (
 
     meta = {
       homepage = args.src.meta.homepage or "https://melpa.org/#/${pname}";
-    } // meta;
+    }
+    // meta;
   }
 
 )

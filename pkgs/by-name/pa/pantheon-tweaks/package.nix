@@ -35,18 +35,17 @@ stdenv.mkDerivation rec {
     wrapGAppsHook4
   ];
 
-  buildInputs =
-    [
-      gtk4
-      libgee
-      pango
-    ]
-    ++ (with pantheon; [
-      elementary-files # settings schemas
-      elementary-terminal # settings schemas
-      granite7
-      switchboard
-    ]);
+  buildInputs = [
+    gtk4
+    libgee
+    pango
+  ]
+  ++ (with pantheon; [
+    elementary-files # settings schemas
+    elementary-terminal # settings schemas
+    granite7
+    switchboard
+  ]);
 
   postPatch = ''
     substituteInPlace src/Settings/ThemeSettings.vala \

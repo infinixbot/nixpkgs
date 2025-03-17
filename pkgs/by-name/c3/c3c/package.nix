@@ -35,7 +35,8 @@ llvmPackages.stdenv.mkDerivation (finalAttrs: {
     curl
     libxml2
     libffi
-  ] ++ lib.optionals llvmPackages.stdenv.hostPlatform.isDarwin [ xar ];
+  ]
+  ++ lib.optionals llvmPackages.stdenv.hostPlatform.isDarwin [ xar ];
 
   nativeCheckInputs = [ python3 ];
 

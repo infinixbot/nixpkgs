@@ -112,25 +112,24 @@ stdenv.mkDerivation (finalAttrs: {
     substituteInPlace meson.build --replace-fail "'ani'," ""
   '';
 
-  postInstall =
-    ''
-      # All except one utility seem to be only useful during building.
-      moveToOutput "bin" "$dev"
-      moveToOutput "bin/gdk-pixbuf-thumbnailer" "$out"
+  postInstall = ''
+    # All except one utility seem to be only useful during building.
+    moveToOutput "bin" "$dev"
+    moveToOutput "bin/gdk-pixbuf-thumbnailer" "$out"
 
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      # meson erroneously installs loaders with .dylib extension on Darwin.
-      # Their @rpath has to be replaced before gdk-pixbuf-query-loaders looks at them.
-      for f in $out/${finalAttrs.passthru.moduleDir}/*.dylib; do
-          install_name_tool -change @rpath/libgdk_pixbuf-2.0.0.dylib $out/lib/libgdk_pixbuf-2.0.0.dylib $f
-          mv $f ''${f%.dylib}.so
-      done
-    ''
-    + lib.optionalString withIntrospection ''
-      # We need to install 'loaders.cache' in lib/gdk-pixbuf-2.0/2.10.0/
-      ${stdenv.hostPlatform.emulator buildPackages} $dev/bin/gdk-pixbuf-query-loaders --update-cache
-    '';
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    # meson erroneously installs loaders with .dylib extension on Darwin.
+    # Their @rpath has to be replaced before gdk-pixbuf-query-loaders looks at them.
+    for f in $out/${finalAttrs.passthru.moduleDir}/*.dylib; do
+        install_name_tool -change @rpath/libgdk_pixbuf-2.0.0.dylib $out/lib/libgdk_pixbuf-2.0.0.dylib $f
+        mv $f ''${f%.dylib}.so
+    done
+  ''
+  + lib.optionalString withIntrospection ''
+    # We need to install 'loaders.cache' in lib/gdk-pixbuf-2.0/2.10.0/
+    ${stdenv.hostPlatform.emulator buildPackages} $dev/bin/gdk-pixbuf-query-loaders --update-cache
+  '';
 
   # The fixDarwinDylibNames hook doesn't patch binaries.
   preFixup = lib.optionalString stdenv.hostPlatform.isDarwin ''

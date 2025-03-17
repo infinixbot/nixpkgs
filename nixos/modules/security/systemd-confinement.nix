@@ -195,8 +195,7 @@ in
       lib.optionals cfg.confinement.enable [
         {
           assertion = !cfg.serviceConfig.RootDirectoryStartOnly or false;
-          message =
-            "${whatOpt "RootDirectoryStartOnly"}, but right now systemd"
+          message = "${whatOpt "RootDirectoryStartOnly"}, but right now systemd"
             + " doesn't support restricting bind-mounts to 'ExecStart'."
             + " Please either define a separate service or find a way to run"
             + " commands other than ExecStart within the chroot.";

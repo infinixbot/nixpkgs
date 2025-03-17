@@ -32,18 +32,16 @@ stdenv.mkDerivation (finalAttrs: {
     autoreconfHook
     pkg-config
   ];
-  buildInputs =
-    [
-      util-linux
-      lz4
-      zlib
-    ]
-    ++ lib.optionals fuseSupport [ fuse ]
-    ++ lib.optionals selinuxSupport [ libselinux ]
-    ++ lib.optionals lzmaSupport [ xz ];
+  buildInputs = [
+    util-linux
+    lz4
+    zlib
+  ]
+  ++ lib.optionals fuseSupport [ fuse ]
+  ++ lib.optionals selinuxSupport [ libselinux ]
+  ++ lib.optionals lzmaSupport [ xz ];
 
-  configureFlags =
-    [ "MAX_BLOCK_SIZE=4096" ]
+  configureFlags = [ "MAX_BLOCK_SIZE=4096" ]
     ++ lib.optional fuseSupport "--enable-fuse"
     ++ lib.optional selinuxSupport "--with-selinux"
     ++ lib.optional lzmaSupport "--enable-lzma";

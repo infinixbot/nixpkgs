@@ -97,21 +97,21 @@ let
 
     inherit src patches;
 
-    outputs =
-      [
-        "out"
-        "dev"
-      ]
-      ++ lib.optionals enableDocumentation [
-        "man"
-        "doc"
-      ];
+    outputs = [
+      "out"
+      "dev"
+    ]
+    ++ lib.optionals enableDocumentation [
+      "man"
+      "doc"
+    ];
 
     hardeningEnable = lib.optionals (!stdenv.hostPlatform.isDarwin) [ "pie" ];
 
     hardeningDisable = [
       "shadowstack"
-    ] ++ lib.optional stdenv.hostPlatform.isMusl "fortify";
+    ]
+    ++ lib.optional stdenv.hostPlatform.isMusl "fortify";
 
     nativeInstallCheckInputs = lib.optional atLeast224 [
       git
@@ -146,52 +146,50 @@ let
         util-linuxMinimal
       ];
 
-    buildInputs =
-      [
-        boost
-        brotli
-        bzip2
-        curl
-        editline
-        libsodium
-        openssl
-        sqlite
-        xz
-        gtest
-        libarchive
-        lowdown
-      ]
-      ++ lib.optionals atLeast224 [
-        libgit2
-        toml11
-        rapidcheck
-      ]
-      ++ lib.optionals (atLeast225 && enableDocumentation) [
-        python3
-      ]
-      ++ lib.optionals stdenv.hostPlatform.isDarwin [
-        Security
-      ]
-      ++ lib.optionals (stdenv.hostPlatform.isx86_64) [
-        libcpuid
-      ]
-      ++ lib.optionals withLibseccomp [
-        libseccomp
-      ]
-      ++ lib.optionals withAWS [
-        aws-sdk-cpp
-      ]
-      ++ lib.optional (atLeast224 && stdenv.hostPlatform.isDarwin) [
-        darwin.apple_sdk.libs.sandbox
-      ];
+    buildInputs = [
+      boost
+      brotli
+      bzip2
+      curl
+      editline
+      libsodium
+      openssl
+      sqlite
+      xz
+      gtest
+      libarchive
+      lowdown
+    ]
+    ++ lib.optionals atLeast224 [
+      libgit2
+      toml11
+      rapidcheck
+    ]
+    ++ lib.optionals (atLeast225 && enableDocumentation) [
+      python3
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      Security
+    ]
+    ++ lib.optionals (stdenv.hostPlatform.isx86_64) [
+      libcpuid
+    ]
+    ++ lib.optionals withLibseccomp [
+      libseccomp
+    ]
+    ++ lib.optionals withAWS [
+      aws-sdk-cpp
+    ]
+    ++ lib.optional (atLeast224 && stdenv.hostPlatform.isDarwin) [
+      darwin.apple_sdk.libs.sandbox
+    ];
 
-    propagatedBuildInputs =
-      [
-        boehmgc
-      ]
-      ++ lib.optionals atLeast224 [
-        nlohmann_json
-      ];
+    propagatedBuildInputs = [
+      boehmgc
+    ]
+    ++ lib.optionals atLeast224 [
+      nlohmann_json
+    ];
 
     postPatch = ''
       patchShebangs --build tests
@@ -227,39 +225,38 @@ let
           mv tmp/config.nix.in corepkgs/config.nix.in
         '';
 
-    configureFlags =
-      [
-        "--with-store-dir=${storeDir}"
-        "--localstatedir=${stateDir}"
-        "--sysconfdir=${confDir}"
-        "--enable-gc"
-      ]
-      ++ lib.optionals (!enableDocumentation) [
-        "--disable-doc-gen"
-      ]
-      ++ lib.optionals stdenv.hostPlatform.isLinux [
-        "--with-sandbox-shell=${busybox-sandbox-shell}/bin/busybox"
-      ]
-      ++ lib.optionals (atLeast224 && stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isStatic) [
-        "--enable-embedded-sandbox-shell"
-      ]
-      ++
-        lib.optionals
-          (
-            stdenv.hostPlatform != stdenv.buildPlatform
-            && stdenv.hostPlatform ? nix
-            && stdenv.hostPlatform.nix ? system
-          )
-          [
-            "--with-system=${stdenv.hostPlatform.nix.system}"
-          ]
-      ++ lib.optionals (!withLibseccomp) [
-        # RISC-V support in progress https://github.com/seccomp/libseccomp/pull/50
-        "--disable-seccomp-sandboxing"
-      ]
-      ++ lib.optionals (atLeast224 && stdenv.cc.isGNU && !enableStatic) [
-        "--enable-lto"
-      ];
+    configureFlags = [
+      "--with-store-dir=${storeDir}"
+      "--localstatedir=${stateDir}"
+      "--sysconfdir=${confDir}"
+      "--enable-gc"
+    ]
+    ++ lib.optionals (!enableDocumentation) [
+      "--disable-doc-gen"
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isLinux [
+      "--with-sandbox-shell=${busybox-sandbox-shell}/bin/busybox"
+    ]
+    ++ lib.optionals (atLeast224 && stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isStatic) [
+      "--enable-embedded-sandbox-shell"
+    ]
+    ++
+      lib.optionals
+        (
+          stdenv.hostPlatform != stdenv.buildPlatform
+          && stdenv.hostPlatform ? nix
+          && stdenv.hostPlatform.nix ? system
+        )
+        [
+          "--with-system=${stdenv.hostPlatform.nix.system}"
+        ]
+    ++ lib.optionals (!withLibseccomp) [
+      # RISC-V support in progress https://github.com/seccomp/libseccomp/pull/50
+      "--disable-seccomp-sandboxing"
+    ]
+    ++ lib.optionals (atLeast224 && stdenv.cc.isGNU && !enableStatic) [
+      "--enable-lto"
+    ];
 
     makeFlags =
       [
@@ -278,10 +275,9 @@ let
     installCheckTarget = if atLeast224 then "installcheck" else null;
 
     # socket path becomes too long otherwise
-    preInstallCheck =
-      lib.optionalString stdenv.hostPlatform.isDarwin ''
-        export TMPDIR=$NIX_BUILD_TOP
-      ''
+    preInstallCheck = lib.optionalString stdenv.hostPlatform.isDarwin ''
+      export TMPDIR=$NIX_BUILD_TOP
+    ''
       # Prevent crashes in libcurl due to invoking Objective-C `+initialize` methods after `fork`.
       # See http://sealiesoftware.com/blog/archive/2017/6/5/Objective-C_and_fork_in_macOS_1013.html.
       + lib.optionalString stdenv.hostPlatform.isDarwin ''
@@ -346,7 +342,8 @@ let
       license = licenses.lgpl21Plus;
       inherit maintainers;
       platforms = platforms.unix;
-      outputsToInstall = [ "out" ] ++ optional enableDocumentation "man";
+      outputsToInstall = [ "out" ]
+        ++ optional enableDocumentation "man";
       mainProgram = "nix";
     };
   };

@@ -111,37 +111,36 @@ stdenv.mkDerivation (finalAttrs: {
       libmsgraph
     ];
 
-  mesonFlags =
-    [
-      "-Dsystemduserunitdir=${placeholder "out"}/lib/systemd/user"
-      "-Dtmpfilesdir=no"
-    ]
-    ++ lib.optionals (!udevSupport) [
-      "-Dgudev=false"
-      "-Dudisks2=false"
-      "-Dfuse=false"
-      "-Dcdda=false"
-      "-Dsmb=false"
-      "-Dmtp=false"
-      "-Dadmin=false"
-      "-Dgphoto2=false"
-      "-Dlibusb=false"
-      "-Dlogind=false"
-    ]
-    ++ lib.optionals (!gnomeSupport) [
-      "-Dgcr=false"
-      "-Dgoa=false"
-      "-Dkeyring=false"
-      "-Dgoogle=false"
-      "-Donedrive=false"
-    ]
-    ++ lib.optionals (avahi == null) [
-      "-Ddnssd=false"
-    ]
-    ++ lib.optionals (samba == null) [
-      # Xfce don't want samba
-      "-Dsmb=false"
-    ];
+  mesonFlags = [
+    "-Dsystemduserunitdir=${placeholder "out"}/lib/systemd/user"
+    "-Dtmpfilesdir=no"
+  ]
+  ++ lib.optionals (!udevSupport) [
+    "-Dgudev=false"
+    "-Dudisks2=false"
+    "-Dfuse=false"
+    "-Dcdda=false"
+    "-Dsmb=false"
+    "-Dmtp=false"
+    "-Dadmin=false"
+    "-Dgphoto2=false"
+    "-Dlibusb=false"
+    "-Dlogind=false"
+  ]
+  ++ lib.optionals (!gnomeSupport) [
+    "-Dgcr=false"
+    "-Dgoa=false"
+    "-Dkeyring=false"
+    "-Dgoogle=false"
+    "-Donedrive=false"
+  ]
+  ++ lib.optionals (avahi == null) [
+    "-Ddnssd=false"
+  ]
+  ++ lib.optionals (samba == null) [
+    # Xfce don't want samba
+    "-Dsmb=false"
+  ];
 
   doCheck = false; # fails with "ModuleNotFoundError: No module named 'gi'"
   doInstallCheck = finalAttrs.finalPackage.doCheck;

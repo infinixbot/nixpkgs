@@ -31,7 +31,8 @@ buildPythonPackage rec {
 
   optional-dependencies.CLI = [ click ];
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ optional-dependencies.CLI;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ optional-dependencies.CLI;
 
   pythonImportsCheck = [ "pymorphy3" ];
 

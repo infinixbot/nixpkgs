@@ -32,14 +32,13 @@
     ./sys-headers-incsdir.patch
   ];
 
-  postPatch =
-    ''
-      substituteInPlace sys/arch/i386/stand/efiboot/Makefile.efiboot \
-        --replace "-nocombreloc" "-z nocombreloc"
-    ''
-    +
-      # multiple header dirs, see above
-      include.postPatch;
+  postPatch = ''
+    substituteInPlace sys/arch/i386/stand/efiboot/Makefile.efiboot \
+      --replace "-nocombreloc" "-z nocombreloc"
+  ''
+  +
+  # multiple header dirs, see above
+  include.postPatch;
 
   CONFIG = "GENERIC";
 

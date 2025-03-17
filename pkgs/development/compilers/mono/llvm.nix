@@ -32,7 +32,8 @@ stdenv.mkDerivation {
     libxml2
     python2
     libffi
-  ] ++ lib.optional stdenv.hostPlatform.isLinux valgrind;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isLinux valgrind;
 
   propagatedBuildInputs = [
     ncurses

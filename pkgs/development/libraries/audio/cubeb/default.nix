@@ -44,8 +44,7 @@ stdenv.mkDerivation {
     pkg-config
   ];
 
-  buildInputs =
-    [ speexdsp ]
+  buildInputs = [ speexdsp ]
     ++ (
       if stdenv.hostPlatform.isDarwin then
         [

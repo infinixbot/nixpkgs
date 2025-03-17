@@ -77,7 +77,8 @@ buildPythonPackage rec {
     pydantic
     srsly
     wasabi
-  ] ++ lib.optionals (pythonOlder "3.8") [ typing-extensions ];
+  ]
+  ++ lib.optionals (pythonOlder "3.8") [ typing-extensions ];
 
   nativeCheckInputs = [
     hypothesis

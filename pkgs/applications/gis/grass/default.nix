@@ -49,51 +49,49 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-NKMshd6pr2O62ZjmQ/oPttmeVBYVD0Nqhh3SwQrhZf8=";
   };
 
-  nativeBuildInputs =
-    [
-      makeWrapper
-      wrapGAppsHook3
+  nativeBuildInputs = [
+    makeWrapper
+    wrapGAppsHook3
 
-      bison
-      flex
-      gdal # for `gdal-config`
-      geos # for `geos-config`
-      netcdf # for `nc-config`
-      pkg-config
-    ]
-    ++ (with python3Packages; [
-      python-dateutil
-      numpy
-      wxpython
-    ]);
+    bison
+    flex
+    gdal # for `gdal-config`
+    geos # for `geos-config`
+    netcdf # for `nc-config`
+    pkg-config
+  ]
+  ++ (with python3Packages; [
+    python-dateutil
+    numpy
+    wxpython
+  ]);
 
-  buildInputs =
-    [
-      blas
-      cairo
-      ffmpeg
-      fftw
-      freetype
-      gdal
-      geos
-      lapack
-      libpng
-      libsvm
-      libtiff
-      libxml2
-      netcdf
-      pdal
-      libpq
-      proj
-      readline
-      sqlite
-      wxGTK32
-      zlib
-      zstd
-    ]
-    ++ lib.optionals withOpenGL [ libGLU ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [ libiconv ]
-    ++ lib.optionals stdenv.cc.isClang [ llvmPackages.openmp ];
+  buildInputs = [
+    blas
+    cairo
+    ffmpeg
+    fftw
+    freetype
+    gdal
+    geos
+    lapack
+    libpng
+    libsvm
+    libtiff
+    libxml2
+    netcdf
+    pdal
+    libpq
+    proj
+    readline
+    sqlite
+    wxGTK32
+    zlib
+    zstd
+  ]
+  ++ lib.optionals withOpenGL [ libGLU ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ libiconv ]
+  ++ lib.optionals stdenv.cc.isClang [ llvmPackages.openmp ];
 
   strictDeps = true;
 

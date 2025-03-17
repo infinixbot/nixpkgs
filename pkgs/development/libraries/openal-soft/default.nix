@@ -58,16 +58,15 @@ stdenv.mkDerivation rec {
       AudioToolbox
     ];
 
-  cmakeFlags =
-    [
-      # Automatically links dependencies without having to rely on dlopen, thus
-      # removes the need for NIX_LDFLAGS.
-      "-DALSOFT_DLOPEN=OFF"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      # https://github.com/NixOS/nixpkgs/issues/183774
-      "-DOSS_INCLUDE_DIR=${stdenv.cc.libc}/include"
-    ];
+  cmakeFlags = [
+    # Automatically links dependencies without having to rely on dlopen, thus
+    # removes the need for NIX_LDFLAGS.
+    "-DALSOFT_DLOPEN=OFF"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    # https://github.com/NixOS/nixpkgs/issues/183774
+    "-DOSS_INCLUDE_DIR=${stdenv.cc.libc}/include"
+  ];
 
   postInstall = lib.optional pipewireSupport ''
     remove-references-to -t ${pipewire.dev} $(readlink -f $out/lib/*.so)

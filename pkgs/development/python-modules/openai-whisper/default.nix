@@ -53,7 +53,8 @@ buildPythonPackage rec {
     tiktoken
     torch
     tqdm
-  ] ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform triton) [ triton ];
+  ]
+  ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform triton) [ triton ];
 
   preCheck = ''
     export HOME=$TMPDIR

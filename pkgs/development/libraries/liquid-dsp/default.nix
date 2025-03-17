@@ -21,8 +21,7 @@ stdenv.mkDerivation rec {
 
   configureFlags = lib.optionals stdenv.hostPlatform.isDarwin [ "LIBTOOL=${cctools}/bin/libtool" ];
 
-  nativeBuildInputs =
-    [ autoreconfHook ]
+  nativeBuildInputs = [ autoreconfHook ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       cctools
       autoSignDarwinBinariesHook

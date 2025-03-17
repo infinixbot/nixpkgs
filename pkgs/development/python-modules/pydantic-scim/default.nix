@@ -29,7 +29,8 @@ buildPythonPackage rec {
       --replace 'version=get_version(),' 'version="${version}",'
   '';
 
-  propagatedBuildInputs = [ pydantic ] ++ pydantic.optional-dependencies.email;
+  propagatedBuildInputs = [ pydantic ]
+    ++ pydantic.optional-dependencies.email;
 
   pythonImportsCheck = [ "pydanticscim" ];
 

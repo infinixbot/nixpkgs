@@ -45,9 +45,11 @@ rustPlatform.buildRustPackage rec {
     nodejs
     pkg-config
     pnpm.configHook
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin makeBinaryWrapper;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin makeBinaryWrapper;
 
-  buildInputs = [ openssl ] ++ lib.optional stdenv.hostPlatform.isLinux webkitgtk_4_1;
+  buildInputs = [ openssl ]
+    ++ lib.optional stdenv.hostPlatform.isLinux webkitgtk_4_1;
 
   # Tests fail on other, unrelated packages in the monorepo
   cargoTestFlags = [

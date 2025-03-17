@@ -149,36 +149,35 @@ buildPythonPackage rec {
   ];
 
   # https://github.com/numpy/numpy/issues/24548
-  disabledTests =
-    [
-      # Tries to import numpy.distutils.msvccompiler, removed in setuptools 74.0
-      "test_api_importable"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isi686 [
-      "test_new_policy" # AssertionError: assert False
-      "test_identityless_reduction_huge_array" # ValueError: Maximum allowed dimension exceeded
-      "test_float_remainder_overflow" # AssertionError: FloatingPointError not raised by divmod
-      "test_int" # AssertionError: selectedintkind(19): expected 16 but got -1
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isAarch32 [
-      "test_impossible_feature_enable" # AssertionError: Failed to generate error
-      "test_features" # AssertionError: Failure Detection
-      "test_new_policy" # AssertionError: assert False
-      "test_identityless_reduction_huge_array" # ValueError: Maximum allowed dimension exceeded
-      "test_unary_spurious_fpexception" # AssertionError: Got warnings: [<warnings.WarningMessage object at 0xd1197430>]
-      "test_int" # AssertionError: selectedintkind(19): expected 16 but got -1
-      "test_real" # AssertionError: selectedrealkind(16): expected 10 but got -1
-      "test_quad_precision" # AssertionError: selectedrealkind(32): expected 16 but got -1
-      "test_big_arrays" # ValueError: array is too big; `arr.size * arr.dtype.itemsize` is larger tha...
-      "test_multinomial_pvals_float32" # Failed: DID NOT RAISE <class 'ValueError'>
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isAarch64 [
-      "test_big_arrays" # OOM on a 16G machine
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isx86_64) [
-      # can fail on virtualized machines confused over their cpu identity
-      "test_dispatcher"
-    ];
+  disabledTests = [
+    # Tries to import numpy.distutils.msvccompiler, removed in setuptools 74.0
+    "test_api_importable"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isi686 [
+    "test_new_policy" # AssertionError: assert False
+    "test_identityless_reduction_huge_array" # ValueError: Maximum allowed dimension exceeded
+    "test_float_remainder_overflow" # AssertionError: FloatingPointError not raised by divmod
+    "test_int" # AssertionError: selectedintkind(19): expected 16 but got -1
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isAarch32 [
+    "test_impossible_feature_enable" # AssertionError: Failed to generate error
+    "test_features" # AssertionError: Failure Detection
+    "test_new_policy" # AssertionError: assert False
+    "test_identityless_reduction_huge_array" # ValueError: Maximum allowed dimension exceeded
+    "test_unary_spurious_fpexception" # AssertionError: Got warnings: [<warnings.WarningMessage object at 0xd1197430>]
+    "test_int" # AssertionError: selectedintkind(19): expected 16 but got -1
+    "test_real" # AssertionError: selectedrealkind(16): expected 10 but got -1
+    "test_quad_precision" # AssertionError: selectedrealkind(32): expected 16 but got -1
+    "test_big_arrays" # ValueError: array is too big; `arr.size * arr.dtype.itemsize` is larger tha...
+    "test_multinomial_pvals_float32" # Failed: DID NOT RAISE <class 'ValueError'>
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isAarch64 [
+    "test_big_arrays" # OOM on a 16G machine
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isx86_64) [
+    # can fail on virtualized machines confused over their cpu identity
+    "test_dispatcher"
+  ];
 
   passthru = {
     # just for backwards compatibility

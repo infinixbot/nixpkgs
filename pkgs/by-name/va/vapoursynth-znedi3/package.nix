@@ -24,8 +24,7 @@ stdenv.mkDerivation {
     ln -s ${vapoursynth}/include/vapoursynth vsxx/vapoursynth
   '';
 
-  makeFlags =
-    [ "CPPFLAGS=-DNNEDI3_WEIGHTS_PATH='\"$(out)/share/nnedi3/nnedi3_weights.bin\"'" ]
+  makeFlags = [ "CPPFLAGS=-DNNEDI3_WEIGHTS_PATH='\"$(out)/share/nnedi3/nnedi3_weights.bin\"'" ]
     ++ lib.optionals stdenv.hostPlatform.isx86 [
       "X86=1"
       "X86_AVX512=1"

@@ -23,7 +23,8 @@ buildPythonPackage rec {
 
   build-system = [ setuptools-scm ];
 
-  dependencies = [ asdf-standard ] ++ lib.optionals (pythonOlder "3.9") [ importlib-resources ];
+  dependencies = [ asdf-standard ]
+    ++ lib.optionals (pythonOlder "3.9") [ importlib-resources ];
 
   # Circular dependency on asdf
   doCheck = false;

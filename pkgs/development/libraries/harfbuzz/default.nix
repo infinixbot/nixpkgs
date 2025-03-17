@@ -43,15 +43,14 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-bONSDy0ImjPO8PxIMhM0uOC3IUH2p2Nxmqrs0neey4I=";
   };
 
-  postPatch =
-    ''
-      patchShebangs src/*.py test
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      # ApplicationServices.framework headers have cast-align warnings.
-      substituteInPlace src/hb.hh \
-        --replace '#pragma GCC diagnostic error   "-Wcast-align"' ""
-    '';
+  postPatch = ''
+    patchShebangs src/*.py test
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    # ApplicationServices.framework headers have cast-align warnings.
+    substituteInPlace src/hb.hh \
+      --replace '#pragma GCC diagnostic error   "-Wcast-align"' ""
+  '';
 
   outputs = [
     "out"
@@ -89,17 +88,17 @@ stdenv.mkDerivation (finalAttrs: {
     gtk-doc
     docbook-xsl-nons
     docbook_xml_dtd_43
-  ] ++ lib.optional withIntrospection gobject-introspection;
+  ]
+  ++ lib.optional withIntrospection gobject-introspection;
 
-  buildInputs =
-    [
-      glib
-      freetype
-    ]
-    ++ lib.optionals withCoreText [
-      ApplicationServices
-      CoreText
-    ];
+  buildInputs = [
+    glib
+    freetype
+  ]
+  ++ lib.optionals withCoreText [
+    ApplicationServices
+    CoreText
+  ];
 
   propagatedBuildInputs =
     lib.optional withGraphite2 graphite2

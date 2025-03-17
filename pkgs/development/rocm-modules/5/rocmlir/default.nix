@@ -36,13 +36,12 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "rocmlir${suffix}";
   version = "5.7.1";
 
-  outputs =
-    [
-      "out"
-    ]
-    ++ lib.optionals (!buildRockCompiler) [
-      "external"
-    ];
+  outputs = [
+    "out"
+  ]
+  ++ lib.optionals (!buildRockCompiler) [
+    "external"
+  ];
 
   src = fetchFromGitHub {
     owner = "ROCm";

@@ -75,9 +75,11 @@ stdenv.mkDerivation (finalAttrs: {
   ];
   outputBin = "dev"; # sdl-config
 
-  nativeBuildInputs = [ pkg-config ] ++ lib.optional stdenv.hostPlatform.isLinux libcap;
+  nativeBuildInputs = [ pkg-config ]
+    ++ lib.optional stdenv.hostPlatform.isLinux libcap;
 
-  propagatedBuildInputs = [ libiconv ] ++ extraPropagatedBuildInputs;
+  propagatedBuildInputs = [ libiconv ]
+    ++ extraPropagatedBuildInputs;
 
   buildInputs =
     [ ]
@@ -90,22 +92,21 @@ stdenv.mkDerivation (finalAttrs: {
       OpenGL
     ];
 
-  configureFlags =
-    [
-      "--disable-oss"
-      "--disable-video-x11-xme"
-      "--enable-rpath"
-      # Building without this fails on Darwin with
-      #
-      #   ./src/video/x11/SDL_x11sym.h:168:17: error: conflicting types for '_XData32'
-      #   SDL_X11_SYM(int,_XData32,(Display *dpy,register long *data,unsigned len),(dpy,data,len),return)
-      #
-      # Please try revert the change that introduced this comment when updating SDL.
-    ]
-    ++ lib.optional stdenv.hostPlatform.isDarwin "--disable-x11-shared"
-    ++ lib.optional (!x11Support) "--without-x"
-    ++ lib.optional alsaSupport "--with-alsa-prefix=${alsa-lib.out}/lib"
-    ++ lib.optional stdenv.hostPlatform.isMusl "CFLAGS=-DICONV_INBUF_NONCONST";
+  configureFlags = [
+    "--disable-oss"
+    "--disable-video-x11-xme"
+    "--enable-rpath"
+    # Building without this fails on Darwin with
+    #
+    #   ./src/video/x11/SDL_x11sym.h:168:17: error: conflicting types for '_XData32'
+    #   SDL_X11_SYM(int,_XData32,(Display *dpy,register long *data,unsigned len),(dpy,data,len),return)
+    #
+    # Please try revert the change that introduced this comment when updating SDL.
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin "--disable-x11-shared"
+  ++ lib.optional (!x11Support) "--without-x"
+  ++ lib.optional alsaSupport "--with-alsa-prefix=${alsa-lib.out}/lib"
+  ++ lib.optional stdenv.hostPlatform.isMusl "CFLAGS=-DICONV_INBUF_NONCONST";
 
   patches = [
     ./find-headers.patch

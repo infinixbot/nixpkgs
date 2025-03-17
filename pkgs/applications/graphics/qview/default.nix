@@ -31,7 +31,8 @@ mkDerivation rec {
     qttools
     qtimageformats
     qtsvg
-  ] ++ lib.optionals x11Support [ qtx11extras ];
+  ]
+  ++ lib.optionals x11Support [ qtx11extras ];
 
   meta = with lib; {
     description = "Practical and minimal image viewer";

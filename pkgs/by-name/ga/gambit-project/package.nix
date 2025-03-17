@@ -19,7 +19,8 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-waRGnkykkKqOs7G1nlkL+eO4QRmerhGrZ7wjRgBsZc0=";
   };
 
-  nativeBuildInputs = [ autoreconfHook ] ++ lib.optional withGui wxGTK31;
+  nativeBuildInputs = [ autoreconfHook ]
+    ++ lib.optional withGui wxGTK31;
 
   buildInputs =
     lib.optional withGui wxGTK31

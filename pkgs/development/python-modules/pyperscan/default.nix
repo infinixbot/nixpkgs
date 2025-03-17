@@ -35,7 +35,8 @@ buildPythonPackage rec {
 
   checkInputs = [ pytestCheckHook ];
 
-  buildInputs = [ vectorscan ] ++ lib.optional stdenv.hostPlatform.isDarwin libiconv;
+  buildInputs = [ vectorscan ]
+    ++ lib.optional stdenv.hostPlatform.isDarwin libiconv;
 
   pythonImportsCheck = [ "pyperscan" ];
 

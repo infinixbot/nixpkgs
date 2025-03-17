@@ -188,8 +188,10 @@ in
       description = "mautrix-signal, a Matrix-Signal puppeting bridge.";
 
       wantedBy = [ "multi-user.target" ];
-      wants = [ "network-online.target" ] ++ cfg.serviceDependencies;
-      after = [ "network-online.target" ] ++ cfg.serviceDependencies;
+      wants = [ "network-online.target" ]
+        ++ cfg.serviceDependencies;
+      after = [ "network-online.target" ]
+        ++ cfg.serviceDependencies;
       # ffmpeg is required for conversion of voice messages
       path = [ pkgs.ffmpeg-headless ];
 

@@ -20,7 +20,8 @@ in
 symlinkJoin {
   name = "gimp-with-plugins-${gimp.version}";
 
-  paths = [ gimp ] ++ selectedPlugins;
+  paths = [ gimp ]
+    ++ selectedPlugins;
 
   nativeBuildInputs = [ makeWrapper ];
 

@@ -62,7 +62,8 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     cmake
     wrapQtAppsHook
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin perl; # for macos bundle
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin perl; # for macos bundle
 
   patchPhase = ''
     patchShebangs test/testrunner.sh
@@ -76,7 +77,8 @@ stdenv.mkDerivation rec {
     "-DUSE_SYSTEM_MBEDTLS_LIBS=ON"
     # "-DUSE_SYSTEM_QMDNS_LIBS=ON"  # qmdnsengine not in nixpkgs yet
     "-DENABLE_TESTS=ON"
-  ] ++ lib.optional (withRPiDispmanx == false) "-DENABLE_DISPMANX=OFF";
+  ]
+  ++ lib.optional (withRPiDispmanx == false) "-DENABLE_DISPMANX=OFF";
 
   doCheck = true;
   checkPhase = ''

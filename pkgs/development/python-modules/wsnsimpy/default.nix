@@ -24,13 +24,15 @@ buildPythonPackage rec {
   propagatedBuildInputs = [
     setuptools
     simpy
-  ] ++ lib.optional enableVisualization tkinter;
+  ]
+  ++ lib.optional enableVisualization tkinter;
 
   # No test cases are included, thus unittest tries to run the examples, which
   # fail because no DISPLAYs are available.
   doCheck = false;
 
-  pythonImportsCheck = [ "wsnsimpy" ] ++ lib.optional enableVisualization "wsnsimpy.wsnsimpy_tk";
+  pythonImportsCheck = [ "wsnsimpy" ]
+    ++ lib.optional enableVisualization "wsnsimpy.wsnsimpy_tk";
 
   meta = with lib; {
     description = "SimPy-based WSN Simulator";

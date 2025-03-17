@@ -15,7 +15,8 @@
 }:
 
 let
-  foomatic-db-packages = [ foomatic-db ] ++ lib.lists.optional withNonfreeDb foomatic-db-nonfree;
+  foomatic-db-packages = [ foomatic-db ]
+    ++ lib.lists.optional withNonfreeDb foomatic-db-nonfree;
 
   foomatic-db-combined = buildEnv {
     name = "foomatic-db-combined";

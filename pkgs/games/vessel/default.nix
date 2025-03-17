@@ -32,11 +32,10 @@ stdenv.mkDerivation rec {
   phases = "installPhase";
   ld_preload = ./isatty.c;
 
-  libPath =
-    lib.makeLibraryPath [
-      stdenv.cc.cc
-      stdenv.cc.libc
-    ]
+  libPath = lib.makeLibraryPath [
+    stdenv.cc.cc
+    stdenv.cc.libc
+  ]
     + ":"
     + lib.makeLibraryPath [
       SDL

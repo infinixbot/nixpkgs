@@ -148,8 +148,7 @@ in
     ];
 
     networking.firewall = mkIf cfg.openFirewall {
-      allowedTCPPorts =
-        [ cfg.fileTransferPort ]
+      allowedTCPPorts = [ cfg.fileTransferPort ]
         ++ (map (port: mkIf cfg.openFirewallServerQuery port) [
           cfg.queryPort
           cfg.querySshPort

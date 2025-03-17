@@ -23,7 +23,8 @@ rustPlatform.buildRustPackage rec {
   cargoHash = "sha256-xYtdGhuieFudfJz+LxUjP7mV8uItaIvLahCH7vBWTtg=";
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [ openssl ] ++ lib.optional stdenv.hostPlatform.isDarwin Security;
+  buildInputs = [ openssl ]
+    ++ lib.optional stdenv.hostPlatform.isDarwin Security;
 
   # package does not contain tests as of v0.3.3
   docCheck = false;

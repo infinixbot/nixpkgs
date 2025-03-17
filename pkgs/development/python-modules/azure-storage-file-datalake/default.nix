@@ -33,7 +33,8 @@ buildPythonPackage rec {
   ];
 
   optional-dependencies = {
-    aio = [ azure-core ] ++ azure-core.optional-dependencies.aio;
+    aio = [ azure-core ]
+      ++ azure-core.optional-dependencies.aio;
   };
 
   pythonImportsCheck = [ "azure.storage.filedatalake" ];

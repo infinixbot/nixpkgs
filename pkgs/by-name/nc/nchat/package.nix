@@ -75,23 +75,22 @@ stdenv.mkDerivation rec {
     libcgowm
   ];
 
-  buildInputs =
+  buildInputs = [
+    file # for libmagic
+    ncurses
+    openssl
+    readline
+    sqlite
+    zlib
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin (
+    with darwin.apple_sdk.frameworks;
     [
-      file # for libmagic
-      ncurses
-      openssl
-      readline
-      sqlite
-      zlib
+      AppKit
+      Cocoa
+      Foundation
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        AppKit
-        Cocoa
-        Foundation
-      ]
-    );
+  );
 
   cmakeFlags = [
     "-DCMAKE_INSTALL_LIBDIR=lib"

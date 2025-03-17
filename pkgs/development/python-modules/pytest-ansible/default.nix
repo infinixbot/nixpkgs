@@ -54,20 +54,19 @@ buildPythonPackage rec {
 
   pytestFlagsArray = [ "tests/" ];
 
-  disabledTests =
-    [
-      # Host unreachable in the inventory
-      "test_become"
-      # [Errno -3] Temporary failure in name resolution
-      "test_connection_failure_v2"
-      "test_connection_failure_extra_inventory_v2"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      # These tests fail in the Darwin sandbox
-      "test_ansible_facts"
-      "test_func"
-      "test_param_override_with_marker"
-    ];
+  disabledTests = [
+    # Host unreachable in the inventory
+    "test_become"
+    # [Errno -3] Temporary failure in name resolution
+    "test_connection_failure_v2"
+    "test_connection_failure_extra_inventory_v2"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    # These tests fail in the Darwin sandbox
+    "test_ansible_facts"
+    "test_func"
+    "test_param_override_with_marker"
+  ];
 
   disabledTestPaths =
     [

@@ -47,7 +47,8 @@ in
 stdenv.mkDerivation {
   inherit pname version;
 
-  srcs = [ free_src ] ++ lib.optional unfree_assets assets;
+  srcs = [ free_src ]
+    ++ lib.optional unfree_assets assets;
 
   sourceRoot = free_src.name;
 

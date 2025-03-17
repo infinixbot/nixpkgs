@@ -9,7 +9,9 @@ in
     key = ./ca.key.pem;
   };
   "${domain}" = {
-    cert = ./. + "/${domainSanitized}.cert.pem";
-    key = ./. + "/${domainSanitized}.key.pem";
+    cert = ./.
+      + "/${domainSanitized}.cert.pem";
+    key = ./.
+      + "/${domainSanitized}.key.pem";
   };
 }

@@ -20,7 +20,8 @@ let
       llvmPackages = llvmPackages_18;
       hash = "sha256-5qSiTq+UWGOwjDVZMIrAt2cDKHkyNPBSAEjpRQUByFM=";
     };
-  } // zigVersions;
+  }
+  // zigVersions;
 
   mkPackage =
     {

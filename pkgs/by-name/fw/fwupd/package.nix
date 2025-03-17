@@ -169,90 +169,87 @@ stdenv.mkDerivation (finalAttrs: {
     json-glib
   ];
 
-  nativeBuildInputs =
-    [
-      ensureNewerSourcesForZipFilesHook # required for firmware zipping
-      meson
-      ninja
-      pkg-config
-      gettext
-      shared-mime-info
-      protobufc # for protoc
-      wrapGAppsNoGuiHook
-      vala
-      gobject-introspection
-      gi-docgen
-    ]
-    ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
-      mesonEmulatorHook
-    ];
+  nativeBuildInputs = [
+    ensureNewerSourcesForZipFilesHook # required for firmware zipping
+    meson
+    ninja
+    pkg-config
+    gettext
+    shared-mime-info
+    protobufc # for protoc
+    wrapGAppsNoGuiHook
+    vala
+    gobject-introspection
+    gi-docgen
+  ]
+  ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
+    mesonEmulatorHook
+  ];
 
-  buildInputs =
-    [
-      gnutls
-      polkit
-      libxmlb
-      gusb
-      sqlite
-      libarchive
-      libdrm
-      curl
-      elfutils
-      libgudev
-      libjcat
-      libuuid
-      bash-completion
-      pango
-      tpm2-tss
-      fwupd-efi
-      protobufc
-      modemmanager
-      libmbim
-      libcbor
-      libqmi
-      xz # for liblzma
-      valgrind
-    ]
-    ++ lib.optionals haveFlashrom [
-      flashrom
-    ];
+  buildInputs = [
+    gnutls
+    polkit
+    libxmlb
+    gusb
+    sqlite
+    libarchive
+    libdrm
+    curl
+    elfutils
+    libgudev
+    libjcat
+    libuuid
+    bash-completion
+    pango
+    tpm2-tss
+    fwupd-efi
+    protobufc
+    modemmanager
+    libmbim
+    libcbor
+    libqmi
+    xz # for liblzma
+    valgrind
+  ]
+  ++ lib.optionals haveFlashrom [
+    flashrom
+  ];
 
-  mesonFlags =
-    [
-      "-Ddocs=enabled"
-      # We are building the official releases.
-      "-Dsupported_build=enabled"
-      "-Dlaunchd=disabled"
-      "-Dsystemd_root_prefix=${placeholder "out"}"
-      "-Dinstalled_test_prefix=${placeholder "installedTests"}"
-      "--localstatedir=/var"
-      "--sysconfdir=/etc"
-      "-Dsysconfdir_install=${placeholder "out"}/etc"
-      "-Defi_os_dir=nixos"
-      "-Dplugin_modem_manager=enabled"
-      "-Dvendor_metadata=true"
-      "-Dplugin_uefi_capsule_splash=false"
-      # TODO: what should this be?
-      "-Dvendor_ids_dir=${hwdata}/share/hwdata"
-      "-Dumockdev_tests=disabled"
-      # We do not want to place the daemon into lib (cyclic reference)
-      "--libexecdir=${placeholder "out"}/libexec"
-    ]
-    ++ lib.optionals (!enablePassim) [
-      "-Dpassim=disabled"
-    ]
-    ++ lib.optionals (!haveDell) [
-      "-Dplugin_synaptics_mst=disabled"
-    ]
-    ++ lib.optionals (!haveRedfish) [
-      "-Dplugin_redfish=disabled"
-    ]
-    ++ lib.optionals (!haveFlashrom) [
-      "-Dplugin_flashrom=disabled"
-    ]
-    ++ lib.optionals (!haveMSR) [
-      "-Dplugin_msr=disabled"
-    ];
+  mesonFlags = [
+    "-Ddocs=enabled"
+    # We are building the official releases.
+    "-Dsupported_build=enabled"
+    "-Dlaunchd=disabled"
+    "-Dsystemd_root_prefix=${placeholder "out"}"
+    "-Dinstalled_test_prefix=${placeholder "installedTests"}"
+    "--localstatedir=/var"
+    "--sysconfdir=/etc"
+    "-Dsysconfdir_install=${placeholder "out"}/etc"
+    "-Defi_os_dir=nixos"
+    "-Dplugin_modem_manager=enabled"
+    "-Dvendor_metadata=true"
+    "-Dplugin_uefi_capsule_splash=false"
+    # TODO: what should this be?
+    "-Dvendor_ids_dir=${hwdata}/share/hwdata"
+    "-Dumockdev_tests=disabled"
+    # We do not want to place the daemon into lib (cyclic reference)
+    "--libexecdir=${placeholder "out"}/libexec"
+  ]
+  ++ lib.optionals (!enablePassim) [
+    "-Dpassim=disabled"
+  ]
+  ++ lib.optionals (!haveDell) [
+    "-Dplugin_synaptics_mst=disabled"
+  ]
+  ++ lib.optionals (!haveRedfish) [
+    "-Dplugin_redfish=disabled"
+  ]
+  ++ lib.optionals (!haveFlashrom) [
+    "-Dplugin_flashrom=disabled"
+  ]
+  ++ lib.optionals (!haveMSR) [
+    "-Dplugin_msr=disabled"
+  ];
 
   # TODO: wrapGAppsHook3 wraps efi capsule even though it is not ELF
   dontWrapGApps = true;

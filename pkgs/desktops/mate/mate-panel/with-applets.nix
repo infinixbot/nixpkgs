@@ -20,7 +20,8 @@ stdenv.mkDerivation {
 
   src = null;
 
-  paths = [ mate-panel ] ++ selectedApplets;
+  paths = [ mate-panel ]
+    ++ selectedApplets;
   passAsFile = [ "paths" ];
 
   nativeBuildInputs = [

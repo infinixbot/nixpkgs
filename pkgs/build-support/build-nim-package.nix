@@ -117,13 +117,17 @@ let
         (
           if requiredNimVersion == 1 then
             {
-              depsBuildBuild = [ nim_builder ] ++ depsBuildBuild;
-              nativeBuildInputs = [ nim1 ] ++ nativeBuildInputs;
+              depsBuildBuild = [ nim_builder ]
+                ++ depsBuildBuild;
+              nativeBuildInputs = [ nim1 ]
+                ++ nativeBuildInputs;
             }
           else if requiredNimVersion == 2 then
             {
-              depsBuildBuild = [ nim_builder ] ++ depsBuildBuild;
-              nativeBuildInputs = [ nim2 ] ++ nativeBuildInputs;
+              depsBuildBuild = [ nim_builder ]
+                ++ depsBuildBuild;
+              nativeBuildInputs = [ nim2 ]
+                ++ nativeBuildInputs;
             }
           else
             throw "requiredNimVersion ${toString requiredNimVersion} is not valid"

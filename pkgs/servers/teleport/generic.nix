@@ -55,8 +55,7 @@ let
 
     buildAndTestSubdir = "lib/srv/desktop/rdp/rdpclient";
 
-    buildInputs =
-      [ openssl ]
+    buildInputs = [ openssl ]
       ++ lib.optionals stdenv.hostPlatform.isDarwin [
         CoreFoundation
         Security
@@ -98,8 +97,7 @@ let
       else
         null;
 
-    nativeBuildInputs =
-      [ nodejs ]
+    nativeBuildInputs = [ nodejs ]
       ++ lib.optional (lib.versionAtLeast version "15") [
         binaryen
         cargo
@@ -183,18 +181,18 @@ buildGoModule rec {
   tags = [
     "libfido2"
     "webassets_embed"
-  ] ++ lib.optional withRdpClient "desktop_access_rdp";
+  ]
+  ++ lib.optional withRdpClient "desktop_access_rdp";
 
-  buildInputs =
-    [
-      openssl
-      libfido2
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isDarwin && withRdpClient) [
-      CoreFoundation
-      Security
-      AppKit
-    ];
+  buildInputs = [
+    openssl
+    libfido2
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isDarwin && withRdpClient) [
+    CoreFoundation
+    Security
+    AppKit
+  ];
   nativeBuildInputs = [
     makeWrapper
     pkg-config
@@ -212,14 +210,13 @@ buildGoModule rec {
     "client"
   ];
 
-  preBuild =
-    ''
-      cp -r ${webassets} webassets
-    ''
-    + lib.optionalString withRdpClient ''
-      ln -s ${rdpClient}/lib/* lib/
-      ln -s ${rdpClient}/include/* lib/srv/desktop/rdp/rdpclient/
-    '';
+  preBuild = ''
+    cp -r ${webassets} webassets
+  ''
+  + lib.optionalString withRdpClient ''
+    ln -s ${rdpClient}/lib/* lib/
+    ln -s ${rdpClient}/include/* lib/srv/desktop/rdp/rdpclient/
+  '';
 
   # Multiple tests fail in the build sandbox
   # due to trying to spawn nixbld's shell (/noshell), etc.

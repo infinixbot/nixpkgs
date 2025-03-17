@@ -83,7 +83,8 @@ in
     # 2021-10-10: 9.2.1 is not yet supported (also no issue)
     testFlags = [
       "--skip=/Hpack/renderCabalFile/is inverse to readCabalFile/"
-    ] ++ drv.testFlags or [ ];
+    ]
+    ++ drv.testFlags or [ ];
   }) (doJailbreak super.hpack);
 
   # https://github.com/sjakobi/bsb-http-chunked/issues/38

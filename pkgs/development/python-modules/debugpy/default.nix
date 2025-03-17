@@ -117,15 +117,14 @@ buildPythonPackage rec {
     typing-extensions
   ];
 
-  preCheck =
-    ''
-      export DEBUGPY_PROCESS_SPAWN_TIMEOUT=0
-      export DEBUGPY_PROCESS_EXIT_TIMEOUT=0
-    ''
-    + lib.optionalString (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) ''
-      # https://github.com/python/cpython/issues/74570#issuecomment-1093748531
-      export no_proxy='*';
-    '';
+  preCheck = ''
+    export DEBUGPY_PROCESS_SPAWN_TIMEOUT=0
+    export DEBUGPY_PROCESS_EXIT_TIMEOUT=0
+  ''
+  + lib.optionalString (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) ''
+    # https://github.com/python/cpython/issues/74570#issuecomment-1093748531
+    export no_proxy='*';
+  '';
 
   postCheck = lib.optionalString (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) ''
     unset no_proxy

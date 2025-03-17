@@ -159,7 +159,8 @@ let
         ProtectKernelModules = true;
         ProtectKernelTunables = true;
         ProtectProc = "invisible";
-        RestrictAddressFamilies = [ "AF_UNIX" ] ++ lib.optional (keyboard.port != null) "AF_INET";
+        RestrictAddressFamilies = [ "AF_UNIX" ]
+          ++ lib.optional (keyboard.port != null) "AF_INET";
         RestrictNamespaces = true;
         RestrictRealtime = true;
         SystemCallArchitectures = [ "native" ];

@@ -352,13 +352,12 @@ in
           "man:smb.conf(5)"
         ];
 
-        after =
-          [
-            "network.target"
-          ]
-          ++ lib.optionals (cfg.nmbd.enable) [
-            "samba-nmbd.service"
-          ];
+        after = [
+          "network.target"
+        ]
+        ++ lib.optionals (cfg.nmbd.enable) [
+          "samba-nmbd.service"
+        ];
 
         partOf = [ "samba.target" ];
         wantedBy = [ "samba.target" ];

@@ -62,7 +62,8 @@ buildPythonPackage rec {
     sniffio
     tqdm
     typing-extensions
-  ] ++ optional-dependencies.realtime;
+  ]
+  ++ optional-dependencies.realtime;
 
   optional-dependencies = {
     datalib = [
@@ -92,16 +93,15 @@ buildPythonPackage rec {
     "ignore::DeprecationWarning"
   ];
 
-  disabledTests =
-    [
-      # Tests make network requests
-      "test_copy_build_request"
-      "test_basic_attribute_access_works"
-    ]
-    ++ lib.optionals (pythonAtLeast "3.13") [
-      # RuntimeWarning: coroutine method 'aclose' of 'AsyncStream._iter_events' was never awaited
-      "test_multi_byte_character_multiple_chunks"
-    ];
+  disabledTests = [
+    # Tests make network requests
+    "test_copy_build_request"
+    "test_basic_attribute_access_works"
+  ]
+  ++ lib.optionals (pythonAtLeast "3.13") [
+    # RuntimeWarning: coroutine method 'aclose' of 'AsyncStream._iter_events' was never awaited
+    "test_multi_byte_character_multiple_chunks"
+  ];
 
   disabledTestPaths = [
     # Test makes network requests

@@ -60,7 +60,8 @@ stdenv.mkDerivation rec {
       WebKit
     ];
 
-  cmakeFlags = [ "-DUSE_HAMLIB=ON" ] ++ lib.optional enableDigitalLab "-DENABLE_DIGITAL_LAB=ON";
+  cmakeFlags = [ "-DUSE_HAMLIB=ON" ]
+    ++ lib.optional enableDigitalLab "-DENABLE_DIGITAL_LAB=ON";
 
   postFixup = lib.optionalString stdenv.hostPlatform.isDarwin ''
     install_name_tool -change libliquid.dylib ${lib.getLib liquid-dsp}/lib/libliquid.dylib ''${out}/bin/CubicSDR

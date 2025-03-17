@@ -42,7 +42,8 @@ buildPythonPackage rec {
   build-system = [
     setuptools
     versioneer
-  ] ++ versioneer.optional-dependencies.toml;
+  ]
+  ++ versioneer.optional-dependencies.toml;
 
   dependencies = [
     bids-validator

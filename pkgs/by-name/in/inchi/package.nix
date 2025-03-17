@@ -25,7 +25,8 @@ stdenv.mkDerivation rec {
     sha256 = "1zbygqn0443p0gxwr4kx3m1bkqaj8x9hrpch3s41py7jq08f6x28";
   };
 
-  nativeBuildInputs = [ unzip ] ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames;
+  nativeBuildInputs = [ unzip ]
+    ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames;
   outputs = [
     "out"
     "doc"
@@ -33,17 +34,16 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  preConfigure =
-    ''
-      cd ./INCHI_API/libinchi/gcc
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      substituteInPlace makefile \
-        --replace ",--version-script=libinchi.map" "" \
-        --replace "LINUX_Z_RELRO = ,-z,relro" "" \
-        --replace "-soname" "-install_name" \
-        --replace "gcc" $CC
-    '';
+  preConfigure = ''
+    cd ./INCHI_API/libinchi/gcc
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    substituteInPlace makefile \
+      --replace ",--version-script=libinchi.map" "" \
+      --replace "LINUX_Z_RELRO = ,-z,relro" "" \
+      --replace "-soname" "-install_name" \
+      --replace "gcc" $CC
+  '';
   installPhase =
     let
       versionOneDot = versionMajor + "." + removeDots versionMinor;

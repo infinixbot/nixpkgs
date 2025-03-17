@@ -37,21 +37,20 @@ buildPythonPackage rec {
     setuptools-scm
   ];
 
-  dependencies =
-    [
-      keyring
-      packaging
-      pkginfo
-      readme-renderer
-      requests
-      requests-toolbelt
-      rfc3986
-      rich
-      urllib3
-    ]
-    ++ lib.optionals (pythonOlder "3.10") [
-      importlib-metadata
-    ];
+  dependencies = [
+    keyring
+    packaging
+    pkginfo
+    readme-renderer
+    requests
+    requests-toolbelt
+    rfc3986
+    rich
+    urllib3
+  ]
+  ++ lib.optionals (pythonOlder "3.10") [
+    importlib-metadata
+  ];
 
   nativeCheckInputs = [
     build

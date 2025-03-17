@@ -77,7 +77,8 @@ buildPythonPackage rec {
     pytestCheckHook
     pocketsphinx
     respx
-  ] ++ lib.flatten (lib.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (lib.attrValues optional-dependencies);
 
   preCheck = ''
     # httpx since 0.28.0+ depends on SSL_CERT_FILE

@@ -228,7 +228,8 @@ in
       serviceConfig = {
         User = user;
         Group = group;
-        EnvironmentFile = [ configFile ] ++ lib.optional (cfg.environmentFile != null) cfg.environmentFile;
+        EnvironmentFile = [ configFile ]
+          ++ lib.optional (cfg.environmentFile != null) cfg.environmentFile;
         ExecStart = lib.getExe vaultwarden;
         LimitNOFILE = "1048576";
         CapabilityBoundingSet = [ "" ];

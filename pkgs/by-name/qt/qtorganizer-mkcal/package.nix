@@ -34,16 +34,15 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      extra-cmake-modules
-      mkcal
-    ]
-    ++ (with libsForQt5; [
-      kcalendarcore
-      qtbase
-      qtpim
-    ]);
+  buildInputs = [
+    extra-cmake-modules
+    mkcal
+  ]
+  ++ (with libsForQt5; [
+    kcalendarcore
+    qtbase
+    qtpim
+  ]);
 
   nativeCheckInputs = [
     tzdata

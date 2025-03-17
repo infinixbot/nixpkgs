@@ -30,14 +30,14 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [ pkg-config ] ++ lib.optional enableGui libsForQt5.wrapQtAppsHook;
+  nativeBuildInputs = [ pkg-config ]
+    ++ lib.optional enableGui libsForQt5.wrapQtAppsHook;
   buildInputs =
     [ openssl ]
     ++ (if enableGui then [ libsForQt5.qtcharts ] else [ expat ])
     ++ lib.optional stdenv.hostPlatform.isDarwin expat;
 
-  configureFlags =
-    [ "--with-libssl" ]
+  configureFlags = [ "--with-libssl" ]
     ++ (
       if enableGui then
         [

@@ -58,7 +58,8 @@ stdenv.mkDerivation rec {
     "-DICONV_INCLUDE_DIR=${libiconv}/include"
     "-Duse_sys_spdlog=ON"
     "-Duse_sys_sqlite3=ON"
-  ] ++ lib.optional (qt5 != null) "-Dbuild_wizard=YES";
+  ]
+  ++ lib.optional (qt5 != null) "-Dbuild_wizard=YES";
 
   # put examples in an output so people/tools can test against them
   outputs = [

@@ -134,11 +134,10 @@ let
         features = kernelFeatures; # Ensure we know of all extra patches, etc.
       };
 
-      intermediateNixConfig =
-        configfile.moduleStructuredConfig.intermediateNixConfig
-        # extra config in legacy string format
-        + extraConfig
-        + stdenv.hostPlatform.linux-kernel.extraConfig or "";
+      intermediateNixConfig = configfile.moduleStructuredConfig.intermediateNixConfig
+      # extra config in legacy string format
+      + extraConfig
+      + stdenv.hostPlatform.linux-kernel.extraConfig or "";
 
       structuredConfigFromPatches = map (
         {
@@ -253,23 +252,22 @@ let
           # The result is a set of two attributes
           moduleStructuredConfig =
             (lib.evalModules {
-              modules =
-                [
-                  module
-                ]
-                ++ lib.optionals enableCommonConfig [
-                  {
-                    settings = commonStructuredConfig;
-                    _file = "pkgs/os-specific/linux/kernel/common-config.nix";
-                  }
-                ]
-                ++ [
-                  {
-                    settings = structuredExtraConfig;
-                    _file = "structuredExtraConfig";
-                  }
-                ]
-                ++ structuredConfigFromPatches;
+              modules = [
+                module
+              ]
+              ++ lib.optionals enableCommonConfig [
+                {
+                  settings = commonStructuredConfig;
+                  _file = "pkgs/os-specific/linux/kernel/common-config.nix";
+                }
+              ]
+              ++ [
+                {
+                  settings = structuredExtraConfig;
+                  _file = "structuredExtraConfig";
+                }
+              ]
+              ++ structuredConfigFromPatches;
             }).config;
 
           structuredConfig = moduleStructuredConfig.settings;

@@ -122,8 +122,7 @@ in
             DynamicUser = true;
             User = "tts";
             StateDirectory = "tts";
-            ExecStart =
-              "${pkgs.tts}/bin/tts-server --port ${toString options.port} "
+            ExecStart = "${pkgs.tts}/bin/tts-server --port ${toString options.port} "
               + optionalString (options.model != null) "--model_name ${options.model} "
               + optionalString (options.useCuda) "--use_cuda "
               + (escapeShellArgs options.extraArgs);

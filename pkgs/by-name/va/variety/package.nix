@@ -42,7 +42,8 @@ python3.pkgs.buildPythonApplication rec {
     hicolor-icon-theme
     libnotify
     librsvg
-  ] ++ lib.optional appindicatorSupport libayatana-appindicator;
+  ]
+  ++ lib.optional appindicatorSupport libayatana-appindicator;
 
   propagatedBuildInputs =
     with python3.pkgs;

@@ -40,32 +40,30 @@ stdenv.mkDerivation rec {
     hash = "sha256-8HKeXIdl/rGWm7bB+6GK+iWCEmsDWap1oXP9oaz5PEw=";
   };
 
-  nativeBuildInputs =
-    [
-      glib
-      meson
-      ninja
-      pkg-config
-      makeWrapper
-    ]
-    ++ lib.optionals withIntrospection [
-      gobject-introspection
-    ];
+  nativeBuildInputs = [
+    glib
+    meson
+    ninja
+    pkg-config
+    makeWrapper
+  ]
+  ++ lib.optionals withIntrospection [
+    gobject-introspection
+  ];
 
-  buildInputs =
-    [
-      libX11
-      libxml2
-      # at-spi2-core can be build without X support, but due it is a client-side library, GUI-less usage is a very rare case
-      libXtst
-      libXi
-      # libXext is a transitive dependency of libXi
-      libXext
-    ]
-    ++ lib.optionals systemdSupport [
-      # libsystemd is a needed for dbus-broker support
-      systemd
-    ];
+  buildInputs = [
+    libX11
+    libxml2
+    # at-spi2-core can be build without X support, but due it is a client-side library, GUI-less usage is a very rare case
+    libXtst
+    libXi
+    # libXext is a transitive dependency of libXi
+    libXext
+  ]
+  ++ lib.optionals systemdSupport [
+    # libsystemd is a needed for dbus-broker support
+    systemd
+  ];
 
   # In atspi-2.pc dbus-1 glib-2.0
   # In atk.pc gobject-2.0

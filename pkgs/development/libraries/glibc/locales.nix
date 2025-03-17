@@ -39,8 +39,7 @@
         (if stdenv.hostPlatform.isLittleEndian then "--little-endian" else "--big-endian")
       ];
 
-      preBuild =
-        (previousAttrs.preBuild or "")
+      preBuild = (previousAttrs.preBuild or "")
         + ''
           # Awful hack: `localedef' doesn't allow the path to `locale-archive'
           # to be overriden, but you *can* specify a prefix, i.e. it will use

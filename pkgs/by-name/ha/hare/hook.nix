@@ -44,7 +44,8 @@ makeSetupHook {
   # `harec` and `qbe` respectively. We use the derivations from the `hare`
   # package to assure that there's no different behavior between the `hareHook`
   # and `hare` packages.
-  propagatedBuildInputs = [ hareWrapper ] ++ harePropagationInputs;
+  propagatedBuildInputs = [ hareWrapper ]
+    ++ harePropagationInputs;
   substitutions = {
     hare_unconditional_flags = "-q -a${arch}";
     hare_stdlib = "${hare}/src/hare/stdlib";

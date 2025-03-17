@@ -30,25 +30,24 @@ buildGoModule rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs =
+  buildInputs = [
+    libGL
+    libX11
+    libXcursor
+    libXinerama
+    libXi
+    libXrandr
+    libXxf86vm
+  ]
+  ++ (lib.optionals stdenv.hostPlatform.isDarwin (
+    with darwin.apple_sdk_11_0.frameworks;
     [
-      libGL
-      libX11
-      libXcursor
-      libXinerama
-      libXi
-      libXrandr
-      libXxf86vm
+      Carbon
+      Cocoa
+      Kernel
+      UserNotifications
     ]
-    ++ (lib.optionals stdenv.hostPlatform.isDarwin (
-      with darwin.apple_sdk_11_0.frameworks;
-      [
-        Carbon
-        Cocoa
-        Kernel
-        UserNotifications
-      ]
-    ));
+  ));
 
   doCheck = false;
 

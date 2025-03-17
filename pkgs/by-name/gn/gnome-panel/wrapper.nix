@@ -15,7 +15,8 @@ let
   selectedPanelModulePackages = [
     gnome-panel
     gnome-flashback
-  ] ++ panelModulePackages;
+  ]
+  ++ panelModulePackages;
 
   panelModulesEnv = buildEnv {
     name = "gnome-panel-modules-env";

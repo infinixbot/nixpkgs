@@ -20,8 +20,7 @@ stdenv.mkDerivation (finalAttrs: {
     finalAttrs.passthru.sources.${stdenv.hostPlatform.system}
       or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
 
-  nativeBuildInputs =
-    [ installShellFiles ]
+  nativeBuildInputs = [ installShellFiles ]
     ++ lib.optionals stdenv.hostPlatform.isx86_64 [
       xxd
     ];

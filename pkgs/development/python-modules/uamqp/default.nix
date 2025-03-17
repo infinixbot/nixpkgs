@@ -61,8 +61,7 @@ buildPythonPackage rec {
     cmake
   ];
 
-  buildInputs =
-    [ openssl ]
+  buildInputs = [ openssl ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       CoreFoundation
       CFNetwork

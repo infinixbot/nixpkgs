@@ -8,7 +8,9 @@ in
     key = ./ca.key.pem;
   };
   "${domain}" = {
-    cert = ./. + "/${domain}.cert.pem";
-    key = ./. + "/${domain}.key.pem";
+    cert = ./.
+      + "/${domain}.cert.pem";
+    key = ./.
+      + "/${domain}.key.pem";
   };
 }

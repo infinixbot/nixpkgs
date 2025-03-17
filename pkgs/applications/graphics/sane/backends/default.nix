@@ -94,25 +94,24 @@ stdenv.mkDerivation rec {
     python3
   ];
 
-  buildInputs =
-    [
-      avahi
-      libgphoto2
-      libjpeg
-      libpng
-      libtiff
-      libusb1
-      curl
-      libxml2
-      poppler
-      gawk
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      libieee1284
-      libv4l
-      net-snmp
-      systemd
-    ];
+  buildInputs = [
+    avahi
+    libgphoto2
+    libjpeg
+    libpng
+    libtiff
+    libusb1
+    curl
+    libxml2
+    poppler
+    gawk
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    libieee1284
+    libv4l
+    net-snmp
+    systemd
+  ];
 
   enableParallelBuilding = true;
 

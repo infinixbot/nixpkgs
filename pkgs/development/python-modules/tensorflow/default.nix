@@ -306,44 +306,44 @@ let
       perl
       protobuf-core
       protobuf-extra
-    ] ++ lib.optional cudaSupport addDriverRunpath;
+    ]
+    ++ lib.optional cudaSupport addDriverRunpath;
 
-    buildInputs =
-      [
-        jemalloc
-        mpi
-        glibcLocales
-        git
+    buildInputs = [
+      jemalloc
+      mpi
+      glibcLocales
+      git
 
-        # libs taken from system through the TF_SYS_LIBS mechanism
-        abseil-cpp
-        boringssl
-        curl
-        double-conversion
-        flatbuffers-core
-        giflib
-        grpc
-        # Necessary to fix the "`GLIBCXX_3.4.30' not found" error
-        (icu.override { inherit stdenv; })
-        jsoncpp
-        libjpeg_turbo
-        libpng
-        (pybind11.overridePythonAttrs (_: {
-          inherit stdenv;
-        }))
-        snappy
-        sqlite
-      ]
-      ++ lib.optionals cudaSupport [
-        cudatoolkit
-        cudnnMerged
-      ]
-      ++ lib.optionals mklSupport [ mkl ]
-      ++ lib.optionals stdenv.hostPlatform.isDarwin [
-        Foundation
-        Security
-      ]
-      ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [ nsync ];
+      # libs taken from system through the TF_SYS_LIBS mechanism
+      abseil-cpp
+      boringssl
+      curl
+      double-conversion
+      flatbuffers-core
+      giflib
+      grpc
+      # Necessary to fix the "`GLIBCXX_3.4.30' not found" error
+      (icu.override { inherit stdenv; })
+      jsoncpp
+      libjpeg_turbo
+      libpng
+      (pybind11.overridePythonAttrs (_: {
+        inherit stdenv;
+      }))
+      snappy
+      sqlite
+    ]
+    ++ lib.optionals cudaSupport [
+      cudatoolkit
+      cudnnMerged
+    ]
+    ++ lib.optionals mklSupport [ mkl ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      Foundation
+      Security
+    ]
+    ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [ nsync ];
 
     # arbitrarily set to the current latest bazel version, overly careful
     TF_IGNORE_MAX_BAZEL_VERSION = true;
@@ -439,20 +439,20 @@ let
       ./protobuf_python.patch
       ./pybind11_protobuf_python_runtime_dep.patch
       ./pybind11_protobuf_newer_version.patch
-    ] ++ lib.optionals (stdenv.hostPlatform.system == "aarch64-darwin") [ ./absl_to_std.patch ];
+    ]
+    ++ lib.optionals (stdenv.hostPlatform.system == "aarch64-darwin") [ ./absl_to_std.patch ];
 
-    postPatch =
-      ''
-        # bazel 3.3 should work just as well as bazel 3.1
-        rm -f .bazelversion
-        patchShebangs .
-      ''
-      + lib.optionalString (!withTensorboard) ''
-        # Tensorboard pulls in a bunch of dependencies, some of which may
-        # include security vulnerabilities. So we make it optional.
-        # https://github.com/tensorflow/tensorflow/issues/20280#issuecomment-400230560
-        sed -i '/tensorboard ~=/d' tensorflow/tools/pip_package/setup.py
-      '';
+    postPatch = ''
+      # bazel 3.3 should work just as well as bazel 3.1
+      rm -f .bazelversion
+      patchShebangs .
+    ''
+    + lib.optionalString (!withTensorboard) ''
+      # Tensorboard pulls in a bunch of dependencies, some of which may
+      # include security vulnerabilities. So we make it optional.
+      # https://github.com/tensorflow/tensorflow/issues/20280#issuecomment-400230560
+      sed -i '/tensorboard ~=/d' tensorflow/tools/pip_package/setup.py
+    '';
 
     # https://github.com/tensorflow/tensorflow/pull/39470
     env.NIX_CFLAGS_COMPILE = toString [ "-Wno-stringop-truncation" ];
@@ -583,25 +583,24 @@ let
       requiredSystemFeatures = [ "big-parallel" ];
     };
 
-    meta =
-      {
-        badPlatforms = lib.optionals cudaSupport lib.platforms.darwin;
-        changelog = "https://github.com/tensorflow/tensorflow/releases/tag/v${version}";
-        description = "Computation using data flow graphs for scalable machine learning";
-        homepage = "http://tensorflow.org";
-        license = lib.licenses.asl20;
-        maintainers = with lib.maintainers; [ abbradar ];
-        platforms = with lib.platforms; linux ++ darwin;
-        broken =
-          stdenv.hostPlatform.isDarwin
-          || !(xlaSupport -> cudaSupport)
-          || !(cudaSupport -> builtins.hasAttr cudnnAttribute cudaPackages)
-          || !(cudaSupport -> cudaPackages ? cudatoolkit);
-      }
-      // lib.optionalAttrs stdenv.hostPlatform.isDarwin {
-        timeout = 86400; # 24 hours
-        maxSilent = 14400; # 4h, double the default of 7200s
-      };
+    meta = {
+      badPlatforms = lib.optionals cudaSupport lib.platforms.darwin;
+      changelog = "https://github.com/tensorflow/tensorflow/releases/tag/v${version}";
+      description = "Computation using data flow graphs for scalable machine learning";
+      homepage = "http://tensorflow.org";
+      license = lib.licenses.asl20;
+      maintainers = with lib.maintainers; [ abbradar ];
+      platforms = with lib.platforms; linux ++ darwin;
+      broken =
+        stdenv.hostPlatform.isDarwin
+        || !(xlaSupport -> cudaSupport)
+        || !(cudaSupport -> builtins.hasAttr cudnnAttribute cudaPackages)
+        || !(cudaSupport -> cudaPackages ? cudatoolkit);
+    }
+    // lib.optionalAttrs stdenv.hostPlatform.isDarwin {
+      timeout = 86400; # 24 hours
+      maxSilent = 14400; # 4h, double the default of 7200s
+    };
   };
 in
 buildPythonPackage {
@@ -659,7 +658,8 @@ buildPythonPackage {
     termcolor
     typing-extensions
     wrapt
-  ] ++ lib.optionals withTensorboard [ tensorboard ];
+  ]
+  ++ lib.optionals withTensorboard [ tensorboard ];
 
   nativeBuildInputs = lib.optionals cudaSupport [ addDriverRunpath ];
 

@@ -26,7 +26,8 @@ rustPlatform.buildRustPackage rec {
   useFetchCargoVendor = true;
   cargoHash = "sha256-6FRc/kEhGJXIZ+6GXeYj5j7QVmvZgIQgtDPvt94hlho=";
 
-  nativeBuildInputs = [ installShellFiles ] ++ lib.optional stdenv.hostPlatform.isLinux pkg-config;
+  nativeBuildInputs = [ installShellFiles ]
+    ++ lib.optional stdenv.hostPlatform.isLinux pkg-config;
 
   buildInputs =
     lib.optional withSixel libsixel

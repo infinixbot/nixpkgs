@@ -110,67 +110,64 @@ stdenv.mkDerivation (finalAttrs: {
     clr
   ];
 
-  buildInputs =
-    [
-      python3
-    ]
-    ++ lib.optionals buildTensile [
-      msgpack
-      libxml2
-      python3Packages.msgpack
-      python3Packages.joblib
-    ]
-    ++ lib.optionals buildTests [
-      gtest
-    ]
-    ++ lib.optionals (buildTests || buildBenchmarks) [
-      gfortran
-      openmp
-      amd-blis
-    ]
-    ++ lib.optionals (buildTensile || buildTests || buildBenchmarks) [
-      python3Packages.pyyaml
-    ];
+  buildInputs = [
+    python3
+  ]
+  ++ lib.optionals buildTensile [
+    msgpack
+    libxml2
+    python3Packages.msgpack
+    python3Packages.joblib
+  ]
+  ++ lib.optionals buildTests [
+    gtest
+  ]
+  ++ lib.optionals (buildTests || buildBenchmarks) [
+    gfortran
+    openmp
+    amd-blis
+  ]
+  ++ lib.optionals (buildTensile || buildTests || buildBenchmarks) [
+    python3Packages.pyyaml
+  ];
 
-  cmakeFlags =
-    [
-      "-DCMAKE_C_COMPILER=hipcc"
-      "-DCMAKE_CXX_COMPILER=hipcc"
-      "-Dpython=python3"
-      "-DAMDGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}"
-      "-DBUILD_WITH_TENSILE=${if buildTensile then "ON" else "OFF"}"
-      # Manually define CMAKE_INSTALL_<DIR>
-      # See: https://github.com/NixOS/nixpkgs/pull/197838
-      "-DCMAKE_INSTALL_BINDIR=bin"
-      "-DCMAKE_INSTALL_LIBDIR=lib"
-      "-DCMAKE_INSTALL_INCLUDEDIR=include"
-    ]
-    ++ lib.optionals buildTensile [
-      "-DVIRTUALENV_HOME_DIR=/build/source/tensile"
-      "-DTensile_TEST_LOCAL_PATH=/build/source/tensile"
-      "-DTensile_ROOT=/build/source/tensile/${python3.sitePackages}/Tensile"
-      "-DTensile_LOGIC=${tensileLogic}"
-      "-DTensile_CODE_OBJECT_VERSION=${tensileCOVersion}"
-      "-DTensile_SEPARATE_ARCHITECTURES=${if tensileSepArch then "ON" else "OFF"}"
-      "-DTensile_LAZY_LIBRARY_LOADING=${if tensileLazyLib then "ON" else "OFF"}"
-      "-DTensile_LIBRARY_FORMAT=${tensileLibFormat}"
-    ]
-    ++ lib.optionals buildTests [
-      "-DBUILD_CLIENTS_TESTS=ON"
-    ]
-    ++ lib.optionals buildBenchmarks [
-      "-DBUILD_CLIENTS_BENCHMARKS=ON"
-    ]
-    ++ lib.optionals (buildTests || buildBenchmarks) [
-      "-DCMAKE_CXX_FLAGS=-I${amd-blis}/include/blis"
-    ];
+  cmakeFlags = [
+    "-DCMAKE_C_COMPILER=hipcc"
+    "-DCMAKE_CXX_COMPILER=hipcc"
+    "-Dpython=python3"
+    "-DAMDGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}"
+    "-DBUILD_WITH_TENSILE=${if buildTensile then "ON" else "OFF"}"
+    # Manually define CMAKE_INSTALL_<DIR>
+    # See: https://github.com/NixOS/nixpkgs/pull/197838
+    "-DCMAKE_INSTALL_BINDIR=bin"
+    "-DCMAKE_INSTALL_LIBDIR=lib"
+    "-DCMAKE_INSTALL_INCLUDEDIR=include"
+  ]
+  ++ lib.optionals buildTensile [
+    "-DVIRTUALENV_HOME_DIR=/build/source/tensile"
+    "-DTensile_TEST_LOCAL_PATH=/build/source/tensile"
+    "-DTensile_ROOT=/build/source/tensile/${python3.sitePackages}/Tensile"
+    "-DTensile_LOGIC=${tensileLogic}"
+    "-DTensile_CODE_OBJECT_VERSION=${tensileCOVersion}"
+    "-DTensile_SEPARATE_ARCHITECTURES=${if tensileSepArch then "ON" else "OFF"}"
+    "-DTensile_LAZY_LIBRARY_LOADING=${if tensileLazyLib then "ON" else "OFF"}"
+    "-DTensile_LIBRARY_FORMAT=${tensileLibFormat}"
+  ]
+  ++ lib.optionals buildTests [
+    "-DBUILD_CLIENTS_TESTS=ON"
+  ]
+  ++ lib.optionals buildBenchmarks [
+    "-DBUILD_CLIENTS_BENCHMARKS=ON"
+  ]
+  ++ lib.optionals (buildTests || buildBenchmarks) [
+    "-DCMAKE_CXX_FLAGS=-I${amd-blis}/include/blis"
+  ];
 
-  postPatch =
-    lib.optionalString (finalAttrs.pname != "rocblas") ''
-      # Return early and install tensile files manually
-      substituteInPlace library/src/CMakeLists.txt \
-        --replace "set_target_properties( TensileHost PROPERTIES OUTPUT_NAME" "return()''\nset_target_properties( TensileHost PROPERTIES OUTPUT_NAME"
-    ''
+  postPatch = lib.optionalString (finalAttrs.pname != "rocblas") ''
+    # Return early and install tensile files manually
+    substituteInPlace library/src/CMakeLists.txt \
+      --replace "set_target_properties( TensileHost PROPERTIES OUTPUT_NAME" "return()''\nset_target_properties( TensileHost PROPERTIES OUTPUT_NAME"
+  ''
     + lib.optionalString (buildTensile && finalAttrs.pname == "rocblas") ''
       # Link the prebuilt Tensile files
       mkdir -p build/Tensile/library
@@ -195,10 +192,9 @@ stdenv.mkDerivation (finalAttrs: {
         --replace "virtualenv_install(\''${Tensile_TEST_LOCAL_PATH})" ""
     '';
 
-  postInstall =
-    lib.optionalString (finalAttrs.pname == "rocblas") ''
-      ln -sf ${fallbacks}/lib/rocblas/library/TensileManifest.txt $out/lib/rocblas/library
-    ''
+  postInstall = lib.optionalString (finalAttrs.pname == "rocblas") ''
+    ln -sf ${fallbacks}/lib/rocblas/library/TensileManifest.txt $out/lib/rocblas/library
+  ''
     + lib.optionalString (finalAttrs.pname != "rocblas") ''
       mkdir -p $out/lib/rocblas/library
       rm -rf $out/share

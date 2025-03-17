@@ -81,41 +81,40 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs =
-    [
-      bzip2
-      openssl
-      pythonForPypy
-      libffi
-      ncurses
-      expat
-      sqlite
-      tk
-      tcl
-      libX11
-      gdbm
-      db
-    ]
-    ++ lib.optionals isPy3k [
-      xz
-    ]
-    ++ lib.optionals (stdenv ? cc && stdenv.cc.libc != null) [
-      stdenv.cc.libc
-    ]
-    ++ lib.optionals zlibSupport [
-      zlib
-    ]
-    ++
-      lib.optionals
-        (lib.any (l: l == optimizationLevel) [
-          "0"
-          "1"
-          "2"
-          "3"
-        ])
-        [
-          boehmgc
-        ];
+  buildInputs = [
+    bzip2
+    openssl
+    pythonForPypy
+    libffi
+    ncurses
+    expat
+    sqlite
+    tk
+    tcl
+    libX11
+    gdbm
+    db
+  ]
+  ++ lib.optionals isPy3k [
+    xz
+  ]
+  ++ lib.optionals (stdenv ? cc && stdenv.cc.libc != null) [
+    stdenv.cc.libc
+  ]
+  ++ lib.optionals zlibSupport [
+    zlib
+  ]
+  ++
+    lib.optionals
+      (lib.any (l: l == optimizationLevel) [
+        "0"
+        "1"
+        "2"
+        "3"
+      ])
+      [
+        boehmgc
+      ];
 
   # Remove bootstrap python from closure
   dontPatchShebangs = true;

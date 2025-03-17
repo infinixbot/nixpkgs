@@ -25,7 +25,8 @@ rustPlatform.buildRustPackage rec {
   buildInputs = [
     ncurses
     openssl
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ Security ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ Security ];
 
   useFetchCargoVendor = true;
   cargoHash = "sha256-Pe6mNbn4GFjhpFZeWMlaRt7Bj5BLiIy789hXWkII2ps=";

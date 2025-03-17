@@ -7,23 +7,22 @@
 let
   cfg = config.services.gotenberg;
 
-  args =
-    [
-      "--api-port=${toString cfg.port}"
-      "--api-timeout=${cfg.timeout}"
-      "--api-root-path=${cfg.rootPath}"
-      "--log-level=${cfg.logLevel}"
-      "--chromium-max-queue-size=${toString cfg.chromium.maxQueueSize}"
-      "--libreoffice-restart-after=${toString cfg.libreoffice.restartAfter}"
-      "--libreoffice-max-queue-size=${toString cfg.libreoffice.maxQueueSize}"
-      "--pdfengines-engines=${lib.concatStringsSep "," cfg.pdfEngines}"
-    ]
-    ++ optional cfg.enableBasicAuth "--api-enable-basic-auth"
-    ++ optional cfg.chromium.autoStart "--chromium-auto-start"
-    ++ optional cfg.chromium.disableJavascript "--chromium-disable-javascript"
-    ++ optional cfg.chromium.disableRoutes "--chromium-disable-routes"
-    ++ optional cfg.libreoffice.autoStart "--libreoffice-auto-start"
-    ++ optional cfg.libreoffice.disableRoutes "--libreoffice-disable-routes";
+  args = [
+    "--api-port=${toString cfg.port}"
+    "--api-timeout=${cfg.timeout}"
+    "--api-root-path=${cfg.rootPath}"
+    "--log-level=${cfg.logLevel}"
+    "--chromium-max-queue-size=${toString cfg.chromium.maxQueueSize}"
+    "--libreoffice-restart-after=${toString cfg.libreoffice.restartAfter}"
+    "--libreoffice-max-queue-size=${toString cfg.libreoffice.maxQueueSize}"
+    "--pdfengines-engines=${lib.concatStringsSep "," cfg.pdfEngines}"
+  ]
+  ++ optional cfg.enableBasicAuth "--api-enable-basic-auth"
+  ++ optional cfg.chromium.autoStart "--chromium-auto-start"
+  ++ optional cfg.chromium.disableJavascript "--chromium-disable-javascript"
+  ++ optional cfg.chromium.disableRoutes "--chromium-disable-routes"
+  ++ optional cfg.libreoffice.autoStart "--libreoffice-auto-start"
+  ++ optional cfg.libreoffice.disableRoutes "--libreoffice-disable-routes";
 
   inherit (lib)
     mkEnableOption
@@ -207,7 +206,8 @@ in
         LIBREOFFICE_BIN_PATH = "${cfg.libreoffice.package}/lib/libreoffice/program/soffice.bin";
         CHROMIUM_BIN_PATH = lib.getExe cfg.chromium.package;
         FONTCONFIG_FILE = pkgs.makeFontsConf {
-          fontDirectories = [ pkgs.liberation_ttf_v2 ] ++ cfg.extraFontPackages;
+          fontDirectories = [ pkgs.liberation_ttf_v2 ]
+            ++ cfg.extraFontPackages;
         };
       };
       serviceConfig = {
@@ -247,7 +247,8 @@ in
         SystemCallArchitectures = "native";
 
         UMask = 77;
-      } // optionalAttrs (cfg.environmentFile != null) { EnvironmentFile = cfg.environmentFile; };
+      }
+      // optionalAttrs (cfg.environmentFile != null) { EnvironmentFile = cfg.environmentFile; };
     };
   };
 

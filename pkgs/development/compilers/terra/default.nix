@@ -57,20 +57,19 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs =
-    [
-      llvmMerged
-      ncurses
-      libffi
-      libxml2
-    ]
-    ++ lib.optionals enableCUDA [ cuda ]
-    ++ lib.optional (!stdenv.hostPlatform.isDarwin) libpfm
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      libobjc
-      Cocoa
-      Foundation
-    ];
+  buildInputs = [
+    llvmMerged
+    ncurses
+    libffi
+    libxml2
+  ]
+  ++ lib.optionals enableCUDA [ cuda ]
+  ++ lib.optional (!stdenv.hostPlatform.isDarwin) libpfm
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    libobjc
+    Cocoa
+    Foundation
+  ];
 
   cmakeFlags =
     let

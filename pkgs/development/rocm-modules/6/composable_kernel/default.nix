@@ -63,11 +63,10 @@ stdenv.mkDerivation (finalAttrs: {
     ];
 
   # No flags to build selectively it seems...
-  postPatch =
-    lib.optionalString (!buildTests) ''
-      substituteInPlace CMakeLists.txt \
-        --replace "add_subdirectory(test)" ""
-    ''
+  postPatch = lib.optionalString (!buildTests) ''
+    substituteInPlace CMakeLists.txt \
+      --replace "add_subdirectory(test)" ""
+  ''
     + lib.optionalString (!buildExamples) ''
       substituteInPlace CMakeLists.txt \
         --replace "add_subdirectory(example)" ""
@@ -77,18 +76,17 @@ stdenv.mkDerivation (finalAttrs: {
         --replace "add_subdirectory(profiler)" ""
     '';
 
-  postInstall =
-    ''
-      zstd --rm $out/lib/libdevice_operations.a
-    ''
-    + lib.optionalString buildTests ''
-      mkdir -p $test/bin
-      mv $out/bin/test_* $test/bin
-    ''
-    + lib.optionalString buildExamples ''
-      mkdir -p $example/bin
-      mv $out/bin/example_* $example/bin
-    '';
+  postInstall = ''
+    zstd --rm $out/lib/libdevice_operations.a
+  ''
+  + lib.optionalString buildTests ''
+    mkdir -p $test/bin
+    mv $out/bin/test_* $test/bin
+  ''
+  + lib.optionalString buildExamples ''
+    mkdir -p $example/bin
+    mv $out/bin/example_* $example/bin
+  '';
 
   passthru.updateScript = rocmUpdateScript {
     name = finalAttrs.pname;

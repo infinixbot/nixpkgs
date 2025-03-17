@@ -130,20 +130,19 @@ buildDotnetModule (finalAttrs: {
     "RequiresNetworking!=True"
   ];
 
-  disabledTests =
-    [
-      "NexusMods.UI.Tests.ImageCacheTests.Test_LoadAndCache_RemoteImage"
-      "NexusMods.UI.Tests.ImageCacheTests.Test_LoadAndCache_ImageStoredFile"
+  disabledTests = [
+    "NexusMods.UI.Tests.ImageCacheTests.Test_LoadAndCache_RemoteImage"
+    "NexusMods.UI.Tests.ImageCacheTests.Test_LoadAndCache_ImageStoredFile"
 
-      # Fails in ofborg with VerifyException tests/Games/NexusMods.Games.StardewValley.Tests
-      "NexusMods.Games.StardewValley.Tests.StardewValleyInstallersTests.CanInstallMod"
+    # Fails in ofborg with VerifyException tests/Games/NexusMods.Games.StardewValley.Tests
+    "NexusMods.Games.StardewValley.Tests.StardewValleyInstallersTests.CanInstallMod"
 
-      # Fails with: Expected a <System.ArgumentException> to be thrown, but no exception was thrown.
-      "NexusMods.Networking.ModUpdates.Tests.PerFeedCacheUpdaterTests.Constructor_WithItemsFromDifferentGames_ShouldThrowArgumentException_InDebug"
-    ]
-    ++ lib.optionals (!_7zz.meta.unfree) [
-      "NexusMods.Games.FOMOD.Tests.FomodXmlInstallerTests.InstallsFilesSimple_UsingRar"
-    ];
+    # Fails with: Expected a <System.ArgumentException> to be thrown, but no exception was thrown.
+    "NexusMods.Networking.ModUpdates.Tests.PerFeedCacheUpdaterTests.Constructor_WithItemsFromDifferentGames_ShouldThrowArgumentException_InDebug"
+  ]
+  ++ lib.optionals (!_7zz.meta.unfree) [
+    "NexusMods.Games.FOMOD.Tests.FomodXmlInstallerTests.InstallsFilesSimple_UsingRar"
+  ];
 
   passthru = {
     tests =

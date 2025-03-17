@@ -11,7 +11,8 @@
 buildEnv {
   name = "${pname}-${version}";
 
-  paths = [ indilib ] ++ extraDrivers;
+  paths = [ indilib ]
+    ++ extraDrivers;
 
   nativeBuildInputs = [ makeBinaryWrapper ];
 

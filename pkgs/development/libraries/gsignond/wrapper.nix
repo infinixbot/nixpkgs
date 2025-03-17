@@ -8,7 +8,8 @@
 symlinkJoin {
   name = "gsignond-with-plugins-${gsignond.version}";
 
-  paths = [ gsignond ] ++ plugins;
+  paths = [ gsignond ]
+    ++ plugins;
 
   nativeBuildInputs = [ makeWrapper ];
 

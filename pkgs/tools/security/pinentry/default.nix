@@ -77,7 +77,8 @@ let
       nativeBuildInputs = [
         pkg-config
         autoreconfHook
-      ] ++ lib.concatMap (f: flavorInfo.${f}.nativeBuildInputs or [ ]) buildFlavors;
+      ]
+      ++ lib.concatMap (f: flavorInfo.${f}.nativeBuildInputs or [ ]) buildFlavors;
 
       buildInputs =
         [
@@ -90,8 +91,7 @@ let
       dontWrapGApps = true;
       dontWrapQtApps = true;
 
-      patches =
-        [ ./autoconf-ar.patch ]
+      patches = [ ./autoconf-ar.patch ]
         ++ lib.optionals (lib.elem "gtk2" buildFlavors) [
           (fetchpatch {
             url = "https://salsa.debian.org/debian/pinentry/raw/debian/1.1.0-1/debian/patches/0007-gtk2-When-X11-input-grabbing-fails-try-again-over-0..patch";
@@ -103,12 +103,12 @@ let
         "--with-libgpg-error-prefix=${libgpg-error.dev}"
         "--with-libassuan-prefix=${libassuan.dev}"
         (lib.enableFeature withLibsecret "libsecret")
-      ] ++ (map enableFeaturePinentry (lib.attrNames flavorInfo));
+      ]
+      ++ (map enableFeaturePinentry (lib.attrNames flavorInfo));
 
-      postInstall =
-        lib.optionalString (lib.elem "gnome3" buildFlavors) ''
-          wrapGApp $out/bin/pinentry-gnome3
-        ''
+      postInstall = lib.optionalString (lib.elem "gnome3" buildFlavors) ''
+        wrapGApp $out/bin/pinentry-gnome3
+      ''
         + lib.optionalString (lib.elem "qt5" buildFlavors) ''
           wrapQtApp $out/bin/pinentry-qt5
           ln -sf $out/bin/pinentry-qt5 $out/bin/pinentry-qt

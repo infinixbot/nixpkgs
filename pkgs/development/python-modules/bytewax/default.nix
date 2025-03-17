@@ -85,7 +85,8 @@ buildPythonPackage rec {
   checkInputs = [
     myst-docutils
     pytestCheckHook
-  ] ++ lib.flatten (builtins.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (builtins.attrValues optional-dependencies);
 
   disabledTestPaths = [
     # dependens on an old myst-docutils version

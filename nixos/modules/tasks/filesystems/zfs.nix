@@ -165,14 +165,14 @@ let
       # but don't *require* it, because mounts shouldn't be killed if it's stopped.
       # In the future, hopefully someone will complete this:
       # https://github.com/zfsonlinux/zfs/pull/4943
-      wants = [
-        "systemd-udev-settle.service"
-      ] ++ lib.optional (config.boot.initrd.clevis.useTang) "network-online.target";
+      wants = [ "systemd-udev-settle.service" ]
+        ++ lib.optional (config.boot.initrd.clevis.useTang) "network-online.target";
       after = [
         "systemd-udev-settle.service"
         "systemd-modules-load.service"
         "systemd-ask-password-console.service"
-      ] ++ lib.optional (config.boot.initrd.clevis.useTang) "network-online.target";
+      ]
+      ++ lib.optional (config.boot.initrd.clevis.useTang) "network-online.target";
       requiredBy =
         let
           poolFilesystems = getPoolFilesystems pool;
@@ -864,7 +864,8 @@ in
         };
 
       system.fsPackages = [ cfgZfs.package ]; # XXX: needed? zfs doesn't have (need) a fsck
-      environment.systemPackages = [ cfgZfs.package ] ++ lib.optional cfgSnapshots.enable autosnapPkg; # so the user can run the command to see flags
+      environment.systemPackages = [ cfgZfs.package ]
+        ++ lib.optional cfgSnapshots.enable autosnapPkg; # so the user can run the command to see flags
 
       services.udev.packages = [ cfgZfs.package ]; # to hook zvol naming, etc.
       systemd.packages = [ cfgZfs.package ];

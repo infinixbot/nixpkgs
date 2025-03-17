@@ -30,23 +30,22 @@ stdenv.mkDerivation rec {
       --replace "10.*)" "*)"
   '';
 
-  buildInputs =
-    [
-      libpq
-      sqlite
-      zlib
-      ncurses
-      openssl
-      readline
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      gettext # bacula requires CoreFoundation, but its `configure` script will only link it when it detects libintl.
-      CoreFoundation
-      IOKit
-      Kerberos
-    ]
-    # acl relies on attr, which I can't get to build on darwin
-    ++ lib.optional (!stdenv.hostPlatform.isDarwin) acl;
+  buildInputs = [
+    libpq
+    sqlite
+    zlib
+    ncurses
+    openssl
+    readline
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    gettext # bacula requires CoreFoundation, but its `configure` script will only link it when it detects libintl.
+    CoreFoundation
+    IOKit
+    Kerberos
+  ]
+  # acl relies on attr, which I can't get to build on darwin
+  ++ lib.optional (!stdenv.hostPlatform.isDarwin) acl;
 
   configureFlags =
     [

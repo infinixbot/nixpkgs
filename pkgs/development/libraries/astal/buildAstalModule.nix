@@ -65,7 +65,8 @@ let
           python3
         ];
 
-        buildInputs = [ glib ] ++ buildInputs;
+        buildInputs = [ glib ]
+          ++ buildInputs;
 
         meta = {
           homepage = "https://aylur.github.io/astal/guide/libraries/${website-path}";
@@ -75,7 +76,8 @@ let
             "aarch64-linux"
             "x86_64-linux"
           ];
-        } // meta;
+        }
+        // meta;
       }
     );
 in

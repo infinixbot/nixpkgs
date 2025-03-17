@@ -339,14 +339,14 @@ in
       wantedBy = [ "multi-user.target" ];
       after = optional mysqlLocal "mysql.service" ++ optional pgsqlLocal "postgresql.service";
 
-      path = [ "/run/wrappers" ] ++ cfg.extraPackages;
-      preStart =
-        optionalString pgsqlLocal ''
-          if ! test -e "${stateDir}/db-created"; then
-            cat ${cfg.package}/share/zabbix/database/postgresql/schema.sql | ${pgsql.package}/bin/psql ${cfg.database.name}
-            touch "${stateDir}/db-created"
-          fi
-        ''
+      path = [ "/run/wrappers" ]
+        ++ cfg.extraPackages;
+      preStart = optionalString pgsqlLocal ''
+        if ! test -e "${stateDir}/db-created"; then
+          cat ${cfg.package}/share/zabbix/database/postgresql/schema.sql | ${pgsql.package}/bin/psql ${cfg.database.name}
+          touch "${stateDir}/db-created"
+        fi
+      ''
         + optionalString mysqlLocal ''
           if ! test -e "${stateDir}/db-created"; then
             cat ${cfg.package}/share/zabbix/database/mysql/schema.sql | ${mysql.package}/bin/mysql ${cfg.database.name}

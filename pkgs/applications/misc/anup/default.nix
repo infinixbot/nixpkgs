@@ -19,14 +19,13 @@ rustPlatform.buildRustPackage rec {
     sha256 = "sha256-4pXF4p4K8+YihVB9NdgT6bOidmQEgWXUbcbvgXJ0IDA=";
   };
 
-  buildInputs =
-    [
-      sqlite
-      xdg-utils
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      Security
-    ];
+  buildInputs = [
+    sqlite
+    xdg-utils
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    Security
+  ];
 
   cargoLock = {
     lockFile = ./Cargo.lock;

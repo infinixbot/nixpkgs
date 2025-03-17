@@ -36,7 +36,8 @@ rustPlatform.buildRustPackage rec {
     installShellFiles
   ];
 
-  buildInputs = [ curl ] ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [ openssl ];
+  buildInputs = [ curl ]
+    ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [ openssl ];
 
   preFixup = lib.optionalString canRunCmd ''
     installShellCompletion --cmd gix \

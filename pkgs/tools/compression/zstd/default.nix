@@ -36,7 +36,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-qcd92hQqVBjMT3hyntjcgk29o9wGQsg5Hg7HE5C0UNc=";
   };
 
-  nativeBuildInputs = [ cmake ] ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames;
+  nativeBuildInputs = [ cmake ]
+    ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames;
   buildInputs = lib.optional stdenv.hostPlatform.isUnix bash;
 
   patches = [
@@ -82,32 +83,29 @@ stdenv.mkDerivation rec {
     runHook postCheck
   '';
 
-  preInstall =
-    ''
-      mkdir -p $bin/bin
-      substituteInPlace ../programs/zstdgrep \
-        --replace ":-grep" ":-${gnugrep}/bin/grep" \
-        --replace ":-zstdcat" ":-$bin/bin/zstdcat"
+  preInstall = ''
+    mkdir -p $bin/bin
+    substituteInPlace ../programs/zstdgrep \
+      --replace ":-grep" ":-${gnugrep}/bin/grep" \
+      --replace ":-zstdcat" ":-$bin/bin/zstdcat"
 
-      substituteInPlace ../programs/zstdless \
-        --replace "zstdcat" "$bin/bin/zstdcat"
+    substituteInPlace ../programs/zstdless \
+      --replace "zstdcat" "$bin/bin/zstdcat"
+  ''
+  + lib.optionalString buildContrib (
     ''
-    + lib.optionalString buildContrib (
-      ''
-        cp contrib/pzstd/pzstd $bin/bin/pzstd
-      ''
-      + lib.optionalString stdenv.hostPlatform.isDarwin ''
-        install_name_tool -change @rpath/libzstd.1.dylib $out/lib/libzstd.1.dylib $bin/bin/pzstd
-      ''
-    );
+      cp contrib/pzstd/pzstd $bin/bin/pzstd
+    ''
+    + lib.optionalString stdenv.hostPlatform.isDarwin ''
+      install_name_tool -change @rpath/libzstd.1.dylib $out/lib/libzstd.1.dylib $bin/bin/pzstd
+    ''
+  );
 
-  outputs =
-    [
-      "bin"
-      "dev"
-    ]
-    ++ lib.optional stdenv.hostPlatform.isUnix "man"
-    ++ [ "out" ];
+  outputs = [
+    "bin"
+    "dev"
+  ]
+  ++ lib.optional stdenv.hostPlatform.isUnix "man" ++ [ "out" ];
 
   passthru = {
     updateScript = nix-update-script { };

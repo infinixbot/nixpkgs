@@ -79,16 +79,15 @@ rustPlatform.buildRustPackage rec {
     makeBinaryWrapper
   ];
 
-  buildInputs =
-    [
-      openssl
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      dbus
-      glib
-      glib-networking
-      webkitgtk_4_0
-    ];
+  buildInputs = [
+    openssl
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    dbus
+    glib
+    glib-networking
+    webkitgtk_4_0
+  ];
 
   meta = {
     description = "Yet another matrix client for desktop";

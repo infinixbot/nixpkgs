@@ -83,8 +83,7 @@ in
         serviceConfig = {
           Type = "oneshot";
           RemainAfterExit = "yes";
-          ExecStart =
-            "${cpupower}/bin/cpupower frequency-set "
+          ExecStart = "${cpupower}/bin/cpupower frequency-set "
             + optionalString governorEnable "--governor ${cfg.cpuFreqGovernor} "
             + optionalString maxEnable "--max ${toString cfg.cpufreq.max} "
             + optionalString minEnable "--min ${toString cfg.cpufreq.min} ";

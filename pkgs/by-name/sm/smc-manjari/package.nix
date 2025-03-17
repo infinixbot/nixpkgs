@@ -24,7 +24,8 @@ stdenvNoCC.mkDerivation rec {
     python3Packages.fontmake
   ];
 
-  buildFlags = [ "otf" ] ++ lib.optional truetype "ttf";
+  buildFlags = [ "otf" ]
+    ++ lib.optional truetype "ttf";
 
   installPhase = ''
     runHook preInstall

@@ -800,8 +800,7 @@ in
         in
         {
           assertion = length primaryHeads < 2;
-          message =
-            "Only one head is allowed to be primary in "
+          message = "Only one head is allowed to be primary in "
             + "‘services.xserver.xrandrHeads’, but there are "
             + "${toString (length primaryHeads)} heads set to primary: "
             + concatMapStringsSep ", " (x: x.output) primaryHeads;
@@ -879,21 +878,20 @@ in
       };
     };
 
-    services.xserver.displayManager.xserverArgs =
-      [
-        "-config ${configFile}"
-        "-xkbdir"
-        "${cfg.xkb.dir}"
-      ]
-      ++ optional (cfg.display != null) ":${toString cfg.display}"
-      ++ optional (cfg.tty != null) "vt${toString cfg.tty}"
-      ++ optional (cfg.dpi != null) "-dpi ${toString cfg.dpi}"
-      ++ optional (cfg.logFile != null) "-logfile ${toString cfg.logFile}"
-      ++ optional (cfg.verbose != null) "-verbose ${toString cfg.verbose}"
-      ++ optional (!cfg.enableTCP) "-nolisten tcp"
-      ++ optional (cfg.autoRepeatDelay != null) "-ardelay ${toString cfg.autoRepeatDelay}"
-      ++ optional (cfg.autoRepeatInterval != null) "-arinterval ${toString cfg.autoRepeatInterval}"
-      ++ optional cfg.terminateOnReset "-terminate";
+    services.xserver.displayManager.xserverArgs = [
+      "-config ${configFile}"
+      "-xkbdir"
+      "${cfg.xkb.dir}"
+    ]
+    ++ optional (cfg.display != null) ":${toString cfg.display}"
+    ++ optional (cfg.tty != null) "vt${toString cfg.tty}"
+    ++ optional (cfg.dpi != null) "-dpi ${toString cfg.dpi}"
+    ++ optional (cfg.logFile != null) "-logfile ${toString cfg.logFile}"
+    ++ optional (cfg.verbose != null) "-verbose ${toString cfg.verbose}"
+    ++ optional (!cfg.enableTCP) "-nolisten tcp"
+    ++ optional (cfg.autoRepeatDelay != null) "-ardelay ${toString cfg.autoRepeatDelay}"
+    ++ optional (cfg.autoRepeatInterval != null) "-arinterval ${toString cfg.autoRepeatInterval}"
+    ++ optional cfg.terminateOnReset "-terminate";
 
     services.xserver.modules = concatLists (catAttrs "modules" cfg.drivers) ++ [
       xorg.xorgserver.out

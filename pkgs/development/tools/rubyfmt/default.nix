@@ -38,21 +38,20 @@ rustPlatform.buildRustPackage rec {
     ruby
   ];
 
-  buildInputs =
-    [
-      zlib
-      libxcrypt
-      libyaml
-      rust-jemalloc-sys-unprefixed
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      readline
-      libiconv
-      libobjc
-      libunwind
-      Foundation
-      Security
-    ];
+  buildInputs = [
+    zlib
+    libxcrypt
+    libyaml
+    rust-jemalloc-sys-unprefixed
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    readline
+    libiconv
+    libobjc
+    libunwind
+    Foundation
+    Security
+  ];
 
   preConfigure = ''
     pushd librubyfmt/ruby_checkout

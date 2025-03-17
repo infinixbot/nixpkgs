@@ -39,15 +39,14 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-P6QYyAjMRwFFWKF8AhbrYGe+mYVJXdbBW1or6vcobYU=";
   };
 
-  nativeBuildInputs =
-    [
-      cmake
-      clr
-    ]
-    ++ lib.optionals buildDocs [
-      doxygen
-      graphviz
-    ];
+  nativeBuildInputs = [
+    cmake
+    clr
+  ]
+  ++ lib.optionals buildDocs [
+    doxygen
+    graphviz
+  ];
 
   buildInputs = [
     libxml2
@@ -70,14 +69,13 @@ stdenv.mkDerivation (finalAttrs: {
     "-Wno-error=array-bounds"
   ];
 
-  postPatch =
-    ''
-      export HIP_DEVICE_LIB_PATH=${rocm-device-libs}/amdgcn/bitcode
-    ''
-    + lib.optionalString (!buildTests) ''
-      substituteInPlace CMakeLists.txt \
-        --replace "add_subdirectory(test)" ""
-    '';
+  postPatch = ''
+    export HIP_DEVICE_LIB_PATH=${rocm-device-libs}/amdgcn/bitcode
+  ''
+  + lib.optionalString (!buildTests) ''
+    substituteInPlace CMakeLists.txt \
+      --replace "add_subdirectory(test)" ""
+  '';
 
   # Tests always fail, probably need GPU
   # doCheck = buildTests;

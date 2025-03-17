@@ -54,58 +54,56 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs =
-    [
-      gst_all_1.gst-plugins-base
-      gst_all_1.gstreamer
-      libpng
-      libtiff
-      libjpeg_turbo
-      zlib
-      pcre2
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      curl
-      gtk3
-      libSM
-      libXinerama
-      libXtst
-      libXxf86vm
-      xorgproto
-    ]
-    ++ lib.optional withMesa libGLU
-    ++ lib.optional (withWebKit && stdenv.hostPlatform.isLinux) webkitgtk_4_0
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      expat
-    ];
+  buildInputs = [
+    gst_all_1.gst-plugins-base
+    gst_all_1.gstreamer
+    libpng
+    libtiff
+    libjpeg_turbo
+    zlib
+    pcre2
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    curl
+    gtk3
+    libSM
+    libXinerama
+    libXtst
+    libXxf86vm
+    xorgproto
+  ]
+  ++ lib.optional withMesa libGLU
+  ++ lib.optional (withWebKit && stdenv.hostPlatform.isLinux) webkitgtk_4_0
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    expat
+  ];
 
-  configureFlags =
-    [
-      "--disable-precomp-headers"
-      # This is the default option, but be explicit
-      "--disable-monolithic"
-      "--enable-mediactrl"
-      "--with-nanosvg"
-      "--disable-rpath"
-      "--enable-repro-build"
-      "--enable-webrequest"
-      (if compat28 then "--enable-compat28" else "--disable-compat28")
-      (if compat30 then "--enable-compat30" else "--disable-compat30")
-    ]
-    ++ lib.optional unicode "--enable-unicode"
-    ++ lib.optional withMesa "--with-opengl"
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      "--with-osx_cocoa"
-      "--with-libiconv"
-      "--with-urlsession" # for wxWebRequest
-    ]
-    ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
-      "--with-libcurl" # for wxWebRequest
-    ]
-    ++ lib.optionals withWebKit [
-      "--enable-webview"
-      "--enable-webviewwebkit"
-    ];
+  configureFlags = [
+    "--disable-precomp-headers"
+    # This is the default option, but be explicit
+    "--disable-monolithic"
+    "--enable-mediactrl"
+    "--with-nanosvg"
+    "--disable-rpath"
+    "--enable-repro-build"
+    "--enable-webrequest"
+    (if compat28 then "--enable-compat28" else "--disable-compat28")
+    (if compat30 then "--enable-compat30" else "--disable-compat30")
+  ]
+  ++ lib.optional unicode "--enable-unicode"
+  ++ lib.optional withMesa "--with-opengl"
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    "--with-osx_cocoa"
+    "--with-libiconv"
+    "--with-urlsession" # for wxWebRequest
+  ]
+  ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
+    "--with-libcurl" # for wxWebRequest
+  ]
+  ++ lib.optionals withWebKit [
+    "--enable-webview"
+    "--enable-webviewwebkit"
+  ];
 
   SEARCH_LIB = lib.optionalString (
     !stdenv.hostPlatform.isDarwin

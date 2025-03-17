@@ -69,7 +69,8 @@ let
         python3
         openjdk
         mono
-      ] ++ lib.optionals useClang [ llvmPackages.lld ];
+      ]
+      ++ lib.optionals useClang [ llvmPackages.lld ];
 
       separateDebugInfo = true;
       dontFixCmake = true;
@@ -165,7 +166,8 @@ let
         description = "Open source, distributed, transactional key-value store";
         homepage = "https://www.foundationdb.org";
         license = licenses.asl20;
-        platforms = [ "x86_64-linux" ] ++ lib.optionals (!(avxEnabled version)) [ "aarch64-linux" ];
+        platforms = [ "x86_64-linux" ]
+          ++ lib.optionals (!(avxEnabled version)) [ "aarch64-linux" ];
         # Fails when cross-compiling with "/bin/sh: gcc-ar: not found"
         broken = stdenv.buildPlatform != stdenv.hostPlatform;
         maintainers = with maintainers; [

@@ -2284,46 +2284,45 @@ in
 
     environment.etc = lib.mapAttrs' makePAMService config.security.pam.services;
 
-    security.pam.services =
-      {
-        other.text = ''
-          auth     required pam_warn.so
-          auth     required pam_deny.so
-          account  required pam_warn.so
-          account  required pam_deny.so
-          password required pam_warn.so
-          password required pam_deny.so
-          session  required pam_warn.so
-          session  required pam_deny.so
-        '';
+    security.pam.services = {
+      other.text = ''
+        auth     required pam_warn.so
+        auth     required pam_deny.so
+        account  required pam_warn.so
+        account  required pam_deny.so
+        password required pam_warn.so
+        password required pam_deny.so
+        session  required pam_warn.so
+        session  required pam_deny.so
+      '';
 
-        # Most of these should be moved to specific modules.
-        i3lock = { };
-        i3lock-color = { };
-        vlock = { };
-        xlock = { };
-        xscreensaver = { };
+      # Most of these should be moved to specific modules.
+      i3lock = { };
+      i3lock-color = { };
+      vlock = { };
+      xlock = { };
+      xscreensaver = { };
 
-        runuser = {
-          rootOK = true;
-          unixAuth = false;
-          setEnvironment = false;
-        };
-
-        /*
-          FIXME: should runuser -l start a systemd session? Currently
-          it complains "Cannot create session: Already running in a
-          session".
-        */
-        runuser-l = {
-          rootOK = true;
-          unixAuth = false;
-        };
-      }
-      // lib.optionalAttrs (config.security.pam.enableFscrypt) {
-        # Allow fscrypt to verify login passphrase
-        fscrypt = { };
+      runuser = {
+        rootOK = true;
+        unixAuth = false;
+        setEnvironment = false;
       };
+
+      /*
+        FIXME: should runuser -l start a systemd session? Currently
+        it complains "Cannot create session: Already running in a
+        session".
+      */
+      runuser-l = {
+        rootOK = true;
+        unixAuth = false;
+      };
+    }
+    // lib.optionalAttrs (config.security.pam.enableFscrypt) {
+      # Allow fscrypt to verify login passphrase
+      fscrypt = { };
+    };
 
     security.apparmor.includes."abstractions/pam" =
       lib.concatMapStrings (name: "r ${config.environment.etc."pam.d/${name}".source},\n") (

@@ -54,24 +54,24 @@ stdenv.mkDerivation (rec {
     which
     python3
     git
-  ] ++ lib.optionals (stdenv.hostPlatform.isDarwin) [ cctools ];
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isDarwin) [ cctools ];
 
   buildInputs = [
     libxml2
     z3
   ];
 
-  patches =
-    [
-      # Sandbox disallows network access, so disabling problematic networking tests
-      ./disable-networking-tests.patch
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      (substituteAll {
-        src = ./fix-darwin-build.patch;
-        libSystem = darwin.Libsystem;
-      })
-    ];
+  patches = [
+    # Sandbox disallows network access, so disabling problematic networking tests
+    ./disable-networking-tests.patch
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    (substituteAll {
+      src = ./fix-darwin-build.patch;
+      libSystem = darwin.Libsystem;
+    })
+  ];
 
   postUnpack = ''
     mkdir -p $NIX_BUILD_TOP/deps
@@ -103,7 +103,8 @@ stdenv.mkDerivation (rec {
   makeFlags = [
     "PONYC_VERSION=${version}"
     "prefix=${placeholder "out"}"
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin ([ "bits=64" ] ++ lib.optional (!lto) "lto=no");
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin ([ "bits=64" ] ++ lib.optional (!lto) "lto=no");
 
   env.NIX_CFLAGS_COMPILE = toString [
     "-Wno-error=redundant-move"
@@ -113,29 +114,28 @@ stdenv.mkDerivation (rec {
   # make: *** [Makefile:222: test-full-programs-release] Killed: 9
   doCheck = !stdenv.hostPlatform.isDarwin;
 
-  installPhase =
-    ''
-      makeArgs=(config=release prefix=$out)
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      makeArgs+=(bits=64)
-    ''
-    + lib.optionalString (stdenv.hostPlatform.isDarwin && !lto) ''
-      makeArgs+=(lto=no)
-    ''
-    + ''
-      make "''${makeArgs[@]}" install
-      wrapProgram $out/bin/ponyc \
-        --prefix PATH ":" "${stdenv.cc}/bin" \
-        --set-default CC "$CC" \
-        --prefix PONYPATH : "${
-          lib.makeLibraryPath [
-            pcre2
-            openssl
-            (placeholder "out")
-          ]
-        }"
-    '';
+  installPhase = ''
+    makeArgs=(config=release prefix=$out)
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    makeArgs+=(bits=64)
+  ''
+  + lib.optionalString (stdenv.hostPlatform.isDarwin && !lto) ''
+    makeArgs+=(lto=no)
+  ''
+  + ''
+    make "''${makeArgs[@]}" install
+    wrapProgram $out/bin/ponyc \
+      --prefix PATH ":" "${stdenv.cc}/bin" \
+      --set-default CC "$CC" \
+      --prefix PONYPATH : "${
+        lib.makeLibraryPath [
+          pcre2
+          openssl
+          (placeholder "out")
+        ]
+      }"
+  '';
 
   # Stripping breaks linking for ponyc
   dontStrip = true;

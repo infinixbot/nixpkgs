@@ -47,7 +47,8 @@ stdenv.mkDerivation (finalAttrs: {
     "--with-ipv6"
     "--with-openssl=${openssl.dev}"
     "--disable-smartcard"
-  ] ++ lib.optional (!enableCredssp) "--disable-credssp";
+  ]
+  ++ lib.optional (!enableCredssp) "--disable-credssp";
 
   patches = [
     ./rdesktop-configure-c99.patch

@@ -52,34 +52,32 @@ let
 
   defaultConfig =
     {
-      General =
-        {
-          HaltCommand = "/run/current-system/systemd/bin/systemctl poweroff";
-          RebootCommand = "/run/current-system/systemd/bin/systemctl reboot";
-          Numlock = if cfg.autoNumlock then "on" else "none"; # on, off none
+      General = {
+        HaltCommand = "/run/current-system/systemd/bin/systemctl poweroff";
+        RebootCommand = "/run/current-system/systemd/bin/systemctl reboot";
+        Numlock = if cfg.autoNumlock then "on" else "none"; # on, off none
 
-          # Implementation is done via pkgs/applications/display-managers/sddm/sddm-default-session.patch
-          DefaultSession = optionalString (
-            config.services.displayManager.defaultSession != null
-          ) "${config.services.displayManager.defaultSession}.desktop";
+        # Implementation is done via pkgs/applications/display-managers/sddm/sddm-default-session.patch
+        DefaultSession = optionalString (
+          config.services.displayManager.defaultSession != null
+        ) "${config.services.displayManager.defaultSession}.desktop";
 
-          DisplayServer = if cfg.wayland.enable then "wayland" else "x11";
-        }
-        // optionalAttrs (cfg.wayland.enable && cfg.wayland.compositor == "kwin") {
-          GreeterEnvironment = "QT_WAYLAND_SHELL_INTEGRATION=layer-shell";
-          InputMethod = ""; # needed if we are using --inputmethod with kwin
-        };
+        DisplayServer = if cfg.wayland.enable then "wayland" else "x11";
+      }
+      // optionalAttrs (cfg.wayland.enable && cfg.wayland.compositor == "kwin") {
+        GreeterEnvironment = "QT_WAYLAND_SHELL_INTEGRATION=layer-shell";
+        InputMethod = ""; # needed if we are using --inputmethod with kwin
+      };
 
-      Theme =
-        {
-          Current = cfg.theme;
-          ThemeDir = "/run/current-system/sw/share/sddm/themes";
-          FacesDir = "/run/current-system/sw/share/sddm/faces";
-        }
-        // optionalAttrs (cfg.theme == "breeze") {
-          CursorTheme = "breeze_cursors";
-          CursorSize = 24;
-        };
+      Theme = {
+        Current = cfg.theme;
+        ThemeDir = "/run/current-system/sw/share/sddm/themes";
+        FacesDir = "/run/current-system/sw/share/sddm/faces";
+      }
+      // optionalAttrs (cfg.theme == "breeze") {
+        CursorTheme = "breeze_cursors";
+        CursorSize = 24;
+      };
 
       Users = {
         MaximumUid = config.ids.uids.nixbld;

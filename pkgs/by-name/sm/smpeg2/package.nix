@@ -28,7 +28,8 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs = [ SDL2 ] ++ lib.optional stdenv.hostPlatform.isDarwin darwin.libobjc;
+  buildInputs = [ SDL2 ]
+    ++ lib.optional stdenv.hostPlatform.isDarwin darwin.libobjc;
 
   outputs = [
     "out"

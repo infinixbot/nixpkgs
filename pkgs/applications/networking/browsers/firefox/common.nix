@@ -278,7 +278,8 @@ buildStdenv.mkDerivation {
 
   outputs = [
     "out"
-  ] ++ lib.optionals crashreporterSupport [ "symbols" ];
+  ]
+  ++ lib.optionals crashreporterSupport [ "symbols" ];
 
   # Add another configure-build-profiling run before the final configure phase if we build with pgo
   preConfigurePhases = lib.optionals pgoSupport [
@@ -354,12 +355,11 @@ buildStdenv.mkDerivation {
     ]
     ++ extraPatches;
 
-  postPatch =
-    ''
-      rm -rf obj-x86_64-pc-linux-gnu
-      patchShebangs mach build
-    ''
-    + extraPostPatch;
+  postPatch = ''
+    rm -rf obj-x86_64-pc-linux-gnu
+    patchShebangs mach build
+  ''
+  + extraPostPatch;
 
   # Ignore trivial whitespace changes in patches, this fixes compatibility of
   # ./env_var_for_system_dir-*.patch with Firefox >=65 without having to track
@@ -373,121 +373,119 @@ buildStdenv.mkDerivation {
   HOST_CC = "${llvmPackagesBuildBuild.stdenv.cc}/bin/cc";
   HOST_CXX = "${llvmPackagesBuildBuild.stdenv.cc}/bin/c++";
 
-  nativeBuildInputs =
-    [
-      autoconf
-      cargo
-      gnum4
-      llvmPackagesBuildBuild.bintools
-      makeWrapper
-      nodejs
-      perl
-      python3
-      rust-cbindgen
-      rustPlatform.bindgenHook
-      rustc
-      unzip
-      which
-      wrapGAppsHook3
-    ]
-    ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [ pkg-config ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [ rsync ]
-    ++ lib.optionals crashreporterSupport [
-      dump_syms
-      patchelf
-    ]
-    ++ lib.optionals pgoSupport [ xvfb-run ]
-    ++ extraNativeBuildInputs;
+  nativeBuildInputs = [
+    autoconf
+    cargo
+    gnum4
+    llvmPackagesBuildBuild.bintools
+    makeWrapper
+    nodejs
+    perl
+    python3
+    rust-cbindgen
+    rustPlatform.bindgenHook
+    rustc
+    unzip
+    which
+    wrapGAppsHook3
+  ]
+  ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [ pkg-config ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ rsync ]
+  ++ lib.optionals crashreporterSupport [
+    dump_syms
+    patchelf
+  ]
+  ++ lib.optionals pgoSupport [ xvfb-run ]
+  ++ extraNativeBuildInputs;
 
   setOutputFlags = false; # `./mach configure` doesn't understand `--*dir=` flags.
 
-  preConfigure =
-    ''
-      # Runs autoconf through ./mach configure in configurePhase
-      configureScript="$(realpath ./mach) configure"
+  preConfigure = ''
+    # Runs autoconf through ./mach configure in configurePhase
+    configureScript="$(realpath ./mach) configure"
 
-      # Set reproducible build date; https://bugzilla.mozilla.org/show_bug.cgi?id=885777#c21
-      export MOZ_BUILD_DATE=$(head -n1 sourcestamp.txt)
+    # Set reproducible build date; https://bugzilla.mozilla.org/show_bug.cgi?id=885777#c21
+    export MOZ_BUILD_DATE=$(head -n1 sourcestamp.txt)
 
-      # Set predictable directories for build and state
-      export MOZ_OBJDIR=$(pwd)/objdir
-      export MOZBUILD_STATE_PATH=$TMPDIR/mozbuild
+    # Set predictable directories for build and state
+    export MOZ_OBJDIR=$(pwd)/objdir
+    export MOZBUILD_STATE_PATH=$TMPDIR/mozbuild
 
-      # Don't try to send libnotify notifications during build
-      export MOZ_NOSPAM=1
+    # Don't try to send libnotify notifications during build
+    export MOZ_NOSPAM=1
 
-      # Set consistent remoting name to ensure wmclass matches with desktop file
-      export MOZ_APP_REMOTINGNAME="${binaryName}"
+    # Set consistent remoting name to ensure wmclass matches with desktop file
+    export MOZ_APP_REMOTINGNAME="${binaryName}"
 
-      # AS=as in the environment causes build failure
-      # https://bugzilla.mozilla.org/show_bug.cgi?id=1497286
-      unset AS
+    # AS=as in the environment causes build failure
+    # https://bugzilla.mozilla.org/show_bug.cgi?id=1497286
+    unset AS
 
-      # Use our own python
-      export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
+    # Use our own python
+    export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
 
-      # RBox WASM Sandboxing
-      export WASM_CC=${pkgsCross.wasi32.stdenv.cc}/bin/${pkgsCross.wasi32.stdenv.cc.targetPrefix}cc
-      export WASM_CXX=${pkgsCross.wasi32.stdenv.cc}/bin/${pkgsCross.wasi32.stdenv.cc.targetPrefix}c++
-    ''
-    + lib.optionalString pgoSupport ''
-      if [ -e "$TMPDIR/merged.profdata" ]; then
-        echo "Configuring with profiling data"
-        for i in "''${!configureFlagsArray[@]}"; do
-          if [[ ''${configureFlagsArray[i]} = "--enable-profile-generate=cross" ]]; then
-            unset 'configureFlagsArray[i]'
-          fi
-        done
-        appendToVar configureFlags --enable-profile-use=cross
-        appendToVar configureFlags --with-pgo-profile-path=$TMPDIR/merged.profdata
-        appendToVar configureFlags --with-pgo-jarlog=$TMPDIR/jarlog
-        ${lib.optionalString stdenv.hostPlatform.isMusl ''
-          LDFLAGS="$OLD_LDFLAGS"
-          unset OLD_LDFLAGS
-        ''}
-      else
-        echo "Configuring to generate profiling data"
-        configureFlagsArray+=(
-          "--enable-profile-generate=cross"
-        )
-        ${lib.optionalString stdenv.hostPlatform.isMusl
-          # Set the rpath appropriately for the profiling run
-          # During the profiling run, loading libraries from $out would fail,
-          # since the profiling build has not been installed to $out
-          ''
-            OLD_LDFLAGS="$LDFLAGS"
-            LDFLAGS="-Wl,-rpath,$(pwd)/objdir/dist/${binaryName}"
-          ''
-        }
-      fi
-    ''
-    + lib.optionalString googleAPISupport ''
-      # Google API key used by Chromium and Firefox.
-      # Note: These are for NixOS/nixpkgs use ONLY. For your own distribution,
-      # please get your own set of keys at https://www.chromium.org/developers/how-tos/api-keys/.
-      echo "AIzaSyDGi15Zwl11UNe6Y-5XW_upsfyw31qwZPI" > $TMPDIR/google-api-key
-      # 60.5+ & 66+ did split the google API key arguments: https://bugzilla.mozilla.org/show_bug.cgi?id=1531176
-      configureFlagsArray+=("--with-google-location-service-api-keyfile=$TMPDIR/google-api-key")
-      configureFlagsArray+=("--with-google-safebrowsing-api-keyfile=$TMPDIR/google-api-key")
-    ''
-    + lib.optionalString mlsAPISupport ''
-      # Mozilla Location services API key
-      # Note: These are for NixOS/nixpkgs use ONLY. For your own distribution,
-      # please get your own set of keys at https://location.services.mozilla.com/api.
-      echo "dfd7836c-d458-4917-98bb-421c82d3c8a0" > $TMPDIR/mls-api-key
-      configureFlagsArray+=("--with-mozilla-api-keyfile=$TMPDIR/mls-api-key")
-    ''
-    + lib.optionalString (enableOfficialBranding && !stdenv.hostPlatform.is32bit) ''
-      export MOZILLA_OFFICIAL=1
-    ''
-    + lib.optionalString (!requireSigning) ''
-      export MOZ_REQUIRE_SIGNING=
-    ''
-    + lib.optionalString stdenv.hostPlatform.isMusl ''
-      # linking firefox hits the vm.max_map_count kernel limit with the default musl allocator
-      # TODO: Default vm.max_map_count has been increased, retest without this
-      export LD_PRELOAD=${mimalloc}/lib/libmimalloc.so
-    '';
+    # RBox WASM Sandboxing
+    export WASM_CC=${pkgsCross.wasi32.stdenv.cc}/bin/${pkgsCross.wasi32.stdenv.cc.targetPrefix}cc
+    export WASM_CXX=${pkgsCross.wasi32.stdenv.cc}/bin/${pkgsCross.wasi32.stdenv.cc.targetPrefix}c++
+  ''
+  + lib.optionalString pgoSupport ''
+    if [ -e "$TMPDIR/merged.profdata" ]; then
+      echo "Configuring with profiling data"
+      for i in "''${!configureFlagsArray[@]}"; do
+        if [[ ''${configureFlagsArray[i]} = "--enable-profile-generate=cross" ]]; then
+          unset 'configureFlagsArray[i]'
+        fi
+      done
+      appendToVar configureFlags --enable-profile-use=cross
+      appendToVar configureFlags --with-pgo-profile-path=$TMPDIR/merged.profdata
+      appendToVar configureFlags --with-pgo-jarlog=$TMPDIR/jarlog
+      ${lib.optionalString stdenv.hostPlatform.isMusl ''
+        LDFLAGS="$OLD_LDFLAGS"
+        unset OLD_LDFLAGS
+      ''}
+    else
+      echo "Configuring to generate profiling data"
+      configureFlagsArray+=(
+        "--enable-profile-generate=cross"
+      )
+      ${lib.optionalString stdenv.hostPlatform.isMusl
+        # Set the rpath appropriately for the profiling run
+        # During the profiling run, loading libraries from $out would fail,
+        # since the profiling build has not been installed to $out
+        ''
+          OLD_LDFLAGS="$LDFLAGS"
+          LDFLAGS="-Wl,-rpath,$(pwd)/objdir/dist/${binaryName}"
+        ''
+      }
+    fi
+  ''
+  + lib.optionalString googleAPISupport ''
+    # Google API key used by Chromium and Firefox.
+    # Note: These are for NixOS/nixpkgs use ONLY. For your own distribution,
+    # please get your own set of keys at https://www.chromium.org/developers/how-tos/api-keys/.
+    echo "AIzaSyDGi15Zwl11UNe6Y-5XW_upsfyw31qwZPI" > $TMPDIR/google-api-key
+    # 60.5+ & 66+ did split the google API key arguments: https://bugzilla.mozilla.org/show_bug.cgi?id=1531176
+    configureFlagsArray+=("--with-google-location-service-api-keyfile=$TMPDIR/google-api-key")
+    configureFlagsArray+=("--with-google-safebrowsing-api-keyfile=$TMPDIR/google-api-key")
+  ''
+  + lib.optionalString mlsAPISupport ''
+    # Mozilla Location services API key
+    # Note: These are for NixOS/nixpkgs use ONLY. For your own distribution,
+    # please get your own set of keys at https://location.services.mozilla.com/api.
+    echo "dfd7836c-d458-4917-98bb-421c82d3c8a0" > $TMPDIR/mls-api-key
+    configureFlagsArray+=("--with-mozilla-api-keyfile=$TMPDIR/mls-api-key")
+  ''
+  + lib.optionalString (enableOfficialBranding && !stdenv.hostPlatform.is32bit) ''
+    export MOZILLA_OFFICIAL=1
+  ''
+  + lib.optionalString (!requireSigning) ''
+    export MOZ_REQUIRE_SIGNING=
+  ''
+  + lib.optionalString stdenv.hostPlatform.isMusl ''
+    # linking firefox hits the vm.max_map_count kernel limit with the default musl allocator
+    # TODO: Default vm.max_map_count has been increased, retest without this
+    export LD_PRELOAD=${mimalloc}/lib/libmimalloc.so
+  '';
 
   # firefox has a different definition of configurePlatforms from nixpkgs, see configureFlags
   configurePlatforms = [ ];
@@ -556,68 +554,67 @@ buildStdenv.mkDerivation {
     ++ lib.optional (branding != null) "--with-branding=${branding}"
     ++ extraConfigureFlags;
 
-  buildInputs =
+  buildInputs = [
+    bzip2
+    file
+    libGL
+    libGLU
+    libstartup_notification
+    nasm
+    perl
+    zip
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    apple-sdk_14
+    cups
+  ]
+  ++ (lib.optionals (!stdenv.hostPlatform.isDarwin) (
     [
-      bzip2
-      file
-      libGL
-      libGLU
-      libstartup_notification
-      nasm
-      perl
-      zip
+      dbus
+      dbus-glib
+      fontconfig
+      freetype
+      glib
+      gtk3
+      libffi
+      libevent
+      libjpeg
+      libpng
+      libvpx
+      libwebp
+      nspr
+      pango
+      xorg.libX11
+      xorg.libXcursor
+      xorg.libXdamage
+      xorg.libXext
+      xorg.libXft
+      xorg.libXi
+      xorg.libXrender
+      xorg.libXt
+      xorg.libXtst
+      xorg.pixman
+      xorg.xorgproto
+      zlib
+      (
+        if (lib.versionAtLeast version "116") then nss_latest else nss_esr # 3.90
+      )
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      apple-sdk_14
-      cups
+    ++ lib.optional alsaSupport alsa-lib
+    ++ lib.optional jackSupport libjack2
+    ++ lib.optional pulseaudioSupport libpulseaudio # only headers are needed
+    ++ lib.optional sndioSupport sndio
+    ++ lib.optionals waylandSupport [
+      libxkbcommon
+      libdrm
     ]
-    ++ (lib.optionals (!stdenv.hostPlatform.isDarwin) (
-      [
-        dbus
-        dbus-glib
-        fontconfig
-        freetype
-        glib
-        gtk3
-        libffi
-        libevent
-        libjpeg
-        libpng
-        libvpx
-        libwebp
-        nspr
-        pango
-        xorg.libX11
-        xorg.libXcursor
-        xorg.libXdamage
-        xorg.libXext
-        xorg.libXft
-        xorg.libXi
-        xorg.libXrender
-        xorg.libXt
-        xorg.libXtst
-        xorg.pixman
-        xorg.xorgproto
-        zlib
-        (
-          if (lib.versionAtLeast version "116") then nss_latest else nss_esr # 3.90
-        )
-      ]
-      ++ lib.optional alsaSupport alsa-lib
-      ++ lib.optional jackSupport libjack2
-      ++ lib.optional pulseaudioSupport libpulseaudio # only headers are needed
-      ++ lib.optional sndioSupport sndio
-      ++ lib.optionals waylandSupport [
-        libxkbcommon
-        libdrm
-      ]
-    ))
-    # icu74 fails to build on 127 and older
-    # https://bugzilla.mozilla.org/show_bug.cgi?id=1862601
-    ++ [ (if (lib.versionAtLeast version "134") then icu74 else icu73) ]
-    ++ lib.optional gssSupport libkrb5
-    ++ lib.optional jemallocSupport jemalloc
-    ++ extraBuildInputs;
+  ))
+  # icu74 fails to build on 127 and older
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1862601
+  ++ [ (if (lib.versionAtLeast version "134") then icu74 else icu73) ]
+  ++ lib.optional gssSupport libkrb5
+  ++ lib.optional jemallocSupport jemalloc
+  ++ extraBuildInputs;
 
   profilingPhase = lib.optionalString pgoSupport ''
     # Package up Firefox for profiling
@@ -676,16 +673,15 @@ buildStdenv.mkDerivation {
   # The target will prepare .app bundle
   installTargets = lib.optionalString stdenv.hostPlatform.isDarwin "stage-package";
 
-  postInstall =
-    lib.optionalString stdenv.hostPlatform.isDarwin ''
-      mkdir -p $out/Applications
-      cp -r dist/${binaryName}/*.app $out/Applications
+  postInstall = lib.optionalString stdenv.hostPlatform.isDarwin ''
+    mkdir -p $out/Applications
+    cp -r dist/${binaryName}/*.app $out/Applications
 
-      appBundlePath=(dist/${binaryName}/*.app)
-      appBundle=''${appBundlePath[0]#dist/${binaryName}}
-      resourceDir=$out/Applications/$appBundle/Contents/Resources
+    appBundlePath=(dist/${binaryName}/*.app)
+    appBundle=''${appBundlePath[0]#dist/${binaryName}}
+    resourceDir=$out/Applications/$appBundle/Contents/Resources
 
-    ''
+  ''
     + lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
       # Remove SDK cruft. FIXME: move to a separate output?
       rm -rf $out/share/idl $out/include $out/lib/${binaryName}-devel-*
@@ -709,10 +705,9 @@ buildStdenv.mkDerivation {
 
   # Some basic testing
   doInstallCheck = true;
-  installCheckPhase =
-    lib.optionalString buildStdenv.hostPlatform.isDarwin ''
-      bindir=$out/Applications/$appBundle/Contents/MacOS
-    ''
+  installCheckPhase = lib.optionalString buildStdenv.hostPlatform.isDarwin ''
+    bindir=$out/Applications/$appBundle/Contents/MacOS
+  ''
     + lib.optionalString (!buildStdenv.hostPlatform.isDarwin) ''
       bindir=$out/bin
     ''
@@ -736,7 +731,8 @@ buildStdenv.mkDerivation {
     inherit gtk3;
     inherit wasiSysRoot;
     version = packageVersion;
-  } // extraPassthru;
+  }
+  // extraPassthru;
 
   hardeningDisable = [ "format" ]; # -Werror=format-security
 

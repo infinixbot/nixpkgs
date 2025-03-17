@@ -46,7 +46,8 @@ stdenv.mkDerivation rec {
     magic-enum
     range-v3
     spdlog
-  ] ++ lib.optional stdenv.hostPlatform.isLinux qtwayland;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isLinux qtwayland;
   cmakeFlags = [
     "-DFETCHCONTENT_FULLY_DISCONNECTED=ON"
     "-DFETCHCONTENT_QUIET=OFF"

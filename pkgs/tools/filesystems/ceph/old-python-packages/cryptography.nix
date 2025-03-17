@@ -77,7 +77,8 @@ buildPythonPackage rec {
     cargo
     rustc
     pkg-config
-  ] ++ lib.optionals (!isPyPy) [ cffi ];
+  ]
+  ++ lib.optionals (!isPyPy) [ cffi ];
 
   buildInputs =
     [ openssl ]
@@ -102,16 +103,15 @@ buildPythonPackage rec {
 
   pytestFlagsArray = [ "--disable-pytest-warnings" ];
 
-  disabledTestPaths =
-    [
-      # save compute time by not running benchmarks
-      "tests/bench"
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) [
-      # aarch64-darwin forbids W+X memory, but this tests depends on it:
-      # * https://cffi.readthedocs.io/en/latest/using.html#callbacks
-      "tests/hazmat/backends/test_openssl_memleak.py"
-    ];
+  disabledTestPaths = [
+    # save compute time by not running benchmarks
+    "tests/bench"
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) [
+    # aarch64-darwin forbids W+X memory, but this tests depends on it:
+    # * https://cffi.readthedocs.io/en/latest/using.html#callbacks
+    "tests/hazmat/backends/test_openssl_memleak.py"
+  ];
 
   meta = with lib; {
     description = "A package which provides cryptographic recipes and primitives";

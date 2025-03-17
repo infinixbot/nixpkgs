@@ -12,8 +12,7 @@ stdenv.mkDerivation rec {
   version = "0.0pre20210621";
 
   strictDeps = true;
-  nativeBuildInputs =
-    [ perl ]
+  nativeBuildInputs = [ perl ]
     ++ (with ocamlPackages; [
       ocaml
       findlib

@@ -35,7 +35,8 @@ buildPythonPackage rec {
     chameleon = [ chameleon ];
   };
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ optional-dependencies.chameleon;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ optional-dependencies.chameleon;
 
   pythonImportsCheck = [ "lingva" ];
 

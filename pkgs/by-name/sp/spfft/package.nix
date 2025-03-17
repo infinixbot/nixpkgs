@@ -40,23 +40,23 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     cmake
     gfortran
-  ] ++ lib.optional (gpuBackend == "cuda") cudaPackages.cuda_nvcc;
+  ]
+  ++ lib.optional (gpuBackend == "cuda") cudaPackages.cuda_nvcc;
 
-  buildInputs =
-    [
-      fftw
-      mpi
-    ]
-    ++ lib.optionals (gpuBackend == "cuda") [
-      cudaPackages.libcufft
-      cudaPackages.cuda_cudart
-    ]
-    ++ lib.optionals (gpuBackend == "rocm") [
-      rocmPackages.clr
-      rocmPackages.rocfft
-      rocmPackages.hipfft
-    ]
-    ++ lib.optional stdenv.hostPlatform.isDarwin llvmPackages.openmp;
+  buildInputs = [
+    fftw
+    mpi
+  ]
+  ++ lib.optionals (gpuBackend == "cuda") [
+    cudaPackages.libcufft
+    cudaPackages.cuda_cudart
+  ]
+  ++ lib.optionals (gpuBackend == "rocm") [
+    rocmPackages.clr
+    rocmPackages.rocfft
+    rocmPackages.hipfft
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin llvmPackages.openmp;
 
   cmakeFlags =
     [

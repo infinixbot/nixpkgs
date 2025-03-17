@@ -39,7 +39,8 @@ stdenv.mkDerivation (finalAttrs: {
 
   hardeningDisable = [ "format" ];
 
-  outputs = [ "out" ] ++ lib.optional (with stdenv; buildPlatform.canExecute hostPlatform) "dev";
+  outputs = [ "out" ]
+    ++ lib.optional (with stdenv; buildPlatform.canExecute hostPlatform) "dev";
 
   setOutputFlags = false;
 
@@ -60,13 +61,12 @@ stdenv.mkDerivation (finalAttrs: {
     tex
   ];
 
-  makeFlags =
-    [
-      "catdvi" # to avoid running tests until checkPhase
-    ]
-    ++ lib.optionals (with stdenv; !buildPlatform.canExecute hostPlatform) (
-      map (tool: "--assume-old=${tool}") buildPlatformTools
-    );
+  makeFlags = [
+    "catdvi" # to avoid running tests until checkPhase
+  ]
+  ++ lib.optionals (with stdenv; !buildPlatform.canExecute hostPlatform) (
+    map (tool: "--assume-old=${tool}") buildPlatformTools
+  );
 
   nativeCheckInputs = [
     texlive

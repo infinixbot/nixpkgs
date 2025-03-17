@@ -27,7 +27,8 @@ buildPythonPackage rec {
 
   pythonImportsCheck = [ "flask_httpauth" ];
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ flask.optional-dependencies.async;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ flask.optional-dependencies.async;
 
   meta = with lib; {
     description = "Extension that provides HTTP authentication for Flask routes";

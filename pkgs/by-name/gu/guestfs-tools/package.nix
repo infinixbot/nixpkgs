@@ -38,29 +38,28 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-02khDS2NLG1QOSqswtDoqBX2Mg6sE/OiUoP9JFs4vTU=";
   };
 
-  nativeBuildInputs =
-    [
-      bison
-      cdrkit
-      cpio
-      flex
-      getopt
-      makeWrapper
-      pkg-config
-      qemu
-    ]
-    ++ (with perlPackages; [
-      GetoptLong
-      libintl-perl
-      ModuleBuild
-      perl
-      Po4a
-    ])
-    ++ (with ocamlPackages; [
-      findlib
-      ocaml
-      ounit2
-    ]);
+  nativeBuildInputs = [
+    bison
+    cdrkit
+    cpio
+    flex
+    getopt
+    makeWrapper
+    pkg-config
+    qemu
+  ]
+  ++ (with perlPackages; [
+    GetoptLong
+    libintl-perl
+    ModuleBuild
+    perl
+    Po4a
+  ])
+  ++ (with ocamlPackages; [
+    findlib
+    ocaml
+    ounit2
+  ]);
 
   buildInputs = [
     bash-completion

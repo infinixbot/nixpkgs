@@ -176,39 +176,39 @@ let
       python3
       perl
       gmpxx
-    ] ++ lib.optional enableFortran gfortran;
+    ]
+    ++ lib.optional enableFortran gfortran;
 
     buildInputs = [
       boost
       eigen
     ];
 
-    configureFlags =
-      [
-        "--with-max-am=${builtins.toString maxAm}"
-        "--with-eri-max-am=${lib.concatStringsSep "," (builtins.map builtins.toString eriAm)}"
-        "--with-eri3-max-am=${lib.concatStringsSep "," (builtins.map builtins.toString eri3Am)}"
-        "--with-eri2-max-am=${lib.concatStringsSep "," (builtins.map builtins.toString eri2Am)}"
-        "--with-eri-opt-am=${lib.concatStringsSep "," (builtins.map builtins.toString eriOptAm)}"
-        "--with-eri3-opt-am=${lib.concatStringsSep "," (builtins.map builtins.toString eri3OptAm)}"
-        "--with-eri2-opt-am=${lib.concatStringsSep "," (builtins.map builtins.toString eri2OptAm)}"
-        "--with-cartgauss-ordering=${cartGaussOrd}"
-        "--with-shgauss-ordering=${shGaussOrd}"
-        "--with-shell-set=${shellSet}"
-      ]
-      ++ lib.optional enableFMA "--enable-fma"
-      ++ lib.optional (eriDeriv > 0) "--enable-eri=${builtins.toString eriDeriv}"
-      ++ lib.optional (eri2Deriv > 0) "--enable-eri2=${builtins.toString eri2Deriv}"
-      ++ lib.optional (eri3Deriv > 0) "--enable-eri3=${builtins.toString eri3Deriv}"
-      ++ lib.optionals enableOneBody [
-        "--enable-1body=${builtins.toString oneBodyDerivOrd}"
-        "--enable-1body-property-derivs"
-      ]
-      ++ lib.optional (multipoleOrd > 0) "--with-multipole-max-order=${builtins.toString multipoleOrd}"
-      ++ lib.optional enableGeneric "--enable-generic"
-      ++ lib.optional enableContracted "--enable-contracted-ints"
-      ++ lib.optional eri3PureSh "--enable-eri3-pure-sh"
-      ++ lib.optional eri2PureSh "--enable-eri2-pure-sh";
+    configureFlags = [
+      "--with-max-am=${builtins.toString maxAm}"
+      "--with-eri-max-am=${lib.concatStringsSep "," (builtins.map builtins.toString eriAm)}"
+      "--with-eri3-max-am=${lib.concatStringsSep "," (builtins.map builtins.toString eri3Am)}"
+      "--with-eri2-max-am=${lib.concatStringsSep "," (builtins.map builtins.toString eri2Am)}"
+      "--with-eri-opt-am=${lib.concatStringsSep "," (builtins.map builtins.toString eriOptAm)}"
+      "--with-eri3-opt-am=${lib.concatStringsSep "," (builtins.map builtins.toString eri3OptAm)}"
+      "--with-eri2-opt-am=${lib.concatStringsSep "," (builtins.map builtins.toString eri2OptAm)}"
+      "--with-cartgauss-ordering=${cartGaussOrd}"
+      "--with-shgauss-ordering=${shGaussOrd}"
+      "--with-shell-set=${shellSet}"
+    ]
+    ++ lib.optional enableFMA "--enable-fma"
+    ++ lib.optional (eriDeriv > 0) "--enable-eri=${builtins.toString eriDeriv}"
+    ++ lib.optional (eri2Deriv > 0) "--enable-eri2=${builtins.toString eri2Deriv}"
+    ++ lib.optional (eri3Deriv > 0) "--enable-eri3=${builtins.toString eri3Deriv}"
+    ++ lib.optionals enableOneBody [
+      "--enable-1body=${builtins.toString oneBodyDerivOrd}"
+      "--enable-1body-property-derivs"
+    ]
+    ++ lib.optional (multipoleOrd > 0) "--with-multipole-max-order=${builtins.toString multipoleOrd}"
+    ++ lib.optional enableGeneric "--enable-generic"
+    ++ lib.optional enableContracted "--enable-contracted-ints"
+    ++ lib.optional eri3PureSh "--enable-eri3-pure-sh"
+    ++ lib.optional eri2PureSh "--enable-eri2-pure-sh";
 
     preConfigure = ''
       ./autogen.sh
@@ -234,7 +234,8 @@ let
     nativeBuildInputs = [
       python3
       cmake
-    ] ++ lib.optional enableFortran gfortran;
+    ]
+    ++ lib.optional enableFortran gfortran;
 
     buildInputs = [
       boost

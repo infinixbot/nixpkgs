@@ -63,7 +63,8 @@ buildPythonPackage rec {
     huggingface-hub
     pytestCheckHook
     torch
-  ] ++ optional-dependencies.schemas;
+  ]
+  ++ optional-dependencies.schemas;
 
   pytestFlagsArray = [ "tests/unit" ];
 

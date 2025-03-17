@@ -62,7 +62,8 @@ stdenv.mkDerivation (finalAttrs: {
     p7zip
     perl
     undmg
-  ] ++ kernel.moduleBuildDependencies;
+  ]
+  ++ kernel.moduleBuildDependencies;
 
   buildInputs = [
     dbus-glib

@@ -42,14 +42,13 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs =
-    [
-      less
-      makeWrapper
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      autoPatchelfHook
-    ];
+  nativeBuildInputs = [
+    less
+    makeWrapper
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    autoPatchelfHook
+  ];
 
   buildInputs =
     [
@@ -67,27 +66,26 @@ stdenv.mkDerivation rec {
       pam
     ];
 
-  installPhase =
-    ''
-      runHook preInstall
+  installPhase = ''
+    runHook preInstall
 
-      mkdir -p $out/{bin,share/powershell}
-      cp -R * $out/share/powershell
-      chmod +x $out/share/powershell/pwsh
-      makeWrapper $out/share/powershell/pwsh $out/bin/pwsh \
-        --prefix ${platformLdLibraryPath} : "${lib.makeLibraryPath buildInputs}" \
-        --set TERM xterm \
-        --set POWERSHELL_TELEMETRY_OPTOUT 1 \
-        --set DOTNET_CLI_TELEMETRY_OPTOUT 1
+    mkdir -p $out/{bin,share/powershell}
+    cp -R * $out/share/powershell
+    chmod +x $out/share/powershell/pwsh
+    makeWrapper $out/share/powershell/pwsh $out/bin/pwsh \
+      --prefix ${platformLdLibraryPath} : "${lib.makeLibraryPath buildInputs}" \
+      --set TERM xterm \
+      --set POWERSHELL_TELEMETRY_OPTOUT 1 \
+      --set DOTNET_CLI_TELEMETRY_OPTOUT 1
 
-    ''
-    + lib.optionalString stdenv.hostPlatform.isLinux ''
-      patchelf --replace-needed liblttng-ust${ext}.0 liblttng-ust${ext}.1 $out/share/powershell/libcoreclrtraceptprovider.so
+  ''
+  + lib.optionalString stdenv.hostPlatform.isLinux ''
+    patchelf --replace-needed liblttng-ust${ext}.0 liblttng-ust${ext}.1 $out/share/powershell/libcoreclrtraceptprovider.so
 
-    ''
-    + ''
-      runHook postInstall
-    '';
+  ''
+  + ''
+    runHook postInstall
+  '';
 
   dontStrip = true;
 

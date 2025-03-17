@@ -52,32 +52,32 @@ in
     makeWrapper
     pkg-config
     texinfo
-  ] ++ lib.optional withQt qttools;
+  ]
+  ++ lib.optional withQt qttools;
 
-  buildInputs =
-    [
-      cairo
-      gd
-      libcerf
-      pango
-      readline
-      zlib
-    ]
-    ++ lib.optional withTeXLive texliveSmall
-    ++ lib.optional withLua lua
-    ++ lib.optional withCaca libcaca
-    ++ lib.optionals withX [
-      libX11
-      libXpm
-      libXt
-      libXaw
-    ]
-    ++ lib.optionals withQt [
-      qtbase
-      qtsvg
-    ]
-    ++ lib.optional withWxGTK wxGTK32
-    ++ lib.optional (withWxGTK && stdenv.hostPlatform.isDarwin) Cocoa;
+  buildInputs = [
+    cairo
+    gd
+    libcerf
+    pango
+    readline
+    zlib
+  ]
+  ++ lib.optional withTeXLive texliveSmall
+  ++ lib.optional withLua lua
+  ++ lib.optional withCaca libcaca
+  ++ lib.optionals withX [
+    libX11
+    libXpm
+    libXt
+    libXaw
+  ]
+  ++ lib.optionals withQt [
+    qtbase
+    qtsvg
+  ]
+  ++ lib.optional withWxGTK wxGTK32
+  ++ lib.optional (withWxGTK && stdenv.hostPlatform.isDarwin) Cocoa;
 
   postPatch = ''
     # lrelease is in qttools, not in qtbase.

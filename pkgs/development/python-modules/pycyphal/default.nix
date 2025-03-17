@@ -34,7 +34,8 @@ buildPythonPackage rec {
   ];
 
   optional-dependencies = {
-    transport-can-pythoncan = [ python-can ] ++ python-can.optional-dependencies.serial;
+    transport-can-pythoncan = [ python-can ]
+      ++ python-can.optional-dependencies.serial;
     transport-serial = [
       cobs
       pyserial
@@ -45,7 +46,8 @@ buildPythonPackage rec {
   nativeCheckInputs = [
     pytestCheckHook
     pytest-asyncio
-  ] ++ builtins.foldl' (x: y: x ++ y) [ ] (builtins.attrValues optional-dependencies);
+  ]
+  ++ builtins.foldl' (x: y: x ++ y) [ ] (builtins.attrValues optional-dependencies);
 
   preCheck = ''
     export HOME=$TMPDIR

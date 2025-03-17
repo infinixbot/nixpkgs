@@ -79,46 +79,44 @@ stdenv.mkDerivation (finalAttrs: {
     wayland-scanner
   ];
 
-  buildInputs =
-    [
-      libX11
-      libGL
-      freefont_ttf
-      spice-protocol
-      expat
-      libbfd
-      nettle
-      fontconfig
-      libffi
-      nanosvg
-    ]
-    ++ lib.optionals xorgSupport [
-      libxkbcommon
-      libXi
-      libXScrnSaver
-      libXinerama
-      libXcursor
-      libXpresent
-      libXext
-      libXrandr
-      libXdmcp
-    ]
-    ++ lib.optionals waylandSupport [
-      libxkbcommon
-      wayland
-      wayland-protocols
-    ]
-    ++ lib.optionals pipewireSupport [
-      pipewire
-      libsamplerate
-    ]
-    ++ lib.optionals pulseSupport [
-      pulseaudio
-      libsamplerate
-    ];
+  buildInputs = [
+    libX11
+    libGL
+    freefont_ttf
+    spice-protocol
+    expat
+    libbfd
+    nettle
+    fontconfig
+    libffi
+    nanosvg
+  ]
+  ++ lib.optionals xorgSupport [
+    libxkbcommon
+    libXi
+    libXScrnSaver
+    libXinerama
+    libXcursor
+    libXpresent
+    libXext
+    libXrandr
+    libXdmcp
+  ]
+  ++ lib.optionals waylandSupport [
+    libxkbcommon
+    wayland
+    wayland-protocols
+  ]
+  ++ lib.optionals pipewireSupport [
+    pipewire
+    libsamplerate
+  ]
+  ++ lib.optionals pulseSupport [
+    pulseaudio
+    libsamplerate
+  ];
 
-  cmakeFlags =
-    [ "-DOPTIMIZE_FOR_NATIVE=OFF" ]
+  cmakeFlags = [ "-DOPTIMIZE_FOR_NATIVE=OFF" ]
     ++ lib.optionals (!openGLSupport) [ "-DENABLE_OPENGL=no" ]
     ++ lib.optionals (!xorgSupport) [ "-DENABLE_X11=no" ]
     ++ lib.optionals (!waylandSupport) [ "-DENABLE_WAYLAND=no" ]

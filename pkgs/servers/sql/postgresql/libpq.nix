@@ -48,7 +48,8 @@ stdenv.mkDerivation (finalAttrs: {
     disallowedReferences = [ "dev" ];
     disallowedRequisites = [
       stdenv.cc
-    ] ++ (map lib.getDev (builtins.filter (drv: drv ? "dev") finalAttrs.buildInputs));
+    ]
+    ++ (map lib.getDev (builtins.filter (drv: drv ? "dev") finalAttrs.buildInputs));
   };
 
   buildInputs =

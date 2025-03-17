@@ -20,7 +20,8 @@ let
   ];
   env = buildEnv {
     name = "quake3-env";
-    paths = [ ioquake3 ] ++ paks;
+    paths = [ ioquake3 ]
+      ++ paks;
   };
 
 in

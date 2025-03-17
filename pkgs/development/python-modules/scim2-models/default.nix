@@ -24,7 +24,8 @@ buildPythonPackage rec {
 
   build-system = [ hatchling ];
 
-  dependencies = [ pydantic ] ++ pydantic.optional-dependencies.email;
+  dependencies = [ pydantic ]
+    ++ pydantic.optional-dependencies.email;
 
   nativeCheckInputs = [ pytestCheckHook ];
 

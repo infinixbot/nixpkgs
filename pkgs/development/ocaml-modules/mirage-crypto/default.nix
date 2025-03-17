@@ -28,13 +28,12 @@ buildDunePackage rec {
   ];
 
   buildInputs = [ dune-configurator ];
-  propagatedBuildInputs =
-    [
-      eqaf-cstruct
-    ]
-    ++ lib.optionals withFreestanding [
-      ocaml-freestanding
-    ];
+  propagatedBuildInputs = [
+    eqaf-cstruct
+  ]
+  ++ lib.optionals withFreestanding [
+    ocaml-freestanding
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/mirage/mirage-crypto";

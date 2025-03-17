@@ -98,8 +98,7 @@ buildPythonPackage rec {
   meta = with lib; {
     description = "Python Interface To The cURL library";
     homepage = "http://pycurl.io/";
-    changelog =
-      "https://github.com/pycurl/pycurl/blob/REL_"
+    changelog = "https://github.com/pycurl/pycurl/blob/REL_"
       + replaceStrings [ "." ] [ "_" ] version
       + "/ChangeLog";
     license = with licenses; [

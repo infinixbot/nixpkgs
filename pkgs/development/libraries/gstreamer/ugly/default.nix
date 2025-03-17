@@ -39,17 +39,16 @@ stdenv.mkDerivation rec {
     hash = "sha256-nfb9haclYkHvuyX4SzN1deOzRSZvXas4STceRpR3nxg=";
   };
 
-  nativeBuildInputs =
-    [
-      meson
-      ninja
-      gettext
-      pkg-config
-      python3
-    ]
-    ++ lib.optionals enableDocumentation [
-      hotdoc
-    ];
+  nativeBuildInputs = [
+    meson
+    ninja
+    gettext
+    pkg-config
+    python3
+  ]
+  ++ lib.optionals enableDocumentation [
+    hotdoc
+  ];
 
   buildInputs =
     [
@@ -71,26 +70,25 @@ stdenv.mkDerivation rec {
       DiskArbitration
     ];
 
-  mesonFlags =
-    [
-      "-Dsidplay=disabled" # sidplay / sidplay/player.h isn't packaged in nixpkgs as of writing
-      (lib.mesonEnable "doc" enableDocumentation)
-    ]
-    ++ (
-      if enableGplPlugins then
-        [
-          "-Dgpl=enabled"
-        ]
-      else
-        [
-          "-Da52dec=disabled"
-          "-Dcdio=disabled"
-          "-Ddvdread=disabled"
-          "-Dmpeg2dec=disabled"
-          "-Dsidplay=disabled"
-          "-Dx264=disabled"
-        ]
-    );
+  mesonFlags = [
+    "-Dsidplay=disabled" # sidplay / sidplay/player.h isn't packaged in nixpkgs as of writing
+    (lib.mesonEnable "doc" enableDocumentation)
+  ]
+  ++ (
+    if enableGplPlugins then
+      [
+        "-Dgpl=enabled"
+      ]
+    else
+      [
+        "-Da52dec=disabled"
+        "-Dcdio=disabled"
+        "-Ddvdread=disabled"
+        "-Dmpeg2dec=disabled"
+        "-Dsidplay=disabled"
+        "-Dx264=disabled"
+      ]
+  );
 
   postPatch = ''
     patchShebangs \

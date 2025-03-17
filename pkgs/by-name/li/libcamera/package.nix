@@ -104,7 +104,8 @@ stdenv.mkDerivation rec {
     graphviz
     doxygen
     openssl
-  ] ++ lib.optional withQcam qt6.wrapQtAppsHook;
+  ]
+  ++ lib.optional withQcam qt6.wrapQtAppsHook;
 
   mesonFlags = [
     "-Dv4l2=true"

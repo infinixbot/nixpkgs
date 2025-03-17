@@ -87,27 +87,26 @@ stdenv.mkDerivation rec {
 
   __darwinAllowLocalNetworking = true;
 
-  configureFlags =
-    [
-      "--enable-user-session"
-      "--enable-xml-docs"
-      "--libexecdir=${placeholder "out"}/libexec"
-      "--datadir=/etc"
-      "--localstatedir=/var"
-      "--runstatedir=/run"
-      "--sysconfdir=/etc"
-      "--with-session-socket-dir=/tmp"
-      "--with-system-pid-file=/run/dbus/pid"
-      "--with-system-socket=/run/dbus/system_bus_socket"
-      "--with-systemdsystemunitdir=${placeholder "out"}/etc/systemd/system"
-      "--with-systemduserunitdir=${placeholder "out"}/etc/systemd/user"
-    ]
-    ++ lib.optional (!x11Support) "--without-x"
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      "--enable-apparmor"
-      "--enable-libaudit"
-    ]
-    ++ lib.optionals enableSystemd [ "SYSTEMCTL=${systemdMinimal}/bin/systemctl" ];
+  configureFlags = [
+    "--enable-user-session"
+    "--enable-xml-docs"
+    "--libexecdir=${placeholder "out"}/libexec"
+    "--datadir=/etc"
+    "--localstatedir=/var"
+    "--runstatedir=/run"
+    "--sysconfdir=/etc"
+    "--with-session-socket-dir=/tmp"
+    "--with-system-pid-file=/run/dbus/pid"
+    "--with-system-socket=/run/dbus/system_bus_socket"
+    "--with-systemdsystemunitdir=${placeholder "out"}/etc/systemd/system"
+    "--with-systemduserunitdir=${placeholder "out"}/etc/systemd/user"
+  ]
+  ++ lib.optional (!x11Support) "--without-x"
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    "--enable-apparmor"
+    "--enable-libaudit"
+  ]
+  ++ lib.optionals enableSystemd [ "SYSTEMCTL=${systemdMinimal}/bin/systemctl" ];
 
   NIX_CFLAGS_LINK = lib.optionalString (!stdenv.hostPlatform.isDarwin) "-Wl,--as-needed";
 

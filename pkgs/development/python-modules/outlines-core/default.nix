@@ -74,7 +74,8 @@ buildPythonPackage rec {
     ];
   };
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ lib.flatten (lib.attrValues optional-dependencies);
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ lib.flatten (lib.attrValues optional-dependencies);
 
   disabledTests = [
     # Tests that need to download from Hugging Face Hub.

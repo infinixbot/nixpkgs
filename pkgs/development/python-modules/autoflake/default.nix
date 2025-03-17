@@ -20,7 +20,8 @@ buildPythonPackage rec {
 
   nativeBuildInputs = [ hatchling ];
 
-  propagatedBuildInputs = [ pyflakes ] ++ lib.optional (pythonOlder "3.11") tomli;
+  propagatedBuildInputs = [ pyflakes ]
+    ++ lib.optional (pythonOlder "3.11") tomli;
 
   nativeCheckInputs = [ pytestCheckHook ];
 

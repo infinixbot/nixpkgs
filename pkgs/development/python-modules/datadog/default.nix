@@ -49,16 +49,15 @@ buildPythonPackage rec {
     "tests/integration/api/test_*.py"
   ];
 
-  disabledTests =
-    [
-      "test_default_settings_set"
-      # https://github.com/DataDog/datadogpy/issues/746
-      "TestDogshell"
-    ]
-    ++ lib.optionals (pythonAtLeast "3.13") [
-      # https://github.com/DataDog/datadogpy/issues/880
-      "test_timed_coroutine"
-    ];
+  disabledTests = [
+    "test_default_settings_set"
+    # https://github.com/DataDog/datadogpy/issues/746
+    "TestDogshell"
+  ]
+  ++ lib.optionals (pythonAtLeast "3.13") [
+    # https://github.com/DataDog/datadogpy/issues/880
+    "test_timed_coroutine"
+  ];
 
   pythonImportsCheck = [ "datadog" ];
 

@@ -25,15 +25,14 @@ stdenv.mkDerivation rec {
   };
 
   strictDeps = true;
-  nativeBuildInputs =
-    [
-      makeWrapper
-      pkg-config
-    ]
-    ++ lib.optionals cupsSupport [
-      cups
-      perl
-    ]; # for cups-config
+  nativeBuildInputs = [
+    makeWrapper
+    pkg-config
+  ]
+  ++ lib.optionals cupsSupport [
+    cups
+    perl
+  ]; # for cups-config
   buildInputs =
     [
       ijs

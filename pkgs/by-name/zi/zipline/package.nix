@@ -90,7 +90,8 @@ stdenv.mkDerivation (finalAttrs: {
   env = {
     YARN_ENABLE_TELEMETRY = "0";
     ZIPLINE_DOCKER_BUILD = "true";
-  } // environment;
+  }
+  // environment;
 
   configurePhase = ''
     export HOME="$NIX_BUILD_TOP"

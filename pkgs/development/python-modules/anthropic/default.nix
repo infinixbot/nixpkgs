@@ -66,15 +66,14 @@ buildPythonPackage rec {
 
   pythonImportsCheck = [ "anthropic" ];
 
-  disabledTests =
-    [
-      # Test require network access
-      "test_copy_build_request"
-    ]
-    ++ lib.optionals (pythonAtLeast "3.13") [
-      # Fails on RuntimeWarning: coroutine method 'aclose' of 'AsyncStream._iter_events' was never awaited
-      "test_multi_byte_character_multiple_chunks[async]"
-    ];
+  disabledTests = [
+    # Test require network access
+    "test_copy_build_request"
+  ]
+  ++ lib.optionals (pythonAtLeast "3.13") [
+    # Fails on RuntimeWarning: coroutine method 'aclose' of 'AsyncStream._iter_events' was never awaited
+    "test_multi_byte_character_multiple_chunks[async]"
+  ];
 
   disabledTestPaths = [
     # Test require network access

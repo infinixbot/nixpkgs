@@ -32,8 +32,7 @@ rustPlatform.buildRustPackage rec {
     installShellFiles
     asciidoctor
   ];
-  buildInputs =
-    [ ncurses ]
+  buildInputs = [ ncurses ]
     ++ (
       if stdenv.hostPlatform.isDarwin then
         [

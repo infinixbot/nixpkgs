@@ -41,30 +41,29 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      SDL2
-      SDL2_image
-      SDL2_mixer
-      SDL2_net
-      SDL2_ttf
-      pango
-      gettext
-      boost
-      libvorbis
-      fribidi
-      dbus
-      libpng
-      pcre
-      openssl
-      icu
-      lua
-      curl
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      Cocoa
-      Foundation
-    ];
+  buildInputs = [
+    SDL2
+    SDL2_image
+    SDL2_mixer
+    SDL2_net
+    SDL2_ttf
+    pango
+    gettext
+    boost
+    libvorbis
+    fribidi
+    dbus
+    libpng
+    pcre
+    openssl
+    icu
+    lua
+    curl
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    Cocoa
+    Foundation
+  ];
 
   cmakeFlags = [
     "-DENABLE_SYSTEM_LUA=ON"

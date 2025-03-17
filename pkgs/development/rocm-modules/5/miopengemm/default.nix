@@ -39,19 +39,18 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "miopengemm";
   version = "5.5.0";
 
-  outputs =
-    [
-      "out"
-    ]
-    ++ lib.optionals buildDocs [
-      "doc"
-    ]
-    ++ lib.optionals buildTests [
-      "test"
-    ]
-    ++ lib.optionals buildBenchmarks [
-      "benchmark"
-    ];
+  outputs = [
+    "out"
+  ]
+  ++ lib.optionals buildDocs [
+    "doc"
+  ]
+  ++ lib.optionals buildTests [
+    "test"
+  ]
+  ++ lib.optionals buildBenchmarks [
+    "benchmark"
+  ];
 
   # Deprecated? https://github.com/ROCmSoftwarePlatform/MIOpenGEMM/issues/62
   src = fetchFromGitHub {
@@ -101,11 +100,10 @@ stdenv.mkDerivation (finalAttrs: {
     ];
 
   # Unfortunately, it seems like we have to call make on these manually
-  postBuild =
-    lib.optionalString buildDocs ''
-      export HOME=$(mktemp -d)
-      make doc
-    ''
+  postBuild = lib.optionalString buildDocs ''
+    export HOME=$(mktemp -d)
+    make doc
+  ''
     + lib.optionalString buildTests ''
       make check
     ''
@@ -113,11 +111,10 @@ stdenv.mkDerivation (finalAttrs: {
       make examples
     '';
 
-  postInstall =
-    lib.optionalString buildDocs ''
-      mv ../doc/html $out/share/doc/miopengemm
-      mv ../doc/pdf/miopengemm.pdf $out/share/doc/miopengemm
-    ''
+  postInstall = lib.optionalString buildDocs ''
+    mv ../doc/html $out/share/doc/miopengemm
+    mv ../doc/pdf/miopengemm.pdf $out/share/doc/miopengemm
+  ''
     + lib.optionalString buildTests ''
       mkdir -p $test/bin
       find tests -executable -type f -exec mv {} $test/bin \;

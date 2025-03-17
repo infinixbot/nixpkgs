@@ -32,17 +32,16 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs =
+  buildInputs = [
+    boost # for tests
+    fontconfig
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin (
+    with darwin.apple_sdk.frameworks;
     [
-      boost # for tests
-      fontconfig
+      ApplicationServices
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        ApplicationServices
-      ]
-    );
+  );
 
   propagatedBuildInputs = [
     cairo

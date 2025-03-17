@@ -25,7 +25,8 @@ stdenv.mkDerivation rec {
     zsh
     coreutils
     procps
-  ] ++ lib.optional stdenv.hostPlatform.isLinux inetutils;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isLinux inetutils;
 
   buildPhase = ''
     cd doc

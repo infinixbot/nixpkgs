@@ -396,14 +396,13 @@ in
                 # unfortunately networkd cannot encode dependencies of netdevs on addresses/routes,
                 # so we cannot specify Local=, Peer=, PeerPort=. this looks like a missing feature
                 # in networkd.
-                fooOverUDPConfig =
-                  {
-                    Port = fou.port;
-                    Encapsulation = if fou.protocol != null then "FooOverUDP" else "GenericUDPEncapsulation";
-                  }
-                  // (optionalAttrs (fou.protocol != null) {
-                    Protocol = fou.protocol;
-                  });
+                fooOverUDPConfig = {
+                  Port = fou.port;
+                  Encapsulation = if fou.protocol != null then "FooOverUDP" else "GenericUDPEncapsulation";
+                }
+                // (optionalAttrs (fou.protocol != null) {
+                  Protocol = fou.protocol;
+                });
               };
             }
           )
@@ -509,7 +508,8 @@ in
                 after = [
                   "network-pre.target"
                   "ovs-vswitchd.service"
-                ] ++ deps;
+                ]
+                ++ deps;
                 wants = deps; # if one or more interface fails, the switch should continue to run
                 serviceConfig.Type = "oneshot";
                 serviceConfig.RemainAfterExit = true;

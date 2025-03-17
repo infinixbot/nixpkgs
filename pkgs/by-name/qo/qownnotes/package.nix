@@ -41,7 +41,8 @@ stdenv.mkDerivation (finalAttrs: {
     qt6Packages.qtsvg
     qt6Packages.qtwebsockets
     botan2
-  ] ++ lib.optionals stdenv.hostPlatform.isLinux [ qt6Packages.qtwayland ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [ qt6Packages.qtwayland ];
 
   cmakeFlags = [
     "-DQON_QT6_BUILD=ON"

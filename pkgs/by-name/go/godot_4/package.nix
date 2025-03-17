@@ -96,20 +96,19 @@ let
     #
     # See also 'hash' in
     # https://docs.godotengine.org/en/stable/classes/class_engine.html#class-engine-method-get-version-info
-    preConfigure =
-      ''
-        mkdir -p .git
-        echo ${commitHash} > .git/HEAD
-      ''
-      + lib.optionalString withMono ''
-        # TODO: avoid pulling in dependencies of windows-only project
-        dotnet sln modules/mono/editor/GodotTools/GodotTools.sln \
-          remove modules/mono/editor/GodotTools/GodotTools.OpenVisualStudio/GodotTools.OpenVisualStudio.csproj
+    preConfigure = ''
+      mkdir -p .git
+      echo ${commitHash} > .git/HEAD
+    ''
+    + lib.optionalString withMono ''
+      # TODO: avoid pulling in dependencies of windows-only project
+      dotnet sln modules/mono/editor/GodotTools/GodotTools.sln \
+        remove modules/mono/editor/GodotTools/GodotTools.OpenVisualStudio/GodotTools.OpenVisualStudio.csproj
 
-        dotnet restore modules/mono/glue/GodotSharp/GodotSharp.sln
-        dotnet restore modules/mono/editor/GodotTools/GodotTools.sln
-        dotnet restore modules/mono/editor/Godot.NET.Sdk/Godot.NET.Sdk.sln
-      '';
+      dotnet restore modules/mono/glue/GodotSharp/GodotSharp.sln
+      dotnet restore modules/mono/editor/GodotTools/GodotTools.sln
+      dotnet restore modules/mono/editor/Godot.NET.Sdk/Godot.NET.Sdk.sln
+    '';
 
     # From: https://github.com/godotengine/godot/blob/4.2.2-stable/SConstruct
     sconsFlags = mkSconsFlagsFromAttrSet {
@@ -170,69 +169,67 @@ let
       python modules/mono/build_scripts/build_assemblies.py --godot-output-dir bin --precision=${withPrecision}
     '';
 
-    runtimeDependencies =
-      [
-        alsa-lib
-        libGL
-        vulkan-loader
-      ]
-      ++ lib.optionals withX11 [
-        libX11
-        libXcursor
-        libXext
-        libXfixes
-        libXi
-        libXinerama
-        libxkbcommon
-        libXrandr
-        libXrender
-      ]
-      ++ lib.optionals withWayland [
-        libdecor
-        wayland
-      ]
-      ++ lib.optionals withDbus [
-        dbus
-        dbus.lib
-      ]
-      ++ lib.optionals withFontconfig [
-        fontconfig
-        fontconfig.lib
-      ]
-      ++ lib.optionals withPulseaudio [ libpulseaudio ]
-      ++ lib.optionals withSpeechd [ speechd-minimal ]
-      ++ lib.optionals withUdev [ udev ];
+    runtimeDependencies = [
+      alsa-lib
+      libGL
+      vulkan-loader
+    ]
+    ++ lib.optionals withX11 [
+      libX11
+      libXcursor
+      libXext
+      libXfixes
+      libXi
+      libXinerama
+      libxkbcommon
+      libXrandr
+      libXrender
+    ]
+    ++ lib.optionals withWayland [
+      libdecor
+      wayland
+    ]
+    ++ lib.optionals withDbus [
+      dbus
+      dbus.lib
+    ]
+    ++ lib.optionals withFontconfig [
+      fontconfig
+      fontconfig.lib
+    ]
+    ++ lib.optionals withPulseaudio [ libpulseaudio ]
+    ++ lib.optionals withSpeechd [ speechd-minimal ]
+    ++ lib.optionals withUdev [ udev ];
 
-    installPhase =
-      ''
-        runHook preInstall
+    installPhase = ''
+      runHook preInstall
 
-        mkdir -p "$out/bin"
-        cp bin/godot.* $out/bin/godot4${suffix}
+      mkdir -p "$out/bin"
+      cp bin/godot.* $out/bin/godot4${suffix}
 
-        installManPage misc/dist/linux/godot.6
+      installManPage misc/dist/linux/godot.6
 
-        mkdir -p "$out"/share/{applications,icons/hicolor/scalable/apps}
-        cp misc/dist/linux/org.godotengine.Godot.desktop "$out/share/applications/org.godotengine.Godot4${suffix}.desktop"
-        substituteInPlace "$out/share/applications/org.godotengine.Godot4${suffix}.desktop" \
-          --replace "Exec=godot" "Exec=$out/bin/godot4${suffix}" \
-          --replace "Godot Engine" "Godot Engine 4"
-        cp icon.svg "$out/share/icons/hicolor/scalable/apps/godot.svg"
-        cp icon.png "$out/share/icons/godot.png"
-      ''
-      + lib.optionalString withMono ''
-        cp -r bin/GodotSharp/ $out/bin/
-        wrapProgram $out/bin/godot4${suffix} \
-          --set DOTNET_ROOT ${dotnet-sdk} \
-          --prefix PATH : "${
-            lib.makeBinPath [
-              dotnet-sdk
-            ]
-          }"
-      ''
-      + ''
-        runHook postInstall
-      '';
+      mkdir -p "$out"/share/{applications,icons/hicolor/scalable/apps}
+      cp misc/dist/linux/org.godotengine.Godot.desktop "$out/share/applications/org.godotengine.Godot4${suffix}.desktop"
+      substituteInPlace "$out/share/applications/org.godotengine.Godot4${suffix}.desktop" \
+        --replace "Exec=godot" "Exec=$out/bin/godot4${suffix}" \
+        --replace "Godot Engine" "Godot Engine 4"
+      cp icon.svg "$out/share/icons/hicolor/scalable/apps/godot.svg"
+      cp icon.png "$out/share/icons/godot.png"
+    ''
+    + lib.optionalString withMono ''
+      cp -r bin/GodotSharp/ $out/bin/
+      wrapProgram $out/bin/godot4${suffix} \
+        --set DOTNET_ROOT ${dotnet-sdk} \
+        --prefix PATH : "${
+          lib.makeBinPath [
+            dotnet-sdk
+          ]
+        }"
+    ''
+    + ''
+      runHook postInstall
+    '';
 
     passthru.tests = {
       version = testers.testVersion {
@@ -254,7 +251,8 @@ let
       platforms = [
         "x86_64-linux"
         "aarch64-linux"
-      ] ++ lib.optional (!withMono) "i686-linux";
+      ]
+      ++ lib.optional (!withMono) "i686-linux";
       maintainers = with lib.maintainers; [
         shiryel
         corngood

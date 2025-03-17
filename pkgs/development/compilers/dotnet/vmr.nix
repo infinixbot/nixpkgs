@@ -150,192 +150,191 @@ stdenv.mkDerivation rec {
       ./fix-aspnetcore-portable-build.patch
     ];
 
-  postPatch =
+  postPatch = ''
+    # set the sdk version in global.json to match the bootstrap sdk
+    jq '(.tools.dotnet=$dotnet)' global.json --arg dotnet "$(${bootstrapSdk}/bin/dotnet --version)" > global.json~
+    mv global.json{~,}
+
+    patchShebangs $(find -name \*.sh -type f -executable)
+
+    # I'm not sure why this is required, but these files seem to use the wrong
+    # property name.
+    # TODO: not needed in 9.0?
+    [[ ! -f src/xliff-tasks/eng/Versions.props ]] || \
+      sed -i 's:\bVersionBase\b:VersionPrefix:g' \
+        src/xliff-tasks/eng/Versions.props
+
+    # at least in 9.0 preview 1, this package depends on a specific beta build
+    # of System.CommandLine
+    xmlstarlet ed \
+      --inplace \
+      -s //Project -t elem -n PropertyGroup \
+      -s \$prev -t elem -n NoWarn -v '$(NoWarn);NU1603' \
+      src/nuget-client/src/NuGet.Core/NuGet.CommandLine.XPlat/NuGet.CommandLine.XPlat.csproj
+
+    # AD0001 crashes intermittently in source-build-reference-packages with
+    # CSC : error AD0001: Analyzer 'Microsoft.NetCore.CSharp.Analyzers.Runtime.CSharpDetectPreviewFeatureAnalyzer' threw an exception of type 'System.NullReferenceException' with message 'Object reference not set to an instance of an object.'.
+    # possibly related to https://github.com/dotnet/runtime/issues/90356
+    xmlstarlet ed \
+      --inplace \
+      -s //Project -t elem -n PropertyGroup \
+      -s \$prev -t elem -n NoWarn -v '$(NoWarn);AD0001' \
+      src/source-build-reference-packages/src/referencePackages/Directory.Build.props
+
+    # https://github.com/microsoft/ApplicationInsights-dotnet/issues/2848
+    xmlstarlet ed \
+      --inplace \
+      -u //_:Project/_:PropertyGroup/_:BuildNumber -v 0 \
+      src/source-build-externals/src/application-insights/.props/_GlobalStaticVersion.props
+
+    # this fixes compile errors with clang 15 (e.g. darwin)
+    substituteInPlace \
+      src/runtime/src/native/libs/CMakeLists.txt \
+      --replace-fail 'add_compile_options(-Weverything)' 'add_compile_options(-Wall)'
+
+    # strip native symbols in runtime
+    # see: https://github.com/dotnet/source-build/issues/2543
+    xmlstarlet ed \
+      --inplace \
+      -s //Project -t elem -n PropertyGroup \
+      -s \$prev -t elem -n KeepNativeSymbols -v false \
+      src/runtime/Directory.Build.props
+  ''
+  + lib.optionalString (lib.versionAtLeast version "9") ''
+    # repro.csproj fails to restore due to missing freebsd packages
+    xmlstarlet ed \
+      --inplace \
+      -s //Project -t elem -n PropertyGroup \
+      -s \$prev -t elem -n RuntimeIdentifiers -v ${targetRid} \
+      src/runtime/src/coreclr/tools/aot/ILCompiler/repro/repro.csproj
+
+    # https://github.com/dotnet/runtime/pull/98559#issuecomment-1965338627
+    xmlstarlet ed \
+      --inplace \
+      -s //Project -t elem -n PropertyGroup \
+      -s \$prev -t elem -n NoWarn -v '$(NoWarn);CS9216' \
+      src/runtime/Directory.Build.props
+
+    # patch packages installed from npm cache
+    xmlstarlet ed \
+      --inplace \
+      -s //Project -t elem -n Import \
+      -i \$prev -t attr -n Project -v "${./patch-npm-packages.proj}" \
+      src/aspnetcore/eng/DotNetBuild.props
+
+    # https://github.com/dotnet/source-build/issues/3131#issuecomment-2030215805
+    substituteInPlace \
+      src/aspnetcore/eng/Dependencies.props \
+      --replace-fail \
+      "'\$(DotNetBuildSourceOnly)' == 'true'" \
+      "'\$(DotNetBuildSourceOnly)' == 'true' and \$(PortableBuild) == 'false'"
+
+    # https://github.com/dotnet/source-build/issues/4325
+    xmlstarlet ed \
+      --inplace \
+      -r '//Target[@Name="UnpackTarballs"]/Move' -v Copy \
+      eng/init-source-only.proj
+
+    # error: _FORTIFY_SOURCE requires compiling with optimization (-O) [-Werror,-W#warnings]
+    substituteInPlace \
+      src/runtime/src/coreclr/ilasm/CMakeLists.txt \
+      --replace-fail 'set_source_files_properties( prebuilt/asmparse.cpp PROPERTIES COMPILE_FLAGS "-O0" )' ""
+
+    # https://github.com/dotnet/source-build/issues/4444
+    xmlstarlet ed \
+      --inplace \
+      -s '//Project/Target/MSBuild[@Targets="Restore"]' \
+      -t attr -n Properties -v "NUGET_PACKAGES='\$(CurrentRepoSourceBuildPackageCache)'" \
+      src/aspnetcore/eng/Tools.props
+  ''
+  + lib.optionalString isLinux (
     ''
-      # set the sdk version in global.json to match the bootstrap sdk
-      jq '(.tools.dotnet=$dotnet)' global.json --arg dotnet "$(${bootstrapSdk}/bin/dotnet --version)" > global.json~
-      mv global.json{~,}
-
-      patchShebangs $(find -name \*.sh -type f -executable)
-
-      # I'm not sure why this is required, but these files seem to use the wrong
-      # property name.
-      # TODO: not needed in 9.0?
-      [[ ! -f src/xliff-tasks/eng/Versions.props ]] || \
-        sed -i 's:\bVersionBase\b:VersionPrefix:g' \
-          src/xliff-tasks/eng/Versions.props
-
-      # at least in 9.0 preview 1, this package depends on a specific beta build
-      # of System.CommandLine
-      xmlstarlet ed \
-        --inplace \
-        -s //Project -t elem -n PropertyGroup \
-        -s \$prev -t elem -n NoWarn -v '$(NoWarn);NU1603' \
-        src/nuget-client/src/NuGet.Core/NuGet.CommandLine.XPlat/NuGet.CommandLine.XPlat.csproj
-
-      # AD0001 crashes intermittently in source-build-reference-packages with
-      # CSC : error AD0001: Analyzer 'Microsoft.NetCore.CSharp.Analyzers.Runtime.CSharpDetectPreviewFeatureAnalyzer' threw an exception of type 'System.NullReferenceException' with message 'Object reference not set to an instance of an object.'.
-      # possibly related to https://github.com/dotnet/runtime/issues/90356
-      xmlstarlet ed \
-        --inplace \
-        -s //Project -t elem -n PropertyGroup \
-        -s \$prev -t elem -n NoWarn -v '$(NoWarn);AD0001' \
-        src/source-build-reference-packages/src/referencePackages/Directory.Build.props
-
-      # https://github.com/microsoft/ApplicationInsights-dotnet/issues/2848
-      xmlstarlet ed \
-        --inplace \
-        -u //_:Project/_:PropertyGroup/_:BuildNumber -v 0 \
-        src/source-build-externals/src/application-insights/.props/_GlobalStaticVersion.props
-
-      # this fixes compile errors with clang 15 (e.g. darwin)
       substituteInPlace \
-        src/runtime/src/native/libs/CMakeLists.txt \
-        --replace-fail 'add_compile_options(-Weverything)' 'add_compile_options(-Wall)'
+        src/runtime/src/native/libs/System.Security.Cryptography.Native/opensslshim.c \
+        --replace-fail '"libssl.so"' '"${openssl.out}/lib/libssl.so"'
 
-      # strip native symbols in runtime
-      # see: https://github.com/dotnet/source-build/issues/2543
-      xmlstarlet ed \
-        --inplace \
-        -s //Project -t elem -n PropertyGroup \
-        -s \$prev -t elem -n KeepNativeSymbols -v false \
-        src/runtime/Directory.Build.props
+      substituteInPlace \
+        src/runtime/src/native/libs/System.Net.Security.Native/pal_gssapi.c \
+        --replace-fail '"libgssapi_krb5.so.2"' '"${lib.getLib krb5}/lib/libgssapi_krb5.so.2"'
+
+      substituteInPlace \
+        src/runtime/src/native/libs/System.Globalization.Native/pal_icushim.c \
+        --replace-fail '"libicui18n.so"' '"${icu}/lib/libicui18n.so"' \
+        --replace-fail '"libicuuc.so"' '"${icu}/lib/libicuuc.so"'
     ''
     + lib.optionalString (lib.versionAtLeast version "9") ''
-      # repro.csproj fails to restore due to missing freebsd packages
-      xmlstarlet ed \
-        --inplace \
-        -s //Project -t elem -n PropertyGroup \
-        -s \$prev -t elem -n RuntimeIdentifiers -v ${targetRid} \
-        src/runtime/src/coreclr/tools/aot/ILCompiler/repro/repro.csproj
+      substituteInPlace \
+        src/runtime/src/native/libs/System.Globalization.Native/pal_icushim.c \
+        --replace-fail '#define VERSIONED_LIB_NAME_LEN 64' '#define VERSIONED_LIB_NAME_LEN 256'
+    ''
+    + lib.optionalString (lib.versionOlder version "9") ''
+      substituteInPlace \
+        src/runtime/src/native/libs/System.Globalization.Native/pal_icushim.c \
+        --replace-warn 'libicuucName[64]' 'libicuucName[256]' \
+        --replace-warn 'libicui18nName[64]' 'libicui18nName[256]'
+    ''
+  )
+  + lib.optionalString isDarwin (
+    ''
+      substituteInPlace \
+        src/runtime/src/native/libs/System.Globalization.Native/CMakeLists.txt \
+        --replace-fail '/usr/lib/libicucore.dylib' '${darwin.ICU}/lib/libicucore.dylib'
 
-      # https://github.com/dotnet/runtime/pull/98559#issuecomment-1965338627
+      substituteInPlace \
+        src/runtime/src/installer/managed/Microsoft.NET.HostModel/HostModelUtils.cs \
+        src/sdk/src/Tasks/Microsoft.NET.Build.Tasks/targets/Microsoft.NET.Sdk.targets \
+        --replace-fail '/usr/bin/codesign' '${sigtool}/bin/codesign'
+
+      # fix: strip: error: unknown argument '-n'
+      substituteInPlace \
+        src/runtime/eng/native/functions.cmake \
+        --replace-fail ' -no_code_signature_warning' ""
+
+      # [...]/installer.singlerid.targets(434,5): error MSB3073: The command "pkgbuild [...]" exited with code 127
       xmlstarlet ed \
         --inplace \
         -s //Project -t elem -n PropertyGroup \
-        -s \$prev -t elem -n NoWarn -v '$(NoWarn);CS9216' \
+        -s \$prev -t elem -n SkipInstallerBuild -v true \
         src/runtime/Directory.Build.props
 
-      # patch packages installed from npm cache
-      xmlstarlet ed \
-        --inplace \
-        -s //Project -t elem -n Import \
-        -i \$prev -t attr -n Project -v "${./patch-npm-packages.proj}" \
-        src/aspnetcore/eng/DotNetBuild.props
-
-      # https://github.com/dotnet/source-build/issues/3131#issuecomment-2030215805
+      # stop passing -sdk without a path
+      # stop using xcrun
+      # add -module-cache-path to fix swift errors, see sandboxProfile
+      # <unknown>:0: error: unable to open output file '/var/folders/[...]/C/clang/ModuleCache/[...]/SwiftShims-[...].pcm': 'Operation not permitted'
+      # <unknown>:0: error: could not build Objective-C module 'SwiftShims'
       substituteInPlace \
-        src/aspnetcore/eng/Dependencies.props \
-        --replace-fail \
-        "'\$(DotNetBuildSourceOnly)' == 'true'" \
-        "'\$(DotNetBuildSourceOnly)' == 'true' and \$(PortableBuild) == 'false'"
-
-      # https://github.com/dotnet/source-build/issues/4325
-      xmlstarlet ed \
-        --inplace \
-        -r '//Target[@Name="UnpackTarballs"]/Move' -v Copy \
-        eng/init-source-only.proj
-
-      # error: _FORTIFY_SOURCE requires compiling with optimization (-O) [-Werror,-W#warnings]
-      substituteInPlace \
-        src/runtime/src/coreclr/ilasm/CMakeLists.txt \
-        --replace-fail 'set_source_files_properties( prebuilt/asmparse.cpp PROPERTIES COMPILE_FLAGS "-O0" )' ""
-
-      # https://github.com/dotnet/source-build/issues/4444
-      xmlstarlet ed \
-        --inplace \
-        -s '//Project/Target/MSBuild[@Targets="Restore"]' \
-        -t attr -n Properties -v "NUGET_PACKAGES='\$(CurrentRepoSourceBuildPackageCache)'" \
-        src/aspnetcore/eng/Tools.props
+        src/runtime/src/native/libs/System.Security.Cryptography.Native.Apple/CMakeLists.txt \
+        --replace-fail ' -sdk ''${CMAKE_OSX_SYSROOT}' "" \
+        --replace-fail 'xcrun swiftc' 'swiftc -module-cache-path "$ENV{HOME}/.cache/module-cache"'
     ''
-    + lib.optionalString isLinux (
-      ''
-        substituteInPlace \
-          src/runtime/src/native/libs/System.Security.Cryptography.Native/opensslshim.c \
-          --replace-fail '"libssl.so"' '"${openssl.out}/lib/libssl.so"'
+    + lib.optionalString (lib.versionAtLeast version "9") ''
+      # fix: strip: error: unknown argument '-n'
+      substituteInPlace \
+        src/runtime/src/coreclr/nativeaot/BuildIntegration/Microsoft.NETCore.Native.targets \
+        src/runtime/src/native/managed/native-library.targets \
+        --replace-fail ' -no_code_signature_warning' ""
 
-        substituteInPlace \
-          src/runtime/src/native/libs/System.Net.Security.Native/pal_gssapi.c \
-          --replace-fail '"libgssapi_krb5.so.2"' '"${lib.getLib krb5}/lib/libgssapi_krb5.so.2"'
+      # ld: library not found for -ld_classic
+      substituteInPlace \
+        src/runtime/src/coreclr/nativeaot/BuildIntegration/Microsoft.NETCore.Native.Unix.targets \
+        src/runtime/src/coreclr/tools/aot/ILCompiler/ILCompiler.csproj \
+        --replace-fail 'Include="-ld_classic"' ""
+    ''
+    + lib.optionalString (lib.versionOlder version "9") ''
+      # [...]/build.proj(123,5): error : Did not find PDBs for the following SDK files:
+      # [...]/build.proj(123,5): error : sdk/8.0.102/System.Resources.Extensions.dll
+      # [...]/build.proj(123,5): error : sdk/8.0.102/System.CodeDom.dll
+      # [...]/build.proj(123,5): error : sdk/8.0.102/FSharp/System.Resources.Extensions.dll
+      # [...]/build.proj(123,5): error : sdk/8.0.102/FSharp/System.CodeDom.dll
+      substituteInPlace \
+        build.proj \
+        --replace-fail 'FailOnMissingPDBs="true"' 'FailOnMissingPDBs="false"'
 
-        substituteInPlace \
-          src/runtime/src/native/libs/System.Globalization.Native/pal_icushim.c \
-          --replace-fail '"libicui18n.so"' '"${icu}/lib/libicui18n.so"' \
-          --replace-fail '"libicuuc.so"' '"${icu}/lib/libicuuc.so"'
-      ''
-      + lib.optionalString (lib.versionAtLeast version "9") ''
-        substituteInPlace \
-          src/runtime/src/native/libs/System.Globalization.Native/pal_icushim.c \
-          --replace-fail '#define VERSIONED_LIB_NAME_LEN 64' '#define VERSIONED_LIB_NAME_LEN 256'
-      ''
-      + lib.optionalString (lib.versionOlder version "9") ''
-        substituteInPlace \
-          src/runtime/src/native/libs/System.Globalization.Native/pal_icushim.c \
-          --replace-warn 'libicuucName[64]' 'libicuucName[256]' \
-          --replace-warn 'libicui18nName[64]' 'libicui18nName[256]'
-      ''
-    )
-    + lib.optionalString isDarwin (
-      ''
-        substituteInPlace \
-          src/runtime/src/native/libs/System.Globalization.Native/CMakeLists.txt \
-          --replace-fail '/usr/lib/libicucore.dylib' '${darwin.ICU}/lib/libicucore.dylib'
-
-        substituteInPlace \
-          src/runtime/src/installer/managed/Microsoft.NET.HostModel/HostModelUtils.cs \
-          src/sdk/src/Tasks/Microsoft.NET.Build.Tasks/targets/Microsoft.NET.Sdk.targets \
-          --replace-fail '/usr/bin/codesign' '${sigtool}/bin/codesign'
-
-        # fix: strip: error: unknown argument '-n'
-        substituteInPlace \
-          src/runtime/eng/native/functions.cmake \
-          --replace-fail ' -no_code_signature_warning' ""
-
-        # [...]/installer.singlerid.targets(434,5): error MSB3073: The command "pkgbuild [...]" exited with code 127
-        xmlstarlet ed \
-          --inplace \
-          -s //Project -t elem -n PropertyGroup \
-          -s \$prev -t elem -n SkipInstallerBuild -v true \
-          src/runtime/Directory.Build.props
-
-        # stop passing -sdk without a path
-        # stop using xcrun
-        # add -module-cache-path to fix swift errors, see sandboxProfile
-        # <unknown>:0: error: unable to open output file '/var/folders/[...]/C/clang/ModuleCache/[...]/SwiftShims-[...].pcm': 'Operation not permitted'
-        # <unknown>:0: error: could not build Objective-C module 'SwiftShims'
-        substituteInPlace \
-          src/runtime/src/native/libs/System.Security.Cryptography.Native.Apple/CMakeLists.txt \
-          --replace-fail ' -sdk ''${CMAKE_OSX_SYSROOT}' "" \
-          --replace-fail 'xcrun swiftc' 'swiftc -module-cache-path "$ENV{HOME}/.cache/module-cache"'
-      ''
-      + lib.optionalString (lib.versionAtLeast version "9") ''
-        # fix: strip: error: unknown argument '-n'
-        substituteInPlace \
-          src/runtime/src/coreclr/nativeaot/BuildIntegration/Microsoft.NETCore.Native.targets \
-          src/runtime/src/native/managed/native-library.targets \
-          --replace-fail ' -no_code_signature_warning' ""
-
-        # ld: library not found for -ld_classic
-        substituteInPlace \
-          src/runtime/src/coreclr/nativeaot/BuildIntegration/Microsoft.NETCore.Native.Unix.targets \
-          src/runtime/src/coreclr/tools/aot/ILCompiler/ILCompiler.csproj \
-          --replace-fail 'Include="-ld_classic"' ""
-      ''
-      + lib.optionalString (lib.versionOlder version "9") ''
-        # [...]/build.proj(123,5): error : Did not find PDBs for the following SDK files:
-        # [...]/build.proj(123,5): error : sdk/8.0.102/System.Resources.Extensions.dll
-        # [...]/build.proj(123,5): error : sdk/8.0.102/System.CodeDom.dll
-        # [...]/build.proj(123,5): error : sdk/8.0.102/FSharp/System.Resources.Extensions.dll
-        # [...]/build.proj(123,5): error : sdk/8.0.102/FSharp/System.CodeDom.dll
-        substituteInPlace \
-          build.proj \
-          --replace-fail 'FailOnMissingPDBs="true"' 'FailOnMissingPDBs="false"'
-
-        substituteInPlace \
-          src/runtime/src/mono/CMakeLists.txt \
-          --replace-fail '/usr/lib/libicucore.dylib' '${darwin.ICU}/lib/libicucore.dylib'
-      ''
-    );
+      substituteInPlace \
+        src/runtime/src/mono/CMakeLists.txt \
+        --replace-fail '/usr/lib/libicucore.dylib' '${darwin.ICU}/lib/libicucore.dylib'
+    ''
+  );
 
   prepFlags = [
     "--no-artifacts"
@@ -374,22 +373,21 @@ stdenv.mkDerivation rec {
   # bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
   LOCALE_ARCHIVE = lib.optionalString isLinux "${glibcLocales}/lib/locale/locale-archive";
 
-  buildFlags =
-    [
-      "--with-packages"
-      bootstrapSdk.artifacts
-      "--clean-while-building"
-      "--release-manifest"
-      releaseManifestFile
-    ]
-    ++ lib.optionals (lib.versionAtLeast version "9") [
-      "--source-build"
-    ]
-    ++ [
-      "--"
-      "-p:PortableBuild=true"
-    ]
-    ++ lib.optional (targetRid != buildRid) "-p:TargetRid=${targetRid}";
+  buildFlags = [
+    "--with-packages"
+    bootstrapSdk.artifacts
+    "--clean-while-building"
+    "--release-manifest"
+    releaseManifestFile
+  ]
+  ++ lib.optionals (lib.versionAtLeast version "9") [
+    "--source-build"
+  ]
+  ++ [
+    "--"
+    "-p:PortableBuild=true"
+  ]
+  ++ lib.optional (targetRid != buildRid) "-p:TargetRid=${targetRid}";
 
   buildPhase = ''
     runHook preBuild

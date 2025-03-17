@@ -244,7 +244,8 @@ in
           settings = {
             "listen.owner" = webserver.user;
             "listen.group" = webserver.group;
-          } // cfg.poolConfig;
+          }
+          // cfg.poolConfig;
         })
       ) eachSite;
 
@@ -278,8 +279,7 @@ in
                 dbCharset = cfg.database.charset;
                 dbUnixSocket = if cfg.database.socket != null then "&unixSocket=${cfg.database.socket}" else "";
                 # Note: serverVersion is a shell variable. See below.
-                dbUri =
-                  "mysql://${dbUser}${dbPwd}@${dbHost}:${dbPort}"
+                dbUri = "mysql://${dbUser}${dbPwd}@${dbHost}:${dbPort}"
                   + "/${dbName}?charset=${dbCharset}"
                   + "&serverVersion=$serverVersion${dbUnixSocket}";
               in

@@ -126,7 +126,8 @@ let
     else
       true
   ) replacements;
-  targetDerivations = [ drv ] ++ map ({ newDependency, ... }: newDependency) relevantReplacements;
+  targetDerivations = [ drv ]
+    ++ map ({ newDependency, ... }: newDependency) relevantReplacements;
   referencesMemo = listToAttrs (
     map (drv: {
       name = realisation drv;

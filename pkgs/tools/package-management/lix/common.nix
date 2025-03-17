@@ -78,67 +78,64 @@ stdenv.mkDerivation {
 
   inherit src patches;
 
-  outputs =
-    [
-      "out"
-      "dev"
-    ]
-    ++ lib.optionals enableDocumentation [
-      "man"
-      "doc"
-      "devdoc"
-    ];
+  outputs = [
+    "out"
+    "dev"
+  ]
+  ++ lib.optionals enableDocumentation [
+    "man"
+    "doc"
+    "devdoc"
+  ];
 
   strictDeps = true;
 
-  nativeBuildInputs =
-    [
-      pkg-config
-      flex
-      jq
-      meson
-      ninja
-      cmake
-      python3
+  nativeBuildInputs = [
+    pkg-config
+    flex
+    jq
+    meson
+    ninja
+    cmake
+    python3
 
-      # Tests
-      git
-      mercurial
-      jq
-      lsof
-    ]
-    ++ lib.optionals isLegacyParser [ bison ]
-    ++ lib.optionals enableDocumentation [
-      (lib.getBin lowdown-unsandboxed)
-      mdbook
-      mdbook-linkcheck
-      doxygen
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [ util-linuxMinimal ];
+    # Tests
+    git
+    mercurial
+    jq
+    lsof
+  ]
+  ++ lib.optionals isLegacyParser [ bison ]
+  ++ lib.optionals enableDocumentation [
+    (lib.getBin lowdown-unsandboxed)
+    mdbook
+    mdbook-linkcheck
+    doxygen
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [ util-linuxMinimal ];
 
-  buildInputs =
-    [
-      boost
-      brotli
-      bzip2
-      curl
-      editline
-      libsodium
-      openssl
-      sqlite
-      xz
-      gtest
-      libarchive
-      lowdown
-      rapidcheck
-      toml11
-      lix-doc
-    ]
-    ++ lib.optionals (!isLegacyParser) [ pegtl ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [ Security ]
-    ++ lib.optionals (stdenv.hostPlatform.isx86_64) [ libcpuid ]
-    ++ lib.optionals withLibseccomp [ libseccomp ]
-    ++ lib.optionals withAWS [ aws-sdk-cpp ];
+  buildInputs = [
+    boost
+    brotli
+    bzip2
+    curl
+    editline
+    libsodium
+    openssl
+    sqlite
+    xz
+    gtest
+    libarchive
+    lowdown
+    rapidcheck
+    toml11
+    lix-doc
+  ]
+  ++ lib.optionals (!isLegacyParser) [ pegtl ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ Security ]
+  ++ lib.optionals (stdenv.hostPlatform.isx86_64) [ libcpuid ]
+  ++ lib.optionals withLibseccomp [ libseccomp ]
+  ++ lib.optionals withAWS [ aws-sdk-cpp ];
 
   propagatedBuildInputs = [
     boehmgc
@@ -175,38 +172,36 @@ stdenv.mkDerivation {
   # We use -O2 upstream https://gerrit.lix.systems/c/lix/+/554
   mesonBuildType = "debugoptimized";
 
-  mesonFlags =
-    [
-      # Enable LTO, since it improves eval performance a fair amount
-      # LTO is disabled on static due to strange linking errors
-      (lib.mesonBool "b_lto" (!stdenv.hostPlatform.isStatic && stdenv.cc.isGNU))
-      (lib.mesonEnable "gc" true)
-      (lib.mesonBool "enable-tests" true)
-      (lib.mesonBool "enable-docs" enableDocumentation)
-      (lib.mesonEnable "internal-api-docs" enableDocumentation)
-      (lib.mesonBool "enable-embedded-sandbox-shell" (
-        stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isStatic
-      ))
-      (lib.mesonEnable "seccomp-sandboxing" withLibseccomp)
+  mesonFlags = [
+    # Enable LTO, since it improves eval performance a fair amount
+    # LTO is disabled on static due to strange linking errors
+    (lib.mesonBool "b_lto" (!stdenv.hostPlatform.isStatic && stdenv.cc.isGNU))
+    (lib.mesonEnable "gc" true)
+    (lib.mesonBool "enable-tests" true)
+    (lib.mesonBool "enable-docs" enableDocumentation)
+    (lib.mesonEnable "internal-api-docs" enableDocumentation)
+    (lib.mesonBool "enable-embedded-sandbox-shell" (
+      stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isStatic
+    ))
+    (lib.mesonEnable "seccomp-sandboxing" withLibseccomp)
 
-      (lib.mesonOption "store-dir" storeDir)
-      (lib.mesonOption "state-dir" stateDir)
-      (lib.mesonOption "sysconfdir" confDir)
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      (lib.mesonOption "sandbox-shell" "${busybox-sandbox-shell}/bin/busybox")
-    ];
+    (lib.mesonOption "store-dir" storeDir)
+    (lib.mesonOption "state-dir" stateDir)
+    (lib.mesonOption "sysconfdir" confDir)
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    (lib.mesonOption "sandbox-shell" "${busybox-sandbox-shell}/bin/busybox")
+  ];
 
   ninjaFlags = [ "-v" ];
 
-  postInstall =
-    lib.optionalString enableDocumentation ''
-      mkdir -p $doc/nix-support
-      echo "doc manual $doc/share/doc/nix/manual" >> $doc/nix-support/hydra-build-products
+  postInstall = lib.optionalString enableDocumentation ''
+    mkdir -p $doc/nix-support
+    echo "doc manual $doc/share/doc/nix/manual" >> $doc/nix-support/hydra-build-products
 
-      mkdir -p $devdoc/nix-support
-      echo "devdoc internal-api $devdoc/share/doc/nix/internal-api" >> $devdoc/nix-support/hydra-build-products
-    ''
+    mkdir -p $devdoc/nix-support
+    echo "devdoc internal-api $devdoc/share/doc/nix/internal-api" >> $devdoc/nix-support/hydra-build-products
+  ''
     + lib.optionalString stdenv.hostPlatform.isStatic ''
       mkdir -p $out/nix-support
       echo "file binary-dist $out/bin/nix" >> $out/nix-support/hydra-build-products
@@ -295,7 +290,8 @@ stdenv.mkDerivation {
     license = lib.licenses.lgpl21Plus;
     inherit maintainers;
     platforms = lib.platforms.unix;
-    outputsToInstall = [ "out" ] ++ lib.optional enableDocumentation "man";
+    outputsToInstall = [ "out" ]
+      ++ lib.optional enableDocumentation "man";
     mainProgram = "nix";
   };
 }

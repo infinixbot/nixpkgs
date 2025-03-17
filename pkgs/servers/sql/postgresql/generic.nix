@@ -156,7 +156,8 @@ let
           disallowedRequisites = [
             stdenv'.cc
             llvmPackages.llvm.out
-          ] ++ (map lib.getDev (builtins.filter (drv: drv ? "dev") finalAttrs.buildInputs));
+          ]
+          ++ (map lib.getDev (builtins.filter (drv: drv ? "dev") finalAttrs.buildInputs));
         };
 
         lib = {
@@ -169,7 +170,8 @@ let
           disallowedRequisites = [
             stdenv'.cc
             llvmPackages.llvm.out
-          ] ++ (map lib.getDev (builtins.filter (drv: drv ? "dev") finalAttrs.buildInputs));
+          ]
+          ++ (map lib.getDev (builtins.filter (drv: drv ? "dev") finalAttrs.buildInputs));
         };
 
         doc = {
@@ -191,27 +193,26 @@ let
 
       strictDeps = true;
 
-      buildInputs =
-        [
-          zlib
-          readline
-          openssl
-          libxml2
-          libuuid
-        ]
-        ++ lib.optionals icuSupport [ icu ]
-        ++ lib.optionals jitSupport [ llvmPackages.llvm ]
-        ++ lib.optionals lz4Enabled [ lz4 ]
-        ++ lib.optionals zstdEnabled [ zstd ]
-        ++ lib.optionals systemdSupport [ systemdLibs ]
-        ++ lib.optionals pythonSupport [ python3 ]
-        ++ lib.optionals gssSupport [ libkrb5 ]
-        ++ lib.optionals pamSupport [ linux-pam ]
-        ++ lib.optionals perlSupport [ perl ]
-        ++ lib.optionals ldapSupport [ openldap ]
-        ++ lib.optionals tclSupport [ tcl ]
-        ++ lib.optionals selinuxSupport [ libselinux ]
-        ++ lib.optionals nlsSupport [ gettext ];
+      buildInputs = [
+        zlib
+        readline
+        openssl
+        libxml2
+        libuuid
+      ]
+      ++ lib.optionals icuSupport [ icu ]
+      ++ lib.optionals jitSupport [ llvmPackages.llvm ]
+      ++ lib.optionals lz4Enabled [ lz4 ]
+      ++ lib.optionals zstdEnabled [ zstd ]
+      ++ lib.optionals systemdSupport [ systemdLibs ]
+      ++ lib.optionals pythonSupport [ python3 ]
+      ++ lib.optionals gssSupport [ libkrb5 ]
+      ++ lib.optionals pamSupport [ linux-pam ]
+      ++ lib.optionals perlSupport [ perl ]
+      ++ lib.optionals ldapSupport [ openldap ]
+      ++ lib.optionals tclSupport [ tcl ]
+      ++ lib.optionals selinuxSupport [ libselinux ]
+      ++ lib.optionals nlsSupport [ gettext ];
 
       nativeBuildInputs =
         [
@@ -248,7 +249,8 @@ let
         CFLAGS =
           "-fdata-sections -ffunction-sections"
           + (if stdenv'.cc.isClang then " -flto" else " -fmerge-constants -Wl,--gc-sections");
-      } // lib.optionalAttrs pythonSupport { PYTHON = "${python3}/bin/python"; };
+      }
+      // lib.optionalAttrs pythonSupport { PYTHON = "${python3}/bin/python"; };
 
       configureFlags =
         let
@@ -281,46 +283,45 @@ let
         ++ lib.optionals nlsSupport [ "--enable-nls" ]
         ++ lib.optionals bonjourSupport [ "--with-bonjour" ];
 
-      patches =
-        [
-          (
-            if atLeast "16" then
-              ./patches/relative-to-symlinks-16+.patch
-            else
-              ./patches/relative-to-symlinks.patch
-          )
-          (
-            if atLeast "15" then
-              ./patches/empty-pg-config-view-15+.patch
-            else
-              ./patches/empty-pg-config-view.patch
-          )
-          ./patches/less-is-more.patch
-          ./patches/paths-for-split-outputs.patch
-          ./patches/paths-with-postgresql-suffix.patch
-
-          (fetchpatch {
-            url = "https://github.com/postgres/postgres/commit/8108674f0e5639baebcf03b54b7ccf9e9a8662a2.patch";
-            hash = "sha256-EQJkDR0eb7QWCjyMzXMn+Vbcwx3MMdC83oN7XSVJP0U=";
-          })
-
-          (substituteAll {
-            src = ./patches/locale-binary-path.patch;
-            locale = "${
-              if stdenv.hostPlatform.isDarwin then darwin.adv_cmds else lib.getBin stdenv.cc.libc
-            }/bin/locale";
-          })
-        ]
-        ++ lib.optionals stdenv'.hostPlatform.isMusl (
-          # Using fetchurl instead of fetchpatch on purpose: https://github.com/NixOS/nixpkgs/issues/240141
-          map fetchurl (lib.attrValues muslPatches)
+      patches = [
+        (
+          if atLeast "16" then
+            ./patches/relative-to-symlinks-16+.patch
+          else
+            ./patches/relative-to-symlinks.patch
         )
-        ++ lib.optionals stdenv'.hostPlatform.isLinux [
-          ./patches/socketdir-in-run-13+.patch
-        ]
-        ++ lib.optionals (stdenv'.hostPlatform.isDarwin && olderThan "16") [
-          ./patches/export-dynamic-darwin-15-.patch
-        ];
+        (
+          if atLeast "15" then
+            ./patches/empty-pg-config-view-15+.patch
+          else
+            ./patches/empty-pg-config-view.patch
+        )
+        ./patches/less-is-more.patch
+        ./patches/paths-for-split-outputs.patch
+        ./patches/paths-with-postgresql-suffix.patch
+
+        (fetchpatch {
+          url = "https://github.com/postgres/postgres/commit/8108674f0e5639baebcf03b54b7ccf9e9a8662a2.patch";
+          hash = "sha256-EQJkDR0eb7QWCjyMzXMn+Vbcwx3MMdC83oN7XSVJP0U=";
+        })
+
+        (substituteAll {
+          src = ./patches/locale-binary-path.patch;
+          locale = "${
+            if stdenv.hostPlatform.isDarwin then darwin.adv_cmds else lib.getBin stdenv.cc.libc
+          }/bin/locale";
+        })
+      ]
+      ++ lib.optionals stdenv'.hostPlatform.isMusl (
+        # Using fetchurl instead of fetchpatch on purpose: https://github.com/NixOS/nixpkgs/issues/240141
+        map fetchurl (lib.attrValues muslPatches)
+      )
+      ++ lib.optionals stdenv'.hostPlatform.isLinux [
+        ./patches/socketdir-in-run-13+.patch
+      ]
+      ++ lib.optionals (stdenv'.hostPlatform.isDarwin && olderThan "16") [
+        ./patches/export-dynamic-darwin-15-.patch
+      ];
 
       installTargets = [ "install-world" ];
 
@@ -330,57 +331,56 @@ let
         substituteInPlace "src/common/config_info.c" --subst-var dev
       '';
 
-      postInstall =
-        ''
-          moveToOutput "bin/ecpg" "$dev"
-          moveToOutput "lib/pgxs" "$dev"
+      postInstall = ''
+        moveToOutput "bin/ecpg" "$dev"
+        moveToOutput "lib/pgxs" "$dev"
 
-          # Pretend pg_config is located in $out/bin to return correct paths, but
-          # actually have it in -dev to avoid pulling in all other outputs. See the
-          # pg_config.sh script's comments for details.
-          moveToOutput "bin/pg_config" "$dev"
-          install -c -m 755 "${pg_config}"/bin/pg_config "$out/bin/pg_config"
-          wrapProgram "$dev/bin/pg_config" --argv0 "$out/bin/pg_config"
+        # Pretend pg_config is located in $out/bin to return correct paths, but
+        # actually have it in -dev to avoid pulling in all other outputs. See the
+        # pg_config.sh script's comments for details.
+        moveToOutput "bin/pg_config" "$dev"
+        install -c -m 755 "${pg_config}"/bin/pg_config "$out/bin/pg_config"
+        wrapProgram "$dev/bin/pg_config" --argv0 "$out/bin/pg_config"
 
-          # postgres exposes external symbols get_pkginclude_path and similar. Those
-          # can't be stripped away by --gc-sections/LTO, because they could theoretically
-          # be used by dynamically loaded modules / extensions. To avoid circular dependencies,
-          # references to -dev, -doc and -man are removed here. References to -lib must be kept,
-          # because there is a realistic use-case for extensions to locate the /lib directory to
-          # load other shared modules.
-          remove-references-to -t "$dev" -t "$doc" -t "$man" "$out/bin/postgres"
-        ''
-        + lib.optionalString (!stdenv'.hostPlatform.isStatic) ''
-          if [ -z "''${dontDisableStatic:-}" ]; then
-            # Remove static libraries in case dynamic are available.
-            for i in $lib/lib/*.a; do
-              name="$(basename "$i")"
-              ext="${stdenv'.hostPlatform.extensions.sharedLibrary}"
-              if [ -e "$lib/lib/''${name%.a}$ext" ] || [ -e "''${i%.a}$ext" ]; then
-                rm "$i"
-              fi
-            done
-          fi
-        ''
-        + ''
-          # The remaining static libraries are libpgcommon.a, libpgport.a and related.
-          # Those are only used when building e.g. extensions, so go to $dev.
-          moveToOutput "lib/*.a" "$dev"
-        ''
-        + lib.optionalString jitSupport ''
-          # In the case of JIT support, prevent useless dependencies on header files
-          find "$out/lib" -iname '*.bc' -type f -exec nuke-refs '{}' +
+        # postgres exposes external symbols get_pkginclude_path and similar. Those
+        # can't be stripped away by --gc-sections/LTO, because they could theoretically
+        # be used by dynamically loaded modules / extensions. To avoid circular dependencies,
+        # references to -dev, -doc and -man are removed here. References to -lib must be kept,
+        # because there is a realistic use-case for extensions to locate the /lib directory to
+        # load other shared modules.
+        remove-references-to -t "$dev" -t "$doc" -t "$man" "$out/bin/postgres"
+      ''
+      + lib.optionalString (!stdenv'.hostPlatform.isStatic) ''
+        if [ -z "''${dontDisableStatic:-}" ]; then
+          # Remove static libraries in case dynamic are available.
+          for i in $lib/lib/*.a; do
+            name="$(basename "$i")"
+            ext="${stdenv'.hostPlatform.extensions.sharedLibrary}"
+            if [ -e "$lib/lib/''${name%.a}$ext" ] || [ -e "''${i%.a}$ext" ]; then
+              rm "$i"
+            fi
+          done
+        fi
+      ''
+      + ''
+        # The remaining static libraries are libpgcommon.a, libpgport.a and related.
+        # Those are only used when building e.g. extensions, so go to $dev.
+        moveToOutput "lib/*.a" "$dev"
+      ''
+      + lib.optionalString jitSupport ''
+        # In the case of JIT support, prevent useless dependencies on header files
+        find "$out/lib" -iname '*.bc' -type f -exec nuke-refs '{}' +
 
-          # Stop lib depending on the -dev output of llvm
-          remove-references-to -t ${llvmPackages.llvm.dev} "$out/lib/llvmjit${dlSuffix}"
-        ''
-        + lib.optionalString stdenv'.hostPlatform.isDarwin ''
-          # The darwin specific Makefile for PGXS contains a reference to the postgres
-          # binary. Some extensions (here: postgis), which are able to set bindir correctly
-          # to their own output for installation, will then fail to find "postgres" during linking.
-          substituteInPlace "$dev/lib/pgxs/src/Makefile.port" \
-            --replace-fail '-bundle_loader $(bindir)/postgres' "-bundle_loader $out/bin/postgres"
-        '';
+        # Stop lib depending on the -dev output of llvm
+        remove-references-to -t ${llvmPackages.llvm.dev} "$out/lib/llvmjit${dlSuffix}"
+      ''
+      + lib.optionalString stdenv'.hostPlatform.isDarwin ''
+        # The darwin specific Makefile for PGXS contains a reference to the postgres
+        # binary. Some extensions (here: postgis), which are able to set bindir correctly
+        # to their own output for installation, will then fail to find "postgres" during linking.
+        substituteInPlace "$dev/lib/pgxs/src/Makefile.port" \
+          --replace-fail '-bundle_loader $(bindir)/postgres' "-bundle_loader $out/bin/postgres"
+      '';
 
       postFixup =
         lib.optionalString stdenv'.hostPlatform.isGnu ''
@@ -469,16 +469,15 @@ let
             postgresql = this;
           };
 
-          tests =
-            {
-              postgresql = nixosTests.postgresql.postgresql.passthru.override finalAttrs.finalPackage;
-              postgresql-tls-client-cert = nixosTests.postgresql.postgresql-tls-client-cert.passthru.override finalAttrs.finalPackage;
-              postgresql-wal-receiver = nixosTests.postgresql.postgresql-wal-receiver.passthru.override finalAttrs.finalPackage;
-              pkg-config = testers.testMetaPkgConfig finalAttrs.finalPackage;
-            }
-            // lib.optionalAttrs jitSupport {
-              postgresql-jit = nixosTests.postgresql.postgresql-jit.passthru.override finalAttrs.finalPackage;
-            };
+          tests = {
+            postgresql = nixosTests.postgresql.postgresql.passthru.override finalAttrs.finalPackage;
+            postgresql-tls-client-cert = nixosTests.postgresql.postgresql-tls-client-cert.passthru.override finalAttrs.finalPackage;
+            postgresql-wal-receiver = nixosTests.postgresql.postgresql-wal-receiver.passthru.override finalAttrs.finalPackage;
+            pkg-config = testers.testMetaPkgConfig finalAttrs.finalPackage;
+          }
+          // lib.optionalAttrs jitSupport {
+            postgresql-jit = nixosTests.postgresql.postgresql-jit.passthru.override finalAttrs.finalPackage;
+          };
         };
 
       meta = with lib; {

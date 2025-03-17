@@ -27,22 +27,21 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-TvDopZyrRx+604ARrOiy2OsswE8/K+W5LIhOitttt3U=";
   };
 
-  buildInputs =
-    [
-      qtserialport
-    ]
-    ++ (
-      if isQt6 then
-        [
-          qtbase
-          qtpositioning
-          qtsvg
-        ]
-      else
-        [
-          qtlocation
-        ]
-    );
+  buildInputs = [
+    qtserialport
+  ]
+  ++ (
+    if isQt6 then
+      [
+        qtbase
+        qtpositioning
+        qtsvg
+      ]
+    else
+      [
+        qtlocation
+      ]
+  );
 
   nativeBuildInputs = [
     qmake

@@ -17,8 +17,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-Leeb/Wfsksqa4v+1BFbdHVP/QPP6cbQixl6AYgE8noU=";
   };
 
-  buildInputs =
-    [ libpcap ]
+  buildInputs = [ libpcap ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       Carbon
       CoreServices

@@ -100,7 +100,8 @@ stdenv.mkDerivation (finalAttrs: {
   preConfigure =
     let
       # ideally we'd recurse, but we don't need that right now
-      inputs = [ ncurses ] ++ perl.propagatedBuildInputs;
+      inputs = [ ncurses ]
+        ++ perl.propagatedBuildInputs;
       ldflags = map (drv: "-L${lib.getLib drv}/lib") inputs;
       cppflags = map (drv: "-isystem ${lib.getDev drv}/include") inputs;
     in

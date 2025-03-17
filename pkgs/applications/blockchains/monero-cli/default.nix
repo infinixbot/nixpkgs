@@ -76,29 +76,28 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      boost186 # uses boost/asio/io_service.hpp
-      libsodium
-      miniupnpc
-      openssl
-      randomx
-      rapidjson
-      readline
-      unbound
-      zeromq
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      IOKit
-      CoreData
-    ]
-    ++ lib.optionals trezorSupport [
-      python3
-      hidapi
-      libusb1
-      protobuf_21
-    ]
-    ++ lib.optionals (trezorSupport && stdenv.hostPlatform.isLinux) [ udev ];
+  buildInputs = [
+    boost186 # uses boost/asio/io_service.hpp
+    libsodium
+    miniupnpc
+    openssl
+    randomx
+    rapidjson
+    readline
+    unbound
+    zeromq
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    IOKit
+    CoreData
+  ]
+  ++ lib.optionals trezorSupport [
+    python3
+    hidapi
+    libusb1
+    protobuf_21
+  ]
+  ++ lib.optionals (trezorSupport && stdenv.hostPlatform.isLinux) [ udev ];
 
   cmakeFlags =
     [

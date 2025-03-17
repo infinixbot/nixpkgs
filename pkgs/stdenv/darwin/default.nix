@@ -167,12 +167,11 @@ let
         extraBuildInputs = [ prevStage.apple-sdk ];
         inherit extraNativeBuildInputs;
 
-        preHook =
-          lib.optionalString (!isBuiltByNixpkgsCompiler bash) ''
-            # Don't patch #!/interpreter because it leads to retained
-            # dependencies on the bootstrapTools in the final stdenv.
-            dontPatchShebangs=1
-          ''
+        preHook = lib.optionalString (!isBuiltByNixpkgsCompiler bash) ''
+          # Don't patch #!/interpreter because it leads to retained
+          # dependencies on the bootstrapTools in the final stdenv.
+          dontPatchShebangs=1
+        ''
           + ''
             ${commonPreHook}
             ${extraPreHook}

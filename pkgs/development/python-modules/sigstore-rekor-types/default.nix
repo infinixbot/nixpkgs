@@ -23,7 +23,8 @@ buildPythonPackage rec {
 
   build-system = [ setuptools ];
 
-  dependencies = [ pydantic ] ++ pydantic.optional-dependencies.email;
+  dependencies = [ pydantic ]
+    ++ pydantic.optional-dependencies.email;
 
   # Module has no tests
   doCheck = false;

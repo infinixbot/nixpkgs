@@ -32,7 +32,8 @@ rustPlatform.buildRustPackage rec {
   nativeBuildInputs = [
     pkg-config
     installShellFiles
-  ] ++ lib.optional wrapWithMono makeWrapper;
+  ]
+  ++ lib.optional wrapWithMono makeWrapper;
 
   buildInputs =
     [
@@ -53,16 +54,15 @@ rustPlatform.buildRustPackage rec {
 
   buildAndTestSubdir = "owmods_cli";
 
-  postInstall =
-    ''
-      cargo xtask dist_cli
-      installManPage dist/cli/man/*
-      installShellCompletion --cmd owmods \
-      dist/cli/completions/owmods.{bash,fish,zsh}
-    ''
-    + lib.optionalString wrapWithMono ''
-      wrapProgram $out/bin/${meta.mainProgram} --prefix PATH : '${mono}/bin'
-    '';
+  postInstall = ''
+    cargo xtask dist_cli
+    installManPage dist/cli/man/*
+    installShellCompletion --cmd owmods \
+    dist/cli/completions/owmods.{bash,fish,zsh}
+  ''
+  + lib.optionalString wrapWithMono ''
+    wrapProgram $out/bin/${meta.mainProgram} --prefix PATH : '${mono}/bin'
+  '';
 
   passthru.updateScript = nix-update-script { };
 

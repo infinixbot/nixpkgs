@@ -105,57 +105,56 @@ stdenv.mkDerivation (finalAttrs: {
     glib
   ];
 
-  buildInputs =
-    [
-      alsa-lib
-      bluez
-      dbus
-      fdk_aac
-      ffmpeg
-      glib
-      gst_all_1.gst-plugins-base
-      gst_all_1.gstreamer
-      libcamera
-      libjack2
-      libfreeaptx
-      liblc3
-      libmysofa
-      libopus
-      libpulseaudio
-      libusb1
-      libselinux
-      libsndfile
-      lilv
-      modemmanager
-      ncurses
-      readline
-      sbc
-    ]
-    ++ (
-      if enableSystemd then
-        [ systemd ]
-      else
-        [
-          elogind
-          udev
-        ]
-    )
-    ++ lib.take 1 webrtc-audio-processings
-    ++ lib.optional (lib.meta.availableOn stdenv.hostPlatform ldacbt) ldacbt
-    ++ lib.optional zeroconfSupport avahi
-    ++ lib.optional raopSupport openssl
-    ++ lib.optional rocSupport roc-toolkit
-    ++ lib.optionals vulkanSupport [
-      libdrm
-      vulkan-headers
-      vulkan-loader
-    ]
-    ++ lib.optionals x11Support [
-      libcanberra
-      xorg.libX11
-      xorg.libXfixes
-    ]
-    ++ lib.optional ffadoSupport ffado;
+  buildInputs = [
+    alsa-lib
+    bluez
+    dbus
+    fdk_aac
+    ffmpeg
+    glib
+    gst_all_1.gst-plugins-base
+    gst_all_1.gstreamer
+    libcamera
+    libjack2
+    libfreeaptx
+    liblc3
+    libmysofa
+    libopus
+    libpulseaudio
+    libusb1
+    libselinux
+    libsndfile
+    lilv
+    modemmanager
+    ncurses
+    readline
+    sbc
+  ]
+  ++ (
+    if enableSystemd then
+      [ systemd ]
+    else
+      [
+        elogind
+        udev
+      ]
+  )
+  ++ lib.take 1 webrtc-audio-processings
+  ++ lib.optional (lib.meta.availableOn stdenv.hostPlatform ldacbt) ldacbt
+  ++ lib.optional zeroconfSupport avahi
+  ++ lib.optional raopSupport openssl
+  ++ lib.optional rocSupport roc-toolkit
+  ++ lib.optionals vulkanSupport [
+    libdrm
+    vulkan-headers
+    vulkan-loader
+  ]
+  ++ lib.optionals x11Support [
+    libcanberra
+    xorg.libX11
+    xorg.libXfixes
+  ]
+  ++ lib.optional ffadoSupport ffado;
 
   # Valgrind binary is required for running one optional test.
   nativeCheckInputs = lib.optional (lib.meta.availableOn stdenv.hostPlatform valgrind) valgrind;

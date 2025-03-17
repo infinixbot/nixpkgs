@@ -92,85 +92,83 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      glib
-      dbus
-      libmnl
-      gnutls
-      readline
-    ]
-    ++ optionals (firewallType == "iptables") [ iptables ]
-    ++ optionals (firewallType == "nftables") [ libnftnl ]
-    ++ optionals (enableOpenconnect) [ openconnect ]
-    ++ optionals (enablePolkit) [ polkit ]
-    ++ optionals (enablePptp) [
-      pptp
-      ppp
-    ];
+  buildInputs = [
+    glib
+    dbus
+    libmnl
+    gnutls
+    readline
+  ]
+  ++ optionals (firewallType == "iptables") [ iptables ]
+  ++ optionals (firewallType == "nftables") [ libnftnl ]
+  ++ optionals (enableOpenconnect) [ openconnect ]
+  ++ optionals (enablePolkit) [ polkit ]
+  ++ optionals (enablePptp) [
+    pptp
+    ppp
+  ];
 
   postPatch = ''
     sed -i "s@/usr/bin/file@file@g" ./configure
   '';
 
-  configureFlags =
-    [
-      # directories flags
-      "--sysconfdir=/etc"
-      "--localstatedir=/var"
-    ]
-    ++ [
-      # production build flags
-      (enableFeature false "maintainer-mode")
-      (enableFeatureAs true "session-policy-local" "builtin")
-      # for building and running tests
-      # (enableFeature true "tests") # installs the tests, we don't want that
-      (enableFeature true "tools")
-      (enableFeature enableLoopback "loopback")
-      (enableFeature enableEthernet "ethernet")
-      (enableFeature enableWireguard "wireguard")
-      (enableFeature enableGadget "gadget")
-      (enableFeature enableWifi "wifi")
-      # enable IWD support for wifi as it doesn't require any new dependencies and
-      # it's easier for the NixOS module to use only one connman package when IWD
-      # is requested
-      (enableFeature enableWifi "iwd")
-      (enableFeature enableBluetooth "bluetooth")
-      (enableFeature enableOfono "ofono")
-      (enableFeature enableDundee "dundee")
-      (enableFeature enablePacrunner "pacrunner")
-      (enableFeature enableNeard "neard")
-      (enableFeature enableWispr "wispr")
-      (enableFeature enableTools "tools")
-      (enableFeature enableStats "stats")
-      (enableFeature enableClient "client")
-      (enableFeature enableDatafiles "datafiles")
-      (enableFeature enablePolkit "polkit")
-      (enableFeature enablePptp "pptp")
-      (enableFeature enableWireguard "wireguard")
-      (enableFeature enableNetworkManagerCompatibility "nmcompat")
-      (enableFeature enableHh2serialGps "hh2serial-gps")
-      (enableFeature enableL2tp "l2tp")
-      (enableFeature enableIospm "iospm")
-      (enableFeature enableTist "tist")
-    ]
-    ++ [
-      (enableFeatureAs enableOpenconnect "openconnect" "builtin")
-      (enableFeatureAs enableOpenvpn "openvpn" "builtin")
-      (enableFeatureAs enableVpnc "vpnc" "builtin")
-    ]
-    ++ [
-      (withFeatureAs true "dbusconfdir" "${placeholder "out"}/share")
-      (withFeatureAs true "dbusdatadir" "${placeholder "out"}/share")
-      (withFeatureAs true "tmpfilesdir" "${placeholder "out"}/tmpfiles.d")
-      (withFeatureAs true "systemdunitdir" "${placeholder "out"}/systemd/system")
-      (withFeatureAs true "dns-backend" "${dnsType}")
-      (withFeatureAs true "firewall" "${firewallType}")
-      (withFeatureAs enableOpenconnect "openconnect" "${openconnect}/sbin/openconnect")
-      (withFeatureAs enableOpenvpn "openvpn" "${openvpn}/sbin/openvpn")
-      (withFeatureAs enableVpnc "vpnc" "${vpnc}/sbin/vpnc")
-      (withFeatureAs enablePptp "pptp" "${pptp}/sbin/pptp")
-    ];
+  configureFlags = [
+    # directories flags
+    "--sysconfdir=/etc"
+    "--localstatedir=/var"
+  ]
+  ++ [
+    # production build flags
+    (enableFeature false "maintainer-mode")
+    (enableFeatureAs true "session-policy-local" "builtin")
+    # for building and running tests
+    # (enableFeature true "tests") # installs the tests, we don't want that
+    (enableFeature true "tools")
+    (enableFeature enableLoopback "loopback")
+    (enableFeature enableEthernet "ethernet")
+    (enableFeature enableWireguard "wireguard")
+    (enableFeature enableGadget "gadget")
+    (enableFeature enableWifi "wifi")
+    # enable IWD support for wifi as it doesn't require any new dependencies and
+    # it's easier for the NixOS module to use only one connman package when IWD
+    # is requested
+    (enableFeature enableWifi "iwd")
+    (enableFeature enableBluetooth "bluetooth")
+    (enableFeature enableOfono "ofono")
+    (enableFeature enableDundee "dundee")
+    (enableFeature enablePacrunner "pacrunner")
+    (enableFeature enableNeard "neard")
+    (enableFeature enableWispr "wispr")
+    (enableFeature enableTools "tools")
+    (enableFeature enableStats "stats")
+    (enableFeature enableClient "client")
+    (enableFeature enableDatafiles "datafiles")
+    (enableFeature enablePolkit "polkit")
+    (enableFeature enablePptp "pptp")
+    (enableFeature enableWireguard "wireguard")
+    (enableFeature enableNetworkManagerCompatibility "nmcompat")
+    (enableFeature enableHh2serialGps "hh2serial-gps")
+    (enableFeature enableL2tp "l2tp")
+    (enableFeature enableIospm "iospm")
+    (enableFeature enableTist "tist")
+  ]
+  ++ [
+    (enableFeatureAs enableOpenconnect "openconnect" "builtin")
+    (enableFeatureAs enableOpenvpn "openvpn" "builtin")
+    (enableFeatureAs enableVpnc "vpnc" "builtin")
+  ]
+  ++ [
+    (withFeatureAs true "dbusconfdir" "${placeholder "out"}/share")
+    (withFeatureAs true "dbusdatadir" "${placeholder "out"}/share")
+    (withFeatureAs true "tmpfilesdir" "${placeholder "out"}/tmpfiles.d")
+    (withFeatureAs true "systemdunitdir" "${placeholder "out"}/systemd/system")
+    (withFeatureAs true "dns-backend" "${dnsType}")
+    (withFeatureAs true "firewall" "${firewallType}")
+    (withFeatureAs enableOpenconnect "openconnect" "${openconnect}/sbin/openconnect")
+    (withFeatureAs enableOpenvpn "openvpn" "${openvpn}/sbin/openvpn")
+    (withFeatureAs enableVpnc "vpnc" "${vpnc}/sbin/vpnc")
+    (withFeatureAs enablePptp "pptp" "${pptp}/sbin/pptp")
+  ];
 
   doCheck = true;
 

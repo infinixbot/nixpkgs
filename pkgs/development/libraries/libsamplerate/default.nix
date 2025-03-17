@@ -23,8 +23,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs =
-    [ libsndfile ]
+  buildInputs = [ libsndfile ]
     ++ optionals stdenv.hostPlatform.isDarwin [
       ApplicationServices
       CoreServices

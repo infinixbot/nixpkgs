@@ -172,29 +172,28 @@ stdenv.mkDerivation (finalAttrs: {
       zlib
     ];
 
-  cmakeFlags =
-    [
-      "-DCMAKE_CXX_FLAGS=-Wno-#warnings" # <half> -> <half/half.hpp>
-      "-DMIOPEN_USE_MIOPENGEMM=ON"
-      "-DUNZIPPER=${bzip2}/bin/bunzip2"
-      # Manually define CMAKE_INSTALL_<DIR>
-      # See: https://github.com/NixOS/nixpkgs/pull/197838
-      "-DCMAKE_INSTALL_BINDIR=bin"
-      "-DCMAKE_INSTALL_LIBDIR=lib"
-      "-DCMAKE_INSTALL_INCLUDEDIR=include"
-    ]
-    ++ lib.optionals (!useOpenCL) [
-      "-DCMAKE_C_COMPILER=hipcc"
-      "-DCMAKE_CXX_COMPILER=hipcc"
-      "-DMIOPEN_BACKEND=HIP"
-    ]
-    ++ lib.optionals useOpenCL [
-      "-DMIOPEN_BACKEND=OpenCL"
-    ]
-    ++ lib.optionals buildTests [
-      "-DBUILD_TESTS=ON"
-      "-DMIOPEN_TEST_ALL=ON"
-    ];
+  cmakeFlags = [
+    "-DCMAKE_CXX_FLAGS=-Wno-#warnings" # <half> -> <half/half.hpp>
+    "-DMIOPEN_USE_MIOPENGEMM=ON"
+    "-DUNZIPPER=${bzip2}/bin/bunzip2"
+    # Manually define CMAKE_INSTALL_<DIR>
+    # See: https://github.com/NixOS/nixpkgs/pull/197838
+    "-DCMAKE_INSTALL_BINDIR=bin"
+    "-DCMAKE_INSTALL_LIBDIR=lib"
+    "-DCMAKE_INSTALL_INCLUDEDIR=include"
+  ]
+  ++ lib.optionals (!useOpenCL) [
+    "-DCMAKE_C_COMPILER=hipcc"
+    "-DCMAKE_CXX_COMPILER=hipcc"
+    "-DMIOPEN_BACKEND=HIP"
+  ]
+  ++ lib.optionals useOpenCL [
+    "-DMIOPEN_BACKEND=OpenCL"
+  ]
+  ++ lib.optionals buildTests [
+    "-DBUILD_TESTS=ON"
+    "-DMIOPEN_TEST_ALL=ON"
+  ];
 
   postPatch = ''
     patchShebangs test src/composable_kernel fin utils install_deps.cmake
@@ -226,31 +225,30 @@ stdenv.mkDerivation (finalAttrs: {
       make -j$NIX_BUILD_CORES check
     '';
 
-  postInstall =
-    ''
-      rm $out/bin/install_precompiled_kernels.sh
-      ln -sf ${gfx900} $out/share/miopen/db/gfx900.kdb
-      ln -sf ${gfx906} $out/share/miopen/db/gfx906.kdb
-      ln -sf ${gfx908} $out/share/miopen/db/gfx908.kdb
-      ln -sf ${gfx90a} $out/share/miopen/db/gfx90a.kdb
-      ln -sf ${gfx1030} $out/share/miopen/db/gfx1030.kdb
-    ''
-    + lib.optionalString buildDocs ''
-      mv ../doc/html $out/share/doc/miopen-${if useOpenCL then "opencl" else "hip"}
-    ''
-    + lib.optionalString buildTests ''
-      mkdir -p $test/bin
-      mv bin/test_* $test/bin
-      patchelf --set-rpath $out/lib:${
-        lib.makeLibraryPath (
-          finalAttrs.buildInputs
-          ++ [
-            clr
-            rocm-comgr
-          ]
-        )
-      } $test/bin/*
-    '';
+  postInstall = ''
+    rm $out/bin/install_precompiled_kernels.sh
+    ln -sf ${gfx900} $out/share/miopen/db/gfx900.kdb
+    ln -sf ${gfx906} $out/share/miopen/db/gfx906.kdb
+    ln -sf ${gfx908} $out/share/miopen/db/gfx908.kdb
+    ln -sf ${gfx90a} $out/share/miopen/db/gfx90a.kdb
+    ln -sf ${gfx1030} $out/share/miopen/db/gfx1030.kdb
+  ''
+  + lib.optionalString buildDocs ''
+    mv ../doc/html $out/share/doc/miopen-${if useOpenCL then "opencl" else "hip"}
+  ''
+  + lib.optionalString buildTests ''
+    mkdir -p $test/bin
+    mv bin/test_* $test/bin
+    patchelf --set-rpath $out/lib:${
+      lib.makeLibraryPath (
+        finalAttrs.buildInputs
+        ++ [
+          clr
+          rocm-comgr
+        ]
+      )
+    } $test/bin/*
+  '';
 
   requiredSystemFeatures = [ "big-parallel" ];
 

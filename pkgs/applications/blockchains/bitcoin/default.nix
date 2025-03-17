@@ -45,72 +45,68 @@ stdenv.mkDerivation rec {
     sha256 = "c5ae2dd041c7f9d9b7c722490ba5a9d624f7e9a089c67090615e1ba4ad0883ba";
   };
 
-  nativeBuildInputs =
-    [
-      autoreconfHook
-      pkg-config
-      installShellFiles
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [ util-linux ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [ hexdump ]
-    ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) [
-      autoSignDarwinBinariesHook
-    ]
-    ++ lib.optionals withGui [ wrapQtAppsHook ];
+  nativeBuildInputs = [
+    autoreconfHook
+    pkg-config
+    installShellFiles
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [ util-linux ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ hexdump ]
+  ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) [
+    autoSignDarwinBinariesHook
+  ]
+  ++ lib.optionals withGui [ wrapQtAppsHook ];
 
-  buildInputs =
-    [
-      boost
-      libevent
-      miniupnpc
-      zeromq
-      zlib
-    ]
-    ++ lib.optionals withWallet [ sqlite ]
-    # building with db48 (for legacy descriptor wallet support) is broken on Darwin
-    ++ lib.optionals (withWallet && !stdenv.hostPlatform.isDarwin) [ db48 ]
-    ++ lib.optionals withGui [
-      qrencode
-      qtbase
-      qttools
-    ];
+  buildInputs = [
+    boost
+    libevent
+    miniupnpc
+    zeromq
+    zlib
+  ]
+  ++ lib.optionals withWallet [ sqlite ]
+  # building with db48 (for legacy descriptor wallet support) is broken on Darwin
+  ++ lib.optionals (withWallet && !stdenv.hostPlatform.isDarwin) [ db48 ]
+  ++ lib.optionals withGui [
+    qrencode
+    qtbase
+    qttools
+  ];
 
-  postInstall =
-    ''
-      installShellCompletion --bash contrib/completions/bash/bitcoin-cli.bash
-      installShellCompletion --bash contrib/completions/bash/bitcoind.bash
-      installShellCompletion --bash contrib/completions/bash/bitcoin-tx.bash
+  postInstall = ''
+    installShellCompletion --bash contrib/completions/bash/bitcoin-cli.bash
+    installShellCompletion --bash contrib/completions/bash/bitcoind.bash
+    installShellCompletion --bash contrib/completions/bash/bitcoin-tx.bash
 
-      installShellCompletion --fish contrib/completions/fish/bitcoin-cli.fish
-      installShellCompletion --fish contrib/completions/fish/bitcoind.fish
-      installShellCompletion --fish contrib/completions/fish/bitcoin-tx.fish
-      installShellCompletion --fish contrib/completions/fish/bitcoin-util.fish
-      installShellCompletion --fish contrib/completions/fish/bitcoin-wallet.fish
-    ''
-    + lib.optionalString withGui ''
-      installShellCompletion --fish contrib/completions/fish/bitcoin-qt.fish
+    installShellCompletion --fish contrib/completions/fish/bitcoin-cli.fish
+    installShellCompletion --fish contrib/completions/fish/bitcoind.fish
+    installShellCompletion --fish contrib/completions/fish/bitcoin-tx.fish
+    installShellCompletion --fish contrib/completions/fish/bitcoin-util.fish
+    installShellCompletion --fish contrib/completions/fish/bitcoin-wallet.fish
+  ''
+  + lib.optionalString withGui ''
+    installShellCompletion --fish contrib/completions/fish/bitcoin-qt.fish
 
-      install -Dm644 ${desktop} $out/share/applications/bitcoin-qt.desktop
-      substituteInPlace $out/share/applications/bitcoin-qt.desktop --replace "Icon=bitcoin128" "Icon=bitcoin"
-      install -Dm644 share/pixmaps/bitcoin256.png $out/share/pixmaps/bitcoin.png
-    '';
+    install -Dm644 ${desktop} $out/share/applications/bitcoin-qt.desktop
+    substituteInPlace $out/share/applications/bitcoin-qt.desktop --replace "Icon=bitcoin128" "Icon=bitcoin"
+    install -Dm644 share/pixmaps/bitcoin256.png $out/share/pixmaps/bitcoin.png
+  '';
 
-  configureFlags =
-    [
-      "--with-boost-libdir=${boost.out}/lib"
-      "--disable-bench"
-    ]
-    ++ lib.optionals (!doCheck) [
-      "--disable-tests"
-      "--disable-gui-tests"
-    ]
-    ++ lib.optionals (!withWallet) [
-      "--disable-wallet"
-    ]
-    ++ lib.optionals withGui [
-      "--with-gui=qt5"
-      "--with-qt-bindir=${qtbase.dev}/bin:${qttools.dev}/bin"
-    ];
+  configureFlags = [
+    "--with-boost-libdir=${boost.out}/lib"
+    "--disable-bench"
+  ]
+  ++ lib.optionals (!doCheck) [
+    "--disable-tests"
+    "--disable-gui-tests"
+  ]
+  ++ lib.optionals (!withWallet) [
+    "--disable-wallet"
+  ]
+  ++ lib.optionals withGui [
+    "--with-gui=qt5"
+    "--with-qt-bindir=${qtbase.dev}/bin:${qttools.dev}/bin"
+  ];
 
   nativeCheckInputs = [ python3 ];
 

@@ -50,7 +50,8 @@ qtModule {
     qtlocation
     qtsensors
     qtwebchannel
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin qtmultimedia;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin qtmultimedia;
   buildInputs = [
     fontconfig
     libwebp
@@ -74,8 +75,7 @@ qtModule {
     cmake
   ];
 
-  cmakeFlags =
-    [ "-DPORT=Qt" ]
+  cmakeFlags = [ "-DPORT=Qt" ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       "-DQt5Multimedia_DIR=${lib.getDev qtmultimedia}/lib/cmake/Qt5Multimedia"
       "-DQt5MultimediaWidgets_DIR=${lib.getDev qtmultimedia}/lib/cmake/Qt5MultimediaWidgets"

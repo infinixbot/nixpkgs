@@ -39,7 +39,8 @@ stdenv.mkDerivation (finalAttrs: {
   outputs = [
     "out"
     "dev"
-  ] ++ lib.optional (gtkVersion != null) "devdoc";
+  ]
+  ++ lib.optional (gtkVersion != null) "devdoc";
 
   src = fetchurl {
     url = "mirror://gnome/sources/vte/${lib.versions.majorMinor finalAttrs.version}/vte-${finalAttrs.version}.tar.xz";
@@ -87,20 +88,19 @@ stdenv.mkDerivation (finalAttrs: {
     gi-docgen
   ];
 
-  buildInputs =
-    [
-      cairo
-      fribidi
-      gnutls
-      pango # duplicated with propagatedBuildInputs to support gtkVersion == null
-      pcre2
-      lz4
-      icu
-      fast-float
-    ]
-    ++ lib.optionals systemdSupport [
-      systemd
-    ];
+  buildInputs = [
+    cairo
+    fribidi
+    gnutls
+    pango # duplicated with propagatedBuildInputs to support gtkVersion == null
+    pcre2
+    lz4
+    icu
+    fast-float
+  ]
+  ++ lib.optionals systemdSupport [
+    systemd
+  ];
 
   # Required by vte-2.91.pc.
   propagatedBuildInputs = lib.optionals (gtkVersion != null) [

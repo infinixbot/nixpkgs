@@ -79,45 +79,43 @@ stdenv.mkDerivation rec {
     wrapGAppsNoGuiHook
   ];
 
-  buildInputs =
-    [
-      curl
-      glib
-      systemd
-      e2fsprogs
-      libsoup_2_4
-      glib-networking
-      gpgme
-      fuse3
-      libselinux
-      libsodium
-      libcap
-      libarchive
-      bzip2
-      xz
-      util-linuxMinimal # for libmount
+  buildInputs = [
+    curl
+    glib
+    systemd
+    e2fsprogs
+    libsoup_2_4
+    glib-networking
+    gpgme
+    fuse3
+    libselinux
+    libsodium
+    libcap
+    libarchive
+    bzip2
+    xz
+    util-linuxMinimal # for libmount
 
-      # for installed tests
-      testPython
-      gjs
-    ]
-    ++ lib.optionals withComposefs [
-      (lib.getDev composefs)
-    ];
+    # for installed tests
+    testPython
+    gjs
+  ]
+  ++ lib.optionals withComposefs [
+    (lib.getDev composefs)
+  ];
 
   enableParallelBuilding = true;
 
-  configureFlags =
-    [
-      "--with-curl"
-      "--with-systemdsystemunitdir=${placeholder "out"}/lib/systemd/system"
-      "--with-systemdsystemgeneratordir=${placeholder "out"}/lib/systemd/system-generators"
-      "--enable-installed-tests"
-      "--with-ed25519-libsodium"
-    ]
-    ++ lib.optionals withComposefs [
-      "--with-composefs"
-    ];
+  configureFlags = [
+    "--with-curl"
+    "--with-systemdsystemunitdir=${placeholder "out"}/lib/systemd/system"
+    "--with-systemdsystemgeneratordir=${placeholder "out"}/lib/systemd/system-generators"
+    "--enable-installed-tests"
+    "--with-ed25519-libsodium"
+  ]
+  ++ lib.optionals withComposefs [
+    "--with-composefs"
+  ];
 
   makeFlags = [
     "installed_testdir=${placeholder "installedTests"}/libexec/installed-tests/libostree"

@@ -59,32 +59,31 @@ stdenv.mkDerivation (finalAttrs: {
     gettext
   ];
 
-  buildInputs =
-    [
-      libGL
-      xorg.libX11
-      xorg.libXrandr
-      xorg.libXcursor
-      xorg.libXScrnSaver
-      dbus
-      fontconfig
-      libjpeg
-      libpng
-      alsa-lib
-      libogg
-      libvorbis
-      libopus
-      SDL2
-      gnutls
-      zlib
-      bullet
-    ]
-    ++ lib.optional enableEGL libglvnd
-    ++ lib.optionals enableWayland [
-      wayland
-      libxkbcommon
-    ]
-    ++ lib.optional enableVulkan vulkan-headers;
+  buildInputs = [
+    libGL
+    xorg.libX11
+    xorg.libXrandr
+    xorg.libXcursor
+    xorg.libXScrnSaver
+    dbus
+    fontconfig
+    libjpeg
+    libpng
+    alsa-lib
+    libogg
+    libvorbis
+    libopus
+    SDL2
+    gnutls
+    zlib
+    bullet
+  ]
+  ++ lib.optional enableEGL libglvnd
+  ++ lib.optionals enableWayland [
+    wayland
+    libxkbcommon
+  ]
+  ++ lib.optional enableVulkan vulkan-headers;
 
   cmakeFlags = [
     (lib.cmakeFeature "FTE_BUILD_CONFIG" "${finalAttrs.src}/engine/common/config_nzportable.h")

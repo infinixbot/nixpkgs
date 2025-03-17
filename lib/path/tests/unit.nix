@@ -13,7 +13,8 @@ let
     ;
 
   # This is not allowed generally, but we're in the tests here, so we'll allow ourselves.
-  storeDirPath = /. + builtins.storeDir;
+  storeDirPath = /.
+    + builtins.storeDir;
 
   cases = lib.runTests {
     # Test examples from the lib.path.append documentation

@@ -24,8 +24,7 @@ buildPythonPackage rec {
 
   # can't run normal tests due to circular dependency with fontParts
   doCheck = false;
-  pythonImportsCheck =
-    [ "fontPens" ]
+  pythonImportsCheck = [ "fontPens" ]
     ++ (builtins.map (s: "fontPens." + s) [
       "angledMarginPen"
       "digestPointPen"

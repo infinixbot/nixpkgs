@@ -25,7 +25,8 @@ stdenv.mkDerivation rec {
     autoreconfHook
     pkg-config
   ];
-  buildInputs = [ zlib ] ++ lib.optionals curlSupport [ curl ];
+  buildInputs = [ zlib ]
+    ++ lib.optionals curlSupport [ curl ];
   propagatedBuildInputs = [ libzen ];
 
   sourceRoot = "MediaInfoLib/Project/GNU/Library";
@@ -35,13 +36,12 @@ stdenv.mkDerivation rec {
       --replace "pkg-config " "${stdenv.cc.targetPrefix}pkg-config "
   '';
 
-  configureFlags =
-    [
-      "--enable-shared"
-    ]
-    ++ lib.optionals curlSupport [
-      "--with-libcurl"
-    ];
+  configureFlags = [
+    "--enable-shared"
+  ]
+  ++ lib.optionals curlSupport [
+    "--with-libcurl"
+  ];
 
   enableParallelBuilding = true;
 

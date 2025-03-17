@@ -25,8 +25,7 @@ python311Packages.buildPythonApplication rec {
     six
   ];
 
-  nativeCheckInputs =
-    [ go ]
+  nativeCheckInputs = [ go ]
     ++ (with python311Packages; [
       mock
       pytest7CheckHook

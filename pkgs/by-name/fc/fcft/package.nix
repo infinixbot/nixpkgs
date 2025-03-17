@@ -64,13 +64,12 @@ stdenv.mkDerivation rec {
   nativeCheckInputs = [ check ];
 
   mesonBuildType = "release";
-  mesonFlags =
-    [
-      (lib.mesonEnable "system-nanosvg" true)
-    ]
-    ++ builtins.map (
-      t: lib.mesonEnable "${t}-shaping" (lib.elem t withShapingTypes)
-    ) availableShapingTypes;
+  mesonFlags = [
+    (lib.mesonEnable "system-nanosvg" true)
+  ]
+  ++ builtins.map (
+    t: lib.mesonEnable "${t}-shaping" (lib.elem t withShapingTypes)
+  ) availableShapingTypes;
 
   doCheck = true;
 

@@ -126,8 +126,7 @@ in
 
   mlPlugin = true;
   nativeBuildInputs = lib.optional recent coq.ocamlPackages.ocamlbuild;
-  propagatedBuildInputs =
-    [ ssreflect ]
+  propagatedBuildInputs = [ ssreflect ]
     ++ lib.optionals recent [
       ExtLib
       simple-io

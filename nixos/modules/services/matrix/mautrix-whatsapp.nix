@@ -152,8 +152,10 @@ in
       description = "Mautrix-WhatsApp Service - A WhatsApp bridge for Matrix";
 
       wantedBy = [ "multi-user.target" ];
-      wants = [ "network-online.target" ] ++ cfg.serviceDependencies;
-      after = [ "network-online.target" ] ++ cfg.serviceDependencies;
+      wants = [ "network-online.target" ]
+        ++ cfg.serviceDependencies;
+      after = [ "network-online.target" ]
+        ++ cfg.serviceDependencies;
 
       preStart = ''
         # substitute the settings file by environment variables

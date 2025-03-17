@@ -55,7 +55,8 @@ buildPythonPackage rec {
     pathspec
     pyproject-metadata
     scikit-build-core
-  ] ++ lib.optionals cudaSupport [ cudaPackages.cuda_nvcc ];
+  ]
+  ++ lib.optionals cudaSupport [ cudaPackages.cuda_nvcc ];
 
   dontUseCmakeConfigure = true;
 
@@ -89,14 +90,13 @@ buildPythonPackage rec {
       cffi
       pyarrow
     ];
-    dask =
-      [
-        dask
-        pandas
-      ]
-      ++ dask.optional-dependencies.array
-      ++ dask.optional-dependencies.dataframe
-      ++ dask.optional-dependencies.distributed;
+    dask = [
+      dask
+      pandas
+    ]
+    ++ dask.optional-dependencies.array
+    ++ dask.optional-dependencies.dataframe
+    ++ dask.optional-dependencies.distributed;
     pandas = [ pandas ];
     scikit-learn = [ scikit-learn ];
   };

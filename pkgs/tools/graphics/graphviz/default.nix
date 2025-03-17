@@ -79,7 +79,8 @@ stdenv.mkDerivation rec {
   configureFlags = [
     "--with-ltdl-lib=${libtool.lib}/lib"
     "--with-ltdl-include=${libtool}/include"
-  ] ++ optional (xorg == null) "--without-x";
+  ]
+  ++ optional (xorg == null) "--without-x";
 
   enableParallelBuilding = true;
 

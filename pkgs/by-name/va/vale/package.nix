@@ -39,7 +39,8 @@ buildGoModule rec {
     selector:
     symlinkJoin {
       name = "vale-with-styles-${vale.version}";
-      paths = [ vale ] ++ selector valeStyles;
+      paths = [ vale ]
+        ++ selector valeStyles;
       nativeBuildInputs = [ makeBinaryWrapper ];
       postBuild = ''
         wrapProgram "$out/bin/vale" \

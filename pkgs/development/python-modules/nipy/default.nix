@@ -57,7 +57,8 @@ buildPythonPackage rec {
 
   optional-dependencies.optional = [ matplotlib ];
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ optional-dependencies.optional;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ optional-dependencies.optional;
 
   doCheck = false; # partial imports … circular dependencies. needs more time to figure out.
 

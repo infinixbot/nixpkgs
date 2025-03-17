@@ -19,7 +19,8 @@ symlinkJoin {
     meta
     ;
 
-  paths = [ unwrapped ] ++ binaryPlugins;
+  paths = [ unwrapped ]
+    ++ binaryPlugins;
 
   postBuild = ''
     wrapQtApp "$out/bin/krita" \

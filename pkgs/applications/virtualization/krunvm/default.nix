@@ -36,10 +36,10 @@ stdenv.mkDerivation rec {
     rustc
     asciidoctor
     makeWrapper
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ sigtool ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ sigtool ];
 
-  buildInputs =
-    [ libkrun ]
+  buildInputs = [ libkrun ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       libiconv
     ];

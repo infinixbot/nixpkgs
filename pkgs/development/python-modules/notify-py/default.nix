@@ -53,9 +53,11 @@ buildPythonPackage rec {
 
   pythonRelaxDeps = [ "loguru" ];
 
-  propagatedBuildInputs = [ loguru ] ++ lib.optionals stdenv.hostPlatform.isLinux [ jeepney ];
+  propagatedBuildInputs = [ loguru ]
+    ++ lib.optionals stdenv.hostPlatform.isLinux [ jeepney ];
 
-  nativeCheckInputs = [ pytest ] ++ lib.optionals stdenv.hostPlatform.isLinux [ dbus ];
+  nativeCheckInputs = [ pytest ]
+    ++ lib.optionals stdenv.hostPlatform.isLinux [ dbus ];
 
   checkPhase =
     if stdenv.hostPlatform.isDarwin then

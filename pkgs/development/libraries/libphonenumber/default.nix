@@ -37,15 +37,14 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      boost
-      icu
-      protobuf
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      Foundation
-    ];
+  buildInputs = [
+    boost
+    icu
+    protobuf
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    Foundation
+  ];
 
   cmakeDir = "../cpp";
 

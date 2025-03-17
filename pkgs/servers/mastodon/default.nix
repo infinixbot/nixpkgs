@@ -17,7 +17,8 @@
   patches ? [ ],
   # src is a package
   srcOverride ? callPackage ./source.nix { inherit patches; },
-  gemset ? ./. + "/gemset.nix",
+  gemset ? ./.
+    + "/gemset.nix",
   yarnHash ? srcOverride.yarnHash,
 }:
 

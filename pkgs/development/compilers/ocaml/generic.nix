@@ -164,12 +164,12 @@ stdenv.mkDerivation (
       ];
     depsBuildBuild = lib.optionals (!stdenv.hostPlatform.isDarwin) [ binutils ];
     propagatedBuildInputs = optional spaceTimeSupport libunwind;
-    installTargets = [ "install" ] ++ optional useNativeCompilers "installopt";
-    preConfigure =
-      optionalString (lib.versionOlder version "4.04") ''
-        CAT=$(type -tp cat)
-        sed -e "s@/bin/cat@$CAT@" -i config/auto-aux/sharpbang
-      ''
+    installTargets = [ "install" ]
+      ++ optional useNativeCompilers "installopt";
+    preConfigure = optionalString (lib.versionOlder version "4.04") ''
+      CAT=$(type -tp cat)
+      sed -e "s@/bin/cat@$CAT@" -i config/auto-aux/sharpbang
+    ''
       + optionalString (stdenv.hostPlatform.isDarwin) ''
         # Do what upstream does by default now: https://github.com/ocaml/ocaml/pull/10176
         # This is required for aarch64-darwin, everything else works as is.

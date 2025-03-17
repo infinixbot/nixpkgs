@@ -33,7 +33,8 @@ buildPythonPackage rec {
     ruamel = [ ruamel-yaml ];
   };
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ optional-dependencies.ruamel;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ optional-dependencies.ruamel;
 
   pythonImportsCheck = [ "yamale" ];
 

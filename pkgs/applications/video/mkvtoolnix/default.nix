@@ -79,7 +79,8 @@ stdenv.mkDerivation rec {
     libxslt
     pkg-config
     rake
-  ] ++ optionals withGUI [ wrapQtAppsHook ];
+  ]
+  ++ optionals withGUI [ wrapQtAppsHook ];
 
   # qtbase and qtmultimedia are needed without the GUI
   buildInputs =

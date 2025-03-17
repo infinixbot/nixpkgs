@@ -62,15 +62,14 @@ stdenv.mkDerivation rec {
     sed -e "s|$NIX_STORE/[a-z0-9]\{32\}-|$NIX_STORE/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-|g" -i config.report
   '';
 
-  nativeBuildInputs =
-    [
-      autoreconfHook
-      pkg-config
-    ]
-    ++ (with python3Packages; [
-      sphinxHook
-      sphinx-rtd-theme
-    ]);
+  nativeBuildInputs = [
+    autoreconfHook
+    pkg-config
+  ]
+  ++ (with python3Packages; [
+    sphinxHook
+    sphinx-rtd-theme
+  ]);
 
   sphinxBuilders = [
     "html"

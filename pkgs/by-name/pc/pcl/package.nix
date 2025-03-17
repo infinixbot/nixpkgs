@@ -50,7 +50,8 @@ stdenv.mkDerivation (finalAttrs: {
     cmake
     libsForQt5.wrapQtAppsHook
     pkg-config
-  ] ++ lib.optionals cudaSupport [ cudaPackages.cuda_nvcc ];
+  ]
+  ++ lib.optionals cudaSupport [ cudaPackages.cuda_nvcc ];
 
   buildInputs = [
     eigen

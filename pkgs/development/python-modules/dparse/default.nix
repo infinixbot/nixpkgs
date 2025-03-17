@@ -26,7 +26,8 @@ buildPythonPackage rec {
 
   build-system = [ hatchling ];
 
-  dependencies = [ packaging ] ++ lib.optionals (pythonOlder "3.11") [ tomli ];
+  dependencies = [ packaging ]
+    ++ lib.optionals (pythonOlder "3.11") [ tomli ];
 
   optional-dependencies = {
     # FIXME pipenv = [ pipenv ];
@@ -35,7 +36,8 @@ buildPythonPackage rec {
 
   nativeCheckInputs = [
     pytestCheckHook
-  ] ++ lib.flatten (lib.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (lib.attrValues optional-dependencies);
 
   pythonImportsCheck = [ "dparse" ];
 

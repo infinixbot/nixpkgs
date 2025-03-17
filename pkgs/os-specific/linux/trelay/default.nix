@@ -25,7 +25,8 @@ stdenv.mkDerivation (finalAttrs: {
     "pic"
     "format"
   ];
-  nativeBuildInputs = [ kmod ] ++ kernel.moduleBuildDependencies;
+  nativeBuildInputs = [ kmod ]
+    ++ kernel.moduleBuildDependencies;
 
   postPatch = ''
     cp '${./Makefile}' Makefile

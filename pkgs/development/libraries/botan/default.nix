@@ -62,8 +62,7 @@ let
           jitterentropy
         ];
 
-      buildTargets =
-        [ "cli" ]
+      buildTargets = [ "cli" ]
         ++ lib.optionals finalAttrs.doCheck [ "tests" ]
         ++ lib.optionals static [ "static" ]
         ++ lib.optionals (!static) [ "shared" ];

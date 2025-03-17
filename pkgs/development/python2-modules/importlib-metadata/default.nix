@@ -22,8 +22,7 @@ buildPythonPackage rec {
 
   nativeBuildInputs = [ setuptools-scm ];
 
-  propagatedBuildInputs =
-    [ zipp ]
+  propagatedBuildInputs = [ zipp ]
     ++ lib.optionals (!isPy3k) [
       pathlib2
       contextlib2

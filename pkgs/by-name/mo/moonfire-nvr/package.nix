@@ -59,17 +59,16 @@ rustPlatform.buildRustPackage {
     pkg-config
   ];
 
-  buildInputs =
+  buildInputs = [
+    ncurses
+    sqlite
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin (
+    with darwin.apple_sdk.frameworks;
     [
-      ncurses
-      sqlite
+      Security
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        Security
-      ]
-    );
+  );
 
   postInstall = ''
     mkdir -p $out/lib/ui

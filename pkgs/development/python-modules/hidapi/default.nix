@@ -28,7 +28,8 @@ buildPythonPackage rec {
     setuptools
   ];
 
-  nativeBuildInputs = [ pkg-config ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ xcbuild ];
+  nativeBuildInputs = [ pkg-config ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ xcbuild ];
 
   buildInputs = lib.optionals stdenv.hostPlatform.isLinux [
     hidapi

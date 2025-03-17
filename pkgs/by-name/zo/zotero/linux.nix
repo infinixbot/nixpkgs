@@ -33,31 +33,30 @@ stdenv.mkDerivation rec {
   dontPatchELF = true;
   nativeBuildInputs = [ wrapGAppsHook3 ];
 
-  libPath =
-    lib.makeLibraryPath [
-      alsa-lib
-      atk
-      cairo
-      dbus-glib
-      gdk-pixbuf
-      glib
-      gtk3
-      libGL
-      libva
-      xorg.libX11
-      xorg.libXcomposite
-      xorg.libXcursor
-      xorg.libXdamage
-      xorg.libXext
-      xorg.libXfixes
-      xorg.libXi
-      xorg.libXrandr
-      xorg.libXtst
-      xorg.libxcb
-      libgbm
-      pango
-      pciutils
-    ]
+  libPath = lib.makeLibraryPath [
+    alsa-lib
+    atk
+    cairo
+    dbus-glib
+    gdk-pixbuf
+    glib
+    gtk3
+    libGL
+    libva
+    xorg.libX11
+    xorg.libXcomposite
+    xorg.libXcursor
+    xorg.libXdamage
+    xorg.libXext
+    xorg.libXfixes
+    xorg.libXi
+    xorg.libXrandr
+    xorg.libXtst
+    xorg.libxcb
+    libgbm
+    pango
+    pciutils
+  ]
     + ":"
     + lib.makeSearchPathOutput "lib" "lib64" [ stdenv.cc.cc ];
 

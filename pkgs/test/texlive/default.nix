@@ -31,7 +31,8 @@ rec {
     runCommand "texlive-test-tex-${name}"
       (
         {
-          nativeBuildInputs = [ texLive ] ++ attrs.nativeBuildInputs or [ ];
+          nativeBuildInputs = [ texLive ]
+            ++ attrs.nativeBuildInputs or [ ];
           text = builtins.toFile "${name}.tex" text;
         }
         // builtins.removeAttrs attrs [
@@ -443,7 +444,8 @@ rec {
 
         # 'Error initialising QuantumRenderer: no suitable pipeline found'
         "tlcockpit"
-      ] ++ lib.optional stdenv.hostPlatform.isDarwin "epspdftk"; # wish shebang is a script, not a binary!
+      ]
+      ++ lib.optional stdenv.hostPlatform.isDarwin "epspdftk"; # wish shebang is a script, not a binary!
 
       # (1) binaries requiring -v
       shortVersion = [

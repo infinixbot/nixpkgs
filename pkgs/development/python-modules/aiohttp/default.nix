@@ -87,7 +87,8 @@ buildPythonPackage rec {
     multidict
     propcache
     yarl
-  ] ++ optional-dependencies.speedups;
+  ]
+  ++ optional-dependencies.speedups;
 
   optional-dependencies.speedups = [
     aiodns
@@ -130,18 +131,17 @@ buildPythonPackage rec {
 
   __darwinAllowLocalNetworking = true;
 
-  preCheck =
-    ''
-      # aiohttp in current folder shadows installed version
-      rm -r aiohttp
-      touch tests/data.unknown_mime_type # has to be modified after 1 Jan 1990
+  preCheck = ''
+    # aiohttp in current folder shadows installed version
+    rm -r aiohttp
+    touch tests/data.unknown_mime_type # has to be modified after 1 Jan 1990
 
-      export HOME=$(mktemp -d)
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      # Work around "OSError: AF_UNIX path too long"
-      export TMPDIR="/tmp"
-    '';
+    export HOME=$(mktemp -d)
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    # Work around "OSError: AF_UNIX path too long"
+    export TMPDIR="/tmp"
+  '';
 
   meta = with lib; {
     changelog = "https://github.com/aio-libs/aiohttp/blob/v${version}/CHANGES.rst";

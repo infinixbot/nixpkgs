@@ -170,12 +170,14 @@ let
   # Composes a /usr-like directory structure
   staticUsrProfileTarget = buildEnv {
     name = "${name}-usr-target";
-    paths = [ etcPkg ] ++ basePkgs ++ targetPaths;
+    paths = [ etcPkg ]
+      ++ basePkgs ++ targetPaths;
     extraOutputsToInstall = [
       "out"
       "lib"
       "bin"
-    ] ++ extraOutputsToInstall;
+    ]
+    ++ extraOutputsToInstall;
     ignoreCollisions = true;
     postBuild = ''
       if [[ -d  $out/share/gsettings-schemas/ ]]; then
@@ -214,7 +216,8 @@ let
     extraOutputsToInstall = [
       "out"
       "lib"
-    ] ++ extraOutputsToInstall;
+    ]
+    ++ extraOutputsToInstall;
     ignoreCollisions = true;
   };
 

@@ -31,8 +31,7 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   nativeBuildInputs = [ cmake ];
-  buildInputs =
-    [ blas ]
+  buildInputs = [ blas ]
     ++ lib.optionals pythonSupport [
       python3Packages.cython
       python3Packages.numpy

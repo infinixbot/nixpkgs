@@ -43,14 +43,13 @@ let
       '')
       + oa.preBuild;
 
-    env.NIX_CFLAGS_COMPILE =
-      oa.env.NIX_CFLAGS_COMPILE
-      + " "
-      + toString (
-        lib.optionals stdenv.cc.isGNU [
-          "-Wno-error=ignored-attributes"
-        ]
-      );
+    env.NIX_CFLAGS_COMPILE = oa.env.NIX_CFLAGS_COMPILE
+    + " "
+    + toString (
+      lib.optionals stdenv.cc.isGNU [
+        "-Wno-error=ignored-attributes"
+      ]
+    );
 
     vendorHash = "sha256-06MkjXl0DKFzIH/H+uT9kXsQdPq7qdZh2dlLW/YhJuk=";
   });

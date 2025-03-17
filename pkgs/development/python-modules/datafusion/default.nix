@@ -59,8 +59,7 @@ buildPythonPackage rec {
     protoc
   ];
 
-  buildInputs =
-    [ protobuf ]
+  buildInputs = [ protobuf ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       libiconv
       Security
@@ -69,7 +68,8 @@ buildPythonPackage rec {
 
   dependencies = [
     pyarrow
-  ] ++ lib.optionals (pythonOlder "3.13") [ typing-extensions ];
+  ]
+  ++ lib.optionals (pythonOlder "3.13") [ typing-extensions ];
 
   nativeCheckInputs = [
     pytestCheckHook

@@ -17,8 +17,7 @@
   dbus, # Since 0.0.3, mutter compositors run with their own DBUS sessions
 }:
 let
-  compositors =
-    [ weston ]
+  compositors = [ weston ]
     ++ lib.optional withCage cage
     ++ lib.optional withKwin kdePackages.kwin
     ++ lib.optional withMutter gnome.mutter

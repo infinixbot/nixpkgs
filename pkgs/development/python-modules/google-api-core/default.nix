@@ -42,7 +42,8 @@ buildPythonPackage rec {
   ];
 
   optional-dependencies = {
-    async_rest = [ google-auth ] ++ google-auth.optional-dependencies.aiohttp;
+    async_rest = [ google-auth ]
+      ++ google-auth.optional-dependencies.aiohttp;
     grpc = [
       grpcio
       grpcio-status

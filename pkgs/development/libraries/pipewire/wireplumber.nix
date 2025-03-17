@@ -30,7 +30,8 @@ stdenv.mkDerivation rec {
   outputs = [
     "out"
     "dev"
-  ] ++ lib.optional enableDocs "doc";
+  ]
+  ++ lib.optional enableDocs "doc";
 
   src = fetchFromGitLab {
     domain = "gitlab.freedesktop.org";
@@ -40,31 +41,30 @@ stdenv.mkDerivation rec {
     hash = "sha256-RILzGhFQEpwGlpLbTzw7qrXIX3uNQZfJJ4d5ftXZzzw=";
   };
 
-  nativeBuildInputs =
-    [
-      meson
-      pkg-config
-      ninja
-    ]
-    ++ lib.optionals enableDocs [
-      graphviz
-    ]
-    ++ lib.optionals enableGI [
-      gobject-introspection
-    ]
-    ++ lib.optionals (enableDocs || enableGI) [
-      doxygen
-      (python3.pythonOnBuildForHost.withPackages (
-        ps:
-        with ps;
-        lib.optionals enableDocs [
-          sphinx
-          sphinx-rtd-theme
-          breathe
-        ]
-        ++ lib.optionals enableGI [ lxml ]
-      ))
-    ];
+  nativeBuildInputs = [
+    meson
+    pkg-config
+    ninja
+  ]
+  ++ lib.optionals enableDocs [
+    graphviz
+  ]
+  ++ lib.optionals enableGI [
+    gobject-introspection
+  ]
+  ++ lib.optionals (enableDocs || enableGI) [
+    doxygen
+    (python3.pythonOnBuildForHost.withPackages (
+      ps:
+      with ps;
+      lib.optionals enableDocs [
+        sphinx
+        sphinx-rtd-theme
+        breathe
+      ]
+      ++ lib.optionals enableGI [ lxml ]
+    ))
+  ];
 
   buildInputs = [
     glib

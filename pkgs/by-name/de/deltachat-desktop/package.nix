@@ -52,18 +52,17 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-ovwdFpVFqXaGqsYc1ldhimqgdi0CXjQYMMMcmUXtMFc=";
   };
 
-  nativeBuildInputs =
-    [
-      yq
-      makeWrapper
-      nodejs
-      pkg-config
-      pnpm.configHook
-      python3
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      copyDesktopItems
-    ];
+  nativeBuildInputs = [
+    yq
+    makeWrapper
+    nodejs
+    pkg-config
+    pnpm.configHook
+    python3
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    copyDesktopItems
+  ];
 
   buildInputs = lib.optionals stdenv.hostPlatform.isDarwin [
     darwin.apple_sdk.frameworks.CoreServices

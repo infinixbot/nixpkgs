@@ -38,7 +38,8 @@ buildPythonPackage rec {
   nativeCheckInputs = [
     pytestCheckHook
     mock
-  ] ++ optional-dependencies.webassets;
+  ]
+  ++ optional-dependencies.webassets;
 
   disabledTests = [ "test_installer" ];
 

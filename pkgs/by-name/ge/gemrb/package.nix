@@ -47,7 +47,8 @@ stdenv.mkDerivation rec {
     openal
     python3
     zlib
-  ] ++ optional withVLC libvlc;
+  ]
+  ++ optional withVLC libvlc;
 
   nativeBuildInputs = [ cmake ];
 

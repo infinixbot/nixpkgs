@@ -37,7 +37,8 @@ stdenv.mkDerivation (finalAttrs: {
     desktop-file-utils
     libSM
     imagemagick
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ Cocoa ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ Cocoa ];
 
   sourceRoot = "MediaInfo/Project/GNU/GUI";
 

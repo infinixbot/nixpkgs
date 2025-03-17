@@ -131,7 +131,8 @@ mkDerivation rec {
     qtbase
     phonon
   ];
-  buildInputs = [ taglib ] ++ runtimeDeps;
+  buildInputs = [ taglib ]
+    ++ runtimeDeps;
   # encoder plugins go to ${out}/lib so they're found by kbuildsycoca5
   cmakeFlags = [ "-DCMAKE_INSTALL_PREFIX=$out" ];
   sourceRoot = "${src.name}/src";

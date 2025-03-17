@@ -120,54 +120,53 @@ let
   # TODO(@Ericson2314) Make unconditional
   targetPrefix = lib.optionalString (targetPlatform != hostPlatform) "${targetPlatform.config}-";
 
-  buildMK =
-    ''
-      BuildFlavour = ${ghcFlavour}
-      ifneq \"\$(BuildFlavour)\" \"\"
-      include mk/flavours/\$(BuildFlavour).mk
-      endif
-      BUILD_SPHINX_HTML = ${if enableDocs then "YES" else "NO"}
-      BUILD_SPHINX_PDF = NO
+  buildMK = ''
+    BuildFlavour = ${ghcFlavour}
+    ifneq \"\$(BuildFlavour)\" \"\"
+    include mk/flavours/\$(BuildFlavour).mk
+    endif
+    BUILD_SPHINX_HTML = ${if enableDocs then "YES" else "NO"}
+    BUILD_SPHINX_PDF = NO
 
-      WITH_TERMINFO = ${if enableTerminfo then "YES" else "NO"}
+    WITH_TERMINFO = ${if enableTerminfo then "YES" else "NO"}
+  ''
+  +
+    # Note [HADDOCK_DOCS]:
+    # Unfortunately currently `HADDOCK_DOCS` controls both whether the `haddock`
+    # program is built (which we generally always want to have a complete GHC install)
+    # and whether it is run on the GHC sources to generate hyperlinked source code
+    # (which is impossible for cross-compilation); see:
+    # https://gitlab.haskell.org/ghc/ghc/-/issues/20077
+    # This implies that currently a cross-compiled GHC will never have a `haddock`
+    # program, so it can never generate haddocks for any packages.
+    # If this is solved in the future, we'd like to unconditionally
+    # build the haddock program (removing the `enableHaddockProgram` option).
     ''
-    +
-      # Note [HADDOCK_DOCS]:
-      # Unfortunately currently `HADDOCK_DOCS` controls both whether the `haddock`
-      # program is built (which we generally always want to have a complete GHC install)
-      # and whether it is run on the GHC sources to generate hyperlinked source code
-      # (which is impossible for cross-compilation); see:
-      # https://gitlab.haskell.org/ghc/ghc/-/issues/20077
-      # This implies that currently a cross-compiled GHC will never have a `haddock`
-      # program, so it can never generate haddocks for any packages.
-      # If this is solved in the future, we'd like to unconditionally
-      # build the haddock program (removing the `enableHaddockProgram` option).
-      ''
-        HADDOCK_DOCS = ${if enableHaddockProgram then "YES" else "NO"}
-        # Build haddocks for boot packages with hyperlinking
-        EXTRA_HADDOCK_OPTS += --hyperlinked-source --quickjump
+      HADDOCK_DOCS = ${if enableHaddockProgram then "YES" else "NO"}
+      # Build haddocks for boot packages with hyperlinking
+      EXTRA_HADDOCK_OPTS += --hyperlinked-source --quickjump
 
-        DYNAMIC_GHC_PROGRAMS = ${if enableShared then "YES" else "NO"}
-        BIGNUM_BACKEND = ${if enableNativeBignum then "native" else "gmp"}
-      ''
-    + lib.optionalString (targetPlatform != hostPlatform) ''
-      Stage1Only = ${if targetPlatform.system == hostPlatform.system then "NO" else "YES"}
-      CrossCompilePrefix = ${targetPrefix}
+      DYNAMIC_GHC_PROGRAMS = ${if enableShared then "YES" else "NO"}
+      BIGNUM_BACKEND = ${if enableNativeBignum then "native" else "gmp"}
     ''
-    + lib.optionalString (!enableProfiledLibs) ''
-      BUILD_PROF_LIBS = NO
+  + lib.optionalString (targetPlatform != hostPlatform) ''
+    Stage1Only = ${if targetPlatform.system == hostPlatform.system then "NO" else "YES"}
+    CrossCompilePrefix = ${targetPrefix}
+  ''
+  + lib.optionalString (!enableProfiledLibs) ''
+    BUILD_PROF_LIBS = NO
+  ''
+  +
+    # -fexternal-dynamic-refs apparently (because it's not clear from the documentation)
+    # makes the GHC RTS able to load static libraries, which may be needed for TemplateHaskell.
+    # This solution was described in https://www.tweag.io/blog/2020-09-30-bazel-static-haskell
+    lib.optionalString enableRelocatedStaticLibs ''
+      GhcLibHcOpts += -fPIC -fexternal-dynamic-refs
+      GhcRtsHcOpts += -fPIC -fexternal-dynamic-refs
     ''
-    +
-      # -fexternal-dynamic-refs apparently (because it's not clear from the documentation)
-      # makes the GHC RTS able to load static libraries, which may be needed for TemplateHaskell.
-      # This solution was described in https://www.tweag.io/blog/2020-09-30-bazel-static-haskell
-      lib.optionalString enableRelocatedStaticLibs ''
-        GhcLibHcOpts += -fPIC -fexternal-dynamic-refs
-        GhcRtsHcOpts += -fPIC -fexternal-dynamic-refs
-      ''
-    + lib.optionalString targetPlatform.useAndroidPrebuilt ''
-      EXTRA_CC_OPTS += -std=gnu99
-    '';
+  + lib.optionalString targetPlatform.useAndroidPrebuilt ''
+    EXTRA_CC_OPTS += -std=gnu99
+  '';
 
   # Splicer will pull out correct variations
   libDeps =
@@ -181,7 +180,8 @@ let
   # GHC doesn't seem to have {LLC,OPT}_HOST
   toolsForTarget = [
     pkgsBuildTarget.targetPackages.stdenv.cc
-  ] ++ lib.optional useLLVM buildTargetLlvmPackages.llvm;
+  ]
+  ++ lib.optional useLLVM buildTargetLlvmPackages.llvm;
 
   buildCC = buildPackages.stdenv.cc;
   targetCC = builtins.head toolsForTarget;
@@ -466,47 +466,47 @@ stdenv.mkDerivation (
     # TODO(@Ericson2314): Always pass "--target" and always prefix.
     configurePlatforms = [
       "build"
-    ] ++ lib.optional (buildPlatform != hostPlatform || targetPlatform != hostPlatform) "target";
+    ]
+    ++ lib.optional (buildPlatform != hostPlatform || targetPlatform != hostPlatform) "target";
 
     # `--with` flags for libraries needed for RTS linker
-    configureFlags =
-      [
-        "--datadir=$doc/share/doc/ghc"
-      ]
-      ++ lib.optionals enableTerminfo [
-        "--with-curses-includes=${lib.getDev targetLibs.ncurses}/include"
-        "--with-curses-libraries=${lib.getLib targetLibs.ncurses}/lib"
-      ]
-      ++ lib.optionals (libffi != null) [
-        "--with-system-libffi"
-        "--with-ffi-includes=${targetLibs.libffi.dev}/include"
-        "--with-ffi-libraries=${targetLibs.libffi.out}/lib"
-      ]
-      ++ lib.optionals (targetPlatform == hostPlatform && !enableNativeBignum) [
-        "--with-gmp-includes=${targetLibs.gmp.dev}/include"
-        "--with-gmp-libraries=${targetLibs.gmp.out}/lib"
-      ]
-      ++
-        lib.optionals
-          (targetPlatform == hostPlatform && hostPlatform.libc != "glibc" && !targetPlatform.isWindows)
-          [
-            "--with-iconv-includes=${libiconv}/include"
-            "--with-iconv-libraries=${libiconv}/lib"
-          ]
-      ++ lib.optionals (targetPlatform != hostPlatform) [
-        "--enable-bootstrap-with-devel-snapshot"
-      ]
-      ++ lib.optionals useLdGold [
-        "CFLAGS=-fuse-ld=gold"
-        "CONF_GCC_LINKER_OPTS_STAGE1=-fuse-ld=gold"
-        "CONF_GCC_LINKER_OPTS_STAGE2=-fuse-ld=gold"
-      ]
-      ++ lib.optionals (disableLargeAddressSpace) [
-        "--disable-large-address-space"
-      ]
-      ++ lib.optionals enableUnregisterised [
-        "--enable-unregisterised"
-      ];
+    configureFlags = [
+      "--datadir=$doc/share/doc/ghc"
+    ]
+    ++ lib.optionals enableTerminfo [
+      "--with-curses-includes=${lib.getDev targetLibs.ncurses}/include"
+      "--with-curses-libraries=${lib.getLib targetLibs.ncurses}/lib"
+    ]
+    ++ lib.optionals (libffi != null) [
+      "--with-system-libffi"
+      "--with-ffi-includes=${targetLibs.libffi.dev}/include"
+      "--with-ffi-libraries=${targetLibs.libffi.out}/lib"
+    ]
+    ++ lib.optionals (targetPlatform == hostPlatform && !enableNativeBignum) [
+      "--with-gmp-includes=${targetLibs.gmp.dev}/include"
+      "--with-gmp-libraries=${targetLibs.gmp.out}/lib"
+    ]
+    ++
+      lib.optionals
+        (targetPlatform == hostPlatform && hostPlatform.libc != "glibc" && !targetPlatform.isWindows)
+        [
+          "--with-iconv-includes=${libiconv}/include"
+          "--with-iconv-libraries=${libiconv}/lib"
+        ]
+    ++ lib.optionals (targetPlatform != hostPlatform) [
+      "--enable-bootstrap-with-devel-snapshot"
+    ]
+    ++ lib.optionals useLdGold [
+      "CFLAGS=-fuse-ld=gold"
+      "CONF_GCC_LINKER_OPTS_STAGE1=-fuse-ld=gold"
+      "CONF_GCC_LINKER_OPTS_STAGE2=-fuse-ld=gold"
+    ]
+    ++ lib.optionals (disableLargeAddressSpace) [
+      "--disable-large-address-space"
+    ]
+    ++ lib.optionals enableUnregisterised [
+      "--enable-unregisterised"
+    ];
 
     # Make sure we never relax`$PATH` and hooks support for compatibility.
     strictDeps = true;
@@ -514,29 +514,28 @@ stdenv.mkDerivation (
     # Don’t add -liconv to LDFLAGS automatically so that GHC will add it itself.
     dontAddExtraLibs = true;
 
-    nativeBuildInputs =
-      [
-        perl
-        autoconf
-        automake
-        m4
-        python3
-        bootPkgs.alex
-        bootPkgs.happy
-        bootPkgs.hscolour
-        bootPkgs.ghc-settings-edit
-      ]
-      ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) [
-        autoSignDarwinBinariesHook
-      ]
-      ++ lib.optionals enableDocs [
-        sphinx
-      ]
-      ++ lib.optionals (stdenv.hostPlatform.isDarwin && lib.versions.majorMinor version == "9.0") [
-        # TODO(@sternenseemann): backport addition of XATTR env var like
-        # https://gitlab.haskell.org/ghc/ghc/-/merge_requests/6447
-        xattr
-      ];
+    nativeBuildInputs = [
+      perl
+      autoconf
+      automake
+      m4
+      python3
+      bootPkgs.alex
+      bootPkgs.happy
+      bootPkgs.hscolour
+      bootPkgs.ghc-settings-edit
+    ]
+    ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) [
+      autoSignDarwinBinariesHook
+    ]
+    ++ lib.optionals enableDocs [
+      sphinx
+    ]
+    ++ lib.optionals (stdenv.hostPlatform.isDarwin && lib.versions.majorMinor version == "9.0") [
+      # TODO(@sternenseemann): backport addition of XATTR env var like
+      # https://gitlab.haskell.org/ghc/ghc/-/merge_requests/6447
+      xattr
+    ];
 
     # Everything the stage0 compiler needs to build stage1: CC, bintools, extra libs.
     # See also GHC, {CC,LD,AR}_STAGE0 in preConfigure.
@@ -558,14 +557,16 @@ stdenv.mkDerivation (
       bootPkgs.ghc
     ];
 
-    buildInputs = [ bash ] ++ (libDeps hostPlatform);
+    buildInputs = [ bash ]
+      ++ (libDeps hostPlatform);
 
     depsTargetTarget = map lib.getDev (libDeps targetPlatform);
     depsTargetTargetPropagated = map (lib.getOutput "out") (libDeps targetPlatform);
 
     # required, because otherwise all symbols from HSffi.o are stripped, and
     # that in turn causes GHCi to abort
-    stripDebugFlags = [ "-S" ] ++ lib.optional (!targetPlatform.isDarwin) "--keep-file-symbols";
+    stripDebugFlags = [ "-S" ]
+      ++ lib.optional (!targetPlatform.isDarwin) "--keep-file-symbols";
 
     checkTarget = "test";
 
@@ -583,45 +584,44 @@ stdenv.mkDerivation (
     # Hydra which already warrants a significant speedup
     requiredSystemFeatures = [ "big-parallel" ];
 
-    postInstall =
-      ''
-        settingsFile="$out/lib/${targetPrefix}${passthru.haskellCompilerName}/settings"
+    postInstall = ''
+      settingsFile="$out/lib/${targetPrefix}${passthru.haskellCompilerName}/settings"
 
-        # Make the installed GHC use the host->target tools.
-        ghc-settings-edit "$settingsFile" \
-          "C compiler command" "${toolPath "cc" installCC}" \
-          "Haskell CPP command" "${toolPath "cc" installCC}" \
-          "C++ compiler command" "${toolPath "c++" installCC}" \
-          "ld command" "${toolPath "ld${lib.optionalString useLdGold ".gold"}" installCC}" \
-          "Merge objects command" "${toolPath "ld${lib.optionalString useLdGold ".gold"}" installCC}" \
-          "ar command" "${toolPath "ar" installCC}" \
-          "ranlib command" "${toolPath "ranlib" installCC}"
-      ''
-      + lib.optionalString (stdenv.targetPlatform.linker == "cctools") ''
-        ghc-settings-edit "$settingsFile" \
-          "otool command" "${toolPath "otool" installCC}" \
-          "install_name_tool command" "${toolPath "install_name_tool" installCC}"
-      ''
-      + lib.optionalString useLLVM ''
-        ghc-settings-edit "$settingsFile" \
-          "LLVM llc command" "${lib.getBin llvmPackages.llvm}/bin/llc" \
-          "LLVM opt command" "${lib.getBin llvmPackages.llvm}/bin/opt"
-      ''
-      + lib.optionalString (useLLVM && stdenv.targetPlatform.isDarwin) ''
-        ghc-settings-edit "$settingsFile" \
-          "LLVM clang command" "${
-            # See comment for CLANG in preConfigure
-            if installCC.isClang then
-              toolPath "clang" installCC
-            else
-              "${llvmPackages.clang}/bin/${llvmPackages.clang.targetPrefix}clang"
-          }"
-      ''
-      + ''
+      # Make the installed GHC use the host->target tools.
+      ghc-settings-edit "$settingsFile" \
+        "C compiler command" "${toolPath "cc" installCC}" \
+        "Haskell CPP command" "${toolPath "cc" installCC}" \
+        "C++ compiler command" "${toolPath "c++" installCC}" \
+        "ld command" "${toolPath "ld${lib.optionalString useLdGold ".gold"}" installCC}" \
+        "Merge objects command" "${toolPath "ld${lib.optionalString useLdGold ".gold"}" installCC}" \
+        "ar command" "${toolPath "ar" installCC}" \
+        "ranlib command" "${toolPath "ranlib" installCC}"
+    ''
+    + lib.optionalString (stdenv.targetPlatform.linker == "cctools") ''
+      ghc-settings-edit "$settingsFile" \
+        "otool command" "${toolPath "otool" installCC}" \
+        "install_name_tool command" "${toolPath "install_name_tool" installCC}"
+    ''
+    + lib.optionalString useLLVM ''
+      ghc-settings-edit "$settingsFile" \
+        "LLVM llc command" "${lib.getBin llvmPackages.llvm}/bin/llc" \
+        "LLVM opt command" "${lib.getBin llvmPackages.llvm}/bin/opt"
+    ''
+    + lib.optionalString (useLLVM && stdenv.targetPlatform.isDarwin) ''
+      ghc-settings-edit "$settingsFile" \
+        "LLVM clang command" "${
+          # See comment for CLANG in preConfigure
+          if installCC.isClang then
+            toolPath "clang" installCC
+          else
+            "${llvmPackages.clang}/bin/${llvmPackages.clang.targetPrefix}clang"
+        }"
+    ''
+    + ''
 
-        # Install the bash completion file.
-        install -D -m 444 utils/completion/ghc.bash $out/share/bash-completion/completions/${targetPrefix}ghc
-      '';
+      # Install the bash completion file.
+      install -D -m 444 utils/completion/ghc.bash $out/share/bash-completion/completions/${targetPrefix}ghc
+    '';
 
     passthru = {
       inherit bootPkgs targetPrefix;

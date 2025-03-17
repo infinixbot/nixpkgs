@@ -50,8 +50,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  makeFlags =
-    [ "GIT_VERSION=\"v${finalAttrs.version}\"" ]
+  makeFlags = [ "GIT_VERSION=\"v${finalAttrs.version}\"" ]
     ++ lib.optionals (lineEditingLibrary == "isocline") [ "ISOCLINE=1" ]
     ++ lib.optionals (!enableFFI) [ "NOFFI=1" ]
     ++ lib.optionals (!enableSSL) [ "NOSSL=1" ]
@@ -67,7 +66,8 @@ stdenv.mkDerivation (finalAttrs: {
 
   doCheck = !valgrind.meta.broken;
 
-  checkFlags = [ "test" ] ++ lib.optionals checkLeaks [ "leaks" ];
+  checkFlags = [ "test" ]
+    ++ lib.optionals checkLeaks [ "leaks" ];
 
   passthru = {
     tests = {

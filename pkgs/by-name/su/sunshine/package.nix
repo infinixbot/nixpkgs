@@ -82,19 +82,18 @@ stdenv'.mkDerivation rec {
     '';
   };
 
-  nativeBuildInputs =
-    [
-      cmake
-      pkg-config
-      python3
-      makeWrapper
-      wayland-scanner
-      # Avoid fighting upstream's usage of vendored ffmpeg libraries
-      autoPatchelfHook
-    ]
-    ++ lib.optionals cudaSupport [
-      autoAddDriverRunpath
-    ];
+  nativeBuildInputs = [
+    cmake
+    pkg-config
+    python3
+    makeWrapper
+    wayland-scanner
+    # Avoid fighting upstream's usage of vendored ffmpeg libraries
+    autoPatchelfHook
+  ]
+  ++ lib.optionals cudaSupport [
+    autoAddDriverRunpath
+  ];
 
   buildInputs =
     [
@@ -154,23 +153,22 @@ stdenv'.mkDerivation rec {
     libglvnd
   ];
 
-  cmakeFlags =
-    [
-      "-Wno-dev"
-      # upstream tries to use systemd and udev packages to find these directories in FHS; set the paths explicitly instead
-      (lib.cmakeBool "UDEV_FOUND" true)
-      (lib.cmakeBool "SYSTEMD_FOUND" true)
-      (lib.cmakeFeature "UDEV_RULES_INSTALL_DIR" "lib/udev/rules.d")
-      (lib.cmakeFeature "SYSTEMD_USER_UNIT_INSTALL_DIR" "lib/systemd/user")
-      (lib.cmakeBool "BOOST_USE_STATIC" false)
-      (lib.cmakeBool "BUILD_DOCS" false)
-      (lib.cmakeFeature "SUNSHINE_PUBLISHER_NAME" "nixpkgs")
-      (lib.cmakeFeature "SUNSHINE_PUBLISHER_WEBSITE" "https://nixos.org")
-      (lib.cmakeFeature "SUNSHINE_PUBLISHER_ISSUE_URL" "https://github.com/NixOS/nixpkgs/issues")
-    ]
-    ++ lib.optionals (!cudaSupport) [
-      (lib.cmakeBool "SUNSHINE_ENABLE_CUDA" false)
-    ];
+  cmakeFlags = [
+    "-Wno-dev"
+    # upstream tries to use systemd and udev packages to find these directories in FHS; set the paths explicitly instead
+    (lib.cmakeBool "UDEV_FOUND" true)
+    (lib.cmakeBool "SYSTEMD_FOUND" true)
+    (lib.cmakeFeature "UDEV_RULES_INSTALL_DIR" "lib/udev/rules.d")
+    (lib.cmakeFeature "SYSTEMD_USER_UNIT_INSTALL_DIR" "lib/systemd/user")
+    (lib.cmakeBool "BOOST_USE_STATIC" false)
+    (lib.cmakeBool "BUILD_DOCS" false)
+    (lib.cmakeFeature "SUNSHINE_PUBLISHER_NAME" "nixpkgs")
+    (lib.cmakeFeature "SUNSHINE_PUBLISHER_WEBSITE" "https://nixos.org")
+    (lib.cmakeFeature "SUNSHINE_PUBLISHER_ISSUE_URL" "https://github.com/NixOS/nixpkgs/issues")
+  ]
+  ++ lib.optionals (!cudaSupport) [
+    (lib.cmakeBool "SUNSHINE_ENABLE_CUDA" false)
+  ];
 
   env = {
     # needed to trigger CMake version configuration

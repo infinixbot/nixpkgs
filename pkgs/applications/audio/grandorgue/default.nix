@@ -42,20 +42,19 @@ stdenv.mkDerivation rec {
     makeWrapper
   ];
 
-  buildInputs =
-    [
-      fftwFloat
-      zlib
-      wavpack
-      wxGTK32
-      yaml-cpp
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      alsa-lib
-      udev
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [ Cocoa ]
-    ++ lib.optional jackaudioSupport libjack2;
+  buildInputs = [
+    fftwFloat
+    zlib
+    wavpack
+    wxGTK32
+    yaml-cpp
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    alsa-lib
+    udev
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ Cocoa ]
+  ++ lib.optional jackaudioSupport libjack2;
 
   cmakeFlags =
     lib.optionals (!jackaudioSupport) [

@@ -42,7 +42,8 @@ buildPythonPackage rec {
   ];
 
   optional-dependencies = {
-    compatible-mypy = [ mypy ] ++ django-stubs.optional-dependencies.compatible-mypy;
+    compatible-mypy = [ mypy ]
+      ++ django-stubs.optional-dependencies.compatible-mypy;
     coreapi = [ coreapi ];
     markdown = [ types-markdown ];
   };
@@ -51,7 +52,8 @@ buildPythonPackage rec {
     py
     pytest-mypy-plugins
     pytestCheckHook
-  ] ++ lib.flatten (builtins.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (builtins.attrValues optional-dependencies);
 
   # Upstream recommends mypy > 1.7 which we don't have yet, thus all testsare failing with 3.14.5 and below
   doCheck = false;

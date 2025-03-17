@@ -42,17 +42,16 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-mvRsyA2li0MByiuu/MJaQNES0DFVB+YywPPw8IMo0FQ=";
   };
 
-  nativeBuildInputs =
-    [
-      pkg-config
-      doxygen # (optional) api docs
-      pythonPackages.sphinx # (optional) documentation -> doc/INSTALL
-      texinfo # (optional) documentation -> doc/INSTALL
-      pythonPackages.cffi
-    ]
-    ++ lib.optional withEmacs emacs
-    ++ lib.optional withRuby ruby
-    ++ lib.optional withSfsexp makeWrapper;
+  nativeBuildInputs = [
+    pkg-config
+    doxygen # (optional) api docs
+    pythonPackages.sphinx # (optional) documentation -> doc/INSTALL
+    texinfo # (optional) documentation -> doc/INSTALL
+    pythonPackages.cffi
+  ]
+  ++ lib.optional withEmacs emacs
+  ++ lib.optional withRuby ruby
+  ++ lib.optional withSfsexp makeWrapper;
 
   buildInputs =
     [
@@ -67,32 +66,30 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optional withRuby ruby
     ++ lib.optional withSfsexp sfsexp;
 
-  postPatch =
-    ''
-      patchShebangs configure test/
+  postPatch = ''
+    patchShebangs configure test/
 
-      substituteInPlace lib/Makefile.local \
-        --replace '-install_name $(libdir)' "-install_name $out/lib"
+    substituteInPlace lib/Makefile.local \
+      --replace '-install_name $(libdir)' "-install_name $out/lib"
 
-      # do not override CFLAGS of the Makefile created by mkmf
-      substituteInPlace bindings/Makefile.local \
-        --replace 'CFLAGS="$(CFLAGS) -pipe -fno-plt -fPIC"' ""
-    ''
-    + lib.optionalString withEmacs ''
-      substituteInPlace emacs/notmuch-emacs-mua \
-        --replace 'EMACS:-emacs' 'EMACS:-${emacs}/bin/emacs' \
-        --replace 'EMACSCLIENT:-emacsclient' 'EMACSCLIENT:-${emacs}/bin/emacsclient'
-    '';
+    # do not override CFLAGS of the Makefile created by mkmf
+    substituteInPlace bindings/Makefile.local \
+      --replace 'CFLAGS="$(CFLAGS) -pipe -fno-plt -fPIC"' ""
+  ''
+  + lib.optionalString withEmacs ''
+    substituteInPlace emacs/notmuch-emacs-mua \
+      --replace 'EMACS:-emacs' 'EMACS:-${emacs}/bin/emacs' \
+      --replace 'EMACSCLIENT:-emacsclient' 'EMACSCLIENT:-${emacs}/bin/emacsclient'
+  '';
 
-  configureFlags =
-    [
-      "--zshcompletiondir=${placeholder "out"}/share/zsh/site-functions"
-      "--bashcompletiondir=${placeholder "out"}/share/bash-completion/completions"
-      "--infodir=${placeholder "info"}/share/info"
-    ]
-    ++ lib.optional (!withEmacs) "--without-emacs"
-    ++ lib.optional withEmacs "--emacslispdir=${placeholder "emacs"}/share/emacs/site-lisp"
-    ++ lib.optional (!withRuby) "--without-ruby";
+  configureFlags = [
+    "--zshcompletiondir=${placeholder "out"}/share/zsh/site-functions"
+    "--bashcompletiondir=${placeholder "out"}/share/bash-completion/completions"
+    "--infodir=${placeholder "info"}/share/info"
+  ]
+  ++ lib.optional (!withEmacs) "--without-emacs"
+  ++ lib.optional withEmacs "--emacslispdir=${placeholder "emacs"}/share/emacs/site-lisp"
+  ++ lib.optional (!withRuby) "--without-ruby";
 
   # Notmuch doesn't use autoconf and consequently doesn't tag --bindir and
   # friends
@@ -164,10 +161,9 @@ stdenv.mkDerivation (finalAttrs: {
     "install-info"
   ];
 
-  postInstall =
-    lib.optionalString withEmacs ''
-      moveToOutput bin/notmuch-emacs-mua $emacs
-    ''
+  postInstall = lib.optionalString withEmacs ''
+    moveToOutput bin/notmuch-emacs-mua $emacs
+  ''
     + lib.optionalString withRuby ''
       make -C bindings/ruby install \
         vendordir=$out/lib/ruby \

@@ -29,7 +29,8 @@ stdenv.mkDerivation (finalAttrs: {
   buildInputs = [
     argtable
     libserialport
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin IOKit;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin IOKit;
 
   cmakeFlags = [
     "-DBLISP_BUILD_CLI=ON"

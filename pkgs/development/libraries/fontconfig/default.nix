@@ -42,7 +42,8 @@ stdenv.mkDerivation (finalAttrs: {
 
   buildInputs = [
     expat
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin CoreFoundation;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin CoreFoundation;
 
   propagatedBuildInputs = [
     freetype
@@ -53,17 +54,16 @@ stdenv.mkDerivation (finalAttrs: {
     sed -i '/check_PROGRAMS += test-crbug1004254/d' test/Makefile.am
   '';
 
-  configureFlags =
-    [
-      "--sysconfdir=/etc"
-      "--with-arch=${stdenv.hostPlatform.parsed.cpu.name}"
-      "--with-cache-dir=/var/cache/fontconfig" # otherwise the fallback is in $out/
-      # just <1MB; this is what you get when loading config fails for some reason
-      "--with-default-fonts=${dejavu_fonts.minimal}"
-    ]
-    ++ lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
-      "--with-arch=${stdenv.hostPlatform.parsed.cpu.name}"
-    ];
+  configureFlags = [
+    "--sysconfdir=/etc"
+    "--with-arch=${stdenv.hostPlatform.parsed.cpu.name}"
+    "--with-cache-dir=/var/cache/fontconfig" # otherwise the fallback is in $out/
+    # just <1MB; this is what you get when loading config fails for some reason
+    "--with-default-fonts=${dejavu_fonts.minimal}"
+  ]
+  ++ lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
+    "--with-arch=${stdenv.hostPlatform.parsed.cpu.name}"
+  ];
 
   enableParallelBuilding = true;
 

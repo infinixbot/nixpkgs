@@ -95,14 +95,12 @@ stdenv.mkDerivation rec {
       '';
       copyComponent = component: "cp ${component} $TEMP/${component.name}";
       # leaves enabled: quartus, devinfo
-      disabledComponents =
-        [
-          "quartus_help"
-          "quartus_update"
-          "questa_fe"
-        ]
-        ++ (lib.optional (!withQuesta) "questa_fse")
-        ++ (lib.attrValues unsupportedDeviceIds);
+      disabledComponents = [
+        "quartus_help"
+        "quartus_update"
+        "questa_fe"
+      ]
+      ++ (lib.optional (!withQuesta) "questa_fse") ++ (lib.attrValues unsupportedDeviceIds);
     in
     ''
       echo "setting up installer..."

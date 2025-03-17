@@ -32,15 +32,14 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
   depsBuildBuild = [ buildPackages.stdenv.cc ];
-  nativeBuildInputs =
-    [
-      swig
-      pkg-config
-      libtool
-    ]
-    ++ lib.optionals pythonBindings [ python3 ]
-    ++ lib.optionals tclBindings [ tcl ]
-    ++ lib.optionals perlBindings [ perl ];
+  nativeBuildInputs = [
+    swig
+    pkg-config
+    libtool
+  ]
+  ++ lib.optionals pythonBindings [ python3 ]
+  ++ lib.optionals tclBindings [ tcl ]
+  ++ lib.optionals perlBindings [ perl ];
 
   buildInputs =
     [
@@ -55,16 +54,15 @@ stdenv.mkDerivation rec {
     ]
     ++ lib.optionals tclBindings [ tcl ];
 
-  configureFlags =
-    [
-      "CC_FOR_BUILD=${stdenv.cc.targetPrefix}cc"
-    ]
-    ++ lib.optionals perlBindings [ "--with-perl-binding" ]
-    ++ lib.optionals tclBindings [
-      "--with-tcl-binding"
-      "--with-tcl=${tcl}/lib/"
-    ]
-    ++ lib.optionals pythonBindings [ "--with-python-binding" ];
+  configureFlags = [
+    "CC_FOR_BUILD=${stdenv.cc.targetPrefix}cc"
+  ]
+  ++ lib.optionals perlBindings [ "--with-perl-binding" ]
+  ++ lib.optionals tclBindings [
+    "--with-tcl-binding"
+    "--with-tcl=${tcl}/lib/"
+  ]
+  ++ lib.optionals pythonBindings [ "--with-python-binding" ];
 
   meta = with lib; {
     description = "Runtime library to control radio transceivers and receivers";

@@ -17,7 +17,8 @@ in
 symlinkJoin {
   name = "inkscape-with-extensions-${lib.getVersion inkscape}";
 
-  paths = [ inkscape ] ++ selectedExtensions;
+  paths = [ inkscape ]
+    ++ selectedExtensions;
 
   nativeBuildInputs = [ makeWrapper ];
 

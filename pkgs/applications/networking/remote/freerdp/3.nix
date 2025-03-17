@@ -76,25 +76,24 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-qFjR1Z2GZsNpgjlbHw+o+dLCBLZQ9D9c93FFqFGM8T4=";
   };
 
-  postPatch =
-    ''
-      export HOME=$TMP
+  postPatch = ''
+    export HOME=$TMP
 
-      # skip NIB file generation on darwin
-      substituteInPlace "client/Mac/CMakeLists.txt" "client/Mac/cli/CMakeLists.txt" \
-        --replace-fail "if(NOT IS_XCODE)" "if(FALSE)"
+    # skip NIB file generation on darwin
+    substituteInPlace "client/Mac/CMakeLists.txt" "client/Mac/cli/CMakeLists.txt" \
+      --replace-fail "if(NOT IS_XCODE)" "if(FALSE)"
 
-      substituteInPlace "libfreerdp/freerdp.pc.in" \
-        --replace-fail "Requires:" "Requires: @WINPR_PKG_CONFIG_FILENAME@"
-    ''
-    + lib.optionalString (pcsclite != null) ''
-      substituteInPlace "winpr/libwinpr/smartcard/smartcard_pcsc.c" \
-        --replace-fail "libpcsclite.so" "${lib.getLib pcsclite}/lib/libpcsclite.so"
-    ''
-    + lib.optionalString nocaps ''
-      substituteInPlace "libfreerdp/locale/keyboard_xkbfile.c" \
-        --replace-fail "RDP_SCANCODE_CAPSLOCK" "RDP_SCANCODE_LCONTROL"
-    '';
+    substituteInPlace "libfreerdp/freerdp.pc.in" \
+      --replace-fail "Requires:" "Requires: @WINPR_PKG_CONFIG_FILENAME@"
+  ''
+  + lib.optionalString (pcsclite != null) ''
+    substituteInPlace "winpr/libwinpr/smartcard/smartcard_pcsc.c" \
+      --replace-fail "libpcsclite.so" "${lib.getLib pcsclite}/lib/libpcsclite.so"
+  ''
+  + lib.optionalString nocaps ''
+    substituteInPlace "libfreerdp/locale/keyboard_xkbfile.c" \
+      --replace-fail "RDP_SCANCODE_CAPSLOCK" "RDP_SCANCODE_LCONTROL"
+  '';
 
   nativeBuildInputs = [
     cmake
@@ -104,63 +103,62 @@ stdenv.mkDerivation (finalAttrs: {
     wayland-scanner
   ];
 
-  buildInputs =
-    [
-      cairo
-      cjson
-      cups
-      faad2
-      ffmpeg
-      glib
-      icu
-      libX11
-      libXcursor
-      libXdamage
-      libXdmcp
-      libXext
-      libXi
-      libXinerama
-      libXrandr
-      libXrender
-      libXtst
-      libXv
-      libjpeg_turbo
-      libkrb5
-      libopus
-      libpulseaudio
-      libunwind
-      libusb1
-      libxkbcommon
-      libxkbfile
-      openh264
-      openssl
-      orc
-      pcre2
-      pcsclite
-      pkcs11helper
-      SDL2
-      SDL2_ttf
-      SDL2_image
-      uriparser
-      zlib
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      alsa-lib
-      fuse3
-      systemd
-      wayland
-      wayland-scanner
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      AudioToolbox
-      AVFoundation
-      Carbon
-      Cocoa
-      CoreMedia
-    ]
-    ++ lib.optionals withUnfree [
-      faac
-    ];
+  buildInputs = [
+    cairo
+    cjson
+    cups
+    faad2
+    ffmpeg
+    glib
+    icu
+    libX11
+    libXcursor
+    libXdamage
+    libXdmcp
+    libXext
+    libXi
+    libXinerama
+    libXrandr
+    libXrender
+    libXtst
+    libXv
+    libjpeg_turbo
+    libkrb5
+    libopus
+    libpulseaudio
+    libunwind
+    libusb1
+    libxkbcommon
+    libxkbfile
+    openh264
+    openssl
+    orc
+    pcre2
+    pcsclite
+    pkcs11helper
+    SDL2
+    SDL2_ttf
+    SDL2_image
+    uriparser
+    zlib
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    alsa-lib
+    fuse3
+    systemd
+    wayland
+    wayland-scanner
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    AudioToolbox
+    AVFoundation
+    Carbon
+    Cocoa
+    CoreMedia
+  ]
+  ++ lib.optionals withUnfree [
+    faac
+  ];
 
   # https://github.com/FreeRDP/FreeRDP/issues/8526#issuecomment-1357134746
   cmakeFlags =

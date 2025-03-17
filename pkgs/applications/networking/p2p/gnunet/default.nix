@@ -67,7 +67,8 @@ stdenv.mkDerivation rec {
     libopus
     libogg
     jansson
-  ] ++ lib.optional postgresqlSupport libpq;
+  ]
+  ++ lib.optional postgresqlSupport libpq;
 
   preConfigure = ''
     # Brute force: since nix-worker chroots don't provide

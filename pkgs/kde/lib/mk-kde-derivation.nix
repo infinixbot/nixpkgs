@@ -123,15 +123,18 @@ let
       cmake
       qt6.wrapQtAppsHook
       moveDevHook
-    ] ++ extraNativeBuildInputs;
-    buildInputs = [ qt6.qtbase ] ++ extraBuildInputs;
+    ]
+    ++ extraNativeBuildInputs;
+    buildInputs = [ qt6.qtbase ]
+      ++ extraBuildInputs;
 
     # FIXME: figure out what to propagate here
     propagatedBuildInputs = deps ++ extraPropagatedBuildInputs;
     strictDeps = true;
 
     dontFixCmake = true;
-    cmakeFlags = [ "-DQT_MAJOR_VERSION=6" ] ++ extraCmakeFlags;
+    cmakeFlags = [ "-DQT_MAJOR_VERSION=6" ]
+      ++ extraCmakeFlags;
 
     separateDebugInfo = true;
 
@@ -154,7 +157,8 @@ let
     maintainers = lib.teams.qt-kde.members;
     # Platforms are currently limited to what upstream tests in CI, but can be extended if there's interest.
     platforms = lib.platforms.linux ++ lib.platforms.freebsd;
-  } // (args.meta or { });
+  }
+  // (args.meta or { });
 
   pos = builtins.unsafeGetAttrPos "pname" args;
 in

@@ -40,15 +40,15 @@ let
 
       strictDeps = true;
 
-      nativeBuildInputs =
-        [ python ]
+      nativeBuildInputs = [ python ]
         ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames
         ++ lib.optional javaBindings jdk
         ++ lib.optionals ocamlBindings [
           ocaml
           findlib
         ];
-      propagatedBuildInputs = [ python.pkgs.setuptools ] ++ lib.optionals ocamlBindings [ zarith ];
+      propagatedBuildInputs = [ python.pkgs.setuptools ]
+        ++ lib.optionals ocamlBindings [ zarith ];
       enableParallelBuilding = true;
 
       postPatch =
@@ -68,13 +68,12 @@ let
               done
             '';
 
-      configurePhase =
-        lib.concatStringsSep " " (
-          [ "${python.pythonOnBuildForHost.interpreter} scripts/mk_make.py --prefix=$out" ]
-          ++ lib.optional javaBindings "--java"
-          ++ lib.optional ocamlBindings "--ml"
-          ++ lib.optional pythonBindings "--python --pypkgdir=$out/${python.sitePackages}"
-        )
+      configurePhase = lib.concatStringsSep " " (
+        [ "${python.pythonOnBuildForHost.interpreter} scripts/mk_make.py --prefix=$out" ]
+        ++ lib.optional javaBindings "--java"
+        ++ lib.optional ocamlBindings "--ml"
+        ++ lib.optional pythonBindings "--python --pypkgdir=$out/${python.sitePackages}"
+      )
         + "\n"
         + "cd build";
 
@@ -84,22 +83,21 @@ let
         ./test-z3 -a
       '';
 
-      postInstall =
-        ''
-          mkdir -p $dev $lib
-          mv $out/lib $lib/lib
-          mv $out/include $dev/include
-        ''
-        + lib.optionalString pythonBindings ''
-          mkdir -p $python/lib
-          mv $lib/lib/python* $python/lib/
-          ln -sf $lib/lib/libz3${stdenv.hostPlatform.extensions.sharedLibrary} $python/${python.sitePackages}/z3/lib/libz3${stdenv.hostPlatform.extensions.sharedLibrary}
-        ''
-        + lib.optionalString javaBindings ''
-          mkdir -p $java/share/java
-          mv com.microsoft.z3.jar $java/share/java
-          moveToOutput "lib/libz3java.${stdenv.hostPlatform.extensions.sharedLibrary}" "$java"
-        '';
+      postInstall = ''
+        mkdir -p $dev $lib
+        mv $out/lib $lib/lib
+        mv $out/include $dev/include
+      ''
+      + lib.optionalString pythonBindings ''
+        mkdir -p $python/lib
+        mv $lib/lib/python* $python/lib/
+        ln -sf $lib/lib/libz3${stdenv.hostPlatform.extensions.sharedLibrary} $python/${python.sitePackages}/z3/lib/libz3${stdenv.hostPlatform.extensions.sharedLibrary}
+      ''
+      + lib.optionalString javaBindings ''
+        mkdir -p $java/share/java
+        mv com.microsoft.z3.jar $java/share/java
+        moveToOutput "lib/libz3java.${stdenv.hostPlatform.extensions.sharedLibrary}" "$java"
+      '';
 
       doInstallCheck = true;
       installCheckPhase = ''

@@ -71,7 +71,8 @@ stdenv.mkDerivation (finalAttrs: {
   outputs = [
     "out"
     "dev"
-  ] ++ lib.optional withIntrospection "devdoc";
+  ]
+  ++ lib.optional withIntrospection "devdoc";
   outputBin = "dev";
 
   setupHooks = [
@@ -88,51 +89,49 @@ stdenv.mkDerivation (finalAttrs: {
       hash = "sha256-fgTwZIUVA0uAa3SuXXdNh8/7GiqWxGjLW+R21Rvy88c=";
     };
 
-  patches =
-    [
-      ./patches/3.0-immodules.cache.patch
-      ./patches/3.0-Xft-setting-fallback-compute-DPI-properly.patch
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      # X11 module requires <gio/gdesktopappinfo.h> which is not installed on Darwin
-      # let’s drop that dependency in similar way to how other parts of the library do it
-      # e.g. https://gitlab.gnome.org/GNOME/gtk/blob/3.24.4/gtk/gtk-launch.c#L31-33
-      # https://gitlab.gnome.org/GNOME/gtk/merge_requests/536
-      ./patches/3.0-darwin-x11.patch
-    ];
+  patches = [
+    ./patches/3.0-immodules.cache.patch
+    ./patches/3.0-Xft-setting-fallback-compute-DPI-properly.patch
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    # X11 module requires <gio/gdesktopappinfo.h> which is not installed on Darwin
+    # let’s drop that dependency in similar way to how other parts of the library do it
+    # e.g. https://gitlab.gnome.org/GNOME/gtk/blob/3.24.4/gtk/gtk-launch.c#L31-33
+    # https://gitlab.gnome.org/GNOME/gtk/merge_requests/536
+    ./patches/3.0-darwin-x11.patch
+  ];
 
   depsBuildBuild = [
     pkg-config
   ];
-  nativeBuildInputs =
-    [
-      gettext
-      makeWrapper
-      meson
-      ninja
-      pkg-config
-      python3
-      sassc
-      gdk-pixbuf
-    ]
-    ++ finalAttrs.setupHooks
-    ++ lib.optionals withIntrospection [
-      gobject-introspection
-      docbook_xml_dtd_43
-      docbook-xsl-nons
-      gtk-doc
-      # For xmllint
-      libxml2
-    ]
-    ++
-      lib.optionals
-        ((withIntrospection || compileSchemas) && !stdenv.buildPlatform.canExecute stdenv.hostPlatform)
-        [
-          mesonEmulatorHook
-        ]
-    ++ lib.optionals waylandSupport [
-      wayland-scanner
-    ];
+  nativeBuildInputs = [
+    gettext
+    makeWrapper
+    meson
+    ninja
+    pkg-config
+    python3
+    sassc
+    gdk-pixbuf
+  ]
+  ++ finalAttrs.setupHooks
+  ++ lib.optionals withIntrospection [
+    gobject-introspection
+    docbook_xml_dtd_43
+    docbook-xsl-nons
+    gtk-doc
+    # For xmllint
+    libxml2
+  ]
+  ++
+    lib.optionals
+      ((withIntrospection || compileSchemas) && !stdenv.buildPlatform.canExecute stdenv.hostPlatform)
+      [
+        mesonEmulatorHook
+      ]
+  ++ lib.optionals waylandSupport [
+    wayland-scanner
+  ];
 
   buildInputs =
     [
@@ -286,15 +285,14 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://www.gtk.org/";
     license = licenses.lgpl2Plus;
     maintainers = with maintainers; [ raskin ] ++ teams.gnome.members;
-    pkgConfigModules =
-      [
-        "gdk-3.0"
-        "gtk+-3.0"
-      ]
-      ++ lib.optionals x11Support [
-        "gdk-x11-3.0"
-        "gtk+-x11-3.0"
-      ];
+    pkgConfigModules = [
+      "gdk-3.0"
+      "gtk+-3.0"
+    ]
+    ++ lib.optionals x11Support [
+      "gdk-x11-3.0"
+      "gtk+-x11-3.0"
+    ];
     platforms = platforms.all;
     changelog = "https://gitlab.gnome.org/GNOME/gtk/-/raw/${finalAttrs.version}/NEWS";
   };

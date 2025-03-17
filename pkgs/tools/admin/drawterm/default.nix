@@ -31,8 +31,7 @@ stdenv.mkDerivation {
 
   enableParallelBuilding = true;
   strictDeps = true;
-  nativeBuildInputs =
-    [ installShellFiles ]
+  nativeBuildInputs = [ installShellFiles ]
     ++ {
       linux = [
         pkg-config

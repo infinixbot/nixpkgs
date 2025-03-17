@@ -51,18 +51,17 @@ rustPlatform.buildRustPackage.override
         (lib.getDev pkgsHostHost.curl)
         zlib
       ];
-      buildInputs =
-        [
-          file
-          curl
-          python3
-          openssl
-          zlib
-        ]
-        ++ lib.optionals stdenv.hostPlatform.isDarwin [
-          CoreFoundation
-          Security
-        ];
+      buildInputs = [
+        file
+        curl
+        python3
+        openssl
+        zlib
+      ]
+      ++ lib.optionals stdenv.hostPlatform.isDarwin [
+        CoreFoundation
+        Security
+      ];
 
       # cargo uses git-rs which is made for a version of libgit2 from recent master that
       # is not compatible with the current version in nixpkgs.

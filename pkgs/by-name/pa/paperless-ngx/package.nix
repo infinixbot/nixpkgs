@@ -88,23 +88,21 @@ let
 
     npmDepsHash = "sha256-hK7Soop9gBZP4m2UzbEIAsLkPKpbQkLmVruY2So4CSs=";
 
-    nativeBuildInputs =
-      [
-        pkg-config
-        python3
-      ]
-      ++ lib.optionals stdenv.hostPlatform.isDarwin [
-        xcbuild
-      ];
+    nativeBuildInputs = [
+      pkg-config
+      python3
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      xcbuild
+    ];
 
-    buildInputs =
-      [
-        pango
-      ]
-      ++ lib.optionals stdenv.hostPlatform.isDarwin [
-        giflib
-        darwin.apple_sdk.frameworks.CoreText
-      ];
+    buildInputs = [
+      pango
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      giflib
+      darwin.apple_sdk.frameworks.CoreText
+    ];
 
     CYPRESS_INSTALL_BINARY = "0";
     NG_CLI_ANALYTICS = "false";

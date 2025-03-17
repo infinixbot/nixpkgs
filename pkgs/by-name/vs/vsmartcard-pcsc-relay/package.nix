@@ -28,24 +28,23 @@ stdenv.mkDerivation (finalAttrs: {
     help2man
   ];
 
-  buildInputs =
-    [
-      pcsclite
-      libnfc
-      gengetopt
-      (python3.withPackages (
-        pp: with pp; [
-          pyscard
-          pycrypto
-          pbkdf2
-          pillow
-          gnureadline
-        ]
-      ))
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      darwin.apple_sdk.frameworks.PCSC
-    ];
+  buildInputs = [
+    pcsclite
+    libnfc
+    gengetopt
+    (python3.withPackages (
+      pp: with pp; [
+        pyscard
+        pycrypto
+        pbkdf2
+        pillow
+        gnureadline
+      ]
+    ))
+  ]
+  ++ lib.optionals stdenv.isDarwin [
+    darwin.apple_sdk.frameworks.PCSC
+  ];
 
   meta = {
     description = "Relays a smart card using an contact-less interface";

@@ -115,7 +115,8 @@ let
                       -i \$prev -t attr -n Include -v 'NUGET_PACKAGES=$(ProjectDirectory)artifacts/sb/package-cache/' \
                       repo-projects/nuget-client.proj
                   '';
-                buildFlags = [ "--online" ] ++ old.buildFlags;
+                buildFlags = [ "--online" ]
+                  ++ old.buildFlags;
                 prebuiltPackages = null;
               });
 

@@ -32,19 +32,17 @@ stdenv.mkDerivation rec {
     hash = "sha256-R4/9aKD13ejvbKmJt/A1taCiLFmRQuXNP/ewO76+Xys=";
   };
 
-  nativeBuildInputs =
-    [
-      pkg-config
-      autoreconfHook
-    ]
-    ++ lib.optionals withJava [
-      jdk17
-      ant
-      stripJavaArchivesHook
-    ];
+  nativeBuildInputs = [
+    pkg-config
+    autoreconfHook
+  ]
+  ++ lib.optionals withJava [
+    jdk17
+    ant
+    stripJavaArchivesHook
+  ];
 
-  buildInputs =
-    [ fontconfig ]
+  buildInputs = [ fontconfig ]
     ++ lib.optional withMetadata libxml2
     ++ lib.optional withFonts freetype
     ++ lib.optional stdenv.hostPlatform.isDarwin DiskArbitration;

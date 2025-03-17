@@ -42,18 +42,17 @@ stdenv.mkDerivation rec {
 
   cmakeFlags = [ "-DSDLSOUND_DECODER_MIDI=1" ];
 
-  buildInputs =
-    [
-      SDL2
-      flac
-      libmikmod
-      libvorbis
-      timidity
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      AudioToolbox
-      CoreAudio
-    ];
+  buildInputs = [
+    SDL2
+    flac
+    libmikmod
+    libvorbis
+    timidity
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    AudioToolbox
+    CoreAudio
+  ];
 
   meta = with lib; {
     description = "SDL2 sound library";

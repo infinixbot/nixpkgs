@@ -93,81 +93,80 @@ stdenv.mkDerivation rec {
 
   inherit src version;
 
-  propagatedBuildInputs =
-    [
-      libxml2
-      libxslt
-      openssl
-      sqlite
-      zlib
-      # Text rendering
-      harfbuzz
-      icu
-      # Image formats
-      libjpeg
-      libpng
-      pcre2
-      pcre
-      zstd
-      libb2
-      md4c
-      double-conversion
-    ]
-    ++ lib.optionals (!stdenv.hostPlatform.isMinGW) [
-      libproxy
-      dbus
-      glib
-      # unixODBC drivers
-      unixODBC
-      unixODBCDrivers.psql
-      unixODBCDrivers.sqlite
-      unixODBCDrivers.mariadb
-    ]
-    ++ lib.optionals systemdSupport [
-      systemd
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      util-linux
-      mtdev
-      lksctp-tools
-      libselinux
-      libsepol
-      lttng-ust
-      vulkan-headers
-      vulkan-loader
-      libthai
-      libdrm
-      libdatrie
-      udev
-      # Text rendering
-      fontconfig
-      freetype
-      # X11 libs
-      libX11
-      libXcomposite
-      libXext
-      libXi
-      libXrender
-      libxcb
-      libxkbcommon
-      xcbutil
-      xcbutilimage
-      xcbutilkeysyms
-      xcbutilrenderutil
-      xcbutilwm
-      xorg.libXdmcp
-      xorg.libXtst
-      xorg.xcbutilcursor
-      libepoxy
-    ]
-    ++ lib.optionals libGLSupported [
-      libGL
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isMinGW [
-      vulkan-headers
-      vulkan-loader
-    ]
-    ++ lib.optional (cups != null && lib.meta.availableOn stdenv.hostPlatform cups) cups;
+  propagatedBuildInputs = [
+    libxml2
+    libxslt
+    openssl
+    sqlite
+    zlib
+    # Text rendering
+    harfbuzz
+    icu
+    # Image formats
+    libjpeg
+    libpng
+    pcre2
+    pcre
+    zstd
+    libb2
+    md4c
+    double-conversion
+  ]
+  ++ lib.optionals (!stdenv.hostPlatform.isMinGW) [
+    libproxy
+    dbus
+    glib
+    # unixODBC drivers
+    unixODBC
+    unixODBCDrivers.psql
+    unixODBCDrivers.sqlite
+    unixODBCDrivers.mariadb
+  ]
+  ++ lib.optionals systemdSupport [
+    systemd
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    util-linux
+    mtdev
+    lksctp-tools
+    libselinux
+    libsepol
+    lttng-ust
+    vulkan-headers
+    vulkan-loader
+    libthai
+    libdrm
+    libdatrie
+    udev
+    # Text rendering
+    fontconfig
+    freetype
+    # X11 libs
+    libX11
+    libXcomposite
+    libXext
+    libXi
+    libXrender
+    libxcb
+    libxkbcommon
+    xcbutil
+    xcbutilimage
+    xcbutilkeysyms
+    xcbutilrenderutil
+    xcbutilwm
+    xorg.libXdmcp
+    xorg.libXtst
+    xorg.xcbutilcursor
+    libepoxy
+  ]
+  ++ lib.optionals libGLSupported [
+    libGL
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isMinGW [
+    vulkan-headers
+    vulkan-loader
+  ]
+  ++ lib.optional (cups != null && lib.meta.availableOn stdenv.hostPlatform cups) cups;
 
   buildInputs =
     lib.optionals (lib.meta.availableOn stdenv.hostPlatform at-spi2-core) [
@@ -190,7 +189,8 @@ stdenv.mkDerivation rec {
     cmake
     xmlstarlet
     ninja
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ moveBuildTree ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ moveBuildTree ];
 
   propagatedNativeBuildInputs =
     [ lndir ]
@@ -274,31 +274,30 @@ stdenv.mkDerivation rec {
   qtPluginPrefix = "lib/qt-6/plugins";
   qtQmlPrefix = "lib/qt-6/qml";
 
-  cmakeFlags =
-    [
-      "-DQT_EMBED_TOOLCHAIN_COMPILER=OFF"
-      "-DINSTALL_PLUGINSDIR=${qtPluginPrefix}"
-      "-DINSTALL_QMLDIR=${qtQmlPrefix}"
-      "-DQT_FEATURE_libproxy=ON"
-      "-DQT_FEATURE_system_sqlite=ON"
-      "-DQT_FEATURE_openssl_linked=ON"
-    ]
-    ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
-      "-DQT_FEATURE_sctp=ON"
-      "-DQT_FEATURE_journald=${if systemdSupport then "ON" else "OFF"}"
-      "-DQT_FEATURE_vulkan=ON"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      "-DQT_FEATURE_rpath=OFF"
-      "-DQT_NO_XCODE_MIN_VERSION_CHECK=ON"
-    ]
-    ++ lib.optionals isCrossBuild [
-      "-DQT_HOST_PATH=${pkgsBuildBuild.qt6.qtbase}"
-      "-DQt6HostInfo_DIR=${pkgsBuildBuild.qt6.qtbase}/lib/cmake/Qt6HostInfo"
-    ]
-    ++ lib.optional (
-      qttranslations != null && !isCrossBuild
-    ) "-DINSTALL_TRANSLATIONSDIR=${qttranslations}/translations";
+  cmakeFlags = [
+    "-DQT_EMBED_TOOLCHAIN_COMPILER=OFF"
+    "-DINSTALL_PLUGINSDIR=${qtPluginPrefix}"
+    "-DINSTALL_QMLDIR=${qtQmlPrefix}"
+    "-DQT_FEATURE_libproxy=ON"
+    "-DQT_FEATURE_system_sqlite=ON"
+    "-DQT_FEATURE_openssl_linked=ON"
+  ]
+  ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
+    "-DQT_FEATURE_sctp=ON"
+    "-DQT_FEATURE_journald=${if systemdSupport then "ON" else "OFF"}"
+    "-DQT_FEATURE_vulkan=ON"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    "-DQT_FEATURE_rpath=OFF"
+    "-DQT_NO_XCODE_MIN_VERSION_CHECK=ON"
+  ]
+  ++ lib.optionals isCrossBuild [
+    "-DQT_HOST_PATH=${pkgsBuildBuild.qt6.qtbase}"
+    "-DQt6HostInfo_DIR=${pkgsBuildBuild.qt6.qtbase}/lib/cmake/Qt6HostInfo"
+  ]
+  ++ lib.optional (
+    qttranslations != null && !isCrossBuild
+  ) "-DINSTALL_TRANSLATIONSDIR=${qttranslations}/translations";
 
   env.NIX_CFLAGS_COMPILE = "-DNIXPKGS_QT_PLUGIN_PREFIX=\"${qtPluginPrefix}\"";
 
@@ -310,17 +309,16 @@ stdenv.mkDerivation rec {
 
   moveToDev = false;
 
-  postFixup =
-    ''
-      moveToOutput      "mkspecs/modules" "$dev"
-      fixQtModulePaths  "$dev/mkspecs/modules"
-      fixQtBuiltinPaths "$out" '*.pr?'
-    ''
-    + lib.optionalString stdenv.hostPlatform.isLinux ''
+  postFixup = ''
+    moveToOutput      "mkspecs/modules" "$dev"
+    fixQtModulePaths  "$dev/mkspecs/modules"
+    fixQtBuiltinPaths "$out" '*.pr?'
+  ''
+  + lib.optionalString stdenv.hostPlatform.isLinux ''
 
-      # FIXME: not sure why this isn't added automatically?
-      patchelf --add-rpath "${libmysqlclient}/lib/mariadb" $out/${qtPluginPrefix}/sqldrivers/libqsqlmysql.so
-    '';
+    # FIXME: not sure why this isn't added automatically?
+    patchelf --add-rpath "${libmysqlclient}/lib/mariadb" $out/${qtPluginPrefix}/sqldrivers/libqsqlmysql.so
+  '';
 
   dontWrapQtApps = true;
 

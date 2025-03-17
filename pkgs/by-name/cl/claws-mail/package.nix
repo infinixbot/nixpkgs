@@ -206,7 +206,8 @@ let
     {
       flags = [ "notification-plugin" ];
       enabled = enablePluginNotification;
-      deps = [ libnotify ] ++ [ libcanberra-gtk3 ];
+      deps = [ libnotify ]
+        ++ [ libcanberra-gtk3 ];
     }
     {
       flags = [ "pdf_viewer-plugin" ];
@@ -319,17 +320,17 @@ stdenv.mkDerivation rec {
     gsettings-desktop-schemas
     glib-networking
     gtk3
-  ] ++ lib.concatMap (f: lib.optionals f.enabled f.deps) (lib.filter (f: f ? deps) features);
+  ]
+  ++ lib.concatMap (f: lib.optionals f.enabled f.deps) (lib.filter (f: f ? deps) features);
 
-  configureFlags =
-    [
-      "--disable-manual" # Missing docbook-tools, e.g., docbook2html
-      "--disable-compface" # Missing compface library
-      "--disable-jpilot" # Missing jpilot library
-    ]
-    ++ (map (
-      feature: map (flag: lib.strings.enableFeature feature.enabled flag) feature.flags
-    ) features);
+  configureFlags = [
+    "--disable-manual" # Missing docbook-tools, e.g., docbook2html
+    "--disable-compface" # Missing compface library
+    "--disable-jpilot" # Missing jpilot library
+  ]
+  ++ (map (
+    feature: map (flag: lib.strings.enableFeature feature.enabled flag) feature.flags
+  ) features);
 
   enableParallelBuilding = true;
 

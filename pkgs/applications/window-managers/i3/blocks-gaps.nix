@@ -51,11 +51,10 @@ stdenv.mkDerivation rec {
   buildInputs = lib.optional (contains_any scripts perlscripts) perl;
   nativeBuildInputs = [ makeWrapper ];
 
-  postFixup =
-    lib.optionalString (lib.elem "bandwidth" scripts) ''
-      wrapProgram $out/libexec/i3blocks/bandwidth \
-        --prefix PATH : ${lib.makeBinPath [ iproute2 ]}
-    ''
+  postFixup = lib.optionalString (lib.elem "bandwidth" scripts) ''
+    wrapProgram $out/libexec/i3blocks/bandwidth \
+      --prefix PATH : ${lib.makeBinPath [ iproute2 ]}
+  ''
     + lib.optionalString (lib.elem "battery" scripts) ''
       wrapProgram $out/libexec/i3blocks/battery \
         --prefix PATH : ${lib.makeBinPath [ acpi ]}

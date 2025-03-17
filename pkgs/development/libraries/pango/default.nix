@@ -36,7 +36,8 @@ stdenv.mkDerivation (finalAttrs: {
     "bin"
     "out"
     "dev"
-  ] ++ lib.optional withIntrospection "devdoc";
+  ]
+  ++ lib.optional withIntrospection "devdoc";
 
   src = fetchurl {
     url = "mirror://gnome/sources/pango/${lib.versions.majorMinor finalAttrs.version}/pango-${finalAttrs.version}.tar.xz";
@@ -47,45 +48,42 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  nativeBuildInputs =
-    [
-      meson
-      ninja
-      glib # for glib-mkenum
-      pkg-config
-      python3
-      docutils # for rst2man, rst2html5
-    ]
-    ++ lib.optionals withIntrospection [
-      gi-docgen
-      gobject-introspection
-    ];
+  nativeBuildInputs = [
+    meson
+    ninja
+    glib # for glib-mkenum
+    pkg-config
+    python3
+    docutils # for rst2man, rst2html5
+  ]
+  ++ lib.optionals withIntrospection [
+    gi-docgen
+    gobject-introspection
+  ];
 
-  buildInputs =
+  buildInputs = [
+    fribidi
+    libthai
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin (
+    with darwin.apple_sdk.frameworks;
     [
-      fribidi
-      libthai
+      ApplicationServices
+      Carbon
+      CoreGraphics
+      CoreText
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        ApplicationServices
-        Carbon
-        CoreGraphics
-        CoreText
-      ]
-    );
+  );
 
-  propagatedBuildInputs =
-    [
-      cairo
-      glib
-      libintl
-      harfbuzz
-    ]
-    ++ lib.optionals x11Support [
-      libXft
-    ];
+  propagatedBuildInputs = [
+    cairo
+    glib
+    libintl
+    harfbuzz
+  ]
+  ++ lib.optionals x11Support [
+    libXft
+  ];
 
   mesonFlags = [
     (lib.mesonBool "documentation" withIntrospection)

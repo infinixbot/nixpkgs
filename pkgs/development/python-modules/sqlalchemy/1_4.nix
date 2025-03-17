@@ -68,16 +68,20 @@ buildPythonPackage rec {
     oracle = [ cx-oracle ];
     postgresql = [ psycopg2 ];
     postgresql_pg8000 = [ pg8000 ];
-    postgresql_asyncpg = [ asyncpg ] ++ self.asyncio;
+    postgresql_asyncpg = [ asyncpg ]
+      ++ self.asyncio;
     postgresql_psycopg2binary = [ psycopg2 ];
     postgresql_psycopg2cffi = [ psycopg2cffi ];
     pymysql = [ pymysql ];
-    aiomysql = [ aiomysql ] ++ self.asyncio;
-    asyncmy = [ asyncmy ] ++ self.asyncio;
+    aiomysql = [ aiomysql ]
+      ++ self.asyncio;
+    asyncmy = [ asyncmy ]
+      ++ self.asyncio;
     aiosqlite = [
       aiosqlite
       typing-extensions
-    ] ++ self.asyncio;
+    ]
+    ++ self.asyncio;
     sqlcipher = [
       # TODO: sqlcipher3
     ];

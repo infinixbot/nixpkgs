@@ -48,12 +48,10 @@ lib.fix (
       lib.optionals (webcamSupport || stdenv.hostPlatform.isDarwin) [ rustPlatform.bindgenHook ]
       ++ lib.optionals audioSupport [ pkg-config ];
 
-    buildInputs =
-      [ libffi ] # we force dynamic linking our own libffi below
+    buildInputs = [ libffi ] # we force dynamic linking our own libffi below
       ++ lib.optionals (audioSupport && stdenv.hostPlatform.isLinux) [ alsa-lib ];
 
-    buildFeatures =
-      [ "libffi/system" ] # force libffi to be linked dynamically instead of rebuilding it
+    buildFeatures = [ "libffi/system" ] # force libffi to be linked dynamically instead of rebuilding it
       ++ lib.optional audioSupport "audio"
       ++ lib.optional webcamSupport "webcam"
       ++ lib.optional windowSupport "window";

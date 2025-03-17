@@ -30,8 +30,7 @@
 qtModule {
   pname = "qtmultimedia";
   nativeBuildInputs = [ pkg-config ];
-  buildInputs =
-    [ ffmpeg ]
+  buildInputs = [ ffmpeg ]
     ++ lib.optionals (!stdenv.hostPlatform.isMinGW) [
       libunwind
       orc
@@ -62,14 +61,13 @@ qtModule {
       gst-vaapi
     ];
 
-  patches =
-    [
-      ./fix-qtgui-include-incorrect-case.patch
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isMinGW [
-      ./windows-no-uppercase-libs.patch
-      ./windows-resolve-function-name.patch
-    ];
+  patches = [
+    ./fix-qtgui-include-incorrect-case.patch
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isMinGW [
+    ./windows-no-uppercase-libs.patch
+    ./windows-resolve-function-name.patch
+  ];
 
   cmakeFlags = [
     "-DENABLE_DYNAMIC_RESOLVE_VAAPI_SYMBOLS=0"

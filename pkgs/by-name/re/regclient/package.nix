@@ -29,7 +29,8 @@ buildGoModule rec {
   };
   vendorHash = "sha256-SWkrPpjAA32XkToh7ujSPaRNvHtf2ymvx5E7iGD5B8k=";
 
-  outputs = [ "out" ] ++ bins;
+  outputs = [ "out" ]
+    ++ bins;
 
   ldflags = [
     "-s"

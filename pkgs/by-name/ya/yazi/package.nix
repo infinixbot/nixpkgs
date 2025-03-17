@@ -41,7 +41,8 @@
 }:
 
 let
-  runtimePaths = [ file ] ++ optionalDeps ++ extraPackages;
+  runtimePaths = [ file ]
+    ++ optionalDeps ++ extraPackages;
 
   settingsFormat = formats.toml { };
 

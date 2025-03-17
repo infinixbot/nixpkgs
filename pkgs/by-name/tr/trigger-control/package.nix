@@ -33,15 +33,14 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      SDL2
-      dbus
-      libnotify
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      libdecor
-    ];
+  buildInputs = [
+    SDL2
+    dbus
+    libnotify
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    libdecor
+  ];
 
   patches = [
     # Fix build on clang https://github.com/Etaash-mathamsetty/trigger-control/pull/23

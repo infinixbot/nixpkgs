@@ -142,7 +142,8 @@ in
       rake
       bundler
       pkg-config
-    ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ DarwinTools ];
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ DarwinTools ];
     propagatedBuildInputs = [
       gobject-introspection
       wrapGAppsHook3
@@ -168,7 +169,8 @@ in
     };
 
   cairo = attrs: {
-    nativeBuildInputs = [ pkg-config ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ DarwinTools ];
+    nativeBuildInputs = [ pkg-config ]
+      ++ lib.optionals stdenv.hostPlatform.isDarwin [ DarwinTools ];
     buildInputs = [
       cairo
       expat
@@ -181,7 +183,8 @@ in
   };
 
   cairo-gobject = attrs: {
-    nativeBuildInputs = [ pkg-config ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ DarwinTools ];
+    nativeBuildInputs = [ pkg-config ]
+      ++ lib.optionals stdenv.hostPlatform.isDarwin [ DarwinTools ];
     buildInputs = [
       cairo
       expat
@@ -361,7 +364,8 @@ in
       pkg-config
       bundler
       rake
-    ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ DarwinTools ];
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ DarwinTools ];
     propagatedBuildInputs = [
       gobject-introspection
       wrapGAppsHook3
@@ -374,7 +378,8 @@ in
       pkg-config
       bundler
       rake
-    ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ DarwinTools ];
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ DarwinTools ];
     propagatedBuildInputs = [
       gobject-introspection
       wrapGAppsHook3
@@ -393,18 +398,18 @@ in
     nativeBuildInputs = [
       pkg-config
       gobject-introspection
-    ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ DarwinTools ];
-    buildInputs =
-      [
-        glib
-        libsysprof-capture
-        pcre2
-      ]
-      ++ lib.optionals stdenv.hostPlatform.isLinux [
-        util-linux
-        libselinux
-        libsepol
-      ];
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ DarwinTools ];
+    buildInputs = [
+      glib
+      libsysprof-capture
+      pcre2
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isLinux [
+      util-linux
+      libselinux
+      libsepol
+    ];
   };
 
   gitlab-markup = attrs: { meta.priority = 1; };
@@ -511,7 +516,8 @@ in
     };
 
   glib2 = attrs: {
-    nativeBuildInputs = [ pkg-config ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ DarwinTools ];
+    nativeBuildInputs = [ pkg-config ]
+      ++ lib.optionals stdenv.hostPlatform.isDarwin [ DarwinTools ];
     buildInputs = [
       glib
       libsysprof-capture
@@ -554,7 +560,8 @@ in
   };
 
   gobject-introspection = attrs: {
-    nativeBuildInputs = [ pkg-config ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ DarwinTools ];
+    nativeBuildInputs = [ pkg-config ]
+      ++ lib.optionals stdenv.hostPlatform.isDarwin [ DarwinTools ];
     propagatedBuildInputs = [
       gobject-introspection
       wrapGAppsHook3
@@ -605,19 +612,18 @@ in
       })
     ];
     dontBuild = false;
-    postPatch =
-      ''
-        substituteInPlace Makefile \
-          --replace '-Wno-invalid-source-encoding' ""
-      ''
-      + lib.optionalString (lib.versionOlder attrs.version "1.53.0" && stdenv.hostPlatform.isDarwin) ''
-        # For < v1.48.0
-        substituteInPlace src/ruby/ext/grpc/extconf.rb \
-          --replace "ENV['AR'] = 'libtool -o' if RUBY_PLATFORM =~ /darwin/" ""
-        # For >= v1.48.0
-        substituteInPlace src/ruby/ext/grpc/extconf.rb \
-          --replace 'apple_toolchain = ' 'apple_toolchain = false && '
-      '';
+    postPatch = ''
+      substituteInPlace Makefile \
+        --replace '-Wno-invalid-source-encoding' ""
+    ''
+    + lib.optionalString (lib.versionOlder attrs.version "1.53.0" && stdenv.hostPlatform.isDarwin) ''
+      # For < v1.48.0
+      substituteInPlace src/ruby/ext/grpc/extconf.rb \
+        --replace "ENV['AR'] = 'libtool -o' if RUBY_PLATFORM =~ /darwin/" ""
+      # For >= v1.48.0
+      substituteInPlace src/ruby/ext/grpc/extconf.rb \
+        --replace 'apple_toolchain = ' 'apple_toolchain = false && '
+    '';
   };
 
   hitimes = attrs: {
@@ -693,15 +699,14 @@ in
   };
 
   libxml-ruby = attrs: {
-    buildFlags =
-      [
-        "--with-xml2-lib=${libxml2.out}/lib"
-        "--with-xml2-include=${libxml2.dev}/include/libxml2"
-      ]
-      ++ lib.optionals stdenv.hostPlatform.isDarwin [
-        "--with-iconv-dir=${lib.getLib libiconv}"
-        "--with-opt-include=${lib.getDev libiconv}/include"
-      ];
+    buildFlags = [
+      "--with-xml2-lib=${libxml2.out}/lib"
+      "--with-xml2-include=${libxml2.dev}/include/libxml2"
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      "--with-iconv-dir=${lib.getLib libiconv}"
+      "--with-opt-include=${lib.getDev libiconv}/include"
+    ];
   };
 
   mathematical = attrs: {
@@ -802,22 +807,21 @@ in
     attrs:
     (
       {
-        buildFlags =
-          [
-            "--use-system-libraries"
-            "--with-zlib-lib=${zlib.out}/lib"
-            "--with-zlib-include=${zlib.dev}/include"
-            "--with-xml2-lib=${libxml2.out}/lib"
-            "--with-xml2-include=${libxml2.dev}/include/libxml2"
-            "--with-xslt-lib=${libxslt.out}/lib"
-            "--with-xslt-include=${libxslt.dev}/include"
-            "--with-exslt-lib=${libxslt.out}/lib"
-            "--with-exslt-include=${libxslt.dev}/include"
-          ]
-          ++ lib.optionals stdenv.hostPlatform.isDarwin [
-            "--with-iconv-dir=${libiconv}"
-            "--with-opt-include=${libiconv}/include"
-          ];
+        buildFlags = [
+          "--use-system-libraries"
+          "--with-zlib-lib=${zlib.out}/lib"
+          "--with-zlib-include=${zlib.dev}/include"
+          "--with-xml2-lib=${libxml2.out}/lib"
+          "--with-xml2-include=${libxml2.dev}/include/libxml2"
+          "--with-xslt-lib=${libxslt.out}/lib"
+          "--with-xslt-include=${libxslt.dev}/include"
+          "--with-exslt-lib=${libxslt.out}/lib"
+          "--with-exslt-include=${libxslt.dev}/include"
+        ]
+        ++ lib.optionals stdenv.hostPlatform.isDarwin [
+          "--with-iconv-dir=${libiconv}"
+          "--with-opt-include=${libiconv}/include"
+        ];
       }
       // lib.optionalAttrs stdenv.hostPlatform.isDarwin {
         buildInputs = [ libxml2 ];
@@ -856,23 +860,23 @@ in
   pango = attrs: {
     nativeBuildInputs = [
       pkg-config
-    ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ DarwinTools ];
-    buildInputs =
-      [
-        libdatrie
-        libthai
-        fribidi
-        harfbuzz
-        libsysprof-capture
-        pcre2
-        xorg.libpthreadstubs
-        xorg.libXdmcp
-      ]
-      ++ lib.optionals stdenv.hostPlatform.isLinux [
-        libselinux
-        libsepol
-        util-linux
-      ];
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ DarwinTools ];
+    buildInputs = [
+      libdatrie
+      libthai
+      fribidi
+      harfbuzz
+      libsysprof-capture
+      pcre2
+      xorg.libpthreadstubs
+      xorg.libXdmcp
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isLinux [
+      libselinux
+      libsepol
+      util-linux
+    ];
     propagatedBuildInputs = [
       gobject-introspection
       wrapGAppsHook3
@@ -1027,7 +1031,8 @@ in
       cmake
       pkg-config
       which
-    ] ++ lib.optional stdenv.hostPlatform.isDarwin libiconv;
+    ]
+    ++ lib.optional stdenv.hostPlatform.isDarwin libiconv;
     buildInputs = [
       openssl
       libssh2

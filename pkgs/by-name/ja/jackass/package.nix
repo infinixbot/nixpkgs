@@ -24,9 +24,11 @@ stdenv.mkDerivation (finalAttrs: {
     cp -r ${vst2-sdk}/{public.sdk,pluginterfaces} vstsdk2.4
   '';
 
-  nativeBuildInputs = [ pkg-config ] ++ lib.optionals enableJackAssWine64 [ wine64 ];
+  nativeBuildInputs = [ pkg-config ]
+    ++ lib.optionals enableJackAssWine64 [ wine64 ];
 
-  makeFlags = [ "linux" ] ++ lib.optionals enableJackAssWine64 [ "wine64" ];
+  makeFlags = [ "linux" ]
+    ++ lib.optionals enableJackAssWine64 [ "wine64" ];
 
   installPhase = ''
     runHook preInstall

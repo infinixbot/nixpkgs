@@ -20,8 +20,7 @@ buildDunePackage {
   inherit (ffmpeg-base) version src;
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs =
-    [ dune-configurator ]
+  buildInputs = [ dune-configurator ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       AudioToolbox
       VideoToolbox

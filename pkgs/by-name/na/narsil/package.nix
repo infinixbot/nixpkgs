@@ -26,8 +26,7 @@ stdenv.mkDerivation rec {
   passthru.updateScript = nix-update-script { extraArgs = [ "--version=branch=main" ]; };
 
   nativeBuildInputs = [ autoreconfHook ];
-  buildInputs =
-    [ ncurses ]
+  buildInputs = [ ncurses ]
     ++ lib.optionals enableSdl2 [
       SDL2
       SDL2_image

@@ -76,7 +76,8 @@ let
             {
               _module.check = false;
             }
-          ] ++ docModules.eager;
+          ]
+          ++ docModules.eager;
           class = "nixos";
           specialArgs = specialArgs // {
             pkgs = scrubDerivations "pkgs" pkgs;
@@ -121,8 +122,7 @@ let
           pkgsLibPath = filter (pkgs.path + "/pkgs/pkgs-lib");
           nixosPath = filter (pkgs.path + "/nixos");
           NIX_ABORT_ON_WARN = warningsAreErrors;
-          modules =
-            "[ "
+          modules = "[ "
             + concatMapStringsSep " " (p: ''"${removePrefix "${modulesPath}/" (toString p)}"'') docModules.lazy
             + " ]";
           passAsFile = [ "modules" ];
@@ -373,13 +373,15 @@ in
     # depending on which backend is active.
     (mkIf cfg.man.enable {
       environment.pathsToLink = [ "/share/man" ];
-      environment.extraOutputsToInstall = [ "man" ] ++ optional cfg.dev.enable "devman";
+      environment.extraOutputsToInstall = [ "man" ]
+        ++ optional cfg.dev.enable "devman";
     })
 
     (mkIf cfg.info.enable {
       environment.systemPackages = [ pkgs.texinfoInteractive ];
       environment.pathsToLink = [ "/share/info" ];
-      environment.extraOutputsToInstall = [ "info" ] ++ optional cfg.dev.enable "devinfo";
+      environment.extraOutputsToInstall = [ "info" ]
+        ++ optional cfg.dev.enable "devinfo";
       environment.extraSetup = ''
         if [ -w $out/share/info ]; then
           shopt -s nullglob
@@ -398,7 +400,8 @@ in
         "/share/gtk-doc"
         "/share/devhelp"
       ];
-      environment.extraOutputsToInstall = [ "doc" ] ++ optional cfg.dev.enable "devdoc";
+      environment.extraOutputsToInstall = [ "doc" ]
+        ++ optional cfg.dev.enable "devdoc";
     })
 
     (mkIf cfg.nixos.enable {

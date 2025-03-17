@@ -24,8 +24,7 @@ stdenv.mkDerivation rec {
 
   patches = [ ./darwin-fixes.patch ];
 
-  nativeBuildInputs =
-    [ cmake ]
+  nativeBuildInputs = [ cmake ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       darwin.sigtool
       libicns

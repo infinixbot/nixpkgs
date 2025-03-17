@@ -124,7 +124,8 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = finalAttrs.virtualboxSha256;
   };
 
-  outputs = [ "out" ] ++ optional withModsrc "modsrc";
+  outputs = [ "out" ]
+    ++ optional withModsrc "modsrc";
 
   nativeBuildInputs = [
     pkg-config
@@ -133,55 +134,55 @@ stdenv.mkDerivation (finalAttrs: {
     docbook_xml_dtd_43
     yasm
     glslang
-  ] ++ optional (!headless) wrapQtAppsHook;
+  ]
+  ++ optional (!headless) wrapQtAppsHook;
 
   # Wrap manually because we wrap just a small number of executables.
   dontWrapQtApps = true;
 
-  buildInputs =
-    [
-      acpica-tools
-      dev86
-      libxslt
-      libxml2
-      xorgproto
-      libX11
-      libXext
-      libXcursor
-      libIDL
-      libcap
-      glib
-      lvm2
-      alsa-lib
-      curl
-      libvpx
-      pam
-      makeself
-      perl
-      libXmu
-      libXrandr
-      libpng
-      libopus
-      libtpms
-      python3
-      xz
-    ]
-    ++ optional javaBindings jdk
-    ++ optional pythonBindings python3 # Python is needed even when not building bindings
-    ++ optional pulseSupport libpulseaudio
-    ++ optionals headless [ libGL ]
-    ++ optionals (!headless) [
-      qtbase
-      qttools
-      qtscxml
-      libXinerama
-      SDL2
-      libGLU
-    ]
-    ++ optionals enableWebService [
-      gsoap
-      zlib
-    ];
+  buildInputs = [
+    acpica-tools
+    dev86
+    libxslt
+    libxml2
+    xorgproto
+    libX11
+    libXext
+    libXcursor
+    libIDL
+    libcap
+    glib
+    lvm2
+    alsa-lib
+    curl
+    libvpx
+    pam
+    makeself
+    perl
+    libXmu
+    libXrandr
+    libpng
+    libopus
+    libtpms
+    python3
+    xz
+  ]
+  ++ optional javaBindings jdk
+  ++ optional pythonBindings python3 # Python is needed even when not building bindings
+  ++ optional pulseSupport libpulseaudio
+  ++ optionals headless [ libGL ]
+  ++ optionals (!headless) [
+    qtbase
+    qttools
+    qtscxml
+    libXinerama
+    SDL2
+    libGLU
+  ]
+  ++ optionals enableWebService [
+    gsoap
+    zlib
+  ];
 
   hardeningDisable = [
     "format"

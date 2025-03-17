@@ -121,41 +121,40 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-IrCLL8MQp0SkWj7sbfZlma5FrnMbgdl4E/1nPGy0Y60=";
   };
 
-  buildInputs =
-    [
-      readline
-      ncurses
-      zlib
-      gsl
-      openmp
-      graphicsmagick
-      fftw
-      fftwFloat
-      fftwLongDouble
-      proj
-      shapelib
-      expat
-      mpi
-      udunits
-      eigen
-      pslib
-      libpng
-      libtiff
-      libgeotiff
-      libjpeg
-      hdf4-custom
-      hdf5-custom
-      netcdf-custom
-      plplot-with-drivers
-    ]
-    ++ lib.optional enableXWin plplot-with-drivers.libX11
-    ++ lib.optional enableGRIB eccodes
-    ++ lib.optional enableGLPK glpk
-    ++ lib.optional enableWX wxGTK32
-    ++ lib.optional (enableWX && stdenv.hostPlatform.isDarwin) Cocoa
-    ++ lib.optional enableMPI mpi
-    ++ lib.optional enableLibtirpc hdf4-custom.libtirpc
-    ++ lib.optional enableSzip szip;
+  buildInputs = [
+    readline
+    ncurses
+    zlib
+    gsl
+    openmp
+    graphicsmagick
+    fftw
+    fftwFloat
+    fftwLongDouble
+    proj
+    shapelib
+    expat
+    mpi
+    udunits
+    eigen
+    pslib
+    libpng
+    libtiff
+    libgeotiff
+    libjpeg
+    hdf4-custom
+    hdf5-custom
+    netcdf-custom
+    plplot-with-drivers
+  ]
+  ++ lib.optional enableXWin plplot-with-drivers.libX11
+  ++ lib.optional enableGRIB eccodes
+  ++ lib.optional enableGLPK glpk
+  ++ lib.optional enableWX wxGTK32
+  ++ lib.optional (enableWX && stdenv.hostPlatform.isDarwin) Cocoa
+  ++ lib.optional enableMPI mpi
+  ++ lib.optional enableLibtirpc hdf4-custom.libtirpc
+  ++ lib.optional enableSzip szip;
 
   propagatedBuildInputs = [
     (python3.withPackages (ps: with ps; [ numpy ]))
@@ -163,7 +162,8 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [
     cmake
-  ] ++ lib.optional enableWX wrapGAppsHook3;
+  ]
+  ++ lib.optional enableWX wrapGAppsHook3;
 
   cmakeFlags =
     lib.optional (!enableHDF4) "-DHDF=OFF"

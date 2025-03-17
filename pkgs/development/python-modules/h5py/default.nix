@@ -64,7 +64,8 @@ buildPythonPackage rec {
     setuptools
   ];
 
-  buildInputs = [ hdf5 ] ++ lib.optional mpiSupport mpi;
+  buildInputs = [ hdf5 ]
+    ++ lib.optional mpiSupport mpi;
 
   dependencies =
     [ numpy ]

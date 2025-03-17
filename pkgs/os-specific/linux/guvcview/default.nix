@@ -45,24 +45,23 @@ stdenv.mkDerivation rec {
     ++ lib.optionals (useGtk) [ wrapGAppsHook3 ]
     ++ lib.optionals (useQt) [ wrapQtAppsHook ];
 
-  buildInputs =
-    [
-      SDL2
-      alsa-lib
-      ffmpeg
-      libusb1
-      libv4l
-      portaudio
-      udev
-      gsl
-      libpng
-      sfml
-    ]
-    ++ lib.optionals (pulseaudioSupport) [ libpulseaudio ]
-    ++ lib.optionals (useGtk) [ gtk3 ]
-    ++ lib.optionals (useQt) [
-      qtbase
-    ];
+  buildInputs = [
+    SDL2
+    alsa-lib
+    ffmpeg
+    libusb1
+    libv4l
+    portaudio
+    udev
+    gsl
+    libpng
+    sfml
+  ]
+  ++ lib.optionals (pulseaudioSupport) [ libpulseaudio ]
+  ++ lib.optionals (useGtk) [ gtk3 ]
+  ++ lib.optionals (useQt) [
+    qtbase
+  ];
   configureFlags =
     [
       "--enable-sfml"

@@ -46,10 +46,10 @@ rustPlatform.buildRustPackage rec {
   useFetchCargoVendor = true;
   cargoHash = "sha256-c16qw2khbMXTA8IbYQnMKqivO63DwyAWKfV2P1aD7dU=";
 
-  nativeBuildInputs = [ pkg-config ] ++ lib.optional withClipboard python3;
+  nativeBuildInputs = [ pkg-config ]
+    ++ lib.optional withClipboard python3;
 
-  buildInputs =
-    [ ncurses ]
+  buildInputs = [ ncurses ]
     ++ lib.optional stdenv.hostPlatform.isLinux openssl
     ++ lib.optional (withALSA || withRodio) alsa-lib
     ++ lib.optional withClipboard libxcb

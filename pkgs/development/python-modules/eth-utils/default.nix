@@ -41,7 +41,8 @@ buildPythonPackage rec {
     hypothesis
     mypy
     pytestCheckHook
-  ] ++ eth-hash.optional-dependencies.pycryptodome;
+  ]
+  ++ eth-hash.optional-dependencies.pycryptodome;
 
   pythonImportsCheck = [ "eth_utils" ];
 

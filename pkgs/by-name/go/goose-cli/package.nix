@@ -44,7 +44,8 @@ rustPlatform.buildRustPackage rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [ dbus ] ++ lib.optionals stdenv.hostPlatform.isLinux [ xorg.libxcb ];
+  buildInputs = [ dbus ]
+    ++ lib.optionals stdenv.hostPlatform.isLinux [ xorg.libxcb ];
 
   env.LIBCLANG_PATH = "${lib.getLib llvmPackages.libclang}/lib";
 
@@ -58,17 +59,16 @@ rustPlatform.buildRustPackage rec {
 
   __darwinAllowLocalNetworking = true;
 
-  checkFlags =
-    [
-      # need dbus-daemon
-      "--skip=config::base::tests::test_multiple_secrets"
-      "--skip=config::base::tests::test_secret_management"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      # Lazy instance has previously been poisoned
-      "--skip=jetbrains::tests::test_capabilities"
-      "--skip=jetbrains::tests::test_router_creation"
-    ];
+  checkFlags = [
+    # need dbus-daemon
+    "--skip=config::base::tests::test_multiple_secrets"
+    "--skip=config::base::tests::test_secret_management"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    # Lazy instance has previously been poisoned
+    "--skip=jetbrains::tests::test_capabilities"
+    "--skip=jetbrains::tests::test_router_creation"
+  ];
 
   passthru.updateScript = nix-update-script { extraArgs = [ "--generate-lockfile" ]; };
 

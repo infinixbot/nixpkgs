@@ -27,16 +27,15 @@ stdenv.mkDerivation rec {
     "dev"
   ];
 
-  nativeBuildInputs =
-    [
-      pkg-config
-      meson
-      ninja
-      python3
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      ApplicationServices
-    ];
+  nativeBuildInputs = [
+    pkg-config
+    meson
+    ninja
+    python3
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    ApplicationServices
+  ];
   propagatedBuildInputs = [
     pango
     glibmm

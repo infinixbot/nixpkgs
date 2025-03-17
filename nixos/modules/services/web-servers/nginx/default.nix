@@ -692,7 +692,8 @@ in
 
       defaultListenAddresses = mkOption {
         type = types.listOf types.str;
-        default = [ "0.0.0.0" ] ++ optional enableIPv6 "[::0]";
+        default = [ "0.0.0.0" ]
+          ++ optional enableIPv6 "[::0]";
         defaultText = literalExpression ''[ "0.0.0.0" ] ++ lib.optional config.networking.enableIPv6 "[::0]"'';
         example = literalExpression ''[ "10.0.0.12" "[2002:a00:1::]" ]'';
         description = ''
@@ -1388,8 +1389,7 @@ in
         mkCertOwnershipAssertion {
           cert = config.security.acme.certs.${name};
           groups = config.users.groups;
-          services =
-            [ config.systemd.services.nginx ]
+          services = [ config.systemd.services.nginx ]
             ++ lib.optional (
               cfg.enableReload || vhostCertNames != [ ]
             ) config.systemd.services.nginx-config-reload;
@@ -1401,7 +1401,8 @@ in
       ++ lib.optional cfg.recommendedZstdSettings pkgs.nginxModules.zstd;
 
     services.nginx.virtualHosts.localhost = mkIf cfg.statusPage {
-      serverAliases = [ "127.0.0.1" ] ++ lib.optional config.networking.enableIPv6 "[::1]";
+      serverAliases = [ "127.0.0.1" ]
+        ++ lib.optional config.networking.enableIPv6 "[::1]";
       listenAddresses = lib.mkDefault (
         [
           "0.0.0.0"
@@ -1464,24 +1465,22 @@ in
         # New file permissions
         UMask = "0027"; # 0640 / 0750
         # Capabilities
-        AmbientCapabilities =
-          [
-            "CAP_NET_BIND_SERVICE"
-            "CAP_SYS_RESOURCE"
-          ]
-          ++ optionals cfg.enableQuicBPF [
-            "CAP_SYS_ADMIN"
-            "CAP_NET_ADMIN"
-          ];
-        CapabilityBoundingSet =
-          [
-            "CAP_NET_BIND_SERVICE"
-            "CAP_SYS_RESOURCE"
-          ]
-          ++ optionals cfg.enableQuicBPF [
-            "CAP_SYS_ADMIN"
-            "CAP_NET_ADMIN"
-          ];
+        AmbientCapabilities = [
+          "CAP_NET_BIND_SERVICE"
+          "CAP_SYS_RESOURCE"
+        ]
+        ++ optionals cfg.enableQuicBPF [
+          "CAP_SYS_ADMIN"
+          "CAP_NET_ADMIN"
+        ];
+        CapabilityBoundingSet = [
+          "CAP_NET_BIND_SERVICE"
+          "CAP_SYS_RESOURCE"
+        ]
+        ++ optionals cfg.enableQuicBPF [
+          "CAP_SYS_ADMIN"
+          "CAP_NET_ADMIN"
+        ];
         # Security
         NoNewPrivileges = true;
         # Sandboxing (sorted by occurrence in https://www.freedesktop.org/software/systemd/man/systemd.exec.html)
@@ -1513,9 +1512,8 @@ in
         PrivateMounts = true;
         # System Call Filtering
         SystemCallArchitectures = "native";
-        SystemCallFilter = [
-          "~@cpu-emulation @debug @keyring @mount @obsolete @privileged @setuid"
-        ] ++ optional cfg.enableQuicBPF [ "bpf" ];
+        SystemCallFilter = [ "~@cpu-emulation @debug @keyring @mount @obsolete @privileged @setuid" ]
+          ++ optional cfg.enableQuicBPF [ "bpf" ];
       };
     };
 

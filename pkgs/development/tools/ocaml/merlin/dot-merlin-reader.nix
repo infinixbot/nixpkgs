@@ -16,8 +16,7 @@ buildDunePackage rec {
 
   minimalOCamlVersion = "4.06";
 
-  buildInputs =
-    [ findlib ]
+  buildInputs = [ findlib ]
     ++ (
       if lib.versionAtLeast version "4.7-414" then
         [ merlin-lib ]

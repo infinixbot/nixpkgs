@@ -17,7 +17,8 @@ mkTclDerivation rec {
 
   nativeBuildInputs = lib.optional withCritcl critcl;
 
-  buildFlags = [ "all" ] ++ lib.optional withCritcl "critcl";
+  buildFlags = [ "all" ]
+    ++ lib.optional withCritcl "critcl";
 
   meta = {
     homepage = "https://core.tcl-lang.org/tcllib/";

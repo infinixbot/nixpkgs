@@ -129,8 +129,9 @@ stdenv.mkDerivation rec {
 
   doCheck = false;
 
-  buildTargets =
-    "build" + lib.optionalString enableDoxygen " doxygen" + lib.optionalString withManual "sphinx";
+  buildTargets = "build"
+    + lib.optionalString enableDoxygen " doxygen"
+    + lib.optionalString withManual "sphinx";
 
   # to prevent fatal error: 'backward_warning.h' file not found
   CXXFLAGS = "-D_GLIBCXX_PERMIT_BACKWARD_HASH";
@@ -151,7 +152,8 @@ stdenv.mkDerivation rec {
     "-DNS3_ASSERT=ON"
     "-DNS3_GTK3=ON"
     "-DGTK3_GLIBCONFIG_INCLUDE_DIR=${glib.out}/lib/glib-2.0/include"
-  ] ++ lib.optional doCheck "-DNS3_TESTS=ON";
+  ]
+  ++ lib.optional doCheck "-DNS3_TESTS=ON";
 
   # strictoverflow prevents clang from discovering pyembed when bindings
   hardeningDisable = [

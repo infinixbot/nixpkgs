@@ -34,7 +34,8 @@ stdenv.mkDerivation rec {
   configureFlags = [
     "--enable-utf8"
     "--with-openssl"
-  ] ++ lib.optionals withGeolocation [ "--enable-geoip=mmdb" ];
+  ]
+  ++ lib.optionals withGeolocation [ "--enable-geoip=mmdb" ];
 
   meta = with lib; {
     description = "Real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems";

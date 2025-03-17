@@ -29,7 +29,8 @@ buildPythonPackage rec {
 
   build-system = [ setuptools ];
 
-  dependencies = [ botocore ] ++ lib.optionals (pythonOlder "3.11") [ typing-extensions ];
+  dependencies = [ botocore ]
+    ++ lib.optionals (pythonOlder "3.11") [ typing-extensions ];
 
   optional-dependencies = {
     signal = [ blinker ];
@@ -40,7 +41,8 @@ buildPythonPackage rec {
     pytest-env
     pytest-mock
     pytestCheckHook
-  ] ++ optional-dependencies.signal;
+  ]
+  ++ optional-dependencies.signal;
 
   pythonImportsCheck = [ "pynamodb" ];
 

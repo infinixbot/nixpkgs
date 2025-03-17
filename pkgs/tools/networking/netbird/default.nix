@@ -46,7 +46,8 @@ buildGoModule rec {
 
   vendorHash = "sha256-/8SoQAQoFuuHTi+rTkmQSZxCt9sAl0yDCVccrqlx4VE=";
 
-  nativeBuildInputs = [ installShellFiles ] ++ lib.optional ui pkg-config;
+  nativeBuildInputs = [ installShellFiles ]
+    ++ lib.optional ui pkg-config;
 
   buildInputs =
     lib.optionals (stdenv.hostPlatform.isLinux && ui) [

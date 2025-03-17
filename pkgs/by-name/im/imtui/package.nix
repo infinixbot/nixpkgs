@@ -37,15 +37,14 @@ stdenv.mkDerivation rec {
     ++ lib.optional withNcurses ncurses
     ++ lib.optional stdenv.hostPlatform.isDarwin darwin.apple_sdk.frameworks.Cocoa;
 
-  postPatch =
-    ''
-      cp -r ${imgui.src}/* third-party/imgui/imgui
-      chmod -R u+w third-party/imgui
-    ''
-    + lib.optionalString (lib.versionAtLeast imgui.version "1.90.1") ''
-      substituteInPlace src/imtui-impl-{emscripten,ncurses}.cpp \
-        --replace "ImGuiKey_KeyPadEnter" "ImGuiKey_KeypadEnter"
-    '';
+  postPatch = ''
+    cp -r ${imgui.src}/* third-party/imgui/imgui
+    chmod -R u+w third-party/imgui
+  ''
+  + lib.optionalString (lib.versionAtLeast imgui.version "1.90.1") ''
+    substituteInPlace src/imtui-impl-{emscripten,ncurses}.cpp \
+      --replace "ImGuiKey_KeyPadEnter" "ImGuiKey_KeypadEnter"
+  '';
 
   cmakeFlags = [
     "-DEMSCRIPTEN:BOOL=${if withEmscripten then "ON" else "OFF"}"

@@ -41,28 +41,26 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  nativeBuildInputs =
-    [
-      cmake
-      doxygen
-      graphviz
-      perl
-      pkg-config
-    ]
-    ++ (with libsForQt5; [
-      wrapQtAppsHook
-    ]);
+  nativeBuildInputs = [
+    cmake
+    doxygen
+    graphviz
+    perl
+    pkg-config
+  ]
+  ++ (with libsForQt5; [
+    wrapQtAppsHook
+  ]);
 
-  buildInputs =
-    [
-      extra-cmake-modules
-    ]
-    ++ (with libsForQt5; [
-      kcalendarcore
-      qtbase
-      qtpim
-      timed
-    ]);
+  buildInputs = [
+    extra-cmake-modules
+  ]
+  ++ (with libsForQt5; [
+    kcalendarcore
+    qtbase
+    qtpim
+    timed
+  ]);
 
   nativeCheckInputs = [
     tzdata

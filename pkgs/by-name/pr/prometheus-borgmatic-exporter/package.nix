@@ -21,8 +21,7 @@ python3Packages.buildPythonApplication rec {
 
   build-system = with python3Packages; [ poetry-core ];
 
-  propagatedBuildInputs =
-    [ borgmatic ]
+  propagatedBuildInputs = [ borgmatic ]
     ++ (with python3Packages; [
       arrow
       click

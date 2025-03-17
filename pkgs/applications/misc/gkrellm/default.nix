@@ -38,7 +38,8 @@ stdenv.mkDerivation rec {
     libX11
     libSM
     libICE
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ IOKit ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ IOKit ];
 
   hardeningDisable = [ "format" ];
 

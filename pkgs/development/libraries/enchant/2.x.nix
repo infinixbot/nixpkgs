@@ -45,22 +45,21 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      glib
-    ]
-    ++ lib.optionals withHunspell [
-      hunspell
-    ]
-    ++ lib.optionals withNuspell [
-      nuspell
-    ]
-    ++ lib.optionals withVoikko [
-      libvoikko
-    ]
-    ++ lib.optionals withAppleSpell [
-      Cocoa
-    ];
+  buildInputs = [
+    glib
+  ]
+  ++ lib.optionals withHunspell [
+    hunspell
+  ]
+  ++ lib.optionals withNuspell [
+    nuspell
+  ]
+  ++ lib.optionals withVoikko [
+    libvoikko
+  ]
+  ++ lib.optionals withAppleSpell [
+    Cocoa
+  ];
 
   checkInputs = [
     unittest-cpp

@@ -60,7 +60,8 @@ stdenv.mkDerivation (finalAttrs: {
     zlib
     attr
     udev
-  ] ++ lib.optional fuseSupport fuse3;
+  ]
+  ++ lib.optional fuseSupport fuse3;
 
   cargoDeps = rustPlatform.fetchCargoVendor {
     src = finalAttrs.src;
@@ -71,7 +72,8 @@ stdenv.mkDerivation (finalAttrs: {
     "PREFIX=${placeholder "out"}"
     "VERSION=${finalAttrs.version}"
     "INITRAMFS_DIR=${placeholder "out"}/etc/initramfs-tools"
-  ] ++ lib.optional fuseSupport "BCACHEFS_FUSE=1";
+  ]
+  ++ lib.optional fuseSupport "BCACHEFS_FUSE=1";
 
   env = {
     CARGO_BUILD_TARGET = stdenv.hostPlatform.rust.rustcTargetSpec;
@@ -97,17 +99,16 @@ stdenv.mkDerivation (finalAttrs: {
     "PKGCONFIG_UDEVDIR=$(out)/lib/udev"
   ];
 
-  postInstall =
-    ''
-      substituteInPlace $out/libexec/bcachefsck_all \
-        --replace-fail "/usr/bin/python3" "${python3.interpreter}"
-    ''
-    + lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
-      installShellCompletion --cmd bcachefs \
-        --bash <($out/sbin/bcachefs completions bash) \
-        --zsh  <($out/sbin/bcachefs completions zsh) \
-        --fish <($out/sbin/bcachefs completions fish)
-    '';
+  postInstall = ''
+    substituteInPlace $out/libexec/bcachefsck_all \
+      --replace-fail "/usr/bin/python3" "${python3.interpreter}"
+  ''
+  + lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
+    installShellCompletion --cmd bcachefs \
+      --bash <($out/sbin/bcachefs completions bash) \
+      --zsh  <($out/sbin/bcachefs completions zsh) \
+      --fish <($out/sbin/bcachefs completions fish)
+  '';
 
   passthru = {
     tests = {

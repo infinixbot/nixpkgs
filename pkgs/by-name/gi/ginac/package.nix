@@ -20,7 +20,8 @@ stdenv.mkDerivation rec {
 
   propagatedBuildInputs = [ cln ];
 
-  buildInputs = [ readline ] ++ lib.optional stdenv.hostPlatform.isDarwin gmp;
+  buildInputs = [ readline ]
+    ++ lib.optional stdenv.hostPlatform.isDarwin gmp;
 
   nativeBuildInputs = [
     pkg-config

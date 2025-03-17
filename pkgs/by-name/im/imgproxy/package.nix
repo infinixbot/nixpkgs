@@ -27,7 +27,8 @@ buildGoModule rec {
     gobject-introspection
   ];
 
-  buildInputs = [ vips ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ libunwind ];
+  buildInputs = [ vips ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ libunwind ];
 
   preBuild = ''
     export CGO_LDFLAGS_ALLOW='-(s|w)'

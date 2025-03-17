@@ -46,24 +46,23 @@ stdenv.mkDerivation rec {
     wrapQtAppsHook
     qttools
   ];
-  buildInputs =
-    [
-      curl
-      qtbase
-      avahi
-      libX11
-      libXext
-      libXtst
-      libXinerama
-      libXrandr
-      libXdmcp
-      libICE
-      libSM
-    ]
-    ++ lib.optionals withLibei [
-      libei
-      libportal
-    ];
+  buildInputs = [
+    curl
+    qtbase
+    avahi
+    libX11
+    libXext
+    libXtst
+    libXinerama
+    libXrandr
+    libXdmcp
+    libICE
+    libSM
+  ]
+  ++ lib.optionals withLibei [
+    libei
+    libportal
+  ];
 
   patches = [
     (fetchpatch2 {
@@ -75,7 +74,8 @@ stdenv.mkDerivation rec {
 
   cmakeFlags = [
     "-DINPUTLEAP_REVISION=${builtins.substring 0 8 src.rev}"
-  ] ++ lib.optional withLibei "-DINPUTLEAP_BUILD_LIBEI=ON";
+  ]
+  ++ lib.optional withLibei "-DINPUTLEAP_BUILD_LIBEI=ON";
 
   dontWrapGApps = true;
   preFixup = ''

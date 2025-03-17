@@ -50,7 +50,8 @@ let
             {
               imports = [
                 testConfig
-              ] ++ optional withX11 ../common/x11.nix;
+              ]
+              ++ optional withX11 ../common/x11.nix;
 
               environment.systemPackages = with pkgs; [ gnome-desktop-testing ];
 
@@ -62,10 +63,9 @@ let
               environment.variables.TESTED_PACKAGE_INSTALLED_TESTS = "${tested.installedTests}/share";
             };
 
-          testScript =
-            optionalString withX11 ''
-              machine.wait_for_x()
-            ''
+          testScript = optionalString withX11 ''
+            machine.wait_for_x()
+          ''
             + optionalString (preTestScript != "") ''
               ${preTestScript}
             ''

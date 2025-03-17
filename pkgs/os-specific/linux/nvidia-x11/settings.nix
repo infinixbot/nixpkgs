@@ -141,7 +141,8 @@ stdenv.mkDerivation {
     pkg-config
     m4
     addDriverRunpath
-  ] ++ lib.optionals withGtk3 [ wrapGAppsHook3 ];
+  ]
+  ++ lib.optionals withGtk3 [ wrapGAppsHook3 ];
 
   buildInputs =
     [
@@ -163,10 +164,9 @@ stdenv.mkDerivation {
 
   installFlags = [ "PREFIX=$(out)" ];
 
-  postInstall =
-    lib.optionalString (!withGtk2) ''
-      rm -f $out/lib/libnvidia-gtk2.so.*
-    ''
+  postInstall = lib.optionalString (!withGtk2) ''
+    rm -f $out/lib/libnvidia-gtk2.so.*
+  ''
     + lib.optionalString (!withGtk3) ''
       rm -f $out/lib/libnvidia-gtk3.so.*
     ''

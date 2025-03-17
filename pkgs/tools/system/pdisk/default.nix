@@ -43,15 +43,14 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  postPatch =
-    ''
-      substituteInPlace makefile \
-        --replace 'cc' '${stdenv.cc.targetPrefix}cc'
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      substituteInPlace makefile \
-        --replace '-lbsd' '-framework CoreFoundation -framework IOKit'
-    '';
+  postPatch = ''
+    substituteInPlace makefile \
+      --replace 'cc' '${stdenv.cc.targetPrefix}cc'
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    substituteInPlace makefile \
+      --replace '-lbsd' '-framework CoreFoundation -framework IOKit'
+  '';
 
   nativeBuildInputs = [
     installShellFiles

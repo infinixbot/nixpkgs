@@ -45,21 +45,20 @@ let
     .${stdenv.hostPlatform.parsed.kernel.name}
       or (throw "Unsupported platform: ${stdenv.hostPlatform.parsed.kernel.name}");
 
-  runtimeDependencies =
-    [
-      cups
-    ]
-    ++ lib.optionals gtkSupport [
-      cairo
-      glib
-      gtk3
-    ]
-    ++ lib.optionals (gtkSupport && lib.versionOlder dist.jdkVersion "17") [
-      gtk2
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isLinux && enableJavaFX) [
-      ffmpeg.lib
-    ];
+  runtimeDependencies = [
+    cups
+  ]
+  ++ lib.optionals gtkSupport [
+    cairo
+    glib
+    gtk3
+  ]
+  ++ lib.optionals (gtkSupport && lib.versionOlder dist.jdkVersion "17") [
+    gtk2
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isLinux && enableJavaFX) [
+    ffmpeg.lib
+  ];
 
   runtimeLibraryPath = lib.makeLibraryPath runtimeDependencies;
 
@@ -82,14 +81,13 @@ let
       curlOpts = "-H Referer:https://www.azul.com/downloads/zulu/";
     };
 
-    nativeBuildInputs =
-      [
-        unzip
-      ]
-      ++ lib.optionals stdenv.hostPlatform.isLinux [
-        autoPatchelfHook
-        makeWrapper
-      ];
+    nativeBuildInputs = [
+      unzip
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isLinux [
+      autoPatchelfHook
+      makeWrapper
+    ];
 
     buildInputs =
       lib.optionals stdenv.hostPlatform.isLinux [

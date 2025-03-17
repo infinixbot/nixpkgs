@@ -44,7 +44,8 @@ pythonPackages.buildPythonApplication rec {
     dev = optional-dependencies.lint ++ optional-dependencies.test ++ [ pythonPackages.tox ];
   };
 
-  nativeCheckInputs = [ pythonPackages.pytestCheckHook ] ++ optional-dependencies.test;
+  nativeCheckInputs = [ pythonPackages.pytestCheckHook ]
+    ++ optional-dependencies.test;
 
   pythonImportsCheck = [ "mopidy_spotify" ];
 

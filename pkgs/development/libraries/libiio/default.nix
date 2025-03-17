@@ -26,7 +26,8 @@ stdenv.mkDerivation rec {
     "out"
     "lib"
     "dev"
-  ] ++ lib.optional pythonSupport "python";
+  ]
+  ++ lib.optional pythonSupport "python";
 
   src = fetchFromGitHub {
     owner = "analogdevicesinc";
@@ -39,31 +40,29 @@ stdenv.mkDerivation rec {
   # fixed properly
   patches = [ ./cmake-fix-libxml2-find-package.patch ];
 
-  nativeBuildInputs =
+  nativeBuildInputs = [
+    cmake
+    flex
+    bison
+    pkg-config
+  ]
+  ++ lib.optionals pythonSupport (
     [
-      cmake
-      flex
-      bison
-      pkg-config
+      python
     ]
-    ++ lib.optionals pythonSupport (
-      [
-        python
-      ]
-      ++ lib.optional python.isPy3k python.pkgs.setuptools
-    );
+    ++ lib.optional python.isPy3k python.pkgs.setuptools
+  );
 
-  buildInputs =
-    [
-      libxml2
-      libusb1
-    ]
-    ++ lib.optional avahiSupport avahi
-    ++ lib.optional stdenv.hostPlatform.isLinux libaio
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      CFNetwork
-      CoreServices
-    ];
+  buildInputs = [
+    libxml2
+    libusb1
+  ]
+  ++ lib.optional avahiSupport avahi
+  ++ lib.optional stdenv.hostPlatform.isLinux libaio
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    CFNetwork
+    CoreServices
+  ];
 
   cmakeFlags =
     [
@@ -81,15 +80,14 @@ stdenv.mkDerivation rec {
       "-DHAVE_DNS_SD=OFF"
     ];
 
-  postPatch =
-    ''
-      substituteInPlace libiio.rules.cmakein \
-        --replace /bin/sh ${runtimeShell}
-    ''
-    + lib.optionalString pythonSupport ''
-      # Hardcode path to the shared library into the bindings.
-      sed "s#@libiio@#$lib/lib/libiio${stdenv.hostPlatform.extensions.sharedLibrary}#g" ${./hardcode-library-path.patch} | patch -p1
-    '';
+  postPatch = ''
+    substituteInPlace libiio.rules.cmakein \
+      --replace /bin/sh ${runtimeShell}
+  ''
+  + lib.optionalString pythonSupport ''
+    # Hardcode path to the shared library into the bindings.
+    sed "s#@libiio@#$lib/lib/libiio${stdenv.hostPlatform.extensions.sharedLibrary}#g" ${./hardcode-library-path.patch} | patch -p1
+  '';
 
   postInstall = lib.optionalString pythonSupport ''
     # Move Python bindings into a separate output.

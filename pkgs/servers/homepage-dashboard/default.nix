@@ -53,7 +53,8 @@ buildNpmPackage rec {
 
   buildInputs = [
     nodePackages.node-gyp-build
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ IOKit ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ IOKit ];
 
   env.PYTHON = "${python3}/bin/python";
 

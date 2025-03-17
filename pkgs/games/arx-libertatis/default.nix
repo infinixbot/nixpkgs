@@ -48,7 +48,8 @@ stdenv.mkDerivation rec {
     inkscape
     imagemagick
     optipng
-  ] ++ optionals withCrashReporter [ wrapQtAppsHook ];
+  ]
+  ++ optionals withCrashReporter [ wrapQtAppsHook ];
 
   buildInputs =
     [
@@ -75,15 +76,14 @@ stdenv.mkDerivation rec {
 
   dontWrapQtApps = true;
 
-  postInstall =
-    ''
-      ln -sf \
-        ${dejavu_fonts}/share/fonts/truetype/DejaVuSansMono.ttf \
-        $out/share/games/arx/misc/dejavusansmono.ttf
-    ''
-    + optionalString withCrashReporter ''
-      wrapQtApp "$out/libexec/arxcrashreporter"
-    '';
+  postInstall = ''
+    ln -sf \
+      ${dejavu_fonts}/share/fonts/truetype/DejaVuSansMono.ttf \
+      $out/share/games/arx/misc/dejavusansmono.ttf
+  ''
+  + optionalString withCrashReporter ''
+    wrapQtApp "$out/libexec/arxcrashreporter"
+  '';
 
   meta = {
     description = ''

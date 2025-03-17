@@ -38,10 +38,10 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [ autoreconfHook ] ++ lib.optional stdenv.hostPlatform.isLinux pkg-config;
+  nativeBuildInputs = [ autoreconfHook ]
+    ++ lib.optional stdenv.hostPlatform.isLinux pkg-config;
 
-  buildInputs =
-    [ ncurses ]
+  buildInputs = [ ncurses ]
     ++ lib.optional stdenv.hostPlatform.isDarwin IOKit
     ++ lib.optionals stdenv.hostPlatform.isLinux [
       libcap

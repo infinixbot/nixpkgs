@@ -34,13 +34,12 @@ buildNpmPackage rec {
     hash = "sha256-o65UPPyGgmFe8+HANmnyVgPITk8gY7uvIzx7QZUluBU=";
   };
 
-  nativeBuildInputs =
-    [
-      makeWrapper
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      copyDesktopItems
-    ];
+  nativeBuildInputs = [
+    makeWrapper
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    copyDesktopItems
+  ];
 
   # robotjs node-gyp dependencies
   buildInputs =

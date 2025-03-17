@@ -85,8 +85,10 @@ in
       description = "Matrix to Discord puppeting bridge";
 
       wantedBy = [ "multi-user.target" ];
-      wants = [ "network-online.target" ] ++ cfg.serviceDependencies;
-      after = [ "network-online.target" ] ++ cfg.serviceDependencies;
+      wants = [ "network-online.target" ]
+        ++ cfg.serviceDependencies;
+      after = [ "network-online.target" ]
+        ++ cfg.serviceDependencies;
 
       preStart = ''
         # generate the appservice's registration file if absent

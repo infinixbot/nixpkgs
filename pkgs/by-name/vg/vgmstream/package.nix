@@ -38,7 +38,8 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     cmake
     pkg-config
-  ] ++ lib.optional buildAudaciousPlugin gtk3;
+  ]
+  ++ lib.optional buildAudaciousPlugin gtk3;
 
   buildInputs = [
     mpg123
@@ -47,7 +48,8 @@ stdenv.mkDerivation rec {
     libao
     jansson
     speex
-  ] ++ lib.optional buildAudaciousPlugin audacious-bare;
+  ]
+  ++ lib.optional buildAudaciousPlugin audacious-bare;
 
   preConfigure = ''
     substituteInPlace cmake/dependencies/audacious.cmake \
@@ -57,7 +59,8 @@ stdenv.mkDerivation rec {
   cmakeFlags = [
     # It always tries to download it, no option to use the system one
     "-DUSE_CELT=OFF"
-  ] ++ lib.optional (!buildAudaciousPlugin) "-DBUILD_AUDACIOUS=OFF";
+  ]
+  ++ lib.optional (!buildAudaciousPlugin) "-DBUILD_AUDACIOUS=OFF";
 
   meta = with lib; {
     description = "Library for playback of various streamed audio formats used in video games";

@@ -67,25 +67,24 @@ stdenv.mkDerivation (finalAttrs: {
 
   configureScript = "../configure";
 
-  configureFlags =
-    [
-      "--enable-check"
-      "--enable-csonly"
-      "--enable-liblz4"
-      "--enable-libz"
-    ]
-    ++ lib.optional disableDocs "--disable-docs"
-    ++ lib.optionals (!isStatic) [
-      # instead of `--disable-static` that `stdenv` assumes
-      "--disable-libs"
-      # "not currently supported" in `configure --help-cs` but still emphasized in README
-      "--enable-shared"
-    ]
-    ++ lib.optionals isDarwin [
-      "--disable-strip"
-      # "use Unix style (e.g., use Gtk) for Mac OS", which eliminates many problems
-      "--enable-xonx"
-    ];
+  configureFlags = [
+    "--enable-check"
+    "--enable-csonly"
+    "--enable-liblz4"
+    "--enable-libz"
+  ]
+  ++ lib.optional disableDocs "--disable-docs"
+  ++ lib.optionals (!isStatic) [
+    # instead of `--disable-static` that `stdenv` assumes
+    "--disable-libs"
+    # "not currently supported" in `configure --help-cs` but still emphasized in README
+    "--enable-shared"
+  ]
+  ++ lib.optionals isDarwin [
+    "--disable-strip"
+    # "use Unix style (e.g., use Gtk) for Mac OS", which eliminates many problems
+    "--enable-xonx"
+  ];
 
   dontStrip = isDarwin;
 

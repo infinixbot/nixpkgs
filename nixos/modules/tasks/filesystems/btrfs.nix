@@ -75,8 +75,7 @@ in
 
     (mkIf inInitrd {
       boot.initrd.kernelModules = [ "btrfs" ];
-      boot.initrd.availableKernelModules =
-        [ "crc32c" ]
+      boot.initrd.availableKernelModules = [ "crc32c" ]
         ++ optionals (config.boot.kernelPackages.kernel.kernelAtLeast "5.5") [
           # Needed for mounting filesystems with new checksums
           "xxhash_generic"

@@ -334,15 +334,21 @@ rec {
     default = [ ];
     x86-64 = [ ];
     x86-64-v2 = [ "x86-64" ];
-    x86-64-v3 = [ "x86-64-v2" ] ++ inferiors.x86-64-v2;
-    x86-64-v4 = [ "x86-64-v3" ] ++ inferiors.x86-64-v3;
+    x86-64-v3 = [ "x86-64-v2" ]
+      ++ inferiors.x86-64-v2;
+    x86-64-v4 = [ "x86-64-v3" ]
+      ++ inferiors.x86-64-v3;
 
     # x86_64 Intel
     # https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html
-    nehalem = [ "x86-64-v2" ] ++ inferiors.x86-64-v2;
-    westmere = [ "nehalem" ] ++ inferiors.nehalem;
-    sandybridge = [ "westmere" ] ++ inferiors.westmere;
-    ivybridge = [ "sandybridge" ] ++ inferiors.sandybridge;
+    nehalem = [ "x86-64-v2" ]
+      ++ inferiors.x86-64-v2;
+    westmere = [ "nehalem" ]
+      ++ inferiors.nehalem;
+    sandybridge = [ "westmere" ]
+      ++ inferiors.westmere;
+    ivybridge = [ "sandybridge" ]
+      ++ inferiors.sandybridge;
 
     haswell = lib.unique (
       [
@@ -352,8 +358,10 @@ rec {
       ++ inferiors.ivybridge
       ++ inferiors.x86-64-v3
     );
-    broadwell = [ "haswell" ] ++ inferiors.haswell;
-    skylake = [ "broadwell" ] ++ inferiors.broadwell;
+    broadwell = [ "haswell" ]
+      ++ inferiors.haswell;
+    skylake = [ "broadwell" ]
+      ++ inferiors.broadwell;
 
     skylake-avx512 = lib.unique (
       [
@@ -363,14 +371,22 @@ rec {
       ++ inferiors.skylake
       ++ inferiors.x86-64-v4
     );
-    cannonlake = [ "skylake-avx512" ] ++ inferiors.skylake-avx512;
-    icelake-client = [ "cannonlake" ] ++ inferiors.cannonlake;
-    icelake-server = [ "icelake-client" ] ++ inferiors.icelake-client;
-    cascadelake = [ "cannonlake" ] ++ inferiors.cannonlake;
-    cooperlake = [ "cascadelake" ] ++ inferiors.cascadelake;
-    tigerlake = [ "icelake-server" ] ++ inferiors.icelake-server;
-    sapphirerapids = [ "tigerlake" ] ++ inferiors.tigerlake;
-    emeraldrapids = [ "sapphirerapids" ] ++ inferiors.sapphirerapids;
+    cannonlake = [ "skylake-avx512" ]
+      ++ inferiors.skylake-avx512;
+    icelake-client = [ "cannonlake" ]
+      ++ inferiors.cannonlake;
+    icelake-server = [ "icelake-client" ]
+      ++ inferiors.icelake-client;
+    cascadelake = [ "cannonlake" ]
+      ++ inferiors.cannonlake;
+    cooperlake = [ "cascadelake" ]
+      ++ inferiors.cascadelake;
+    tigerlake = [ "icelake-server" ]
+      ++ inferiors.icelake-server;
+    sapphirerapids = [ "tigerlake" ]
+      ++ inferiors.tigerlake;
+    emeraldrapids = [ "sapphirerapids" ]
+      ++ inferiors.sapphirerapids;
 
     # CX16 does not exist on alderlake, while it does on nearly all other intel CPUs
     alderlake = [ ];
@@ -402,9 +418,12 @@ rec {
     # https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html
     # https://en.wikichip.org/wiki/amd/microarchitectures/zen
     # https://en.wikichip.org/wiki/intel/microarchitectures/skylake
-    znver1 = [ "skylake" ] ++ inferiors.skylake; # Includes haswell and x86-64-v3
-    znver2 = [ "znver1" ] ++ inferiors.znver1;
-    znver3 = [ "znver2" ] ++ inferiors.znver2;
+    znver1 = [ "skylake" ]
+      ++ inferiors.skylake; # Includes haswell and x86-64-v3
+    znver2 = [ "znver1" ]
+      ++ inferiors.znver1;
+    znver3 = [ "znver2" ]
+      ++ inferiors.znver2;
     znver4 = lib.unique (
       [
         "znver3"
@@ -413,7 +432,8 @@ rec {
       ++ inferiors.znver3
       ++ inferiors.x86-64-v4
     );
-    znver5 = [ "znver4" ] ++ inferiors.znver4;
+    znver5 = [ "znver4" ]
+      ++ inferiors.znver4;
 
     # other
     armv5te = [ ];

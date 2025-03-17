@@ -23,12 +23,10 @@ buildPythonPackage rec {
 
   nativeBuildInputs = [ hatchling ];
 
-  propagatedBuildInputs =
-    [
-      httpx
-    ]
-    ++ lib.optionals (pythonOlder "3.11") [ typing-extensions ]
-    ++ httpx.optional-dependencies.http2;
+  propagatedBuildInputs = [
+    httpx
+  ]
+  ++ lib.optionals (pythonOlder "3.11") [ typing-extensions ] ++ httpx.optional-dependencies.http2;
 
   pythonImportsCheck = [ "gotenberg_client" ];
 

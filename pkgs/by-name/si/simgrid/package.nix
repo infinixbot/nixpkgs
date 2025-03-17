@@ -42,28 +42,28 @@ stdenv.mkDerivation rec {
   };
 
   propagatedBuildInputs = [ boost ];
-  nativeBuildInputs =
-    [
-      cmake
-      perl
-      python3
-    ]
-    ++ lib.optionals fortranSupport [ gfortran ]
-    ++ lib.optionals buildJavaBindings [ openjdk ]
-    ++ lib.optionals buildPythonBindings [ python3Packages.pybind11 ]
-    ++ lib.optionals buildDocumentation [
-      fig2dev
-      ghostscript
-      doxygen
-    ]
-    ++ lib.optionals bmfSupport [ eigen ]
-    ++ lib.optionals modelCheckingSupport [
-      libunwind
-      libevent
-      elfutils
-    ];
+  nativeBuildInputs = [
+    cmake
+    perl
+    python3
+  ]
+  ++ lib.optionals fortranSupport [ gfortran ]
+  ++ lib.optionals buildJavaBindings [ openjdk ]
+  ++ lib.optionals buildPythonBindings [ python3Packages.pybind11 ]
+  ++ lib.optionals buildDocumentation [
+    fig2dev
+    ghostscript
+    doxygen
+  ]
+  ++ lib.optionals bmfSupport [ eigen ]
+  ++ lib.optionals modelCheckingSupport [
+    libunwind
+    libevent
+    elfutils
+  ];
 
-  outputs = [ "out" ] ++ lib.optionals buildPythonBindings [ "python" ];
+  outputs = [ "out" ]
+    ++ lib.optionals buildPythonBindings [ "python" ];
 
   # "Release" does not work. non-debug mode is Debug compiled with optimization
   cmakeBuildType = "Debug";

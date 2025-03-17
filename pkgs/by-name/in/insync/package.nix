@@ -45,7 +45,8 @@ let
       lz4
       libgcrypt
       libthai
-    ] ++ (with libsForQt5; [ qt5.qtvirtualkeyboard ]);
+    ]
+    ++ (with libsForQt5; [ qt5.qtvirtualkeyboard ]);
 
     installPhase = ''
       runHook preInstall

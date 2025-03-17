@@ -8,7 +8,8 @@
 runCommand "gawk-with-extensions"
   {
     nativeBuildInputs = [ makeWrapper ];
-    buildInputs = [ gawk ] ++ extensions;
+    buildInputs = [ gawk ]
+      ++ extensions;
   }
   ''
     mkdir -p $out/bin

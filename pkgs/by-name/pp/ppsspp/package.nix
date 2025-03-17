@@ -34,8 +34,7 @@ in
 # Only SDL frontend needs to specify whether to use Wayland
 assert forceWayland -> !enableQt;
 stdenv.mkDerivation (finalAttrs: {
-  pname =
-    "ppsspp"
+  pname = "ppsspp"
     + lib.optionalString enableQt "-qt"
     + lib.optionalString (!enableQt) "-sdl"
     + lib.optionalString forceWayland "-wayland";
@@ -64,30 +63,30 @@ stdenv.mkDerivation (finalAttrs: {
     makeWrapper
     pkg-config
     python3
-  ] ++ lib.optionals enableQt [ wrapQtAppsHook ];
+  ]
+  ++ lib.optionals enableQt [ wrapQtAppsHook ];
 
-  buildInputs =
-    [
-      SDL2
-      glew
-      libzip
-      zlib
-    ]
-    ++ lib.optionals useSystemFfmpeg [
-      ffmpeg_6
-    ]
-    ++ lib.optionals useSystemSnappy [
-      snappy
-    ]
-    ++ lib.optionals enableQt [
-      qtbase
-      qtmultimedia
-    ]
-    ++ lib.optionals enableVulkan [ vulkan-loader ]
-    ++ lib.optionals vulkanWayland [
-      wayland
-      libffi
-    ];
+  buildInputs = [
+    SDL2
+    glew
+    libzip
+    zlib
+  ]
+  ++ lib.optionals useSystemFfmpeg [
+    ffmpeg_6
+  ]
+  ++ lib.optionals useSystemSnappy [
+    snappy
+  ]
+  ++ lib.optionals enableQt [
+    qtbase
+    qtmultimedia
+  ]
+  ++ lib.optionals enableVulkan [ vulkan-loader ]
+  ++ lib.optionals vulkanWayland [
+    wayland
+    libffi
+  ];
 
   cmakeFlags = [
     (lib.cmakeBool "HEADLESS" (!enableQt))
@@ -157,8 +156,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   meta = {
     homepage = "https://www.ppsspp.org/";
-    description =
-      "HLE Playstation Portable emulator, written in C++ ("
+    description = "HLE Playstation Portable emulator, written in C++ ("
       + (if enableQt then "Qt" else "SDL + headless")
       + ")";
     longDescription = ''

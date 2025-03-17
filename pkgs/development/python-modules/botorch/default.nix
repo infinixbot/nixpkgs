@@ -51,8 +51,7 @@ buildPythonPackage rec {
     "-vvv"
   ];
 
-  disabledTests =
-    [ "test_all_cases_covered" ]
+  disabledTests = [ "test_all_cases_covered" ]
     ++ lib.optionals (pythonAtLeast "3.13") [
       # RuntimeError: Boolean value of Tensor with more than one value is ambiguous
       "test_optimize_acqf_mixed_binary_only"

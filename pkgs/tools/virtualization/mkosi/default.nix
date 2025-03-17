@@ -63,23 +63,22 @@ buildPythonApplication rec {
     hash = "sha256-rO/4ki2nAJQN2slmYuHKESGBBDMXC/ikGf6dMDcKFr4=";
   };
 
-  patches =
-    [
-      (replaceVars ./0001-Use-wrapped-binaries-instead-of-Python-interpreter.patch {
-        UKIFY = "${systemdForMkosi}/lib/systemd/ukify";
-        PYTHON_PEFILE = "${python3pefile}/bin/python3.12";
-        MKOSI_SANDBOX = null; # will be replaced in postPatch
-      })
-      (replaceVars ./0002-Fix-library-resolving.patch {
-        LIBC = "${stdenv.cc.libc}/lib/libc.so.6";
-        LIBSECCOMP = "${libseccomp.lib}/lib/libseccomp.so.2";
-      })
-    ]
-    ++ lib.optional withQemu (
-      replaceVars ./0003-Fix-QEMU-firmware-path.patch {
-        QEMU_FIRMWARE = "${qemu}/share/qemu/firmware";
-      }
-    );
+  patches = [
+    (replaceVars ./0001-Use-wrapped-binaries-instead-of-Python-interpreter.patch {
+      UKIFY = "${systemdForMkosi}/lib/systemd/ukify";
+      PYTHON_PEFILE = "${python3pefile}/bin/python3.12";
+      MKOSI_SANDBOX = null; # will be replaced in postPatch
+    })
+    (replaceVars ./0002-Fix-library-resolving.patch {
+      LIBC = "${stdenv.cc.libc}/lib/libc.so.6";
+      LIBSECCOMP = "${libseccomp.lib}/lib/libseccomp.so.2";
+    })
+  ]
+  ++ lib.optional withQemu (
+    replaceVars ./0003-Fix-QEMU-firmware-path.patch {
+      QEMU_FIRMWARE = "${qemu}/share/qemu/firmware";
+    }
+  );
 
   postPatch = ''
     # As we need the $out reference, we can't use `replaceVars` here.
@@ -94,20 +93,19 @@ buildPythonApplication rec {
     wheel
   ];
 
-  propagatedBuildInputs =
-    [
-      bash
-      btrfs-progs
-      coreutils
-      cpio
-      gnutar
-      kmod
-      systemdForMkosi
-      util-linux
-    ]
-    ++ lib.optional withQemu [
-      qemu
-    ];
+  propagatedBuildInputs = [
+    bash
+    btrfs-progs
+    coreutils
+    cpio
+    gnutar
+    kmod
+    systemdForMkosi
+    util-linux
+  ]
+  ++ lib.optional withQemu [
+    qemu
+  ];
 
   postBuild = ''
     ./tools/make-man-page.sh

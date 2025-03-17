@@ -24,8 +24,7 @@ ocamlPackages.buildDunePackage rec {
     hash = "sha256-UABbrNNcNaN9NgtAjCs4HUoNXMaK4QvCuWERuEnMG6I=";
   };
 
-  nativeBuildInputs =
-    [ removeReferencesTo ]
+  nativeBuildInputs = [ removeReferencesTo ]
     ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) [
       darwin.sigtool
     ];

@@ -47,7 +47,8 @@ buildDunePackage rec {
         pname = "utop-runtime-env";
         inherit version;
 
-        buildInputs = [ findlib ] ++ propagatedBuildInputs;
+        buildInputs = [ findlib ]
+          ++ propagatedBuildInputs;
 
         dontUnpack = true;
 

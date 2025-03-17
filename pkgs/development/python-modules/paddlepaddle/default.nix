@@ -111,8 +111,7 @@ buildPythonPackage {
     homepage = "https://github.com/PaddlePaddle/Paddle";
     license = licenses.asl20;
     maintainers = with maintainers; [ happysalada ];
-    platforms =
-      [ "x86_64-linux" ]
+    platforms = [ "x86_64-linux" ]
       ++ optionals (!cudaSupport) [
         "x86_64-darwin"
         "aarch64-darwin"

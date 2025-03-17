@@ -44,7 +44,8 @@ buildPythonPackage rec {
     pillow
     pytest-django
     pytestCheckHook
-  ] ++ lib.flatten (builtins.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (builtins.attrValues optional-dependencies);
 
   preCheck = ''
     export DJANGO_SETTINGS_MODULE=tests.app.settings

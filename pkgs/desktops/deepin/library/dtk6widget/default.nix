@@ -41,16 +41,15 @@ stdenv.mkDerivation (finalAttrs: {
     qt6Packages.wrapQtAppsHook
   ];
 
-  buildInputs =
-    [
-      cups
-      libstartup_notification
-    ]
-    ++ (with qt6Packages; [
-      qtbase
-      qtmultimedia
-      qtsvg
-    ]);
+  buildInputs = [
+    cups
+    libstartup_notification
+  ]
+  ++ (with qt6Packages; [
+    qtbase
+    qtmultimedia
+    qtsvg
+  ]);
 
   propagatedBuildInputs = [ dtk6gui ];
 

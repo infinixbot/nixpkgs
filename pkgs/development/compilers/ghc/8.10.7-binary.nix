@@ -213,19 +213,18 @@ let
 
   libEnvVar = lib.optionalString stdenv.hostPlatform.isDarwin "DY" + "LD_LIBRARY_PATH";
 
-  runtimeDeps =
-    [
-      targetPackages.stdenv.cc
-      targetPackages.stdenv.cc.bintools
-      coreutils # for cat
-    ]
-    ++ lib.optionals useLLVM [
-      (lib.getBin llvmPackages.llvm)
-    ]
-    # On darwin, we need unwrapped bintools as well (for otool)
-    ++ lib.optionals (stdenv.targetPlatform.linker == "cctools") [
-      targetPackages.stdenv.cc.bintools.bintools
-    ];
+  runtimeDeps = [
+    targetPackages.stdenv.cc
+    targetPackages.stdenv.cc.bintools
+    coreutils # for cat
+  ]
+  ++ lib.optionals useLLVM [
+    (lib.getBin llvmPackages.llvm)
+  ]
+  # On darwin, we need unwrapped bintools as well (for otool)
+  ++ lib.optionals (stdenv.targetPlatform.linker == "cctools") [
+    targetPackages.stdenv.cc.bintools.bintools
+  ];
 
 in
 
@@ -374,15 +373,14 @@ stdenv.mkDerivation rec {
   preConfigure = lib.optionalString stdenv.targetPlatform.isAarch32 "LD=ld.gold";
 
   configurePlatforms = [ ];
-  configureFlags =
-    [
-      "--with-gmp-includes=${lib.getDev gmp}/include"
-      # Note `--with-gmp-libraries` does nothing for GHC bindists:
-      # https://gitlab.haskell.org/ghc/ghc/-/merge_requests/6124
-    ]
-    ++ lib.optional stdenv.hostPlatform.isDarwin "--with-gcc=${./gcc-clang-wrapper.sh}"
-    # From: https://github.com/NixOS/nixpkgs/pull/43369/commits
-    ++ lib.optional stdenv.hostPlatform.isMusl "--disable-ld-override";
+  configureFlags = [
+    "--with-gmp-includes=${lib.getDev gmp}/include"
+    # Note `--with-gmp-libraries` does nothing for GHC bindists:
+    # https://gitlab.haskell.org/ghc/ghc/-/merge_requests/6124
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin "--with-gcc=${./gcc-clang-wrapper.sh}"
+  # From: https://github.com/NixOS/nixpkgs/pull/43369/commits
+  ++ lib.optional stdenv.hostPlatform.isMusl "--disable-ld-override";
 
   # No building is necessary, but calling make without flags ironically
   # calls install-strip ...
@@ -415,37 +413,36 @@ stdenv.mkDerivation rec {
 
   # On Linux, use patchelf to modify the executables so that they can
   # find editline/gmp.
-  postFixup =
-    lib.optionalString stdenv.hostPlatform.isLinux (
-      if stdenv.hostPlatform.isAarch64 then
-        # Keep rpath as small as possible on aarch64 for patchelf#244.  All Elfs
-        # are 2 directories deep from $out/lib, so pooling symlinks there makes
-        # a short rpath.
-        ''
-          (cd $out/lib; ln -s ${ncurses6.out}/lib/libtinfo.so.6)
-          (cd $out/lib; ln -s ${gmp.out}/lib/libgmp.so.10)
-          (cd $out/lib; ln -s ${numactl.out}/lib/libnuma.so.1)
-          for p in $(find "$out/lib" -type f -name "*\.so*"); do
-            (cd $out/lib; ln -s $p)
-          done
+  postFixup = lib.optionalString stdenv.hostPlatform.isLinux (
+    if stdenv.hostPlatform.isAarch64 then
+      # Keep rpath as small as possible on aarch64 for patchelf#244.  All Elfs
+      # are 2 directories deep from $out/lib, so pooling symlinks there makes
+      # a short rpath.
+      ''
+        (cd $out/lib; ln -s ${ncurses6.out}/lib/libtinfo.so.6)
+        (cd $out/lib; ln -s ${gmp.out}/lib/libgmp.so.10)
+        (cd $out/lib; ln -s ${numactl.out}/lib/libnuma.so.1)
+        for p in $(find "$out/lib" -type f -name "*\.so*"); do
+          (cd $out/lib; ln -s $p)
+        done
 
-          for p in $(find "$out/lib" -type f -executable); do
-            if isELF "$p"; then
-              echo "Patchelfing $p"
-              patchelf --set-rpath "\$ORIGIN:\$ORIGIN/../.." $p
-            fi
-          done
-        ''
-      else
-        ''
-          for p in $(find "$out" -type f -executable); do
-            if isELF "$p"; then
-              echo "Patchelfing $p"
-              patchelf --set-rpath "${libPath}:$(patchelf --print-rpath $p)" $p
-            fi
-          done
-        ''
-    )
+        for p in $(find "$out/lib" -type f -executable); do
+          if isELF "$p"; then
+            echo "Patchelfing $p"
+            patchelf --set-rpath "\$ORIGIN:\$ORIGIN/../.." $p
+          fi
+        done
+      ''
+    else
+      ''
+        for p in $(find "$out" -type f -executable); do
+          if isELF "$p"; then
+            echo "Patchelfing $p"
+            patchelf --set-rpath "${libPath}:$(patchelf --print-rpath $p)" $p
+          fi
+        done
+      ''
+  )
     + lib.optionalString stdenv.hostPlatform.isDarwin ''
       # not enough room in the object files for the full path to libiconv :(
       for exe in $(find "$out" -type f -executable); do

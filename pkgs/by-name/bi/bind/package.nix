@@ -50,20 +50,19 @@ stdenv.mkDerivation (finalAttrs: {
     perl
     pkg-config
   ];
-  buildInputs =
-    [
-      libidn2
-      libtool
-      libxml2
-      openssl
-      libuv
-      nghttp2
-      jemalloc
-    ]
-    ++ lib.optional stdenv.hostPlatform.isLinux libcap
-    ++ lib.optional enableGSSAPI libkrb5
-    ++ lib.optional enablePython (python3.withPackages (ps: with ps; [ ply ]))
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [ darwin.apple_sdk.frameworks.CoreServices ];
+  buildInputs = [
+    libidn2
+    libtool
+    libxml2
+    openssl
+    libuv
+    nghttp2
+    jemalloc
+  ]
+  ++ lib.optional stdenv.hostPlatform.isLinux libcap
+  ++ lib.optional enableGSSAPI libkrb5
+  ++ lib.optional enablePython (python3.withPackages (ps: with ps; [ ply ]))
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ darwin.apple_sdk.frameworks.CoreServices ];
 
   depsBuildBuild = [ buildPackages.stdenv.cc ];
 
@@ -111,13 +110,12 @@ stdenv.mkDerivation (finalAttrs: {
       && !is32bit;
   */
   checkTarget = "unit";
-  checkInputs =
-    [
-      cmocka
-    ]
-    ++ lib.optionals (!stdenv.hostPlatform.isMusl) [
-      tzdata
-    ];
+  checkInputs = [
+    cmocka
+  ]
+  ++ lib.optionals (!stdenv.hostPlatform.isMusl) [
+    tzdata
+  ];
   preCheck =
     lib.optionalString stdenv.hostPlatform.isMusl ''
       # musl doesn't respect TZDIR, skip timezone-related tests

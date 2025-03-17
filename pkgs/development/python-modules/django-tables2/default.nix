@@ -38,7 +38,8 @@ buildPythonPackage rec {
   dependencies = [ django ];
 
   optional-dependencies = {
-    tablib = [ tablib ] ++ tablib.optional-dependencies.xls ++ tablib.optional-dependencies.yaml;
+    tablib = [ tablib ]
+      ++ tablib.optional-dependencies.xls ++ tablib.optional-dependencies.yaml;
   };
 
   env.DJANGO_SETTINGS_MODULE = "tests.app.settings";
@@ -52,7 +53,8 @@ buildPythonPackage rec {
     pyyaml
     pytest-django
     pytestCheckHook
-  ] ++ lib.flatten (lib.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (lib.attrValues optional-dependencies);
 
   meta = with lib; {
     changelog = "https://github.com/jieter/django-tables2/blob/v${version}/CHANGELOG.md";

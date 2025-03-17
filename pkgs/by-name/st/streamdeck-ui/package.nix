@@ -54,8 +54,7 @@ python3Packages.buildPythonApplication rec {
     ]
     ++ lib.optionals stdenv.hostPlatform.isLinux [ qt6.qtwayland ];
 
-  nativeCheckInputs =
-    [ xvfb-run ]
+  nativeCheckInputs = [ xvfb-run ]
     ++ (with python3Packages; [
       pytest
       pytest-qt

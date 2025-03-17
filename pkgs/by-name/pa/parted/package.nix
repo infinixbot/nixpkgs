@@ -35,8 +35,7 @@ stdenv.mkDerivation rec {
     patchShebangs tests
   '';
 
-  buildInputs =
-    [ libuuid ]
+  buildInputs = [ libuuid ]
     ++ lib.optional (readline != null) readline
     ++ lib.optional (gettext != null) gettext
     ++ lib.optional (lvm2 != null) lvm2;

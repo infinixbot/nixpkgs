@@ -803,8 +803,7 @@ let
         types.attrsOf elemType
         // {
           name = "loaOf";
-          deprecationMessage =
-            "Mixing lists with attribute values is no longer"
+          deprecationMessage = "Mixing lists with attribute values is no longer"
             + " possible; please use `types.attrsOf` instead. See"
             + " https://github.com/NixOS/nixpkgs/issues/1800 for the motivation.";
           nestedTypes.elemType = elemType;
@@ -1138,7 +1137,8 @@ let
                 # It shouldn't cause an issue since this is cosmetic for the manual.
                 _module.args.name = lib.mkOptionDefault "‹name›";
               }
-            ] ++ modules;
+            ]
+            ++ modules;
           };
 
           freeformType = base._module.freeformType;
@@ -1153,7 +1153,8 @@ let
           merge =
             loc: defs:
             (base.extendModules {
-              modules = [ { _module.args.name = last loc; } ] ++ allModules defs;
+              modules = [ { _module.args.name = last loc; } ]
+                ++ allModules defs;
               prefix = loc;
             }).config;
           emptyValue = {

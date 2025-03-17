@@ -198,7 +198,8 @@ in
     environment.systemPackages = [ pkgs.nagios ];
     systemd.services.nagios = {
       description = "Nagios monitoring daemon";
-      path = [ pkgs.nagios ] ++ cfg.plugins;
+      path = [ pkgs.nagios ]
+        ++ cfg.plugins;
       wantedBy = [ "multi-user.target" ];
       after = [ "network.target" ];
       restartTriggers = [ nagiosCfgFile ];

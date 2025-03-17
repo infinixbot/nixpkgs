@@ -76,7 +76,8 @@ let
         };
         file = unpackZigArtifact {
           inherit name;
-          artifact = /. + path;
+          artifact = /.
+            + path;
         };
       };
     in

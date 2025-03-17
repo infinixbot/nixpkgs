@@ -45840,7 +45840,8 @@ self: {
       badPlatforms = [
         "i686-linux"
         "armv7l-linux"
-      ] ++ lib.platforms.darwin;
+      ]
+      ++ lib.platforms.darwin;
     }
   ) { };
 
@@ -461786,7 +461787,8 @@ self: {
       testSystemDepends = [ mpich ];
       description = "MPI bindings for Haskell";
       license = lib.licenses.asl20;
-      badPlatforms = [ "aarch64-linux" ] ++ lib.platforms.darwin;
+      badPlatforms = [ "aarch64-linux" ]
+        ++ lib.platforms.darwin;
       maintainers = [ lib.maintainers.sheepforce ];
     }
   ) { inherit (pkgs) mpich; };
@@ -461822,7 +461824,8 @@ self: {
       testPkgconfigDepends = [ ompi ];
       description = "MPI bindings for Haskell";
       license = lib.licenses.asl20;
-      badPlatforms = [ "aarch64-linux" ] ++ lib.platforms.darwin;
+      badPlatforms = [ "aarch64-linux" ]
+        ++ lib.platforms.darwin;
       hydraPlatforms = lib.platforms.none;
       maintainers = [ lib.maintainers.sheepforce ];
     }
@@ -461857,7 +461860,8 @@ self: {
       testHaskellDepends = [ base ];
       description = "MPI bindings for Haskell";
       license = lib.licenses.asl20;
-      badPlatforms = [ "aarch64-linux" ] ++ lib.platforms.darwin;
+      badPlatforms = [ "aarch64-linux" ]
+        ++ lib.platforms.darwin;
       maintainers = [ lib.maintainers.sheepforce ];
     }
   ) { };
@@ -461891,7 +461895,8 @@ self: {
       testHaskellDepends = [ base ];
       description = "MPI bindings for Haskell";
       license = lib.licenses.asl20;
-      badPlatforms = [ "aarch64-linux" ] ++ lib.platforms.darwin;
+      badPlatforms = [ "aarch64-linux" ]
+        ++ lib.platforms.darwin;
       maintainers = [ lib.maintainers.sheepforce ];
     }
   ) { };
@@ -461925,7 +461930,8 @@ self: {
       testHaskellDepends = [ base ];
       description = "MPI bindings for Haskell";
       license = lib.licenses.asl20;
-      badPlatforms = [ "aarch64-linux" ] ++ lib.platforms.darwin;
+      badPlatforms = [ "aarch64-linux" ]
+        ++ lib.platforms.darwin;
       maintainers = [ lib.maintainers.sheepforce ];
     }
   ) { };
@@ -461971,7 +461977,8 @@ self: {
       executableHaskellDepends = [ base ];
       description = "Save your spot when watching movies with @mplayer@";
       license = lib.licenses.bsd3;
-      badPlatforms = [ "aarch64-linux" ] ++ lib.platforms.darwin;
+      badPlatforms = [ "aarch64-linux" ]
+        ++ lib.platforms.darwin;
       mainProgram = "mplayer-spot";
     }
   ) { };
@@ -562261,7 +562268,8 @@ self: {
       ];
       description = "A reflex-dom widget to draw on a canvas with a fragment shader program";
       license = lib.licenses.mit;
-      badPlatforms = [ "aarch64-linux" ] ++ lib.platforms.darwin;
+      badPlatforms = [ "aarch64-linux" ]
+        ++ lib.platforms.darwin;
       hydraPlatforms = lib.platforms.none;
       mainProgram = "demo";
       broken = true;
@@ -563022,7 +563030,8 @@ self: {
       ];
       description = "Helper widgets for reflex-localize";
       license = lib.licenses.mit;
-      badPlatforms = [ "aarch64-linux" ] ++ lib.platforms.darwin;
+      badPlatforms = [ "aarch64-linux" ]
+        ++ lib.platforms.darwin;
       hydraPlatforms = lib.platforms.none;
     }
   ) { };
@@ -708881,7 +708890,8 @@ self: {
       badPlatforms = [
         "i686-linux"
         "armv7l-linux"
-      ] ++ lib.platforms.darwin;
+      ]
+      ++ lib.platforms.darwin;
     }
   ) { inherit (pkgs) vulkan-loader; };
 
@@ -727988,7 +727998,8 @@ self: {
       badPlatforms = [
         "aarch64-linux"
         "armv7l-linux"
-      ] ++ lib.platforms.darwin;
+      ]
+      ++ lib.platforms.darwin;
       mainProgram = "xgb-agaricus";
     }
   ) { inherit (pkgs) xgboost; };

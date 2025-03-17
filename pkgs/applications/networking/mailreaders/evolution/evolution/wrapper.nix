@@ -8,7 +8,8 @@
 
 symlinkJoin {
   name = "evolution-with-plugins";
-  paths = [ evolution-data-server ] ++ plugins;
+  paths = [ evolution-data-server ]
+    ++ plugins;
 
   nativeBuildInputs = [ makeWrapper ];
 

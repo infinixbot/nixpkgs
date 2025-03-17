@@ -47,7 +47,8 @@ in
 
     listen = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-      default = [ "0.0.0.0" ] ++ lib.optional config.networking.enableIPv6 "[::0]";
+      default = [ "0.0.0.0" ]
+        ++ lib.optional config.networking.enableIPv6 "[::0]";
       defaultText = lib.literalExpression ''[ "0.0.0.0" ] ++ lib.optional config.networking.enableIPv6 "[::0]"'';
       example = lib.literalExpression ''[ "10.0.0.12" "[2002:a00:1::]" ]'';
       description = ''
@@ -260,26 +261,26 @@ in
         LockPersonality = true;
         RestrictRealtime = true;
         RemoveIPC = true;
-        CapabilityBoundingSet =
-          [
-            "~CAP_SYS_PTRACE"
-            "~CAP_SYS_ADMIN"
-            "~CAP_SETPCAP"
-            "~CAP_SYS_TIME"
-            "~CAP_SYS_PACCT"
-            "~CAP_SYS_TTY_CONFIG "
-            "~CAP_SYS_CHROOT"
-            "~CAP_SYS_BOOT"
-            "~CAP_NET_ADMIN"
-          ]
-          ++ lib.lists.optional (!cfg.allowCgiUser) [
-            "~CAP_SETGID"
-            "~CAP_SETUID"
-          ];
+        CapabilityBoundingSet = [
+          "~CAP_SYS_PTRACE"
+          "~CAP_SYS_ADMIN"
+          "~CAP_SETPCAP"
+          "~CAP_SYS_TIME"
+          "~CAP_SYS_PACCT"
+          "~CAP_SYS_TTY_CONFIG "
+          "~CAP_SYS_CHROOT"
+          "~CAP_SYS_BOOT"
+          "~CAP_NET_ADMIN"
+        ]
+        ++ lib.lists.optional (!cfg.allowCgiUser) [
+          "~CAP_SETGID"
+          "~CAP_SETUID"
+        ];
         SystemCallArchitectures = "native";
         SystemCallFilter = [
           "~@cpu-emulation @debug @keyring @mount @obsolete"
-        ] ++ lib.lists.optional (!cfg.allowCgiUser) [ "@privileged @setuid" ];
+        ]
+        ++ lib.lists.optional (!cfg.allowCgiUser) [ "@privileged @setuid" ];
       };
     };
 

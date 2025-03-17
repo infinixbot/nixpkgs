@@ -71,7 +71,8 @@ stdenv.mkDerivation rec {
     nss
     nspr
     pam
-  ] ++ lib.optionals (enablePython) [ python2 ];
+  ]
+  ++ lib.optionals (enablePython) [ python2 ];
   propagatedBuildInputs = [
     coreutils
     gettext

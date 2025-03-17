@@ -124,7 +124,8 @@ in
 
   # Requires HW SGX
   sampleCommonLoader = (buildSample "SampleCommonLoader").overrideAttrs (old: {
-    nativeBuildInputs = [ sgx-psw ] ++ old.nativeBuildInputs;
+    nativeBuildInputs = [ sgx-psw ]
+      ++ old.nativeBuildInputs;
 
     installPhase = ''
       runHook preInstall

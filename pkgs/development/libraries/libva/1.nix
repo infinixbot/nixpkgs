@@ -40,8 +40,7 @@ stdenv.mkDerivation rec {
     wayland-scanner
   ];
 
-  buildInputs =
-    [ libdrm ]
+  buildInputs = [ libdrm ]
     ++ lib.optionals (!minimal) [
       libva1-minimal
       libX11

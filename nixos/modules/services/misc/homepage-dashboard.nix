@@ -212,8 +212,7 @@ in
 
       configDir = if managedConfig then "/etc/homepage-dashboard" else "/var/lib/homepage-dashboard";
 
-      msg =
-        "using unmanaged configuration for homepage-dashboard is deprecated and will be removed"
+      msg = "using unmanaged configuration for homepage-dashboard is deprecated and will be removed"
         + " in 24.05. please see the NixOS documentation for `services.homepage-dashboard' and add"
         + " your bookmarks, services, widgets, and other configuration using the options provided.";
     in

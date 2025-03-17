@@ -376,8 +376,7 @@ in
               ${pkgs.envsubst}/bin/envsubst -i "${keepalivedConf}" > ${finalConfigFile}
             ''
           );
-          ExecStart =
-            "${lib.getExe cfg.package}"
+          ExecStart = "${lib.getExe cfg.package}"
             + " -f ${finalConfigFile}"
             + " -p ${pidFile}"
             + optionalString cfg.snmp.enable " --snmp";

@@ -48,14 +48,16 @@ buildPythonPackage rec {
     itsdangerous
     jinja2
     werkzeug
-  ] ++ lib.optionals (pythonOlder "3.10") [ importlib-metadata ];
+  ]
+  ++ lib.optionals (pythonOlder "3.10") [ importlib-metadata ];
 
   optional-dependencies = {
     async = [ asgiref ];
     dotenv = [ python-dotenv ];
   };
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ lib.flatten (lib.attrValues optional-dependencies);
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ lib.flatten (lib.attrValues optional-dependencies);
 
   passthru.tests = {
     inherit

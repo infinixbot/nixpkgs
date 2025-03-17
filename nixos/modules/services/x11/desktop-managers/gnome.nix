@@ -258,7 +258,8 @@ in
 
       systemd.packages = [
         pkgs.gnome-flashback
-      ] ++ map pkgs.gnome-flashback.mkSystemdTargetForWm flashbackWms;
+      ]
+      ++ map pkgs.gnome-flashback.mkSystemdTargetForWm flashbackWms;
 
       environment.systemPackages =
         [

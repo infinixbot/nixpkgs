@@ -105,8 +105,10 @@ in
       description = "a bridge between Matrix and multiple project management services";
 
       wantedBy = [ "multi-user.target" ];
-      wants = [ "network-online.target" ] ++ cfg.serviceDependencies;
-      after = [ "network-online.target" ] ++ cfg.serviceDependencies;
+      wants = [ "network-online.target" ]
+        ++ cfg.serviceDependencies;
+      after = [ "network-online.target" ]
+        ++ cfg.serviceDependencies;
 
       preStart = ''
         if [ ! -f '${cfg.settings.passFile}' ]; then

@@ -74,7 +74,8 @@ rec {
       {
         enableParallelBuilding = true;
         inherit buildCommand name;
-        passAsFile = [ "buildCommand" ] ++ (derivationArgs.passAsFile or [ ]);
+        passAsFile = [ "buildCommand" ]
+          ++ (derivationArgs.passAsFile or [ ]);
       }
       // lib.optionalAttrs (!derivationArgs ? meta) {
         pos =
@@ -128,7 +129,8 @@ rec {
             allowSubstitutes
             preferLocalBuild
             ;
-          passAsFile = [ "text" ] ++ derivationArgs.passAsFile or [ ];
+          passAsFile = [ "text" ]
+            ++ derivationArgs.passAsFile or [ ];
           meta =
             lib.optionalAttrs (executable && matches != null) {
               mainProgram = lib.head matches;
@@ -340,27 +342,26 @@ rec {
       destination = "/bin/${name}";
       allowSubstitutes = true;
       preferLocalBuild = false;
-      text =
-        ''
-          #!${runtimeShell}
-          ${lib.concatMapStringsSep "\n" (option: "set -o ${option}") bashOptions}
-        ''
-        + lib.optionalString (runtimeEnv != null) (
-          lib.concatStrings (
-            lib.mapAttrsToList (name: value: ''
-              ${lib.toShellVar name value}
-              export ${name}
-            '') runtimeEnv
-          )
+      text = ''
+        #!${runtimeShell}
+        ${lib.concatMapStringsSep "\n" (option: "set -o ${option}") bashOptions}
+      ''
+      + lib.optionalString (runtimeEnv != null) (
+        lib.concatStrings (
+          lib.mapAttrsToList (name: value: ''
+            ${lib.toShellVar name value}
+            export ${name}
+          '') runtimeEnv
         )
-        + lib.optionalString (runtimeInputs != [ ]) ''
+      )
+      + lib.optionalString (runtimeInputs != [ ]) ''
 
-          export PATH="${lib.makeBinPath runtimeInputs}${lib.optionalString inheritPath ":$PATH"}"
-        ''
-        + ''
+        export PATH="${lib.makeBinPath runtimeInputs}${lib.optionalString inheritPath ":$PATH"}"
+      ''
+      + ''
 
-          ${text}
-        '';
+        ${text}
+      '';
 
       checkPhase =
         # GHC (=> shellcheck) isn't supported on some platforms (such as risc-v)

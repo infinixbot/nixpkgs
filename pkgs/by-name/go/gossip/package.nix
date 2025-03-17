@@ -46,16 +46,15 @@ rustPlatform.buildRustPackage rec {
     "lang-cjk"
   ];
 
-  nativeBuildInputs =
-    [
-      cmake
-      git
-      pkg-config
-      rustPlatform.bindgenHook
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      wayland-scanner
-    ];
+  nativeBuildInputs = [
+    cmake
+    git
+    pkg-config
+    rustPlatform.bindgenHook
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    wayland-scanner
+  ];
 
   buildInputs =
     [

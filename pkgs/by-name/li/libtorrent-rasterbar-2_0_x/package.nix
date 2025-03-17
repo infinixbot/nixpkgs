@@ -41,7 +41,8 @@ stdenv.mkDerivation {
     zlib
     python3
     ncurses
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ darwin.apple_sdk.frameworks.SystemConfiguration ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ darwin.apple_sdk.frameworks.SystemConfiguration ];
 
   patches = [
     # provide distutils alternative for python 3.12

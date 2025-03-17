@@ -107,7 +107,8 @@ with lib;
 
     systemd.services.zeronet = {
       description = "zeronet";
-      after = [ "network.target" ] ++ optional cfg.tor "tor.service";
+      after = [ "network.target" ]
+        ++ optional cfg.tor "tor.service";
       wantedBy = [ "multi-user.target" ];
 
       serviceConfig = {

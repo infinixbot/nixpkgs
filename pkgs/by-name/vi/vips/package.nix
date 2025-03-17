@@ -57,7 +57,8 @@ stdenv.mkDerivation (finalAttrs: {
     "out"
     "man"
     "dev"
-  ] ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [ "devdoc" ];
+  ]
+  ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [ "devdoc" ];
 
   src = fetchFromGitHub {
     owner = "libvips";
@@ -71,53 +72,51 @@ stdenv.mkDerivation (finalAttrs: {
     '';
   };
 
-  nativeBuildInputs =
-    [
-      docbook-xsl-nons
-      gobject-introspection
-      meson
-      ninja
-      pkg-config
-    ]
-    ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
-      gtk-doc
-    ];
+  nativeBuildInputs = [
+    docbook-xsl-nons
+    gobject-introspection
+    meson
+    ninja
+    pkg-config
+  ]
+  ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
+    gtk-doc
+  ];
 
-  buildInputs =
-    [
-      glib
-      libxml2
-      expat
-      (python3.withPackages (p: [ p.pycairo ]))
+  buildInputs = [
+    glib
+    libxml2
+    expat
+    (python3.withPackages (p: [ p.pycairo ]))
 
-      # Optional dependencies
-      cfitsio
-      cgif
-      fftw
-      imagemagick
-      lcms2
-      libarchive
-      libexif
-      libheif
-      libhwy
-      libimagequant
-      libjpeg
-      libjxl
-      librsvg
-      libspng
-      libtiff
-      libwebp
-      matio
-      openexr_3
-      openjpeg
-      openslide
-      pango
-      poppler
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      ApplicationServices
-      Foundation
-    ];
+    # Optional dependencies
+    cfitsio
+    cgif
+    fftw
+    imagemagick
+    lcms2
+    libarchive
+    libexif
+    libheif
+    libhwy
+    libimagequant
+    libjpeg
+    libjxl
+    librsvg
+    libspng
+    libtiff
+    libwebp
+    matio
+    openexr_3
+    openjpeg
+    openslide
+    pango
+    poppler
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    ApplicationServices
+    Foundation
+  ];
 
   # Required by .pc file
   propagatedBuildInputs = [

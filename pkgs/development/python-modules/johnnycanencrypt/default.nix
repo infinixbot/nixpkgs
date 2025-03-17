@@ -41,8 +41,7 @@ buildPythonPackage rec {
     maturinBuildHook
   ];
 
-  nativeBuildInputs =
-    [ pkg-config ]
+  nativeBuildInputs = [ pkg-config ]
     ++ (with rustPlatform; [
       bindgenHook
       cargoSetupHook

@@ -44,17 +44,16 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs =
-    [
-      pkg-config
-      sphinx
-      scons
-    ]
-    ++ lib.optionals withGui [
-      makeWrapper
-      wrapGAppsHook3
-      gobject-introspection
-    ];
+  nativeBuildInputs = [
+    pkg-config
+    sphinx
+    scons
+  ]
+  ++ lib.optionals withGui [
+    makeWrapper
+    wrapGAppsHook3
+    gobject-introspection
+  ];
 
   buildInputs =
     [

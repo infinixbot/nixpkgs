@@ -134,20 +134,19 @@ stdenv.mkDerivation (
       dontFixup
       ;
 
-    passthru =
-      {
-        inherit
-          executableName
-          longName
-          tests
-          updateScript
-          ;
-        fhs = fhs { };
-        fhsWithPackages = f: fhs { additionalPkgs = f; };
-      }
-      // lib.optionalAttrs (vscodeServer != null) {
-        inherit rev vscodeServer;
-      };
+    passthru = {
+      inherit
+        executableName
+        longName
+        tests
+        updateScript
+        ;
+      fhs = fhs { };
+      fhsWithPackages = f: fhs { additionalPkgs = f; };
+    }
+    // lib.optionalAttrs (vscodeServer != null) {
+      inherit rev vscodeServer;
+    };
 
     desktopItems = [
       (makeDesktopItem {
@@ -193,22 +192,21 @@ stdenv.mkDerivation (
       })
     ];
 
-    buildInputs =
-      [
-        libsecret
-        libXScrnSaver
-        libxshmfence
-      ]
-      ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
-        alsa-lib
-        at-spi2-atk
-        libkrb5
-        libgbm
-        nss
-        nspr
-        systemd
-        xorg.libxkbfile
-      ];
+    buildInputs = [
+      libsecret
+      libXScrnSaver
+      libxshmfence
+    ]
+    ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
+      alsa-lib
+      at-spi2-atk
+      libkrb5
+      libgbm
+      nss
+      nspr
+      systemd
+      xorg.libxkbfile
+    ];
 
     runtimeDependencies = lib.optionals stdenv.hostPlatform.isLinux [
       (lib.getLib systemd)
@@ -218,8 +216,7 @@ stdenv.mkDerivation (
       libsecret
     ];
 
-    nativeBuildInputs =
-      [ unzip ]
+    nativeBuildInputs = [ unzip ]
       ++ lib.optionals stdenv.hostPlatform.isLinux [
         autoPatchelfHook
         asar
@@ -233,41 +230,40 @@ stdenv.mkDerivation (
     dontConfigure = true;
     noDumpEnvVars = true;
 
-    installPhase =
-      ''
-        runHook preInstall
-      ''
-      + (
-        if stdenv.hostPlatform.isDarwin then
-          ''
-            mkdir -p "$out/Applications/${longName}.app" "$out/bin"
-            cp -r ./* "$out/Applications/${longName}.app"
-            ln -s "$out/Applications/${longName}.app/Contents/Resources/app/bin/${sourceExecutableName}" "$out/bin/${executableName}"
-          ''
-        else
-          ''
-            mkdir -p "$out/lib/${libraryName}" "$out/bin"
-            cp -r ./* "$out/lib/${libraryName}"
+    installPhase = ''
+      runHook preInstall
+    ''
+    + (
+      if stdenv.hostPlatform.isDarwin then
+        ''
+          mkdir -p "$out/Applications/${longName}.app" "$out/bin"
+          cp -r ./* "$out/Applications/${longName}.app"
+          ln -s "$out/Applications/${longName}.app/Contents/Resources/app/bin/${sourceExecutableName}" "$out/bin/${executableName}"
+        ''
+      else
+        ''
+          mkdir -p "$out/lib/${libraryName}" "$out/bin"
+          cp -r ./* "$out/lib/${libraryName}"
 
-            ln -s "$out/lib/${libraryName}/bin/${sourceExecutableName}" "$out/bin/${executableName}"
+          ln -s "$out/lib/${libraryName}/bin/${sourceExecutableName}" "$out/bin/${executableName}"
 
-            # These are named vscode.png, vscode-insiders.png, etc to match the name in upstream *.deb packages.
-            mkdir -p "$out/share/pixmaps"
-            cp "$out/lib/${libraryName}/resources/app/resources/linux/code.png" "$out/share/pixmaps/${iconName}.png"
+          # These are named vscode.png, vscode-insiders.png, etc to match the name in upstream *.deb packages.
+          mkdir -p "$out/share/pixmaps"
+          cp "$out/lib/${libraryName}/resources/app/resources/linux/code.png" "$out/share/pixmaps/${iconName}.png"
 
-            # Override the previously determined VSCODE_PATH with the one we know to be correct
-            sed -i "/ELECTRON=/iVSCODE_PATH='$out/lib/${libraryName}'" "$out/bin/${executableName}"
-            grep -q "VSCODE_PATH='$out/lib/${libraryName}'" "$out/bin/${executableName}" # check if sed succeeded
+          # Override the previously determined VSCODE_PATH with the one we know to be correct
+          sed -i "/ELECTRON=/iVSCODE_PATH='$out/lib/${libraryName}'" "$out/bin/${executableName}"
+          grep -q "VSCODE_PATH='$out/lib/${libraryName}'" "$out/bin/${executableName}" # check if sed succeeded
 
-            # Remove native encryption code, as it derives the key from the executable path which does not work for us.
-            # The credentials should be stored in a secure keychain already, so the benefit of this is questionable
-            # in the first place.
-            rm -rf $out/lib/${libraryName}/resources/app/node_modules/vscode-encrypt
-          ''
-      )
-      + ''
-        runHook postInstall
-      '';
+          # Remove native encryption code, as it derives the key from the executable path which does not work for us.
+          # The credentials should be stored in a secure keychain already, so the benefit of this is questionable
+          # in the first place.
+          rm -rf $out/lib/${libraryName}/resources/app/node_modules/vscode-encrypt
+        ''
+    )
+    + ''
+      runHook postInstall
+    '';
 
     preFixup = ''
       gappsWrapperArgs+=(

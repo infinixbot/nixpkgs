@@ -29,7 +29,8 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs = [ libdwarf ];
-  propagatedBuildInputs = [ zstd ] ++ (lib.optionals static [ libdwarf ]);
+  propagatedBuildInputs = [ zstd ]
+    ++ (lib.optionals static [ libdwarf ]);
 
   cmakeFlags = [
     (lib.cmakeBool "CPPTRACE_USE_EXTERNAL_LIBDWARF" true)

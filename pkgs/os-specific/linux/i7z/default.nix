@@ -19,7 +19,8 @@ stdenv.mkDerivation rec {
     sha256 = "00c4ng30ry88hcya4g1i9dngiqmz3cs31x7qh1a10nalxn1829xy";
   };
 
-  buildInputs = [ ncurses ] ++ lib.optional withGui qtbase;
+  buildInputs = [ ncurses ]
+    ++ lib.optional withGui qtbase;
 
   patches = [
     (fetchpatch {

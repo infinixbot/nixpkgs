@@ -34,9 +34,9 @@ stdenv.mkDerivation rec {
     wayland
   ];
 
-  buildInputs = [ SDL2 ] ++ gstInputs ++ propagatedBuildInputs;
-  nativeBuildInputs =
-    [ pkg-config ]
+  buildInputs = [ SDL2 ]
+    ++ gstInputs ++ propagatedBuildInputs;
+  nativeBuildInputs = [ pkg-config ]
     ++ (with libsForQt5; [
       qmake
       qttools

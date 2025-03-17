@@ -39,18 +39,17 @@ rustPlatform.buildRustPackage rec {
     makeBinaryWrapper
   ];
 
-  buildInputs =
-    [
-      openssl
-      xorg.libxcb
-      libsixel
-      mpv
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      CoreFoundation
-      Security
-      AppKit
-    ];
+  buildInputs = [
+    openssl
+    xorg.libxcb
+    libsixel
+    mpv
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    CoreFoundation
+    Security
+    AppKit
+  ];
 
   # sixel-sys is dynamically linked to libsixel
   postInstall = lib.optionalString stdenv.hostPlatform.isDarwin ''

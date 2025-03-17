@@ -68,7 +68,8 @@ buildPythonPackage {
 
   pythonImportsCheck = [ "layoutparser" ];
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ optional-dependencies.ocr;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ optional-dependencies.ocr;
 
   disabledTests = [
     "test_PaddleDetectionModel" # requires paddlepaddle not yet packaged

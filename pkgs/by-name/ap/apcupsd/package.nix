@@ -43,27 +43,26 @@ stdenv.mkDerivation rec {
 
   # ./configure ignores --prefix, so we must specify some paths manually
   # There is no real reason for a bin/sbin split, so just use bin.
-  configureFlags =
-    [
-      "--bindir=${placeholder "out"}/bin"
-      "--sbindir=${placeholder "out"}/bin"
-      "--sysconfdir=${placeholder "out"}/etc/apcupsd"
-      "--mandir=${placeholder "out"}/share/man"
-      "--with-halpolicydir=${placeholder "out"}/share/halpolicy"
-      "--localstatedir=/var"
-      "--with-nologin=/run"
-      "--with-log-dir=/var/log/apcupsd"
-      "--with-pwrfail-dir=/run/apcupsd"
-      "--with-lock-dir=/run/lock"
-      "--with-pid-dir=/run"
-      "--enable-usb"
-      "ac_cv_path_SHUTDOWN=${systemd}/sbin/shutdown"
-      "ac_cv_path_WALL=${wall}/bin/wall"
-    ]
-    ++ lib.optionals enableCgiScripts [
-      "--enable-cgi"
-      "--with-cgi-bin=${placeholder "out"}/libexec/cgi-bin"
-    ];
+  configureFlags = [
+    "--bindir=${placeholder "out"}/bin"
+    "--sbindir=${placeholder "out"}/bin"
+    "--sysconfdir=${placeholder "out"}/etc/apcupsd"
+    "--mandir=${placeholder "out"}/share/man"
+    "--with-halpolicydir=${placeholder "out"}/share/halpolicy"
+    "--localstatedir=/var"
+    "--with-nologin=/run"
+    "--with-log-dir=/var/log/apcupsd"
+    "--with-pwrfail-dir=/run/apcupsd"
+    "--with-lock-dir=/run/lock"
+    "--with-pid-dir=/run"
+    "--enable-usb"
+    "ac_cv_path_SHUTDOWN=${systemd}/sbin/shutdown"
+    "ac_cv_path_WALL=${wall}/bin/wall"
+  ]
+  ++ lib.optionals enableCgiScripts [
+    "--enable-cgi"
+    "--with-cgi-bin=${placeholder "out"}/libexec/cgi-bin"
+  ];
 
   postInstall = ''
     for file in "$out"/etc/apcupsd/*; do

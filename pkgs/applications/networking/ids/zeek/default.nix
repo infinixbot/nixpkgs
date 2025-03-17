@@ -76,20 +76,19 @@ stdenv.mkDerivation rec {
     patchShebangs ./auxil/spicy/scripts
   '';
 
-  cmakeFlags =
-    [
-      "-DBroker_ROOT=${broker}"
-      "-DENABLE_PERFTOOLS=true"
-      "-DINSTALL_AUX_TOOLS=true"
-      "-DZEEK_ETC_INSTALL_DIR=/etc/zeek"
-      "-DZEEK_LOG_DIR=/var/log/zeek"
-      "-DZEEK_STATE_DIR=/var/lib/zeek"
-      "-DZEEK_SPOOL_DIR=/var/spool/zeek"
-      "-DDISABLE_JAVASCRIPT=ON"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      "-DLIBKQUEUE_ROOT_DIR=${libkqueue}"
-    ];
+  cmakeFlags = [
+    "-DBroker_ROOT=${broker}"
+    "-DENABLE_PERFTOOLS=true"
+    "-DINSTALL_AUX_TOOLS=true"
+    "-DZEEK_ETC_INSTALL_DIR=/etc/zeek"
+    "-DZEEK_LOG_DIR=/var/log/zeek"
+    "-DZEEK_STATE_DIR=/var/lib/zeek"
+    "-DZEEK_SPOOL_DIR=/var/spool/zeek"
+    "-DDISABLE_JAVASCRIPT=ON"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    "-DLIBKQUEUE_ROOT_DIR=${libkqueue}"
+  ];
 
   postInstall = ''
     for file in $out/share/zeek/base/frameworks/notice/actions/pp-alarms.zeek $out/share/zeek/base/frameworks/notice/main.zeek; do

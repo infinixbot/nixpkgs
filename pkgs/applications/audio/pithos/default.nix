@@ -44,23 +44,21 @@ pythonPackages.buildPythonApplication rec {
     gobject-introspection
   ];
 
-  buildInputs =
-    [
-      gtk3
-      libnotify
-      libsecret
-      glib
-    ]
-    ++ (with gst_all_1; [
-      gstreamer
-      gst-plugins-base
-      gst-plugins-good
-      gst-plugins-ugly
-      gst-plugins-bad
-    ]);
+  buildInputs = [
+    gtk3
+    libnotify
+    libsecret
+    glib
+  ]
+  ++ (with gst_all_1; [
+    gstreamer
+    gst-plugins-base
+    gst-plugins-good
+    gst-plugins-ugly
+    gst-plugins-bad
+  ]);
 
-  propagatedBuildInputs =
-    [ adwaita-icon-theme ]
+  propagatedBuildInputs = [ adwaita-icon-theme ]
     ++ (with pythonPackages; [
       pygobject3
       pylast

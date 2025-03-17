@@ -34,8 +34,7 @@ python.pkgs.buildPythonApplication rec {
 
   build-system = with python.pkgs; [ poetry-core ];
 
-  dependencies =
-    [ awscli ]
+  dependencies = [ awscli ]
     ++ (with python.pkgs; [
       awscli
       boto3

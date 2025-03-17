@@ -100,7 +100,8 @@ stdenv.mkDerivation rec {
     "-Dwindows=${withWindowSystem'}"
     "-Dtest=enabled"
     "-Dman=enabled"
-  ] ++ backendFlags;
+  ]
+  ++ backendFlags;
 
   strictDeps = true;
 

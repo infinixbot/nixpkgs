@@ -61,8 +61,7 @@ python.pkgs.buildPythonApplication rec {
     gcp = [ google-cloud-storage ];
   };
 
-  nativeCheckInputs =
-    [ git ]
+  nativeCheckInputs = [ git ]
     ++ (with python3.pkgs; [
       pytest-asyncio
       pytest-mock

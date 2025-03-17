@@ -59,7 +59,8 @@ let
 
         installPrefix = "share/vscode/extensions/${vscodeExtUniqueId}";
 
-        nativeBuildInputs = [ unzip ] ++ nativeBuildInputs;
+        nativeBuildInputs = [ unzip ]
+          ++ nativeBuildInputs;
 
         installPhase = ''
 

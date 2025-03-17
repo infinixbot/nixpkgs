@@ -58,31 +58,31 @@ let
     mp4 = [ ];
 
     # net
-    aws = [ openssl ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ Security ];
+    aws = [ openssl ]
+      ++ lib.optionals stdenv.hostPlatform.isDarwin [ Security ];
     hlssink3 = [ ];
     ndi = [ ];
     onvif = [ pango ];
     raptorq = [ ];
-    reqwest = [ openssl ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ Security ];
+    reqwest = [ openssl ]
+      ++ lib.optionals stdenv.hostPlatform.isDarwin [ Security ];
     rtp = [ ];
-    webrtc =
-      [
-        gst-plugins-bad
-        openssl
-      ]
-      ++ lib.optionals stdenv.hostPlatform.isDarwin [
-        Security
-        SystemConfiguration
-      ];
-    webrtchttp =
-      [
-        gst-plugins-bad
-        openssl
-      ]
-      ++ lib.optionals stdenv.hostPlatform.isDarwin [
-        Security
-        SystemConfiguration
-      ];
+    webrtc = [
+      gst-plugins-bad
+      openssl
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      Security
+      SystemConfiguration
+    ];
+    webrtchttp = [
+      gst-plugins-bad
+      openssl
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      Security
+      SystemConfiguration
+    ];
 
     # text
     textahead = [ ];
@@ -227,7 +227,8 @@ stdenv.mkDerivation (finalAttrs: {
   buildInputs = [
     gstreamer
     gst-plugins-base
-  ] ++ lib.concatMap (plugin: lib.getAttr plugin validPlugins) selectedPlugins;
+  ]
+  ++ lib.concatMap (plugin: lib.getAttr plugin validPlugins) selectedPlugins;
 
   checkInputs = [
     gst-plugins-good
@@ -246,15 +247,14 @@ stdenv.mkDerivation (finalAttrs: {
   doCheck = stdenv.buildPlatform.canExecute stdenv.hostPlatform;
 
   # csound lib dir must be manually specified for it to build
-  preConfigure =
-    ''
-      export CARGO_BUILD_JOBS=$NIX_BUILD_CORES
+  preConfigure = ''
+    export CARGO_BUILD_JOBS=$NIX_BUILD_CORES
 
-      patchShebangs dependencies.py
-    ''
-    + lib.optionalString (lib.elem "csound" selectedPlugins) ''
-      export CSOUND_LIB_DIR=${lib.getLib csound}/lib
-    '';
+    patchShebangs dependencies.py
+  ''
+  + lib.optionalString (lib.elem "csound" selectedPlugins) ''
+    export CSOUND_LIB_DIR=${lib.getLib csound}/lib
+  '';
 
   mesonCheckFlags = [ "--verbose" ];
 

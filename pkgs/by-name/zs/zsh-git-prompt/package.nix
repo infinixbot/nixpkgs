@@ -75,7 +75,8 @@ haskellPackages.callPackage (
       QuickCheck
     ];
     executableHaskellDepends = libraryHaskellDepends;
-    testHaskellDepends = [ HUnit ] ++ libraryHaskellDepends;
+    testHaskellDepends = [ HUnit ]
+      ++ libraryHaskellDepends;
     homepage = "https://github.com/olivierverdier/zsh-git-prompt#readme";
     description = "Informative git prompt for zsh";
     license = lib.licenses.mit;

@@ -46,7 +46,8 @@ stdenv.mkDerivation (finalAttrs: {
     ninja
   ];
 
-  buildInputs = [ zlib ] ++ lib.optionals mklSupport [ mkl ];
+  buildInputs = [ zlib ]
+    ++ lib.optionals mklSupport [ mkl ];
 
   meta = {
     description = "FEBio Suite Solver";

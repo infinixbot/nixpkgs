@@ -44,8 +44,10 @@ stdenv.mkDerivation (
   {
     pname = "libretro-${core}";
 
-    buildInputs = [ zlib ] ++ extraBuildInputs;
-    nativeBuildInputs = [ makeWrapper ] ++ extraNativeBuildInputs;
+    buildInputs = [ zlib ]
+      ++ extraBuildInputs;
+    nativeBuildInputs = [ makeWrapper ]
+      ++ extraNativeBuildInputs;
 
     inherit makefile;
 
@@ -67,7 +69,8 @@ stdenv.mkDerivation (
         }
         .${stdenv.hostPlatform.parsed.cpu.name} or stdenv.hostPlatform.parsed.cpu.name
       }"
-    ] ++ (args.makeFlags or [ ]);
+    ]
+    ++ (args.makeFlags or [ ]);
 
     installPhase = ''
       runHook preInstall
@@ -86,7 +89,8 @@ stdenv.mkDerivation (
       # libretro repos sometimes has a fake tag like "Current", ignore
       # it by setting hardcodeZeroVersion
       updateScript = unstableGitUpdater { hardcodeZeroVersion = true; };
-    } // (args.passthru or { });
+    }
+    // (args.passthru or { });
 
     meta =
       with lib;

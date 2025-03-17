@@ -48,8 +48,7 @@ let
 
       sourceRoot = "${src.name}/${pname}";
 
-      nativeBuildInputs =
-        [ cmake ]
+      nativeBuildInputs = [ cmake ]
         ++ (lib.optional (lib.versionAtLeast release_version "15") ninja)
         ++ [ python3 ]
         ++ lib.optional (lib.versionAtLeast version "18" && enableManpages) python3.pkgs.myst-parser
@@ -96,16 +95,15 @@ let
         ++ lib.optional (lib.versionAtLeast release_version "20") "-DLLVM_DIR=${libllvm.dev}/lib/cmake/llvm"
         ++ devExtraCmakeFlags;
 
-      postPatch =
-        ''
-          # Make sure clang passes the correct location of libLTO to ld64
-          substituteInPlace lib/Driver/ToolChains/Darwin.cpp \
-            --replace-fail 'StringRef P = llvm::sys::path::parent_path(D.Dir);' 'StringRef P = "${lib.getLib libllvm}";'
-          (cd tools && ln -s ../../clang-tools-extra extra)
-        ''
-        + lib.optionalString stdenv.hostPlatform.isMusl ''
-          sed -i -e 's/lgcc_s/lgcc_eh/' lib/Driver/ToolChains/*.cpp
-        '';
+      postPatch = ''
+        # Make sure clang passes the correct location of libLTO to ld64
+        substituteInPlace lib/Driver/ToolChains/Darwin.cpp \
+          --replace-fail 'StringRef P = llvm::sys::path::parent_path(D.Dir);' 'StringRef P = "${lib.getLib libllvm}";'
+        (cd tools && ln -s ../../clang-tools-extra extra)
+      ''
+      + lib.optionalString stdenv.hostPlatform.isMusl ''
+        sed -i -e 's/lgcc_s/lgcc_eh/' lib/Driver/ToolChains/*.cpp
+      '';
 
       outputs = [
         "out"
@@ -114,64 +112,63 @@ let
         "python"
       ];
 
-      postInstall =
-        ''
-          ln -sv $out/bin/clang $out/bin/cpp
-        ''
-        + (lib.optionalString (lib.versions.major release_version == "17") ''
+      postInstall = ''
+        ln -sv $out/bin/clang $out/bin/cpp
+      ''
+      + (lib.optionalString (lib.versions.major release_version == "17") ''
 
-          mkdir -p $lib/lib/clang
-          mv $lib/lib/17 $lib/lib/clang/17
-        '')
-        + (lib.optionalString (lib.versionAtLeast release_version "19") ''
-          mv $out/lib/clang $lib/lib/clang
-        '')
-        + ''
+        mkdir -p $lib/lib/clang
+        mv $lib/lib/17 $lib/lib/clang/17
+      '')
+      + (lib.optionalString (lib.versionAtLeast release_version "19") ''
+        mv $out/lib/clang $lib/lib/clang
+      '')
+      + ''
 
-          # Move libclang to 'lib' output
-          moveToOutput "lib/libclang.*" "$lib"
-          moveToOutput "lib/libclang-cpp.*" "$lib"
-        ''
-        + (
-          if lib.versionOlder release_version "15" then
-            ''
-              mkdir -p $python/bin $python/share/{clang,scan-view}
-            ''
-          else
-            ''
-              mkdir -p $python/bin $python/share/clang/
-            ''
-        )
-        + ''
-          mv $out/bin/{git-clang-format,scan-view} $python/bin
-          if [ -e $out/bin/set-xcode-analyzer ]; then
-            mv $out/bin/set-xcode-analyzer $python/bin
-          fi
-          mv $out/share/clang/*.py $python/share/clang
-        ''
-        + (lib.optionalString (lib.versionOlder release_version "15") ''
-          mv $out/share/scan-view/*.py $python/share/scan-view
-        '')
-        + ''
-          rm $out/bin/c-index-test
-          patchShebangs $python/bin
+        # Move libclang to 'lib' output
+        moveToOutput "lib/libclang.*" "$lib"
+        moveToOutput "lib/libclang-cpp.*" "$lib"
+      ''
+      + (
+        if lib.versionOlder release_version "15" then
+          ''
+            mkdir -p $python/bin $python/share/{clang,scan-view}
+          ''
+        else
+          ''
+            mkdir -p $python/bin $python/share/clang/
+          ''
+      )
+      + ''
+        mv $out/bin/{git-clang-format,scan-view} $python/bin
+        if [ -e $out/bin/set-xcode-analyzer ]; then
+          mv $out/bin/set-xcode-analyzer $python/bin
+        fi
+        mv $out/share/clang/*.py $python/share/clang
+      ''
+      + (lib.optionalString (lib.versionOlder release_version "15") ''
+        mv $out/share/scan-view/*.py $python/share/scan-view
+      '')
+      + ''
+        rm $out/bin/c-index-test
+        patchShebangs $python/bin
 
-          mkdir -p $dev/bin
-        ''
-        + (
-          if lib.versionOlder release_version "15" then
-            ''
-              cp bin/clang-tblgen $dev/bin
-            ''
-          else if lib.versionOlder release_version "20" then
-            ''
-              cp bin/{clang-tblgen,clang-tidy-confusable-chars-gen,clang-pseudo-gen} $dev/bin
-            ''
-          else
-            ''
-              cp bin/{clang-tblgen,clang-tidy-confusable-chars-gen} $dev/bin
-            ''
-        );
+        mkdir -p $dev/bin
+      ''
+      + (
+        if lib.versionOlder release_version "15" then
+          ''
+            cp bin/clang-tblgen $dev/bin
+          ''
+        else if lib.versionOlder release_version "20" then
+          ''
+            cp bin/{clang-tblgen,clang-tidy-confusable-chars-gen,clang-pseudo-gen} $dev/bin
+          ''
+        else
+          ''
+            cp bin/{clang-tblgen,clang-tidy-confusable-chars-gen} $dev/bin
+          ''
+      );
 
       passthru = {
         inherit libllvm;

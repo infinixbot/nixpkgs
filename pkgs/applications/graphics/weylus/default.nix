@@ -66,18 +66,17 @@ rustPlatform.buildRustPackage rec {
       libdrm
     ];
 
-  nativeBuildInputs =
-    [
-      cmake
-      git
-      typescript
-      makeWrapper
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      pkg-config
-      autoconf
-      libtool
-    ];
+  nativeBuildInputs = [
+    cmake
+    git
+    typescript
+    makeWrapper
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    pkg-config
+    autoconf
+    libtool
+  ];
 
   cargoLock = {
     lockFile = ./Cargo.lock;

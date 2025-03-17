@@ -52,7 +52,8 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     cmake
     pkg-config
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin DarwinTools;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin DarwinTools;
 
   buildInputs =
     [
@@ -76,24 +77,23 @@ stdenv.mkDerivation rec {
       --subst-var-by GDCM_VER "${version}"
   '';
 
-  disabledTests =
-    [
-      # require networking:
-      "TestEcho"
-      "TestFind"
-      "gdcmscu-echo-dicomserver"
-      "gdcmscu-find-dicomserver"
-      # seemingly ought to be disabled when the test data submodule is not present:
-      "TestvtkGDCMImageReader2_3"
-      "TestSCUValidation"
-      # errors because 3 classes not wrapped:
-      "TestWrapPython"
-      # AttributeError: module 'gdcm' has no attribute 'UIDGenerator_SetRoot'; maybe a wrapping regression:
-      "TestUIDGeneratorPython"
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isAarch64 && stdenv.hostPlatform.isLinux) [
-      "TestRescaler2"
-    ];
+  disabledTests = [
+    # require networking:
+    "TestEcho"
+    "TestFind"
+    "gdcmscu-echo-dicomserver"
+    "gdcmscu-find-dicomserver"
+    # seemingly ought to be disabled when the test data submodule is not present:
+    "TestvtkGDCMImageReader2_3"
+    "TestSCUValidation"
+    # errors because 3 classes not wrapped:
+    "TestWrapPython"
+    # AttributeError: module 'gdcm' has no attribute 'UIDGenerator_SetRoot'; maybe a wrapping regression:
+    "TestUIDGeneratorPython"
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isAarch64 && stdenv.hostPlatform.isLinux) [
+    "TestRescaler2"
+  ];
 
   checkPhase = ''
     runHook preCheck

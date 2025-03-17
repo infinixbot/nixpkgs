@@ -63,7 +63,8 @@ stdenv.mkDerivation {
     python311
     libiconv
     ncurses
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ darwin.apple_sdk.frameworks.SystemConfiguration ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ darwin.apple_sdk.frameworks.SystemConfiguration ];
 
   preAutoreconf = ''
     mkdir -p build-aux

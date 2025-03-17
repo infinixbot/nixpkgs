@@ -149,7 +149,8 @@ stdenv'.mkDerivation (finalAttrs: {
       url = "https://gitlab.archlinux.org/archlinux/packaging/packages/blender/-/raw/4b6214600e11851d7793256e2f6846a594e6f223/ffmpeg-7-2.patch";
       hash = "sha256-mF6IA/dbHdNEkBN5XXCRcLIZ/8kXoirNwq7RDuLRAjw=";
     })
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin ./darwin.patch;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin ./darwin.patch;
 
   postPatch =
     (lib.optionalString stdenv.hostPlatform.isDarwin ''
@@ -171,63 +172,62 @@ stdenv'.mkDerivation (finalAttrs: {
 
   env.NIX_CFLAGS_COMPILE = "-I${python3}/include/${python3.libPrefix}";
 
-  cmakeFlags =
-    [
-      "-DMaterialX_DIR=${python3Packages.materialx}/lib/cmake/MaterialX"
-      "-DPYTHON_INCLUDE_DIR=${python3}/include/${python3.libPrefix}"
-      "-DPYTHON_LIBPATH=${python3}/lib"
-      "-DPYTHON_LIBRARY=${python3.libPrefix}"
-      "-DPYTHON_NUMPY_INCLUDE_DIRS=${python3Packages.numpy_1}/${python3.sitePackages}/numpy/core/include"
-      "-DPYTHON_NUMPY_PATH=${python3Packages.numpy_1}/${python3.sitePackages}"
-      "-DPYTHON_VERSION=${python3.pythonVersion}"
-      "-DWITH_ALEMBIC=ON"
-      "-DWITH_BUILDINFO=OFF"
-      "-DWITH_CODEC_FFMPEG=ON"
-      "-DWITH_CODEC_SNDFILE=ON"
-      "-DWITH_CPU_CHECK=OFF"
-      "-DWITH_CYCLES_DEVICE_OPTIX=${if cudaSupport then "ON" else "OFF"}"
-      "-DWITH_CYCLES_EMBREE=${if embreeSupport then "ON" else "OFF"}"
-      "-DWITH_CYCLES_OSL=OFF"
-      "-DWITH_FFTW3=ON"
-      "-DWITH_HYDRA=${if openUsdSupport then "ON" else "OFF"}"
-      "-DWITH_IMAGE_OPENJPEG=ON"
-      "-DWITH_INSTALL_PORTABLE=OFF"
-      "-DWITH_JACK=${if jackaudioSupport then "ON" else "OFF"}"
-      "-DWITH_LIBS_PRECOMPILED=OFF"
-      "-DWITH_MOD_OCEANSIM=ON"
-      "-DWITH_OPENCOLLADA=${if colladaSupport then "ON" else "OFF"}"
-      "-DWITH_OPENCOLORIO=ON"
-      "-DWITH_OPENIMAGEDENOISE=${if openImageDenoiseSupport then "ON" else "OFF"}"
-      "-DWITH_OPENSUBDIV=ON"
-      "-DWITH_OPENVDB=ON"
-      "-DWITH_PULSEAUDIO=OFF"
-      "-DWITH_PYTHON_INSTALL=OFF"
-      "-DWITH_PYTHON_INSTALL_NUMPY=OFF"
-      "-DWITH_PYTHON_INSTALL_REQUESTS=OFF"
-      "-DWITH_SDL=OFF"
-      "-DWITH_STRICT_BUILD_OPTIONS=ON"
-      "-DWITH_TBB=ON"
-      "-DWITH_USD=${if openUsdSupport then "ON" else "OFF"}"
+  cmakeFlags = [
+    "-DMaterialX_DIR=${python3Packages.materialx}/lib/cmake/MaterialX"
+    "-DPYTHON_INCLUDE_DIR=${python3}/include/${python3.libPrefix}"
+    "-DPYTHON_LIBPATH=${python3}/lib"
+    "-DPYTHON_LIBRARY=${python3.libPrefix}"
+    "-DPYTHON_NUMPY_INCLUDE_DIRS=${python3Packages.numpy_1}/${python3.sitePackages}/numpy/core/include"
+    "-DPYTHON_NUMPY_PATH=${python3Packages.numpy_1}/${python3.sitePackages}"
+    "-DPYTHON_VERSION=${python3.pythonVersion}"
+    "-DWITH_ALEMBIC=ON"
+    "-DWITH_BUILDINFO=OFF"
+    "-DWITH_CODEC_FFMPEG=ON"
+    "-DWITH_CODEC_SNDFILE=ON"
+    "-DWITH_CPU_CHECK=OFF"
+    "-DWITH_CYCLES_DEVICE_OPTIX=${if cudaSupport then "ON" else "OFF"}"
+    "-DWITH_CYCLES_EMBREE=${if embreeSupport then "ON" else "OFF"}"
+    "-DWITH_CYCLES_OSL=OFF"
+    "-DWITH_FFTW3=ON"
+    "-DWITH_HYDRA=${if openUsdSupport then "ON" else "OFF"}"
+    "-DWITH_IMAGE_OPENJPEG=ON"
+    "-DWITH_INSTALL_PORTABLE=OFF"
+    "-DWITH_JACK=${if jackaudioSupport then "ON" else "OFF"}"
+    "-DWITH_LIBS_PRECOMPILED=OFF"
+    "-DWITH_MOD_OCEANSIM=ON"
+    "-DWITH_OPENCOLLADA=${if colladaSupport then "ON" else "OFF"}"
+    "-DWITH_OPENCOLORIO=ON"
+    "-DWITH_OPENIMAGEDENOISE=${if openImageDenoiseSupport then "ON" else "OFF"}"
+    "-DWITH_OPENSUBDIV=ON"
+    "-DWITH_OPENVDB=ON"
+    "-DWITH_PULSEAUDIO=OFF"
+    "-DWITH_PYTHON_INSTALL=OFF"
+    "-DWITH_PYTHON_INSTALL_NUMPY=OFF"
+    "-DWITH_PYTHON_INSTALL_REQUESTS=OFF"
+    "-DWITH_SDL=OFF"
+    "-DWITH_STRICT_BUILD_OPTIONS=ON"
+    "-DWITH_TBB=ON"
+    "-DWITH_USD=${if openUsdSupport then "ON" else "OFF"}"
 
-      # Blender supplies its own FindAlembic.cmake (incompatible with the Alembic-supplied config file)
-      "-DALEMBIC_INCLUDE_DIR=${lib.getDev alembic}/include"
-      "-DALEMBIC_LIBRARY=${lib.getLib alembic}/lib/libAlembic${stdenv.hostPlatform.extensions.sharedLibrary}"
-    ]
-    ++ lib.optionals waylandSupport [
-      "-DWITH_GHOST_WAYLAND=ON"
-      "-DWITH_GHOST_WAYLAND_DBUS=ON"
-      "-DWITH_GHOST_WAYLAND_DYNLOAD=OFF"
-      "-DWITH_GHOST_WAYLAND_LIBDECOR=ON"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      "-DLIBDIR=/does-not-exist"
-      "-DSSE2NEON_INCLUDE_DIR=${sse2neon}/lib"
-    ]
-    ++ lib.optional stdenv.cc.isClang "-DPYTHON_LINKFLAGS=" # Clang doesn't support "-export-dynamic"
-    ++ lib.optionals cudaSupport [
-      "-DOPTIX_ROOT_DIR=${optix}"
-      "-DWITH_CYCLES_CUDA_BINARIES=ON"
-    ];
+    # Blender supplies its own FindAlembic.cmake (incompatible with the Alembic-supplied config file)
+    "-DALEMBIC_INCLUDE_DIR=${lib.getDev alembic}/include"
+    "-DALEMBIC_LIBRARY=${lib.getLib alembic}/lib/libAlembic${stdenv.hostPlatform.extensions.sharedLibrary}"
+  ]
+  ++ lib.optionals waylandSupport [
+    "-DWITH_GHOST_WAYLAND=ON"
+    "-DWITH_GHOST_WAYLAND_DBUS=ON"
+    "-DWITH_GHOST_WAYLAND_DYNLOAD=OFF"
+    "-DWITH_GHOST_WAYLAND_LIBDECOR=ON"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    "-DLIBDIR=/does-not-exist"
+    "-DSSE2NEON_INCLUDE_DIR=${sse2neon}/lib"
+  ]
+  ++ lib.optional stdenv.cc.isClang "-DPYTHON_LINKFLAGS=" # Clang doesn't support "-export-dynamic"
+  ++ lib.optionals cudaSupport [
+    "-DOPTIX_ROOT_DIR=${optix}"
+    "-DWITH_CYCLES_CUDA_BINARIES=ON"
+  ];
 
   preConfigure = ''
     (
@@ -256,87 +256,86 @@ stdenv'.mkDerivation (finalAttrs: {
       wayland-scanner
     ];
 
-  buildInputs =
-    [
-      alembic
-      boost
-      ffmpeg
-      fftw
-      fftwFloat
-      freetype
-      gettext
-      glew
-      gmp
-      jemalloc
-      libepoxy
-      libharu
-      libjpeg
-      libpng
-      libsamplerate
-      libsndfile
-      libtiff
-      libwebp
-      opencolorio
-      openexr
-      openimageio
-      openjpeg
-      openpgl
-      (opensubdiv.override { inherit cudaSupport; })
-      openvdb_11
-      potrace
-      pugixml
-      python3
-      python3Packages.materialx
-      tbb
-      zlib
-      zstd
-    ]
-    ++ lib.optional embreeSupport embree
-    ++ lib.optional openImageDenoiseSupport (openimagedenoise.override { inherit cudaSupport; })
-    ++ (
-      if (!stdenv.hostPlatform.isDarwin) then
-        [
-          libGL
-          libGLU
-          libX11
-          libXext
-          libXi
-          libXrender
-          libXxf86vm
-          openal
-          openxr-loader
-        ]
-      else
-        [
-          Cocoa
-          CoreGraphics
-          ForceFeedback
-          OpenAL
-          OpenGL
-          SDL
-          brotli
-          llvmPackages.openmp
-          sse2neon
-        ]
-    )
-    ++ lib.optionals cudaSupport [ cudaPackages.cuda_cudart ]
-    ++ lib.optionals openUsdSupport [ pyPkgsOpenusd ]
-    ++ lib.optionals waylandSupport [
-      dbus
-      libdecor'
-      libffi
-      libxkbcommon
-      wayland
-      wayland-protocols
-    ]
-    ++ lib.optional colladaSupport opencollada
-    ++ lib.optional jackaudioSupport libjack2
-    ++ lib.optional spaceNavSupport libspnav
-    ++ lib.optionals vulkanSupport [
-      shaderc
-      vulkan-headers
-      vulkan-loader
-    ];
+  buildInputs = [
+    alembic
+    boost
+    ffmpeg
+    fftw
+    fftwFloat
+    freetype
+    gettext
+    glew
+    gmp
+    jemalloc
+    libepoxy
+    libharu
+    libjpeg
+    libpng
+    libsamplerate
+    libsndfile
+    libtiff
+    libwebp
+    opencolorio
+    openexr
+    openimageio
+    openjpeg
+    openpgl
+    (opensubdiv.override { inherit cudaSupport; })
+    openvdb_11
+    potrace
+    pugixml
+    python3
+    python3Packages.materialx
+    tbb
+    zlib
+    zstd
+  ]
+  ++ lib.optional embreeSupport embree
+  ++ lib.optional openImageDenoiseSupport (openimagedenoise.override { inherit cudaSupport; })
+  ++ (
+    if (!stdenv.hostPlatform.isDarwin) then
+      [
+        libGL
+        libGLU
+        libX11
+        libXext
+        libXi
+        libXrender
+        libXxf86vm
+        openal
+        openxr-loader
+      ]
+    else
+      [
+        Cocoa
+        CoreGraphics
+        ForceFeedback
+        OpenAL
+        OpenGL
+        SDL
+        brotli
+        llvmPackages.openmp
+        sse2neon
+      ]
+  )
+  ++ lib.optionals cudaSupport [ cudaPackages.cuda_cudart ]
+  ++ lib.optionals openUsdSupport [ pyPkgsOpenusd ]
+  ++ lib.optionals waylandSupport [
+    dbus
+    libdecor'
+    libffi
+    libxkbcommon
+    wayland
+    wayland-protocols
+  ]
+  ++ lib.optional colladaSupport opencollada
+  ++ lib.optional jackaudioSupport libjack2
+  ++ lib.optional spaceNavSupport libspnav
+  ++ lib.optionals vulkanSupport [
+    shaderc
+    vulkan-headers
+    vulkan-loader
+  ];
 
   pythonPath =
     let
@@ -359,11 +358,10 @@ stdenv'.mkDerivation (finalAttrs: {
         "/bin/blender"
     );
 
-  postInstall =
-    lib.optionalString stdenv.hostPlatform.isDarwin ''
-      mkdir $out/Applications
-      mv $out/Blender.app $out/Applications
-    ''
+  postInstall = lib.optionalString stdenv.hostPlatform.isDarwin ''
+    mkdir $out/Applications
+    mv $out/Blender.app $out/Applications
+  ''
     + lib.optionalString stdenv.hostPlatform.isLinux ''
       mv $out/share/blender/${lib.versions.majorMinor finalAttrs.version}/python{,-ext}
     ''

@@ -53,7 +53,8 @@ buildPythonPackage rec {
   # See https://github.com/pallets/jinja/issues/1158
   doCheck = !stdenv.hostPlatform.is32bit;
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ optional-dependencies.i18n;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ optional-dependencies.i18n;
 
   passthru.doc = stdenv.mkDerivation {
     # Forge look and feel of multi-output derivation as best as we can.

@@ -39,7 +39,8 @@ builder rec {
 
   depsBuildBuild = [
     buildPackages.stdenv.cc
-  ] ++ lib.optional (stdenv.hostPlatform != stdenv.buildPlatform) pkgsBuildBuild.guile_2_0;
+  ]
+  ++ lib.optional (stdenv.hostPlatform != stdenv.buildPlatform) pkgsBuildBuild.guile_2_0;
 
   nativeBuildInputs = [
     makeWrapper
@@ -98,24 +99,23 @@ builder rec {
     !stdenv.hostPlatform.isDarwin && !stdenv.hostPlatform.isMusl
   ) "-lgcc_s";
 
-  configureFlags =
-    [
-      "--with-libreadline-prefix"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isSunOS [
-      # Make sure the right <gmp.h> is found, and not the incompatible
-      # /usr/include/mp.h from OpenSolaris. See
-      # <https://lists.gnu.org/archive/html/hydra-users/2012-08/msg00000.html>
-      # for details.
-      "--with-libgmp-prefix=${lib.getDev gmp}"
+  configureFlags = [
+    "--with-libreadline-prefix"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isSunOS [
+    # Make sure the right <gmp.h> is found, and not the incompatible
+    # /usr/include/mp.h from OpenSolaris. See
+    # <https://lists.gnu.org/archive/html/hydra-users/2012-08/msg00000.html>
+    # for details.
+    "--with-libgmp-prefix=${lib.getDev gmp}"
 
-      # Same for these (?).
-      "--with-libreadline-prefix=${lib.getDev readline}"
-      "--with-libunistring-prefix=${libunistring}"
+    # Same for these (?).
+    "--with-libreadline-prefix=${lib.getDev readline}"
+    "--with-libunistring-prefix=${libunistring}"
 
-      # See below.
-      "--without-threads"
-    ];
+    # See below.
+    "--without-threads"
+  ];
 
   postInstall =
     ''

@@ -17,16 +17,16 @@ rustPlatform.buildRustPackage rec {
   useFetchCargoVendor = true;
   cargoHash = "sha256-3cmNlCTawMUpr6kSyT/YZzC717FoXkF0uTeE/D8BSFM=";
 
-  nativeBuildInputs = [ pkg-config ] ++ lib.optionals stdenv.cc.isClang [ rustPlatform.bindgenHook ];
-  buildInputs =
-    [
-      openssl
-      curl
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      IOKit
-      CoreFoundation
-    ];
+  nativeBuildInputs = [ pkg-config ]
+    ++ lib.optionals stdenv.cc.isClang [ rustPlatform.bindgenHook ];
+  buildInputs = [
+    openssl
+    curl
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    IOKit
+    CoreFoundation
+  ];
   cargoBuildFlags = [ "--package nu_plugin_query" ];
 
   checkPhase = ''

@@ -246,7 +246,8 @@ in
       {
         description = "DHCP Client";
 
-        wantedBy = [ "multi-user.target" ] ++ lib.optional (!hasDefaultGatewaySet) "network-online.target";
+        wantedBy = [ "multi-user.target" ]
+          ++ lib.optional (!hasDefaultGatewaySet) "network-online.target";
         wants = [
           "network.target"
           "resolvconf.service"

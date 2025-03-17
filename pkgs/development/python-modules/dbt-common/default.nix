@@ -67,7 +67,8 @@ buildPythonPackage rec {
     python-dateutil
     requests
     typing-extensions
-  ] ++ mashumaro.optional-dependencies.msgpack;
+  ]
+  ++ mashumaro.optional-dependencies.msgpack;
 
   nativeCheckInputs = [
     pytestCheckHook

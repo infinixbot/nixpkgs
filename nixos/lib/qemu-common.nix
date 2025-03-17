@@ -53,7 +53,8 @@ rec {
 
       throwUnsupportedHostSystem =
         let
-          supportedSystems = [ "linux" ] ++ (lib.attrNames otherHostGuestMatrix);
+          supportedSystems = [ "linux" ]
+            ++ (lib.attrNames otherHostGuestMatrix);
         in
         throw "Unsupported host system ${hostSystem}, supported: ${lib.concatStringsSep ", " supportedSystems}";
       throwUnsupportedGuestSystem =

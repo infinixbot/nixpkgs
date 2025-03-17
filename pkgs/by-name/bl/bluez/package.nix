@@ -35,23 +35,22 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-QWSlMDqfcccPSMA/9gvjQjG1aNk6mtXnmSjTTmqg6oo=";
   };
 
-  patches =
-    [
-      (fetchpatch {
-        name = "musl.patch";
-        url = "https://git.kernel.org/pub/scm/bluetooth/bluez.git/patch/?id=9d69dba21f1e46b34cdd8ae27fec11d0803907ee";
-        hash = "sha256-yMXPRPK8aT+luVoXNxx9zIa4c6E0BKYKS55DCfr8EQ0=";
-      })
-    ]
-    ++ lib.optional (stdenv.hostPlatform.isMusl && stdenv.hostPlatform.isx86_64)
-      # Disable one failing test with musl libc, also seen by alpine
-      # https://github.com/bluez/bluez/issues/726
-      (
-        fetchurl {
-          url = "https://git.alpinelinux.org/aports/plain/main/bluez/disable_aics_unit_testcases.patch?id=8e96f7faf01a45f0ad8449c1cd825db63a8dfd48";
-          hash = "sha256-1PJkipqBO3qxxOqRFQKfpWlne1kzTCgtnTFYI1cFQt4=";
-        }
-      );
+  patches = [
+    (fetchpatch {
+      name = "musl.patch";
+      url = "https://git.kernel.org/pub/scm/bluetooth/bluez.git/patch/?id=9d69dba21f1e46b34cdd8ae27fec11d0803907ee";
+      hash = "sha256-yMXPRPK8aT+luVoXNxx9zIa4c6E0BKYKS55DCfr8EQ0=";
+    })
+  ]
+  ++ lib.optional (stdenv.hostPlatform.isMusl && stdenv.hostPlatform.isx86_64)
+    # Disable one failing test with musl libc, also seen by alpine
+    # https://github.com/bluez/bluez/issues/726
+    (
+      fetchurl {
+        url = "https://git.alpinelinux.org/aports/plain/main/bluez/disable_aics_unit_testcases.patch?id=8e96f7faf01a45f0ad8449c1cd825db63a8dfd48";
+        hash = "sha256-1PJkipqBO3qxxOqRFQKfpWlne1kzTCgtnTFYI1cFQt4=";
+      }
+    );
 
   buildInputs = [
     alsa-lib
@@ -75,25 +74,25 @@ stdenv.mkDerivation (finalAttrs: {
   outputs = [
     "out"
     "dev"
-  ] ++ lib.optional installTests "test";
+  ]
+  ++ lib.optional installTests "test";
 
-  postPatch =
-    ''
-      substituteInPlace tools/hid2hci.rules \
-        --replace-fail /sbin/udevadm ${systemdMinimal}/bin/udevadm \
-        --replace-fail "hid2hci " "$out/lib/udev/hid2hci "
-    ''
-    +
-      # Disable some tests:
-      # - test-mesh-crypto depends on the following kernel settings:
-      #   CONFIG_CRYPTO_[USER|USER_API|USER_API_AEAD|USER_API_HASH|AES|CCM|AEAD|CMAC]
-      ''
-        if [[ ! -f unit/test-mesh-crypto.c ]]; then
-          echo "unit/test-mesh-crypto.c no longer exists"
-          false
-        fi
-        echo 'int main() { return 77; }' > unit/test-mesh-crypto.c
-      '';
+  postPatch = ''
+    substituteInPlace tools/hid2hci.rules \
+      --replace-fail /sbin/udevadm ${systemdMinimal}/bin/udevadm \
+      --replace-fail "hid2hci " "$out/lib/udev/hid2hci "
+  ''
+  +
+  # Disable some tests:
+  # - test-mesh-crypto depends on the following kernel settings:
+  #   CONFIG_CRYPTO_[USER|USER_API|USER_API_AEAD|USER_API_HASH|AES|CCM|AEAD|CMAC]
+  ''
+    if [[ ! -f unit/test-mesh-crypto.c ]]; then
+      echo "unit/test-mesh-crypto.c no longer exists"
+      false
+    fi
+    echo 'int main() { return 77; }' > unit/test-mesh-crypto.c
+  '';
 
   configureFlags = [
     "--localstatedir=/var"

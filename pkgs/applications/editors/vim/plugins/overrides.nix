@@ -366,17 +366,16 @@ in
     # These usually implicitly set by cc-wrapper around clang (pkgs/build-support/cc-wrapper).
     # The linked ruby code shows generates the required '.clang_complete' for cmake based projects
     # https://gist.github.com/Mic92/135e83803ed29162817fce4098dec144
-    preFixup =
-      ''
-        substituteInPlace "$out"/plugin/clang_complete.vim \
-          --replace-fail "let g:clang_library_path = ''
-      + "''"
-      + ''
-        " "let g:clang_library_path='${lib.getLib llvmPackages.libclang}/lib/libclang.so'"
+    preFixup = ''
+      substituteInPlace "$out"/plugin/clang_complete.vim \
+        --replace-fail "let g:clang_library_path = ''
+    + "''"
+    + ''
+      " "let g:clang_library_path='${lib.getLib llvmPackages.libclang}/lib/libclang.so'"
 
-              substituteInPlace "$out"/plugin/libclang.py \
-                --replace-fail "/usr/lib/clang" "${llvmPackages.clang.cc}/lib/clang"
-      '';
+            substituteInPlace "$out"/plugin/libclang.py \
+              --replace-fail "/usr/lib/clang" "${llvmPackages.clang.cc}/lib/clang"
+    '';
   };
 
   clighter8 = super.clighter8.overrideAttrs {

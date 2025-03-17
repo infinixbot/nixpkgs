@@ -109,11 +109,13 @@ python.pkgs.buildPythonApplication rec {
     in
     {
       ascii = [ chardet ];
-      audio = [ numpy ] ++ gst;
+      audio = [ numpy ]
+        ++ gst;
       ldap = [ python-ldap ];
       openid = [ python3-openid ];
       raw_image = [ py3exiv2 ];
-      video = [ pygobject3 ] ++ gst;
+      video = [ pygobject3 ]
+        ++ gst;
     };
 
   postBuild = ''

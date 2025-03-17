@@ -140,7 +140,8 @@ buildPythonPackage rec {
     # this dependency is still needed due to use of strict markers and
     # `pytest.mark.xdist_group` in the ibis codebase
     pytest-xdist
-  ] ++ lib.concatMap (name: optional-dependencies.${name}) testBackends;
+  ]
+  ++ lib.concatMap (name: optional-dependencies.${name}) testBackends;
 
   pytestFlagsArray = [
     "-m"
@@ -180,7 +181,8 @@ buildPythonPackage rec {
     rm -r "$IBIS_TEST_DATA_DIRECTORY"
   '';
 
-  pythonImportsCheck = [ "ibis" ] ++ map (backend: "ibis.backends.${backend}") testBackends;
+  pythonImportsCheck = [ "ibis" ]
+    ++ map (backend: "ibis.backends.${backend}") testBackends;
 
   optional-dependencies = {
     bigquery = [
@@ -315,7 +317,8 @@ buildPythonPackage rec {
     ];
     visualization = [ graphviz ];
     decompiler = [ black ];
-    examples = [ pins ] ++ pins.optional-dependencies.gcs;
+    examples = [ pins ]
+      ++ pins.optional-dependencies.gcs;
   };
 
   meta = with lib; {

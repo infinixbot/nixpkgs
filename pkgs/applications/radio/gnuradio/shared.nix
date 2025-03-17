@@ -36,8 +36,7 @@ in
         rev = "v${version}";
         sha256 = sourceSha256;
       };
-  nativeBuildInputs =
-    [ removeReferencesTo ]
+  nativeBuildInputs = [ removeReferencesTo ]
     ++ lib.flatten (
       lib.mapAttrsToList (
         feat: info:
@@ -79,14 +78,13 @@ in
     # If python-support is disabled, we probably don't want it referenced
     ++ lib.optionals (!hasFeature "python-support") [ python ];
   # Gcc references from examples
-  stripDebugList =
-    [
-      "lib"
-      "bin"
-    ]
-    ++ lib.optionals (hasFeature "gr-audio") [ "share/gnuradio/examples/audio" ]
-    ++ lib.optionals (hasFeature "gr-uhd") [ "share/gnuradio/examples/uhd" ]
-    ++ lib.optionals (hasFeature "gr-qtgui") [ "share/gnuradio/examples/qt-gui" ];
+  stripDebugList = [
+    "lib"
+    "bin"
+  ]
+  ++ lib.optionals (hasFeature "gr-audio") [ "share/gnuradio/examples/audio" ]
+  ++ lib.optionals (hasFeature "gr-uhd") [ "share/gnuradio/examples/uhd" ]
+  ++ lib.optionals (hasFeature "gr-qtgui") [ "share/gnuradio/examples/qt-gui" ];
   postInstall =
     ""
     # Gcc references

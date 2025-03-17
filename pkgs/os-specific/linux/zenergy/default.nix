@@ -21,7 +21,8 @@ stdenv.mkDerivation {
     hash = "sha256-5fYelEr4IYnuXrly15IcyicFrF0tYjs7OBqIhUYQXZ0=";
   };
 
-  nativeBuildInputs = [ kmod ] ++ kernel.moduleBuildDependencies;
+  nativeBuildInputs = [ kmod ]
+    ++ kernel.moduleBuildDependencies;
 
   hardeningDisable = [
     "format"

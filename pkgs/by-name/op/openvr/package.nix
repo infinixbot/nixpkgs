@@ -48,15 +48,14 @@ stdenv.mkDerivation (finalAttrs: {
     cmake
   ];
 
-  buildInputs =
-    [
-      jsoncpp
-      libGL
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      AppKit
-      Foundation
-    ];
+  buildInputs = [
+    jsoncpp
+    libGL
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    AppKit
+    Foundation
+  ];
 
   cmakeFlags = [
     "-DUSE_SYSTEM_JSONCPP=ON"

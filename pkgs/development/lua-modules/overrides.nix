@@ -847,7 +847,8 @@ in
     nativeBuildInputs = [
       pkg-config
       cmake
-    ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ fixDarwinDylibNames ];
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ fixDarwinDylibNames ];
   };
 
   luv = prev.luv.overrideAttrs (oa: {

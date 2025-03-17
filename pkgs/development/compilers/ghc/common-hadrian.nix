@@ -326,7 +326,8 @@ let
       else
         pkgsBuildTarget.targetPackages.stdenv.cc
     )
-  ] ++ lib.optional useLLVM buildTargetLlvmPackages.llvm;
+  ]
+  ++ lib.optional useLLVM buildTargetLlvmPackages.llvm;
 
   buildCC = buildPackages.stdenv.cc;
   targetCC = builtins.head toolsForTarget;
@@ -558,59 +559,59 @@ stdenv.mkDerivation (
     configurePlatforms = [
       "build"
       "host"
-    ] ++ lib.optional (targetPlatform != hostPlatform) "target";
+    ]
+    ++ lib.optional (targetPlatform != hostPlatform) "target";
 
     # `--with` flags for libraries needed for RTS linker
-    configureFlags =
-      [
-        "--datadir=$doc/share/doc/ghc"
-      ]
-      ++ lib.optionals enableTerminfo [
-        "--with-curses-includes=${lib.getDev targetLibs.ncurses}/include"
-        "--with-curses-libraries=${lib.getLib targetLibs.ncurses}/lib"
-      ]
-      ++ lib.optionals (libffi != null && !targetPlatform.isGhcjs) [
-        "--with-system-libffi"
-        "--with-ffi-includes=${targetLibs.libffi.dev}/include"
-        "--with-ffi-libraries=${targetLibs.libffi.out}/lib"
-      ]
-      ++ lib.optionals (targetPlatform == hostPlatform && !enableNativeBignum) [
-        "--with-gmp-includes=${targetLibs.gmp.dev}/include"
-        "--with-gmp-libraries=${targetLibs.gmp.out}/lib"
-      ]
-      ++
-        lib.optionals
-          (targetPlatform == hostPlatform && hostPlatform.libc != "glibc" && !targetPlatform.isWindows)
-          [
-            "--with-iconv-includes=${libiconv}/include"
-            "--with-iconv-libraries=${libiconv}/lib"
-          ]
-      ++ lib.optionals (targetPlatform != hostPlatform) [
-        "--enable-bootstrap-with-devel-snapshot"
-      ]
-      ++ lib.optionals useLdGold [
-        "CFLAGS=-fuse-ld=gold"
-        "CONF_GCC_LINKER_OPTS_STAGE1=-fuse-ld=gold"
-        "CONF_GCC_LINKER_OPTS_STAGE2=-fuse-ld=gold"
-      ]
-      ++ lib.optionals (disableLargeAddressSpace) [
-        "--disable-large-address-space"
-      ]
-      ++ lib.optionals enableDwarf [
-        "--enable-dwarf-unwind"
-        "--with-libdw-includes=${lib.getDev targetLibs.elfutils}/include"
-        "--with-libdw-libraries=${lib.getLib targetLibs.elfutils}/lib"
-      ]
-      ++ lib.optionals targetPlatform.isDarwin [
-        # Darwin uses llvm-ar. GHC will try to use `-L` with `ar` when it is `llvm-ar`
-        # but it doesn’t currently work because Cabal never uses `-L` on Darwin. See:
-        # https://gitlab.haskell.org/ghc/ghc/-/issues/23188
-        # https://github.com/haskell/cabal/issues/8882
-        "fp_cv_prog_ar_supports_dash_l=no"
-      ]
-      ++ lib.optionals enableUnregisterised [
-        "--enable-unregisterised"
-      ];
+    configureFlags = [
+      "--datadir=$doc/share/doc/ghc"
+    ]
+    ++ lib.optionals enableTerminfo [
+      "--with-curses-includes=${lib.getDev targetLibs.ncurses}/include"
+      "--with-curses-libraries=${lib.getLib targetLibs.ncurses}/lib"
+    ]
+    ++ lib.optionals (libffi != null && !targetPlatform.isGhcjs) [
+      "--with-system-libffi"
+      "--with-ffi-includes=${targetLibs.libffi.dev}/include"
+      "--with-ffi-libraries=${targetLibs.libffi.out}/lib"
+    ]
+    ++ lib.optionals (targetPlatform == hostPlatform && !enableNativeBignum) [
+      "--with-gmp-includes=${targetLibs.gmp.dev}/include"
+      "--with-gmp-libraries=${targetLibs.gmp.out}/lib"
+    ]
+    ++
+      lib.optionals
+        (targetPlatform == hostPlatform && hostPlatform.libc != "glibc" && !targetPlatform.isWindows)
+        [
+          "--with-iconv-includes=${libiconv}/include"
+          "--with-iconv-libraries=${libiconv}/lib"
+        ]
+    ++ lib.optionals (targetPlatform != hostPlatform) [
+      "--enable-bootstrap-with-devel-snapshot"
+    ]
+    ++ lib.optionals useLdGold [
+      "CFLAGS=-fuse-ld=gold"
+      "CONF_GCC_LINKER_OPTS_STAGE1=-fuse-ld=gold"
+      "CONF_GCC_LINKER_OPTS_STAGE2=-fuse-ld=gold"
+    ]
+    ++ lib.optionals (disableLargeAddressSpace) [
+      "--disable-large-address-space"
+    ]
+    ++ lib.optionals enableDwarf [
+      "--enable-dwarf-unwind"
+      "--with-libdw-includes=${lib.getDev targetLibs.elfutils}/include"
+      "--with-libdw-libraries=${lib.getLib targetLibs.elfutils}/lib"
+    ]
+    ++ lib.optionals targetPlatform.isDarwin [
+      # Darwin uses llvm-ar. GHC will try to use `-L` with `ar` when it is `llvm-ar`
+      # but it doesn’t currently work because Cabal never uses `-L` on Darwin. See:
+      # https://gitlab.haskell.org/ghc/ghc/-/issues/23188
+      # https://github.com/haskell/cabal/issues/8882
+      "fp_cv_prog_ar_supports_dash_l=no"
+    ]
+    ++ lib.optionals enableUnregisterised [
+      "--enable-unregisterised"
+    ];
 
     # Make sure we never relax`$PATH` and hooks support for compatibility.
     strictDeps = true;
@@ -661,7 +662,8 @@ stdenv.mkDerivation (
       bootPkgs.ghc
     ];
 
-    buildInputs = [ bash ] ++ (libDeps hostPlatform);
+    buildInputs = [ bash ]
+      ++ (libDeps hostPlatform);
 
     depsTargetTarget = map lib.getDev (libDeps targetPlatform);
     depsTargetTargetPropagated = map (lib.getOutput "out") (libDeps targetPlatform);
@@ -686,7 +688,8 @@ stdenv.mkDerivation (
 
     # required, because otherwise all symbols from HSffi.o are stripped, and
     # that in turn causes GHCi to abort
-    stripDebugFlags = [ "-S" ] ++ lib.optional (!targetPlatform.isDarwin) "--keep-file-symbols";
+    stripDebugFlags = [ "-S" ]
+      ++ lib.optional (!targetPlatform.isDarwin) "--keep-file-symbols";
 
     checkTarget = "test";
 
@@ -713,63 +716,61 @@ stdenv.mkDerivation (
     # https://gitlab.haskell.org/ghc/ghc/-/issues/22058
     # TODO(@sternenseemann): it would be nice if the bindist could be an intermediate
     # derivation, but since it is > 2GB even on x86_64-linux, not a good idea?
-    preInstall =
-      ''
-        pushd _build/bindist/*
+    preInstall = ''
+      pushd _build/bindist/*
 
-      ''
-      # the bindist configure script uses different env variables than the GHC configure script
-      # see https://github.com/NixOS/nixpkgs/issues/267250 and https://gitlab.haskell.org/ghc/ghc/-/issues/24211
-      + lib.optionalString (stdenv.targetPlatform.linker == "cctools") ''
-        export InstallNameToolCmd=$INSTALL_NAME_TOOL
-        export OtoolCmd=$OTOOL
-      ''
-      + ''
-        $configureScript $configureFlags "''${configureFlagsArray[@]}"
-      '';
+    ''
+    # the bindist configure script uses different env variables than the GHC configure script
+    # see https://github.com/NixOS/nixpkgs/issues/267250 and https://gitlab.haskell.org/ghc/ghc/-/issues/24211
+    + lib.optionalString (stdenv.targetPlatform.linker == "cctools") ''
+      export InstallNameToolCmd=$INSTALL_NAME_TOOL
+      export OtoolCmd=$OTOOL
+    ''
+    + ''
+      $configureScript $configureFlags "''${configureFlagsArray[@]}"
+    '';
 
-    postInstall =
-      ''
-        # leave bindist directory
-        popd
+    postInstall = ''
+      # leave bindist directory
+      popd
 
-        settingsFile="$out/lib/${targetPrefix}${haskellCompilerName}/lib/settings"
+      settingsFile="$out/lib/${targetPrefix}${haskellCompilerName}/lib/settings"
 
-        # Make the installed GHC use the host->target tools.
-        ghc-settings-edit "$settingsFile" \
-          "C compiler command" "${toolPath "cc" installCC}" \
-          "Haskell CPP command" "${toolPath "cc" installCC}" \
-          "C++ compiler command" "${toolPath "c++" installCC}" \
-          "ld command" "${toolPath "ld${lib.optionalString useLdGold ".gold"}" installCC}" \
-          "Merge objects command" "${toolPath "ld${lib.optionalString useLdGold ".gold"}" installCC}" \
-          "ar command" "${toolPath "ar" installCC}" \
-          "ranlib command" "${toolPath "ranlib" installCC}"
-      ''
-      + lib.optionalString (stdenv.targetPlatform.linker == "cctools") ''
-        ghc-settings-edit "$settingsFile" \
-          "otool command" "${toolPath "otool" installCC}" \
-          "install_name_tool command" "${toolPath "install_name_tool" installCC}"
-      ''
-      + lib.optionalString useLLVM ''
-        ghc-settings-edit "$settingsFile" \
-          "LLVM llc command" "${lib.getBin llvmPackages.llvm}/bin/llc" \
-          "LLVM opt command" "${lib.getBin llvmPackages.llvm}/bin/opt"
-      ''
-      + lib.optionalString (useLLVM && stdenv.targetPlatform.isDarwin) ''
-        ghc-settings-edit "$settingsFile" \
-          "LLVM clang command" "${
-            # See comment for CLANG in preConfigure
-            if installCC.isClang then
-              toolPath "clang" installCC
-            else
-              "${llvmPackages.clang}/bin/${llvmPackages.clang.targetPrefix}clang"
-          }"
-      ''
-      + ''
+      # Make the installed GHC use the host->target tools.
+      ghc-settings-edit "$settingsFile" \
+        "C compiler command" "${toolPath "cc" installCC}" \
+        "Haskell CPP command" "${toolPath "cc" installCC}" \
+        "C++ compiler command" "${toolPath "c++" installCC}" \
+        "ld command" "${toolPath "ld${lib.optionalString useLdGold ".gold"}" installCC}" \
+        "Merge objects command" "${toolPath "ld${lib.optionalString useLdGold ".gold"}" installCC}" \
+        "ar command" "${toolPath "ar" installCC}" \
+        "ranlib command" "${toolPath "ranlib" installCC}"
+    ''
+    + lib.optionalString (stdenv.targetPlatform.linker == "cctools") ''
+      ghc-settings-edit "$settingsFile" \
+        "otool command" "${toolPath "otool" installCC}" \
+        "install_name_tool command" "${toolPath "install_name_tool" installCC}"
+    ''
+    + lib.optionalString useLLVM ''
+      ghc-settings-edit "$settingsFile" \
+        "LLVM llc command" "${lib.getBin llvmPackages.llvm}/bin/llc" \
+        "LLVM opt command" "${lib.getBin llvmPackages.llvm}/bin/opt"
+    ''
+    + lib.optionalString (useLLVM && stdenv.targetPlatform.isDarwin) ''
+      ghc-settings-edit "$settingsFile" \
+        "LLVM clang command" "${
+          # See comment for CLANG in preConfigure
+          if installCC.isClang then
+            toolPath "clang" installCC
+          else
+            "${llvmPackages.clang}/bin/${llvmPackages.clang.targetPrefix}clang"
+        }"
+    ''
+    + ''
 
-        # Install the bash completion file.
-        install -Dm 644 utils/completion/ghc.bash $out/share/bash-completion/completions/${targetPrefix}ghc
-      '';
+      # Install the bash completion file.
+      install -Dm 644 utils/completion/ghc.bash $out/share/bash-completion/completions/${targetPrefix}ghc
+    '';
 
     passthru = {
       inherit bootPkgs targetPrefix haskellCompilerName;

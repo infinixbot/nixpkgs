@@ -10,57 +10,56 @@ with lib;
 let
   cfg = config.services.syncplay;
 
-  cmdArgs =
-    [
-      "--port"
-      cfg.port
-    ]
-    ++ optionals (cfg.isolateRooms) [ "--isolate-rooms" ]
-    ++ optionals (!cfg.ready) [ "--disable-ready" ]
-    ++ optionals (!cfg.chat) [ "--disable-chat" ]
-    ++ optionals (cfg.salt != null) [
-      "--salt"
-      cfg.salt
-    ]
-    ++ optionals (cfg.motdFile != null) [
-      "--motd-file"
-      cfg.motdFile
-    ]
-    ++ optionals (cfg.roomsDBFile != null) [
-      "--rooms-db-file"
-      cfg.roomsDBFile
-    ]
-    ++ optionals (cfg.permanentRoomsFile != null) [
-      "--permanent-rooms-file"
-      cfg.permanentRoomsFile
-    ]
-    ++ [
-      "--max-chat-message-length"
-      cfg.maxChatMessageLength
-    ]
-    ++ [
-      "--max-username-length"
-      cfg.maxUsernameLength
-    ]
-    ++ optionals (cfg.statsDBFile != null) [
-      "--stats-db-file"
-      cfg.statsDBFile
-    ]
-    ++ optionals (cfg.certDir != null) [
-      "--tls"
-      cfg.certDir
-    ]
-    ++ optionals cfg.ipv4Only [ "--ipv4-only" ]
-    ++ optionals cfg.ipv6Only [ "--ipv6-only" ]
-    ++ optionals (cfg.interfaceIpv4 != "") [
-      "--interface-ipv4"
-      cfg.interfaceIpv4
-    ]
-    ++ optionals (cfg.interfaceIpv6 != "") [
-      "--interface-ipv6"
-      cfg.interfaceIpv6
-    ]
-    ++ cfg.extraArgs;
+  cmdArgs = [
+    "--port"
+    cfg.port
+  ]
+  ++ optionals (cfg.isolateRooms) [ "--isolate-rooms" ]
+  ++ optionals (!cfg.ready) [ "--disable-ready" ]
+  ++ optionals (!cfg.chat) [ "--disable-chat" ]
+  ++ optionals (cfg.salt != null) [
+    "--salt"
+    cfg.salt
+  ]
+  ++ optionals (cfg.motdFile != null) [
+    "--motd-file"
+    cfg.motdFile
+  ]
+  ++ optionals (cfg.roomsDBFile != null) [
+    "--rooms-db-file"
+    cfg.roomsDBFile
+  ]
+  ++ optionals (cfg.permanentRoomsFile != null) [
+    "--permanent-rooms-file"
+    cfg.permanentRoomsFile
+  ]
+  ++ [
+    "--max-chat-message-length"
+    cfg.maxChatMessageLength
+  ]
+  ++ [
+    "--max-username-length"
+    cfg.maxUsernameLength
+  ]
+  ++ optionals (cfg.statsDBFile != null) [
+    "--stats-db-file"
+    cfg.statsDBFile
+  ]
+  ++ optionals (cfg.certDir != null) [
+    "--tls"
+    cfg.certDir
+  ]
+  ++ optionals cfg.ipv4Only [ "--ipv4-only" ]
+  ++ optionals cfg.ipv6Only [ "--ipv6-only" ]
+  ++ optionals (cfg.interfaceIpv4 != "") [
+    "--interface-ipv4"
+    cfg.interfaceIpv4
+  ]
+  ++ optionals (cfg.interfaceIpv6 != "") [
+    "--interface-ipv6"
+    cfg.interfaceIpv6
+  ]
+  ++ cfg.extraArgs;
 
   useACMEHostDir = optionalString (
     cfg.useACMEHost != null

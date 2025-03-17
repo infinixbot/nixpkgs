@@ -47,17 +47,16 @@ stdenv.mkDerivation rec {
     hash = "sha256-SSkoxiLhcL2cRdNTC8KxAzxVgtwYCFxDb86vtigp084=";
   };
 
-  nativeBuildInputs =
-    [
-      clang
-      llvm
-      makeWrapper
-      pkg-config
-    ]
-    ++ lib.optionals rustSupport [
-      rustc
-      cargo
-    ];
+  nativeBuildInputs = [
+    clang
+    llvm
+    makeWrapper
+    pkg-config
+  ]
+  ++ lib.optionals rustSupport [
+    rustc
+    cargo
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     pyyaml
@@ -105,34 +104,33 @@ stdenv.mkDerivation rec {
     touch bpf_stubs_workaround/gnu/stubs-32.h
   '';
 
-  configureFlags =
-    [
-      "--disable-gccmarch-native"
-      "--enable-af-packet"
-      "--enable-ebpf"
-      "--enable-ebpf-build"
-      "--enable-gccprotect"
-      "--enable-geoip"
-      "--enable-luajit"
-      "--enable-nflog"
-      "--enable-nfqueue"
-      "--enable-pie"
-      "--enable-python"
-      "--enable-unix-socket"
-      "--localstatedir=/var"
-      "--sysconfdir=/etc"
-      "--with-libnet-includes=${libnet}/include"
-      "--with-libnet-libraries=${libnet}/lib"
-    ]
-    ++ lib.optionals hyperscanSupport [
-      "--with-libhs-includes=${hyperscan.dev}/include/hs"
-      "--with-libhs-libraries=${hyperscan}/lib"
-    ]
-    ++ lib.optional redisSupport "--enable-hiredis"
-    ++ lib.optionals rustSupport [
-      "--enable-rust"
-      "--enable-rust-experimental"
-    ];
+  configureFlags = [
+    "--disable-gccmarch-native"
+    "--enable-af-packet"
+    "--enable-ebpf"
+    "--enable-ebpf-build"
+    "--enable-gccprotect"
+    "--enable-geoip"
+    "--enable-luajit"
+    "--enable-nflog"
+    "--enable-nfqueue"
+    "--enable-pie"
+    "--enable-python"
+    "--enable-unix-socket"
+    "--localstatedir=/var"
+    "--sysconfdir=/etc"
+    "--with-libnet-includes=${libnet}/include"
+    "--with-libnet-libraries=${libnet}/lib"
+  ]
+  ++ lib.optionals hyperscanSupport [
+    "--with-libhs-includes=${hyperscan.dev}/include/hs"
+    "--with-libhs-libraries=${hyperscan}/lib"
+  ]
+  ++ lib.optional redisSupport "--enable-hiredis"
+  ++ lib.optionals rustSupport [
+    "--enable-rust"
+    "--enable-rust-experimental"
+  ];
 
   postConfigure = ''
     # Avoid unintended clousure growth.

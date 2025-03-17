@@ -50,7 +50,8 @@ stdenv.mkDerivation rec {
     "--without-hal"
     "--enable-udev"
     "--with-udev-dir=${placeholder "out"}/lib/udev"
-  ] ++ lib.optionals monoSupport [ "--with-mono" ];
+  ]
+  ++ lib.optionals monoSupport [ "--with-mono" ];
 
   dontStrip = monoSupport;
 
@@ -71,7 +72,8 @@ stdenv.mkDerivation rec {
     sg3_utils
     sqlite
     taglib
-  ] ++ lib.optional monoSupport gtk-sharp-2_0;
+  ]
+  ++ lib.optional monoSupport gtk-sharp-2_0;
 
   propagatedBuildInputs = [
     gdk-pixbuf

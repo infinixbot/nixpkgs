@@ -139,7 +139,8 @@ stdenv.mkDerivation (finalAttrs: {
           pname = "${appName}-with-packages";
           inherit (finalAttrs.finalPackage) version meta;
 
-          buildInputs = [ dataDerivation ] ++ finalAttrs.buildInputs;
+          buildInputs = [ dataDerivation ]
+            ++ finalAttrs.buildInputs;
           nativeBuildInputs = [ rsync ];
 
           phases = [ "buildPhase" ];

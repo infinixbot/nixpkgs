@@ -88,8 +88,7 @@ buildPythonPackage rec {
     pytz
   ];
 
-  disabledTestPaths =
-    [ "tests/benchmarks" ]
+  disabledTestPaths = [ "tests/benchmarks" ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       # PermissionError: [Errno 1] Operation not permitted: '/etc/localtime'
       "tests/testing/test_time_travel.py"

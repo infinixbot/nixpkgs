@@ -40,22 +40,22 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-ZU31nsQgs+Gz9mV8LVv4utJ7g8TXN5OxHjNDfQlt38M=";
   };
 
-  postPatch =
-    ''
-      patchShebangs genversion.sh
-      substituteInPlace cmake/XRootDConfig.cmake.in \
-        --replace-fail "@PACKAGE_CMAKE_INSTALL_" "@CMAKE_INSTALL_FULL_"
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      sed -i cmake/XRootDOSDefs.cmake -e '/set( MacOSX TRUE )/ainclude( GNUInstallDirs )'
-    '';
+  postPatch = ''
+    patchShebangs genversion.sh
+    substituteInPlace cmake/XRootDConfig.cmake.in \
+      --replace-fail "@PACKAGE_CMAKE_INSTALL_" "@CMAKE_INSTALL_FULL_"
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    sed -i cmake/XRootDOSDefs.cmake -e '/set( MacOSX TRUE )/ainclude( GNUInstallDirs )'
+  '';
 
   outputs = [
     "bin"
     "out"
     "dev"
     "man"
-  ] ++ lib.optional (externalEtc != null) "etc";
+  ]
+  ++ lib.optional (externalEtc != null) "etc";
 
   nativeBuildInputs = [
     cmake
@@ -88,29 +88,28 @@ stdenv.mkDerivation (finalAttrs: {
     ];
 
   # https://github.com/xrootd/xrootd/blob/master/packaging/rhel/xrootd.spec.in#L665-L675=
-  postInstall =
-    ''
-      mkdir -p "$out/lib/tmpfiles.d"
-      install -m 644 -T ../packaging/rhel/xrootd.tmpfiles "$out/lib/tmpfiles.d/xrootd.conf"
-      mkdir -p "$out/etc/xrootd"
-      install -m 644 -t "$out/etc/xrootd" ../packaging/common/*.cfg
-      install -m 644 -t "$out/etc/xrootd" ../packaging/common/client.conf
-      mkdir -p "$out/etc/xrootd/client.plugins.d"
-      install -m 644 -t "$out/etc/xrootd/client.plugins.d" ../packaging/common/client-plugin.conf.example
-      mkdir -p "$out/etc/logrotate.d"
-      install -m 644 -T ../packaging/common/xrootd.logrotate "$out/etc/logrotate.d/xrootd"
-    ''
-    # Leaving those in bin/ leads to a cyclic reference between $dev and $bin
-    # This happens since https://github.com/xrootd/xrootd/commit/fe268eb622e2192d54a4230cea54c41660bd5788
-    # So far, this xrootd-config script does not seem necessary in $bin
-    + ''
-      moveToOutput "bin/xrootd-config" "$dev"
-      moveToOutput "bin/.xrootd-config-wrapped" "$dev"
-    ''
-    + lib.optionalString stdenv.hostPlatform.isLinux ''
-      mkdir -p "$out/lib/systemd/system"
-      install -m 644 -t "$out/lib/systemd/system" ../packaging/common/*.service ../packaging/common/*.socket
-    '';
+  postInstall = ''
+    mkdir -p "$out/lib/tmpfiles.d"
+    install -m 644 -T ../packaging/rhel/xrootd.tmpfiles "$out/lib/tmpfiles.d/xrootd.conf"
+    mkdir -p "$out/etc/xrootd"
+    install -m 644 -t "$out/etc/xrootd" ../packaging/common/*.cfg
+    install -m 644 -t "$out/etc/xrootd" ../packaging/common/client.conf
+    mkdir -p "$out/etc/xrootd/client.plugins.d"
+    install -m 644 -t "$out/etc/xrootd/client.plugins.d" ../packaging/common/client-plugin.conf.example
+    mkdir -p "$out/etc/logrotate.d"
+    install -m 644 -T ../packaging/common/xrootd.logrotate "$out/etc/logrotate.d/xrootd"
+  ''
+  # Leaving those in bin/ leads to a cyclic reference between $dev and $bin
+  # This happens since https://github.com/xrootd/xrootd/commit/fe268eb622e2192d54a4230cea54c41660bd5788
+  # So far, this xrootd-config script does not seem necessary in $bin
+  + ''
+    moveToOutput "bin/xrootd-config" "$dev"
+    moveToOutput "bin/.xrootd-config-wrapped" "$dev"
+  ''
+  + lib.optionalString stdenv.hostPlatform.isLinux ''
+    mkdir -p "$out/lib/systemd/system"
+    install -m 644 -t "$out/lib/systemd/system" ../packaging/common/*.service ../packaging/common/*.socket
+  '';
 
   cmakeFlags = [
     (lib.cmakeFeature "XRootD_VERSION_STRING" finalAttrs.version)
@@ -143,10 +142,9 @@ stdenv.mkDerivation (finalAttrs: {
         pname = "xrootd-test-xrdcp";
         # Use the the bin output hash of xrootd as version to ensure that
         # the test gets rebuild everytime xrootd gets rebuild
-        version =
-          finalAttrs.version
-          + "-"
-          + builtins.substring (builtins.stringLength builtins.storeDir + 1) 32 "${finalAttrs.finalPackage}";
+        version = finalAttrs.version
+        + "-"
+        + builtins.substring (builtins.stringLength builtins.storeDir + 1) 32 "${finalAttrs.finalPackage}";
         url = "root://eospublic.cern.ch//eos/opendata/alice/2010/LHC10h/000138275/ESD/0000/AliESDs.root";
         hash = "sha256-tIcs2oi+8u/Qr+P7AAaPTbQT+DEt26gEdc4VNerlEHY=";
       };

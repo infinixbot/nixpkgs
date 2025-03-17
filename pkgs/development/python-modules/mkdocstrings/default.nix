@@ -36,19 +36,18 @@ buildPythonPackage rec {
 
   build-system = [ pdm-backend ];
 
-  dependencies =
-    [
-      jinja2
-      markdown
-      markupsafe
-      mkdocs
-      mkdocs-autorefs
-      pymdown-extensions
-    ]
-    ++ lib.optionals (pythonOlder "3.10") [
-      importlib-metadata
-      typing-extensions
-    ];
+  dependencies = [
+    jinja2
+    markdown
+    markupsafe
+    mkdocs
+    mkdocs-autorefs
+    pymdown-extensions
+  ]
+  ++ lib.optionals (pythonOlder "3.10") [
+    importlib-metadata
+    typing-extensions
+  ];
 
   nativeCheckInputs = [ pytestCheckHook ];
 

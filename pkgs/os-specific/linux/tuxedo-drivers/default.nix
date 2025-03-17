@@ -21,7 +21,8 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   buildInputs = [ pahole ];
-  nativeBuildInputs = [ kmod ] ++ kernel.moduleBuildDependencies;
+  nativeBuildInputs = [ kmod ]
+    ++ kernel.moduleBuildDependencies;
 
   makeFlags = kernelModuleMakeFlags ++ [
     "KERNELRELEASE=${kernel.modDirVersion}"

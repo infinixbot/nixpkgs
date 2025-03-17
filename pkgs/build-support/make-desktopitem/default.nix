@@ -156,7 +156,8 @@ lib.makeOverridable (
       "URL" = url;
       "PrefersNonDefaultGPU" = boolOrNullToString prefersNonDefaultGPU;
       # "SingleMainWindow" = boolOrNullToString singleMainWindow;
-    } // extraConfig;
+    }
+    // extraConfig;
 
     # Render a single attribute pair to a Key=Value line.
     # FIXME: this isn't entirely correct for arbitrary strings, as some characters
@@ -195,7 +196,8 @@ lib.makeOverridable (
     actionsRendered = lib.mapAttrsToList renderAction actions;
 
     extension = if type == "Directory" then "directory" else "desktop";
-    content = [ mainSectionRendered ] ++ actionsRendered;
+    content = [ mainSectionRendered ]
+      ++ actionsRendered;
   in
   writeTextFile {
     name = "${name}.${extension}";

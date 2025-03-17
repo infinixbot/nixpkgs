@@ -22,8 +22,7 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  cmakeFlags =
-    [ "-DWITH_PROCPS=Off" ]
+  cmakeFlags = [ "-DWITH_PROCPS=Off" ]
     ++ lib.optionals stdenv.hostPlatform.isAarch64 [
       "-DCURVE=ALT_BN128"
       "-DUSE_ASM=OFF"

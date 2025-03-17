@@ -9,7 +9,8 @@ let
     name:
     {
       args ? "",
-      dir ? ./. + "/${name}",
+      dir ? ./.
+        + "/${name}",
       file ? "index.ts",
       expected ? "",
       expectFailure ? false,

@@ -67,21 +67,22 @@ let
       lib.optional re2Support fb-re2
       ++ lib.optional gitSupport pygit2
       ++ lib.optional highlightSupport pygments;
-    nativeBuildInputs =
-      [
-        makeWrapper
-        gettext
-        installShellFiles
-        setuptools
-      ]
-      ++ lib.optionals rustSupport [
-        rustPlatform.cargoSetupHook
-        cargo
-        rustc
-      ];
-    buildInputs = [ docutils ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ ApplicationServices ];
+    nativeBuildInputs = [
+      makeWrapper
+      gettext
+      installShellFiles
+      setuptools
+    ]
+    ++ lib.optionals rustSupport [
+      rustPlatform.cargoSetupHook
+      cargo
+      rustc
+    ];
+    buildInputs = [ docutils ]
+      ++ lib.optionals stdenv.hostPlatform.isDarwin [ ApplicationServices ];
 
-    makeFlags = [ "PREFIX=$(out)" ] ++ lib.optional rustSupport "PURE=--rust";
+    makeFlags = [ "PREFIX=$(out)" ]
+      ++ lib.optional rustSupport "PURE=--rust";
 
     postInstall =
       (lib.optionalString guiSupport ''

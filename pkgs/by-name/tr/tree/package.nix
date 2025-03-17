@@ -8,11 +8,10 @@ let
   # These settings are found in the Makefile, but there seems to be no
   # way to select one or the other setting other than editing the file
   # manually, so we have to duplicate the know how here.
-  systemFlags =
-    lib.optionalString stdenv.hostPlatform.isDarwin ''
-      CFLAGS="-O2 -Wall -fomit-frame-pointer -no-cpp-precomp"
-      LDFLAGS=
-    ''
+  systemFlags = lib.optionalString stdenv.hostPlatform.isDarwin ''
+    CFLAGS="-O2 -Wall -fomit-frame-pointer -no-cpp-precomp"
+    LDFLAGS=
+  ''
     + lib.optionalString stdenv.hostPlatform.isCygwin ''
       CFLAGS="-O2 -Wall -fomit-frame-pointer"
       LDFLAGS=-s

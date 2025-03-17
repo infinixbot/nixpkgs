@@ -29,7 +29,8 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake ];
 
-  buildInputs = [ orcania ] ++ lib.optional withSystemd systemd;
+  buildInputs = [ orcania ]
+    ++ lib.optional withSystemd systemd;
 
   nativeCheckInputs = [
     check
@@ -38,7 +39,8 @@ stdenv.mkDerivation rec {
 
   cmakeFlags = [
     "-DBUILD_YDER_TESTING=on"
-  ] ++ lib.optional (!withSystemd) "-DWITH_JOURNALD=off";
+  ]
+  ++ lib.optional (!withSystemd) "-DWITH_JOURNALD=off";
 
   doCheck = true;
 

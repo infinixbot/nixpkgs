@@ -95,7 +95,8 @@ in
 
   config = mkIf cfg.enable {
     environment = {
-      systemPackages = [ cfg.package ] ++ cfg.extraPackages;
+      systemPackages = [ cfg.package ]
+        ++ cfg.extraPackages;
       etc."bat/config".source = generate "bat-config" (
         mapAttrs' (
           name: value:

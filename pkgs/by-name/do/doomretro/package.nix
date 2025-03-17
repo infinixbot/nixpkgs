@@ -33,7 +33,8 @@ stdenv.mkDerivation (finalAttrs: {
     SDL2
     SDL2_image
     SDL2_mixer
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ Cocoa ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ Cocoa ];
 
   strictDeps = true;
 

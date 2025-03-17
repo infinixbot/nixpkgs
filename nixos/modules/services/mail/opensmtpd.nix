@@ -131,7 +131,8 @@ in
       let
         procEnv = pkgs.buildEnv {
           name = "opensmtpd-procs";
-          paths = [ cfg.package ] ++ cfg.procPackages;
+          paths = [ cfg.package ]
+            ++ cfg.procPackages;
           pathsToLink = [ "/libexec/opensmtpd" ];
         };
       in

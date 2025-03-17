@@ -17,7 +17,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-kQBv/67miw6lSHIcCVYy66B7OHVofFs2N+evtsQ3Ovk=";
   };
 
-  nativeBuildInputs = [ kmod ] ++ kernel.moduleBuildDependencies;
+  nativeBuildInputs = [ kmod ]
+    ++ kernel.moduleBuildDependencies;
 
   makeFlags = kernelModuleMakeFlags ++ [
     "KVER=${kernel.modDirVersion}"

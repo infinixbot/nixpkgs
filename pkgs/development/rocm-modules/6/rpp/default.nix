@@ -38,16 +38,15 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-AquAVoEqlsBVxd41hG2sVo9UoSS+255eCQzIfGkC/Tk=";
   };
 
-  nativeBuildInputs =
-    [
-      cmake
-      rocm-cmake
-      clr
-    ]
-    ++ lib.optionals buildDocs [
-      rocm-docs-core
-      python3Packages.python
-    ];
+  nativeBuildInputs = [
+    cmake
+    rocm-cmake
+    clr
+  ]
+  ++ lib.optionals buildDocs [
+    rocm-docs-core
+    python3Packages.python
+  ];
 
   buildInputs = [
     half
@@ -55,24 +54,23 @@ stdenv.mkDerivation (finalAttrs: {
     boost
   ];
 
-  cmakeFlags =
-    [
-      "-DROCM_PATH=${clr}"
-    ]
-    ++ lib.optionals (gpuTargets != [ ]) [
-      "-DAMDGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}"
-    ]
-    ++ lib.optionals (!useOpenCL && !useCPU) [
-      "-DCMAKE_C_COMPILER=hipcc"
-      "-DCMAKE_CXX_COMPILER=hipcc"
-      "-DBACKEND=HIP"
-    ]
-    ++ lib.optionals (useOpenCL && !useCPU) [
-      "-DBACKEND=OCL"
-    ]
-    ++ lib.optionals useCPU [
-      "-DBACKEND=CPU"
-    ];
+  cmakeFlags = [
+    "-DROCM_PATH=${clr}"
+  ]
+  ++ lib.optionals (gpuTargets != [ ]) [
+    "-DAMDGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}"
+  ]
+  ++ lib.optionals (!useOpenCL && !useCPU) [
+    "-DCMAKE_C_COMPILER=hipcc"
+    "-DCMAKE_CXX_COMPILER=hipcc"
+    "-DBACKEND=HIP"
+  ]
+  ++ lib.optionals (useOpenCL && !useCPU) [
+    "-DBACKEND=OCL"
+  ]
+  ++ lib.optionals useCPU [
+    "-DBACKEND=CPU"
+  ];
 
   postPatch = lib.optionalString (!useOpenCL && !useCPU) ''
     # Bad path

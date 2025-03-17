@@ -108,7 +108,8 @@ lib.makeOverridable (
         nativeBuildInputs = [
           git
           cacert
-        ] ++ lib.optionals fetchLFS [ git-lfs ];
+        ]
+        ++ lib.optionals fetchLFS [ git-lfs ];
 
         inherit outputHash outputHashAlgo;
         outputHashMode = "recursive";

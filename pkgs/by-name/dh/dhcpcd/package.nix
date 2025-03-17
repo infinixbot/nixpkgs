@@ -45,7 +45,8 @@ stdenv.mkDerivation rec {
     "--disable-privsep"
     "--dbdir=/var/lib/dhcpcd"
     (lib.enableFeature enablePrivSep "privsep")
-  ] ++ lib.optional enablePrivSep "--privsepuser=dhcpcd";
+  ]
+  ++ lib.optional enablePrivSep "--privsepuser=dhcpcd";
 
   makeFlags = [ "PREFIX=${placeholder "out"}" ];
 

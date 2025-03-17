@@ -109,12 +109,14 @@ stdenv.mkDerivation {
   nativeBuildInputs = [
     pkg-config
     cmake
-  ] ++ (if isROCm then [ llvm ] else [ llvm.dev ]);
+  ]
+  ++ (if isROCm then [ llvm ] else [ llvm.dev ]);
 
   buildInputs = [
     spirv-headers
     spirv-tools
-  ] ++ lib.optionals (!isROCm) [ llvm ];
+  ]
+  ++ lib.optionals (!isROCm) [ llvm ];
 
   nativeCheckInputs = [ lit ];
 
@@ -138,14 +140,13 @@ stdenv.mkDerivation {
     "llvm-spirv"
   ];
 
-  postInstall =
-    ''
-      install -D tools/llvm-spirv/llvm-spirv $out/bin/llvm-spirv
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      install_name_tool $out/bin/llvm-spirv \
-        -change @rpath/libLLVMSPIRVLib.dylib $out/lib/libLLVMSPIRVLib.dylib
-    '';
+  postInstall = ''
+    install -D tools/llvm-spirv/llvm-spirv $out/bin/llvm-spirv
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    install_name_tool $out/bin/llvm-spirv \
+      -change @rpath/libLLVMSPIRVLib.dylib $out/lib/libLLVMSPIRVLib.dylib
+  '';
 
   meta = with lib; {
     homepage = "https://github.com/KhronosGroup/SPIRV-LLVM-Translator";

@@ -67,15 +67,14 @@ buildNpmPackage rec {
 
   npmDepsHash = "sha256-HeqwpZyHLHdMhd/UfXVBonMu+PhStrLCxAMuP/KuTT8=";
 
-  nativeBuildInputs =
-    [
-      remarshal
-      ttfautohint-nox
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      # libtool
-      cctools
-    ];
+  nativeBuildInputs = [
+    remarshal
+    ttfautohint-nox
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    # libtool
+    cctools
+  ];
 
   buildPlan =
     if builtins.isAttrs privateBuildPlan then
@@ -84,8 +83,7 @@ buildNpmPackage rec {
       privateBuildPlan;
 
   inherit extraParameters;
-  passAsFile =
-    [ "extraParameters" ]
+  passAsFile = [ "extraParameters" ]
     ++ lib.optionals (
       !(builtins.isString privateBuildPlan && lib.hasPrefix builtins.storeDir privateBuildPlan)
     ) [ "buildPlan" ];

@@ -69,7 +69,8 @@ stdenv.mkDerivation rec {
     vulkan-loader
     xdg-user-dirs
     zlib
-  ] ++ lib.optional withWayland qtwayland;
+  ]
+  ++ lib.optional withWayland qtwayland;
 
   cmakeFlags = [
     "-DPORTABLE_INSTALL=OFF"

@@ -20,7 +20,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-N9ip8yFUqXmNMKcvQuOyxDI4yF/w1YaoIh0prvS4Xr4=";
   };
 
-  buildInputs = [ raylib ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ Cocoa ];
+  buildInputs = [ raylib ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ Cocoa ];
 
   configurePhase = ''
     runHook preConfigure

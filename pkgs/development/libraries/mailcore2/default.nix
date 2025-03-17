@@ -52,22 +52,21 @@ stdenv.mkDerivation rec {
       darwin.apple_sdk.frameworks.Foundation
     ];
 
-  postPatch =
-    ''
-      substituteInPlace CMakeLists.txt \
-         --replace " icule iculx" "" \
-         --replace "tidy/tidy.h" "tidy.h" \
-         --replace "/usr/include/tidy" "${html-tidy}/include" \
-         --replace "/usr/include/libxml2" "${libxml2.dev}/include/libxml2"
-      substituteInPlace src/core/basetypes/MCHTMLCleaner.cpp \
-        --replace buffio.h tidybuffio.h
-      substituteInPlace src/core/basetypes/MCString.cpp \
-        --replace "xmlErrorPtr" "const xmlError *"
-    ''
-    + lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
-      substituteInPlace src/core/basetypes/MCICUTypes.h \
-        --replace "__CHAR16_TYPE__ UChar" "char16_t UChar"
-    '';
+  postPatch = ''
+    substituteInPlace CMakeLists.txt \
+       --replace " icule iculx" "" \
+       --replace "tidy/tidy.h" "tidy.h" \
+       --replace "/usr/include/tidy" "${html-tidy}/include" \
+       --replace "/usr/include/libxml2" "${libxml2.dev}/include/libxml2"
+    substituteInPlace src/core/basetypes/MCHTMLCleaner.cpp \
+      --replace buffio.h tidybuffio.h
+    substituteInPlace src/core/basetypes/MCString.cpp \
+      --replace "xmlErrorPtr" "const xmlError *"
+  ''
+  + lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
+    substituteInPlace src/core/basetypes/MCICUTypes.h \
+      --replace "__CHAR16_TYPE__ UChar" "char16_t UChar"
+  '';
 
   cmakeFlags = lib.optionals (!stdenv.hostPlatform.isDarwin) [
     "-DBUILD_SHARED_LIBS=ON"

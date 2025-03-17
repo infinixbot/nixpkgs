@@ -38,16 +38,15 @@ buildGoModule rec {
   # Trusted by this computer: no: x509: “cert-manager” certificate is not trusted
   doCheck = !stdenv.hostPlatform.isDarwin;
 
-  postInstall =
-    ''
-      mv $out/bin/ctl $out/bin/cmctl
-    ''
-    + lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
-      installShellCompletion --cmd cmctl \
-        --bash <($out/bin/cmctl completion bash) \
-        --fish <($out/bin/cmctl completion fish) \
-        --zsh <($out/bin/cmctl completion zsh)
-    '';
+  postInstall = ''
+    mv $out/bin/ctl $out/bin/cmctl
+  ''
+  + lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
+    installShellCompletion --cmd cmctl \
+      --bash <($out/bin/cmctl completion bash) \
+      --fish <($out/bin/cmctl completion fish) \
+      --zsh <($out/bin/cmctl completion zsh)
+  '';
 
   passthru.updateScript = nix-update-script { };
 

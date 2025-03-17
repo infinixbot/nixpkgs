@@ -11,7 +11,8 @@
 # useful to this.
 runCommand "build-environment-info"
   {
-    nativeBuildInputs = [ getent ] ++ lib.optionals stdenv.buildPlatform.isDarwin [ xcbuild ];
+    nativeBuildInputs = [ getent ]
+      ++ lib.optionals stdenv.buildPlatform.isDarwin [ xcbuild ];
   }
   ''
     # It’s useful to get more info even if a command fails.

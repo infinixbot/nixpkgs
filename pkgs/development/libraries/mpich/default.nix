@@ -75,15 +75,14 @@ stdenv.mkDerivation rec {
     autoconf
     automake
   ];
-  buildInputs =
-    [
-      perl
-      openssh
-      hwloc
-    ]
-    ++ lib.optional (!stdenv.hostPlatform.isDarwin) ch4backend
-    ++ lib.optional pmixSupport pmix
-    ++ lib.optional stdenv.hostPlatform.isDarwin darwin.apple_sdk.frameworks.Foundation;
+  buildInputs = [
+    perl
+    openssh
+    hwloc
+  ]
+  ++ lib.optional (!stdenv.hostPlatform.isDarwin) ch4backend
+  ++ lib.optional pmixSupport pmix
+  ++ lib.optional stdenv.hostPlatform.isDarwin darwin.apple_sdk.frameworks.Foundation;
 
   # test_double_serializer.test fails on darwin
   doCheck = !stdenv.hostPlatform.isDarwin;

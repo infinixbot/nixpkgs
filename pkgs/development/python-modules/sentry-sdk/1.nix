@@ -110,16 +110,15 @@ buildPythonPackage rec {
     "test_default_release"
   ];
 
-  disabledTestPaths =
-    [
-      # Varius integration tests fail every once in a while when we
-      # upgrade dependencies, so don't bother testing them.
-      "tests/integrations/"
-    ]
-    ++ lib.optionals (stdenv.buildPlatform != "x86_64-linux") [
-      # test crashes on aarch64
-      "tests/test_transport.py"
-    ];
+  disabledTestPaths = [
+    # Varius integration tests fail every once in a while when we
+    # upgrade dependencies, so don't bother testing them.
+    "tests/integrations/"
+  ]
+  ++ lib.optionals (stdenv.buildPlatform != "x86_64-linux") [
+    # test crashes on aarch64
+    "tests/test_transport.py"
+  ];
 
   pythonImportsCheck = [ "sentry_sdk" ];
 

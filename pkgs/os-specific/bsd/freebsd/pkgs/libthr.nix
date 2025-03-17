@@ -13,7 +13,8 @@ mkDerivation {
     "lib/libthread_db"
     "lib/libc" # needs /include + arch-specific files
     "libexec/rtld-elf"
-  ] ++ extraSrc;
+  ]
+  ++ extraSrc;
 
   outputs = [
     "out"

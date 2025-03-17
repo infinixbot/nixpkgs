@@ -53,30 +53,29 @@ stdenv.mkDerivation (finalAttrs: {
     makeWrapper
   ];
 
-  buildInputs =
-    [
-      libbfd
-      libdwarf
-      backward-cpp
-      curl
-      enet
-      freetype
-      glm
-      libjpeg
-      libuuid
-      libuv
-      lua5_4
-      lzfse
-      SDL2
-      SDL2_mixer
-    ]
-    ++ lib.optional stdenv.hostPlatform.isLinux wayland-protocols
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      Carbon
-      CoreServices
-      OpenCL
-    ]
-    ++ lib.optional (!stdenv.hostPlatform.isDarwin) opencl-headers;
+  buildInputs = [
+    libbfd
+    libdwarf
+    backward-cpp
+    curl
+    enet
+    freetype
+    glm
+    libjpeg
+    libuuid
+    libuv
+    lua5_4
+    lzfse
+    SDL2
+    SDL2_mixer
+  ]
+  ++ lib.optional stdenv.hostPlatform.isLinux wayland-protocols
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    Carbon
+    CoreServices
+    OpenCL
+  ]
+  ++ lib.optional (!stdenv.hostPlatform.isDarwin) opencl-headers;
 
   cmakeFlags = lib.optional stdenv.hostPlatform.isDarwin "-DCORESERVICES_LIB=${CoreServices}";
 

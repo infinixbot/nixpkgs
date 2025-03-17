@@ -98,8 +98,7 @@ in
         text = cfg.config;
       };
     };
-    environment.systemPackages =
-      [ pkgs.rasdaemon ]
+    environment.systemPackages = [ pkgs.rasdaemon ]
       ++ lib.optionals (cfg.testing) (
         with pkgs.error-inject;
         [

@@ -30,7 +30,8 @@ mkDerivation {
     kdoctools
     wrapQtAppsHook
   ];
-  buildInputs = [ pcre ] ++ gst;
+  buildInputs = [ pcre ]
+    ++ gst;
   propagatedBuildInputs = [
     qtdeclarative
     qtgraphicaleffects

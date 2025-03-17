@@ -50,7 +50,8 @@ buildPythonPackage rec {
     cuda = [ pycuda ];
   };
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ optional-dependencies.full;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ optional-dependencies.full;
 
   preCheck = ''
     export HOME=$TMPDIR

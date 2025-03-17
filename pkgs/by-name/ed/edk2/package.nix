@@ -110,8 +110,7 @@ let
 
     makeFlags = [ "-C BaseTools" ];
 
-    env.NIX_CFLAGS_COMPILE =
-      "-Wno-return-type"
+    env.NIX_CFLAGS_COMPILE = "-Wno-return-type"
       + lib.optionalString (stdenv.cc.isGNU) " -Wno-error=stringop-truncation"
       + lib.optionalString (stdenv.hostPlatform.isDarwin) " -Wno-error=macro-redefined";
 
@@ -170,11 +169,13 @@ let
           {
             inherit (edk2) src;
 
-            depsBuildBuild = [ buildPackages.stdenv.cc ] ++ attrs.depsBuildBuild or [ ];
+            depsBuildBuild = [ buildPackages.stdenv.cc ]
+              ++ attrs.depsBuildBuild or [ ];
             nativeBuildInputs = [
               bc
               pythonEnv
-            ] ++ attrs.nativeBuildInputs or [ ];
+            ]
+            ++ attrs.nativeBuildInputs or [ ];
             strictDeps = true;
 
             ${"GCC5_${targetArch}_PREFIX"} = stdenv.cc.targetPrefix;

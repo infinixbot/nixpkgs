@@ -23,20 +23,19 @@
   OpenGL,
 }:
 let
-  rpathLibs =
-    [
-      libGL
-      libX11
-      libXcursor
-      libXi
-      libXrandr
-      libXxf86vm
-      libxcb
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      libxkbcommon
-      wayland
-    ];
+  rpathLibs = [
+    libGL
+    libX11
+    libXcursor
+    libXi
+    libXrandr
+    libXxf86vm
+    libxcb
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    libxkbcommon
+    wayland
+  ];
 in
 rustPlatform.buildRustPackage rec {
   pname = "emulsion";

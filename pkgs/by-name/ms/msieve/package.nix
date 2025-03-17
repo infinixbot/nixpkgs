@@ -42,6 +42,7 @@ stdenv.mkDerivation rec {
     license = lib.licenses.publicDomain;
     homepage = "http://msieve.sourceforge.net/";
     maintainers = [ lib.maintainers.roconnor ];
-    platforms = [ "x86_64-linux" ] ++ lib.platforms.darwin;
+    platforms = [ "x86_64-linux" ]
+      ++ lib.platforms.darwin;
   };
 }

@@ -46,7 +46,8 @@ stdenv.mkDerivation rec {
   wafConfigureFlags = [
     "--boost-includes=${boost186.dev}/include"
     "--boost-libs=${boost186.out}/lib"
-  ] ++ lib.optional (!withWebSocket) "--without-websocket";
+  ]
+  ++ lib.optional (!withWebSocket) "--without-websocket";
 
   meta = with lib; {
     homepage = "https://named-data.net/";

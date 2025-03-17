@@ -82,20 +82,19 @@ let
                       'ENGINESDIR=$(OPENSSLDIR)/engines-{- $sover_dirname -}'
         '';
 
-      outputs =
-        [
-          "bin"
-          "dev"
-          "out"
-          "man"
-        ]
-        ++ lib.optional withDocs "doc"
-        # Separate output for the runtime dependencies of the static build.
-        # Specifically, move OPENSSLDIR into this output, as its path will be
-        # compiled into 'libcrypto.a'. This makes it a runtime dependency of
-        # any package that statically links openssl, so we want to keep that
-        # output minimal.
-        ++ lib.optional static "etc";
+      outputs = [
+        "bin"
+        "dev"
+        "out"
+        "man"
+      ]
+      ++ lib.optional withDocs "doc"
+      # Separate output for the runtime dependencies of the static build.
+      # Specifically, move OPENSSLDIR into this output, as its path will be
+      # compiled into 'libcrypto.a'. This makes it a runtime dependency of
+      # any package that statically links openssl, so we want to keep that
+      # output minimal.
+      ++ lib.optional static "etc";
       setOutputFlags = false;
       separateDebugInfo =
         !stdenv.hostPlatform.isDarwin && !(stdenv.hostPlatform.useLLVM or false) && stdenv.cc.isGNU;
@@ -160,62 +159,61 @@ let
 
       # OpenSSL doesn't like the `--enable-static` / `--disable-shared` flags.
       dontAddStaticConfigureFlags = true;
-      configureFlags =
-        [
-          "shared" # "shared" builds both shared and static libraries
-          "--libdir=lib"
-          (
-            if !static then
-              "--openssldir=etc/ssl"
-            else
-              # Move OPENSSLDIR to the 'etc' output for static builds. Prepend '/.'
-              # to the path to make it appear absolute before variable expansion,
-              # else the 'prefix' would be prepended to it.
-              "--openssldir=/.$(etc)/etc/ssl"
-          )
-        ]
-        ++ lib.optionals withCryptodev [
-          "-DHAVE_CRYPTODEV"
-          "-DUSE_CRYPTODEV_DIGESTS"
-        ]
-        ++ lib.optional enableMD2 "enable-md2"
-        ++ lib.optional enableSSL2 "enable-ssl2"
-        ++ lib.optional enableSSL3 "enable-ssl3"
-        # We select KTLS here instead of the configure-time detection (which we patch out).
-        # KTLS should work on FreeBSD 13+ as well, so we could enable it if someone tests it.
-        ++ lib.optional (lib.versionAtLeast version "3.0.0" && enableKTLS) "enable-ktls"
-        ++ lib.optional (lib.versionAtLeast version "1.1.1" && stdenv.hostPlatform.isAarch64) "no-afalgeng"
-        # OpenSSL needs a specific `no-shared` configure flag.
-        # See https://wiki.openssl.org/index.php/Compilation_and_Installation#Configure_Options
-        # for a comprehensive list of configuration options.
-        ++ lib.optional (lib.versionAtLeast version "1.1.1" && static) "no-shared"
-        ++ lib.optional (lib.versionAtLeast version "3.0.0" && static) "no-module"
-        # This introduces a reference to the CTLOG_FILE which is undesired when
-        # trying to build binaries statically.
-        ++ lib.optional static "no-ct"
-        ++ lib.optional withZlib "zlib"
-        # /dev/crypto support has been dropped in OpenBSD 5.7.
+      configureFlags = [
+        "shared" # "shared" builds both shared and static libraries
+        "--libdir=lib"
+        (
+          if !static then
+            "--openssldir=etc/ssl"
+          else
+            # Move OPENSSLDIR to the 'etc' output for static builds. Prepend '/.'
+            # to the path to make it appear absolute before variable expansion,
+            # else the 'prefix' would be prepended to it.
+            "--openssldir=/.$(etc)/etc/ssl"
+        )
+      ]
+      ++ lib.optionals withCryptodev [
+        "-DHAVE_CRYPTODEV"
+        "-DUSE_CRYPTODEV_DIGESTS"
+      ]
+      ++ lib.optional enableMD2 "enable-md2"
+      ++ lib.optional enableSSL2 "enable-ssl2"
+      ++ lib.optional enableSSL3 "enable-ssl3"
+      # We select KTLS here instead of the configure-time detection (which we patch out).
+      # KTLS should work on FreeBSD 13+ as well, so we could enable it if someone tests it.
+      ++ lib.optional (lib.versionAtLeast version "3.0.0" && enableKTLS) "enable-ktls"
+      ++ lib.optional (lib.versionAtLeast version "1.1.1" && stdenv.hostPlatform.isAarch64) "no-afalgeng"
+      # OpenSSL needs a specific `no-shared` configure flag.
+      # See https://wiki.openssl.org/index.php/Compilation_and_Installation#Configure_Options
+      # for a comprehensive list of configuration options.
+      ++ lib.optional (lib.versionAtLeast version "1.1.1" && static) "no-shared"
+      ++ lib.optional (lib.versionAtLeast version "3.0.0" && static) "no-module"
+      # This introduces a reference to the CTLOG_FILE which is undesired when
+      # trying to build binaries statically.
+      ++ lib.optional static "no-ct"
+      ++ lib.optional withZlib "zlib"
+      # /dev/crypto support has been dropped in OpenBSD 5.7.
+      #
+      # OpenBSD's ports does this too,
+      # https://github.com/openbsd/ports/blob/a1147500c76970fea22947648fb92a093a529d7c/security/openssl/3.3/Makefile#L25.
+      #
+      # https://github.com/openssl/openssl/pull/10565 indicated the
+      # intent was that this would be configured properly automatically,
+      # but that doesn't appear to be the case.
+      ++ lib.optional stdenv.hostPlatform.isOpenBSD "no-devcryptoeng"
+      ++ lib.optionals (stdenv.hostPlatform.isMips && stdenv.hostPlatform ? gcc.arch) [
+        # This is necessary in order to avoid openssl adding -march
+        # flags which ultimately conflict with those added by
+        # cc-wrapper.  Openssl assumes that it can scan CFLAGS to
+        # detect any -march flags, using this perl code:
         #
-        # OpenBSD's ports does this too,
-        # https://github.com/openbsd/ports/blob/a1147500c76970fea22947648fb92a093a529d7c/security/openssl/3.3/Makefile#L25.
+        #   && !grep { $_ =~ /-m(ips|arch=)/ } (@{$config{CFLAGS}})
         #
-        # https://github.com/openssl/openssl/pull/10565 indicated the
-        # intent was that this would be configured properly automatically,
-        # but that doesn't appear to be the case.
-        ++ lib.optional stdenv.hostPlatform.isOpenBSD "no-devcryptoeng"
-        ++ lib.optionals (stdenv.hostPlatform.isMips && stdenv.hostPlatform ? gcc.arch) [
-          # This is necessary in order to avoid openssl adding -march
-          # flags which ultimately conflict with those added by
-          # cc-wrapper.  Openssl assumes that it can scan CFLAGS to
-          # detect any -march flags, using this perl code:
-          #
-          #   && !grep { $_ =~ /-m(ips|arch=)/ } (@{$config{CFLAGS}})
-          #
-          # The following bogus CFLAGS environment variable triggers the
-          # the code above, inhibiting `./Configure` from adding the
-          # conflicting flags.
-          "CFLAGS=-march=${stdenv.hostPlatform.gcc.arch}"
-        ];
+        # The following bogus CFLAGS environment variable triggers the
+        # the code above, inhibiting `./Configure` from adding the
+        # conflicting flags.
+        "CFLAGS=-march=${stdenv.hostPlatform.gcc.arch}"
+      ];
 
       makeFlags = [
         "MANDIR=$(man)/share/man"
@@ -228,54 +226,53 @@ let
 
       enableParallelBuilding = true;
 
-      postInstall =
-        (
-          if static then
-            ''
-              # OPENSSLDIR has a reference to self
-              remove-references-to -t $out $out/lib/*.a
-            ''
-          else
-            ''
-              # If we're building dynamic libraries, then don't install static
-              # libraries.
-              if [ -n "$(echo $out/lib/*.so $out/lib/*.dylib $out/lib/*.dll)" ]; then
-                  rm "$out/lib/"*.a
-              fi
+      postInstall = (
+        if static then
+          ''
+            # OPENSSLDIR has a reference to self
+            remove-references-to -t $out $out/lib/*.a
+          ''
+        else
+          ''
+            # If we're building dynamic libraries, then don't install static
+            # libraries.
+            if [ -n "$(echo $out/lib/*.so $out/lib/*.dylib $out/lib/*.dll)" ]; then
+                rm "$out/lib/"*.a
+            fi
 
-              # 'etc' is a separate output on static builds only.
-              etc=$out
-            ''
-        )
-        + ''
-          mkdir -p $bin
-          mv $out/bin $bin/bin
+            # 'etc' is a separate output on static builds only.
+            etc=$out
+          ''
+      )
+      + ''
+        mkdir -p $bin
+        mv $out/bin $bin/bin
 
-        ''
-        +
-          lib.optionalString (!stdenv.hostPlatform.isWindows)
-            # makeWrapper is broken for windows cross (https://github.com/NixOS/nixpkgs/issues/120726)
-            ''
-              # c_rehash is a legacy perl script with the same functionality
-              # as `openssl rehash`
-              # this wrapper script is created to maintain backwards compatibility without
-              # depending on perl
-              makeWrapper $bin/bin/openssl $bin/bin/c_rehash \
-                --add-flags "rehash"
-            ''
-        + ''
+      ''
+      +
+        lib.optionalString (!stdenv.hostPlatform.isWindows)
+          # makeWrapper is broken for windows cross (https://github.com/NixOS/nixpkgs/issues/120726)
+          ''
+            # c_rehash is a legacy perl script with the same functionality
+            # as `openssl rehash`
+            # this wrapper script is created to maintain backwards compatibility without
+            # depending on perl
+            makeWrapper $bin/bin/openssl $bin/bin/c_rehash \
+              --add-flags "rehash"
+          ''
+      + ''
 
-          mkdir $dev
-          mv $out/include $dev/
+        mkdir $dev
+        mv $out/include $dev/
 
-          # remove dependency on Perl at runtime
-          rm -r $etc/etc/ssl/misc
+        # remove dependency on Perl at runtime
+        rm -r $etc/etc/ssl/misc
 
-          rmdir $etc/etc/ssl/{certs,private}
-        ''
-        + lib.optionalString (conf != null) ''
-          cat ${conf} > $etc/etc/ssl/openssl.cnf
-        '';
+        rmdir $etc/etc/ssl/{certs,private}
+      ''
+      + lib.optionalString (conf != null) ''
+        cat ${conf} > $etc/etc/ssl/openssl.cnf
+      '';
 
       postFixup =
         lib.optionalString (!stdenv.hostPlatform.isWindows) ''
@@ -307,7 +304,8 @@ let
           "openssl"
         ];
         platforms = lib.platforms.all;
-      } // extraMeta;
+      }
+      // extraMeta;
     });
 
 in

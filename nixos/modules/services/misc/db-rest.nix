@@ -116,7 +116,8 @@ in
     systemd.services.db-rest = mkMerge [
       {
         description = "db-rest service";
-        after = [ "network.target" ] ++ lib.optional cfg.redis.createLocally "redis-db-rest.service";
+        after = [ "network.target" ]
+          ++ lib.optional cfg.redis.createLocally "redis-db-rest.service";
         requires = lib.optional cfg.redis.createLocally "redis-db-rest.service";
         wantedBy = [ "multi-user.target" ];
         serviceConfig = {

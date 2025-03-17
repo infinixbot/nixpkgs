@@ -70,19 +70,18 @@ let
         dedicatedServer: {
           version = "${unstableVersionMajor}-${builtins.substring 0 8 rev}";
           src = fetchArmagetron rev hash;
-          extraBuildInputs =
-            [
-              protobuf
-              boost
-            ]
-            ++ lib.optionals (!dedicatedServer) [
-              glew
-              ftgl
-              freetype
-              SDL2
-              SDL2_image
-              SDL2_mixer
-            ];
+          extraBuildInputs = [
+            protobuf
+            boost
+          ]
+          ++ lib.optionals (!dedicatedServer) [
+            glew
+            ftgl
+            freetype
+            SDL2
+            SDL2_image
+            SDL2_mixer
+          ];
           extraNativeBuildInputs = [ bison ];
         };
 
@@ -126,8 +125,9 @@ let
         else
           "";
 
-      minorVersion =
-        (minorVersionPart splitVersion "." 2) + (minorVersionPart versionParts "-" 1) + "-nixpkgs";
+      minorVersion = (minorVersionPart splitVersion "." 2)
+        + (minorVersionPart versionParts "-" 1)
+        + "-nixpkgs";
     in
     stdenv.mkDerivation {
       pname = mainProgram;
@@ -172,10 +172,10 @@ let
         pkg-config
         which
         python3
-      ] ++ (resolvedParams.extraNativeBuildInputs or [ ]);
+      ]
+      ++ (resolvedParams.extraNativeBuildInputs or [ ]);
 
-      nativeInstallCheckInputs =
-        [ gnugrep ]
+      nativeInstallCheckInputs = [ gnugrep ]
         ++ lib.optional (!dedicatedServer) xvfb-run
         ++ (resolvedParams.extraNativeInstallCheckInputs or [ ]);
 

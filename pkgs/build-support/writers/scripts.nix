@@ -683,7 +683,8 @@ rec {
     let
       finalGuile = pkgs.buildEnv {
         name = "guile-env";
-        paths = [ guile ] ++ libraries;
+        paths = [ guile ]
+          ++ libraries;
         passthru = {
           inherit (guile) siteDir siteCcacheDir;
         };

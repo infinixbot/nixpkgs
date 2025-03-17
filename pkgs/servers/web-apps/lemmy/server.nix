@@ -35,8 +35,7 @@ rustPlatform.buildRustPackage rec {
   useFetchCargoVendor = true;
   cargoHash = pinData.serverCargoHash;
 
-  buildInputs =
-    [ libpq ]
+  buildInputs = [ libpq ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       libiconv
       Security

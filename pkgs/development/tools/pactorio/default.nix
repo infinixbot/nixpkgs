@@ -28,7 +28,8 @@ rustPlatform.buildRustPackage rec {
     pkg-config
   ];
 
-  buildInputs = [ bzip2 ] ++ lib.optional stdenv.hostPlatform.isDarwin Security;
+  buildInputs = [ bzip2 ]
+    ++ lib.optional stdenv.hostPlatform.isDarwin Security;
 
   postInstall = ''
     installManPage artifacts/pactorio.1

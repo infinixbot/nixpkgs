@@ -25,7 +25,8 @@ buildPythonPackage rec {
 
   build-system = [ setuptools ];
 
-  dependencies = [ setuptools ] ++ lib.optionals (pythonOlder "3.11") [ tomli ];
+  dependencies = [ setuptools ]
+    ++ lib.optionals (pythonOlder "3.11") [ tomli ];
 
   pythonImportsCheck = [ "setuptools_gettext" ];
 

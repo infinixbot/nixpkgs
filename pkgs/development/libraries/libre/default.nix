@@ -18,14 +18,13 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-OWVDuKlF7YLipDURC46s14WOLWWagUqWg20sH0kSIA4=";
   };
 
-  buildInputs =
-    [
-      openssl
-      zlib
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      SystemConfiguration
-    ];
+  buildInputs = [
+    openssl
+    zlib
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    SystemConfiguration
+  ];
 
   nativeBuildInputs = [ cmake ];
   makeFlags =

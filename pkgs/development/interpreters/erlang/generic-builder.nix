@@ -121,8 +121,7 @@ stdenv.mkDerivation (
     # name is used instead of pname to
     # - not have to pass pnames as argument
     # - have a separate pname for erlang (main module)
-    name =
-      "${baseName}"
+    name = "${baseName}"
       + optionalString javacSupport "_javac"
       + optionalString odbcSupport "_odbc"
       + "-${version}";
@@ -140,54 +139,50 @@ stdenv.mkDerivation (
       libxml2
     ];
 
-    buildInputs =
-      [
-        ncurses
-        opensslPackage
-        zlib
-      ]
-      ++ optionals wxSupport wxPackages2
-      ++ optionals odbcSupport odbcPackages
-      ++ optionals javacSupport javacPackages
-      ++ optional systemdSupport systemd;
+    buildInputs = [
+      ncurses
+      opensslPackage
+      zlib
+    ]
+    ++ optionals wxSupport wxPackages2
+    ++ optionals odbcSupport odbcPackages
+    ++ optionals javacSupport javacPackages
+    ++ optional systemdSupport systemd;
 
     debugInfo = enableDebugInfo;
 
     # On some machines, parallel build reliably crashes on `GEN    asn1ct_eval_ext.erl` step
     enableParallelBuilding = parallelBuild;
 
-    postPatch =
-      ''
-        patchShebangs make
+    postPatch = ''
+      patchShebangs make
 
-        ${postPatch}
-      ''
-      + optionalString (lib.versionOlder "25" version) ''
-        substituteInPlace lib/os_mon/src/disksup.erl \
-          --replace-fail '"sh ' '"${runtimeShell} '
-      '';
+      ${postPatch}
+    ''
+    + optionalString (lib.versionOlder "25" version) ''
+      substituteInPlace lib/os_mon/src/disksup.erl \
+        --replace-fail '"sh ' '"${runtimeShell} '
+    '';
 
     # For OTP 27+ we need ex_doc to build the documentation
     # When ex_docSupport is enabled, grab the raw ex_doc executable from the ex_doc
     # derivation. Next, patch the first line to use the escript that will be
     # built during the build phase of this derivation. Finally, building the
     # documentation requires the erlang-logo.png asset.
-    preConfigure =
-      ''
-        ./otp_build autoconf
-      ''
-      + optionalString ex_docSupport ''
-        mkdir -p $out/bin
-        cp ${ex_doc}/bin/.ex_doc-wrapped $out/bin/ex_doc
-        sed -i "1 s:^.*$:#!$out/bin/escript:" $out/bin/ex_doc
-        export EX_DOC=$out/bin/ex_doc
+    preConfigure = ''
+      ./otp_build autoconf
+    ''
+    + optionalString ex_docSupport ''
+      mkdir -p $out/bin
+      cp ${ex_doc}/bin/.ex_doc-wrapped $out/bin/ex_doc
+      sed -i "1 s:^.*$:#!$out/bin/escript:" $out/bin/ex_doc
+      export EX_DOC=$out/bin/ex_doc
 
-        mkdir -p $out/lib/erlang/system/doc/assets
-        cp $src/system/doc/assets/erlang-logo.png $out/lib/erlang/system/doc/assets
-      '';
+      mkdir -p $out/lib/erlang/system/doc/assets
+      cp $src/system/doc/assets/erlang-logo.png $out/lib/erlang/system/doc/assets
+    '';
 
-    configureFlags =
-      [ "--with-ssl=${lib.getOutput "out" opensslPackage}" ]
+    configureFlags = [ "--with-ssl=${lib.getOutput "out" opensslPackage}" ]
       ++ [ "--with-ssl-incl=${lib.getDev opensslPackage}" ] # This flag was introduced in R24
       ++ optional enableThreads "--enable-threads"
       ++ optional enableSmpSupport "--enable-smp-support"

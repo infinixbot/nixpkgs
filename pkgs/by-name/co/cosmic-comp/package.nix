@@ -49,7 +49,8 @@ rustPlatform.buildRustPackage rec {
     seatd
     udev
     wayland
-  ] ++ lib.optional useSystemd systemd;
+  ]
+  ++ lib.optional useSystemd systemd;
 
   # Only default feature is systemd
   buildNoDefaultFeatures = !useSystemd;
@@ -73,22 +74,21 @@ rustPlatform.buildRustPackage rec {
 
   # These libraries are only used by the X11 backend, which will not
   # be the common case, so just make them available, don't link them.
-  postInstall =
-    ''
-      wrapProgramArgs=(--prefix LD_LIBRARY_PATH : ${
-        lib.makeLibraryPath [
-          xorg.libX11
-          xorg.libXcursor
-          xorg.libXi
-        ]
-      })
-    ''
-    + lib.optionalString useXWayland ''
-      wrapProgramArgs+=(--prefix PATH : ${lib.makeBinPath [ xwayland ]})
-    ''
-    + ''
-      wrapProgram $out/bin/cosmic-comp "''${wrapProgramArgs[@]}"
-    '';
+  postInstall = ''
+    wrapProgramArgs=(--prefix LD_LIBRARY_PATH : ${
+      lib.makeLibraryPath [
+        xorg.libX11
+        xorg.libXcursor
+        xorg.libXi
+      ]
+    })
+  ''
+  + lib.optionalString useXWayland ''
+    wrapProgramArgs+=(--prefix PATH : ${lib.makeBinPath [ xwayland ]})
+  ''
+  + ''
+    wrapProgram $out/bin/cosmic-comp "''${wrapProgramArgs[@]}"
+  '';
 
   meta = with lib; {
     homepage = "https://github.com/pop-os/cosmic-comp";

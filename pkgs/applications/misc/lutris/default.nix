@@ -87,25 +87,24 @@ buildPythonApplication rec {
     wrapGAppsHook3
     gobject-introspection
   ];
-  buildInputs =
-    [
-      atk
-      gdk-pixbuf
-      glib-networking
-      gnome-desktop
-      gtk3
-      libnotify
-      pango
-      webkitgtk_4_0
-    ]
-    ++ (with gst_all_1; [
-      gst-libav
-      gst-plugins-bad
-      gst-plugins-base
-      gst-plugins-good
-      gst-plugins-ugly
-      gstreamer
-    ]);
+  buildInputs = [
+    atk
+    gdk-pixbuf
+    glib-networking
+    gnome-desktop
+    gtk3
+    libnotify
+    pango
+    webkitgtk_4_0
+  ]
+  ++ (with gst_all_1; [
+    gst-libav
+    gst-plugins-bad
+    gst-plugins-base
+    gst-plugins-good
+    gst-plugins-ugly
+    gstreamer
+  ]);
 
   # See `install_requires` in https://github.com/lutris/lutris/blob/master/setup.py
   propagatedBuildInputs = [
@@ -132,7 +131,8 @@ buildPythonApplication rec {
     xvfb-run
     nose2
     flake8
-  ] ++ requiredTools;
+  ]
+  ++ requiredTools;
   checkPhase = ''
     runHook preCheck
 

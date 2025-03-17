@@ -104,16 +104,16 @@ python3Packages.buildPythonApplication {
     gobject-introspection
     sphinxHook
     python3Packages.pydata-sphinx-theme
-  ] ++ extraNativeBuildInputs;
+  ]
+  ++ extraNativeBuildInputs;
 
-  buildInputs =
-    [
-    ]
-    ++ (with gst_all_1; [
-      gst-plugins-base
-      gst-plugins-good
-      gst-plugins-ugly
-    ]);
+  buildInputs = [
+  ]
+  ++ (with gst_all_1; [
+    gst-plugins-base
+    gst-plugins-good
+    gst-plugins-ugly
+  ]);
 
   outputs = [
     "out"

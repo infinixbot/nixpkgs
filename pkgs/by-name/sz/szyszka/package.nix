@@ -33,21 +33,20 @@ rustPlatform.buildRustPackage rec {
     wrapGAppsHook4
   ];
 
-  buildInputs =
+  buildInputs = [
+    glib
+    cairo
+    pango
+    atk
+    gdk-pixbuf
+    gtk4
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin (
+    with darwin.apple_sdk.frameworks;
     [
-      glib
-      cairo
-      pango
-      atk
-      gdk-pixbuf
-      gtk4
+      Foundation
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        Foundation
-      ]
-    );
+  );
 
   postInstall = ''
     install -m 444 \

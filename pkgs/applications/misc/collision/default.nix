@@ -52,7 +52,8 @@ crystal.buildCrystalPackage rec {
     wrapGAppsHook4
     pkg-config
     gobject-introspection
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ desktopToDarwinBundle ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ desktopToDarwinBundle ];
 
   buildInputs = [
     libadwaita

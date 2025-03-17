@@ -105,20 +105,19 @@ stdenv.mkDerivation (finalAttrs: {
     })
   ];
 
-  nativeBuildInputs =
-    [
-      gradle
-      unzip
-      makeBinaryWrapper
-      copyDesktopItems
-      protobuf
-      python3
-      python3Packages.pip
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      xcbuild
-      desktopToDarwinBundle
-    ];
+  nativeBuildInputs = [
+    gradle
+    unzip
+    makeBinaryWrapper
+    copyDesktopItems
+    protobuf
+    python3
+    python3Packages.pip
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    xcbuild
+    desktopToDarwinBundle
+  ];
 
   dontStrip = true;
 

@@ -32,17 +32,16 @@ stdenv.mkDerivation rec {
     libxslt
     docbook_xsl
   ];
-  buildInputs =
-    [
-      pam
-      yubikey-personalization
-      libyubikey
-      libykclient
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      CoreServices
-      SystemConfiguration
-    ];
+  buildInputs = [
+    pam
+    yubikey-personalization
+    libyubikey
+    libykclient
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    CoreServices
+    SystemConfiguration
+  ];
 
   meta = with lib; {
     description = "Yubico PAM module";

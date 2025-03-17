@@ -120,46 +120,45 @@ buildPythonPackage rec {
     pytest-xdist
     pytestCheckHook
     tomlkit
-  ] ++ lib.flatten (builtins.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (builtins.attrValues optional-dependencies);
 
   pythonImportsCheck = [ "kserve" ];
 
-  pytestFlagsArray =
-    [
-      # AssertionError
-      "--deselect=test/test_server.py::TestTFHttpServerLoadAndUnLoad::test_unload"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      # RuntimeError: Failed to start GCS
-      "--deselect=test/test_dataplane.py::TestDataPlane::test_explain"
-      "--deselect=test/test_dataplane.py::TestDataPlane::test_infer"
-      "--deselect=test/test_dataplane.py::TestDataPlane::test_model_metadata"
-      "--deselect=test/test_dataplane.py::TestDataPlane::test_server_readiness"
-      "--deselect=test/test_server.py::TestRayServer::test_explain"
-      "--deselect=test/test_server.py::TestRayServer::test_health_handler"
-      "--deselect=test/test_server.py::TestRayServer::test_infer"
-      "--deselect=test/test_server.py::TestRayServer::test_list_handler"
-      "--deselect=test/test_server.py::TestRayServer::test_liveness_handler"
-      "--deselect=test/test_server.py::TestRayServer::test_predict"
-    ];
+  pytestFlagsArray = [
+    # AssertionError
+    "--deselect=test/test_server.py::TestTFHttpServerLoadAndUnLoad::test_unload"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    # RuntimeError: Failed to start GCS
+    "--deselect=test/test_dataplane.py::TestDataPlane::test_explain"
+    "--deselect=test/test_dataplane.py::TestDataPlane::test_infer"
+    "--deselect=test/test_dataplane.py::TestDataPlane::test_model_metadata"
+    "--deselect=test/test_dataplane.py::TestDataPlane::test_server_readiness"
+    "--deselect=test/test_server.py::TestRayServer::test_explain"
+    "--deselect=test/test_server.py::TestRayServer::test_health_handler"
+    "--deselect=test/test_server.py::TestRayServer::test_infer"
+    "--deselect=test/test_server.py::TestRayServer::test_list_handler"
+    "--deselect=test/test_server.py::TestRayServer::test_liveness_handler"
+    "--deselect=test/test_server.py::TestRayServer::test_predict"
+  ];
 
   disabledTestPaths = [
     # Looks for a config file at the root of the repository
     "test/test_inference_service_client.py"
   ];
 
-  disabledTests =
-    [
-      # Require network access
-      "test_infer_graph_endpoint"
-      "test_infer_path_based_routing"
+  disabledTests = [
+    # Require network access
+    "test_infer_graph_endpoint"
+    "test_infer_path_based_routing"
 
-      # Tries to access `/tmp` (hardcoded)
-      "test_local_path_with_out_dir_exist"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      "test_local_path_with_out_dir_not_exist"
-    ];
+    # Tries to access `/tmp` (hardcoded)
+    "test_local_path_with_out_dir_exist"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    "test_local_path_with_out_dir_not_exist"
+  ];
 
   __darwinAllowLocalNetworking = true;
 

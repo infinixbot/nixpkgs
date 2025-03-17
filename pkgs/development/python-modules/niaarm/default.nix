@@ -42,7 +42,8 @@ buildPythonPackage rec {
     pandas
     plotly
     scikit-learn
-  ] ++ lib.optionals (pythonOlder "3.11") [ tomli ];
+  ]
+  ++ lib.optionals (pythonOlder "3.11") [ tomli ];
 
   disabledTests = [
     # Test requires extra nltk data dependency

@@ -44,8 +44,7 @@ let
         inherit sha256;
       };
 
-      propagatedBuildInputs =
-        [ spacy ]
+      propagatedBuildInputs = [ spacy ]
         ++ lib.optionals (lib.hasSuffix "_trf" pname) [ spacy-curated-transformers ]
         ++ lib.optionals requires-transformers [ transformers ]
         ++ lib.optionals (lang == "ja") [
@@ -73,7 +72,8 @@ let
             --replace-fail "spacy-pkuseg>=1.0.0,<2.0.0" "spacy-pkuseg"
         '';
 
-      nativeBuildInputs = [ setuptools ] ++ lib.optionals requires-protobuf [ protobuf ];
+      nativeBuildInputs = [ setuptools ]
+        ++ lib.optionals requires-protobuf [ protobuf ];
 
       pythonImportsCheck = [ pname ];
 

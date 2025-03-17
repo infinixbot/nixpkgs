@@ -57,20 +57,19 @@ stdenv.mkDerivation rec {
     ]
     ++ lib.optionals wgetSupport [ wget ];
 
-  configureFlags =
-    [
-      "--sysconfdir=/etc"
-      "--localstatedir=/run"
-      "--with-iptables=${iptables}/sbin/iptables"
-      (lib.enableFeature buildServer "server")
-      (lib.enableFeature buildClient "client")
-      (lib.withFeatureAs wgetSupport "wget" "${wget}/bin/wget")
-    ]
-    ++ lib.optionalString gnupgSupport [
-      "--with-gpgme"
-      "--with-gpgme-prefix=${gpgme.dev}"
-      "--with-gpg=${gnupg}"
-    ];
+  configureFlags = [
+    "--sysconfdir=/etc"
+    "--localstatedir=/run"
+    "--with-iptables=${iptables}/sbin/iptables"
+    (lib.enableFeature buildServer "server")
+    (lib.enableFeature buildClient "client")
+    (lib.withFeatureAs wgetSupport "wget" "${wget}/bin/wget")
+  ]
+  ++ lib.optionalString gnupgSupport [
+    "--with-gpgme"
+    "--with-gpgme-prefix=${gpgme.dev}"
+    "--with-gpg=${gnupg}"
+  ];
 
   # Temporary hack to copy the example configuration files into the nix-store,
   # this'll probably be helpful until there's a NixOS module for that (feel free

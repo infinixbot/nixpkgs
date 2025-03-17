@@ -46,7 +46,8 @@ buildPythonPackage rec {
     preferences = [ configobj ];
   };
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ lib.flatten (lib.attrValues optional-dependencies);
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ lib.flatten (lib.attrValues optional-dependencies);
 
   preCheck = ''
     export HOME=$TMP

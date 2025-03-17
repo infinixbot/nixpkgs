@@ -33,17 +33,16 @@ mkWrapper "sdk" (buildEnv {
   ];
   ignoreCollisions = true;
   nativeBuildInputs = [ makeWrapper ];
-  postBuild =
-    ''
-      mkdir -p "$out"/share/dotnet
-      cp "${cli}"/share/dotnet/dotnet $out/share/dotnet
-      cp -R "${cli}"/nix-support "$out"/
-      mkdir "$out"/bin
-      ln -s "$out"/share/dotnet/dotnet "$out"/bin/dotnet
-    ''
-    + lib.optionalString (cli ? man) ''
-      ln -s ${cli.man} $man
-    '';
+  postBuild = ''
+    mkdir -p "$out"/share/dotnet
+    cp "${cli}"/share/dotnet/dotnet $out/share/dotnet
+    cp -R "${cli}"/nix-support "$out"/
+    mkdir "$out"/bin
+    ln -s "$out"/share/dotnet/dotnet "$out"/bin/dotnet
+  ''
+  + lib.optionalString (cli ? man) ''
+    ln -s ${cli.man} $man
+  '';
   passthru = {
     pname = "dotnet";
     version = "combined";

@@ -50,19 +50,22 @@ let
           python3
           qt5.wrapQtAppsHook
           qt5.qttools
-        ] ++ (overrides.nativeBuildInputs or [ ]);
+        ]
+        ++ (overrides.nativeBuildInputs or [ ]);
 
         buildInputs = [
           avahi
           boost
           poco
           protobuf
-        ] ++ (overrides.buildInputs or [ ]);
+        ]
+        ++ (overrides.buildInputs or [ ]);
 
         cmakeFlags = [
           "-D g15=OFF"
           "-D CMAKE_CXX_STANDARD=17" # protobuf >22 requires C++ 17
-        ] ++ (overrides.configureFlags or [ ]);
+        ]
+        ++ (overrides.configureFlags or [ ]);
 
         preConfigure = ''
           patchShebangs scripts
@@ -89,39 +92,37 @@ let
       type = "mumble";
 
       nativeBuildInputs = [ qt5.qttools ];
-      buildInputs =
-        [
-          flac
-          libogg
-          libopus
-          libsndfile
-          libvorbis
-          qt5.qtsvg
-          rnnoise
-          speex
-        ]
-        ++ lib.optional (!jackSupport) alsa-lib
-        ++ lib.optional jackSupport libjack2
-        ++ lib.optional speechdSupport speechd-minimal
-        ++ lib.optional pulseSupport libpulseaudio
-        ++ lib.optional pipewireSupport pipewire;
+      buildInputs = [
+        flac
+        libogg
+        libopus
+        libsndfile
+        libvorbis
+        qt5.qtsvg
+        rnnoise
+        speex
+      ]
+      ++ lib.optional (!jackSupport) alsa-lib
+      ++ lib.optional jackSupport libjack2
+      ++ lib.optional speechdSupport speechd-minimal
+      ++ lib.optional pulseSupport libpulseaudio
+      ++ lib.optional pipewireSupport pipewire;
 
-      configureFlags =
-        [
-          "-D server=OFF"
-          "-D bundled-celt=ON"
-          "-D bundled-opus=OFF"
-          "-D bundled-speex=OFF"
-          "-D bundle-qt-translations=OFF"
-          "-D update=OFF"
-          "-D overlay-xcompile=OFF"
-          "-D oss=OFF"
-          "-D warnings-as-errors=OFF" # conversion error workaround
-        ]
-        ++ lib.optional (!speechdSupport) "-D speechd=OFF"
-        ++ lib.optional (!pulseSupport) "-D pulseaudio=OFF"
-        ++ lib.optional (!pipewireSupport) "-D pipewire=OFF"
-        ++ lib.optional jackSupport "-D alsa=OFF -D jackaudio=ON";
+      configureFlags = [
+        "-D server=OFF"
+        "-D bundled-celt=ON"
+        "-D bundled-opus=OFF"
+        "-D bundled-speex=OFF"
+        "-D bundle-qt-translations=OFF"
+        "-D update=OFF"
+        "-D overlay-xcompile=OFF"
+        "-D oss=OFF"
+        "-D warnings-as-errors=OFF" # conversion error workaround
+      ]
+      ++ lib.optional (!speechdSupport) "-D speechd=OFF"
+      ++ lib.optional (!pulseSupport) "-D pulseaudio=OFF"
+      ++ lib.optional (!pipewireSupport) "-D pipewire=OFF"
+      ++ lib.optional jackSupport "-D alsa=OFF -D jackaudio=ON";
 
       env.NIX_CFLAGS_COMPILE = lib.optionalString speechdSupport "-I${speechd-minimal}/include/speech-dispatcher";
 
@@ -151,7 +152,8 @@ let
           "-D Ice_SLICE_DIR=${lib.getDev zeroc-ice}/share/ice/slice"
         ];
 
-      buildInputs = [ libcap ] ++ lib.optional iceSupport zeroc-ice;
+      buildInputs = [ libcap ]
+        ++ lib.optional iceSupport zeroc-ice;
     } source;
 
   overlay =

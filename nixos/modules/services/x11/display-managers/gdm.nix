@@ -168,23 +168,22 @@ in
       # Enable desktop session data
       enable = true;
 
-      environment =
-        {
-          GDM_X_SERVER_EXTRA_ARGS = toString (lib.filter (arg: arg != "-terminate") cfg.xserverArgs);
-          XDG_DATA_DIRS = lib.makeSearchPath "share" [
-            gdm # for gnome-login.session
-            config.services.displayManager.sessionData.desktops
-            pkgs.gnome-control-center # for accessibility icon
-            pkgs.adwaita-icon-theme
-            pkgs.hicolor-icon-theme # empty icon theme as a base
-          ];
-        }
-        // lib.optionalAttrs (xSessionWrapper != null) {
-          # Make GDM use this wrapper before running the session, which runs the
-          # configured setupCommands. This relies on a patched GDM which supports
-          # this environment variable.
-          GDM_X_SESSION_WRAPPER = "${xSessionWrapper}";
-        };
+      environment = {
+        GDM_X_SERVER_EXTRA_ARGS = toString (lib.filter (arg: arg != "-terminate") cfg.xserverArgs);
+        XDG_DATA_DIRS = lib.makeSearchPath "share" [
+          gdm # for gnome-login.session
+          config.services.displayManager.sessionData.desktops
+          pkgs.gnome-control-center # for accessibility icon
+          pkgs.adwaita-icon-theme
+          pkgs.hicolor-icon-theme # empty icon theme as a base
+        ];
+      }
+      // lib.optionalAttrs (xSessionWrapper != null) {
+        # Make GDM use this wrapper before running the session, which runs the
+        # configured setupCommands. This relies on a patched GDM which supports
+        # this environment variable.
+        GDM_X_SESSION_WRAPPER = "${xSessionWrapper}";
+      };
       execCmd = "exec ${gdm}/bin/gdm";
       preStart = lib.optionalString (defaultSessionName != null) ''
         # Set default session in session chooser to a specified values – basically ignore session history.

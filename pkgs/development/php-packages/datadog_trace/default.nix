@@ -46,16 +46,15 @@ buildPecl rec {
       darwin.apple_sdk_11_0.rustPlatform.cargoSetupHook
     ];
 
-  buildInputs =
-    [
-      curl
-      pcre2
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      darwin.apple_sdk.frameworks.CoreFoundation
-      darwin.apple_sdk.frameworks.Security
-      libiconv
-    ];
+  buildInputs = [
+    curl
+    pcre2
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    darwin.apple_sdk.frameworks.CoreFoundation
+    darwin.apple_sdk.frameworks.Security
+    libiconv
+  ];
 
   meta = {
     changelog = "https://github.com/DataDog/dd-trace-php/blob/${src.rev}/CHANGELOG.md";

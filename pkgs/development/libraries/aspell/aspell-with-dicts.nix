@@ -22,7 +22,8 @@ in
 buildEnv {
   name = "aspell-env";
   nativeBuildInputs = [ makeWrapper ];
-  paths = [ aspell ] ++ dicts;
+  paths = [ aspell ]
+    ++ dicts;
   postBuild = ''
     # Construct wrappers in /bin
     unlink "$out/bin"

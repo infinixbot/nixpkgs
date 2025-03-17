@@ -64,37 +64,35 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-G68d/gvBbTdNx8xR3xY+OkBm5Yxq1NFjxby9BbpOcUk=";
   };
 
-  nativeBuildInputs =
-    [
-      cmake
-      rocm-cmake
-      clr
-    ]
-    ++ lib.optionals buildTensile [
-      tensile
-    ];
+  nativeBuildInputs = [
+    cmake
+    rocm-cmake
+    clr
+  ]
+  ++ lib.optionals buildTensile [
+    tensile
+  ];
 
-  buildInputs =
-    [
-      python3
-    ]
-    ++ lib.optionals buildTensile [
-      msgpack
-      libxml2
-      python3Packages.msgpack
-      python3Packages.joblib
-    ]
-    ++ lib.optionals buildTests [
-      gtest
-    ]
-    ++ lib.optionals (buildTests || buildBenchmarks) [
-      gfortran
-      openmp
-      amd-blis
-    ]
-    ++ lib.optionals (buildTensile || buildTests || buildBenchmarks) [
-      python3Packages.pyyaml
-    ];
+  buildInputs = [
+    python3
+  ]
+  ++ lib.optionals buildTensile [
+    msgpack
+    libxml2
+    python3Packages.msgpack
+    python3Packages.joblib
+  ]
+  ++ lib.optionals buildTests [
+    gtest
+  ]
+  ++ lib.optionals (buildTests || buildBenchmarks) [
+    gfortran
+    openmp
+    amd-blis
+  ]
+  ++ lib.optionals (buildTensile || buildTests || buildBenchmarks) [
+    python3Packages.pyyaml
+  ];
 
   cmakeFlags =
     [

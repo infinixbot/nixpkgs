@@ -135,7 +135,8 @@ stdenv.mkDerivation (
       fi
     '';
 
-    prePhases = [ "initPhase" ] ++ prePhases;
+    prePhases = [ "initPhase" ]
+      ++ prePhases;
 
     buildInputs =
       buildInputs
@@ -144,7 +145,8 @@ stdenv.mkDerivation (
       ++ (lib.optional doCoverityAnalysis args.cov-build)
       ++ (lib.optional doCoverityAnalysis args.xz);
 
-    lcovFilter = [ "${builtins.storeDir}/*" ] ++ lcovFilter;
+    lcovFilter = [ "${builtins.storeDir}/*" ]
+      ++ lcovFilter;
 
     inherit lcovExtraTraceFiles;
 

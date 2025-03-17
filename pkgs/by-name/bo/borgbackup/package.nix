@@ -56,17 +56,16 @@ python.pkgs.buildPythonApplication rec {
     "man"
   ];
 
-  buildInputs =
-    [
-      libb2
-      lz4
-      xxHash
-      zstd
-      openssl
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      acl
-    ];
+  buildInputs = [
+    libb2
+    lz4
+    xxHash
+    zstd
+    openssl
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    acl
+  ];
 
   dependencies = with python.pkgs; [
     msgpack

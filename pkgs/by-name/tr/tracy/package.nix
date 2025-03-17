@@ -52,27 +52,26 @@ stdenv.mkDerivation rec {
     ++ lib.optionals stdenv.isLinux [ wayland-scanner ]
     ++ lib.optionals stdenv.cc.isClang [ stdenv.cc.cc.libllvm ];
 
-  buildInputs =
-    [
-      capstone
-      freetype
-      tbb
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isLinux && withGtkFileSelector) [ gtk3 ]
-    ++ lib.optionals (stdenv.hostPlatform.isLinux && !withGtkFileSelector) [ dbus ]
-    ++ lib.optionals (stdenv.hostPlatform.isLinux && withWayland) [
-      libglvnd
-      libxkbcommon
-      wayland
-      wayland-protocols
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isDarwin || (stdenv.hostPlatform.isLinux && !withWayland)) [
-      glfw
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [ darwin.apple_sdk.frameworks.AppKit ]
-    ++ lib.optionals (
-      stdenv.hostPlatform.isDarwin && lib.versionAtLeast stdenv.hostPlatform.darwinMinVersion "11"
-    ) [ darwin.apple_sdk.frameworks.UniformTypeIdentifiers ];
+  buildInputs = [
+    capstone
+    freetype
+    tbb
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isLinux && withGtkFileSelector) [ gtk3 ]
+  ++ lib.optionals (stdenv.hostPlatform.isLinux && !withGtkFileSelector) [ dbus ]
+  ++ lib.optionals (stdenv.hostPlatform.isLinux && withWayland) [
+    libglvnd
+    libxkbcommon
+    wayland
+    wayland-protocols
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isDarwin || (stdenv.hostPlatform.isLinux && !withWayland)) [
+    glfw
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ darwin.apple_sdk.frameworks.AppKit ]
+  ++ lib.optionals (
+    stdenv.hostPlatform.isDarwin && lib.versionAtLeast stdenv.hostPlatform.darwinMinVersion "11"
+  ) [ darwin.apple_sdk.frameworks.UniformTypeIdentifiers ];
 
   cmakeFlags =
     [
@@ -107,24 +106,23 @@ stdenv.mkDerivation rec {
     ninja -C update/build
   '';
 
-  postInstall =
-    ''
-      install -D -m 0555 capture/build/tracy-capture -t $out/bin
-      install -D -m 0555 csvexport/build/tracy-csvexport $out/bin
-      install -D -m 0555 import/build/{tracy-import-chrome,tracy-import-fuchsia} -t $out/bin
-      install -D -m 0555 profiler/build/tracy-profiler $out/bin/tracy
-      install -D -m 0555 update/build/tracy-update -t $out/bin
-    ''
-    + lib.optionalString stdenv.hostPlatform.isLinux ''
-      substituteInPlace extra/desktop/tracy.desktop \
-        --replace-fail Exec=/usr/bin/tracy Exec=tracy
+  postInstall = ''
+    install -D -m 0555 capture/build/tracy-capture -t $out/bin
+    install -D -m 0555 csvexport/build/tracy-csvexport $out/bin
+    install -D -m 0555 import/build/{tracy-import-chrome,tracy-import-fuchsia} -t $out/bin
+    install -D -m 0555 profiler/build/tracy-profiler $out/bin/tracy
+    install -D -m 0555 update/build/tracy-update -t $out/bin
+  ''
+  + lib.optionalString stdenv.hostPlatform.isLinux ''
+    substituteInPlace extra/desktop/tracy.desktop \
+      --replace-fail Exec=/usr/bin/tracy Exec=tracy
 
-      install -D -m 0444 extra/desktop/application-tracy.xml $out/share/mime/packages/application-tracy.xml
-      install -D -m 0444 extra/desktop/tracy.desktop $out/share/applications/tracy.desktop
-      install -D -m 0444 icon/application-tracy.svg $out/share/icons/hicolor/scalable/apps/application-tracy.svg
-      install -D -m 0444 icon/icon.png $out/share/icons/hicolor/256x256/apps/tracy.png
-      install -D -m 0444 icon/icon.svg $out/share/icons/hicolor/scalable/apps/tracy.svg
-    '';
+    install -D -m 0444 extra/desktop/application-tracy.xml $out/share/mime/packages/application-tracy.xml
+    install -D -m 0444 extra/desktop/tracy.desktop $out/share/applications/tracy.desktop
+    install -D -m 0444 icon/application-tracy.svg $out/share/icons/hicolor/scalable/apps/application-tracy.svg
+    install -D -m 0444 icon/icon.png $out/share/icons/hicolor/256x256/apps/tracy.png
+    install -D -m 0444 icon/icon.svg $out/share/icons/hicolor/scalable/apps/tracy.svg
+  '';
 
   meta = with lib; {
     description = "Real time, nanosecond resolution, remote telemetry frame profiler for games and other applications";

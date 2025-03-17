@@ -36,7 +36,8 @@ let
       after = [
         "network-online.target"
         "time-sync.target"
-      ] ++ lib.optional (daemonType == "osd") "ceph-mon.target";
+      ]
+      ++ lib.optional (daemonType == "osd") "ceph-mon.target";
       wants = [
         "network-online.target"
         "time-sync.target"
@@ -419,14 +420,13 @@ in
         );
         # Remove all name-value pairs with null values from the attribute set to avoid making empty sections in the ceph.conf
         globalSection' = lib.filterAttrs (name: value: value != null) globalSection;
-        totalConfig =
-          {
-            global = globalSection';
-          }
-          // lib.optionalAttrs (cfg.mon.enable && cfg.mon.extraConfig != { }) { mon = cfg.mon.extraConfig; }
-          // lib.optionalAttrs (cfg.mds.enable && cfg.mds.extraConfig != { }) { mds = cfg.mds.extraConfig; }
-          // lib.optionalAttrs (cfg.osd.enable && cfg.osd.extraConfig != { }) { osd = cfg.osd.extraConfig; }
-          // lib.optionalAttrs (cfg.client.enable && cfg.client.extraConfig != { }) cfg.client.extraConfig;
+        totalConfig = {
+          global = globalSection';
+        }
+        // lib.optionalAttrs (cfg.mon.enable && cfg.mon.extraConfig != { }) { mon = cfg.mon.extraConfig; }
+        // lib.optionalAttrs (cfg.mds.enable && cfg.mds.extraConfig != { }) { mds = cfg.mds.extraConfig; }
+        // lib.optionalAttrs (cfg.osd.enable && cfg.osd.extraConfig != { }) { osd = cfg.osd.extraConfig; }
+        // lib.optionalAttrs (cfg.client.enable && cfg.client.extraConfig != { }) cfg.client.extraConfig;
       in
       lib.generators.toINI { } totalConfig;
 
@@ -455,21 +455,20 @@ in
 
     systemd.targets =
       let
-        targets =
-          [
-            {
-              ceph = {
-                description = "Ceph target allowing to start/stop all ceph service instances at once";
-                wantedBy = [ "multi-user.target" ];
-                unitConfig.StopWhenUnneeded = true;
-              };
-            }
-          ]
-          ++ lib.optional cfg.mon.enable (makeTarget "mon")
-          ++ lib.optional cfg.mds.enable (makeTarget "mds")
-          ++ lib.optional cfg.osd.enable (makeTarget "osd")
-          ++ lib.optional cfg.rgw.enable (makeTarget "rgw")
-          ++ lib.optional cfg.mgr.enable (makeTarget "mgr");
+        targets = [
+          {
+            ceph = {
+              description = "Ceph target allowing to start/stop all ceph service instances at once";
+              wantedBy = [ "multi-user.target" ];
+              unitConfig.StopWhenUnneeded = true;
+            };
+          }
+        ]
+        ++ lib.optional cfg.mon.enable (makeTarget "mon")
+        ++ lib.optional cfg.mds.enable (makeTarget "mds")
+        ++ lib.optional cfg.osd.enable (makeTarget "osd")
+        ++ lib.optional cfg.rgw.enable (makeTarget "rgw")
+        ++ lib.optional cfg.mgr.enable (makeTarget "mgr");
       in
       lib.mkMerge targets;
 

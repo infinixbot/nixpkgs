@@ -65,7 +65,8 @@ let
         meta = {
           description = "Aspell dictionary for ${fullName}";
           platforms = lib.platforms.all;
-        } // (args.meta or { });
+        }
+        // (args.meta or { });
       }
       // removeAttrs args [ "meta" ]
     );
@@ -126,7 +127,8 @@ let
 
           meta = {
             homepage = "http://ftp.gnu.org/gnu/aspell/dict/0index.html";
-          } // (args.meta or { });
+          }
+          // (args.meta or { });
 
         }
         //

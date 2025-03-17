@@ -63,14 +63,13 @@ stdenv.mkDerivation rec {
     # don't seem to be packaged in Nixpkgs, so don't unbundle them.
   '';
 
-  nativeBuildInputs =
-    [
-      cmake
-      pkg-config
-    ]
-    ++ lib.optionals (buildClient && stdenv.hostPlatform.isLinux) [
-      icoutils
-    ];
+  nativeBuildInputs = [
+    cmake
+    pkg-config
+  ]
+  ++ lib.optionals (buildClient && stdenv.hostPlatform.isLinux) [
+    icoutils
+  ];
 
   buildInputs =
     [

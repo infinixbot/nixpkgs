@@ -62,10 +62,10 @@ stdenv.mkDerivation (finalAttrs: {
   nativeBuildInputs = [
     cmake
     gtest
-  ] ++ lib.optional nvidia addDriverRunpath;
+  ]
+  ++ lib.optional nvidia addDriverRunpath;
 
-  buildInputs =
-    [ ncurses ]
+  buildInputs = [ ncurses ]
     ++ lib.optional stdenv.isLinux udev
     ++ lib.optional stdenv.isDarwin apple-sdk_12
     ++ lib.optional nvidia cudatoolkit

@@ -145,7 +145,8 @@ in
     };
 
     networking.firewall = mkIf cfg.openFirewall {
-      allowedTCPPorts = [ cfg.listen.port ] ++ [ cfg.api.listen.port ];
+      allowedTCPPorts = [ cfg.listen.port ]
+        ++ [ cfg.api.listen.port ];
     };
 
     users.users.${cfg.user} = {

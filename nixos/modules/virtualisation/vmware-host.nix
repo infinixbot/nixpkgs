@@ -72,7 +72,8 @@ in
       "fuse"
     ];
 
-    environment.systemPackages = [ cfg.package ] ++ cfg.extraPackages;
+    environment.systemPackages = [ cfg.package ]
+      ++ cfg.extraPackages;
     services.printing.drivers = [ cfg.package ];
 
     environment.etc."vmware/config".text = ''

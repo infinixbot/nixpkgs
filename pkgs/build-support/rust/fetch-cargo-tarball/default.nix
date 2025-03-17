@@ -84,7 +84,8 @@ lib.warn
           git
           cargo-vendor-normalise
           cargo
-        ] ++ nativeBuildInputs;
+        ]
+        ++ nativeBuildInputs;
 
         dontConfigure = true;
         buildPhase = ''

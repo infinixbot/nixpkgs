@@ -28,7 +28,8 @@ buildPythonPackage {
 
   build-system = [ setuptools ];
 
-  dependencies = [ aiohttp ] ++ lib.optionals withVoice [ pynacl ];
+  dependencies = [ aiohttp ]
+    ++ lib.optionals withVoice [ pynacl ];
 
   patchPhase = lib.optionalString withVoice ''
     substituteInPlace "discord/opus.py" \

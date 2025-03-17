@@ -24,7 +24,8 @@ stdenv.mkDerivation rec {
     gfortran
   ];
 
-  cmakeFlags = [ "-DBUILD_SHARED_LIBS=ON" ] ++ lib.optional blas64 "-DBUILD_INDEX64=ON";
+  cmakeFlags = [ "-DBUILD_SHARED_LIBS=ON" ]
+    ++ lib.optional blas64 "-DBUILD_INDEX64=ON";
 
   postInstall =
     let

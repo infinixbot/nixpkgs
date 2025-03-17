@@ -3,7 +3,8 @@ name: paths:
 
 buildEnv {
   inherit name;
-  paths = [ qtbase ] ++ paths;
+  paths = [ qtbase ]
+    ++ paths;
 
   pathsToLink = [
     "/metatypes"

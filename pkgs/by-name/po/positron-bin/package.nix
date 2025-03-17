@@ -128,6 +128,7 @@ stdenv.mkDerivation {
       detroyejr
     ];
     mainProgram = "positron";
-    platforms = [ "x86_64-linux" ] ++ platforms.darwin;
+    platforms = [ "x86_64-linux" ]
+      ++ platforms.darwin;
   };
 }

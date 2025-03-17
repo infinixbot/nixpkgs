@@ -165,7 +165,8 @@ stdenv.mkDerivation {
     homepage = "https://socalabs.com/synths/commodore-64-sid/";
     mainProgram = "SID";
     platforms = lib.platforms.linux;
-    license = [ lib.licenses.gpl3 ] ++ lib.optional enableVST2 lib.licenses.unfree;
+    license = [ lib.licenses.gpl3 ]
+      ++ lib.optional enableVST2 lib.licenses.unfree;
     maintainers = [ lib.maintainers.l1npengtul ];
   };
 }

@@ -40,7 +40,8 @@ rustPlatform.buildRustPackage rec {
     ];
 
   buildNoDefaultFeatures = true;
-  buildFeatures = [ "doh" ] ++ lib.optional withGui "webgui";
+  buildFeatures = [ "doh" ]
+    ++ lib.optional withGui "webgui";
 
   checkFlags = [
     # these want internet access, disable them

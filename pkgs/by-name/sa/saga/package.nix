@@ -47,7 +47,8 @@ stdenv.mkDerivation rec {
     cmake
     wrapGAppsHook3
     pkg-config
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin desktopToDarwinBundle;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin desktopToDarwinBundle;
 
   buildInputs =
     [

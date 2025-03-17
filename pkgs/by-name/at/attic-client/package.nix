@@ -27,17 +27,16 @@ rustPlatform.buildRustPackage {
     installShellFiles
   ];
 
-  buildInputs =
+  buildInputs = [
+    nix
+    boost
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin (
+    with darwin.apple_sdk.frameworks;
     [
-      nix
-      boost
+      SystemConfiguration
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        SystemConfiguration
-      ]
-    );
+  );
 
   cargoBuildFlags = lib.concatMapStrings (c: "-p ${c} ") crates;
   cargoHash = "sha256-AbpWnYfBMrR6oOfy2LkQvIPYsClCWE89bJav+iHTtLM=";

@@ -40,7 +40,8 @@ stdenv.mkDerivation rec {
     makeWrapper
     clang
     platformChez
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ zsh ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ zsh ];
   buildInputs = [
     platformChez
     gmp
@@ -50,7 +51,8 @@ stdenv.mkDerivation rec {
     patchShebangs --build tests
   '';
 
-  makeFlags = [ "PREFIX=$(out)" ] ++ lib.optional stdenv.hostPlatform.isDarwin "OS=";
+  makeFlags = [ "PREFIX=$(out)" ]
+    ++ lib.optional stdenv.hostPlatform.isDarwin "OS=";
 
   # The name of the main executable of pkgs.chez is `scheme`
   buildFlags = [

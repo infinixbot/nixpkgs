@@ -46,10 +46,10 @@ stdenv.mkDerivation (finalAttrs: {
     meson
     pkg-config
     ninja
-  ] ++ lib.optional (!minimal) wayland-scanner;
+  ]
+  ++ lib.optional (!minimal) wayland-scanner;
 
-  buildInputs =
-    [ libdrm ]
+  buildInputs = [ libdrm ]
     ++ lib.optionals (!minimal) [
       libX11
       libXext
@@ -98,16 +98,15 @@ stdenv.mkDerivation (finalAttrs: {
     changelog = "https://raw.githubusercontent.com/intel/libva/${finalAttrs.version}/NEWS";
     license = licenses.mit;
     maintainers = with maintainers; [ SuperSandro2000 ];
-    pkgConfigModules =
-      [
-        "libva"
-        "libva-drm"
-      ]
-      ++ lib.optionals (!minimal) [
-        "libva-glx"
-        "libva-wayland"
-        "libva-x11"
-      ];
+    pkgConfigModules = [
+      "libva"
+      "libva-drm"
+    ]
+    ++ lib.optionals (!minimal) [
+      "libva-glx"
+      "libva-wayland"
+      "libva-x11"
+    ];
     platforms = platforms.unix;
     badPlatforms = [
       # Mandatory libva shared library.

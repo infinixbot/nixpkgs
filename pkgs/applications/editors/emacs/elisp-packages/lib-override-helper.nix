@@ -42,13 +42,12 @@ rec {
   fixRequireHelmCore =
     pkg:
     pkg.overrideAttrs (previousAttrs: {
-      postPatch =
-        previousAttrs.postPatch or ""
-        + "\n"
-        + ''
-          substituteInPlace $ename.el \
-            --replace-fail "(require 'helm)" "(require 'helm-core)"
-        '';
+      postPatch = previousAttrs.postPatch or ""
+      + "\n"
+      + ''
+        substituteInPlace $ename.el \
+          --replace-fail "(require 'helm)" "(require 'helm-core)"
+      '';
     });
 
   ignoreCompilationError = pkg: ignoreCompilationErrorWhen pkg (finalAttrs: previousAttrs: true);

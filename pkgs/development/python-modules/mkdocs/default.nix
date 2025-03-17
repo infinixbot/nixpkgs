@@ -64,16 +64,19 @@ buildPythonPackage rec {
     pyyaml
     pyyaml-env-tag
     watchdog
-  ] ++ lib.optionals (pythonOlder "3.10") [ importlib-metadata ];
+  ]
+  ++ lib.optionals (pythonOlder "3.10") [ importlib-metadata ];
 
   optional-dependencies = {
-    i18n = [ babel ] ++ lib.optionals (pythonAtLeast "3.12") [ setuptools ];
+    i18n = [ babel ]
+      ++ lib.optionals (pythonAtLeast "3.12") [ setuptools ];
   };
 
   nativeCheckInputs = [
     unittestCheckHook
     mock
-  ] ++ optional-dependencies.i18n;
+  ]
+  ++ optional-dependencies.i18n;
 
   unittestFlagsArray = [
     "-v"

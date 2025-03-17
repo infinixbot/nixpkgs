@@ -28,13 +28,15 @@ buildPythonPackage rec {
     hash = "sha256-Qt6htldxy6k7elFdZaZdgkblYHaKZrkQalksjn8myKc=";
   };
 
-  build-system = [ setuptools ] ++ lib.optionals (pythonOlder "3.11") [ tomli ];
+  build-system = [ setuptools ]
+    ++ lib.optionals (pythonOlder "3.11") [ tomli ];
 
   dependencies = [
     packaging
     setuptools
     typing-extensions
-  ] ++ lib.optionals (pythonOlder "3.11") [ tomli ];
+  ]
+  ++ lib.optionals (pythonOlder "3.11") [ tomli ];
 
   optional-dependencies = {
     rich = [ rich ];

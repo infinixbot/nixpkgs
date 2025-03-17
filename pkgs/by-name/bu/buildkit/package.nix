@@ -18,7 +18,8 @@ buildGoModule rec {
 
   vendorHash = null;
 
-  subPackages = [ "cmd/buildctl" ] ++ lib.optionals stdenv.hostPlatform.isLinux [ "cmd/buildkitd" ];
+  subPackages = [ "cmd/buildctl" ]
+    ++ lib.optionals stdenv.hostPlatform.isLinux [ "cmd/buildkitd" ];
 
   ldflags = [
     "-s"

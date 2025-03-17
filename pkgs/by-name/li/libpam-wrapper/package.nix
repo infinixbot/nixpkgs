@@ -28,7 +28,8 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [ cmake ] ++ lib.optionals enablePython [ python ];
+  nativeBuildInputs = [ cmake ]
+    ++ lib.optionals enablePython [ python ];
 
   # We must use linux-pam, using openpam will result in broken fprintd.
   buildInputs = [ linux-pam ];

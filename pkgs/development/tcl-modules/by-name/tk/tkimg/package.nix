@@ -25,17 +25,16 @@ tcl.mkTclDerivation rec {
     "--with-tkinclude=${tk.dev}/include"
   ];
 
-  buildInputs =
+  buildInputs = [
+    xorg.libX11
+    tcllib
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin (
+    with darwin.apple_sdk.frameworks;
     [
-      xorg.libX11
-      tcllib
+      Cocoa
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        Cocoa
-      ]
-    );
+  );
 
   meta = {
     homepage = "https://sourceforge.net/projects/tkimg/";

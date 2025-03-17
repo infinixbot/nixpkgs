@@ -33,7 +33,8 @@ buildPythonPackage rec {
 
   optional-dependencies = {
     autocompletion = [ argcomplete ];
-    graphql = [ gql ] ++ gql.optional-dependencies.httpx;
+    graphql = [ gql ]
+      ++ gql.optional-dependencies.httpx;
     yaml = [ pyyaml ];
   };
 

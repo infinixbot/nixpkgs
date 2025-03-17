@@ -17,8 +17,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ makeWrapper ];
-  buildInputs =
-    [ perl ]
+  buildInputs = [ perl ]
     ++ (with perlPackages; [
       GetoptLong
       TimeParseDate

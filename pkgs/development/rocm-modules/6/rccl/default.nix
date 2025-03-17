@@ -19,13 +19,12 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "rccl";
   version = "6.0.2";
 
-  outputs =
-    [
-      "out"
-    ]
-    ++ lib.optionals buildTests [
-      "test"
-    ];
+  outputs = [
+    "out"
+  ]
+  ++ lib.optionals buildTests [
+    "test"
+  ];
 
   src = fetchFromGitHub {
     owner = "ROCm";
@@ -42,14 +41,13 @@ stdenv.mkDerivation (finalAttrs: {
     hipify
   ];
 
-  buildInputs =
-    [
-      rocm-smi
-      gtest
-    ]
-    ++ lib.optionals buildTests [
-      chrpath
-    ];
+  buildInputs = [
+    rocm-smi
+    gtest
+  ]
+  ++ lib.optionals buildTests [
+    chrpath
+  ];
 
   cmakeFlags =
     [

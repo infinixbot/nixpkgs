@@ -89,17 +89,16 @@ stdenv.mkDerivation rec {
         ''
     );
 
-  nativeBuildInputs =
-    [
-      cmake
-      ninja
-      python3
-    ]
-    ++ lib.optional (lib.versionAtLeast release_version "19") [
-      clang-only
-      buildLlvmTools.llvm
-      spirv-llvm-translator
-    ];
+  nativeBuildInputs = [
+    cmake
+    ninja
+    python3
+  ]
+  ++ lib.optional (lib.versionAtLeast release_version "19") [
+    clang-only
+    buildLlvmTools.llvm
+    spirv-llvm-translator
+  ];
   buildInputs = [ llvm ];
   strictDeps = true;
 

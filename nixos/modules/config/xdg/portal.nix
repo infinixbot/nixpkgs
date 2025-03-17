@@ -113,7 +113,8 @@ in
   config =
     let
       cfg = config.xdg.portal;
-      packages = [ pkgs.xdg-desktop-portal ] ++ cfg.extraPortals;
+      packages = [ pkgs.xdg-desktop-portal ]
+        ++ cfg.extraPortals;
     in
     mkIf cfg.enable {
       warnings = lib.optional (cfg.configPackages == [ ] && cfg.config == { }) ''

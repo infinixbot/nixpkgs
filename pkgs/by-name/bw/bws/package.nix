@@ -30,14 +30,13 @@ rustPlatform.buildRustPackage rec {
     };
   };
 
-  nativeBuildInputs =
-    [
-      installShellFiles
-      pkg-config
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      perl
-    ];
+  nativeBuildInputs = [
+    installShellFiles
+    pkg-config
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    perl
+  ];
 
   buildInputs =
     [

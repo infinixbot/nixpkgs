@@ -38,49 +38,48 @@ stdenv.mkDerivation (finalAttrs: {
   outputs = [
     "out"
     "dev"
-  ] ++ lib.optionals withDocumentation [ "devdoc" ];
+  ]
+  ++ lib.optionals withDocumentation [ "devdoc" ];
 
   patches = [
     # Remove when https://github.com/AyatanaIndicators/ayatana-indicator-messages/pull/39 merged & in release
     ./fix-pie.patch
   ];
 
-  postPatch =
-    ''
-      # Uses pkg_get_variable, cannot substitute prefix with that
-      substituteInPlace data/CMakeLists.txt \
-        --replace-fail "\''${SYSTEMD_USER_DIR}" "$out/lib/systemd/user"
+  postPatch = ''
+    # Uses pkg_get_variable, cannot substitute prefix with that
+    substituteInPlace data/CMakeLists.txt \
+      --replace-fail "\''${SYSTEMD_USER_DIR}" "$out/lib/systemd/user"
 
-      # Bad concatenation
-      substituteInPlace libmessaging-menu/messaging-menu.pc.in \
-        --replace-fail "\''${exec_prefix}/@CMAKE_INSTALL_LIBDIR@" '@CMAKE_INSTALL_FULL_LIBDIR@' \
-        --replace-fail "\''${prefix}/@CMAKE_INSTALL_INCLUDEDIR@" '@CMAKE_INSTALL_FULL_INCLUDEDIR@'
+    # Bad concatenation
+    substituteInPlace libmessaging-menu/messaging-menu.pc.in \
+      --replace-fail "\''${exec_prefix}/@CMAKE_INSTALL_LIBDIR@" '@CMAKE_INSTALL_FULL_LIBDIR@' \
+      --replace-fail "\''${prefix}/@CMAKE_INSTALL_INCLUDEDIR@" '@CMAKE_INSTALL_FULL_INCLUDEDIR@'
 
-      # Fix tests with gobject-introspection 1.80 not installing GLib introspection data
-      substituteInPlace tests/CMakeLists.txt \
-        --replace-fail 'GI_TYPELIB_PATH=\"' 'GI_TYPELIB_PATH=\"$GI_TYPELIB_PATH$\{GI_TYPELIB_PATH\:+\:\}'
-    ''
-    + lib.optionalString (!withDocumentation) ''
-      sed -i CMakeLists.txt \
-        '/add_subdirectory(doc)/d'
-    '';
+    # Fix tests with gobject-introspection 1.80 not installing GLib introspection data
+    substituteInPlace tests/CMakeLists.txt \
+      --replace-fail 'GI_TYPELIB_PATH=\"' 'GI_TYPELIB_PATH=\"$GI_TYPELIB_PATH$\{GI_TYPELIB_PATH\:+\:\}'
+  ''
+  + lib.optionalString (!withDocumentation) ''
+    sed -i CMakeLists.txt \
+      '/add_subdirectory(doc)/d'
+  '';
 
   strictDeps = true;
 
-  nativeBuildInputs =
-    [
-      cmake
-      glib # For glib-compile-schemas
-      intltool
-      pkg-config
-      vala
-      wrapGAppsHook3
-    ]
-    ++ lib.optionals withDocumentation [
-      docbook_xsl
-      docbook_xml_dtd_45
-      gtk-doc
-    ];
+  nativeBuildInputs = [
+    cmake
+    glib # For glib-compile-schemas
+    intltool
+    pkg-config
+    vala
+    wrapGAppsHook3
+  ]
+  ++ lib.optionals withDocumentation [
+    docbook_xsl
+    docbook_xml_dtd_45
+    gtk-doc
+  ];
 
   buildInputs = [
     accountsservice

@@ -83,12 +83,12 @@ in
         DynamicUser = true;
         LoadCredential = [
           "cachix-token:${toString cfg.cachixTokenFile}"
-        ] ++ lib.optional (cfg.signingKeyFile != null) "signing-key:${toString cfg.signingKeyFile}";
+        ]
+        ++ lib.optional (cfg.signingKeyFile != null) "signing-key:${toString cfg.signingKeyFile}";
       };
       script =
         let
-          command =
-            [ "${cfg.package}/bin/cachix" ]
+          command = [ "${cfg.package}/bin/cachix" ]
             ++ (lib.optional cfg.verbose "--verbose")
             ++ (lib.optionals (cfg.host != null) [
               "--host"

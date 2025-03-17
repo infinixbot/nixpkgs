@@ -64,18 +64,16 @@ let
 
         buildInputs = [ openssl ];
 
-        makeFlags =
-          [
-            "HOSTCC=$(CC_FOR_BUILD)"
-            "M0_CROSS_COMPILE=${pkgsCross.arm-embedded.stdenv.cc.targetPrefix}"
-            "CROSS_COMPILE=${stdenv.cc.targetPrefix}"
-            # binutils 2.39 regression
-            # `warning: /build/source/build/rk3399/release/bl31/bl31.elf has a LOAD segment with RWX permissions`
-            # See also: https://developer.trustedfirmware.org/T996
-            "LDFLAGS=-no-warn-rwx-segments"
-          ]
-          ++ (lib.optional (platform != null) "PLAT=${platform}")
-          ++ extraMakeFlags;
+        makeFlags = [
+          "HOSTCC=$(CC_FOR_BUILD)"
+          "M0_CROSS_COMPILE=${pkgsCross.arm-embedded.stdenv.cc.targetPrefix}"
+          "CROSS_COMPILE=${stdenv.cc.targetPrefix}"
+          # binutils 2.39 regression
+          # `warning: /build/source/build/rk3399/release/bl31/bl31.elf has a LOAD segment with RWX permissions`
+          # See also: https://developer.trustedfirmware.org/T996
+          "LDFLAGS=-no-warn-rwx-segments"
+        ]
+        ++ (lib.optional (platform != null) "PLAT=${platform}") ++ extraMakeFlags;
 
         installPhase = ''
           runHook preInstall
@@ -97,9 +95,8 @@ let
           {
             homepage = "https://github.com/ARM-software/arm-trusted-firmware";
             description = "Reference implementation of secure world software for ARMv8-A";
-            license = [
-              licenses.bsd3
-            ] ++ lib.optionals (!deleteHDCPBlobBeforeBuild) [ licenses.unfreeRedistributable ];
+            license = [ licenses.bsd3 ]
+              ++ lib.optionals (!deleteHDCPBlobBeforeBuild) [ licenses.unfreeRedistributable ];
             maintainers = with maintainers; [ lopsided98 ];
           }
           // extraMeta;

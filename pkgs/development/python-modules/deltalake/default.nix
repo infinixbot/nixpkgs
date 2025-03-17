@@ -40,24 +40,22 @@ buildPythonPackage rec {
     pyarrow-hotfix
   ];
 
-  buildInputs =
-    [
-      openssl
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      darwin.apple_sdk.frameworks.Security
-      darwin.apple_sdk.frameworks.SystemConfiguration
-      libiconv
-    ];
+  buildInputs = [
+    openssl
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    darwin.apple_sdk.frameworks.Security
+    darwin.apple_sdk.frameworks.SystemConfiguration
+    libiconv
+  ];
 
-  nativeBuildInputs =
-    [
-      pkg-config # openssl-sys needs this
-    ]
-    ++ (with rustPlatform; [
-      cargoSetupHook
-      maturinBuildHook
-    ]);
+  nativeBuildInputs = [
+    pkg-config # openssl-sys needs this
+  ]
+  ++ (with rustPlatform; [
+    cargoSetupHook
+    maturinBuildHook
+  ]);
 
   pythonImportsCheck = [ "deltalake" ];
 

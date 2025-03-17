@@ -119,7 +119,8 @@ mkWrapper type (
       libkrb5
       curl
       xmlstarlet
-    ] ++ lib.optional stdenv.hostPlatform.isLinux lttng-ust_2_12;
+    ]
+    ++ lib.optional stdenv.hostPlatform.isLinux lttng-ust_2_12;
 
     src = fetchurl (
       srcs.${hostRid} or (throw "Missing source (url and hash) for host RID: ${hostRid}")
@@ -190,33 +191,32 @@ mkWrapper type (
                          (global-name "com.apple.system.opendirectoryd.membership"))
     '';
 
-    passthru =
+    passthru = {
+      inherit icu hasILCompiler;
+    }
+    // lib.optionalAttrs (type == "sdk") (
+      let
+        # force evaluation of the SDK package to ensure evaluation failures
+        # (e.g. due to vulnerabilities) propagate to the nuget packages
+        forceSDKEval = builtins.seq finalAttrs.finalPackage.drvPath;
+      in
       {
-        inherit icu hasILCompiler;
-      }
-      // lib.optionalAttrs (type == "sdk") (
-        let
-          # force evaluation of the SDK package to ensure evaluation failures
-          # (e.g. due to vulnerabilities) propagate to the nuget packages
-          forceSDKEval = builtins.seq finalAttrs.finalPackage.drvPath;
-        in
-        {
-          packages = map forceSDKEval (
-            commonPackages ++ hostPackages.${hostRid} ++ targetPackages.${targetRid}
-          );
-          targetPackages = lib.mapAttrs (_: map forceSDKEval) targetPackages;
-          inherit runtime aspnetcore;
+        packages = map forceSDKEval (
+          commonPackages ++ hostPackages.${hostRid} ++ targetPackages.${targetRid}
+        );
+        targetPackages = lib.mapAttrs (_: map forceSDKEval) targetPackages;
+        inherit runtime aspnetcore;
 
-          updateScript =
-            let
-              majorVersion = lib.concatStringsSep "." (lib.take 2 (lib.splitVersion version));
-            in
-            [
-              ./update.sh
-              majorVersion
-            ];
-        }
-      );
+        updateScript =
+          let
+            majorVersion = lib.concatStringsSep "." (lib.take 2 (lib.splitVersion version));
+          in
+          [
+            ./update.sh
+            majorVersion
+          ];
+      }
+    );
 
     meta = with lib; {
       description = builtins.getAttr type descriptions;

@@ -103,8 +103,7 @@ let
   };
 
   # TODO(ghthor): some of this can be removed
-  darwinBuildInputs =
-    [ llamaccpPackage ]
+  darwinBuildInputs = [ llamaccpPackage ]
     ++ optionals stdenv.hostPlatform.isDarwin ([
       apple-sdk_15
     ]);
@@ -144,19 +143,17 @@ rustPlatform.buildRustPackage {
   versionCheckProgramArg = [ "--version" ];
   doInstallCheck = true;
 
-  nativeBuildInputs =
-    [
-      git
-      pkg-config
-      protobuf
-      cmake
-    ]
-    ++ optionals enableCuda [
-      autoAddDriverRunpath
-    ];
+  nativeBuildInputs = [
+    git
+    pkg-config
+    protobuf
+    cmake
+  ]
+  ++ optionals enableCuda [
+    autoAddDriverRunpath
+  ];
 
-  buildInputs =
-    [ openssl ]
+  buildInputs = [ openssl ]
     ++ optionals stdenv.hostPlatform.isDarwin darwinBuildInputs
     ++ optionals enableCuda cudaBuildInputs
     ++ optionals enableRocm rocmBuildInputs;

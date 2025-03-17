@@ -139,31 +139,31 @@ stdenv.mkDerivation (
       "shadowstack"
     ];
 
-    nativeBuildInputs =
-      [
-        cmake
-        # while this is not an autotools build, it still includes a config.guess
-        # this is needed until scripts are updated to not use /usr/bin/uname on FreeBSD native
-        updateAutotoolsGnuConfigScriptsHook
-      ]
-      ++ (lib.optional (lib.versionAtLeast release_version "15") ninja)
-      ++ [ python ]
-      ++ optionals enableManpages [
-        # Note: we intentionally use `python3Packages` instead of `python3.pkgs`;
-        # splicing does *not* work with the latter. (TODO: fix)
-        python3Packages.sphinx
-      ]
-      ++ optionals (lib.versionOlder version "18" && enableManpages) [
-        python3Packages.recommonmark
-      ]
-      ++ optionals (lib.versionAtLeast version "18" && enableManpages) [
-        python3Packages.myst-parser
-      ];
+    nativeBuildInputs = [
+      cmake
+      # while this is not an autotools build, it still includes a config.guess
+      # this is needed until scripts are updated to not use /usr/bin/uname on FreeBSD native
+      updateAutotoolsGnuConfigScriptsHook
+    ]
+    ++ (lib.optional (lib.versionAtLeast release_version "15") ninja)
+    ++ [ python ]
+    ++ optionals enableManpages [
+      # Note: we intentionally use `python3Packages` instead of `python3.pkgs`;
+      # splicing does *not* work with the latter. (TODO: fix)
+      python3Packages.sphinx
+    ]
+    ++ optionals (lib.versionOlder version "18" && enableManpages) [
+      python3Packages.recommonmark
+    ]
+    ++ optionals (lib.versionAtLeast version "18" && enableManpages) [
+      python3Packages.myst-parser
+    ];
 
     buildInputs = [
       libxml2
       libffi
-    ] ++ optional enablePFM libpfm; # exegesis
+    ]
+    ++ optional enablePFM libpfm; # exegesis
 
     propagatedBuildInputs =
       (lib.optional (
@@ -171,59 +171,58 @@ stdenv.mkDerivation (
       ) ncurses)
       ++ [ zlib ];
 
-    postPatch =
-      optionalString stdenv.hostPlatform.isDarwin (
-        ''
-          substituteInPlace cmake/modules/AddLLVM.cmake \
-            --replace-fail 'set(_install_name_dir INSTALL_NAME_DIR "@rpath")' "set(_install_name_dir)"
-        ''
-        +
-          # As of LLVM 15, marked as XFAIL on arm64 macOS but lit doesn't seem to pick
-          # this up: https://github.com/llvm/llvm-project/blob/c344d97a125b18f8fed0a64aace73c49a870e079/llvm/test/MC/ELF/cfi-version.ll#L7
-          (optionalString (lib.versionAtLeast release_version "15") (
-            ''
-              rm test/MC/ELF/cfi-version.ll
+    postPatch = optionalString stdenv.hostPlatform.isDarwin (
+      ''
+        substituteInPlace cmake/modules/AddLLVM.cmake \
+          --replace-fail 'set(_install_name_dir INSTALL_NAME_DIR "@rpath")' "set(_install_name_dir)"
+      ''
+      +
+        # As of LLVM 15, marked as XFAIL on arm64 macOS but lit doesn't seem to pick
+        # this up: https://github.com/llvm/llvm-project/blob/c344d97a125b18f8fed0a64aace73c49a870e079/llvm/test/MC/ELF/cfi-version.ll#L7
+        (optionalString (lib.versionAtLeast release_version "15") (
+          ''
+            rm test/MC/ELF/cfi-version.ll
 
+          ''
+          +
+            # This test tries to call `sw_vers` by absolute path (`/usr/bin/sw_vers`)
+            # and thus fails under the sandbox:
+            (
+              if lib.versionAtLeast release_version "16" then
+                ''
+                  substituteInPlace unittests/TargetParser/Host.cpp \
+                    --replace-fail '/usr/bin/sw_vers' "${(builtins.toString darwin.DarwinTools) + "/bin/sw_vers"}"
+                ''
+              else
+                ''
+                  substituteInPlace unittests/Support/Host.cpp \
+                    --replace-fail '/usr/bin/sw_vers' "${(builtins.toString darwin.DarwinTools) + "/bin/sw_vers"}"
+                ''
+            )
+          +
+            # This test tries to call the intrinsics `@llvm.roundeven.f32` and
+            # `@llvm.roundeven.f64` which seem to (incorrectly?) lower to `roundevenf`
+            # and `roundeven` on macOS and FreeBSD.
+            #
+            # However these functions are glibc specific so the test fails:
+            #   - https://www.gnu.org/software/gnulib/manual/html_node/roundevenf.html
+            #   - https://www.gnu.org/software/gnulib/manual/html_node/roundeven.html
+            #
+            # TODO(@rrbutani): this seems to run fine on `aarch64-darwin`, why does it
+            # pass there?
+            optionalString (lib.versionAtLeast release_version "16") ''
+              substituteInPlace test/ExecutionEngine/Interpreter/intrinsics.ll \
+                --replace-fail "%roundeven32 = call float @llvm.roundeven.f32(float 0.000000e+00)" "" \
+                --replace-fail "%roundeven64 = call double @llvm.roundeven.f64(double 0.000000e+00)" ""
             ''
-            +
-              # This test tries to call `sw_vers` by absolute path (`/usr/bin/sw_vers`)
-              # and thus fails under the sandbox:
-              (
-                if lib.versionAtLeast release_version "16" then
-                  ''
-                    substituteInPlace unittests/TargetParser/Host.cpp \
-                      --replace-fail '/usr/bin/sw_vers' "${(builtins.toString darwin.DarwinTools) + "/bin/sw_vers"}"
-                  ''
-                else
-                  ''
-                    substituteInPlace unittests/Support/Host.cpp \
-                      --replace-fail '/usr/bin/sw_vers' "${(builtins.toString darwin.DarwinTools) + "/bin/sw_vers"}"
-                  ''
-              )
-            +
-              # This test tries to call the intrinsics `@llvm.roundeven.f32` and
-              # `@llvm.roundeven.f64` which seem to (incorrectly?) lower to `roundevenf`
-              # and `roundeven` on macOS and FreeBSD.
-              #
-              # However these functions are glibc specific so the test fails:
-              #   - https://www.gnu.org/software/gnulib/manual/html_node/roundevenf.html
-              #   - https://www.gnu.org/software/gnulib/manual/html_node/roundeven.html
-              #
-              # TODO(@rrbutani): this seems to run fine on `aarch64-darwin`, why does it
-              # pass there?
-              optionalString (lib.versionAtLeast release_version "16") ''
-                substituteInPlace test/ExecutionEngine/Interpreter/intrinsics.ll \
-                  --replace-fail "%roundeven32 = call float @llvm.roundeven.f32(float 0.000000e+00)" "" \
-                  --replace-fail "%roundeven64 = call double @llvm.roundeven.f64(double 0.000000e+00)" ""
-              ''
-            +
-              # fails when run in sandbox
-              optionalString (!stdenv.hostPlatform.isx86 && lib.versionAtLeast release_version "18") ''
-                substituteInPlace unittests/Support/VirtualFileSystemTest.cpp \
-                  --replace-fail "PhysicalFileSystemWorkingDirFailure" "DISABLED_PhysicalFileSystemWorkingDirFailure"
-              ''
-          ))
-      )
+          +
+            # fails when run in sandbox
+            optionalString (!stdenv.hostPlatform.isx86 && lib.versionAtLeast release_version "18") ''
+              substituteInPlace unittests/Support/VirtualFileSystemTest.cpp \
+                --replace-fail "PhysicalFileSystemWorkingDirFailure" "DISABLED_PhysicalFileSystemWorkingDirFailure"
+            ''
+        ))
+    )
       +
         # dup of above patch with different conditions
         optionalString
@@ -536,47 +535,46 @@ stdenv.mkDerivation (
           ]
       ++ devExtraCmakeFlags;
 
-    postInstall =
-      ''
-        mkdir -p $python/share
-        mv $out/share/opt-viewer $python/share/opt-viewer
-        moveToOutput "bin/llvm-config*" "$dev"
-        substituteInPlace "$dev/lib/cmake/llvm/LLVMExports-${
-          if debugVersion then "debug" else "release"
-        }.cmake" \
-          --replace-fail "$out/bin/llvm-config" "$dev/bin/llvm-config"
-      ''
-      + (
-        if lib.versionOlder release_version "15" then
-          ''
-            substituteInPlace "$dev/lib/cmake/llvm/LLVMConfig.cmake" \
-              --replace-fail 'set(LLVM_BINARY_DIR "''${LLVM_INSTALL_PREFIX}")' 'set(LLVM_BINARY_DIR "''${LLVM_INSTALL_PREFIX}'"$lib"'")'
-          ''
-        else
-          ''
-            substituteInPlace "$dev/lib/cmake/llvm/LLVMConfig.cmake" \
-              --replace-fail 'set(LLVM_BINARY_DIR "''${LLVM_INSTALL_PREFIX}")' 'set(LLVM_BINARY_DIR "'"$lib"'")'
-          ''
-      )
-      +
-        optionalString
-          (stdenv.hostPlatform.isDarwin && enableSharedLibraries && lib.versionOlder release_version "18")
-          ''
-            ln -s $lib/lib/libLLVM.dylib $lib/lib/libLLVM-${shortVersion}.dylib
-          ''
-      + optionalString (stdenv.hostPlatform.isDarwin && enableSharedLibraries) ''
-        ln -s $lib/lib/libLLVM.dylib $lib/lib/libLLVM-${release_version}.dylib
-      ''
-      + optionalString (stdenv.buildPlatform != stdenv.hostPlatform) (
-        if stdenv.buildPlatform.canExecute stdenv.hostPlatform then
-          ''
-            ln -s $dev/bin/llvm-config $dev/bin/llvm-config-native
-          ''
-        else
-          ''
-            cp NATIVE/bin/llvm-config $dev/bin/llvm-config-native
-          ''
-      );
+    postInstall = ''
+      mkdir -p $python/share
+      mv $out/share/opt-viewer $python/share/opt-viewer
+      moveToOutput "bin/llvm-config*" "$dev"
+      substituteInPlace "$dev/lib/cmake/llvm/LLVMExports-${
+        if debugVersion then "debug" else "release"
+      }.cmake" \
+        --replace-fail "$out/bin/llvm-config" "$dev/bin/llvm-config"
+    ''
+    + (
+      if lib.versionOlder release_version "15" then
+        ''
+          substituteInPlace "$dev/lib/cmake/llvm/LLVMConfig.cmake" \
+            --replace-fail 'set(LLVM_BINARY_DIR "''${LLVM_INSTALL_PREFIX}")' 'set(LLVM_BINARY_DIR "''${LLVM_INSTALL_PREFIX}'"$lib"'")'
+        ''
+      else
+        ''
+          substituteInPlace "$dev/lib/cmake/llvm/LLVMConfig.cmake" \
+            --replace-fail 'set(LLVM_BINARY_DIR "''${LLVM_INSTALL_PREFIX}")' 'set(LLVM_BINARY_DIR "'"$lib"'")'
+        ''
+    )
+    +
+      optionalString
+        (stdenv.hostPlatform.isDarwin && enableSharedLibraries && lib.versionOlder release_version "18")
+        ''
+          ln -s $lib/lib/libLLVM.dylib $lib/lib/libLLVM-${shortVersion}.dylib
+        ''
+    + optionalString (stdenv.hostPlatform.isDarwin && enableSharedLibraries) ''
+      ln -s $lib/lib/libLLVM.dylib $lib/lib/libLLVM-${release_version}.dylib
+    ''
+    + optionalString (stdenv.buildPlatform != stdenv.hostPlatform) (
+      if stdenv.buildPlatform.canExecute stdenv.hostPlatform then
+        ''
+          ln -s $dev/bin/llvm-config $dev/bin/llvm-config-native
+        ''
+      else
+        ''
+          cp NATIVE/bin/llvm-config $dev/bin/llvm-config-native
+        ''
+    );
 
     doCheck = !isDarwinBootstrap && doCheck;
 
@@ -644,9 +642,8 @@ stdenv.mkDerivation (
     )
   )
   // lib.optionalAttrs (lib.versionAtLeast release_version "13") {
-    nativeCheckInputs = [
-      which
-    ] ++ lib.optional (stdenv.hostPlatform.isDarwin && lib.versionAtLeast release_version "15") sysctl;
+    nativeCheckInputs = [ which ]
+      ++ lib.optional (stdenv.hostPlatform.isDarwin && lib.versionAtLeast release_version "15") sysctl;
   }
   // lib.optionalAttrs (lib.versionOlder release_version "15") {
     # hacky fix: created binaries need to be run before installation

@@ -21,8 +21,7 @@ stdenv.mkDerivation rec {
     m4
     makeWrapper
   ];
-  buildInputs =
-    [ libbsd ]
+  buildInputs = [ libbsd ]
     ++ (with perlPackages; [
       perl
       SysCPU

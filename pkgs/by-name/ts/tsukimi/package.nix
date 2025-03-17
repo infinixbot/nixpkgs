@@ -32,22 +32,21 @@ rustPlatform.buildRustPackage rec {
     wrapGAppsHook4
   ];
 
-  buildInputs =
-    [
-      mpv-unwrapped
-      ffmpeg
-      libadwaita
-      openssl
-      libepoxy
-    ]
-    ++ (with gst_all_1; [
-      gstreamer
-      gst-plugins-base
-      gst-plugins-good
-      gst-plugins-bad
-      gst-plugins-ugly
-      gst-libav
-    ]);
+  buildInputs = [
+    mpv-unwrapped
+    ffmpeg
+    libadwaita
+    openssl
+    libepoxy
+  ]
+  ++ (with gst_all_1; [
+    gstreamer
+    gst-plugins-base
+    gst-plugins-good
+    gst-plugins-bad
+    gst-plugins-ugly
+    gst-libav
+  ]);
 
   doCheck = false; # tests require networking
 

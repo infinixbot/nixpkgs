@@ -22,7 +22,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-uJLezIGp5nwsTSXFOZ1XbY93w7DAUmBgZ0MkPIZTnfg=";
   };
 
-  nativeBuildInputs = [ qmake ] ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames;
+  nativeBuildInputs = [ qmake ]
+    ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames;
 
   buildInputs =
     [ glew ]
@@ -43,15 +44,14 @@ stdenv.mkDerivation rec {
     qmakeFlags=("''${qmakeFlags[@]}" "INSTALLDIR=$out")
   '';
 
-  postInstall =
-    ''
-      install -D copying.txt "$out/share/doc/opencsg/copying.txt"
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      mkdir -p $out/Applications
-      mv $out/bin/*.app $out/Applications
-      rmdir $out/bin || true
-    '';
+  postInstall = ''
+    install -D copying.txt "$out/share/doc/opencsg/copying.txt"
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    mkdir -p $out/Applications
+    mv $out/bin/*.app $out/Applications
+    rmdir $out/bin || true
+  '';
 
   dontWrapQtApps = true;
 

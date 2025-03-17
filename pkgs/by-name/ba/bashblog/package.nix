@@ -32,7 +32,8 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [ makeWrapper ];
 
-  buildInputs = [ TextMarkdown ] ++ lib.optionals usePandoc [ pandoc ];
+  buildInputs = [ TextMarkdown ]
+    ++ lib.optionals usePandoc [ pandoc ];
 
   patches = [
     (replaceVars ./0001-Setting-markdown_bin.patch {

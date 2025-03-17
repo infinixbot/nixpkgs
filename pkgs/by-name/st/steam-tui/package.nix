@@ -30,7 +30,8 @@ rustPlatform.buildRustPackage rec {
     pkg-config
   ];
 
-  buildInputs = [ steamcmd ] ++ lib.optional withWine wine;
+  buildInputs = [ steamcmd ]
+    ++ lib.optional withWine wine;
 
   preFixup = ''
     mv $out/bin/steam-tui $out/bin/.steam-tui-unwrapped

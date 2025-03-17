@@ -70,19 +70,18 @@ stdenv.mkDerivation (finalAttrs: {
   version = "1.16.0";
 
   # TODO: split out lib once we figure out what to do with triggerdir
-  outputs =
-    [
-      "out"
-      "dev"
-    ]
-    ++ lib.optionals withDocbookDocs [
-      "doc"
-    ]
-    ++ lib.optionals withGtkDoc [
-      "devdoc"
-    ]
-    ++ lib.optional finalAttrs.doCheck "installedTests"
-    ++ lib.optional withMan "man";
+  outputs = [
+    "out"
+    "dev"
+  ]
+  ++ lib.optionals withDocbookDocs [
+    "doc"
+  ]
+  ++ lib.optionals withGtkDoc [
+    "devdoc"
+  ]
+  ++ lib.optional finalAttrs.doCheck "installedTests"
+  ++ lib.optional withMan "man";
 
   src = fetchurl {
     url = "https://github.com/flatpak/flatpak/releases/download/${finalAttrs.version}/flatpak-${finalAttrs.version}.tar.xz";
@@ -142,26 +141,25 @@ stdenv.mkDerivation (finalAttrs: {
 
   depsBuildBuild = [ pkg-config ];
 
-  nativeBuildInputs =
-    [
-      (python3.pythonOnBuildForHost.withPackages (p: [ p.pyparsing ]))
-      bison
-      gobject-introspection
-      meson
-      ninja
-      pkg-config
-      validatePkgConfig
-      wayland-scanner
-      wrapGAppsNoGuiHook
-    ]
-    ++ lib.optional withGtkDoc gtk-doc
-    ++ lib.optional withMan libxslt
-    ++ lib.optional withSELinuxModule bzip2
-    ++ lib.optionals withDocbookDocs [
-      docbook-xsl-nons
-      docbook_xml_dtd_45
-      xmlto
-    ];
+  nativeBuildInputs = [
+    (python3.pythonOnBuildForHost.withPackages (p: [ p.pyparsing ]))
+    bison
+    gobject-introspection
+    meson
+    ninja
+    pkg-config
+    validatePkgConfig
+    wayland-scanner
+    wrapGAppsNoGuiHook
+  ]
+  ++ lib.optional withGtkDoc gtk-doc
+  ++ lib.optional withMan libxslt
+  ++ lib.optional withSELinuxModule bzip2
+  ++ lib.optionals withDocbookDocs [
+    docbook-xsl-nons
+    docbook_xml_dtd_45
+    xmlto
+  ];
 
   buildInputs = [
     appstream
@@ -185,7 +183,8 @@ stdenv.mkDerivation (finalAttrs: {
     wayland-protocols
     xorg.libXau
     zstd
-  ] ++ lib.optional withSystemd systemd;
+  ]
+  ++ lib.optional withSystemd systemd;
 
   # Required by flatpak.pc
   propagatedBuildInputs = [

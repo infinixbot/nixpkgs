@@ -209,7 +209,8 @@ in
         inherit pre-pkg;
       };
       src = resolve-pre-src pre-src;
-      buildInputs = [ gerbil ] ++ gerbilInputs ++ buildInputs_;
+      buildInputs = [ gerbil ]
+        ++ gerbilInputs ++ buildInputs_;
 
       postPatch = ''
         set -e ;

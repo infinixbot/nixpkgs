@@ -59,44 +59,42 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-D1pMGQhCS/JrxB6TYRaMNjaFCA+9uHoZbIkchAHKLwk=";
   };
 
-  patches =
-    [
-      # Make g-ir-scanner put absolute path to GIR files it generates
-      # so that programs can just dlopen them without having to muck
-      # with LD_LIBRARY_PATH environment variable.
-      (replaceVars ./absolute_shlib_path.patch {
-        inherit nixStoreDir;
-      })
-    ]
-    ++ lib.optionals x11Support [
-      # Hardcode the cairo shared library path in the Cairo gir shipped with this package.
-      # https://github.com/NixOS/nixpkgs/issues/34080
-      (replaceVars ./absolute_gir_path.patch {
-        cairoLib = "${lib.getLib cairo}/lib";
-        # original source code in patch's context
-        CAIRO_GIR_PACKAGE = null;
-        CAIRO_SHARED_LIBRARY = null;
-      })
-    ];
+  patches = [
+    # Make g-ir-scanner put absolute path to GIR files it generates
+    # so that programs can just dlopen them without having to muck
+    # with LD_LIBRARY_PATH environment variable.
+    (replaceVars ./absolute_shlib_path.patch {
+      inherit nixStoreDir;
+    })
+  ]
+  ++ lib.optionals x11Support [
+    # Hardcode the cairo shared library path in the Cairo gir shipped with this package.
+    # https://github.com/NixOS/nixpkgs/issues/34080
+    (replaceVars ./absolute_gir_path.patch {
+      cairoLib = "${lib.getLib cairo}/lib";
+      # original source code in patch's context
+      CAIRO_GIR_PACKAGE = null;
+      CAIRO_SHARED_LIBRARY = null;
+    })
+  ];
 
   strictDeps = true;
 
-  nativeBuildInputs =
-    [
-      meson
-      ninja
-      pkg-config
-      flex
-      bison
-      gtk-doc
-      docbook-xsl-nons
-      docbook_xml_dtd_45
-      # Build definition checks for the Python modules needed at runtime by importing them.
-      (buildPackages.python3.withPackages pythonModules)
-      finalAttrs.setupHook # move .gir files
-      # can't use canExecute, we need prebuilt when cross
-    ]
-    ++ lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [ gobject-introspection-unwrapped ];
+  nativeBuildInputs = [
+    meson
+    ninja
+    pkg-config
+    flex
+    bison
+    gtk-doc
+    docbook-xsl-nons
+    docbook_xml_dtd_45
+    # Build definition checks for the Python modules needed at runtime by importing them.
+    (buildPackages.python3.withPackages pythonModules)
+    finalAttrs.setupHook # move .gir files
+    # can't use canExecute, we need prebuilt when cross
+  ]
+  ++ lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [ gobject-introspection-unwrapped ];
 
   buildInputs = [
     (python3.withPackages pythonModules)

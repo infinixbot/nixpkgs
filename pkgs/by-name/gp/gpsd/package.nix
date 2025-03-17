@@ -44,16 +44,15 @@ stdenv.mkDerivation rec {
   };
 
   # TODO: render & install HTML documentation using asciidoctor
-  nativeBuildInputs =
-    [
-      pkg-config
-      python3Packages.wrapPython
-      scons
-    ]
-    ++ lib.optionals guiSupport [
-      gobject-introspection
-      wrapGAppsHook3
-    ];
+  nativeBuildInputs = [
+    pkg-config
+    python3Packages.wrapPython
+    scons
+  ]
+  ++ lib.optionals guiSupport [
+    gobject-introspection
+    wrapGAppsHook3
+  ];
 
   buildInputs =
     [

@@ -25,7 +25,8 @@ rustPlatform.buildRustPackage rec {
   buildInputs = [
     openssl
     xz
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ Security ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ Security ];
   nativeBuildInputs = [
     pkg-config
     makeBinaryWrapper

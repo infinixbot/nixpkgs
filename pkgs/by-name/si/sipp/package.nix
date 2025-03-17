@@ -42,7 +42,8 @@ stdenv.mkDerivation rec {
     ncurses
     libpcap
     openssl
-  ] ++ lib.optional (stdenv.hostPlatform.isLinux) lksctp-tools;
+  ]
+  ++ lib.optional (stdenv.hostPlatform.isLinux) lksctp-tools;
 
   meta = with lib; {
     homepage = "http://sipp.sf.net";

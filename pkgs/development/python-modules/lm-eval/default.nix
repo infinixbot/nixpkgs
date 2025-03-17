@@ -96,7 +96,8 @@ buildPythonPackage rec {
       immutabledict
       nltk
     ];
-    neuronx = [ optimum ] ++ optimum.optional-dependencies.neuronx;
+    neuronx = [ optimum ]
+      ++ optimum.optional-dependencies.neuronx;
     mamba = [
       mamba-ssm
       causal-conv1d
@@ -105,7 +106,8 @@ buildPythonPackage rec {
       sympy
       antlr4-python3-runtime
     ];
-    optimum = [ optimum ] ++ optimum.optional-dependencies.openvino;
+    optimum = [ optimum ]
+      ++ optimum.optional-dependencies.openvino;
     sentencepiece = [ sentencepiece ];
     vllm = [ vllm ];
     wandb = [
@@ -122,7 +124,8 @@ buildPythonPackage rec {
 
   nativeCheckInputs = [
     pytestCheckHook
-  ] ++ optional-dependencies.api;
+  ]
+  ++ optional-dependencies.api;
 
   preCheck = ''
     export HOME=$TMP

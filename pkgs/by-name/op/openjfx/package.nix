@@ -48,7 +48,8 @@
 }:
 
 let
-  sourceFile = ./. + "/${featureVersion}/source.json";
+  sourceFile = ./.
+    + "/${featureVersion}/source.json";
   source = nixpkgs-openjdk-updater.openjdkSource {
     inherit sourceFile;
     featureVersionPrefix = featureVersion;
@@ -104,7 +105,8 @@ stdenv.mkDerivation {
   mitmCache = gradle_openjfx.fetchDeps {
     attrPath = "openjfx${featureVersion}";
     pkg = pkgs."openjfx${featureVersion}".override { withWebKit = true; };
-    data = ./. + "/${featureVersion}/deps.json";
+    data = ./.
+      + "/${featureVersion}/deps.json";
   };
 
   gradleBuildTask = "sdk";

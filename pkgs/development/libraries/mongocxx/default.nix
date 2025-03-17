@@ -37,7 +37,8 @@ stdenv.mkDerivation (finalAttrs: {
     mongoc
     openssl
     cyrus_sasl
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin darwin.apple_sdk.frameworks.Security;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin darwin.apple_sdk.frameworks.Security;
 
   cmakeFlags = [
     "-DCMAKE_CXX_STANDARD=20"

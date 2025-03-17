@@ -33,7 +33,8 @@ stdenv.mkDerivation rec {
     libpcap
     libnet
     ncurses
-  ] ++ lib.optional withGtk gtk2;
+  ]
+  ++ lib.optional withGtk gtk2;
 
   autoreconfPhase = "./autogen.sh";
 

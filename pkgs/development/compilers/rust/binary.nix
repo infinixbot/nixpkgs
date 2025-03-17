@@ -43,8 +43,7 @@ rec {
     };
 
     nativeBuildInputs = lib.optional (!stdenv.hostPlatform.isDarwin) autoPatchelfHook;
-    buildInputs =
-      [ bash ]
+    buildInputs = [ bash ]
       ++ lib.optional (!stdenv.hostPlatform.isDarwin && !stdenv.hostPlatform.isFreeBSD) gcc.cc.lib
       ++ lib.optional (!stdenv.hostPlatform.isDarwin) zlib
       ++ lib.optional stdenv.hostPlatform.isDarwin Security;
@@ -148,7 +147,8 @@ rec {
 
     nativeBuildInputs = [
       makeWrapper
-    ] ++ lib.optional (!stdenv.hostPlatform.isDarwin) autoPatchelfHook;
+    ]
+    ++ lib.optional (!stdenv.hostPlatform.isDarwin) autoPatchelfHook;
     buildInputs =
       [ bash ]
       ++ lib.optional (!stdenv.hostPlatform.isDarwin && !stdenv.hostPlatform.isFreeBSD) gcc.cc.lib
@@ -158,19 +158,18 @@ rec {
       patchShebangs .
     '';
 
-    installPhase =
-      ''
-        patchShebangs ./install.sh
-        ./install.sh --prefix=$out \
-          --components=cargo
-      ''
-      + lib.optionalString stdenv.hostPlatform.isDarwin ''
-        install_name_tool -change "/usr/lib/libcurl.4.dylib" \
-          "${curl.out}/lib/libcurl.4.dylib" "$out/bin/cargo"
-      ''
-      + ''
-        wrapProgram "$out/bin/cargo" \
-          --suffix PATH : "${rustc}/bin"
-      '';
+    installPhase = ''
+      patchShebangs ./install.sh
+      ./install.sh --prefix=$out \
+        --components=cargo
+    ''
+    + lib.optionalString stdenv.hostPlatform.isDarwin ''
+      install_name_tool -change "/usr/lib/libcurl.4.dylib" \
+        "${curl.out}/lib/libcurl.4.dylib" "$out/bin/cargo"
+    ''
+    + ''
+      wrapProgram "$out/bin/cargo" \
+        --suffix PATH : "${rustc}/bin"
+    '';
   };
 }

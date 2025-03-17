@@ -72,8 +72,7 @@ buildPythonPackage rec {
     "test_assert_html_snapshot_by_css_selector"
   ];
 
-  disabledTestPaths =
-    [ "bx_py_utils_tests/tests/test_project_setup.py" ]
+  disabledTestPaths = [ "bx_py_utils_tests/tests/test_project_setup.py" ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       # processify() doesn't work under darwin
       # https://github.com/boxine/bx_py_utils/issues/80

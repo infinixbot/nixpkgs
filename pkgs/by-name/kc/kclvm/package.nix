@@ -28,8 +28,7 @@ rustPlatform.buildRustPackage rec {
     };
   };
 
-  buildInputs =
-    [ rustc ]
+  buildInputs = [ rustc ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       darwin.apple_sdk.frameworks.Security
       darwin.apple_sdk.frameworks.CoreServices

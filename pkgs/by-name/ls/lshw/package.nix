@@ -29,8 +29,7 @@ stdenv.mkDerivation rec {
     gettext
   ];
 
-  buildInputs =
-    [ hwdata ]
+  buildInputs = [ hwdata ]
     ++ lib.optionals withGUI [
       gtk3
       sqlite
@@ -41,11 +40,13 @@ stdenv.mkDerivation rec {
     "VERSION=${src.rev}"
   ];
 
-  buildFlags = [ "all" ] ++ lib.optional withGUI "gui";
+  buildFlags = [ "all" ]
+    ++ lib.optional withGUI "gui";
 
   hardeningDisable = lib.optionals stdenv.hostPlatform.isStatic [ "fortify" ];
 
-  installTargets = [ "install" ] ++ lib.optional withGUI "install-gui";
+  installTargets = [ "install" ]
+    ++ lib.optional withGUI "install-gui";
 
   enableParallelBuilding = true;
 

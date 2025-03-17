@@ -60,24 +60,23 @@ stdenv.mkDerivation rec {
     wrapQtAppsHook
   ];
 
-  buildInputs =
+  buildInputs = [
+    cmark
+    git
+    hunspell
+    libssh2
+    lua5_4
+    openssl
+    qtbase
+    qttools
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin (
+    with darwin.apple_sdk.frameworks;
     [
-      cmark
-      git
-      hunspell
-      libssh2
-      lua5_4
-      openssl
-      qtbase
-      qttools
+      CoreFoundation
+      Security
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        CoreFoundation
-        Security
-      ]
-    );
+  );
 
   postInstall = ''
     # Those are not program libs, just some Qt5 libs that the build system leaks for some reason

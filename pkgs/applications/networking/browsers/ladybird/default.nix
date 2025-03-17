@@ -138,15 +138,14 @@ stdenv.mkDerivation (finalAttrs: {
       apple-sdk_14
     ];
 
-  cmakeFlags =
-    [
-      # Disable network operations
-      "-DSERENITY_CACHE_DIR=Caches"
-      "-DENABLE_NETWORK_DOWNLOADS=OFF"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      "-DCMAKE_INSTALL_LIBEXECDIR=libexec"
-    ];
+  cmakeFlags = [
+    # Disable network operations
+    "-DSERENITY_CACHE_DIR=Caches"
+    "-DENABLE_NETWORK_DOWNLOADS=OFF"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    "-DCMAKE_INSTALL_LIBEXECDIR=libexec"
+  ];
 
   # FIXME: Add an option to -DENABLE_QT=ON on macOS to use Qt rather than Cocoa for the GUI
 

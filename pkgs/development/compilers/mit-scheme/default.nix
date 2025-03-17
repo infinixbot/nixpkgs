@@ -43,7 +43,8 @@ stdenv.mkDerivation {
         sha256 = "035f92vni0vqmgj9hq2i7vwasz7crx52wll4823vhfkm1qdv5ywc";
       };
 
-  buildInputs = [ ncurses ] ++ lib.optionals enableX11 [ libX11 ];
+  buildInputs = [ ncurses ]
+    ++ lib.optionals enableX11 [ libX11 ];
 
   configurePhase = ''
     runHook preConfigure

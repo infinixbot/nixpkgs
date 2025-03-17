@@ -363,7 +363,8 @@ in
           User = cfg.user;
           Group = cfg.group;
           WorkingDirectory = cfg.dataDir;
-          ReadWritePaths = [ cfg.dataDir ] ++ cfg.extraReadWriteDirs;
+          ReadWritePaths = [ cfg.dataDir ]
+            ++ cfg.extraReadWriteDirs;
           LimitNOFILE = 8192; # taken from upstream
           KillMode = "mixed";
           ExecStart = "${cfg.package}/bin/sftpgo serve ${utils.escapeSystemdExecArgs cfg.extraArgs}";

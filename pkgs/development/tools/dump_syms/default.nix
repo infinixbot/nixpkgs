@@ -37,14 +37,13 @@ rustPlatform.buildRustPackage {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      openssl
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isDarwin) [
-      Security
-      SystemConfiguration
-    ];
+  buildInputs = [
+    openssl
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isDarwin) [
+    Security
+    SystemConfiguration
+  ];
 
   checkFlags = [
     # Disable tests that require network access

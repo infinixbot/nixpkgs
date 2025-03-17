@@ -30,8 +30,7 @@ let
 
     nativeBuildInputs = [ pkg-config ];
 
-    buildInputs =
-      [ openssl ]
+    buildInputs = [ openssl ]
       ++ lib.optionals stdenv.hostPlatform.isDarwin [
         libiconv
         CoreServices

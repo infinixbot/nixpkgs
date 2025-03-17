@@ -76,7 +76,8 @@ buildPythonPackage rec {
       requests
       requests-oauthlib
       pyjwt
-    ] ++ pyjwt.optional-dependencies.crypto;
+    ]
+    ++ pyjwt.optional-dependencies.crypto;
     steam = [ python3-openid ];
   };
 
@@ -87,7 +88,8 @@ buildPythonPackage rec {
     pytestCheckHook
     pytest-asyncio
     pytest-django
-  ] ++ lib.flatten (builtins.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (builtins.attrValues optional-dependencies);
 
   disabledTests = [
     # Tests require network access

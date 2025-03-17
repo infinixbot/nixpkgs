@@ -25,7 +25,8 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     autoreconfHook
     makeWrapper
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ CoreServices ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ CoreServices ];
   buildInputs = [
     gettext
     libtool

@@ -21,7 +21,8 @@ python3Packages.buildPythonApplication rec {
     prompt-toolkit
   ];
 
-  nativeCheckInputs = [ git ] ++ (with python3Packages; [ parameterized ]);
+  nativeCheckInputs = [ git ]
+    ++ (with python3Packages; [ parameterized ]);
 
   meta = with lib; {
     description = "Command-line tool to delete merged Git branches";

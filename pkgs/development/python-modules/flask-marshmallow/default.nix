@@ -39,7 +39,8 @@ buildPythonPackage rec {
     ];
   };
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ optional-dependencies.sqlalchemy;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ optional-dependencies.sqlalchemy;
 
   pythonImportsCheck = [ "flask_marshmallow" ];
 

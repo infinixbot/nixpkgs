@@ -625,7 +625,8 @@ in
 
       serviceConfig =
         let
-          capabilityBoundingSet = [ "CAP_CHOWN" ] ++ lib.optional (cfg.port < 1024) "CAP_NET_BIND_SERVICE";
+          capabilityBoundingSet = [ "CAP_CHOWN" ]
+            ++ lib.optional (cfg.port < 1024) "CAP_NET_BIND_SERVICE";
         in
         {
           Restart = "always";

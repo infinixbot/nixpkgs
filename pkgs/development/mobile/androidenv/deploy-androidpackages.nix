@@ -97,7 +97,8 @@ stdenv.mkDerivation (
       else
         package.archives.all
     ) packages;
-    nativeBuildInputs = [ unzip ] ++ nativeBuildInputs;
+    nativeBuildInputs = [ unzip ]
+      ++ nativeBuildInputs;
     preferLocalBuild = true;
 
     unpackPhase = ''
@@ -146,7 +147,8 @@ stdenv.mkDerivation (
 
     meta = {
       description = lib.concatMapStringsSep "\n" (package: package.displayName) packages;
-    } // meta;
+    }
+    // meta;
   }
   // extraParams
 )

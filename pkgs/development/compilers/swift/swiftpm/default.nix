@@ -79,8 +79,7 @@ let
   };
 
   # Tools invoked by swiftpm at run-time.
-  runtimeDeps =
-    [ git ]
+  runtimeDeps = [ git ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       xcbuild.xcrun
       # These tools are part of cctools, but adding that as a build input puts

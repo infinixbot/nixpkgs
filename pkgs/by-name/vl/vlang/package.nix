@@ -68,7 +68,8 @@ stdenv.mkDerivation {
     glfw
     freetype
     openssl
-  ] ++ lib.optional stdenv.hostPlatform.isUnix upx;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isUnix upx;
 
   nativeBuildInputs = [ makeWrapper ];
 

@@ -59,13 +59,10 @@ buildPythonPackage rec {
     soap = [ requests ];
   };
 
-  nativeCheckInputs =
-    [
-      pytestCheckHook
-    ]
-    ++ optional-dependencies.cli
-    ++ optional-dependencies.lxml
-    ++ optional-dependencies.soap;
+  nativeCheckInputs = [
+    pytestCheckHook
+  ]
+  ++ optional-dependencies.cli ++ optional-dependencies.lxml ++ optional-dependencies.soap;
 
   disabledTestPaths = [ "tests/integration/benchmarks" ];
 

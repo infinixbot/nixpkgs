@@ -48,24 +48,23 @@ stdenv.mkDerivation (finalAttrs: {
     ./add-option-for-installation-sysconfdir.patch
   ];
 
-  nativeBuildInputs =
-    [
-      pkg-config
-      intltool
-      meson
-      ninja
-      wrapGAppsHook3
-      python3
-      vala
-      gobject-introspection
-      # devdoc
-      gtk-doc
-      docbook-xsl-nons
-      docbook_xml_dtd_412
-    ]
-    ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
-      mesonEmulatorHook
-    ];
+  nativeBuildInputs = [
+    pkg-config
+    intltool
+    meson
+    ninja
+    wrapGAppsHook3
+    python3
+    vala
+    gobject-introspection
+    # devdoc
+    gtk-doc
+    docbook-xsl-nons
+    docbook_xml_dtd_412
+  ]
+  ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
+    mesonEmulatorHook
+  ];
 
   buildInputs =
     [
@@ -87,20 +86,19 @@ stdenv.mkDerivation (finalAttrs: {
     glib-networking
   ];
 
-  mesonFlags =
-    [
-      "-Dsystemd-system-unit-dir=${placeholder "out"}/lib/systemd/system"
-      "-Ddemo-agent=${lib.boolToString withDemoAgent}"
-      "--sysconfdir=/etc"
-      "-Dsysconfdir_install=${placeholder "out"}/etc"
-      "-Ddbus-srv-user=geoclue"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      "-D3g-source=false"
-      "-Dcdma-source=false"
-      "-Dmodem-gps-source=false"
-      "-Dnmea-source=false"
-    ];
+  mesonFlags = [
+    "-Dsystemd-system-unit-dir=${placeholder "out"}/lib/systemd/system"
+    "-Ddemo-agent=${lib.boolToString withDemoAgent}"
+    "--sysconfdir=/etc"
+    "-Dsysconfdir_install=${placeholder "out"}/etc"
+    "-Ddbus-srv-user=geoclue"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    "-D3g-source=false"
+    "-Dcdma-source=false"
+    "-Dmodem-gps-source=false"
+    "-Dnmea-source=false"
+  ];
 
   postPatch = ''
     chmod +x demo/install-file.py

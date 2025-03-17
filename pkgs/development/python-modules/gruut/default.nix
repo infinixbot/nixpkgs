@@ -70,30 +70,31 @@ buildPythonPackage rec {
     num2words
     numpy
     python-crfsuite
-  ] ++ optional-dependencies.en;
+  ]
+  ++ optional-dependencies.en;
 
-  optional-dependencies =
-    {
-      train = [
-        pydub
-        rapidfuzz
-      ];
-    }
-    // lib.genAttrs langPkgs (lang: [
-      (callPackage ./language-pack.nix {
-        inherit
-          lang
-          version
-          src
-          build-system
-          ;
-      })
-    ]);
+  optional-dependencies = {
+    train = [
+      pydub
+      rapidfuzz
+    ];
+  }
+  // lib.genAttrs langPkgs (lang: [
+    (callPackage ./language-pack.nix {
+      inherit
+        lang
+        version
+        src
+        build-system
+        ;
+    })
+  ]);
 
   nativeCheckInputs = [
     glibcLocales
     pytestCheckHook
-  ] ++ lib.flatten (lib.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (lib.attrValues optional-dependencies);
 
   disabledTests = [
     # https://github.com/rhasspy/gruut/issues/25

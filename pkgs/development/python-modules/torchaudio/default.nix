@@ -88,17 +88,16 @@ buildPythonPackage rec {
 
   patches = [ ./0001-setup.py-propagate-cmakeFlags.patch ];
 
-  postPatch =
-    ''
-      substituteInPlace setup.py \
-        --replace 'print(" --- Initializing submodules")' "return" \
-        --replace "_fetch_archives(_parse_sources())" "pass"
-    ''
-    + lib.optionalString rocmSupport ''
-      # There is no .info/version-dev, only .info/version
-      substituteInPlace cmake/LoadHIP.cmake \
-        --replace "/.info/version-dev" "/.info/version"
-    '';
+  postPatch = ''
+    substituteInPlace setup.py \
+      --replace 'print(" --- Initializing submodules")' "return" \
+      --replace "_fetch_archives(_parse_sources())" "pass"
+  ''
+  + lib.optionalString rocmSupport ''
+    # There is no .info/version-dev, only .info/version
+    substituteInPlace cmake/LoadHIP.cmake \
+      --replace "/.info/version-dev" "/.info/version"
+  '';
 
   env = {
     TORCH_CUDA_ARCH_LIST = "${lib.concatStringsSep ";" torch.cudaCapabilities}";

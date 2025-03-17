@@ -180,14 +180,13 @@ edk2.mkDerivation projectDscPath (finalAttrs: {
     export PYTHONPATH=$NIX_BUILD_TOP/debian/python:$PYTHONPATH
   '';
 
-  postBuild =
-    lib.optionalString (stdenv.hostPlatform.isAarch || stdenv.hostPlatform.isLoongArch64) ''
-      (
-      cd ${buildPrefix}/FV
-      cp QEMU_EFI.fd ${fwPrefix}_CODE.fd
-      cp QEMU_VARS.fd ${fwPrefix}_VARS.fd
-      )
-    ''
+  postBuild = lib.optionalString (stdenv.hostPlatform.isAarch || stdenv.hostPlatform.isLoongArch64) ''
+    (
+    cd ${buildPrefix}/FV
+    cp QEMU_EFI.fd ${fwPrefix}_CODE.fd
+    cp QEMU_VARS.fd ${fwPrefix}_VARS.fd
+    )
+  ''
     + lib.optionalString stdenv.hostPlatform.isAarch ''
       # QEMU expects 64MiB CODE and VARS files on ARM/AARCH64 architectures
       # Truncate the firmware files to the expected size
@@ -216,35 +215,34 @@ edk2.mkDerivation projectDscPath (finalAttrs: {
   # TODO: Usage of -bios OVMF.fd is discouraged: https://lists.katacontainers.io/pipermail/kata-dev/2021-January/001650.html
   # We should remove the isx86-specifc block here once we're ready to update nixpkgs to stop using that and update the
   # release notes accordingly.
-  postInstall =
-    ''
-      mkdir -vp $fd/FV
-    ''
-    +
-      lib.optionalString
-        (builtins.elem fwPrefix [
-          "OVMF"
-          "AAVMF"
-          "RISCV_VIRT"
-          "LOONGARCH_VIRT"
-        ])
-        ''
-          mv -v $out/FV/${fwPrefix}_{CODE,VARS}.fd $fd/FV
-        ''
-    + lib.optionalString stdenv.hostPlatform.isx86 ''
-      mv -v $out/FV/${fwPrefix}.fd $fd/FV
-    ''
-    + lib.optionalString msVarsTemplate ''
-      mv -v $out/FV/${fwPrefix}_VARS.ms.fd $fd/FV
-      ln -sv $fd/FV/${fwPrefix}_CODE{,.ms}.fd
-    ''
-    + lib.optionalString stdenv.hostPlatform.isAarch ''
-      mv -v $out/FV/QEMU_{EFI,VARS}.fd $fd/FV
-      # Add symlinks for Fedora dir layout: https://src.fedoraproject.org/rpms/edk2/blob/main/f/edk2.spec
-      mkdir -vp $fd/AAVMF
-      ln -s $fd/FV/AAVMF_CODE.fd $fd/AAVMF/QEMU_EFI-pflash.raw
-      ln -s $fd/FV/AAVMF_VARS.fd $fd/AAVMF/vars-template-pflash.raw
-    '';
+  postInstall = ''
+    mkdir -vp $fd/FV
+  ''
+  +
+    lib.optionalString
+      (builtins.elem fwPrefix [
+        "OVMF"
+        "AAVMF"
+        "RISCV_VIRT"
+        "LOONGARCH_VIRT"
+      ])
+      ''
+        mv -v $out/FV/${fwPrefix}_{CODE,VARS}.fd $fd/FV
+      ''
+  + lib.optionalString stdenv.hostPlatform.isx86 ''
+    mv -v $out/FV/${fwPrefix}.fd $fd/FV
+  ''
+  + lib.optionalString msVarsTemplate ''
+    mv -v $out/FV/${fwPrefix}_VARS.ms.fd $fd/FV
+    ln -sv $fd/FV/${fwPrefix}_CODE{,.ms}.fd
+  ''
+  + lib.optionalString stdenv.hostPlatform.isAarch ''
+    mv -v $out/FV/QEMU_{EFI,VARS}.fd $fd/FV
+    # Add symlinks for Fedora dir layout: https://src.fedoraproject.org/rpms/edk2/blob/main/f/edk2.spec
+    mkdir -vp $fd/AAVMF
+    ln -s $fd/FV/AAVMF_CODE.fd $fd/AAVMF/QEMU_EFI-pflash.raw
+    ln -s $fd/FV/AAVMF_VARS.fd $fd/AAVMF/vars-template-pflash.raw
+  '';
 
   dontPatchELF = true;
 

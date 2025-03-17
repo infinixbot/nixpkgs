@@ -201,7 +201,8 @@ in
       ];
       documentation = [ "man:lxd(1)" ];
 
-      path = [ pkgs.util-linux ] ++ lib.optional cfg.zfsSupport config.boot.zfs.package;
+      path = [ pkgs.util-linux ]
+        ++ lib.optional cfg.zfsSupport config.boot.zfs.package;
 
       environment = lib.mkIf (cfg.ui.enable) {
         "LXD_UI" = cfg.ui.package;
@@ -277,6 +278,7 @@ in
       "xt_CHECKSUM"
       "xt_MASQUERADE"
       "vhost_vsock"
-    ] ++ lib.optionals (!config.networking.nftables.enable) [ "iptable_mangle" ];
+    ]
+    ++ lib.optionals (!config.networking.nftables.enable) [ "iptable_mangle" ];
   };
 }

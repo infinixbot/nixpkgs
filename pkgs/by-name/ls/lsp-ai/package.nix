@@ -63,15 +63,14 @@ rustPlatform.buildRustPackage rec {
     perl
   ];
 
-  buildInputs =
-    [
-      openssl
-      zlib
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      darwin.apple_sdk.frameworks.SystemConfiguration
-      darwin.apple_sdk.frameworks.CoreServices
-    ];
+  buildInputs = [
+    openssl
+    zlib
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    darwin.apple_sdk.frameworks.SystemConfiguration
+    darwin.apple_sdk.frameworks.CoreServices
+  ];
 
   passthru.updateScript = gitUpdater {
     rev-prefix = "v";

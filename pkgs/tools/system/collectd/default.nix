@@ -41,14 +41,13 @@ stdenv.mkDerivation rec {
     pkg-config
     autoreconfHook
   ];
-  buildInputs =
-    [
-      libtool
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      darwin.apple_sdk.frameworks.ApplicationServices
-    ]
-    ++ plugins.buildInputs;
+  buildInputs = [
+    libtool
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    darwin.apple_sdk.frameworks.ApplicationServices
+  ]
+  ++ plugins.buildInputs;
 
   configureFlags =
     [

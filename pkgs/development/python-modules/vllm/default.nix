@@ -215,42 +215,40 @@ buildPythonPackage rec {
 
   # Ignore the python version check because it hard-codes minor versions and
   # lags behind `ray`'s python interpreter support
-  postPatch =
-    ''
-      substituteInPlace CMakeLists.txt \
-        --replace-fail \
-          'set(PYTHON_SUPPORTED_VERSIONS' \
-          'set(PYTHON_SUPPORTED_VERSIONS "${lib.versions.majorMinor python.version}"'
+  postPatch = ''
+    substituteInPlace CMakeLists.txt \
+      --replace-fail \
+        'set(PYTHON_SUPPORTED_VERSIONS' \
+        'set(PYTHON_SUPPORTED_VERSIONS "${lib.versions.majorMinor python.version}"'
 
-      # Relax torch dependency manually because the nonstandard requirements format
-      # is not caught by pythonRelaxDeps
-      substituteInPlace requirements*.txt pyproject.toml \
-        --replace-warn 'torch==2.5.1' 'torch==${lib.getVersion torch}' \
-        --replace-warn 'torch == 2.5.1' 'torch == ${lib.getVersion torch}'
-    ''
-    + lib.optionalString (nccl == null) ''
-      # On platforms where NCCL is not supported (e.g. Jetson), substitute Gloo (provided by Torch)
-      substituteInPlace vllm/distributed/parallel_state.py \
-        --replace-fail '"nccl"' '"gloo"'
-    '';
+    # Relax torch dependency manually because the nonstandard requirements format
+    # is not caught by pythonRelaxDeps
+    substituteInPlace requirements*.txt pyproject.toml \
+      --replace-warn 'torch==2.5.1' 'torch==${lib.getVersion torch}' \
+      --replace-warn 'torch == 2.5.1' 'torch == ${lib.getVersion torch}'
+  ''
+  + lib.optionalString (nccl == null) ''
+    # On platforms where NCCL is not supported (e.g. Jetson), substitute Gloo (provided by Torch)
+    substituteInPlace vllm/distributed/parallel_state.py \
+      --replace-fail '"nccl"' '"gloo"'
+  '';
 
-  nativeBuildInputs =
-    [
-      cmake
-      ninja
-      pythonRelaxDepsHook
-      which
-    ]
-    ++ lib.optionals rocmSupport [
-      rocmPackages.hipcc
-    ]
-    ++ lib.optionals cudaSupport [
-      cudaPackages.cuda_nvcc
-      autoAddDriverRunpath
-    ]
-    ++ lib.optionals isCudaJetson [
-      cudaPackages.autoAddCudaCompatRunpath
-    ];
+  nativeBuildInputs = [
+    cmake
+    ninja
+    pythonRelaxDepsHook
+    which
+  ]
+  ++ lib.optionals rocmSupport [
+    rocmPackages.hipcc
+  ]
+  ++ lib.optionals cudaSupport [
+    cudaPackages.cuda_nvcc
+    autoAddDriverRunpath
+  ]
+  ++ lib.optionals isCudaJetson [
+    cudaPackages.autoAddCudaCompatRunpath
+  ];
 
   build-system = [
     packaging
@@ -258,77 +256,75 @@ buildPythonPackage rec {
     wheel
   ];
 
-  buildInputs =
+  buildInputs = [
+    setuptools-scm
+    torch
+  ]
+  ++ (lib.optionals cpuSupport ([
+    numactl
+    oneDNN
+  ]))
+  ++ (
+    lib.optionals cudaSupport mergedCudaLibraries
+    ++ (with cudaPackages; [
+      nccl
+      cudnn
+      libcufile
+    ])
+  )
+  ++ (lib.optionals rocmSupport (
+    with rocmPackages;
     [
-      setuptools-scm
-      torch
+      clr
+      rocthrust
+      rocprim
+      hipsparse
+      hipblas
     ]
-    ++ (lib.optionals cpuSupport ([
-      numactl
-      oneDNN
-    ]))
-    ++ (
-      lib.optionals cudaSupport mergedCudaLibraries
-      ++ (with cudaPackages; [
-        nccl
-        cudnn
-        libcufile
-      ])
-    )
-    ++ (lib.optionals rocmSupport (
-      with rocmPackages;
-      [
-        clr
-        rocthrust
-        rocprim
-        hipsparse
-        hipblas
-      ]
-    ));
+  ));
 
-  dependencies =
-    [
-      aioprometheus
-      blake3
-      depyf
-      fastapi
-      lm-format-enforcer
-      numpy
-      openai
-      opencv-python-headless
-      outlines
-      pandas
-      prometheus-fastapi-instrumentator
-      psutil
-      py-cpuinfo
-      pyarrow
-      pydantic
-      pyzmq
-      ray
-      sentencepiece
-      tiktoken
-      tokenizers
-      msgspec
-      gguf
-      einops
-      importlib-metadata
-      partial-json-parser
-      compressed-tensors
-      mistral-common
-      torch
-      torchaudio
-      torchvision
-      transformers
-      uvicorn
-      xformers
-      xgrammar
-    ]
-    ++ uvicorn.optional-dependencies.standard
-    ++ aioprometheus.optional-dependencies.starlette
-    ++ lib.optionals cudaSupport [
-      cupy
-      pynvml
-    ];
+  dependencies = [
+    aioprometheus
+    blake3
+    depyf
+    fastapi
+    lm-format-enforcer
+    numpy
+    openai
+    opencv-python-headless
+    outlines
+    pandas
+    prometheus-fastapi-instrumentator
+    psutil
+    py-cpuinfo
+    pyarrow
+    pydantic
+    pyzmq
+    ray
+    sentencepiece
+    tiktoken
+    tokenizers
+    msgspec
+    gguf
+    einops
+    importlib-metadata
+    partial-json-parser
+    compressed-tensors
+    mistral-common
+    torch
+    torchaudio
+    torchvision
+    transformers
+    uvicorn
+    xformers
+    xgrammar
+  ]
+  ++ uvicorn.optional-dependencies.standard
+  ++ aioprometheus.optional-dependencies.starlette
+  ++ lib.optionals cudaSupport [
+    cupy
+    pynvml
+  ];
 
   dontUseCmakeConfigure = true;
   cmakeFlags =

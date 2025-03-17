@@ -320,55 +320,54 @@ stdenv.mkDerivation (finalAttrs: {
   outputs = [
     "out"
     "dev"
-  ] ++ (lib.optional (!buildLibsOnly) "man");
+  ]
+  ++ (lib.optional (!buildLibsOnly) "man");
   separateDebugInfo = true;
 
-  hardeningDisable =
-    [
-      # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=111523
-      "trivialautovarinit"
-      # breaks clang -target bpf; should be fixed to filter target?
-    ]
-    ++ (lib.optionals withLibBPF [
-      "zerocallusedregs"
-      "shadowstack"
-    ]);
+  hardeningDisable = [
+    # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=111523
+    "trivialautovarinit"
+    # breaks clang -target bpf; should be fixed to filter target?
+  ]
+  ++ (lib.optionals withLibBPF [
+    "zerocallusedregs"
+    "shadowstack"
+  ]);
 
-  nativeBuildInputs =
-    [
-      pkg-config
-      makeBinaryWrapper
-      gperf
-      ninja
-      meson
-      glibcLocales
-      getent
-      m4
-      autoPatchelfHook
+  nativeBuildInputs = [
+    pkg-config
+    makeBinaryWrapper
+    gperf
+    ninja
+    meson
+    glibcLocales
+    getent
+    m4
+    autoPatchelfHook
 
-      intltool
-      gettext
+    intltool
+    gettext
 
-      libxslt
-      docbook_xsl
-      docbook_xml_dtd_42
-      docbook_xml_dtd_45
-      bash
-      (buildPackages.python3Packages.python.withPackages (
-        ps:
-        with ps;
-        [
-          lxml
-          jinja2
-        ]
-        ++ lib.optional withEfi ps.pyelftools
-      ))
-    ]
-    ++ lib.optionals withLibBPF [
-      bpftools
-      buildPackages.llvmPackages.clang
-      buildPackages.llvmPackages.libllvm
-    ];
+    libxslt
+    docbook_xsl
+    docbook_xml_dtd_42
+    docbook_xml_dtd_45
+    bash
+    (buildPackages.python3Packages.python.withPackages (
+      ps:
+      with ps;
+      [
+        lxml
+        jinja2
+      ]
+      ++ lib.optional withEfi ps.pyelftools
+    ))
+  ]
+  ++ lib.optionals withLibBPF [
+    bpftools
+    buildPackages.llvmPackages.clang
+    buildPackages.llvmPackages.libllvm
+  ];
 
   autoPatchelfFlags = [ "--keep-libc" ];
 
@@ -794,24 +793,23 @@ stdenv.mkDerivation (finalAttrs: {
     "libsystemd"
   ];
 
-  postInstall =
-    lib.optionalString (!buildLibsOnly) ''
-      mkdir -p $out/example/systemd
-      mv $out/lib/{binfmt.d,sysctl.d,tmpfiles.d} $out/example
-      mv $out/lib/systemd/{system,user} $out/example/systemd
+  postInstall = lib.optionalString (!buildLibsOnly) ''
+    mkdir -p $out/example/systemd
+    mv $out/lib/{binfmt.d,sysctl.d,tmpfiles.d} $out/example
+    mv $out/lib/systemd/{system,user} $out/example/systemd
 
-      rm -rf $out/etc/systemd/system
+    rm -rf $out/etc/systemd/system
 
-      # Fix reference to /bin/false in the D-Bus services.
-      for i in $out/share/dbus-1/system-services/*.service; do
-        substituteInPlace $i --replace /bin/false ${coreutils}/bin/false
-      done
+    # Fix reference to /bin/false in the D-Bus services.
+    for i in $out/share/dbus-1/system-services/*.service; do
+      substituteInPlace $i --replace /bin/false ${coreutils}/bin/false
+    done
 
-      # For compatibility with dependents that use sbin instead of bin.
-      ln -s bin "$out/sbin"
+    # For compatibility with dependents that use sbin instead of bin.
+    ln -s bin "$out/sbin"
 
-      rm -rf $out/etc/rpm
-    ''
+    rm -rf $out/etc/rpm
+  ''
     + lib.optionalString (!withKernelInstall) ''
       # "kernel-install" shouldn't be used on NixOS.
       find $out -name "*kernel-install*" -exec rm {} \;
@@ -836,13 +834,12 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   # Wrap in the correct path for LUKS2 tokens.
-  postFixup =
-    lib.optionalString withCryptsetup ''
-      for f in bin/systemd-cryptsetup bin/systemd-cryptenroll; do
-        # This needs to be in LD_LIBRARY_PATH because rpath on a binary is not propagated to libraries using dlopen, in this case `libcryptsetup.so`
-        wrapProgram $out/$f --prefix LD_LIBRARY_PATH : ${placeholder "out"}/lib/cryptsetup
-      done
-    ''
+  postFixup = lib.optionalString withCryptsetup ''
+    for f in bin/systemd-cryptsetup bin/systemd-cryptenroll; do
+      # This needs to be in LD_LIBRARY_PATH because rpath on a binary is not propagated to libraries using dlopen, in this case `libcryptsetup.so`
+      wrapProgram $out/$f --prefix LD_LIBRARY_PATH : ${placeholder "out"}/lib/cryptsetup
+    done
+  ''
     + lib.optionalString withBootloader ''
       mv $out/dont-strip-me $out/lib/systemd/boot/efi
     ''

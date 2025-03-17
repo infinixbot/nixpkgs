@@ -68,16 +68,15 @@ stdenv.mkDerivation (finalAttrs: {
     (lib.getLib stdenv.cc.cc)
   ];
 
-  patches =
-    [
-      ./disable_update_checking.patch
-      ./fix_read_only_settings.patch
-    ]
-    ++ lib.optional withSystemVencord (
-      replaceVars ./use_system_vencord.patch {
-        inherit vencord;
-      }
-    );
+  patches = [
+    ./disable_update_checking.patch
+    ./fix_read_only_settings.patch
+  ]
+  ++ lib.optional withSystemVencord (
+    replaceVars ./use_system_vencord.patch {
+      inherit vencord;
+    }
+  );
 
   env = {
     ELECTRON_SKIP_BINARY_DOWNLOAD = 1;
@@ -114,26 +113,25 @@ stdenv.mkDerivation (finalAttrs: {
     popd
   '';
 
-  installPhase =
-    ''
-      runHook preInstall
-    ''
-    + lib.optionalString stdenv.hostPlatform.isLinux ''
-      mkdir -p $out/opt/Vesktop
-      cp -r dist/*unpacked/resources $out/opt/Vesktop/
+  installPhase = ''
+    runHook preInstall
+  ''
+  + lib.optionalString stdenv.hostPlatform.isLinux ''
+    mkdir -p $out/opt/Vesktop
+    cp -r dist/*unpacked/resources $out/opt/Vesktop/
 
-      for file in build/icon_*x32.png; do
-        file_suffix=''${file//build\/icon_}
-        install -Dm0644 $file $out/share/icons/hicolor/''${file_suffix//x32.png}/apps/vesktop.png
-      done
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      mkdir -p $out/{Applications,bin}
-      mv dist/mac*/Vesktop.app $out/Applications/Vesktop.app
-    ''
-    + ''
-      runHook postInstall
-    '';
+    for file in build/icon_*x32.png; do
+      file_suffix=''${file//build\/icon_}
+      install -Dm0644 $file $out/share/icons/hicolor/''${file_suffix//x32.png}/apps/vesktop.png
+    done
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    mkdir -p $out/{Applications,bin}
+    mv dist/mac*/Vesktop.app $out/Applications/Vesktop.app
+  ''
+  + ''
+    runHook postInstall
+  '';
 
   postFixup =
     lib.optionalString stdenv.hostPlatform.isLinux ''

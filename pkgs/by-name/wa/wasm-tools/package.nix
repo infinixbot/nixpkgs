@@ -24,8 +24,7 @@ rustPlatform.buildRustPackage rec {
     "--package"
     "wasm-tools"
   ];
-  cargoTestFlags =
-    [ "--all" ]
+  cargoTestFlags = [ "--all" ]
     ++
     # Due to https://github.com/bytecodealliance/wasm-tools/issues/1820
     [

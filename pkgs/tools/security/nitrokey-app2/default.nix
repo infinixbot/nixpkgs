@@ -28,8 +28,7 @@ python3.pkgs.buildPythonApplication rec {
     wrapQtAppsHook
   ];
 
-  buildInputs =
-    [ qtbase ]
+  buildInputs = [ qtbase ]
     ++ lib.optionals stdenv.hostPlatform.isLinux [
       qtwayland
       qtsvg

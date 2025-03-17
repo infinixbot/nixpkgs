@@ -160,8 +160,7 @@ in
                 config.systemd.package # To allow systemd-based container healthchecks
               ]
               ++ lib.optional (config.boot.supportedFilesystems.zfs or false) config.boot.zfs.package;
-            extraRuntimes =
-              [ pkgs.runc ]
+            extraRuntimes = [ pkgs.runc ]
               ++ lib.optionals
                 (
                   config.virtualisation.containers.containersConf.settings.network.default_rootless_network_cmd or ""
@@ -219,7 +218,8 @@ in
         ''
       ];
 
-      environment.systemPackages = [ cfg.package ] ++ lib.optional cfg.dockerCompat dockerCompat;
+      environment.systemPackages = [ cfg.package ]
+        ++ lib.optional cfg.dockerCompat dockerCompat;
 
       # https://github.com/containers/podman/blob/097cc6eb6dd8e598c0e8676d21267b4edb11e144/docs/tutorials/basic_networking.md#default-network
       environment.etc."containers/networks/podman.json" = lib.mkIf (cfg.defaultNetwork.settings != { }) {

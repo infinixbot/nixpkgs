@@ -46,8 +46,7 @@ stdenv.mkDerivation {
     yices
   ];
 
-  hardeningDisable =
-    [ "stackprotector" ]
+  hardeningDisable = [ "stackprotector" ]
     ++ lib.optionals stdenv.hostPlatform.isi686 [
       "pic"
       "fortify"

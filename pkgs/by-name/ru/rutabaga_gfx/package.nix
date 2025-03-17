@@ -54,8 +54,7 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
     rustPlatform.cargoSetupHook
   ];
-  buildInputs =
-    [ libiconv ]
+  buildInputs = [ libiconv ]
     ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform gfxstream) (
       [
         aemu

@@ -48,20 +48,19 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs =
-    [
-      cmake
-      ninja
-      pkg-config
-    ]
-    ++ lib.optionals (!doInstallCheck) [
-      # enable these dependencies when doInstallCheck is false because we're
-      # unconditionally building tests and benchmarks
-      #
-      # when doInstallCheck is true, these deps are added to nativeInstallCheckInputs
-      gbenchmark
-      gtest
-    ];
+  nativeBuildInputs = [
+    cmake
+    ninja
+    pkg-config
+  ]
+  ++ lib.optionals (!doInstallCheck) [
+    # enable these dependencies when doInstallCheck is false because we're
+    # unconditionally building tests and benchmarks
+    #
+    # when doInstallCheck is true, these deps are added to nativeInstallCheckInputs
+    gbenchmark
+    gtest
+  ];
 
   buildInputs = [
     c-ares

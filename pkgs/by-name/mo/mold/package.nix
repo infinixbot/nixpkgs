@@ -38,15 +38,14 @@ stdenv.mkDerivation rec {
     ninja
   ];
 
-  buildInputs =
-    [
-      tbb
-      zlib
-      zstd
-    ]
-    ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
-      mimalloc
-    ];
+  buildInputs = [
+    tbb
+    zlib
+    zstd
+  ]
+  ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
+    mimalloc
+  ];
 
   cmakeFlags = [
     "-DMOLD_USE_SYSTEM_MIMALLOC:BOOL=ON"

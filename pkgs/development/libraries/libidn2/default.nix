@@ -41,7 +41,8 @@ stdenv.mkDerivation rec {
     help2man
     texinfo
   ];
-  buildInputs = [ libunistring ] ++ lib.optional stdenv.hostPlatform.isDarwin libiconv;
+  buildInputs = [ libunistring ]
+    ++ lib.optional stdenv.hostPlatform.isDarwin libiconv;
   depsBuildBuild = [ buildPackages.stdenv.cc ];
 
   meta = {

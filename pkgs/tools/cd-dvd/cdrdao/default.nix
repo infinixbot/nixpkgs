@@ -31,17 +31,16 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs =
-    [
-      libiconv
-      libvorbis
-      libmad
-      libao
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      CoreServices
-      IOKit
-    ];
+  buildInputs = [
+    libiconv
+    libvorbis
+    libmad
+    libao
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    CoreServices
+    IOKit
+  ];
 
   hardeningDisable = [ "format" ];
 

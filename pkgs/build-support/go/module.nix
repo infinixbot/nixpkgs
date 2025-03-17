@@ -197,7 +197,8 @@ in
         }).overrideAttrs
           (finalAttrs.passthru.overrideModAttrs or overrideModAttrs);
 
-    nativeBuildInputs = [ go ] ++ nativeBuildInputs;
+    nativeBuildInputs = [ go ]
+      ++ nativeBuildInputs;
 
     env = args.env or { } // {
       inherit (go) GOOS GOARCH;
@@ -387,11 +388,13 @@ in
       # `passthru.overrideModAttrs` will be overridden
       # when users want to override `goModules`.
       overrideModAttrs = lib.toExtension overrideModAttrs;
-    } // passthru;
+    }
+    // passthru;
 
     meta = {
       # Add default meta information.
       platforms = go.meta.platforms or lib.platforms.all;
-    } // meta;
+    }
+    // meta;
   }
 ))

@@ -45,7 +45,8 @@ buildPythonPackage rec {
     fastapi
     pytestCheckHook
     setproctitle
-  ] ++ lib.flatten (builtins.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (builtins.attrValues optional-dependencies);
 
   optional-dependencies = {
     aiohttp = [ aiohttp ];

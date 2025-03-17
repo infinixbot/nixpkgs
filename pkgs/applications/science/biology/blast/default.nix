@@ -101,7 +101,8 @@ stdenv.mkDerivation rec {
     gawk
     zlib
     bzip2
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ ApplicationServices ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ ApplicationServices ];
 
   strictDeps = true;
 

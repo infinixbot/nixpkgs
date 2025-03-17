@@ -87,7 +87,8 @@ in
       serviceConfig =
         let
           needsPrivileges = cfg.port < 1024 || cfg.prometheus.port < 1024;
-          capabilities = [ "" ] ++ lib.optionals needsPrivileges [ "CAP_NET_BIND_SERVICE" ];
+          capabilities = [ "" ]
+            ++ lib.optionals needsPrivileges [ "CAP_NET_BIND_SERVICE" ];
           rootDirectory = "/run/endlessh-go";
         in
         {

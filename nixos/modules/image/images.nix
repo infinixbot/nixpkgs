@@ -45,7 +45,8 @@ let
     sd-card = {
       imports =
         let
-          module = ../. + "/installer/sd-card/sd-image-${pkgs.targetPlatform.linuxArch}.nix";
+          module = ../.
+            + "/installer/sd-card/sd-image-${pkgs.targetPlatform.linuxArch}.nix";
         in
         if builtins.pathExists module then [ module ] else throw "The module ${module} does not exist.";
     };

@@ -31,7 +31,8 @@ buildGoModule rec {
   # no test files
   doCheck = false;
 
-  nativeBuildInputs = [ installShellFiles ] ++ lib.optionals isFull [ coredns ];
+  nativeBuildInputs = [ installShellFiles ]
+    ++ lib.optionals isFull [ coredns ];
 
   preBuild = ''
     export HOME=$TMPDIR

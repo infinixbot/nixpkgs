@@ -26,7 +26,8 @@ stdenv.mkDerivation (finalAttrs: {
       url = "https://github.com/xiph/theora/commit/28cc6dbd9b2a141df94f60993256a5fca368fa54.diff";
       hash = "sha256-M/UULkiklvEay7LyOuCamxWCSvt37QSMzHOsAAnOWJo=";
     })
-  ] ++ lib.optionals stdenv.hostPlatform.isMinGW [ ./mingw-remove-export.patch ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isMinGW [ ./mingw-remove-export.patch ];
 
   configureFlags = [ "--disable-examples" ];
 

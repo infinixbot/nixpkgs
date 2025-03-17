@@ -52,19 +52,18 @@ rustPlatform.buildRustPackage rec {
     makeWrapper
   ];
 
-  buildInputs =
-    [
-      openssl
-      gst_all_1.gstreamer
-      gst_all_1.gst-plugins-base
-      gst_all_1.gst-plugins-good
-      gst_all_1.gst-plugins-bad
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      glib-networking
-      libayatana-appindicator
-      webkitgtk_4_1
-    ];
+  buildInputs = [
+    openssl
+    gst_all_1.gstreamer
+    gst_all_1.gst-plugins-base
+    gst_all_1.gst-plugins-good
+    gst_all_1.gst-plugins-bad
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    glib-networking
+    libayatana-appindicator
+    webkitgtk_4_1
+  ];
 
   patches = [
     # Upstream code uses Git to find the program version.
@@ -83,25 +82,24 @@ rustPlatform.buildRustPackage rec {
     })
   ];
 
-  postPatch =
-    ''
-      # Tauri bundler expects slimevr.jar to exist.
-      mkdir -p server/desktop/build/libs
-      touch server/desktop/build/libs/slimevr.jar
-    ''
-    + lib.optionalString stdenv.hostPlatform.isLinux ''
-      # Both libappindicator-rs and SlimeVR need to know where Nix's appindicator lib is.
-      pushd $cargoDepsCopy/libappindicator-sys
-      oldHash=$(sha256sum src/lib.rs | cut -d " " -f 1)
-      substituteInPlace src/lib.rs \
-        --replace-fail "libayatana-appindicator3.so.1" "${libayatana-appindicator}/lib/libayatana-appindicator3.so.1"
-      # Cargo doesn't like it when vendored dependencies are edited.
-      substituteInPlace .cargo-checksum.json \
-        --replace-warn $oldHash $(sha256sum src/lib.rs | cut -d " " -f 1)
-      popd
-      substituteInPlace gui/src-tauri/src/tray.rs \
-        --replace-fail "libayatana-appindicator3.so.1" "${libayatana-appindicator}/lib/libayatana-appindicator3.so.1"
-    '';
+  postPatch = ''
+    # Tauri bundler expects slimevr.jar to exist.
+    mkdir -p server/desktop/build/libs
+    touch server/desktop/build/libs/slimevr.jar
+  ''
+  + lib.optionalString stdenv.hostPlatform.isLinux ''
+    # Both libappindicator-rs and SlimeVR need to know where Nix's appindicator lib is.
+    pushd $cargoDepsCopy/libappindicator-sys
+    oldHash=$(sha256sum src/lib.rs | cut -d " " -f 1)
+    substituteInPlace src/lib.rs \
+      --replace-fail "libayatana-appindicator3.so.1" "${libayatana-appindicator}/lib/libayatana-appindicator3.so.1"
+    # Cargo doesn't like it when vendored dependencies are edited.
+    substituteInPlace .cargo-checksum.json \
+      --replace-warn $oldHash $(sha256sum src/lib.rs | cut -d " " -f 1)
+    popd
+    substituteInPlace gui/src-tauri/src/tray.rs \
+      --replace-fail "libayatana-appindicator3.so.1" "${libayatana-appindicator}/lib/libayatana-appindicator3.so.1"
+  '';
 
   # solarxr needs to be installed after compiling its Typescript files. This isn't
   # done the first time, because `pnpm_9.configHook` ignores `package.json` scripts.

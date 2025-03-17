@@ -161,27 +161,26 @@ let
   # Thus, if you're packaging a Jupyter kernel, you either need to pass these flags as extra
   # args to xcpp (for xeus-cling) or put them in the environment variable CLING_OPTS
   # (for jupyter-cling-kernel).
-  flags =
-    [
-      "-nostdinc"
-      "-nostdinc++"
+  flags = [
+    "-nostdinc"
+    "-nostdinc++"
 
-      "-resource-dir"
-      "${llvm.lib}/lib"
+    "-resource-dir"
+    "${llvm.lib}/lib"
 
-      "-isystem"
-      "${lib.getLib unwrapped}/lib/clang/${llvmPackages_13.clang.version}/include"
-    ]
-    ++ cxxFlags
-    ++ [
-      # System libc
-      "-isystem"
-      "${lib.getDev stdenv.cc.libc}/include"
+    "-isystem"
+    "${lib.getLib unwrapped}/lib/clang/${llvmPackages_13.clang.version}/include"
+  ]
+  ++ cxxFlags
+  ++ [
+    # System libc
+    "-isystem"
+    "${lib.getDev stdenv.cc.libc}/include"
 
-      # cling includes
-      "-isystem"
-      "${lib.getDev unwrapped}/include"
-    ];
+    # cling includes
+    "-isystem"
+    "${lib.getDev unwrapped}/include"
+  ];
 
 in
 

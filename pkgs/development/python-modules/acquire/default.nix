@@ -49,10 +49,12 @@ buildPythonPackage rec {
       requests
       requests-toolbelt
       rich
-    ] ++ dissect-target.optional-dependencies.full;
+    ]
+    ++ dissect-target.optional-dependencies.full;
   };
 
-  nativeCheckInputs = [ pytestCheckHook ] ++ optional-dependencies.full;
+  nativeCheckInputs = [ pytestCheckHook ]
+    ++ optional-dependencies.full;
 
   pythonImportsCheck = [ "acquire" ];
 

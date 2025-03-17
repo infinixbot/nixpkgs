@@ -66,7 +66,8 @@ buildPythonPackage rec {
     pytestCheckHook
     tabulate
     yappi
-  ] ++ lib.flatten (lib.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (lib.attrValues optional-dependencies);
 
   disabledTestPaths = [
     "ax/benchmark"
@@ -79,30 +80,29 @@ buildPythonPackage rec {
     "ax/storage"
   ];
 
-  disabledTests =
-    [
-      # exact comparison of floating points
-      "test_optimize_l0_homotopy"
-      # AssertionError: 5 != 2
-      "test_get_standard_plots_moo"
-      # AssertionError: Expected 'warning' to be called once. Called 3 times
-      "test_validate_kwarg_typing"
-      # uses torch.equal
-      "test_convert_observations"
-      # broken with sqlalchemy 2
-      "test_sql_storage"
-    ]
-    ++ lib.optionals (pythonAtLeast "3.13") [
-      #  Both `metric_aggregation` and `criterion` must be `ReductionCriterion`
-      "test_SingleDiagnosticBestModelSelector_max_mean"
-      "test_SingleDiagnosticBestModelSelector_min_mean"
-      "test_SingleDiagnosticBestModelSelector_min_min"
-      "test_SingleDiagnosticBestModelSelector_model_cv_kwargs"
-      "test_init"
-      "test_gen"
-      # "use MIN or MAX" does not match "Both `metric_aggregation` and `criterion` must be `ReductionCriterion`
-      "test_user_input_error"
-    ];
+  disabledTests = [
+    # exact comparison of floating points
+    "test_optimize_l0_homotopy"
+    # AssertionError: 5 != 2
+    "test_get_standard_plots_moo"
+    # AssertionError: Expected 'warning' to be called once. Called 3 times
+    "test_validate_kwarg_typing"
+    # uses torch.equal
+    "test_convert_observations"
+    # broken with sqlalchemy 2
+    "test_sql_storage"
+  ]
+  ++ lib.optionals (pythonAtLeast "3.13") [
+    #  Both `metric_aggregation` and `criterion` must be `ReductionCriterion`
+    "test_SingleDiagnosticBestModelSelector_max_mean"
+    "test_SingleDiagnosticBestModelSelector_min_mean"
+    "test_SingleDiagnosticBestModelSelector_min_min"
+    "test_SingleDiagnosticBestModelSelector_model_cv_kwargs"
+    "test_init"
+    "test_gen"
+    # "use MIN or MAX" does not match "Both `metric_aggregation` and `criterion` must be `ReductionCriterion`
+    "test_user_input_error"
+  ];
 
   pythonImportsCheck = [ "ax" ];
 

@@ -63,7 +63,8 @@ buildPythonPackage rec {
     numpy
     opt-einsum
     scipy
-  ] ++ lib.optionals cudaSupport optional-dependencies.cuda;
+  ]
+  ++ lib.optionals cudaSupport optional-dependencies.cuda;
 
   optional-dependencies = rec {
     cuda = [ jax-cuda12-plugin ];
@@ -87,19 +88,18 @@ buildPythonPackage rec {
   # which creates a circular dependency. See https://discourse.nixos.org/t/how-to-nix-ify-python-packages-with-circular-dependencies/14648/2.
   # Not a big deal, this is how the JAX docs suggest running the test suite
   # anyhow.
-  pytestFlagsArray =
-    [
-      "--numprocesses=4"
-      "-W ignore::DeprecationWarning"
-      "tests/"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      # SystemError: nanobind::detail::nb_func_error_except(): exception could not be translated!
-      # reported at: https://github.com/jax-ml/jax/issues/26106
-      "--deselect tests/pjit_test.py::PJitErrorTest::testAxisResourcesMismatch"
-      "--deselect tests/shape_poly_test.py::ShapePolyTest"
-      "--deselect tests/tree_util_test.py::TreeTest"
-    ];
+  pytestFlagsArray = [
+    "--numprocesses=4"
+    "-W ignore::DeprecationWarning"
+    "tests/"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    # SystemError: nanobind::detail::nb_func_error_except(): exception could not be translated!
+    # reported at: https://github.com/jax-ml/jax/issues/26106
+    "--deselect tests/pjit_test.py::PJitErrorTest::testAxisResourcesMismatch"
+    "--deselect tests/shape_poly_test.py::ShapePolyTest"
+    "--deselect tests/tree_util_test.py::TreeTest"
+  ];
 
   # Prevents `tests/export_back_compat_test.py::CompatTest::test_*` tests from failing on darwin with
   # PermissionError: [Errno 13] Permission denied: '/tmp/back_compat_testdata/test_*.py'
@@ -109,69 +109,67 @@ buildPythonPackage rec {
     export TEST_UNDECLARED_OUTPUTS_DIR=$(mktemp -d)
   '';
 
-  disabledTests =
-    [
-      # Exceeds tolerance when the machine is busy
-      "test_custom_linear_solve_aux"
-      # UserWarning: Explicitly requested dtype <class 'numpy.float64'>
-      #  requested in astype is not available, and will be truncated to
-      # dtype float32. (With numpy 1.24)
-      "testKde3"
-      "testKde5"
-      "testKde6"
-      # Invokes python manually in a subprocess, which does not have the correct dependencies
-      # ImportError: This version of jax requires jaxlib version >= 0.4.19.
-      "test_no_log_spam"
-    ]
-    ++ lib.optionals usingMKL [
-      # See
-      #  * https://github.com/google/jax/issues/9705
-      #  * https://discourse.nixos.org/t/getting-different-results-for-the-same-build-on-two-equally-configured-machines/17921
-      #  * https://github.com/NixOS/nixpkgs/issues/161960
-      "test_custom_linear_solve_cholesky"
-      "test_custom_root_with_aux"
-      "testEigvalsGrad_shape"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isAarch64 [
-      # See https://github.com/google/jax/issues/14793.
-      "test_for_loop_fixpoint_correctly_identifies_loop_varying_residuals_unrolled_for_loop"
-      "testQdwhWithRandomMatrix3"
-      "testScanGrad_jit_scan"
+  disabledTests = [
+    # Exceeds tolerance when the machine is busy
+    "test_custom_linear_solve_aux"
+    # UserWarning: Explicitly requested dtype <class 'numpy.float64'>
+    #  requested in astype is not available, and will be truncated to
+    # dtype float32. (With numpy 1.24)
+    "testKde3"
+    "testKde5"
+    "testKde6"
+    # Invokes python manually in a subprocess, which does not have the correct dependencies
+    # ImportError: This version of jax requires jaxlib version >= 0.4.19.
+    "test_no_log_spam"
+  ]
+  ++ lib.optionals usingMKL [
+    # See
+    #  * https://github.com/google/jax/issues/9705
+    #  * https://discourse.nixos.org/t/getting-different-results-for-the-same-build-on-two-equally-configured-machines/17921
+    #  * https://github.com/NixOS/nixpkgs/issues/161960
+    "test_custom_linear_solve_cholesky"
+    "test_custom_root_with_aux"
+    "testEigvalsGrad_shape"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isAarch64 [
+    # See https://github.com/google/jax/issues/14793.
+    "test_for_loop_fixpoint_correctly_identifies_loop_varying_residuals_unrolled_for_loop"
+    "testQdwhWithRandomMatrix3"
+    "testScanGrad_jit_scan"
 
-      # See https://github.com/google/jax/issues/17867.
-      "test_array"
-      "test_async"
-      "test_copy0"
-      "test_device_put"
-      "test_make_array_from_callback"
-      "test_make_array_from_single_device_arrays"
+    # See https://github.com/google/jax/issues/17867.
+    "test_array"
+    "test_async"
+    "test_copy0"
+    "test_device_put"
+    "test_make_array_from_callback"
+    "test_make_array_from_single_device_arrays"
 
-      # Fails on some hardware due to some numerical error
-      # See https://github.com/google/jax/issues/18535
-      "testQdwhWithOnRankDeficientInput5"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      # SystemError: nanobind::detail::nb_func_error_except(): exception could not be translated!
-      # reported at: https://github.com/jax-ml/jax/issues/26106
-      "testInAxesPyTreePrefixMismatchError"
-      "testInAxesPyTreePrefixMismatchErrorKwargs"
-      "testOutAxesPyTreePrefixMismatchError"
-      "test_tree_map"
-      "test_tree_prefix_error"
-      "test_vjp_rule_inconsistent_pytree_structures_error"
-      "test_vmap_in_axes_tree_prefix_error"
-      "test_vmap_mismatched_axis_sizes_error_message_issue_705"
-    ];
+    # Fails on some hardware due to some numerical error
+    # See https://github.com/google/jax/issues/18535
+    "testQdwhWithOnRankDeficientInput5"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    # SystemError: nanobind::detail::nb_func_error_except(): exception could not be translated!
+    # reported at: https://github.com/jax-ml/jax/issues/26106
+    "testInAxesPyTreePrefixMismatchError"
+    "testInAxesPyTreePrefixMismatchErrorKwargs"
+    "testOutAxesPyTreePrefixMismatchError"
+    "test_tree_map"
+    "test_tree_prefix_error"
+    "test_vjp_rule_inconsistent_pytree_structures_error"
+    "test_vmap_in_axes_tree_prefix_error"
+    "test_vmap_mismatched_axis_sizes_error_message_issue_705"
+  ];
 
-  disabledTestPaths =
-    [
-      # Segmentation fault. See https://gist.github.com/zimbatm/e9b61891f3bcf5e4aaefd13f94344fba
-      "tests/linalg_test.py"
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) [
-      # RuntimeWarning: invalid value encountered in cast
-      "tests/lax_test.py"
-    ];
+  disabledTestPaths = [
+    # Segmentation fault. See https://gist.github.com/zimbatm/e9b61891f3bcf5e4aaefd13f94344fba
+    "tests/linalg_test.py"
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) [
+    # RuntimeWarning: invalid value encountered in cast
+    "tests/lax_test.py"
+  ];
 
   pythonImportsCheck = [ "jax" ];
 

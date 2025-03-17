@@ -86,16 +86,15 @@ buildPythonPackage rec {
     ]
   );
 
-  postPatch =
-    ''
-      substituteInPlace pyproject.toml \
-        --replace-fail "setuptools~=69.2.0" "setuptools" \
-        --replace-fail "wheel~=0.44.0" "wheel"
-    ''
-    + lib.optionalString stdenv.hostPlatform.isLinux ''
-      substituteInPlace kivy/lib/mtdev.py \
-        --replace-fail "LoadLibrary('libmtdev.so.1')" "LoadLibrary('${mtdev}/lib/libmtdev.so.1')"
-    '';
+  postPatch = ''
+    substituteInPlace pyproject.toml \
+      --replace-fail "setuptools~=69.2.0" "setuptools" \
+      --replace-fail "wheel~=0.44.0" "wheel"
+  ''
+  + lib.optionalString stdenv.hostPlatform.isLinux ''
+    substituteInPlace kivy/lib/mtdev.py \
+      --replace-fail "LoadLibrary('libmtdev.so.1')" "LoadLibrary('${mtdev}/lib/libmtdev.so.1')"
+  '';
 
   /*
     We cannot run tests as Kivy tries to import itself before being fully

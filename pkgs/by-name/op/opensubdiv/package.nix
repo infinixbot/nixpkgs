@@ -34,44 +34,42 @@ stdenv.mkDerivation rec {
     "static"
   ];
 
-  nativeBuildInputs =
+  nativeBuildInputs = [
+    cmake
+    pkg-config
+  ]
+  ++ lib.optional cudaSupport [
+    cudaPackages.cuda_nvcc
+  ];
+  buildInputs = [
+    libGLU
+    libGL
+    python3
+    # FIXME: these are not actually needed, but the configure script wants them.
+    glew
+    xorg.libX11
+    xorg.libXrandr
+    xorg.libXxf86vm
+    xorg.libXcursor
+    xorg.libXinerama
+    xorg.libXi
+  ]
+  ++ lib.optionals (openclSupport && !stdenv.hostPlatform.isDarwin) [ ocl-icd ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin (
+    with darwin.apple_sdk.frameworks;
     [
-      cmake
-      pkg-config
+      OpenCL
+      Cocoa
+      CoreVideo
+      IOKit
+      AppKit
+      AGL
+      MetalKit
     ]
-    ++ lib.optional cudaSupport [
-      cudaPackages.cuda_nvcc
-    ];
-  buildInputs =
-    [
-      libGLU
-      libGL
-      python3
-      # FIXME: these are not actually needed, but the configure script wants them.
-      glew
-      xorg.libX11
-      xorg.libXrandr
-      xorg.libXxf86vm
-      xorg.libXcursor
-      xorg.libXinerama
-      xorg.libXi
-    ]
-    ++ lib.optionals (openclSupport && !stdenv.hostPlatform.isDarwin) [ ocl-icd ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        OpenCL
-        Cocoa
-        CoreVideo
-        IOKit
-        AppKit
-        AGL
-        MetalKit
-      ]
-    )
-    ++ lib.optionals cudaSupport [
-      cudaPackages.cuda_cudart
-    ];
+  )
+  ++ lib.optionals cudaSupport [
+    cudaPackages.cuda_cudart
+  ];
 
   # It's important to set OSD_CUDA_NVCC_FLAGS,
   # because otherwise OSD might piggyback unwanted architectures:
@@ -82,23 +80,22 @@ stdenv.mkDerivation rec {
     )
   '';
 
-  cmakeFlags =
-    [
-      "-DNO_TUTORIALS=1"
-      "-DNO_REGRESSION=1"
-      "-DNO_EXAMPLES=1"
-      (lib.cmakeBool "NO_METAL" (!stdenv.hostPlatform.isDarwin))
-      (lib.cmakeBool "NO_OPENCL" (!openclSupport))
-      (lib.cmakeBool "NO_CUDA" (!cudaSupport))
-    ]
-    ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
-      "-DGLEW_INCLUDE_DIR=${glew.dev}/include"
-      "-DGLEW_LIBRARY=${glew.dev}/lib"
-    ]
-    ++ lib.optionals cudaSupport [
-    ]
-    ++ lib.optionals (!openclSupport) [
-    ];
+  cmakeFlags = [
+    "-DNO_TUTORIALS=1"
+    "-DNO_REGRESSION=1"
+    "-DNO_EXAMPLES=1"
+    (lib.cmakeBool "NO_METAL" (!stdenv.hostPlatform.isDarwin))
+    (lib.cmakeBool "NO_OPENCL" (!openclSupport))
+    (lib.cmakeBool "NO_CUDA" (!cudaSupport))
+  ]
+  ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
+    "-DGLEW_INCLUDE_DIR=${glew.dev}/include"
+    "-DGLEW_LIBRARY=${glew.dev}/lib"
+  ]
+  ++ lib.optionals cudaSupport [
+  ]
+  ++ lib.optionals (!openclSupport) [
+  ];
 
   preBuild =
     let

@@ -29,32 +29,31 @@ in
   # getting the version at runtime, so it's safe to remove the references to them.
   # This is true so far for pandoc-types and warp.
   # For details see: https://github.com/NixOS/nixpkgs/issues/34376
-  postInstall =
-    drv.postInstall or ""
-    + ''
-      remove-references-to \
-        -t ${pandoc-cli.scope.pandoc-types} \
-        $out/bin/pandoc
-      remove-references-to \
-        -t ${pandoc-cli.scope.warp} \
-        $out/bin/pandoc
-      remove-references-to \
-        -t ${pandoc-cli.scope.pandoc} \
-        $out/bin/pandoc
-    ''
-    # https://github.com/jgm/typst-hs/commit/9707b74ce60d71c2ba0f35249ffbd01dea197a6e
-    + lib.optionalString (lib.versionAtLeast pandoc-cli.scope.typst.version "0.6.1") ''
-      remove-references-to \
-        -t ${pandoc-cli.scope.typst} \
-        $out/bin/pandoc
-    ''
-    + lib.optionalString (stdenv.buildPlatform == stdenv.hostPlatform) ''
-      mkdir -p $out/share/bash-completion/completions
-      $out/bin/pandoc --bash-completion > $out/share/bash-completion/completions/pandoc
-    ''
-    + ''
-      installManPage man/*
-    '';
+  postInstall = drv.postInstall or ""
+  + ''
+    remove-references-to \
+      -t ${pandoc-cli.scope.pandoc-types} \
+      $out/bin/pandoc
+    remove-references-to \
+      -t ${pandoc-cli.scope.warp} \
+      $out/bin/pandoc
+    remove-references-to \
+      -t ${pandoc-cli.scope.pandoc} \
+      $out/bin/pandoc
+  ''
+  # https://github.com/jgm/typst-hs/commit/9707b74ce60d71c2ba0f35249ffbd01dea197a6e
+  + lib.optionalString (lib.versionAtLeast pandoc-cli.scope.typst.version "0.6.1") ''
+    remove-references-to \
+      -t ${pandoc-cli.scope.typst} \
+      $out/bin/pandoc
+  ''
+  + lib.optionalString (stdenv.buildPlatform == stdenv.hostPlatform) ''
+    mkdir -p $out/share/bash-completion/completions
+    $out/bin/pandoc --bash-completion > $out/share/bash-completion/completions/pandoc
+  ''
+  + ''
+    installManPage man/*
+  '';
 }) static).overrideAttrs
   (drv: {
     # These libraries are still referenced, because they generate

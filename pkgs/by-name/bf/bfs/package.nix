@@ -20,8 +20,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-vYK3lQsHE3GD8mFCZLxJN+TrJZJGwq9+kNm6y0zAa2U=";
   };
 
-  buildInputs =
-    [ oniguruma ]
+  buildInputs = [ oniguruma ]
     ++ lib.optionals stdenv.hostPlatform.isLinux [
       acl
       attr

@@ -29,7 +29,8 @@ let
   basename = "libcxx";
   pname = basename;
   cxxabiName = "lib${if cxxabi == null then "cxxabi" else cxxabi.libName}";
-  runtimes = [ "libcxx" ] ++ lib.optional (cxxabi == null) "libcxxabi";
+  runtimes = [ "libcxx" ]
+    ++ lib.optional (cxxabi == null) "libcxxabi";
 
   # Note: useLLVM is likely false for Darwin but true under pkgsLLVM
   useLLVM = stdenv.hostPlatform.useLLVM or false;
@@ -89,83 +90,80 @@ let
       "-DLIBCXXABI_ENABLE_SHARED=OFF"
     ];
 
-  cxxCMakeFlags =
-    [
-      "-DLIBCXX_CXX_ABI=${cxxabiName}"
-    ]
-    ++ lib.optionals (cxxabi == null && lib.versionAtLeast release_version "16") [
-      # Note: llvm < 16 doesn't support this flag (or it's broken); handled in postInstall instead.
-      # Include libc++abi symbols within libc++.a for static linking libc++;
-      # dynamic linking includes them through libc++.so being a linker script
-      # which includes both shared objects.
-      "-DLIBCXX_STATICALLY_LINK_ABI_IN_STATIC_LIBRARY=ON"
-    ]
-    ++ lib.optionals (cxxabi != null) [
-      "-DLIBCXX_CXX_ABI_INCLUDE_PATHS=${lib.getDev cxxabi}/include"
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isMusl || stdenv.hostPlatform.isWasi) [
-      "-DLIBCXX_HAS_MUSL_LIBC=1"
-    ]
-    ++
-      lib.optionals
-        (
-          lib.versionAtLeast release_version "18"
-          && !useLLVM
-          && stdenv.hostPlatform.libc == "glibc"
-          && !stdenv.hostPlatform.isStatic
-        )
-        [
-          "-DLIBCXX_ADDITIONAL_LIBRARIES=gcc_s"
-        ]
-    ++ lib.optionals (lib.versionAtLeast release_version "18" && stdenv.hostPlatform.isFreeBSD) [
-      # Name and documentation claim this is for libc++abi, but its man effect is adding `-lunwind`
-      # to the libc++.so linker script. We want FreeBSD's so-called libgcc instead of libunwind.
-      "-DLIBCXXABI_USE_LLVM_UNWINDER=OFF"
-    ]
-    ++ lib.optionals useLLVM [
-      "-DLIBCXX_USE_COMPILER_RT=ON"
-    ]
-    ++
-      lib.optionals (useLLVM && !stdenv.hostPlatform.isFreeBSD && lib.versionAtLeast release_version "16")
-        [
-          "-DLIBCXX_ADDITIONAL_LIBRARIES=unwind"
-        ]
-    ++ lib.optionals stdenv.hostPlatform.isWasm [
-      "-DLIBCXX_ENABLE_THREADS=OFF"
-      "-DLIBCXX_ENABLE_FILESYSTEM=OFF"
-      "-DLIBCXX_ENABLE_EXCEPTIONS=OFF"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isWindows [
-      # https://github.com/llvm/llvm-project/issues/55245
-      "-DLIBCXX_ENABLE_STATIC_ABI_LIBRARY=ON"
-    ]
-    ++ lib.optionals (!enableShared) [
-      "-DLIBCXX_ENABLE_SHARED=OFF"
-    ]
-    ++ lib.optionals (cxxabi != null && cxxabi.libName == "cxxrt") [
-      "-DLIBCXX_ENABLE_NEW_DELETE_DEFINITIONS=ON"
-    ];
+  cxxCMakeFlags = [
+    "-DLIBCXX_CXX_ABI=${cxxabiName}"
+  ]
+  ++ lib.optionals (cxxabi == null && lib.versionAtLeast release_version "16") [
+    # Note: llvm < 16 doesn't support this flag (or it's broken); handled in postInstall instead.
+    # Include libc++abi symbols within libc++.a for static linking libc++;
+    # dynamic linking includes them through libc++.so being a linker script
+    # which includes both shared objects.
+    "-DLIBCXX_STATICALLY_LINK_ABI_IN_STATIC_LIBRARY=ON"
+  ]
+  ++ lib.optionals (cxxabi != null) [
+    "-DLIBCXX_CXX_ABI_INCLUDE_PATHS=${lib.getDev cxxabi}/include"
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isMusl || stdenv.hostPlatform.isWasi) [
+    "-DLIBCXX_HAS_MUSL_LIBC=1"
+  ]
+  ++
+    lib.optionals
+      (
+        lib.versionAtLeast release_version "18"
+        && !useLLVM
+        && stdenv.hostPlatform.libc == "glibc"
+        && !stdenv.hostPlatform.isStatic
+      )
+      [
+        "-DLIBCXX_ADDITIONAL_LIBRARIES=gcc_s"
+      ]
+  ++ lib.optionals (lib.versionAtLeast release_version "18" && stdenv.hostPlatform.isFreeBSD) [
+    # Name and documentation claim this is for libc++abi, but its man effect is adding `-lunwind`
+    # to the libc++.so linker script. We want FreeBSD's so-called libgcc instead of libunwind.
+    "-DLIBCXXABI_USE_LLVM_UNWINDER=OFF"
+  ]
+  ++ lib.optionals useLLVM [
+    "-DLIBCXX_USE_COMPILER_RT=ON"
+  ]
+  ++
+    lib.optionals (useLLVM && !stdenv.hostPlatform.isFreeBSD && lib.versionAtLeast release_version "16")
+      [
+        "-DLIBCXX_ADDITIONAL_LIBRARIES=unwind"
+      ]
+  ++ lib.optionals stdenv.hostPlatform.isWasm [
+    "-DLIBCXX_ENABLE_THREADS=OFF"
+    "-DLIBCXX_ENABLE_FILESYSTEM=OFF"
+    "-DLIBCXX_ENABLE_EXCEPTIONS=OFF"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isWindows [
+    # https://github.com/llvm/llvm-project/issues/55245
+    "-DLIBCXX_ENABLE_STATIC_ABI_LIBRARY=ON"
+  ]
+  ++ lib.optionals (!enableShared) [
+    "-DLIBCXX_ENABLE_SHARED=OFF"
+  ]
+  ++ lib.optionals (cxxabi != null && cxxabi.libName == "cxxrt") [
+    "-DLIBCXX_ENABLE_NEW_DELETE_DEFINITIONS=ON"
+  ];
 
-  cmakeFlags =
+  cmakeFlags = [
+    "-DLLVM_ENABLE_RUNTIMES=${lib.concatStringsSep ";" runtimes}"
+  ]
+  ++ lib.optionals
+    (
+      stdenv.hostPlatform.isWasm
+      || (lib.versions.major release_version == "12" && stdenv.hostPlatform.isDarwin)
+    )
     [
-      "-DLLVM_ENABLE_RUNTIMES=${lib.concatStringsSep ";" runtimes}"
+      "-DCMAKE_CXX_COMPILER_WORKS=ON"
     ]
-    ++
-      lib.optionals
-        (
-          stdenv.hostPlatform.isWasm
-          || (lib.versions.major release_version == "12" && stdenv.hostPlatform.isDarwin)
-        )
-        [
-          "-DCMAKE_CXX_COMPILER_WORKS=ON"
-        ]
-    ++ lib.optionals stdenv.hostPlatform.isWasm [
-      "-DCMAKE_C_COMPILER_WORKS=ON"
-      "-DUNIX=ON" # Required otherwise libc++ fails to detect the correct linker
-    ]
-    ++ cxxCMakeFlags
-    ++ lib.optionals (cxxabi == null) cxxabiCMakeFlags
-    ++ devExtraCmakeFlags;
+  ++ lib.optionals stdenv.hostPlatform.isWasm [
+    "-DCMAKE_C_COMPILER_WORKS=ON"
+    "-DUNIX=ON" # Required otherwise libc++ fails to detect the correct linker
+  ]
+  ++ cxxCMakeFlags
+  ++ lib.optionals (cxxabi == null) cxxabiCMakeFlags
+  ++ devExtraCmakeFlags;
 
 in
 
@@ -198,8 +196,7 @@ stdenv.mkDerivation (
       ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames
       ++ lib.optional (cxxabi != null) lndir;
 
-    buildInputs =
-      [ cxxabi ]
+    buildInputs = [ cxxabi ]
       ++ lib.optionals (useLLVM && !stdenv.hostPlatform.isWasm && !stdenv.hostPlatform.isFreeBSD) [
         libunwind
       ];

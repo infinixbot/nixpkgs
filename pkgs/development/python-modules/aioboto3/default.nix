@@ -40,7 +40,8 @@ buildPythonPackage rec {
   dependencies = [
     aiobotocore
     aiofiles
-  ] ++ aiobotocore.optional-dependencies.boto3;
+  ]
+  ++ aiobotocore.optional-dependencies.boto3;
 
   optional-dependencies = {
     chalice = [ chalice ];
@@ -53,7 +54,8 @@ buildPythonPackage rec {
     pytest-asyncio
     pytestCheckHook
     requests
-  ] ++ lib.flatten (builtins.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (builtins.attrValues optional-dependencies);
 
   pythonImportsCheck = [ "aioboto3" ];
 

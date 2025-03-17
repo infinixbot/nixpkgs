@@ -36,18 +36,17 @@ stdenv.mkDerivation (finalAttrs: {
     gobject-introspection
   ];
 
-  buildInputs =
-    [
-      glib
-      dbus-glib
-      json-glib
-    ]
-    ++ lib.optional (gtkVersion != null)
-      {
-        "2" = gtk2;
-        "3" = gtk3;
-      }
-      .${gtkVersion} or (throw "unknown GTK version ${gtkVersion}");
+  buildInputs = [
+    glib
+    dbus-glib
+    json-glib
+  ]
+  ++ lib.optional (gtkVersion != null)
+    {
+      "2" = gtk2;
+      "3" = gtk3;
+    }
+    .${gtkVersion} or (throw "unknown GTK version ${gtkVersion}");
 
   patches = [
     ./requires-glib.patch
@@ -73,7 +72,8 @@ stdenv.mkDerivation (finalAttrs: {
     # TODO use `lib.withFeatureAs`
     (if gtkVersion == null then "--disable-gtk" else "--with-gtk=${gtkVersion}")
     "--disable-scrollkeeper"
-  ] ++ lib.optional (gtkVersion != "2") "--disable-dumper";
+  ]
+  ++ lib.optional (gtkVersion != "2") "--disable-dumper";
 
   doCheck = false; # generates shebangs in check phase, too lazy to fix
 
@@ -96,7 +96,8 @@ stdenv.mkDerivation (finalAttrs: {
     pkgConfigModules = [
       "dbusmenu-glib-0.4"
       "dbusmenu-jsonloader-0.4"
-    ] ++ lib.optional (gtkVersion == "3") "dbusmenu-gtk${gtkVersion}-0.4";
+    ]
+    ++ lib.optional (gtkVersion == "3") "dbusmenu-gtk${gtkVersion}-0.4";
     platforms = platforms.linux;
     maintainers = [ maintainers.msteen ];
   };

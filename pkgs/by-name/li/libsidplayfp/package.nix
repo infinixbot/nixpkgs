@@ -29,7 +29,8 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-VBzobT/UT1YFLYWfJ5XFND+p6fClf/qZVb4eEVpdTqg=";
   };
 
-  outputs = [ "out" ] ++ lib.optionals docSupport [ "doc" ];
+  outputs = [ "out" ]
+    ++ lib.optionals docSupport [ "doc" ];
 
   postPatch = ''
     patchShebangs .
@@ -37,17 +38,16 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  nativeBuildInputs =
-    [
-      autoreconfHook
-      perl
-      pkg-config
-      xa
-    ]
-    ++ lib.optionals docSupport [
-      doxygen
-      graphviz
-    ];
+  nativeBuildInputs = [
+    autoreconfHook
+    perl
+    pkg-config
+    xa
+  ]
+  ++ lib.optionals docSupport [
+    doxygen
+    graphviz
+  ];
 
   buildInputs = [
     libexsid
@@ -75,7 +75,8 @@ stdenv.mkDerivation (finalAttrs: {
     export XDG_CACHE_HOME=$TMPDIR
   '';
 
-  buildFlags = [ "all" ] ++ lib.optionals docSupport [ "doc" ];
+  buildFlags = [ "all" ]
+    ++ lib.optionals docSupport [ "doc" ];
 
   doCheck = stdenv.buildPlatform.canExecute stdenv.hostPlatform;
 
