@@ -191,8 +191,7 @@ let
             in
             {
               propagatedBuildInputs =
-                o.propagatedBuildInputs
-                ++ lib.optional requiresOcamlStdlibShims coq.ocamlPackages.stdlib-shims;
+                o.propagatedBuildInputs ++ lib.optional requiresOcamlStdlibShims coq.ocamlPackages.stdlib-shims;
             }
           );
       # utils, common, template-pcuic, quotation, safechecker-plugin, and erasure-plugin

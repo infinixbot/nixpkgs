@@ -36,8 +36,7 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   env.CXXFLAGS =
-    "-std=c++14"
-    + lib.optionalString stdenv.cc.isClang " -Wno-error=reserved-user-defined-literal";
+    "-std=c++14" + lib.optionalString stdenv.cc.isClang " -Wno-error=reserved-user-defined-literal";
 
   preConfigure = ''
     ./bootstrap

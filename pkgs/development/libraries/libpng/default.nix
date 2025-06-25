@@ -52,8 +52,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   meta = with lib; {
     description =
-      "Official reference implementation for the PNG file format"
-      + whenPatched " with animation patch";
+      "Official reference implementation for the PNG file format" + whenPatched " with animation patch";
     homepage = "http://www.libpng.org/pub/png/libpng.html";
     changelog = "https://github.com/pnggroup/libpng/blob/v${finalAttrs.version}/CHANGES";
     license = licenses.libpng2;

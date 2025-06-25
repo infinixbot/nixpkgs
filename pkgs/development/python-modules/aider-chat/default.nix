@@ -353,8 +353,7 @@ let
               ++ lib.optionals (withAll || withBedrock) aider-chat.optional-dependencies.bedrock;
 
             propagatedBuildInputs =
-              propagatedBuildInputs
-              ++ lib.optionals (withAll || withPlaywright) [ playwright-driver.browsers ];
+              propagatedBuildInputs ++ lib.optionals (withAll || withPlaywright) [ playwright-driver.browsers ];
 
             makeWrapperArgs =
               makeWrapperArgs

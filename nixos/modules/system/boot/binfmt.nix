@@ -387,8 +387,7 @@ in
     );
     nix.settings = lib.mkIf (cfg.addEmulatedSystemsToNixSandbox && cfg.emulatedSystems != [ ]) {
       extra-platforms =
-        cfg.emulatedSystems
-        ++ lib.optional pkgs.stdenv.hostPlatform.isx86_64 "i686-linux";
+        cfg.emulatedSystems ++ lib.optional pkgs.stdenv.hostPlatform.isx86_64 "i686-linux";
       extra-sandbox-paths =
         let
           ruleFor = system: cfg.registrations.${system};

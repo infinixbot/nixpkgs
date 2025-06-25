@@ -153,8 +153,7 @@ goBuild (finalAttrs: {
   ];
 
   buildInputs =
-    lib.optionals enableRocm (rocmLibs ++ [ libdrm ])
-    ++ lib.optionals enableCuda cudaLibs;
+    lib.optionals enableRocm (rocmLibs ++ [ libdrm ]) ++ lib.optionals enableCuda cudaLibs;
 
   # replace inaccurate version number with actual release version
   postPatch = ''

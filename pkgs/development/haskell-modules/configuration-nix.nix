@@ -612,14 +612,15 @@ builtins.intersectAttrs super {
   tasty = overrideCabal (drv: {
     libraryHaskellDepends =
       (drv.libraryHaskellDepends or [ ])
-      ++ lib.optionals
-        (
-          !(pkgs.stdenv.hostPlatform.isAarch64 || pkgs.stdenv.hostPlatform.isx86_64)
-          || (self.ghc.isGhcjs or false)
-        )
-        [
-          self.unbounded-delays
-        ];
+      ++
+        lib.optionals
+          (
+            !(pkgs.stdenv.hostPlatform.isAarch64 || pkgs.stdenv.hostPlatform.isx86_64)
+            || (self.ghc.isGhcjs or false)
+          )
+          [
+            self.unbounded-delays
+          ];
   }) super.tasty;
 
   tasty-discover = overrideCabal (drv: {

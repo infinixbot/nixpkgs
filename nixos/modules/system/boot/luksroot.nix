@@ -163,8 +163,7 @@ let
         optionalString (dev.header != null) "--header=${dev.header}"
       }";
       fido2luksCredentials =
-        dev.fido2.credentials
-        ++ optional (dev.fido2.credential != null) dev.fido2.credential;
+        dev.fido2.credentials ++ optional (dev.fido2.credential != null) dev.fido2.credential;
     in
     ''
       # Wait for luksRoot (and optionally keyFile and/or header) to appear, e.g.

@@ -34,8 +34,7 @@ stdenv.mkDerivation {
   ];
 
   buildInputs =
-    selectedPanelModulePackages
-    ++ lib.forEach selectedPanelModulePackages (x: x.buildInputs or [ ]);
+    selectedPanelModulePackages ++ lib.forEach selectedPanelModulePackages (x: x.buildInputs or [ ]);
 
   dontUnpack = true;
   dontConfigure = true;

@@ -2270,16 +2270,17 @@ in
           a malicious process can then edit such an authorized_keys file and bypass the ssh-agent-based authentication.
           See https://github.com/NixOS/nixpkgs/issues/31611
         ''
-      ++ lib.optional
-        (
-          with config.security.pam.rssh;
-          enable && settings.auth_key_file or null != null && settings.authorized_keys_command or null != null
-        )
-        ''
-          security.pam.rssh.settings.auth_key_file will be ignored as
-          security.pam.rssh.settings.authorized_keys_command has been specified.
-          Explictly set the former to null to silence this warning.
-        '';
+      ++
+        lib.optional
+          (
+            with config.security.pam.rssh;
+            enable && settings.auth_key_file or null != null && settings.authorized_keys_command or null != null
+          )
+          ''
+            security.pam.rssh.settings.auth_key_file will be ignored as
+            security.pam.rssh.settings.authorized_keys_command has been specified.
+            Explictly set the former to null to silence this warning.
+          '';
 
     environment.systemPackages =
       # Include the PAM modules in the system path mostly for the manpages.

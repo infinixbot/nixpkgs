@@ -135,7 +135,6 @@ stdenv.mkDerivation (finalAttrs: {
       thoughtpolice
     ];
     platforms =
-      lib.platforms.linux
-      ++ lib.optionals (backend == "mcode" || backend == "llvm") [ "x86_64-darwin" ];
+      lib.platforms.linux ++ lib.optionals (backend == "mcode" || backend == "llvm") [ "x86_64-darwin" ];
   };
 })

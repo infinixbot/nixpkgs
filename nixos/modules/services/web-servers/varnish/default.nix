@@ -28,10 +28,11 @@ let
 
   commandLine =
     "-f ${pkgs.writeText "default.vcl" cfg.config}"
-    + lib.optionalString (cfg.extraModules != [ ])
-      " -p vmod_path='${
-         lib.makeSearchPathOutput "lib" "lib/varnish/vmods" ([ cfg.package ] ++ cfg.extraModules)
-       }' -r vmod_path";
+    +
+      lib.optionalString (cfg.extraModules != [ ])
+        " -p vmod_path='${
+           lib.makeSearchPathOutput "lib" "lib/varnish/vmods" ([ cfg.package ] ++ cfg.extraModules)
+         }' -r vmod_path";
 in
 {
   imports = [

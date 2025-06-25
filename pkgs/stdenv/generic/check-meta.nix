@@ -621,8 +621,7 @@ let
       # Note that there may be external consumers of this API (repology, for instance) -
       # if you add a new maintainer or team attribute please ensure that this expectation is still met.
       maintainers =
-        attrs.meta.maintainers or [ ]
-        ++ concatMap (team: team.members or [ ]) attrs.meta.teams or [ ];
+        attrs.meta.maintainers or [ ] ++ concatMap (team: team.members or [ ]) attrs.meta.teams or [ ];
     }
     // {
       # Expose the result of the checks for everyone to see.

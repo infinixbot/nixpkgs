@@ -320,8 +320,9 @@ in
     warnings =
       optional (cfg.interfaceIpv4 != "" && cfg.ipv6Only)
         "You have specified services.syncplay.interfaceIpv4 but IPv4 is disabled by services.syncplay.ipv6Only."
-      ++ optional (cfg.interfaceIpv6 != "" && cfg.ipv4Only)
-        "You have specified services.syncplay.interfaceIpv6 but IPv6 is disabled by services.syncplay.ipv4Only.";
+      ++
+        optional (cfg.interfaceIpv6 != "" && cfg.ipv4Only)
+          "You have specified services.syncplay.interfaceIpv6 but IPv6 is disabled by services.syncplay.ipv4Only.";
 
     security.acme.certs = mkIf (cfg.useACMEHost != null) {
       "${cfg.useACMEHost}".reloadServices = [ "syncplay.service" ];

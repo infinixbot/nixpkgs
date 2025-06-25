@@ -49,8 +49,7 @@ stdenv.mkDerivation (finalAttrs: {
   doCheck = stdenv.buildPlatform.canExecute stdenv.hostPlatform;
 
   configureFlags =
-    lib.optional (!withInternalSqlite) "--disable-internal-sqlite"
-    ++ lib.optional withJson "--json";
+    lib.optional (!withInternalSqlite) "--disable-internal-sqlite" ++ lib.optional withJson "--json";
 
   preBuild = ''
     export USER=nonexistent-but-specified-user

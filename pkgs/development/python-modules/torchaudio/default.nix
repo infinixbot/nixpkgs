@@ -160,8 +160,7 @@ buildPythonPackage rec {
     changelog = "https://github.com/pytorch/audio/releases/tag/v${version}";
     license = lib.licenses.bsd2;
     platforms =
-      lib.platforms.linux
-      ++ lib.optionals (!cudaSupport && !rocmSupport) lib.platforms.darwin;
+      lib.platforms.linux ++ lib.optionals (!cudaSupport && !rocmSupport) lib.platforms.darwin;
     maintainers = with lib.maintainers; [
       GaetanLepage
       junjihashimoto

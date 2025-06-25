@@ -57,8 +57,7 @@ stdenv.mkDerivation rec {
   ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames;
 
   buildInputs =
-    lib.optional sslSupport openssl
-    ++ lib.optional stdenv.hostPlatform.isCygwin findutils;
+    lib.optional sslSupport openssl ++ lib.optional stdenv.hostPlatform.isCygwin findutils;
 
   doCheck = false; # needs the net
 

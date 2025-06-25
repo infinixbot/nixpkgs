@@ -224,8 +224,7 @@ in
         vlanNetworks
       ];
       boot.initrd.availableKernelModules =
-        optional (cfg.bridges != { }) "bridge"
-        ++ optional (cfg.vlans != { }) "8021q";
+        optional (cfg.bridges != { }) "bridge" ++ optional (cfg.vlans != { }) "8021q";
     })
 
     (mkIf cfg.useNetworkd {

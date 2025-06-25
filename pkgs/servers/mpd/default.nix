@@ -176,8 +176,7 @@ let
         ];
 
       knownFeatures =
-        builtins.attrNames featureDependencies
-        ++ builtins.attrNames nativeFeatureDependencies;
+        builtins.attrNames featureDependencies ++ builtins.attrNames nativeFeatureDependencies;
       platformFeatures = lib.subtractLists platformMask knownFeatures;
 
       features_ =

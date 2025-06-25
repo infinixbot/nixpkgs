@@ -71,8 +71,7 @@ let
 
   # Tell OpenModelica where built dependencies are located.
   configureFlags =
-    lib.optional ifDeps "--with-openmodelicahome=${joinedDeps}"
-    ++ getAttrDef "configureFlags" [ ] pkg;
+    lib.optional ifDeps "--with-openmodelicahome=${joinedDeps}" ++ getAttrDef "configureFlags" [ ] pkg;
 
   # Our own configurePhase that accounts for omautoconf
   configurePhase = ''
