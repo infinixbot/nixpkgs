@@ -22,13 +22,12 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-bFGqOrBPoywx/r35zpViAWUGiF1ZL3IG1E3TA+Qa354=";
   };
 
-  nativeBuildInputs =
-    [
-      installShellFiles
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      darwin.ps
-    ];
+  nativeBuildInputs = [
+    installShellFiles
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    darwin.ps
+  ];
 
   build-system = with python3Packages; [
     hatchling

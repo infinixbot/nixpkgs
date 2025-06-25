@@ -34,16 +34,15 @@ stdenv.mkDerivation (finalAttrs: {
     tcl
   ];
 
-  buildInputs =
-    [
-      zlib
-      openssl
-      readline
-      which
-      ed
-    ]
-    ++ lib.optional stdenv.hostPlatform.isDarwin libiconv
-    ++ lib.optional (!withInternalSqlite) sqlite;
+  buildInputs = [
+    zlib
+    openssl
+    readline
+    which
+    ed
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin libiconv
+  ++ lib.optional (!withInternalSqlite) sqlite;
 
   enableParallelBuilding = true;
 

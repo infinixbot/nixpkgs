@@ -64,7 +64,8 @@ buildPythonPackage rec {
     responses
     psutil
     uvicorn
-  ] ++ optional-dependencies.tui;
+  ]
+  ++ optional-dependencies.tui;
 
   disabledTests = [
     # require a running display server

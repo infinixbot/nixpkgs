@@ -78,21 +78,22 @@ let
   };
 
   # Tools invoked by swiftpm at run-time.
-  runtimeDeps =
-    [ git ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      xcbuild.xcrun
-      # These tools are part of cctools, but adding that as a build input puts
-      # an unwrapped linker in PATH, and breaks builds. This small derivation
-      # exposes just the tools we need:
-      # - vtool is used to determine a minimum deployment target.
-      # - libtool is used to build static libraries.
-      (runCommandLocal "swiftpm-cctools" { } ''
-        mkdir -p $out/bin
-        ln -s ${cctools}/bin/vtool $out/bin/vtool
-        ln -s ${cctools}/bin/libtool $out/bin/libtool
-      '')
-    ];
+  runtimeDeps = [
+    git
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    xcbuild.xcrun
+    # These tools are part of cctools, but adding that as a build input puts
+    # an unwrapped linker in PATH, and breaks builds. This small derivation
+    # exposes just the tools we need:
+    # - vtool is used to determine a minimum deployment target.
+    # - libtool is used to build static libraries.
+    (runCommandLocal "swiftpm-cctools" { } ''
+      mkdir -p $out/bin
+      ln -s ${cctools}/bin/vtool $out/bin/vtool
+      ln -s ${cctools}/bin/libtool $out/bin/libtool
+    '')
+  ];
 
   # Common attributes for the bootstrap derivations.
   mkBootstrapDerivation =

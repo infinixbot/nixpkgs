@@ -98,7 +98,8 @@ let
             exit 1
           fi
         '';
-    } // sdkSourceBuilders;
+    }
+    // sdkSourceBuilders;
   };
   packageConfig = generators.linkPackageConfig {
     packageConfig = pub2nix.generatePackageConfig {
@@ -149,7 +150,8 @@ let
       outputs = [
         "out"
         "pubcache"
-      ] ++ args.outputs or [ ];
+      ]
+      ++ args.outputs or [ ];
 
       dartEntryPoints =
         if (dartEntryPoints != null) then
@@ -191,7 +193,8 @@ let
 
       passthru = {
         pubspecLock = pubspecLockData;
-      } // (args.passthru or { });
+      }
+      // (args.passthru or { });
 
       meta = (args.meta or { }) // {
         platforms = args.meta.platforms or dart.meta.platforms;

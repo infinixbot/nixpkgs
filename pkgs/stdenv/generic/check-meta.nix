@@ -602,7 +602,8 @@ let
           else
             findFirst hasOutput null outputs
         )
-      ] ++ optional (hasOutput "man") "man";
+      ]
+      ++ optional (hasOutput "man") "man";
     }
     // (filterAttrs (_: v: v != null) {
       # CI scripts look at these to determine pings. Note that we should filter nulls out of this,

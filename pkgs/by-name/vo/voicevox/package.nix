@@ -49,15 +49,14 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-IuyDHAomaGEvGbN4gLpyPfZGm/pF9XK+BkXSipaM7NQ=";
   };
 
-  nativeBuildInputs =
-    [
-      makeWrapper
-      pnpm_9.configHook
-      nodejs
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      copyDesktopItems
-    ];
+  nativeBuildInputs = [
+    makeWrapper
+    pnpm_9.configHook
+    nodejs
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    copyDesktopItems
+  ];
 
   env.ELECTRON_SKIP_BINARY_DOWNLOAD = "1";
 

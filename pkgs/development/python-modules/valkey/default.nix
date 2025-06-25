@@ -74,7 +74,8 @@ buildPythonPackage rec {
     redisTestHook
     ujson
     uvloop
-  ] ++ lib.flatten (lib.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (lib.attrValues optional-dependencies);
 
   pytestFlagsArray = [ "-m 'not onlycluster and not ssl'" ];
 

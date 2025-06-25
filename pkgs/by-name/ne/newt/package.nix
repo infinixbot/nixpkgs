@@ -34,14 +34,13 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
   nativeBuildInputs = [ python3 ];
-  buildInputs =
-    [
-      slang
-      popt
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      gettext # for darwin with clang
-    ];
+  buildInputs = [
+    slang
+    popt
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    gettext # for darwin with clang
+  ];
 
   NIX_LDFLAGS =
     "-lncurses"

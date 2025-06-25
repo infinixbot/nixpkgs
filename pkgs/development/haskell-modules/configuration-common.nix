@@ -1286,11 +1286,10 @@ self: super:
     # Flaky tests: https://github.com/jfischoff/tmp-postgres/issues/274
     doCheck = false;
 
-    preCheck =
-      ''
-        export HOME="$TMPDIR"
-      ''
-      + (drv.preCheck or "");
+    preCheck = ''
+      export HOME="$TMPDIR"
+    ''
+    + (drv.preCheck or "");
     libraryToolDepends = drv.libraryToolDepends or [ ] ++ [ pkgs.buildPackages.postgresql ];
     testToolDepends = drv.testToolDepends or [ ] ++ [ pkgs.procps ];
   }) super.tmp-postgres;
@@ -1913,17 +1912,15 @@ self: super:
   spacecookie = overrideCabal (old: {
     buildTools = (old.buildTools or [ ]) ++ [ pkgs.buildPackages.installShellFiles ];
     # let testsuite discover the resulting binary
-    preCheck =
-      ''
-        export SPACECOOKIE_TEST_BIN=./dist/build/spacecookie/spacecookie
-      ''
-      + (old.preCheck or "");
+    preCheck = ''
+      export SPACECOOKIE_TEST_BIN=./dist/build/spacecookie/spacecookie
+    ''
+    + (old.preCheck or "");
     # install man pages shipped in the sdist
-    postInstall =
-      ''
-        installManPage docs/man/*
-      ''
-      + (old.postInstall or "");
+    postInstall = ''
+      installManPage docs/man/*
+    ''
+    + (old.postInstall or "");
   }) super.spacecookie;
 
   # Patch and jailbreak can be removed at next release, chatter > 0.9.1.0
@@ -2237,7 +2234,8 @@ self: super:
         "/Data.List.UniqueUnsorted.repeatedBy,repeated,unique/unique: simple test/"
         "--skip"
         "/Data.List.UniqueUnsorted.repeatedBy,repeated,unique/repeatedBy: simple test/"
-      ] ++ drv.testFlags or [ ];
+      ]
+      ++ drv.testFlags or [ ];
     }) super.Unique;
 
   # https://github.com/AndrewRademacher/aeson-casing/issues/8
@@ -2247,7 +2245,8 @@ self: super:
       testFlags = [
         "-p"
         "! /encode train/"
-      ] ++ drv.testFlags or [ ];
+      ]
+      ++ drv.testFlags or [ ];
     }) super.aeson-casing;
 
   # https://github.com/emc2/HUnit-Plus/issues/26
@@ -2257,14 +2256,16 @@ self: super:
     testFlags = [
       "--skip"
       "/Geo/Hexable/Encodes a linestring/"
-    ] ++ drv.testFlags or [ ];
+    ]
+    ++ drv.testFlags or [ ];
   }) super.haskell-postgis;
   # https://github.com/ChrisPenner/json-to-haskell/issues/5
   json-to-haskell = overrideCabal (drv: {
     testFlags = [
       "--match"
       "/should sanitize weird field and record names/"
-    ] ++ drv.testFlags or [ ];
+    ]
+    ++ drv.testFlags or [ ];
   }) super.json-to-haskell;
   # https://github.com/fieldstrength/aeson-deriving/issues/5
   aeson-deriving = dontCheck super.aeson-deriving;
@@ -2283,14 +2284,16 @@ self: super:
     testFlags = [
       "--skip"
       "/Dropbox/Dropbox aeson aeson/encodes list folder correctly/"
-    ] ++ drv.testFlags or [ ];
+    ]
+    ++ drv.testFlags or [ ];
   }) super.dropbox;
   # https://github.com/alonsodomin/haskell-schema/issues/11
   hschema-aeson = overrideCabal (drv: {
     testFlags = [
       "--skip"
       "/toJsonSerializer/should generate valid JSON/"
-    ] ++ drv.testFlags or [ ];
+    ]
+    ++ drv.testFlags or [ ];
   }) super.hschema-aeson;
   # https://github.com/minio/minio-hs/issues/165
   # https://github.com/minio/minio-hs/pull/191 Use crypton-connection instead of unmaintained connection
@@ -2298,7 +2301,8 @@ self: super:
     testFlags = [
       "-p"
       "!/Test mkSelectRequest/"
-    ] ++ drv.testFlags or [ ];
+    ]
+    ++ drv.testFlags or [ ];
     patches = drv.patches or [ ] ++ [
       (pkgs.fetchpatch {
         name = "use-crypton-connection.patch";
@@ -2921,18 +2925,17 @@ self: super:
   zinza = dontCheck super.zinza;
 
   pdftotext = overrideCabal (drv: {
-    postPatch =
-      ''
-        # Fixes https://todo.sr.ht/~geyaeb/haskell-pdftotext/6
-        substituteInPlace pdftotext.cabal --replace-quiet c-sources cxx-sources
+    postPatch = ''
+      # Fixes https://todo.sr.ht/~geyaeb/haskell-pdftotext/6
+      substituteInPlace pdftotext.cabal --replace-quiet c-sources cxx-sources
 
-        # Fix cabal ignoring cxx because the cabal format version is too old
-        substituteInPlace pdftotext.cabal --replace-quiet ">=1.10" 2.2
+      # Fix cabal ignoring cxx because the cabal format version is too old
+      substituteInPlace pdftotext.cabal --replace-quiet ">=1.10" 2.2
 
-        # Fix wrong license name that breaks recent cabal version
-        substituteInPlace pdftotext.cabal --replace-quiet BSD3 BSD-3-Clause
-      ''
-      + (drv.postPatch or "");
+      # Fix wrong license name that breaks recent cabal version
+      substituteInPlace pdftotext.cabal --replace-quiet BSD3 BSD-3-Clause
+    ''
+    + (drv.postPatch or "");
   }) (doJailbreak (addExtraLibrary pkgs.pkg-config (addExtraLibrary pkgs.poppler super.pdftotext)));
 
   proto3-wire = appendPatch (fetchpatch {

@@ -45846,7 +45846,8 @@ self: {
       badPlatforms = [
         "i686-linux"
         "armv7l-linux"
-      ] ++ lib.platforms.darwin;
+      ]
+      ++ lib.platforms.darwin;
     }
   ) { };
 
@@ -705908,7 +705909,8 @@ self: {
       badPlatforms = [
         "i686-linux"
         "armv7l-linux"
-      ] ++ lib.platforms.darwin;
+      ]
+      ++ lib.platforms.darwin;
     }
   ) { inherit (pkgs) vulkan-loader; };
 
@@ -724826,7 +724828,8 @@ self: {
       badPlatforms = [
         "aarch64-linux"
         "armv7l-linux"
-      ] ++ lib.platforms.darwin;
+      ]
+      ++ lib.platforms.darwin;
       hydraPlatforms = lib.platforms.none;
       mainProgram = "xgb-agaricus";
       broken = true;

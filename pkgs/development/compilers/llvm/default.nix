@@ -37,7 +37,8 @@ let
       rev-version = "21.0.0-unstable-2025-06-22";
       sha256 = "sha256-Xu9RD6R6tQDZ0kaSD7N0GTp1TcUV6BK12fobK0qPkIw=";
     };
-  } // llvmVersions;
+  }
+  // llvmVersions;
 
   mkPackage =
     {

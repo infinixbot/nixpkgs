@@ -87,13 +87,12 @@ let
   deptargets = lib.forEach pkg.omdeps (dep: dep.omtarget);
 
   # ... so we ask openmodelica makefile to skip those targets.
-  preBuild =
-    ''
-      for target in ${concatStringsSep " " deptargets}; do
-        touch ''${target}.skip;
-      done
-    ''
-    + appendByAttr "preBuild" "\n" pkg;
+  preBuild = ''
+    for target in ${concatStringsSep " " deptargets}; do
+      touch ''${target}.skip;
+    done
+  ''
+  + appendByAttr "preBuild" "\n" pkg;
 
   makeFlags = "${omtarget}" + appendByAttr "makeFlags" " " pkg;
 

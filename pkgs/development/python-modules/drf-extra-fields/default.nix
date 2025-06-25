@@ -44,7 +44,8 @@ buildPythonPackage rec {
     pytestCheckHook
     pytest-django
     pytz
-  ] ++ optional-dependencies.Base64ImageField;
+  ]
+  ++ optional-dependencies.Base64ImageField;
 
   pythonImportsCheck = [ "drf_extra_fields" ];
 

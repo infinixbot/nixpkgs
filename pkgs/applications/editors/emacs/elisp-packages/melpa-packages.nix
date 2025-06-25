@@ -838,11 +838,10 @@ let
 
           ac-php-core = super.ac-php-core.overrideAttrs (old: {
             # empty file causing native-compiler-error-empty-byte
-            preBuild =
-              ''
-                rm --verbose ac-php-comm-tags-data.el
-              ''
-              + old.preBuild or "";
+            preBuild = ''
+              rm --verbose ac-php-comm-tags-data.el
+            ''
+            + old.preBuild or "";
           });
 
           # Optimizer error: too much on the stack

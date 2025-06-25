@@ -138,7 +138,8 @@ let
     nativeBuildInputs = [
       meson
       ninja
-    ] ++ prevAttrs.nativeBuildInputs or [ ];
+    ]
+    ++ prevAttrs.nativeBuildInputs or [ ];
     mesonCheckFlags = prevAttrs.mesonCheckFlags or [ ] ++ [
       "--print-errorlogs"
     ];

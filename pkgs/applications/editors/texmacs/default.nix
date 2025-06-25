@@ -64,21 +64,20 @@ stdenv.mkDerivation {
     cmake
   ];
 
-  buildInputs =
-    [
-      guile_1_8
-      qtbase
-      qtsvg
-      ghostscriptX
-      freetype
-      libjpeg
-      sqlite
-      git
-      python3
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      qtmacextras
-    ];
+  buildInputs = [
+    guile_1_8
+    qtbase
+    qtsvg
+    ghostscriptX
+    freetype
+    libjpeg
+    sqlite
+    git
+    python3
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    qtmacextras
+  ];
 
   patches = [
     (fetchpatch {

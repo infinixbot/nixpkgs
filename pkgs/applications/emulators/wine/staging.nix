@@ -33,7 +33,8 @@ wineUnstable.overrideAttrs (self: {
     perl
     python3
     gitMinimal
-  ] ++ self.nativeBuildInputs;
+  ]
+  ++ self.nativeBuildInputs;
 
   prePatch =
     self.prePatch or ""

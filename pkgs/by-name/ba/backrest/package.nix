@@ -68,16 +68,15 @@ buildGoModule {
 
   checkFlags =
     let
-      skippedTests =
-        [
-          "TestMultihostIndexSnapshots"
-          "TestRunCommand"
-          "TestSnapshot"
-        ]
-        ++ lib.optionals stdenv.hostPlatform.isDarwin [
-          "TestBackup" # relies on ionice
-          "TestCancelBackup"
-        ];
+      skippedTests = [
+        "TestMultihostIndexSnapshots"
+        "TestRunCommand"
+        "TestSnapshot"
+      ]
+      ++ lib.optionals stdenv.hostPlatform.isDarwin [
+        "TestBackup" # relies on ionice
+        "TestCancelBackup"
+      ];
     in
     [ "-skip=^${builtins.concatStringsSep "$|^" skippedTests}$" ];
 

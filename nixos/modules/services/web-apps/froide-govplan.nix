@@ -189,15 +189,14 @@ in
             "systemd-tmpfiles-setup.service"
           ];
           wantedBy = [ "multi-user.target" ];
-          environment =
-            {
-              PYTHONPATH = pkg.pythonPath;
-              GDAL_LIBRARY_PATH = "${pkgs.gdal}/lib/libgdal.so";
-              GEOS_LIBRARY_PATH = "${pkgs.geos}/lib/libgeos_c.so";
-            }
-            // lib.optionalAttrs (cfg.secretKeyFile != null) {
-              SECRET_KEY_FILE = cfg.secretKeyFile;
-            };
+          environment = {
+            PYTHONPATH = pkg.pythonPath;
+            GDAL_LIBRARY_PATH = "${pkgs.gdal}/lib/libgdal.so";
+            GEOS_LIBRARY_PATH = "${pkgs.geos}/lib/libgeos_c.so";
+          }
+          // lib.optionalAttrs (cfg.secretKeyFile != null) {
+            SECRET_KEY_FILE = cfg.secretKeyFile;
+          };
           preStart = ''
             # Auto-migrate on first run or if the package has changed
             versionFile="${cfg.dataDir}/src-version"

@@ -120,7 +120,8 @@ let
             propagatedBuildInputs = [
               equations
               coq.ocamlPackages.zarith
-            ] ++ metacoq-deps;
+            ]
+            ++ metacoq-deps;
 
             patchPhase =
               if lib.versionAtLeast coq.coq-version "8.17" || coq.coq-version == "dev" then

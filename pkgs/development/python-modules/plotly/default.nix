@@ -89,7 +89,8 @@ buildPythonPackage rec {
     statsmodels
     which
     xarray
-  ] ++ lib.flatten (lib.attrValues optional-dependencies);
+  ]
+  ++ lib.flatten (lib.attrValues optional-dependencies);
 
   disabledTests = [
     # failed pinning test, sensitive to dep versions

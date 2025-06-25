@@ -69,16 +69,15 @@ stdenv.mkDerivation (finalAttrs: {
     bison
   ];
 
-  configureFlags =
-    [
-      "--bindir=\${bin}/bin"
-      "--sbindir=\${bin}/bin"
-      "--datadir=\${doc}/share"
-      "--mandir=\${man}/share/man"
-    ]
-    ++ lib.optional (!onigurumaSupport) "--with-oniguruma=no"
-    # jq is linked to libjq:
-    ++ lib.optional (!stdenv.hostPlatform.isDarwin) "LDFLAGS=-Wl,-rpath,\\\${libdir}";
+  configureFlags = [
+    "--bindir=\${bin}/bin"
+    "--sbindir=\${bin}/bin"
+    "--datadir=\${doc}/share"
+    "--mandir=\${man}/share/man"
+  ]
+  ++ lib.optional (!onigurumaSupport) "--with-oniguruma=no"
+  # jq is linked to libjq:
+  ++ lib.optional (!stdenv.hostPlatform.isDarwin) "LDFLAGS=-Wl,-rpath,\\\${libdir}";
 
   # jq binary includes the whole `configureFlags` in:
   # https://github.com/jqlang/jq/commit/583e4a27188a2db097dd043dd203b9c106bba100

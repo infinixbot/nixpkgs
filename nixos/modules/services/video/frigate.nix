@@ -613,18 +613,17 @@ in
       wantedBy = [
         "multi-user.target"
       ];
-      environment =
-        {
-          CONFIG_FILE = "/run/frigate/frigate.yml";
-          HOME = "/var/lib/frigate";
-          PYTHONPATH = cfg.package.pythonPath;
-        }
-        // optionalAttrs (cfg.vaapiDriver != null) {
-          LIBVA_DRIVER_NAME = cfg.vaapiDriver;
-        }
-        // optionalAttrs withCoral {
-          LD_LIBRARY_PATH = makeLibraryPath (with pkgs; [ libedgetpu ]);
-        };
+      environment = {
+        CONFIG_FILE = "/run/frigate/frigate.yml";
+        HOME = "/var/lib/frigate";
+        PYTHONPATH = cfg.package.pythonPath;
+      }
+      // optionalAttrs (cfg.vaapiDriver != null) {
+        LIBVA_DRIVER_NAME = cfg.vaapiDriver;
+      }
+      // optionalAttrs withCoral {
+        LD_LIBRARY_PATH = makeLibraryPath (with pkgs; [ libedgetpu ]);
+      };
       path =
         with pkgs;
         [

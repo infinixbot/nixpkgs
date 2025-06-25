@@ -50,16 +50,15 @@ let
   # filter out gdcm, libminc from list of ITK deps as it's not needed for OTB
   itkVersion = "5.3.0";
   itkMajorMinorVersion = lib.versions.majorMinor itkVersion;
-  itkDepsToRemove =
-    [
-      "gdcm"
-      "libminc"
-    ]
-    ++ optionals (!enableFFTW) [
-      # remove fftw to avoid GPL contamination
-      # https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb/-/issues/2454#note_112821
-      "fftw"
-    ];
+  itkDepsToRemove = [
+    "gdcm"
+    "libminc"
+  ]
+  ++ optionals (!enableFFTW) [
+    # remove fftw to avoid GPL contamination
+    # https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb/-/issues/2454#note_112821
+    "fftw"
+  ];
   itkIsInDepsToRemove = dep: builtins.any (d: d == dep.name) itkDepsToRemove;
 
   # remove after https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb/-/issues/2451
@@ -233,17 +232,16 @@ stdenv.mkDerivation (finalAttrs: {
     ./1-otb-swig-include-itk.diff
   ];
 
-  postPatch =
-    ''
-      substituteInPlace Modules/Core/Wrappers/SWIG/src/python/CMakeLists.txt \
-        --replace-fail ''\'''${ITK_INCLUDE_DIRS}' "${otb-itk}/include/ITK-${itkMajorMinorVersion}"
-    ''
-    # Add the header file "vcl_legacy_aliases.h", which defines the legacy vcl_* functions.
-    # This patch fixes the unreproducible build of OTB.
-    # See https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb/-/issues/2484.
-    + ''
-      sed -i '/#include "vcl_compiler.h"/a #include "vcl_legacy_aliases.h"' Modules/Core/Mosaic/include/otbMosaicFunctors.h
-    '';
+  postPatch = ''
+    substituteInPlace Modules/Core/Wrappers/SWIG/src/python/CMakeLists.txt \
+      --replace-fail ''\'''${ITK_INCLUDE_DIRS}' "${otb-itk}/include/ITK-${itkMajorMinorVersion}"
+  ''
+  # Add the header file "vcl_legacy_aliases.h", which defines the legacy vcl_* functions.
+  # This patch fixes the unreproducible build of OTB.
+  # See https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb/-/issues/2484.
+  + ''
+    sed -i '/#include "vcl_compiler.h"/a #include "vcl_legacy_aliases.h"' Modules/Core/Mosaic/include/otbMosaicFunctors.h
+  '';
 
   nativeBuildInputs = [
     cmake
@@ -271,29 +269,28 @@ stdenv.mkDerivation (finalAttrs: {
     (lib.cmakeBool "OTB_USE_FFTW" enableFFTW)
   ];
 
-  propagatedBuildInputs =
+  propagatedBuildInputs = [
+    boost
+    curl
+    gdal
+    libgeotiff
+    libsvm
+    muparser
+    muparserx
+    opencv
+    otb-itk
+    perl
+    tinyxml
+  ]
+  ++ otb-itk.propagatedBuildInputs
+  ++ optionals enablePython (
     [
-      boost
-      curl
-      gdal
-      libgeotiff
-      libsvm
-      muparser
-      muparserx
-      opencv
-      otb-itk
-      perl
-      tinyxml
+      python3
+      otbSwig
     ]
-    ++ otb-itk.propagatedBuildInputs
-    ++ optionals enablePython (
-      [
-        python3
-        otbSwig
-      ]
-      ++ pythonInputs
-    )
-    ++ optionals enableShark [ otb-shark ];
+    ++ pythonInputs
+  )
+  ++ optionals enableShark [ otb-shark ];
 
   doInstallCheck = true;
 

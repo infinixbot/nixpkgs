@@ -30,25 +30,24 @@ python3Packages.buildPythonApplication rec {
     poetry-core
   ];
 
-  dependencies =
-    [
-      passthru.pyopenjtalk
-    ]
-    ++ (with python3Packages; [
-      numpy
-      fastapi
-      jinja2
-      python-multipart
-      uvicorn
-      soundfile
-      pyyaml
-      pyworld
-      semver
-      platformdirs
-      soxr
-      pydantic
-      starlette
-    ]);
+  dependencies = [
+    passthru.pyopenjtalk
+  ]
+  ++ (with python3Packages; [
+    numpy
+    fastapi
+    jinja2
+    python-multipart
+    uvicorn
+    soundfile
+    pyyaml
+    pyworld
+    semver
+    platformdirs
+    soxr
+    pydantic
+    starlette
+  ]);
 
   pythonRemoveDeps = [
     # upstream wants fastapi-slim, but we provide fastapi instead

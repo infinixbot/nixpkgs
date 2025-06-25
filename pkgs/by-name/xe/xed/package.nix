@@ -47,7 +47,8 @@ stdenv.mkDerivation (finalAttrs: {
   nativeBuildInputs = [
     mbuild
     installShellFiles
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ llvmPackages.bintools ];
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ llvmPackages.bintools ];
 
   buildPhase = ''
     runHook preBuild

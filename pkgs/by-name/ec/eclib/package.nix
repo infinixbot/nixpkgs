@@ -34,15 +34,14 @@ stdenv.mkDerivation rec {
     url = "https://github.com/JohnCremona/eclib/releases/download/${version}/eclib-${version}.tar.bz2";
     hash = "sha256-WrPkrAlBhsnK/NqSFNTZNkgsL2EJzvmLASha0rI4U5s=";
   };
-  buildInputs =
-    [
-      pari
-      ntl
-      gmp
-    ]
-    ++ lib.optionals withFlint [
-      flint
-    ];
+  buildInputs = [
+    pari
+    ntl
+    gmp
+  ]
+  ++ lib.optionals withFlint [
+    flint
+  ];
   nativeBuildInputs = [
     autoreconfHook
   ];

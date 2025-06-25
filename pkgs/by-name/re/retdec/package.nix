@@ -64,16 +64,15 @@ let
   };
 
   retdec-support-version = "2019-03-08";
-  retdec-support =
-    {
-      rev = retdec-support-version;
-    }
-    # for checking the version against the expected version
-    // fetchzip {
-      url = "https://github.com/avast-tl/retdec-support/releases/download/${retdec-support-version}/retdec-support_${retdec-support-version}.tar.xz";
-      hash = "sha256-t1tx4MfLW/lwtbO5JQ1nrFBIOeMclq+0dENuXW+ahIM=";
-      stripRoot = false;
-    };
+  retdec-support = {
+    rev = retdec-support-version;
+  }
+  # for checking the version against the expected version
+  // fetchzip {
+    url = "https://github.com/avast-tl/retdec-support/releases/download/${retdec-support-version}/retdec-support_${retdec-support-version}.tar.xz";
+    hash = "sha256-t1tx4MfLW/lwtbO5JQ1nrFBIOeMclq+0dENuXW+ahIM=";
+    stripRoot = false;
+  };
 
   check-dep = name: dep: ''
     context="$(grep ${name}_URL --after-context 1 cmake/deps.cmake)"
@@ -87,19 +86,18 @@ let
     fi
   '';
 
-  deps =
-    {
-      CAPSTONE = capstone;
-      LLVM = llvm;
-      YARA = yaracpp;
-      YARAMOD = yaramod;
-      SUPPORT_PKG = retdec-support;
-    }
-    // lib.optionalAttrs enableTests {
-      KEYSTONE = keystone;
-      # nixpkgs googletest is used
-      # GOOGLETEST = googletest;
-    };
+  deps = {
+    CAPSTONE = capstone;
+    LLVM = llvm;
+    YARA = yaracpp;
+    YARAMOD = yaramod;
+    SUPPORT_PKG = retdec-support;
+  }
+  // lib.optionalAttrs enableTests {
+    KEYSTONE = keystone;
+    # nixpkgs googletest is used
+    # GOOGLETEST = googletest;
+  };
 
   # overwrite install-share.py to copy instead of download.
   # we use this so the copy happens at the right time in the build,
@@ -162,13 +160,15 @@ stdenv.mkDerivation (self: {
     libffi
     libxml2
     zlib
-  ] ++ lib.optional self.doInstallCheck gtest;
+  ]
+  ++ lib.optional self.doInstallCheck gtest;
 
   cmakeFlags = [
     (lib.cmakeBool "RETDEC_TESTS" self.doInstallCheck) # build tests
     (lib.cmakeBool "RETDEC_DEV_TOOLS" buildDevTools) # build tools e.g. capstone2llvmir, retdectool
     (lib.cmakeBool "RETDEC_COMPILE_YARA" compileYaraPatterns) # build and install compiled patterns
-  ] ++ lib.mapAttrsToList (k: v: lib.cmakeFeature "${k}_URL" "${v}") deps;
+  ]
+  ++ lib.mapAttrsToList (k: v: lib.cmakeFeature "${k}_URL" "${v}") deps;
 
   preConfigure =
     lib.concatStringsSep "\n" (lib.mapAttrsToList check-dep deps)

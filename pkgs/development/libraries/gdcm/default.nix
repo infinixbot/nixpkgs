@@ -29,59 +29,57 @@ stdenv.mkDerivation rec {
     hash = "sha256-PYVVlSqeAZCWvnWPqqWGQIWatMfPYqnrXc7cqi8UseU=";
   };
 
-  patches =
-    [
-      ./add-missing-losslylosslessarray-in-TestTransferSyntax.patch
-    ]
-    ++ lib.optionals (lib.versionOlder vtk.version "9.3") [
-      (fetchpatch2 {
-        url = "https://github.com/malaterre/GDCM/commit/3be6c2fa0945c91889bcf06e8c20e88f69692dd5.patch?full_index=1";
-        hash = "sha256-Yt5f4mxhP5n+L0A/CRq3CxKCqUT7LZ8uKdbCf9P71Zc=";
-        revert = true;
-      })
-    ];
+  patches = [
+    ./add-missing-losslylosslessarray-in-TestTransferSyntax.patch
+  ]
+  ++ lib.optionals (lib.versionOlder vtk.version "9.3") [
+    (fetchpatch2 {
+      url = "https://github.com/malaterre/GDCM/commit/3be6c2fa0945c91889bcf06e8c20e88f69692dd5.patch?full_index=1";
+      hash = "sha256-Yt5f4mxhP5n+L0A/CRq3CxKCqUT7LZ8uKdbCf9P71Zc=";
+      revert = true;
+    })
+  ];
 
-  cmakeFlags =
-    [
-      "-DGDCM_BUILD_APPLICATIONS=ON"
-      "-DGDCM_BUILD_SHARED_LIBS=ON"
-      "-DGDCM_BUILD_TESTING=ON"
-      "-DGDCM_USE_SYSTEM_EXPAT=ON"
-      "-DGDCM_USE_SYSTEM_ZLIB=ON"
-      "-DGDCM_USE_SYSTEM_UUID=ON"
-      "-DGDCM_USE_SYSTEM_OPENJPEG=ON"
-      # hack around usual "`RUNTIME_DESTINATION` must not be an absolute path" issue:
-      "-DCMAKE_INSTALL_LIBDIR=lib"
-      "-DCMAKE_INSTALL_BINDIR=bin"
-      "-DCMAKE_INSTALL_INCLUDEDIR=include"
-    ]
-    ++ lib.optionals enableVTK [
-      "-DGDCM_USE_VTK=ON"
-    ]
-    ++ lib.optionals enablePython [
-      "-DGDCM_WRAP_PYTHON:BOOL=ON"
-      "-DGDCM_INSTALL_PYTHONMODULE_DIR=${placeholder "out"}/${python.sitePackages}/python_gdcm"
-    ];
+  cmakeFlags = [
+    "-DGDCM_BUILD_APPLICATIONS=ON"
+    "-DGDCM_BUILD_SHARED_LIBS=ON"
+    "-DGDCM_BUILD_TESTING=ON"
+    "-DGDCM_USE_SYSTEM_EXPAT=ON"
+    "-DGDCM_USE_SYSTEM_ZLIB=ON"
+    "-DGDCM_USE_SYSTEM_UUID=ON"
+    "-DGDCM_USE_SYSTEM_OPENJPEG=ON"
+    # hack around usual "`RUNTIME_DESTINATION` must not be an absolute path" issue:
+    "-DCMAKE_INSTALL_LIBDIR=lib"
+    "-DCMAKE_INSTALL_BINDIR=bin"
+    "-DCMAKE_INSTALL_INCLUDEDIR=include"
+  ]
+  ++ lib.optionals enableVTK [
+    "-DGDCM_USE_VTK=ON"
+  ]
+  ++ lib.optionals enablePython [
+    "-DGDCM_WRAP_PYTHON:BOOL=ON"
+    "-DGDCM_INSTALL_PYTHONMODULE_DIR=${placeholder "out"}/${python.sitePackages}/python_gdcm"
+  ];
 
   nativeBuildInputs = [
     cmake
     pkg-config
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin DarwinTools;
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin DarwinTools;
 
-  buildInputs =
-    [
-      expat
-      libuuid
-      openjpeg
-      zlib
-    ]
-    ++ lib.optionals enableVTK [
-      vtk
-    ]
-    ++ lib.optionals enablePython [
-      swig
-      python
-    ];
+  buildInputs = [
+    expat
+    libuuid
+    openjpeg
+    zlib
+  ]
+  ++ lib.optionals enableVTK [
+    vtk
+  ]
+  ++ lib.optionals enablePython [
+    swig
+    python
+  ];
 
   postInstall = lib.optionalString enablePython ''
     substitute \
@@ -90,24 +88,23 @@ stdenv.mkDerivation rec {
       --subst-var-by GDCM_VER "${version}"
   '';
 
-  disabledTests =
-    [
-      # require networking:
-      "TestEcho"
-      "TestFind"
-      "gdcmscu-echo-dicomserver"
-      "gdcmscu-find-dicomserver"
-      # seemingly ought to be disabled when the test data submodule is not present:
-      "TestvtkGDCMImageReader2_3"
-      "TestSCUValidation"
-      # errors because 3 classes not wrapped:
-      "TestWrapPython"
-      # AttributeError: module 'gdcm' has no attribute 'UIDGenerator_SetRoot'; maybe a wrapping regression:
-      "TestUIDGeneratorPython"
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isAarch64 && stdenv.hostPlatform.isLinux) [
-      "TestRescaler2"
-    ];
+  disabledTests = [
+    # require networking:
+    "TestEcho"
+    "TestFind"
+    "gdcmscu-echo-dicomserver"
+    "gdcmscu-find-dicomserver"
+    # seemingly ought to be disabled when the test data submodule is not present:
+    "TestvtkGDCMImageReader2_3"
+    "TestSCUValidation"
+    # errors because 3 classes not wrapped:
+    "TestWrapPython"
+    # AttributeError: module 'gdcm' has no attribute 'UIDGenerator_SetRoot'; maybe a wrapping regression:
+    "TestUIDGeneratorPython"
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isAarch64 && stdenv.hostPlatform.isLinux) [
+    "TestRescaler2"
+  ];
 
   nativeCheckInputs = [
     ctestCheckHook

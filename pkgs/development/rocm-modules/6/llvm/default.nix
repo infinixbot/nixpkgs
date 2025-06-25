@@ -453,24 +453,23 @@ rec {
   # Emulate a monolithic ROCm LLVM build to support building ROCm's in-tree LLVM projects
   rocm-merged-llvm = symlinkJoin {
     name = "rocm-llvm-merge";
-    paths =
-      [
-        llvm
-        llvm.dev
-        lld
-        lld.lib
-        lld.dev
-        libunwind
-        libunwind.dev
-        compiler-rt
-        compiler-rt.dev
-        rocmcxx
-      ]
-      ++ lib.optionals useLibcxx [
-        libcxx
-        libcxx.out
-        libcxx.dev
-      ];
+    paths = [
+      llvm
+      llvm.dev
+      lld
+      lld.lib
+      lld.dev
+      libunwind
+      libunwind.dev
+      compiler-rt
+      compiler-rt.dev
+      rocmcxx
+    ]
+    ++ lib.optionals useLibcxx [
+      libcxx
+      libcxx.out
+      libcxx.dev
+    ];
     postBuild = builtins.unsafeDiscardStringContext ''
       found_files=$(find $out -name '*.cmake')
       if [ -z "$found_files" ]; then

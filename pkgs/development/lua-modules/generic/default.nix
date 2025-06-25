@@ -25,7 +25,8 @@ else
           "LUA_INC=-I${lua}/include"
           "LUA_LIBDIR=$(out)/lib/lua/${lua.luaversion}"
           "LUA_VERSION=${lua.luaversion}"
-        ] ++ makeFlags;
+        ]
+        ++ makeFlags;
 
         propagatedBuildInputs = propagatedBuildInputs ++ [
           lua # propagate it for its setup-hook

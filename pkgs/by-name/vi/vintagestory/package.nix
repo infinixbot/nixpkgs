@@ -77,21 +77,20 @@ stdenv.mkDerivation rec {
     runHook postInstall
   '';
 
-  preFixup =
-    ''
-      makeWrapper ${dotnet-runtime_7}/bin/dotnet $out/bin/vintagestory \
-        --prefix LD_LIBRARY_PATH : "${runtimeLibs}" \
-        --add-flags $out/share/vintagestory/Vintagestory.dll
-      makeWrapper ${dotnet-runtime_7}/bin/dotnet $out/bin/vintagestory-server \
-        --prefix LD_LIBRARY_PATH : "${runtimeLibs}" \
-        --add-flags $out/share/vintagestory/VintagestoryServer.dll
-    ''
-    + ''
-      find "$out/share/vintagestory/assets/" -not -path "*/fonts/*" -regex ".*/.*[A-Z].*" | while read -r file; do
-        local filename="$(basename -- "$file")"
-        ln -sf "$filename" "''${file%/*}"/"''${filename,,}"
-      done
-    '';
+  preFixup = ''
+    makeWrapper ${dotnet-runtime_7}/bin/dotnet $out/bin/vintagestory \
+      --prefix LD_LIBRARY_PATH : "${runtimeLibs}" \
+      --add-flags $out/share/vintagestory/Vintagestory.dll
+    makeWrapper ${dotnet-runtime_7}/bin/dotnet $out/bin/vintagestory-server \
+      --prefix LD_LIBRARY_PATH : "${runtimeLibs}" \
+      --add-flags $out/share/vintagestory/VintagestoryServer.dll
+  ''
+  + ''
+    find "$out/share/vintagestory/assets/" -not -path "*/fonts/*" -regex ".*/.*[A-Z].*" | while read -r file; do
+      local filename="$(basename -- "$file")"
+      ln -sf "$filename" "''${file%/*}"/"''${filename,,}"
+    done
+  '';
 
   meta = with lib; {
     description = "In-development indie sandbox game about innovation and exploration";

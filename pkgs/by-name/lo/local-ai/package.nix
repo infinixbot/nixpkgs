@@ -251,7 +251,8 @@ let
     nativeBuildInputs = [
       cmake
       pkg-config
-    ] ++ lib.optionals with_cublas [ cuda_nvcc ];
+    ]
+    ++ lib.optionals with_cublas [ cuda_nvcc ];
 
     buildInputs =
       [ ]
@@ -364,23 +365,22 @@ let
 
     env.NIX_CFLAGS_COMPILE = " -isystem ${opencv}/include/opencv4";
 
-    postPatch =
-      ''
-        # TODO: add silero-vad
-        sed -i Makefile \
-          -e '/mod download/ d' \
-          -e '/^ALL_GRPC_BACKENDS+=backend-assets\/grpc\/llama-cpp-avx/ d' \
-          -e '/^ALL_GRPC_BACKENDS+=backend-assets\/grpc\/llama-cpp-cuda/ d' \
-          -e '/^ALL_GRPC_BACKENDS+=backend-assets\/grpc\/silero-vad/ d' \
+    postPatch = ''
+      # TODO: add silero-vad
+      sed -i Makefile \
+        -e '/mod download/ d' \
+        -e '/^ALL_GRPC_BACKENDS+=backend-assets\/grpc\/llama-cpp-avx/ d' \
+        -e '/^ALL_GRPC_BACKENDS+=backend-assets\/grpc\/llama-cpp-cuda/ d' \
+        -e '/^ALL_GRPC_BACKENDS+=backend-assets\/grpc\/silero-vad/ d' \
 
-        sed -i backend/go/image/stablediffusion-ggml/Makefile \
-          -e '/^libsd/ s,$, $(COMBINED_LIB),'
+      sed -i backend/go/image/stablediffusion-ggml/Makefile \
+        -e '/^libsd/ s,$, $(COMBINED_LIB),'
 
-      ''
-      + lib.optionalString with_cublas ''
-        sed -i Makefile \
-          -e '/^CGO_LDFLAGS_WHISPER?=/ s;$;-L${libcufft}/lib -L${cuda_cudart}/lib;'
-      '';
+    ''
+    + lib.optionalString with_cublas ''
+      sed -i Makefile \
+        -e '/^CGO_LDFLAGS_WHISPER?=/ s;$;-L${libcufft}/lib -L${cuda_cudart}/lib;'
+    '';
 
     postConfigure =
       prepare-sources
@@ -417,17 +417,16 @@ let
       ++ lib.optionals with_openblas [ openblas.dev ]
       ++ lib.optionals with_tts go-piper.buildInputs;
 
-    nativeBuildInputs =
-      [
-        protobuf
-        protoc-gen-go
-        protoc-gen-go-grpc
-        makeWrapper
-        ncurses # tput
-        which
-      ]
-      ++ lib.optional enable_upx upx
-      ++ lib.optionals with_cublas [ cuda_nvcc ];
+    nativeBuildInputs = [
+      protobuf
+      protoc-gen-go
+      protoc-gen-go-grpc
+      makeWrapper
+      ncurses # tput
+      which
+    ]
+    ++ lib.optional enable_upx upx
+    ++ lib.optionals with_cublas [ cuda_nvcc ];
 
     enableParallelBuilding = false;
 
@@ -444,13 +443,12 @@ let
     # containing spaces
     env.GO_TAGS = builtins.concatStringsSep " " GO_TAGS;
 
-    makeFlags =
-      [
-        "VERSION=v${version}"
-        "BUILD_TYPE=${BUILD_TYPE}"
-      ]
-      ++ lib.optional with_cublas "CUDA_LIBPATH=${cuda_cudart}/lib"
-      ++ lib.optional with_tts "PIPER_CGO_CXXFLAGS=-DSPDLOG_FMT_EXTERNAL=1";
+    makeFlags = [
+      "VERSION=v${version}"
+      "BUILD_TYPE=${BUILD_TYPE}"
+    ]
+    ++ lib.optional with_cublas "CUDA_LIBPATH=${cuda_cudart}/lib"
+    ++ lib.optional with_tts "PIPER_CGO_CXXFLAGS=-DSPDLOG_FMT_EXTERNAL=1";
 
     buildPhase = ''
       runHook preBuild

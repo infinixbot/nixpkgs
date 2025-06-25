@@ -89,7 +89,8 @@ in
     platforms = [
       "aarch64-linux"
       "x86_64-linux"
-    ] ++ lib.platforms.darwin;
+    ]
+    ++ lib.platforms.darwin;
     mainProgram = "cursor";
   };
 }).overrideAttrs

@@ -113,28 +113,28 @@ buildPythonPackage rec {
     ];
   };
 
-  nativeBuildInputs =
+  nativeBuildInputs = [
+    cmake
+    pkg-config
+    ninja
+  ]
+  ++ lib.optionals cudaSupport [ cudaPackages.cuda_nvcc ]
+  ++ lib.optionals rocmSupport (
+    with rocmPackages;
     [
-      cmake
-      pkg-config
-      ninja
+      clr
+      rocblas
+      hipblas
     ]
-    ++ lib.optionals cudaSupport [ cudaPackages.cuda_nvcc ]
-    ++ lib.optionals rocmSupport (
-      with rocmPackages;
-      [
-        clr
-        rocblas
-        hipblas
-      ]
-    );
+  );
 
   buildInputs = [
     ffmpeg_6-full
     pybind11
     sox
     torch.cxxdev
-  ] ++ lib.optionals stdenv.cc.isClang [ llvmPackages.openmp ];
+  ]
+  ++ lib.optionals stdenv.cc.isClang [ llvmPackages.openmp ];
 
   dependencies = [ torch ];
 

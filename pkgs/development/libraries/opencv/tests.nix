@@ -13,24 +13,23 @@
   xvfb-run,
 }:
 let
-  testNames =
-    [
-      "calib3d"
-      "core"
-      "features2d"
-      "flann"
-      "imgcodecs"
-      "imgproc"
-      "ml"
-      "objdetect"
-      "photo"
-      "stitching"
-      "video"
-      #"videoio" # - a lot of GStreamer warnings and failed tests
-      #"dnn" #- some caffe tests failed, probably because github workflow also downloads additional models
-    ]
-    ++ lib.optionals (!stdenv.hostPlatform.isAarch64 && enableGStreamer) [ "gapi" ]
-    ++ lib.optionals (enableGtk2 || enableGtk3) [ "highgui" ];
+  testNames = [
+    "calib3d"
+    "core"
+    "features2d"
+    "flann"
+    "imgcodecs"
+    "imgproc"
+    "ml"
+    "objdetect"
+    "photo"
+    "stitching"
+    "video"
+    #"videoio" # - a lot of GStreamer warnings and failed tests
+    #"dnn" #- some caffe tests failed, probably because github workflow also downloads additional models
+  ]
+  ++ lib.optionals (!stdenv.hostPlatform.isAarch64 && enableGStreamer) [ "gapi" ]
+  ++ lib.optionals (enableGtk2 || enableGtk3) [ "highgui" ];
   perfTestNames = [
     "calib3d"
     "core"
@@ -41,7 +40,8 @@ let
     "photo"
     "stitching"
     "video"
-  ] ++ lib.optionals (!stdenv.hostPlatform.isAarch64 && enableGStreamer) [ "gapi" ];
+  ]
+  ++ lib.optionals (!stdenv.hostPlatform.isAarch64 && enableGStreamer) [ "gapi" ];
   testRunner = lib.optionalString (!stdenv.hostPlatform.isDarwin) "${lib.getExe xvfb-run} -a ";
   testsPreparation = ''
     touch $out

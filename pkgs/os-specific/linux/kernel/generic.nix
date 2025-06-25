@@ -182,20 +182,19 @@ let
         passAsFile = [ "kernelConfig" ];
 
         depsBuildBuild = [ buildPackages.stdenv.cc ];
-        nativeBuildInputs =
-          [
-            perl
-            gmp
-            libmpc
-            mpfr
-            bison
-            flex
-          ]
-          ++ lib.optional (lib.versionAtLeast version "5.2") pahole
-          ++ lib.optionals withRust [
-            rust-bindgen
-            rustc
-          ];
+        nativeBuildInputs = [
+          perl
+          gmp
+          libmpc
+          mpfr
+          bison
+          flex
+        ]
+        ++ lib.optional (lib.versionAtLeast version "5.2") pahole
+        ++ lib.optionals withRust [
+          rust-bindgen
+          rustc
+        ];
 
         RUST_LIB_SRC = lib.optionalString withRust rustPlatform.rustLibSrc;
 
@@ -252,23 +251,22 @@ let
           # The result is a set of two attributes
           moduleStructuredConfig =
             (lib.evalModules {
-              modules =
-                [
-                  module
-                ]
-                ++ lib.optionals enableCommonConfig [
-                  {
-                    settings = commonStructuredConfig;
-                    _file = "pkgs/os-specific/linux/kernel/common-config.nix";
-                  }
-                ]
-                ++ [
-                  {
-                    settings = structuredExtraConfig;
-                    _file = "structuredExtraConfig";
-                  }
-                ]
-                ++ structuredConfigFromPatches;
+              modules = [
+                module
+              ]
+              ++ lib.optionals enableCommonConfig [
+                {
+                  settings = commonStructuredConfig;
+                  _file = "pkgs/os-specific/linux/kernel/common-config.nix";
+                }
+              ]
+              ++ [
+                {
+                  settings = structuredExtraConfig;
+                  _file = "structuredExtraConfig";
+                }
+              ]
+              ++ structuredConfigFromPatches;
             }).config;
 
           structuredConfig = moduleStructuredConfig.settings;

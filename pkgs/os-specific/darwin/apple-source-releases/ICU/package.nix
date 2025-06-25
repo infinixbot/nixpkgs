@@ -44,21 +44,20 @@ let
 
     dontDisableStatic = withStatic;
 
-    configureFlags =
-      [
-        (lib.enableFeature false "debug")
-        (lib.enableFeature false "renaming")
-        (lib.enableFeature false "extras")
-        (lib.enableFeature false "layout")
-        (lib.enableFeature false "samples")
-      ]
-      ++ lib.optionals (stdenv.hostPlatform.isFreeBSD || stdenv.hostPlatform.isDarwin) [
-        (lib.enableFeature true "rpath")
-      ]
-      ++ lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [
-        (lib.withFeatureAs true "cross-build" nativeBuildRoot)
-      ]
-      ++ lib.optionals withStatic [ (lib.enableFeature true "static") ];
+    configureFlags = [
+      (lib.enableFeature false "debug")
+      (lib.enableFeature false "renaming")
+      (lib.enableFeature false "extras")
+      (lib.enableFeature false "layout")
+      (lib.enableFeature false "samples")
+    ]
+    ++ lib.optionals (stdenv.hostPlatform.isFreeBSD || stdenv.hostPlatform.isDarwin) [
+      (lib.enableFeature true "rpath")
+    ]
+    ++ lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [
+      (lib.withFeatureAs true "cross-build" nativeBuildRoot)
+    ]
+    ++ lib.optionals withStatic [ (lib.enableFeature true "static") ];
 
     nativeBuildInputs = [ python3 ];
 
@@ -90,7 +89,8 @@ let
     outputs = [
       "out"
       "dev"
-    ] ++ lib.optional withStatic "static";
+    ]
+    ++ lib.optional withStatic "static";
     outputBin = "dev";
 
     postPatch = lib.optionalString self.finalPackage.doCheck ''

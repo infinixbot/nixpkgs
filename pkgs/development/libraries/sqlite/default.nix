@@ -56,12 +56,13 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     unzip
   ];
-  buildInputs =
-    [ zlib ]
-    ++ lib.optionals interactive [
-      readline
-      ncurses
-    ];
+  buildInputs = [
+    zlib
+  ]
+  ++ lib.optionals interactive [
+    readline
+    ncurses
+  ];
 
   # required for aarch64 but applied for all arches for simplicity
   preConfigure = ''
@@ -73,14 +74,13 @@ stdenv.mkDerivation rec {
   # on a per-output basis.
   setOutputFlags = false;
 
-  configureFlags =
-    [
-      "--bindir=${placeholder "bin"}/bin"
-      "--includedir=${placeholder "dev"}/include"
-      "--libdir=${placeholder "out"}/lib"
-    ]
-    ++ lib.optional (!interactive) "--disable-readline"
-    ++ lib.optional (stdenv.hostPlatform.isStatic) "--disable-shared";
+  configureFlags = [
+    "--bindir=${placeholder "bin"}/bin"
+    "--includedir=${placeholder "dev"}/include"
+    "--libdir=${placeholder "out"}/lib"
+  ]
+  ++ lib.optional (!interactive) "--disable-readline"
+  ++ lib.optional (stdenv.hostPlatform.isStatic) "--disable-shared";
 
   env.NIX_CFLAGS_COMPILE = toString [
     "-DSQLITE_ENABLE_COLUMN_METADATA"

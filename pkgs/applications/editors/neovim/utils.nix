@@ -264,7 +264,8 @@ let
 
         meta = {
           platforms = lib.platforms.all;
-        } // grammar.meta;
+        }
+        // grammar.meta;
       }
     ));
 

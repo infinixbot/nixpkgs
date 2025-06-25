@@ -735,14 +735,13 @@ in
         "postgresql.service"
         "discourse-postgresql.service"
       ];
-      bindsTo =
-        [
-          "redis-discourse.service"
-        ]
-        ++ lib.optionals (cfg.database.host == null) [
-          "postgresql.service"
-          "discourse-postgresql.service"
-        ];
+      bindsTo = [
+        "redis-discourse.service"
+      ]
+      ++ lib.optionals (cfg.database.host == null) [
+        "postgresql.service"
+        "discourse-postgresql.service"
+      ];
       path = cfg.package.runtimeDeps ++ [
         postgresqlPackage
         pkgs.replace-secret
@@ -1127,16 +1126,15 @@ in
       };
     };
 
-    users.users =
-      {
-        discourse = {
-          group = "discourse";
-          isSystemUser = true;
-        };
-      }
-      // (lib.optionalAttrs cfg.nginx.enable {
-        ${config.services.nginx.user}.extraGroups = [ "discourse" ];
-      });
+    users.users = {
+      discourse = {
+        group = "discourse";
+        isSystemUser = true;
+      };
+    }
+    // (lib.optionalAttrs cfg.nginx.enable {
+      ${config.services.nginx.user}.extraGroups = [ "discourse" ];
+    });
 
     users.groups = {
       discourse = { };

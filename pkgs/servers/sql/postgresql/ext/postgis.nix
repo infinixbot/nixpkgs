@@ -59,17 +59,16 @@ postgresqlBuildExtension (finalAttrs: {
     })
   ];
 
-  buildInputs =
-    [
-      geos
-      proj
-      gdal
-      json_c
-      protobufc
-      pcre2.dev
-    ]
-    ++ lib.optional stdenv.hostPlatform.isDarwin libiconv
-    ++ lib.optional withSfcgal sfcgal;
+  buildInputs = [
+    geos
+    proj
+    gdal
+    json_c
+    protobufc
+    pcre2.dev
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin libiconv
+  ++ lib.optional withSfcgal sfcgal;
 
   nativeBuildInputs = [
     autoconf
@@ -80,7 +79,8 @@ postgresqlBuildExtension (finalAttrs: {
     pkg-config
     protobufc
     which
-  ] ++ lib.optional jitSupport llvm;
+  ]
+  ++ lib.optional jitSupport llvm;
 
   dontDisableStatic = true;
 
@@ -106,7 +106,8 @@ postgresqlBuildExtension (finalAttrs: {
     "--with-gdalconfig=${gdal}/bin/gdal-config"
     "--with-jsondir=${json_c.dev}"
     "--disable-extension-upgrades-install"
-  ] ++ lib.optional withSfcgal "--with-sfcgal=${sfcgal}/bin/sfcgal-config";
+  ]
+  ++ lib.optional withSfcgal "--with-sfcgal=${sfcgal}/bin/sfcgal-config";
 
   makeFlags = [
     "PERL=${perl}/bin/perl"
@@ -132,40 +133,38 @@ postgresqlBuildExtension (finalAttrs: {
 
   passthru.tests.extension = postgresqlTestExtension {
     inherit (finalAttrs) finalPackage;
-    sql =
-      ''
-        CREATE EXTENSION postgis;
-        CREATE EXTENSION postgis_raster;
-        CREATE EXTENSION postgis_topology;
-        -- st_makepoint goes through c code
-        select st_makepoint(1, 1);
-      ''
-      + lib.optionalString withSfcgal ''
-        CREATE EXTENSION postgis_sfcgal;
-        CREATE TABLE geometries (
-          name varchar,
-          geom geometry(PolygonZ) NOT NULL
-        );
+    sql = ''
+      CREATE EXTENSION postgis;
+      CREATE EXTENSION postgis_raster;
+      CREATE EXTENSION postgis_topology;
+      -- st_makepoint goes through c code
+      select st_makepoint(1, 1);
+    ''
+    + lib.optionalString withSfcgal ''
+      CREATE EXTENSION postgis_sfcgal;
+      CREATE TABLE geometries (
+        name varchar,
+        geom geometry(PolygonZ) NOT NULL
+      );
 
-        INSERT INTO geometries(name, geom) VALUES
-          ('planar geom', 'PolygonZ((1 1 0, 1 2 0, 2 2 0, 2 1 0, 1 1 0))'),
-          ('nonplanar geom', 'PolygonZ((1 1 1, 1 2 -1, 2 2 2, 2 1 0, 1 1 1))');
+      INSERT INTO geometries(name, geom) VALUES
+        ('planar geom', 'PolygonZ((1 1 0, 1 2 0, 2 2 0, 2 1 0, 1 1 0))'),
+        ('nonplanar geom', 'PolygonZ((1 1 1, 1 2 -1, 2 2 2, 2 1 0, 1 1 1))');
 
-        SELECT name from geometries where cg_isplanar(geom);
-      '';
-    asserts =
-      [
-        {
-          query = "postgis_version()";
-          expected = "'${lib.versions.major finalAttrs.version}.${lib.versions.minor finalAttrs.version} USE_GEOS=1 USE_PROJ=1 USE_STATS=1'";
-          description = "postgis_version() returns correct values.";
-        }
-      ]
-      ++ lib.optional withSfcgal {
-        query = "postgis_sfcgal_version()";
-        expected = "'${sfcgal.version}'";
-        description = "postgis_sfcgal_version() returns correct value.";
-      };
+      SELECT name from geometries where cg_isplanar(geom);
+    '';
+    asserts = [
+      {
+        query = "postgis_version()";
+        expected = "'${lib.versions.major finalAttrs.version}.${lib.versions.minor finalAttrs.version} USE_GEOS=1 USE_PROJ=1 USE_STATS=1'";
+        description = "postgis_version() returns correct values.";
+      }
+    ]
+    ++ lib.optional withSfcgal {
+      query = "postgis_sfcgal_version()";
+      expected = "'${sfcgal.version}'";
+      description = "postgis_sfcgal_version() returns correct value.";
+    };
   };
 
   meta = {
