@@ -189,19 +189,17 @@ let
   buildRootOnlyAttrs = self: super: {
     pname = "ICU-build-root";
 
-    preConfigure =
-      super.preConfigure
-      + ''
-        mkdir build
-        cd build
-        configureScript=../configure
+    preConfigure = super.preConfigure + ''
+      mkdir build
+      cd build
+      configureScript=../configure
 
-        # Apple’s customizations require building and linking additional files, which are handled via `Makefile.local`.
-        # These need copied into the build environment to avoid link errors from not building them.
-        mkdir common i18n
-        cp ../common/Makefile.local common/Makefile.local
-        cp ../i18n/Makefile.local i18n/Makefile.local
-      '';
+      # Apple’s customizations require building and linking additional files, which are handled via `Makefile.local`.
+      # These need copied into the build environment to avoid link errors from not building them.
+      mkdir common i18n
+      cp ../common/Makefile.local common/Makefile.local
+      cp ../i18n/Makefile.local i18n/Makefile.local
+    '';
 
     postBuild = ''
       cd ..

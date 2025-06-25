@@ -101,7 +101,8 @@ deployAndroidPackage rec {
   '';
 
   patchInstructions =
-    patchOsAgnostic + lib.optionalString stdenv.hostPlatform.isLinux patchElfBnaries;
+    patchOsAgnostic
+    + lib.optionalString stdenv.hostPlatform.isLinux patchElfBnaries;
 
   noAuditTmpdir = true; # Audit script gets invoked by the build/ component in the path for the make standalone script
 

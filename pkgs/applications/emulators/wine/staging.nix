@@ -36,17 +36,15 @@ wineUnstable.overrideAttrs (self: {
   ]
   ++ self.nativeBuildInputs;
 
-  prePatch =
-    self.prePatch or ""
-    + ''
-      patchShebangs tools
-      cp -r ${patch}/patches ${patch}/staging .
-      chmod +w patches
-      patchShebangs ./patches/gitapply.sh
-      python3 ./staging/patchinstall.py DESTDIR="$PWD" --all ${
-        lib.concatMapStringsSep " " (ps: "-W ${ps}") patch.disabledPatchsets
-      }
-    '';
+  prePatch = self.prePatch or "" + ''
+    patchShebangs tools
+    cp -r ${patch}/patches ${patch}/staging .
+    chmod +w patches
+    patchShebangs ./patches/gitapply.sh
+    python3 ./staging/patchinstall.py DESTDIR="$PWD" --all ${
+      lib.concatMapStringsSep " " (ps: "-W ${ps}") patch.disabledPatchsets
+    }
+  '';
 })
 // {
   meta = wineUnstable.meta // {

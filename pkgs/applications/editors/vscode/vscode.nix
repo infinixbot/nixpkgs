@@ -13,7 +13,8 @@
   # On MacOS the insider binary is still called code instead of code-insiders as
   # of 2023-08-06.
   sourceExecutableName ?
-    "code" + lib.optionalString (isInsiders && stdenv.hostPlatform.isLinux) "-insiders",
+    "code"
+    + lib.optionalString (isInsiders && stdenv.hostPlatform.isLinux) "-insiders",
   commandLineArgs ? "",
   useVSCodeRipgrep ? stdenv.hostPlatform.isDarwin,
 }:

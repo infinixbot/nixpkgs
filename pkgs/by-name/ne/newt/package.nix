@@ -77,11 +77,9 @@ stdenv.mkDerivation rec {
           ... which is implemented by `runCommand`,
           ... which has a custom builder and does not run $preDistPhases
       */
-      postBuild =
-        postBuild
-        + ''
-          runPhase pythonImportsCheckPhase
-        '';
+      postBuild = postBuild + ''
+        runPhase pythonImportsCheckPhase
+      '';
     }
   );
 

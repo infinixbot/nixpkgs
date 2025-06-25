@@ -175,36 +175,34 @@ originalAttrs:
       eval "$oldOpts"
     '';
 
-    preConfigure =
-      (originalAttrs.preConfigure or "")
-      + ''
-        if test -n "$newlibSrc"; then
-            tar xvf "$newlibSrc" -C ..
-            ln -s ../newlib-*/newlib newlib
-            # Patch to get armvt5el working:
-            sed -i -e 's/ arm)/ arm*)/' newlib/configure.host
-        fi
+    preConfigure = (originalAttrs.preConfigure or "") + ''
+      if test -n "$newlibSrc"; then
+          tar xvf "$newlibSrc" -C ..
+          ln -s ../newlib-*/newlib newlib
+          # Patch to get armvt5el working:
+          sed -i -e 's/ arm)/ arm*)/' newlib/configure.host
+      fi
 
-        # Bug - they packaged zlib
-        if test -d "zlib"; then
-            # This breaks the build without-headers, which should build only
-            # the target libgcc as target libraries.
-            # See 'configure:5370'
-            rm -Rf zlib
-        fi
+      # Bug - they packaged zlib
+      if test -d "zlib"; then
+          # This breaks the build without-headers, which should build only
+          # the target libgcc as target libraries.
+          # See 'configure:5370'
+          rm -Rf zlib
+      fi
 
-        if test -n "$crossMingw" -a -n "$withoutTargetLibc"; then
-            mkdir -p ../mingw
-            # --with-build-sysroot expects that:
-            cp -R $libcCross/include ../mingw
-            appendToVar configureFlags "--with-build-sysroot=`pwd`/.."
-        fi
+      if test -n "$crossMingw" -a -n "$withoutTargetLibc"; then
+          mkdir -p ../mingw
+          # --with-build-sysroot expects that:
+          cp -R $libcCross/include ../mingw
+          appendToVar configureFlags "--with-build-sysroot=`pwd`/.."
+      fi
 
-        # Perform the build in a different directory.
-        mkdir ../build
-        cd ../build
-        configureScript=../$sourceRoot/configure
-      '';
+      # Perform the build in a different directory.
+      mkdir ../build
+      cd ../build
+      configureScript=../$sourceRoot/configure
+    '';
 
     postConfigure = ''
       # Avoid store paths when embedding ./configure flags into gcc.

@@ -34,19 +34,17 @@ mattermost.overrideAttrs (
       gotestsum
     ];
 
-    postPatch =
-      prev.postPatch or ""
-      + ''
-        # Just echo install/get/mod commands in the Makefile, since the dependencies are locked.
-        substituteInPlace server/Makefile \
-          --replace-warn '$(GO) install' 'echo $(GO) install' \
-          --replace-warn '$(GOBIN)/go$$version download' 'echo $(GOBIN)/go$$version download' \
-          --replace-warn '$(GO) get' 'echo $(GO) get' \
-          --replace-warn '$(GO) get' 'echo $(GO) mod'
-        # mmctl tests shell out by writing a bash script to a tempfile
-        substituteInPlace server/cmd/mmctl/commands/config_e2e_test.go \
-          --replace-fail '#!/bin/bash' '#!${runtimeShell}'
-      '';
+    postPatch = prev.postPatch or "" + ''
+      # Just echo install/get/mod commands in the Makefile, since the dependencies are locked.
+      substituteInPlace server/Makefile \
+        --replace-warn '$(GO) install' 'echo $(GO) install' \
+        --replace-warn '$(GOBIN)/go$$version download' 'echo $(GOBIN)/go$$version download' \
+        --replace-warn '$(GO) get' 'echo $(GO) get' \
+        --replace-warn '$(GO) get' 'echo $(GO) mod'
+      # mmctl tests shell out by writing a bash script to a tempfile
+      substituteInPlace server/cmd/mmctl/commands/config_e2e_test.go \
+        --replace-fail '#!/bin/bash' '#!${runtimeShell}'
+    '';
 
     # Make sure we disable tests that are broken.
     # Use: `nix log <drv> | grep FAIL: | awk '{print $3}' | sort`

@@ -84,15 +84,14 @@ let
     lib.optionalString config.services.nginx.virtualHosts.${cfg.localDomain}.forceSSL ''
       add_header Strict-Transport-Security 'max-age=31536000';
     ''
-    +
-      lib.optionalString
-        (
-          config.services.nginx.virtualHosts.${cfg.localDomain}.quic
-          && config.services.nginx.virtualHosts.${cfg.localDomain}.http3
-        )
-        ''
-          add_header Alt-Svc 'h3=":$server_port"; ma=604800';
-        '';
+    + lib.optionalString
+      (
+        config.services.nginx.virtualHosts.${cfg.localDomain}.quic
+        && config.services.nginx.virtualHosts.${cfg.localDomain}.http3
+      )
+      ''
+        add_header Alt-Svc 'h3=":$server_port"; ma=604800';
+      '';
 
   nginxCommonHeadersExtra = ''
     add_header Access-Control-Allow-Origin '*';

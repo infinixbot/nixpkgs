@@ -97,7 +97,8 @@ let
 in
 stdenv.mkDerivation rec {
   pname =
-    (if withTeensyduino then "teensyduino" else "arduino") + lib.optionalString (!withGui) "-core";
+    (if withTeensyduino then "teensyduino" else "arduino")
+    + lib.optionalString (!withGui) "-core";
   version = "1.8.19";
 
   src = fetchFromGitHub {

@@ -1110,12 +1110,10 @@ self: super:
             ./darwin/stub.patch
           ];
 
-          postPatch =
-            attrs.postPatch
-            + ''
-              substituteInPlace hw/xquartz/mach-startup/stub.c \
-                --subst-var-by XQUARTZ_APP "$out/Applications/XQuartz.app"
-            '';
+          postPatch = attrs.postPatch + ''
+            substituteInPlace hw/xquartz/mach-startup/stub.c \
+              --subst-var-by XQUARTZ_APP "$out/Applications/XQuartz.app"
+          '';
 
           configureFlags = [
             # note: --enable-xquartz is auto

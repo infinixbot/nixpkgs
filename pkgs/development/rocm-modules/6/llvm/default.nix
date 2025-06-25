@@ -378,22 +378,18 @@ rec {
               # FIXME: Config file in rocmcxx instead of GCC_INSTALL_PREFIX?
               "-DGCC_INSTALL_PREFIX=${gcc-prefix}"
             ];
-          postFixup =
-            (old.postFixup or "")
-            + ''
-              find $lib -type f -exec remove-references-to -t ${stdenvToBuildRocmLlvm.cc} {} +
-              find $lib -type f -exec remove-references-to -t ${stdenv.cc} {} +
-              find $lib -type f -exec remove-references-to -t ${stdenv.cc.cc} {} +
-              find $lib -type f -exec remove-references-to -t ${stdenv.cc.bintools} {} +
-            '';
-          preConfigure =
-            (old.preConfigure or "")
-            + ''
-              cmakeFlagsArray+=(
-                '-DCMAKE_C_FLAGS_RELEASE=${llvmExtraCflags}'
-                '-DCMAKE_CXX_FLAGS_RELEASE=${llvmExtraCflags}'
-              )
-            '';
+          postFixup = (old.postFixup or "") + ''
+            find $lib -type f -exec remove-references-to -t ${stdenvToBuildRocmLlvm.cc} {} +
+            find $lib -type f -exec remove-references-to -t ${stdenv.cc} {} +
+            find $lib -type f -exec remove-references-to -t ${stdenv.cc.cc} {} +
+            find $lib -type f -exec remove-references-to -t ${stdenv.cc.bintools} {} +
+          '';
+          preConfigure = (old.preConfigure or "") + ''
+            cmakeFlagsArray+=(
+              '-DCMAKE_C_FLAGS_RELEASE=${llvmExtraCflags}'
+              '-DCMAKE_CXX_FLAGS_RELEASE=${llvmExtraCflags}'
+            )
+          '';
         }
       )
     )

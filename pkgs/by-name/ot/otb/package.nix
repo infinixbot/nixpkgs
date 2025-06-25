@@ -96,11 +96,9 @@ let
     ];
 
     # fix the CMake config files for ITK which contains double slashes
-    postInstall =
-      (oldArgs.postInstall or "")
-      + ''
-        sed -i 's|''${ITK_INSTALL_PREFIX}//nix/store|/nix/store|g' $out/lib/cmake/ITK-${itkMajorMinorVersion}/ITKConfig.cmake
-      '';
+    postInstall = (oldArgs.postInstall or "") + ''
+      sed -i 's|''${ITK_INSTALL_PREFIX}//nix/store|/nix/store|g' $out/lib/cmake/ITK-${itkMajorMinorVersion}/ITKConfig.cmake
+    '';
 
     cmakeFlags = oldArgs.cmakeFlags or [ ] ++ [
       (lib.cmakeBool "ITK_USE_SYSTEM_EIGEN" true)

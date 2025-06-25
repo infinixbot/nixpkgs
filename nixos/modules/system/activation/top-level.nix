@@ -100,11 +100,9 @@ let
 
   systemWithBuildDeps = system.overrideAttrs (o: {
     systemBuildClosure = pkgs.closureInfo { rootPaths = [ system.drvPath ]; };
-    buildCommand =
-      o.buildCommand
-      + ''
-        ln -sn $systemBuildClosure $out/build-closure
-      '';
+    buildCommand = o.buildCommand + ''
+      ln -sn $systemBuildClosure $out/build-closure
+    '';
   });
 
 in

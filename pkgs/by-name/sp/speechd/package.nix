@@ -143,7 +143,8 @@ stdenv.mkDerivation (finalAttrs: {
 
   meta = with lib; {
     description =
-      "Common interface to speech synthesis" + lib.optionalString libsOnly " - client libraries only";
+      "Common interface to speech synthesis"
+      + lib.optionalString libsOnly " - client libraries only";
     homepage = "https://devel.freebsoft.org/speechd";
     license = licenses.gpl2Plus;
     maintainers = with maintainers; [

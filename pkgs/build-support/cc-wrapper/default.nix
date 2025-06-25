@@ -147,7 +147,8 @@ let
     && !(targetPlatform.isiOS or false)
     && gccForLibs != null;
   gccForLibs_solib =
-    getLib gccForLibs + optionalString (targetPlatform != hostPlatform) "/${targetPlatform.config}";
+    getLib gccForLibs
+    + optionalString (targetPlatform != hostPlatform) "/${targetPlatform.config}";
 
   # Analogously to cc_solib and gccForLibs_solib
   libcxx_solib = "${getLib libcxx}/lib";

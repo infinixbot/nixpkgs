@@ -11,11 +11,9 @@ let
   settingsFile = pythonFmt.generate "extra_settings.py" cfg.settings;
 
   pkg = cfg.package.overridePythonAttrs (old: {
-    postInstall =
-      old.postInstall
-      + ''
-        ln -s ${settingsFile} $out/${pkg.python.sitePackages}/froide_govplan/project/extra_settings.py
-      '';
+    postInstall = old.postInstall + ''
+      ln -s ${settingsFile} $out/${pkg.python.sitePackages}/froide_govplan/project/extra_settings.py
+    '';
   });
 
   froide-govplan = pkgs.writeShellApplication {

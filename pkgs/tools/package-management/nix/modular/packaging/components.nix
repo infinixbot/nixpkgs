@@ -44,12 +44,12 @@ let
     preConfigure =
       prevAttrs.preConfigure or ""
       +
-        # Update the repo-global .version file.
-        # Symlink ./.version points there, but by default only workDir is writable.
-        ''
-          chmod u+w ./.version
-          echo ${finalAttrs.version} > ./.version
-        '';
+      # Update the repo-global .version file.
+      # Symlink ./.version points there, but by default only workDir is writable.
+      ''
+        chmod u+w ./.version
+        echo ${finalAttrs.version} > ./.version
+      '';
   };
 
   localSourceLayer =
@@ -120,21 +120,20 @@ let
     # For this reason, we don't want to refer to `finalAttrs.mesonBuildType` here, but rather use the environment variable.
     preConfigure =
       prevAttrs.preConfigure or ""
-      +
-        lib.optionalString
-          (
-            !stdenv.hostPlatform.isWindows
-            # build failure
-            && !stdenv.hostPlatform.isStatic
-            # LTO breaks exception handling on x86-64-darwin.
-            && stdenv.system != "x86_64-darwin"
-          )
-          ''
-            case "$mesonBuildType" in
-            release|minsize) appendToVar mesonFlags "-Db_lto=true"  ;;
-            *)               appendToVar mesonFlags "-Db_lto=false" ;;
-            esac
-          '';
+      + lib.optionalString
+        (
+          !stdenv.hostPlatform.isWindows
+          # build failure
+          && !stdenv.hostPlatform.isStatic
+          # LTO breaks exception handling on x86-64-darwin.
+          && stdenv.system != "x86_64-darwin"
+        )
+        ''
+          case "$mesonBuildType" in
+          release|minsize) appendToVar mesonFlags "-Db_lto=true"  ;;
+          *)               appendToVar mesonFlags "-Db_lto=false" ;;
+          esac
+        '';
     nativeBuildInputs = [
       meson
       ninja

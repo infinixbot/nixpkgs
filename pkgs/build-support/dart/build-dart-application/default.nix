@@ -179,11 +179,9 @@ let
           # Ensure that we inherit the propagated build inputs from the dependencies.
           builtins.attrValues pubspecLockData.dependencySources;
 
-      preConfigure =
-        args.preConfigure or ""
-        + ''
-          ln -sf "$pubspecLockFilePath" pubspec.lock
-        '';
+      preConfigure = args.preConfigure or "" + ''
+        ln -sf "$pubspecLockFilePath" pubspec.lock
+      '';
 
       # When stripping, it seems some ELF information is lost and the dart VM cli
       # runs instead of the expected program. Don't strip if it's an exe output.

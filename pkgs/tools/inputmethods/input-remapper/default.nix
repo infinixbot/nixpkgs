@@ -176,11 +176,9 @@ in
       # this ensures the rev matches the input src's rev after overriding
       # See https://discourse.nixos.org/t/avoid-rec-expresions-in-nixpkgs/8293/7 for more
       # discussion
-      postPatch =
-        prev.postPatch or ""
-        + ''
-          # set revision for --version output
-          echo "COMMIT_HASH = '${final.src.rev}'" > inputremapper/commit_hash.py
-        '';
+      postPatch = prev.postPatch or "" + ''
+        # set revision for --version output
+        echo "COMMIT_HASH = '${final.src.rev}'" > inputremapper/commit_hash.py
+      '';
     }
   )

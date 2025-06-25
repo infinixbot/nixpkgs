@@ -64,11 +64,9 @@ self: super:
       (drv: {
         # Revert increased lower bound on unix since we have backported
         # the required patch to all GHC bundled versions of unix.
-        postPatch =
-          drv.postPatch or ""
-          + ''
-            substituteInPlace Cabal.cabal --replace-fail "unix  >= 2.8.6.0" "unix >= 2.6.0.0"
-          '';
+        postPatch = drv.postPatch or "" + ''
+          substituteInPlace Cabal.cabal --replace-fail "unix  >= 2.8.6.0" "unix >= 2.6.0.0"
+        '';
       })
       (
         doDistribute (
@@ -106,11 +104,9 @@ self: super:
             old:
             {
               # Prevent DOS line endings from Hackage from breaking a patch
-              prePatch =
-                old.prePatch or ""
-                + ''
-                  ${pkgs.buildPackages.dos2unix}/bin/dos2unix *.cabal
-                '';
+              prePatch = old.prePatch or "" + ''
+                ${pkgs.buildPackages.dos2unix}/bin/dos2unix *.cabal
+              '';
               # Ignore unix bound intended to prevent an unix bug on 32bit systems.
               # We apply a patch for this issue to the GHC core packages directly.
               # See unix-fix-ctimeval-size-32-bit.patch in ../compilers/ghc/common-*.nix
@@ -655,11 +651,9 @@ self: super:
   ABList = dontCheck super.ABList;
 
   inline-c-cpp = overrideCabal (drv: {
-    postPatch =
-      (drv.postPatch or "")
-      + ''
-        substituteInPlace inline-c-cpp.cabal --replace "-optc-std=c++11" ""
-      '';
+    postPatch = (drv.postPatch or "") + ''
+      substituteInPlace inline-c-cpp.cabal --replace "-optc-std=c++11" ""
+    '';
   }) super.inline-c-cpp;
 
   inline-java = addBuildDepend pkgs.jdk super.inline-java;
@@ -1163,11 +1157,9 @@ self: super:
   # https://github.com/Philonous/hs-stun/pull/1
   # Remove if a version > 0.1.0.1 ever gets released.
   stunclient = overrideCabal (drv: {
-    postPatch =
-      (drv.postPatch or "")
-      + ''
-        substituteInPlace source/Network/Stun/MappedAddress.hs --replace "import Network.Endian" ""
-      '';
+    postPatch = (drv.postPatch or "") + ''
+      substituteInPlace source/Network/Stun/MappedAddress.hs --replace "import Network.Endian" ""
+    '';
   }) super.stunclient;
 
   d-bus =
@@ -1247,13 +1239,11 @@ self: super:
   # in LTS-13.x.
   cryptol = overrideCabal (drv: {
     buildTools = drv.buildTools or [ ] ++ [ pkgs.buildPackages.makeWrapper ];
-    postInstall =
-      drv.postInstall or ""
-      + ''
-        for b in $out/bin/cryptol $out/bin/cryptol-html; do
-          wrapProgram $b --prefix 'PATH' ':' "${lib.getBin pkgs.z3}/bin"
-        done
-      '';
+    postInstall = drv.postInstall or "" + ''
+      for b in $out/bin/cryptol $out/bin/cryptol-html; do
+        wrapProgram $b --prefix 'PATH' ':' "${lib.getBin pkgs.z3}/bin"
+      done
+    '';
   }) super.cryptol;
 
   # Z3 removed aliases for boolean types in 4.12
@@ -1338,11 +1328,9 @@ self: super:
   # Workaround for https://github.com/sol/hpack/issues/528
   # The hpack test suite can't deal with the CRLF line endings hackage revisions insert
   hpack = overrideCabal (drv: {
-    postPatch =
-      drv.postPatch or ""
-      + ''
-        "${lib.getBin pkgs.buildPackages.dos2unix}/bin/dos2unix" *.cabal
-      '';
+    postPatch = drv.postPatch or "" + ''
+      "${lib.getBin pkgs.buildPackages.dos2unix}/bin/dos2unix" *.cabal
+    '';
   }) super.hpack;
 
   # hslua has tests that break when using musl.
@@ -1419,12 +1407,10 @@ self: super:
   # https://github.com/NixOS/nixpkgs/issues/6860
   PortMidi = overrideCabal (drv: {
     patches = (drv.patches or [ ]) ++ [ ./patches/portmidi-alsa-plugins.patch ];
-    postPatch =
-      (drv.postPatch or "")
-      + ''
-        substituteInPlace portmidi/pm_linux/pmlinuxalsa.c \
-          --replace @alsa_plugin_dir@ "${pkgs.alsa-plugins}/lib/alsa-lib"
-      '';
+    postPatch = (drv.postPatch or "") + ''
+      substituteInPlace portmidi/pm_linux/pmlinuxalsa.c \
+        --replace @alsa_plugin_dir@ "${pkgs.alsa-plugins}/lib/alsa-lib"
+    '';
   }) super.PortMidi;
 
   scat = overrideCabal (drv: {
@@ -1448,20 +1434,16 @@ self: super:
   esqueleto =
     overrideCabal
       (drv: {
-        postPatch =
-          drv.postPatch or ""
-          + ''
-            # patch out TCP usage: https://nixos.org/manual/nixpkgs/stable/#sec-postgresqlTestHook-tcp
-            sed -i test/PostgreSQL/Test.hs \
-              -e s^host=localhost^^
-          '';
+        postPatch = drv.postPatch or "" + ''
+          # patch out TCP usage: https://nixos.org/manual/nixpkgs/stable/#sec-postgresqlTestHook-tcp
+          sed -i test/PostgreSQL/Test.hs \
+            -e s^host=localhost^^
+        '';
         # Match the test suite defaults (or hardcoded values?)
-        preCheck =
-          drv.preCheck or ""
-          + ''
-            PGUSER=esqutest
-            PGDATABASE=esqutest
-          '';
+        preCheck = drv.preCheck or "" + ''
+          PGUSER=esqutest
+          PGDATABASE=esqutest
+        '';
         testFlags = drv.testFlags or [ ] ++ [
           # We don't have a MySQL test hook yet
           "--skip=/Esqueleto/MySQL"
@@ -1516,22 +1498,18 @@ self: super:
 
   # it wants to build a statically linked binary by default
   hledger-flow = overrideCabal (drv: {
-    postPatch =
-      (drv.postPatch or "")
-      + ''
-        substituteInPlace hledger-flow.cabal --replace "-static" ""
-      '';
+    postPatch = (drv.postPatch or "") + ''
+      substituteInPlace hledger-flow.cabal --replace "-static" ""
+    '';
   }) super.hledger-flow;
 
   # Chart-tests needs and compiles some modules from Chart itself
   Chart-tests = overrideCabal (old: {
     # 2025-02-13: Too strict bounds on lens < 5.3 and vector < 0.13
     jailbreak = true;
-    preCheck =
-      old.preCheck or ""
-      + ''
-        tar --one-top-level=../chart --strip-components=1 -xf ${self.Chart.src}
-      '';
+    preCheck = old.preCheck or "" + ''
+      tar --one-top-level=../chart --strip-components=1 -xf ${self.Chart.src}
+    '';
   }) (addExtraLibrary self.QuickCheck super.Chart-tests);
 
   # This breaks because of version bounds, but compiles and runs fine.
@@ -1550,20 +1528,16 @@ self: super:
     # TODO: move this override to configuration-nix.nix
     overrideCabal
       (drv: {
-        postPatch =
-          drv.postPath or ""
-          + ''
-            # patch out TCP usage: https://nixos.org/manual/nixpkgs/stable/#sec-postgresqlTestHook-tcp
-            # NOTE: upstream host variable takes only two values...
-            sed -i test/PgInit.hs \
-              -e s^'host=" <> host <> "'^^
-          '';
-        preCheck =
-          drv.preCheck or ""
-          + ''
-            PGDATABASE=test
-            PGUSER=test
-          '';
+        postPatch = drv.postPath or "" + ''
+          # patch out TCP usage: https://nixos.org/manual/nixpkgs/stable/#sec-postgresqlTestHook-tcp
+          # NOTE: upstream host variable takes only two values...
+          sed -i test/PgInit.hs \
+            -e s^'host=" <> host <> "'^^
+        '';
+        preCheck = drv.preCheck or "" + ''
+          PGDATABASE=test
+          PGUSER=test
+        '';
         testToolDepends = drv.testToolDepends or [ ] ++ [
           pkgs.postgresql
           pkgs.postgresqlTestHook
@@ -1621,12 +1595,10 @@ self: super:
   jsaddle-webkit2gtk =
     overrideCabal
       (drv: {
-        postPatch =
-          drv.postPatch or ""
-          + ''
-            substituteInPlace jsaddle-webkit2gtk.cabal --replace-fail gi-gtk gi-gtk3
-            substituteInPlace jsaddle-webkit2gtk.cabal --replace-fail gi-javascriptcore gi-javascriptcore4
-          '';
+        postPatch = drv.postPatch or "" + ''
+          substituteInPlace jsaddle-webkit2gtk.cabal --replace-fail gi-gtk gi-gtk3
+          substituteInPlace jsaddle-webkit2gtk.cabal --replace-fail gi-javascriptcore gi-javascriptcore4
+        '';
       })
       (
         super.jsaddle-webkit2gtk.override {
@@ -1757,11 +1729,9 @@ self: super:
       (self.generateOptparseApplicativeCompletions [ "update-nix-fetchgit" ])
       (overrideCabal (drv: {
         buildTools = drv.buildTools or [ ] ++ [ pkgs.buildPackages.makeWrapper ];
-        postInstall =
-          drv.postInstall or ""
-          + ''
-            wrapProgram "$out/bin/update-nix-fetchgit" --prefix 'PATH' ':' "${lib.makeBinPath deps}"
-          '';
+        postInstall = drv.postInstall or "" + ''
+          wrapProgram "$out/bin/update-nix-fetchgit" --prefix 'PATH' ':' "${lib.makeBinPath deps}"
+        '';
       }))
       (addTestToolDepends deps)
       # Patch for hnix compat.
@@ -2112,11 +2082,9 @@ self: super:
       # from upstream because the gi-vte repo doesn't actually contain a
       # gi-vte.cabal file. The gi-vte.cabal file is generated from metadata in
       # the repo.
-      postPatch =
-        (oldAttrs.postPatch or "")
-        + ''
-          sed -i 's/\(gi-gtk == .*\),/\1, gi-gdkpixbuf == 2.0.*,/' ./gi-vte.cabal
-        '';
+      postPatch = (oldAttrs.postPatch or "") + ''
+        sed -i 's/\(gi-gtk == .*\),/\1, gi-gdkpixbuf == 2.0.*,/' ./gi-vte.cabal
+      '';
       buildDepends = (oldAttrs.buildDepends or [ ]) ++ [ self.gi-gdkpixbuf ];
     }
   ) super.gi-vte;
@@ -2531,11 +2499,9 @@ self: super:
         ];
       })
     ];
-    postPatch =
-      drv.postPatch or ""
-      + ''
-        ln -fs ${pkgs.simdjson.src} simdjson
-      '';
+    postPatch = drv.postPatch or "" + ''
+      ln -fs ${pkgs.simdjson.src} simdjson
+    '';
   }) super.hermes-json;
 
   # Disabling doctests.
@@ -2957,12 +2923,10 @@ self: super:
     drv:
     assert drv.version == "0.1.0.5";
     {
-      postPatch =
-        drv.postPatch or ""
-        + ''
-          substituteInPlace src/Feedback/Loop/OptParse.hs \
-            --replace-fail '(uncurry loopConfigLine)' '(pure . uncurry loopConfigLine)'
-        '';
+      postPatch = drv.postPatch or "" + ''
+        substituteInPlace src/Feedback/Loop/OptParse.hs \
+          --replace-fail '(uncurry loopConfigLine)' '(pure . uncurry loopConfigLine)'
+      '';
     }
   ) super.feedback;
 

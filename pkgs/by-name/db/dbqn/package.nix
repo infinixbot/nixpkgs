@@ -72,7 +72,8 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     homepage = "https://github.com/dzaima/BQN";
     description =
-      "BQN implementation in Java" + lib.optionalString buildNativeImage ", compiled as a native image";
+      "BQN implementation in Java"
+      + lib.optionalString buildNativeImage ", compiled as a native image";
     license = licenses.mit;
     maintainers = with maintainers; [
       sternenseemann

@@ -133,12 +133,10 @@ let
           text = self.luarocks_content;
         };
 
-        luarocks_content =
-          (lib.generators.toLua { asBindings = true; } self.luarocksConfig)
-          + ''
+        luarocks_content = (lib.generators.toLua { asBindings = true; } self.luarocksConfig) + ''
 
-            ${self.extraConfig}
-          '';
+          ${self.extraConfig}
+        '';
 
         # TODO make it the default variable
         luarocksConfig =

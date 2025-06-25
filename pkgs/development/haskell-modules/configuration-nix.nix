@@ -327,12 +327,10 @@ builtins.intersectAttrs super {
 
   shelly = overrideCabal (drv: {
     # /usr/bin/env is unavailable in the sandbox
-    preCheck =
-      drv.preCheck or ""
-      + ''
-        chmod +x ./test/data/*.sh
-        patchShebangs --build test/data
-      '';
+    preCheck = drv.preCheck or "" + ''
+      chmod +x ./test/data/*.sh
+      patchShebangs --build test/data
+    '';
   }) super.shelly;
 
   # Add necessary reference to gtk3 package
@@ -520,14 +518,12 @@ builtins.intersectAttrs super {
           wrapGAppsHook3 # Fix error: GLib-GIO-ERROR **: No GSettings schemas are installed on the system
           gtk3 # Fix error: GLib-GIO-ERROR **: Settings schema 'org.gtk.Settings.FileChooser' is not installed
         ]);
-      postPatch =
-        (drv.postPatch or "")
-        + ''
-          for f in src/IDE/Leksah.hs src/IDE/Utils/ServerConnection.hs
-          do
-            substituteInPlace "$f" --replace "\"leksah-server\"" "\"${self.leksah-server}/bin/leksah-server\""
-          done
-        '';
+      postPatch = (drv.postPatch or "") + ''
+        for f in src/IDE/Leksah.hs src/IDE/Utils/ServerConnection.hs
+        do
+          substituteInPlace "$f" --replace "\"leksah-server\"" "\"${self.leksah-server}/bin/leksah-server\""
+        done
+      '';
     }) super.leksah
   );
 
@@ -606,11 +602,9 @@ builtins.intersectAttrs super {
 
   # Tests execute goldplate
   goldplate = overrideCabal (drv: {
-    preCheck =
-      drv.preCheck or ""
-      + ''
-        export PATH="$PWD/dist/build/goldplate:$PATH"
-      '';
+    preCheck = drv.preCheck or "" + ''
+      export PATH="$PWD/dist/build/goldplate:$PATH"
+    '';
   }) super.goldplate;
 
   # At least on 1.3.4 version on 32-bit architectures tasty requires
@@ -653,11 +647,9 @@ builtins.intersectAttrs super {
     patches = drv.patches or [ ] ++ [
       ./patches/GLUT.patch
     ];
-    prePatch =
-      drv.prePatch or ""
-      + ''
-        ${lib.getBin pkgs.buildPackages.dos2unix}/bin/dos2unix *.cabal
-      '';
+    prePatch = drv.prePatch or "" + ''
+      ${lib.getBin pkgs.buildPackages.dos2unix}/bin/dos2unix *.cabal
+    '';
   }) super.GLUT;
 
   libsystemd-journal = addExtraLibrary pkgs.systemd super.libsystemd-journal;
@@ -835,18 +827,14 @@ builtins.intersectAttrs super {
   futhark =
     overrideCabal
       (_drv: {
-        postBuild =
-          (_drv.postBuild or "")
-          + ''
-            make -C docs man
-          '';
+        postBuild = (_drv.postBuild or "") + ''
+          make -C docs man
+        '';
 
-        postInstall =
-          (_drv.postInstall or "")
-          + ''
-            mkdir -p $out/share/man/man1
-            mv docs/_build/man/*.1 $out/share/man/man1/
-          '';
+        postInstall = (_drv.postInstall or "") + ''
+          mkdir -p $out/share/man/man1
+          mv docs/_build/man/*.1 $out/share/man/man1/
+        '';
       })
       (
         addBuildTools (with pkgs.buildPackages; [
@@ -888,12 +876,10 @@ builtins.intersectAttrs super {
           self.buildHaskellPackages.data-default
         ];
 
-        preConfigure =
-          drv.preConfigure or ""
-          + ''
-            export HOME=$TEMPDIR
-            patchShebangs .
-          '';
+        preConfigure = drv.preConfigure or "" + ''
+          export HOME=$TEMPDIR
+          patchShebangs .
+        '';
 
         # git-annex ships its test suite as part of the final executable instead of
         # using a Cabal test suite.
@@ -918,19 +904,17 @@ builtins.intersectAttrs super {
         # Use default installPhase of pkgs/stdenv/generic/setup.sh. We need to set
         # the environment variables it uses via the preInstall hook since the Haskell
         # generic builder doesn't accept them as arguments.
-        preInstall =
-          drv.preInstall or ""
-          + ''
-            installTargets="install"
-            installFlagsArray+=(
-              "PREFIX="
-              "DESTDIR=$out"
-              # Prevent Makefile from calling cabal/Setup again
-              "BUILDER=:"
-              # Make Haskell build dependencies available
-              "GHC=${self.buildHaskellPackages.ghc.targetPrefix}ghc -global-package-db -package-db $setupPackageConfDir"
-            )
-          '';
+        preInstall = drv.preInstall or "" + ''
+          installTargets="install"
+          installFlagsArray+=(
+            "PREFIX="
+            "DESTDIR=$out"
+            # Prevent Makefile from calling cabal/Setup again
+            "BUILDER=:"
+            # Make Haskell build dependencies available
+            "GHC=${self.buildHaskellPackages.ghc.targetPrefix}ghc -global-package-db -package-db $setupPackageConfDir"
+          )
+        '';
         installPhase = null;
 
         # Ensure git-annex uses the exact same coreutils it saw at build-time.
@@ -1027,32 +1011,30 @@ builtins.intersectAttrs super {
       })
       [
         (overrideCabal (drv: {
-          postUnpack =
-            (drv.postUnpack or "")
-            + ''
-              # Spago includes the following two files directly into the binary
-              # with Template Haskell.  They are fetched at build-time from the
-              # `purescript-docs-search` repo above.  If they cannot be fetched at
-              # build-time, they are pulled in from the `templates/` directory in
-              # the spago source.
-              #
-              # However, they are not actually available in the spago source, so they
-              # need to fetched with nix and put in the correct place.
-              # https://github.com/spacchetti/spago/issues/510
-              cp ${docsSearchApp_0_0_10} "$sourceRoot/templates/docs-search-app-0.0.10.js"
-              cp ${docsSearchApp_0_0_11} "$sourceRoot/templates/docs-search-app-0.0.11.js"
-              cp ${purescriptDocsSearch_0_0_10} "$sourceRoot/templates/purescript-docs-search-0.0.10"
-              cp ${purescriptDocsSearch_0_0_11} "$sourceRoot/templates/purescript-docs-search-0.0.11"
+          postUnpack = (drv.postUnpack or "") + ''
+            # Spago includes the following two files directly into the binary
+            # with Template Haskell.  They are fetched at build-time from the
+            # `purescript-docs-search` repo above.  If they cannot be fetched at
+            # build-time, they are pulled in from the `templates/` directory in
+            # the spago source.
+            #
+            # However, they are not actually available in the spago source, so they
+            # need to fetched with nix and put in the correct place.
+            # https://github.com/spacchetti/spago/issues/510
+            cp ${docsSearchApp_0_0_10} "$sourceRoot/templates/docs-search-app-0.0.10.js"
+            cp ${docsSearchApp_0_0_11} "$sourceRoot/templates/docs-search-app-0.0.11.js"
+            cp ${purescriptDocsSearch_0_0_10} "$sourceRoot/templates/purescript-docs-search-0.0.10"
+            cp ${purescriptDocsSearch_0_0_11} "$sourceRoot/templates/purescript-docs-search-0.0.11"
 
-              # For some weird reason, on Darwin, the open(2) call to embed these files
-              # requires write permissions. The easiest resolution is just to permit that
-              # (doesn't cause any harm on other systems).
-              chmod u+w \
-                "$sourceRoot/templates/docs-search-app-0.0.10.js" \
-                "$sourceRoot/templates/purescript-docs-search-0.0.10" \
-                "$sourceRoot/templates/docs-search-app-0.0.11.js" \
-                "$sourceRoot/templates/purescript-docs-search-0.0.11"
-            '';
+            # For some weird reason, on Darwin, the open(2) call to embed these files
+            # requires write permissions. The easiest resolution is just to permit that
+            # (doesn't cause any harm on other systems).
+            chmod u+w \
+              "$sourceRoot/templates/docs-search-app-0.0.10.js" \
+              "$sourceRoot/templates/purescript-docs-search-0.0.10" \
+              "$sourceRoot/templates/docs-search-app-0.0.11.js" \
+              "$sourceRoot/templates/purescript-docs-search-0.0.11"
+          '';
         }))
 
         # Tests require network access.
@@ -1414,11 +1396,9 @@ builtins.intersectAttrs super {
     (
       let
         fourmoluTestFix = overrideCabal (drv: {
-          preCheck =
-            drv.preCheck or ""
-            + ''
-              export PATH="$PWD/dist/build/fourmolu:$PATH"
-            '';
+          preCheck = drv.preCheck or "" + ''
+            export PATH="$PWD/dist/build/fourmolu:$PATH"
+          '';
         });
       in
       builtins.mapAttrs (_: fourmoluTestFix) super
@@ -1430,11 +1410,9 @@ builtins.intersectAttrs super {
 
   # Test suite needs to execute 'disco' binary
   disco = overrideCabal (drv: {
-    preCheck =
-      drv.preCheck or ""
-      + ''
-        export PATH="$PWD/dist/build/disco:$PATH"
-      '';
+    preCheck = drv.preCheck or "" + ''
+      export PATH="$PWD/dist/build/disco:$PATH"
+    '';
     testFlags = drv.testFlags or [ ] ++ [
       # Needs network access
       "-p"
@@ -1479,11 +1457,9 @@ builtins.intersectAttrs super {
         _:
         overrideCabal (drv: {
           buildTools = drv.buildTools or [ ] ++ [ pkgs.buildPackages.which ];
-          preCheck =
-            drv.preCheck or ""
-            + ''
-              export PATH="$PWD/dist/build/happy:$PATH"
-            '';
+          preCheck = drv.preCheck or "" + ''
+            export PATH="$PWD/dist/build/happy:$PATH"
+          '';
         })
       )
       {
@@ -1562,15 +1538,13 @@ builtins.intersectAttrs super {
       pkgs.buildPackages.makeWrapper
     ]
     ++ old.buildTools or [ ];
-    postInstall =
-      old.postInstall
-      + ''
-        mkdir -p "$out/share/man/man1"
-        "$out/bin/cabal" man --raw > "$out/share/man/man1/cabal.1"
+    postInstall = old.postInstall + ''
+      mkdir -p "$out/share/man/man1"
+      "$out/bin/cabal" man --raw > "$out/share/man/man1/cabal.1"
 
-        wrapProgram "$out/bin/cabal" \
-          --prefix PATH : "${pkgs.lib.makeBinPath [ pkgs.groff ]}"
-      '';
+      wrapProgram "$out/bin/cabal" \
+        --prefix PATH : "${pkgs.lib.makeBinPath [ pkgs.groff ]}"
+    '';
     hydraPlatforms = pkgs.lib.platforms.all;
     broken = false;
   }) super.cabal-install;
@@ -1588,16 +1562,14 @@ builtins.intersectAttrs super {
         ];
         # Added a shim for the `tailwindcss` CLI entry point
         nativeBuildInputs = (oa.nativeBuildInputs or [ ]) ++ [ pkgs.buildPackages.makeBinaryWrapper ];
-        postInstall =
-          (oa.postInstall or "")
-          + ''
-            nodePath=""
-            for p in "$out" "${pkgs.nodePackages.postcss}" $plugins; do
-              nodePath="$nodePath''${nodePath:+:}$p/lib/node_modules"
-            done
-            makeWrapper "$out/bin/tailwindcss" "$out/bin/tailwind" --prefix NODE_PATH : "$nodePath"
-            unset nodePath
-          '';
+        postInstall = (oa.postInstall or "") + ''
+          nodePath=""
+          for p in "$out" "${pkgs.nodePackages.postcss}" $plugins; do
+            nodePath="$nodePath''${nodePath:+:}$p/lib/node_modules"
+          done
+          makeWrapper "$out/bin/tailwindcss" "$out/bin/tailwind" --prefix NODE_PATH : "$nodePath"
+          unset nodePath
+        '';
       }))
       super.tailwind;
 

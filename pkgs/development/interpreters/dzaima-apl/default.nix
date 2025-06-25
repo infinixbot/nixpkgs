@@ -71,7 +71,8 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     homepage = "https://github.com/dzaima/APL";
     description =
-      "APL implementation in Java" + lib.optionalString buildNativeImage ", compiled as a native image";
+      "APL implementation in Java"
+      + lib.optionalString buildNativeImage ", compiled as a native image";
     license = licenses.mit;
     maintainers = with maintainers; [ ];
     inherit (jdk.meta) platforms;

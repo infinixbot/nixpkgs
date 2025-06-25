@@ -170,55 +170,53 @@ stdenv.mkDerivation (self: {
   ]
   ++ lib.mapAttrsToList (k: v: lib.cmakeFeature "${k}_URL" "${v}") deps;
 
-  preConfigure =
-    lib.concatStringsSep "\n" (lib.mapAttrsToList check-dep deps)
-    + ''
-      cp -v ${install-share} ./support/install-share.py
+  preConfigure = lib.concatStringsSep "\n" (lib.mapAttrsToList check-dep deps) + ''
+    cp -v ${install-share} ./support/install-share.py
 
-      # the CMakeLists assume CMAKE_INSTALL_BINDIR, etc are path components but in Nix, they are absolute.
-      # therefore, we need to remove the unnecessary CMAKE_INSTALL_PREFIX prepend.
-      substituteInPlace ./CMakeLists.txt \
-        --replace-warn "''$"{CMAKE_INSTALL_PREFIX}/"''$"{RETDEC_INSTALL_BIN_DIR} "''$"{CMAKE_INSTALL_FULL_BINDIR} \
-        --replace-warn "''$"{CMAKE_INSTALL_PREFIX}/"''$"{RETDEC_INSTALL_LIB_DIR} "''$"{CMAKE_INSTALL_FULL_LIBDIR} \
+    # the CMakeLists assume CMAKE_INSTALL_BINDIR, etc are path components but in Nix, they are absolute.
+    # therefore, we need to remove the unnecessary CMAKE_INSTALL_PREFIX prepend.
+    substituteInPlace ./CMakeLists.txt \
+      --replace-warn "''$"{CMAKE_INSTALL_PREFIX}/"''$"{RETDEC_INSTALL_BIN_DIR} "''$"{CMAKE_INSTALL_FULL_BINDIR} \
+      --replace-warn "''$"{CMAKE_INSTALL_PREFIX}/"''$"{RETDEC_INSTALL_LIB_DIR} "''$"{CMAKE_INSTALL_FULL_LIBDIR} \
 
-      # --replace "''$"{CMAKE_INSTALL_PREFIX}/"''$"{RETDEC_INSTALL_SUPPORT_DIR} "''$"{RETDEC_INSTALL_SUPPORT_DIR}
-      # note! Nix does not set CMAKE_INSTALL_DATADIR to an absolute path, so this replacement would be incorrect
+    # --replace "''$"{CMAKE_INSTALL_PREFIX}/"''$"{RETDEC_INSTALL_SUPPORT_DIR} "''$"{RETDEC_INSTALL_SUPPORT_DIR}
+    # note! Nix does not set CMAKE_INSTALL_DATADIR to an absolute path, so this replacement would be incorrect
 
-      # similarly for yaramod. here, we fix the LIBDIR to lib64. for whatever reason, only "lib64" works.
-      substituteInPlace deps/yaramod/CMakeLists.txt \
-        --replace-fail "''$"{YARAMOD_INSTALL_DIR}/"''$"{CMAKE_INSTALL_LIBDIR} "''$"{YARAMOD_INSTALL_DIR}/lib64 \
-        --replace-fail CMAKE_ARGS 'CMAKE_ARGS -DCMAKE_INSTALL_LIBDIR=lib64'
+    # similarly for yaramod. here, we fix the LIBDIR to lib64. for whatever reason, only "lib64" works.
+    substituteInPlace deps/yaramod/CMakeLists.txt \
+      --replace-fail "''$"{YARAMOD_INSTALL_DIR}/"''$"{CMAKE_INSTALL_LIBDIR} "''$"{YARAMOD_INSTALL_DIR}/lib64 \
+      --replace-fail CMAKE_ARGS 'CMAKE_ARGS -DCMAKE_INSTALL_LIBDIR=lib64'
 
-      # yara needs write permissions in the generated source directory.
-      echo ${lib.escapeShellArg ''
-        ExternalProject_Add_Step(
-          yara chmod WORKING_DIRECTORY ''${YARA_DIR}
-          DEPENDEES download COMMAND chmod -R u+w .
-        )
-      ''} >> deps/yara/CMakeLists.txt
+    # yara needs write permissions in the generated source directory.
+    echo ${lib.escapeShellArg ''
+      ExternalProject_Add_Step(
+        yara chmod WORKING_DIRECTORY ''${YARA_DIR}
+        DEPENDEES download COMMAND chmod -R u+w .
+      )
+    ''} >> deps/yara/CMakeLists.txt
 
-      # patch gtest to use the system package
-      gtest=deps/googletest/CMakeLists.txt
-      old="$(cat $gtest)"
-      (echo 'find_package(GTest REQUIRED)'; echo "$old") > $gtest
-      sed -i 's/ExternalProject_[^(]\+[(]/ set(IGNORED /g' $gtest
+    # patch gtest to use the system package
+    gtest=deps/googletest/CMakeLists.txt
+    old="$(cat $gtest)"
+    (echo 'find_package(GTest REQUIRED)'; echo "$old") > $gtest
+    sed -i 's/ExternalProject_[^(]\+[(]/ set(IGNORED /g' $gtest
 
-      substituteInPlace $gtest \
-        --replace-fail '$'{GTEST_LIB} "GTest::gtest"\
-        --replace-fail '$'{GMOCK_LIB} "GTest::gmock"\
-        --replace-fail '$'{GTEST_MAIN_LIB} "GTest::gtest_main"\
-        --replace-fail '$'{GMOCK_MAIN_LIB} "GTest::gmock_main"
+    substituteInPlace $gtest \
+      --replace-fail '$'{GTEST_LIB} "GTest::gtest"\
+      --replace-fail '$'{GMOCK_LIB} "GTest::gmock"\
+      --replace-fail '$'{GTEST_MAIN_LIB} "GTest::gtest_main"\
+      --replace-fail '$'{GMOCK_MAIN_LIB} "GTest::gmock_main"
 
-      # without git history, there is no chance these tests will pass.
-      substituteInPlace tests/utils/version_tests.cpp \
-        --replace-quiet VersionTests DISABLED_VersionTests
+    # without git history, there is no chance these tests will pass.
+    substituteInPlace tests/utils/version_tests.cpp \
+      --replace-quiet VersionTests DISABLED_VersionTests
 
-      substituteInPlace scripts/retdec-utils.py \
-        --replace-warn /usr/bin/time ${time} \
-        --replace-warn /usr/local/bin/gtime ${time}
-      substituteInPlace scripts/retdec-unpacker.py \
-        --replace-warn "'upx'" "'${upx}'"
-    '';
+    substituteInPlace scripts/retdec-utils.py \
+      --replace-warn /usr/bin/time ${time} \
+      --replace-warn /usr/local/bin/gtime ${time}
+    substituteInPlace scripts/retdec-unpacker.py \
+      --replace-warn "'upx'" "'${upx}'"
+  '';
 
   doInstallCheck = enableTests;
   installCheckPhase = ''

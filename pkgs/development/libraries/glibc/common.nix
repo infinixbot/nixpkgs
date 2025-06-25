@@ -204,11 +204,9 @@ stdenv.mkDerivation (
         "OBJDUMP=${stdenv.cc.bintools.bintools}/bin/objdump"
       ];
 
-    postInstall =
-      (args.postInstall or "")
-      + ''
-        moveToOutput bin/getent $getent
-      '';
+    postInstall = (args.postInstall or "") + ''
+      moveToOutput bin/getent $getent
+    '';
 
     installFlags = [ "sysconfdir=$(out)/etc" ];
 

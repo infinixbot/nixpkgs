@@ -396,14 +396,12 @@
   proc-macro-crate =
     attrs:
     lib.optionalAttrs (lib.versionAtLeast attrs.version "2.0") {
-      postPatch =
-        (attrs.postPatch or "")
-        + ''
-          substituteInPlace \
-            src/lib.rs \
-            --replace-fail \
-            'env::var("CARGO")' \
-            'Ok::<_, core::convert::Infallible>("${lib.getBin buildPackages.cargo}/bin/cargo")'
-        '';
+      postPatch = (attrs.postPatch or "") + ''
+        substituteInPlace \
+          src/lib.rs \
+          --replace-fail \
+          'env::var("CARGO")' \
+          'Ok::<_, core::convert::Infallible>("${lib.getBin buildPackages.cargo}/bin/cargo")'
+      '';
     };
 }

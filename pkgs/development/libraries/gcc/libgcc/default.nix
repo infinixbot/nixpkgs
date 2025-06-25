@@ -44,11 +44,9 @@ stdenv.mkDerivation (finalAttrs: {
     buildRoot=$(readlink -e "./build")
   '';
 
-  postPatch =
-    gcc.cc.passthru.forceLibgccToBuildCrtStuff
-    + ''
-      sourceRoot=$(readlink -e "./libgcc")
-    '';
+  postPatch = gcc.cc.passthru.forceLibgccToBuildCrtStuff + ''
+    sourceRoot=$(readlink -e "./libgcc")
+  '';
 
   hardeningDisable = [ "pie" ];
 

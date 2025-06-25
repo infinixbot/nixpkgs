@@ -154,7 +154,8 @@ in
           StateDirectory = lib.optionalString (cfg.record) "rasdaemon";
 
           ExecStart =
-            "${cfg.package}/bin/rasdaemon --foreground" + lib.optionalString (cfg.record) " --record";
+            "${cfg.package}/bin/rasdaemon --foreground"
+            + lib.optionalString (cfg.record) " --record";
           ExecStop = "${cfg.package}/bin/rasdaemon --disable";
           Restart = "on-abort";
 

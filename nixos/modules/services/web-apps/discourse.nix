@@ -898,14 +898,12 @@ in
               }:
               {
                 proxyPass = "http://discourse";
-                extraConfig =
-                  extraConfig
-                  + ''
-                    proxy_set_header X-Request-Start "t=''${msec}";
-                    proxy_set_header X-Sendfile-Type "";
-                    proxy_set_header X-Accel-Mapping "";
-                    proxy_set_header Client-Ip "";
-                  '';
+                extraConfig = extraConfig + ''
+                  proxy_set_header X-Request-Start "t=''${msec}";
+                  proxy_set_header X-Sendfile-Type "";
+                  proxy_set_header X-Accel-Mapping "";
+                  proxy_set_header Client-Ip "";
+                '';
               };
             cache = time: ''
               expires ${time};
@@ -929,11 +927,9 @@ in
             };
             "~ ^/uploads/short-url/" = proxy { };
             "~ ^/secure-media-uploads/" = proxy { };
-            "~* (fonts|assets|plugins|uploads)/.*\\.(eot|ttf|woff|woff2|ico|otf)$".extraConfig =
-              cache_1y
-              + ''
-                add_header Access-Control-Allow-Origin *;
-              '';
+            "~* (fonts|assets|plugins|uploads)/.*\\.(eot|ttf|woff|woff2|ico|otf)$".extraConfig = cache_1y + ''
+              add_header Access-Control-Allow-Origin *;
+            '';
             "/srv/status" = proxy {
               extraConfig = ''
                 access_log off;
@@ -941,38 +937,34 @@ in
               '';
             };
             "~ ^/javascripts/".extraConfig = cache_1d;
-            "~ ^/assets/(?<asset_path>.+)$".extraConfig =
-              cache_1y
-              + ''
-                # asset pipeline enables this
-                brotli_static on;
-                gzip_static on;
-              '';
+            "~ ^/assets/(?<asset_path>.+)$".extraConfig = cache_1y + ''
+              # asset pipeline enables this
+              brotli_static on;
+              gzip_static on;
+            '';
             "~ ^/plugins/".extraConfig = cache_1y;
             "~ /images/emoji/".extraConfig = cache_1y;
             "~ ^/uploads/" = proxy {
-              extraConfig =
-                cache_1y
-                + ''
-                  proxy_set_header X-Sendfile-Type X-Accel-Redirect;
-                  proxy_set_header X-Accel-Mapping ${cfg.package}/share/discourse/public/=/downloads/;
+              extraConfig = cache_1y + ''
+                proxy_set_header X-Sendfile-Type X-Accel-Redirect;
+                proxy_set_header X-Accel-Mapping ${cfg.package}/share/discourse/public/=/downloads/;
 
-                  # custom CSS
-                  location ~ /stylesheet-cache/ {
-                      try_files $uri =404;
-                  }
-                  # this allows us to bypass rails
-                  location ~* \.(gif|png|jpg|jpeg|bmp|tif|tiff|ico|webp)$ {
-                      try_files $uri =404;
-                  }
-                  # SVG needs an extra header attached
-                  location ~* \.(svg)$ {
-                  }
-                  # thumbnails & optimized images
-                  location ~ /_?optimized/ {
-                      try_files $uri =404;
-                  }
-                '';
+                # custom CSS
+                location ~ /stylesheet-cache/ {
+                    try_files $uri =404;
+                }
+                # this allows us to bypass rails
+                location ~* \.(gif|png|jpg|jpeg|bmp|tif|tiff|ico|webp)$ {
+                    try_files $uri =404;
+                }
+                # SVG needs an extra header attached
+                location ~* \.(svg)$ {
+                }
+                # thumbnails & optimized images
+                location ~ /_?optimized/ {
+                    try_files $uri =404;
+                }
+              '';
             };
             "~ ^/admin/backups/" = proxy {
               extraConfig = ''

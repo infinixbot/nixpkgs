@@ -135,11 +135,9 @@ lib.makeOverridable (
       lib.optionalAttrs
         (!stdenv.hostPlatform.isStatic && !attrs.alwaysKeepStatic or false && stdenv.hostPlatform.isFreeBSD)
         {
-          postInstall =
-            (attrs.postInstall or "")
-            + ''
-              rm -f $out/lib/*.a
-            '';
+          postInstall = (attrs.postInstall or "") + ''
+            rm -f $out/lib/*.a
+          '';
         }
     //
       lib.optionalAttrs

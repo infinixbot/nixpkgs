@@ -44,16 +44,15 @@ finalAttrs: prevAttrs: {
   # NOTE: Versions from CUDNN releases have four components.
   postFixup =
     prevAttrs.postFixup or ""
-    +
-      strings.optionalString
-        (
-          strings.versionAtLeast finalAttrs.version "8.0.5.0"
-          && strings.versionOlder finalAttrs.version "9.0.0.0"
-        )
-        ''
-          ${meta.getExe patchelf} $lib/lib/libcudnn.so --add-needed libcudnn_cnn_infer.so
-          ${meta.getExe patchelf} $lib/lib/libcudnn_ops_infer.so --add-needed libcublas.so --add-needed libcublasLt.so
-        '';
+    + strings.optionalString
+      (
+        strings.versionAtLeast finalAttrs.version "8.0.5.0"
+        && strings.versionOlder finalAttrs.version "9.0.0.0"
+      )
+      ''
+        ${meta.getExe patchelf} $lib/lib/libcudnn.so --add-needed libcudnn_cnn_infer.so
+        ${meta.getExe patchelf} $lib/lib/libcudnn_ops_infer.so --add-needed libcublas.so --add-needed libcublasLt.so
+      '';
 
   passthru = prevAttrs.passthru or { } // {
     useCudatoolkitRunfile = cudaOlder "11.3.999";

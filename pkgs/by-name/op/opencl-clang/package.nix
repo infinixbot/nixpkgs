@@ -14,13 +14,11 @@ let
   addPatches =
     component: pkg:
     pkg.overrideAttrs (oldAttrs: {
-      postPatch =
-        oldAttrs.postPatch or ""
-        + ''
-          for p in ${passthru.patchesOut}/${component}/*; do
-            patch -p1 -i "$p"
-          done
-        '';
+      postPatch = oldAttrs.postPatch or "" + ''
+        for p in ${passthru.patchesOut}/${component}/*; do
+          patch -p1 -i "$p"
+        done
+      '';
     });
 
   llvmPkgs = llvmPackages_15;

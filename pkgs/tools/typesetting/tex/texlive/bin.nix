@@ -520,11 +520,9 @@ rec {
       "tie"
       "web"
     ];
-    postInstall =
-      common.moveBins
-      + ''
-        rm "${placeholder "ptex"}"/bin/{pbibtex,pdvitype,ppltotf,ptftopl}
-      '';
+    postInstall = common.moveBins + ''
+      rm "${placeholder "ptex"}"/bin/{pbibtex,pdvitype,ppltotf,ptftopl}
+    '';
   };
 
   chktex = stdenv.mkDerivation {

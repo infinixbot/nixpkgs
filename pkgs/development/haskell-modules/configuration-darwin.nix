@@ -64,15 +64,13 @@ self: super:
 
     git-annex = overrideCabal (drv: {
       # We can't use testFlags since git-annex side steps the Cabal test mechanism
-      preCheck =
-        drv.preCheck or ""
-        + ''
-          checkFlagsArray+=(
-            # The addurl test cases require security(1) to be in PATH which we can't
-            # provide from nixpkgs to my (@sternenseemann) knowledge.
-            "-p" "!/addurl/"
-          )
-        '';
+      preCheck = drv.preCheck or "" + ''
+        checkFlagsArray+=(
+          # The addurl test cases require security(1) to be in PATH which we can't
+          # provide from nixpkgs to my (@sternenseemann) knowledge.
+          "-p" "!/addurl/"
+        )
+      '';
     }) super.git-annex;
 
     # on*Finish tests rely on a threadDelay timing differential of 0.1s.

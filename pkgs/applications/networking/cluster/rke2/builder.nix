@@ -137,7 +137,8 @@ buildGoModule (finalAttrs: {
         moduleTests =
           let
             package_version =
-              "rke2_" + lib.replaceStrings [ "." ] [ "_" ] (lib.versions.majorMinor rke2Version);
+              "rke2_"
+              + lib.replaceStrings [ "." ] [ "_" ] (lib.versions.majorMinor rke2Version);
           in
           lib.mapAttrs (name: value: nixosTests.rke2.${name}.${package_version}) nixosTests.rke2;
       in

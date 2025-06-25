@@ -216,11 +216,9 @@ let
                 a:
                 lib.optionalAttrs (prevStage.gcc-unwrapped.passthru.isXgcc or false) {
                   # This affects only `xgcc` (the compiler which compiles the final compiler).
-                  postFixup =
-                    (a.postFixup or "")
-                    + ''
-                      echo "--sysroot=${lib.getDev prevStage.libc}" >> $out/nix-support/cc-cflags
-                    '';
+                  postFixup = (a.postFixup or "") + ''
+                    echo "--sysroot=${lib.getDev prevStage.libc}" >> $out/nix-support/cc-cflags
+                  '';
                 }
               );
 
@@ -520,11 +518,9 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
         # and use the result as input for our final glibc.  We also pass this pair
         # through, so the final package-set uses exactly the same builds.
         libunistring = super.libunistring.overrideAttrs (attrs: {
-          postFixup =
-            attrs.postFixup or ""
-            + ''
-              ${self.nukeReferences}/bin/nuke-refs "$out"/lib/lib*.so.*.*
-            '';
+          postFixup = attrs.postFixup or "" + ''
+            ${self.nukeReferences}/bin/nuke-refs "$out"/lib/lib*.so.*.*
+          '';
           # Apparently iconv won't work with bootstrap glibc, but it will be used
           # with glibc built later where we keep *this* build of libunistring,
           # so we need to trick it into supporting libiconv.
@@ -533,12 +529,10 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
           };
         });
         libidn2 = super.libidn2.overrideAttrs (attrs: {
-          postFixup =
-            attrs.postFixup or ""
-            + ''
-              ${self.nukeReferences}/bin/nuke-refs -e '${lib.getLib self.libunistring}' \
-                "$out"/lib/lib*.so.*.*
-            '';
+          postFixup = attrs.postFixup or "" + ''
+            ${self.nukeReferences}/bin/nuke-refs -e '${lib.getLib self.libunistring}' \
+              "$out"/lib/lib*.so.*.*
+          '';
         });
 
         # This also contains the full, dynamically linked, final Glibc.

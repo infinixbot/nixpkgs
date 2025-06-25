@@ -241,15 +241,13 @@ let
             "-DINSTALL_MYSQLSHAREDIR=share/mysql-client"
           ];
 
-          postInstall =
-            common.postInstall
-            + ''
-              rm "$out"/bin/{mariadb-test,mysqltest}
-              libmysqlclient_path=$(readlink -f $out/lib/libmysqlclient${libExt})
-              rm "$out"/lib/{libmariadb${libExt},libmysqlclient${libExt},libmysqlclient_r${libExt}}
-              mv "$libmysqlclient_path" "$out"/lib/libmysqlclient${libExt}
-              ln -sv libmysqlclient${libExt} "$out"/lib/libmysqlclient_r${libExt}
-            '';
+          postInstall = common.postInstall + ''
+            rm "$out"/bin/{mariadb-test,mysqltest}
+            libmysqlclient_path=$(readlink -f $out/lib/libmysqlclient${libExt})
+            rm "$out"/lib/{libmariadb${libExt},libmysqlclient${libExt},libmysqlclient_r${libExt}}
+            mv "$libmysqlclient_path" "$out"/lib/libmysqlclient${libExt}
+            ln -sv libmysqlclient${libExt} "$out"/lib/libmysqlclient_r${libExt}
+          '';
         }
       );
     in

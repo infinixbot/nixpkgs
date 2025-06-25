@@ -147,19 +147,17 @@ let
     # nixpkgs' x265 sourceRoot is x265-.../source whereas handbrake's x265 patches
     # are written with respect to the parent directory instead of that source directory.
     # patches which don't cleanly apply are commented out.
-    postPatch =
-      (old.postPatch or "")
-      + ''
-        pushd ..
-        patch -p1 < ${src}/contrib/x265/A01-Do-not-set-thread-priority-on-Windows.patch
-        # patch -p1 < ${src}/contrib/x265/A02-Apple-Silicon-tuning.patch
-        patch -p1 < ${src}/contrib/x265/A03-fix-crash-when-SEI-length-is-variable.patch
-        patch -p1 < ${src}/contrib/x265/A04-implement-ambient-viewing-environment-sei.patch
-        # patch -p1 < ${src}/contrib/x265/A05-Fix-Dolby-Vision-RPU-memory-management.patch
-        # patch -p1 < ${src}/contrib/x265/A06-Simplify-macOS-cross-compilation.patch
-        # patch -p1 < ${src}/contrib/x265/A07-add-new-matrix-coefficients-from-H.273-v3.patch
-        popd
-      '';
+    postPatch = (old.postPatch or "") + ''
+      pushd ..
+      patch -p1 < ${src}/contrib/x265/A01-Do-not-set-thread-priority-on-Windows.patch
+      # patch -p1 < ${src}/contrib/x265/A02-Apple-Silicon-tuning.patch
+      patch -p1 < ${src}/contrib/x265/A03-fix-crash-when-SEI-length-is-variable.patch
+      patch -p1 < ${src}/contrib/x265/A04-implement-ambient-viewing-environment-sei.patch
+      # patch -p1 < ${src}/contrib/x265/A05-Fix-Dolby-Vision-RPU-memory-management.patch
+      # patch -p1 < ${src}/contrib/x265/A06-Simplify-macOS-cross-compilation.patch
+      # patch -p1 < ${src}/contrib/x265/A07-add-new-matrix-coefficients-from-H.273-v3.patch
+      popd
+    '';
   });
 
   versionFile = writeText "version.txt" ''

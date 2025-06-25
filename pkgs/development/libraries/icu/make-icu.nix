@@ -149,13 +149,11 @@ let
     pname = pname + "-build-root";
     inherit version;
 
-    preConfigure =
-      baseAttrs.preConfigure
-      + ''
-        mkdir build
-        cd build
-        configureScript=../configure
-      '';
+    preConfigure = baseAttrs.preConfigure + ''
+      mkdir build
+      cd build
+      configureScript=../configure
+    '';
 
     postBuild = ''
       cd ..

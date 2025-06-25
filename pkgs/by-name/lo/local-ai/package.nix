@@ -112,20 +112,18 @@ let
           hash = "sha256-b9B5I3EbBFrkWc6RLXMWcCRKayyWjlGuQrogUcrISrc=";
           fetchSubmodules = true;
         };
-        postPatch =
-          prev.postPatch
-          + ''
-            cd examples
-            cp -r --no-preserve=mode ${src}/backend/cpp/llama grpc-server
-            cp llava/clip* llava/llava.* grpc-server
-            printf "\nadd_subdirectory(grpc-server)" >> CMakeLists.txt
+        postPatch = prev.postPatch + ''
+          cd examples
+          cp -r --no-preserve=mode ${src}/backend/cpp/llama grpc-server
+          cp llava/clip* llava/llava.* grpc-server
+          printf "\nadd_subdirectory(grpc-server)" >> CMakeLists.txt
 
-            cp ${src}/backend/backend.proto grpc-server
-            sed -i grpc-server/CMakeLists.txt \
-              -e '/get_filename_component/ s;[.\/]*backend/;;' \
-              -e '$a\install(TARGETS ''${TARGET} RUNTIME)'
-            cd ..
-          '';
+          cp ${src}/backend/backend.proto grpc-server
+          sed -i grpc-server/CMakeLists.txt \
+            -e '/get_filename_component/ s;[.\/]*backend/;;' \
+            -e '$a\install(TARGETS ''${TARGET} RUNTIME)'
+          cd ..
+        '';
         cmakeFlags = prev.cmakeFlags ++ [
           (lib.cmakeBool "BUILD_SHARED_LIBS" false)
           (lib.cmakeBool "GGML_AVX" enable_avx)
@@ -382,25 +380,23 @@ let
         -e '/^CGO_LDFLAGS_WHISPER?=/ s;$;-L${libcufft}/lib -L${cuda_cudart}/lib;'
     '';
 
-    postConfigure =
-      prepare-sources
-      + ''
-        shopt -s extglob
-        mkdir -p backend-assets/grpc
-        cp ${llama-cpp-grpc}/bin/grpc-server backend-assets/grpc/llama-cpp-fallback
-        cp ${llama-cpp-rpc}/bin/grpc-server backend-assets/grpc/llama-cpp-grpc
+    postConfigure = prepare-sources + ''
+      shopt -s extglob
+      mkdir -p backend-assets/grpc
+      cp ${llama-cpp-grpc}/bin/grpc-server backend-assets/grpc/llama-cpp-fallback
+      cp ${llama-cpp-rpc}/bin/grpc-server backend-assets/grpc/llama-cpp-grpc
 
-        mkdir -p backend/cpp/llama/llama.cpp
+      mkdir -p backend/cpp/llama/llama.cpp
 
-        mkdir -p backend-assets/util
-        cp ${llama-cpp-rpc}/bin/llama-rpc-server backend-assets/util/llama-cpp-rpc-server
+      mkdir -p backend-assets/util
+      cp ${llama-cpp-rpc}/bin/llama-rpc-server backend-assets/util/llama-cpp-rpc-server
 
-        cp -r --no-preserve=mode,ownership ${stable-diffusion}/build backend/go/image/stablediffusion-ggml/build
+      cp -r --no-preserve=mode,ownership ${stable-diffusion}/build backend/go/image/stablediffusion-ggml/build
 
-        # avoid rebuild of prebuilt make targets
-        touch backend-assets/grpc/* backend-assets/util/*
-        find sources -name "lib*.a" -exec touch {} +
-      '';
+      # avoid rebuild of prebuilt make targets
+      touch backend-assets/grpc/* backend-assets/util/*
+      find sources -name "lib*.a" -exec touch {} +
+    '';
 
     buildInputs =
       [ ]
@@ -430,12 +426,10 @@ let
 
     enableParallelBuilding = false;
 
-    modBuildPhase =
-      prepare-sources
-      + ''
-        make protogen-go
-        go mod tidy -v
-      '';
+    modBuildPhase = prepare-sources + ''
+      make protogen-go
+      go mod tidy -v
+    '';
 
     proxyVendor = true;
 

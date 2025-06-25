@@ -107,11 +107,11 @@ stdenv.mkDerivation (
           ''
       )
       +
-        # Perl's build system uses the src variable, and its value may end up in
-        # the output in some cases (when cross-compiling)
-        ''
-          unset src
-        '';
+      # Perl's build system uses the src variable, and its value may end up in
+      # the output in some cases (when cross-compiling)
+      ''
+        unset src
+      '';
 
     # Build a thread-safe Perl with a dynamic libperl.so.  We need the
     # "installstyle" option to ensure that modules are put under

@@ -49,12 +49,10 @@ stdenv.mkDerivation {
     hash = "sha256-h6aSLuDdrAtVzOnNVPqMEWX9WLDHtkCjPy9JXWnBgYY=";
   };
 
-  postPatch =
-    common.postPatch
-    + ''
-      substituteInPlace configure \
-        --replace "-mfpmath=sse -msse2" ""
-    '';
+  postPatch = common.postPatch + ''
+    substituteInPlace configure \
+      --replace "-mfpmath=sse -msse2" ""
+  '';
 
   nativeBuildInputs = [
     guile_1_8
