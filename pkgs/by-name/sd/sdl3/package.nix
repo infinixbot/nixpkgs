@@ -65,15 +65,14 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "sdl3";
   version = "3.2.16";
 
-  outputs =
-    [
-      "lib"
-      "dev"
-      "out"
-    ]
-    ++ lib.optionals testSupport [
-      "installedTests"
-    ];
+  outputs = [
+    "lib"
+    "dev"
+    "out"
+  ]
+  ++ lib.optionals testSupport [
+    "installedTests"
+  ];
 
   src = fetchFromGitHub {
     owner = "libsdl-org";
@@ -105,7 +104,8 @@ stdenv.mkDerivation (finalAttrs: {
     cmake
     ninja
     validatePkgConfig
-  ] ++ lib.optional waylandSupport wayland-scanner;
+  ]
+  ++ lib.optional waylandSupport wayland-scanner;
 
   buildInputs =
     finalAttrs.dlopenBuildInputs

@@ -56,20 +56,19 @@ buildPythonPackage rec {
     "mlx-vlm" # not yet avainable on nixpkgs
   ];
 
-  dependencies =
-    [
-      docling
-      fastapi
-      httpx
-      pydantic-settings
-      python-multipart
-      uvicorn
-      websockets
-    ]
-    ++ lib.optionals withUI optional-dependencies.ui
-    ++ lib.optionals withTesserocr optional-dependencies.tesserocr
-    ++ lib.optionals withRapidocr optional-dependencies.rapidocr
-    ++ lib.optionals withCPU optional-dependencies.cpu;
+  dependencies = [
+    docling
+    fastapi
+    httpx
+    pydantic-settings
+    python-multipart
+    uvicorn
+    websockets
+  ]
+  ++ lib.optionals withUI optional-dependencies.ui
+  ++ lib.optionals withTesserocr optional-dependencies.tesserocr
+  ++ lib.optionals withRapidocr optional-dependencies.rapidocr
+  ++ lib.optionals withCPU optional-dependencies.cpu;
 
   optional-dependencies = {
     ui = [

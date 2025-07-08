@@ -62,13 +62,14 @@ stdenv.mkDerivation (finalAttrs: {
     (lib.getLib stdenv.cc.cc)
   ];
 
-  patches =
-    [ ./disable_update_checking.patch ]
-    ++ lib.optional withSystemEquicord (
-      replaceVars ./use_system_equicord.patch {
-        inherit equicord;
-      }
-    );
+  patches = [
+    ./disable_update_checking.patch
+  ]
+  ++ lib.optional withSystemEquicord (
+    replaceVars ./use_system_equicord.patch {
+      inherit equicord;
+    }
+  );
 
   env = {
     ELECTRON_SKIP_BINARY_DOWNLOAD = 1;
