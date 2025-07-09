@@ -35,13 +35,12 @@ stdenv.mkDerivation rec {
     tcl
     udevCheckHook
   ];
-  buildInputs =
-    [
-      bluez
-      ncurses.dev
-    ]
-    ++ lib.optional alsaSupport alsa-lib
-    ++ lib.optional systemdSupport systemd;
+  buildInputs = [
+    bluez
+    ncurses.dev
+  ]
+  ++ lib.optional alsaSupport alsa-lib
+  ++ lib.optional systemdSupport systemd;
 
   doInstallCheck = true;
 

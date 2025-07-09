@@ -56,17 +56,19 @@ stdenv.mkDerivation rec {
     pkg-config
     perl
     udevCheckHook
-  ] ++ lib.optional withQt wrapQtAppsHook;
+  ]
+  ++ lib.optional withQt wrapQtAppsHook;
 
-  buildInputs =
-    [ udev ]
-    ++ lib.optional (!stdenv.hostPlatform.isGnu) argp-standalone
-    ++ lib.optionals withQt [
-      alsa-lib
-      libX11
-      qtbase
-      libGLU
-    ];
+  buildInputs = [
+    udev
+  ]
+  ++ lib.optional (!stdenv.hostPlatform.isGnu) argp-standalone
+  ++ lib.optionals withQt [
+    alsa-lib
+    libX11
+    qtbase
+    libGLU
+  ];
 
   propagatedBuildInputs = [ libjpeg ];
 

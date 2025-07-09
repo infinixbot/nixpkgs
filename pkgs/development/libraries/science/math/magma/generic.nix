@@ -121,90 +121,86 @@ stdenv.mkDerivation {
     "test"
   ];
 
-  postPatch =
-    ''
-      # For rocm version script invoked by cmake
-      patchShebangs tools/
-      # Fixup for the python test runners
-      patchShebangs ./testing/run_{tests,summarize}.py
-    ''
-    + lib.optionalString (strings.versionOlder version "2.9.0") ''
-      substituteInPlace ./testing/run_tests.py \
-        --replace-fail \
-          "print >>sys.stderr, cmdp, \"doesn't exist (original name: \" + cmd + \", precision: \" + precision + \")\"" \
-          "print(f\"{cmdp} doesn't exist (original name: {cmd}, precision: {precision})\", file=sys.stderr)"
-    '';
+  postPatch = ''
+    # For rocm version script invoked by cmake
+    patchShebangs tools/
+    # Fixup for the python test runners
+    patchShebangs ./testing/run_{tests,summarize}.py
+  ''
+  + lib.optionalString (strings.versionOlder version "2.9.0") ''
+    substituteInPlace ./testing/run_tests.py \
+      --replace-fail \
+        "print >>sys.stderr, cmdp, \"doesn't exist (original name: \" + cmd + \", precision: \" + precision + \")\"" \
+        "print(f\"{cmdp} doesn't exist (original name: {cmd}, precision: {precision})\", file=sys.stderr)"
+  '';
 
-  nativeBuildInputs =
-    [
-      autoPatchelfHook
-      cmake
-      ninja
-      gfortran
-    ]
-    ++ lists.optionals cudaSupport [
-      effectiveCudaPackages.cuda_nvcc
-    ];
+  nativeBuildInputs = [
+    autoPatchelfHook
+    cmake
+    ninja
+    gfortran
+  ]
+  ++ lists.optionals cudaSupport [
+    effectiveCudaPackages.cuda_nvcc
+  ];
 
-  buildInputs =
+  buildInputs = [
+    libpthreadstubs
+    lapack
+    blas
+    python3
+    (getLib gfortran.cc) # libgfortran.so
+  ]
+  ++ lists.optionals cudaSupport (
+    with effectiveCudaPackages;
     [
-      libpthreadstubs
-      lapack
-      blas
-      python3
-      (getLib gfortran.cc) # libgfortran.so
+      cuda_cccl # <nv/target> and <cuda/std/type_traits>
+      cuda_cudart # cuda_runtime.h
+      libcublas # cublas_v2.h
+      libcusparse # cusparse.h
     ]
-    ++ lists.optionals cudaSupport (
-      with effectiveCudaPackages;
-      [
-        cuda_cccl # <nv/target> and <cuda/std/type_traits>
-        cuda_cudart # cuda_runtime.h
-        libcublas # cublas_v2.h
-        libcusparse # cusparse.h
-      ]
-      ++ lists.optionals (cudaOlder "11.8") [
-        cuda_nvprof # <cuda_profiler_api.h>
-      ]
-      ++ lists.optionals (cudaAtLeast "11.8") [
-        cuda_profiler_api # <cuda_profiler_api.h>
-      ]
-    )
-    ++ lists.optionals rocmSupport (
-      with effectiveRocmPackages;
-      [
-        clr
-        hipblas
-        hipsparse
-        llvm.openmp
-      ]
-    );
+    ++ lists.optionals (cudaOlder "11.8") [
+      cuda_nvprof # <cuda_profiler_api.h>
+    ]
+    ++ lists.optionals (cudaAtLeast "11.8") [
+      cuda_profiler_api # <cuda_profiler_api.h>
+    ]
+  )
+  ++ lists.optionals rocmSupport (
+    with effectiveRocmPackages;
+    [
+      clr
+      hipblas
+      hipsparse
+      llvm.openmp
+    ]
+  );
 
-  cmakeFlags =
-    [
-      (strings.cmakeFeature "GPU_TARGET" gpuTargetString)
-      (strings.cmakeBool "MAGMA_ENABLE_CUDA" cudaSupport)
-      (strings.cmakeBool "MAGMA_ENABLE_HIP" rocmSupport)
-      (strings.cmakeBool "BUILD_SHARED_LIBS" (!static))
-      # Set the Fortran name mangling scheme explicitly. We must set FORTRAN_CONVENTION manually because it will
-      # otherwise not be set in NVCC_FLAGS or DEVCCFLAGS (which we cannot modify).
-      # See https://github.com/NixOS/nixpkgs/issues/281656#issuecomment-1902931289
-      (strings.cmakeBool "USE_FORTRAN" true)
-      (strings.cmakeFeature "CMAKE_C_FLAGS" "-DADD_")
-      (strings.cmakeFeature "CMAKE_CXX_FLAGS" "-DADD_")
-      (strings.cmakeFeature "FORTRAN_CONVENTION" "-DADD_")
-    ]
-    ++ lists.optionals cudaSupport [
-      (strings.cmakeFeature "CMAKE_CUDA_ARCHITECTURES" cudaArchitecturesString)
-      (strings.cmakeFeature "MIN_ARCH" minArch) # Disarms magma's asserts
-    ]
-    ++ lists.optionals rocmSupport [
-      # Can be removed once https://github.com/icl-utk-edu/magma/pull/27 is merged
-      # Can't easily apply the PR as a patch because we rely on the tarball with pregenerated
-      # hipified files ∴ fetchpatch of the PR will apply cleanly but fail to build
-      (strings.cmakeFeature "ROCM_CORE" "${effectiveRocmPackages.clr}")
-      (strings.cmakeFeature "CMAKE_C_COMPILER" "${effectiveRocmPackages.clr}/bin/hipcc")
-      (strings.cmakeFeature "CMAKE_CXX_COMPILER" "${effectiveRocmPackages.clr}/bin/hipcc")
-    ];
+  cmakeFlags = [
+    (strings.cmakeFeature "GPU_TARGET" gpuTargetString)
+    (strings.cmakeBool "MAGMA_ENABLE_CUDA" cudaSupport)
+    (strings.cmakeBool "MAGMA_ENABLE_HIP" rocmSupport)
+    (strings.cmakeBool "BUILD_SHARED_LIBS" (!static))
+    # Set the Fortran name mangling scheme explicitly. We must set FORTRAN_CONVENTION manually because it will
+    # otherwise not be set in NVCC_FLAGS or DEVCCFLAGS (which we cannot modify).
+    # See https://github.com/NixOS/nixpkgs/issues/281656#issuecomment-1902931289
+    (strings.cmakeBool "USE_FORTRAN" true)
+    (strings.cmakeFeature "CMAKE_C_FLAGS" "-DADD_")
+    (strings.cmakeFeature "CMAKE_CXX_FLAGS" "-DADD_")
+    (strings.cmakeFeature "FORTRAN_CONVENTION" "-DADD_")
+  ]
+  ++ lists.optionals cudaSupport [
+    (strings.cmakeFeature "CMAKE_CUDA_ARCHITECTURES" cudaArchitecturesString)
+    (strings.cmakeFeature "MIN_ARCH" minArch) # Disarms magma's asserts
+  ]
+  ++ lists.optionals rocmSupport [
+    # Can be removed once https://github.com/icl-utk-edu/magma/pull/27 is merged
+    # Can't easily apply the PR as a patch because we rely on the tarball with pregenerated
+    # hipified files ∴ fetchpatch of the PR will apply cleanly but fail to build
+    (strings.cmakeFeature "ROCM_CORE" "${effectiveRocmPackages.clr}")
+    (strings.cmakeFeature "CMAKE_C_COMPILER" "${effectiveRocmPackages.clr}/bin/hipcc")
+    (strings.cmakeFeature "CMAKE_CXX_COMPILER" "${effectiveRocmPackages.clr}/bin/hipcc")
+  ];
 
   # Magma doesn't have a test suite we can easily run, just loose executables, all of which require a GPU.
   doCheck = false;

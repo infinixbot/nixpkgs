@@ -52,7 +52,8 @@ buildPythonPackage rec {
     farama-notifications
     numpy
     typing-extensions
-  ] ++ lib.optionals (pythonOlder "3.10") [ importlib-metadata ];
+  ]
+  ++ lib.optionals (pythonOlder "3.10") [ importlib-metadata ];
 
   pythonImportsCheck = [ "gymnasium" ];
 
