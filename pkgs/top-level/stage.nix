@@ -242,7 +242,8 @@ let
             (self': super': {
               pkgsi686Linux = super';
             })
-          ] ++ overlays;
+          ]
+          ++ overlays;
           ${if stdenv.hostPlatform == stdenv.buildPlatform then "localSystem" else "crossSystem"} = {
             config = lib.systems.parse.tripleFromSystem (
               stdenv.hostPlatform.parsed
@@ -263,7 +264,8 @@ let
             (self': super': {
               pkgsx86_64Darwin = super';
             })
-          ] ++ overlays;
+          ]
+          ++ overlays;
           localSystem = {
             config = lib.systems.parse.tripleFromSystem (
               stdenv.hostPlatform.parsed
@@ -310,7 +312,8 @@ let
         (self': super': {
           pkgsStatic = super';
         })
-      ] ++ overlays;
+      ]
+      ++ overlays;
       crossSystem = {
         isStatic = true;
         config = lib.systems.parse.tripleFromSystem (

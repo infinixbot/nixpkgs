@@ -47,66 +47,63 @@ stdenv.mkDerivation (finalAttrs: {
     ./no-framework.patch
   ];
 
-  postPatch =
-    ''
-      cp -R ${radaeSrc} radae
-      chmod -R u+w radae
-      substituteInPlace radae/cmake/BuildOpus.cmake \
-        --replace-fail "https://gitlab.xiph.org/xiph/opus/-/archive/main/opus-main.tar.gz" "${libopus.src}" \
-        --replace-fail "./autogen.sh && " ""
-      substituteInPlace cmake/BuildRADE.cmake \
-        --replace-fail "GIT_REPOSITORY https://github.com/drowe67/radae.git" "URL $(realpath radae)" \
-        --replace-fail "GIT_TAG main" ""
-      patchShebangs test/test_*.sh
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      substituteInPlace CMakeLists.txt \
-        --replace-fail "-Wl,-ld_classic" ""
-      substituteInPlace src/CMakeLists.txt \
-        --replace-fail "\''${CMAKE_SOURCE_DIR}/macdylibbundler/dylibbundler" "dylibbundler"
-      sed -i "/codesign/d;/hdiutil/d" src/CMakeLists.txt
-    '';
+  postPatch = ''
+    cp -R ${radaeSrc} radae
+    chmod -R u+w radae
+    substituteInPlace radae/cmake/BuildOpus.cmake \
+      --replace-fail "https://gitlab.xiph.org/xiph/opus/-/archive/main/opus-main.tar.gz" "${libopus.src}" \
+      --replace-fail "./autogen.sh && " ""
+    substituteInPlace cmake/BuildRADE.cmake \
+      --replace-fail "GIT_REPOSITORY https://github.com/drowe67/radae.git" "URL $(realpath radae)" \
+      --replace-fail "GIT_TAG main" ""
+    patchShebangs test/test_*.sh
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    substituteInPlace CMakeLists.txt \
+      --replace-fail "-Wl,-ld_classic" ""
+    substituteInPlace src/CMakeLists.txt \
+      --replace-fail "\''${CMAKE_SOURCE_DIR}/macdylibbundler/dylibbundler" "dylibbundler"
+    sed -i "/codesign/d;/hdiutil/d" src/CMakeLists.txt
+  '';
 
-  nativeBuildInputs =
-    [
-      cmake
-      pkg-config
-      python3
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      macdylibbundler
-      makeWrapper
-      darwin.autoSignDarwinBinariesHook
-      darwin.sigtool
-    ];
+  nativeBuildInputs = [
+    cmake
+    pkg-config
+    python3
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    macdylibbundler
+    makeWrapper
+    darwin.autoSignDarwinBinariesHook
+    darwin.sigtool
+  ];
 
-  buildInputs =
-    [
-      codec2
-      libsamplerate
-      libsndfile
-      lpcnet
-      speexdsp
-      hamlib_4
-      wxGTK32
-      sioclient
-      python3.pkgs.numpy
-    ]
-    ++ (
-      if stdenv.hostPlatform.isLinux then
-        [
-          libpulseaudio
-          dbus
-        ]
-      else if stdenv.hostPlatform.isDarwin then
-        [
-          apple-sdk_15
-        ]
-      else
-        [
-          portaudio
-        ]
-    );
+  buildInputs = [
+    codec2
+    libsamplerate
+    libsndfile
+    lpcnet
+    speexdsp
+    hamlib_4
+    wxGTK32
+    sioclient
+    python3.pkgs.numpy
+  ]
+  ++ (
+    if stdenv.hostPlatform.isLinux then
+      [
+        libpulseaudio
+        dbus
+      ]
+    else if stdenv.hostPlatform.isDarwin then
+      [
+        apple-sdk_15
+      ]
+    else
+      [
+        portaudio
+      ]
+  );
 
   cmakeFlags = [
     (lib.cmakeBool "USE_INTERNAL_CODEC2" false)
@@ -119,15 +116,14 @@ stdenv.mkDerivation (finalAttrs: {
 
   doCheck = false;
 
-  postInstall =
-    ''
-      install -Dm755 rade_build/src/librade.* -t $out/lib
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      mkdir -p $out/Applications
-      mv $out/bin/FreeDV.app $out/Applications
-      makeWrapper $out/Applications/FreeDV.app/Contents/MacOS/FreeDV $out/bin/freedv
-    '';
+  postInstall = ''
+    install -Dm755 rade_build/src/librade.* -t $out/lib
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    mkdir -p $out/Applications
+    mv $out/bin/FreeDV.app $out/Applications
+    makeWrapper $out/Applications/FreeDV.app/Contents/MacOS/FreeDV $out/bin/freedv
+  '';
 
   passthru.updateScript = nix-update-script {
     extraArgs = [
