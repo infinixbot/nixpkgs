@@ -119,8 +119,8 @@ let
     ++ optional doInstallCheck "-Dunit_tests=enabled"
     ++ optional doInstallCheck "-Dconfig_tests=enabled"
     ++ optional stdenv.hostPlatform.isLinux "-Dsystemd_files=enabled" # used by NixOS service
-    #"-Dextra_tests=enabled" # not suitable as in-distro tests; many deps, too.
-    ;
+      #"-Dextra_tests=enabled" # not suitable as in-distro tests; many deps, too.
+      ;
 
     postInstall = ''
       rm "$out"/lib/libkres.a

@@ -42,7 +42,7 @@ let
       # `structuredExtraConfig` is used
       enableCommonConfig ? true
 
-      , # kernel intermediate config overrides, as a set
+        , # kernel intermediate config overrides, as a set
       structuredExtraConfig ? { },
 
       # The version number used for the module directory
