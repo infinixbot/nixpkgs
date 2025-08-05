@@ -254,18 +254,18 @@ stdenv.mkDerivation (finalAttrs: {
 
   # Wrap demos
   postFixup =
-    lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
-      demos=(gtk4-demo gtk4-demo-application gtk4-widget-factory)
+  lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
+    demos=(gtk4-demo gtk4-demo-application gtk4-widget-factory)
 
-      for program in ''${demos[@]}; do
-        wrapProgram $dev/bin/$program \
-          --prefix XDG_DATA_DIRS : "$GSETTINGS_SCHEMAS_PATH:$out/share/gsettings-schemas/${finalAttrs.pname}-${finalAttrs.version}"
-      done
-    ''
-    + lib.optionalString x11Support ''
-      # Cannot be in postInstall, otherwise _multioutDocs hook in preFixup will move right back.
-      moveToOutput "share/doc" "$devdoc"
-    '';
+    for program in ''${demos[@]}; do
+      wrapProgram $dev/bin/$program \
+        --prefix XDG_DATA_DIRS : "$GSETTINGS_SCHEMAS_PATH:$out/share/gsettings-schemas/${finalAttrs.pname}-${finalAttrs.version}"
+    done
+  ''
+  + lib.optionalString x11Support ''
+    # Cannot be in postInstall, otherwise _multioutDocs hook in preFixup will move right back.
+    moveToOutput "share/doc" "$devdoc"
+  '';
 
   passthru = {
     updateScript = gnome.updateScript {

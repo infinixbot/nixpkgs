@@ -248,32 +248,32 @@ stdenv.mkDerivation rec {
     '';
 
   preFixup =
-    lib.optionalString (stdenv.hostPlatform.isLinux && (stdenv.hostPlatform == stdenv.buildPlatform)) ''
-      wrapProgram $out/libexec/pulse/gsettings-helper \
-       --prefix XDG_DATA_DIRS : "$out/share/gsettings-schemas/${pname}-${version}" \
-       --prefix GIO_EXTRA_MODULES : "${lib.getLib dconf}/lib/gio/modules"
-    ''
-    # add .so symlinks for modules to be found under macOS
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      for file in $out/lib/pulseaudio/modules/*.dylib; do
-        ln -s "''$file" "''${file%.dylib}.so"
-        ln -s "''$file" "$out/lib/pulseaudio/''$(basename ''$file .dylib).so"
-      done
-    ''
-    # put symlinks to binaries in `$prefix/bin`;
-    # then wrapGApp will *rename these symlinks* instead of
-    # the original binaries in `$prefix/.bin-unwrapped` (see above);
-    # when pulseaudio is looking for its own binary (it does!),
-    # it will be happy to find it in its original installation location
-    + lib.optionalString (!libOnly) ''
-      mkdir -p $out/bin
-      ln -st $out/bin $out/.bin-unwrapped/*
+  lib.optionalString (stdenv.hostPlatform.isLinux && (stdenv.hostPlatform == stdenv.buildPlatform)) ''
+    wrapProgram $out/libexec/pulse/gsettings-helper \
+     --prefix XDG_DATA_DIRS : "$out/share/gsettings-schemas/${pname}-${version}" \
+     --prefix GIO_EXTRA_MODULES : "${lib.getLib dconf}/lib/gio/modules"
+  ''
+  # add .so symlinks for modules to be found under macOS
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    for file in $out/lib/pulseaudio/modules/*.dylib; do
+      ln -s "''$file" "''${file%.dylib}.so"
+      ln -s "''$file" "$out/lib/pulseaudio/''$(basename ''$file .dylib).so"
+    done
+  ''
+  # put symlinks to binaries in `$prefix/bin`;
+  # then wrapGApp will *rename these symlinks* instead of
+  # the original binaries in `$prefix/.bin-unwrapped` (see above);
+  # when pulseaudio is looking for its own binary (it does!),
+  # it will be happy to find it in its original installation location
+  + lib.optionalString (!libOnly) ''
+    mkdir -p $out/bin
+    ln -st $out/bin $out/.bin-unwrapped/*
 
-      # Ensure that service files use the wrapped binaries.
-      find "$out" -name "*.service" | while read f; do
-          substituteInPlace "$f" --replace "$out/.bin-unwrapped/" "$out/bin/"
-      done
-    '';
+    # Ensure that service files use the wrapped binaries.
+    find "$out" -name "*.service" | while read f; do
+        substituteInPlace "$f" --replace "$out/.bin-unwrapped/" "$out/bin/"
+    done
+  '';
 
   passthru.tests = {
     inherit (nixosTests) pulseaudio;

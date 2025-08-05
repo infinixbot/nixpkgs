@@ -68,19 +68,19 @@ finalAttrs: prevAttrs: {
   buildInputs = prevAttrs.buildInputs or [ ] ++ [ (finalAttrs.passthru.cudnn.lib or null) ];
 
   preInstall =
-    prevAttrs.preInstall or ""
-    + strings.optionalString (targetArch != "unsupported") ''
-      # Replace symlinks to bin and lib with the actual directories from targets.
-      for dir in bin lib; do
-        rm "$dir"
-        mv "targets/${targetArch}/$dir" "$dir"
-      done
+  prevAttrs.preInstall or ""
+  + strings.optionalString (targetArch != "unsupported") ''
+    # Replace symlinks to bin and lib with the actual directories from targets.
+    for dir in bin lib; do
+      rm "$dir"
+      mv "targets/${targetArch}/$dir" "$dir"
+    done
 
-      # Remove broken symlinks
-      for dir in include samples; do
-        rm "targets/${targetArch}/$dir" || :
-      done
-    '';
+    # Remove broken symlinks
+    for dir in include samples; do
+      rm "targets/${targetArch}/$dir" || :
+    done
+  '';
 
   # Tell autoPatchelf about runtime dependencies.
   postFixup =
@@ -114,8 +114,8 @@ finalAttrs: prevAttrs: {
 
   meta = prevAttrs.meta or { } // {
     badPlatforms =
-      prevAttrs.meta.badPlatforms or [ ]
-      ++ lib.optionals (targetArch == "unsupported") [ hostPlatform.system ];
+    prevAttrs.meta.badPlatforms or [ ]
+    ++ lib.optionals (targetArch == "unsupported") [ hostPlatform.system ];
     homepage = "https://developer.nvidia.com/tensorrt";
     maintainers = prevAttrs.meta.maintainers or [ ] ++ [ maintainers.aidalgol ];
     teams = prevAttrs.meta.teams or [ ];

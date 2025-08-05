@@ -98,13 +98,13 @@ effectiveStdenv.mkDerivation (finalAttrs: {
   '';
 
   configureFlags =
-    optionals enableSse41 [ "--with-sse41" ]
-    ++ optionals enableSse42 [ "--with-sse42" ]
-    ++ optionals enableAvx [ "--with-avx" ]
-    ++ optionals enableCuda [
-      "--with-cuda=${cuda_nvcc}"
-      "--with-nvcc-gencode=${concatStringsSep " " flags.gencode}"
-    ];
+  optionals enableSse41 [ "--with-sse41" ]
+  ++ optionals enableSse42 [ "--with-sse42" ]
+  ++ optionals enableAvx [ "--with-avx" ]
+  ++ optionals enableCuda [
+    "--with-cuda=${cuda_nvcc}"
+    "--with-nvcc-gencode=${concatStringsSep " " flags.gencode}"
+  ];
 
   postInstall = ''
     find "$out/lib/" -name "*.la" -exec rm -f \{} \;

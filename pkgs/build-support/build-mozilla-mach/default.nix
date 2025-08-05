@@ -303,44 +303,44 @@ buildStdenv.mkDerivation {
   ];
 
   patches =
-    lib.optionals (lib.versionAtLeast version "111" && lib.versionOlder version "133") [
-      ./env_var_for_system_dir-ff111.patch
-    ]
-    ++ lib.optionals (lib.versionAtLeast version "133") [ ./env_var_for_system_dir-ff133.patch ]
-    ++ lib.optionals (lib.versionAtLeast version "121" && lib.versionOlder version "136") [
-      ./no-buildconfig-ffx121.patch
-    ]
-    ++ lib.optionals (lib.versionAtLeast version "136") [ ./no-buildconfig-ffx136.patch ]
-    ++ lib.optionals (lib.versionAtLeast version "139" && lib.versionOlder version "141") [
-      # https://bugzilla.mozilla.org/show_bug.cgi?id=1955112
-      # https://hg-edge.mozilla.org/mozilla-central/rev/aa8a29bd1fb9
-      ./139-wayland-drag-animation.patch
-    ]
-    ++ lib.optionals (lib.versionAtLeast version "139" && lib.versionOlder version "142") [
-      ./139-relax-apple-sdk.patch
-    ]
-    ++ lib.optionals (lib.versionAtLeast version "142") [
-      ./142-relax-apple-sdk.patch
-    ]
-    ++ lib.optionals (lib.versionOlder version "139") [
-      # Fix for missing vector header on macOS
-      # https://bugzilla.mozilla.org/show_bug.cgi?id=1959377
-      # Fixed on Firefox 139
-      ./firefox-mac-missing-vector-header.patch
-    ]
-    ++ lib.optionals (lib.versionOlder version "140") [
-      # https://bugzilla.mozilla.org/show_bug.cgi?id=1962497
-      # https://phabricator.services.mozilla.com/D246545
-      # Fixed on Firefox 140
-      ./build-fix-RELRHACK_LINKER-setting-when-linker-name-i.patch
-    ]
-    ++ lib.optionals (lib.versionOlder version "138") [
-      # https://bugzilla.mozilla.org/show_bug.cgi?id=1941479
-      # https://phabricator.services.mozilla.com/D240572
-      # Fixed on Firefox 138
-      ./firefox-cannot-find-type-Allocator.patch
-    ]
-    ++ extraPatches;
+  lib.optionals (lib.versionAtLeast version "111" && lib.versionOlder version "133") [
+    ./env_var_for_system_dir-ff111.patch
+  ]
+  ++ lib.optionals (lib.versionAtLeast version "133") [ ./env_var_for_system_dir-ff133.patch ]
+  ++ lib.optionals (lib.versionAtLeast version "121" && lib.versionOlder version "136") [
+    ./no-buildconfig-ffx121.patch
+  ]
+  ++ lib.optionals (lib.versionAtLeast version "136") [ ./no-buildconfig-ffx136.patch ]
+  ++ lib.optionals (lib.versionAtLeast version "139" && lib.versionOlder version "141") [
+    # https://bugzilla.mozilla.org/show_bug.cgi?id=1955112
+    # https://hg-edge.mozilla.org/mozilla-central/rev/aa8a29bd1fb9
+    ./139-wayland-drag-animation.patch
+  ]
+  ++ lib.optionals (lib.versionAtLeast version "139" && lib.versionOlder version "142") [
+    ./139-relax-apple-sdk.patch
+  ]
+  ++ lib.optionals (lib.versionAtLeast version "142") [
+    ./142-relax-apple-sdk.patch
+  ]
+  ++ lib.optionals (lib.versionOlder version "139") [
+    # Fix for missing vector header on macOS
+    # https://bugzilla.mozilla.org/show_bug.cgi?id=1959377
+    # Fixed on Firefox 139
+    ./firefox-mac-missing-vector-header.patch
+  ]
+  ++ lib.optionals (lib.versionOlder version "140") [
+    # https://bugzilla.mozilla.org/show_bug.cgi?id=1962497
+    # https://phabricator.services.mozilla.com/D246545
+    # Fixed on Firefox 140
+    ./build-fix-RELRHACK_LINKER-setting-when-linker-name-i.patch
+  ]
+  ++ lib.optionals (lib.versionOlder version "138") [
+    # https://bugzilla.mozilla.org/show_bug.cgi?id=1941479
+    # https://phabricator.services.mozilla.com/D240572
+    # Fixed on Firefox 138
+    ./firefox-cannot-find-type-Allocator.patch
+  ]
+  ++ extraPatches;
 
   postPatch = ''
     rm -rf obj-x86_64-pc-linux-gnu
@@ -649,29 +649,29 @@ buildStdenv.mkDerivation {
   installTargets = lib.optionalString stdenv.hostPlatform.isDarwin "stage-package";
 
   postInstall =
-    lib.optionalString stdenv.hostPlatform.isDarwin ''
-      mkdir -p $out/Applications
-      cp -r dist/${binaryName}/*.app "$out/Applications/${applicationName}.app"
+  lib.optionalString stdenv.hostPlatform.isDarwin ''
+    mkdir -p $out/Applications
+    cp -r dist/${binaryName}/*.app "$out/Applications/${applicationName}.app"
 
-      resourceDir="$out/Applications/${applicationName}.app/Contents/Resources"
+    resourceDir="$out/Applications/${applicationName}.app/Contents/Resources"
 
-    ''
-    + lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
-      # Remove SDK cruft. FIXME: move to a separate output?
-      rm -rf $out/share/idl $out/include $out/lib/${binaryName}-devel-*
+  ''
+  + lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
+    # Remove SDK cruft. FIXME: move to a separate output?
+    rm -rf $out/share/idl $out/include $out/lib/${binaryName}-devel-*
 
-      # Needed to find Mozilla runtime
-      gappsWrapperArgs+=(--argv0 "$out/bin/.${binaryName}-wrapped")
+    # Needed to find Mozilla runtime
+    gappsWrapperArgs+=(--argv0 "$out/bin/.${binaryName}-wrapped")
 
-      resourceDir=$out/lib/${binaryName}
-    ''
-    + ''
-      # Install distribution customizations
-      install -Dvm644 ${distributionIni} "$resourceDir/distribution/distribution.ini"
-      install -Dvm644 ${defaultPrefsFile} "$resourceDir/browser/defaults/preferences/nixos-default-prefs.js"
+    resourceDir=$out/lib/${binaryName}
+  ''
+  + ''
+    # Install distribution customizations
+    install -Dvm644 ${distributionIni} "$resourceDir/distribution/distribution.ini"
+    install -Dvm644 ${defaultPrefsFile} "$resourceDir/browser/defaults/preferences/nixos-default-prefs.js"
 
-      cd ..
-    '';
+    cd ..
+  '';
 
   postFixup = lib.optionalString (crashreporterSupport && buildStdenv.hostPlatform.isLinux) ''
     patchelf --add-rpath "${lib.makeLibraryPath [ curl ]}" $out/lib/${binaryName}/crashreporter
@@ -680,15 +680,15 @@ buildStdenv.mkDerivation {
   # Some basic testing
   doInstallCheck = true;
   installCheckPhase =
-    lib.optionalString buildStdenv.hostPlatform.isDarwin ''
-      bindir="$out/Applications/${applicationName}.app/Contents/MacOS"
-    ''
-    + lib.optionalString (!buildStdenv.hostPlatform.isDarwin) ''
-      bindir=$out/bin
-    ''
-    + ''
-      "$bindir/${binaryName}" --version
-    '';
+  lib.optionalString buildStdenv.hostPlatform.isDarwin ''
+    bindir="$out/Applications/${applicationName}.app/Contents/MacOS"
+  ''
+  + lib.optionalString (!buildStdenv.hostPlatform.isDarwin) ''
+    bindir=$out/bin
+  ''
+  + ''
+    "$bindir/${binaryName}" --version
+  '';
 
   passthru = {
     inherit applicationName;

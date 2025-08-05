@@ -290,11 +290,11 @@ in
                 user = cfg.user;
                 group = config.services.rtorrent.group;
                 settings =
-                  mapAttrs (name: mkDefault) {
-                    "listen.owner" = config.services.nginx.user;
-                    "listen.group" = config.services.nginx.group;
-                  }
-                  // cfg.poolSettings;
+                mapAttrs (name: mkDefault) {
+                  "listen.owner" = config.services.nginx.user;
+                  "listen.group" = config.services.nginx.group;
+                }
+                // cfg.poolSettings;
               };
             in
             if (envPath == "") then pool else pool // { phpEnv.PATH = envPath; };

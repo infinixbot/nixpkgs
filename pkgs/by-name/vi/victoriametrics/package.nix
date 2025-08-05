@@ -25,24 +25,24 @@ buildGoModule (finalAttrs: {
   vendorHash = null;
 
   subPackages =
-    lib.optionals withServer [
-      "app/victoria-metrics"
-      "app/vminsert"
-      "app/vmselect"
-      "app/vmstorage"
-      "app/vmui"
-    ]
-    ++ lib.optionals withVmAgent [ "app/vmagent" ]
-    ++ lib.optionals withVmAlert [
-      "app/vmalert"
-      "app/vmalert-tool"
-    ]
-    ++ lib.optionals withVmAuth [ "app/vmauth" ]
-    ++ lib.optionals withVmctl [ "app/vmctl" ]
-    ++ lib.optionals withBackupTools [
-      "app/vmbackup"
-      "app/vmrestore"
-    ];
+  lib.optionals withServer [
+    "app/victoria-metrics"
+    "app/vminsert"
+    "app/vmselect"
+    "app/vmstorage"
+    "app/vmui"
+  ]
+  ++ lib.optionals withVmAgent [ "app/vmagent" ]
+  ++ lib.optionals withVmAlert [
+    "app/vmalert"
+    "app/vmalert-tool"
+  ]
+  ++ lib.optionals withVmAuth [ "app/vmauth" ]
+  ++ lib.optionals withVmctl [ "app/vmctl" ]
+  ++ lib.optionals withBackupTools [
+    "app/vmbackup"
+    "app/vmrestore"
+  ];
 
   postPatch = ''
     # main module (github.com/VictoriaMetrics/VictoriaMetrics) does not contain package

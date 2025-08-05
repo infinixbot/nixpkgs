@@ -499,29 +499,29 @@ in
             cfg.package.serverBin or "redis-server"
           } /var/lib/${redisName name}/redis.conf ${lib.escapeShellArgs conf.extraParams}";
           ExecStartPre =
-            "+"
-            + pkgs.writeShellScript "${redisName name}-prep-conf" (
-              let
-                redisConfVar = "/var/lib/${redisName name}/redis.conf";
-                redisConfRun = "/run/${redisName name}/nixos.conf";
-                redisConfStore = redisConfig conf.settings;
-              in
-              ''
-                touch "${redisConfVar}" "${redisConfRun}"
-                chown '${conf.user}':'${conf.group}' "${redisConfVar}" "${redisConfRun}"
-                chmod 0600 "${redisConfVar}" "${redisConfRun}"
-                if [ ! -s ${redisConfVar} ]; then
-                  echo 'include "${redisConfRun}"' > "${redisConfVar}"
-                fi
-                echo 'include "${redisConfStore}"' > "${redisConfRun}"
-                ${lib.optionalString (conf.requirePassFile != null) ''
-                  {
-                    echo -n "requirepass "
-                    cat ${lib.escapeShellArg conf.requirePassFile}
-                  } >> "${redisConfRun}"
-                ''}
-              ''
-            );
+          "+"
+          + pkgs.writeShellScript "${redisName name}-prep-conf" (
+            let
+              redisConfVar = "/var/lib/${redisName name}/redis.conf";
+              redisConfRun = "/run/${redisName name}/nixos.conf";
+              redisConfStore = redisConfig conf.settings;
+            in
+            ''
+              touch "${redisConfVar}" "${redisConfRun}"
+              chown '${conf.user}':'${conf.group}' "${redisConfVar}" "${redisConfRun}"
+              chmod 0600 "${redisConfVar}" "${redisConfRun}"
+              if [ ! -s ${redisConfVar} ]; then
+                echo 'include "${redisConfRun}"' > "${redisConfVar}"
+              fi
+              echo 'include "${redisConfStore}"' > "${redisConfRun}"
+              ${lib.optionalString (conf.requirePassFile != null) ''
+                {
+                  echo -n "requirepass "
+                  cat ${lib.escapeShellArg conf.requirePassFile}
+                } >> "${redisConfRun}"
+              ''}
+            ''
+          );
           Type = "notify";
           # User and group
           User = conf.user;

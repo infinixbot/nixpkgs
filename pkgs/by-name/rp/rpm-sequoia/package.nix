@@ -49,23 +49,23 @@ rustPlatform.buildRustPackage rec {
   # Install extra files, the same as this is done on fedora:
   # https://src.fedoraproject.org/rpms/rust-rpm-sequoia/blob/f41/f/rust-rpm-sequoia.spec#_81
   preInstall =
-    # Install the generated pc file for consumption by the dependents
-    ''
-      install -Dm644 target/release/rpm-sequoia.pc -t $dev/lib/pkgconfig
-    ''
-    +
-      # Dependents will rely on the versioned symlinks
-      lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
-        install -d $out/lib
-        find target/release/ \
-          -maxdepth 1 \
-          -type l -name 'librpm_sequoia.*' \
-          -exec cp --no-dereference {} $out/lib/ \;
-      ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
+  # Install the generated pc file for consumption by the dependents
+  ''
+    install -Dm644 target/release/rpm-sequoia.pc -t $dev/lib/pkgconfig
+  ''
+  +
+    # Dependents will rely on the versioned symlinks
+    lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
       install -d $out/lib
-      ln -s librpm_sequoia.dylib $out/lib/librpm_sequoia.${version}.dylib
-    '';
+      find target/release/ \
+        -maxdepth 1 \
+        -type l -name 'librpm_sequoia.*' \
+        -exec cp --no-dereference {} $out/lib/ \;
+    ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    install -d $out/lib
+    ln -s librpm_sequoia.dylib $out/lib/librpm_sequoia.${version}.dylib
+  '';
 
   passthru.updateScript = nix-update-script { };
 

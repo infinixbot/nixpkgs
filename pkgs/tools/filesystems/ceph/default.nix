@@ -424,67 +424,67 @@ rec {
     ];
 
     buildInputs =
-      cryptoLibsMap.${cryptoStr}
-      ++ [
-        arrow-cpp
-        babeltrace
-        boost'
-        bzip2
-        # Adding `ceph-python-env` here adds the env's `site-packages` to `PYTHONPATH` during the build.
-        # This is important, otherwise the build system may not find the Python deps and then
-        # silently skip installing ceph-volume and other Ceph python tools.
-        ceph-python-env
-        cryptsetup
-        cunit
-        e2fsprogs # according to `debian/control` file, `ceph-volume` is supposed to use it
-        gperf
-        gtest
-        icu
-        libcap
-        libnl
-        libxml2
-        lmdb
-        lttng-ust
-        lua
-        lvm2 # according to `debian/control` file, e.g. `pvs` command used by `src/ceph-volume/ceph_volume/api/lvm.py`
-        lz4
-        malloc
-        oath-toolkit
-        openldap
-        optLibatomic_ops
-        optLibs3
-        optYasm
-        parted # according to `debian/control` file, used by `src/ceph-volume/ceph_volume/util/disk.py`
-        rdkafka
-        rocksdb'
-        snappy
-        openssh # according to `debian/control` file, `ssh` command used by `cephadm`
-        sqlite
-        utf8proc
-        xfsprogs # according to `debian/control` file, `ceph-volume` is supposed to use it
-        zlib
-        zstd
-      ]
-      ++ lib.optionals stdenv.hostPlatform.isLinux [
-        keyutils
-        libcap_ng
-        liburing
-        libuuid
-        linuxHeaders
-        optLibaio
-        optLibxfs
-        optZfs
-        rabbitmq-c
-        rdma-core
-        udev
-        util-linux
-      ]
-      ++ lib.optionals hasRadosgw [
-        optCurl
-        optExpat
-        optFuse
-        optLibedit
-      ];
+    cryptoLibsMap.${cryptoStr}
+    ++ [
+      arrow-cpp
+      babeltrace
+      boost'
+      bzip2
+      # Adding `ceph-python-env` here adds the env's `site-packages` to `PYTHONPATH` during the build.
+      # This is important, otherwise the build system may not find the Python deps and then
+      # silently skip installing ceph-volume and other Ceph python tools.
+      ceph-python-env
+      cryptsetup
+      cunit
+      e2fsprogs # according to `debian/control` file, `ceph-volume` is supposed to use it
+      gperf
+      gtest
+      icu
+      libcap
+      libnl
+      libxml2
+      lmdb
+      lttng-ust
+      lua
+      lvm2 # according to `debian/control` file, e.g. `pvs` command used by `src/ceph-volume/ceph_volume/api/lvm.py`
+      lz4
+      malloc
+      oath-toolkit
+      openldap
+      optLibatomic_ops
+      optLibs3
+      optYasm
+      parted # according to `debian/control` file, used by `src/ceph-volume/ceph_volume/util/disk.py`
+      rdkafka
+      rocksdb'
+      snappy
+      openssh # according to `debian/control` file, `ssh` command used by `cephadm`
+      sqlite
+      utf8proc
+      xfsprogs # according to `debian/control` file, `ceph-volume` is supposed to use it
+      zlib
+      zstd
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isLinux [
+      keyutils
+      libcap_ng
+      liburing
+      libuuid
+      linuxHeaders
+      optLibaio
+      optLibxfs
+      optZfs
+      rabbitmq-c
+      rdma-core
+      udev
+      util-linux
+    ]
+    ++ lib.optionals hasRadosgw [
+      optCurl
+      optExpat
+      optFuse
+      optLibedit
+    ];
 
     # Picked up, amongst others, by `wrapPythonPrograms`.
     pythonPath = [

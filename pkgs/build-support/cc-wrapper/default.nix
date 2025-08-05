@@ -135,8 +135,8 @@ let
   # adjusted to be a valid bash identifier. This should be considered an
   # unstable implementation detail, however.
   suffixSalt =
-    replaceStrings [ "-" "." ] [ "_" "_" ] targetPlatform.config
-    + lib.optionalString (targetPlatform.isDarwin && targetPlatform.isStatic) "_static";
+  replaceStrings [ "-" "." ] [ "_" "_" ] targetPlatform.config
+  + lib.optionalString (targetPlatform.isDarwin && targetPlatform.isStatic) "_static";
 
   useGccForLibs =
     useCcForLibs
@@ -147,7 +147,7 @@ let
     && !(targetPlatform.isiOS or false)
     && gccForLibs != null;
   gccForLibs_solib =
-    getLib gccForLibs + optionalString (targetPlatform != hostPlatform) "/${targetPlatform.config}";
+  getLib gccForLibs + optionalString (targetPlatform != hostPlatform) "/${targetPlatform.config}";
 
   # Analogously to cc_solib and gccForLibs_solib
   libcxx_solib = "${getLib libcxx}/lib";
@@ -311,38 +311,38 @@ let
   # flags and other gcc flags as well.
 
   machineFlags =
-    # Always add -march based on cpu in triple. Sometimes there is a
-    # discrepancy (x86_64 vs. x86-64), so we provide an "arch" arg in
-    # that case.
+  # Always add -march based on cpu in triple. Sometimes there is a
+  # discrepancy (x86_64 vs. x86-64), so we provide an "arch" arg in
+  # that case.
+  optional (
+    targetPlatform ? gcc.arch
+    && !(targetPlatform.isDarwin && targetPlatform.isAarch64)
+    && isGccArchSupported targetPlatform.gcc.arch
+  ) "-march=${targetPlatform.gcc.arch}"
+  ++
+    # TODO: aarch64-darwin has mcpu incompatible with gcc
     optional (
-      targetPlatform ? gcc.arch
-      && !(targetPlatform.isDarwin && targetPlatform.isAarch64)
-      && isGccArchSupported targetPlatform.gcc.arch
-    ) "-march=${targetPlatform.gcc.arch}"
-    ++
-      # TODO: aarch64-darwin has mcpu incompatible with gcc
-      optional (
-        targetPlatform ? gcc.cpu && !(targetPlatform.isDarwin && targetPlatform.isAarch64)
-      ) "-mcpu=${targetPlatform.gcc.cpu}"
-    ++
-      # -mfloat-abi only matters on arm32 but we set it here
-      # unconditionally just in case. If the abi specifically sets hard
-      # vs. soft floats we use it here.
-      optional (targetPlatform ? gcc.float-abi) "-mfloat-abi=${targetPlatform.gcc.float-abi}"
-    ++ optional (targetPlatform ? gcc.fpu) "-mfpu=${targetPlatform.gcc.fpu}"
-    ++ optional (targetPlatform ? gcc.mode) "-mmode=${targetPlatform.gcc.mode}"
-    ++ optional (targetPlatform ? gcc.thumb) "-m${thumb}"
-    ++ optional (tune != null) "-mtune=${tune}"
-    ++
-      optional (targetPlatform ? gcc.strict-align)
-        "-m${optionalString (!targetPlatform.gcc.strict-align) "no-"}strict-align"
-    ++ optional (
-      targetPlatform ? gcc.cmodel
-      &&
-        # TODO: clang on powerpcspe also needs a condition: https://github.com/llvm/llvm-project/issues/71356
-        # https://releases.llvm.org/18.1.6/tools/clang/docs/ReleaseNotes.html#loongarch-support
-        ((targetPlatform.isLoongArch64 && isClang) -> versionAtLeast ccVersion "18.1")
-    ) "-mcmodel=${targetPlatform.gcc.cmodel}";
+      targetPlatform ? gcc.cpu && !(targetPlatform.isDarwin && targetPlatform.isAarch64)
+    ) "-mcpu=${targetPlatform.gcc.cpu}"
+  ++
+    # -mfloat-abi only matters on arm32 but we set it here
+    # unconditionally just in case. If the abi specifically sets hard
+    # vs. soft floats we use it here.
+    optional (targetPlatform ? gcc.float-abi) "-mfloat-abi=${targetPlatform.gcc.float-abi}"
+  ++ optional (targetPlatform ? gcc.fpu) "-mfpu=${targetPlatform.gcc.fpu}"
+  ++ optional (targetPlatform ? gcc.mode) "-mmode=${targetPlatform.gcc.mode}"
+  ++ optional (targetPlatform ? gcc.thumb) "-m${thumb}"
+  ++ optional (tune != null) "-mtune=${tune}"
+  ++
+    optional (targetPlatform ? gcc.strict-align)
+      "-m${optionalString (!targetPlatform.gcc.strict-align) "no-"}strict-align"
+  ++ optional (
+    targetPlatform ? gcc.cmodel
+    &&
+      # TODO: clang on powerpcspe also needs a condition: https://github.com/llvm/llvm-project/issues/71356
+      # https://releases.llvm.org/18.1.6/tools/clang/docs/ReleaseNotes.html#loongarch-support
+      ((targetPlatform.isLoongArch64 && isClang) -> versionAtLeast ccVersion "18.1")
+  ) "-mcmodel=${targetPlatform.gcc.cmodel}";
 
   defaultHardeningFlags = bintools.defaultHardeningFlags or [ ];
 
@@ -580,341 +580,341 @@ stdenvNoCC.mkDerivation {
   );
 
   postFixup =
-    # Ensure flags files exists, as some other programs cat them. (That these
-    # are considered an exposed interface is a bit dubious, but fine for now.)
-    ''
-      touch "$out/nix-support/cc-cflags"
-      touch "$out/nix-support/cc-ldflags"
-    ''
+  # Ensure flags files exists, as some other programs cat them. (That these
+  # are considered an exposed interface is a bit dubious, but fine for now.)
+  ''
+    touch "$out/nix-support/cc-cflags"
+    touch "$out/nix-support/cc-ldflags"
+  ''
 
-    # Backwards compatibility for packages expecting this file, e.g. with
-    # `$NIX_CC/nix-support/dynamic-linker`.
-    #
-    # TODO(@Ericson2314): Remove this after stable release and force
-    # everyone to refer to bintools-wrapper directly.
+  # Backwards compatibility for packages expecting this file, e.g. with
+  # `$NIX_CC/nix-support/dynamic-linker`.
+  #
+  # TODO(@Ericson2314): Remove this after stable release and force
+  # everyone to refer to bintools-wrapper directly.
+  + optionalString (!isArocc) ''
+    if [[ -f "$bintools/nix-support/dynamic-linker" ]]; then
+      ln -s "$bintools/nix-support/dynamic-linker" "$out/nix-support"
+    fi
+    if [[ -f "$bintools/nix-support/dynamic-linker-m32" ]]; then
+      ln -s "$bintools/nix-support/dynamic-linker-m32" "$out/nix-support"
+    fi
+  ''
+
+  ##
+  ## GCC libs for non-GCC support
+  ##
+  + optionalString (useGccForLibs && isClang) ''
+
+    echo "-B${gccForLibs}/lib/gcc/${targetPlatform.config}/${gccForLibs.version}" >> $out/nix-support/cc-cflags
+  ''
+  + optionalString (useGccForLibs && !isArocc) ''
+    echo "-L${gccForLibs}/lib/gcc/${targetPlatform.config}/${gccForLibs.version}" >> $out/nix-support/cc-ldflags
+    echo "-L${gccForLibs_solib}/lib" >> $out/nix-support/cc-ldflags
+  ''
+
+  # TODO We would like to connect this to `useGccForLibs`, but we cannot yet
+  # because `libcxxStdenv` on linux still needs this. Maybe someday we'll
+  # always set `useLLVM` on Darwin, and maybe also break down `useLLVM` into
+  # fine-grained use flags (libgcc vs compiler-rt, ld.lld vs legacy, libc++
+  # vs libstdc++, etc.) since Darwin isn't `useLLVM` on all counts. (See
+  # https://clang.llvm.org/docs/Toolchain.html for all the axes one might
+  # break `useLLVM` into.)
+  +
+    optionalString
+      (
+        isClang
+        && targetPlatform.isLinux
+        && !(targetPlatform.useAndroidPrebuilt or false)
+        && !(targetPlatform.useLLVM or false)
+        && gccForLibs != null
+      )
+      (
+        ''
+          echo "--gcc-toolchain=${gccForLibs}" >> $out/nix-support/cc-cflags
+
+          # Pull in 'cc.out' target to get 'libstdc++fs.a'. It should be in
+          # 'cc.lib'. But it's a gcc package bug.
+          # TODO(trofi): remove once gcc is fixed to move libraries to .lib output.
+          echo "-L${gccForLibs}/${
+            optionalString (targetPlatform != hostPlatform) "/${targetPlatform.config}"
+          }/lib" >> $out/nix-support/cc-ldflags
+        ''
+        # this ensures that when clang passes -lgcc_s to lld (as it does
+        # when building e.g. firefox), lld is able to find libgcc_s.so
+        + optionals (!isArocc) (
+          concatMapStrings (libgcc: ''
+            echo "-L${libgcc}/lib" >> $out/nix-support/cc-ldflags
+          '') (toList (gccForLibs.libgcc or [ ]))
+        )
+      )
+
+  ##
+  ## General libc support
+  ##
+
+  # The "-B${libc_lib}/lib/" flag is a quick hack to force gcc to link
+  # against the crt1.o from our own glibc, rather than the one in
+  # /usr/lib.  (This is only an issue when using an `impure'
+  # compiler/linker, i.e., one that searches /usr/lib and so on.)
+  #
+  # Unfortunately, setting -B appears to override the default search
+  # path. Thus, the gcc-specific "../includes-fixed" directory is
+  # now longer searched and glibc's <limits.h> header fails to
+  # compile, because it uses "#include_next <limits.h>" to find the
+  # limits.h file in ../includes-fixed. To remedy the problem,
+  # another -idirafter is necessary to add that directory again.
+  + optionalString (libc != null) (
+    ''
+      touch "$out/nix-support/libc-cflags"
+      touch "$out/nix-support/libc-ldflags"
+    ''
     + optionalString (!isArocc) ''
-      if [[ -f "$bintools/nix-support/dynamic-linker" ]]; then
-        ln -s "$bintools/nix-support/dynamic-linker" "$out/nix-support"
-      fi
-      if [[ -f "$bintools/nix-support/dynamic-linker-m32" ]]; then
-        ln -s "$bintools/nix-support/dynamic-linker-m32" "$out/nix-support"
-      fi
+      echo "-B${libc_lib}${libc.libdir or "/lib/"}" >> $out/nix-support/libc-crt1-cflags
     ''
-
-    ##
-    ## GCC libs for non-GCC support
-    ##
-    + optionalString (useGccForLibs && isClang) ''
-
-      echo "-B${gccForLibs}/lib/gcc/${targetPlatform.config}/${gccForLibs.version}" >> $out/nix-support/cc-cflags
+    + optionalString (!(cc.langD or false)) ''
+      echo "-${
+        if isArocc then "I" else "idirafter"
+      } ${libc_dev}${libc.incdir or "/include"}" >> $out/nix-support/libc-cflags
     ''
-    + optionalString (useGccForLibs && !isArocc) ''
-      echo "-L${gccForLibs}/lib/gcc/${targetPlatform.config}/${gccForLibs.version}" >> $out/nix-support/cc-ldflags
-      echo "-L${gccForLibs_solib}/lib" >> $out/nix-support/cc-ldflags
-    ''
-
-    # TODO We would like to connect this to `useGccForLibs`, but we cannot yet
-    # because `libcxxStdenv` on linux still needs this. Maybe someday we'll
-    # always set `useLLVM` on Darwin, and maybe also break down `useLLVM` into
-    # fine-grained use flags (libgcc vs compiler-rt, ld.lld vs legacy, libc++
-    # vs libstdc++, etc.) since Darwin isn't `useLLVM` on all counts. (See
-    # https://clang.llvm.org/docs/Toolchain.html for all the axes one might
-    # break `useLLVM` into.)
-    +
-      optionalString
-        (
-          isClang
-          && targetPlatform.isLinux
-          && !(targetPlatform.useAndroidPrebuilt or false)
-          && !(targetPlatform.useLLVM or false)
-          && gccForLibs != null
-        )
-        (
-          ''
-            echo "--gcc-toolchain=${gccForLibs}" >> $out/nix-support/cc-cflags
-
-            # Pull in 'cc.out' target to get 'libstdc++fs.a'. It should be in
-            # 'cc.lib'. But it's a gcc package bug.
-            # TODO(trofi): remove once gcc is fixed to move libraries to .lib output.
-            echo "-L${gccForLibs}/${
-              optionalString (targetPlatform != hostPlatform) "/${targetPlatform.config}"
-            }/lib" >> $out/nix-support/cc-ldflags
-          ''
-          # this ensures that when clang passes -lgcc_s to lld (as it does
-          # when building e.g. firefox), lld is able to find libgcc_s.so
-          + optionals (!isArocc) (
-            concatMapStrings (libgcc: ''
-              echo "-L${libgcc}/lib" >> $out/nix-support/cc-ldflags
-            '') (toList (gccForLibs.libgcc or [ ]))
-          )
-        )
-
-    ##
-    ## General libc support
-    ##
-
-    # The "-B${libc_lib}/lib/" flag is a quick hack to force gcc to link
-    # against the crt1.o from our own glibc, rather than the one in
-    # /usr/lib.  (This is only an issue when using an `impure'
-    # compiler/linker, i.e., one that searches /usr/lib and so on.)
-    #
-    # Unfortunately, setting -B appears to override the default search
-    # path. Thus, the gcc-specific "../includes-fixed" directory is
-    # now longer searched and glibc's <limits.h> header fails to
-    # compile, because it uses "#include_next <limits.h>" to find the
-    # limits.h file in ../includes-fixed. To remedy the problem,
-    # another -idirafter is necessary to add that directory again.
-    + optionalString (libc != null) (
-      ''
-        touch "$out/nix-support/libc-cflags"
-        touch "$out/nix-support/libc-ldflags"
-      ''
-      + optionalString (!isArocc) ''
-        echo "-B${libc_lib}${libc.libdir or "/lib/"}" >> $out/nix-support/libc-crt1-cflags
-      ''
-      + optionalString (!(cc.langD or false)) ''
-        echo "-${
-          if isArocc then "I" else "idirafter"
-        } ${libc_dev}${libc.incdir or "/include"}" >> $out/nix-support/libc-cflags
-      ''
-      + optionalString (isGNU && (!(cc.langD or false))) ''
-        for dir in "${cc}"/lib/gcc/*/*/include-fixed; do
-          echo '-idirafter' ''${dir} >> $out/nix-support/libc-cflags
-        done
-      ''
-      + ''
-
-        echo "${libc_lib}" > $out/nix-support/orig-libc
-        echo "${libc_dev}" > $out/nix-support/orig-libc-dev
-      ''
-      # fortify-headers is a set of wrapper headers that augment libc
-      # and use #include_next to pass through to libc's true
-      # implementations, so must appear before them in search order.
-      # in theory a correctly placed -idirafter could be used, but in
-      # practice the compiler may have been built with a --with-headers
-      # like option that forces the libc headers before all -idirafter,
-      # hence -isystem here.
-      + optionalString includeFortifyHeaders' ''
-        echo "-isystem ${fortify-headers}/include" >> $out/nix-support/libc-cflags
-      ''
-    )
-
-    ##
-    ## General libc++ support
-    ##
-
-    # We have a libc++ directly, we have one via "smuggled" GCC, or we have one
-    # bundled with the C compiler because it is GCC
-    +
-      optionalString
-        (libcxx != null || (useGccForLibs && gccForLibs.langCC or false) || (isGNU && cc.langCC or false))
-        ''
-          touch "$out/nix-support/libcxx-cxxflags"
-          touch "$out/nix-support/libcxx-ldflags"
-        ''
-    # Adding -isystem flags should be done only for clang; gcc
-    # already knows how to find its own libstdc++, and adding
-    # additional -isystem flags will confuse gfortran (see
-    # https://github.com/NixOS/nixpkgs/pull/209870#issuecomment-1500550903)
-    + optionalString (libcxx == null && isClang && (useGccForLibs && gccForLibs.langCC or false)) ''
-      for dir in ${gccForLibs}/include/c++/*; do
-        echo "-isystem $dir" >> $out/nix-support/libcxx-cxxflags
+    + optionalString (isGNU && (!(cc.langD or false))) ''
+      for dir in "${cc}"/lib/gcc/*/*/include-fixed; do
+        echo '-idirafter' ''${dir} >> $out/nix-support/libc-cflags
       done
-      for dir in ${gccForLibs}/include/c++/*/${targetPlatform.config}; do
-        echo "-isystem $dir" >> $out/nix-support/libcxx-cxxflags
-      done
-    ''
-    + optionalString (libcxx.isLLVM or false) ''
-      echo "-isystem ${getDev libcxx}/include/c++/v1" >> $out/nix-support/libcxx-cxxflags
-      echo "-stdlib=libc++" >> $out/nix-support/libcxx-ldflags
-    ''
-    # GCC NG friendly libc++
-    + optionalString (libcxx != null && libcxx.isGNU or false) ''
-      echo "-isystem ${getDev libcxx}/include" >> $out/nix-support/libcxx-cxxflags
-    ''
-
-    ##
-    ## Initial CFLAGS
-    ##
-
-    # GCC shows ${cc_solib}/lib in `gcc -print-search-dirs', but not
-    # ${cc_solib}/lib64 (even though it does actually search there...)..
-    # This confuses libtool.  So add it to the compiler tool search
-    # path explicitly.
-    + optionalString (!nativeTools && !isArocc) ''
-      if [ -e "${cc_solib}/lib64" -a ! -L "${cc_solib}/lib64" ]; then
-        ccLDFlags+=" -L${cc_solib}/lib64"
-        ccCFlags+=" -B${cc_solib}/lib64"
-      fi
-      ccLDFlags+=" -L${cc_solib}/lib"
-      ccCFlags+=" -B${cc_solib}/lib"
-
-    ''
-    + optionalString (cc.langAda or false && !isArocc) ''
-      touch "$out/nix-support/gnat-cflags"
-      touch "$out/nix-support/gnat-ldflags"
-      basePath=$(echo $cc/lib/*/*/*)
-      ccCFlags+=" -B$basePath -I$basePath/adainclude"
-      gnatCFlags="-I$basePath/adainclude -I$basePath/adalib"
-
-      echo "$gnatCFlags" >> $out/nix-support/gnat-cflags
     ''
     + ''
-      echo "$ccLDFlags" >> $out/nix-support/cc-ldflags
-      echo "$ccCFlags" >> $out/nix-support/cc-cflags
-    ''
-    + optionalString (targetPlatform.isDarwin && (libcxx != null) && (cc.isClang or false)) ''
-      echo " -L${libcxx_solib}" >> $out/nix-support/cc-ldflags
-    ''
 
-    ## Prevent clang from seeing /usr/include. There is a desire to achieve this
-    ## through alternate means because it breaks -sysroot and related functionality.
-    #
-    # This flag prevents global system header directories from
-    # leaking through on non‐NixOS Linux. However, on macOS, the
-    # SDK path is used as the sysroot, and forcing `-nostdlibinc`
-    # breaks `-isysroot` with an unwrapped compiler. As macOS has
-    # no `/usr/include`, there’s essentially no risk to dropping
-    # the flag there. See discussion in NixOS/nixpkgs#191152.
-    #
-    +
-      optionalString
-        (
-          (cc.isClang or false)
-          && !(cc.isROCm or false)
-          && !targetPlatform.isDarwin
-          && !targetPlatform.isAndroid
-        )
-        ''
-          echo " -nostdlibinc" >> $out/nix-support/cc-cflags
-        ''
-
-    ##
-    ## Man page and info support
-    ##
-    + optionalString propagateDoc ''
-      ln -s ${cc.man} $man
-      ln -s ${cc.info} $info
+      echo "${libc_lib}" > $out/nix-support/orig-libc
+      echo "${libc_dev}" > $out/nix-support/orig-libc-dev
     ''
-    + optionalString (cc.langD or cc.langJava or false && !isArocc) ''
-      echo "-B${zlib}${zlib.libdir or "/lib/"}" >> $out/nix-support/libc-cflags
+    # fortify-headers is a set of wrapper headers that augment libc
+    # and use #include_next to pass through to libc's true
+    # implementations, so must appear before them in search order.
+    # in theory a correctly placed -idirafter could be used, but in
+    # practice the compiler may have been built with a --with-headers
+    # like option that forces the libc headers before all -idirafter,
+    # hence -isystem here.
+    + optionalString includeFortifyHeaders' ''
+      echo "-isystem ${fortify-headers}/include" >> $out/nix-support/libc-cflags
     ''
+  )
 
-    ##
-    ## Hardening support
-    ##
-    + ''
-      export hardening_unsupported_flags="${concatStringsSep " " ccHardeningUnsupportedFlags}"
-    ''
+  ##
+  ## General libc++ support
+  ##
 
-    # Do not prevent omission of framepointers on x86 32bit due to the small
-    # number of general purpose registers. Keeping EBP available provides
-    # non-trivial performance benefits.
-    # Also skip s390/s390x as it fails to build glibc and causes
-    # performance regressions:
-    #   https://bugs.launchpad.net/ubuntu-z-systems/+bug/2064538
-    #   https://github.com/NixOS/nixpkgs/issues/428260
-    + (
-      let
-        enable_fp = !targetPlatform.isx86_32 && !targetPlatform.isS390;
-        enable_leaf_fp =
-          enable_fp
-          && (
-            targetPlatform.isx86_64
-            || targetPlatform.isAarch64
-            || (targetPlatform.isRiscV && (!isGNU || versionAtLeast ccVersion "15.1"))
-          );
-      in
-      optionalString enable_fp ''
-        echo " -fno-omit-frame-pointer ${optionalString enable_leaf_fp "-mno-omit-leaf-frame-pointer "}" >> $out/nix-support/cc-cflags-before
+  # We have a libc++ directly, we have one via "smuggled" GCC, or we have one
+  # bundled with the C compiler because it is GCC
+  +
+    optionalString
+      (libcxx != null || (useGccForLibs && gccForLibs.langCC or false) || (isGNU && cc.langCC or false))
       ''
-    )
+        touch "$out/nix-support/libcxx-cxxflags"
+        touch "$out/nix-support/libcxx-ldflags"
+      ''
+  # Adding -isystem flags should be done only for clang; gcc
+  # already knows how to find its own libstdc++, and adding
+  # additional -isystem flags will confuse gfortran (see
+  # https://github.com/NixOS/nixpkgs/pull/209870#issuecomment-1500550903)
+  + optionalString (libcxx == null && isClang && (useGccForLibs && gccForLibs.langCC or false)) ''
+    for dir in ${gccForLibs}/include/c++/*; do
+      echo "-isystem $dir" >> $out/nix-support/libcxx-cxxflags
+    done
+    for dir in ${gccForLibs}/include/c++/*/${targetPlatform.config}; do
+      echo "-isystem $dir" >> $out/nix-support/libcxx-cxxflags
+    done
+  ''
+  + optionalString (libcxx.isLLVM or false) ''
+    echo "-isystem ${getDev libcxx}/include/c++/v1" >> $out/nix-support/libcxx-cxxflags
+    echo "-stdlib=libc++" >> $out/nix-support/libcxx-ldflags
+  ''
+  # GCC NG friendly libc++
+  + optionalString (libcxx != null && libcxx.isGNU or false) ''
+    echo "-isystem ${getDev libcxx}/include" >> $out/nix-support/libcxx-cxxflags
+  ''
 
-    # For clang, this is handled in add-clang-cc-cflags-before.sh
-    + optionalString (!isClang && machineFlags != [ ]) ''
-      printf "%s\n" ${lib.escapeShellArgs machineFlags} >> $out/nix-support/cc-cflags-before
-    ''
+  ##
+  ## Initial CFLAGS
+  ##
 
-    # TODO: categorize these and figure out a better place for them
-    + optionalString targetPlatform.isWindows ''
-      hardening_unsupported_flags+=" pic"
-    ''
-    + optionalString targetPlatform.isMinGW ''
-      hardening_unsupported_flags+=" stackprotector fortify"
-    ''
-    + optionalString targetPlatform.isAvr ''
-      hardening_unsupported_flags+=" stackprotector pic"
-    ''
-    + optionalString (targetPlatform.libc == "newlib" || targetPlatform.libc == "newlib-nano") ''
-      hardening_unsupported_flags+=" stackprotector fortify pie pic"
-    ''
-    + optionalString (targetPlatform.libc == "musl" && targetPlatform.isx86_32) ''
-      hardening_unsupported_flags+=" stackprotector"
-    ''
-    + optionalString targetPlatform.isNetBSD ''
-      hardening_unsupported_flags+=" stackprotector fortify"
-    ''
-    + optionalString cc.langAda or false ''
-      hardening_unsupported_flags+=" format stackprotector strictoverflow"
-    ''
-    + optionalString cc.langD or false ''
-      hardening_unsupported_flags+=" format"
-    ''
-    + optionalString cc.langFortran or false ''
-      hardening_unsupported_flags+=" format"
-    ''
-    + optionalString targetPlatform.isWasm ''
-      hardening_unsupported_flags+=" stackprotector fortify pie pic"
-    ''
-    + optionalString targetPlatform.isMicroBlaze ''
-      hardening_unsupported_flags+=" stackprotector"
-    ''
+  # GCC shows ${cc_solib}/lib in `gcc -print-search-dirs', but not
+  # ${cc_solib}/lib64 (even though it does actually search there...)..
+  # This confuses libtool.  So add it to the compiler tool search
+  # path explicitly.
+  + optionalString (!nativeTools && !isArocc) ''
+    if [ -e "${cc_solib}/lib64" -a ! -L "${cc_solib}/lib64" ]; then
+      ccLDFlags+=" -L${cc_solib}/lib64"
+      ccCFlags+=" -B${cc_solib}/lib64"
+    fi
+    ccLDFlags+=" -L${cc_solib}/lib"
+    ccCFlags+=" -B${cc_solib}/lib"
 
-    + optionalString (libc != null && targetPlatform.isAvr && !isArocc) ''
-      for isa in avr5 avr3 avr4 avr6 avr25 avr31 avr35 avr51 avrxmega2 avrxmega4 avrxmega5 avrxmega6 avrxmega7 tiny-stack; do
-        echo "-B${getLib libc}/avr/lib/$isa" >> $out/nix-support/libc-crt1-cflags
-      done
+  ''
+  + optionalString (cc.langAda or false && !isArocc) ''
+    touch "$out/nix-support/gnat-cflags"
+    touch "$out/nix-support/gnat-ldflags"
+    basePath=$(echo $cc/lib/*/*/*)
+    ccCFlags+=" -B$basePath -I$basePath/adainclude"
+    gnatCFlags="-I$basePath/adainclude -I$basePath/adalib"
+
+    echo "$gnatCFlags" >> $out/nix-support/gnat-cflags
+  ''
+  + ''
+    echo "$ccLDFlags" >> $out/nix-support/cc-ldflags
+    echo "$ccCFlags" >> $out/nix-support/cc-cflags
+  ''
+  + optionalString (targetPlatform.isDarwin && (libcxx != null) && (cc.isClang or false)) ''
+    echo " -L${libcxx_solib}" >> $out/nix-support/cc-ldflags
+  ''
+
+  ## Prevent clang from seeing /usr/include. There is a desire to achieve this
+  ## through alternate means because it breaks -sysroot and related functionality.
+  #
+  # This flag prevents global system header directories from
+  # leaking through on non‐NixOS Linux. However, on macOS, the
+  # SDK path is used as the sysroot, and forcing `-nostdlibinc`
+  # breaks `-isysroot` with an unwrapped compiler. As macOS has
+  # no `/usr/include`, there’s essentially no risk to dropping
+  # the flag there. See discussion in NixOS/nixpkgs#191152.
+  #
+  +
+    optionalString
+      (
+        (cc.isClang or false)
+        && !(cc.isROCm or false)
+        && !targetPlatform.isDarwin
+        && !targetPlatform.isAndroid
+      )
+      ''
+        echo " -nostdlibinc" >> $out/nix-support/cc-cflags
+      ''
+
+  ##
+  ## Man page and info support
+  ##
+  + optionalString propagateDoc ''
+    ln -s ${cc.man} $man
+    ln -s ${cc.info} $info
+  ''
+  + optionalString (cc.langD or cc.langJava or false && !isArocc) ''
+    echo "-B${zlib}${zlib.libdir or "/lib/"}" >> $out/nix-support/libc-cflags
+  ''
+
+  ##
+  ## Hardening support
+  ##
+  + ''
+    export hardening_unsupported_flags="${concatStringsSep " " ccHardeningUnsupportedFlags}"
+  ''
+
+  # Do not prevent omission of framepointers on x86 32bit due to the small
+  # number of general purpose registers. Keeping EBP available provides
+  # non-trivial performance benefits.
+  # Also skip s390/s390x as it fails to build glibc and causes
+  # performance regressions:
+  #   https://bugs.launchpad.net/ubuntu-z-systems/+bug/2064538
+  #   https://github.com/NixOS/nixpkgs/issues/428260
+  + (
+    let
+      enable_fp = !targetPlatform.isx86_32 && !targetPlatform.isS390;
+      enable_leaf_fp =
+        enable_fp
+        && (
+          targetPlatform.isx86_64
+          || targetPlatform.isAarch64
+          || (targetPlatform.isRiscV && (!isGNU || versionAtLeast ccVersion "15.1"))
+        );
+    in
+    optionalString enable_fp ''
+      echo " -fno-omit-frame-pointer ${optionalString enable_leaf_fp "-mno-omit-leaf-frame-pointer "}" >> $out/nix-support/cc-cflags-before
     ''
+  )
 
-    + optionalString targetPlatform.isAndroid ''
-      echo "-D__ANDROID_API__=${targetPlatform.androidSdkVersion}" >> $out/nix-support/cc-cflags
-    ''
+  # For clang, this is handled in add-clang-cc-cflags-before.sh
+  + optionalString (!isClang && machineFlags != [ ]) ''
+    printf "%s\n" ${lib.escapeShellArgs machineFlags} >> $out/nix-support/cc-cflags-before
+  ''
 
-    # There are a few tools (to name one libstdcxx5) which do not work
-    # well with multi line flags, so make the flags single line again
-    + ''
-      for flags in "$out/nix-support"/*flags*; do
-        substituteInPlace "$flags" --replace $'\n' ' '
-      done
+  # TODO: categorize these and figure out a better place for them
+  + optionalString targetPlatform.isWindows ''
+    hardening_unsupported_flags+=" pic"
+  ''
+  + optionalString targetPlatform.isMinGW ''
+    hardening_unsupported_flags+=" stackprotector fortify"
+  ''
+  + optionalString targetPlatform.isAvr ''
+    hardening_unsupported_flags+=" stackprotector pic"
+  ''
+  + optionalString (targetPlatform.libc == "newlib" || targetPlatform.libc == "newlib-nano") ''
+    hardening_unsupported_flags+=" stackprotector fortify pie pic"
+  ''
+  + optionalString (targetPlatform.libc == "musl" && targetPlatform.isx86_32) ''
+    hardening_unsupported_flags+=" stackprotector"
+  ''
+  + optionalString targetPlatform.isNetBSD ''
+    hardening_unsupported_flags+=" stackprotector fortify"
+  ''
+  + optionalString cc.langAda or false ''
+    hardening_unsupported_flags+=" format stackprotector strictoverflow"
+  ''
+  + optionalString cc.langD or false ''
+    hardening_unsupported_flags+=" format"
+  ''
+  + optionalString cc.langFortran or false ''
+    hardening_unsupported_flags+=" format"
+  ''
+  + optionalString targetPlatform.isWasm ''
+    hardening_unsupported_flags+=" stackprotector fortify pie pic"
+  ''
+  + optionalString targetPlatform.isMicroBlaze ''
+    hardening_unsupported_flags+=" stackprotector"
+  ''
 
-      substituteAll ${./add-flags.sh} $out/nix-support/add-flags.sh
-      substituteAll ${./add-hardening.sh} $out/nix-support/add-hardening.sh
-      substituteAll ${../wrapper-common/utils.bash} $out/nix-support/utils.bash
-      substituteAll ${../wrapper-common/darwin-sdk-setup.bash} $out/nix-support/darwin-sdk-setup.bash
-    ''
+  + optionalString (libc != null && targetPlatform.isAvr && !isArocc) ''
+    for isa in avr5 avr3 avr4 avr6 avr25 avr31 avr35 avr51 avrxmega2 avrxmega4 avrxmega5 avrxmega6 avrxmega7 tiny-stack; do
+      echo "-B${getLib libc}/avr/lib/$isa" >> $out/nix-support/libc-crt1-cflags
+    done
+  ''
 
-    + optionalString cc.langAda or false ''
-      substituteAll ${./add-gnat-extra-flags.sh} $out/nix-support/add-gnat-extra-flags.sh
-    ''
+  + optionalString targetPlatform.isAndroid ''
+    echo "-D__ANDROID_API__=${targetPlatform.androidSdkVersion}" >> $out/nix-support/cc-cflags
+  ''
 
-    ##
-    ## General Clang support
-    ## Needs to go after ^ because the for loop eats \n and makes this file an invalid script
-    ##
-    + optionalString isClang ''
-      # Escape twice: once for this script, once for the one it gets substituted into.
-      export machineFlags=${escapeShellArg (escapeShellArgs machineFlags)}
-      export defaultTarget=${targetPlatform.config}
-      substituteAll ${./add-clang-cc-cflags-before.sh} $out/nix-support/add-local-cc-cflags-before.sh
-    ''
+  # There are a few tools (to name one libstdcxx5) which do not work
+  # well with multi line flags, so make the flags single line again
+  + ''
+    for flags in "$out/nix-support"/*flags*; do
+      substituteInPlace "$flags" --replace $'\n' ' '
+    done
 
-    ##
-    ## Extra custom steps
-    ##
-    + extraBuildCommands
-    + concatStringsSep "; " (
-      mapAttrsToList (name: value: "echo ${toString value} >> $out/nix-support/${name}") nixSupport
-    );
+    substituteAll ${./add-flags.sh} $out/nix-support/add-flags.sh
+    substituteAll ${./add-hardening.sh} $out/nix-support/add-hardening.sh
+    substituteAll ${../wrapper-common/utils.bash} $out/nix-support/utils.bash
+    substituteAll ${../wrapper-common/darwin-sdk-setup.bash} $out/nix-support/darwin-sdk-setup.bash
+  ''
+
+  + optionalString cc.langAda or false ''
+    substituteAll ${./add-gnat-extra-flags.sh} $out/nix-support/add-gnat-extra-flags.sh
+  ''
+
+  ##
+  ## General Clang support
+  ## Needs to go after ^ because the for loop eats \n and makes this file an invalid script
+  ##
+  + optionalString isClang ''
+    # Escape twice: once for this script, once for the one it gets substituted into.
+    export machineFlags=${escapeShellArg (escapeShellArgs machineFlags)}
+    export defaultTarget=${targetPlatform.config}
+    substituteAll ${./add-clang-cc-cflags-before.sh} $out/nix-support/add-local-cc-cflags-before.sh
+  ''
+
+  ##
+  ## Extra custom steps
+  ##
+  + extraBuildCommands
+  + concatStringsSep "; " (
+    mapAttrsToList (name: value: "echo ${toString value} >> $out/nix-support/${name}") nixSupport
+  );
 
   env = {
     inherit isClang;

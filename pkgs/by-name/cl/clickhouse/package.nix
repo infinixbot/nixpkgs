@@ -118,13 +118,13 @@ llvmPackages_19.stdenv.mkDerivation (finalAttrs: {
   env = {
     CARGO_HOME = "$PWD/../.cargo/";
     NIX_CFLAGS_COMPILE =
-      # undefined reference to '__sync_val_compare_and_swap_16'
-      lib.optionalString stdenv.hostPlatform.isx86_64 " -mcx16"
-      +
-        # Silence ``-Wimplicit-const-int-float-conversion` error in MemoryTracker.cpp and
-        # ``-Wno-unneeded-internal-declaration` TreeOptimizer.cpp.
-        lib.optionalString stdenv.hostPlatform.isDarwin
-          " -Wno-implicit-const-int-float-conversion -Wno-unneeded-internal-declaration";
+    # undefined reference to '__sync_val_compare_and_swap_16'
+    lib.optionalString stdenv.hostPlatform.isx86_64 " -mcx16"
+    +
+      # Silence ``-Wimplicit-const-int-float-conversion` error in MemoryTracker.cpp and
+      # ``-Wno-unneeded-internal-declaration` TreeOptimizer.cpp.
+      lib.optionalString stdenv.hostPlatform.isDarwin
+        " -Wno-implicit-const-int-float-conversion -Wno-unneeded-internal-declaration";
   };
 
   # https://github.com/ClickHouse/ClickHouse/issues/49988

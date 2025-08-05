@@ -423,27 +423,27 @@ let
     {
       wantedBy = [ ] ++ optional (container.autoStart) "multi-user.target";
       wants =
-        lib.optional (container.imageFile == null && container.imageStream == null) "network-online.target"
-        ++ lib.optionals dependOnLingerService [ "linger-users.service" ];
+      lib.optional (container.imageFile == null && container.imageStream == null) "network-online.target"
+      ++ lib.optionals dependOnLingerService [ "linger-users.service" ];
       after =
-        lib.optionals (cfg.backend == "docker") [
-          "docker.service"
-          "docker.socket"
-        ]
-        # if imageFile or imageStream is not set, the service needs the network to download the image from the registry
-        ++ lib.optionals (container.imageFile == null && container.imageStream == null) [
-          "network-online.target"
-        ]
-        ++ dependsOn
-        ++ lib.optionals dependOnLingerService [ "linger-users.service" ]
-        ++ lib.optionals (effectiveUser != "root" && container.podman.sdnotify == "healthy") [
-          "user@${toString uid}.service"
-        ];
+      lib.optionals (cfg.backend == "docker") [
+        "docker.service"
+        "docker.socket"
+      ]
+      # if imageFile or imageStream is not set, the service needs the network to download the image from the registry
+      ++ lib.optionals (container.imageFile == null && container.imageStream == null) [
+        "network-online.target"
+      ]
+      ++ dependsOn
+      ++ lib.optionals dependOnLingerService [ "linger-users.service" ]
+      ++ lib.optionals (effectiveUser != "root" && container.podman.sdnotify == "healthy") [
+        "user@${toString uid}.service"
+      ];
       requires =
-        dependsOn
-        ++ lib.optionals (effectiveUser != "root" && container.podman.sdnotify == "healthy") [
-          "user@${toString uid}.service"
-        ];
+      dependsOn
+      ++ lib.optionals (effectiveUser != "root" && container.podman.sdnotify == "healthy") [
+        "user@${toString uid}.service"
+      ];
       environment = lib.mkMerge [
         proxy_env
         (mkIf (cfg.backend == "podman" && container.podman.user != "root") {

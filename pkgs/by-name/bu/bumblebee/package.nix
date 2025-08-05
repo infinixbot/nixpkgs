@@ -107,12 +107,12 @@ stdenv.mkDerivation rec {
 
   # By default we don't want to use a display device
   nvidiaDeviceOptions =
-    lib.optionalString (!useDisplayDevice) ''
-      # Disable display device
-      Option "UseEDID" "false"
-      Option "UseDisplayDevice" "none"
-    ''
-    + extraNvidiaDeviceOptions;
+  lib.optionalString (!useDisplayDevice) ''
+    # Disable display device
+    Option "UseEDID" "false"
+    Option "UseDisplayDevice" "none"
+  ''
+  + extraNvidiaDeviceOptions;
 
   nouveauDeviceOptions = extraNouveauDeviceOptions;
 

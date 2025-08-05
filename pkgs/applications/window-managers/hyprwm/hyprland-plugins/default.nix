@@ -17,8 +17,8 @@ let
         meta = args.meta // {
           description = args.meta.description or "";
           longDescription =
-            (args.meta.longDescription or "")
-            + "\n\nPlugins can be installed via a plugin entry in the Hyprland NixOS or Home Manager options.";
+          (args.meta.longDescription or "")
+          + "\n\nPlugins can be installed via a plugin entry in the Hyprland NixOS or Home Manager options.";
         };
       }
     );

@@ -62,66 +62,66 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   postBuild =
-    lib.optionalString stdenv.hostPlatform.isLinux ''
-      export NIX_CFLAGS_COMPILE="$NIX_CFLAGS_COMPILE -Wno-error=int-to-pointer-cast -Wno-error=pointer-to-int-cast"
-      export CXXFLAGS="$CXXFLAGS -fpermissive"
-      # Build Xvnc
-      tar xf ${xorg.xorgserver.src}
-      cp -R xorg*/* unix/xserver
-      pushd unix/xserver
-      version=$(echo ${xorg.xorgserver.name} | sed 's/.*-\([0-9]\+\).[0-9]\+.*/\1/g')
-      patch -p1 < "$source_top/unix/xserver$version.patch"
-      autoreconf -vfi
-      ./configure $configureFlags  --disable-devel-docs --disable-docs \
-          --disable-xorg --disable-xnest --disable-xvfb --disable-dmx \
-          --disable-xwin --disable-xephyr --disable-kdrive --with-pic \
-          --disable-xorgcfg --disable-xprint --disable-static \
-          --enable-composite --disable-xtrap --enable-xcsecurity \
-          --disable-{a,c,m}fb \
-          --disable-xwayland \
-          --disable-config-dbus --disable-config-udev --disable-config-hal \
-          --disable-xevie \
-          --disable-dri --disable-dri2 --disable-dri3 --enable-glx \
-          --enable-install-libxf86config \
-          --prefix="$out" --disable-unit-tests \
-          --with-xkb-path=${xkeyboard_config}/share/X11/xkb \
-          --with-xkb-bin-directory=${xorg.xkbcomp}/bin \
-          --with-xkb-output=$out/share/X11/xkb/compiled
-      make TIGERVNC_SRC=$src TIGERVNC_BUILDDIR=`pwd`/../.. -j$NIX_BUILD_CORES
-      popd
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      make dmg
-    '';
+  lib.optionalString stdenv.hostPlatform.isLinux ''
+    export NIX_CFLAGS_COMPILE="$NIX_CFLAGS_COMPILE -Wno-error=int-to-pointer-cast -Wno-error=pointer-to-int-cast"
+    export CXXFLAGS="$CXXFLAGS -fpermissive"
+    # Build Xvnc
+    tar xf ${xorg.xorgserver.src}
+    cp -R xorg*/* unix/xserver
+    pushd unix/xserver
+    version=$(echo ${xorg.xorgserver.name} | sed 's/.*-\([0-9]\+\).[0-9]\+.*/\1/g')
+    patch -p1 < "$source_top/unix/xserver$version.patch"
+    autoreconf -vfi
+    ./configure $configureFlags  --disable-devel-docs --disable-docs \
+        --disable-xorg --disable-xnest --disable-xvfb --disable-dmx \
+        --disable-xwin --disable-xephyr --disable-kdrive --with-pic \
+        --disable-xorgcfg --disable-xprint --disable-static \
+        --enable-composite --disable-xtrap --enable-xcsecurity \
+        --disable-{a,c,m}fb \
+        --disable-xwayland \
+        --disable-config-dbus --disable-config-udev --disable-config-hal \
+        --disable-xevie \
+        --disable-dri --disable-dri2 --disable-dri3 --enable-glx \
+        --enable-install-libxf86config \
+        --prefix="$out" --disable-unit-tests \
+        --with-xkb-path=${xkeyboard_config}/share/X11/xkb \
+        --with-xkb-bin-directory=${xorg.xkbcomp}/bin \
+        --with-xkb-output=$out/share/X11/xkb/compiled
+    make TIGERVNC_SRC=$src TIGERVNC_BUILDDIR=`pwd`/../.. -j$NIX_BUILD_CORES
+    popd
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    make dmg
+  '';
 
   postInstall =
-    lib.optionalString stdenv.hostPlatform.isLinux ''
-      pushd unix/xserver/hw/vnc
-      make TIGERVNC_SRC=$src TIGERVNC_BUILDDIR=`pwd`/../../../.. install
-      popd
-      rm -f $out/lib/xorg/protocol.txt
+  lib.optionalString stdenv.hostPlatform.isLinux ''
+    pushd unix/xserver/hw/vnc
+    make TIGERVNC_SRC=$src TIGERVNC_BUILDDIR=`pwd`/../../../.. install
+    popd
+    rm -f $out/lib/xorg/protocol.txt
 
-      wrapProgram $out/bin/vncserver \
-        --prefix PATH : ${
-          lib.makeBinPath (
-            with xorg;
-            [
-              xterm
-              twm
-              xsetroot
-              xauth
-            ]
-          )
-        }
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      mkdir -p $out/Applications
-      mv 'TigerVNC Viewer ${finalAttrs.version}.app' $out/Applications/
-      rm $out/bin/vncviewer
-      echo "#!/usr/bin/env bash
-      open $out/Applications/TigerVNC\ Viewer\ ${finalAttrs.version}.app --args \$@" >> $out/bin/vncviewer
-      chmod +x $out/bin/vncviewer
-    '';
+    wrapProgram $out/bin/vncserver \
+      --prefix PATH : ${
+        lib.makeBinPath (
+          with xorg;
+          [
+            xterm
+            twm
+            xsetroot
+            xauth
+          ]
+        )
+      }
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    mkdir -p $out/Applications
+    mv 'TigerVNC Viewer ${finalAttrs.version}.app' $out/Applications/
+    rm $out/bin/vncviewer
+    echo "#!/usr/bin/env bash
+    open $out/Applications/TigerVNC\ Viewer\ ${finalAttrs.version}.app --args \$@" >> $out/bin/vncviewer
+    chmod +x $out/bin/vncviewer
+  '';
 
   buildInputs = [
     fltk

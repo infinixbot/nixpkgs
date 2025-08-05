@@ -36,12 +36,12 @@ stdenv.mkDerivation (finalAttrs: {
 
   # Disable some failing tests
   env.GTEST_FILTER =
-    "-"
-    + lib.concatStringsSep ":" [
-      "xlapack.*"
-      "xlinalg.*"
-      "xtest_extended.*"
-    ];
+  "-"
+  + lib.concatStringsSep ":" [
+    "xlapack.*"
+    "xlinalg.*"
+    "xtest_extended.*"
+  ];
 
   doCheck = true;
 

@@ -58,19 +58,19 @@ in
   # For building runtime libs
   # same for all gcc's
   depsBuildTarget =
-    (
-      if lib.systems.equals hostPlatform buildPlatform then
-        [
-          targetPackages.stdenv.cc.bintools # newly-built gcc will be used
-        ]
-      else
-        assert lib.systems.equals targetPlatform hostPlatform;
-        [
-          # build != host == target
-          stdenv.cc
-        ]
-    )
-    ++ optionals targetPlatform.isLinux [ patchelf ];
+  (
+    if lib.systems.equals hostPlatform buildPlatform then
+      [
+        targetPackages.stdenv.cc.bintools # newly-built gcc will be used
+      ]
+    else
+      assert lib.systems.equals targetPlatform hostPlatform;
+      [
+        # build != host == target
+        stdenv.cc
+      ]
+  )
+  ++ optionals targetPlatform.isLinux [ patchelf ];
 
   buildInputs = [
     gmp

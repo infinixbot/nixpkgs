@@ -93,7 +93,7 @@ in
       startAt = cfg.interval;
       serviceConfig = {
         ExecStart =
-          "${pkgs.elasticsearch-curator}/bin/curator" + " --config ${curatorConfig} ${curatorAction}";
+        "${pkgs.elasticsearch-curator}/bin/curator" + " --config ${curatorConfig} ${curatorAction}";
       };
     };
   };

@@ -155,15 +155,15 @@ let
     assert name == dev.name;
     let
       csopen =
-        "cryptsetup luksOpen ${dev.device} ${dev.name}"
-        + optionalString dev.allowDiscards " --allow-discards"
-        + optionalString dev.bypassWorkqueues " --perf-no_read_workqueue --perf-no_write_workqueue"
-        + optionalString (dev.header != null) " --header=${dev.header}";
+      "cryptsetup luksOpen ${dev.device} ${dev.name}"
+      + optionalString dev.allowDiscards " --allow-discards"
+      + optionalString dev.bypassWorkqueues " --perf-no_read_workqueue --perf-no_write_workqueue"
+      + optionalString (dev.header != null) " --header=${dev.header}";
       cschange = "cryptsetup luksChangeKey ${dev.device} ${
         optionalString (dev.header != null) "--header=${dev.header}"
       }";
       fido2luksCredentials =
-        dev.fido2.credentials ++ optional (dev.fido2.credential != null) dev.fido2.credential;
+      dev.fido2.credentials ++ optional (dev.fido2.credential != null) dev.fido2.credential;
     in
     ''
       # Wait for luksRoot (and optionally keyFile and/or header) to appear, e.g.
@@ -593,17 +593,17 @@ let
         n: v:
         let
           opts =
-            v.crypttabExtraOpts
-            ++ optional v.allowDiscards "discard"
-            ++ optionals v.bypassWorkqueues [
-              "no-read-workqueue"
-              "no-write-workqueue"
-            ]
-            ++ optional (v.header != null) "header=${v.header}"
-            ++ optional (v.keyFileOffset != null) "keyfile-offset=${toString v.keyFileOffset}"
-            ++ optional (v.keyFileSize != null) "keyfile-size=${toString v.keyFileSize}"
-            ++ optional (v.keyFileTimeout != null) "keyfile-timeout=${builtins.toString v.keyFileTimeout}s"
-            ++ optional (v.tryEmptyPassphrase) "try-empty-password=true";
+          v.crypttabExtraOpts
+          ++ optional v.allowDiscards "discard"
+          ++ optionals v.bypassWorkqueues [
+            "no-read-workqueue"
+            "no-write-workqueue"
+          ]
+          ++ optional (v.header != null) "header=${v.header}"
+          ++ optional (v.keyFileOffset != null) "keyfile-offset=${toString v.keyFileOffset}"
+          ++ optional (v.keyFileSize != null) "keyfile-size=${toString v.keyFileSize}"
+          ++ optional (v.keyFileTimeout != null) "keyfile-timeout=${builtins.toString v.keyFileTimeout}s"
+          ++ optional (v.tryEmptyPassphrase) "try-empty-password=true";
         in
         "${n} ${v.device} ${if v.keyFile == null then "-" else v.keyFile} ${lib.concatStringsSep "," opts}"
       ) luks.devices

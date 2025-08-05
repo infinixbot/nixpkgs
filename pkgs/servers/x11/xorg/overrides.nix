@@ -154,7 +154,7 @@ self: super:
   libxcb = super.libxcb.overrideAttrs (attrs: {
     # $dev/include/xcb/xcb.h includes pthread.h
     propagatedBuildInputs =
-      attrs.propagatedBuildInputs or [ ] ++ lib.optional stdenv.hostPlatform.isMinGW windows.pthreads;
+    attrs.propagatedBuildInputs or [ ] ++ lib.optional stdenv.hostPlatform.isMinGW windows.pthreads;
     configureFlags = [
       "--enable-xkb"
       "--enable-xinput"
@@ -204,9 +204,9 @@ self: super:
       "man"
     ];
     configureFlags =
-      attrs.configureFlags or [ ]
-      ++ malloc0ReturnsNullCrossFlag
-      ++ lib.optional (stdenv.targetPlatform.useLLVM or false) "ac_cv_path_RAWCPP=cpp";
+    attrs.configureFlags or [ ]
+    ++ malloc0ReturnsNullCrossFlag
+    ++ lib.optional (stdenv.targetPlatform.useLLVM or false) "ac_cv_path_RAWCPP=cpp";
     depsBuildBuild = [
       buildPackages.stdenv.cc
     ]
@@ -297,11 +297,11 @@ self: super:
   xdpyinfo = super.xdpyinfo.overrideAttrs (attrs: {
     configureFlags = attrs.configureFlags or [ ] ++ malloc0ReturnsNullCrossFlag;
     preConfigure =
-      attrs.preConfigure or ""
-      # missing transitive dependencies
-      + lib.optionalString stdenv.hostPlatform.isStatic ''
-        export NIX_CFLAGS_LINK="$NIX_CFLAGS_LINK -lXau -lXdmcp"
-      '';
+    attrs.preConfigure or ""
+    # missing transitive dependencies
+    + lib.optionalString stdenv.hostPlatform.isStatic ''
+      export NIX_CFLAGS_LINK="$NIX_CFLAGS_LINK -lXau -lXdmcp"
+    '';
     meta = attrs.meta // {
       mainProgram = "xdpyinfo";
     };
@@ -310,17 +310,17 @@ self: super:
   xdm = super.xdm.overrideAttrs (attrs: {
     buildInputs = attrs.buildInputs ++ [ libxcrypt ];
     configureFlags =
-      attrs.configureFlags or [ ]
-      ++ [
-        "ac_cv_path_RAWCPP=${stdenv.cc.targetPrefix}cpp"
-      ]
-      ++
-        lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform)
-          # checking for /dev/urandom... configure: error: cannot check for file existence when cross compiling
-          [
-            "ac_cv_file__dev_urandom=true"
-            "ac_cv_file__dev_random=true"
-          ];
+    attrs.configureFlags or [ ]
+    ++ [
+      "ac_cv_path_RAWCPP=${stdenv.cc.targetPrefix}cpp"
+    ]
+    ++
+      lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform)
+        # checking for /dev/urandom... configure: error: cannot check for file existence when cross compiling
+        [
+          "ac_cv_file__dev_urandom=true"
+          "ac_cv_file__dev_random=true"
+        ];
     meta = attrs.meta // {
       mainProgram = "xdm";
     };
@@ -334,9 +334,9 @@ self: super:
       sed 's,^as_dummy.*,as_dummy="\$PATH",' -i configure
     '';
     configureFlags =
-      attrs.configureFlags or [ ]
-      ++ malloc0ReturnsNullCrossFlag
-      ++ lib.optional (stdenv.targetPlatform.useLLVM or false) "ac_cv_path_RAWCPP=cpp";
+    attrs.configureFlags or [ ]
+    ++ malloc0ReturnsNullCrossFlag
+    ++ lib.optional (stdenv.targetPlatform.useLLVM or false) "ac_cv_path_RAWCPP=cpp";
     propagatedBuildInputs = attrs.propagatedBuildInputs or [ ] ++ [ xorg.libSM ];
     depsBuildBuild = [ buildPackages.stdenv.cc ];
     CPP = if stdenv.hostPlatform.isDarwin then "clang -E -" else "${stdenv.cc.targetPrefix}cc -E -";
@@ -441,10 +441,10 @@ self: super:
       xorg.libXext
     ];
     configureFlags =
-      lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
-        "xorg_cv_malloc0_returns_null=no"
-      ]
-      ++ lib.optional stdenv.hostPlatform.isStatic "--disable-shared";
+    lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
+      "xorg_cv_malloc0_returns_null=no"
+    ]
+    ++ lib.optional stdenv.hostPlatform.isStatic "--disable-shared";
   });
 
   libXinerama = super.libXinerama.overrideAttrs (attrs: {
@@ -1021,12 +1021,12 @@ self: super:
             dri-pkgconfig-stub
           ];
           propagatedBuildInputs =
-            attrs.propagatedBuildInputs or [ ]
-            ++ [ xorg.libpciaccess ]
-            ++ commonPropagatedBuildInputs
-            ++ lib.optionals stdenv.hostPlatform.isLinux [
-              udev
-            ];
+          attrs.propagatedBuildInputs or [ ]
+          ++ [ xorg.libpciaccess ]
+          ++ commonPropagatedBuildInputs
+          ++ lib.optionals stdenv.hostPlatform.isLinux [
+            udev
+          ];
           depsBuildBuild = [ buildPackages.stdenv.cc ];
           prePatch = lib.optionalString stdenv.hostPlatform.isMusl ''
             export CFLAGS+=" -D__uid_t=uid_t -D__gid_t=gid_t"
@@ -1194,11 +1194,11 @@ self: super:
   xauth = super.xauth.overrideAttrs (attrs: {
     doCheck = false; # fails
     preConfigure =
-      attrs.preConfigure or ""
-      # missing transitive dependencies
-      + lib.optionalString stdenv.hostPlatform.isStatic ''
-        export NIX_CFLAGS_LINK="$NIX_CFLAGS_LINK -lxcb -lXau -lXdmcp"
-      '';
+    attrs.preConfigure or ""
+    # missing transitive dependencies
+    + lib.optionalString stdenv.hostPlatform.isStatic ''
+      export NIX_CFLAGS_LINK="$NIX_CFLAGS_LINK -lxcb -lXau -lXdmcp"
+    '';
     meta = attrs.meta // {
       mainProgram = "xauth";
     };
@@ -1237,12 +1237,12 @@ self: super:
           substituteInPlace Makefile.in --replace "PROGCPPDEFS =" "PROGCPPDEFS = -Dlinux=linux -Dunix=unix"
         '';
         propagatedBuildInputs =
-          attrs.propagatedBuildInputs or [ ]
-          ++ [ xorg.xauth ]
-          ++ lib.optionals isDarwin [
-            xorg.libX11
-            xorg.xorgproto
-          ];
+        attrs.propagatedBuildInputs or [ ]
+        ++ [ xorg.xauth ]
+        ++ lib.optionals isDarwin [
+          xorg.libX11
+          xorg.xorgproto
+        ];
         postFixup = ''
           sed -i $out/bin/startx \
             -e '/^sysserverrc=/ s:=.*:=/etc/X11/xinit/xserverrc:' \

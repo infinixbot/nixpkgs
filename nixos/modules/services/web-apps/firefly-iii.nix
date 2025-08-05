@@ -110,14 +110,14 @@ in
     };
 
     package =
-      lib.mkPackageOption pkgs "firefly-iii" { }
-      // lib.mkOption {
-        apply =
-          firefly-iii:
-          firefly-iii.override (prev: {
-            dataDir = cfg.dataDir;
-          });
-      };
+    lib.mkPackageOption pkgs "firefly-iii" { }
+    // lib.mkOption {
+      apply =
+        firefly-iii:
+        firefly-iii.override (prev: {
+          dataDir = cfg.dataDir;
+        });
+    };
 
     enableNginx = lib.mkOption {
       type = lib.types.bool;

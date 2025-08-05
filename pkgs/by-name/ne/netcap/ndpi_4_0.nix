@@ -22,11 +22,11 @@ ndpi.overrideAttrs (
     configureScript = "./autogen.sh";
 
     nativeBuildInputs =
-      lib.remove autoreconfHook prevAttrs.nativeBuildInputs
-      ++ [
-        autoconf
-        automake
-      ]
-      ++ lib.optionals stdenv.hostPlatform.isDarwin [ fixDarwinDylibNames ];
+    lib.remove autoreconfHook prevAttrs.nativeBuildInputs
+    ++ [
+      autoconf
+      automake
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ fixDarwinDylibNames ];
   }
 )

@@ -74,11 +74,11 @@ in
 
 stdenv.mkDerivation (finalAttrs: {
   pname =
-    "git"
-    + lib.optionalString svnSupport "-with-svn"
-    + lib.optionalString (
-      !svnSupport && !guiSupport && !sendEmailSupport && !withManual && !pythonSupport && !withpcre2
-    ) "-minimal";
+  "git"
+  + lib.optionalString svnSupport "-with-svn"
+  + lib.optionalString (
+    !svnSupport && !guiSupport && !sendEmailSupport && !withManual && !pythonSupport && !withpcre2
+  ) "-minimal";
   inherit version;
 
   src = fetchurl {
@@ -164,8 +164,8 @@ stdenv.mkDerivation (finalAttrs: {
 
   # required to support pthread_cancel()
   env.NIX_LDFLAGS =
-    lib.optionalString (stdenv.cc.isGNU && stdenv.hostPlatform.libc == "glibc") "-lgcc_s"
-    + lib.optionalString (stdenv.hostPlatform.isFreeBSD) "-lthr";
+  lib.optionalString (stdenv.cc.isGNU && stdenv.hostPlatform.libc == "glibc") "-lgcc_s"
+  + lib.optionalString (stdenv.hostPlatform.isFreeBSD) "-lthr";
 
   configureFlags = [
     "ac_cv_prog_CURL_CONFIG=${lib.getDev curl}/bin/curl-config"
@@ -254,26 +254,26 @@ stdenv.mkDerivation (finalAttrs: {
   installFlags = [ "NO_INSTALL_HARDLINKS=1" ];
 
   preInstall =
-    lib.optionalString osxkeychainSupport ''
-      mkdir -p $out/libexec/git-core
-      ln -s $out/share/git/contrib/credential/osxkeychain/git-credential-osxkeychain $out/libexec/git-core/
+  lib.optionalString osxkeychainSupport ''
+    mkdir -p $out/libexec/git-core
+    ln -s $out/share/git/contrib/credential/osxkeychain/git-credential-osxkeychain $out/libexec/git-core/
 
-      # ideally unneeded, but added for backwards compatibility
-      mkdir -p $out/bin
-      ln -s $out/libexec/git-core/git-credential-osxkeychain $out/bin/
+    # ideally unneeded, but added for backwards compatibility
+    mkdir -p $out/bin
+    ln -s $out/libexec/git-core/git-credential-osxkeychain $out/bin/
 
-      rm -f $PWD/contrib/credential/osxkeychain/git-credential-osxkeychain.o
-    ''
-    + lib.optionalString withLibsecret ''
-      mkdir -p $out/libexec/git-core
-      ln -s $out/share/git/contrib/credential/libsecret/git-credential-libsecret $out/libexec/git-core/
+    rm -f $PWD/contrib/credential/osxkeychain/git-credential-osxkeychain.o
+  ''
+  + lib.optionalString withLibsecret ''
+    mkdir -p $out/libexec/git-core
+    ln -s $out/share/git/contrib/credential/libsecret/git-credential-libsecret $out/libexec/git-core/
 
-      # ideally unneeded, but added for backwards compatibility
-      mkdir -p $out/bin
-      ln -s $out/libexec/git-core/git-credential-libsecret $out/bin/
+    # ideally unneeded, but added for backwards compatibility
+    mkdir -p $out/bin
+    ln -s $out/libexec/git-core/git-credential-libsecret $out/bin/
 
-      rm -f $PWD/contrib/credential/libsecret/git-credential-libsecret.o
-    '';
+    rm -f $PWD/contrib/credential/libsecret/git-credential-libsecret.o
+  '';
 
   postInstall = ''
     # Set up the flags array for make in the same way as for the main install

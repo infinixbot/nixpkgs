@@ -48,11 +48,11 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   env.NIX_CFLAGS_COMPILE =
-    # old libiberty emits fatal warnings
-    "-w"
-    # old gmp fails to compile with newer gcc
-    # FIXME remove when the normal version has moved on
-    + lib.optionalString (!enableUnstable) " -fpermissive";
+  # old libiberty emits fatal warnings
+  "-w"
+  # old gmp fails to compile with newer gcc
+  # FIXME remove when the normal version has moved on
+  + lib.optionalString (!enableUnstable) " -fpermissive";
 
   dontUseCmakeConfigure = true;
   enableParallelBuilding = true;

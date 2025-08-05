@@ -394,7 +394,7 @@ in
     };
 
     systemd.services.httpd.after =
-      optional mysqlLocal "mysql.service" ++ optional pgsqlLocal "postgresql.target";
+    optional mysqlLocal "mysql.service" ++ optional pgsqlLocal "postgresql.target";
 
     users.users.${user} = {
       group = group;

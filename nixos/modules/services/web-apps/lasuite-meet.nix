@@ -322,8 +322,8 @@ in
       ++ (optional cfg.redis.createLocally "redis-lasuite-meet.service");
 
       wants =
-        (optional cfg.postgresql.createLocally "postgresql.service")
-        ++ (optional cfg.redis.createLocally "redis-lasuite-meet.service");
+      (optional cfg.postgresql.createLocally "postgresql.service")
+      ++ (optional cfg.redis.createLocally "redis-lasuite-meet.service");
 
       wantedBy = [ "multi-user.target" ];
 
@@ -372,8 +372,8 @@ in
       ++ (optional cfg.redis.createLocally "redis-lasuite-meet.service");
 
       wants =
-        (optional cfg.postgresql.createLocally "postgresql.service")
-        ++ (optional cfg.redis.createLocally "redis-lasuite-meet.service");
+      (optional cfg.postgresql.createLocally "postgresql.service")
+      ++ (optional cfg.redis.createLocally "redis-lasuite-meet.service");
 
       wantedBy = [ "multi-user.target" ];
 

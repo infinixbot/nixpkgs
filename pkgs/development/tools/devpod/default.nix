@@ -143,33 +143,33 @@ let
     ];
 
     postInstall =
-      lib.optionalString stdenv.hostPlatform.isDarwin ''
-        # replace sidecar binary with symlink
-        ln -sf ${lib.getExe devpod} "$out/Applications/DevPod.app/Contents/MacOS/devpod-cli"
+    lib.optionalString stdenv.hostPlatform.isDarwin ''
+      # replace sidecar binary with symlink
+      ln -sf ${lib.getExe devpod} "$out/Applications/DevPod.app/Contents/MacOS/devpod-cli"
 
-        makeWrapper "$out/Applications/DevPod.app/Contents/MacOS/DevPod Desktop" "$out/bin/DevPod Desktop"
-      ''
-      + lib.optionalString stdenv.hostPlatform.isLinux ''
-        # replace sidecar binary with symlink
-        ln -sf ${lib.getExe devpod} "$out/bin/devpod-cli"
+      makeWrapper "$out/Applications/DevPod.app/Contents/MacOS/DevPod Desktop" "$out/bin/DevPod Desktop"
+    ''
+    + lib.optionalString stdenv.hostPlatform.isLinux ''
+      # replace sidecar binary with symlink
+      ln -sf ${lib.getExe devpod} "$out/bin/devpod-cli"
 
-        # set up scheme handling
-        desktop-file-edit "$out/share/applications/DevPod.desktop" \
-          --set-key="Exec"     --set-value="\"DevPod Desktop\" %u" \
-          --set-key="MimeType" --set-value="x-scheme-handler/devpod"
+      # set up scheme handling
+      desktop-file-edit "$out/share/applications/DevPod.desktop" \
+        --set-key="Exec"     --set-value="\"DevPod Desktop\" %u" \
+        --set-key="MimeType" --set-value="x-scheme-handler/devpod"
 
-        # whitespace in the icon name causes gtk-update-icon-cache to fail
-        desktop-file-edit "$out/share/applications/DevPod.desktop" \
-          --set-key="Icon"     --set-value="DevPod-Desktop"
+      # whitespace in the icon name causes gtk-update-icon-cache to fail
+      desktop-file-edit "$out/share/applications/DevPod.desktop" \
+        --set-key="Icon"     --set-value="DevPod-Desktop"
 
-        for dir in "$out"/share/icons/hicolor/*/apps; do
-          mv "$dir/DevPod Desktop.png" "$dir/DevPod-Desktop.png"
-        done
-      ''
-      + ''
-        # propagate the `devpod` command
-        ln -s ${lib.getExe devpod} "$out/bin/devpod"
-      '';
+      for dir in "$out"/share/icons/hicolor/*/apps; do
+        mv "$dir/DevPod Desktop.png" "$dir/DevPod-Desktop.png"
+      done
+    ''
+    + ''
+      # propagate the `devpod` command
+      ln -s ${lib.getExe devpod} "$out/bin/devpod"
+    '';
 
     # we only want to wrap the main binary
     dontWrapGApps = true;

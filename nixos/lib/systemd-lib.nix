@@ -570,51 +570,51 @@ rec {
     {
       config = {
         unitConfig =
-          optionalAttrs (config.requires != [ ]) { Requires = toString config.requires; }
-          // optionalAttrs (config.wants != [ ]) { Wants = toString config.wants; }
-          // optionalAttrs (config.upholds != [ ]) { Upholds = toString config.upholds; }
-          // optionalAttrs (config.after != [ ]) { After = toString config.after; }
-          // optionalAttrs (config.before != [ ]) { Before = toString config.before; }
-          // optionalAttrs (config.bindsTo != [ ]) { BindsTo = toString config.bindsTo; }
-          // optionalAttrs (config.partOf != [ ]) { PartOf = toString config.partOf; }
-          // optionalAttrs (config.conflicts != [ ]) { Conflicts = toString config.conflicts; }
-          // optionalAttrs (config.requisite != [ ]) { Requisite = toString config.requisite; }
-          // optionalAttrs (config ? restartTriggers && config.restartTriggers != [ ]) {
-            X-Restart-Triggers = "${pkgs.writeText "X-Restart-Triggers-${name}" (
-              pipe config.restartTriggers [
-                flatten
-                (map (x: if isPath x then "${x}" else x))
-                toString
-              ]
-            )}";
-          }
-          // optionalAttrs (config ? reloadTriggers && config.reloadTriggers != [ ]) {
-            X-Reload-Triggers = "${pkgs.writeText "X-Reload-Triggers-${name}" (
-              pipe config.reloadTriggers [
-                flatten
-                (map (x: if isPath x then "${x}" else x))
-                toString
-              ]
-            )}";
-          }
-          // optionalAttrs (config.description != "") {
-            Description = config.description;
-          }
-          // optionalAttrs (config.documentation != [ ]) {
-            Documentation = toString config.documentation;
-          }
-          // optionalAttrs (config.onFailure != [ ]) {
-            OnFailure = toString config.onFailure;
-          }
-          // optionalAttrs (config.onSuccess != [ ]) {
-            OnSuccess = toString config.onSuccess;
-          }
-          // optionalAttrs (options.startLimitIntervalSec.isDefined) {
-            StartLimitIntervalSec = toString config.startLimitIntervalSec;
-          }
-          // optionalAttrs (options.startLimitBurst.isDefined) {
-            StartLimitBurst = toString config.startLimitBurst;
-          };
+        optionalAttrs (config.requires != [ ]) { Requires = toString config.requires; }
+        // optionalAttrs (config.wants != [ ]) { Wants = toString config.wants; }
+        // optionalAttrs (config.upholds != [ ]) { Upholds = toString config.upholds; }
+        // optionalAttrs (config.after != [ ]) { After = toString config.after; }
+        // optionalAttrs (config.before != [ ]) { Before = toString config.before; }
+        // optionalAttrs (config.bindsTo != [ ]) { BindsTo = toString config.bindsTo; }
+        // optionalAttrs (config.partOf != [ ]) { PartOf = toString config.partOf; }
+        // optionalAttrs (config.conflicts != [ ]) { Conflicts = toString config.conflicts; }
+        // optionalAttrs (config.requisite != [ ]) { Requisite = toString config.requisite; }
+        // optionalAttrs (config ? restartTriggers && config.restartTriggers != [ ]) {
+          X-Restart-Triggers = "${pkgs.writeText "X-Restart-Triggers-${name}" (
+            pipe config.restartTriggers [
+              flatten
+              (map (x: if isPath x then "${x}" else x))
+              toString
+            ]
+          )}";
+        }
+        // optionalAttrs (config ? reloadTriggers && config.reloadTriggers != [ ]) {
+          X-Reload-Triggers = "${pkgs.writeText "X-Reload-Triggers-${name}" (
+            pipe config.reloadTriggers [
+              flatten
+              (map (x: if isPath x then "${x}" else x))
+              toString
+            ]
+          )}";
+        }
+        // optionalAttrs (config.description != "") {
+          Description = config.description;
+        }
+        // optionalAttrs (config.documentation != [ ]) {
+          Documentation = toString config.documentation;
+        }
+        // optionalAttrs (config.onFailure != [ ]) {
+          OnFailure = toString config.onFailure;
+        }
+        // optionalAttrs (config.onSuccess != [ ]) {
+          OnSuccess = toString config.onSuccess;
+        }
+        // optionalAttrs (options.startLimitIntervalSec.isDefined) {
+          StartLimitIntervalSec = toString config.startLimitIntervalSec;
+        }
+        // optionalAttrs (options.startLimitBurst.isDefined) {
+          StartLimitBurst = toString config.startLimitBurst;
+        };
       };
     };
 

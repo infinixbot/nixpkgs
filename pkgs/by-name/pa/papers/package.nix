@@ -98,12 +98,12 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   mesonFlags =
-    lib.optionals (!withLibsecret) [
-      "-Dkeyring=disabled"
-    ]
-    ++ lib.optionals (!supportNautilus) [
-      "-Dnautilus=false"
-    ];
+  lib.optionals (!withLibsecret) [
+    "-Dkeyring=disabled"
+  ]
+  ++ lib.optionals (!supportNautilus) [
+    "-Dnautilus=false"
+  ];
 
   postInstall = ''
     substituteInPlace $out/share/thumbnailers/papers.thumbnailer \

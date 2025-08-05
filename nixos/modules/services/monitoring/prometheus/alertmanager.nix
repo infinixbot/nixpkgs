@@ -26,16 +26,16 @@ let
     checkedConfig yml;
 
   cmdlineArgs =
-    cfg.extraFlags
-    ++ [
-      "--config.file /tmp/alert-manager-substituted.yaml"
-      "--web.listen-address ${cfg.listenAddress}:${toString cfg.port}"
-      "--log.level ${cfg.logLevel}"
-      "--storage.path /var/lib/alertmanager"
-      (toString (map (peer: "--cluster.peer ${peer}:9094") cfg.clusterPeers))
-    ]
-    ++ (lib.optional (cfg.webExternalUrl != null) "--web.external-url ${cfg.webExternalUrl}")
-    ++ (lib.optional (cfg.logFormat != null) "--log.format ${cfg.logFormat}");
+  cfg.extraFlags
+  ++ [
+    "--config.file /tmp/alert-manager-substituted.yaml"
+    "--web.listen-address ${cfg.listenAddress}:${toString cfg.port}"
+    "--log.level ${cfg.logLevel}"
+    "--storage.path /var/lib/alertmanager"
+    (toString (map (peer: "--cluster.peer ${peer}:9094") cfg.clusterPeers))
+  ]
+  ++ (lib.optional (cfg.webExternalUrl != null) "--web.external-url ${cfg.webExternalUrl}")
+  ++ (lib.optional (cfg.logFormat != null) "--log.format ${cfg.logFormat}");
 in
 {
   imports = [
@@ -189,8 +189,8 @@ in
       assertions = lib.singleton {
         assertion = cfg.configuration != null || cfg.configText != null;
         message =
-          "Can not enable alertmanager without a configuration. "
-          + "Set either the `configuration` or `configText` attribute.";
+        "Can not enable alertmanager without a configuration. "
+        + "Set either the `configuration` or `configText` attribute.";
       };
     })
     (lib.mkIf cfg.enable {
@@ -206,10 +206,10 @@ in
         '';
         serviceConfig = {
           ExecStart =
-            "${cfg.package}/bin/alertmanager"
-            + lib.optionalString (lib.length cmdlineArgs != 0) (
-              " \\\n  " + lib.concatStringsSep " \\\n  " cmdlineArgs
-            );
+          "${cfg.package}/bin/alertmanager"
+          + lib.optionalString (lib.length cmdlineArgs != 0) (
+            " \\\n  " + lib.concatStringsSep " \\\n  " cmdlineArgs
+          );
           ExecReload = "${pkgs.coreutils}/bin/kill -HUP $MAINPID";
 
           EnvironmentFile = lib.mkIf (cfg.environmentFile != null) cfg.environmentFile;

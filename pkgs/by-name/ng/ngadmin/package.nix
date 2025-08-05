@@ -23,9 +23,9 @@ stdenv.mkDerivation {
   nativeBuildInputs = [ autoreconfHook ] ++ lib.optional withReadline readline;
   enableParallelBuilding = true;
   configureFlags =
-    lib.optional (!withReadline) "--without-readline"
-    ++ lib.optional enableEmu "--enable-emu"
-    ++ lib.optional enableSpy "--enable-spy";
+  lib.optional (!withReadline) "--without-readline"
+  ++ lib.optional enableEmu "--enable-emu"
+  ++ lib.optional enableSpy "--enable-spy";
 
   meta = with lib; {
     description = "Netgear switch (NSDP) administration tool";

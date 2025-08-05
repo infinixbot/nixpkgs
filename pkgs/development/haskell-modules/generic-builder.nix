@@ -432,11 +432,11 @@ let
     else
       allPkgconfigDepends';
   allPkgconfigDepends' =
-    pkg-configDepends
-    ++ libraryPkgconfigDepends
-    ++ executablePkgconfigDepends
-    ++ optionals doCheck testPkgconfigDepends
-    ++ optionals doBenchmark benchmarkPkgconfigDepends;
+  pkg-configDepends
+  ++ libraryPkgconfigDepends
+  ++ executablePkgconfigDepends
+  ++ optionals doCheck testPkgconfigDepends
+  ++ optionals doBenchmark benchmarkPkgconfigDepends;
 
   depsBuildBuild = [
     nativeGhc
@@ -445,11 +445,11 @@ let
   # platform. See crossCabalFlags above for more details.
   ++ lib.optionals (!stdenv.hasCC) [ buildPackages.stdenv.cc ];
   collectedToolDepends =
-    buildTools
-    ++ libraryToolDepends
-    ++ executableToolDepends
-    ++ optionals doCheck testToolDepends
-    ++ optionals doBenchmark benchmarkToolDepends;
+  buildTools
+  ++ libraryToolDepends
+  ++ executableToolDepends
+  ++ optionals doCheck testToolDepends
+  ++ optionals doBenchmark benchmarkToolDepends;
   nativeBuildInputs = [
     ghc
     removeReferencesTo
@@ -462,31 +462,31 @@ let
   ++ collectedToolDepends
   ++ optional stdenv.hostPlatform.isGhcjs nodejs;
   propagatedBuildInputs =
-    buildDepends ++ libraryHaskellDepends ++ executableHaskellDepends ++ libraryFrameworkDepends;
+  buildDepends ++ libraryHaskellDepends ++ executableHaskellDepends ++ libraryFrameworkDepends;
   otherBuildInputsHaskell =
-    optionals doCheck (testDepends ++ testHaskellDepends)
-    ++ optionals doBenchmark (benchmarkDepends ++ benchmarkHaskellDepends);
+  optionals doCheck (testDepends ++ testHaskellDepends)
+  ++ optionals doBenchmark (benchmarkDepends ++ benchmarkHaskellDepends);
   otherBuildInputsSystem =
-    extraLibraries
-    ++ librarySystemDepends
-    ++ executableSystemDepends
-    ++ executableFrameworkDepends
-    ++ allPkgconfigDepends
-    ++ optionals doCheck (testSystemDepends ++ testFrameworkDepends)
-    ++ optionals doBenchmark (benchmarkSystemDepends ++ benchmarkFrameworkDepends);
+  extraLibraries
+  ++ librarySystemDepends
+  ++ executableSystemDepends
+  ++ executableFrameworkDepends
+  ++ allPkgconfigDepends
+  ++ optionals doCheck (testSystemDepends ++ testFrameworkDepends)
+  ++ optionals doBenchmark (benchmarkSystemDepends ++ benchmarkFrameworkDepends);
   # TODO next rebuild just define as `otherBuildInputsHaskell ++ otherBuildInputsSystem`
   otherBuildInputs =
-    extraLibraries
-    ++ librarySystemDepends
-    ++ executableSystemDepends
-    ++ executableFrameworkDepends
-    ++ allPkgconfigDepends
-    ++ optionals doCheck (
-      testDepends ++ testHaskellDepends ++ testSystemDepends ++ testFrameworkDepends
-    )
-    ++ optionals doBenchmark (
-      benchmarkDepends ++ benchmarkHaskellDepends ++ benchmarkSystemDepends ++ benchmarkFrameworkDepends
-    );
+  extraLibraries
+  ++ librarySystemDepends
+  ++ executableSystemDepends
+  ++ executableFrameworkDepends
+  ++ allPkgconfigDepends
+  ++ optionals doCheck (
+    testDepends ++ testHaskellDepends ++ testSystemDepends ++ testFrameworkDepends
+  )
+  ++ optionals doBenchmark (
+    benchmarkDepends ++ benchmarkHaskellDepends ++ benchmarkSystemDepends ++ benchmarkFrameworkDepends
+  );
 
   setupCommand = "./Setup";
 
@@ -565,8 +565,8 @@ let
   # Works around https://gitlab.haskell.org/ghc/ghc/-/issues/23456.
   // optionalAttrs (stdenv.hasCC && stdenv.cc.isClang) {
     NIX_CFLAGS_COMPILE =
-      "-Wno-error=int-conversion"
-      + lib.optionalString (env ? NIX_CFLAGS_COMPILE) (" " + env.NIX_CFLAGS_COMPILE);
+    "-Wno-error=int-conversion"
+    + lib.optionalString (env ? NIX_CFLAGS_COMPILE) (" " + env.NIX_CFLAGS_COMPILE);
   };
 
 in
@@ -597,31 +597,31 @@ lib.fix (
 
       inherit depsBuildBuild nativeBuildInputs;
       buildInputs =
-        otherBuildInputs
-        ++ optionals (!isLibrary) propagatedBuildInputs
-        # For patchShebangsAuto in fixupPhase
-        ++ optionals stdenv.hostPlatform.isGhcjs [ nodejs ];
+      otherBuildInputs
+      ++ optionals (!isLibrary) propagatedBuildInputs
+      # For patchShebangsAuto in fixupPhase
+      ++ optionals stdenv.hostPlatform.isGhcjs [ nodejs ];
       propagatedBuildInputs = optionals isLibrary propagatedBuildInputs;
 
       env =
-        optionalAttrs (stdenv.buildPlatform.libc == "glibc") {
-          LOCALE_ARCHIVE = "${glibcLocales}/lib/locale/locale-archive";
-        }
-        // env';
+      optionalAttrs (stdenv.buildPlatform.libc == "glibc") {
+        LOCALE_ARCHIVE = "${glibcLocales}/lib/locale/locale-archive";
+      }
+      // env';
 
       prePatch =
-        optionalString (editedCabalFile != null) ''
-          echo "Replace Cabal file with edited version from ${newCabalFileUrl}."
-          cp ${newCabalFile} ${pname}.cabal
-        ''
-        + prePatch;
+      optionalString (editedCabalFile != null) ''
+        echo "Replace Cabal file with edited version from ${newCabalFileUrl}."
+        cp ${newCabalFile} ${pname}.cabal
+      ''
+      + prePatch;
 
       postPatch =
-        optionalString jailbreak ''
-          echo "Run jailbreak-cabal to lift version restrictions on build inputs."
-          ${jailbreak-cabal}/bin/jailbreak-cabal ${pname}.cabal
-        ''
-        + postPatch;
+      optionalString jailbreak ''
+        echo "Run jailbreak-cabal to lift version restrictions on build inputs."
+        ${jailbreak-cabal}/bin/jailbreak-cabal ${pname}.cabal
+      ''
+      + postPatch;
 
       setupCompilerEnvironmentPhase = ''
         NIX_BUILD_CORES=$(( NIX_BUILD_CORES < ${toString maxBuildCores} ? NIX_BUILD_CORES : ${toString maxBuildCores} ))
@@ -740,14 +740,14 @@ lib.fix (
       # Note: the options here must be always added, regardless of whether the
       # package specifies `hardeningDisable`.
       hardeningDisable =
-        lib.optionals (args ? hardeningDisable) hardeningDisable
-        ++ lib.optional (ghc.isHaLVM or false) "all"
-        # Static libraries (ie. all of pkgsStatic.haskellPackages) fail to build
-        # because by default Nix adds `-pie` to the linker flags: this
-        # conflicts with the `-r` and `-no-pie` flags added by GHC (see
-        # https://gitlab.haskell.org/ghc/ghc/-/issues/19580). hardeningDisable
-        # changes the default Nix behavior regarding adding "hardening" flags.
-        ++ lib.optional enableStaticLibraries "pie";
+      lib.optionals (args ? hardeningDisable) hardeningDisable
+      ++ lib.optional (ghc.isHaLVM or false) "all"
+      # Static libraries (ie. all of pkgsStatic.haskellPackages) fail to build
+      # because by default Nix adds `-pie` to the linker flags: this
+      # conflicts with the `-r` and `-no-pie` flags added by GHC (see
+      # https://gitlab.haskell.org/ghc/ghc/-/issues/19580). hardeningDisable
+      # changes the default Nix behavior regarding adding "hardening" flags.
+      ++ lib.optional enableStaticLibraries "pie";
 
       configurePhase = ''
         runHook preConfigure

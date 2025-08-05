@@ -16,13 +16,13 @@ stdenv.mkDerivation {
   src = kernel.src;
 
   patches =
-    lib.optionals (kernelOlder "5.4") [
-      # fixes build with gcc8
-      ./fix-snprintf-truncation.patch
-      # fixes build with gcc9
-      ./fix-strncpy-truncation.patch
-    ]
-    ++ kernel.patches;
+  lib.optionals (kernelOlder "5.4") [
+    # fixes build with gcc8
+    ./fix-snprintf-truncation.patch
+    # fixes build with gcc9
+    ./fix-strncpy-truncation.patch
+  ]
+  ++ kernel.patches;
 
   nativeBuildInputs = [
     autoconf

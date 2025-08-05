@@ -70,14 +70,14 @@ mkAppleDerivation (finalAttrs: {
   '';
 
   postInstall =
-    # The Darwin SDK puts the headers in `include/ffi`. Add a symlink for compatibility.
-    ''
-      ln -s "$dev/include" "$dev/include/ffi"
-    ''
-    # Install the trampoline dylib since it is build manually.
-    + lib.optionalString stdenv.hostPlatform.isAarch64 ''
-      cp libffi-trampolines.dylib "$out/lib/libffi-trampolines.dylib"
-    '';
+  # The Darwin SDK puts the headers in `include/ffi`. Add a symlink for compatibility.
+  ''
+    ln -s "$dev/include" "$dev/include/ffi"
+  ''
+  # Install the trampoline dylib since it is build manually.
+  + lib.optionalString stdenv.hostPlatform.isAarch64 ''
+    cp libffi-trampolines.dylib "$out/lib/libffi-trampolines.dylib"
+  '';
 
   preCheck = ''
     # The tests use -O0 which is not compatible with -D_FORTIFY_SOURCE.

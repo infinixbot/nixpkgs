@@ -64,18 +64,18 @@ stdenv.mkDerivation (finalAttrs: {
   strictDeps = true;
 
   qtWrapperArgs =
-    lib.optionals stdenv.hostPlatform.isLinux [
-      "--prefix LD_LIBRARY_PATH : ${
-        lib.makeLibraryPath [
-          libpcap
-          pipewire
-          wayland
-        ]
-      }"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      "--prefix DYLD_LIBRARY_PATH : ${lib.makeLibraryPath [ libpcap ]}"
-    ];
+  lib.optionals stdenv.hostPlatform.isLinux [
+    "--prefix LD_LIBRARY_PATH : ${
+      lib.makeLibraryPath [
+        libpcap
+        pipewire
+        wayland
+      ]
+    }"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    "--prefix DYLD_LIBRARY_PATH : ${lib.makeLibraryPath [ libpcap ]}"
+  ];
 
   passthru = {
     updateScript = unstableGitUpdater { };

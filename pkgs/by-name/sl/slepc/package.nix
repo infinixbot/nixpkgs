@@ -51,12 +51,12 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   configureFlags =
-    lib.optionals withArpack [
-      "--with-arpack=1"
-    ]
-    ++ lib.optionals pythonSupport [
-      "--with-slepc4py=1"
-    ];
+  lib.optionals withArpack [
+    "--with-arpack=1"
+  ]
+  ++ lib.optionals pythonSupport [
+    "--with-slepc4py=1"
+  ];
 
   buildInputs = [
     mpi

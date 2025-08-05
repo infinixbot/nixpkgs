@@ -18,8 +18,8 @@ stdenv.mkDerivation (finalAttrs: {
     hash = platformAttrs.${stdenv.system}.srcHash;
   };
   sourceRoot =
-    "hadoop-${finalAttrs.version}-src/hadoop-yarn-project/hadoop-yarn/"
-    + "hadoop-yarn-server/hadoop-yarn-server-nodemanager/src";
+  "hadoop-${finalAttrs.version}-src/hadoop-yarn-project/hadoop-yarn/"
+  + "hadoop-yarn-server/hadoop-yarn-server-nodemanager/src";
 
   nativeBuildInputs = [ cmake ];
   buildInputs = [ openssl ];

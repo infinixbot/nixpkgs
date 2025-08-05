@@ -79,16 +79,16 @@ effectiveStdenv.mkDerivation rec {
   ];
 
   cmakeFlags =
-    lib.optionals doCheck [ "-DGOOGLE_TEST=ON" ]
-    ++ lib.optionals cudaSupport [
-      "-DUSE_CUDA=ON"
-      # Their CMakeLists.txt does not respect CUDA_HOST_COMPILER, instead using the CXX compiler.
-      # https://github.com/dmlc/xgboost/blob/ccf43d4ba0a94e2f0a3cc5a526197539ae46f410/CMakeLists.txt#L145
-      "-DCMAKE_C_COMPILER=${effectiveStdenv.cc}/bin/gcc"
-      "-DCMAKE_CXX_COMPILER=${effectiveStdenv.cc}/bin/g++"
-    ]
-    ++ lib.optionals ncclSupport [ "-DUSE_NCCL=ON" ]
-    ++ lib.optionals rLibrary [ "-DR_LIB=ON" ];
+  lib.optionals doCheck [ "-DGOOGLE_TEST=ON" ]
+  ++ lib.optionals cudaSupport [
+    "-DUSE_CUDA=ON"
+    # Their CMakeLists.txt does not respect CUDA_HOST_COMPILER, instead using the CXX compiler.
+    # https://github.com/dmlc/xgboost/blob/ccf43d4ba0a94e2f0a3cc5a526197539ae46f410/CMakeLists.txt#L145
+    "-DCMAKE_C_COMPILER=${effectiveStdenv.cc}/bin/gcc"
+    "-DCMAKE_CXX_COMPILER=${effectiveStdenv.cc}/bin/g++"
+  ]
+  ++ lib.optionals ncclSupport [ "-DUSE_NCCL=ON" ]
+  ++ lib.optionals rLibrary [ "-DR_LIB=ON" ];
 
   # on Darwin, cmake uses find_library to locate R instead of using the PATH
   env.NIX_LDFLAGS = "-L${R}/lib/R/lib";

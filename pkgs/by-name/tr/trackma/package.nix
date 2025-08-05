@@ -79,19 +79,19 @@ python3.pkgs.buildPythonApplication rec {
   dontWrapGApps = true;
 
   preFixup =
-    lib.optional withQT "wrapQtApp $out/bin/trackma-qt"
-    ++ lib.optional withGTK "wrapGApp $out/bin/trackma-gtk";
+  lib.optional withQT "wrapQtApp $out/bin/trackma-qt"
+  ++ lib.optional withGTK "wrapGApp $out/bin/trackma-gtk";
 
   desktopItems =
-    lib.optional withQT (
-      mkDesktopItem "trackma-qt" "Trackma (Qt)" "Trackma Updater (Qt-frontend)" false
-    )
-    ++ lib.optional withGTK (
-      mkDesktopItem "trackma-gtk" "Trackma (GTK)" "Trackma Updater (Gtk-frontend)" false
-    )
-    ++ lib.optional withCurses (
-      mkDesktopItem "trackma-curses" "Trackma (ncurses)" "Trackma Updater (ncurses frontend)" true
-    );
+  lib.optional withQT (
+    mkDesktopItem "trackma-qt" "Trackma (Qt)" "Trackma Updater (Qt-frontend)" false
+  )
+  ++ lib.optional withGTK (
+    mkDesktopItem "trackma-gtk" "Trackma (GTK)" "Trackma Updater (Gtk-frontend)" false
+  )
+  ++ lib.optional withCurses (
+    mkDesktopItem "trackma-curses" "Trackma (ncurses)" "Trackma Updater (ncurses frontend)" true
+  );
 
   postInstall = ''
     install -Dvm444 $src/trackma/data/icon.png $out/share/pixmaps/trackma.png
@@ -102,9 +102,9 @@ python3.pkgs.buildPythonApplication rec {
   pythonImportsCheck = [ "trackma" ];
 
   postDist =
-    lib.optional (!withQT) "rm $out/bin/trackma-qt"
-    ++ lib.optional (!withGTK) "rm $out/bin/trackma-gtk"
-    ++ lib.optional (!withCurses) "rm $out/bin/trackma-curses";
+  lib.optional (!withQT) "rm $out/bin/trackma-qt"
+  ++ lib.optional (!withGTK) "rm $out/bin/trackma-gtk"
+  ++ lib.optional (!withCurses) "rm $out/bin/trackma-curses";
 
   passthru.updateScript = ./update.sh;
 

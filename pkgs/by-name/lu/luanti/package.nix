@@ -131,13 +131,13 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   postInstall =
-    lib.optionalString stdenv.hostPlatform.isLinux ''
-      patchShebangs $out
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      mkdir -p $out/Applications
-      mv $out/luanti.app $out/Applications
-    '';
+  lib.optionalString stdenv.hostPlatform.isLinux ''
+    patchShebangs $out
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    mkdir -p $out/Applications
+    mv $out/luanti.app $out/Applications
+  '';
 
   doCheck = true;
 

@@ -113,30 +113,30 @@ stdenv.mkDerivation rec {
 
   preConfigure = "patchShebangs .";
   configureFlags =
-    lib.optionals withP11-kit [
-      "--with-default-trust-store-file=/etc/ssl/certs/ca-certificates.crt"
-      "--with-default-trust-store-pkcs11=pkcs11:"
-    ]
-    ++ [
-      "--disable-dependency-tracking"
-      "--enable-fast-install"
-      "--with-unbound-root-key-file=${dns-root-data}/root.key"
-      (lib.withFeature withP11-kit "p11-kit")
-      (lib.enableFeature cxxBindings "cxx")
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      "--enable-ktls"
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isMinGW) [
-      "--disable-doc"
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isLinux && tpmSupport) [
-      "--with-trousers-lib=${trousers}/lib/libtspi.so"
-    ]
-    ++ [
-      # do not dlopen in nixpkgs
-      "--with-zlib=link"
-    ];
+  lib.optionals withP11-kit [
+    "--with-default-trust-store-file=/etc/ssl/certs/ca-certificates.crt"
+    "--with-default-trust-store-pkcs11=pkcs11:"
+  ]
+  ++ [
+    "--disable-dependency-tracking"
+    "--enable-fast-install"
+    "--with-unbound-root-key-file=${dns-root-data}/root.key"
+    (lib.withFeature withP11-kit "p11-kit")
+    (lib.enableFeature cxxBindings "cxx")
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    "--enable-ktls"
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isMinGW) [
+    "--disable-doc"
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isLinux && tpmSupport) [
+    "--with-trousers-lib=${trousers}/lib/libtspi.so"
+  ]
+  ++ [
+    # do not dlopen in nixpkgs
+    "--with-zlib=link"
+  ];
 
   enableParallelBuilding = true;
 

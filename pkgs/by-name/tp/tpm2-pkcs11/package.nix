@@ -56,8 +56,8 @@ chosenStdenv.mkDerivation (finalAttrs: {
 
   # Disable Java‐based tests because of missing dependencies
   patches =
-    lib.singleton ./disable-java-integration.patch
-    ++ lib.optional defaultToFapi ./default-to-fapi.patch;
+  lib.singleton ./disable-java-integration.patch
+  ++ lib.optional defaultToFapi ./default-to-fapi.patch;
 
   postPatch = ''
     echo ${lib.escapeShellArg finalAttrs.version} >VERSION
@@ -246,8 +246,8 @@ chosenStdenv.mkDerivation (finalAttrs: {
 
   meta = {
     description =
-      "PKCS#11 interface for TPM2 hardware."
-      + lib.optionalString (extraDescription != null) " ${extraDescription}";
+    "PKCS#11 interface for TPM2 hardware."
+    + lib.optionalString (extraDescription != null) " ${extraDescription}";
     homepage = "https://github.com/tpm2-software/tpm2-pkcs11";
     license = lib.licenses.bsd2;
     platforms = lib.platforms.linux;

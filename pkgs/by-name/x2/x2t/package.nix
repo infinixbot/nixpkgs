@@ -529,18 +529,18 @@ let
       ./common-pole-c20.patch
     ];
     qmakeFlags =
-      qmakeFlags
-      ++ icuQmakeFlags
-      ++ [
-        # c++1z for nodejs_22.libv8 (20 seems to produce errors around 'is_void_v' there)
-        # c++ 20 for nodejs_23.libv8
-        "CONFIG+=c++2a"
-        # v8_base.h will set nMaxVirtualMemory to 4000000000/5000000000
-        # which is not page-aligned, so disable memory limitation for now
-        "QMAKE_CXXFLAGS+=-DV8_VERSION_121_PLUS"
-        "QMAKE_CXXFLAGS+=-DDISABLE_MEMORY_LIMITATION"
-        "QMAKE_LFLAGS+=-licui18n"
-      ];
+    qmakeFlags
+    ++ icuQmakeFlags
+    ++ [
+      # c++1z for nodejs_22.libv8 (20 seems to produce errors around 'is_void_v' there)
+      # c++ 20 for nodejs_23.libv8
+      "CONFIG+=c++2a"
+      # v8_base.h will set nMaxVirtualMemory to 4000000000/5000000000
+      # which is not page-aligned, so disable memory limitation for now
+      "QMAKE_CXXFLAGS+=-DV8_VERSION_121_PLUS"
+      "QMAKE_CXXFLAGS+=-DDISABLE_MEMORY_LIMITATION"
+      "QMAKE_LFLAGS+=-licui18n"
+    ];
     preConfigure = ''
       cd $BUILDRT
 

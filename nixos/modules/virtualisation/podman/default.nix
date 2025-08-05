@@ -155,12 +155,12 @@ in
           pkg:
           pkg.override {
             extraPackages =
-              cfg.extraPackages
-              ++ [
-                "/run/wrappers" # setuid shadow
-                config.systemd.package # To allow systemd-based container healthchecks
-              ]
-              ++ lib.optional (config.boot.supportedFilesystems.zfs or false) config.boot.zfs.package;
+            cfg.extraPackages
+            ++ [
+              "/run/wrappers" # setuid shadow
+              config.systemd.package # To allow systemd-based container healthchecks
+            ]
+            ++ lib.optional (config.boot.supportedFilesystems.zfs or false) config.boot.zfs.package;
             extraRuntimes = [
               pkgs.runc
             ]

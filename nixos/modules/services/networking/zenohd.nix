@@ -100,7 +100,7 @@ in
           User = "zenohd";
           Group = "zenohd";
           ExecStart =
-            "${lib.getExe cfg.package} -c ${cfgFile} " + (lib.concatStringsSep " " cfg.extraOptions);
+          "${lib.getExe cfg.package} -c ${cfgFile} " + (lib.concatStringsSep " " cfg.extraOptions);
         };
       };
 

@@ -130,19 +130,19 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs =
-    lib.optionals (x11Support || waylandSupport) [
-      # TODO: Reorder me on `staging`.
-      libxkbcommon
-    ]
-    ++ [
-      (libepoxy.override { inherit x11Support; })
-    ]
-    ++ lib.optionals (x11Support || waylandSupport) [
-      isocodes
-    ]
-    ++ lib.optionals trackerSupport [
-      tinysparql
-    ];
+  lib.optionals (x11Support || waylandSupport) [
+    # TODO: Reorder me on `staging`.
+    libxkbcommon
+  ]
+  ++ [
+    (libepoxy.override { inherit x11Support; })
+  ]
+  ++ lib.optionals (x11Support || waylandSupport) [
+    isocodes
+  ]
+  ++ lib.optionals trackerSupport [
+    tinysparql
+  ];
   #TODO: colord?
 
   propagatedBuildInputs = [
@@ -228,37 +228,37 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   postInstall =
-    lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
-      # The updater is needed for nixos env and it's tiny.
-      moveToOutput bin/gtk-update-icon-cache "$out"
-      # Launcher
-      moveToOutput bin/gtk-launch "$out"
-      # Broadway daemon
-      moveToOutput bin/broadwayd "$out"
+  lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
+    # The updater is needed for nixos env and it's tiny.
+    moveToOutput bin/gtk-update-icon-cache "$out"
+    # Launcher
+    moveToOutput bin/gtk-launch "$out"
+    # Broadway daemon
+    moveToOutput bin/broadwayd "$out"
 
-      # TODO: patch glib directly
-      for f in $dev/bin/gtk-encode-symbolic-svg; do
-        wrapProgram $f --prefix XDG_DATA_DIRS : "${shared-mime-info}/share"
-      done
-    ''
-    + lib.optionalString (stdenv.buildPlatform == stdenv.hostPlatform) ''
-      GTK_PATH="''${out:?}/lib/gtk-3.0/3.0.0/immodules/" ''${dev:?}/bin/gtk-query-immodules-3.0 > "''${out:?}/lib/gtk-3.0/3.0.0/immodules.cache"
-    '';
+    # TODO: patch glib directly
+    for f in $dev/bin/gtk-encode-symbolic-svg; do
+      wrapProgram $f --prefix XDG_DATA_DIRS : "${shared-mime-info}/share"
+    done
+  ''
+  + lib.optionalString (stdenv.buildPlatform == stdenv.hostPlatform) ''
+    GTK_PATH="''${out:?}/lib/gtk-3.0/3.0.0/immodules/" ''${dev:?}/bin/gtk-query-immodules-3.0 > "''${out:?}/lib/gtk-3.0/3.0.0/immodules.cache"
+  '';
 
   # Wrap demos
   postFixup =
-    lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
-      demos=(gtk3-demo gtk3-demo-application gtk3-icon-browser gtk3-widget-factory)
+  lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
+    demos=(gtk3-demo gtk3-demo-application gtk3-icon-browser gtk3-widget-factory)
 
-      for program in ''${demos[@]}; do
-        wrapProgram $dev/bin/$program \
-          --prefix XDG_DATA_DIRS : "$GSETTINGS_SCHEMAS_PATH:$out/share/gsettings-schemas/${finalAttrs.pname}-${finalAttrs.version}"
-      done
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      # a comment created a cycle between outputs
-      sed '/^# ModulesPath =/d' -i "$out"/lib/gtk-*/*/immodules.cache
-    '';
+    for program in ''${demos[@]}; do
+      wrapProgram $dev/bin/$program \
+        --prefix XDG_DATA_DIRS : "$GSETTINGS_SCHEMAS_PATH:$out/share/gsettings-schemas/${finalAttrs.pname}-${finalAttrs.version}"
+    done
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    # a comment created a cycle between outputs
+    sed '/^# ModulesPath =/d' -i "$out"/lib/gtk-*/*/immodules.cache
+  '';
 
   passthru = {
     updateScript = gnome.updateScript {

@@ -44,12 +44,12 @@ lib.checkListOfEnum "where-is-my-sddm-theme: variant" validVariants variants
     };
 
     propagatedUserEnvPkgs =
-      [ ]
-      ++ lib.optionals (lib.elem "qt5" variants) [ libsForQt5.qtgraphicaleffects ]
-      ++ lib.optionals (lib.elem "qt6" variants) [
-        qt6.qt5compat
-        qt6.qtsvg
-      ];
+    [ ]
+    ++ lib.optionals (lib.elem "qt5" variants) [ libsForQt5.qtgraphicaleffects ]
+    ++ lib.optionals (lib.elem "qt6" variants) [
+      qt6.qt5compat
+      qt6.qtsvg
+    ];
 
     installPhase = ''
       mkdir -p $out/share/sddm/themes/

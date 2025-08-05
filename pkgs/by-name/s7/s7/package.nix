@@ -36,14 +36,14 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   buildInputs =
-    lib.optional withArb flint3
-    ++ lib.optionals withGMP [
-      gmp
-      mpfr
-      libmpc
-    ]
-    ++ lib.optional withNrepl notcurses
-    ++ lib.optional stdenv.hostPlatform.isMinGW windows.pthreads;
+  lib.optional withArb flint3
+  ++ lib.optionals withGMP [
+    gmp
+    mpfr
+    libmpc
+  ]
+  ++ lib.optional withNrepl notcurses
+  ++ lib.optional stdenv.hostPlatform.isMinGW windows.pthreads;
 
   # The following scripts are modified from [Guix's](https://packages.guix.gnu.org/packages/s7/).
 

@@ -112,52 +112,52 @@ let
     passthru.updateScript = ./update.sh;
 
     rpath =
-      lib.makeLibraryPath [
-        alsa-lib
-        at-spi2-atk
-        at-spi2-core
-        atk
-        cairo
-        cups
-        curl
-        dbus
-        expat
-        fontconfig
-        freetype
-        gdk-pixbuf
-        glib
-        gtk3
-        libGL
-        libappindicator-gtk3
-        libdrm
-        libnotify
-        libpulseaudio
-        libuuid
-        libxcb
-        libxkbcommon
-        libgbm
-        nspr
-        nss
-        pango
-        pipewire
-        stdenv.cc.cc
-        systemd
-        wayland
-        xorg.libX11
-        xorg.libXScrnSaver
-        xorg.libXcomposite
-        xorg.libXcursor
-        xorg.libXdamage
-        xorg.libXext
-        xorg.libXfixes
-        xorg.libXi
-        xorg.libXrandr
-        xorg.libXrender
-        xorg.libXtst
-        xorg.libxkbfile
-        xorg.libxshmfence
-      ]
-      + ":${lib.getLib stdenv.cc.cc}/lib64";
+    lib.makeLibraryPath [
+      alsa-lib
+      at-spi2-atk
+      at-spi2-core
+      atk
+      cairo
+      cups
+      curl
+      dbus
+      expat
+      fontconfig
+      freetype
+      gdk-pixbuf
+      glib
+      gtk3
+      libGL
+      libappindicator-gtk3
+      libdrm
+      libnotify
+      libpulseaudio
+      libuuid
+      libxcb
+      libxkbcommon
+      libgbm
+      nspr
+      nss
+      pango
+      pipewire
+      stdenv.cc.cc
+      systemd
+      wayland
+      xorg.libX11
+      xorg.libXScrnSaver
+      xorg.libXcomposite
+      xorg.libXcursor
+      xorg.libXdamage
+      xorg.libXext
+      xorg.libXfixes
+      xorg.libXi
+      xorg.libXrandr
+      xorg.libXrender
+      xorg.libXtst
+      xorg.libxkbfile
+      xorg.libxshmfence
+    ]
+    + ":${lib.getLib stdenv.cc.cc}/lib64";
 
     buildInputs = [
       gtk3 # needed for GSETTINGS_SCHEMAS_PATH

@@ -49,21 +49,21 @@ stdenv.mkDerivation (finalAttrs: {
   env.GTEST_FILTER =
     let
       filteredTests =
-        lib.optionals stdenv.hostPlatform.isMusl [
-          "Symbolize.SymbolizeStackConsumption"
-          "Symbolize.SymbolizeWithDemanglingStackConsumption"
-        ]
-        ++ lib.optionals stdenv.hostPlatform.isStatic [
-          "LogBacktraceAt.DoesBacktraceAtRightLineWhenEnabled"
-        ]
-        ++ lib.optionals stdenv.cc.isClang [
-          # Clang optimizes an expected allocation away.
-          # See https://github.com/google/glog/issues/937
-          "DeathNoAllocNewHook.logging"
-        ]
-        ++ lib.optionals stdenv.hostPlatform.isDarwin [
-          "LogBacktraceAt.DoesBacktraceAtRightLineWhenEnabled"
-        ];
+      lib.optionals stdenv.hostPlatform.isMusl [
+        "Symbolize.SymbolizeStackConsumption"
+        "Symbolize.SymbolizeWithDemanglingStackConsumption"
+      ]
+      ++ lib.optionals stdenv.hostPlatform.isStatic [
+        "LogBacktraceAt.DoesBacktraceAtRightLineWhenEnabled"
+      ]
+      ++ lib.optionals stdenv.cc.isClang [
+        # Clang optimizes an expected allocation away.
+        # See https://github.com/google/glog/issues/937
+        "DeathNoAllocNewHook.logging"
+      ]
+      ++ lib.optionals stdenv.hostPlatform.isDarwin [
+        "LogBacktraceAt.DoesBacktraceAtRightLineWhenEnabled"
+      ];
     in
     "-${builtins.concatStringsSep ":" filteredTests}";
 

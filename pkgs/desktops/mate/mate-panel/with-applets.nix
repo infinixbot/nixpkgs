@@ -29,11 +29,11 @@ stdenv.mkDerivation {
   ];
 
   buildInputs =
-    lib.forEach selectedApplets (x: x.buildInputs)
-    ++ selectedApplets
-    ++ [ mate-panel ]
-    ++ mate-panel.buildInputs
-    ++ mate-panel.propagatedBuildInputs;
+  lib.forEach selectedApplets (x: x.buildInputs)
+  ++ selectedApplets
+  ++ [ mate-panel ]
+  ++ mate-panel.buildInputs
+  ++ mate-panel.propagatedBuildInputs;
 
   dontUnpack = true;
   dontConfigure = true;

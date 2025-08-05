@@ -18,22 +18,22 @@ let
 
   # merge parameters from services.nfs.server
   nfsConfSettings =
-    lib.optionalAttrs (cfg.server.nproc != null) {
-      nfsd.threads = cfg.server.nproc;
-    }
-    // lib.optionalAttrs (cfg.server.hostName != null) {
-      nfsd.host = cfg.server.hostName;
-    }
-    // lib.optionalAttrs (cfg.server.mountdPort != null) {
-      mountd.port = cfg.server.mountdPort;
-    }
-    // lib.optionalAttrs (cfg.server.statdPort != null) {
-      statd.port = cfg.server.statdPort;
-    }
-    // lib.optionalAttrs (cfg.server.lockdPort != null) {
-      lockd.port = cfg.server.lockdPort;
-      lockd.udp-port = cfg.server.lockdPort;
-    };
+  lib.optionalAttrs (cfg.server.nproc != null) {
+    nfsd.threads = cfg.server.nproc;
+  }
+  // lib.optionalAttrs (cfg.server.hostName != null) {
+    nfsd.host = cfg.server.hostName;
+  }
+  // lib.optionalAttrs (cfg.server.mountdPort != null) {
+    mountd.port = cfg.server.mountdPort;
+  }
+  // lib.optionalAttrs (cfg.server.statdPort != null) {
+    statd.port = cfg.server.statdPort;
+  }
+  // lib.optionalAttrs (cfg.server.lockdPort != null) {
+    lockd.port = cfg.server.lockdPort;
+    lockd.udp-port = cfg.server.lockdPort;
+  };
 
   nfsConfDeprecated = cfg.extraConfig + ''
     [nfsd]
@@ -122,12 +122,12 @@ in
       {
 
         warnings =
-          (lib.optional (cfg.extraConfig != "") ''
-            `services.nfs.extraConfig` is deprecated. Use `services.nfs.settings` instead.
-          '')
-          ++ (lib.optional (cfg.server.extraNfsdConfig != "") ''
-            `services.nfs.server.extraNfsdConfig` is deprecated. Use `services.nfs.settings` instead.
-          '');
+        (lib.optional (cfg.extraConfig != "") ''
+          `services.nfs.extraConfig` is deprecated. Use `services.nfs.settings` instead.
+        '')
+        ++ (lib.optional (cfg.server.extraNfsdConfig != "") ''
+          `services.nfs.server.extraNfsdConfig` is deprecated. Use `services.nfs.settings` instead.
+        '');
         assertions = [
           {
             assertion = cfg.settings != { } -> cfg.extraConfig == "" && cfg.server.extraNfsdConfig == "";

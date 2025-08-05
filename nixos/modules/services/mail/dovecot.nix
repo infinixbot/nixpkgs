@@ -645,7 +645,7 @@ in
 
     services.dovecot2 = {
       protocols =
-        optional cfg.enableImap "imap" ++ optional cfg.enablePop3 "pop3" ++ optional cfg.enableLmtp "lmtp";
+      optional cfg.enableImap "imap" ++ optional cfg.enablePop3 "pop3" ++ optional cfg.enableLmtp "lmtp";
 
       mailPlugins = mkIf cfg.enableQuota {
         globally.enable = [ "quota" ];
@@ -653,8 +653,8 @@ in
       };
 
       sieve.plugins =
-        optional (cfg.imapsieve.mailbox != [ ]) "sieve_imapsieve"
-        ++ optional (cfg.sieve.pipeBins != [ ]) "sieve_extprograms";
+      optional (cfg.imapsieve.mailbox != [ ]) "sieve_imapsieve"
+      ++ optional (cfg.sieve.pipeBins != [ ]) "sieve_extprograms";
 
       sieve.globalExtensions = optional (cfg.sieve.pipeBins != [ ]) "vnd.dovecot.pipe";
 

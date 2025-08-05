@@ -52,9 +52,9 @@ stdenv.mkDerivation (finalAttrs: {
   ++ optional pkcs11Support pkcs11helper;
 
   configureFlags =
-    optional useSystemd "--enable-systemd"
-    ++ optional pkcs11Support "--enable-pkcs11"
-    ++ optional stdenv.hostPlatform.isDarwin "--disable-plugin-auth-pam";
+  optional useSystemd "--enable-systemd"
+  ++ optional pkcs11Support "--enable-pkcs11"
+  ++ optional stdenv.hostPlatform.isDarwin "--disable-plugin-auth-pam";
 
   # We used to vendor the update-systemd-resolved script inside libexec,
   # but a separate package was made, that uses libexec/openvpn. Copy it

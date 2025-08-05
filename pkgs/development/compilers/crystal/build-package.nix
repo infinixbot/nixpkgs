@@ -115,21 +115,21 @@ stdenv.mkDerivation (
     inherit enableParallelBuilding;
     strictDeps = true;
     buildInputs =
-      args.buildInputs or [ ]
-      ++ [ crystal ]
-      ++ lib.optional (lib.versionAtLeast crystal.version "1.8") pcre2;
+    args.buildInputs or [ ]
+    ++ [ crystal ]
+    ++ lib.optional (lib.versionAtLeast crystal.version "1.8") pcre2;
 
     nativeBuildInputs =
-      args.nativeBuildInputs or [ ]
-      ++ [
-        crystal
-        git
-        installShellFiles
-        removeReferencesTo
-        pkg-config
-        which
-      ]
-      ++ lib.optional (format != "crystal") shards;
+    args.nativeBuildInputs or [ ]
+    ++ [
+      crystal
+      git
+      installShellFiles
+      removeReferencesTo
+      pkg-config
+      which
+    ]
+    ++ lib.optional (format != "crystal") shards;
 
     buildPhase =
       args.buildPhase or (lib.concatStringsSep "\n" (

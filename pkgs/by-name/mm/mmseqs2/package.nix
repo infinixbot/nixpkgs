@@ -59,16 +59,16 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs =
-    lib.optionals stdenv.cc.isClang [
-      llvmPackages.openmp
-      zlib
-      bzip2
-    ]
-    ++ lib.optional enableMpi mpi
-    ++ lib.optionals cudaSupport [
-      cudaPackages.cuda_cudart
-      cudaPackages.cuda_cccl
-    ];
+  lib.optionals stdenv.cc.isClang [
+    llvmPackages.openmp
+    zlib
+    bzip2
+  ]
+  ++ lib.optional enableMpi mpi
+  ++ lib.optionals cudaSupport [
+    cudaPackages.cuda_cudart
+    cudaPackages.cuda_cccl
+  ];
 
   postInstall = ''
     installShellCompletion --bash --cmd mmseqs $out/util/bash-completion.sh

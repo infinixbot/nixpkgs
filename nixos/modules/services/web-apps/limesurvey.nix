@@ -285,10 +285,10 @@ in
       components = {
         db = {
           connectionString =
-            "${cfg.database.type}:dbname=${cfg.database.name};host=${
-              if pgsqlLocal then cfg.database.socket else cfg.database.host
-            };port=${toString cfg.database.port}"
-            + optionalString mysqlLocal ";socket=${cfg.database.socket}";
+          "${cfg.database.type}:dbname=${cfg.database.name};host=${
+            if pgsqlLocal then cfg.database.socket else cfg.database.host
+          };port=${toString cfg.database.port}"
+          + optionalString mysqlLocal ";socket=${cfg.database.socket}";
           username = cfg.database.user;
           password = mkIf (
             cfg.database.passwordFile != null
@@ -444,7 +444,7 @@ in
     };
 
     systemd.services.httpd.after =
-      optional mysqlLocal "mysql.service" ++ optional pgsqlLocal "postgresql.target";
+    optional mysqlLocal "mysql.service" ++ optional pgsqlLocal "postgresql.target";
 
     users.users.${user} = {
       group = group;

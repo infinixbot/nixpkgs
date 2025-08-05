@@ -211,72 +211,72 @@ let
   '';
 
   configureFlags =
-    lib.optionals enableOptimizations [
-      "--enable-optimizations"
-    ]
-    ++ lib.optionals (!static) [
-      "--enable-shared"
-    ]
-    ++ [
-      "--with-threads"
-      "--with-system-ffi"
-      "--with-system-expat"
-      "--enable-unicode=ucs${toString ucsEncoding}"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isCygwin [
-      "ac_cv_func_bind_textdomain_codeset=yes"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      "--disable-toolbox-glue"
-    ]
-    ++ lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
-      "PYTHON_FOR_BUILD=${lib.getBin buildPackages.python27}/bin/python"
-      "ac_cv_buggy_getaddrinfo=no"
-      # Assume little-endian IEEE 754 floating point when cross compiling
-      "ac_cv_little_endian_double=yes"
-      "ac_cv_big_endian_double=no"
-      "ac_cv_mixed_endian_double=no"
-      "ac_cv_x87_double_rounding=yes"
-      "ac_cv_tanh_preserves_zero_sign=yes"
-      # Generally assume that things are present and work
-      "ac_cv_posix_semaphores_enabled=yes"
-      "ac_cv_broken_sem_getvalue=no"
-      "ac_cv_wchar_t_signed=yes"
-      "ac_cv_rshift_extends_sign=yes"
-      "ac_cv_broken_nice=no"
-      "ac_cv_broken_poll=no"
-      "ac_cv_working_tzset=yes"
-      "ac_cv_have_long_long_format=yes"
-      "ac_cv_have_size_t_format=yes"
-      "ac_cv_computed_gotos=yes"
-      "ac_cv_file__dev_ptmx=yes"
-      "ac_cv_file__dev_ptc=yes"
-    ]
-    # Never even try to use lchmod on linux,
-    # don't rely on detecting glibc-isms.
-    ++ lib.optional stdenv.hostPlatform.isLinux "ac_cv_func_lchmod=no"
-    ++ lib.optional static "LDFLAGS=-static";
+  lib.optionals enableOptimizations [
+    "--enable-optimizations"
+  ]
+  ++ lib.optionals (!static) [
+    "--enable-shared"
+  ]
+  ++ [
+    "--with-threads"
+    "--with-system-ffi"
+    "--with-system-expat"
+    "--enable-unicode=ucs${toString ucsEncoding}"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isCygwin [
+    "ac_cv_func_bind_textdomain_codeset=yes"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    "--disable-toolbox-glue"
+  ]
+  ++ lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
+    "PYTHON_FOR_BUILD=${lib.getBin buildPackages.python27}/bin/python"
+    "ac_cv_buggy_getaddrinfo=no"
+    # Assume little-endian IEEE 754 floating point when cross compiling
+    "ac_cv_little_endian_double=yes"
+    "ac_cv_big_endian_double=no"
+    "ac_cv_mixed_endian_double=no"
+    "ac_cv_x87_double_rounding=yes"
+    "ac_cv_tanh_preserves_zero_sign=yes"
+    # Generally assume that things are present and work
+    "ac_cv_posix_semaphores_enabled=yes"
+    "ac_cv_broken_sem_getvalue=no"
+    "ac_cv_wchar_t_signed=yes"
+    "ac_cv_rshift_extends_sign=yes"
+    "ac_cv_broken_nice=no"
+    "ac_cv_broken_poll=no"
+    "ac_cv_working_tzset=yes"
+    "ac_cv_have_long_long_format=yes"
+    "ac_cv_have_size_t_format=yes"
+    "ac_cv_computed_gotos=yes"
+    "ac_cv_file__dev_ptmx=yes"
+    "ac_cv_file__dev_ptc=yes"
+  ]
+  # Never even try to use lchmod on linux,
+  # don't rely on detecting glibc-isms.
+  ++ lib.optional stdenv.hostPlatform.isLinux "ac_cv_func_lchmod=no"
+  ++ lib.optional static "LDFLAGS=-static";
 
   strictDeps = true;
   buildInputs =
-    lib.optional (stdenv ? cc && stdenv.cc.libc != null) stdenv.cc.libc
-    ++ [
-      bzip2
-      openssl
-      zlib
-      libffi
-      expat
-      db
-      gdbm
-      ncurses
-      sqlite
-      readline
-    ]
-    ++ lib.optionals x11Support [
-      tcl
-      tk
-      libX11
-    ];
+  lib.optional (stdenv ? cc && stdenv.cc.libc != null) stdenv.cc.libc
+  ++ [
+    bzip2
+    openssl
+    zlib
+    libffi
+    expat
+    db
+    gdbm
+    ncurses
+    sqlite
+    readline
+  ]
+  ++ lib.optionals x11Support [
+    tcl
+    tk
+    libX11
+  ];
   nativeBuildInputs = [
     autoreconfHook
   ]
@@ -318,8 +318,8 @@ stdenv.mkDerivation (
     inherit (mkPaths buildInputs) C_INCLUDE_PATH LIBRARY_PATH;
 
     env.NIX_CFLAGS_COMPILE =
-      lib.optionalString (stdenv.targetPlatform.system == "x86_64-darwin") "-msse2"
-      + lib.optionalString stdenv.hostPlatform.isMusl " -DTHREAD_STACK_SIZE=0x100000";
+    lib.optionalString (stdenv.targetPlatform.system == "x86_64-darwin") "-msse2"
+    + lib.optionalString stdenv.hostPlatform.isMusl " -DTHREAD_STACK_SIZE=0x100000";
     DETERMINISTIC_BUILD = 1;
 
     setupHook = python-setup-hook sitePackages;

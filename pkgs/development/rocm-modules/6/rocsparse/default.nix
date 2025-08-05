@@ -121,18 +121,18 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   postInstall =
-    lib.optionalString buildBenchmarks ''
-      mkdir -p $benchmark/bin
-      cp -a $out/bin/* $benchmark/bin
-      rm $benchmark/bin/rocsparse-test
-    ''
-    + lib.optionalString (buildTests || buildBenchmarks) ''
-      mkdir -p $test/bin
-      mv $out/bin/* $test/bin
-      rm $test/bin/rocsparse-bench || true
-      mv /build/source/matrices $test
-      rmdir $out/bin
-    '';
+  lib.optionalString buildBenchmarks ''
+    mkdir -p $benchmark/bin
+    cp -a $out/bin/* $benchmark/bin
+    rm $benchmark/bin/rocsparse-test
+  ''
+  + lib.optionalString (buildTests || buildBenchmarks) ''
+    mkdir -p $test/bin
+    mv $out/bin/* $test/bin
+    rm $test/bin/rocsparse-bench || true
+    mv /build/source/matrices $test
+    rmdir $out/bin
+  '';
 
   passthru = {
     matrices = import ./deps.nix {

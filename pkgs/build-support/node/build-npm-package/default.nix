@@ -86,16 +86,16 @@ lib.extendMkDerivation {
       inherit npmDeps npmBuildScript;
 
       nativeBuildInputs =
-        nativeBuildInputs
-        ++ [
-          nodejs
-          # Prefer passed hooks
-          (if npmConfigHook != null then npmConfigHook else npmHooks.npmConfigHook)
-          (if npmBuildHook != null then npmBuildHook else npmHooks.npmBuildHook)
-          (if npmInstallHook != null then npmInstallHook else npmHooks.npmInstallHook)
-          nodejs.python
-        ]
-        ++ lib.optionals stdenv.hostPlatform.isDarwin [ cctools ];
+      nativeBuildInputs
+      ++ [
+        nodejs
+        # Prefer passed hooks
+        (if npmConfigHook != null then npmConfigHook else npmHooks.npmConfigHook)
+        (if npmBuildHook != null then npmBuildHook else npmHooks.npmBuildHook)
+        (if npmInstallHook != null then npmInstallHook else npmHooks.npmInstallHook)
+        nodejs.python
+      ]
+      ++ lib.optionals stdenv.hostPlatform.isDarwin [ cctools ];
       buildInputs = buildInputs ++ [ nodejs ];
 
       strictDeps = true;

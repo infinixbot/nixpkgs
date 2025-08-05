@@ -42,9 +42,9 @@ assert (repos != [ ]) || (url != "") || (urls != [ ]);
 
 let
   pname =
-    (lib.replaceStrings [ "." ] [ "_" ] groupId)
-    + "_"
-    + (lib.replaceStrings [ "." ] [ "_" ] artifactId);
+  (lib.replaceStrings [ "." ] [ "_" ] groupId)
+  + "_"
+  + (lib.replaceStrings [ "." ] [ "_" ] artifactId);
   suffix = lib.optionalString (classifier != null) "-${classifier}";
   filename = "${artifactId}-${version}${suffix}.jar";
   mkJarUrl =

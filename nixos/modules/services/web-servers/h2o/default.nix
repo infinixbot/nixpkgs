@@ -131,22 +131,22 @@ let
       );
 
       httpSettings =
-        lib.optionalAttrs (value.tls == null || value.tls.policy == "add") {
-          "${names.server}:${builtins.toString port.HTTP}" = value.settings // {
-            listen.port = port.HTTP;
-          };
-        }
-        // lib.optionalAttrs (value.tls != null && value.tls.policy == "force") {
-          "${names.server}:${builtins.toString port.HTTP}" = {
-            listen.port = port.HTTP;
-            paths."/" = {
-              redirect = {
-                status = value.tls.redirectCode;
-                url = "https://${names.server}:${builtins.toString port.TLS}";
-              };
+      lib.optionalAttrs (value.tls == null || value.tls.policy == "add") {
+        "${names.server}:${builtins.toString port.HTTP}" = value.settings // {
+          listen.port = port.HTTP;
+        };
+      }
+      // lib.optionalAttrs (value.tls != null && value.tls.policy == "force") {
+        "${names.server}:${builtins.toString port.HTTP}" = {
+          listen.port = port.HTTP;
+          paths."/" = {
+            redirect = {
+              status = value.tls.redirectCode;
+              url = "https://${names.server}:${builtins.toString port.TLS}";
             };
           };
         };
+      };
 
       tlsSettings =
         lib.optionalAttrs
@@ -167,32 +167,32 @@ let
 
                 # ATTENTION: Let’s Encrypt has sunset OCSP stapling.
                 tlsRecAttrs =
-                  # If using ACME, this module will disable H2O’s default OCSP
-                  # stapling.
-                  #
-                  # See: https://letsencrypt.org/2024/12/05/ending-ocsp/
-                  lib.optionalAttrs (builtins.elem names.cert acmeCertNames.all) {
-                    ocsp-update-interval = 0;
+                # If using ACME, this module will disable H2O’s default OCSP
+                # stapling.
+                #
+                # See: https://letsencrypt.org/2024/12/05/ending-ocsp/
+                lib.optionalAttrs (builtins.elem names.cert acmeCertNames.all) {
+                  ocsp-update-interval = 0;
+                }
+                # Mozilla’s ssl-config-generator is at present still
+                # recommending this setting as well, but this module will
+                # skip setting a stapling value as Let’s Encrypt + ACME is
+                # the most likely use case.
+                #
+                # See: https://github.com/mozilla/ssl-config-generator/issues/323
+                // lib.optionalAttrs hasTLSRecommendations (
+                  let
+                    recs = mozTLSRecs.${tlsRecommendations};
+                  in
+                  {
+                    min-version = builtins.head recs.tls_versions;
+                    cipher-preference = "server";
+                    "cipher-suite-tls1.3" = recs.ciphersuites;
                   }
-                  # Mozilla’s ssl-config-generator is at present still
-                  # recommending this setting as well, but this module will
-                  # skip setting a stapling value as Let’s Encrypt + ACME is
-                  # the most likely use case.
-                  #
-                  # See: https://github.com/mozilla/ssl-config-generator/issues/323
-                  // lib.optionalAttrs hasTLSRecommendations (
-                    let
-                      recs = mozTLSRecs.${tlsRecommendations};
-                    in
-                    {
-                      min-version = builtins.head recs.tls_versions;
-                      cipher-preference = "server";
-                      "cipher-suite-tls1.3" = recs.ciphersuites;
-                    }
-                    // lib.optionalAttrs (recs.ciphers.openssl != [ ]) {
-                      cipher-suite = lib.concatStringsSep ":" recs.ciphers.openssl;
-                    }
-                  );
+                  // lib.optionalAttrs (recs.ciphers.openssl != [ ]) {
+                    cipher-suite = lib.concatStringsSep ":" recs.ciphers.openssl;
+                  }
+                );
 
                 headerRecAttrs =
                   lib.optionalAttrs
@@ -225,11 +225,11 @@ let
                 listen =
                   let
                     identity =
-                      value.tls.identity
-                      ++ lib.optional (builtins.elem names.cert acmeCertNames.all) {
-                        key-file = "${certs.${names.cert}.directory}/key.pem";
-                        certificate-file = "${certs.${names.cert}.directory}/fullchain.pem";
-                      };
+                    value.tls.identity
+                    ++ lib.optional (builtins.elem names.cert acmeCertNames.all) {
+                      key-file = "${certs.${names.cert}.directory}/key.pem";
+                      certificate-file = "${certs.${names.cert}.directory}/fullchain.pem";
+                    };
 
                     baseListen = {
                       port = port.TLS;

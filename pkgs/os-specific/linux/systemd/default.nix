@@ -808,36 +808,36 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   postInstall =
-    lib.optionalString (!buildLibsOnly) ''
-      mkdir -p $out/example/systemd
-      mv $out/lib/{binfmt.d,sysctl.d,tmpfiles.d} $out/example
-      mv $out/lib/systemd/{system,user} $out/example/systemd
+  lib.optionalString (!buildLibsOnly) ''
+    mkdir -p $out/example/systemd
+    mv $out/lib/{binfmt.d,sysctl.d,tmpfiles.d} $out/example
+    mv $out/lib/systemd/{system,user} $out/example/systemd
 
-      rm -rf $out/etc/systemd/system
+    rm -rf $out/etc/systemd/system
 
-      # Fix reference to /bin/false in the D-Bus services.
-      for i in $out/share/dbus-1/system-services/*.service; do
-        substituteInPlace $i --replace /bin/false ${coreutils}/bin/false
-      done
+    # Fix reference to /bin/false in the D-Bus services.
+    for i in $out/share/dbus-1/system-services/*.service; do
+      substituteInPlace $i --replace /bin/false ${coreutils}/bin/false
+    done
 
-      # For compatibility with dependents that use sbin instead of bin.
-      ln -s bin "$out/sbin"
+    # For compatibility with dependents that use sbin instead of bin.
+    ln -s bin "$out/sbin"
 
-      rm -rf $out/etc/rpm
-    ''
-    + lib.optionalString (!withKernelInstall) ''
-      # "kernel-install" shouldn't be used on NixOS.
-      find $out -name "*kernel-install*" -exec rm {} \;
-    ''
-    + lib.optionalString (!withDocumentation) ''
-      rm -rf $out/share/doc
-    ''
-    + lib.optionalString (withKmod && !buildLibsOnly) ''
-      mv $out/lib/modules-load.d $out/example
-    ''
-    + lib.optionalString withSysusers ''
-      mv $out/lib/sysusers.d $out/example
-    '';
+    rm -rf $out/etc/rpm
+  ''
+  + lib.optionalString (!withKernelInstall) ''
+    # "kernel-install" shouldn't be used on NixOS.
+    find $out -name "*kernel-install*" -exec rm {} \;
+  ''
+  + lib.optionalString (!withDocumentation) ''
+    rm -rf $out/share/doc
+  ''
+  + lib.optionalString (withKmod && !buildLibsOnly) ''
+    mv $out/lib/modules-load.d $out/example
+  ''
+  + lib.optionalString withSysusers ''
+    mv $out/lib/sysusers.d $out/example
+  '';
 
   doInstallCheck = true;
 
@@ -864,23 +864,23 @@ stdenv.mkDerivation (finalAttrs: {
 
   # Wrap in the correct path for LUKS2 tokens.
   postFixup =
-    lib.optionalString withCryptsetup ''
-      for f in bin/systemd-cryptsetup bin/systemd-cryptenroll; do
-        # This needs to be in LD_LIBRARY_PATH because rpath on a binary is not propagated to libraries using dlopen, in this case `libcryptsetup.so`
-        wrapProgram $out/$f --prefix LD_LIBRARY_PATH : ${placeholder "out"}/lib/cryptsetup
-      done
-    ''
-    + lib.optionalString withBootloader ''
-      mv $out/dont-strip-me $out/lib/systemd/boot/efi
-    ''
-    + lib.optionalString withUkify ''
-      # To cross compile a derivation that builds a UKI with ukify, we need to wrap
-      # ukify with the correct binutils. When wrapping, no splicing happens so we
-      # have to explicitly pull binutils from targetPackages.
-      wrapProgram $out/bin/ukify --prefix PATH : ${
-        lib.makeBinPath [ targetPackages.stdenv.cc.bintools ]
-      }:${placeholder "out"}/lib/systemd
-    '';
+  lib.optionalString withCryptsetup ''
+    for f in bin/systemd-cryptsetup bin/systemd-cryptenroll; do
+      # This needs to be in LD_LIBRARY_PATH because rpath on a binary is not propagated to libraries using dlopen, in this case `libcryptsetup.so`
+      wrapProgram $out/$f --prefix LD_LIBRARY_PATH : ${placeholder "out"}/lib/cryptsetup
+    done
+  ''
+  + lib.optionalString withBootloader ''
+    mv $out/dont-strip-me $out/lib/systemd/boot/efi
+  ''
+  + lib.optionalString withUkify ''
+    # To cross compile a derivation that builds a UKI with ukify, we need to wrap
+    # ukify with the correct binutils. When wrapping, no splicing happens so we
+    # have to explicitly pull binutils from targetPackages.
+    wrapProgram $out/bin/ukify --prefix PATH : ${
+      lib.makeBinPath [ targetPackages.stdenv.cc.bintools ]
+    }:${placeholder "out"}/lib/systemd
+  '';
 
   disallowedReferences =
     lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform)

@@ -27,8 +27,8 @@ mkLibretroCore {
   ];
 
   makeFlags =
-    lib.optional stdenv.hostPlatform.isAarch32 "platform=armv-unix"
-    ++ lib.optional (!stdenv.hostPlatform.isx86) "DESMUME_JIT=0";
+  lib.optional stdenv.hostPlatform.isAarch32 "platform=armv-unix"
+  ++ lib.optional (!stdenv.hostPlatform.isx86) "DESMUME_JIT=0";
 
   preBuild = "cd desmume";
 

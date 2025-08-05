@@ -35,10 +35,10 @@ rustPlatform.buildRustPackage {
   nativeBuildInputs = [ installShellFiles ] ++ lib.optional stdenv.hostPlatform.isLinux pkg-config;
 
   buildInputs =
-    lib.optional stdenv.hostPlatform.isLinux openssl
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      libiconv
-    ];
+  lib.optional stdenv.hostPlatform.isLinux openssl
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    libiconv
+  ];
 
   postInstall = lib.optionalString canRunGitGr ''
     manpages=$(mktemp -d)

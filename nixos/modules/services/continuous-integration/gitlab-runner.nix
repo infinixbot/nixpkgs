@@ -699,78 +699,78 @@ in
     }) cfg.services;
 
     warnings =
-      mapAttrsToList (
-        name: serviceConfig:
-        "services.gitlab-runner.services.${name}.`registrationConfigFile` points to a file in Nix Store. You should use quoted absolute path to prevent this."
-      ) (filterAttrs (name: serviceConfig: isStorePath serviceConfig.registrationConfigFile) cfg.services)
-      ++
-        mapAttrsToList
-          (
+    mapAttrsToList (
+      name: serviceConfig:
+      "services.gitlab-runner.services.${name}.`registrationConfigFile` points to a file in Nix Store. You should use quoted absolute path to prevent this."
+    ) (filterAttrs (name: serviceConfig: isStorePath serviceConfig.registrationConfigFile) cfg.services)
+    ++
+      mapAttrsToList
+        (
+          name: serviceConfig:
+          "services.gitlab-runner.services.${name}.`authenticationTokenConfigFile` points to a file in Nix Store. You should use quoted absolute path to prevent this."
+        )
+        (
+          filterAttrs (
+            name: serviceConfig: isStorePath serviceConfig.authenticationTokenConfigFile
+          ) cfg.services
+        )
+    ++
+      mapAttrsToList
+        (name: serviceConfig: ''
+          Runner registration tokens have been deprecated and disabled by default in GitLab >= 17.0.
+          Consider migrating to runner authentication tokens by setting `services.gitlab-runner.services.${name}.authenticationTokenConfigFile`.
+          https://docs.gitlab.com/17.0/ee/ci/runners/new_creation_workflow.html'')
+        (
+          filterAttrs (name: serviceConfig: serviceConfig.authenticationTokenConfigFile == null) cfg.services
+        )
+    ++
+      mapAttrsToList
+        (
+          name: serviceConfig:
+          ''`services.gitlab-runner.services.${name}.protected` with runner authentication tokens has no effect and will be ignored. Please remove it from your configuration.''
+        )
+        (
+          filterAttrs (
             name: serviceConfig:
-            "services.gitlab-runner.services.${name}.`authenticationTokenConfigFile` points to a file in Nix Store. You should use quoted absolute path to prevent this."
-          )
-          (
-            filterAttrs (
-              name: serviceConfig: isStorePath serviceConfig.authenticationTokenConfigFile
-            ) cfg.services
-          )
-      ++
-        mapAttrsToList
-          (name: serviceConfig: ''
-            Runner registration tokens have been deprecated and disabled by default in GitLab >= 17.0.
-            Consider migrating to runner authentication tokens by setting `services.gitlab-runner.services.${name}.authenticationTokenConfigFile`.
-            https://docs.gitlab.com/17.0/ee/ci/runners/new_creation_workflow.html'')
-          (
-            filterAttrs (name: serviceConfig: serviceConfig.authenticationTokenConfigFile == null) cfg.services
-          )
-      ++
-        mapAttrsToList
-          (
+            serviceConfig.authenticationTokenConfigFile != null && serviceConfig.protected == true
+          ) cfg.services
+        )
+    ++
+      mapAttrsToList
+        (
+          name: serviceConfig:
+          ''`services.gitlab-runner.services.${name}.runUntagged` with runner authentication tokens has no effect and will be ignored. Please remove it from your configuration.''
+        )
+        (
+          filterAttrs (
             name: serviceConfig:
-            ''`services.gitlab-runner.services.${name}.protected` with runner authentication tokens has no effect and will be ignored. Please remove it from your configuration.''
-          )
-          (
-            filterAttrs (
-              name: serviceConfig:
-              serviceConfig.authenticationTokenConfigFile != null && serviceConfig.protected == true
-            ) cfg.services
-          )
-      ++
-        mapAttrsToList
-          (
+            serviceConfig.authenticationTokenConfigFile != null && serviceConfig.runUntagged == true
+          ) cfg.services
+        )
+    ++
+      mapAttrsToList
+        (
+          name: v:
+          ''`services.gitlab-runner.services.${name}.maximumTimeout` with runner authentication tokens has no effect and will be ignored. Please remove it from your configuration.''
+        )
+        (
+          filterAttrs (
             name: serviceConfig:
-            ''`services.gitlab-runner.services.${name}.runUntagged` with runner authentication tokens has no effect and will be ignored. Please remove it from your configuration.''
-          )
-          (
-            filterAttrs (
-              name: serviceConfig:
-              serviceConfig.authenticationTokenConfigFile != null && serviceConfig.runUntagged == true
-            ) cfg.services
-          )
-      ++
-        mapAttrsToList
-          (
-            name: v:
-            ''`services.gitlab-runner.services.${name}.maximumTimeout` with runner authentication tokens has no effect and will be ignored. Please remove it from your configuration.''
-          )
-          (
-            filterAttrs (
-              name: serviceConfig:
-              serviceConfig.authenticationTokenConfigFile != null && serviceConfig.maximumTimeout != 0
-            ) cfg.services
-          )
-      ++
-        mapAttrsToList
-          (
-            name: v:
-            ''`services.gitlab-runner.services.${name}.tagList` with runner authentication tokens has no effect and will be ignored. Please remove it from your configuration.''
-          )
-          (
-            filterAttrs (
-              serviceName: serviceConfig:
-              serviceConfig.authenticationTokenConfigFile != null && serviceConfig.tagList != [ ]
-            ) cfg.services
-          );
+            serviceConfig.authenticationTokenConfigFile != null && serviceConfig.maximumTimeout != 0
+          ) cfg.services
+        )
+    ++
+      mapAttrsToList
+        (
+          name: v:
+          ''`services.gitlab-runner.services.${name}.tagList` with runner authentication tokens has no effect and will be ignored. Please remove it from your configuration.''
+        )
+        (
+          filterAttrs (
+            serviceName: serviceConfig:
+            serviceConfig.authenticationTokenConfigFile != null && serviceConfig.tagList != [ ]
+          ) cfg.services
+        );
 
     environment.systemPackages = [ cfg.package ];
     systemd.services.gitlab-runner = {
@@ -789,16 +789,16 @@ in
       };
 
       path =
-        (with pkgs; [
-          bash
-          gawk
-          jq
-          moreutils
-          remarshal
-          util-linux
-        ])
-        ++ [ cfg.package ]
-        ++ cfg.extraPackages;
+      (with pkgs; [
+        bash
+        gawk
+        jq
+        moreutils
+        remarshal
+        util-linux
+      ])
+      ++ [ cfg.package ]
+      ++ cfg.extraPackages;
 
       reloadIfChanged = true;
       serviceConfig = {

@@ -180,10 +180,10 @@ let
   tablegenUsage = x: !(lib.strings.hasInfix "llvm-tblgen" x);
   addGccLtoCmakeFlags = !llvmPackagesRocm.stdenv.cc.isClang;
   llvmExtraCflags =
-    "-O3 -DNDEBUG -march=skylake -mtune=znver3"
-    + (lib.optionalString addGccLtoCmakeFlags " -D_GLIBCXX_USE_CXX11_ABI=0 -flto -ffat-lto-objects -flto-compression-level=19 -Wl,-flto")
-    + (lib.optionalString llvmPackagesRocm.stdenv.cc.isClang " -flto=thin -ffat-lto-objects")
-    + (lib.optionalString profilableStdenv " -fno-omit-frame-pointer -momit-leaf-frame-pointer -gz -g1");
+  "-O3 -DNDEBUG -march=skylake -mtune=znver3"
+  + (lib.optionalString addGccLtoCmakeFlags " -D_GLIBCXX_USE_CXX11_ABI=0 -flto -ffat-lto-objects -flto-compression-level=19 -Wl,-flto")
+  + (lib.optionalString llvmPackagesRocm.stdenv.cc.isClang " -flto=thin -ffat-lto-objects")
+  + (lib.optionalString profilableStdenv " -fno-omit-frame-pointer -momit-leaf-frame-pointer -gz -g1");
 in
 rec {
   inherit (llvmPackagesRocm) libunwind;
@@ -205,28 +205,28 @@ rec {
     '';
     LDFLAGS = "-Wl,--build-id=sha1,--icf=all,--compress-debug-sections=zlib";
     cmakeFlags =
-      (builtins.filter tablegenUsage old.cmakeFlags)
-      ++ [
-        llvmTargetsFlag
-        "-DCMAKE_BUILD_TYPE=Release"
-        "-DLLVM_ENABLE_ZSTD=FORCE_ON"
-        "-DLLVM_ENABLE_ZLIB=FORCE_ON"
-        "-DLLVM_ENABLE_THREADS=ON"
-        "-DLLVM_ENABLE_LTO=Thin"
-        "-DLLVM_USE_LINKER=lld"
-        (lib.cmakeBool "LLVM_ENABLE_LIBCXX" useLibcxx)
-        "-DCLANG_DEFAULT_CXX_STDLIB=${if useLibcxx then "libc++" else "libstdc++"}"
-      ]
-      ++ lib.optionals addGccLtoCmakeFlags [
-        "-DCMAKE_AR=${gcc-unwrapped}/bin/gcc-ar"
-        "-DCMAKE_RANLIB=${gcc-unwrapped}/bin/gcc-ranlib"
-        "-DCMAKE_NM=${gcc-unwrapped}/bin/gcc-nm"
-      ]
-      ++ lib.optionals useLibcxx [
-        "-DLLVM_ENABLE_LTO=Thin"
-        "-DLLVM_USE_LINKER=lld"
-        "-DLLVM_ENABLE_LIBCXX=ON"
-      ];
+    (builtins.filter tablegenUsage old.cmakeFlags)
+    ++ [
+      llvmTargetsFlag
+      "-DCMAKE_BUILD_TYPE=Release"
+      "-DLLVM_ENABLE_ZSTD=FORCE_ON"
+      "-DLLVM_ENABLE_ZLIB=FORCE_ON"
+      "-DLLVM_ENABLE_THREADS=ON"
+      "-DLLVM_ENABLE_LTO=Thin"
+      "-DLLVM_USE_LINKER=lld"
+      (lib.cmakeBool "LLVM_ENABLE_LIBCXX" useLibcxx)
+      "-DCLANG_DEFAULT_CXX_STDLIB=${if useLibcxx then "libc++" else "libstdc++"}"
+    ]
+    ++ lib.optionals addGccLtoCmakeFlags [
+      "-DCMAKE_AR=${gcc-unwrapped}/bin/gcc-ar"
+      "-DCMAKE_RANLIB=${gcc-unwrapped}/bin/gcc-ranlib"
+      "-DCMAKE_NM=${gcc-unwrapped}/bin/gcc-nm"
+    ]
+    ++ lib.optionals useLibcxx [
+      "-DLLVM_ENABLE_LTO=Thin"
+      "-DLLVM_USE_LINKER=lld"
+      "-DLLVM_ENABLE_LIBCXX=ON"
+    ];
     preConfigure = ''
       ${old.preConfigure or ""}
       cmakeFlagsArray+=(
@@ -265,26 +265,26 @@ rec {
         env.NIX_BUILD_ID_STYLE = "fast";
         LDFLAGS = "-Wl,--build-id=sha1,--icf=all,--compress-debug-sections=zlib";
         cmakeFlags =
-          (builtins.filter tablegenUsage old.cmakeFlags)
-          ++ [
-            llvmTargetsFlag
-            "-DCMAKE_BUILD_TYPE=Release"
-            "-DLLVM_ENABLE_ZSTD=FORCE_ON"
-            "-DLLVM_ENABLE_ZLIB=FORCE_ON"
-            "-DLLVM_ENABLE_THREADS=ON"
-            "-DLLVM_ENABLE_LTO=Thin"
-            "-DLLVM_USE_LINKER=lld"
-            (lib.cmakeBool "LLVM_ENABLE_LIBCXX" useLibcxx)
-            "-DCLANG_DEFAULT_CXX_STDLIB=${if useLibcxx then "libc++" else "libstdc++"}"
-          ]
-          ++ lib.optionals addGccLtoCmakeFlags [
-            "-DCMAKE_AR=${gcc-unwrapped}/bin/gcc-ar"
-            "-DCMAKE_RANLIB=${gcc-unwrapped}/bin/gcc-ranlib"
-            "-DCMAKE_NM=${gcc-unwrapped}/bin/gcc-nm"
-          ]
-          ++ lib.optionals useLibcxx [
-            "-DLLVM_ENABLE_LIBCXX=ON"
-          ];
+        (builtins.filter tablegenUsage old.cmakeFlags)
+        ++ [
+          llvmTargetsFlag
+          "-DCMAKE_BUILD_TYPE=Release"
+          "-DLLVM_ENABLE_ZSTD=FORCE_ON"
+          "-DLLVM_ENABLE_ZLIB=FORCE_ON"
+          "-DLLVM_ENABLE_THREADS=ON"
+          "-DLLVM_ENABLE_LTO=Thin"
+          "-DLLVM_USE_LINKER=lld"
+          (lib.cmakeBool "LLVM_ENABLE_LIBCXX" useLibcxx)
+          "-DCLANG_DEFAULT_CXX_STDLIB=${if useLibcxx then "libc++" else "libstdc++"}"
+        ]
+        ++ lib.optionals addGccLtoCmakeFlags [
+          "-DCMAKE_AR=${gcc-unwrapped}/bin/gcc-ar"
+          "-DCMAKE_RANLIB=${gcc-unwrapped}/bin/gcc-ranlib"
+          "-DCMAKE_NM=${gcc-unwrapped}/bin/gcc-nm"
+        ]
+        ++ lib.optionals useLibcxx [
+          "-DLLVM_ENABLE_LIBCXX=ON"
+        ];
         # Ensure we don't leak refs to compiler that was used to bootstrap this LLVM
         disallowedReferences = (old.disallowedReferences or [ ]) ++ disallowedRefsForToolchain;
         postFixup = ''
@@ -354,33 +354,33 @@ rec {
           requiredSystemFeatures = (old.requiredSystemFeatures or [ ]) ++ [ "big-parallel" ];
           # https://github.com/llvm/llvm-project/blob/6976deebafa8e7de993ce159aa6b82c0e7089313/clang/cmake/caches/DistributionExample-stage2.cmake#L9-L11
           cmakeFlags =
-            (builtins.filter tablegenUsage old.cmakeFlags)
-            ++ [
-              llvmTargetsFlag
-              "-DCMAKE_BUILD_TYPE=Release"
-              "-DLLVM_ENABLE_ZSTD=FORCE_ON"
-              "-DLLVM_ENABLE_ZLIB=FORCE_ON"
-              "-DLLVM_ENABLE_THREADS=ON"
-              "-DLLVM_ENABLE_LTO=Thin"
-              "-DLLVM_USE_LINKER=lld"
-              (lib.cmakeBool "LLVM_ENABLE_LIBCXX" useLibcxx)
-              "-DCLANG_DEFAULT_CXX_STDLIB=${if useLibcxx then "libc++" else "libstdc++"}"
-            ]
-            ++ lib.optionals addGccLtoCmakeFlags [
-              "-DCMAKE_AR=${gcc-unwrapped}/bin/gcc-ar"
-              "-DCMAKE_RANLIB=${gcc-unwrapped}/bin/gcc-ranlib"
-              "-DCMAKE_NM=${gcc-unwrapped}/bin/gcc-nm"
-            ]
-            ++ lib.optionals useLibcxx [
-              "-DLLVM_ENABLE_LTO=Thin"
-              "-DLLVM_ENABLE_LIBCXX=ON"
-              "-DLLVM_USE_LINKER=lld"
-              "-DCLANG_DEFAULT_RTLIB=compiler-rt"
-            ]
-            ++ lib.optionals (!useLibcxx) [
-              # FIXME: Config file in rocmcxx instead of GCC_INSTALL_PREFIX?
-              "-DGCC_INSTALL_PREFIX=${gcc-prefix}"
-            ];
+          (builtins.filter tablegenUsage old.cmakeFlags)
+          ++ [
+            llvmTargetsFlag
+            "-DCMAKE_BUILD_TYPE=Release"
+            "-DLLVM_ENABLE_ZSTD=FORCE_ON"
+            "-DLLVM_ENABLE_ZLIB=FORCE_ON"
+            "-DLLVM_ENABLE_THREADS=ON"
+            "-DLLVM_ENABLE_LTO=Thin"
+            "-DLLVM_USE_LINKER=lld"
+            (lib.cmakeBool "LLVM_ENABLE_LIBCXX" useLibcxx)
+            "-DCLANG_DEFAULT_CXX_STDLIB=${if useLibcxx then "libc++" else "libstdc++"}"
+          ]
+          ++ lib.optionals addGccLtoCmakeFlags [
+            "-DCMAKE_AR=${gcc-unwrapped}/bin/gcc-ar"
+            "-DCMAKE_RANLIB=${gcc-unwrapped}/bin/gcc-ranlib"
+            "-DCMAKE_NM=${gcc-unwrapped}/bin/gcc-nm"
+          ]
+          ++ lib.optionals useLibcxx [
+            "-DLLVM_ENABLE_LTO=Thin"
+            "-DLLVM_ENABLE_LIBCXX=ON"
+            "-DLLVM_USE_LINKER=lld"
+            "-DCLANG_DEFAULT_RTLIB=compiler-rt"
+          ]
+          ++ lib.optionals (!useLibcxx) [
+            # FIXME: Config file in rocmcxx instead of GCC_INSTALL_PREFIX?
+            "-DGCC_INSTALL_PREFIX=${gcc-prefix}"
+          ];
           postFixup = (old.postFixup or "") + ''
             find $lib -type f -exec remove-references-to -t ${stdenvToBuildRocmLlvm.cc} {} +
             find $lib -type f -exec remove-references-to -t ${stdenv.cc} {} +
@@ -504,17 +504,17 @@ rec {
         disallowedReferences = (old.disallowedReferences or [ ]) ++ disallowedRefsForToolchain;
         nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ removeReferencesTo ];
         cmakeFlags =
-          old.cmakeFlags
-          ++ [
-            "-DDEVICELIBS_ROOT=${rocm-device-libs.src}"
-            # OMPD support is broken in ROCm 6.3. Haven't investigated why.
-            "-DLIBOMP_OMPD_SUPPORT:BOOL=FALSE"
-            "-DLIBOMP_OMPD_GDB_SUPPORT:BOOL=FALSE"
-          ]
-          ++ lib.optionals addGccLtoCmakeFlags [
-            "-DCMAKE_AR=${gcc-unwrapped}/bin/gcc-ar"
-            "-DCMAKE_RANLIB=${gcc-unwrapped}/bin/gcc-ranlib"
-          ];
+        old.cmakeFlags
+        ++ [
+          "-DDEVICELIBS_ROOT=${rocm-device-libs.src}"
+          # OMPD support is broken in ROCm 6.3. Haven't investigated why.
+          "-DLIBOMP_OMPD_SUPPORT:BOOL=FALSE"
+          "-DLIBOMP_OMPD_GDB_SUPPORT:BOOL=FALSE"
+        ]
+        ++ lib.optionals addGccLtoCmakeFlags [
+          "-DCMAKE_AR=${gcc-unwrapped}/bin/gcc-ar"
+          "-DCMAKE_RANLIB=${gcc-unwrapped}/bin/gcc-ranlib"
+        ];
         env.LLVM = "${rocm-merged-llvm}";
         env.LLVM_DIR = "${rocm-merged-llvm}";
         buildInputs = old.buildInputs ++ [

@@ -67,23 +67,23 @@ lib.init bootStages
           hasCC = false;
 
           extraNativeBuildInputs =
-            old.extraNativeBuildInputs
-            ++ lib.optionals (hostPlatform.isLinux && !buildPlatform.isLinux) [ buildPackages.patchelf ]
-            ++ lib.optional (
-              let
-                f =
-                  p:
-                  !p.isx86
-                  || builtins.elem p.libc [
-                    "musl"
-                    "wasilibc"
-                    "relibc"
-                  ]
-                  || p.isiOS
-                  || p.isGenode;
-              in
-              f hostPlatform && !(f buildPlatform)
-            ) buildPackages.updateAutotoolsGnuConfigScriptsHook;
+          old.extraNativeBuildInputs
+          ++ lib.optionals (hostPlatform.isLinux && !buildPlatform.isLinux) [ buildPackages.patchelf ]
+          ++ lib.optional (
+            let
+              f =
+                p:
+                !p.isx86
+                || builtins.elem p.libc [
+                  "musl"
+                  "wasilibc"
+                  "relibc"
+                ]
+                || p.isiOS
+                || p.isGenode;
+            in
+            f hostPlatform && !(f buildPlatform)
+          ) buildPackages.updateAutotoolsGnuConfigScriptsHook;
         })
       );
     in

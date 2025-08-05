@@ -108,10 +108,10 @@ stdenv.mkDerivation (
     # - not have to pass pnames as argument
     # - have a separate pname for erlang (main module)
     name =
-      "${baseName}"
-      + optionalString javacSupport "_javac"
-      + optionalString odbcSupport "_odbc"
-      + "-${version}";
+    "${baseName}"
+    + optionalString javacSupport "_javac"
+    + optionalString odbcSupport "_odbc"
+    + "-${version}";
 
     inherit src version;
 

@@ -786,8 +786,8 @@ in
       ++ optional usePostgresql "postgresql.target"
       ++ optional useMysql "mysql.service";
       requires =
-        optional (cfg.database.createDatabase && usePostgresql) "postgresql.target"
-        ++ optional (cfg.database.createDatabase && useMysql) "mysql.service";
+      optional (cfg.database.createDatabase && usePostgresql) "postgresql.target"
+      ++ optional (cfg.database.createDatabase && useMysql) "mysql.service";
       wantedBy = [ "multi-user.target" ];
       path = [
         cfg.package
@@ -975,16 +975,16 @@ in
     };
 
     warnings =
-      optional (cfg.database.password != "")
-        "config.services.gitea.database.password will be stored as plaintext in the Nix store. Use database.passwordFile instead."
-      ++ optional (cfg.extraConfig != null) ''
-        services.gitea.`extraConfig` is deprecated, please use services.gitea.`settings`.
-      ''
-      ++ optional (lib.getName cfg.package == "forgejo") ''
-        Running forgejo via services.gitea.package is no longer supported.
-        Please use services.forgejo instead.
-        See https://nixos.org/manual/nixos/unstable/#module-forgejo for migration instructions.
-      '';
+    optional (cfg.database.password != "")
+      "config.services.gitea.database.password will be stored as plaintext in the Nix store. Use database.passwordFile instead."
+    ++ optional (cfg.extraConfig != null) ''
+      services.gitea.`extraConfig` is deprecated, please use services.gitea.`settings`.
+    ''
+    ++ optional (lib.getName cfg.package == "forgejo") ''
+      Running forgejo via services.gitea.package is no longer supported.
+      Please use services.forgejo instead.
+      See https://nixos.org/manual/nixos/unstable/#module-forgejo for migration instructions.
+    '';
 
     # Create database passwordFile default when password is configured.
     services.gitea.database.passwordFile = mkDefault (
@@ -1012,8 +1012,8 @@ in
         Type = "oneshot";
         User = cfg.user;
         ExecStart =
-          "${exe} dump --type ${cfg.dump.type}"
-          + optionalString (cfg.dump.file != null) " --file ${cfg.dump.file}";
+        "${exe} dump --type ${cfg.dump.type}"
+        + optionalString (cfg.dump.file != null) " --file ${cfg.dump.file}";
         WorkingDirectory = cfg.dump.backupDir;
       };
     };

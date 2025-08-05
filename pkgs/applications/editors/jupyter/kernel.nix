@@ -71,9 +71,9 @@ in
                 // (lib.optionalAttrs (kernel ? interruptMode) { interrupt_mode = kernel.interruptMode; })
               );
               extraPaths =
-                kernel.extraPaths or { }
-                // lib.optionalAttrs (kernel.logo32 != null) { "logo-32x32.png" = kernel.logo32; }
-                // lib.optionalAttrs (kernel.logo64 != null) { "logo-64x64.png" = kernel.logo64; };
+              kernel.extraPaths or { }
+              // lib.optionalAttrs (kernel.logo32 != null) { "logo-32x32.png" = kernel.logo32; }
+              // lib.optionalAttrs (kernel.logo64 != null) { "logo-64x64.png" = kernel.logo64; };
               linkExtraPaths = lib.mapAttrsToList (
                 name: value: "ln -s ${value} 'kernels/${kernelName}/${name}';"
               ) extraPaths;

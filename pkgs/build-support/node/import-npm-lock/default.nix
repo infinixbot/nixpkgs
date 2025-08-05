@@ -142,13 +142,13 @@ lib.fix (self: {
 
       # Substitute dependency references in package.json with Nix store paths
       packageJSON' =
-        package
-        // lib.optionalAttrs (package ? dependencies) {
-          dependencies = mapPackageDependencies package.dependencies;
-        }
-        // lib.optionalAttrs (package ? devDependencies) {
-          devDependencies = mapPackageDependencies package.devDependencies;
-        };
+      package
+      // lib.optionalAttrs (package ? dependencies) {
+        dependencies = mapPackageDependencies package.dependencies;
+      }
+      // lib.optionalAttrs (package ? devDependencies) {
+        devDependencies = mapPackageDependencies package.devDependencies;
+      };
 
       pname = package.name or "unknown";
 

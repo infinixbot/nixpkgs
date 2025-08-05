@@ -37,13 +37,13 @@ buildPythonPackage {
   buildInputs = [ setuptools ];
 
   propagatedBuildInputs =
-    [ ]
-    ++ lib.optionals fuseSupport [ fusepy ]
-    ++ lib.optionals tuiSupport [
-      urwid
-      urwid-readline
-      pygments
-    ];
+  [ ]
+  ++ lib.optionals fuseSupport [ fusepy ]
+  ++ lib.optionals tuiSupport [
+    urwid
+    urwid-readline
+    pygments
+  ];
 
   # Project requires avocado-framework for testing, therefore replacing check phase
   checkPhase = ''
@@ -55,12 +55,12 @@ buildPythonPackage {
   pythonImportsCheck = [ "qemu" ];
 
   preFixup =
-    (lib.optionalString (!tuiSupport) ''
-      rm $out/bin/qmp-tui
-    '')
-    + (lib.optionalString (!fuseSupport) ''
-      rm $out/bin/qom-fuse
-    '');
+  (lib.optionalString (!tuiSupport) ''
+    rm $out/bin/qmp-tui
+  '')
+  + (lib.optionalString (!fuseSupport) ''
+    rm $out/bin/qom-fuse
+  '');
 
   meta = with lib; {
     homepage = "https://www.qemu.org/";

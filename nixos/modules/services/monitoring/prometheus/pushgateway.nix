@@ -8,15 +8,15 @@ let
   cfg = config.services.prometheus.pushgateway;
 
   cmdlineArgs =
-    opt "web.listen-address" cfg.web.listen-address
-    ++ opt "web.telemetry-path" cfg.web.telemetry-path
-    ++ opt "web.external-url" cfg.web.external-url
-    ++ opt "web.route-prefix" cfg.web.route-prefix
-    ++ lib.optional cfg.persistMetrics ''--persistence.file="/var/lib/${cfg.stateDir}/metrics"''
-    ++ opt "persistence.interval" cfg.persistence.interval
-    ++ opt "log.level" cfg.log.level
-    ++ opt "log.format" cfg.log.format
-    ++ cfg.extraFlags;
+  opt "web.listen-address" cfg.web.listen-address
+  ++ opt "web.telemetry-path" cfg.web.telemetry-path
+  ++ opt "web.external-url" cfg.web.external-url
+  ++ opt "web.route-prefix" cfg.web.route-prefix
+  ++ lib.optional cfg.persistMetrics ''--persistence.file="/var/lib/${cfg.stateDir}/metrics"''
+  ++ opt "persistence.interval" cfg.persistence.interval
+  ++ opt "log.level" cfg.log.level
+  ++ opt "log.format" cfg.log.format
+  ++ cfg.extraFlags;
 
   opt = k: v: lib.optional (v != null) ''--${k}="${v}"'';
 
@@ -149,9 +149,9 @@ in
       {
         assertion = !lib.hasPrefix "/" cfg.stateDir;
         message =
-          "The option services.prometheus.pushgateway.stateDir"
-          + " shouldn't be an absolute directory."
-          + " It should be a directory relative to /var/lib.";
+        "The option services.prometheus.pushgateway.stateDir"
+        + " shouldn't be an absolute directory."
+        + " It should be a directory relative to /var/lib.";
       }
     ];
     systemd.services.pushgateway = {
@@ -159,10 +159,10 @@ in
       after = [ "network.target" ];
       serviceConfig = {
         ExecStart =
-          "${cfg.package}/bin/pushgateway"
-          + lib.optionalString (lib.length cmdlineArgs != 0) (
-            " \\\n  " + lib.concatStringsSep " \\\n  " cmdlineArgs
-          );
+        "${cfg.package}/bin/pushgateway"
+        + lib.optionalString (lib.length cmdlineArgs != 0) (
+          " \\\n  " + lib.concatStringsSep " \\\n  " cmdlineArgs
+        );
 
         CapabilityBoundingSet = [ "" ];
         DeviceAllow = [ "" ];

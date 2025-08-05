@@ -80,10 +80,10 @@ python3Packages.buildPythonApplication rec {
   makeWrapperArgs =
     let
       packagesToBinPath =
-        [ ]
-        ++ lib.optional atomicparsleySupport atomicparsley
-        ++ lib.optional ffmpegSupport ffmpeg-headless
-        ++ lib.optional rtmpSupport rtmpdump;
+      [ ]
+      ++ lib.optional atomicparsleySupport atomicparsley
+      ++ lib.optional ffmpegSupport ffmpeg-headless
+      ++ lib.optional rtmpSupport rtmpdump;
     in
     lib.optionals (packagesToBinPath != [ ]) [
       ''--prefix PATH : "${lib.makeBinPath packagesToBinPath}"''

@@ -37,17 +37,17 @@ melpaStablePackages.tree-sitter-langs.overrideAttrs (old: {
   '';
 
   postInstall =
-    old.postInstall or ""
-    + lib.concatStringsSep "\n" (
-      map (g: ''
-        if [[ -d "${g}/queries" ]]; then
-          mkdir -p ${siteDir}/queries/${langName g}/
-          for f in ${g}/queries/*; do
-            ln -sfn "$f" ${siteDir}/queries/${langName g}/
-          done
-        fi
-      '') plugins
-    );
+  old.postInstall or ""
+  + lib.concatStringsSep "\n" (
+    map (g: ''
+      if [[ -d "${g}/queries" ]]; then
+        mkdir -p ${siteDir}/queries/${langName g}/
+        for f in ${g}/queries/*; do
+          ln -sfn "$f" ${siteDir}/queries/${langName g}/
+        done
+      fi
+    '') plugins
+  );
 
   passthru = old.passthru or { } // {
     inherit plugins;

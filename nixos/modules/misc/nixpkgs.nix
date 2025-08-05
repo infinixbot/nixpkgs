@@ -66,9 +66,9 @@ let
   buildPlatformLine = lib.optionalString hasBuildPlatform "${lib.showOptionWithDefLocs opt.buildPlatform}";
 
   legacyOptionsDefined =
-    lib.optional (opt.localSystem.highestPrio < (lib.mkDefault { }).priority) opt.system
-    ++ lib.optional (opt.localSystem.highestPrio < (lib.mkOptionDefault { }).priority) opt.localSystem
-    ++ lib.optional (opt.crossSystem.highestPrio < (lib.mkOptionDefault { }).priority) opt.crossSystem;
+  lib.optional (opt.localSystem.highestPrio < (lib.mkDefault { }).priority) opt.system
+  ++ lib.optional (opt.localSystem.highestPrio < (lib.mkOptionDefault { }).priority) opt.localSystem
+  ++ lib.optional (opt.crossSystem.highestPrio < (lib.mkOptionDefault { }).priority) opt.crossSystem;
 
   defaultPkgs =
     if opt.hostPlatform.isDefined then

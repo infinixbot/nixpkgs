@@ -432,8 +432,8 @@ in
         Group = cfg.group;
         WorkingDirectory = cfg.stateDir;
         ReadOnlyPaths =
-          optional isMysqlLocal cfg.database.passwordFile
-          ++ optional (cfg.admin.initialPasswordFile != null) cfg.admin.initialPasswordFile;
+        optional isMysqlLocal cfg.database.passwordFile
+        ++ optional (cfg.admin.initialPasswordFile != null) cfg.admin.initialPasswordFile;
       };
 
       script =

@@ -152,12 +152,12 @@ let
       outputHash = hash;
 
       impureEnvVars =
-        lib.fetchers.proxyImpureEnvVars
-        ++ impureEnvVars
-        ++ [
-          # This variable allows the user to pass additional options to curl
-          "NIX_CURL_FLAGS"
-        ];
+      lib.fetchers.proxyImpureEnvVars
+      ++ impureEnvVars
+      ++ [
+        # This variable allows the user to pass additional options to curl
+        "NIX_CURL_FLAGS"
+      ];
     };
 
   fetchPianoteqTrial =

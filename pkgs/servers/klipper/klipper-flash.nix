@@ -24,13 +24,13 @@ in
 writeShellApplication {
   name = "klipper-flash-${mcu}";
   runtimeInputs =
-    [ ]
-    ++ lib.optionals (matchPlatform == "avr") [ avrdude ]
-    ++ lib.optionals (matchPlatform == "stm32") [
-      stm32flash
-      dfu-util
-    ]
-    ++ lib.optionals (matchPlatform == "lpc176x") [ dfu-util ]
+  [ ]
+  ++ lib.optionals (matchPlatform == "avr") [ avrdude ]
+  ++ lib.optionals (matchPlatform == "stm32") [
+    stm32flash
+    dfu-util
+  ]
+  ++ lib.optionals (matchPlatform == "lpc176x") [ dfu-util ]
   # bossac, hid-flash and RP2040 flash binaries are built by klipper-firmware
   ;
   text =

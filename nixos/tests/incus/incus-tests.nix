@@ -37,17 +37,17 @@ import ../make-test-python.nix (
     images = init: {
       container = {
         metadata =
-          (releases init).incusContainerMeta.${pkgs.stdenv.hostPlatform.system}
-          + "/tarball/nixos-image-lxc-*-${pkgs.stdenv.hostPlatform.system}.tar.xz";
+        (releases init).incusContainerMeta.${pkgs.stdenv.hostPlatform.system}
+        + "/tarball/nixos-image-lxc-*-${pkgs.stdenv.hostPlatform.system}.tar.xz";
 
         rootfs =
-          (releases init).incusContainerImage.${pkgs.stdenv.hostPlatform.system}
-          + "/nixos-lxc-image-${pkgs.stdenv.hostPlatform.system}.squashfs";
+        (releases init).incusContainerImage.${pkgs.stdenv.hostPlatform.system}
+        + "/nixos-lxc-image-${pkgs.stdenv.hostPlatform.system}.squashfs";
       };
 
       virtual-machine = {
         metadata =
-          (releases init).incusVirtualMachineImageMeta.${pkgs.stdenv.hostPlatform.system} + "/*/*.tar.xz";
+        (releases init).incusVirtualMachineImageMeta.${pkgs.stdenv.hostPlatform.system} + "/*/*.tar.xz";
         disk = (releases init).incusVirtualMachineImage.${pkgs.stdenv.hostPlatform.system} + "/nixos.qcow2";
       };
     };

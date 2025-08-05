@@ -31,8 +31,8 @@ stdenv.mkDerivation (finalAttrs: {
   inherit doCheck;
 
   configureFlags =
-    lib.optional (stdenv.hostPlatform.isWindows || stdenv.hostPlatform.isStatic) "--disable-examples"
-    ++ lib.optional (!finalAttrs.finalPackage.doCheck) "--disable-tests";
+  lib.optional (stdenv.hostPlatform.isWindows || stdenv.hostPlatform.isStatic) "--disable-examples"
+  ++ lib.optional (!finalAttrs.finalPackage.doCheck) "--disable-tests";
 
   cmakeFlags = lib.optionals (!finalAttrs.finalPackage.doCheck) [ "-DBUILD_TESTS:BOOL=OFF" ];
 

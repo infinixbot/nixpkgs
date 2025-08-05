@@ -119,16 +119,16 @@ in
           documentation = [ "man:physlock(1)" ];
           description = "Physlock";
           wantedBy =
-            lib.optional cfg.lockOn.suspend "suspend.target"
-            ++ lib.optional cfg.lockOn.hibernate "hibernate.target"
-            ++ cfg.lockOn.extraTargets;
+          lib.optional cfg.lockOn.suspend "suspend.target"
+          ++ lib.optional cfg.lockOn.hibernate "hibernate.target"
+          ++ cfg.lockOn.extraTargets;
           before =
-            lib.optional cfg.lockOn.suspend "systemd-suspend.service"
-            ++ lib.optional cfg.lockOn.hibernate "systemd-hibernate.service"
-            ++ lib.optional (
-              cfg.lockOn.hibernate || cfg.lockOn.suspend
-            ) "systemd-suspend-then-hibernate.service"
-            ++ cfg.lockOn.extraTargets;
+          lib.optional cfg.lockOn.suspend "systemd-suspend.service"
+          ++ lib.optional cfg.lockOn.hibernate "systemd-hibernate.service"
+          ++ lib.optional (
+            cfg.lockOn.hibernate || cfg.lockOn.suspend
+          ) "systemd-suspend-then-hibernate.service"
+          ++ cfg.lockOn.extraTargets;
           serviceConfig = {
             Type = "forking";
             ExecStart = "${pkgs.physlock}/bin/physlock -d${lib.optionalString cfg.muteKernelMessages "m"}${lib.optionalString cfg.disableSysRq "s"}${

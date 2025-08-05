@@ -51,8 +51,8 @@ buildPythonApplication rec {
   ]
   ++ lib.optionals stdenv.hostPlatform.isLinux [ pkg-config ];
   buildInputs =
-    lib.optionals stdenv.hostPlatform.isLinux [ openssl ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [ libiconv ];
+  lib.optionals stdenv.hostPlatform.isLinux [ openssl ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ libiconv ];
 
   pythonImportsCheck = [ "silver_platter" ];
 

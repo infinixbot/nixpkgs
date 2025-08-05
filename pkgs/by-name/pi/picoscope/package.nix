@@ -123,18 +123,18 @@ stdenv.mkDerivation rec {
 
   scopeLibs = lib.attrVals (map (x: "lib${x}") scopes) scopePkgs;
   MONO_PATH =
-    "${gtk-sharp-3_0}/lib/mono/gtk-sharp-3.0:"
-    + (lib.makeLibraryPath (
-      [
-        glib
-        gtk3-x11
-        gtk-sharp-3_0
-        libusb1
-        zlib
-        libpicoipp
-      ]
-      ++ scopeLibs
-    ));
+  "${gtk-sharp-3_0}/lib/mono/gtk-sharp-3.0:"
+  + (lib.makeLibraryPath (
+    [
+      glib
+      gtk3-x11
+      gtk-sharp-3_0
+      libusb1
+      zlib
+      libpicoipp
+    ]
+    ++ scopeLibs
+  ));
 
   installPhase = ''
     runHook preInstall

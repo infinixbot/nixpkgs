@@ -315,19 +315,19 @@ in
     let
       configDir = "${cfg.dataDir}/.kismet";
       settings =
-        cfg.settings
-        // {
-          server_name = cfg.serverName;
-          server_description = cfg.serverDescription;
-          logging_enabled = cfg.logTypes != [ ];
-          log_types = cfg.logTypes;
-        }
-        // optionalAttrs cfg.httpd.enable {
-          httpd_bind_address = cfg.httpd.address;
-          httpd_port = cfg.httpd.port;
-          httpd_auth_file = "${configDir}/kismet_httpd.conf";
-          httpd_home = "${cfg.package}/share/kismet/httpd";
-        };
+      cfg.settings
+      // {
+        server_name = cfg.serverName;
+        server_description = cfg.serverDescription;
+        logging_enabled = cfg.logTypes != [ ];
+        log_types = cfg.logTypes;
+      }
+      // optionalAttrs cfg.httpd.enable {
+        httpd_bind_address = cfg.httpd.address;
+        httpd_port = cfg.httpd.port;
+        httpd_auth_file = "${configDir}/kismet_httpd.conf";
+        httpd_home = "${cfg.package}/share/kismet/httpd";
+      };
     in
     mkIf cfg.enable {
       systemd.tmpfiles.settings = {

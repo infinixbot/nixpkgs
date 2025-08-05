@@ -143,93 +143,93 @@ buildPythonPackage {
   };
 
   patches =
-    lib.optionals effectiveStdenv.hostPlatform.isDarwin [
-      (replaceVars ./darwin-libcxx.patch {
-        LIBCXX_DEV = llvmPackages.libcxx.dev;
-        LIBCXX_LIB = llvmPackages.libcxx;
-      })
-      ./darwin-single-target.patch
-    ]
-    ++ lib.optionals standaloneSupport [
-      (replaceVars ./standalone-llvm.patch {
-        LLVM_DEV = llvmPackages.llvm.dev;
-        LLVM_LIB = llvmPackages.llvm.lib;
-        LIBCLANG_DEV = llvmPackages.libclang.dev;
-        LIBCLANG_LIB = llvmPackages.libclang.lib;
-      })
-      ./standalone-cxx11-abi.patch
-    ];
+  lib.optionals effectiveStdenv.hostPlatform.isDarwin [
+    (replaceVars ./darwin-libcxx.patch {
+      LIBCXX_DEV = llvmPackages.libcxx.dev;
+      LIBCXX_LIB = llvmPackages.libcxx;
+    })
+    ./darwin-single-target.patch
+  ]
+  ++ lib.optionals standaloneSupport [
+    (replaceVars ./standalone-llvm.patch {
+      LLVM_DEV = llvmPackages.llvm.dev;
+      LLVM_LIB = llvmPackages.llvm.lib;
+      LIBCLANG_DEV = llvmPackages.libclang.dev;
+      LIBCLANG_LIB = llvmPackages.libclang.lib;
+    })
+    ./standalone-cxx11-abi.patch
+  ];
 
   postPatch =
-    # Patch build_dll.py to use our gencode flags rather than NVIDIA's very broad defaults.
-    lib.optionalString cudaSupport ''
-      nixLog "patching $PWD/warp/build_dll.py to use our gencode flags"
-      substituteInPlace "$PWD/warp/build_dll.py" \
-          --replace-fail \
-            '*gencode_opts,' \
-            '${
-              lib.concatMapStringsSep ", " (gencodeString: ''"${gencodeString}"'') cudaPackages.flags.gencode
-            },' \
-          --replace-fail \
-            '*clang_arch_flags,' \
-            '${
-              lib.concatMapStringsSep ", " (
-                realArch: ''"--cuda-gpu-arch=${realArch}"''
-              ) cudaPackages.flags.realArches
-            },'
-    ''
-    # Patch build_dll.py to use dynamic libraries rather than static ones.
-    # NOTE: We do not patch the `nvptxcompiler_static` path because it is not available as a dynamic library.
-    + lib.optionalString cudaSupport ''
-      nixLog "patching $PWD/warp/build_dll.py to use dynamic libraries"
-      substituteInPlace "$PWD/warp/build_dll.py" \
+  # Patch build_dll.py to use our gencode flags rather than NVIDIA's very broad defaults.
+  lib.optionalString cudaSupport ''
+    nixLog "patching $PWD/warp/build_dll.py to use our gencode flags"
+    substituteInPlace "$PWD/warp/build_dll.py" \
         --replace-fail \
-          '-lcudart_static' \
-          '-lcudart' \
+          '*gencode_opts,' \
+          '${
+            lib.concatMapStringsSep ", " (gencodeString: ''"${gencodeString}"'') cudaPackages.flags.gencode
+          },' \
         --replace-fail \
-          '-lnvrtc_static' \
-          '-lnvrtc' \
-        --replace-fail \
-          '-lnvrtc-builtins_static' \
-          '-lnvrtc-builtins' \
-        --replace-fail \
-          '-lnvJitLink_static' \
-          '-lnvJitLink' \
-        --replace-fail \
-          '-lmathdx_static' \
-          '-lmathdx'
-    ''
-    # Broken tests on aarch64. Since unittest doesn't support disabling a
-    # single test, and pytest isn't compatible, we patch the test file directly
-    # instead.
-    #
-    # See: https://github.com/NVIDIA/warp/issues/552
-    + lib.optionalString effectiveStdenv.hostPlatform.isAarch64 ''
-      nixLog "patching $PWD/warp/tests/test_fem.py to disable broken tests on aarch64"
-      substituteInPlace "$PWD/warp/tests/test_fem.py" \
-        --replace-fail \
-          'add_function_test(TestFem, "test_integrate_gradient", test_integrate_gradient, devices=devices)' \
-          ""
-    ''
-    # AssertionError: 0.4082476496696472 != 0.40824246406555176 within 5 places
-    + lib.optionalString effectiveStdenv.hostPlatform.isDarwin ''
-      nixLog "patching $PWD/warp/tests/test_fem.py to disable broken tests on darwin"
-      substituteInPlace "$PWD/warp/tests/test_codegen.py" \
-        --replace-fail \
-          'places=5' \
-          'places=4'
-    ''
-    # These tests fail on CPU and CUDA.
-    + ''
-      nixLog "patching $PWD/warp/tests/test_reload.py to disable broken tests"
-      substituteInPlace "$PWD/warp/tests/test_reload.py" \
-        --replace-fail \
-          'add_function_test(TestReload, "test_reload", test_reload, devices=devices)' \
-          "" \
-        --replace-fail \
-          'add_function_test(TestReload, "test_reload_references", test_reload_references, devices=get_test_devices("basic"))' \
-          ""
-    '';
+          '*clang_arch_flags,' \
+          '${
+            lib.concatMapStringsSep ", " (
+              realArch: ''"--cuda-gpu-arch=${realArch}"''
+            ) cudaPackages.flags.realArches
+          },'
+  ''
+  # Patch build_dll.py to use dynamic libraries rather than static ones.
+  # NOTE: We do not patch the `nvptxcompiler_static` path because it is not available as a dynamic library.
+  + lib.optionalString cudaSupport ''
+    nixLog "patching $PWD/warp/build_dll.py to use dynamic libraries"
+    substituteInPlace "$PWD/warp/build_dll.py" \
+      --replace-fail \
+        '-lcudart_static' \
+        '-lcudart' \
+      --replace-fail \
+        '-lnvrtc_static' \
+        '-lnvrtc' \
+      --replace-fail \
+        '-lnvrtc-builtins_static' \
+        '-lnvrtc-builtins' \
+      --replace-fail \
+        '-lnvJitLink_static' \
+        '-lnvJitLink' \
+      --replace-fail \
+        '-lmathdx_static' \
+        '-lmathdx'
+  ''
+  # Broken tests on aarch64. Since unittest doesn't support disabling a
+  # single test, and pytest isn't compatible, we patch the test file directly
+  # instead.
+  #
+  # See: https://github.com/NVIDIA/warp/issues/552
+  + lib.optionalString effectiveStdenv.hostPlatform.isAarch64 ''
+    nixLog "patching $PWD/warp/tests/test_fem.py to disable broken tests on aarch64"
+    substituteInPlace "$PWD/warp/tests/test_fem.py" \
+      --replace-fail \
+        'add_function_test(TestFem, "test_integrate_gradient", test_integrate_gradient, devices=devices)' \
+        ""
+  ''
+  # AssertionError: 0.4082476496696472 != 0.40824246406555176 within 5 places
+  + lib.optionalString effectiveStdenv.hostPlatform.isDarwin ''
+    nixLog "patching $PWD/warp/tests/test_fem.py to disable broken tests on darwin"
+    substituteInPlace "$PWD/warp/tests/test_codegen.py" \
+      --replace-fail \
+        'places=5' \
+        'places=4'
+  ''
+  # These tests fail on CPU and CUDA.
+  + ''
+    nixLog "patching $PWD/warp/tests/test_reload.py to disable broken tests"
+    substituteInPlace "$PWD/warp/tests/test_reload.py" \
+      --replace-fail \
+        'add_function_test(TestReload, "test_reload", test_reload, devices=devices)' \
+        "" \
+      --replace-fail \
+        'add_function_test(TestReload, "test_reload_references", test_reload_references, devices=get_test_devices("basic"))' \
+        ""
+  '';
 
   build-system = [
     setuptools
@@ -247,46 +247,46 @@ buildPythonPackage {
   ];
 
   buildInputs =
-    lib.optionals standaloneSupport [
-      llvmPackages.llvm
-      llvmPackages.clang
-      llvmPackages.libcxx
-    ]
-    ++ lib.optionals cudaSupport [
-      (lib.getOutput "static" cudaPackages.cuda_nvcc) # dependency on nvptxcompiler_static; no dynamic version available
-      cudaPackages.cuda_cccl
-      cudaPackages.cuda_cudart
-      cudaPackages.cuda_nvcc
-      cudaPackages.cuda_nvrtc
-    ]
-    ++ lib.optionals libmathdxSupport [
-      libmathdx
-      cudaPackages.libcublas
-      cudaPackages.libcufft
-      cudaPackages.libcusolver
-      cudaPackages.libnvjitlink
-    ];
+  lib.optionals standaloneSupport [
+    llvmPackages.llvm
+    llvmPackages.clang
+    llvmPackages.libcxx
+  ]
+  ++ lib.optionals cudaSupport [
+    (lib.getOutput "static" cudaPackages.cuda_nvcc) # dependency on nvptxcompiler_static; no dynamic version available
+    cudaPackages.cuda_cccl
+    cudaPackages.cuda_cudart
+    cudaPackages.cuda_nvcc
+    cudaPackages.cuda_nvrtc
+  ]
+  ++ lib.optionals libmathdxSupport [
+    libmathdx
+    cudaPackages.libcublas
+    cudaPackages.libcufft
+    cudaPackages.libcusolver
+    cudaPackages.libnvjitlink
+  ];
 
   preBuild =
     let
       buildOptions =
-        lib.optionals effectiveStdenv.cc.isClang [
-          "--clang_build_toolchain"
-        ]
-        ++ lib.optionals (!standaloneSupport) [
-          "--no_standalone"
-        ]
-        ++ lib.optionals cudaSupport [
-          # NOTE: The `cuda_path` argument is the directory which contains `bin/nvcc` (i.e., the bin output).
-          "--cuda_path=${lib.getBin pkgsBuildHost.cudaPackages.cuda_nvcc}"
-        ]
-        ++ lib.optionals libmathdxSupport [
-          "--libmathdx"
-          "--libmathdx_path=${libmathdx}"
-        ]
-        ++ lib.optionals (!libmathdxSupport) [
-          "--no_libmathdx"
-        ];
+      lib.optionals effectiveStdenv.cc.isClang [
+        "--clang_build_toolchain"
+      ]
+      ++ lib.optionals (!standaloneSupport) [
+        "--no_standalone"
+      ]
+      ++ lib.optionals cudaSupport [
+        # NOTE: The `cuda_path` argument is the directory which contains `bin/nvcc` (i.e., the bin output).
+        "--cuda_path=${lib.getBin pkgsBuildHost.cudaPackages.cuda_nvcc}"
+      ]
+      ++ lib.optionals libmathdxSupport [
+        "--libmathdx"
+        "--libmathdx_path=${libmathdx}"
+      ]
+      ++ lib.optionals (!libmathdxSupport) [
+        "--no_libmathdx"
+      ];
 
       buildOptionString = lib.concatStringsSep " " buildOptions;
     in
@@ -334,9 +334,9 @@ buildPythonPackage {
           }:
           let
             name =
-              "warp-lang-unit-tests-cpu" # CPU is baseline
-              + lib.optionalString cudaSupport "-cuda"
-              + lib.optionalString libmathdxSupport "-libmathdx";
+            "warp-lang-unit-tests-cpu" # CPU is baseline
+            + lib.optionalString cudaSupport "-cuda"
+            + lib.optionalString libmathdxSupport "-libmathdx";
 
             warp-lang' = warp-lang.override {
               inherit cudaSupport libmathdxSupport;

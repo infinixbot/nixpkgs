@@ -85,20 +85,20 @@ stdenv.mkDerivation (finalAttrs: {
     lib.optionals stdenv.hostPlatform.isAarch64 [ "-I${androidZlibContrib}" ];
 
   "C++FLAGS" =
-    # Avoid a compilation error that only occurs for 4-byte longs.
-    lib.optionals stdenv.hostPlatform.isi686 [ "-Wno-narrowing" ]
-    # See the "Header dependency changes" section of
-    # https://www.gnu.org/software/gcc/gcc-11/porting_to.html for more
-    # information on why we need to include these.
-    ++
-      lib.optionals
-        (stdenv.cc.isClang || (stdenv.cc.isGNU && lib.versionAtLeast stdenv.cc.cc.version "11.0.0"))
-        [
-          "-include"
-          "limits"
-          "-include"
-          "thread"
-        ];
+  # Avoid a compilation error that only occurs for 4-byte longs.
+  lib.optionals stdenv.hostPlatform.isi686 [ "-Wno-narrowing" ]
+  # See the "Header dependency changes" section of
+  # https://www.gnu.org/software/gcc/gcc-11/porting_to.html for more
+  # information on why we need to include these.
+  ++
+    lib.optionals
+      (stdenv.cc.isClang || (stdenv.cc.isGNU && lib.versionAtLeast stdenv.cc.cc.version "11.0.0"))
+      [
+        "-include"
+        "limits"
+        "-include"
+        "thread"
+      ];
 
   preBuild = lib.optionalString stdenv.hostPlatform.isDarwin ''
     export MACOSX_SDK=$SDKROOT

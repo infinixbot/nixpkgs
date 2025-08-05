@@ -32,18 +32,18 @@ buildPythonPackage rec {
   };
 
   patches =
-    [ ]
-    ++ (lib.optional withTesseractSupport (
-      replaceVars ./paths-tesseract.patch {
-        inherit tesseract;
-        tesseractLibraryLocation = "${tesseract}/lib/libtesseract${stdenv.hostPlatform.extensions.sharedLibrary}";
-      }
-    ))
-    ++ (lib.optional stdenv.hostPlatform.isLinux (
-      replaceVars ./paths-cuneiform.patch {
-        inherit cuneiform;
-      }
-    ));
+  [ ]
+  ++ (lib.optional withTesseractSupport (
+    replaceVars ./paths-tesseract.patch {
+      inherit tesseract;
+      tesseractLibraryLocation = "${tesseract}/lib/libtesseract${stdenv.hostPlatform.extensions.sharedLibrary}";
+    }
+  ))
+  ++ (lib.optional stdenv.hostPlatform.isLinux (
+    replaceVars ./paths-cuneiform.patch {
+      inherit cuneiform;
+    }
+  ));
 
   propagatedBuildInputs = [ pillow ];
 

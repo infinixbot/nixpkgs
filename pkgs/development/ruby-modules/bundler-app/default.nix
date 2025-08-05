@@ -67,12 +67,12 @@ let
       }
       // meta;
       passthru =
-        basicEnv.passthru
-        // {
-          inherit basicEnv;
-          inherit (basicEnv) env;
-        }
-        // passthru;
+      basicEnv.passthru
+      // {
+        inherit basicEnv;
+        inherit (basicEnv) env;
+      }
+      // passthru;
     };
 in
 runCommand basicEnv.name cmdArgs ''

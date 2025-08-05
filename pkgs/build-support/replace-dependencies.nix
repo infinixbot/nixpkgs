@@ -137,57 +137,57 @@ let
   # Make sure a derivation is returned even when no replacements are actually applied.
   # Yes, even in the stupid edge case where the root derivation itself is replaced.
   storePathOrKnownTargetDerivationMemo =
-    mapAttrs (
-      drv: _references:
-      # builtins.storePath does not work in pure evaluation mode, even though it is not impure.
-      # This reimplementation in Nix works as long as the path is already allowed in the evaluation state.
-      # This is always the case here, because all paths come from the closure of the original derivation.
-      appendContext drv { ${drv}.path = true; }
-    ) relevantReferences
-    // listToAttrs (
-      map (drv: {
-        name = realisation drv;
-        value = drv;
-      }) targetDerivations
-    );
+  mapAttrs (
+    drv: _references:
+    # builtins.storePath does not work in pure evaluation mode, even though it is not impure.
+    # This reimplementation in Nix works as long as the path is already allowed in the evaluation state.
+    # This is always the case here, because all paths come from the closure of the original derivation.
+    appendContext drv { ${drv}.path = true; }
+  ) relevantReferences
+  // listToAttrs (
+    map (drv: {
+      name = realisation drv;
+      value = drv;
+    }) targetDerivations
+  );
 
   rewriteMemo =
-    # Mind the order of how the three attrsets are merged here.
-    # The order of precedence needs to be "explicitly specified replacements" > "rewrite exclusion (cutoffPackages)" > "rewrite".
-    # So the attrset merge order is the opposite.
-    mapAttrs (
-      drv: references:
-      let
-        rewrittenReferences = filter (dep: dep != drv && toString rewriteMemo.${dep} != dep) references;
-        rewrites = listToAttrs (
-          map (reference: {
-            name = reference;
-            value = rewriteMemo.${reference};
-          }) rewrittenReferences
-        );
-      in
-      replaceDirectDependencies {
-        drv = storePathOrKnownTargetDerivationMemo.${drv};
-        replacements = mapAttrsToList (name: value: {
-          oldDependency = name;
-          newDependency = value;
-        }) rewrites;
+  # Mind the order of how the three attrsets are merged here.
+  # The order of precedence needs to be "explicitly specified replacements" > "rewrite exclusion (cutoffPackages)" > "rewrite".
+  # So the attrset merge order is the opposite.
+  mapAttrs (
+    drv: references:
+    let
+      rewrittenReferences = filter (dep: dep != drv && toString rewriteMemo.${dep} != dep) references;
+      rewrites = listToAttrs (
+        map (reference: {
+          name = reference;
+          value = rewriteMemo.${reference};
+        }) rewrittenReferences
+      );
+    in
+    replaceDirectDependencies {
+      drv = storePathOrKnownTargetDerivationMemo.${drv};
+      replacements = mapAttrsToList (name: value: {
+        oldDependency = name;
+        newDependency = value;
+      }) rewrites;
+    }
+  ) relevantReferences
+  // listToAttrs (
+    map (drv: {
+      name = realisation drv;
+      value = storePathOrKnownTargetDerivationMemo.${realisation drv};
+    }) cutoffPackages
+  )
+  // listToAttrs (
+    map (
+      { oldDependency, newDependency }:
+      {
+        name = realisation oldDependency;
+        value = rewriteMemo.${realisation newDependency};
       }
-    ) relevantReferences
-    // listToAttrs (
-      map (drv: {
-        name = realisation drv;
-        value = storePathOrKnownTargetDerivationMemo.${realisation drv};
-      }) cutoffPackages
-    )
-    // listToAttrs (
-      map (
-        { oldDependency, newDependency }:
-        {
-          name = realisation oldDependency;
-          value = rewriteMemo.${realisation newDependency};
-        }
-      ) relevantReplacements
-    );
+    ) relevantReplacements
+  );
 in
 rewriteMemo.${realisation drv}

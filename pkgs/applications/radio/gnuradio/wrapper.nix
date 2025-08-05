@@ -60,22 +60,22 @@ let
   # We don't check if `python-support` feature is on, as it's unlikely someone
   # may wish to wrap GR without python support.
   pythonPkgs =
-    extraPythonPackages
-    ++ [ (unwrapped.python.pkgs.toPythonModule unwrapped) ]
-    ++ unwrapped.passthru.uhd.pythonPath
-    ++ lib.optionals (unwrapped.passthru.uhd.pythonPath != [ ]) [
-      (unwrapped.python.pkgs.toPythonModule unwrapped.passthru.uhd)
-    ]
-    # Add the extraPackages as python modules as well
-    ++ (builtins.map unwrapped.python.pkgs.toPythonModule extraPackages)
-    ++ lib.flatten (
-      lib.mapAttrsToList (
-        feat: info:
-        (lib.optionals (
-          (unwrapped.hasFeature feat) && (builtins.hasAttr "pythonRuntime" info)
-        ) info.pythonRuntime)
-      ) unwrapped.featuresInfo
-    );
+  extraPythonPackages
+  ++ [ (unwrapped.python.pkgs.toPythonModule unwrapped) ]
+  ++ unwrapped.passthru.uhd.pythonPath
+  ++ lib.optionals (unwrapped.passthru.uhd.pythonPath != [ ]) [
+    (unwrapped.python.pkgs.toPythonModule unwrapped.passthru.uhd)
+  ]
+  # Add the extraPackages as python modules as well
+  ++ (builtins.map unwrapped.python.pkgs.toPythonModule extraPackages)
+  ++ lib.flatten (
+    lib.mapAttrsToList (
+      feat: info:
+      (lib.optionals (
+        (unwrapped.hasFeature feat) && (builtins.hasAttr "pythonRuntime" info)
+      ) info.pythonRuntime)
+    ) unwrapped.featuresInfo
+  );
   pythonEnv = unwrapped.python.withPackages (ps: pythonPkgs);
 
   pname = unwrapped.pname + "-wrapped";

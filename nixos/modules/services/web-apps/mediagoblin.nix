@@ -44,14 +44,14 @@ let
   GST_PLUGIN_PATH = lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" gst;
 
   path =
-    lib.optionals (cfg.settings.mediagoblin.plugins ? "mediagoblin.media_types.stl") [ pkgs.blender ]
-    ++ lib.optionals (cfg.settings.mediagoblin.plugins ? "mediagoblin.media_types.pdf") (
-      with pkgs;
-      [
-        poppler-utils
-        unoconv
-      ]
-    );
+  lib.optionals (cfg.settings.mediagoblin.plugins ? "mediagoblin.media_types.stl") [ pkgs.blender ]
+  ++ lib.optionals (cfg.settings.mediagoblin.plugins ? "mediagoblin.media_types.pdf") (
+    with pkgs;
+    [
+      poppler-utils
+      unoconv
+    ]
+  );
 
   finalPackage = cfg.package.python.buildEnv.override {
     extraLibs =

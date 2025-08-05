@@ -56,7 +56,7 @@
             # Use the the bin output hash of gfal2-util as version to ensure that
             # the test gets rebuild everytime gfal2-util gets rebuild
             versionFODTests =
-              finalAttrs.version + "-" + lib.substring (lib.stringLength builtins.storeDir + 1) 32 "${self}";
+            finalAttrs.version + "-" + lib.substring (lib.stringLength builtins.storeDir + 1) 32 "${self}";
             self = finalAttrs.finalPackage;
           in
           lib.optionalAttrs gfal2-python.gfal2.enablePluginStatus.xrootd (

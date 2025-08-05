@@ -51,13 +51,13 @@ rustPlatform.buildRustPackage rec {
 
   buildNoDefaultFeatures = true;
   buildFeatures =
-    lib.optional withRodio "rodio-backend"
-    ++ lib.optional withMDNS "with-libmdns"
-    ++ lib.optional withDNS-SD "with-dns-sd"
-    ++ lib.optional withALSA "alsa-backend"
-    ++ lib.optional withAvahi "with-avahi"
-    ++ lib.optional withPortAudio "portaudio-backend"
-    ++ lib.optional withPulseAudio "pulseaudio-backend";
+  lib.optional withRodio "rodio-backend"
+  ++ lib.optional withMDNS "with-libmdns"
+  ++ lib.optional withDNS-SD "with-dns-sd"
+  ++ lib.optional withALSA "alsa-backend"
+  ++ lib.optional withAvahi "with-avahi"
+  ++ lib.optional withPortAudio "portaudio-backend"
+  ++ lib.optional withPulseAudio "pulseaudio-backend";
 
   postFixup = lib.optionalString withALSA ''
     wrapProgram "$out/bin/librespot" \

@@ -168,20 +168,20 @@ stdenv.mkDerivation {
   ];
 
   nativeBuildInputs =
-    (builtins.concatLists (
-      lib.mapAttrsToList (
-        _: library: if (library.package ? dev) then [ library.package.dev ] else [ ]
-      ) gnSystemLibraries
-    ))
-    ++ [
-      gn
-      (python3.withPackages (ps: [ ps.setuptools ]))
-      ninja
-      git
-      cpio
-      pkg-config
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [ xcbuild ];
+  (builtins.concatLists (
+    lib.mapAttrsToList (
+      _: library: if (library.package ? dev) then [ library.package.dev ] else [ ]
+    ) gnSystemLibraries
+  ))
+  ++ [
+    gn
+    (python3.withPackages (ps: [ ps.setuptools ]))
+    ninja
+    git
+    cpio
+    pkg-config
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ xcbuild ];
 
   buildInputs = [
     nasm

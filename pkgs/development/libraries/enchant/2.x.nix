@@ -63,12 +63,12 @@ stdenv.mkDerivation rec {
 
   # libtool puts these to .la files
   propagatedBuildInputs =
-    lib.optionals withHspell [
-      hspell
-    ]
-    ++ lib.optionals withAspell [
-      aspell
-    ];
+  lib.optionals withHspell [
+    hspell
+  ]
+  ++ lib.optionals withAspell [
+    aspell
+  ];
 
   enableParallelBuilding = true;
 

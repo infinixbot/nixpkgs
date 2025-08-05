@@ -140,12 +140,12 @@ in
 
 stdenv.mkDerivation (finalAttrs: {
   pname =
-    "qemu"
-    + lib.optionalString xenSupport "-xen"
-    + lib.optionalString hostCpuOnly "-host-cpu-only"
-    + lib.optionalString nixosTestRunner "-for-vm-tests"
-    + lib.optionalString toolsOnly "-utils"
-    + lib.optionalString userOnly "-user";
+  "qemu"
+  + lib.optionalString xenSupport "-xen"
+  + lib.optionalString hostCpuOnly "-host-cpu-only"
+  + lib.optionalString nixosTestRunner "-for-vm-tests"
+  + lib.optionalString toolsOnly "-utils"
+  + lib.optionalString userOnly "-user";
   version = "10.0.2";
 
   src = fetchurl {

@@ -89,8 +89,8 @@ rustPlatform.buildRustPackage (finalAttrs: {
   ];
 
   buildFeatures =
-    lib.optionals stdenv.hostPlatform.isDarwin [ "metal" ]
-    ++ lib.optionals config.cudaSupport [ "cuda" ];
+  lib.optionals stdenv.hostPlatform.isDarwin [ "metal" ]
+  ++ lib.optionals config.cudaSupport [ "cuda" ];
 
   env = lib.optionalAttrs config.cudaSupport {
     CUDA_COMPUTE_CAP = cudaCapability';

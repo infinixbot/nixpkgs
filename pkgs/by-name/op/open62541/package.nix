@@ -125,28 +125,28 @@ stdenv.mkDerivation (finalAttrs: {
     '';
 
   postInstall =
-    lib.optionalString withDoc ''
-      # excluded files, see doc/CMakeLists.txt
-      rm -r doc/{_sources/,CMakeFiles/,cmake_install.cmake}
+  lib.optionalString withDoc ''
+    # excluded files, see doc/CMakeLists.txt
+    rm -r doc/{_sources/,CMakeFiles/,cmake_install.cmake}
 
-      # doc is not installed automatically
-      mkdir -p $out/share/doc/open62541
-      cp -r doc/ $out/share/doc/open62541/html
-    ''
-    + lib.optionalString withExamples ''
-      # install sources of examples
-      mkdir -p $out/share/open62541
-      cp -r ../examples $out/share/open62541
+    # doc is not installed automatically
+    mkdir -p $out/share/doc/open62541
+    cp -r doc/ $out/share/doc/open62541/html
+  ''
+  + lib.optionalString withExamples ''
+    # install sources of examples
+    mkdir -p $out/share/open62541
+    cp -r ../examples $out/share/open62541
 
-      ${lib.optionalString (!stdenv.hostPlatform.isWindows) ''
-        # remove .exe suffix
-        mv -v $out/bin/ua_server_ctt.exe $out/bin/ua_server_ctt
-      ''}
+    ${lib.optionalString (!stdenv.hostPlatform.isWindows) ''
+      # remove .exe suffix
+      mv -v $out/bin/ua_server_ctt.exe $out/bin/ua_server_ctt
+    ''}
 
-      # remove duplicate libraries in build/bin/, which cause forbidden
-      # references to /build/ in ua_server_ctt
-      rm -r bin/libopen62541*
-    '';
+    # remove duplicate libraries in build/bin/, which cause forbidden
+    # references to /build/ in ua_server_ctt
+    rm -r bin/libopen62541*
+  '';
 
   __darwinAllowLocalNetworking = true;
 

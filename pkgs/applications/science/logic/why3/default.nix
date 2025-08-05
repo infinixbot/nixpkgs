@@ -31,16 +31,16 @@ stdenv.mkDerivation rec {
   strictDeps = true;
 
   nativeBuildInputs =
-    lib.optional ideSupport wrapGAppsHook3
-    ++ (with ocamlPackages; [
-      ocaml
-      findlib
-      menhir
-    ])
-    ++ [
-      # Coq Support
-      coqPackages.coq
-    ];
+  lib.optional ideSupport wrapGAppsHook3
+  ++ (with ocamlPackages; [
+    ocaml
+    findlib
+    menhir
+  ])
+  ++ [
+    # Coq Support
+    coqPackages.coq
+  ];
 
   buildInputs =
     with ocamlPackages;

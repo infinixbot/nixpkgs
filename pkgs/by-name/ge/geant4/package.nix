@@ -85,21 +85,21 @@ stdenv.mkDerivation rec {
   dontWrapQtApps = true; # no binaries
 
   buildInputs =
-    lib.optionals enableOpenGLX11 [
-      libGLU
-      libXext
-      libXmu
-    ]
-    ++ lib.optionals enableInventor [
-      libXpm
-      coin3d
-      soxt
-      motif
-    ]
-    ++ lib.optionals enablePython [
-      boost_python
-      python3
-    ];
+  lib.optionals enableOpenGLX11 [
+    libGLU
+    libXext
+    libXmu
+  ]
+  ++ lib.optionals enableInventor [
+    libXpm
+    coin3d
+    soxt
+    motif
+  ]
+  ++ lib.optionals enablePython [
+    boost_python
+    python3
+  ];
 
   propagatedBuildInputs = [
     clhep

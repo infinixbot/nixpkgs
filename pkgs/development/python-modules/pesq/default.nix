@@ -26,21 +26,21 @@ buildPythonPackage rec {
   };
 
   postPatch =
-    # pythonRemoveDeps does not work for removing pytest-runner
-    ''
-      substituteInPlace setup.py \
-        --replace-fail ", 'pytest-runner'" ""
-    ''
-    # Flaky tests: numerical equality is not satisfied on ARM platforms
-    + ''
-      substituteInPlace tests/test_pesq.py \
-        --replace-fail \
-          "assert score == 1.6072081327438354" \
-          "assert abs(score - 1.6072081327438354) < 1e-5" \
-        --replace-fail \
-          "assert score == [1.6072081327438354]" \
-          "assert np.allclose(np.array(score), np.array([1.6072081327438354]))"
-    '';
+  # pythonRemoveDeps does not work for removing pytest-runner
+  ''
+    substituteInPlace setup.py \
+      --replace-fail ", 'pytest-runner'" ""
+  ''
+  # Flaky tests: numerical equality is not satisfied on ARM platforms
+  + ''
+    substituteInPlace tests/test_pesq.py \
+      --replace-fail \
+        "assert score == 1.6072081327438354" \
+        "assert abs(score - 1.6072081327438354) < 1e-5" \
+      --replace-fail \
+        "assert score == [1.6072081327438354]" \
+        "assert np.allclose(np.array(score), np.array([1.6072081327438354]))"
+  '';
 
   build-system = [
     cython

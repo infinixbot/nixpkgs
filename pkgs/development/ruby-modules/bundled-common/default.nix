@@ -152,15 +152,15 @@ let
     pathsToLink = [ "/lib" ];
 
     postBuild =
-      genStubsScript (
-        defs
-        // args
-        // {
-          inherit confFiles bundler groups;
-          binPaths = envPaths;
-        }
-      )
-      + lib.optionalString (postBuild != null) postBuild;
+    genStubsScript (
+      defs
+      // args
+      // {
+        inherit confFiles bundler groups;
+        binPaths = envPaths;
+      }
+    )
+    + lib.optionalString (postBuild != null) postBuild;
 
     meta = {
       platforms = ruby.meta.platforms;

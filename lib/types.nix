@@ -804,8 +804,8 @@ let
         mkOptionType {
           name = if lazy then "lazyAttrsOf" else "attrsOf";
           description =
-            (if lazy then "lazy attribute set" else "attribute set")
-            + " of ${optionDescriptionPhrase (class: class == "noun" || class == "composite") elemType}";
+          (if lazy then "lazy attribute set" else "attribute set")
+          + " of ${optionDescriptionPhrase (class: class == "noun" || class == "composite") elemType}";
           descriptionClass = "composite";
           check = isAttrs;
           merge =
@@ -866,9 +866,9 @@ let
         // {
           name = "loaOf";
           deprecationMessage =
-            "Mixing lists with attribute values is no longer"
-            + " possible; please use `types.attrsOf` instead. See"
-            + " https://github.com/NixOS/nixpkgs/issues/1800 for the motivation.";
+          "Mixing lists with attribute values is no longer"
+          + " possible; please use `types.attrsOf` instead. See"
+          + " https://github.com/NixOS/nixpkgs/issues/1800 for the motivation.";
           nestedTypes.elemType = elemType;
         };
 
@@ -958,25 +958,25 @@ let
               in
               a: b: {
                 tags =
-                  a.tags
-                  // b.tags
-                  // mapAttrs (
-                    tagName: bOpt:
-                    lib.mergeOptionDecls
-                      # FIXME: loc is not accurate; should include prefix
-                      #        Fortunately, it's only used for error messages, where a "relative" location is kinda ok.
-                      #        It is also returned though, but use of the attribute seems rare?
-                      [ tagName ]
-                      [
-                        (wrapOptionDecl a.tags.${tagName})
-                        (wrapOptionDecl bOpt)
-                      ]
-                    // {
-                      # mergeOptionDecls is not idempotent in these attrs:
-                      declarations = a.tags.${tagName}.declarations ++ bOpt.declarations;
-                      declarationPositions = a.tags.${tagName}.declarationPositions ++ bOpt.declarationPositions;
-                    }
-                  ) (builtins.intersectAttrs a.tags b.tags);
+                a.tags
+                // b.tags
+                // mapAttrs (
+                  tagName: bOpt:
+                  lib.mergeOptionDecls
+                    # FIXME: loc is not accurate; should include prefix
+                    #        Fortunately, it's only used for error messages, where a "relative" location is kinda ok.
+                    #        It is also returned though, but use of the attribute seems rare?
+                    [ tagName ]
+                    [
+                      (wrapOptionDecl a.tags.${tagName})
+                      (wrapOptionDecl bOpt)
+                    ]
+                  // {
+                    # mergeOptionDecls is not idempotent in these attrs:
+                    declarations = a.tags.${tagName}.declarations ++ bOpt.declarations;
+                    declarationPositions = a.tags.${tagName}.declarationPositions ++ bOpt.declarationPositions;
+                  }
+                ) (builtins.intersectAttrs a.tags b.tags);
               };
           };
         };
@@ -1102,10 +1102,10 @@ let
           check = x: isAttrs x || isFunction x || path.check x;
           merge = loc: defs: {
             imports =
-              staticModules
-              ++ map (
-                def: lib.setDefaultModuleLocation "${def.file}, via option ${showOption loc}" def.value
-              ) defs;
+            staticModules
+            ++ map (
+              def: lib.setDefaultModuleLocation "${def.file}, via option ${showOption loc}" def.value
+            ) defs;
           };
           inherit (submoduleWith { modules = staticModules; })
             getSubOptions

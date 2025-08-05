@@ -283,61 +283,61 @@ let
     JAXLIB_RELEASE = "1";
 
     preConfigure =
-      # Dummy ldconfig to work around "Can't open cache file /nix/store/<hash>-glibc-2.38-44/etc/ld.so.cache" error
-      ''
-        mkdir dummy-ldconfig
-        echo "#!${effectiveStdenv.shell}" > dummy-ldconfig/ldconfig
-        chmod +x dummy-ldconfig/ldconfig
-        export PATH="$PWD/dummy-ldconfig:$PATH"
-      ''
-      +
+    # Dummy ldconfig to work around "Can't open cache file /nix/store/<hash>-glibc-2.38-44/etc/ld.so.cache" error
+    ''
+      mkdir dummy-ldconfig
+      echo "#!${effectiveStdenv.shell}" > dummy-ldconfig/ldconfig
+      chmod +x dummy-ldconfig/ldconfig
+      export PATH="$PWD/dummy-ldconfig:$PATH"
+    ''
+    +
 
-        # Construct .jax_configure.bazelrc. See https://github.com/google/jax/blob/b9824d7de3cb30f1df738cc42e486db3e9d915ff/build/build.py#L259-L345
-        # for more info. We assume
-        # * `cpu = None`
-        # * `enable_nccl = True`
-        # * `target_cpu_features = "release"`
-        # * `rocm_amdgpu_targets = None`
-        # * `enable_rocm = False`
-        # * `build_gpu_plugin = False`
-        # * `use_clang = False` (Should we use `effectiveStdenv.cc.isClang` instead?)
-        #
-        # Note: We should try just running https://github.com/google/jax/blob/ceb198582b62b9e6f6bdf20ab74839b0cf1db16e/build/build.py#L259-L266
-        # instead of duplicating the logic here. Perhaps we can leverage the
-        # `--configure_only` flag (https://github.com/google/jax/blob/ceb198582b62b9e6f6bdf20ab74839b0cf1db16e/build/build.py#L544-L548)?
-        ''
-          cat <<CFG > ./.jax_configure.bazelrc
-          build --strategy=Genrule=standalone
-          build --repo_env PYTHON_BIN_PATH="${python}/bin/python"
-          build --action_env=PYENV_ROOT
-          build --python_path="${python}/bin/python"
-          build --distinct_host_configuration=false
-          build --define PROTOBUF_INCLUDE_PATH="${pkgs.protobuf}/include"
-        ''
-      + lib.optionalString cudaSupport ''
-        build --config=cuda
-        build --action_env CUDA_TOOLKIT_PATH="${cuda_build_deps_joined}"
-        build --action_env CUDNN_INSTALL_PATH="${cudnnMerged}"
-        build --action_env TF_CUDA_PATHS="${cuda_build_deps_joined},${cudnnMerged},${lib.getDev nccl}"
-        build --action_env TF_CUDA_VERSION="${cudaMajorMinorVersion}"
-        build --action_env TF_CUDNN_VERSION="${lib.versions.major cudaPackages.cudnn.version}"
-        build:cuda --action_env TF_CUDA_COMPUTE_CAPABILITIES="${builtins.concatStringsSep "," flags.realArches}"
+      # Construct .jax_configure.bazelrc. See https://github.com/google/jax/blob/b9824d7de3cb30f1df738cc42e486db3e9d915ff/build/build.py#L259-L345
+      # for more info. We assume
+      # * `cpu = None`
+      # * `enable_nccl = True`
+      # * `target_cpu_features = "release"`
+      # * `rocm_amdgpu_targets = None`
+      # * `enable_rocm = False`
+      # * `build_gpu_plugin = False`
+      # * `use_clang = False` (Should we use `effectiveStdenv.cc.isClang` instead?)
+      #
+      # Note: We should try just running https://github.com/google/jax/blob/ceb198582b62b9e6f6bdf20ab74839b0cf1db16e/build/build.py#L259-L266
+      # instead of duplicating the logic here. Perhaps we can leverage the
+      # `--configure_only` flag (https://github.com/google/jax/blob/ceb198582b62b9e6f6bdf20ab74839b0cf1db16e/build/build.py#L544-L548)?
       ''
-      +
-        # Note that upstream conditions this on `wheel_cpu == "x86_64"`. We just
-        # rely on `effectiveStdenv.hostPlatform.avxSupport` instead. So far so
-        # good. See https://github.com/google/jax/blob/b9824d7de3cb30f1df738cc42e486db3e9d915ff/build/build.py#L322
-        # for upstream's version.
-        lib.optionalString (effectiveStdenv.hostPlatform.avxSupport && effectiveStdenv.hostPlatform.isUnix)
-          ''
-            build --config=avx_posix
-          ''
-      + lib.optionalString mklSupport ''
-        build --config=mkl_open_source_only
+        cat <<CFG > ./.jax_configure.bazelrc
+        build --strategy=Genrule=standalone
+        build --repo_env PYTHON_BIN_PATH="${python}/bin/python"
+        build --action_env=PYENV_ROOT
+        build --python_path="${python}/bin/python"
+        build --distinct_host_configuration=false
+        build --define PROTOBUF_INCLUDE_PATH="${pkgs.protobuf}/include"
       ''
-      + ''
-        CFG
-      '';
+    + lib.optionalString cudaSupport ''
+      build --config=cuda
+      build --action_env CUDA_TOOLKIT_PATH="${cuda_build_deps_joined}"
+      build --action_env CUDNN_INSTALL_PATH="${cudnnMerged}"
+      build --action_env TF_CUDA_PATHS="${cuda_build_deps_joined},${cudnnMerged},${lib.getDev nccl}"
+      build --action_env TF_CUDA_VERSION="${cudaMajorMinorVersion}"
+      build --action_env TF_CUDNN_VERSION="${lib.versions.major cudaPackages.cudnn.version}"
+      build:cuda --action_env TF_CUDA_COMPUTE_CAPABILITIES="${builtins.concatStringsSep "," flags.realArches}"
+    ''
+    +
+      # Note that upstream conditions this on `wheel_cpu == "x86_64"`. We just
+      # rely on `effectiveStdenv.hostPlatform.avxSupport` instead. So far so
+      # good. See https://github.com/google/jax/blob/b9824d7de3cb30f1df738cc42e486db3e9d915ff/build/build.py#L322
+      # for upstream's version.
+      lib.optionalString (effectiveStdenv.hostPlatform.avxSupport && effectiveStdenv.hostPlatform.isUnix)
+        ''
+          build --config=avx_posix
+        ''
+    + lib.optionalString mklSupport ''
+      build --config=mkl_open_source_only
+    ''
+    + ''
+      CFG
+    '';
 
     # Make sure Bazel knows about our configuration flags during fetching so that the
     # relevant dependencies can be downloaded.
@@ -366,18 +366,18 @@ let
         "@mkl_dnn_v1//:mkl_dnn"
       ];
       bazelFlags =
-        bazelFlags
-        ++ [
-          "--config=avx_posix"
-          "--config=mkl_open_source_only"
-        ]
-        ++ lib.optionals cudaSupport [
-          # ideally we'd add this unconditionally too, but it doesn't work on darwin
-          # we make this conditional on `cudaSupport` instead of the system, so that the hash for both
-          # the cuda and the non-cuda deps can be computed on linux, since a lot of contributors don't
-          # have access to darwin machines
-          "--config=cuda"
-        ];
+      bazelFlags
+      ++ [
+        "--config=avx_posix"
+        "--config=mkl_open_source_only"
+      ]
+      ++ lib.optionals cudaSupport [
+        # ideally we'd add this unconditionally too, but it doesn't work on darwin
+        # we make this conditional on `cudaSupport` instead of the system, so that the hash for both
+        # the cuda and the non-cuda deps can be computed on linux, since a lot of contributors don't
+        # have access to darwin machines
+        "--config=cuda"
+      ];
 
       sha256 =
         (

@@ -3090,12 +3090,12 @@ let
           Name = config.name;
         };
         networkConfig =
-          optionalAttrs (config.DHCP != null) {
-            DHCP = config.DHCP;
-          }
-          // optionalAttrs (config.domains != null) {
-            Domains = concatStringsSep " " config.domains;
-          };
+        optionalAttrs (config.DHCP != null) {
+          DHCP = config.DHCP;
+        }
+        // optionalAttrs (config.domains != null) {
+          Domains = concatStringsSep " " config.domains;
+        };
       };
     };
 
@@ -3308,8 +3308,8 @@ let
       (mkIf config.systemd.network.enable {
 
         systemd.network.units =
-          mapAttrs' (n: v: nameValuePair "${n}.netdev" (mkUnit netdevToUnit v)) cfg.netdevs
-          // mapAttrs' (n: v: nameValuePair "${n}.network" (mkUnit networkToUnit v)) cfg.networks;
+        mapAttrs' (n: v: nameValuePair "${n}.netdev" (mkUnit netdevToUnit v)) cfg.netdevs
+        // mapAttrs' (n: v: nameValuePair "${n}.network" (mkUnit networkToUnit v)) cfg.networks;
 
         # systemd-networkd is socket-activated by kernel netlink route change
         # messages. It is important to have systemd buffer those on behalf of

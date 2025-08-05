@@ -62,17 +62,17 @@ let
       ++ lib.optionals requires-sentencepiece [ sentencepiece ];
 
       postPatch =
-        lib.optionalString requires-protobuf ''
-          substituteInPlace meta.json \
-            --replace-fail "protobuf<3.21.0" "protobuf"
-        ''
-        + lib.optionalString (lang == "zh") ''
-          # Uses numpy 2.x, while the rest of the dependencies still uses
-          # numpy 1.x. Remove once all spaCy packages are updated for
-          # numpy 2.x.
-          substituteInPlace meta.json \
-            --replace-fail "spacy-pkuseg>=1.0.0,<2.0.0" "spacy-pkuseg"
-        '';
+      lib.optionalString requires-protobuf ''
+        substituteInPlace meta.json \
+          --replace-fail "protobuf<3.21.0" "protobuf"
+      ''
+      + lib.optionalString (lang == "zh") ''
+        # Uses numpy 2.x, while the rest of the dependencies still uses
+        # numpy 1.x. Remove once all spaCy packages are updated for
+        # numpy 2.x.
+        substituteInPlace meta.json \
+          --replace-fail "spacy-pkuseg>=1.0.0,<2.0.0" "spacy-pkuseg"
+      '';
 
       nativeBuildInputs = [ setuptools ] ++ lib.optionals requires-protobuf [ protobuf ];
 

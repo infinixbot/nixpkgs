@@ -117,32 +117,32 @@ let
   };
 
   combinedFonts =
+  lib.concatMapAttrs (
+    ligName: ligVariant:
     lib.concatMapAttrs (
-      ligName: ligVariant:
-      lib.concatMapAttrs (
-        typeName: typeVariant:
-        let
-          pname = "MapleMono${ligVariant.suffix}-${typeVariant.suffix}";
-        in
-        {
-          "${ligVariant.suffix}-${typeVariant.suffix}" = maple-font {
-            inherit pname;
-            desc = "${ligVariant.desc} ${typeVariant.desc}";
-            hash = hashes.${pname};
-          };
-        }
-      ) typeVariants
-    ) ligatureVariants
-    // lib.mapAttrs (
-      _: value:
+      typeName: typeVariant:
       let
-        pname = "MapleMono-${value.suffix}";
+        pname = "MapleMono${ligVariant.suffix}-${typeVariant.suffix}";
       in
-      maple-font {
-        inherit pname;
-        inherit (value) desc;
-        hash = hashes.${pname};
+      {
+        "${ligVariant.suffix}-${typeVariant.suffix}" = maple-font {
+          inherit pname;
+          desc = "${ligVariant.desc} ${typeVariant.desc}";
+          hash = hashes.${pname};
+        };
       }
-    ) typeVariants;
+    ) typeVariants
+  ) ligatureVariants
+  // lib.mapAttrs (
+    _: value:
+    let
+      pname = "MapleMono-${value.suffix}";
+    in
+    maple-font {
+      inherit pname;
+      inherit (value) desc;
+      hash = hashes.${pname};
+    }
+  ) typeVariants;
 in
 combinedFonts

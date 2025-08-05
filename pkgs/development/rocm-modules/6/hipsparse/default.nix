@@ -113,25 +113,25 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   postInstall =
-    lib.optionalString buildTests ''
-      mkdir -p $test/bin
-      mv $out/bin/hipsparse-test $test/bin
-      mv /build/source/matrices $test
-      rmdir $out/bin
-    ''
-    + lib.optionalString buildSamples ''
-      mkdir -p $sample/bin
-      mv clients/staging/example_* $sample/bin
-      patchelf --set-rpath $out/lib:${
-        lib.makeLibraryPath (
-          finalAttrs.buildInputs
-          ++ [
-            clr
-            gfortran.cc
-          ]
-        )
-      } $sample/bin/example_*
-    '';
+  lib.optionalString buildTests ''
+    mkdir -p $test/bin
+    mv $out/bin/hipsparse-test $test/bin
+    mv /build/source/matrices $test
+    rmdir $out/bin
+  ''
+  + lib.optionalString buildSamples ''
+    mkdir -p $sample/bin
+    mv clients/staging/example_* $sample/bin
+    patchelf --set-rpath $out/lib:${
+      lib.makeLibraryPath (
+        finalAttrs.buildInputs
+        ++ [
+          clr
+          gfortran.cc
+        ]
+      )
+    } $sample/bin/example_*
+  '';
 
   passthru.updateScript = rocmUpdateScript {
     name = finalAttrs.pname;

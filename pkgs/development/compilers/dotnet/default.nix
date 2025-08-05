@@ -128,33 +128,33 @@ let
             ''
             + old.postBuild;
             passthru =
-              old.passthru
-              // (
-                let
-                  # if only overlay has a working ILCompiler, use it
-                  hostRid = pkgs.systemToDotnetRid base.stdenv.hostPlatform.system;
-                  hasILCompiler = base.hasILCompiler || overlay.hasILCompiler;
-                  packageName = "runtime.${hostRid}.Microsoft.DotNet.ILCompiler";
-                  packages =
-                    if !base.hasILCompiler && overlay.hasILCompiler then
-                      lib.filter (x: x.pname != packageName) base.packages
-                      ++ lib.filter (x: x.pname == packageName) overlay.packages
-                    else
-                      base.packages;
-                in
-                {
-                  inherit hasILCompiler packages;
-                  inherit (base)
-                    targetPackages
-                    runtime
-                    aspnetcore
-                    ;
-                  inherit (overlay.unwrapped)
-                    pname
-                    version
-                    ;
-                }
-              );
+            old.passthru
+            // (
+              let
+                # if only overlay has a working ILCompiler, use it
+                hostRid = pkgs.systemToDotnetRid base.stdenv.hostPlatform.system;
+                hasILCompiler = base.hasILCompiler || overlay.hasILCompiler;
+                packageName = "runtime.${hostRid}.Microsoft.DotNet.ILCompiler";
+                packages =
+                  if !base.hasILCompiler && overlay.hasILCompiler then
+                    lib.filter (x: x.pname != packageName) base.packages
+                    ++ lib.filter (x: x.pname == packageName) overlay.packages
+                  else
+                    base.packages;
+              in
+              {
+                inherit hasILCompiler packages;
+                inherit (base)
+                  targetPackages
+                  runtime
+                  aspnetcore
+                  ;
+                inherit (overlay.unwrapped)
+                  pname
+                  version
+                  ;
+              }
+            );
           })
       );
 

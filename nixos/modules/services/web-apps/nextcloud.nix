@@ -119,13 +119,13 @@ let
   # NOTE: The credentials required by all services at runtime, not including things like the
   #       admin password which is only needed by the setup service.
   runtimeSystemdCredentials =
-    [ ]
-    ++ (lib.optional (cfg.config.dbpassFile != null) "dbpass:${cfg.config.dbpassFile}")
-    ++ (lib.optional (cfg.config.objectstore.s3.enable) "s3_secret:${cfg.config.objectstore.s3.secretFile}")
-    ++ (lib.optional (
-      cfg.config.objectstore.s3.sseCKeyFile != null
-    ) "s3_sse_c_key:${cfg.config.objectstore.s3.sseCKeyFile}")
-    ++ (lib.optional (cfg.secretFile != null) "secret_file:${cfg.secretFile}");
+  [ ]
+  ++ (lib.optional (cfg.config.dbpassFile != null) "dbpass:${cfg.config.dbpassFile}")
+  ++ (lib.optional (cfg.config.objectstore.s3.enable) "s3_secret:${cfg.config.objectstore.s3.secretFile}")
+  ++ (lib.optional (
+    cfg.config.objectstore.s3.sseCKeyFile != null
+  ) "s3_sse_c_key:${cfg.config.objectstore.s3.sseCKeyFile}")
+  ++ (lib.optional (cfg.secretFile != null) "secret_file:${cfg.secretFile}");
 
   requiresRuntimeSystemdCredentials = (lib.length runtimeSystemdCredentials) != 0;
 
@@ -1358,11 +1358,11 @@ in
             PATH = "/run/wrappers/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin:/usr/bin:/bin";
           };
           settings =
-            lib.mapAttrs (name: lib.mkDefault) {
-              "listen.owner" = config.services.nginx.user;
-              "listen.group" = config.services.nginx.group;
-            }
-            // cfg.poolSettings;
+          lib.mapAttrs (name: lib.mkDefault) {
+            "listen.owner" = config.services.nginx.user;
+            "listen.group" = config.services.nginx.group;
+          }
+          // cfg.poolSettings;
           extraConfig = cfg.poolConfig;
         };
       };

@@ -84,8 +84,8 @@ mkChromiumDerivation (base: rec {
 
   meta = {
     description =
-      "Open source web browser from Google"
-      + lib.optionalString ungoogled ", with dependencies on Google web services removed";
+    "Open source web browser from Google"
+    + lib.optionalString ungoogled ", with dependencies on Google web services removed";
     longDescription = ''
       Chromium is an open source web browser from Google that aims to build a
       safer, faster, and more stable way for all Internet users to experience

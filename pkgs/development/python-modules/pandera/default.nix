@@ -134,16 +134,16 @@ buildPythonPackage rec {
   ];
 
   disabledTests =
-    lib.optionals stdenv.hostPlatform.isDarwin [
-      # OOM error on ofborg:
-      "test_engine_geometry_coerce_crs"
-      # pandera.errors.SchemaError: Error while coercing 'geometry' to type geometry
-      "test_schema_dtype_crs_with_coerce"
-    ]
-    ++ lib.optionals (pythonAtLeast "3.13") [
-      # AssertionError: assert DataType(Sparse[float64, nan]) == DataType(Sparse[float64, nan])
-      "test_legacy_default_pandas_extension_dtype"
-    ];
+  lib.optionals stdenv.hostPlatform.isDarwin [
+    # OOM error on ofborg:
+    "test_engine_geometry_coerce_crs"
+    # pandera.errors.SchemaError: Error while coercing 'geometry' to type geometry
+    "test_schema_dtype_crs_with_coerce"
+  ]
+  ++ lib.optionals (pythonAtLeast "3.13") [
+    # AssertionError: assert DataType(Sparse[float64, nan]) == DataType(Sparse[float64, nan])
+    "test_legacy_default_pandas_extension_dtype"
+  ];
 
   pythonImportsCheck = [
     "pandera"

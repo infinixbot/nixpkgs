@@ -194,17 +194,17 @@ in
           documentation = [ "https://plausible.io/docs/self-hosting" ];
           wantedBy = [ "multi-user.target" ];
           after =
-            optional cfg.database.clickhouse.setup "clickhouse.service"
-            ++ optionals cfg.database.postgres.setup [
-              "postgresql.target"
-              "plausible-postgres.service"
-            ];
+          optional cfg.database.clickhouse.setup "clickhouse.service"
+          ++ optionals cfg.database.postgres.setup [
+            "postgresql.target"
+            "plausible-postgres.service"
+          ];
           requires =
-            optional cfg.database.clickhouse.setup "clickhouse.service"
-            ++ optionals cfg.database.postgres.setup [
-              "postgresql.target"
-              "plausible-postgres.service"
-            ];
+          optional cfg.database.clickhouse.setup "clickhouse.service"
+          ++ optionals cfg.database.postgres.setup [
+            "postgresql.target"
+            "plausible-postgres.service"
+          ];
 
           environment = {
             # NixOS specific option to avoid that it's trying to write into its store-path.

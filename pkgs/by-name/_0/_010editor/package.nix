@@ -34,12 +34,12 @@ stdenv.mkDerivation (finalAttrs: {
   dontConfigure = true;
 
   nativeBuildInputs =
-    lib.optionals stdenv.hostPlatform.isLinux [
-      autoPatchelfHook
-      makeWrapper
-      qt5.wrapQtAppsHook
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [ undmg ];
+  lib.optionals stdenv.hostPlatform.isLinux [
+    autoPatchelfHook
+    makeWrapper
+    qt5.wrapQtAppsHook
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ undmg ];
 
   buildInputs = lib.optionals stdenv.hostPlatform.isLinux [
     cups

@@ -71,11 +71,11 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   postFixup =
-    lib.optionalString stdenv.hostPlatform.isDarwin ''
-      wrapQtApp "$out/Applications/${finalAttrs.meta.mainProgram}.app/Contents/MacOS/${finalAttrs.meta.mainProgram}"
-    ''
-    + lib.optionalString stdenv.hostPlatform.isLinux ''
-      substituteInPlace $out/share/dbus-1/services/* \
-        --replace-fail "$unwrapped" "$out"
-    '';
+  lib.optionalString stdenv.hostPlatform.isDarwin ''
+    wrapQtApp "$out/Applications/${finalAttrs.meta.mainProgram}.app/Contents/MacOS/${finalAttrs.meta.mainProgram}"
+  ''
+  + lib.optionalString stdenv.hostPlatform.isLinux ''
+    substituteInPlace $out/share/dbus-1/services/* \
+      --replace-fail "$unwrapped" "$out"
+  '';
 })

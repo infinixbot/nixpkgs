@@ -18,32 +18,32 @@
 
 let
   targets =
-    additionalTargets
-    // lib.optionalAttrs stdenv.hostPlatform.isx86_64 {
-      "bin-x86_64-efi/ipxe.efi" = null;
-      "bin-x86_64-efi/ipxe.efirom" = null;
-      "bin-x86_64-efi/ipxe.usb" = "ipxe-efi.usb";
-      "bin-x86_64-efi/snp.efi" = null;
-    }
-    // lib.optionalAttrs stdenv.hostPlatform.isx86 {
-      "bin/ipxe.dsk" = null;
-      "bin/ipxe.usb" = null;
-      "bin/ipxe.iso" = null;
-      "bin/ipxe.lkrn" = null;
-      "bin/undionly.kpxe" = null;
-    }
-    // lib.optionalAttrs stdenv.hostPlatform.isAarch32 {
-      "bin-arm32-efi/ipxe.efi" = null;
-      "bin-arm32-efi/ipxe.efirom" = null;
-      "bin-arm32-efi/ipxe.usb" = "ipxe-efi.usb";
-      "bin-arm32-efi/snp.efi" = null;
-    }
-    // lib.optionalAttrs stdenv.hostPlatform.isAarch64 {
-      "bin-arm64-efi/ipxe.efi" = null;
-      "bin-arm64-efi/ipxe.efirom" = null;
-      "bin-arm64-efi/ipxe.usb" = "ipxe-efi.usb";
-      "bin-arm64-efi/snp.efi" = null;
-    };
+  additionalTargets
+  // lib.optionalAttrs stdenv.hostPlatform.isx86_64 {
+    "bin-x86_64-efi/ipxe.efi" = null;
+    "bin-x86_64-efi/ipxe.efirom" = null;
+    "bin-x86_64-efi/ipxe.usb" = "ipxe-efi.usb";
+    "bin-x86_64-efi/snp.efi" = null;
+  }
+  // lib.optionalAttrs stdenv.hostPlatform.isx86 {
+    "bin/ipxe.dsk" = null;
+    "bin/ipxe.usb" = null;
+    "bin/ipxe.iso" = null;
+    "bin/ipxe.lkrn" = null;
+    "bin/undionly.kpxe" = null;
+  }
+  // lib.optionalAttrs stdenv.hostPlatform.isAarch32 {
+    "bin-arm32-efi/ipxe.efi" = null;
+    "bin-arm32-efi/ipxe.efirom" = null;
+    "bin-arm32-efi/ipxe.usb" = "ipxe-efi.usb";
+    "bin-arm32-efi/snp.efi" = null;
+  }
+  // lib.optionalAttrs stdenv.hostPlatform.isAarch64 {
+    "bin-arm64-efi/ipxe.efi" = null;
+    "bin-arm64-efi/ipxe.efirom" = null;
+    "bin-arm64-efi/ipxe.usb" = "ipxe-efi.usb";
+    "bin-arm64-efi/snp.efi" = null;
+  };
 in
 
 stdenv.mkDerivation (finalAttrs: {

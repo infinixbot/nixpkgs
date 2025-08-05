@@ -45,9 +45,9 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs =
-    lib.optionals (datatype != "simd") [ libpng ]
-    # TODO: This may mismatch the LLVM version in the stdenv, see #79818.
-    ++ lib.optional (enableOpenmp && stdenv.cc.isClang) llvmPackages.openmp;
+  lib.optionals (datatype != "simd") [ libpng ]
+  # TODO: This may mismatch the LLVM version in the stdenv, see #79818.
+  ++ lib.optional (enableOpenmp && stdenv.cc.isClang) llvmPackages.openmp;
 
   nativeCheckInputs = [ (python3.withPackages (ps: [ ps.numpy ])) ];
 

@@ -33,12 +33,12 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    lib.optionals enableMysql [
-      libmysqlclient
-    ]
-    ++ lib.optionals enableXmlpipe2 [
-      expat
-    ];
+  lib.optionals enableMysql [
+    libmysqlclient
+  ]
+  ++ lib.optionals enableXmlpipe2 [
+    expat
+  ];
 
   CXXFLAGS = "-std=c++98";
 

@@ -280,16 +280,16 @@ in
         ];
         RuntimeDirectory = "mpd";
         StateDirectory =
-          [ ]
-          ++ lib.optionals (cfg.dataDir == "/var/lib/${name}") [ name ]
-          ++ lib.optionals (cfg.playlistDirectory == "/var/lib/${name}/playlists") [
-            name
-            "${name}/playlists"
-          ]
-          ++ lib.optionals (cfg.musicDirectory == "/var/lib/${name}/music") [
-            name
-            "${name}/music"
-          ];
+        [ ]
+        ++ lib.optionals (cfg.dataDir == "/var/lib/${name}") [ name ]
+        ++ lib.optionals (cfg.playlistDirectory == "/var/lib/${name}/playlists") [
+          name
+          "${name}/playlists"
+        ]
+        ++ lib.optionals (cfg.musicDirectory == "/var/lib/${name}/music") [
+          name
+          "${name}/music"
+        ];
       };
     };
 

@@ -153,15 +153,15 @@ in
   config =
     let
       configFiles =
-        (lib.optionalAttrs (cfg.settings != null) {
-          "borgmatic/config.yaml".source = cfgfile;
-        })
-        // lib.mapAttrs' (
-          name: value:
-          lib.nameValuePair "borgmatic.d/${name}.yaml" {
-            source = settingsFormat.generate "${name}.yaml" (addRequiredBinaries value);
-          }
-        ) cfg.configurations;
+      (lib.optionalAttrs (cfg.settings != null) {
+        "borgmatic/config.yaml".source = cfgfile;
+      })
+      // lib.mapAttrs' (
+        name: value:
+        lib.nameValuePair "borgmatic.d/${name}.yaml" {
+          source = settingsFormat.generate "${name}.yaml" (addRequiredBinaries value);
+        }
+      ) cfg.configurations;
       borgmaticCheck =
         name: f:
         pkgs.runCommandCC "${name} validation" { } ''
@@ -172,13 +172,13 @@ in
     lib.mkIf cfg.enable {
 
       warnings =
-        [ ]
-        ++
-          lib.optional (cfg.settings != null && cfg.settings ? location)
-            "`services.borgmatic.settings.location` is deprecated, please move your options out of sections to the global scope"
-        ++
-          lib.optional (lib.catAttrs "location" (lib.attrValues cfg.configurations) != [ ])
-            "`services.borgmatic.configurations.<name>.location` is deprecated, please move your options out of sections to the global scope";
+      [ ]
+      ++
+        lib.optional (cfg.settings != null && cfg.settings ? location)
+          "`services.borgmatic.settings.location` is deprecated, please move your options out of sections to the global scope"
+      ++
+        lib.optional (lib.catAttrs "location" (lib.attrValues cfg.configurations) != [ ])
+          "`services.borgmatic.configurations.<name>.location` is deprecated, please move your options out of sections to the global scope";
 
       environment.systemPackages = [ pkgs.borgmatic ];
 

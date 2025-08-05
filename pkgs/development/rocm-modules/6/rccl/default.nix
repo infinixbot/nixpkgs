@@ -113,14 +113,14 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   postInstall =
-    lib.optionalString useAsan ''
-      patchelf --add-needed ${clr}/llvm/lib/linux/libclang_rt.asan-${stdenv.hostPlatform.parsed.cpu.name}.so $out/lib/librccl.so
-    ''
-    + lib.optionalString buildTests ''
-      mkdir -p $test/bin
-      mv $out/bin/* $test/bin
-      rmdir $out/bin
-    '';
+  lib.optionalString useAsan ''
+    patchelf --add-needed ${clr}/llvm/lib/linux/libclang_rt.asan-${stdenv.hostPlatform.parsed.cpu.name}.so $out/lib/librccl.so
+  ''
+  + lib.optionalString buildTests ''
+    mkdir -p $test/bin
+    mv $out/bin/* $test/bin
+    rmdir $out/bin
+  '';
 
   passthru.updateScript = rocmUpdateScript {
     name = finalAttrs.pname;

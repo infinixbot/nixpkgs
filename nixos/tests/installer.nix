@@ -1076,22 +1076,22 @@ let
           "udevadm settle")
         '';
         extraConfig =
-          optionalString (!parentDataset) ''
-            boot.initrd.clevis.devices."rpool/root".secretFile = "/etc/nixos/clevis-secret.jwe";
-          ''
-          + optionalString (parentDataset) ''
-            boot.initrd.clevis.devices."rpool".secretFile = "/etc/nixos/clevis-secret.jwe";
-          ''
-          + ''
-            boot.zfs.requestEncryptionCredentials = true;
+        optionalString (!parentDataset) ''
+          boot.initrd.clevis.devices."rpool/root".secretFile = "/etc/nixos/clevis-secret.jwe";
+        ''
+        + optionalString (parentDataset) ''
+          boot.initrd.clevis.devices."rpool".secretFile = "/etc/nixos/clevis-secret.jwe";
+        ''
+        + ''
+          boot.zfs.requestEncryptionCredentials = true;
 
 
-            # Using by-uuid overrides the default of by-id, and is unique
-            # to the qemu disks, as they don't produce by-id paths for
-            # some reason.
-            boot.zfs.devNodes = "/dev/disk/by-uuid/";
-            networking.hostId = "00000000";
-          '';
+          # Using by-uuid overrides the default of by-id, and is unique
+          # to the qemu disks, as they don't produce by-id paths for
+          # some reason.
+          boot.zfs.devNodes = "/dev/disk/by-uuid/";
+          networking.hostId = "00000000";
+        '';
         postBootCommands = optionalString fallback ''
           ${
             if systemdStage1 then

@@ -24,19 +24,19 @@ stdenvNoCC.mkDerivation (
     postgresqlTestUserOptions = "LOGIN SUPERUSER";
     passAsFile = [ "sql" ];
     sql =
-      sql
-      + lib.concatMapStrings (
-        {
-          query,
-          expected,
-          description,
-        }:
-        ''
-          DO $$ BEGIN
-            ASSERT (${query}) = (${expected}), '${lib.replaceStrings [ "'" ] [ "''" ] description}';
-          END $$;
-        ''
-      ) asserts;
+    sql
+    + lib.concatMapStrings (
+      {
+        query,
+        expected,
+        description,
+      }:
+      ''
+        DO $$ BEGIN
+          ASSERT (${query}) = (${expected}), '${lib.replaceStrings [ "'" ] [ "''" ] description}';
+        END $$;
+      ''
+    ) asserts;
     checkPhase = ''
       runHook preCheck
       psql -a -v ON_ERROR_STOP=1 -f "$sqlPath"

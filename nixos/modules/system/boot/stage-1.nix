@@ -757,7 +757,7 @@ in
           in
           resumeDevice == "" || builtins.substring 0 1 resumeDevice == "/";
         message =
-          "boot.resumeDevice has to be an absolute path." + " Old \"x:y\" style is no longer supported.";
+        "boot.resumeDevice has to be an absolute path." + " Old \"x:y\" style is no longer supported.";
       }
       # TODO: remove when #85000 is fixed
       {

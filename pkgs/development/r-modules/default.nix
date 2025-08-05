@@ -1728,8 +1728,8 @@ let
       env = (attrs.env or { }) // {
         # Avoid incompatible pointer type error
         NIX_CFLAGS_COMPILE =
-          attrs.env.NIX_CFLAGS_COMPILE
-          + " -Wno-implicit-function-declaration -Wno-incompatible-pointer-types";
+        attrs.env.NIX_CFLAGS_COMPILE
+        + " -Wno-implicit-function-declaration -Wno-incompatible-pointer-types";
       };
     });
 
@@ -2079,7 +2079,7 @@ let
     ModelMetrics = old.ModelMetrics.overrideAttrs (attrs: {
       env = (attrs.env or { }) // {
         NIX_CFLAGS_COMPILE =
-          attrs.env.NIX_CFLAGS_COMPILE + lib.optionalString stdenv.hostPlatform.isDarwin " -fopenmp";
+        attrs.env.NIX_CFLAGS_COMPILE + lib.optionalString stdenv.hostPlatform.isDarwin " -fopenmp";
       };
     });
 
@@ -2438,8 +2438,8 @@ let
     BiocParallel = old.BiocParallel.overrideAttrs (attrs: {
       env = (attrs.env or { }) // {
         NIX_CFLAGS_COMPILE =
-          attrs.env.NIX_CFLAGS_COMPILE
-          + lib.optionalString stdenv.hostPlatform.isDarwin " -Wno-error=missing-template-arg-list-after-template-kw";
+        attrs.env.NIX_CFLAGS_COMPILE
+        + lib.optionalString stdenv.hostPlatform.isDarwin " -Wno-error=missing-template-arg-list-after-template-kw";
       };
     });
 
@@ -2476,8 +2476,8 @@ let
       # Use a workaround from https://github.com/swig/swig/issues/1538
       env = (attrs.env or { }) // {
         NIX_CFLAGS_COMPILE =
-          (attrs.env.NIX_CFLAGS_COMPILE or "")
-          + lib.optionalString stdenv.hostPlatform.isDarwin " -D_LIBCPP_ENABLE_CXX17_REMOVED_FEATURES";
+        (attrs.env.NIX_CFLAGS_COMPILE or "")
+        + lib.optionalString stdenv.hostPlatform.isDarwin " -D_LIBCPP_ENABLE_CXX17_REMOVED_FEATURES";
       };
     });
 

@@ -44,18 +44,18 @@ let
   #                                # user, group and mode set permissions for
   #                                #   a Unix domain socket.
   commandLineAddresses =
-    (concatMapStringsSep " " (
-      a:
-      "-a "
-      + optionalString (!isNull a.name) "${a.name}="
-      + a.address
-      + optionalString (!isNull a.port) ":${toString a.port}"
-      + optionalString (!isNull a.proto) ",${a.proto}"
-      + optionalString (!isNull a.user) ",user=${a.user}"
-      + optionalString (!isNull a.group) ",group=${a.group}"
-      + optionalString (!isNull a.mode) ",mode=${a.mode}"
-    ) cfg.listen)
-    + lib.optionalString (!isNull cfg.http_address) " -a ${cfg.http_address}";
+  (concatMapStringsSep " " (
+    a:
+    "-a "
+    + optionalString (!isNull a.name) "${a.name}="
+    + a.address
+    + optionalString (!isNull a.port) ":${toString a.port}"
+    + optionalString (!isNull a.proto) ",${a.proto}"
+    + optionalString (!isNull a.user) ",user=${a.user}"
+    + optionalString (!isNull a.group) ",group=${a.group}"
+    + optionalString (!isNull a.mode) ",mode=${a.mode}"
+  ) cfg.listen)
+  + lib.optionalString (!isNull cfg.http_address) " -a ${cfg.http_address}";
   addressSubmodule = types.submodule {
     options = {
       name = mkOption {
@@ -122,12 +122,12 @@ let
     )
   );
   commandLine =
-    "-f ${pkgs.writeText "default.vcl" cfg.config}"
-    +
-      lib.optionalString (cfg.extraModules != [ ])
-        " -p vmod_path='${
-           lib.makeSearchPathOutput "lib" "lib/varnish/vmods" ([ cfg.package ] ++ cfg.extraModules)
-         }' -r vmod_path";
+  "-f ${pkgs.writeText "default.vcl" cfg.config}"
+  +
+    lib.optionalString (cfg.extraModules != [ ])
+      " -p vmod_path='${
+         lib.makeSearchPathOutput "lib" "lib/varnish/vmods" ([ cfg.package ] ++ cfg.extraModules)
+       }' -r vmod_path";
 in
 {
   imports = [

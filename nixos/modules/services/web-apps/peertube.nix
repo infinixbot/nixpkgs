@@ -82,18 +82,18 @@ let
   '';
 
   nginxCommonHeaders =
-    lib.optionalString config.services.nginx.virtualHosts.${cfg.localDomain}.forceSSL ''
-      add_header Strict-Transport-Security 'max-age=31536000';
-    ''
-    +
-      lib.optionalString
-        (
-          config.services.nginx.virtualHosts.${cfg.localDomain}.quic
-          && config.services.nginx.virtualHosts.${cfg.localDomain}.http3
-        )
-        ''
-          add_header Alt-Svc 'h3=":$server_port"; ma=604800';
-        '';
+  lib.optionalString config.services.nginx.virtualHosts.${cfg.localDomain}.forceSSL ''
+    add_header Strict-Transport-Security 'max-age=31536000';
+  ''
+  +
+    lib.optionalString
+      (
+        config.services.nginx.virtualHosts.${cfg.localDomain}.quic
+        && config.services.nginx.virtualHosts.${cfg.localDomain}.http3
+      )
+      ''
+        add_header Alt-Svc 'h3=":$server_port"; ma=604800';
+      '';
 
   nginxCommonHeadersExtra = ''
     add_header Access-Control-Allow-Origin '*';
@@ -517,11 +517,11 @@ in
         "peertube-init-db.service"
       ];
       requires =
-        lib.optional cfg.redis.createLocally "redis-peertube.service"
-        ++ lib.optionals cfg.database.createLocally [
-          "postgresql.target"
-          "peertube-init-db.service"
-        ];
+      lib.optional cfg.redis.createLocally "redis-peertube.service"
+      ++ lib.optionals cfg.database.createLocally [
+        "postgresql.target"
+        "peertube-init-db.service"
+      ];
       wantedBy = [ "multi-user.target" ];
 
       environment = env;

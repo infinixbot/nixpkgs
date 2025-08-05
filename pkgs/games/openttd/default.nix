@@ -130,15 +130,15 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   postInstall =
-    lib.optionalString withOpenGFX ''
-      cp ${opengfx}/*.tar $out/share/games/openttd/baseset
-    ''
-    + lib.optionalString withOpenSFX ''
-      cp ${opensfx}/*.tar $out/share/games/openttd/baseset
-    ''
-    + lib.optionalString withOpenMSX ''
-      tar -xf ${openmsx}/*.tar -C $out/share/games/openttd/baseset
-    '';
+  lib.optionalString withOpenGFX ''
+    cp ${opengfx}/*.tar $out/share/games/openttd/baseset
+  ''
+  + lib.optionalString withOpenSFX ''
+    cp ${opensfx}/*.tar $out/share/games/openttd/baseset
+  ''
+  + lib.optionalString withOpenMSX ''
+    tar -xf ${openmsx}/*.tar -C $out/share/games/openttd/baseset
+  '';
 
   meta = {
     description = ''Open source clone of the Microprose game "Transport Tycoon Deluxe"'';

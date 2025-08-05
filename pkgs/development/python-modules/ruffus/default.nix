@@ -31,20 +31,20 @@ buildPythonPackage rec {
   # tests very flaky & hang often on darwin
   doCheck = !stdenv.hostPlatform.isDarwin;
   checkPhase =
-    # https://docs.python.org/3/whatsnew/3.13.html#re
-    lib.optionalString (pythonAtLeast "3.13") ''
-      substituteInPlace ruffus/test/test_ruffus_utility.py \
-        --replace-fail re.error re.PatternError
-    ''
-    # test files do indeed need to be executed separately
-    + ''
-      pushd ruffus/test
-      rm test_with_logger.py  # spawns 500 processes
-      for f in test_*.py ; do
-        HOME=$TMPDIR pytest -v --disable-warnings $f
-      done
-      popd
-    '';
+  # https://docs.python.org/3/whatsnew/3.13.html#re
+  lib.optionalString (pythonAtLeast "3.13") ''
+    substituteInPlace ruffus/test/test_ruffus_utility.py \
+      --replace-fail re.error re.PatternError
+  ''
+  # test files do indeed need to be executed separately
+  + ''
+    pushd ruffus/test
+    rm test_with_logger.py  # spawns 500 processes
+    for f in test_*.py ; do
+      HOME=$TMPDIR pytest -v --disable-warnings $f
+    done
+    popd
+  '';
   pythonImportsCheck = [ "ruffus" ];
 
   meta = with lib; {

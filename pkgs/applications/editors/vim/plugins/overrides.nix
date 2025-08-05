@@ -3832,10 +3832,10 @@ in
   vim-colorschemes = super.vim-colorschemes.overrideAttrs (old: {
     src = old.src.overrideAttrs (srcOld: {
       postFetch =
-        (srcOld.postFetch or "")
-        + lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
-          rm $out/colors/darkBlue.vim
-        '';
+      (srcOld.postFetch or "")
+      + lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
+        rm $out/colors/darkBlue.vim
+      '';
     });
   });
 

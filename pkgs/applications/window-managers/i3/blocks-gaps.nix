@@ -52,26 +52,26 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ makeWrapper ];
 
   postFixup =
-    lib.optionalString (lib.elem "bandwidth" scripts) ''
-      wrapProgram $out/libexec/i3blocks/bandwidth \
-        --prefix PATH : ${lib.makeBinPath [ iproute2 ]}
-    ''
-    + lib.optionalString (lib.elem "battery" scripts) ''
-      wrapProgram $out/libexec/i3blocks/battery \
-        --prefix PATH : ${lib.makeBinPath [ acpi ]}
-    ''
-    + lib.optionalString (lib.elem "cpu_usage" scripts) ''
-      wrapProgram $out/libexec/i3blocks/cpu_usage \
-        --prefix PATH : ${lib.makeBinPath [ sysstat ]}
-    ''
-    + lib.optionalString (lib.elem "iface" scripts) ''
-      wrapProgram $out/libexec/i3blocks/iface \
-        --prefix PATH : ${lib.makeBinPath [ iproute2 ]}
-    ''
-    + lib.optionalString (lib.elem "volume" scripts) ''
-      wrapProgram $out/libexec/i3blocks/volume \
-        --prefix PATH : ${lib.makeBinPath [ alsa-utils ]}
-    '';
+  lib.optionalString (lib.elem "bandwidth" scripts) ''
+    wrapProgram $out/libexec/i3blocks/bandwidth \
+      --prefix PATH : ${lib.makeBinPath [ iproute2 ]}
+  ''
+  + lib.optionalString (lib.elem "battery" scripts) ''
+    wrapProgram $out/libexec/i3blocks/battery \
+      --prefix PATH : ${lib.makeBinPath [ acpi ]}
+  ''
+  + lib.optionalString (lib.elem "cpu_usage" scripts) ''
+    wrapProgram $out/libexec/i3blocks/cpu_usage \
+      --prefix PATH : ${lib.makeBinPath [ sysstat ]}
+  ''
+  + lib.optionalString (lib.elem "iface" scripts) ''
+    wrapProgram $out/libexec/i3blocks/iface \
+      --prefix PATH : ${lib.makeBinPath [ iproute2 ]}
+  ''
+  + lib.optionalString (lib.elem "volume" scripts) ''
+    wrapProgram $out/libexec/i3blocks/volume \
+      --prefix PATH : ${lib.makeBinPath [ alsa-utils ]}
+  '';
 
   meta = with lib; {
     description = "Flexible scheduler for your i3bar blocks -- this is a fork to use with i3-gaps";

@@ -182,9 +182,9 @@ in
         default = "-Xmx2048M -Xms2048M";
         # Example options from https://minecraft.wiki/w/Tutorial:Server_startup_script
         example =
-          "-Xms4092M -Xmx4092M -XX:+UseG1GC -XX:+CMSIncrementalPacing "
-          + "-XX:+CMSClassUnloadingEnabled -XX:ParallelGCThreads=2 "
-          + "-XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10";
+        "-Xms4092M -Xmx4092M -XX:+UseG1GC -XX:+CMSIncrementalPacing "
+        + "-XX:+CMSClassUnloadingEnabled -XX:ParallelGCThreads=2 "
+        + "-XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10";
         description = "JVM options for the Minecraft server.";
       };
     };
@@ -316,9 +316,9 @@ in
       {
         assertion = cfg.eula;
         message =
-          "You must agree to Mojangs EULA to run minecraft-server."
-          + " Read https://account.mojang.com/documents/minecraft_eula and"
-          + " set `services.minecraft-server.eula` to `true` if you agree.";
+        "You must agree to Mojangs EULA to run minecraft-server."
+        + " Read https://account.mojang.com/documents/minecraft_eula and"
+        + " set `services.minecraft-server.eula` to `true` if you agree.";
       }
     ];
 

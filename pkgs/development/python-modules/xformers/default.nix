@@ -68,19 +68,19 @@ buildPythonPackage {
   stdenv = if cudaSupport then cudaPackages.backendStdenv else stdenv;
 
   buildInputs =
-    lib.optional stdenv.hostPlatform.isDarwin openmp
-    ++ lib.optionals cudaSupport (
-      with cudaPackages;
-      [
-        # flash-attn build
-        cuda_cudart # cuda_runtime_api.h
-        libcusparse # cusparse.h
-        cuda_cccl # nv/target
-        libcublas # cublas_v2.h
-        libcusolver # cusolverDn.h
-        libcurand # curand_kernel.h
-      ]
-    );
+  lib.optional stdenv.hostPlatform.isDarwin openmp
+  ++ lib.optionals cudaSupport (
+    with cudaPackages;
+    [
+      # flash-attn build
+      cuda_cudart # cuda_runtime_api.h
+      libcusparse # cusparse.h
+      cuda_cccl # nv/target
+      libcublas # cublas_v2.h
+      libcusolver # cusolverDn.h
+      libcurand # curand_kernel.h
+    ]
+  );
 
   nativeBuildInputs = [
     ninja

@@ -174,15 +174,15 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   postInstall =
-    lib.optionalString buildDocs ''
-      mv ../doc/html $out/share/doc/migraphx
-      mv ../doc/pdf/MIGraphX.pdf $out/share/doc/migraphx
-    ''
-    + lib.optionalString buildTests ''
-      mkdir -p $test/bin
-      mv bin/test_* $test/bin
-      patchelf $test/bin/test_* --shrink-rpath --allowed-rpath-prefixes "$NIX_STORE"
-    '';
+  lib.optionalString buildDocs ''
+    mv ../doc/html $out/share/doc/migraphx
+    mv ../doc/pdf/MIGraphX.pdf $out/share/doc/migraphx
+  ''
+  + lib.optionalString buildTests ''
+    mkdir -p $test/bin
+    mv bin/test_* $test/bin
+    patchelf $test/bin/test_* --shrink-rpath --allowed-rpath-prefixes "$NIX_STORE"
+  '';
 
   passthru.updateScript = rocmUpdateScript {
     name = finalAttrs.pname;

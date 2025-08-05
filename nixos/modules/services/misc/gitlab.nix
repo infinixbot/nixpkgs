@@ -44,12 +44,12 @@ let
     in
     {
       production =
-        (if (gitlabVersionAtLeast "15.0") then { main = val; } else val)
-        // lib.optionalAttrs (gitlabVersionAtLeast "15.9") {
-          ci = val // {
-            database_tasks = false;
-          };
+      (if (gitlabVersionAtLeast "15.0") then { main = val; } else val)
+      // lib.optionalAttrs (gitlabVersionAtLeast "15.9") {
+        ci = val // {
+          database_tasks = false;
         };
+      };
     };
 
   # We only want to create a database if we're actually going to connect to it.
@@ -192,22 +192,22 @@ let
   };
 
   gitlabEnv =
-    cfg.packages.gitlab.gitlabEnv
-    // {
-      HOME = "${cfg.statePath}/home";
-      PUMA_PATH = "${cfg.statePath}/";
-      GITLAB_PATH = "${cfg.packages.gitlab}/share/gitlab/";
-      SCHEMA = "${cfg.statePath}/db/structure.sql";
-      GITLAB_UPLOADS_PATH = "${cfg.statePath}/uploads";
-      GITLAB_LOG_PATH = "${cfg.statePath}/log";
-      prometheus_multiproc_dir = "/run/gitlab";
-      RAILS_ENV = "production";
-      MALLOC_ARENA_MAX = "2";
-      # allow to use bundler version from nixpkgs
-      # rather than version listed in Gemfile.lock
-      BUNDLER_VERSION = pkgs.bundler.version;
-    }
-    // cfg.extraEnv;
+  cfg.packages.gitlab.gitlabEnv
+  // {
+    HOME = "${cfg.statePath}/home";
+    PUMA_PATH = "${cfg.statePath}/";
+    GITLAB_PATH = "${cfg.packages.gitlab}/share/gitlab/";
+    SCHEMA = "${cfg.statePath}/db/structure.sql";
+    GITLAB_UPLOADS_PATH = "${cfg.statePath}/uploads";
+    GITLAB_LOG_PATH = "${cfg.statePath}/log";
+    prometheus_multiproc_dir = "/run/gitlab";
+    RAILS_ENV = "production";
+    MALLOC_ARENA_MAX = "2";
+    # allow to use bundler version from nixpkgs
+    # rather than version listed in Gemfile.lock
+    BUNDLER_VERSION = pkgs.bundler.version;
+  }
+  // cfg.extraEnv;
 
   runtimeDeps = [
     git
@@ -1567,8 +1567,8 @@ in
         "postgresql.target"
       ];
       wants =
-        optional (cfg.databaseHost == "") "postgresql.target"
-        ++ optional databaseActuallyCreateLocally "gitlab-postgresql.target";
+      optional (cfg.databaseHost == "") "postgresql.target"
+      ++ optional databaseActuallyCreateLocally "gitlab-postgresql.target";
       bindsTo = [ "gitlab-config.service" ];
       wantedBy = [ "gitlab.target" ];
       partOf = [ "gitlab.target" ];
@@ -1610,12 +1610,12 @@ in
       wantedBy = [ "gitlab.target" ];
       partOf = [ "gitlab.target" ];
       environment =
-        gitlabEnv
-        // (optionalAttrs cfg.sidekiq.memoryKiller.enable {
-          SIDEKIQ_MEMORY_KILLER_MAX_RSS = cfg.sidekiq.memoryKiller.maxMemory;
-          SIDEKIQ_MEMORY_KILLER_GRACE_TIME = cfg.sidekiq.memoryKiller.graceTime;
-          SIDEKIQ_MEMORY_KILLER_SHUTDOWN_WAIT = cfg.sidekiq.memoryKiller.shutdownWait;
-        });
+      gitlabEnv
+      // (optionalAttrs cfg.sidekiq.memoryKiller.enable {
+        SIDEKIQ_MEMORY_KILLER_MAX_RSS = cfg.sidekiq.memoryKiller.maxMemory;
+        SIDEKIQ_MEMORY_KILLER_GRACE_TIME = cfg.sidekiq.memoryKiller.graceTime;
+        SIDEKIQ_MEMORY_KILLER_SHUTDOWN_WAIT = cfg.sidekiq.memoryKiller.shutdownWait;
+      });
       path = [
         git
       ]
@@ -1805,14 +1805,14 @@ in
           rm "${cfg.statePath}/config/gitlab-workhorse.json"
         '';
         ExecStart =
-          "${cfg.packages.gitlab-workhorse}/bin/${optionalString (lib.versionAtLeast (lib.getVersion cfg.packages.gitlab-workhorse) "16.10") "gitlab-"}workhorse "
-          + "-listenUmask 0 "
-          + "-listenNetwork unix "
-          + "-listenAddr /run/gitlab/gitlab-workhorse.socket "
-          + "-authSocket ${gitlabSocket} "
-          + "-documentRoot ${cfg.packages.gitlab}/share/gitlab/public "
-          + "-config ${cfg.statePath}/config/gitlab-workhorse.toml "
-          + "-secretPath ${cfg.statePath}/.gitlab_workhorse_secret";
+        "${cfg.packages.gitlab-workhorse}/bin/${optionalString (lib.versionAtLeast (lib.getVersion cfg.packages.gitlab-workhorse) "16.10") "gitlab-"}workhorse "
+        + "-listenUmask 0 "
+        + "-listenNetwork unix "
+        + "-listenAddr /run/gitlab/gitlab-workhorse.socket "
+        + "-authSocket ${gitlabSocket} "
+        + "-documentRoot ${cfg.packages.gitlab}/share/gitlab/public "
+        + "-config ${cfg.statePath}/config/gitlab-workhorse.toml "
+        + "-secretPath ${cfg.statePath}/.gitlab_workhorse_secret";
       };
     };
 

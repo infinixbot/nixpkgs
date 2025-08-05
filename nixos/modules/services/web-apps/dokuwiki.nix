@@ -483,13 +483,13 @@ in
 
           phpPackage = mkPhpPackage cfg;
           phpEnv =
-            optionalAttrs (cfg.usersFile != null) {
-              DOKUWIKI_USERS_AUTH_CONFIG = "${cfg.usersFile}";
-            }
-            // optionalAttrs (cfg.mergedConfig.useacl) {
-              DOKUWIKI_ACL_AUTH_CONFIG =
-                if (cfg.acl != null) then "${dokuwikiAclAuthConfig hostName cfg}" else "${toString cfg.aclFile}";
-            };
+          optionalAttrs (cfg.usersFile != null) {
+            DOKUWIKI_USERS_AUTH_CONFIG = "${cfg.usersFile}";
+          }
+          // optionalAttrs (cfg.mergedConfig.useacl) {
+            DOKUWIKI_ACL_AUTH_CONFIG =
+              if (cfg.acl != null) then "${dokuwikiAclAuthConfig hostName cfg}" else "${toString cfg.aclFile}";
+          };
 
           settings = {
             "listen.owner" = webserver.user;

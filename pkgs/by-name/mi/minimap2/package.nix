@@ -24,8 +24,8 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ installShellFiles ];
 
   makeFlags =
-    lib.optionals stdenv.hostPlatform.isAarch [ "arm_neon=1" ]
-    ++ lib.optionals stdenv.hostPlatform.isAarch64 [ "aarch64=1" ];
+  lib.optionals stdenv.hostPlatform.isAarch [ "arm_neon=1" ]
+  ++ lib.optionals stdenv.hostPlatform.isAarch64 [ "aarch64=1" ];
 
   installPhase = ''
     runHook preInstall

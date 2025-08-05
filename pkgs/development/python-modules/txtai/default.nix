@@ -173,12 +173,12 @@ let
     skl2onnx
   ];
   pipeline =
-    pipeline-audio
-    ++ pipeline-data
-    ++ pipeline-image
-    ++ pipeline-llm
-    ++ pipeline-text
-    ++ pipeline-train;
+  pipeline-audio
+  ++ pipeline-data
+  ++ pipeline-image
+  ++ pipeline-llm
+  ++ pipeline-text
+  ++ pipeline-train;
   scoring = [ sqlalchemy ];
   vectors = [
     fasttext
@@ -201,17 +201,17 @@ let
   ];
   similarity = ann ++ vectors;
   all =
-    agent
-    ++ api
-    ++ ann
-    ++ console
-    ++ database
-    ++ graph
-    ++ model
-    ++ pipeline
-    ++ scoring
-    ++ similarity
-    ++ workflow;
+  agent
+  ++ api
+  ++ ann
+  ++ console
+  ++ database
+  ++ graph
+  ++ model
+  ++ pipeline
+  ++ scoring
+  ++ similarity
+  ++ workflow;
 
   optional-dependencies = {
     inherit

@@ -142,9 +142,9 @@ stdenv.mkDerivation (finalAttrs: {
         # Use the the bin output hash of xrootd as version to ensure that
         # the test gets rebuild everytime xrootd gets rebuild
         version =
-          finalAttrs.version
-          + "-"
-          + builtins.substring (builtins.stringLength builtins.storeDir + 1) 32 "${finalAttrs.finalPackage}";
+        finalAttrs.version
+        + "-"
+        + builtins.substring (builtins.stringLength builtins.storeDir + 1) 32 "${finalAttrs.finalPackage}";
         url = "root://eospublic.cern.ch//eos/opendata/alice/2010/LHC10h/000138275/ESD/0000/AliESDs.root";
         hash = "sha256-tIcs2oi+8u/Qr+P7AAaPTbQT+DEt26gEdc4VNerlEHY=";
       };

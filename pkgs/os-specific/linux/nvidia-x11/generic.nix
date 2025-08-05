@@ -276,11 +276,11 @@ stdenv.mkDerivation (finalAttrs: {
           inherit hash;
           nvidia_x11 = finalAttrs.finalPackage;
           patches =
-            (builtins.map (rewritePatch {
-              from = "kernel";
-              to = "kernel-open";
-            }) patches)
-            ++ patchesOpen;
+          (builtins.map (rewritePatch {
+            from = "kernel";
+            to = "kernel-open";
+          }) patches)
+          ++ patchesOpen;
           broken = brokenOpen;
         }
       ) openSha256;

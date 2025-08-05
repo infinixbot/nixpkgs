@@ -66,18 +66,18 @@ buildPythonPackage rec {
   nativeCheckInputs = [ pytestCheckHook ];
 
   disabledTestPaths =
-    lib.optionals (!testOpenclRuntime) [ "test/test_opencl.py" ]
-    ++ lib.optionals (!rocmSupport) [ "test/test_hip.py" ]
-    ++ lib.optionals (!cudaSupport) [ "test/test_cuda.py" ];
+  lib.optionals (!testOpenclRuntime) [ "test/test_opencl.py" ]
+  ++ lib.optionals (!rocmSupport) [ "test/test_hip.py" ]
+  ++ lib.optionals (!cudaSupport) [ "test/test_cuda.py" ];
 
   # Require GPU access to run (not available in the sandbox)
   disabledTests =
-    lib.optionals (!testCudaRuntime) [
-      "TestCUDADevice"
-    ]
-    ++ lib.optionals (!testRocmRuntime) [
-      "TestHIPDevice"
-    ];
+  lib.optionals (!testCudaRuntime) [
+    "TestCUDADevice"
+  ]
+  ++ lib.optionals (!testRocmRuntime) [
+    "TestHIPDevice"
+  ];
 
   pytestFlags = lib.optionals (testCudaRuntime || testOpenclRuntime || testRocmRuntime) [ "-v" ];
 
@@ -86,9 +86,9 @@ buildPythonPackage rec {
   # pre-build hook which exposes the devices and the drivers in the sandbox
   # based on requiredSystemFeatures:
   requiredSystemFeatures =
-    lib.optionals testCudaRuntime [ "cuda" ]
-    ++ lib.optionals testOpenclRuntime [ "opencl" ]
-    ++ lib.optionals testRocmRuntime [ "rocm" ];
+  lib.optionals testCudaRuntime [ "cuda" ]
+  ++ lib.optionals testOpenclRuntime [ "opencl" ]
+  ++ lib.optionals testRocmRuntime [ "rocm" ];
 
   passthru.gpuChecks = {
     cuda = gpuctypes.override {

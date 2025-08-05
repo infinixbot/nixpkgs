@@ -42,25 +42,25 @@ rustPlatform.buildRustPackage (finalAttrs: {
   ];
 
   buildInputs =
-    lib.optionals stdenv.hostPlatform.isDarwin [ apple-sdk_11 ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [ openssl ]
-    # The `dbus_mpris` feature works on other platforms, but only requires `dbus` on Linux
-    ++ lib.optional (withMpris && stdenv.hostPlatform.isLinux) dbus
-    ++ lib.optional (withALSA || withJack) alsa-lib
-    ++ lib.optional withJack libjack2
-    ++ lib.optional withPulseAudio libpulseaudio
-    ++ lib.optional withPortAudio portaudio;
+  lib.optionals stdenv.hostPlatform.isDarwin [ apple-sdk_11 ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [ openssl ]
+  # The `dbus_mpris` feature works on other platforms, but only requires `dbus` on Linux
+  ++ lib.optional (withMpris && stdenv.hostPlatform.isLinux) dbus
+  ++ lib.optional (withALSA || withJack) alsa-lib
+  ++ lib.optional withJack libjack2
+  ++ lib.optional withPulseAudio libpulseaudio
+  ++ lib.optional withPortAudio portaudio;
 
   # `aws-lc-sys` fails with this enabled
   hardeningDisable = [ "strictoverflow" ];
 
   buildNoDefaultFeatures = true;
   buildFeatures =
-    lib.optional withALSA "alsa_backend"
-    ++ lib.optional withJack "rodiojack_backend"
-    ++ lib.optional withMpris "dbus_mpris"
-    ++ lib.optional withPortAudio "portaudio_backend"
-    ++ lib.optional withPulseAudio "pulseaudio_backend";
+  lib.optional withALSA "alsa_backend"
+  ++ lib.optional withJack "rodiojack_backend"
+  ++ lib.optional withMpris "dbus_mpris"
+  ++ lib.optional withPortAudio "portaudio_backend"
+  ++ lib.optional withPulseAudio "pulseaudio_backend";
 
   checkFlags = lib.optionals stdenv.hostPlatform.isDarwin [
     # `assertion failed: shell.is_some()`

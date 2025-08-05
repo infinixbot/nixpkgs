@@ -15,21 +15,21 @@
 
 let
   runtime_paths =
-    lib.makeBinPath (
-      with pkgsHostHost;
-      [
-        coreutils
-        file
-        findutils
-        gawk
-        gnugrep
-        gnused
-        jdk
-        python3
-        which
-      ]
-    )
-    + ":${platform-tools}/platform-tools";
+  lib.makeBinPath (
+    with pkgsHostHost;
+    [
+      coreutils
+      file
+      findutils
+      gawk
+      gnugrep
+      gnused
+      jdk
+      python3
+      which
+    ]
+  )
+  + ":${platform-tools}/platform-tools";
 in
 deployAndroidPackage rec {
   inherit package os arch;
@@ -101,7 +101,7 @@ deployAndroidPackage rec {
   '';
 
   patchInstructions =
-    patchOsAgnostic + lib.optionalString stdenv.hostPlatform.isLinux patchElfBnaries;
+  patchOsAgnostic + lib.optionalString stdenv.hostPlatform.isLinux patchElfBnaries;
 
   noAuditTmpdir = true; # Audit script gets invoked by the build/ component in the path for the make standalone script
 

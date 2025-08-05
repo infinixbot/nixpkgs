@@ -1288,11 +1288,11 @@ rec {
       sandboxBuildDir = "/build";
 
       drvEnv =
-        devShellTools.unstructuredDerivationInputEnv { inherit (drv) drvAttrs; }
-        // devShellTools.derivationOutputEnv {
-          outputList = drv.outputs;
-          outputMap = drv;
-        };
+      devShellTools.unstructuredDerivationInputEnv { inherit (drv) drvAttrs; }
+      // devShellTools.derivationOutputEnv {
+        outputList = drv.outputs;
+        outputMap = drv;
+      };
 
       # Environment variables set in the image
       envVars = {

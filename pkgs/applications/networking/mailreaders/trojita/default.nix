@@ -61,13 +61,13 @@ mkDerivation rec {
   ];
 
   postPatch =
-    "echo ${version} > src/trojita-version"
-    + lib.optionalString withI18n ''
-      mkdir -p po
-      for f in `find ${l10n} -name "trojita_common.po"`; do
-        cp $f po/trojita_common_$(echo $f | cut -d/ -f5).po
-      done
-    '';
+  "echo ${version} > src/trojita-version"
+  + lib.optionalString withI18n ''
+    mkdir -p po
+    for f in `find ${l10n} -name "trojita_common.po"`; do
+      cp $f po/trojita_common_$(echo $f | cut -d/ -f5).po
+    done
+  '';
 
   meta = with lib; {
     description = "Qt IMAP e-mail client";

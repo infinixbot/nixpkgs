@@ -204,8 +204,8 @@ in
 
           serviceConfig = {
             ExecStart =
-              "@${lib.getExe cfg.package} consul agent -config-dir /etc/consul.d"
-              + lib.concatMapStrings (n: " -config-file ${n}") configFiles;
+            "@${lib.getExe cfg.package} consul agent -config-dir /etc/consul.d"
+            + lib.concatMapStrings (n: " -config-file ${n}") configFiles;
             ExecReload = "${pkgs.coreutils}/bin/kill -HUP $MAINPID";
             PermissionsStartOnly = true;
             User = if cfg.dropPrivileges then "consul" else null;

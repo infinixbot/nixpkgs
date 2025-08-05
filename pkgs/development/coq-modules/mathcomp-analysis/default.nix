@@ -142,24 +142,24 @@ let
         ];
 
         propagatedBuildInputs =
-          intra-deps
-          ++ lib.optionals (lib.elem package [
-            "classical"
-            "single"
-          ]) classical-deps
-          ++ lib.optionals (lib.elem package [
-            "experimental-reals"
-            "single"
-          ]) experimental-reals-deps
-          ++ lib.optionals (lib.elem package [
-            "analysis"
-            "single"
-          ]) analysis-deps
-          ++ lib.optional (lib.elem package [
-            "reals-stdlib"
-            "analysis-stdlib"
-            "single"
-          ]) stdlib;
+        intra-deps
+        ++ lib.optionals (lib.elem package [
+          "classical"
+          "single"
+        ]) classical-deps
+        ++ lib.optionals (lib.elem package [
+          "experimental-reals"
+          "single"
+        ]) experimental-reals-deps
+        ++ lib.optionals (lib.elem package [
+          "analysis"
+          "single"
+        ]) analysis-deps
+        ++ lib.optional (lib.elem package [
+          "reals-stdlib"
+          "analysis-stdlib"
+          "single"
+        ]) stdlib;
 
         preBuild = ''
           cd ${pkgpath}

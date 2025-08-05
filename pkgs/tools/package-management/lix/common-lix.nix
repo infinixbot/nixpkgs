@@ -283,34 +283,34 @@ stdenv.mkDerivation (finalAttrs: {
   ninjaFlags = [ "-v" ];
 
   postInstall =
-    lib.optionalString enableDocumentation ''
-      mkdir -p $doc/nix-support
-      echo "doc manual $doc/share/doc/nix/manual" >> $doc/nix-support/hydra-build-products
+  lib.optionalString enableDocumentation ''
+    mkdir -p $doc/nix-support
+    echo "doc manual $doc/share/doc/nix/manual" >> $doc/nix-support/hydra-build-products
 
-      mkdir -p $devdoc/nix-support
-      echo "devdoc internal-api $devdoc/share/doc/nix/internal-api" >> $devdoc/nix-support/hydra-build-products
-    ''
-    + lib.optionalString (!hasExternalLixDoc) ''
-      # We do not need static archives.
-      # FIXME(Raito): why are they getting installed _at all_ ?
-      rm $out/lib/liblix_doc.a
-    ''
-    + lib.optionalString stdenv.hostPlatform.isStatic ''
-      mkdir -p $out/nix-support
-      echo "file binary-dist $out/bin/nix" >> $out/nix-support/hydra-build-products
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      for lib in liblixutil.dylib liblixexpr.dylib; do
-        install_name_tool \
-          -change "${lib.getLib boost}/lib/libboost_context.dylib" \
-          "$out/lib/libboost_context.dylib" \
-          "$out/lib/$lib"
-      done
-    ''
-    + ''
-      # Drop all references to libstd++ include files due to `__FILE__` leaking in libstd++ assertions.
-      find "$out" -type f -exec remove-references-to -t ${stdenv.cc.cc.stdenv.cc.cc} '{}' +
-    '';
+    mkdir -p $devdoc/nix-support
+    echo "devdoc internal-api $devdoc/share/doc/nix/internal-api" >> $devdoc/nix-support/hydra-build-products
+  ''
+  + lib.optionalString (!hasExternalLixDoc) ''
+    # We do not need static archives.
+    # FIXME(Raito): why are they getting installed _at all_ ?
+    rm $out/lib/liblix_doc.a
+  ''
+  + lib.optionalString stdenv.hostPlatform.isStatic ''
+    mkdir -p $out/nix-support
+    echo "file binary-dist $out/bin/nix" >> $out/nix-support/hydra-build-products
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    for lib in liblixutil.dylib liblixexpr.dylib; do
+      install_name_tool \
+        -change "${lib.getLib boost}/lib/libboost_context.dylib" \
+        "$out/lib/libboost_context.dylib" \
+        "$out/lib/$lib"
+    done
+  ''
+  + ''
+    # Drop all references to libstd++ include files due to `__FILE__` leaking in libstd++ assertions.
+    find "$out" -type f -exec remove-references-to -t ${stdenv.cc.cc.stdenv.cc.cc} '{}' +
+  '';
 
   # This needs to run after _multioutDocs moves the docs to $doc
   postFixup = lib.optionalString enableDocumentation ''

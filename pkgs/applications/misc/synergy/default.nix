@@ -88,11 +88,11 @@ stdenv.mkDerivation rec {
   env.NIX_CFLAGS_COMPILE = lib.optionalString stdenv.hostPlatform.isDarwin "-Wno-inconsistent-missing-override";
 
   cmakeFlags =
-    lib.optional (!withGUI) "-DSYNERGY_BUILD_LEGACY_GUI=OFF"
-    # NSFilenamesPboardType is deprecated in 10.14+
-    ++ lib.optional stdenv.hostPlatform.isDarwin "-DCMAKE_OSX_DEPLOYMENT_TARGET=${
-      if stdenv.hostPlatform.isAarch64 then "10.13" else stdenv.hostPlatform.darwinSdkVersion
-    }";
+  lib.optional (!withGUI) "-DSYNERGY_BUILD_LEGACY_GUI=OFF"
+  # NSFilenamesPboardType is deprecated in 10.14+
+  ++ lib.optional stdenv.hostPlatform.isDarwin "-DCMAKE_OSX_DEPLOYMENT_TARGET=${
+    if stdenv.hostPlatform.isAarch64 then "10.13" else stdenv.hostPlatform.darwinSdkVersion
+  }";
 
   doCheck = true;
 

@@ -102,19 +102,19 @@ let
     cudaAtLeast = strings.versionAtLeast cudaMajorMinorVersion;
 
     flags =
-      cudaLib.formatCapabilities {
-        inherit (final.backendStdenv) cudaCapabilities cudaForwardCompat;
-        inherit (_cuda.db) cudaCapabilityToInfo;
-      }
-      # TODO(@connorbaker): Enable the corresponding warnings in `../development/cuda-modules/aliases.nix` after some
-      # time to allow users to migrate to cudaLib and backendStdenv.
-      // {
-        inherit (cudaLib) dropDots;
-        cudaComputeCapabilityToName =
-          cudaCapability: _cuda.db.cudaCapabilityToInfo.${cudaCapability}.archName;
-        dropDot = cudaLib.dropDots;
-        isJetsonBuild = final.backendStdenv.hasJetsonCudaCapability;
-      };
+    cudaLib.formatCapabilities {
+      inherit (final.backendStdenv) cudaCapabilities cudaForwardCompat;
+      inherit (_cuda.db) cudaCapabilityToInfo;
+    }
+    # TODO(@connorbaker): Enable the corresponding warnings in `../development/cuda-modules/aliases.nix` after some
+    # time to allow users to migrate to cudaLib and backendStdenv.
+    // {
+      inherit (cudaLib) dropDots;
+      cudaComputeCapabilityToName =
+        cudaCapability: _cuda.db.cudaCapabilityToInfo.${cudaCapability}.archName;
+      dropDot = cudaLib.dropDots;
+      isJetsonBuild = final.backendStdenv.hasJetsonCudaCapability;
+    };
 
     # Loose packages
     # Barring packages which share a home (e.g., cudatoolkit and cudatoolkit-legacy-runfile), new packages

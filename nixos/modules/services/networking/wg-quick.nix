@@ -308,16 +308,16 @@ let
           null;
       preUpFile = if values.preUp != "" then writeScriptFile "preUp.sh" values.preUp else null;
       postUp =
+      optional (
+        values.privateKeyFile != null
+      ) "${wgBin} set ${name} private-key <(cat ${values.privateKeyFile})"
+      ++ (concatMap (
+        peer:
         optional (
-          values.privateKeyFile != null
-        ) "${wgBin} set ${name} private-key <(cat ${values.privateKeyFile})"
-        ++ (concatMap (
-          peer:
-          optional (
-            peer.presharedKeyFile != null
-          ) "${wgBin} set ${name} peer ${peer.publicKey} preshared-key <(cat ${peer.presharedKeyFile})"
-        ) values.peers)
-        ++ optional (values.postUp != "") values.postUp;
+          peer.presharedKeyFile != null
+        ) "${wgBin} set ${name} peer ${peer.publicKey} preshared-key <(cat ${peer.presharedKeyFile})"
+      ) values.peers)
+      ++ optional (values.postUp != "") values.postUp;
       postUpFile =
         if postUp != [ ] then
           writeScriptFile "postUp.sh" (concatMapStringsSep "\n" (line: line) postUp)
@@ -440,14 +440,14 @@ in
 
   config = mkIf (cfg.interfaces != { }) {
     boot.extraModulePackages =
-      optional (
-        any (x: x.type == "wireguard") (attrValues cfg.interfaces)
-        && (versionOlder kernel.kernel.version "5.6")
-      ) kernel.wireguard
-      ++ optional (any (x: x.type == "amneziawg") (attrValues cfg.interfaces)) kernel.amneziawg;
+    optional (
+      any (x: x.type == "wireguard") (attrValues cfg.interfaces)
+      && (versionOlder kernel.kernel.version "5.6")
+    ) kernel.wireguard
+    ++ optional (any (x: x.type == "amneziawg") (attrValues cfg.interfaces)) kernel.amneziawg;
     environment.systemPackages =
-      optional (any (x: x.type == "wireguard") (attrValues cfg.interfaces)) pkgs.wireguard-tools
-      ++ optional (any (x: x.type == "amneziawg") (attrValues cfg.interfaces)) pkgs.amneziawg-tools;
+    optional (any (x: x.type == "wireguard") (attrValues cfg.interfaces)) pkgs.wireguard-tools
+    ++ optional (any (x: x.type == "amneziawg") (attrValues cfg.interfaces)) pkgs.amneziawg-tools;
     systemd.services = mapAttrs' generateUnit cfg.interfaces;
 
     # Prevent networkd from clearing the rules set by wg-quick when restarted (e.g. when waking up from suspend).

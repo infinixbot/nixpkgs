@@ -27,12 +27,12 @@ mkDerivation {
   noLibc = stdenv.hostPlatform.isFreeBSD;
 
   buildInputs =
-    lib.optionals stdenv.hostPlatform.isFreeBSD [
-      include
-      libcMinimal
-      libgcc
-    ]
-    ++ compatIfNeeded;
+  lib.optionals stdenv.hostPlatform.isFreeBSD [
+    include
+    libcMinimal
+    libgcc
+  ]
+  ++ compatIfNeeded;
 
   extraNativeBuildInputs = [
     m4

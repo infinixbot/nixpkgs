@@ -98,15 +98,15 @@ rustPlatform.buildRustPackage rec {
   buildNoDefaultFeatures = true;
 
   buildFeatures =
-    [ ]
-    ++ lib.optionals (withAudioBackend != "") [ "${withAudioBackend}-backend" ]
-    ++ lib.optionals withMediaControl [ "media-control" ]
-    ++ lib.optionals withImage [ "image" ]
-    ++ lib.optionals withDaemon [ "daemon" ]
-    ++ lib.optionals withNotify [ "notify" ]
-    ++ lib.optionals withStreaming [ "streaming" ]
-    ++ lib.optionals withSixel [ "sixel" ]
-    ++ lib.optionals withFuzzy [ "fzf" ];
+  [ ]
+  ++ lib.optionals (withAudioBackend != "") [ "${withAudioBackend}-backend" ]
+  ++ lib.optionals withMediaControl [ "media-control" ]
+  ++ lib.optionals withImage [ "image" ]
+  ++ lib.optionals withDaemon [ "daemon" ]
+  ++ lib.optionals withNotify [ "notify" ]
+  ++ lib.optionals withStreaming [ "streaming" ]
+  ++ lib.optionals withSixel [ "sixel" ]
+  ++ lib.optionals withFuzzy [ "fzf" ];
 
   postInstall =
     let

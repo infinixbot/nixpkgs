@@ -151,31 +151,31 @@ stdenv.mkDerivation (finalAttrs: {
   doCheck = runTests;
 
   mesonFlags =
-    (lib.mapAttrsToList lib.mesonEnable {
-      "cava" = cavaSupport && lib.asserts.assertMsg sndioSupport "Sndio support is required for Cava";
-      "dbusmenu-gtk" = traySupport;
-      "gps" = gpsSupport;
-      "jack" = jackSupport;
-      "libevdev" = evdevSupport;
-      "libinput" = inputSupport;
-      "libnl" = nlSupport;
-      "libudev" = udevSupport;
-      "man-pages" = enableManpages;
-      "mpd" = mpdSupport;
-      "mpris" = mprisSupport;
-      "pipewire" = pipewireSupport;
-      "pulseaudio" = pulseSupport;
-      "rfkill" = rfkillSupport;
-      "sndio" = sndioSupport;
-      "systemd" = systemdSupport;
-      "tests" = runTests;
-      "upower_glib" = upowerSupport;
-      "wireplumber" = wireplumberSupport;
-    })
-    ++ (lib.mapAttrsToList lib.mesonBool {
-      "experimental" = experimentalPatches;
-      "niri" = niriSupport;
-    });
+  (lib.mapAttrsToList lib.mesonEnable {
+    "cava" = cavaSupport && lib.asserts.assertMsg sndioSupport "Sndio support is required for Cava";
+    "dbusmenu-gtk" = traySupport;
+    "gps" = gpsSupport;
+    "jack" = jackSupport;
+    "libevdev" = evdevSupport;
+    "libinput" = inputSupport;
+    "libnl" = nlSupport;
+    "libudev" = udevSupport;
+    "man-pages" = enableManpages;
+    "mpd" = mpdSupport;
+    "mpris" = mprisSupport;
+    "pipewire" = pipewireSupport;
+    "pulseaudio" = pulseSupport;
+    "rfkill" = rfkillSupport;
+    "sndio" = sndioSupport;
+    "systemd" = systemdSupport;
+    "tests" = runTests;
+    "upower_glib" = upowerSupport;
+    "wireplumber" = wireplumberSupport;
+  })
+  ++ (lib.mapAttrsToList lib.mesonBool {
+    "experimental" = experimentalPatches;
+    "niri" = niriSupport;
+  });
 
   env = lib.optionalAttrs systemdSupport {
     PKG_CONFIG_SYSTEMD_SYSTEMDUSERUNITDIR = "${placeholder "out"}/lib/systemd/user";

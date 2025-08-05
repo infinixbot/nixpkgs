@@ -44,26 +44,26 @@ stdenv.mkDerivation {
   ];
 
   buildInputs =
-    lib.optionals withWayland [
-      pipewire
-      wayland
-      wayland-protocols
-      libxkbcommon
-      libdecor
-    ]
-    ++ lib.optionals withXorg [
-      xorg.libX11
-      xorg.libXt
-    ]
-    ++ lib.optional stdenv.hostPlatform.isDarwin apple-sdk_13;
+  lib.optionals withWayland [
+    pipewire
+    wayland
+    wayland-protocols
+    libxkbcommon
+    libdecor
+  ]
+  ++ lib.optionals withXorg [
+    xorg.libX11
+    xorg.libXt
+  ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin apple-sdk_13;
 
   makeFlags =
-    lib.optional withWayland "CONF=linux"
-    ++ lib.optional (!(withWayland || stdenv.hostPlatform.isDarwin)) "CONF=unix"
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      "CONF=osx-cocoa"
-      "CC=clang"
-    ];
+  lib.optional withWayland "CONF=linux"
+  ++ lib.optional (!(withWayland || stdenv.hostPlatform.isDarwin)) "CONF=unix"
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    "CONF=osx-cocoa"
+    "CC=clang"
+  ];
 
   installPhase = ''
     installManPage drawterm.1

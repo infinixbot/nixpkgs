@@ -77,14 +77,14 @@ let
   ];
 
   wantedExtras =
-    cfg.extras
-    ++ lib.optional (cfg.settings ? oidc_providers) "oidc"
-    ++ lib.optional (cfg.settings ? jwt_config) "jwt"
-    ++ lib.optional (cfg.settings ? saml2_config) "saml2"
-    ++ lib.optional (cfg.settings ? redis) "redis"
-    ++ lib.optional (cfg.settings ? sentry) "sentry"
-    ++ lib.optional (cfg.settings.url_preview_enabled) "url-preview"
-    ++ lib.optional (cfg.settings.database.name == "psycopg2") "postgres";
+  cfg.extras
+  ++ lib.optional (cfg.settings ? oidc_providers) "oidc"
+  ++ lib.optional (cfg.settings ? jwt_config) "jwt"
+  ++ lib.optional (cfg.settings ? saml2_config) "saml2"
+  ++ lib.optional (cfg.settings ? redis) "redis"
+  ++ lib.optional (cfg.settings ? sentry) "sentry"
+  ++ lib.optional (cfg.settings.url_preview_enabled) "url-preview"
+  ++ lib.optional (cfg.settings.database.name == "psycopg2") "postgres";
 
   wrapped = pkgs.matrix-synapse.override {
     extras = wantedExtras;

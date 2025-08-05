@@ -150,20 +150,20 @@ stdenv.mkDerivation rec {
   strictDeps = true;
 
   postPatch =
-    lib.optionalString stdenv.hostPlatform.isDarwin ''
-      substituteInPlace cmake/modules/SetupBuildFlags.cmake \
-        --replace "-Wl,--no-undefined" ""
-      substituteInPlace src/services/evolution-alarm-notify/e-alarm-notify.c \
-        --replace "G_OS_WIN32" "__APPLE__"
-    ''
-    + lib.optionalString (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
-      substituteInPlace src/addressbook/libebook-contacts/CMakeLists.txt --replace-fail \
-        'COMMAND ''${CMAKE_CURRENT_BINARY_DIR}/gen-western-table' \
-        'COMMAND ${stdenv.hostPlatform.emulator buildPackages} ''${CMAKE_CURRENT_BINARY_DIR}/gen-western-table'
-      substituteInPlace src/camel/CMakeLists.txt --replace-fail \
-        'COMMAND ''${CMAKE_CURRENT_BINARY_DIR}/camel-gen-tables' \
-        'COMMAND ${stdenv.hostPlatform.emulator buildPackages} ''${CMAKE_CURRENT_BINARY_DIR}/camel-gen-tables'
-    '';
+  lib.optionalString stdenv.hostPlatform.isDarwin ''
+    substituteInPlace cmake/modules/SetupBuildFlags.cmake \
+      --replace "-Wl,--no-undefined" ""
+    substituteInPlace src/services/evolution-alarm-notify/e-alarm-notify.c \
+      --replace "G_OS_WIN32" "__APPLE__"
+  ''
+  + lib.optionalString (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
+    substituteInPlace src/addressbook/libebook-contacts/CMakeLists.txt --replace-fail \
+      'COMMAND ''${CMAKE_CURRENT_BINARY_DIR}/gen-western-table' \
+      'COMMAND ${stdenv.hostPlatform.emulator buildPackages} ''${CMAKE_CURRENT_BINARY_DIR}/gen-western-table'
+    substituteInPlace src/camel/CMakeLists.txt --replace-fail \
+      'COMMAND ''${CMAKE_CURRENT_BINARY_DIR}/camel-gen-tables' \
+      'COMMAND ${stdenv.hostPlatform.emulator buildPackages} ''${CMAKE_CURRENT_BINARY_DIR}/camel-gen-tables'
+  '';
 
   postInstall = lib.optionalString stdenv.hostPlatform.isDarwin ''
     ln -s $out/lib/evolution-data-server/*.dylib $out/lib/

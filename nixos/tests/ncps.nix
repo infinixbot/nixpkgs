@@ -57,10 +57,10 @@
     { nodes, ... }:
     let
       narinfoName =
-        (lib.strings.removePrefix "/nix/store/" (
-          lib.strings.removeSuffix "-empty-file" pkgs.emptyFile.outPath
-        ))
-        + ".narinfo";
+      (lib.strings.removePrefix "/nix/store/" (
+        lib.strings.removeSuffix "-empty-file" pkgs.emptyFile.outPath
+      ))
+      + ".narinfo";
 
       narinfoNameChars = lib.strings.stringToCharacters narinfoName;
 

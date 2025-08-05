@@ -78,21 +78,21 @@ in
     environment.systemPackages = [ cfg.package ];
 
     environment.etc =
-      (lib.mapAttrs' (name: value: lib.nameValuePair "udisks2/${name}" { source = value; }) configFiles)
-      // (
-        let
-          libblockdev = cfg.package.libblockdev;
-          majorVer = lib.versions.major libblockdev.version;
-        in
-        {
-          # We need to make sure /etc/libblockdev/@major_ver@/conf.d is populated to avoid
-          # warnings
-          "libblockdev/${majorVer}/conf.d/00-default.cfg".source =
-            "${libblockdev}/etc/libblockdev/${majorVer}/conf.d/00-default.cfg";
-          "libblockdev/${majorVer}/conf.d/10-lvm-dbus.cfg".source =
-            "${libblockdev}/etc/libblockdev/${majorVer}/conf.d/10-lvm-dbus.cfg";
-        }
-      );
+    (lib.mapAttrs' (name: value: lib.nameValuePair "udisks2/${name}" { source = value; }) configFiles)
+    // (
+      let
+        libblockdev = cfg.package.libblockdev;
+        majorVer = lib.versions.major libblockdev.version;
+      in
+      {
+        # We need to make sure /etc/libblockdev/@major_ver@/conf.d is populated to avoid
+        # warnings
+        "libblockdev/${majorVer}/conf.d/00-default.cfg".source =
+          "${libblockdev}/etc/libblockdev/${majorVer}/conf.d/00-default.cfg";
+        "libblockdev/${majorVer}/conf.d/10-lvm-dbus.cfg".source =
+          "${libblockdev}/etc/libblockdev/${majorVer}/conf.d/10-lvm-dbus.cfg";
+      }
+    );
 
     security.polkit.enable = true;
 

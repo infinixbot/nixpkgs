@@ -81,10 +81,10 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   qtWrapperArgs =
-    lib.optionals stdenv.hostPlatform.isLinux [
-      "--prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ vulkan-loader ]}"
-    ]
-    ++ lib.optional withWayland "--set RMG_ALLOW_WAYLAND 1";
+  lib.optionals stdenv.hostPlatform.isLinux [
+    "--prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ vulkan-loader ]}"
+  ]
+  ++ lib.optional withWayland "--set RMG_ALLOW_WAYLAND 1";
 
   passthru.updateScript = gitUpdater { rev-prefix = "v"; };
 

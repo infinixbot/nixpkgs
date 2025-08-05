@@ -40,25 +40,25 @@ stdenv.mkDerivation (finalAttrs: {
 
   # Also, patch the tests
   postPatch =
-    # Force path to static link, otherwise, it fails at runtime to
-    # find the shared library
-    ''
-      substituteInPlace Makefile \
-        --replace-fail "-Iext/safestringlib/include" "-I${safestringlib}/include" \
-        --replace-fail "-Lext/safestringlib" "-L${safestringlib}/lib"
-    ''
-    # Make test compile by changing the compiler and path to library
-    # Remove xeonbsw test that fails to compile due to missing _rdsc
-    # also, not portable
-    + ''
-      substituteInPlace test/Makefile \
-        --replace-fail "icpc" "g++" \
-        --replace-fail "../ext/safestringlib/libsafestring.a"  \
-                       "${safestringlib}/lib/libsafestring.a" \
-        --replace-fail \
-          "fmi_test smem2_test bwt_seed_strategy_test sa2ref_test xeonbsw" \
-          "fmi_test smem2_test bwt_seed_strategy_test sa2ref_test"
-    '';
+  # Force path to static link, otherwise, it fails at runtime to
+  # find the shared library
+  ''
+    substituteInPlace Makefile \
+      --replace-fail "-Iext/safestringlib/include" "-I${safestringlib}/include" \
+      --replace-fail "-Lext/safestringlib" "-L${safestringlib}/lib"
+  ''
+  # Make test compile by changing the compiler and path to library
+  # Remove xeonbsw test that fails to compile due to missing _rdsc
+  # also, not portable
+  + ''
+    substituteInPlace test/Makefile \
+      --replace-fail "icpc" "g++" \
+      --replace-fail "../ext/safestringlib/libsafestring.a"  \
+                     "${safestringlib}/lib/libsafestring.a" \
+      --replace-fail \
+        "fmi_test smem2_test bwt_seed_strategy_test sa2ref_test xeonbsw" \
+        "fmi_test smem2_test bwt_seed_strategy_test sa2ref_test"
+  '';
 
   env.NIX_CFLAGS_COMPILE = toString (
     lib.optionals stdenv.hostPlatform.isDarwin [

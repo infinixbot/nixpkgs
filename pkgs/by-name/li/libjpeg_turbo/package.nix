@@ -42,10 +42,10 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   patches =
-    [ ]
-    ++ lib.optionals stdenv.hostPlatform.isMinGW [
-      ./mingw-boolean.patch
-    ];
+  [ ]
+  ++ lib.optionals stdenv.hostPlatform.isMinGW [
+    ./mingw-boolean.patch
+  ];
 
   outputs = [
     "bin"

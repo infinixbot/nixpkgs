@@ -40,13 +40,13 @@ stdenv.mkDerivation rec {
   ];
 
   env.NIX_CFLAGS_COMPILE =
-    toString (makeSDLFlags [
-      SDL
-      SDL_image
-      SDL_ttf
-      SDL_gfx
-    ])
-    + " -lSDL";
+  toString (makeSDLFlags [
+    SDL
+    SDL_image
+    SDL_ttf
+    SDL_gfx
+  ])
+  + " -lSDL";
 
   patches = [
     ./parse.patch # Fixes compilation error by avoiding redundant definitions.

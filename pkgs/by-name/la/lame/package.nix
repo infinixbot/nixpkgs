@@ -35,10 +35,10 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ ] ++ lib.optional nasmSupport nasm;
 
   buildInputs =
-    [ ]
-    #++ optional efenceSupport libefence
-    #++ optional mp3xSupport gtk1
-    ++ lib.optional sndfileFileIOSupport libsndfile;
+  [ ]
+  #++ optional efenceSupport libefence
+  #++ optional mp3xSupport gtk1
+  ++ lib.optional sndfileFileIOSupport libsndfile;
 
   configureFlags = [
     (lib.enableFeature nasmSupport "nasm")

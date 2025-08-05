@@ -34,13 +34,13 @@ buildGoModule (finalAttrs: {
   ];
 
   buildInputs =
-    # Depends on a vendored, patched GLFW.
-    glfw.buildInputs or [ ]
-    ++ glfw.propagatedBuildInputs or [ ]
-    ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
-      gtk3
-      xorg.libXxf86vm
-    ];
+  # Depends on a vendored, patched GLFW.
+  glfw.buildInputs or [ ]
+  ++ glfw.propagatedBuildInputs or [ ]
+  ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
+    gtk3
+    xorg.libXxf86vm
+  ];
 
   nativeBuildInputs = [
     copyDesktopItems

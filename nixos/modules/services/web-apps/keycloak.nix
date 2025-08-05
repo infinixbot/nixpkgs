@@ -503,12 +503,12 @@ in
       keycloakBuild = cfg.package.override {
         inherit confFile;
         plugins =
-          cfg.package.enabledPlugins
-          ++ cfg.plugins
-          ++ (with cfg.package.plugins; [
-            quarkus-systemd-notify
-            quarkus-systemd-notify-deployment
-          ]);
+        cfg.package.enabledPlugins
+        ++ cfg.plugins
+        ++ (with cfg.package.plugins; [
+          quarkus-systemd-notify
+          quarkus-systemd-notify-deployment
+        ]);
       };
     in
     mkIf cfg.enable {
@@ -724,11 +724,11 @@ in
           };
           serviceConfig = {
             LoadCredential =
-              map (p: "${baseNameOf p}:${p}") secretPaths
-              ++ optionals (cfg.sslCertificate != null && cfg.sslCertificateKey != null) [
-                "ssl_cert:${cfg.sslCertificate}"
-                "ssl_key:${cfg.sslCertificateKey}"
-              ];
+            map (p: "${baseNameOf p}:${p}") secretPaths
+            ++ optionals (cfg.sslCertificate != null && cfg.sslCertificateKey != null) [
+              "ssl_cert:${cfg.sslCertificate}"
+              "ssl_key:${cfg.sslCertificateKey}"
+            ];
             User = "keycloak";
             Group = "keycloak";
             DynamicUser = true;

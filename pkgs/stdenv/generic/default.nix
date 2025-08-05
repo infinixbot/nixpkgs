@@ -67,24 +67,24 @@ let
 
     let
       defaultNativeBuildInputs =
-        extraNativeBuildInputs
-        ++ [
-          ../../build-support/setup-hooks/no-broken-symlinks.sh
-          ../../build-support/setup-hooks/audit-tmpdir.sh
-          ../../build-support/setup-hooks/compress-man-pages.sh
-          ../../build-support/setup-hooks/make-symlinks-relative.sh
-          ../../build-support/setup-hooks/move-docs.sh
-          ../../build-support/setup-hooks/move-lib64.sh
-          ../../build-support/setup-hooks/move-sbin.sh
-          ../../build-support/setup-hooks/move-systemd-user-units.sh
-          ../../build-support/setup-hooks/multiple-outputs.sh
-          ../../build-support/setup-hooks/patch-shebangs.sh
-          ../../build-support/setup-hooks/prune-libtool-files.sh
-          ../../build-support/setup-hooks/reproducible-builds.sh
-          ../../build-support/setup-hooks/set-source-date-epoch-to-latest.sh
-          ../../build-support/setup-hooks/strip.sh
-        ]
-        ++ lib.optionals hasCC [ cc ];
+      extraNativeBuildInputs
+      ++ [
+        ../../build-support/setup-hooks/no-broken-symlinks.sh
+        ../../build-support/setup-hooks/audit-tmpdir.sh
+        ../../build-support/setup-hooks/compress-man-pages.sh
+        ../../build-support/setup-hooks/make-symlinks-relative.sh
+        ../../build-support/setup-hooks/move-docs.sh
+        ../../build-support/setup-hooks/move-lib64.sh
+        ../../build-support/setup-hooks/move-sbin.sh
+        ../../build-support/setup-hooks/move-systemd-user-units.sh
+        ../../build-support/setup-hooks/multiple-outputs.sh
+        ../../build-support/setup-hooks/patch-shebangs.sh
+        ../../build-support/setup-hooks/prune-libtool-files.sh
+        ../../build-support/setup-hooks/reproducible-builds.sh
+        ../../build-support/setup-hooks/set-source-date-epoch-to-latest.sh
+        ../../build-support/setup-hooks/strip.sh
+      ]
+      ++ lib.optionals hasCC [ cc ];
 
       defaultBuildInputs = extraBuildInputs;
 
@@ -123,17 +123,17 @@ let
         # TODO: This really wants to be in stdenv/darwin but we don't have hostPlatform
         # there (yet?) so it goes here until then.
         preHook =
-          preHook
-          + lib.optionalString buildPlatform.isDarwin ''
-            export NIX_DONT_SET_RPATH_FOR_BUILD=1
-          ''
-          + lib.optionalString (hostPlatform.isDarwin || (!hostPlatform.isElf && !hostPlatform.isMacho)) ''
-            export NIX_DONT_SET_RPATH=1
-            export NIX_NO_SELF_RPATH=1
-          ''
-          + lib.optionalString (hostPlatform.isDarwin && hostPlatform.isMacOS) ''
-            export MACOSX_DEPLOYMENT_TARGET=${hostPlatform.darwinMinVersion}
-          ''
+        preHook
+        + lib.optionalString buildPlatform.isDarwin ''
+          export NIX_DONT_SET_RPATH_FOR_BUILD=1
+        ''
+        + lib.optionalString (hostPlatform.isDarwin || (!hostPlatform.isElf && !hostPlatform.isMacho)) ''
+          export NIX_DONT_SET_RPATH=1
+          export NIX_NO_SELF_RPATH=1
+        ''
+        + lib.optionalString (hostPlatform.isDarwin && hostPlatform.isMacOS) ''
+          export MACOSX_DEPLOYMENT_TARGET=${hostPlatform.darwinMinVersion}
+        ''
         # TODO this should be uncommented, but it causes stupid mass rebuilds due to
         # `pkgsCross.*.buildPackages` not being the same, resulting in cross-compiling
         # for a target rebuilding all of `nativeBuildInputs` for that target.

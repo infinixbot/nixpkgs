@@ -684,12 +684,12 @@ in
     services.openssh.sftpServerExecutable = lib.mkDefault "${cfg.package}/libexec/sftp-server";
 
     environment.etc =
-      authKeysFiles
-      // authPrincipalsFiles
-      // {
-        "ssh/moduli".source = cfg.moduliFile;
-        "ssh/sshd_config".source = sshconf;
-      };
+    authKeysFiles
+    // authPrincipalsFiles
+    // {
+      "ssh/moduli".source = cfg.moduliFile;
+      "ssh/sshd_config".source = sshconf;
+    };
 
     systemd.tmpfiles.settings."ssh-root-provision" = {
       "/root"."d-" = {

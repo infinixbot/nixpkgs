@@ -50,16 +50,16 @@ rustPlatform.buildRustPackage (finalAttrs: {
     '';
 
   postInstall =
-    lib.optionalString stdenv.hostPlatform.isDarwin ''
-      mkdir -p "$out/bin"
-      ln -sf "$out/Applications/Cinny.app/Contents/MacOS/Cinny" "$out/bin/cinny"
-    ''
-    + lib.optionalString stdenv.hostPlatform.isLinux ''
-      desktop-file-edit \
-        --set-comment "Yet another matrix client for desktop" \
-        --set-key="Categories" --set-value="Network;InstantMessaging;" \
-        $out/share/applications/cinny.desktop
-    '';
+  lib.optionalString stdenv.hostPlatform.isDarwin ''
+    mkdir -p "$out/bin"
+    ln -sf "$out/Applications/Cinny.app/Contents/MacOS/Cinny" "$out/bin/cinny"
+  ''
+  + lib.optionalString stdenv.hostPlatform.isLinux ''
+    desktop-file-edit \
+      --set-comment "Yet another matrix client for desktop" \
+      --set-key="Categories" --set-value="Network;InstantMessaging;" \
+      $out/share/applications/cinny.desktop
+  '';
 
   preFixup = ''
     gappsWrapperArgs+=(

@@ -50,11 +50,11 @@ buildDunePackage rec {
     ppxlib
   ];
   propagatedBuildInputs =
-    lib.optional (lib.versionOlder version "5.2") ocaml-migrate-parsetree
-    ++ [
-      ppx_derivers
-    ]
-    ++ lib.optional (lib.versionOlder version "6.0") result;
+  lib.optional (lib.versionOlder version "5.2") ocaml-migrate-parsetree
+  ++ [
+    ppx_derivers
+  ]
+  ++ lib.optional (lib.versionOlder version "6.0") result;
 
   doCheck = lib.versionAtLeast ocaml.version "4.08";
   checkInputs = [

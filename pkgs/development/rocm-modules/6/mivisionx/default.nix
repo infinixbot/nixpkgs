@@ -32,15 +32,15 @@
 
 stdenv.mkDerivation (finalAttrs: {
   pname =
-    "mivisionx-"
-    + (
-      if (!useOpenCL && !useCPU) then
-        "hip"
-      else if (!useOpenCL && !useCPU) then
-        "opencl"
-      else
-        "cpu"
-    );
+  "mivisionx-"
+  + (
+    if (!useOpenCL && !useCPU) then
+      "hip"
+    else if (!useOpenCL && !useCPU) then
+      "opencl"
+    else
+      "cpu"
+  );
 
   version = "6.3.3";
 

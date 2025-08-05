@@ -33,8 +33,8 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   buildInputs =
-    (lib.optional (historyType == "editline") editline)
-    ++ (lib.optional (historyType == "readline") readline);
+  (lib.optional (historyType == "editline") editline)
+  ++ (lib.optional (historyType == "readline") readline);
 
   configureFlags = [
     "--disable-nls"

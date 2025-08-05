@@ -29,13 +29,13 @@ let
       };
 
   args' =
-    (builtins.removeAttrs args [ "branch" ])
-    // {
-      inherit src version;
+  (builtins.removeAttrs args [ "branch" ])
+  // {
+    inherit src version;
 
-      modDirVersion = lib.versions.pad 3 version;
-      extraMeta.branch = branch;
-    }
-    // (args.argsOverride or { });
+    modDirVersion = lib.versions.pad 3 version;
+    extraMeta.branch = branch;
+  }
+  // (args.argsOverride or { });
 in
 buildLinux args'

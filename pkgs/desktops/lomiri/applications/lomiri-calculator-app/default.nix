@@ -25,16 +25,16 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   postPatch =
-    # We don't want absolute paths in desktop files
-    ''
-      substituteInPlace CMakeLists.txt \
-        --replace-fail 'ICON ''${LOMIRI-CALCULATOR-APP_DIR}/''${ICON_FILE}' 'ICON ''${APP_HARDCODE}' \
-        --replace-fail 'SPLASH ''${LOMIRI-CALCULATOR-APP_DIR}/''${SPLASH_FILE}' 'SPLASH lomiri-app-launch/splash/''${APP_HARDCODE}.svg'
-    ''
-    + lib.optionalString (!finalAttrs.finalPackage.doCheck) ''
-      substituteInPlace CMakeLists.txt \
-        --replace-fail 'add_subdirectory(tests)' ""
-    '';
+  # We don't want absolute paths in desktop files
+  ''
+    substituteInPlace CMakeLists.txt \
+      --replace-fail 'ICON ''${LOMIRI-CALCULATOR-APP_DIR}/''${ICON_FILE}' 'ICON ''${APP_HARDCODE}' \
+      --replace-fail 'SPLASH ''${LOMIRI-CALCULATOR-APP_DIR}/''${SPLASH_FILE}' 'SPLASH lomiri-app-launch/splash/''${APP_HARDCODE}.svg'
+  ''
+  + lib.optionalString (!finalAttrs.finalPackage.doCheck) ''
+    substituteInPlace CMakeLists.txt \
+      --replace-fail 'add_subdirectory(tests)' ""
+  '';
 
   strictDeps = true;
 

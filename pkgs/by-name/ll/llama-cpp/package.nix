@@ -115,12 +115,12 @@ effectiveStdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs =
-    optionals cudaSupport cudaBuildInputs
-    ++ optionals openclSupport [ clblast ]
-    ++ optionals rocmSupport rocmBuildInputs
-    ++ optionals blasSupport [ blas ]
-    ++ optionals vulkanSupport vulkanBuildInputs
-    ++ [ curl ];
+  optionals cudaSupport cudaBuildInputs
+  ++ optionals openclSupport [ clblast ]
+  ++ optionals rocmSupport rocmBuildInputs
+  ++ optionals blasSupport [ blas ]
+  ++ optionals vulkanSupport vulkanBuildInputs
+  ++ [ curl ];
 
   cmakeFlags = [
     # -march=native is non-deterministic; override with platform-specific flags if needed

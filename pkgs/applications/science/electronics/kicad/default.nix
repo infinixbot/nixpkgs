@@ -195,12 +195,12 @@ stdenv.mkDerivation rec {
   dontFixup = true;
 
   pythonPath =
-    optionals (withScripting) [
-      wxPython
-      python.pkgs.six
-      python.pkgs.requests
-    ]
-    ++ addonsDrvs;
+  optionals (withScripting) [
+    wxPython
+    python.pkgs.six
+    python.pkgs.requests
+  ]
+  ++ addonsDrvs;
 
   nativeBuildInputs = [ makeWrapper ] ++ optionals (withScripting) [ python.pkgs.wrapPython ];
 
@@ -311,15 +311,15 @@ stdenv.mkDerivation rec {
 
   meta = {
     description =
-      (
-        if (stable) then
-          "Open Source Electronics Design Automation suite"
-        else if (testing) then
-          "Open Source EDA suite, latest on stable branch"
-        else
-          "Open Source EDA suite, latest on master branch"
-      )
-      + (lib.optionalString (!with3d) ", without 3D models");
+    (
+      if (stable) then
+        "Open Source Electronics Design Automation suite"
+      else if (testing) then
+        "Open Source EDA suite, latest on stable branch"
+      else
+        "Open Source EDA suite, latest on master branch"
+    )
+    + (lib.optionalString (!with3d) ", without 3D models");
     homepage = "https://www.kicad.org/";
     longDescription = ''
       KiCad is an open source software suite for Electronic Design Automation.

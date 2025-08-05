@@ -42,9 +42,9 @@ stdenv.mkDerivation (finalAttrs: {
   nativeBuildInputs = [ xxd ];
 
   buildInputs =
-    lib.optionals enableFFI [ libffi ]
-    ++ lib.optionals enableSSL [ openssl ]
-    ++ lib.optionals (lineEditingLibrary == "readline") [ readline ];
+  lib.optionals enableFFI [ libffi ]
+  ++ lib.optionals enableSSL [ openssl ]
+  ++ lib.optionals (lineEditingLibrary == "readline") [ readline ];
 
   nativeCheckInputs = lib.optionals finalAttrs.finalPackage.doCheck [ valgrind ];
 

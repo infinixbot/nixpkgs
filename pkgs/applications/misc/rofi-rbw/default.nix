@@ -60,8 +60,8 @@ buildPythonApplication rec {
   ];
 
   wrapper_flags =
-    lib.optionalString waylandSupport "--typer wtype --clipboarder wl-copy"
-    + lib.optionalString x11Support "--typer xdotool --clipboarder xclip";
+  lib.optionalString waylandSupport "--typer wtype --clipboarder wl-copy"
+  + lib.optionalString x11Support "--typer xdotool --clipboarder xclip";
 
   preFixup = ''
     makeWrapperArgs+=(--prefix PATH : ${lib.makeBinPath wrapper_paths} --add-flags "${wrapper_flags}")

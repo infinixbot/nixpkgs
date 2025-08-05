@@ -36,12 +36,12 @@ stdenv.mkDerivation (finalAttrs: {
   buildInputs = [ libogg ];
 
   cmakeFlags =
-    lib.optionals (!stdenv.hostPlatform.isStatic) [
-      "-DBUILD_SHARED_LIBS=ON"
-    ]
-    ++ lib.optionals (!enableManpages) [
-      "-DINSTALL_MANPAGES=OFF"
-    ];
+  lib.optionals (!stdenv.hostPlatform.isStatic) [
+    "-DBUILD_SHARED_LIBS=ON"
+  ]
+  ++ lib.optionals (!enableManpages) [
+    "-DINSTALL_MANPAGES=OFF"
+  ];
 
   CFLAGS = [
     "-O3"

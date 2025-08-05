@@ -27,7 +27,7 @@ let
       sha256 = "0g17afsmb8am0darxchqgjz1lmkaihmnn7k1x4ahg5gllcmw8k3l";
     };
     version =
-      lib.strings.substring 0 7 finalAttrs.src.rev + "-" + lib.versions.majorMinor cudatoolkit.version;
+    lib.strings.substring 0 7 finalAttrs.src.rev + "-" + lib.versions.majorMinor cudatoolkit.version;
     nativeBuildInputs = [
       cmake
       addDriverRunpath
@@ -101,18 +101,18 @@ in
       sourceRoot = "${finalAttrs.src.name}/cuSPARSELt/matmul";
 
       nativeBuildInputs =
-        prevAttrs.nativeBuildInputs or [ ]
-        ++ [
-          cmake
-          addDriverRunpath
-          (lib.getDev cusparselt)
-          (lib.getDev libcusparse)
-          cuda_nvcc
-          (lib.getDev cuda_cudart) # <cuda_runtime_api.h>
-        ]
-        ++ lib.optionals (cudaAtLeast "12.0") [
-          cuda_cccl # <nv/target>
-        ];
+      prevAttrs.nativeBuildInputs or [ ]
+      ++ [
+        cmake
+        addDriverRunpath
+        (lib.getDev cusparselt)
+        (lib.getDev libcusparse)
+        cuda_nvcc
+        (lib.getDev cuda_cudart) # <cuda_runtime_api.h>
+      ]
+      ++ lib.optionals (cudaAtLeast "12.0") [
+        cuda_cccl # <nv/target>
+      ];
 
       postPatch = prevAttrs.postPatch or "" + ''
         substituteInPlace CMakeLists.txt \

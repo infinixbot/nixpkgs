@@ -97,20 +97,20 @@ stdenv.mkDerivation rec {
   ++ lib.optional enableSound "SOUND=y";
 
   postInstall =
-    lib.optionalString tileMode ''
-      mv $out/bin/crawl $out/bin/crawl-tiles
-      echo "Exec=crawl-tiles" >> $out/xdg-data/org.develz.Crawl_tiles.desktop
-      echo "Icon=crawl" >> $out/xdg-data/org.develz.Crawl_tiles.desktop
-      install -Dm444 $out/xdg-data/org.develz.Crawl_tiles.desktop -t $out/share/applications
-      install -Dm444 $out/xdg-data/org.develz.Crawl_tiles.appdata.xml -t $out/share/metainfo
-    ''
-    + lib.optionalString (!tileMode) ''
-      echo "Exec=crawl" >> $out/xdg-data/org.develz.Crawl_console.desktop
-      echo "Icon=crawl" >> $out/xdg-data/org.develz.Crawl_console.desktop
-      install -Dm444 $out/xdg-data/org.develz.Crawl_console.desktop -t $out/share/applications
-      install -Dm444 $out/xdg-data/org.develz.Crawl_console.appdata.xml -t $out/share/metainfo
-    ''
-    + "install -Dm444 dat/tiles/stone_soup_icon-512x512.png $out/share/icons/hicolor/512x512/apps/crawl.png";
+  lib.optionalString tileMode ''
+    mv $out/bin/crawl $out/bin/crawl-tiles
+    echo "Exec=crawl-tiles" >> $out/xdg-data/org.develz.Crawl_tiles.desktop
+    echo "Icon=crawl" >> $out/xdg-data/org.develz.Crawl_tiles.desktop
+    install -Dm444 $out/xdg-data/org.develz.Crawl_tiles.desktop -t $out/share/applications
+    install -Dm444 $out/xdg-data/org.develz.Crawl_tiles.appdata.xml -t $out/share/metainfo
+  ''
+  + lib.optionalString (!tileMode) ''
+    echo "Exec=crawl" >> $out/xdg-data/org.develz.Crawl_console.desktop
+    echo "Icon=crawl" >> $out/xdg-data/org.develz.Crawl_console.desktop
+    install -Dm444 $out/xdg-data/org.develz.Crawl_console.desktop -t $out/share/applications
+    install -Dm444 $out/xdg-data/org.develz.Crawl_console.appdata.xml -t $out/share/metainfo
+  ''
+  + "install -Dm444 dat/tiles/stone_soup_icon-512x512.png $out/share/icons/hicolor/512x512/apps/crawl.png";
 
   enableParallelBuilding = true;
 

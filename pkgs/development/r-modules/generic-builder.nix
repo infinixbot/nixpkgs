@@ -19,19 +19,19 @@
 stdenv.mkDerivation (
   {
     buildInputs =
-      buildInputs
-      ++ [
-        R
-        gettext
-      ]
-      ++ lib.optionals requireX [
-        util-linux
-        xvfb-run
-      ]
-      ++ lib.optionals stdenv.hostPlatform.isDarwin [
-        gfortran
-        libiconv
-      ];
+    buildInputs
+    ++ [
+      R
+      gettext
+    ]
+    ++ lib.optionals requireX [
+      util-linux
+      xvfb-run
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      gfortran
+      libiconv
+    ];
 
     env.NIX_CFLAGS_COMPILE = lib.optionalString stdenv.hostPlatform.isDarwin "-I${lib.getInclude stdenv.cc.libcxx}/include/c++/v1";
 

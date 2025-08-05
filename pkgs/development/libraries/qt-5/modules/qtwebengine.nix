@@ -420,20 +420,20 @@ qtModule (
     dontUseNinjaInstall = true;
 
     postInstall =
-      lib.optionalString (stdenv.buildPlatform != stdenv.hostPlatform) ''
-        mkdir -p $out/libexec
-      ''
-      + lib.optionalString stdenv.hostPlatform.isLinux ''
-        cat > $out/libexec/qt.conf <<EOF
-        [Paths]
-        Prefix = ..
-        EOF
+    lib.optionalString (stdenv.buildPlatform != stdenv.hostPlatform) ''
+      mkdir -p $out/libexec
+    ''
+    + lib.optionalString stdenv.hostPlatform.isLinux ''
+      cat > $out/libexec/qt.conf <<EOF
+      [Paths]
+      Prefix = ..
+      EOF
 
-      ''
-      + ''
-        # Fix for out-of-sync QtWebEngine and Qt releases (since 5.15.3)
-        sed 's/${lib.head (lib.splitString "-" version)} /${qtCompatVersion} /' -i "$out"/lib/cmake/*/*Config.cmake
-      '';
+    ''
+    + ''
+      # Fix for out-of-sync QtWebEngine and Qt releases (since 5.15.3)
+      sed 's/${lib.head (lib.splitString "-" version)} /${qtCompatVersion} /' -i "$out"/lib/cmake/*/*Config.cmake
+    '';
 
     requiredSystemFeatures = [ "big-parallel" ];
 

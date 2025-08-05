@@ -159,14 +159,14 @@ stdenv.mkDerivation rec {
   ++ lib.optional (cups != null && lib.meta.availableOn stdenv.hostPlatform cups) cups;
 
   buildInputs =
-    lib.optionals (lib.meta.availableOn stdenv.hostPlatform at-spi2-core) [
-      at-spi2-core
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin (darwinVersionInputs ++ [ moltenvk ])
-    ++ lib.optional withGtk3 gtk3
-    ++ lib.optional withLibinput libinput
-    ++ lib.optional (libmysqlclient != null && !stdenv.hostPlatform.isMinGW) libmysqlclient
-    ++ lib.optional (libpq != null && lib.meta.availableOn stdenv.hostPlatform libpq) libpq;
+  lib.optionals (lib.meta.availableOn stdenv.hostPlatform at-spi2-core) [
+    at-spi2-core
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin (darwinVersionInputs ++ [ moltenvk ])
+  ++ lib.optional withGtk3 gtk3
+  ++ lib.optional withLibinput libinput
+  ++ lib.optional (libmysqlclient != null && !stdenv.hostPlatform.isMinGW) libmysqlclient
+  ++ lib.optional (libpq != null && lib.meta.availableOn stdenv.hostPlatform libpq) libpq;
 
   nativeBuildInputs = [
     bison

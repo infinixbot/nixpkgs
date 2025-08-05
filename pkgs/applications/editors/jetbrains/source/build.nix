@@ -200,18 +200,18 @@ let
     in
     fetchurl {
       url =
-        repoUrl
-        + "/"
-        + groupId
-        + "/"
-        + artefactId
-        + "/"
-        + version
-        + "/"
-        + artefactId
-        + "-"
-        + version
-        + ".jar";
+      repoUrl
+      + "/"
+      + groupId
+      + "/"
+      + artefactId
+      + "/"
+      + version
+      + "/"
+      + artefactId
+      + "-"
+      + version
+      + ".jar";
       hash = kotlin-jps-plugin.hash;
     };
 

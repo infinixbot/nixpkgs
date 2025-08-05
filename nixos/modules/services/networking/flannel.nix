@@ -8,14 +8,14 @@ let
   cfg = config.services.flannel;
 
   networkConfig =
-    (lib.filterAttrs (n: v: v != null) {
-      Network = cfg.network;
-      SubnetLen = cfg.subnetLen;
-      SubnetMin = cfg.subnetMin;
-      SubnetMax = cfg.subnetMax;
-      Backend = cfg.backend;
-    })
-    // cfg.extraNetworkConfig;
+  (lib.filterAttrs (n: v: v != null) {
+    Network = cfg.network;
+    SubnetLen = cfg.subnetLen;
+    SubnetMin = cfg.subnetMin;
+    SubnetMax = cfg.subnetMax;
+    Backend = cfg.backend;
+  })
+  // cfg.extraNetworkConfig;
 in
 {
   options.services.flannel = {

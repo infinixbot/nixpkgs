@@ -67,15 +67,15 @@ rustPlatform.buildRustPackage rec {
   ];
 
   buildInputs =
-    rpathLibs
-    ++ [
-      glib
-      gtk3
-      openssl
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      fontconfig
-    ];
+  rpathLibs
+  ++ [
+    glib
+    gtk3
+    openssl
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    fontconfig
+  ];
 
   postInstall =
     if stdenv.hostPlatform.isLinux then

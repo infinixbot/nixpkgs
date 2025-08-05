@@ -255,7 +255,7 @@ in
       };
 
     environment.systemPackages =
-      lib.optionals (cfg.platformTheme != null) (platformPackages.${cfg.platformTheme})
-      ++ lib.optionals (cfg.style != null) (stylePackages.${cfg.style});
+    lib.optionals (cfg.platformTheme != null) (platformPackages.${cfg.platformTheme})
+    ++ lib.optionals (cfg.style != null) (stylePackages.${cfg.style});
   };
 }

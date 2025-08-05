@@ -54,40 +54,40 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   dontConfigure = true;
 
   installPhase =
-    lib.optionalString stdenvNoCC.hostPlatform.isLinux ''
-      runHook preInstall
+  lib.optionalString stdenvNoCC.hostPlatform.isLinux ''
+    runHook preInstall
 
-      cd AppFlowy/
+    cd AppFlowy/
 
-      mkdir -p $out/{bin,opt}
+    mkdir -p $out/{bin,opt}
 
-      # Copy archive contents to the outpout directory
-      cp -r ./* $out/opt/
+    # Copy archive contents to the outpout directory
+    cp -r ./* $out/opt/
 
-      # Copy icon
-      install -Dm444 data/flutter_assets/assets/images/flowy_logo.svg $out/share/icons/hicolor/scalable/apps/appflowy.svg
+    # Copy icon
+    install -Dm444 data/flutter_assets/assets/images/flowy_logo.svg $out/share/icons/hicolor/scalable/apps/appflowy.svg
 
-      runHook postInstall
-    ''
-    + lib.optionalString stdenvNoCC.hostPlatform.isDarwin ''
-      runHook preInstall
+    runHook postInstall
+  ''
+  + lib.optionalString stdenvNoCC.hostPlatform.isDarwin ''
+    runHook preInstall
 
-      mkdir -p $out/{Applications,bin}
-      cp -r ./AppFlowy.app $out/Applications/
+    mkdir -p $out/{Applications,bin}
+    cp -r ./AppFlowy.app $out/Applications/
 
-      runHook postInstall
-    '';
+    runHook postInstall
+  '';
 
   preFixup =
-    lib.optionalString stdenvNoCC.hostPlatform.isLinux ''
-      # Add missing libraries to appflowy using the ones it comes with
-      makeWrapper $out/opt/AppFlowy $out/bin/appflowy \
-        --set LD_LIBRARY_PATH "$out/opt/lib/" \
-        --prefix PATH : "${lib.makeBinPath [ xdg-user-dirs ]}"
-    ''
-    + lib.optionalString stdenvNoCC.hostPlatform.isDarwin ''
-      makeWrapper $out/Applications/AppFlowy.app/Contents/MacOS/AppFlowy $out/bin/appflowy
-    '';
+  lib.optionalString stdenvNoCC.hostPlatform.isLinux ''
+    # Add missing libraries to appflowy using the ones it comes with
+    makeWrapper $out/opt/AppFlowy $out/bin/appflowy \
+      --set LD_LIBRARY_PATH "$out/opt/lib/" \
+      --prefix PATH : "${lib.makeBinPath [ xdg-user-dirs ]}"
+  ''
+  + lib.optionalString stdenvNoCC.hostPlatform.isDarwin ''
+    makeWrapper $out/Applications/AppFlowy.app/Contents/MacOS/AppFlowy $out/bin/appflowy
+  '';
 
   desktopItems = lib.optionals stdenvNoCC.hostPlatform.isLinux [
     (makeDesktopItem {

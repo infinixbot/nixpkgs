@@ -101,12 +101,12 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   postInstall =
-    lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
-      make -f Makefile.fip install
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      ln -s $out/lib/libfreeimage.3.dylib $out/lib/libfreeimage.dylib
-    '';
+  lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
+    make -f Makefile.fip install
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    ln -s $out/lib/libfreeimage.3.dylib $out/lib/libfreeimage.dylib
+  '';
 
   enableParallelBuilding = true;
 

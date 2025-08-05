@@ -17,46 +17,46 @@ deployAndroidPackage {
   inherit package os arch;
   nativeBuildInputs = [ makeWrapper ] ++ lib.optionals (os == "linux") [ autoPatchelfHook ];
   buildInputs =
-    lib.optionals (os == "linux") (
-      with pkgs;
-      [
-        glibc
-        libcxx
-        libGL
-        libpulseaudio
-        libtiff
-        libuuid
-        zlib
-        libbsd
-        ncurses5
-        libdrm
-        stdenv.cc.cc
-        expat
-        freetype
-        nss
-        nspr
-        alsa-lib
-        llvmPackages_15.libllvm.lib
-        waylandpp.lib
-      ]
-    )
-    ++ (with pkgs.xorg; [
-      libX11
-      libXext
-      libXdamage
-      libXfixes
-      libxcb
-      libXcomposite
-      libXcursor
-      libXi
-      libXrender
-      libXtst
-      libICE
-      libSM
-      libxkbfile
-      libxshmfence
-    ])
-    ++ lib.optional (os == "linux" && stdenv.isx86_64) pkgsi686Linux.glibc;
+  lib.optionals (os == "linux") (
+    with pkgs;
+    [
+      glibc
+      libcxx
+      libGL
+      libpulseaudio
+      libtiff
+      libuuid
+      zlib
+      libbsd
+      ncurses5
+      libdrm
+      stdenv.cc.cc
+      expat
+      freetype
+      nss
+      nspr
+      alsa-lib
+      llvmPackages_15.libllvm.lib
+      waylandpp.lib
+    ]
+  )
+  ++ (with pkgs.xorg; [
+    libX11
+    libXext
+    libXdamage
+    libXfixes
+    libxcb
+    libXcomposite
+    libXcursor
+    libXi
+    libXrender
+    libXtst
+    libICE
+    libSM
+    libxkbfile
+    libxshmfence
+  ])
+  ++ lib.optional (os == "linux" && stdenv.isx86_64) pkgsi686Linux.glibc;
   patchInstructions =
     (lib.optionalString (os == "linux") ''
       addAutoPatchelfSearchPath $packageBaseDir/lib

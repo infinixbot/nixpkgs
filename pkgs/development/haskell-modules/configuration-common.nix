@@ -123,27 +123,27 @@ with haskellLib;
               # We apply a patch for this issue to the GHC core packages directly.
               # See unix-fix-ctimeval-size-32-bit.patch in ../compilers/ghc/common-*.nix
               patches =
-                old.patches or [ ]
-                ++
-                  lib.optionals
-                    (
-                      scope.unix == null
-                      && lib.elem self.ghc.version [
-                        "9.6.1"
-                        "9.6.2"
-                        "9.6.3"
-                        "9.6.4"
-                        "9.6.5"
-                        "9.6.6"
-                        "9.8.1"
-                        "9.8.2"
-                        "9.8.3"
-                        "9.10.1"
-                      ]
-                    )
-                    [
-                      ./patches/cabal-install-3.14.1.1-lift-unix-bound.patch
-                    ];
+              old.patches or [ ]
+              ++
+                lib.optionals
+                  (
+                    scope.unix == null
+                    && lib.elem self.ghc.version [
+                      "9.6.1"
+                      "9.6.2"
+                      "9.6.3"
+                      "9.6.4"
+                      "9.6.5"
+                      "9.6.6"
+                      "9.8.1"
+                      "9.8.2"
+                      "9.8.3"
+                      "9.10.1"
+                    ]
+                  )
+                  [
+                    ./patches/cabal-install-3.14.1.1-lift-unix-bound.patch
+                  ];
             }
             // lib.optionalAttrs (pkgs.stdenv.hostPlatform.isDarwin && pkgs.stdenv.hostPlatform.isAarch64) {
               postInstall = ''
@@ -1140,13 +1140,13 @@ with haskellLib;
           overrideCabal (drv: {
             version = "2024-05-05-unstable";
             src =
-              pkgs.fetchFromGitHub {
-                owner = "valderman";
-                repo = "selda";
-                rev = "50c3ba5c5da72bb758a4112363ba2fe1c0e968ea";
-                hash = "sha256-LEAJsSsDL0mmVHntnI16fH8m5DmePfcU0hFw9ErqTgQ=";
-              }
-              + "/${name}";
+            pkgs.fetchFromGitHub {
+              owner = "valderman";
+              repo = "selda";
+              rev = "50c3ba5c5da72bb758a4112363ba2fe1c0e968ea";
+              hash = "sha256-LEAJsSsDL0mmVHntnI16fH8m5DmePfcU0hFw9ErqTgQ=";
+            }
+            + "/${name}";
             # 2025-04-09: jailbreak to allow bytestring >= 0.12, text >= 2.1
             # Note: jailbreak ignores constraints under an if(flag)
             postPatch = ''

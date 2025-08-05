@@ -75,30 +75,30 @@ else
       pathsToLink = [ "/lib" ];
 
       postBuild =
-        genStubsScript {
-          inherit
-            lib
-            runCommand
-            ruby
-            bundler
-            groups
-            ;
-          confFiles = basicEnv.confFiles;
-          binPaths = [ basicEnv.gems.${pname} ];
-        }
-        + lib.optionalString (postBuild != null) postBuild;
+      genStubsScript {
+        inherit
+          lib
+          runCommand
+          ruby
+          bundler
+          groups
+          ;
+        confFiles = basicEnv.confFiles;
+        binPaths = [ basicEnv.gems.${pname} ];
+      }
+      + lib.optionalString (postBuild != null) postBuild;
 
       meta = {
         platforms = ruby.meta.platforms;
       }
       // meta;
       passthru =
-        basicEnv.passthru
-        // {
-          inherit basicEnv;
-          inherit (basicEnv) env;
-        }
-        // passthru;
+      basicEnv.passthru
+      // {
+        inherit basicEnv;
+        inherit (basicEnv) env;
+      }
+      // passthru;
     };
   in
   if copyGemFiles then

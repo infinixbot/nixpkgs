@@ -42,17 +42,17 @@ rustPlatform.buildRustPackage rec {
   doCheck = false;
 
   postInstall =
-    lib.optionalString installManPages ''
-      mkdir -p $out/man
-      $out/bin/neverest man $out/man
-      installManPage $out/man/*
-    ''
-    + lib.optionalString installShellCompletions ''
-      installShellCompletion --cmd neverest \
-        --bash <($out/bin/neverest completion bash) \
-        --fish <($out/bin/neverest completion fish) \
-        --zsh <($out/bin/neverest completion zsh)
-    '';
+  lib.optionalString installManPages ''
+    mkdir -p $out/man
+    $out/bin/neverest man $out/man
+    installManPage $out/man/*
+  ''
+  + lib.optionalString installShellCompletions ''
+    installShellCompletion --cmd neverest \
+      --bash <($out/bin/neverest completion bash) \
+      --fish <($out/bin/neverest completion fish) \
+      --zsh <($out/bin/neverest completion zsh)
+  '';
 
   meta = {
     description = "CLI to synchronize, backup and restore emails";

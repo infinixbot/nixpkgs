@@ -127,14 +127,14 @@ lib.extendMkDerivation {
       buildInputs = (args.buildInputs or [ ]);
 
       nativeBuildInputs =
-        (args.nativeBuildInputs or [ ])
-        ++ [
-          cargo-pgrx
-          postgresql
-          pkg-config
-          rustPlatform.bindgenHook
-        ]
-        ++ lib.optionals useFakeRustfmt [ fakeRustfmt ];
+      (args.nativeBuildInputs or [ ])
+      ++ [
+        cargo-pgrx
+        postgresql
+        pkg-config
+        rustPlatform.bindgenHook
+      ]
+      ++ lib.optionals useFakeRustfmt [ fakeRustfmt ];
 
       buildPhase = ''
         runHook preBuild
@@ -182,9 +182,9 @@ lib.extendMkDerivation {
 
       checkNoDefaultFeatures = true;
       checkFeatures =
-        (args.checkFeatures or [ ])
-        ++ (lib.optionals usePgTestCheckFeature [ "pg_test" ])
-        ++ [ "pg${pgrxPostgresMajor}" ];
+      (args.checkFeatures or [ ])
+      ++ (lib.optionals usePgTestCheckFeature [ "pg_test" ])
+      ++ [ "pg${pgrxPostgresMajor}" ];
 
       meta = (args.meta or { }) // {
         # See comment in postgresql's generic.nix doInstallCheck section

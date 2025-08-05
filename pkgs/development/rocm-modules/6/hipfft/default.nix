@@ -89,22 +89,22 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   postInstall =
-    lib.optionalString buildTests ''
-      mkdir -p $test/bin
-      mv $out/bin/hipfft-test $test/bin
-    ''
-    + lib.optionalString buildBenchmarks ''
-      mkdir -p $benchmark/bin
-      mv $out/bin/hipfft-rider $benchmark/bin
-    ''
-    + lib.optionalString buildSamples ''
-      mkdir -p $sample/bin
-      mv clients/staging/hipfft_* $sample/bin
-      patchelf $sample/bin/hipfft_* --shrink-rpath --allowed-rpath-prefixes "$NIX_STORE"
-    ''
-    + lib.optionalString (buildTests || buildBenchmarks) ''
-      rmdir $out/bin
-    '';
+  lib.optionalString buildTests ''
+    mkdir -p $test/bin
+    mv $out/bin/hipfft-test $test/bin
+  ''
+  + lib.optionalString buildBenchmarks ''
+    mkdir -p $benchmark/bin
+    mv $out/bin/hipfft-rider $benchmark/bin
+  ''
+  + lib.optionalString buildSamples ''
+    mkdir -p $sample/bin
+    mv clients/staging/hipfft_* $sample/bin
+    patchelf $sample/bin/hipfft_* --shrink-rpath --allowed-rpath-prefixes "$NIX_STORE"
+  ''
+  + lib.optionalString (buildTests || buildBenchmarks) ''
+    rmdir $out/bin
+  '';
 
   passthru.updateScript = rocmUpdateScript {
     name = finalAttrs.pname;

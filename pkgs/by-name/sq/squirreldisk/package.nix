@@ -93,13 +93,13 @@ rustPlatform.buildRustPackage rec {
 
   # WEBKIT_DISABLE_COMPOSITING_MODE essential in NVIDIA + compositor https://github.com/NixOS/nixpkgs/issues/212064#issuecomment-1400202079
   postFixup =
-    lib.optionalString stdenv.hostPlatform.isLinux ''
-      wrapGApp "$out/bin/squirrel-disk" \
-        --set WEBKIT_DISABLE_COMPOSITING_MODE 1
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      makeWrapper "$out/Applications/SquirrelDisk.app/Contents/MacOS/SquirrelDisk" "$out/bin/squirrel-disk"
-    '';
+  lib.optionalString stdenv.hostPlatform.isLinux ''
+    wrapGApp "$out/bin/squirrel-disk" \
+      --set WEBKIT_DISABLE_COMPOSITING_MODE 1
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    makeWrapper "$out/Applications/SquirrelDisk.app/Contents/MacOS/SquirrelDisk" "$out/bin/squirrel-disk"
+  '';
 
   meta = with lib; {
     description = "Cross-platform disk usage analysis tool";

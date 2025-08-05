@@ -72,10 +72,10 @@ stdenv.mkDerivation (finalAttrs: {
     ];
 
     platforms =
-      (lib.intersectLists platforms.linux (
-        lib.platforms.arm ++ lib.platforms.aarch64 ++ lib.platforms.x86
-      ))
-      ++ (lib.intersectLists platforms.darwin (lib.platforms.aarch64 ++ lib.platforms.x86_64));
+    (lib.intersectLists platforms.linux (
+      lib.platforms.arm ++ lib.platforms.aarch64 ++ lib.platforms.x86
+    ))
+    ++ (lib.intersectLists platforms.darwin (lib.platforms.aarch64 ++ lib.platforms.x86_64));
 
     sourceProvenance = [ sourceTypes.binaryNativeCode ];
     mainProgram = "ocis";

@@ -82,37 +82,37 @@ stdenv.mkDerivation rec {
 
   # ncurses is a hidden dependency of waf when checking python
   buildInputs =
-    lib.optionals pythonSupport [
-      castxml
-      ncurses
-    ]
-    ++ lib.optionals enableDoxygen [
-      doxygen
-      graphviz
-      imagemagick
-    ]
-    ++ lib.optionals withManual [
-      dia
-      tetex
-      ghostscript
-      imagemagick
-      texliveMedium
-    ]
-    ++ [
-      libxml2
-      pythonEnv
-      sqlite.dev
-      gsl
-      boost
-      root # provides cppyy
-      glib.out
-      glib.dev
-      libpcap
-      gtk3-x11.dev
-      harfbuzz
-      freetype
-      jansson
-    ];
+  lib.optionals pythonSupport [
+    castxml
+    ncurses
+  ]
+  ++ lib.optionals enableDoxygen [
+    doxygen
+    graphviz
+    imagemagick
+  ]
+  ++ lib.optionals withManual [
+    dia
+    tetex
+    ghostscript
+    imagemagick
+    texliveMedium
+  ]
+  ++ [
+    libxml2
+    pythonEnv
+    sqlite.dev
+    gsl
+    boost
+    root # provides cppyy
+    glib.out
+    glib.dev
+    libpcap
+    gtk3-x11.dev
+    harfbuzz
+    freetype
+    jansson
+  ];
 
   propagatedBuildInputs = [ pythonEnv ];
 
@@ -130,7 +130,7 @@ stdenv.mkDerivation rec {
   doCheck = false;
 
   buildTargets =
-    "build" + lib.optionalString enableDoxygen " doxygen" + lib.optionalString withManual "sphinx";
+  "build" + lib.optionalString enableDoxygen " doxygen" + lib.optionalString withManual "sphinx";
 
   # to prevent fatal error: 'backward_warning.h' file not found
   CXXFLAGS = "-D_GLIBCXX_PERMIT_BACKWARD_HASH";

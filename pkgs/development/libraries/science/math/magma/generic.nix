@@ -190,32 +190,32 @@ stdenv.mkDerivation (finalAttrs: {
 
   # Copy the files to the test output and fix the RPATHs.
   postInstall =
-    # NOTE: The python scripts aren't copied by CMake into the build directory, so we must copy them from the source.
-    # TODO(@connorbaker): This should be handled by having CMakeLists.txt install them, but such a patch is
-    # out of the scope of the PR which introduces the `test` output: https://github.com/NixOS/nixpkgs/pull/283777.
-    # See https://github.com/NixOS/nixpkgs/pull/283777#discussion_r1482125034 for more information.
-    # Such work is tracked by https://github.com/NixOS/nixpkgs/issues/296286.
-    ''
-      install -Dm755 ../testing/run_{tests,summarize}.py -t "$test/bin/"
-    ''
-    # Copy core test executables and libraries over to the test output.
-    # NOTE: Magma doesn't provide tests for sparse solvers for ROCm, but it does for CUDA -- we put them both in the same
-    # install command to avoid the case where a glob would fail to find any files and cause the install command to fail
-    # because it has no files to install.
-    + ''
-      install -Dm755 ./testing/testing_* ./sparse/testing/testing_* -t "$test/bin/"
-      install -Dm755 ./lib/lib*test*.* -t "$test/lib/"
-    ''
-    # All of the test executables and libraries will have a reference to the build directory in their RPATH, which we
-    # must remove. We do this by shrinking the RPATH to only include the Nix store. The autoPatchelfHook will take care
-    # of supplying the correct RPATH for needed libraries (like `libtester.so`).
-    + ''
-      find "$test" -type f -exec \
-        patchelf \
-          --shrink-rpath \
-          --allowed-rpath-prefixes "$NIX_STORE" \
-          {} \;
-    '';
+  # NOTE: The python scripts aren't copied by CMake into the build directory, so we must copy them from the source.
+  # TODO(@connorbaker): This should be handled by having CMakeLists.txt install them, but such a patch is
+  # out of the scope of the PR which introduces the `test` output: https://github.com/NixOS/nixpkgs/pull/283777.
+  # See https://github.com/NixOS/nixpkgs/pull/283777#discussion_r1482125034 for more information.
+  # Such work is tracked by https://github.com/NixOS/nixpkgs/issues/296286.
+  ''
+    install -Dm755 ../testing/run_{tests,summarize}.py -t "$test/bin/"
+  ''
+  # Copy core test executables and libraries over to the test output.
+  # NOTE: Magma doesn't provide tests for sparse solvers for ROCm, but it does for CUDA -- we put them both in the same
+  # install command to avoid the case where a glob would fail to find any files and cause the install command to fail
+  # because it has no files to install.
+  + ''
+    install -Dm755 ./testing/testing_* ./sparse/testing/testing_* -t "$test/bin/"
+    install -Dm755 ./lib/lib*test*.* -t "$test/lib/"
+  ''
+  # All of the test executables and libraries will have a reference to the build directory in their RPATH, which we
+  # must remove. We do this by shrinking the RPATH to only include the Nix store. The autoPatchelfHook will take care
+  # of supplying the correct RPATH for needed libraries (like `libtester.so`).
+  + ''
+    find "$test" -type f -exec \
+      patchelf \
+        --shrink-rpath \
+        --allowed-rpath-prefixes "$NIX_STORE" \
+        {} \;
+  '';
 
   passthru = {
     inherit

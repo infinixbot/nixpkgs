@@ -91,20 +91,20 @@ let
     ];
 
     buildInputs =
-      lib.optionals stdenv.hostPlatform.isLinux [
-        alsa-lib # libasound.so wanted by lib/libjsound.so
-        fontconfig
-        freetype
-        stdenv.cc.cc # libstdc++.so.6
-        xorg.libX11
-        xorg.libXext
-        xorg.libXi
-        xorg.libXrender
-        xorg.libXtst
-        xorg.libXxf86vm
-        zlib
-      ]
-      ++ lib.optionals (stdenv.hostPlatform.isLinux && enableJavaFX) runtimeDependencies;
+    lib.optionals stdenv.hostPlatform.isLinux [
+      alsa-lib # libasound.so wanted by lib/libjsound.so
+      fontconfig
+      freetype
+      stdenv.cc.cc # libstdc++.so.6
+      xorg.libX11
+      xorg.libXext
+      xorg.libXi
+      xorg.libXrender
+      xorg.libXtst
+      xorg.libXxf86vm
+      zlib
+    ]
+    ++ lib.optionals (stdenv.hostPlatform.isLinux && enableJavaFX) runtimeDependencies;
 
     autoPatchelfIgnoreMissingDeps =
       if (stdenv.hostPlatform.isLinux && enableJavaFX) then
@@ -175,22 +175,22 @@ let
     '';
 
     passthru =
-      (lib.optionalAttrs isJdk8 {
-        jre = jdk;
-      })
-      // {
-        home = jdk;
-        tests.version = testers.testVersion {
-          package = jdk;
-          command = "java -version";
-          version = ''openjdk version \""${
-            if lib.versions.major version == "8" then "1.8" else lib.versions.major version
-          }"'';
-        };
-      }
-      // lib.optionalAttrs stdenv.hostPlatform.isDarwin {
-        bundle = "${jdk}/Library/Java/JavaVirtualMachines/zulu-${lib.versions.major version}.jdk";
+    (lib.optionalAttrs isJdk8 {
+      jre = jdk;
+    })
+    // {
+      home = jdk;
+      tests.version = testers.testVersion {
+        package = jdk;
+        command = "java -version";
+        version = ''openjdk version \""${
+          if lib.versions.major version == "8" then "1.8" else lib.versions.major version
+        }"'';
       };
+    }
+    // lib.optionalAttrs stdenv.hostPlatform.isDarwin {
+      bundle = "${jdk}/Library/Java/JavaVirtualMachines/zulu-${lib.versions.major version}.jdk";
+    };
 
     meta = {
       description = "Certified builds of OpenJDK";

@@ -28,12 +28,12 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    lib.optional enableWX wxGTK32
-    ++ lib.optional enableXWin xorg.libX11
-    ++ lib.optionals enablePNG [
-      cairo
-      pango
-    ];
+  lib.optional enableWX wxGTK32
+  ++ lib.optional enableXWin xorg.libX11
+  ++ lib.optionals enablePNG [
+    cairo
+    pango
+  ];
 
   passthru = {
     inherit (xorg) libX11;

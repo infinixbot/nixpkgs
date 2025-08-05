@@ -186,9 +186,9 @@ in
     systemd.services.klipper =
       let
         klippyArgs =
-          "--input-tty=${cfg.inputTTY}"
-          + lib.optionalString (cfg.apiSocket != null) " --api-server=${cfg.apiSocket}"
-          + lib.optionalString (cfg.logFile != null) " --logfile=${cfg.logFile}";
+        "--input-tty=${cfg.inputTTY}"
+        + lib.optionalString (cfg.apiSocket != null) " --api-server=${cfg.apiSocket}"
+        + lib.optionalString (cfg.logFile != null) " --logfile=${cfg.logFile}";
         printerConfig =
           if cfg.settings != null then
             builtins.toFile "klipper.cfg" ((format.generate "" cfg.settings).text + cfg.extraSettings)

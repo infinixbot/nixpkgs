@@ -130,8 +130,8 @@ in
     serviceDependencies = lib.mkOption {
       type = with lib.types; listOf str;
       default =
-        (lib.optional config.services.matrix-synapse.enable config.services.matrix-synapse.serviceUnit)
-        ++ (lib.optional config.services.matrix-conduit.enable "conduit.service");
+      (lib.optional config.services.matrix-synapse.enable config.services.matrix-synapse.serviceUnit)
+      ++ (lib.optional config.services.matrix-conduit.enable "conduit.service");
       defaultText = lib.literalExpression ''
         (optional config.services.matrix-synapse.enable config.services.matrix-synapse.serviceUnit)
         ++ (optional config.services.matrix-conduit.enable "conduit.service")

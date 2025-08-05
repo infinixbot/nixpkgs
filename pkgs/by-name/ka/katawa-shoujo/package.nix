@@ -60,15 +60,15 @@ stdenv.mkDerivation rec {
   sourceRoot = ".";
 
   nativeBuildInputs =
-    lib.optionals stdenv.hostPlatform.isLinux [
-      autoPatchelfHook
-      copyDesktopItems
-      unrpa
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      makeWrapper
-      undmg
-    ];
+  lib.optionals stdenv.hostPlatform.isLinux [
+    autoPatchelfHook
+    copyDesktopItems
+    unrpa
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    makeWrapper
+    undmg
+  ];
 
   buildInputs = [
     freetype

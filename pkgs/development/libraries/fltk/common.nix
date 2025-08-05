@@ -78,16 +78,16 @@ stdenv.mkDerivation {
   ];
 
   buildInputs =
-    lib.optionals (withGL && !stdenv.hostPlatform.isDarwin) [
-      libGL
-      libGLU
-    ]
-    ++ lib.optionals (withExamples && withGL) [
-      glew
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      fontconfig
-    ];
+  lib.optionals (withGL && !stdenv.hostPlatform.isDarwin) [
+    libGL
+    libGLU
+  ]
+  ++ lib.optionals (withExamples && withGL) [
+    glew
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    fontconfig
+  ];
 
   propagatedBuildInputs = [
     zlib
@@ -162,31 +162,31 @@ stdenv.mkDerivation {
   '';
 
   postInstall =
-    lib.optionalString withExamples ''
-      mkdir -p $bin/bin
-      mv bin/{test,examples}/* $bin/bin/
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      mkdir -p $out/Library/Frameworks
-      mv $out{,/Library/Frameworks}/FLTK.framework
+  lib.optionalString withExamples ''
+    mkdir -p $bin/bin
+    mv bin/{test,examples}/* $bin/bin/
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    mkdir -p $out/Library/Frameworks
+    mv $out{,/Library/Frameworks}/FLTK.framework
 
-      moveAppBundles() {
-        echo "Moving and symlinking $1"
-        appname="$(basename "$1")"
-        binname="$(basename "$(find "$1"/Contents/MacOS/ -type f -executable | head -n1)")"
-        curpath="$(dirname "$1")"
+    moveAppBundles() {
+      echo "Moving and symlinking $1"
+      appname="$(basename "$1")"
+      binname="$(basename "$(find "$1"/Contents/MacOS/ -type f -executable | head -n1)")"
+      curpath="$(dirname "$1")"
 
-        mkdir -p "$curpath"/../Applications/
-        mv "$1" "$curpath"/../Applications/
-        [ -f "$curpath"/"$binname" ] && rm "$curpath"/"$binname"
-        ln -s ../Applications/"$appname"/Contents/MacOS/"$binname" "$curpath"/"$binname"
-      }
+      mkdir -p "$curpath"/../Applications/
+      mv "$1" "$curpath"/../Applications/
+      [ -f "$curpath"/"$binname" ] && rm "$curpath"/"$binname"
+      ln -s ../Applications/"$appname"/Contents/MacOS/"$binname" "$curpath"/"$binname"
+    }
 
-      rm $out/bin/fluid.icns
-      for app in $out/bin/*.app ${lib.optionalString withExamples "$bin/bin/*.app"}; do
-        moveAppBundles "$app"
-      done
-    '';
+    rm $out/bin/fluid.icns
+    for app in $out/bin/*.app ${lib.optionalString withExamples "$bin/bin/*.app"}; do
+      moveAppBundles "$app"
+    done
+  '';
 
   postFixup = ''
     substituteInPlace $out/bin/fltk-config \

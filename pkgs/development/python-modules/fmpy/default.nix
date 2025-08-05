@@ -164,17 +164,17 @@ buildPythonPackage rec {
         };
 
         cmakeFlags =
-          prev.cmakeFlags
-          ++ lib.mapAttrsToList (option: enable: lib.cmakeBool option enable) {
-            # only build the CVODE solver
-            BUILD_CVODE = true;
+        prev.cmakeFlags
+        ++ lib.mapAttrsToList (option: enable: lib.cmakeBool option enable) {
+          # only build the CVODE solver
+          BUILD_CVODE = true;
 
-            BUILD_CVODES = false;
-            BUILD_ARKODE = false;
-            BUILD_IDA = false;
-            BUILD_IDAS = false;
-            BUILD_KINSOL = false;
-          };
+          BUILD_CVODES = false;
+          BUILD_ARKODE = false;
+          BUILD_IDA = false;
+          BUILD_IDAS = false;
+          BUILD_KINSOL = false;
+        };
 
         # FMPy searches for sundials without the "lib"-prefix; strip it
         # and symlink the so-files into existence.

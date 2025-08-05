@@ -240,22 +240,22 @@ lib.makeOverridable (
         KRUSTFLAGS = lib.optionalString withRust "--remap-path-prefix ${rustPlatform.rustLibSrc}=/";
 
         patches =
-          map (p: p.patch) kernelPatches
-          # Required for deterministic builds along with some postPatch magic.
-          ++ optional (lib.versionOlder version "5.19") ./randstruct-provide-seed.patch
-          ++ optional (lib.versionAtLeast version "5.19") ./randstruct-provide-seed-5.19.patch
-          # Linux 5.12 marked certain PowerPC-only symbols as GPL, which breaks
-          # OpenZFS; this was fixed in Linux 5.19 so we backport the fix
-          # https://github.com/openzfs/zfs/pull/13367
-          ++
-            optional
-              (
-                lib.versionAtLeast version "5.12" && lib.versionOlder version "5.19" && stdenv.hostPlatform.isPower
-              )
-              (fetchpatch {
-                url = "https://git.kernel.org/pub/scm/linux/kernel/git/powerpc/linux.git/patch/?id=d9e5c3e9e75162f845880535957b7fd0b4637d23";
-                hash = "sha256-bBOyJcP6jUvozFJU0SPTOf3cmnTQ6ZZ4PlHjiniHXLU=";
-              });
+        map (p: p.patch) kernelPatches
+        # Required for deterministic builds along with some postPatch magic.
+        ++ optional (lib.versionOlder version "5.19") ./randstruct-provide-seed.patch
+        ++ optional (lib.versionAtLeast version "5.19") ./randstruct-provide-seed-5.19.patch
+        # Linux 5.12 marked certain PowerPC-only symbols as GPL, which breaks
+        # OpenZFS; this was fixed in Linux 5.19 so we backport the fix
+        # https://github.com/openzfs/zfs/pull/13367
+        ++
+          optional
+            (
+              lib.versionAtLeast version "5.12" && lib.versionOlder version "5.19" && stdenv.hostPlatform.isPower
+            )
+            (fetchpatch {
+              url = "https://git.kernel.org/pub/scm/linux/kernel/git/powerpc/linux.git/patch/?id=d9e5c3e9e75162f845880535957b7fd0b4637d23";
+              hash = "sha256-bBOyJcP6jUvozFJU0SPTOf3cmnTQ6ZZ4PlHjiniHXLU=";
+            });
 
         postPatch = ''
           # Ensure that depmod gets resolved through PATH
@@ -508,24 +508,24 @@ lib.makeOverridable (
           broken = withRust && lib.versionOlder version "6.12";
 
           description =
-            "The Linux kernel"
-            + (
-              if kernelPatches == [ ] then
-                ""
-              else
-                " (with patches: " + lib.concatStringsSep ", " (map (x: x.name) kernelPatches) + ")"
-            );
+          "The Linux kernel"
+          + (
+            if kernelPatches == [ ] then
+              ""
+            else
+              " (with patches: " + lib.concatStringsSep ", " (map (x: x.name) kernelPatches) + ")"
+          );
           license = lib.licenses.gpl2Only;
           homepage = "https://www.kernel.org/";
           maintainers = [ maintainers.thoughtpolice ];
           teams = [ teams.linux-kernel ];
           platforms = platforms.linux;
           badPlatforms =
-            lib.optionals (lib.versionOlder version "4.15") [
-              "riscv32-linux"
-              "riscv64-linux"
-            ]
-            ++ lib.optional (lib.versionOlder version "5.19") "loongarch64-linux";
+          lib.optionals (lib.versionOlder version "4.15") [
+            "riscv32-linux"
+            "riscv64-linux"
+          ]
+          ++ lib.optional (lib.versionOlder version "5.19") "loongarch64-linux";
           timeout = 14400; # 4 hours
         }
         // extraMeta;

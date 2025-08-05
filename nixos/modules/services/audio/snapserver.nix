@@ -349,9 +349,9 @@ in
     };
 
     networking.firewall.allowedTCPPorts =
-      lib.optionals cfg.openFirewall [ cfg.port ]
-      ++ lib.optional (cfg.openFirewall && cfg.tcp.enable) cfg.tcp.port
-      ++ lib.optional (cfg.openFirewall && cfg.http.enable) cfg.http.port;
+    lib.optionals cfg.openFirewall [ cfg.port ]
+    ++ lib.optional (cfg.openFirewall && cfg.tcp.enable) cfg.tcp.port
+    ++ lib.optional (cfg.openFirewall && cfg.http.enable) cfg.http.port;
   };
 
   meta = {

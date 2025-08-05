@@ -53,7 +53,7 @@ stdenv.mkDerivation (
             rm -f ${luaLibDir}/lpeg.so
           '';
           nativeBuildInputs =
-            oa.nativeBuildInputs ++ (lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames);
+          oa.nativeBuildInputs ++ (lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames);
         }))
       else
         luapkgs.lpeg;
@@ -117,18 +117,18 @@ stdenv.mkDerivation (
 
     inherit lua;
     treesitter-parsers =
-      treesitter-parsers
-      // {
-        markdown = treesitter-parsers.markdown // {
-          location = "tree-sitter-markdown";
-        };
-      }
-      // {
-        markdown_inline = treesitter-parsers.markdown // {
-          language = "markdown_inline";
-          location = "tree-sitter-markdown-inline";
-        };
+    treesitter-parsers
+    // {
+      markdown = treesitter-parsers.markdown // {
+        location = "tree-sitter-markdown";
       };
+    }
+    // {
+      markdown_inline = treesitter-parsers.markdown // {
+        language = "markdown_inline";
+        location = "tree-sitter-markdown-inline";
+      };
+    };
 
     buildInputs = [
       libuv

@@ -83,15 +83,15 @@ stdenv.mkDerivation rec {
   '';
 
   postInstall =
-    lib.optionalString stdenv.hostPlatform.isLinux ''
-      install $src/fido2-manage.sh $out/bin/fido2-manage
-      magick ${icon} -background none -gravity center -extent 512x512 token2.png
-      install -Dm444 token2.png $out/share/icons/hicolor/512x512/apps/token2.png
-      install $src/gui.py $out/bin/fido2-manage-gui
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      install $src/fido2-manage-mac.sh $out/bin/fido2-manage
-    '';
+  lib.optionalString stdenv.hostPlatform.isLinux ''
+    install $src/fido2-manage.sh $out/bin/fido2-manage
+    magick ${icon} -background none -gravity center -extent 512x512 token2.png
+    install -Dm444 token2.png $out/share/icons/hicolor/512x512/apps/token2.png
+    install $src/gui.py $out/bin/fido2-manage-gui
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    install $src/fido2-manage-mac.sh $out/bin/fido2-manage
+  '';
 
   desktopItems = lib.optionals stdenv.hostPlatform.isLinux [
     (makeDesktopItem {

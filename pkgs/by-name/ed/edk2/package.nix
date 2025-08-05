@@ -87,9 +87,9 @@ stdenv.mkDerivation (finalAttrs: {
   makeFlags = [ "-C BaseTools" ];
 
   env.NIX_CFLAGS_COMPILE =
-    "-Wno-return-type"
-    + lib.optionalString (stdenv.cc.isGNU) " -Wno-error=stringop-truncation"
-    + lib.optionalString (stdenv.hostPlatform.isDarwin) " -Wno-error=macro-redefined";
+  "-Wno-return-type"
+  + lib.optionalString (stdenv.cc.isGNU) " -Wno-error=stringop-truncation"
+  + lib.optionalString (stdenv.hostPlatform.isDarwin) " -Wno-error=macro-redefined";
 
   hardeningDisable = [
     "format"

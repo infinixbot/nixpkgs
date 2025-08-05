@@ -33,11 +33,11 @@ in
 stdenv.mkDerivation rec {
   version = "1.14.6";
   pname =
-    "hdf5"
-    + lib.optionalString cppSupport "-cpp"
-    + lib.optionalString fortranSupport "-fortran"
-    + lib.optionalString mpiSupport "-mpi"
-    + lib.optionalString threadsafe "-threadsafe";
+  "hdf5"
+  + lib.optionalString cppSupport "-cpp"
+  + lib.optionalString fortranSupport "-fortran"
+  + lib.optionalString mpiSupport "-mpi"
+  + lib.optionalString threadsafe "-threadsafe";
 
   src = fetchFromGitHub {
     owner = "HDFGroup";
@@ -73,7 +73,7 @@ stdenv.mkDerivation rec {
   ++ optional fortranSupport fortran;
 
   buildInputs =
-    optional fortranSupport fortran ++ optional szipSupport szip ++ optional javaSupport jdk;
+  optional fortranSupport fortran ++ optional szipSupport szip ++ optional javaSupport jdk;
 
   propagatedBuildInputs = optional zlibSupport zlib ++ optional mpiSupport mpi;
 

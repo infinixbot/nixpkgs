@@ -34,8 +34,8 @@ buildPythonPackage rec {
   ];
 
   dependencies =
-    lib.optionals stdenv.hostPlatform.isLinux [ mitmproxy-linux ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [ mitmproxy-macos ];
+  lib.optionals stdenv.hostPlatform.isLinux [ mitmproxy-linux ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ mitmproxy-macos ];
   # not packaged yet
   # ++ lib.optionals stdenv.hostPlatform.isWindows [ mitmproxy-windows ]
 

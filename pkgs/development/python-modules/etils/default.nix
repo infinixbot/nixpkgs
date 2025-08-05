@@ -92,20 +92,20 @@ buildPythonPackage rec {
     etree-tf = [ tensorflow ] ++ etree;
     lazy-imports = ecolab;
     all =
-      array-types
-      ++ eapp
-      ++ ecolab
-      ++ edc
-      ++ enp
-      ++ epath
-      ++ epath-gcs
-      ++ epath-s3
-      ++ epy
-      ++ etqdm
-      ++ etree
-      ++ etree-dm
-      ++ etree-jax
-      ++ etree-tf;
+    array-types
+    ++ eapp
+    ++ ecolab
+    ++ edc
+    ++ enp
+    ++ epath
+    ++ epath-gcs
+    ++ epath-s3
+    ++ epy
+    ++ etqdm
+    ++ etree
+    ++ etree-dm
+    ++ etree-jax
+    ++ etree-tf;
   };
 
   pythonImportsCheck = [ "etils" ];

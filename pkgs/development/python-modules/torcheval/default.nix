@@ -41,18 +41,18 @@ buildPythonPackage {
   # Patches are only applied to usages of numpy within tests,
   # which are only used for testing purposes (see dev-requirements.txt)
   postPatch =
-    # numpy's `np.NAN` was changed to `np.nan` when numpy 2 was released
-    ''
-      substituteInPlace tests/metrics/classification/test_accuracy.py tests/metrics/functional/classification/test_accuracy.py \
-        --replace-fail "np.NAN" "np.nan"
-    ''
+  # numpy's `np.NAN` was changed to `np.nan` when numpy 2 was released
+  ''
+    substituteInPlace tests/metrics/classification/test_accuracy.py tests/metrics/functional/classification/test_accuracy.py \
+      --replace-fail "np.NAN" "np.nan"
+  ''
 
-    # `unittest.TestCase.assertEquals` does not exist;
-    # the correct symbol is `unittest.TestCase.assertEqual`
-    + ''
-      substituteInPlace tests/metrics/test_synclib.py \
-        --replace-fail "tc.assertEquals" "tc.assertEqual"
-    '';
+  # `unittest.TestCase.assertEquals` does not exist;
+  # the correct symbol is `unittest.TestCase.assertEqual`
+  + ''
+    substituteInPlace tests/metrics/test_synclib.py \
+      --replace-fail "tc.assertEquals" "tc.assertEqual"
+  '';
 
   build-system = [ setuptools ];
 

@@ -40,16 +40,16 @@ in
   # https://github.com/ConnorBaker/cuda-redist-find-features/issues/11
   env = prevAttrs.env or { } // {
     rmPatterns =
-      prevAttrs.env.rmPatterns or ""
-      + toString [
-        "${hostDir}/lib{arrow,jpeg}*"
-        "${hostDir}/lib{ssl,ssh,crypto}*"
-        "${hostDir}/libboost*"
-        "${hostDir}/libexec"
-        "${hostDir}/libstdc*"
-        "${hostDir}/python/bin/python"
-        "${hostDir}/Mesa"
-      ];
+    prevAttrs.env.rmPatterns or ""
+    + toString [
+      "${hostDir}/lib{arrow,jpeg}*"
+      "${hostDir}/lib{ssl,ssh,crypto}*"
+      "${hostDir}/libboost*"
+      "${hostDir}/libexec"
+      "${hostDir}/libstdc*"
+      "${hostDir}/python/bin/python"
+      "${hostDir}/Mesa"
+    ];
   };
 
   # NOTE(@connorbaker): nsight-exporter and nsight-sys are deprecated scripts wrapping nsys, it's fine to remove them.
@@ -85,38 +85,38 @@ in
   dontWrapQtApps = true;
 
   buildInputs =
-    prevAttrs.buildInputs or [ ]
-    ++ [
-      (qt6.qtdeclarative or qt6.full)
-      (qt6.qtsvg or qt6.full)
-      (qt6.qtimageformats or qt6.full)
-      (qt6.qtpositioning or qt6.full)
-      (qt6.qtscxml or qt6.full)
-      (qt6.qttools or qt6.full)
-      (qt6.qtwebengine or qt6.full)
-      (qt6.qtwayland or qt6.full)
-      boost178
-      cuda_cudart.stubs
-      e2fsprogs
-      gst_all_1.gst-plugins-base
-      gst_all_1.gstreamer
-      nss
-      numactl
-      pulseaudio
-      qt6.qtbase
-      qtWaylandPlugins
-      rdma-core
-      ucx
-      wayland
-      xorg.libXcursor
-      xorg.libXdamage
-      xorg.libXrandr
-      xorg.libXtst
-    ]
-    # NOTE(@connorbaker): Seems to be required only for aarch64-linux.
-    ++ lib.optionals (stdenv.hostPlatform.isAarch64 && cudaAtLeast "11.8") [
-      gst_all_1.gst-plugins-bad
-    ];
+  prevAttrs.buildInputs or [ ]
+  ++ [
+    (qt6.qtdeclarative or qt6.full)
+    (qt6.qtsvg or qt6.full)
+    (qt6.qtimageformats or qt6.full)
+    (qt6.qtpositioning or qt6.full)
+    (qt6.qtscxml or qt6.full)
+    (qt6.qttools or qt6.full)
+    (qt6.qtwebengine or qt6.full)
+    (qt6.qtwayland or qt6.full)
+    boost178
+    cuda_cudart.stubs
+    e2fsprogs
+    gst_all_1.gst-plugins-base
+    gst_all_1.gstreamer
+    nss
+    numactl
+    pulseaudio
+    qt6.qtbase
+    qtWaylandPlugins
+    rdma-core
+    ucx
+    wayland
+    xorg.libXcursor
+    xorg.libXdamage
+    xorg.libXrandr
+    xorg.libXtst
+  ]
+  # NOTE(@connorbaker): Seems to be required only for aarch64-linux.
+  ++ lib.optionals (stdenv.hostPlatform.isAarch64 && cudaAtLeast "11.8") [
+    gst_all_1.gst-plugins-bad
+  ];
 
   postInstall = prevAttrs.postInstall or "" + ''
     moveToOutput '${hostDir}' "''${!outputBin}"

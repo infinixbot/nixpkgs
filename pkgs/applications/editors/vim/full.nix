@@ -211,11 +211,11 @@ stdenv.mkDerivation {
   '';
 
   postFixup =
-    common.postFixup
-    + lib.optionalString wrapPythonDrv ''
-      wrapProgram "$out/bin/vim" --prefix PATH : "${python3}/bin" \
-        --set NIX_PYTHONPATH "${python3}/${python3.sitePackages}"
-    '';
+  common.postFixup
+  + lib.optionalString wrapPythonDrv ''
+    wrapProgram "$out/bin/vim" --prefix PATH : "${python3}/bin" \
+      --set NIX_PYTHONPATH "${python3}/${python3.sitePackages}"
+  '';
 
   dontStrip = true;
 }

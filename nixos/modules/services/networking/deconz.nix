@@ -11,10 +11,10 @@ let
   stateDir = "/var/lib/${name}";
   # ref. upstream deconz.service
   capabilities =
-    lib.optionals (cfg.httpPort < 1024 || cfg.wsPort < 1024) [ "CAP_NET_BIND_SERVICE" ]
-    ++ lib.optionals (cfg.allowRebootSystem) [ "CAP_SYS_BOOT" ]
-    ++ lib.optionals (cfg.allowRestartService) [ "CAP_KILL" ]
-    ++ lib.optionals (cfg.allowSetSystemTime) [ "CAP_SYS_TIME" ];
+  lib.optionals (cfg.httpPort < 1024 || cfg.wsPort < 1024) [ "CAP_NET_BIND_SERVICE" ]
+  ++ lib.optionals (cfg.allowRebootSystem) [ "CAP_SYS_BOOT" ]
+  ++ lib.optionals (cfg.allowRestartService) [ "CAP_KILL" ]
+  ++ lib.optionals (cfg.allowSetSystemTime) [ "CAP_SYS_TIME" ];
 in
 {
   options.services.deconz = {
@@ -111,15 +111,15 @@ in
       };
       serviceConfig = {
         ExecStart =
-          "${lib.getExe cfg.package}"
-          + " -platform minimal"
-          + " --http-listen=${cfg.listenAddress}"
-          + " --http-port=${toString cfg.httpPort}"
-          + " --ws-port=${toString cfg.wsPort}"
-          + " --auto-connect=1"
-          + (lib.optionalString (cfg.device != null) " --dev=${cfg.device}")
-          + " "
-          + (lib.escapeShellArgs cfg.extraArgs);
+        "${lib.getExe cfg.package}"
+        + " -platform minimal"
+        + " --http-listen=${cfg.listenAddress}"
+        + " --http-port=${toString cfg.httpPort}"
+        + " --ws-port=${toString cfg.wsPort}"
+        + " --auto-connect=1"
+        + (lib.optionalString (cfg.device != null) " --dev=${cfg.device}")
+        + " "
+        + (lib.escapeShellArgs cfg.extraArgs);
         Restart = "on-failure";
         AmbientCapabilities = capabilities;
         CapabilityBoundingSet = capabilities;

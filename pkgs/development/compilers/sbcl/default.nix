@@ -126,28 +126,28 @@ stdenv.mkDerivation (self: {
   # altogether. One by one hopefully we can fix these (on ofBorg,
   # upstream--somehow some way) in due time.
   disabledTestFiles =
-    lib.optionals (lib.versionOlder "2.5.2" self.version) [ "debug.impure.lisp" ]
-    ++
-      lib.optionals
-        (builtins.elem stdenv.hostPlatform.system [
-          "x86_64-linux"
-          "aarch64-linux"
-        ])
-        [
-          "foreign-stack-alignment.impure.lisp"
-          # Floating point tests are fragile
-          # https://sourceforge.net/p/sbcl/mailman/message/58728554/
-          "compiler.pure.lisp"
-          "float.pure.lisp"
-        ]
-    ++ lib.optionals (stdenv.hostPlatform.system == "aarch64-linux") [
-      # This is failing on aarch64-linux on ofBorg. Not on my local machine nor on
-      # a VM on my laptop. Not sure what’s wrong.
-      "traceroot.impure.lisp"
-      # Heisentest, sometimes fails on ofBorg, would rather just disable it than
-      # have it block a release.
-      "futex-wait.test.sh"
-    ];
+  lib.optionals (lib.versionOlder "2.5.2" self.version) [ "debug.impure.lisp" ]
+  ++
+    lib.optionals
+      (builtins.elem stdenv.hostPlatform.system [
+        "x86_64-linux"
+        "aarch64-linux"
+      ])
+      [
+        "foreign-stack-alignment.impure.lisp"
+        # Floating point tests are fragile
+        # https://sourceforge.net/p/sbcl/mailman/message/58728554/
+        "compiler.pure.lisp"
+        "float.pure.lisp"
+      ]
+  ++ lib.optionals (stdenv.hostPlatform.system == "aarch64-linux") [
+    # This is failing on aarch64-linux on ofBorg. Not on my local machine nor on
+    # a VM on my laptop. Not sure what’s wrong.
+    "traceroot.impure.lisp"
+    # Heisentest, sometimes fails on ofBorg, would rather just disable it than
+    # have it block a release.
+    "futex-wait.test.sh"
+  ];
   patches =
     # Support the NIX_SBCL_DYNAMIC_SPACE_SIZE envvar. Upstream SBCL didn’t want
     # to include this (see
@@ -166,33 +166,33 @@ stdenv.mkDerivation (self: {
       ];
 
   sbclPatchPhase =
-    lib.optionalString (self.disabledTestFiles != [ ]) ''
-      (cd tests ; rm -f ${lib.concatStringsSep " " self.disabledTestFiles})
-    ''
-    + lib.optionalString self.purgeNixReferences ''
-      # This is the default location to look for the core; by default in $out/lib/sbcl
-      sed 's@^\(#define SBCL_HOME\) .*$@\1 "/no-such-path"@' \
-          -i src/runtime/runtime.c
-    ''
-    + ''
-      (
-        shopt -s nullglob
-        # Tests need patching regardless of purging of paths from the final
-        # binary. There are some tricky files in nested directories which should
-        # definitely NOT be patched this way, hence just a single * (and no
-        # globstar).
-        substituteInPlace ${if self.purgeNixReferences then "tests" else "{tests,src/code}"}/*.{lisp,sh} \
-          --replace-quiet /usr/bin/env "${coreutils}/bin/env" \
-          --replace-quiet /bin/uname "${coreutils}/bin/uname" \
-          --replace-quiet /bin/sh "${stdenv.shell}"
-      )
-      # Official source release tarballs will have a version.lispexpr, but if you
-      # want to override { src = ... } it might not exist. It’s required for
-      # building, so create a mock version as a backup.
-      if [[ ! -a version.lisp-expr ]]; then
-        echo '"${self.version}.nixos"' > version.lisp-expr
-      fi
-    '';
+  lib.optionalString (self.disabledTestFiles != [ ]) ''
+    (cd tests ; rm -f ${lib.concatStringsSep " " self.disabledTestFiles})
+  ''
+  + lib.optionalString self.purgeNixReferences ''
+    # This is the default location to look for the core; by default in $out/lib/sbcl
+    sed 's@^\(#define SBCL_HOME\) .*$@\1 "/no-such-path"@' \
+        -i src/runtime/runtime.c
+  ''
+  + ''
+    (
+      shopt -s nullglob
+      # Tests need patching regardless of purging of paths from the final
+      # binary. There are some tricky files in nested directories which should
+      # definitely NOT be patched this way, hence just a single * (and no
+      # globstar).
+      substituteInPlace ${if self.purgeNixReferences then "tests" else "{tests,src/code}"}/*.{lisp,sh} \
+        --replace-quiet /usr/bin/env "${coreutils}/bin/env" \
+        --replace-quiet /bin/uname "${coreutils}/bin/uname" \
+        --replace-quiet /bin/sh "${stdenv.shell}"
+    )
+    # Official source release tarballs will have a version.lispexpr, but if you
+    # want to override { src = ... } it might not exist. It’s required for
+    # building, so create a mock version as a backup.
+    if [[ ! -a version.lisp-expr ]]; then
+      echo '"${self.version}.nixos"' > version.lisp-expr
+    fi
+  '';
 
   preConfigurePhases = "sbclPatchPhase";
 
@@ -207,12 +207,12 @@ stdenv.mkDerivation (self: {
     ++ lib.optional self.markRegionGC "mark-region-gc";
 
   disableFeatures =
-    lib.optional (!self.threadSupport) "sb-thread"
-    ++ lib.optionals self.disableImmobileSpace [
-      "immobile-space"
-      "immobile-code"
-      "compact-instance-header"
-    ];
+  lib.optional (!self.threadSupport) "sb-thread"
+  ++ lib.optionals self.disableImmobileSpace [
+    "immobile-space"
+    "immobile-code"
+    "compact-instance-header"
+  ];
 
   buildArgs = [
     "--prefix=$out"

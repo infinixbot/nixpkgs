@@ -154,8 +154,8 @@ in
         ];
 
         EnvironmentFile =
-          (lib.optional (cfg.passwordSaltFile != null) cfg.passwordSaltFile)
-          ++ (lib.optional (cfg.smtpPasswordFile != null) cfg.smtpPasswordFile);
+        (lib.optional (cfg.passwordSaltFile != null) cfg.passwordSaltFile)
+        ++ (lib.optional (cfg.smtpPasswordFile != null) cfg.smtpPasswordFile);
 
         User = config.users.users.wakapi.name;
         Group = config.users.users.wakapi.group;

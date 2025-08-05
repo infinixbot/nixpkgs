@@ -147,14 +147,14 @@ let
         pkgs.openssh
       ];
       script =
-        "exec "
-        + lib.optionalString cfg.inhibitsSleep ''
-          ${pkgs.systemd}/bin/systemd-inhibit \
-              --who="borgbackup" \
-              --what="sleep" \
-              --why="Scheduled backup" \
-        ''
-        + backupScript;
+      "exec "
+      + lib.optionalString cfg.inhibitsSleep ''
+        ${pkgs.systemd}/bin/systemd-inhibit \
+            --who="borgbackup" \
+            --what="sleep" \
+            --why="Scheduled backup" \
+      ''
+      + backupScript;
       unitConfig = lib.optionalAttrs (isLocalPath cfg.repo) {
         RequiresMountsFor = [ cfg.repo ];
       };
@@ -250,8 +250,8 @@ let
   mkPassAssertion = name: cfg: {
     assertion = with cfg.encryption; mode != "none" -> passCommand != null || passphrase != null;
     message =
-      "passCommand or passphrase has to be specified because"
-      + " borgbackup.jobs.${name}.encryption != \"none\"";
+    "passCommand or passphrase has to be specified because"
+    + " borgbackup.jobs.${name}.encryption != \"none\"";
   };
 
   mkRepoService =
@@ -876,18 +876,18 @@ in
     with config.services.borgbackup;
     {
       assertions =
-        lib.mapAttrsToList mkPassAssertion jobs
-        ++ lib.mapAttrsToList mkKeysAssertion repos
-        ++ lib.mapAttrsToList mkSourceAssertions jobs
-        ++ lib.mapAttrsToList mkRemovableDeviceAssertions jobs;
+      lib.mapAttrsToList mkPassAssertion jobs
+      ++ lib.mapAttrsToList mkKeysAssertion repos
+      ++ lib.mapAttrsToList mkSourceAssertions jobs
+      ++ lib.mapAttrsToList mkRemovableDeviceAssertions jobs;
 
       systemd.tmpfiles.settings = lib.mapAttrs' mkTmpfiles jobs;
 
       systemd.services =
-        # A job named "foo" is mapped to systemd.services.borgbackup-job-foo
-        lib.mapAttrs' mkBackupService jobs
-        # A repo named "foo" is mapped to systemd.services.borgbackup-repo-foo
-        // lib.mapAttrs' mkRepoService repos;
+      # A job named "foo" is mapped to systemd.services.borgbackup-job-foo
+      lib.mapAttrs' mkBackupService jobs
+      # A repo named "foo" is mapped to systemd.services.borgbackup-repo-foo
+      // lib.mapAttrs' mkRepoService repos;
 
       # A job named "foo" is mapped to systemd.timers.borgbackup-job-foo
       # only generate the timer if interval (startAt) is set

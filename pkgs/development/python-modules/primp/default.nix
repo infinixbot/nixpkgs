@@ -36,23 +36,23 @@ let
     # Remove bazel specific build file to make way for build directory
     # This is a problem on Darwin because of case-insensitive filesystem
     preBuild =
-      (lib.optionalString stdenv.hostPlatform.isDarwin ''
-        rm ../BUILD
-      '')
-      + oa.preBuild;
+    (lib.optionalString stdenv.hostPlatform.isDarwin ''
+      rm ../BUILD
+    '')
+    + oa.preBuild;
 
     env.NIX_CFLAGS_COMPILE =
-      oa.env.NIX_CFLAGS_COMPILE
-      + " "
-      + toString (
-        lib.optionals stdenv.cc.isClang [
-          "-Wno-error=reorder-ctor"
-        ]
-        ++ lib.optionals stdenv.cc.isGNU [
-          "-Wno-error=reorder"
-          "-Wno-error=ignored-attributes"
-        ]
-      );
+    oa.env.NIX_CFLAGS_COMPILE
+    + " "
+    + toString (
+      lib.optionals stdenv.cc.isClang [
+        "-Wno-error=reorder-ctor"
+      ]
+      ++ lib.optionals stdenv.cc.isGNU [
+        "-Wno-error=reorder"
+        "-Wno-error=ignored-attributes"
+      ]
+    );
 
     vendorHash = "sha256-06MkjXl0DKFzIH/H+uT9kXsQdPq7qdZh2dlLW/YhJuk=";
   });

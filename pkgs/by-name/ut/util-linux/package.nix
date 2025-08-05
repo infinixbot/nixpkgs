@@ -171,32 +171,32 @@ stdenv.mkDerivation (finalPackage: rec {
   enableParallelBuilding = true;
 
   postInstall =
-    lib.optionalString stdenv.hostPlatform.isLinux ''
-      moveToOutput bin/mount "$mount"
-      moveToOutput bin/umount "$mount"
-      ln -svf "$mount/bin/"* $bin/bin/
-    ''
-    + ''
+  lib.optionalString stdenv.hostPlatform.isLinux ''
+    moveToOutput bin/mount "$mount"
+    moveToOutput bin/umount "$mount"
+    ln -svf "$mount/bin/"* $bin/bin/
+  ''
+  + ''
 
-      moveToOutput sbin/nologin "$login"
-      moveToOutput sbin/sulogin "$login"
-      prefix=$login _moveSbin
-      ln -svf "$login/bin/"* $bin/bin/
-    ''
-    + lib.optionalString stdenv.hostPlatform.isLinux ''
+    moveToOutput sbin/nologin "$login"
+    moveToOutput sbin/sulogin "$login"
+    prefix=$login _moveSbin
+    ln -svf "$login/bin/"* $bin/bin/
+  ''
+  + lib.optionalString stdenv.hostPlatform.isLinux ''
 
-      moveToOutput sbin/swapon "$swap"
-      moveToOutput sbin/swapoff "$swap"
-      prefix=$swap _moveSbin
-      ln -svf "$swap/bin/"* $bin/bin/
-    ''
-    + ''
+    moveToOutput sbin/swapon "$swap"
+    moveToOutput sbin/swapoff "$swap"
+    prefix=$swap _moveSbin
+    ln -svf "$swap/bin/"* $bin/bin/
+  ''
+  + ''
 
-      ln -svf "$bin/bin/hexdump" "$bin/bin/hd"
-      ln -svf "$man/share/man/man1/hexdump.1" "$man/share/man/man1/hd.1"
+    ln -svf "$bin/bin/hexdump" "$bin/bin/hd"
+    ln -svf "$man/share/man/man1/hexdump.1" "$man/share/man/man1/hd.1"
 
-      installShellCompletion --bash bash-completion/*
-    '';
+    installShellCompletion --bash bash-completion/*
+  '';
 
   passthru = {
     updateScript = gitUpdater {

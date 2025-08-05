@@ -34,25 +34,25 @@ rec {
   };
 
   postPatch =
-    (
-      if tex == null then
-        ''
-          gunzip < ${fullFontsSrc} | (cd TeXmacs && tar xvf -)
-        ''
-      else
-        lib.optionalString extraFonts ''
-          gunzip < ${extraFontsSrc} | (cd TeXmacs && tar xvf -)
-        ''
-    )
-    + (lib.optionalString chineseFonts ''
-      gunzip < ${chineseFontsSrc} | (cd TeXmacs && tar xvf -)
-    '')
-    + (lib.optionalString japaneseFonts ''
-      gunzip < ${japaneseFontsSrc} | (cd TeXmacs && tar xvf -)
-    '')
-    + (lib.optionalString koreanFonts ''
-      gunzip < ${koreanFontsSrc} | (cd TeXmacs && tar xvf -)
-    '');
+  (
+    if tex == null then
+      ''
+        gunzip < ${fullFontsSrc} | (cd TeXmacs && tar xvf -)
+      ''
+    else
+      lib.optionalString extraFonts ''
+        gunzip < ${extraFontsSrc} | (cd TeXmacs && tar xvf -)
+      ''
+  )
+  + (lib.optionalString chineseFonts ''
+    gunzip < ${chineseFontsSrc} | (cd TeXmacs && tar xvf -)
+  '')
+  + (lib.optionalString japaneseFonts ''
+    gunzip < ${japaneseFontsSrc} | (cd TeXmacs && tar xvf -)
+  '')
+  + (lib.optionalString koreanFonts ''
+    gunzip < ${koreanFontsSrc} | (cd TeXmacs && tar xvf -)
+  '');
 
   meta = {
     description = "WYSIWYW editing platform with special features for scientists";

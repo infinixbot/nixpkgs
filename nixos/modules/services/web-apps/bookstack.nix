@@ -198,14 +198,14 @@ in
     enable = lib.mkEnableOption "BookStack: A platform to create documentation/wiki content built with PHP & Laravel";
 
     package =
-      lib.mkPackageOption pkgs "bookstack" { }
-      // lib.mkOption {
-        apply =
-          bookstack:
-          bookstack.override (prev: {
-            dataDir = cfg.dataDir;
-          });
-      };
+    lib.mkPackageOption pkgs "bookstack" { }
+    // lib.mkOption {
+      apply =
+        bookstack:
+        bookstack.override (prev: {
+          dataDir = cfg.dataDir;
+        });
+    };
 
     user = lib.mkOption {
       default = defaultUser;

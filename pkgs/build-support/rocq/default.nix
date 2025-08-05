@@ -187,24 +187,24 @@ stdenv.mkDerivation (
       inherit enableParallelBuilding;
 
       meta =
-        (
+      (
+        {
+          platforms = rocq-core.meta.platforms;
+        }
+        // (switch domain [
           {
-            platforms = rocq-core.meta.platforms;
+            case = pred.union isGitHubDomain isGitLabDomain;
+            out = {
+              homepage = "https://${domain}/${owner}/${repo}";
+            };
           }
-          // (switch domain [
-            {
-              case = pred.union isGitHubDomain isGitLabDomain;
-              out = {
-                homepage = "https://${domain}/${owner}/${repo}";
-              };
-            }
-          ] { })
-          // optionalAttrs (fetched.broken or false) {
-            rocqFilter = true;
-            broken = true;
-          }
-        )
-        // (args.meta or { });
+        ] { })
+        // optionalAttrs (fetched.broken or false) {
+          rocqFilter = true;
+          broken = true;
+        }
+      )
+      // (args.meta or { });
 
     }
     // (optionalAttrs setROCQBIN { ROCQBIN = "${rocq-core}/bin/"; })

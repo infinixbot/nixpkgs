@@ -53,17 +53,17 @@ mkDerivation rec {
   '';
 
   postBuild =
-    lib.optionalString stdenv.hostPlatform.isLinux ''
-      mkdir $out/bin
+  lib.optionalString stdenv.hostPlatform.isLinux ''
+    mkdir $out/bin
 
-      install -Dm444 etc/klayout.desktop -t $out/share/applications
-      install -Dm444 etc/logo.png $out/share/icons/hicolor/256x256/apps/klayout.png
-      mv $out/lib/klayout $out/bin/
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      mkdir -p $out/Applications
-      mv $out/lib/klayout.app $out/Applications/
-    '';
+    install -Dm444 etc/klayout.desktop -t $out/share/applications
+    install -Dm444 etc/logo.png $out/share/icons/hicolor/256x256/apps/klayout.png
+    mv $out/lib/klayout $out/bin/
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    mkdir -p $out/Applications
+    mv $out/lib/klayout.app $out/Applications/
+  '';
 
   preFixup = lib.optionalString stdenv.hostPlatform.isDarwin ''
     exec_name=$out/Applications/klayout.app/Contents/MacOS/klayout

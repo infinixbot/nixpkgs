@@ -59,12 +59,12 @@ let
         name = "${name}-package-config-with-root.json";
 
         nativeBuildInputs =
-          drvArgs.nativeBuildInputs or [ ]
-          ++ args.nativeBuildInputs or [ ]
-          ++ [
-            jq
-            yq
-          ];
+        drvArgs.nativeBuildInputs or [ ]
+        ++ args.nativeBuildInputs or [ ]
+        ++ [
+          jq
+          yq
+        ];
 
         dontBuild = true;
 

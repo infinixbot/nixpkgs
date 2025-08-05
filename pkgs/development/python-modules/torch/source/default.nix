@@ -380,22 +380,22 @@ buildPythonPackage rec {
   # without extreme care to ensure they don't lock each other out of shared resources.
   # For more, see https://github.com/open-mpi/ompi/issues/7733#issuecomment-629806195.
   preConfigure =
-    lib.optionalString cudaSupport ''
-      export TORCH_CUDA_ARCH_LIST="${gpuTargetString}"
-      export CUPTI_INCLUDE_DIR=${lib.getDev cudaPackages.cuda_cupti}/include
-      export CUPTI_LIBRARY_DIR=${lib.getLib cudaPackages.cuda_cupti}/lib
-    ''
-    + lib.optionalString (cudaSupport && cudaPackages ? cudnn) ''
-      export CUDNN_INCLUDE_DIR=${lib.getLib cudnn}/include
-      export CUDNN_LIB_DIR=${lib.getLib cudnn}/lib
-    ''
-    + lib.optionalString rocmSupport ''
-      export ROCM_PATH=${rocmtoolkit_joined}
-      export ROCM_SOURCE_DIR=${rocmtoolkit_joined}
-      export PYTORCH_ROCM_ARCH="${gpuTargetString}"
-      export CMAKE_CXX_FLAGS="-I${rocmtoolkit_joined}/include -I${rocmtoolkit_joined}/include/rocblas"
-      python tools/amd_build/build_amd.py
-    '';
+  lib.optionalString cudaSupport ''
+    export TORCH_CUDA_ARCH_LIST="${gpuTargetString}"
+    export CUPTI_INCLUDE_DIR=${lib.getDev cudaPackages.cuda_cupti}/include
+    export CUPTI_LIBRARY_DIR=${lib.getLib cudaPackages.cuda_cupti}/lib
+  ''
+  + lib.optionalString (cudaSupport && cudaPackages ? cudnn) ''
+    export CUDNN_INCLUDE_DIR=${lib.getLib cudnn}/include
+    export CUDNN_LIB_DIR=${lib.getLib cudnn}/lib
+  ''
+  + lib.optionalString rocmSupport ''
+    export ROCM_PATH=${rocmtoolkit_joined}
+    export ROCM_SOURCE_DIR=${rocmtoolkit_joined}
+    export PYTORCH_ROCM_ARCH="${gpuTargetString}"
+    export CMAKE_CXX_FLAGS="-I${rocmtoolkit_joined}/include -I${rocmtoolkit_joined}/include/rocblas"
+    python tools/amd_build/build_amd.py
+  '';
 
   # Use pytorch's custom configurations
   dontUseCmakeConfigure = true;
@@ -608,7 +608,7 @@ buildPythonPackage rec {
   ];
 
   propagatedCxxBuildInputs =
-    [ ] ++ lib.optionals MPISupport [ mpi ] ++ lib.optionals rocmSupport [ rocmtoolkit_joined ];
+  [ ] ++ lib.optionals MPISupport [ mpi ] ++ lib.optionals rocmSupport [ rocmtoolkit_joined ];
 
   # Tests take a long time and may be flaky, so just sanity-check imports
   doCheck = false;
@@ -748,7 +748,7 @@ buildPythonPackage rec {
       tscholak
     ]; # tscholak esp. for darwin-related builds
     platforms =
-      lib.platforms.linux ++ lib.optionals (!cudaSupport && !rocmSupport) lib.platforms.darwin;
+    lib.platforms.linux ++ lib.optionals (!cudaSupport && !rocmSupport) lib.platforms.darwin;
     broken = builtins.any trivial.id (builtins.attrValues brokenConditions);
   };
 }

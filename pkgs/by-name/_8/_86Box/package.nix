@@ -90,25 +90,25 @@ stdenv.mkDerivation (finalAttrs: {
   ++ lib.optional enableVncRenderer libvncserver;
 
   cmakeFlags =
-    lib.optional stdenv.hostPlatform.isDarwin "-DCMAKE_MACOSX_BUNDLE=OFF"
-    ++ lib.optional enableNewDynarec "-DNEW_DYNAREC=ON"
-    ++ lib.optional enableVncRenderer "-DVNC=ON"
-    ++ lib.optional (!enableDynarec) "-DDYNAREC=OFF"
-    ++ lib.optional (!unfreeEnableDiscord) "-DDISCORD=OFF";
+  lib.optional stdenv.hostPlatform.isDarwin "-DCMAKE_MACOSX_BUNDLE=OFF"
+  ++ lib.optional enableNewDynarec "-DNEW_DYNAREC=ON"
+  ++ lib.optional enableVncRenderer "-DVNC=ON"
+  ++ lib.optional (!enableDynarec) "-DDYNAREC=OFF"
+  ++ lib.optional (!unfreeEnableDiscord) "-DDISCORD=OFF";
 
   postInstall =
-    lib.optionalString stdenv.hostPlatform.isLinux ''
-      install -Dm644 -t $out/share/applications $src/src/unix/assets/net.86box.86Box.desktop
+  lib.optionalString stdenv.hostPlatform.isLinux ''
+    install -Dm644 -t $out/share/applications $src/src/unix/assets/net.86box.86Box.desktop
 
-      for size in 48 64 72 96 128 192 256 512; do
-        install -Dm644 -t $out/share/icons/hicolor/"$size"x"$size"/apps \
-          $src/src/unix/assets/"$size"x"$size"/net.86box.86Box.png
-      done;
-    ''
-    + lib.optionalString unfreeEnableRoms ''
-      mkdir -p $out/share/86Box
-      ln -s ${finalAttrs.passthru.roms} $out/share/86Box/roms
-    '';
+    for size in 48 64 72 96 128 192 256 512; do
+      install -Dm644 -t $out/share/icons/hicolor/"$size"x"$size"/apps \
+        $src/src/unix/assets/"$size"x"$size"/net.86box.86Box.png
+    done;
+  ''
+  + lib.optionalString unfreeEnableRoms ''
+    mkdir -p $out/share/86Box
+    ln -s ${finalAttrs.passthru.roms} $out/share/86Box/roms
+  '';
 
   passthru = {
     roms = fetchFromGitHub {

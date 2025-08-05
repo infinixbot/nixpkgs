@@ -34,20 +34,20 @@ let
   #   tree-sitter-ocaml-interface
   #   tree-sitter-ocaml_interface
   builtGrammars =
-    generatedGrammars
-    // lib.concatMapAttrs (
-      k: v:
-      let
-        replaced = lib.replaceStrings [ "_" ] [ "-" ] k;
-      in
-      {
-        "tree-sitter-${k}" = v;
-      }
-      // lib.optionalAttrs (k != replaced) {
-        ${replaced} = v;
-        "tree-sitter-${replaced}" = v;
-      }
-    ) generatedDerivations;
+  generatedGrammars
+  // lib.concatMapAttrs (
+    k: v:
+    let
+      replaced = lib.replaceStrings [ "_" ] [ "-" ] k;
+    in
+    {
+      "tree-sitter-${k}" = v;
+    }
+    // lib.optionalAttrs (k != replaced) {
+      ${replaced} = v;
+      "tree-sitter-${replaced}" = v;
+    }
+  ) generatedDerivations;
 
   allGrammars = lib.attrValues generatedDerivations;
 

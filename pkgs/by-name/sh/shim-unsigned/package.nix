@@ -36,8 +36,8 @@ stdenv.mkDerivation rec {
   env.NIX_CFLAGS_COMPILE = toString [ "-I${toString elfutils.dev}/include" ];
 
   makeFlags =
-    lib.optional (vendorCertFile != null) "VENDOR_CERT_FILE=${vendorCertFile}"
-    ++ lib.optional (defaultLoader != null) "DEFAULT_LOADER=${defaultLoader}";
+  lib.optional (vendorCertFile != null) "VENDOR_CERT_FILE=${vendorCertFile}"
+  ++ lib.optional (defaultLoader != null) "DEFAULT_LOADER=${defaultLoader}";
 
   installTargets = [ "install-as-data" ];
   installFlags = [

@@ -114,63 +114,63 @@ let
 
     # remove dependency on bootstrap-tools in early stdenv build
     postInstall =
-      lib.optionalString withStatic ''
-        mkdir -p $static/lib
-        mv -v lib/*.a $static/lib
+    lib.optionalString withStatic ''
+      mkdir -p $static/lib
+      mv -v lib/*.a $static/lib
+    ''
+    + lib.optionalString stdenv.hostPlatform.isDarwin ''
+      sed -i 's/INSTALL_CMD=.*install/INSTALL_CMD=install/' $out/lib/icu/*/pkgdata.inc
+    ''
+    + (
+      let
+        replacements = [
+          {
+            from = "\${prefix}/include";
+            to = "${placeholder "dev"}/include";
+          } # --cppflags-searchpath
+          {
+            from = "\${pkglibdir}/Makefile.inc";
+            to = "${placeholder "dev"}/lib/icu/Makefile.inc";
+          } # --incfile
+          {
+            from = "\${pkglibdir}/pkgdata.inc";
+            to = "${placeholder "dev"}/lib/icu/pkgdata.inc";
+          } # --incpkgdatafile
+        ];
+      in
       ''
-      + lib.optionalString stdenv.hostPlatform.isDarwin ''
-        sed -i 's/INSTALL_CMD=.*install/INSTALL_CMD=install/' $out/lib/icu/*/pkgdata.inc
-      ''
-      + (
-        let
-          replacements = [
-            {
-              from = "\${prefix}/include";
-              to = "${placeholder "dev"}/include";
-            } # --cppflags-searchpath
-            {
-              from = "\${pkglibdir}/Makefile.inc";
-              to = "${placeholder "dev"}/lib/icu/Makefile.inc";
-            } # --incfile
-            {
-              from = "\${pkglibdir}/pkgdata.inc";
-              to = "${placeholder "dev"}/lib/icu/pkgdata.inc";
-            } # --incpkgdatafile
-          ];
-        in
-        ''
-          rm $out/share/icu/*/install-sh $out/share/icu/*/mkinstalldirs # Avoid having a runtime dependency on bash
+        rm $out/share/icu/*/install-sh $out/share/icu/*/mkinstalldirs # Avoid having a runtime dependency on bash
 
-          substituteInPlace "$dev/bin/icu-config" \
-            ${lib.concatMapStringsSep " " (r: "--replace-fail '${r.from}' '${r.to}'") replacements}
-        ''
-        # Create library with everything reexported to provide the same ABI as the system ICU.
-        + lib.optionalString stdenv.hostPlatform.isDarwin (
-          if stdenv.hostPlatform.isStatic then
-            ''
-              ${stdenv.cc.targetPrefix}ar qL "$out/lib/libicucore.a" \
-                "$out/lib/libicuuc.a" \
-                "$out/lib/libicudata.a" \
-                "$out/lib/libicui18n.a" \
-                "$out/lib/libicuio.a"
-            ''
-          else
-            ''
-              icuVersion=$(basename "$out/share/icu/"*)
-              ${stdenv.cc.targetPrefix}clang -dynamiclib \
-                -L "$out/lib" \
-                -Wl,-reexport-licuuc \
-                -Wl,-reexport-licudata \
-                -Wl,-reexport-licui18n \
-                -Wl,-reexport-licuio \
-                -compatibility_version 1 \
-                -current_version "$icuVersion" \
-                -install_name "$out/lib/libicucore.A.dylib" \
-                -o "$out/lib/libicucore.A.dylib"
-              ln -s libicucore.A.dylib "$out/lib/libicucore.dylib"
-            ''
-        )
-      );
+        substituteInPlace "$dev/bin/icu-config" \
+          ${lib.concatMapStringsSep " " (r: "--replace-fail '${r.from}' '${r.to}'") replacements}
+      ''
+      # Create library with everything reexported to provide the same ABI as the system ICU.
+      + lib.optionalString stdenv.hostPlatform.isDarwin (
+        if stdenv.hostPlatform.isStatic then
+          ''
+            ${stdenv.cc.targetPrefix}ar qL "$out/lib/libicucore.a" \
+              "$out/lib/libicuuc.a" \
+              "$out/lib/libicudata.a" \
+              "$out/lib/libicui18n.a" \
+              "$out/lib/libicuio.a"
+          ''
+        else
+          ''
+            icuVersion=$(basename "$out/share/icu/"*)
+            ${stdenv.cc.targetPrefix}clang -dynamiclib \
+              -L "$out/lib" \
+              -Wl,-reexport-licuuc \
+              -Wl,-reexport-licudata \
+              -Wl,-reexport-licui18n \
+              -Wl,-reexport-licuio \
+              -compatibility_version 1 \
+              -current_version "$icuVersion" \
+              -install_name "$out/lib/libicucore.A.dylib" \
+              -o "$out/lib/libicucore.A.dylib"
+            ln -s libicucore.A.dylib "$out/lib/libicucore.dylib"
+          ''
+      )
+    );
 
     postFixup = ''moveToOutput lib/icu "$dev" '';
 

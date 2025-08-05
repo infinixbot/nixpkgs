@@ -11,8 +11,8 @@ let
 
   crioPackage = pkgs.cri-o.override {
     extraPackages =
-      cfg.extraPackages
-      ++ lib.optional (config.boot.supportedFilesystems.zfs or false) config.boot.zfs.package;
+    cfg.extraPackages
+    ++ lib.optional (config.boot.supportedFilesystems.zfs or false) config.boot.zfs.package;
   };
 
   format = pkgs.formats.toml { };

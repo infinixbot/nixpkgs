@@ -131,10 +131,10 @@ let
   ]
   ++ lib.optional (coqAtLeast "8.14") ocamlPackages.dune_3;
   ocamlPropagatedBuildInputs =
-    [ ]
-    ++ lib.optional (!coqAtLeast "8.10") ocamlPackages.camlp5
-    ++ lib.optional (!coqAtLeast "8.13") ocamlPackages.num
-    ++ lib.optional (coqAtLeast "8.13") ocamlPackages.zarith;
+  [ ]
+  ++ lib.optional (!coqAtLeast "8.10") ocamlPackages.camlp5
+  ++ lib.optional (!coqAtLeast "8.13") ocamlPackages.num
+  ++ lib.optional (coqAtLeast "8.13") ocamlPackages.zarith;
   self = stdenv.mkDerivation {
     pname = "coq";
     inherit (fetched) version src;

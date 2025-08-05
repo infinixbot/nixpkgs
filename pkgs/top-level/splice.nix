@@ -29,14 +29,14 @@ let
     }:
     let
       mash =
-        # Other pkgs sets
-        pkgsBuildBuild
-        // pkgsBuildTarget
-        // pkgsHostHost
-        // pkgsTargetTarget
-        # The same pkgs sets one probably intends
-        // pkgsBuildHost
-        // pkgsHostTarget;
+      # Other pkgs sets
+      pkgsBuildBuild
+      // pkgsBuildTarget
+      // pkgsHostHost
+      // pkgsTargetTarget
+      # The same pkgs sets one probably intends
+      // pkgsBuildHost
+      // pkgsHostTarget;
       merge = name: {
         inherit name;
         value =
@@ -51,14 +51,14 @@ let
             valueTargetTarget = pkgsTargetTarget.${name} or { };
             augmentedValue = defaultValue // {
               __spliced =
-                (lib.optionalAttrs (pkgsBuildBuild ? ${name}) { buildBuild = valueBuildBuild; })
-                // (lib.optionalAttrs (pkgsBuildHost ? ${name}) { buildHost = valueBuildHost; })
-                // (lib.optionalAttrs (pkgsBuildTarget ? ${name}) { buildTarget = valueBuildTarget; })
-                // (lib.optionalAttrs (pkgsHostHost ? ${name}) { hostHost = valueHostHost; })
-                // (lib.optionalAttrs (pkgsHostTarget ? ${name}) { hostTarget = valueHostTarget; })
-                // (lib.optionalAttrs (pkgsTargetTarget ? ${name}) {
-                  targetTarget = valueTargetTarget;
-                });
+              (lib.optionalAttrs (pkgsBuildBuild ? ${name}) { buildBuild = valueBuildBuild; })
+              // (lib.optionalAttrs (pkgsBuildHost ? ${name}) { buildHost = valueBuildHost; })
+              // (lib.optionalAttrs (pkgsBuildTarget ? ${name}) { buildTarget = valueBuildTarget; })
+              // (lib.optionalAttrs (pkgsHostHost ? ${name}) { hostHost = valueHostHost; })
+              // (lib.optionalAttrs (pkgsHostTarget ? ${name}) { hostTarget = valueHostTarget; })
+              // (lib.optionalAttrs (pkgsTargetTarget ? ${name}) {
+                targetTarget = valueTargetTarget;
+              });
             };
             # Get the set of outputs of a derivation. If one derivation fails to
             # evaluate we don't want to diverge the entire splice, so we fall back
@@ -140,22 +140,22 @@ let
     };
 
   splicedPackagesWithXorg =
-    splicedPackages
-    // builtins.removeAttrs splicedPackages.xorg [
-      "callPackage"
-      "newScope"
-      "overrideScope"
-      "packages"
-    ];
+  splicedPackages
+  // builtins.removeAttrs splicedPackages.xorg [
+    "callPackage"
+    "newScope"
+    "overrideScope"
+    "packages"
+  ];
 
   packagesWithXorg =
-    pkgs
-    // builtins.removeAttrs pkgs.xorg [
-      "callPackage"
-      "newScope"
-      "overrideScope"
-      "packages"
-    ];
+  pkgs
+  // builtins.removeAttrs pkgs.xorg [
+    "callPackage"
+    "newScope"
+    "overrideScope"
+    "packages"
+  ];
 
   pkgsForCall = if actuallySplice then splicedPackagesWithXorg else packagesWithXorg;
 

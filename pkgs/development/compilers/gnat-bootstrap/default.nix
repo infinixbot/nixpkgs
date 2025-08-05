@@ -167,23 +167,23 @@ stdenv.mkDerivation (
       if (stdenv.buildPlatform.isLinux && majorVersion == "13") then true else null;
 
     postPatch =
-      lib.optionalString (stdenv.hostPlatform.isDarwin) ''
-        substituteInPlace lib/gcc/${upstreamTriplet}/${gccVersion}/install-tools/mkheaders.conf \
-          --replace "SYSTEM_HEADER_DIR=\"/usr/include\"" "SYSTEM_HEADER_DIR=\"/include\""
-      ''
-      # The included fixincl binary that is called during header fixup has a
-      # hardcoded execvp("/usr/bin/sed", ...) call, but /usr/bin/sed isn't
-      # available in the Nix Darwin stdenv.  Fortunately, execvp() will search the
-      # PATH environment variable for the executable if its first argument does not
-      # contain a slash, so we can just change the string to "sed" and zero the
-      # other bytes.
-      + ''
-        sed -i "s,/usr/bin/sed,sed\x00\x00\x00\x00\x00\x00\x00\x00\x00," libexec/gcc/${upstreamTriplet}/${gccVersion}/install-tools/fixincl
-      ''
-      # Make sure that collect2 finds binutils-wrapper instead of the included ld binary.
-      + ''
-        rm -f bin/ld ${upstreamTriplet}/bin/ld
-      '';
+    lib.optionalString (stdenv.hostPlatform.isDarwin) ''
+      substituteInPlace lib/gcc/${upstreamTriplet}/${gccVersion}/install-tools/mkheaders.conf \
+        --replace "SYSTEM_HEADER_DIR=\"/usr/include\"" "SYSTEM_HEADER_DIR=\"/include\""
+    ''
+    # The included fixincl binary that is called during header fixup has a
+    # hardcoded execvp("/usr/bin/sed", ...) call, but /usr/bin/sed isn't
+    # available in the Nix Darwin stdenv.  Fortunately, execvp() will search the
+    # PATH environment variable for the executable if its first argument does not
+    # contain a slash, so we can just change the string to "sed" and zero the
+    # other bytes.
+    + ''
+      sed -i "s,/usr/bin/sed,sed\x00\x00\x00\x00\x00\x00\x00\x00\x00," libexec/gcc/${upstreamTriplet}/${gccVersion}/install-tools/fixincl
+    ''
+    # Make sure that collect2 finds binutils-wrapper instead of the included ld binary.
+    + ''
+      rm -f bin/ld ${upstreamTriplet}/bin/ld
+    '';
 
     installPhase = ''
       mkdir -p $out

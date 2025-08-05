@@ -466,8 +466,8 @@ let
     in
     nameValuePair serviceName {
       description =
-        "WireGuard Peer - ${interfaceName} - ${peer.name}"
-        + optionalString (peer.name != peer.publicKey) " (${peer.publicKey})";
+      "WireGuard Peer - ${interfaceName} - ${peer.name}"
+      + optionalString (peer.name != peer.publicKey) " (${peer.publicKey})";
       requires = [ "wireguard-${interfaceName}.service" ];
       wants = [ "network-online.target" ];
       after = [
@@ -715,32 +715,32 @@ in
     {
 
       assertions =
-        (attrValues (
-          mapAttrs (name: value: {
-            assertion = (value.privateKey != null) != (value.privateKeyFile != null);
-            message = "Either networking.wireguard.interfaces.${name}.privateKey or networking.wireguard.interfaces.${name}.privateKeyFile must be set.";
-          }) cfg.interfaces
-        ))
-        ++ (attrValues (
-          mapAttrs (name: value: {
-            assertion = value.generatePrivateKeyFile -> (value.privateKey == null);
-            message = "networking.wireguard.interfaces.${name}.generatePrivateKeyFile must not be set if networking.wireguard.interfaces.${name}.privateKey is set.";
-          }) cfg.interfaces
-        ))
-        ++ map (
-          { interfaceName, peer, ... }:
-          {
-            assertion = (peer.presharedKey == null) || (peer.presharedKeyFile == null);
-            message = "networking.wireguard.interfaces.${interfaceName} peer «${peer.publicKey}» has both presharedKey and presharedKeyFile set, but only one can be used.";
-          }
-        ) all_peers;
+      (attrValues (
+        mapAttrs (name: value: {
+          assertion = (value.privateKey != null) != (value.privateKeyFile != null);
+          message = "Either networking.wireguard.interfaces.${name}.privateKey or networking.wireguard.interfaces.${name}.privateKeyFile must be set.";
+        }) cfg.interfaces
+      ))
+      ++ (attrValues (
+        mapAttrs (name: value: {
+          assertion = value.generatePrivateKeyFile -> (value.privateKey == null);
+          message = "networking.wireguard.interfaces.${name}.generatePrivateKeyFile must not be set if networking.wireguard.interfaces.${name}.privateKey is set.";
+        }) cfg.interfaces
+      ))
+      ++ map (
+        { interfaceName, peer, ... }:
+        {
+          assertion = (peer.presharedKey == null) || (peer.presharedKeyFile == null);
+          message = "networking.wireguard.interfaces.${interfaceName} peer «${peer.publicKey}» has both presharedKey and presharedKeyFile set, but only one can be used.";
+        }
+      ) all_peers;
 
       boot.extraModulePackages =
-        optional (usingWg && (versionOlder kernel.kernel.version "5.6")) kernel.wireguard
-        ++ optional usingAwg kernel.amneziawg;
+      optional (usingWg && (versionOlder kernel.kernel.version "5.6")) kernel.wireguard
+      ++ optional usingAwg kernel.amneziawg;
       boot.kernelModules = optional usingWg "wireguard" ++ optional usingAwg "amneziawg";
       environment.systemPackages =
-        optional usingWg pkgs.wireguard-tools ++ optional usingAwg pkgs.amneziawg-tools;
+      optional usingWg pkgs.wireguard-tools ++ optional usingAwg pkgs.amneziawg-tools;
 
       systemd.services = mkIf (!cfg.useNetworkd) (
         (mapAttrs' generateInterfaceUnit cfg.interfaces)

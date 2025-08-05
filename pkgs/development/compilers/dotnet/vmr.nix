@@ -132,19 +132,19 @@ stdenv.mkDerivation rec {
   '';
 
   patches =
-    lib.optionals (lib.versionAtLeast version "9" && lib.versionOlder version "10") [
-      ./UpdateNuGetConfigPackageSourcesMappings-don-t-add-em.patch
-      ./vmr-compiler-opt-v9.patch
-    ]
-    ++ lib.optionals (lib.versionOlder version "9") [
-      ./fix-aspnetcore-portable-build.patch
-      ./vmr-compiler-opt-v8.patch
-    ]
-    ++ lib.optionals (lib.versionAtLeast version "10") [
-      # src/repos/projects/Directory.Build.targets(106,5): error MSB4018: The "AddSourceToNuGetConfig" task failed unexpectedly.
-      # src/repos/projects/Directory.Build.targets(106,5): error MSB4018: System.Xml.XmlException->Microsoft.Build.Framework.BuildException.GenericBuildTransferredException: There are multiple root elements. Line 9, position 2.
-      ./source-build-externals-overwrite-rather-than-append-.patch
-    ];
+  lib.optionals (lib.versionAtLeast version "9" && lib.versionOlder version "10") [
+    ./UpdateNuGetConfigPackageSourcesMappings-don-t-add-em.patch
+    ./vmr-compiler-opt-v9.patch
+  ]
+  ++ lib.optionals (lib.versionOlder version "9") [
+    ./fix-aspnetcore-portable-build.patch
+    ./vmr-compiler-opt-v8.patch
+  ]
+  ++ lib.optionals (lib.versionAtLeast version "10") [
+    # src/repos/projects/Directory.Build.targets(106,5): error MSB4018: The "AddSourceToNuGetConfig" task failed unexpectedly.
+    # src/repos/projects/Directory.Build.targets(106,5): error MSB4018: System.Xml.XmlException->Microsoft.Build.Framework.BuildException.GenericBuildTransferredException: There are multiple root elements. Line 9, position 2.
+    ./source-build-externals-overwrite-rather-than-append-.patch
+  ];
 
   postPatch = ''
     # set the sdk version in global.json to match the bootstrap sdk

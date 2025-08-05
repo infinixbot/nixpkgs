@@ -13,8 +13,8 @@ let
     licenseAccepted = true;
   };
   all-tests =
-    examples-shell.passthru.tests
-    // (examples-shell-with-emulator.passthru.tests // examples-shell-without-emulator.passthru.tests);
+  examples-shell.passthru.tests
+  // (examples-shell-with-emulator.passthru.tests // examples-shell-without-emulator.passthru.tests);
 in
 stdenv.mkDerivation {
   name = "androidenv-test-suite";

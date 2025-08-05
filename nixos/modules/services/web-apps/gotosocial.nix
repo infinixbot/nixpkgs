@@ -104,19 +104,19 @@ in
     ];
 
     services.gotosocial.settings =
-      (lib.mapAttrs (name: lib.mkDefault) (
-        defaultSettings
-        // {
-          web-asset-base-dir = "${cfg.package}/share/gotosocial/web/assets/";
-          web-template-base-dir = "${cfg.package}/share/gotosocial/web/template/";
-        }
-      ))
-      // (lib.optionalAttrs cfg.setupPostgresqlDB {
-        db-type = "postgres";
-        db-address = "/run/postgresql";
-        db-database = "gotosocial";
-        db-user = "gotosocial";
-      });
+    (lib.mapAttrs (name: lib.mkDefault) (
+      defaultSettings
+      // {
+        web-asset-base-dir = "${cfg.package}/share/gotosocial/web/assets/";
+        web-template-base-dir = "${cfg.package}/share/gotosocial/web/template/";
+      }
+    ))
+    // (lib.optionalAttrs cfg.setupPostgresqlDB {
+      db-type = "postgres";
+      db-address = "/run/postgresql";
+      db-database = "gotosocial";
+      db-user = "gotosocial";
+    });
 
     environment.systemPackages = [ gotosocial-admin ];
 

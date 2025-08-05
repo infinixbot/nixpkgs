@@ -398,12 +398,12 @@ in
       environment.etc."asound.conf".text = cfg.config;
 
       boot.kernelModules =
-        [ ]
-        ++ lib.optionals cfg.enableOSSEmulation [
-          "snd_pcm_oss"
-          "snd_mixer_oss"
-        ]
-        ++ lib.optionals cfg.enableRecorder [ "snd_aloop" ];
+      [ ]
+      ++ lib.optionals cfg.enableOSSEmulation [
+        "snd_pcm_oss"
+        "snd_mixer_oss"
+      ]
+      ++ lib.optionals cfg.enableRecorder [ "snd_aloop" ];
 
       # Assign names to the sound cards
       boot.extraModprobeConfig = lib.concatStringsSep "\n" cardsConfig;

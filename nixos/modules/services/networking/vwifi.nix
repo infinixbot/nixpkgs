@@ -137,13 +137,13 @@ in
       systemd.services.vwifi-client =
         let
           clientArgs =
-            optional cfg.client.spy "--spy"
-            ++ optional (cfg.client.serverAddress != null) cfg.client.serverAddress
-            ++ optionals (cfg.client.serverPort != null) [
-              "--port"
-              cfg.client.serverPort
-            ]
-            ++ cfg.client.extraArgs;
+          optional cfg.client.spy "--spy"
+          ++ optional (cfg.client.serverAddress != null) cfg.client.serverAddress
+          ++ optionals (cfg.client.serverPort != null) [
+            "--port"
+            cfg.client.serverPort
+          ]
+          ++ cfg.client.extraArgs;
         in
         rec {
           description = "vwifi client";
@@ -166,23 +166,23 @@ in
       systemd.services.vwifi-server =
         let
           serverArgs =
-            optionals (cfg.server.ports.vhost != null) [
-              "--port-vhost"
-              (toString cfg.server.ports.vhost)
-            ]
-            ++ optionals (cfg.server.ports.tcp != null) [
-              "--port-tcp"
-              (toString cfg.server.ports.tcp)
-            ]
-            ++ optionals (cfg.server.ports.spy != null) [
-              "--port-spy"
-              (toString cfg.server.ports.spy)
-            ]
-            ++ optionals (cfg.server.ports.control != null) [
-              "--port-ctrl"
-              (toString cfg.server.ports.control)
-            ]
-            ++ cfg.server.extraArgs;
+          optionals (cfg.server.ports.vhost != null) [
+            "--port-vhost"
+            (toString cfg.server.ports.vhost)
+          ]
+          ++ optionals (cfg.server.ports.tcp != null) [
+            "--port-tcp"
+            (toString cfg.server.ports.tcp)
+          ]
+          ++ optionals (cfg.server.ports.spy != null) [
+            "--port-spy"
+            (toString cfg.server.ports.spy)
+          ]
+          ++ optionals (cfg.server.ports.control != null) [
+            "--port-ctrl"
+            (toString cfg.server.ports.control)
+          ]
+          ++ cfg.server.extraArgs;
         in
         rec {
           description = "vwifi server";

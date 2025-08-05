@@ -62,33 +62,33 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    lib.optional withTTYX libX11
-    ++ lib.optional withGUI wxGTK32
-    ++ lib.optional withUCD libuchardet
-    ++ lib.optionals withColorer [
-      spdlog
-      libxml2
+  lib.optional withTTYX libX11
+  ++ lib.optional withGUI wxGTK32
+  ++ lib.optional withUCD libuchardet
+  ++ lib.optionals withColorer [
+    spdlog
+    libxml2
+  ]
+  ++ lib.optionals withMultiArc [
+    libarchive
+    pcre
+  ]
+  ++ lib.optionals withNetRocks [
+    openssl
+    libssh
+    libnfs
+    neon
+  ]
+  ++ lib.optional (withNetRocks && !stdenv.hostPlatform.isDarwin) samba # broken on darwin
+  ++ lib.optionals withPython (
+    with python3Packages;
+    [
+      python
+      cffi
+      debugpy
+      pcpp
     ]
-    ++ lib.optionals withMultiArc [
-      libarchive
-      pcre
-    ]
-    ++ lib.optionals withNetRocks [
-      openssl
-      libssh
-      libnfs
-      neon
-    ]
-    ++ lib.optional (withNetRocks && !stdenv.hostPlatform.isDarwin) samba # broken on darwin
-    ++ lib.optionals withPython (
-      with python3Packages;
-      [
-        python
-        cffi
-        debugpy
-        pcpp
-      ]
-    );
+  );
 
   postPatch = ''
     patchShebangs python/src/prebuild.sh

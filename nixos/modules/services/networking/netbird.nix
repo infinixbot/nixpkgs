@@ -515,13 +515,13 @@ in
           wantedBy = [ "multi-user.target" ];
 
           path =
-            optionals (!config.services.resolved.enable) [ pkgs.openresolv ]
-            # useful for `netbird debug` system info gathering
-            ++ optionals config.networking.nftables.enable [ pkgs.nftables ]
-            ++ optionals (!config.networking.nftables.enable) [
-              pkgs.iptables
-              pkgs.ipset
-            ];
+          optionals (!config.services.resolved.enable) [ pkgs.openresolv ]
+          # useful for `netbird debug` system info gathering
+          ++ optionals config.networking.nftables.enable [ pkgs.nftables ]
+          ++ optionals (!config.networking.nftables.enable) [
+            pkgs.iptables
+            pkgs.ipset
+          ];
 
           serviceConfig = {
             ExecStart = "${getExe client.wrapper} service run";

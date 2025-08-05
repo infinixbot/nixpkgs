@@ -41,18 +41,18 @@ let
         '';
 
         postPatch =
-          lib.optionalString (base_config != null) ''
-            [ -e base-config.yaml ] || (echo "base-config.yaml doesn't exist, can't override it" && exit 1)
-            cp "${
-              if builtins.isPath base_config || lib.isDerivation base_config then
-                base_config
-              else if builtins.isString base_config then
-                builtins.toFile "base-config.yaml" base_config
-              else
-                (formats.yaml { }).generate "base-config.yaml" base_config
-            }" base-config.yaml
-          ''
-          + attrs.postPatch or "";
+        lib.optionalString (base_config != null) ''
+          [ -e base-config.yaml ] || (echo "base-config.yaml doesn't exist, can't override it" && exit 1)
+          cp "${
+            if builtins.isPath base_config || lib.isDerivation base_config then
+              base_config
+            else if builtins.isString base_config then
+              builtins.toFile "base-config.yaml" base_config
+            else
+              (formats.yaml { }).generate "base-config.yaml" base_config
+          }" base-config.yaml
+        ''
+        + attrs.postPatch or "";
 
         installPhase = ''
           runHook preInstall

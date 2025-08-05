@@ -397,13 +397,13 @@ in
           serviceConfig = {
             Type = "oneshot";
             ExecStart =
-              (lib.optionals doBackup [
-                "${resticCmd} backup ${
-                  lib.concatStringsSep " " (backup.extraBackupArgs ++ excludeFlags)
-                } --files-from=${filesFromTmpFile}"
-              ])
-              ++ pruneCmd
-              ++ checkCmd;
+            (lib.optionals doBackup [
+              "${resticCmd} backup ${
+                lib.concatStringsSep " " (backup.extraBackupArgs ++ excludeFlags)
+              } --files-from=${filesFromTmpFile}"
+            ])
+            ++ pruneCmd
+            ++ checkCmd;
             User = backup.user;
             RuntimeDirectory = "restic-backups-${name}";
             CacheDirectory = "restic-backups-${name}";

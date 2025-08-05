@@ -228,15 +228,15 @@ lib.extendMkDerivation {
       };
 
       GOFLAGS =
-        GOFLAGS
-        ++
-          lib.warnIf (lib.any (lib.hasPrefix "-mod=") GOFLAGS)
-            "use `proxyVendor` to control Go module/vendor behavior instead of setting `-mod=` in GOFLAGS"
-            (lib.optional (!finalAttrs.proxyVendor) "-mod=vendor")
-        ++
-          lib.warnIf (builtins.elem "-trimpath" GOFLAGS)
-            "`-trimpath` is added by default to GOFLAGS by buildGoModule when allowGoReference isn't set to true"
-            (lib.optional (!allowGoReference) "-trimpath");
+      GOFLAGS
+      ++
+        lib.warnIf (lib.any (lib.hasPrefix "-mod=") GOFLAGS)
+          "use `proxyVendor` to control Go module/vendor behavior instead of setting `-mod=` in GOFLAGS"
+          (lib.optional (!finalAttrs.proxyVendor) "-mod=vendor")
+      ++
+        lib.warnIf (builtins.elem "-trimpath" GOFLAGS)
+          "`-trimpath` is added by default to GOFLAGS by buildGoModule when allowGoReference isn't set to true"
+          (lib.optional (!allowGoReference) "-trimpath");
 
       inherit enableParallelBuilding;
 

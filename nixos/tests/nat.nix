@@ -98,9 +98,9 @@ import ./make-test-python.nix (
   # 2 -- simulates the external network
   {
     name =
-      "nat"
-      + (lib.optionalString nftables "Nftables")
-      + (if withFirewall then "WithFirewall" else "Standalone");
+    "nat"
+    + (lib.optionalString nftables "Nftables")
+    + (if withFirewall then "WithFirewall" else "Standalone");
     meta = with pkgs.lib.maintainers; {
       maintainers = [
         tne

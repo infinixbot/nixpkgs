@@ -52,21 +52,21 @@ let
   vcpkgSource = applyPatches {
     inherit (vcpkg) src;
     patches =
-      lib.optionals vcpkgRevs.postSdl3 [
-        # This patch was not accepted mainstream, as out-of-scope
-        # and also to not encourage dependencies between Nixpkgs and Vcpkg.
-        # Currently @SomeoneSerge is responsible for rebasing it when necessary.
-        # Consider vendoring instead?
-        ./0001-imgui-allow-installing-into-split-outputs.patch
-      ]
-      ++ lib.optionals vcpkgRevs.others [
-        # Original version of the split-outputs patch
-        fetchpatch
-        {
-          url = "https://github.com/microsoft/vcpkg/commit/4108dd75ce9731a4fdcf50fd05034405156eaddf.patch";
-          hash = "sha256-jXbR0NfyuO8EESmva5A+H3WmBfCG83OiA8ZCcWsRhQA=";
-        }
-      ];
+    lib.optionals vcpkgRevs.postSdl3 [
+      # This patch was not accepted mainstream, as out-of-scope
+      # and also to not encourage dependencies between Nixpkgs and Vcpkg.
+      # Currently @SomeoneSerge is responsible for rebasing it when necessary.
+      # Consider vendoring instead?
+      ./0001-imgui-allow-installing-into-split-outputs.patch
+    ]
+    ++ lib.optionals vcpkgRevs.others [
+      # Original version of the split-outputs patch
+      fetchpatch
+      {
+        url = "https://github.com/microsoft/vcpkg/commit/4108dd75ce9731a4fdcf50fd05034405156eaddf.patch";
+        hash = "sha256-jXbR0NfyuO8EESmva5A+H3WmBfCG83OiA8ZCcWsRhQA=";
+      }
+    ];
   };
 in
 
@@ -95,14 +95,14 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ cmake ];
 
   propagatedBuildInputs =
-    lib.optionals IMGUI_LINK_GLVND [ libGL ]
-    ++ lib.optionals IMGUI_BUILD_GLFW_BINDING [ glfw ]
-    ++ lib.optionals IMGUI_BUILD_SDL3_BINDING [ sdl3 ]
-    ++ lib.optionals IMGUI_BUILD_SDL2_BINDING [ SDL2 ]
-    ++ lib.optionals IMGUI_BUILD_VULKAN_BINDING [
-      vulkan-headers
-      vulkan-loader
-    ];
+  lib.optionals IMGUI_LINK_GLVND [ libGL ]
+  ++ lib.optionals IMGUI_BUILD_GLFW_BINDING [ glfw ]
+  ++ lib.optionals IMGUI_BUILD_SDL3_BINDING [ sdl3 ]
+  ++ lib.optionals IMGUI_BUILD_SDL2_BINDING [ SDL2 ]
+  ++ lib.optionals IMGUI_BUILD_VULKAN_BINDING [
+    vulkan-headers
+    vulkan-loader
+  ];
 
   cmakeFlags = [
     (lib.cmakeBool "IMGUI_BUILD_GLFW_BINDING" IMGUI_BUILD_GLFW_BINDING)

@@ -27,11 +27,11 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-shPLOB+7EXUye9cIp3qrcIoFrd57RxvCZ70VrJmJNjE=";
   };
   postPatch =
-    whenPatched "gunzip < ${patch_src} | patch -Np1"
-    + lib.optionalString stdenv.hostPlatform.isFreeBSD ''
+  whenPatched "gunzip < ${patch_src} | patch -Np1"
+  + lib.optionalString stdenv.hostPlatform.isFreeBSD ''
 
-      sed -i 1i'int feenableexcept(int __mask);' contrib/libtests/pngvalid.c
-    '';
+    sed -i 1i'int feenableexcept(int __mask);' contrib/libtests/pngvalid.c
+  '';
 
   outputs = [
     "out"
@@ -52,7 +52,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   meta = with lib; {
     description =
-      "Official reference implementation for the PNG file format" + whenPatched " with animation patch";
+    "Official reference implementation for the PNG file format" + whenPatched " with animation patch";
     homepage = "http://www.libpng.org/pub/png/libpng.html";
     changelog = "https://github.com/pnggroup/libpng/blob/v${finalAttrs.version}/CHANGES";
     license = licenses.libpng2;

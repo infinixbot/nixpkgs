@@ -35,35 +35,35 @@ stdenv.mkDerivation rec {
   };
 
   patches =
-    lib.optionals (!enablePython) [
-      # this patch isn't useful but keeping it to avoid rebuilds on !enablePython
-      # before 24.11 fully lands
-      ./python-binding-prefix.patch
-    ]
-    ++ [
-      # remove next release
-      (fetchpatch {
-        name = "musl.patch";
-        url = "https://github.com/libpwquality/libpwquality/commit/b0fcd96954be89e8c318e5328dd27c40b401de96.patch";
-        hash = "sha256-ykN1hcRKyX3QAqWTH54kUjOxN6+IwRpqQVsujTd9XWs=";
-      })
-    ]
-    ++ lib.optionals enablePython [
-      # remove next release
-      (fetchpatch {
-        name = "pr-74-use-setuptools-instead-of-distutils.patch";
-        url = "https://github.com/libpwquality/libpwquality/commit/509b0a744adf533b524daaa65f25dda144a6ff40.patch";
-        hash = "sha256-AxiynPVxv/gONujyj8y6b1XlsNkKszzW5TT9oINR/oo=";
-      })
-      # remove next release
-      (fetchpatch {
-        name = "pr-80-respect-pythonsitedir.patch";
-        url = "https://github.com/libpwquality/libpwquality/commit/f92351b3998542e33d2b243fc446a4dd852dc972.patch";
-        hash = "sha256-1lmigZX/UiEFe9b0JXmlfw/371UYT4PF7Ev2Hv66v74=";
-      })
-      # ensure python site-packages goes in $py output
-      ./python-binding-root.patch
-    ];
+  lib.optionals (!enablePython) [
+    # this patch isn't useful but keeping it to avoid rebuilds on !enablePython
+    # before 24.11 fully lands
+    ./python-binding-prefix.patch
+  ]
+  ++ [
+    # remove next release
+    (fetchpatch {
+      name = "musl.patch";
+      url = "https://github.com/libpwquality/libpwquality/commit/b0fcd96954be89e8c318e5328dd27c40b401de96.patch";
+      hash = "sha256-ykN1hcRKyX3QAqWTH54kUjOxN6+IwRpqQVsujTd9XWs=";
+    })
+  ]
+  ++ lib.optionals enablePython [
+    # remove next release
+    (fetchpatch {
+      name = "pr-74-use-setuptools-instead-of-distutils.patch";
+      url = "https://github.com/libpwquality/libpwquality/commit/509b0a744adf533b524daaa65f25dda144a6ff40.patch";
+      hash = "sha256-AxiynPVxv/gONujyj8y6b1XlsNkKszzW5TT9oINR/oo=";
+    })
+    # remove next release
+    (fetchpatch {
+      name = "pr-80-respect-pythonsitedir.patch";
+      url = "https://github.com/libpwquality/libpwquality/commit/f92351b3998542e33d2b243fc446a4dd852dc972.patch";
+      hash = "sha256-1lmigZX/UiEFe9b0JXmlfw/371UYT4PF7Ev2Hv66v74=";
+    })
+    # ensure python site-packages goes in $py output
+    ./python-binding-root.patch
+  ];
 
   nativeBuildInputs = [
     autoreconfHook

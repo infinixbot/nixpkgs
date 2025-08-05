@@ -94,25 +94,25 @@ let
   '';
   withGui' = withGui && !stdenv.hostPlatform.isDarwin;
   optionalDependencies =
-    [ ]
-    ++ (lib.optional withDb db)
-    ++ (lib.optional withJava jdk)
-    ++ (lib.optional withOdbc unixODBC)
-    ++ (lib.optional withPcre pcre2)
-    ++ (lib.optional withPython python3)
-    ++ (lib.optional withYaml libyaml)
-    ++ (lib.optionals withGui' [
-      libXt
-      libXext
-      libXpm
-      libXft
-      libXinerama
-      libjpeg
-      libSM
-      freetype
-      fontconfig
-    ])
-    ++ extraLibraries';
+  [ ]
+  ++ (lib.optional withDb db)
+  ++ (lib.optional withJava jdk)
+  ++ (lib.optional withOdbc unixODBC)
+  ++ (lib.optional withPcre pcre2)
+  ++ (lib.optional withPython python3)
+  ++ (lib.optional withYaml libyaml)
+  ++ (lib.optionals withGui' [
+    libXt
+    libXext
+    libXpm
+    libXft
+    libXinerama
+    libjpeg
+    libSM
+    freetype
+    fontconfig
+  ])
+  ++ extraLibraries';
 in
 stdenv.mkDerivation {
   pname = "swi-prolog";

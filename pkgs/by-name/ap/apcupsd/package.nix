@@ -33,10 +33,10 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    lib.optional enableCgiScripts gd
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      libusb-compat-0_1
-    ];
+  lib.optional enableCgiScripts gd
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    libusb-compat-0_1
+  ];
 
   prePatch = ''
     sed -e "s,\$(INSTALL_PROGRAM) \$(STRIP),\$(INSTALL_PROGRAM)," \

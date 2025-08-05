@@ -36,12 +36,12 @@ stdenv.mkDerivation rec {
   enableParallelBuilding = true;
 
   configureFlags =
-    lib.optional kcapi-test "--enable-kcapi-test"
-    ++ lib.optional kcapi-speed "--enable-kcapi-speed"
-    ++ lib.optional kcapi-hasher "--enable-kcapi-hasher"
-    ++ lib.optional kcapi-rngapp "--enable-kcapi-rngapp"
-    ++ lib.optional kcapi-encapp "--enable-kcapi-encapp"
-    ++ lib.optional kcapi-dgstapp "--enable-kcapi-dgstapp";
+  lib.optional kcapi-test "--enable-kcapi-test"
+  ++ lib.optional kcapi-speed "--enable-kcapi-speed"
+  ++ lib.optional kcapi-hasher "--enable-kcapi-hasher"
+  ++ lib.optional kcapi-rngapp "--enable-kcapi-rngapp"
+  ++ lib.optional kcapi-encapp "--enable-kcapi-encapp"
+  ++ lib.optional kcapi-dgstapp "--enable-kcapi-dgstapp";
 
   meta = {
     homepage = "http://www.chronox.de/libkcapi.html";

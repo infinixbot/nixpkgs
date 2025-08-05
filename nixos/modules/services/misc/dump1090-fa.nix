@@ -60,16 +60,16 @@ in
         ProtectHostname = true;
         RestrictSUIDSGID = true;
         RestrictNamespaces =
-          "~"
-          + (lib.concatStringsSep " " [
-            "cgroup"
-            "ipc"
-            "net"
-            "mnt"
-            "pid"
-            "user"
-            "uts"
-          ]);
+        "~"
+        + (lib.concatStringsSep " " [
+          "cgroup"
+          "ipc"
+          "net"
+          "mnt"
+          "pid"
+          "user"
+          "uts"
+        ]);
         CapabilityBoundingSet = [
           "~CAP_AUDIT_CONTROL"
           "~CAP_AUDIT_READ"

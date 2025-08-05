@@ -126,14 +126,14 @@ stdenv.mkDerivation (finalAttrs: {
     tzdata
   ];
   preCheck =
-    lib.optionalString stdenv.hostPlatform.isMusl ''
-      # musl doesn't respect TZDIR, skip timezone-related tests
-      sed -i '/^ISC_TEST_ENTRY(isc_time_formatISO8601L/d' tests/isc/time_test.c
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      # Test timeouts on Darwin
-      sed -i '/^ISC_TEST_ENTRY(tcpdns_recv_one/d' tests/isc/netmgr_test.c
-    '';
+  lib.optionalString stdenv.hostPlatform.isMusl ''
+    # musl doesn't respect TZDIR, skip timezone-related tests
+    sed -i '/^ISC_TEST_ENTRY(isc_time_formatISO8601L/d' tests/isc/time_test.c
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    # Test timeouts on Darwin
+    sed -i '/^ISC_TEST_ENTRY(tcpdns_recv_one/d' tests/isc/netmgr_test.c
+  '';
 
   postFixup = ''
     remove-references-to -t "$out" "$dnsutils/bin/delv"

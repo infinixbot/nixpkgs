@@ -124,9 +124,9 @@ let
           nixosPath = filter (pkgs.path + "/nixos");
           NIX_ABORT_ON_WARN = warningsAreErrors;
           modules =
-            "[ "
-            + concatMapStringsSep " " (p: ''"${removePrefix "${modulesPath}/" (toString p)}"'') docModules.lazy
-            + " ]";
+          "[ "
+          + concatMapStringsSep " " (p: ''"${removePrefix "${modulesPath}/" (toString p)}"'') docModules.lazy
+          + " ]";
           passAsFile = [ "modules" ];
         }
         ''
@@ -415,12 +415,12 @@ in
       system.build.manual = manual;
 
       environment.systemPackages =
-        [ ]
-        ++ optional cfg.man.enable manual.nixos-configuration-reference-manpage
-        ++ optionals cfg.doc.enable [
-          manual.manualHTML
-          nixos-help
-        ];
+      [ ]
+      ++ optional cfg.man.enable manual.nixos-configuration-reference-manpage
+      ++ optionals cfg.doc.enable [
+        manual.manualHTML
+        nixos-help
+      ];
     })
 
   ]);

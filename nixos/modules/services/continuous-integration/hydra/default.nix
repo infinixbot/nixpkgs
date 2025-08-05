@@ -31,14 +31,14 @@ let
   // cfg.extraEnv;
 
   serverEnv =
-    env
-    // {
-      HYDRA_TRACKER = cfg.tracker;
-      XDG_CACHE_HOME = "${baseDir}/www/.cache";
-      COLUMNS = "80";
-      PGPASSFILE = "${baseDir}/pgpass-www"; # grrr
-    }
-    // (lib.optionalAttrs cfg.debugServer { DBIC_TRACE = "1"; });
+  env
+  // {
+    HYDRA_TRACKER = cfg.tracker;
+    XDG_CACHE_HOME = "${baseDir}/www/.cache";
+    COLUMNS = "80";
+    PGPASSFILE = "${baseDir}/pgpass-www"; # grrr
+  }
+  // (lib.optionalAttrs cfg.debugServer { DBIC_TRACE = "1"; });
 
   localDB = "dbi:Pg:dbname=hydra;user=hydra;";
 
@@ -404,9 +404,9 @@ in
       restartTriggers = [ hydraConf ];
       serviceConfig = {
         ExecStart =
-          "@${hydra-package}/bin/hydra-server hydra-server -f -h '${cfg.listenHost}' "
-          + "-p ${toString cfg.port} --min_spare_servers ${toString cfg.minSpareServers} --max_spare_servers ${toString cfg.maxSpareServers} "
-          + "--max_servers ${toString cfg.maxServers} --max_requests 100 ${lib.optionalString cfg.debugServer "-d"}";
+        "@${hydra-package}/bin/hydra-server hydra-server -f -h '${cfg.listenHost}' "
+        + "-p ${toString cfg.port} --min_spare_servers ${toString cfg.minSpareServers} --max_spare_servers ${toString cfg.maxSpareServers} "
+        + "--max_servers ${toString cfg.maxServers} --max_requests 100 ${lib.optionalString cfg.debugServer "-d"}";
         User = "hydra-www";
         PermissionsStartOnly = true;
         Restart = "always";

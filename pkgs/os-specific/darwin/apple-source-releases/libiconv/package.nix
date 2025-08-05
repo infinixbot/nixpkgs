@@ -58,14 +58,14 @@ mkAppleDerivation (finalAttrs: {
     '';
 
   postInstall =
-    lib.optionalString (hostPlatform.isDarwin && !hostPlatform.isStatic) ''
-      ${stdenv.cc.targetPrefix}install_name_tool "$out/lib/libiconv.2.dylib" \
-        -change '@rpath/libcharset.1.dylib' "$out/lib/libcharset.1.dylib"
-    ''
-    # Move the static library to the `dev` output
-    + lib.optionalString hostPlatform.isStatic ''
-      moveToOutput lib "$dev"
-    '';
+  lib.optionalString (hostPlatform.isDarwin && !hostPlatform.isStatic) ''
+    ${stdenv.cc.targetPrefix}install_name_tool "$out/lib/libiconv.2.dylib" \
+      -change '@rpath/libcharset.1.dylib' "$out/lib/libcharset.1.dylib"
+  ''
+  # Move the static library to the `dev` output
+  + lib.optionalString hostPlatform.isStatic ''
+    moveToOutput lib "$dev"
+  '';
 
   # Tests have to be run in `installCheckPhase` because libiconv expects to `dlopen`
   # modules from `$out/lib/i18n`.

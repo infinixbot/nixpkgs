@@ -182,9 +182,9 @@ let
                   # In order to generate better metadata xml, if the latest version is known but wasn't fetched by Gradle,
                   # add it anyway.
                   uniqueVersions =
-                    uniqueVersions'
-                    ++ lib.optional (!builtins.elem releaseVer uniqueVersions') releaseVer
-                    ++ lib.optional (!builtins.elem latestVer uniqueVersions' && releaseVer != latestVer) latestVer;
+                  uniqueVersions'
+                  ++ lib.optional (!builtins.elem releaseVer uniqueVersions') releaseVer
+                  ++ lib.optional (!builtins.elem latestVer uniqueVersions' && releaseVer != latestVer) latestVer;
 
                   lastUpdated =
                     v.lastUpdated

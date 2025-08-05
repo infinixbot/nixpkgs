@@ -234,8 +234,8 @@ in
 
   config = lib.mkIf cfg.enable {
     services.logcheck.extraRulesDirs =
-      lib.mapAttrsToList writeIgnoreRule cfg.ignore
-      ++ lib.mapAttrsToList writeIgnoreCronRule cfg.ignoreCron;
+    lib.mapAttrsToList writeIgnoreRule cfg.ignore
+    ++ lib.mapAttrsToList writeIgnoreCronRule cfg.ignoreCron;
 
     users.users = lib.optionalAttrs (cfg.user == "logcheck") {
       logcheck = {

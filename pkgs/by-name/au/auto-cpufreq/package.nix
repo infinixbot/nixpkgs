@@ -73,27 +73,27 @@ python3Packages.buildPythonPackage rec {
   propagatedBuildInputs = [ getent ];
 
   postInstall =
-    # copy script manually
-    ''
-      install -Dm 0755 scripts/cpufreqctl.sh $out/bin/cpufreqctl.auto-cpufreq
-    ''
-    # copy css file
-    + ''
-      install -Dm 0644 scripts/style.css $out/share/auto-cpufreq/scripts/style.css
-    ''
-    # systemd service
-    + ''
-      install -Dm 0644 scripts/auto-cpufreq.service -t $out/lib/systemd/system
-    ''
-    # desktop icon
-    + ''
-      install -Dm 0644 scripts/auto-cpufreq-gtk.desktop -t $out/share/applications
-      install -Dm 0644 images/icon.png $out/share/icons/hicolor/512x512/apps/auto-cpufreq.png
-    ''
-    # polkit policy
-    + ''
-      install -Dm 0644 scripts/org.auto-cpufreq.pkexec.policy -t $out/share/polkit-1/actions
-    '';
+  # copy script manually
+  ''
+    install -Dm 0755 scripts/cpufreqctl.sh $out/bin/cpufreqctl.auto-cpufreq
+  ''
+  # copy css file
+  + ''
+    install -Dm 0644 scripts/style.css $out/share/auto-cpufreq/scripts/style.css
+  ''
+  # systemd service
+  + ''
+    install -Dm 0644 scripts/auto-cpufreq.service -t $out/lib/systemd/system
+  ''
+  # desktop icon
+  + ''
+    install -Dm 0644 scripts/auto-cpufreq-gtk.desktop -t $out/share/applications
+    install -Dm 0644 images/icon.png $out/share/icons/hicolor/512x512/apps/auto-cpufreq.png
+  ''
+  # polkit policy
+  + ''
+    install -Dm 0644 scripts/org.auto-cpufreq.pkexec.policy -t $out/share/polkit-1/actions
+  '';
 
   dontWrapGApps = true;
 

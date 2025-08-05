@@ -48,54 +48,54 @@ buildPythonPackage rec {
   ];
 
   postPatch =
-    # be more verbose
-    ''
-      cat >> pyproject.toml <<EOF
-    ''
-    + lib.optionalString enableVerbose ''
-      [tool.sip.project]
-      verbose = true
-    ''
-    # Due to bug in SIP .whl name generation we have to bump minimal macos sdk upto 11.0 for
-    # aarch64-darwin. This patch can be removed once SIP will fix it in upstream,
-    # see https://github.com/NixOS/nixpkgs/pull/186612#issuecomment-1214635456.
-    + lib.optionalString (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) ''
-      minimum-macos-version = "11.0"
-    ''
-    + ''
-      EOF
-    ''
+  # be more verbose
+  ''
+    cat >> pyproject.toml <<EOF
+  ''
+  + lib.optionalString enableVerbose ''
+    [tool.sip.project]
+    verbose = true
+  ''
+  # Due to bug in SIP .whl name generation we have to bump minimal macos sdk upto 11.0 for
+  # aarch64-darwin. This patch can be removed once SIP will fix it in upstream,
+  # see https://github.com/NixOS/nixpkgs/pull/186612#issuecomment-1214635456.
+  + lib.optionalString (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) ''
+    minimum-macos-version = "11.0"
+  ''
+  + ''
+    EOF
+  ''
 
-    # pyqt-builder tries to compile *and run* these programs.  This
-    # is really sad because the only thing they do is print out a
-    # flag based on whether or not some compile-time symbol was
-    # defined.  This could all be done without having to *execute*
-    # cross-compiled programs!
-    #
-    # Here is the complete list of things checked:
-    #
-    # QT_NO_PRINTDIALOG                                                           => PyQt_PrintDialog
-    # QT_NO_PRINTER                                                               => PyQt_Printer
-    # QT_NO_PRINTPREVIEWDIALOG                                                    => PyQt_PrintPreviewDialog
-    # QT_NO_PRINTPREVIEWWIDGET                                                    => PyQt_PrintPreviewWidget
-    # QT_NO_SSL                                                                   => PyQt_SSL
-    # QT_SHARED || QT_DLL                                                         => shared (otherwise static)
-    # QT_NO_PROCESS                                                               => PyQt_Process
-    # QT_NO_FPU || Q_PROCESSOR_ARM || Q_OS_WINCE                                  => PyQt_qreal_double
-    # sizeof (qreal) != sizeof (double)                                           => PyQt_qreal_double
-    # !Q_COMPILER_CONSTEXPR !Q_COMPILER_UNIFORM_INIT                              => PyQt_CONSTEXPR
-    # QT_NO_ACCESSIBILITY                                                         => PyQt_Accessibility
-    # QT_NO_OPENGL                                                                => PyQt_OpenGL PyQt_Desktop_OpenGL
-    # defined(QT_OPENGL_ES) || defined(QT_OPENGL_ES_2) || defined(QT_OPENGL_ES_3) => PyQt_Desktop_OpenGL
-    # QT_NO_RAWFONT                                                               => PyQt_RawFont
-    # QT_NO_SESSIONMANAGER                                                        => PyQt_SessionManager
-    #
-    + lib.optionalString (!(stdenv.buildPlatform.canExecute stdenv.hostPlatform)) ''
-      rm config-tests/cfgtest_QtCore.cpp
-      rm config-tests/cfgtest_QtGui.cpp
-      rm config-tests/cfgtest_QtNetwork.cpp
-      rm config-tests/cfgtest_QtPrintSupport.cpp
-    '';
+  # pyqt-builder tries to compile *and run* these programs.  This
+  # is really sad because the only thing they do is print out a
+  # flag based on whether or not some compile-time symbol was
+  # defined.  This could all be done without having to *execute*
+  # cross-compiled programs!
+  #
+  # Here is the complete list of things checked:
+  #
+  # QT_NO_PRINTDIALOG                                                           => PyQt_PrintDialog
+  # QT_NO_PRINTER                                                               => PyQt_Printer
+  # QT_NO_PRINTPREVIEWDIALOG                                                    => PyQt_PrintPreviewDialog
+  # QT_NO_PRINTPREVIEWWIDGET                                                    => PyQt_PrintPreviewWidget
+  # QT_NO_SSL                                                                   => PyQt_SSL
+  # QT_SHARED || QT_DLL                                                         => shared (otherwise static)
+  # QT_NO_PROCESS                                                               => PyQt_Process
+  # QT_NO_FPU || Q_PROCESSOR_ARM || Q_OS_WINCE                                  => PyQt_qreal_double
+  # sizeof (qreal) != sizeof (double)                                           => PyQt_qreal_double
+  # !Q_COMPILER_CONSTEXPR !Q_COMPILER_UNIFORM_INIT                              => PyQt_CONSTEXPR
+  # QT_NO_ACCESSIBILITY                                                         => PyQt_Accessibility
+  # QT_NO_OPENGL                                                                => PyQt_OpenGL PyQt_Desktop_OpenGL
+  # defined(QT_OPENGL_ES) || defined(QT_OPENGL_ES_2) || defined(QT_OPENGL_ES_3) => PyQt_Desktop_OpenGL
+  # QT_NO_RAWFONT                                                               => PyQt_RawFont
+  # QT_NO_SESSIONMANAGER                                                        => PyQt_SessionManager
+  #
+  + lib.optionalString (!(stdenv.buildPlatform.canExecute stdenv.hostPlatform)) ''
+    rm config-tests/cfgtest_QtCore.cpp
+    rm config-tests/cfgtest_QtGui.cpp
+    rm config-tests/cfgtest_QtNetwork.cpp
+    rm config-tests/cfgtest_QtPrintSupport.cpp
+  '';
 
   enableParallelBuilding = true;
   # HACK: paralellize compilation of make calls within pyqt's setup.py

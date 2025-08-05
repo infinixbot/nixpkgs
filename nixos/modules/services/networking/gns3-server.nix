@@ -243,9 +243,9 @@ in
             StateDirectory = "gns3";
             StateDirectoryMode = "0750";
             SupplementaryGroups =
-              lib.optional flags.enableDocker "docker"
-              ++ lib.optional flags.enableLibvirtd "libvirtd"
-              ++ lib.optional cfg.ubridge.enable "ubridge";
+            lib.optional flags.enableDocker "docker"
+            ++ lib.optional flags.enableLibvirtd "libvirtd"
+            ++ lib.optional cfg.ubridge.enable "ubridge";
             User = "gns3";
             WorkingDirectory = "%S/gns3";
 

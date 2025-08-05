@@ -80,26 +80,26 @@ stdenv.mkDerivation (finalAttrs: {
   # doCheck = buildTests;
 
   postInstall =
-    lib.optionalString buildDocs ''
-      mkdir -p $doc
-    ''
-    + lib.optionalString buildTests ''
-      mkdir -p $test/bin
-      # Not sure why this is an install target
-      find $out/test -executable -type f -exec mv {} $test/bin \;
-      rm $test/bin/{*.sh,*.py}
-      patchelf --set-rpath $out/lib:${
-        lib.makeLibraryPath (
-          finalAttrs.buildInputs
-          ++ [
-            clr
-            gcc-unwrapped.lib
-            rocm-runtime
-          ]
-        )
-      } $test/bin/*
-      rm -rf $out/test
-    '';
+  lib.optionalString buildDocs ''
+    mkdir -p $doc
+  ''
+  + lib.optionalString buildTests ''
+    mkdir -p $test/bin
+    # Not sure why this is an install target
+    find $out/test -executable -type f -exec mv {} $test/bin \;
+    rm $test/bin/{*.sh,*.py}
+    patchelf --set-rpath $out/lib:${
+      lib.makeLibraryPath (
+        finalAttrs.buildInputs
+        ++ [
+          clr
+          gcc-unwrapped.lib
+          rocm-runtime
+        ]
+      )
+    } $test/bin/*
+    rm -rf $out/test
+  '';
 
   passthru.updateScript = rocmUpdateScript {
     name = finalAttrs.pname;

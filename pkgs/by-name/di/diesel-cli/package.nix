@@ -54,9 +54,9 @@ rustPlatform.buildRustPackage rec {
 
   buildNoDefaultFeatures = true;
   buildFeatures =
-    lib.optional sqliteSupport "sqlite"
-    ++ lib.optional postgresqlSupport "postgres"
-    ++ lib.optional mysqlSupport "mysql";
+  lib.optional sqliteSupport "sqlite"
+  ++ lib.optional postgresqlSupport "postgres"
+  ++ lib.optional mysqlSupport "mysql";
 
   checkFlags = [
     # all of these require a live database to be running

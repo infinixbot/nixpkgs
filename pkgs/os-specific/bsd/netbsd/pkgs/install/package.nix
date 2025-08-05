@@ -39,11 +39,11 @@ mkDerivation {
   ];
   skipIncludesPhase = true;
   buildInputs =
-    compatIfNeeded
-    # fts header is needed. glibc already has this header, but musl doesn't,
-    # so make sure pkgsMusl.netbsd.install still builds in case you want to
-    # remove it!
-    ++ [ fts ];
+  compatIfNeeded
+  # fts header is needed. glibc already has this header, but musl doesn't,
+  # so make sure pkgsMusl.netbsd.install still builds in case you want to
+  # remove it!
+  ++ [ fts ];
   installPhase = ''
     runHook preInstall
 

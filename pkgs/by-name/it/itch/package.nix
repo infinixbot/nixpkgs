@@ -22,14 +22,14 @@ let
 
   sparseCheckout = "/release/images/itch-icons";
   icons =
-    fetchFromGitHub {
-      owner = "itchio";
-      repo = "itch";
-      rev = "v${version}";
-      hash = "sha256-jugg+hdP0y0OkFhdQuEI9neWDuNf2p3+DQuwxe09Zck=";
-      sparseCheckout = [ sparseCheckout ];
-    }
-    + sparseCheckout;
+  fetchFromGitHub {
+    owner = "itchio";
+    repo = "itch";
+    rev = "v${version}";
+    hash = "sha256-jugg+hdP0y0OkFhdQuEI9neWDuNf2p3+DQuwxe09Zck=";
+    sparseCheckout = [ sparseCheckout ];
+  }
+  + sparseCheckout;
 in
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "itch";

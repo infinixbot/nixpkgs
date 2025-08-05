@@ -670,15 +670,15 @@ in
         "forgejo-secrets.service"
       ];
       requires =
-        optionals (cfg.database.createDatabase && usePostgresql) [
-          "postgresql.target"
-        ]
-        ++ optionals (cfg.database.createDatabase && useMysql) [
-          "mysql.service"
-        ]
-        ++ optionals (!cfg.useWizard) [
-          "forgejo-secrets.service"
-        ];
+      optionals (cfg.database.createDatabase && usePostgresql) [
+        "postgresql.target"
+      ]
+      ++ optionals (cfg.database.createDatabase && useMysql) [
+        "mysql.service"
+      ]
+      ++ optionals (!cfg.useWizard) [
+        "forgejo-secrets.service"
+      ];
       wantedBy = [ "multi-user.target" ];
       path = [
         cfg.package
@@ -821,8 +821,8 @@ in
         Type = "oneshot";
         User = cfg.user;
         ExecStart =
-          "${exe} dump --type ${cfg.dump.type}"
-          + optionalString (cfg.dump.file != null) " --file ${cfg.dump.file}";
+        "${exe} dump --type ${cfg.dump.type}"
+        + optionalString (cfg.dump.file != null) " --file ${cfg.dump.file}";
         WorkingDirectory = cfg.dump.backupDir;
       };
     };

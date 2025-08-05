@@ -35,11 +35,11 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ updateAutotoolsGnuConfigScriptsHook ] ++ lib.optionals withCMake [ cmake ];
 
   cmakeFlags =
-    [ ]
-    ++ lib.optionals stdenv.hostPlatform.isStatic [
-      "-DCARES_SHARED=OFF"
-      "-DCARES_STATIC=ON"
-    ];
+  [ ]
+  ++ lib.optionals stdenv.hostPlatform.isStatic [
+    "-DCARES_SHARED=OFF"
+    "-DCARES_STATIC=ON"
+  ];
 
   enableParallelBuilding = true;
 

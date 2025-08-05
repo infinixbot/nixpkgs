@@ -9,19 +9,19 @@ let
   # way to select one or the other setting other than editing the file
   # manually, so we have to duplicate the know how here.
   systemFlags =
-    lib.optionalString stdenv.hostPlatform.isDarwin ''
-      CFLAGS="-O2 -Wall -fomit-frame-pointer -no-cpp-precomp"
-      LDFLAGS=
-    ''
-    + lib.optionalString stdenv.hostPlatform.isCygwin ''
-      CFLAGS="-O2 -Wall -fomit-frame-pointer"
-      LDFLAGS=-s
-      TREE_DEST=tree.exe
-    ''
-    + lib.optionalString (stdenv.hostPlatform.isFreeBSD || stdenv.hostPlatform.isOpenBSD) ''
-      CFLAGS="-O2 -Wall -fomit-frame-pointer"
-      LDFLAGS=-s
-    ''; # use linux flags by default
+  lib.optionalString stdenv.hostPlatform.isDarwin ''
+    CFLAGS="-O2 -Wall -fomit-frame-pointer -no-cpp-precomp"
+    LDFLAGS=
+  ''
+  + lib.optionalString stdenv.hostPlatform.isCygwin ''
+    CFLAGS="-O2 -Wall -fomit-frame-pointer"
+    LDFLAGS=-s
+    TREE_DEST=tree.exe
+  ''
+  + lib.optionalString (stdenv.hostPlatform.isFreeBSD || stdenv.hostPlatform.isOpenBSD) ''
+    CFLAGS="-O2 -Wall -fomit-frame-pointer"
+    LDFLAGS=-s
+  ''; # use linux flags by default
 in
 stdenv.mkDerivation rec {
   pname = "tree";

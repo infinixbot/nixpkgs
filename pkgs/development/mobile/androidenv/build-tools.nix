@@ -17,20 +17,20 @@ deployAndroidPackage {
   inherit package os arch;
   nativeBuildInputs = [ makeWrapper ] ++ lib.optionals (os == "linux") [ autoPatchelfHook ];
   buildInputs =
-    lib.optionals (os == "linux") [
-      pkgs.glibc
-      pkgs.zlib
-      pkgs.ncurses5
-      pkgs.libcxx
+  lib.optionals (os == "linux") [
+    pkgs.glibc
+    pkgs.zlib
+    pkgs.ncurses5
+    pkgs.libcxx
+  ]
+  ++ lib.optionals (os == "linux" && stdenv.hostPlatform.isx86_64) (
+    with pkgsi686Linux;
+    [
+      glibc
+      zlib
+      ncurses5
     ]
-    ++ lib.optionals (os == "linux" && stdenv.hostPlatform.isx86_64) (
-      with pkgsi686Linux;
-      [
-        glibc
-        zlib
-        ncurses5
-      ]
-    );
+  );
   patchInstructions = ''
     ${lib.optionalString (os == "linux") ''
       addAutoPatchelfSearchPath $packageBaseDir/lib

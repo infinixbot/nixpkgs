@@ -61,14 +61,14 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   postInstall =
-    lib.optionalString (!isFullBuild) ''
-      substituteAll ${./libc-shim.tpl} $out/lib/libc.so
-    ''
-    # LLVM libc doesn't recognize static vs dynamic yet.
-    # Treat LLVM libc as a static libc, requires this symlink until upstream fixes it.
-    + lib.optionalString (isFullBuild && stdenv.hostPlatform.isLinux) ''
-      ln $out/lib/crt1.o $out/lib/Scrt1.o
-    '';
+  lib.optionalString (!isFullBuild) ''
+    substituteAll ${./libc-shim.tpl} $out/lib/libc.so
+  ''
+  # LLVM libc doesn't recognize static vs dynamic yet.
+  # Treat LLVM libc as a static libc, requires this symlink until upstream fixes it.
+  + lib.optionalString (isFullBuild && stdenv.hostPlatform.isLinux) ''
+    ln $out/lib/crt1.o $out/lib/Scrt1.o
+  '';
 
   libc = if (!isFullBuild) then stdenv.cc.libc else null;
 

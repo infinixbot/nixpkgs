@@ -159,11 +159,11 @@ in
           # Upstream Requirements
           LimitNOFILE = 65536;
           StateDirectory =
-            [ ]
-            ++ optional (cfg.stateDir == defaultstateDir) "galene"
-            ++ optional (cfg.dataDir == defaultdataDir) "galene/data"
-            ++ optional (cfg.groupsDir == defaultgroupsDir) "galene/groups"
-            ++ optional (cfg.recordingsDir == defaultrecordingsDir) "galene/recordings";
+          [ ]
+          ++ optional (cfg.stateDir == defaultstateDir) "galene"
+          ++ optional (cfg.dataDir == defaultdataDir) "galene/data"
+          ++ optional (cfg.groupsDir == defaultgroupsDir) "galene/groups"
+          ++ optional (cfg.recordingsDir == defaultrecordingsDir) "galene/recordings";
 
           # Hardening
           CapabilityBoundingSet = [ "" ];

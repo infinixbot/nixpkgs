@@ -33,20 +33,20 @@ let
   sites = builtins.attrNames mirrors;
 
   impureEnvVars =
-    lib.fetchers.proxyImpureEnvVars
-    ++ [
-      # This variable allows the user to pass additional options to curl
-      "NIX_CURL_FLAGS"
+  lib.fetchers.proxyImpureEnvVars
+  ++ [
+    # This variable allows the user to pass additional options to curl
+    "NIX_CURL_FLAGS"
 
-      # This variable allows the user to override hashedMirrors from the
-      # command-line.
-      "NIX_HASHED_MIRRORS"
+    # This variable allows the user to override hashedMirrors from the
+    # command-line.
+    "NIX_HASHED_MIRRORS"
 
-      # This variable allows overriding the timeout for connecting to
-      # the hashed mirrors.
-      "NIX_CONNECT_TIMEOUT"
-    ]
-    ++ (map (site: "NIX_MIRRORS_${site}") sites);
+    # This variable allows overriding the timeout for connecting to
+    # the hashed mirrors.
+    "NIX_CONNECT_TIMEOUT"
+  ]
+  ++ (map (site: "NIX_MIRRORS_${site}") sites);
 
 in
 

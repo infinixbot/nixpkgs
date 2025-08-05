@@ -192,34 +192,34 @@ let
     '';
 
     preConfigure =
-      # Copy libboost_context so we don't get all of Boost in our closure.
-      # https://github.com/NixOS/nixpkgs/issues/45462
-      lib.optionalString (!enableStatic) ''
-        mkdir -p $out/lib
-        cp -pd ${boost}/lib/{libboost_context*,libboost_thread*,libboost_system*} $out/lib
-        rm -f $out/lib/*.a
-        ${lib.optionalString stdenv.hostPlatform.isLinux ''
-          chmod u+w $out/lib/*.so.*
-          patchelf --set-rpath $out/lib:${lib.getLib stdenv.cc.cc}/lib $out/lib/libboost_thread.so.*
-        ''}
-      ''
-      +
-        # On all versions before c9f51e87057652db0013289a95deffba495b35e7, which
-        # removes config.nix entirely and is not present in 2.3.x, we need to
-        # patch around an issue where the Nix configure step pulls in the build
-        # system's bash and other utilities when cross-compiling.
-        lib.optionalString (stdenv.buildPlatform != stdenv.hostPlatform && !atLeast224) ''
-          mkdir tmp/
-          substitute corepkgs/config.nix.in tmp/config.nix.in \
-            --subst-var-by bash ${bash}/bin/bash \
-            --subst-var-by coreutils ${coreutils}/bin \
-            --subst-var-by bzip2 ${bzip2}/bin/bzip2 \
-            --subst-var-by gzip ${gzip}/bin/gzip \
-            --subst-var-by xz ${xz}/bin/xz \
-            --subst-var-by tar ${gnutar}/bin/tar \
-            --subst-var-by tr ${coreutils}/bin/tr
-          mv tmp/config.nix.in corepkgs/config.nix.in
-        '';
+    # Copy libboost_context so we don't get all of Boost in our closure.
+    # https://github.com/NixOS/nixpkgs/issues/45462
+    lib.optionalString (!enableStatic) ''
+      mkdir -p $out/lib
+      cp -pd ${boost}/lib/{libboost_context*,libboost_thread*,libboost_system*} $out/lib
+      rm -f $out/lib/*.a
+      ${lib.optionalString stdenv.hostPlatform.isLinux ''
+        chmod u+w $out/lib/*.so.*
+        patchelf --set-rpath $out/lib:${lib.getLib stdenv.cc.cc}/lib $out/lib/libboost_thread.so.*
+      ''}
+    ''
+    +
+      # On all versions before c9f51e87057652db0013289a95deffba495b35e7, which
+      # removes config.nix entirely and is not present in 2.3.x, we need to
+      # patch around an issue where the Nix configure step pulls in the build
+      # system's bash and other utilities when cross-compiling.
+      lib.optionalString (stdenv.buildPlatform != stdenv.hostPlatform && !atLeast224) ''
+        mkdir tmp/
+        substitute corepkgs/config.nix.in tmp/config.nix.in \
+          --subst-var-by bash ${bash}/bin/bash \
+          --subst-var-by coreutils ${coreutils}/bin \
+          --subst-var-by bzip2 ${bzip2}/bin/bzip2 \
+          --subst-var-by gzip ${gzip}/bin/gzip \
+          --subst-var-by xz ${xz}/bin/xz \
+          --subst-var-by tar ${gnutar}/bin/tar \
+          --subst-var-by tr ${coreutils}/bin/tr
+        mv tmp/config.nix.in corepkgs/config.nix.in
+      '';
 
     configureFlags = [
       "--with-store-dir=${storeDir}"
@@ -279,25 +279,25 @@ let
 
     # socket path becomes too long otherwise
     preInstallCheck =
-      lib.optionalString stdenv.hostPlatform.isDarwin ''
-        export TMPDIR=$NIX_BUILD_TOP
-      ''
-      # Prevent crashes in libcurl due to invoking Objective-C `+initialize` methods after `fork`.
-      # See http://sealiesoftware.com/blog/archive/2017/6/5/Objective-C_and_fork_in_macOS_1013.html.
-      + lib.optionalString stdenv.hostPlatform.isDarwin ''
-        export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
-      ''
-      # See https://github.com/NixOS/nix/issues/5687
-      + lib.optionalString (atLeast224 && stdenv.hostPlatform.isDarwin) ''
-        echo "exit 99" > tests/gc-non-blocking.sh
-      '' # TODO: investigate why this broken
-      + lib.optionalString (atLeast224 && stdenv.hostPlatform.system == "aarch64-linux") ''
-        echo "exit 0" > tests/functional/flakes/show.sh
-      ''
-      + ''
-        # nixStatic otherwise does not find its man pages in tests.
-        export MANPATH=$man/share/man:$MANPATH
-      '';
+    lib.optionalString stdenv.hostPlatform.isDarwin ''
+      export TMPDIR=$NIX_BUILD_TOP
+    ''
+    # Prevent crashes in libcurl due to invoking Objective-C `+initialize` methods after `fork`.
+    # See http://sealiesoftware.com/blog/archive/2017/6/5/Objective-C_and_fork_in_macOS_1013.html.
+    + lib.optionalString stdenv.hostPlatform.isDarwin ''
+      export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+    ''
+    # See https://github.com/NixOS/nix/issues/5687
+    + lib.optionalString (atLeast224 && stdenv.hostPlatform.isDarwin) ''
+      echo "exit 99" > tests/gc-non-blocking.sh
+    '' # TODO: investigate why this broken
+    + lib.optionalString (atLeast224 && stdenv.hostPlatform.system == "aarch64-linux") ''
+      echo "exit 0" > tests/functional/flakes/show.sh
+    ''
+    + ''
+      # nixStatic otherwise does not find its man pages in tests.
+      export MANPATH=$man/share/man:$MANPATH
+    '';
 
     separateDebugInfo = stdenv.hostPlatform.isLinux && (atLeast224 -> !enableStatic);
 

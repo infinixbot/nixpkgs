@@ -373,14 +373,14 @@ let
           "frugal-uuid/test"
         ];
         lispLibs =
-          o.lispLibs
-          ++ (with self; [
-            ironclad
-            babel
-            trivial-clock
-            trivial-benchmark
-            fiveam
-          ]);
+        o.lispLibs
+        ++ (with self; [
+          ironclad
+          babel
+          trivial-clock
+          trivial-benchmark
+          fiveam
+        ]);
       });
 
       duckdb = super.duckdb.overrideLispAttrs (o: {

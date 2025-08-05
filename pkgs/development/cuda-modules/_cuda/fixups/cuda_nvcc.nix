@@ -28,31 +28,31 @@ prevAttrs: {
   # backend-stdenv.nix
 
   postPatch =
-    prevAttrs.postPatch or ""
-    + ''
-      substituteInPlace bin/nvcc.profile \
-        --replace-fail \
-          '$(TOP)/$(_TARGET_DIR_)/include' \
-          "''${!outputDev}/include"
-    ''
-    # Additional patching required pre-CUDA 12.5.
-    + lib.optionalString (cudaOlder "12.5") ''
-      substituteInPlace bin/nvcc.profile \
-        --replace-fail \
-          '$(TOP)/$(_NVVM_BRANCH_)' \
-          "''${!outputBin}/nvvm"
-    ''
-    + ''
-      cat << EOF >> bin/nvcc.profile
+  prevAttrs.postPatch or ""
+  + ''
+    substituteInPlace bin/nvcc.profile \
+      --replace-fail \
+        '$(TOP)/$(_TARGET_DIR_)/include' \
+        "''${!outputDev}/include"
+  ''
+  # Additional patching required pre-CUDA 12.5.
+  + lib.optionalString (cudaOlder "12.5") ''
+    substituteInPlace bin/nvcc.profile \
+      --replace-fail \
+        '$(TOP)/$(_NVVM_BRANCH_)' \
+        "''${!outputBin}/nvvm"
+  ''
+  + ''
+    cat << EOF >> bin/nvcc.profile
 
-      # Fix a compatible backend compiler
-      PATH += "${backendStdenv.cc}/bin":
+    # Fix a compatible backend compiler
+    PATH += "${backendStdenv.cc}/bin":
 
-      # Expose the split-out nvvm
-      LIBRARIES =+ "-L''${!outputBin}/nvvm/lib"
-      INCLUDES =+ "-I''${!outputBin}/nvvm/include"
-      EOF
-    '';
+    # Expose the split-out nvvm
+    LIBRARIES =+ "-L''${!outputBin}/nvvm/lib"
+    INCLUDES =+ "-I''${!outputBin}/nvvm/include"
+    EOF
+  '';
 
   # Entries here will be in nativeBuildInputs when cuda_nvcc is in nativeBuildInputs.
   propagatedBuildInputs = prevAttrs.propagatedBuildInputs or [ ] ++ [ setupCudaHook ];

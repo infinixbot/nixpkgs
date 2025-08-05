@@ -116,8 +116,8 @@ stdenv.mkDerivation (finalAttrs: {
 
   dontStrip = true;
   env.CXXFLAGS =
-    "-O3 -DNDEBUG -I${hipblas-common}/include"
-    + lib.optionalString (buildTests || buildBenchmarks) " -I${amd-blis}/include/blis";
+  "-O3 -DNDEBUG -I${hipblas-common}/include"
+  + lib.optionalString (buildTests || buildBenchmarks) " -I${amd-blis}/include/blis";
   # Fails to link tests if we don't add amd-blis libs
   env.LDFLAGS = lib.optionalString (
     buildTests || buildBenchmarks

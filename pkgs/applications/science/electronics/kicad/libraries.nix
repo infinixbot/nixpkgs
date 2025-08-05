@@ -26,12 +26,12 @@ let
       ];
 
       postInstall =
-        lib.optionalString (name == "packages3d") ''
-          find $out -type f -name '*.step' | parallel 'stepreduce {} {} && zip -9 {.}.stpZ {} && rm {}'
-        ''
-        + lib.optionalString (name == "footprints") ''
-          grep -rl '\.step' $out | xargs sed -i 's/\.step/.stpZ/g'
-        '';
+      lib.optionalString (name == "packages3d") ''
+        find $out -type f -name '*.step' | parallel 'stepreduce {} {} && zip -9 {.}.stpZ {} && rm {}'
+      ''
+      + lib.optionalString (name == "footprints") ''
+        grep -rl '\.step' $out | xargs sed -i 's/\.step/.stpZ/g'
+      '';
 
       meta = {
         license = lib.licenses.cc-by-sa-40;

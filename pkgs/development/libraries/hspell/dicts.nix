@@ -19,12 +19,12 @@ let
         buildFlags = [ variant ];
 
         meta =
-          hspell.meta
-          // {
-            broken = true;
-            description = "${variant} Hebrew dictionary";
-          }
-          // (lib.optionalAttrs (a ? meta) a.meta);
+        hspell.meta
+        // {
+          broken = true;
+          description = "${variant} Hebrew dictionary";
+        }
+        // (lib.optionalAttrs (a ? meta) a.meta);
       }
       // (removeAttrs a [ "meta" ])
     );

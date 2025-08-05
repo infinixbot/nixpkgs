@@ -16,13 +16,13 @@
 
 let
   soundDependencies =
-    lib.optionals stdenv.hostPlatform.isLinux [
-      alsa-lib
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      # bindgenHook is only included on darwin as it is needed to build `coreaudio-sys`, a darwin-specific crate
-      rustPlatform.bindgenHook
-    ];
+  lib.optionals stdenv.hostPlatform.isLinux [
+    alsa-lib
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    # bindgenHook is only included on darwin as it is needed to build `coreaudio-sys`, a darwin-specific crate
+    rustPlatform.bindgenHook
+  ];
 in
 
 rustPlatform.buildRustPackage (finalAttrs: {

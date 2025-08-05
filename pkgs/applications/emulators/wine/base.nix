@@ -87,8 +87,8 @@ stdenv.mkDerivation (
     inherit version src;
 
     pname =
-      prevName
-      + lib.optionalString (wineRelease != "stable" && wineRelease != "unstable") "-${wineRelease}";
+    prevName
+    + lib.optionalString (wineRelease != "stable" && wineRelease != "unstable") "-${wineRelease}";
 
     # Fixes "Compiler cannot create executables" building wineWow with mingwSupport
     strictDeps = true;
@@ -201,12 +201,12 @@ stdenv.mkDerivation (
     inherit patches;
 
     configureFlags =
-      prevConfigFlags
-      ++ lib.optionals supportFlags.waylandSupport [ "--with-wayland" ]
-      ++ lib.optionals supportFlags.vulkanSupport [ "--with-vulkan" ]
-      ++ lib.optionals (
-        (stdenv.hostPlatform.isDarwin && !supportFlags.xineramaSupport) || !supportFlags.x11Support
-      ) [ "--without-x" ];
+    prevConfigFlags
+    ++ lib.optionals supportFlags.waylandSupport [ "--with-wayland" ]
+    ++ lib.optionals supportFlags.vulkanSupport [ "--with-vulkan" ]
+    ++ lib.optionals (
+      (stdenv.hostPlatform.isDarwin && !supportFlags.xineramaSupport) || !supportFlags.x11Support
+    ) [ "--without-x" ];
 
     # Wine locates a lot of libraries dynamically through dlopen().  Add
     # them to the RPATH so that the user doesn't have to set them in

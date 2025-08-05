@@ -453,10 +453,10 @@ let
     preConfigure =
       let
         opt_flags =
-          [ ]
-          ++ lib.optionals sse42Support [ "-msse4.2" ]
-          ++ lib.optionals avx2Support [ "-mavx2" ]
-          ++ lib.optionals fmaSupport [ "-mfma" ];
+        [ ]
+        ++ lib.optionals sse42Support [ "-msse4.2" ]
+        ++ lib.optionals avx2Support [ "-mavx2" ]
+        ++ lib.optionals fmaSupport [ "-mfma" ];
       in
       ''
         patchShebangs configure

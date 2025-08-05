@@ -17,8 +17,8 @@ let
   verifyChainPathAssert = n: c: {
     assertion = (c.verifyHostname or null) == null || (c.verifyChain || c.verifyPeer);
     message =
-      "stunnel: \"${n}\" client configuration - hostname verification "
-      + "is not possible without either verifyChain or verifyPeer enabled";
+    "stunnel: \"${n}\" client configuration - hostname verification "
+    + "is not possible without either verifyChain or verifyPeer enabled";
   };
 
   removeNulls = lib.mapAttrs (_: lib.filterAttrs (_: v: v != null));

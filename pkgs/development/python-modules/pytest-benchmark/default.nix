@@ -66,18 +66,18 @@ buildPythonPackage rec {
   '';
 
   disabledTests =
-    lib.optionals (pythonOlder "3.12") [
-      # AttributeError: 'PluginImportFixer' object has no attribute 'find_spec'
-      "test_compare_1"
-      "test_compare_2"
-      "test_regression_checks"
-      "test_regression_checks_inf"
-      "test_rendering"
-    ]
-    ++ lib.optionals (pythonAtLeast "3.13") [
-      # argparse usage changes mismatches test artifact
-      "test_help"
-    ];
+  lib.optionals (pythonOlder "3.12") [
+    # AttributeError: 'PluginImportFixer' object has no attribute 'find_spec'
+    "test_compare_1"
+    "test_compare_2"
+    "test_regression_checks"
+    "test_regression_checks_inf"
+    "test_rendering"
+  ]
+  ++ lib.optionals (pythonAtLeast "3.13") [
+    # argparse usage changes mismatches test artifact
+    "test_help"
+  ];
 
   meta = {
     changelog = "https://github.com/ionelmc/pytest-benchmark/blob/${src.rev}/CHANGELOG.rst";

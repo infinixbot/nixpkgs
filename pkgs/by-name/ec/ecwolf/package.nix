@@ -58,14 +58,14 @@ stdenv.mkDerivation (finalAttrs: {
   # ECWolf installs its binary to the games/ directory, but Nix only adds bin/
   # directories to the PATH.
   postInstall =
-    lib.optionalString stdenv.hostPlatform.isLinux ''
-      mv "$out/games" "$out/bin"
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      mkdir -p $out/{Applications,bin}
-      cp -R ecwolf.app $out/Applications
-      makeWrapper $out/{Applications/ecwolf.app/Contents/MacOS,bin}/ecwolf
-    '';
+  lib.optionalString stdenv.hostPlatform.isLinux ''
+    mv "$out/games" "$out/bin"
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    mkdir -p $out/{Applications,bin}
+    cp -R ecwolf.app $out/Applications
+    makeWrapper $out/{Applications/ecwolf.app/Contents/MacOS,bin}/ecwolf
+  '';
 
   passthru.updateScript =
     let

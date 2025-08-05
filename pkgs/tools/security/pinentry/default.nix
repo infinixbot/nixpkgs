@@ -109,16 +109,16 @@ let
       ++ (map enableFeaturePinentry (lib.attrNames flavorInfo));
 
       postInstall =
-        lib.optionalString (lib.elem "gnome3" buildFlavors) ''
-          wrapGApp $out/bin/pinentry-gnome3
-        ''
-        + lib.optionalString (lib.elem "qt5" buildFlavors) ''
-          wrapQtApp $out/bin/pinentry-qt5
-          ln -sf $out/bin/pinentry-qt5 $out/bin/pinentry-qt
-        ''
-        + lib.optionalString (lib.elem "qt" buildFlavors) ''
-          wrapQtApp $out/bin/pinentry-qt
-        '';
+      lib.optionalString (lib.elem "gnome3" buildFlavors) ''
+        wrapGApp $out/bin/pinentry-gnome3
+      ''
+      + lib.optionalString (lib.elem "qt5" buildFlavors) ''
+        wrapQtApp $out/bin/pinentry-qt5
+        ln -sf $out/bin/pinentry-qt5 $out/bin/pinentry-qt
+      ''
+      + lib.optionalString (lib.elem "qt" buildFlavors) ''
+        wrapQtApp $out/bin/pinentry-qt
+      '';
 
       passthru = {
         flavors = buildFlavors;

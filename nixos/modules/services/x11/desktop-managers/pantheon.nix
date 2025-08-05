@@ -193,49 +193,49 @@ in
 
       # Global environment
       environment.systemPackages =
-        (with pkgs.pantheon; [
-          elementary-bluetooth-daemon
-          elementary-session-settings
-          elementary-settings-daemon
-          gala
-          gnome-settings-daemon
-          (switchboard-with-plugs.override {
-            plugs = cfg.extraSwitchboardPlugs;
-          })
-          (wingpanel-with-indicators.override {
-            indicators = cfg.extraWingpanelIndicators;
-          })
+      (with pkgs.pantheon; [
+        elementary-bluetooth-daemon
+        elementary-session-settings
+        elementary-settings-daemon
+        gala
+        gnome-settings-daemon
+        (switchboard-with-plugs.override {
+          plugs = cfg.extraSwitchboardPlugs;
+        })
+        (wingpanel-with-indicators.override {
+          indicators = cfg.extraWingpanelIndicators;
+        })
+      ])
+      ++ utils.removePackagesByName (
+        (with pkgs; [
+          desktop-file-utils
+          glib # for gsettings program
+          gnome-menus
+          adwaita-icon-theme
+          gtk3.out # for gtk-launch program
+          onboard
+          sound-theme-freedesktop
+          xdg-user-dirs # Update user dirs as described in https://freedesktop.org/wiki/Software/xdg-user-dirs/
         ])
-        ++ utils.removePackagesByName (
-          (with pkgs; [
-            desktop-file-utils
-            glib # for gsettings program
-            gnome-menus
-            adwaita-icon-theme
-            gtk3.out # for gtk-launch program
-            onboard
-            sound-theme-freedesktop
-            xdg-user-dirs # Update user dirs as described in https://freedesktop.org/wiki/Software/xdg-user-dirs/
-          ])
-          ++ (with pkgs.pantheon; [
-            # Artwork
-            elementary-gtk-theme
-            elementary-icon-theme
-            elementary-sound-theme
-            elementary-wallpapers
+        ++ (with pkgs.pantheon; [
+          # Artwork
+          elementary-gtk-theme
+          elementary-icon-theme
+          elementary-sound-theme
+          elementary-wallpapers
 
-            # Desktop
-            elementary-default-settings
-            elementary-dock
-            elementary-shortcut-overlay
+          # Desktop
+          elementary-default-settings
+          elementary-dock
+          elementary-shortcut-overlay
 
-            # Services
-            elementary-capnet-assist
-            elementary-notifications
-            pantheon-agent-geoclue2
-            pantheon-agent-polkit
-          ])
-        ) config.environment.pantheon.excludePackages;
+          # Services
+          elementary-capnet-assist
+          elementary-notifications
+          pantheon-agent-geoclue2
+          pantheon-agent-polkit
+        ])
+      ) config.environment.pantheon.excludePackages;
 
       # Settings from elementary-default-settings
       # GTK4 will try both $XDG_CONFIG_DIRS/gtk-4.0 and ${gtk4}/etc/gtk-4.0, but not /etc/gtk-4.0.

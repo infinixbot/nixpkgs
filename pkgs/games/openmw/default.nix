@@ -35,23 +35,23 @@ let
       })
     ];
     cmakeFlags =
-      (old.cmakeFlags or [ ])
-      ++ [
-        "-Wno-dev"
-        "-DOpenGL_GL_PREFERENCE=${GL}"
-        "-DBUILD_OSG_PLUGINS_BY_DEFAULT=0"
-        "-DBUILD_OSG_DEPRECATED_SERIALIZERS=0"
-      ]
-      ++ (map (e: "-DBUILD_OSG_PLUGIN_${e}=1") [
-        "BMP"
-        "DAE"
-        "DDS"
-        "FREETYPE"
-        "JPEG"
-        "OSG"
-        "PNG"
-        "TGA"
-      ]);
+    (old.cmakeFlags or [ ])
+    ++ [
+      "-Wno-dev"
+      "-DOpenGL_GL_PREFERENCE=${GL}"
+      "-DBUILD_OSG_PLUGINS_BY_DEFAULT=0"
+      "-DBUILD_OSG_DEPRECATED_SERIALIZERS=0"
+    ]
+    ++ (map (e: "-DBUILD_OSG_PLUGIN_${e}=1") [
+      "BMP"
+      "DAE"
+      "DDS"
+      "FREETYPE"
+      "JPEG"
+      "OSG"
+      "PNG"
+      "TGA"
+    ]);
   });
 
   bullet' = bullet.overrideDerivation (old: {

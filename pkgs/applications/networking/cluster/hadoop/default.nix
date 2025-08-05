@@ -43,9 +43,9 @@ let
       version = platformAttrs.${stdenv.system}.version or (throw "Unsupported system: ${stdenv.system}");
       src = fetchurl {
         url =
-          "mirror://apache/hadoop/common/hadoop-${finalAttrs.version}/hadoop-${finalAttrs.version}"
-          + lib.optionalString stdenv.hostPlatform.isAarch64 "-aarch64"
-          + ".tar.gz";
+        "mirror://apache/hadoop/common/hadoop-${finalAttrs.version}/hadoop-${finalAttrs.version}"
+        + lib.optionalString stdenv.hostPlatform.isAarch64 "-aarch64"
+        + ".tar.gz";
         inherit (platformAttrs.${stdenv.system} or (throw "Unsupported system: ${stdenv.system}"))
           hash
           ;

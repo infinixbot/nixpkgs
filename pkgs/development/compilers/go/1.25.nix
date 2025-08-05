@@ -37,9 +37,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
   buildInputs =
-    [ ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [ stdenv.cc.libc.out ]
-    ++ lib.optionals (stdenv.hostPlatform.libc == "glibc") [ stdenv.cc.libc.static ];
+  [ ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [ stdenv.cc.libc.out ]
+  ++ lib.optionals (stdenv.hostPlatform.libc == "glibc") [ stdenv.cc.libc.static ];
 
   depsTargetTargetPropagated = lib.optionals stdenv.targetPlatform.isDarwin [
     apple-sdk_12

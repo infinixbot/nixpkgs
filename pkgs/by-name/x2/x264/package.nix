@@ -37,20 +37,20 @@ stdenv.mkDerivation {
   ];
 
   preConfigure =
-    lib.optionalString stdenv.hostPlatform.isx86 ''
-      # `AS' is set to the binutils assembler, but we need nasm
-      unset AS
-    ''
-    + lib.optionalString (stdenv.hostPlatform.isAarch || stdenv.hostPlatform.isLoongArch64) ''
-      export AS=$CC
-    '';
+  lib.optionalString stdenv.hostPlatform.isx86 ''
+    # `AS' is set to the binutils assembler, but we need nasm
+    unset AS
+  ''
+  + lib.optionalString (stdenv.hostPlatform.isAarch || stdenv.hostPlatform.isLoongArch64) ''
+    export AS=$CC
+  '';
 
   configureFlags =
-    lib.optional enableShared "--enable-shared"
-    ++ lib.optional (!stdenv.hostPlatform.isi686) "--enable-pic"
-    ++ lib.optional (
-      stdenv.buildPlatform != stdenv.hostPlatform
-    ) "--cross-prefix=${stdenv.cc.targetPrefix}";
+  lib.optional enableShared "--enable-shared"
+  ++ lib.optional (!stdenv.hostPlatform.isi686) "--enable-pic"
+  ++ lib.optional (
+    stdenv.buildPlatform != stdenv.hostPlatform
+  ) "--cross-prefix=${stdenv.cc.targetPrefix}";
 
   makeFlags = [
     "BASHCOMPLETIONSDIR=$(out)/share/bash-completion/completions"

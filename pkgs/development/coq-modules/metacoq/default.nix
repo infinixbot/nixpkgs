@@ -149,26 +149,26 @@ let
                 '';
 
             configurePhase =
-              lib.optionalString (package == "all") pkgallMake
-              + ''
-                touch ${pkgpath}/metacoq-config
-              ''
-              +
-                lib.optionalString
-                  (lib.elem package [
-                    "erasure"
-                    "template-pcuic"
-                    "quotation"
-                    "safechecker-plugin"
-                    "erasure-plugin"
-                    "translations"
-                  ])
-                  ''
-                    echo  "-I ${template-coq}/lib/coq/${coq.coq-version}/user-contrib/MetaCoq/Template/" > ${pkgpath}/metacoq-config
-                  ''
-              + lib.optionalString (package == "single") ''
-                ./configure.sh local
-              '';
+            lib.optionalString (package == "all") pkgallMake
+            + ''
+              touch ${pkgpath}/metacoq-config
+            ''
+            +
+              lib.optionalString
+                (lib.elem package [
+                  "erasure"
+                  "template-pcuic"
+                  "quotation"
+                  "safechecker-plugin"
+                  "erasure-plugin"
+                  "translations"
+                ])
+                ''
+                  echo  "-I ${template-coq}/lib/coq/${coq.coq-version}/user-contrib/MetaCoq/Template/" > ${pkgpath}/metacoq-config
+                ''
+            + lib.optionalString (package == "single") ''
+              ./configure.sh local
+            '';
 
             preBuild = ''
               cd ${pkgpath}
@@ -193,7 +193,7 @@ let
             in
             {
               propagatedBuildInputs =
-                o.propagatedBuildInputs ++ lib.optional requiresOcamlStdlibShims coq.ocamlPackages.stdlib-shims;
+              o.propagatedBuildInputs ++ lib.optional requiresOcamlStdlibShims coq.ocamlPackages.stdlib-shims;
             }
           );
       # utils, common, template-pcuic, quotation, safechecker-plugin, and erasure-plugin

@@ -115,16 +115,16 @@ vscode-utils.buildVscodeMarketplaceExtension {
   # On aarch64 the binaries are statically linked
   # but on x86 they are not.
   postFixup =
-    lib.optionalString isx86Linux ''
-      autoPatchelf $out/share/vscode/extensions/ms-vscode.cpptools/debugAdapters
-      # cpptools* are distributed by the extension and need to be run through the distributed musl interpretter
-      patchelf --set-interpreter $out/share/vscode/extensions/ms-vscode.cpptools/bin/libc.so $out/share/vscode/extensions/ms-vscode.cpptools/bin/cpptools
-      patchelf --set-interpreter $out/share/vscode/extensions/ms-vscode.cpptools/bin/libc.so $out/share/vscode/extensions/ms-vscode.cpptools/bin/cpptools-srv
-      patchelf --set-interpreter $out/share/vscode/extensions/ms-vscode.cpptools/bin/libc.so $out/share/vscode/extensions/ms-vscode.cpptools/bin/cpptools-wordexp
-    ''
-    + lib.optionalString gdbUseFixed ''
-      wrapProgram $out/share/vscode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7 --prefix PATH : ${lib.makeBinPath [ gdb ]}
-    '';
+  lib.optionalString isx86Linux ''
+    autoPatchelf $out/share/vscode/extensions/ms-vscode.cpptools/debugAdapters
+    # cpptools* are distributed by the extension and need to be run through the distributed musl interpretter
+    patchelf --set-interpreter $out/share/vscode/extensions/ms-vscode.cpptools/bin/libc.so $out/share/vscode/extensions/ms-vscode.cpptools/bin/cpptools
+    patchelf --set-interpreter $out/share/vscode/extensions/ms-vscode.cpptools/bin/libc.so $out/share/vscode/extensions/ms-vscode.cpptools/bin/cpptools-srv
+    patchelf --set-interpreter $out/share/vscode/extensions/ms-vscode.cpptools/bin/libc.so $out/share/vscode/extensions/ms-vscode.cpptools/bin/cpptools-wordexp
+  ''
+  + lib.optionalString gdbUseFixed ''
+    wrapProgram $out/share/vscode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7 --prefix PATH : ${lib.makeBinPath [ gdb ]}
+  '';
 
   meta = {
     description = "C/C++ extension adds language support for C/C++ to Visual Studio Code, including features such as IntelliSense and debugging";

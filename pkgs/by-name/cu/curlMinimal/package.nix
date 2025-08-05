@@ -144,26 +144,26 @@ stdenv.mkDerivation (finalAttrs: {
   # "-lz -lssl", which aren't necessary direct build inputs of
   # applications that use Curl.
   propagatedBuildInputs =
-    lib.optional brotliSupport brotli
-    ++ lib.optional c-aresSupport c-aresMinimal
-    ++ lib.optional gnutlsSupport gnutls
-    ++ lib.optional gsaslSupport gsasl
-    ++ lib.optional gssSupport libkrb5
-    ++ lib.optional http2Support nghttp2
-    ++ lib.optionals http3Support [
-      nghttp3
-      ngtcp2
-    ]
-    ++ lib.optional idnSupport libidn2
-    ++ lib.optional ldapSupport openldap
-    ++ lib.optional opensslSupport openssl'
-    ++ lib.optional pslSupport libpsl
-    ++ lib.optional rtmpSupport rtmpdump
-    ++ lib.optional scpSupport libssh2
-    ++ lib.optional wolfsslSupport wolfssl
-    ++ lib.optional rustlsSupport rustls-ffi
-    ++ lib.optional zlibSupport zlib
-    ++ lib.optional zstdSupport zstd;
+  lib.optional brotliSupport brotli
+  ++ lib.optional c-aresSupport c-aresMinimal
+  ++ lib.optional gnutlsSupport gnutls
+  ++ lib.optional gsaslSupport gsasl
+  ++ lib.optional gssSupport libkrb5
+  ++ lib.optional http2Support nghttp2
+  ++ lib.optionals http3Support [
+    nghttp3
+    ngtcp2
+  ]
+  ++ lib.optional idnSupport libidn2
+  ++ lib.optional ldapSupport openldap
+  ++ lib.optional opensslSupport openssl'
+  ++ lib.optional pslSupport libpsl
+  ++ lib.optional rtmpSupport rtmpdump
+  ++ lib.optional scpSupport libssh2
+  ++ lib.optional wolfsslSupport wolfssl
+  ++ lib.optional rustlsSupport rustls-ffi
+  ++ lib.optional zlibSupport zlib
+  ++ lib.optional zstdSupport zstd;
 
   # for the second line see https://curl.haxx.se/mail/tracker-2014-03/0087.html
   preConfigure = ''

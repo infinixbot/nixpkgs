@@ -676,9 +676,9 @@ in
         entityList =
           type: attrs: flip mapAttrsToList (filterPresent attrs) (name: _: { inherit type name; });
         entities =
-          entityList "group" cfg.provision.groups
-          ++ entityList "person" cfg.provision.persons
-          ++ entityList "oauth2" cfg.provision.systems.oauth2;
+        entityList "group" cfg.provision.groups
+        ++ entityList "person" cfg.provision.persons
+        ++ entityList "oauth2" cfg.provision.systems.oauth2;
 
         # Accumulate entities by name. Track corresponding entity types for later duplicate check.
         entitiesByName = foldl' (

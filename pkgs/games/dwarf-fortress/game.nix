@@ -104,14 +104,14 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = optional stdenv.hostPlatform.isLinux autoPatchelfHook;
   buildInputs =
-    optionals isAtLeast50 [
-      SDL2
-      SDL2_image
-      SDL2_mixer
-    ]
-    ++ optional (!isAtLeast50) SDL
-    ++ optional enableUnfuck dwarf-fortress-unfuck
-    ++ [ (lib.getLib stdenv.cc.cc) ];
+  optionals isAtLeast50 [
+    SDL2
+    SDL2_image
+    SDL2_mixer
+  ]
+  ++ optional (!isAtLeast50) SDL
+  ++ optional enableUnfuck dwarf-fortress-unfuck
+  ++ [ (lib.getLib stdenv.cc.cc) ];
 
   installPhase = ''
     runHook preInstall

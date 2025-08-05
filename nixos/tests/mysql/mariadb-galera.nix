@@ -87,9 +87,9 @@ let
                   localName = "galera_0${toString id}";
 
                   clusterAddress =
-                    "gcomm://"
-                    + lib.optionalString (id == 2 || id == 3) "galera_01,galera_02,galera_03"
-                    + lib.optionalString (id == 5 || id == 6) "galera_04,galera_05,galera_06";
+                  "gcomm://"
+                  + lib.optionalString (id == 2 || id == 3) "galera_01,galera_02,galera_03"
+                  + lib.optionalString (id == 5 || id == 6) "galera_04,galera_05,galera_06";
                 };
 
                 settings = {

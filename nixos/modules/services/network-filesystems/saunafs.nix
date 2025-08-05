@@ -252,21 +252,21 @@ in
             };
 
         environment.systemPackages =
-          (lib.optional cfg.client.enable pkgs.saunafs) ++ (lib.optional cfg.master.enable initTool);
+        (lib.optional cfg.client.enable pkgs.saunafs) ++ (lib.optional cfg.master.enable initTool);
 
         networking.firewall.allowedTCPPorts =
-          (lib.optionals cfg.master.openFirewall [
-            9419
-            9420
-            9421
-          ])
-          ++ (lib.optional cfg.chunkserver.openFirewall 9422);
+        (lib.optionals cfg.master.openFirewall [
+          9419
+          9420
+          9421
+        ])
+        ++ (lib.optional cfg.chunkserver.openFirewall 9422);
 
         # Ensure storage directories exist
         systemd.tmpfiles.rules =
-          lib.optional cfg.master.enable "d ${cfg.master.settings.DATA_PATH} 0700 ${cfg.sfsUser} ${cfg.sfsUser} -"
-          ++ lib.optional cfg.metalogger.enable "d ${cfg.metalogger.settings.DATA_PATH} 0700 ${cfg.sfsUser} ${cfg.sfsUser} -"
-          ++ lib.optional cfg.chunkserver.enable "d ${cfg.chunkserver.settings.DATA_PATH} 0700 ${cfg.sfsUser} ${cfg.sfsUser} -";
+        lib.optional cfg.master.enable "d ${cfg.master.settings.DATA_PATH} 0700 ${cfg.sfsUser} ${cfg.sfsUser} -"
+        ++ lib.optional cfg.metalogger.enable "d ${cfg.metalogger.settings.DATA_PATH} 0700 ${cfg.sfsUser} ${cfg.sfsUser} -"
+        ++ lib.optional cfg.chunkserver.enable "d ${cfg.chunkserver.settings.DATA_PATH} 0700 ${cfg.sfsUser} ${cfg.sfsUser} -";
 
         # Service definitions
         systemd.services.sfs-master = lib.mkIf cfg.master.enable (

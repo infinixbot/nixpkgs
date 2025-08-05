@@ -383,10 +383,10 @@ let
       inherit dontWrapPythonPrograms;
 
       postFixup =
-        optionalString (!finalAttrs.dontWrapPythonPrograms) ''
-          wrapPythonPrograms
-        ''
-        + attrs.postFixup or "";
+      optionalString (!finalAttrs.dontWrapPythonPrograms) ''
+        wrapPythonPrograms
+      ''
+      + attrs.postFixup or "";
 
       # Python packages built through cross-compilation are always for the host platform.
       disallowedReferences = optionals (python.stdenv.hostPlatform != python.stdenv.buildPlatform) [

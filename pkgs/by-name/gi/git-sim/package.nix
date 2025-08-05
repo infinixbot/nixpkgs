@@ -70,14 +70,14 @@ buildPythonApplication {
   nativeBuildInputs = [ installShellFiles ];
 
   postInstall =
-    # https://github.com/NixOS/nixpkgs/issues/308283
-    lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
-      installShellCompletion --cmd git-sim \
-        --bash <($out/bin/git-sim --show-completion bash) \
-        --fish <($out/bin/git-sim --show-completion fish) \
-        --zsh <($out/bin/git-sim --show-completion zsh)
-    ''
-    + "ln -s ${git-dummy}/bin/git-dummy $out/bin/";
+  # https://github.com/NixOS/nixpkgs/issues/308283
+  lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
+    installShellCompletion --cmd git-sim \
+      --bash <($out/bin/git-sim --show-completion bash) \
+      --fish <($out/bin/git-sim --show-completion fish) \
+      --zsh <($out/bin/git-sim --show-completion zsh)
+  ''
+  + "ln -s ${git-dummy}/bin/git-dummy $out/bin/";
 
   preCheck = ''
     PATH=$PATH:$out/bin

@@ -147,13 +147,13 @@ stdenv.mkDerivation (finalAttrs: {
       // extraArgs
       // {
         meta =
-          finalAttrs.finalPackage.meta
-          // {
-            license = lib.licenses.free;
-            mainProgram = pname;
-            hydraPlatforms = [ ];
-          }
-          // meta;
+        finalAttrs.finalPackage.meta
+        // {
+          license = lib.licenses.free;
+          mainProgram = pname;
+          hydraPlatforms = [ ];
+        }
+        // meta;
       }
     );
 })

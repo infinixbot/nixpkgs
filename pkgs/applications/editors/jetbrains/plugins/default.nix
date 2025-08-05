@@ -100,11 +100,11 @@ in
       newPlugins = plugins;
       disallowedReferences = [ ide ];
       nativeBuildInputs =
-        (lib.optional stdenv.hostPlatform.isLinux autoPatchelfHook)
-        # The buildPhase hook rewrites the binary, which invaliates the code
-        # signature. Add the fixup hook to sign the output.
-        ++ (lib.optional stdenv.hostPlatform.isDarwin darwin.autoSignDarwinBinariesHook)
-        ++ (ide.nativeBuildInputs or [ ]);
+      (lib.optional stdenv.hostPlatform.isLinux autoPatchelfHook)
+      # The buildPhase hook rewrites the binary, which invaliates the code
+      # signature. Add the fixup hook to sign the output.
+      ++ (lib.optional stdenv.hostPlatform.isDarwin darwin.autoSignDarwinBinariesHook)
+      ++ (ide.nativeBuildInputs or [ ]);
       buildInputs = lib.unique ((ide.buildInputs or [ ]) ++ [ glib ]);
 
       inherit (ide) meta;

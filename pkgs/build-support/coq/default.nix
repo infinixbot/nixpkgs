@@ -203,24 +203,24 @@ stdenv.mkDerivation (
       inherit enableParallelBuilding;
 
       meta =
-        (
+      (
+        {
+          platforms = coq.meta.platforms;
+        }
+        // (switch domain [
           {
-            platforms = coq.meta.platforms;
+            case = pred.union isGitHubDomain isGitLabDomain;
+            out = {
+              homepage = "https://${domain}/${owner}/${repo}";
+            };
           }
-          // (switch domain [
-            {
-              case = pred.union isGitHubDomain isGitLabDomain;
-              out = {
-                homepage = "https://${domain}/${owner}/${repo}";
-              };
-            }
-          ] { })
-          // optionalAttrs (fetched.broken or false) {
-            coqFilter = true;
-            broken = true;
-          }
-        )
-        // (args.meta or { });
+        ] { })
+        // optionalAttrs (fetched.broken or false) {
+          coqFilter = true;
+          broken = true;
+        }
+      )
+      // (args.meta or { });
 
     }
     // (optionalAttrs setCOQBIN { COQBIN = "${coq}/bin/"; })

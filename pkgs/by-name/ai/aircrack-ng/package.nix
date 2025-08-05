@@ -80,19 +80,19 @@ stdenv.mkDerivation rec {
     autoreconfHook
   ];
   buildInputs =
-    lib.singleton (if useGcrypt then libgcrypt else openssl)
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      libpcap
-      zlib
-      libnl
-      iw
-      ethtool
-      pciutils
-    ]
-    ++ lib.optional (stdenv.hostPlatform.isCygwin && stdenv.hostPlatform.isClang) libiconv
-    ++ lib.optional enableAirolib sqlite
-    ++ lib.optional enableRegex pcre2
-    ++ lib.optional useAirpcap airpcap-sdk;
+  lib.singleton (if useGcrypt then libgcrypt else openssl)
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    libpcap
+    zlib
+    libnl
+    iw
+    ethtool
+    pciutils
+  ]
+  ++ lib.optional (stdenv.hostPlatform.isCygwin && stdenv.hostPlatform.isClang) libiconv
+  ++ lib.optional enableAirolib sqlite
+  ++ lib.optional enableRegex pcre2
+  ++ lib.optional useAirpcap airpcap-sdk;
 
   nativeCheckInputs = [
     cmocka

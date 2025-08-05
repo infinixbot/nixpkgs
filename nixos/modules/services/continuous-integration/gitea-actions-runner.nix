@@ -210,15 +210,15 @@ in
               "multi-user.target"
             ];
             environment =
-              optionalAttrs (instance.token != null) {
-                TOKEN = "${instance.token}";
-              }
-              // optionalAttrs (wantsPodman) {
-                DOCKER_HOST = "unix:///run/podman/podman.sock";
-              }
-              // {
-                HOME = "/var/lib/gitea-runner/${name}";
-              };
+            optionalAttrs (instance.token != null) {
+              TOKEN = "${instance.token}";
+            }
+            // optionalAttrs (wantsPodman) {
+              DOCKER_HOST = "unix:///run/podman/podman.sock";
+            }
+            // {
+              HOME = "/var/lib/gitea-runner/${name}";
+            };
             path =
               with pkgs;
               [
@@ -266,12 +266,12 @@ in
               ];
               ExecStart = "${cfg.package}/bin/act_runner daemon --config ${configFile}";
               SupplementaryGroups =
-                optionals (wantsDocker) [
-                  "docker"
-                ]
-                ++ optionals (wantsPodman) [
-                  "podman"
-                ];
+              optionals (wantsDocker) [
+                "docker"
+              ]
+              ++ optionals (wantsPodman) [
+                "podman"
+              ];
             }
             // optionalAttrs (instance.tokenFile != null) {
               EnvironmentFile = instance.tokenFile;

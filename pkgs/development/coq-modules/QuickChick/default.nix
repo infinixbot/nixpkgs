@@ -92,17 +92,17 @@ in
     in
     {
       nativeBuildInputs =
-        o.nativeBuildInputs
-        ++ lib.optional after_1_6 coq.ocamlPackages.cppo
-        ++ lib.optional after_2_1 coq.ocamlPackages.menhir;
+      o.nativeBuildInputs
+      ++ lib.optional after_1_6 coq.ocamlPackages.cppo
+      ++ lib.optional after_2_1 coq.ocamlPackages.menhir;
       propagatedBuildInputs =
-        o.propagatedBuildInputs
-        ++ lib.optionals after_1_6 (
-          with coq.ocamlPackages;
-          [
-            findlib
-            zarith
-          ]
-        );
+      o.propagatedBuildInputs
+      ++ lib.optionals after_1_6 (
+        with coq.ocamlPackages;
+        [
+          findlib
+          zarith
+        ]
+      );
     }
   )

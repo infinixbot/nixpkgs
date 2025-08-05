@@ -98,17 +98,17 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   postInstall =
-    lib.optionalString stdenv.hostPlatform.isLinux ''
-      wrapProgram $out/bin/dosbox-x \
-        --prefix PATH : ${lib.makeBinPath [ yad ]}
-    ''
-    # Install App Bundle, wrap regular binary into bundle's binary to get the icon working
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      mkdir $out/Applications
-      mv dosbox-x.app $out/Applications/
-      mv $out/bin/dosbox-x $out/Applications/dosbox-x.app/Contents/MacOS/dosbox-x
-      makeWrapper $out/Applications/dosbox-x.app/Contents/MacOS/dosbox-x $out/bin/dosbox-x
-    '';
+  lib.optionalString stdenv.hostPlatform.isLinux ''
+    wrapProgram $out/bin/dosbox-x \
+      --prefix PATH : ${lib.makeBinPath [ yad ]}
+  ''
+  # Install App Bundle, wrap regular binary into bundle's binary to get the icon working
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    mkdir $out/Applications
+    mv dosbox-x.app $out/Applications/
+    mv $out/bin/dosbox-x $out/Applications/dosbox-x.app/Contents/MacOS/dosbox-x
+    makeWrapper $out/Applications/dosbox-x.app/Contents/MacOS/dosbox-x $out/bin/dosbox-x
+  '';
 
   passthru.tests.version = testers.testVersion {
     package = finalAttrs.finalPackage;

@@ -243,27 +243,27 @@ stdenv.mkDerivation (finalAttrs: {
     let
       # Upstream Issue: https://issues.apache.org/jira/browse/ARROW-11398
       filteredTests =
-        lib.optionals stdenv.hostPlatform.isAarch64 [
-          "TestFilterKernelWithNumeric/3.CompareArrayAndFilterRandomNumeric"
-          "TestFilterKernelWithNumeric/7.CompareArrayAndFilterRandomNumeric"
-          "TestCompareKernel.PrimitiveRandomTests"
-        ]
-        ++ lib.optionals enableS3 [
-          "S3OptionsTest.FromUri"
-          "S3RegionResolutionTest.NonExistentBucket"
-          "S3RegionResolutionTest.PublicBucket"
-          "S3RegionResolutionTest.RestrictedBucket"
-          "TestMinioServer.Connect"
-          "TestS3FS.*"
-          "TestS3FSGeneric.*"
-        ]
-        ++ lib.optionals stdenv.hostPlatform.isDarwin [
-          # TODO: revisit at 12.0.0 or when
-          # https://github.com/apache/arrow/commit/295c6644ca6b67c95a662410b2c7faea0920c989
-          # is available, see
-          # https://github.com/apache/arrow/pull/15288#discussion_r1071244661
-          "ExecPlanExecution.StressSourceSinkStopped"
-        ];
+      lib.optionals stdenv.hostPlatform.isAarch64 [
+        "TestFilterKernelWithNumeric/3.CompareArrayAndFilterRandomNumeric"
+        "TestFilterKernelWithNumeric/7.CompareArrayAndFilterRandomNumeric"
+        "TestCompareKernel.PrimitiveRandomTests"
+      ]
+      ++ lib.optionals enableS3 [
+        "S3OptionsTest.FromUri"
+        "S3RegionResolutionTest.NonExistentBucket"
+        "S3RegionResolutionTest.PublicBucket"
+        "S3RegionResolutionTest.RestrictedBucket"
+        "TestMinioServer.Connect"
+        "TestS3FS.*"
+        "TestS3FSGeneric.*"
+      ]
+      ++ lib.optionals stdenv.hostPlatform.isDarwin [
+        # TODO: revisit at 12.0.0 or when
+        # https://github.com/apache/arrow/commit/295c6644ca6b67c95a662410b2c7faea0920c989
+        # is available, see
+        # https://github.com/apache/arrow/pull/15288#discussion_r1071244661
+        "ExecPlanExecution.StressSourceSinkStopped"
+      ];
     in
     lib.optionalString finalAttrs.doInstallCheck "-${lib.concatStringsSep ":" filteredTests}";
 

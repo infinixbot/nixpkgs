@@ -225,10 +225,10 @@ rec {
           '';
 
           DOCKER_BUILDTAGS =
-            lib.optional withSystemd "journald"
-            ++ lib.optional (!withBtrfs) "exclude_graphdriver_btrfs"
-            ++ lib.optional (!withLvm) "exclude_graphdriver_devicemapper"
-            ++ lib.optional withSeccomp "seccomp";
+          lib.optional withSystemd "journald"
+          ++ lib.optional (!withBtrfs) "exclude_graphdriver_btrfs"
+          ++ lib.optional (!withLvm) "exclude_graphdriver_devicemapper"
+          ++ lib.optional withSeccomp "seccomp";
 
           meta = docker-meta // {
             homepage = "https://mobyproject.org/";
@@ -238,10 +238,10 @@ rec {
       );
 
       plugins =
-        lib.optional buildxSupport docker-buildx
-        ++ lib.optional composeSupport docker-compose
-        ++ lib.optional sbomSupport docker-sbom
-        ++ lib.optional initSupport docker-init;
+      lib.optional buildxSupport docker-buildx
+      ++ lib.optional composeSupport docker-compose
+      ++ lib.optional sbomSupport docker-sbom
+      ++ lib.optional initSupport docker-init;
       pluginsRef = symlinkJoin {
         name = "docker-plugins";
         paths = plugins;
@@ -281,11 +281,11 @@ rec {
         ];
 
         buildInputs =
-          plugins
-          ++ lib.optionals (stdenv.hostPlatform.isLinux) [
-            glibc
-            glibc.static
-          ];
+        plugins
+        ++ lib.optionals (stdenv.hostPlatform.isLinux) [
+          glibc
+          glibc.static
+        ];
 
         postPatch = ''
           patchShebangs man scripts/build/

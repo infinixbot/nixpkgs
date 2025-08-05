@@ -78,15 +78,15 @@ lib.extendMkDerivation {
     }@prevAttrs:
     {
       passthru =
-        prevAttrs.passthru or { }
-        // lib.optionalAttrs enableUpdateScript {
-          updateScript =
-            prevAttrs.passthru.updateScript or (nix-update-script (
-              lib.optionalAttrs (lib.hasInfix "unstable" prevAttrs.version) {
-                extraArgs = [ "--version=branch" ];
-              }
-            ));
-        };
+      prevAttrs.passthru or { }
+      // lib.optionalAttrs enableUpdateScript {
+        updateScript =
+          prevAttrs.passthru.updateScript or (nix-update-script (
+            lib.optionalAttrs (lib.hasInfix "unstable" prevAttrs.version) {
+              extraArgs = [ "--version=branch" ];
+            }
+          ));
+      };
 
       strictDeps = true;
       buildInputs = [ postgresql ] ++ prevAttrs.buildInputs or [ ];

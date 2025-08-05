@@ -43,13 +43,13 @@ mkDerivation {
   ];
   skipIncludesPhase = true;
   buildInputs =
-    compatIfNeeded
-    ++ lib.optionals (!stdenv.hostPlatform.isFreeBSD) [
-      libmd'
-    ]
-    ++ [
-      libnetbsd
-    ];
+  compatIfNeeded
+  ++ lib.optionals (!stdenv.hostPlatform.isFreeBSD) [
+    libmd'
+  ]
+  ++ [
+    libnetbsd
+  ];
   makeFlags = [
     "STRIP=-s" # flag to install, not command
     "MK_WERROR=no"

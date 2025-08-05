@@ -22,13 +22,13 @@ python3Packages.buildPythonApplication rec {
   '';
 
   nativeBuildInputs =
-    (with python3Packages; [
-      numpy
-      cython
-      scipy
-      setuptools
-    ])
-    ++ (with qt5; [ wrapQtAppsHook ]);
+  (with python3Packages; [
+    numpy
+    cython
+    scipy
+    setuptools
+  ])
+  ++ (with qt5; [ wrapQtAppsHook ]);
 
   buildInputs = with qt5; [ qtquickcontrols2 ];
 

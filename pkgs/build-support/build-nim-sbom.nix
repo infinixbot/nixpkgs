@@ -126,14 +126,14 @@ let
       version = prevAttrs.version or sbom.metadata.component.version or null;
 
       nimFlags =
-        nimFlags
-        ++ (lib.optional nimRelease "-d:release")
-        ++ (
-          let
-            srcDir = properties."nim:srcDir" or "";
-          in
-          lib.optional (srcDir != "") "--path:${srcDir}"
-        );
+      nimFlags
+      ++ (lib.optional nimRelease "-d:release")
+      ++ (
+        let
+          srcDir = properties."nim:srcDir" or "";
+        in
+        lib.optional (srcDir != "") "--path:${srcDir}"
+      );
 
       configurePhase =
         prevAttrs.configurePhase or ''

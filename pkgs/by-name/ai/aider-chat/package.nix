@@ -237,37 +237,37 @@ let
 
           {
             pname =
-              pname
-              + lib.optionalString withPlaywright "-playwright"
-              + lib.optionalString withBrowser "-browser"
-              + lib.optionalString withHelp "-help"
-              + lib.optionalString withBedrock "-bedrock";
+            pname
+            + lib.optionalString withPlaywright "-playwright"
+            + lib.optionalString withBrowser "-browser"
+            + lib.optionalString withHelp "-help"
+            + lib.optionalString withBedrock "-bedrock";
 
             dependencies =
-              dependencies
-              ++ lib.optionals withPlaywright aider-chat.optional-dependencies.playwright
-              ++ lib.optionals withBrowser aider-chat.optional-dependencies.browser
-              ++ lib.optionals withHelp aider-chat.optional-dependencies.help
-              ++ lib.optionals withBedrock aider-chat.optional-dependencies.bedrock;
+            dependencies
+            ++ lib.optionals withPlaywright aider-chat.optional-dependencies.playwright
+            ++ lib.optionals withBrowser aider-chat.optional-dependencies.browser
+            ++ lib.optionals withHelp aider-chat.optional-dependencies.help
+            ++ lib.optionals withBedrock aider-chat.optional-dependencies.bedrock;
 
             propagatedBuildInputs =
-              propagatedBuildInputs ++ lib.optionals withPlaywright [ playwright-driver.browsers ];
+            propagatedBuildInputs ++ lib.optionals withPlaywright [ playwright-driver.browsers ];
 
             makeWrapperArgs =
-              makeWrapperArgs
-              ++ lib.optionals withPlaywright [
-                "--set"
-                "PLAYWRIGHT_BROWSERS_PATH"
-                "${playwright-driver.browsers}"
-                "--set"
-                "PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS"
-                "true"
-              ]
-              ++ lib.optionals withHelp [
-                "--set"
-                "NLTK_DATA"
-                "${aider-nltk-data}"
-              ];
+            makeWrapperArgs
+            ++ lib.optionals withPlaywright [
+              "--set"
+              "PLAYWRIGHT_BROWSERS_PATH"
+              "${playwright-driver.browsers}"
+              "--set"
+              "PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS"
+              "true"
+            ]
+            ++ lib.optionals withHelp [
+              "--set"
+              "NLTK_DATA"
+              "${aider-nltk-data}"
+            ];
           }
         );
 

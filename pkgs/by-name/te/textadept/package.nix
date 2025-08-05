@@ -26,11 +26,11 @@ stdenv.mkDerivation (finalAttrs: {
   buildInputs = lib.optionals withQt [ libsForQt5.qtbase ] ++ lib.optionals withCurses ncurses;
 
   cmakeFlags =
-    lib.optional withQt [ "-DQT=ON" ]
-    ++ lib.optional withCurses [
-      "-DCURSES=ON"
-      "-DQT=OFF"
-    ];
+  lib.optional withQt [ "-DQT=ON" ]
+  ++ lib.optional withCurses [
+    "-DCURSES=ON"
+    "-DQT=OFF"
+  ];
 
   preConfigure = ''
     mkdir -p $PWD/build/_deps

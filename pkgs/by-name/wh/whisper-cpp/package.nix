@@ -108,11 +108,11 @@ effectiveStdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs =
-    optional withSDL SDL2
-    ++ optionals effectiveStdenv.hostPlatform.isDarwin darwinBuildInputs
-    ++ optionals cudaSupport cudaBuildInputs
-    ++ optionals rocmSupport rocmBuildInputs
-    ++ optionals vulkanSupport vulkanBuildInputs;
+  optional withSDL SDL2
+  ++ optionals effectiveStdenv.hostPlatform.isDarwin darwinBuildInputs
+  ++ optionals cudaSupport cudaBuildInputs
+  ++ optionals rocmSupport rocmBuildInputs
+  ++ optionals vulkanSupport vulkanBuildInputs;
 
   cmakeFlags = [
     (cmakeBool "WHISPER_BUILD_EXAMPLES" true)

@@ -32,10 +32,10 @@ stdenv.mkDerivation (finalAttrs: {
   env = {
     NIX_LDFLAGS = "-lxml2 -L${lib.getLib libxml2}/lib";
     NIX_CFLAGS_COMPILE =
-      lib.optionalString stdenv.cc.isClang "-Wno-implicit-function-declaration "
-      + lib.optionalString (
-        stdenv.hostPlatform.isDarwin && lib.versionOlder apple-sdk.version "13.3"
-      ) "-D__LAPACK_int=int";
+    lib.optionalString stdenv.cc.isClang "-Wno-implicit-function-declaration "
+    + lib.optionalString (
+      stdenv.hostPlatform.isDarwin && lib.versionOlder apple-sdk.version "13.3"
+    ) "-D__LAPACK_int=int";
   };
 
   buildInputs = [

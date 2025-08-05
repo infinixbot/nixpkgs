@@ -134,8 +134,8 @@ rec {
       LUA_LIBS = "-llua";
 
       buildInputs =
-        lib.optionals stdenv.hostPlatform.isLinux [ linux-pam ]
-        ++ lib.optionals stdenv.hostPlatform.isDarwin [ openpam ];
+      lib.optionals stdenv.hostPlatform.isLinux [ linux-pam ]
+      ++ lib.optionals stdenv.hostPlatform.isDarwin [ openpam ];
 
       installPhase = ''
         runHook preInstall

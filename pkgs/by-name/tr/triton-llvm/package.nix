@@ -176,28 +176,28 @@ stdenv.mkDerivation (finalAttrs: {
   );
 
   postPatch =
-    # `CMake Error: cannot write to file "/build/source/llvm/build/lib/cmake/mlir/MLIRTargets.cmake": Permission denied`
-    ''
-      chmod +w -R ./mlir
-      patchShebangs ./mlir/test/mlir-reduce
-    ''
-    # FileSystem permissions tests fail with various special bits
-    + ''
-      rm llvm/test/tools/llvm-objcopy/ELF/mirror-permissions-unix.test
-      rm llvm/unittests/Support/Path.cpp
+  # `CMake Error: cannot write to file "/build/source/llvm/build/lib/cmake/mlir/MLIRTargets.cmake": Permission denied`
+  ''
+    chmod +w -R ./mlir
+    patchShebangs ./mlir/test/mlir-reduce
+  ''
+  # FileSystem permissions tests fail with various special bits
+  + ''
+    rm llvm/test/tools/llvm-objcopy/ELF/mirror-permissions-unix.test
+    rm llvm/unittests/Support/Path.cpp
 
-      substituteInPlace llvm/unittests/Support/CMakeLists.txt \
-        --replace-fail "Path.cpp" ""
-    ''
-    # Not sure why this fails
-    + ''
-      rm mlir/test/Dialect/SPIRV/IR/availability.mlir
-      rm mlir/test/Dialect/SPIRV/IR/target-env.mlir
-    ''
-    # Not sure why this fails
-    + lib.optionalString stdenv.hostPlatform.isAarch64 ''
-      rm llvm/test/tools/llvm-exegesis/AArch64/latency-by-opcode-name.s
-    '';
+    substituteInPlace llvm/unittests/Support/CMakeLists.txt \
+      --replace-fail "Path.cpp" ""
+  ''
+  # Not sure why this fails
+  + ''
+    rm mlir/test/Dialect/SPIRV/IR/availability.mlir
+    rm mlir/test/Dialect/SPIRV/IR/target-env.mlir
+  ''
+  # Not sure why this fails
+  + lib.optionalString stdenv.hostPlatform.isAarch64 ''
+    rm llvm/test/tools/llvm-exegesis/AArch64/latency-by-opcode-name.s
+  '';
 
   postInstall = ''
     cp ${lib.getExe lit} $out/bin/llvm-lit

@@ -70,37 +70,37 @@ stdenv.mkDerivation {
   installPhase =
     let
       rpath =
-        lib.makeLibraryPath [
-          alsa-lib
-          at-spi2-atk
-          at-spi2-core
-          atk
-          cairo
-          cups
-          dbus
-          expat
-          gdk-pixbuf
-          glib
-          gtk3
-          libX11
-          libXcomposite
-          libXdamage
-          libXext
-          libXfixes
-          libXrandr
-          libdrm
-          libxcb
-          libxkbcommon
-          libxshmfence
-          libGL
-          libappindicator-gtk3
-          libgbm
-          nspr
-          nss
-          pango
-          systemd
-        ]
-        + ":${lib.getLib stdenv.cc.cc}/lib64";
+      lib.makeLibraryPath [
+        alsa-lib
+        at-spi2-atk
+        at-spi2-core
+        atk
+        cairo
+        cups
+        dbus
+        expat
+        gdk-pixbuf
+        glib
+        gtk3
+        libX11
+        libXcomposite
+        libXdamage
+        libXext
+        libXfixes
+        libXrandr
+        libdrm
+        libxcb
+        libxkbcommon
+        libxshmfence
+        libGL
+        libappindicator-gtk3
+        libgbm
+        nspr
+        nss
+        pango
+        systemd
+      ]
+      + ":${lib.getLib stdenv.cc.cc}/lib64";
     in
     ''
       runHook preInstall

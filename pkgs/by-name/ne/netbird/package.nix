@@ -73,27 +73,27 @@ buildGoModule (finalAttrs: {
   '';
 
   postInstall =
-    lib.concatStringsSep "\n" (
-      lib.mapAttrsToList (
-        module: binary:
-        ''
-          mv $out/bin/${lib.last (lib.splitString "/" module)} $out/bin/${binary}
-        ''
-        + lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform && !ui) ''
-          installShellCompletion --cmd ${binary} \
-            --bash <($out/bin/${binary} completion bash) \
-            --fish <($out/bin/${binary} completion fish) \
-            --zsh <($out/bin/${binary} completion zsh)
-        ''
-      ) modules
-    )
-    + lib.optionalString (stdenv.hostPlatform.isLinux && ui) ''
-      install -Dm644 "$src/client/ui/assets/netbird-systemtray-connected.png" "$out/share/pixmaps/netbird.png"
-      install -Dm644 "$src/client/ui/build/netbird.desktop" "$out/share/applications/netbird.desktop"
+  lib.concatStringsSep "\n" (
+    lib.mapAttrsToList (
+      module: binary:
+      ''
+        mv $out/bin/${lib.last (lib.splitString "/" module)} $out/bin/${binary}
+      ''
+      + lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform && !ui) ''
+        installShellCompletion --cmd ${binary} \
+          --bash <($out/bin/${binary} completion bash) \
+          --fish <($out/bin/${binary} completion fish) \
+          --zsh <($out/bin/${binary} completion zsh)
+      ''
+    ) modules
+  )
+  + lib.optionalString (stdenv.hostPlatform.isLinux && ui) ''
+    install -Dm644 "$src/client/ui/assets/netbird-systemtray-connected.png" "$out/share/pixmaps/netbird.png"
+    install -Dm644 "$src/client/ui/build/netbird.desktop" "$out/share/applications/netbird.desktop"
 
-      substituteInPlace $out/share/applications/netbird.desktop \
-        --replace-fail "Exec=/usr/bin/netbird-ui" "Exec=$out/bin/netbird-ui"
-    '';
+    substituteInPlace $out/share/applications/netbird.desktop \
+      --replace-fail "Exec=/usr/bin/netbird-ui" "Exec=$out/bin/netbird-ui"
+  '';
 
   nativeInstallCheckInputs = [
     versionCheckHook

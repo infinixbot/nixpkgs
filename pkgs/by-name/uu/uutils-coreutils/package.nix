@@ -41,12 +41,12 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs =
-    lib.optionals (lib.meta.availableOn stdenv.hostPlatform acl) [
-      acl
-    ]
-    ++ lib.optionals selinuxSupport [
-      libselinux
-    ];
+  lib.optionals (lib.meta.availableOn stdenv.hostPlatform acl) [
+    acl
+  ]
+  ++ lib.optionals selinuxSupport [
+    libselinux
+  ];
 
   nativeBuildInputs = [
     rustPlatform.bindgenHook

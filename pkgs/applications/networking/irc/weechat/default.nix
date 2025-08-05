@@ -158,9 +158,9 @@ stdenv.mkDerivation rec {
   hardeningEnable = [ "pie" ];
 
   env.NIX_CFLAGS_COMPILE =
-    "-I${python}/include/${python.libPrefix}"
-    # Fix '_res_9_init: undefined symbol' error
-    + (lib.optionalString stdenv.hostPlatform.isDarwin "-DBIND_8_COMPAT=1 -lresolv");
+  "-I${python}/include/${python.libPrefix}"
+  # Fix '_res_9_init: undefined symbol' error
+  + (lib.optionalString stdenv.hostPlatform.isDarwin "-DBIND_8_COMPAT=1 -lresolv");
 
   postInstall = ''
     for p in ${lib.concatMapStringsSep " " (p: p.name) enabledPlugins}; do

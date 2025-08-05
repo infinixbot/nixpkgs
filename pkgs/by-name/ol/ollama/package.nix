@@ -129,14 +129,14 @@ goBuild (finalAttrs: {
   vendorHash = "sha256-SlaDsu001TUW+t9WRp7LqxUSQSGDF1Lqu9M1bgILoX4=";
 
   env =
-    lib.optionalAttrs enableRocm {
-      ROCM_PATH = rocmPath;
-      CLBlast_DIR = "${clblast}/lib/cmake/CLBlast";
-      HIP_PATH = rocmPath;
-      CFLAGS = "-Wno-c++17-extensions -I${rocmPath}/include";
-      CXXFLAGS = "-Wno-c++17-extensions -I${rocmPath}/include";
-    }
-    // lib.optionalAttrs enableCuda { CUDA_PATH = cudaPath; };
+  lib.optionalAttrs enableRocm {
+    ROCM_PATH = rocmPath;
+    CLBlast_DIR = "${clblast}/lib/cmake/CLBlast";
+    HIP_PATH = rocmPath;
+    CFLAGS = "-Wno-c++17-extensions -I${rocmPath}/include";
+    CXXFLAGS = "-Wno-c++17-extensions -I${rocmPath}/include";
+  }
+  // lib.optionalAttrs enableCuda { CUDA_PATH = cudaPath; };
 
   nativeBuildInputs = [
     cmake
@@ -153,7 +153,7 @@ goBuild (finalAttrs: {
   ];
 
   buildInputs =
-    lib.optionals enableRocm (rocmLibs ++ [ libdrm ]) ++ lib.optionals enableCuda cudaLibs;
+  lib.optionals enableRocm (rocmLibs ++ [ libdrm ]) ++ lib.optionals enableCuda cudaLibs;
 
   # replace inaccurate version number with actual release version
   postPatch = ''
@@ -202,14 +202,14 @@ goBuild (finalAttrs: {
   '';
 
   postFixup =
-    # the app doesn't appear functional at the moment, so hide it
-    ''
-      mv "$out/bin/app" "$out/bin/.ollama-app"
-    ''
-    # expose runtime libraries necessary to use the gpu
-    + lib.optionalString (enableRocm || enableCuda) ''
-      wrapProgram "$out/bin/ollama" ${wrapperArgs}
-    '';
+  # the app doesn't appear functional at the moment, so hide it
+  ''
+    mv "$out/bin/app" "$out/bin/.ollama-app"
+  ''
+  # expose runtime libraries necessary to use the gpu
+  + lib.optionalString (enableRocm || enableCuda) ''
+    wrapProgram "$out/bin/ollama" ${wrapperArgs}
+  '';
 
   ldflags = [
     "-s"
@@ -245,9 +245,9 @@ goBuild (finalAttrs: {
 
   meta = {
     description =
-      "Get up and running with large language models locally"
-      + lib.optionalString rocmRequested ", using ROCm for AMD GPU acceleration"
-      + lib.optionalString cudaRequested ", using CUDA for NVIDIA GPU acceleration";
+    "Get up and running with large language models locally"
+    + lib.optionalString rocmRequested ", using ROCm for AMD GPU acceleration"
+    + lib.optionalString cudaRequested ", using CUDA for NVIDIA GPU acceleration";
     homepage = "https://github.com/ollama/ollama";
     changelog = "https://github.com/ollama/ollama/releases/tag/v${finalAttrs.version}";
     license = licenses.mit;

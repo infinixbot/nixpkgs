@@ -121,14 +121,14 @@ lib.makeOverridable (
       # Files that use NetBSD-specific macros need to have nbtool_config.h
       # included ahead of them on non-NetBSD platforms.
       postPatch =
-        lib.optionalString (!stdenv'.hostPlatform.isNetBSD) ''
-          set +e
-          grep -Zlr "^__RCSID
-          ^__BEGIN_DECLS" $COMPONENT_PATH | xargs -0r grep -FLZ nbtool_config.h |
-              xargs -0tr sed -i '0,/^#/s//#include <nbtool_config.h>\n\0/'
-          set -e
-        ''
-        + attrs.postPatch or "";
+      lib.optionalString (!stdenv'.hostPlatform.isNetBSD) ''
+        set +e
+        grep -Zlr "^__RCSID
+        ^__BEGIN_DECLS" $COMPONENT_PATH | xargs -0r grep -FLZ nbtool_config.h |
+            xargs -0tr sed -i '0,/^#/s//#include <nbtool_config.h>\n\0/'
+        set -e
+      ''
+      + attrs.postPatch or "";
     }
   )
 )

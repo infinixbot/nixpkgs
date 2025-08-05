@@ -46,11 +46,11 @@ in
       '';
 
       postInstall =
-        previousAttrs.postInstall or ""
-        + "\n"
-        + ''
-          ./install.sh "$out"
-        '';
+      previousAttrs.postInstall or ""
+      + "\n"
+      + ''
+        ./install.sh "$out"
+      '';
 
       meta = previousAttrs.meta // {
         maintainers = [ lib.maintainers.sternenseemann ];
@@ -89,13 +89,13 @@ in
 
   debbugs = super.debbugs.overrideAttrs (old: {
     preInstall =
-      old.preInstall or ""
-      + "\n"
-      + ''
-        tmp_src_dir=$(mktemp -d)
-        tar --extract --verbose --file $src --directory $tmp_src_dir --strip-components 1
-        EMACSLOADPATH=$tmp_src_dir/test:$EMACSLOADPATH
-      '';
+    old.preInstall or ""
+    + "\n"
+    + ''
+      tmp_src_dir=$(mktemp -d)
+      tar --extract --verbose --file $src --directory $tmp_src_dir --strip-components 1
+      EMACSLOADPATH=$tmp_src_dir/test:$EMACSLOADPATH
+    '';
   });
 
   ebdb = super.ebdb.overrideAttrs (
@@ -136,16 +136,16 @@ in
   eglot = super.eglot.overrideAttrs (
     finalAttrs: previousAttrs: {
       postInstall =
-        previousAttrs.postInstall or ""
-        # old versions do not include an info manual
-        + lib.optionalString (lib.versionAtLeast "1.17.0.20240829.5352" finalAttrs.version) ''
-          local info_file=eglot.info
-          pushd $out/share/emacs/site-lisp/elpa/eglot-*
-          # specify output info file to override the one defined in eglot.texi
-          makeinfo --output=$info_file eglot.texi
-          install-info $info_file dir
-          popd
-        '';
+      previousAttrs.postInstall or ""
+      # old versions do not include an info manual
+      + lib.optionalString (lib.versionAtLeast "1.17.0.20240829.5352" finalAttrs.version) ''
+        local info_file=eglot.info
+        pushd $out/share/emacs/site-lisp/elpa/eglot-*
+        # specify output info file to override the one defined in eglot.texi
+        makeinfo --output=$info_file eglot.texi
+        install-info $info_file dir
+        popd
+      '';
     }
   );
 
@@ -157,21 +157,21 @@ in
     buildInputs = old.buildInputs or [ ] ++ [ pkgs.enchant2 ];
 
     postBuild =
-      old.postBuild or ""
-      + "\n"
-      + ''
-        NIX_CFLAGS_COMPILE="$($PKG_CONFIG --cflags enchant-2) $NIX_CFLAGS_COMPILE"
-        $CC -shared -o jinx-mod${libExt} jinx-mod.c -lenchant-2
-      '';
+    old.postBuild or ""
+    + "\n"
+    + ''
+      NIX_CFLAGS_COMPILE="$($PKG_CONFIG --cflags enchant-2) $NIX_CFLAGS_COMPILE"
+      $CC -shared -o jinx-mod${libExt} jinx-mod.c -lenchant-2
+    '';
 
     postInstall =
-      old.postInstall or ""
-      + "\n"
-      + ''
-        outd=$out/share/emacs/site-lisp/elpa/jinx-*
-        install -m444 -t $outd jinx-mod${libExt}
-        rm $outd/jinx-mod.c $outd/emacs-module.h
-      '';
+    old.postInstall or ""
+    + "\n"
+    + ''
+      outd=$out/share/emacs/site-lisp/elpa/jinx-*
+      install -m444 -t $outd jinx-mod${libExt}
+      rm $outd/jinx-mod.c $outd/emacs-module.h
+    '';
 
     meta = old.meta // {
       maintainers = [ lib.maintainers.DamienCassou ];
@@ -183,40 +183,40 @@ in
     buildInputs = old.buildInputs or [ ] ++ [ pkgs.perl ];
     nativeBuildInputs = old.nativeBuildInputs or [ ] ++ [ pkgs.perl ];
     preInstall =
-      old.preInstall or ""
-      + "\n"
-      + ''
-        patchShebangs --build mkconfig
-        pushd ..
-        local content_directory=$ename-$version
-        src=$PWD/$content_directory.tar
-        tar --create --verbose --file=$src $content_directory
-        popd
-      '';
+    old.preInstall or ""
+    + "\n"
+    + ''
+      patchShebangs --build mkconfig
+      pushd ..
+      local content_directory=$ename-$version
+      src=$PWD/$content_directory.tar
+      tar --create --verbose --file=$src $content_directory
+      popd
+    '';
     postFixup =
-      old.postFixup or ""
-      + "\n"
-      + ''
-        patchShebangs --host --update $out/share/emacs/site-lisp/elpa/$ename-$version/mkconfig
-      '';
+    old.postFixup or ""
+    + "\n"
+    + ''
+      patchShebangs --host --update $out/share/emacs/site-lisp/elpa/$ename-$version/mkconfig
+    '';
   });
 
   plz = super.plz.overrideAttrs (old: {
     dontUnpack = false;
     postPatch =
-      old.postPatch or ""
-      + "\n"
-      + ''
-        substituteInPlace plz.el \
-          --replace-fail 'plz-curl-program "curl"' 'plz-curl-program "${lib.getExe pkgs.curl}"'
-      '';
+    old.postPatch or ""
+    + "\n"
+    + ''
+      substituteInPlace plz.el \
+        --replace-fail 'plz-curl-program "curl"' 'plz-curl-program "${lib.getExe pkgs.curl}"'
+    '';
     preInstall =
-      old.preInstall or ""
-      + "\n"
-      + ''
-        tar -cf "$ename-$version.tar" --transform "s,^,$ename-$version/," * .[!.]*
-        src="$ename-$version.tar"
-      '';
+    old.preInstall or ""
+    + "\n"
+    + ''
+      tar -cf "$ename-$version.tar" --transform "s,^,$ename-$version/," * .[!.]*
+      src="$ename-$version.tar"
+    '';
   });
 
   # https://sourceware.org/bugzilla/show_bug.cgi?id=32185
@@ -241,14 +241,14 @@ in
   seq = super.seq.overrideAttrs (old: {
     dontUnpack = false;
     postUnpack =
-      old.postUnpack or ""
-      + "\n"
-      + ''
-        local content_directory=$(echo seq-*)
-        rm --verbose $content_directory/tests/seq-tests.el
-        src=$PWD/$content_directory.tar
-        tar --create --verbose --file=$src $content_directory
-      '';
+    old.postUnpack or ""
+    + "\n"
+    + ''
+      local content_directory=$(echo seq-*)
+      rm --verbose $content_directory/tests/seq-tests.el
+      src=$PWD/$content_directory.tar
+      tar --create --verbose --file=$src $content_directory
+    '';
   });
 
   shen-mode = ignoreCompilationErrorIfOlder super.shen-mode "0.1.0.20221221.82050"; # elisp error
@@ -257,14 +257,14 @@ in
   taxy = super.taxy.overrideAttrs (old: {
     dontUnpack = false;
     postUnpack =
-      old.postUnpack or ""
-      + "\n"
-      + ''
-        local content_directory=$ename-$version
-        rm --verbose --recursive $content_directory/examples
-        src=$PWD/$content_directory.tar
-        tar --create --verbose --file=$src $content_directory
-      '';
+    old.postUnpack or ""
+    + "\n"
+    + ''
+      local content_directory=$ename-$version
+      rm --verbose --recursive $content_directory/examples
+      src=$PWD/$content_directory.tar
+      tar --create --verbose --file=$src $content_directory
+    '';
   });
 
   tex-parens = mkHomeIfOlder super.tex-parens "0.4.0.20240630.70456";
@@ -286,13 +286,13 @@ in
       $CXX -shared -o xapian-lite${libExt} xapian-lite.cc -lxapian
     '';
     postInstall =
-      old.postInstall or ""
-      + "\n"
-      + ''
-        outd=$out/share/emacs/site-lisp/elpa/xeft-*
-        install -m444 -t $outd xapian-lite${libExt}
-        rm $outd/xapian-lite.cc $outd/emacs-module.h $outd/emacs-module-prelude.h $outd/demo.gif $outd/Makefile
-      '';
+    old.postInstall or ""
+    + "\n"
+    + ''
+      outd=$out/share/emacs/site-lisp/elpa/xeft-*
+      install -m444 -t $outd xapian-lite${libExt}
+      rm $outd/xapian-lite.cc $outd/emacs-module.h $outd/emacs-module-prelude.h $outd/demo.gif $outd/Makefile
+    '';
   });
 
   # native-ice https://github.com/mattiase/xr/issues/9

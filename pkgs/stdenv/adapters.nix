@@ -200,15 +200,15 @@ rec {
             {
               env = prevAttrs.env // {
                 NIX_CFLAGS_LINK =
-                  toString (args.env.NIX_CFLAGS_LINK or "")
-                  + lib.optionalString (stdenv.cc.isGNU or false) " -static-libgcc";
+                toString (args.env.NIX_CFLAGS_LINK or "")
+                + lib.optionalString (stdenv.cc.isGNU or false) " -static-libgcc";
               };
             }
           else
             {
               NIX_CFLAGS_LINK =
-                toString (prevAttrs.NIX_CFLAGS_LINK or "")
-                + lib.optionalString (stdenv.cc.isGNU or false) " -static-libgcc";
+              toString (prevAttrs.NIX_CFLAGS_LINK or "")
+              + lib.optionalString (stdenv.cc.isGNU or false) " -static-libgcc";
             }
         )
       );

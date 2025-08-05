@@ -76,11 +76,11 @@ stdenv.mkDerivation rec {
   ];
 
   runtimeDependencies =
-    lib.optionals stdenv.hostPlatform.isLinux [
-      gtk3 # libSwell needs libgdk-3.so.0
-    ]
-    ++ lib.optional jackSupport jackLibrary
-    ++ lib.optional pulseaudioSupport libpulseaudio;
+  lib.optionals stdenv.hostPlatform.isLinux [
+    gtk3 # libSwell needs libgdk-3.so.0
+  ]
+  ++ lib.optional jackSupport jackLibrary
+  ++ lib.optional pulseaudioSupport libpulseaudio;
 
   dontBuild = true;
   dontStrip = true;

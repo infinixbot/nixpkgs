@@ -159,39 +159,39 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   postInstall =
-    lib.optionalString withEmacs ''
-      moveToOutput bin/notmuch-emacs-mua $emacs
-    ''
-    + lib.optionalString withRuby ''
-      make -C bindings/ruby install \
-        vendordir=$out/lib/ruby \
-        SHELL=$SHELL \
-        $makeFlags "''${makeFlagsArray[@]}" \
-        $installFlags "''${installFlagsArray[@]}"
-    ''
-    # notmuch-git (https://notmuchmail.org/doc/latest/man1/notmuch-git.html) does not work without
-    # sexp-support, so there is no point in installing if we're building without it.
-    + lib.optionalString withSfsexp ''
-      cp notmuch-git $out/bin/notmuch-git
-      wrapProgram $out/bin/notmuch-git --prefix PATH : $out/bin:${lib.getBin git}/bin
-    ''
-    + lib.optionalString withVim ''
-      make -C vim DESTDIR="$vim/share/vim-plugins/notmuch" prefix="" install
-      mkdir -p $vim/share/nvim
-      ln -s $vim/share/vim-plugins/notmuch $vim/share/nvim/site
-    ''
-    + lib.optionalString (withVim && withRuby) ''
-      PLUG=$vim/share/vim-plugins/notmuch/plugin/notmuch.vim
-      cat >> $PLUG << EOF
-        let \$GEM_PATH=\$GEM_PATH . ":${finalAttrs.passthru.gemEnv}/${ruby.gemPath}"
-        let \$RUBYLIB=\$RUBYLIB . ":$out/${ruby.libPath}/${ruby.system}"
-        if has('nvim')
-      EOF
-      for gem in ${finalAttrs.passthru.gemEnv}/${ruby.gemPath}/gems/*/lib; do
-        echo "ruby \$LOAD_PATH.unshift('$gem')" >> $PLUG
-      done
-      echo 'endif' >> $PLUG
-    '';
+  lib.optionalString withEmacs ''
+    moveToOutput bin/notmuch-emacs-mua $emacs
+  ''
+  + lib.optionalString withRuby ''
+    make -C bindings/ruby install \
+      vendordir=$out/lib/ruby \
+      SHELL=$SHELL \
+      $makeFlags "''${makeFlagsArray[@]}" \
+      $installFlags "''${installFlagsArray[@]}"
+  ''
+  # notmuch-git (https://notmuchmail.org/doc/latest/man1/notmuch-git.html) does not work without
+  # sexp-support, so there is no point in installing if we're building without it.
+  + lib.optionalString withSfsexp ''
+    cp notmuch-git $out/bin/notmuch-git
+    wrapProgram $out/bin/notmuch-git --prefix PATH : $out/bin:${lib.getBin git}/bin
+  ''
+  + lib.optionalString withVim ''
+    make -C vim DESTDIR="$vim/share/vim-plugins/notmuch" prefix="" install
+    mkdir -p $vim/share/nvim
+    ln -s $vim/share/vim-plugins/notmuch $vim/share/nvim/site
+  ''
+  + lib.optionalString (withVim && withRuby) ''
+    PLUG=$vim/share/vim-plugins/notmuch/plugin/notmuch.vim
+    cat >> $PLUG << EOF
+      let \$GEM_PATH=\$GEM_PATH . ":${finalAttrs.passthru.gemEnv}/${ruby.gemPath}"
+      let \$RUBYLIB=\$RUBYLIB . ":$out/${ruby.libPath}/${ruby.system}"
+      if has('nvim')
+    EOF
+    for gem in ${finalAttrs.passthru.gemEnv}/${ruby.gemPath}/gems/*/lib; do
+      echo "ruby \$LOAD_PATH.unshift('$gem')" >> $PLUG
+    done
+    echo 'endif' >> $PLUG
+  '';
 
   passthru = {
     pythonSourceRoot = "notmuch-${finalAttrs.version}/contrib/python-legacy";

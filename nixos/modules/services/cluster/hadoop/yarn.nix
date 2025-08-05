@@ -126,8 +126,8 @@ in
           User = "yarn";
           SyslogIdentifier = "yarn-resourcemanager";
           ExecStart =
-            "${cfg.package}/bin/yarn --config ${hadoopConf} "
-            + " resourcemanager ${lib.escapeShellArgs cfg.yarn.resourcemanager.extraFlags}";
+          "${cfg.package}/bin/yarn --config ${hadoopConf} "
+          + " resourcemanager ${lib.escapeShellArgs cfg.yarn.resourcemanager.extraFlags}";
           Restart = "always";
         };
       };
@@ -178,8 +178,8 @@ in
           SyslogIdentifier = "yarn-nodemanager";
           PermissionsStartOnly = true;
           ExecStart =
-            "${cfg.package}/bin/yarn --config ${hadoopConf} "
-            + " nodemanager ${lib.escapeShellArgs cfg.yarn.nodemanager.extraFlags}";
+          "${cfg.package}/bin/yarn --config ${hadoopConf} "
+          + " nodemanager ${lib.escapeShellArgs cfg.yarn.nodemanager.extraFlags}";
           Restart = "always";
         };
       };

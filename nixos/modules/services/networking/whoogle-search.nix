@@ -51,9 +51,9 @@ in
       serviceConfig = {
         Type = "simple";
         ExecStart =
-          "${lib.getExe pkgs.whoogle-search}"
-          + " --host '${cfg.listenAddress}'"
-          + " --port '${builtins.toString cfg.port}'";
+        "${lib.getExe pkgs.whoogle-search}"
+        + " --host '${cfg.listenAddress}'"
+        + " --port '${builtins.toString cfg.port}'";
         ExecReload = "${pkgs.coreutils}/bin/kill -HUP $MAINPID";
         StateDirectory = "whoogle-search";
         StateDirectoryMode = "0750";

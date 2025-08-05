@@ -99,18 +99,18 @@ stdenv.mkDerivation rec {
   '';
 
   postInstall =
-    lib.optionalString smimeSupport ''
-      # S/MIME setup
-      cp contrib/smime.rc $out/etc/smime.rc
-      sed -i 's#openssl#${openssl}/bin/openssl#' $out/etc/smime.rc
-      echo "source $out/etc/smime.rc" >> $out/etc/Muttrc
-    ''
-    + lib.optionalString gpgSupport ''
-      # GnuPG setup
-      cp contrib/gpg.rc $out/etc/gpg.rc
-      sed -i 's#\(command="\)gpg #\1${gnupg}/bin/gpg #' $out/etc/gpg.rc
-      echo "source $out/etc/gpg.rc" >> $out/etc/Muttrc
-    '';
+  lib.optionalString smimeSupport ''
+    # S/MIME setup
+    cp contrib/smime.rc $out/etc/smime.rc
+    sed -i 's#openssl#${openssl}/bin/openssl#' $out/etc/smime.rc
+    echo "source $out/etc/smime.rc" >> $out/etc/Muttrc
+  ''
+  + lib.optionalString gpgSupport ''
+    # GnuPG setup
+    cp contrib/gpg.rc $out/etc/gpg.rc
+    sed -i 's#\(command="\)gpg #\1${gnupg}/bin/gpg #' $out/etc/gpg.rc
+    echo "source $out/etc/gpg.rc" >> $out/etc/Muttrc
+  '';
 
   passthru = {
     updateScript = writeScript "update-mutt" ''

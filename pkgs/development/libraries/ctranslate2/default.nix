@@ -59,27 +59,27 @@ stdenv.mkDerivation rec {
   ++ lib.optional stdenv.hostPlatform.isDarwin "-DWITH_ACCELERATE=ON";
 
   buildInputs =
-    lib.optionals withMkl [
-      mkl
-    ]
-    ++ lib.optionals withCUDA [
-      cudaPackages.cuda_cccl # <nv/target> required by the fp16 headers in cudart
-      cudaPackages.cuda_cudart
-      cudaPackages.libcublas
-      cudaPackages.libcurand
-    ]
-    ++ lib.optionals (withCUDA && withCuDNN) [
-      cudaPackages.cudnn
-    ]
-    ++ lib.optionals withOneDNN [
-      oneDNN
-    ]
-    ++ lib.optionals withOpenblas [
-      openblas
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      llvmPackages.openmp
-    ];
+  lib.optionals withMkl [
+    mkl
+  ]
+  ++ lib.optionals withCUDA [
+    cudaPackages.cuda_cccl # <nv/target> required by the fp16 headers in cudart
+    cudaPackages.cuda_cudart
+    cudaPackages.libcublas
+    cudaPackages.libcurand
+  ]
+  ++ lib.optionals (withCUDA && withCuDNN) [
+    cudaPackages.cudnn
+  ]
+  ++ lib.optionals withOneDNN [
+    oneDNN
+  ]
+  ++ lib.optionals withOpenblas [
+    openblas
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    llvmPackages.openmp
+  ];
 
   passthru.tests = {
     inherit

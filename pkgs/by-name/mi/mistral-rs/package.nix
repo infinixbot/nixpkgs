@@ -116,9 +116,9 @@ rustPlatform.buildRustPackage (finalAttrs: {
   ++ lib.optionals mklSupport [ mkl ];
 
   buildFeatures =
-    lib.optionals cudaSupport [ "cuda" ]
-    ++ lib.optionals mklSupport [ "mkl" ]
-    ++ lib.optionals (hostPlatform.isDarwin && metalSupport) [ "metal" ];
+  lib.optionals cudaSupport [ "cuda" ]
+  ++ lib.optionals mklSupport [ "mkl" ]
+  ++ lib.optionals (hostPlatform.isDarwin && metalSupport) [ "metal" ];
 
   env = {
     SWAGGER_UI_DOWNLOAD_URL =

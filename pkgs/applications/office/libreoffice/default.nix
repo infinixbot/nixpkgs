@@ -406,108 +406,108 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs =
-    finalAttrs.passthru.gst_packages
-    ++ [
-      # Make libpng not handle APNG images, so LibreOffice's own handler kicks in
-      # This should be ordered first, so it gets picked up before any other
-      # propagated libpng
-      # See: https://www.mail-archive.com/libreoffice@lists.freedesktop.org/msg334080.html
-      (libpng.override { apngSupport = false; })
-      coinmp
-      abseil-cpp
-      bluez5
-      boost
-      box2d_2
-      cairo
-      clucene_core_2
-      cppunit
-      cups
-      curl
-      db
-      dbus-glib
-      expat
-      file
-      fontconfig
-      freetype
-      getopt
-      glib
-      glm
-      adwaita-icon-theme
-      gpgme
-      graphite2
-      gtk3
-      (harfbuzz.override { withIcu = true; })
-      hunspell
-      icu
-      jre'
-      lcms2
-      libGL
-      libGLU
-      libtool
-      xorg.libX11
-      xorg.libXaw
-      xorg.libXdmcp
-      xorg.libXext
-      xorg.libXi
-      xorg.libXinerama
-      xorg.libXtst
-      libabw
-      libargon2
-      libatomic_ops
-      libcdr
-      libcmis
-      libe-book
-      libepoxy
-      libepubgen
-      libetonyek
-      libexttextcat
-      libjpeg
-      liblangtag
-      libmspack
-      libmwaw
-      libodfgen
-      liborcus
-      xorg.libpthreadstubs
-      librdf_redland
-      librevenge
-      librsvg
-      libsndfile
-      libvisio
-      libwpd
-      libwpg
-      libwps
-      libxcrypt
-      libxml2
-      xorg.libxshmfence
-      libxslt
-      libzmf
-      libwebp
-      lp_solve
-      mdds
-      mythes
-      ncurses
-      neon
-      nspr
-      nss
-      openldap
-      openssl
-      pam
-      poppler
-      libpq
-      python311
-      sane-backends
-      unixODBC
-      util-linux
-      which
-      xmlsec
-      zlib
-    ]
-    ++ optionals kdeIntegration [
-      qtbase
-      qtx11extras
-      kcoreaddons
-      kio
-    ];
+  finalAttrs.passthru.gst_packages
+  ++ [
+    # Make libpng not handle APNG images, so LibreOffice's own handler kicks in
+    # This should be ordered first, so it gets picked up before any other
+    # propagated libpng
+    # See: https://www.mail-archive.com/libreoffice@lists.freedesktop.org/msg334080.html
+    (libpng.override { apngSupport = false; })
+    coinmp
+    abseil-cpp
+    bluez5
+    boost
+    box2d_2
+    cairo
+    clucene_core_2
+    cppunit
+    cups
+    curl
+    db
+    dbus-glib
+    expat
+    file
+    fontconfig
+    freetype
+    getopt
+    glib
+    glm
+    adwaita-icon-theme
+    gpgme
+    graphite2
+    gtk3
+    (harfbuzz.override { withIcu = true; })
+    hunspell
+    icu
+    jre'
+    lcms2
+    libGL
+    libGLU
+    libtool
+    xorg.libX11
+    xorg.libXaw
+    xorg.libXdmcp
+    xorg.libXext
+    xorg.libXi
+    xorg.libXinerama
+    xorg.libXtst
+    libabw
+    libargon2
+    libatomic_ops
+    libcdr
+    libcmis
+    libe-book
+    libepoxy
+    libepubgen
+    libetonyek
+    libexttextcat
+    libjpeg
+    liblangtag
+    libmspack
+    libmwaw
+    libodfgen
+    liborcus
+    xorg.libpthreadstubs
+    librdf_redland
+    librevenge
+    librsvg
+    libsndfile
+    libvisio
+    libwpd
+    libwpg
+    libwps
+    libxcrypt
+    libxml2
+    xorg.libxshmfence
+    libxslt
+    libzmf
+    libwebp
+    lp_solve
+    mdds
+    mythes
+    ncurses
+    neon
+    nspr
+    nss
+    openldap
+    openssl
+    pam
+    poppler
+    libpq
+    python311
+    sane-backends
+    unixODBC
+    util-linux
+    which
+    xmlsec
+    zlib
+  ]
+  ++ optionals kdeIntegration [
+    qtbase
+    qtx11extras
+    kcoreaddons
+    kio
+  ];
 
   preConfigure = ''
     configureFlagsArray=(
@@ -644,8 +644,8 @@ stdenv.mkDerivation (finalAttrs: {
     # FIXME: this is a hack, because the right cflags are not being picked up
     # from rasqal's .pc file. Needs more investigation.
     NIX_CFLAGS_COMPILE =
-      "-I${librdf_rasqal}/include/rasqal"
-      + (lib.optionalString debugLogging " -DSAL_LOG_WARN=1 -DSAL_LOG_INFO=1 ");
+    "-I${librdf_rasqal}/include/rasqal"
+    + (lib.optionalString debugLogging " -DSAL_LOG_WARN=1 -DSAL_LOG_INFO=1 ");
 
     # Provide all the fonts used in tests.
     FONTCONFIG_FILE = fontsConf;

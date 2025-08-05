@@ -234,9 +234,9 @@ let
         in
         innerClosePropagation acc' (uniqList {
           inputList =
-            (maybeAttrNullable "propagatedBuildInputs" [ ] y)
-            ++ (maybeAttrNullable "propagatedNativeBuildInputs" [ ] y)
-            ++ ys;
+          (maybeAttrNullable "propagatedBuildInputs" [ ] y)
+          ++ (maybeAttrNullable "propagatedNativeBuildInputs" [ ] y)
+          ++ ys;
           acc = acc';
         });
 
@@ -387,31 +387,31 @@ let
 
   # sane defaults (same name as attr name so that inherit can be used)
   mergeAttrBy = # { buildInputs = concatList; [...]; passthru = mergeAttr; [..]; }
-    listToAttrs (
-      map (n: nameValuePair n concat) [
-        "nativeBuildInputs"
-        "buildInputs"
-        "propagatedBuildInputs"
-        "configureFlags"
-        "prePhases"
-        "postAll"
-        "patches"
-      ]
-    )
-    // listToAttrs (
-      map (n: nameValuePair n mergeAttrs) [
-        "passthru"
-        "meta"
-        "cfg"
-        "flags"
-      ]
-    )
-    // listToAttrs (
-      map (n: nameValuePair n (a: b: "${a}\n${b}")) [
-        "preConfigure"
-        "postInstall"
-      ]
-    );
+  listToAttrs (
+    map (n: nameValuePair n concat) [
+      "nativeBuildInputs"
+      "buildInputs"
+      "propagatedBuildInputs"
+      "configureFlags"
+      "prePhases"
+      "postAll"
+      "patches"
+    ]
+  )
+  // listToAttrs (
+    map (n: nameValuePair n mergeAttrs) [
+      "passthru"
+      "meta"
+      "cfg"
+      "flags"
+    ]
+  )
+  // listToAttrs (
+    map (n: nameValuePair n (a: b: "${a}\n${b}")) [
+      "preConfigure"
+      "postInstall"
+    ]
+  );
 
   nixType =
     x:

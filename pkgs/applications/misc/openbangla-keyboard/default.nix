@@ -50,16 +50,16 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    lib.optionals withFcitx5Support [
-      fcitx5
-    ]
-    ++ lib.optionals withIbusSupport [
-      ibus
-    ]
-    ++ [
-      qtbase
-      zstd
-    ];
+  lib.optionals withFcitx5Support [
+    fcitx5
+  ]
+  ++ lib.optionals withIbusSupport [
+    ibus
+  ]
+  ++ [
+    qtbase
+    zstd
+  ];
 
   cargoDeps = rustPlatform.fetchCargoVendor {
     inherit src cargoRoot postPatch;
@@ -67,12 +67,12 @@ stdenv.mkDerivation rec {
   };
 
   cmakeFlags =
-    lib.optionals withFcitx5Support [
-      "-DENABLE_FCITX=YES"
-    ]
-    ++ lib.optionals withIbusSupport [
-      "-DENABLE_IBUS=YES"
-    ];
+  lib.optionals withFcitx5Support [
+    "-DENABLE_FCITX=YES"
+  ]
+  ++ lib.optionals withIbusSupport [
+    "-DENABLE_IBUS=YES"
+  ];
 
   cargoRoot = "src/engine/riti";
   postPatch = ''

@@ -91,35 +91,35 @@ stdenv.mkDerivation (finalAttrs: {
   # but we don't do it simply to avoid mass rebuilds.
 
   postInstall =
-    lib.optionalString splitStaticOutput ''
-      moveToOutput lib/libz.a "$static"
-    ''
-    # jww (2015-01-06): Sometimes this library install as a .so, even on
-    # Darwin; others time it installs as a .dylib.  I haven't yet figured out
-    # what causes this difference.
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      for file in $out/lib/*.so* $out/lib/*.dylib* ; do
-        ${stdenv.cc.bintools.targetPrefix}install_name_tool -id "$file" $file
-      done
-    ''
-    # Non-typical naming confuses libtool which then refuses to use zlib's DLL
-    # in some cases, e.g. when compiling libpng.
-    + lib.optionalString (stdenv.hostPlatform.isMinGW && shared) ''
-      ln -s zlib1.dll $out/bin/libz.dll
-    '';
+  lib.optionalString splitStaticOutput ''
+    moveToOutput lib/libz.a "$static"
+  ''
+  # jww (2015-01-06): Sometimes this library install as a .so, even on
+  # Darwin; others time it installs as a .dylib.  I haven't yet figured out
+  # what causes this difference.
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    for file in $out/lib/*.so* $out/lib/*.dylib* ; do
+      ${stdenv.cc.bintools.targetPrefix}install_name_tool -id "$file" $file
+    done
+  ''
+  # Non-typical naming confuses libtool which then refuses to use zlib's DLL
+  # in some cases, e.g. when compiling libpng.
+  + lib.optionalString (stdenv.hostPlatform.isMinGW && shared) ''
+    ln -s zlib1.dll $out/bin/libz.dll
+  '';
 
   env =
-    lib.optionalAttrs (!stdenv.hostPlatform.isDarwin) {
-      # As zlib takes part in the stdenv building, we don't want references
-      # to the bootstrap-tools libgcc (as uses to happen on arm/mips)
-      NIX_CFLAGS_COMPILE = "-static-libgcc";
-    }
-    // lib.optionalAttrs (stdenv.hostPlatform.linker == "lld") {
-      # lld 16 enables --no-undefined-version by default
-      # This makes configure think it can't build dynamic libraries
-      # this may be removed when a version is packaged with https://github.com/madler/zlib/issues/960 fixed
-      NIX_LDFLAGS = "--undefined-version";
-    };
+  lib.optionalAttrs (!stdenv.hostPlatform.isDarwin) {
+    # As zlib takes part in the stdenv building, we don't want references
+    # to the bootstrap-tools libgcc (as uses to happen on arm/mips)
+    NIX_CFLAGS_COMPILE = "-static-libgcc";
+  }
+  // lib.optionalAttrs (stdenv.hostPlatform.linker == "lld") {
+    # lld 16 enables --no-undefined-version by default
+    # This makes configure think it can't build dynamic libraries
+    # this may be removed when a version is packaged with https://github.com/madler/zlib/issues/960 fixed
+    NIX_LDFLAGS = "--undefined-version";
+  };
 
   # We don't strip on static cross-compilation because of reports that native
   # stripping corrupted the target library; see commit 12e960f5 for the report.

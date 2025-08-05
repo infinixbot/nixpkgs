@@ -274,25 +274,25 @@ py.pkgs.toPythonApplication (
       ++ lib.concatMap (extension: extension.propagatedBuildInputs) withExtensions;
 
     postInstall =
-      lib.optionalString (stdenvNoCC.buildPlatform.canExecute stdenvNoCC.hostPlatform) ''
-        installShellCompletion --cmd az \
-          --bash <(register-python-argcomplete az --shell bash) \
-          --zsh <(register-python-argcomplete az --shell zsh) \
-          --fish <(register-python-argcomplete az --shell fish)
-      ''
-      + lib.optionalString withImmutableConfig ''
-        export HOME=$TMPDIR
-        $out/bin/az --version
-        mkdir -p $out/etc/azure
-        mv $TMPDIR/.azure/commandIndex.json $out/etc/azure/commandIndex.json
-        mv $TMPDIR/.azure/versionCheck.json $out/etc/azure/versionCheck.json
-      ''
-      + ''
-        # remove garbage
-        rm $out/bin/az.bat
-        rm $out/bin/az.completion.sh
-        rm $out/bin/azps.ps1
-      '';
+    lib.optionalString (stdenvNoCC.buildPlatform.canExecute stdenvNoCC.hostPlatform) ''
+      installShellCompletion --cmd az \
+        --bash <(register-python-argcomplete az --shell bash) \
+        --zsh <(register-python-argcomplete az --shell zsh) \
+        --fish <(register-python-argcomplete az --shell fish)
+    ''
+    + lib.optionalString withImmutableConfig ''
+      export HOME=$TMPDIR
+      $out/bin/az --version
+      mkdir -p $out/etc/azure
+      mv $TMPDIR/.azure/commandIndex.json $out/etc/azure/commandIndex.json
+      mv $TMPDIR/.azure/versionCheck.json $out/etc/azure/versionCheck.json
+    ''
+    + ''
+      # remove garbage
+      rm $out/bin/az.bat
+      rm $out/bin/az.completion.sh
+      rm $out/bin/azps.ps1
+    '';
 
     # wrap the executable so that the python packages are available
     # it's just a shebang script which calls `python -m azure.cli "$@"`

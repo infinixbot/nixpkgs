@@ -37,14 +37,14 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   postPatch =
-    lib.optionalString withDocumentation ''
-      patchShebangs doc/doxygen/gen-doxygen.py
-    ''
-    + lib.optionalString stdenv.hostPlatform.isStatic ''
-      # delete line containing os-wrappers-test, disables
-      # the building of os-wrappers-test
-      sed -i '/os-wrappers-test/d' tests/meson.build
-    '';
+  lib.optionalString withDocumentation ''
+    patchShebangs doc/doxygen/gen-doxygen.py
+  ''
+  + lib.optionalString stdenv.hostPlatform.isStatic ''
+    # delete line containing os-wrappers-test, disables
+    # the building of os-wrappers-test
+    sed -i '/os-wrappers-test/d' tests/meson.build
+  '';
 
   outputs = [
     "out"

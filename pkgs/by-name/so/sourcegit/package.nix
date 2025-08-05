@@ -86,27 +86,27 @@ buildDotnetModule (finalAttrs: {
   ];
 
   postInstall =
-    lib.optionalString stdenv.hostPlatform.isLinux ''
-      # extract the .icns file into multiple .png files
-      # where the format of the .png file names is App_"$n"x"$n"x32.png
+  lib.optionalString stdenv.hostPlatform.isLinux ''
+    # extract the .icns file into multiple .png files
+    # where the format of the .png file names is App_"$n"x"$n"x32.png
 
-      icns2png -x build/resources/app/App.icns
+    icns2png -x build/resources/app/App.icns
 
-      for f in App_*x32.png; do
-        res=''${f//App_}
-        res=''${res//x32.png}
-        install -Dm644 $f "$out/share/icons/hicolor/$res/apps/SourceGit.png"
-      done
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      install -Dm644 build/resources/app/App.icns $out/Applications/SourceGit.app/Contents/Resources/App.icns
+    for f in App_*x32.png; do
+      res=''${f//App_}
+      res=''${res//x32.png}
+      install -Dm644 $f "$out/share/icons/hicolor/$res/apps/SourceGit.png"
+    done
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    install -Dm644 build/resources/app/App.icns $out/Applications/SourceGit.app/Contents/Resources/App.icns
 
-      substitute build/resources/app/App.plist $out/Applications/SourceGit.app/Contents/Info.plist \
-        --replace-fail "SOURCE_GIT_VERSION" "${finalAttrs.version}"
+    substitute build/resources/app/App.plist $out/Applications/SourceGit.app/Contents/Info.plist \
+      --replace-fail "SOURCE_GIT_VERSION" "${finalAttrs.version}"
 
-      mkdir -p $out/Applications/SourceGit.app/Contents/MacOS
-      ln -s $out/bin/SourceGit $out/Applications/SourceGit.app/Contents/MacOS/SourceGit
-    '';
+    mkdir -p $out/Applications/SourceGit.app/Contents/MacOS
+    ln -s $out/bin/SourceGit $out/Applications/SourceGit.app/Contents/MacOS/SourceGit
+  '';
 
   passthru.updateScript = nix-update-script { };
 

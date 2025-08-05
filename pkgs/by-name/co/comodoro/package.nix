@@ -28,17 +28,17 @@ rustPlatform.buildRustPackage rec {
   buildFeatures = lib.optional withTcp "tcp";
 
   postInstall =
-    lib.optionalString installManPages ''
-      mkdir -p $out/man
-      $out/bin/comodoro man $out/man
-      installManPage $out/man/*
-    ''
-    + lib.optionalString installShellCompletions ''
-      installShellCompletion --cmd comodoro \
-        --bash <($out/bin/comodoro completion bash) \
-        --fish <($out/bin/comodoro completion fish) \
-        --zsh <($out/bin/comodoro completion zsh)
-    '';
+  lib.optionalString installManPages ''
+    mkdir -p $out/man
+    $out/bin/comodoro man $out/man
+    installManPage $out/man/*
+  ''
+  + lib.optionalString installShellCompletions ''
+    installShellCompletion --cmd comodoro \
+      --bash <($out/bin/comodoro completion bash) \
+      --fish <($out/bin/comodoro completion fish) \
+      --zsh <($out/bin/comodoro completion zsh)
+  '';
 
   meta = {
     description = "CLI to manage your time";

@@ -64,24 +64,24 @@ in
     ];
 
     boot.initrd.availableKernelModules =
-      lib.optionals cfg.enable [
-        "hid-multitouch"
-        "hid-generic"
-        "usbhid"
+    lib.optionals cfg.enable [
+      "hid-multitouch"
+      "hid-generic"
+      "usbhid"
 
-        "i2c-designware-core"
-        "i2c-designware-platform"
-        "i2c-hid-acpi"
+      "i2c-designware-core"
+      "i2c-designware-platform"
+      "i2c-hid-acpi"
 
-        "usbtouchscreen"
-        "evdev"
-        "psmouse"
-      ]
-      ++ lib.optionals cfg.allowVendorDrivers [
-        "intel_lpss_pci"
-        "elo"
-        "wacom"
-      ];
+      "usbtouchscreen"
+      "evdev"
+      "psmouse"
+    ]
+    ++ lib.optionals cfg.allowVendorDrivers [
+      "intel_lpss_pci"
+      "elo"
+      "wacom"
+    ];
 
     boot.initrd.systemd = {
       contents."/etc/unl0kr.conf".source = settingsFormat.generate "unl0kr.conf" cfg.settings;

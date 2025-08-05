@@ -248,12 +248,12 @@ in
       };
 
       configPackages =
-        cfg.configPackages
-        ++ [
-          extraConfigPkg
-          extraScriptsPkg
-        ]
-        ++ optional (!pwUsedForAudio) pwNotForAudioConfigPkg;
+      cfg.configPackages
+      ++ [
+        extraConfigPkg
+        extraScriptsPkg
+      ]
+      ++ optional (!pwUsedForAudio) pwNotForAudioConfigPkg;
 
       configs = pkgs.buildEnv {
         name = "wireplumber-configs";

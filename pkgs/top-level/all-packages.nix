@@ -3790,7 +3790,7 @@ with pkgs;
     toPythonApplication (
       nvchecker.overridePythonAttrs (oldAttrs: {
         propagatedBuildInputs =
-          oldAttrs.propagatedBuildInputs ++ lib.flatten (builtins.attrValues oldAttrs.optional-dependencies);
+        oldAttrs.propagatedBuildInputs ++ lib.flatten (builtins.attrValues oldAttrs.optional-dependencies);
       })
     );
 
@@ -5068,8 +5068,8 @@ with pkgs;
       (prevAttrs: {
         meta = prevAttrs.meta // {
           badPlatforms =
-            (prevAttrs.meta.badPlatforms or [ ])
-            ++ lib.optionals (stdenv.targetPlatform == stdenv.hostPlatform) [ stdenv.hostPlatform.system ];
+          (prevAttrs.meta.badPlatforms or [ ])
+          ++ lib.optionals (stdenv.targetPlatform == stdenv.hostPlatform) [ stdenv.hostPlatform.system ];
         };
       });
 

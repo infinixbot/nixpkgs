@@ -35,13 +35,13 @@ let
     iface: suppl:
     let
       deps =
-        (
-          if (iface == "WLAN" || iface == "LAN") then
-            [ "sys-subsystem-net-devices-%i.device" ]
-          else
-            (if (iface == "DBUS") then [ "dbus.service" ] else (map subsystemDevice (splitString " " iface)))
-        )
-        ++ optional (suppl.bridge != "") (subsystemDevice suppl.bridge);
+      (
+        if (iface == "WLAN" || iface == "LAN") then
+          [ "sys-subsystem-net-devices-%i.device" ]
+        else
+          (if (iface == "DBUS") then [ "dbus.service" ] else (map subsystemDevice (splitString " " iface)))
+      )
+      ++ optional (suppl.bridge != "") (subsystemDevice suppl.bridge);
 
       ifaceArg = concatStringsSep " -N " (map (i: "-i${i}") (splitString " " iface));
       driverArg = optionalString (suppl.driver != null) "-D${suppl.driver}";

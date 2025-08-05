@@ -122,35 +122,35 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   cmakeFlags =
-    lib.optionals doCheck [
-      (lib.cmakeBool "BUILD_CPP_TEST" true)
-    ]
-    ++ lib.optionals cudaSupport [
-      (lib.cmakeBool "USE_CUDA" true)
-      (lib.cmakeFeature "CMAKE_CXX_COMPILER" (lib.getExe cudaPackages.backendStdenv.cc))
-    ]
-    ++ lib.optionals openclSupport [
-      (lib.cmakeBool "USE_GPU" true)
-    ]
-    ++ lib.optionals mpiSupport [
-      (lib.cmakeBool "USE_MPI" true)
-    ]
-    ++ lib.optionals hdfsSupport [
-      (lib.cmakeBool "USE_HDFS" true)
-      (lib.cmakeFeature "HDFS_LIB" "${hadoop}/lib/hadoop-${hadoop.version}/lib/native/libhdfs.so")
-      (lib.cmakeFeature "HDFS_INCLUDE_DIR" "${hadoop}/lib/hadoop-${hadoop.version}/include")
-    ]
-    ++ lib.optionals javaWrapper [
-      (lib.cmakeBool "USE_SWIG" true)
-      # RPATH of binary /nix/store/.../bin/... contains a forbidden reference to /build/
-      (lib.cmakeBool "CMAKE_SKIP_BUILD_RPATH" true)
-    ]
-    ++ lib.optionals rLibrary [
-      (lib.cmakeBool "__BUILD_FOR_R" true)
-    ]
-    ++ lib.optionals pythonLibrary [
-      (lib.cmakeBool "__BUILD_FOR_PYTHON" true)
-    ];
+  lib.optionals doCheck [
+    (lib.cmakeBool "BUILD_CPP_TEST" true)
+  ]
+  ++ lib.optionals cudaSupport [
+    (lib.cmakeBool "USE_CUDA" true)
+    (lib.cmakeFeature "CMAKE_CXX_COMPILER" (lib.getExe cudaPackages.backendStdenv.cc))
+  ]
+  ++ lib.optionals openclSupport [
+    (lib.cmakeBool "USE_GPU" true)
+  ]
+  ++ lib.optionals mpiSupport [
+    (lib.cmakeBool "USE_MPI" true)
+  ]
+  ++ lib.optionals hdfsSupport [
+    (lib.cmakeBool "USE_HDFS" true)
+    (lib.cmakeFeature "HDFS_LIB" "${hadoop}/lib/hadoop-${hadoop.version}/lib/native/libhdfs.so")
+    (lib.cmakeFeature "HDFS_INCLUDE_DIR" "${hadoop}/lib/hadoop-${hadoop.version}/include")
+  ]
+  ++ lib.optionals javaWrapper [
+    (lib.cmakeBool "USE_SWIG" true)
+    # RPATH of binary /nix/store/.../bin/... contains a forbidden reference to /build/
+    (lib.cmakeBool "CMAKE_SKIP_BUILD_RPATH" true)
+  ]
+  ++ lib.optionals rLibrary [
+    (lib.cmakeBool "__BUILD_FOR_R" true)
+  ]
+  ++ lib.optionals pythonLibrary [
+    (lib.cmakeBool "__BUILD_FOR_PYTHON" true)
+  ];
 
   configurePhase = lib.optionals rLibrary ''
     export R_LIBS_SITE="$out/library:$R_LIBS_SITE''${R_LIBS_SITE:+:}"

@@ -67,18 +67,18 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   cmakeFlags =
-    lib.optionals (lib.versionOlder release_version "14") [
-      (lib.cmakeFeature "LLVM_CONFIG_PATH" "${libllvm.dev}/bin/llvm-config${
-        lib.optionalString (stdenv.hostPlatform != stdenv.buildPlatform) "-native"
-      }")
-    ]
-    ++ lib.optionals (lib.versionAtLeast release_version "15") [
-      (lib.cmakeFeature "LLD_INSTALL_PACKAGE_DIR" "${placeholder "dev"}/lib/cmake/lld")
-    ]
-    ++ [
-      (lib.cmakeFeature "LLVM_TABLEGEN_EXE" "${buildLlvmTools.tblgen}/bin/llvm-tblgen")
-    ]
-    ++ devExtraCmakeFlags;
+  lib.optionals (lib.versionOlder release_version "14") [
+    (lib.cmakeFeature "LLVM_CONFIG_PATH" "${libllvm.dev}/bin/llvm-config${
+      lib.optionalString (stdenv.hostPlatform != stdenv.buildPlatform) "-native"
+    }")
+  ]
+  ++ lib.optionals (lib.versionAtLeast release_version "15") [
+    (lib.cmakeFeature "LLD_INSTALL_PACKAGE_DIR" "${placeholder "dev"}/lib/cmake/lld")
+  ]
+  ++ [
+    (lib.cmakeFeature "LLVM_TABLEGEN_EXE" "${buildLlvmTools.tblgen}/bin/llvm-tblgen")
+  ]
+  ++ devExtraCmakeFlags;
 
   postPatch = lib.optionalString (lib.versionOlder release_version "14") ''
     substituteInPlace MachO/CMakeLists.txt --replace-fail \

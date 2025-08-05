@@ -337,18 +337,18 @@ in
           warp-routing = filterConfig tunnel.warp-routing;
           originRequest = filterConfig tunnel.originRequest;
           ingress =
-            (map (
-              key:
-              {
-                hostname = key;
-              }
-              // lib.getAttr key (filterConfig (filterConfig ingressesSet))
-            ) (lib.attrNames ingressesSet))
-            ++ (map (key: {
+          (map (
+            key:
+            {
               hostname = key;
-              service = lib.getAttr key ingressesStr;
-            }) (lib.attrNames ingressesStr))
-            ++ [ { service = tunnel.default; } ];
+            }
+            // lib.getAttr key (filterConfig (filterConfig ingressesSet))
+          ) (lib.attrNames ingressesSet))
+          ++ (map (key: {
+            hostname = key;
+            service = lib.getAttr key ingressesStr;
+          }) (lib.attrNames ingressesStr))
+          ++ [ { service = tunnel.default; } ];
         };
 
         mkConfigFile = pkgs.writeText "cloudflared.yml" (builtins.toJSON fullConfig);

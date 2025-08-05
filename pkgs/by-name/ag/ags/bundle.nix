@@ -31,14 +31,14 @@ stdenvNoCC.mkDerivation (
     ];
 
     buildInputs =
-      (attrs.buildInputs or [ ])
-      ++ dependencies
-      ++ [
-        gjs
-        astal.astal4
-        astal.astal3
-        astal.io
-      ];
+    (attrs.buildInputs or [ ])
+    ++ dependencies
+    ++ [
+      gjs
+      astal.astal4
+      astal.astal3
+      astal.io
+    ];
 
     preFixup = ''
       gappsWrapperArgs+=(

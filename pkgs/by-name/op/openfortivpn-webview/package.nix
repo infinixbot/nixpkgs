@@ -12,13 +12,13 @@ buildNpmPackage {
   pname = "openfortivpn-webview";
   inherit version;
   src =
-    (fetchFromGitHub {
-      owner = "gm-vm";
-      repo = "openfortivpn-webview";
-      rev = "v${version}-electron";
-      hash = "sha256-jGDCFdqRfnYwUgVs3KO1pDr52JgkYVRHi2KvABaZFl4=";
-    })
-    + "/openfortivpn-webview-electron";
+  (fetchFromGitHub {
+    owner = "gm-vm";
+    repo = "openfortivpn-webview";
+    rev = "v${version}-electron";
+    hash = "sha256-jGDCFdqRfnYwUgVs3KO1pDr52JgkYVRHi2KvABaZFl4=";
+  })
+  + "/openfortivpn-webview-electron";
 
   installPhase = ''
     runHook preInstall

@@ -80,14 +80,14 @@ let
   compress = lib.optionalString (format == "qcow2-compressed") "-c";
 
   filenameSuffix =
-    "."
-    + {
-      qcow2 = "qcow2";
-      vdi = "vdi";
-      vpc = "vhd";
-      raw = "img";
-    }
-    .${formatOpt} or formatOpt;
+  "."
+  + {
+    qcow2 = "qcow2";
+    vdi = "vdi";
+    vpc = "vhd";
+    raw = "img";
+  }
+  .${formatOpt} or formatOpt;
   rootFilename = "nixos.root${filenameSuffix}";
 
   # FIXME: merge with channel.nix / make-channel.nix.

@@ -36,15 +36,15 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs =
-    lib.optionals alsaSupport [
-      alsa-lib
-    ]
-    ++ lib.optionals pulseaudioSupport [
-      libpulseaudio
-    ]
-    ++ lib.optionals jackSupport [
-      libjack2
-    ];
+  lib.optionals alsaSupport [
+    alsa-lib
+  ]
+  ++ lib.optionals pulseaudioSupport [
+    libpulseaudio
+  ]
+  ++ lib.optionals jackSupport [
+    libjack2
+  ];
 
   cmakeFlags = [
     (lib.cmakeBool "RTAUDIO_API_ALSA" alsaSupport)

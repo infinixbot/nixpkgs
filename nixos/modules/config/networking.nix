@@ -175,8 +175,8 @@ in
     networking.hosts =
       let
         hostnames = # Note: The FQDN (canonical hostname) has to come first:
-          lib.optional (cfg.hostName != "" && cfg.domain != null) "${cfg.hostName}.${cfg.domain}"
-          ++ lib.optional (cfg.hostName != "") cfg.hostName; # Then the hostname (without the domain)
+        lib.optional (cfg.hostName != "" && cfg.domain != null) "${cfg.hostName}.${cfg.domain}"
+        ++ lib.optional (cfg.hostName != "") cfg.hostName; # Then the hostname (without the domain)
       in
       {
         "127.0.0.2" = hostnames;
@@ -231,28 +231,28 @@ in
     };
 
     networking.proxy.envVars =
-      lib.optionalAttrs (cfg.proxy.default != null) {
-        # other options already fallback to proxy.default
-        no_proxy = "127.0.0.1,localhost";
-      }
-      // lib.optionalAttrs (cfg.proxy.httpProxy != null) {
-        http_proxy = cfg.proxy.httpProxy;
-      }
-      // lib.optionalAttrs (cfg.proxy.httpsProxy != null) {
-        https_proxy = cfg.proxy.httpsProxy;
-      }
-      // lib.optionalAttrs (cfg.proxy.rsyncProxy != null) {
-        rsync_proxy = cfg.proxy.rsyncProxy;
-      }
-      // lib.optionalAttrs (cfg.proxy.ftpProxy != null) {
-        ftp_proxy = cfg.proxy.ftpProxy;
-      }
-      // lib.optionalAttrs (cfg.proxy.allProxy != null) {
-        all_proxy = cfg.proxy.allProxy;
-      }
-      // lib.optionalAttrs (cfg.proxy.noProxy != null) {
-        no_proxy = cfg.proxy.noProxy;
-      };
+    lib.optionalAttrs (cfg.proxy.default != null) {
+      # other options already fallback to proxy.default
+      no_proxy = "127.0.0.1,localhost";
+    }
+    // lib.optionalAttrs (cfg.proxy.httpProxy != null) {
+      http_proxy = cfg.proxy.httpProxy;
+    }
+    // lib.optionalAttrs (cfg.proxy.httpsProxy != null) {
+      https_proxy = cfg.proxy.httpsProxy;
+    }
+    // lib.optionalAttrs (cfg.proxy.rsyncProxy != null) {
+      rsync_proxy = cfg.proxy.rsyncProxy;
+    }
+    // lib.optionalAttrs (cfg.proxy.ftpProxy != null) {
+      ftp_proxy = cfg.proxy.ftpProxy;
+    }
+    // lib.optionalAttrs (cfg.proxy.allProxy != null) {
+      all_proxy = cfg.proxy.allProxy;
+    }
+    // lib.optionalAttrs (cfg.proxy.noProxy != null) {
+      no_proxy = cfg.proxy.noProxy;
+    };
 
     # Install the proxy environment variables
     environment.sessionVariables = cfg.proxy.envVars;

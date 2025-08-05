@@ -68,8 +68,8 @@ in
         wants = [ "network-online.target" ];
         after = [ "network-online.target" ];
         path =
-          lib.optional (config.services.telegraf.extraConfig.inputs ? procstat) pkgs.procps
-          ++ lib.optional (config.services.telegraf.extraConfig.inputs ? ping) pkgs.iputils;
+        lib.optional (config.services.telegraf.extraConfig.inputs ? procstat) pkgs.procps
+        ++ lib.optional (config.services.telegraf.extraConfig.inputs ? ping) pkgs.iputils;
         serviceConfig = {
           EnvironmentFile = config.services.telegraf.environmentFiles;
           ExecStartPre = lib.optional (config.services.telegraf.environmentFiles != [ ]) (

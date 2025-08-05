@@ -567,30 +567,30 @@ in
 
       targets.initrd.aliases = [ "default.target" ];
       units =
-        mapAttrs' (n: v: nameValuePair "${n}.path" (pathToUnit v)) cfg.paths
-        // mapAttrs' (n: v: nameValuePair "${n}.service" (serviceToUnit v)) cfg.services
-        // mapAttrs' (n: v: nameValuePair "${n}.slice" (sliceToUnit v)) cfg.slices
-        // mapAttrs' (n: v: nameValuePair "${n}.socket" (socketToUnit v)) cfg.sockets
-        // mapAttrs' (n: v: nameValuePair "${n}.target" (targetToUnit v)) cfg.targets
-        // mapAttrs' (n: v: nameValuePair "${n}.timer" (timerToUnit v)) cfg.timers
-        // listToAttrs (
-          map (
-            v:
-            let
-              n = escapeSystemdPath v.where;
-            in
-            nameValuePair "${n}.mount" (mountToUnit v)
-          ) cfg.mounts
-        )
-        // listToAttrs (
-          map (
-            v:
-            let
-              n = escapeSystemdPath v.where;
-            in
-            nameValuePair "${n}.automount" (automountToUnit v)
-          ) cfg.automounts
-        );
+      mapAttrs' (n: v: nameValuePair "${n}.path" (pathToUnit v)) cfg.paths
+      // mapAttrs' (n: v: nameValuePair "${n}.service" (serviceToUnit v)) cfg.services
+      // mapAttrs' (n: v: nameValuePair "${n}.slice" (sliceToUnit v)) cfg.slices
+      // mapAttrs' (n: v: nameValuePair "${n}.socket" (socketToUnit v)) cfg.sockets
+      // mapAttrs' (n: v: nameValuePair "${n}.target" (targetToUnit v)) cfg.targets
+      // mapAttrs' (n: v: nameValuePair "${n}.timer" (timerToUnit v)) cfg.timers
+      // listToAttrs (
+        map (
+          v:
+          let
+            n = escapeSystemdPath v.where;
+          in
+          nameValuePair "${n}.mount" (mountToUnit v)
+        ) cfg.mounts
+      )
+      // listToAttrs (
+        map (
+          v:
+          let
+            n = escapeSystemdPath v.where;
+          in
+          nameValuePair "${n}.automount" (automountToUnit v)
+        ) cfg.automounts
+      );
 
       services.initrd-find-nixos-closure = {
         description = "Find NixOS closure";

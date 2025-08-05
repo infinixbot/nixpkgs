@@ -106,12 +106,12 @@
     }:
     {
       buildInputs =
-        buildInputs
-        ++ (with xorg; [
-          libX11
-          libXft
-          libXinerama
-        ]);
+      buildInputs
+      ++ (with xorg; [
+        libX11
+        libXft
+        libXinerama
+      ]);
     };
 
   zippy =
@@ -122,10 +122,10 @@
     }:
     {
       nimFlags =
-        nimFlags
-        ++ lib.optionals stdenv.hostPlatform.isx86_64 [
-          "--passC:-msse4.1"
-          "--passC:-mpclmul"
-        ];
+      nimFlags
+      ++ lib.optionals stdenv.hostPlatform.isx86_64 [
+        "--passC:-msse4.1"
+        "--passC:-mpclmul"
+      ];
     };
 }

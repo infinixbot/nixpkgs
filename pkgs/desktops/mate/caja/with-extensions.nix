@@ -25,10 +25,10 @@ stdenv.mkDerivation {
   ];
 
   buildInputs =
-    lib.forEach selectedExtensions (x: x.buildInputs)
-    ++ selectedExtensions
-    ++ [ caja ]
-    ++ caja.buildInputs;
+  lib.forEach selectedExtensions (x: x.buildInputs)
+  ++ selectedExtensions
+  ++ [ caja ]
+  ++ caja.buildInputs;
 
   dontUnpack = true;
   dontConfigure = true;

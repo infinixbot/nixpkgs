@@ -35,12 +35,12 @@ mkDerivation (
     noLibc = !bootstrapInstallation;
 
     buildInputs =
-      lib.optionals (!bootstrapInstallation) [
-        libcMinimal
-        include
-        libgcc
-      ]
-      ++ compatIfNeeded;
+    lib.optionals (!bootstrapInstallation) [
+      libcMinimal
+      include
+      libgcc
+    ]
+    ++ compatIfNeeded;
 
     preBuild = ''
       mkdir $BSDSRCDIR/lib/libmd/sys

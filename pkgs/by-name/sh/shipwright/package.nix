@@ -224,36 +224,36 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   postInstall =
-    lib.optionalString stdenv.hostPlatform.isLinux ''
-      mkdir -p $out/bin
-      ln -s $out/lib/soh.elf $out/bin/soh
-      install -Dm644 ../soh/macosx/sohIcon.png $out/share/pixmaps/soh.png
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      # Recreate the macOS bundle (without using cpack)
-      # We mirror the structure of the bundle distributed by the project
+  lib.optionalString stdenv.hostPlatform.isLinux ''
+    mkdir -p $out/bin
+    ln -s $out/lib/soh.elf $out/bin/soh
+    install -Dm644 ../soh/macosx/sohIcon.png $out/share/pixmaps/soh.png
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    # Recreate the macOS bundle (without using cpack)
+    # We mirror the structure of the bundle distributed by the project
 
-      mkdir -p $out/Applications/soh.app/Contents
-      cp $src/soh/macosx/Info.plist.in $out/Applications/soh.app/Contents/Info.plist
-      substituteInPlace $out/Applications/soh.app/Contents/Info.plist \
-        --replace-fail "@CMAKE_PROJECT_VERSION@" "${finalAttrs.version}"
+    mkdir -p $out/Applications/soh.app/Contents
+    cp $src/soh/macosx/Info.plist.in $out/Applications/soh.app/Contents/Info.plist
+    substituteInPlace $out/Applications/soh.app/Contents/Info.plist \
+      --replace-fail "@CMAKE_PROJECT_VERSION@" "${finalAttrs.version}"
 
-      mv $out/MacOS $out/Applications/soh.app/Contents/MacOS
+    mv $out/MacOS $out/Applications/soh.app/Contents/MacOS
 
-      # "lib" contains all resources that are in "Resources" in the official bundle.
-      # We move them to the right place and symlink them back to $out/lib,
-      # as that's where the game expects them.
-      mv $out/Resources $out/Applications/soh.app/Contents/Resources
-      mv $out/lib/** $out/Applications/soh.app/Contents/Resources
-      rm -rf $out/lib
-      ln -s $out/Applications/soh.app/Contents/Resources $out/lib
+    # "lib" contains all resources that are in "Resources" in the official bundle.
+    # We move them to the right place and symlink them back to $out/lib,
+    # as that's where the game expects them.
+    mv $out/Resources $out/Applications/soh.app/Contents/Resources
+    mv $out/lib/** $out/Applications/soh.app/Contents/Resources
+    rm -rf $out/lib
+    ln -s $out/Applications/soh.app/Contents/Resources $out/lib
 
-      # Copy icons
-      cp -r ../build/macosx/soh.icns $out/Applications/soh.app/Contents/Resources/soh.icns
+    # Copy icons
+    cp -r ../build/macosx/soh.icns $out/Applications/soh.app/Contents/Resources/soh.icns
 
-      # Codesign (ad-hoc)
-      codesign -f -s - $out/Applications/soh.app/Contents/MacOS/soh
-    '';
+    # Codesign (ad-hoc)
+    codesign -f -s - $out/Applications/soh.app/Contents/MacOS/soh
+  '';
 
   fixupPhase = lib.optionalString stdenv.hostPlatform.isLinux ''
     wrapProgram $out/lib/soh.elf --prefix PATH ":" ${lib.makeBinPath [ zenity ]}

@@ -420,40 +420,40 @@ in
       user = config.services.nscd.user;
       group = config.services.nscd.group;
       text =
-        lib.optionalString (cfg.nss.getpwnam != null) ''
-          getpwnam ${cfg.nss.getpwnam}
-        ''
-        + lib.optionalString (cfg.nss.getpwuid != null) ''
-          getpwuid ${cfg.nss.getpwuid}
-        ''
-        + lib.optionalString (cfg.nss.getspnam != null) ''
-          getspnam ${cfg.nss.getspnam}
-        ''
-        + lib.optionalString (cfg.nss.getpwent != null) ''
-          getpwent ${cfg.nss.getpwent}
-        ''
-        + lib.optionalString (cfg.nss.getspent != null) ''
-          getspent ${cfg.nss.getspent}
-        ''
-        + lib.optionalString (cfg.nss.getgrnam != null) ''
-          getgrnam ${cfg.nss.getgrnam}
-        ''
-        + lib.optionalString (cfg.nss.getgrgid != null) ''
-          getgrgid ${cfg.nss.getgrgid}
-        ''
-        + lib.optionalString (cfg.nss.getgrent != null) ''
-          getgrent ${cfg.nss.getgrent}
-        ''
-        + lib.optionalString (cfg.nss.memsbygid != null) ''
-          memsbygid ${cfg.nss.memsbygid}
-        ''
-        + lib.optionalString (cfg.nss.gidsbymem != null) ''
-          gidsbymem ${cfg.nss.gidsbymem}
-        ''
-        + ''
-          host ${cfg.host}
-          database ${cfg.database}
-        '';
+      lib.optionalString (cfg.nss.getpwnam != null) ''
+        getpwnam ${cfg.nss.getpwnam}
+      ''
+      + lib.optionalString (cfg.nss.getpwuid != null) ''
+        getpwuid ${cfg.nss.getpwuid}
+      ''
+      + lib.optionalString (cfg.nss.getspnam != null) ''
+        getspnam ${cfg.nss.getspnam}
+      ''
+      + lib.optionalString (cfg.nss.getpwent != null) ''
+        getpwent ${cfg.nss.getpwent}
+      ''
+      + lib.optionalString (cfg.nss.getspent != null) ''
+        getspent ${cfg.nss.getspent}
+      ''
+      + lib.optionalString (cfg.nss.getgrnam != null) ''
+        getgrnam ${cfg.nss.getgrnam}
+      ''
+      + lib.optionalString (cfg.nss.getgrgid != null) ''
+        getgrgid ${cfg.nss.getgrgid}
+      ''
+      + lib.optionalString (cfg.nss.getgrent != null) ''
+        getgrent ${cfg.nss.getgrent}
+      ''
+      + lib.optionalString (cfg.nss.memsbygid != null) ''
+        memsbygid ${cfg.nss.memsbygid}
+      ''
+      + lib.optionalString (cfg.nss.gidsbymem != null) ''
+        gidsbymem ${cfg.nss.gidsbymem}
+      ''
+      + ''
+        host ${cfg.host}
+        database ${cfg.database}
+      '';
     };
 
     environment.etc."libnss-mysql-root.cfg" = {

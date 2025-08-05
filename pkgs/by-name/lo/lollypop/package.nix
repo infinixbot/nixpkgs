@@ -52,37 +52,37 @@ python3.pkgs.buildPythonApplication rec {
   ];
 
   buildInputs =
-    (with gst_all_1; [
-      gst-libav
-      gst-plugins-bad
-      gst-plugins-base
-      gst-plugins-good
-      gst-plugins-ugly
-      gstreamer
+  (with gst_all_1; [
+    gst-libav
+    gst-plugins-bad
+    gst-plugins-base
+    gst-plugins-good
+    gst-plugins-ugly
+    gstreamer
 
-    ])
-    ++ [
-      gdk-pixbuf
-      glib
-      glib-networking
-      gtk3
-      libhandy
-      libsoup_3
-      pango
-      totem-pl-parser
-    ]
-    ++ lib.optional lastFMSupport libsecret;
+  ])
+  ++ [
+    gdk-pixbuf
+    glib
+    glib-networking
+    gtk3
+    libhandy
+    libsoup_3
+    pango
+    totem-pl-parser
+  ]
+  ++ lib.optional lastFMSupport libsecret;
 
   propagatedBuildInputs =
-    (with python3.pkgs; [
-      beautifulsoup4
-      pillow
-      pycairo
-      pygobject3
-    ])
-    ++ lib.optional lastFMSupport python3.pkgs.pylast
-    ++ lib.optional youtubeSupport python3.pkgs.yt-dlp
-    ++ lib.optional kid3Support kid3;
+  (with python3.pkgs; [
+    beautifulsoup4
+    pillow
+    pycairo
+    pygobject3
+  ])
+  ++ lib.optional lastFMSupport python3.pkgs.pylast
+  ++ lib.optional youtubeSupport python3.pkgs.yt-dlp
+  ++ lib.optional kid3Support kid3;
 
   postPatch = ''
     chmod +x meson_post_install.py

@@ -177,12 +177,12 @@ let
               '';
 
               postInstall =
-                (old.postInstall or "")
-                + "\n"
-                + ''
-                  install -m=755 -D sqlite/emacsql-sqlite \
-                    $out/share/emacs/site-lisp/elpa/emacsql-${old.version}/sqlite/emacsql-sqlite
-                '';
+              (old.postInstall or "")
+              + "\n"
+              + ''
+                install -m=755 -D sqlite/emacsql-sqlite \
+                  $out/share/emacs/site-lisp/elpa/emacsql-${old.version}/sqlite/emacsql-sqlite
+              '';
 
               stripDebugList = [ "share" ];
             }
@@ -200,12 +200,12 @@ let
               '';
 
               postInstall =
-                (old.postInstall or "")
-                + "\n"
-                + ''
-                  install -m=755 -D sqlite/emacsql-sqlite \
-                    $out/share/emacs/site-lisp/elpa/emacsql-sqlite-${old.version}/sqlite/emacsql-sqlite
-                '';
+              (old.postInstall or "")
+              + "\n"
+              + ''
+                install -m=755 -D sqlite/emacsql-sqlite \
+                  $out/share/emacs/site-lisp/elpa/emacsql-sqlite-${old.version}/sqlite/emacsql-sqlite
+              '';
 
               stripDebugList = [ "share" ];
             }
@@ -301,11 +301,11 @@ let
             '';
 
             postInstall =
-              (old.postInstall or "")
-              + "\n"
-              + ''
-                install hotfuzz-module.so $out/share/emacs/site-lisp/elpa/hotfuzz-*
-              '';
+            (old.postInstall or "")
+            + "\n"
+            + ''
+              install hotfuzz-module.so $out/share/emacs/site-lisp/elpa/hotfuzz-*
+            '';
           });
 
           irony = super.irony.overrideAttrs (old: {
@@ -361,13 +361,13 @@ let
               '';
 
               postInstall =
-                (old.postInstall or "")
-                + "\n"
-                + ''
-                  outd=$(echo $out/share/emacs/site-lisp/elpa/jinx-*)
-                  install -m444 --target-directory=$outd jinx-mod${libExt}
-                  rm $outd/jinx-mod.c $outd/emacs-module.h
-                '';
+              (old.postInstall or "")
+              + "\n"
+              + ''
+                outd=$(echo $out/share/emacs/site-lisp/elpa/jinx-*)
+                install -m444 --target-directory=$outd jinx-mod${libExt}
+                rm $outd/jinx-mod.c $outd/emacs-module.h
+              '';
 
               meta = old.meta // {
                 maintainers = [ lib.maintainers.DamienCassou ];
@@ -383,13 +383,13 @@ let
             '';
 
             postInstall =
-              (old.postInstall or "")
-              + "\n"
-              + ''
-                outd=$out/share/emacs/site-lisp/elpa/sqlite3-*
-                install -m444 -t $outd sqlite3-api.so
-                rm $outd/*.c $outd/*.h
-              '';
+            (old.postInstall or "")
+            + "\n"
+            + ''
+              outd=$out/share/emacs/site-lisp/elpa/sqlite3-*
+              install -m444 -t $outd sqlite3-api.so
+              rm $outd/*.c $outd/*.h
+            '';
 
             meta = old.meta // {
               maintainers = [ lib.maintainers.DamienCassou ];
@@ -570,12 +570,12 @@ let
             '';
 
             postInstall =
-              (old.postInstall or "")
-              + "\n"
-              + ''
-                mkdir -p $out/bin
-                install -m755 -Dt $out/bin server/telega-server
-              '';
+            (old.postInstall or "")
+            + "\n"
+            + ''
+              mkdir -p $out/bin
+              install -m755 -Dt $out/bin server/telega-server
+            '';
           });
 
           tokei = super.tokei.overrideAttrs (attrs: {
@@ -638,13 +638,13 @@ let
               (pkgs.zeromq.override { enableDrafts = true; })
             ];
             postInstall =
-              (old.postInstall or "")
-              + "\n"
-              + ''
-                mv $EZMQ_LIBDIR/emacs-zmq.* $out/share/emacs/site-lisp/elpa/zmq-*
-                rm -r $out/share/emacs/site-lisp/elpa/zmq-*/src
-                rm $out/share/emacs/site-lisp/elpa/zmq-*/Makefile
-              '';
+            (old.postInstall or "")
+            + "\n"
+            + ''
+              mv $EZMQ_LIBDIR/emacs-zmq.* $out/share/emacs/site-lisp/elpa/zmq-*
+              rm -r $out/share/emacs/site-lisp/elpa/zmq-*/src
+              rm $out/share/emacs/site-lisp/elpa/zmq-*/Makefile
+            '';
           });
 
           # Map legacy renames from emacs2nix since code generation was ported to emacs lisp
@@ -732,13 +732,13 @@ let
             # we need the proper out directory to exist, so we do this in the
             # postInstall instead of postBuild
             postInstall =
-              (old.postInstall or "")
-              + "\n"
-              + ''
-                make
-                install -m444 -t $out/share/emacs/site-lisp/elpa/vterm-** ../*.so
-                rm -rf $out/share/emacs/site-lisp/elpa/vterm-**/{CMake*,build,*.c,*.h}
-              '';
+            (old.postInstall or "")
+            + "\n"
+            + ''
+              make
+              install -m444 -t $out/share/emacs/site-lisp/elpa/vterm-** ../*.so
+              rm -rf $out/share/emacs/site-lisp/elpa/vterm-**/{CMake*,build,*.c,*.h}
+            '';
           });
 
           w3m = super.w3m.override (args: {
@@ -782,14 +782,14 @@ let
                   $CXX -O3 -framework CoreServices -framework Foundation osx-dictionary.m -o osx-dictionary-cli
                 '';
                 postInstall =
-                  (old.postInstall or "")
-                  + "\n"
-                  + ''
-                    outd=$out/share/emacs/site-lisp/elpa/osx-dictionary-*
-                    mkdir -p $out/bin
-                    install -m444 -t $out/bin osx-dictionary-cli
-                    rm $outd/osx-dictionary.m
-                  '';
+                (old.postInstall or "")
+                + "\n"
+                + ''
+                  outd=$out/share/emacs/site-lisp/elpa/osx-dictionary-*
+                  mkdir -p $out/bin
+                  install -m444 -t $out/bin osx-dictionary-cli
+                  rm $outd/osx-dictionary.m
+                '';
               })
             else
               super.osx-dictionary;
@@ -1092,13 +1092,13 @@ let
 
           eimp = super.eimp.overrideAttrs (old: {
             postPatch =
-              old.postPatch or ""
-              + "\n"
-              + ''
-                substituteInPlace eimp.el --replace-fail \
-                  '(defcustom eimp-mogrify-program "mogrify"' \
-                  '(defcustom eimp-mogrify-program "${pkgs.imagemagick}/bin/mogrify"'
-              '';
+            old.postPatch or ""
+            + "\n"
+            + ''
+              substituteInPlace eimp.el --replace-fail \
+                '(defcustom eimp-mogrify-program "mogrify"' \
+                '(defcustom eimp-mogrify-program "${pkgs.imagemagick}/bin/mogrify"'
+            '';
           });
 
           ein = ignoreCompilationError super.ein; # elisp error
@@ -1630,11 +1630,11 @@ let
           # TODO report to upstream
           realgud-lldb = super.realgud-lldb.overrideAttrs (old: {
             preBuild =
-              old.preBuild or ""
-              + "\n"
-              + ''
-                rm --verbose cask-install.el
-              '';
+            old.preBuild or ""
+            + "\n"
+            + ''
+              rm --verbose cask-install.el
+            '';
           });
 
           # empty .yas-compiled-snippets.el causing native-compiler-error-empty-byte

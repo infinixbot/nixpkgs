@@ -62,17 +62,17 @@ let
     '';
 
     nativeCheckInputs =
-      (with python3Packages; [
-        autoflake
-        distutils
-        mdformat
-        pre-commit-hooks
-        pydocstyle
-        pytestCheckHook
-        yapf
-      ])
-      ++ lib.flatten (lib.attrValues optional-dependencies)
-      ++ [ versionCheckHook ];
+    (with python3Packages; [
+      autoflake
+      distutils
+      mdformat
+      pre-commit-hooks
+      pydocstyle
+      pytestCheckHook
+      yapf
+    ])
+    ++ lib.flatten (lib.attrValues optional-dependencies)
+    ++ [ versionCheckHook ];
     versionCheckProgramArg = "--version";
 
     disabledTests = [

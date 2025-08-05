@@ -79,37 +79,37 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   postPatch =
-    # Prevent platform-linux/build.rs from downloading nvtop
-    ''
-      substituteInPlace src/magpie_client/client.rs \
-        --replace-fail \
-          '"missioncenter-magpie"' \
-          '"${placeholder "out"}/bin/missioncenter-magpie"'
+  # Prevent platform-linux/build.rs from downloading nvtop
+  ''
+    substituteInPlace src/magpie_client/client.rs \
+      --replace-fail \
+        '"missioncenter-magpie"' \
+        '"${placeholder "out"}/bin/missioncenter-magpie"'
 
-      SRC_DIR=$NIX_BUILD_TOP/source
-      SRC_MAGPIE_DIR=$SRC_DIR/subprojects/magpie
-      SRC_NVTOP_DIR=$SRC_MAGPIE_DIR/platform-linux/3rdparty/nvtop
+    SRC_DIR=$NIX_BUILD_TOP/source
+    SRC_MAGPIE_DIR=$SRC_DIR/subprojects/magpie
+    SRC_NVTOP_DIR=$SRC_MAGPIE_DIR/platform-linux/3rdparty/nvtop
 
-      # Patch references in nvtop.json to match the name we inject manually
-      substituteInPlace "$SRC_NVTOP_DIR/nvtop.json" \
-        --replace-fail "nvtop-${nvtop.rev}" "nvtop-src"
+    # Patch references in nvtop.json to match the name we inject manually
+    substituteInPlace "$SRC_NVTOP_DIR/nvtop.json" \
+      --replace-fail "nvtop-${nvtop.rev}" "nvtop-src"
 
-      DEST_NVTOP_DIR=$SRC_DIR/build/subprojects/magpie/src/debug/build/native/nvtop-src
+    DEST_NVTOP_DIR=$SRC_DIR/build/subprojects/magpie/src/debug/build/native/nvtop-src
 
-      mkdir -p "$DEST_NVTOP_DIR"
-      cp -r --no-preserve=mode,ownership "${nvtop}"/* "$DEST_NVTOP_DIR"
+    mkdir -p "$DEST_NVTOP_DIR"
+    cp -r --no-preserve=mode,ownership "${nvtop}"/* "$DEST_NVTOP_DIR"
 
-      pushd "$DEST_NVTOP_DIR"
-      mkdir -p include/libdrm
-      for patchfile in "$SRC_NVTOP_DIR"/patches/nvtop*.patch; do
-        patch -p1 < "$patchfile"
-      done
-      popd
-    ''
-    # Patch the shebang of this python script called at build time
-    + ''
-      patchShebangs $SRC_MAGPIE_DIR/platform-linux/hwdb/generate_hwdb.py
-    '';
+    pushd "$DEST_NVTOP_DIR"
+    mkdir -p include/libdrm
+    for patchfile in "$SRC_NVTOP_DIR"/patches/nvtop*.patch; do
+      patch -p1 < "$patchfile"
+    done
+    popd
+  ''
+  # Patch the shebang of this python script called at build time
+  + ''
+    patchShebangs $SRC_MAGPIE_DIR/platform-linux/hwdb/generate_hwdb.py
+  '';
 
   cargoDeps = symlinkJoin {
     name = "cargo-vendor-dir";

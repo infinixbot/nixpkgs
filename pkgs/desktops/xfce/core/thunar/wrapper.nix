@@ -54,9 +54,9 @@ else
         ;
 
       description =
-        thunar.meta.description
-        +
-          optionalString (0 != length thunarPlugins)
-            " (with plugins: ${concatStringsSep ", " (map (x: x.name) thunarPlugins)})";
+      thunar.meta.description
+      +
+        optionalString (0 != length thunarPlugins)
+          " (with plugins: ${concatStringsSep ", " (map (x: x.name) thunarPlugins)})";
     };
   }

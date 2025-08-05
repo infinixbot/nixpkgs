@@ -112,9 +112,9 @@ stdenv.mkDerivation (finalAttrs: {
   ) llvmPackages.openmp;
 
   propagatedBuildInputs =
-    lib.optional mpiSupport mpi
-    ++ lib.optional pythonSupport python3Packages.numpy
-    ++ lib.optional (mpiSupport && pythonSupport) adios2Packages.mpi4py;
+  lib.optional mpiSupport mpi
+  ++ lib.optional pythonSupport python3Packages.numpy
+  ++ lib.optional (mpiSupport && pythonSupport) adios2Packages.mpi4py;
 
   cmakeFlags = [
     # adios2 builtin modules

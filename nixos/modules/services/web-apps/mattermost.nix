@@ -124,7 +124,7 @@ let
           port = if hostIsPath then null else cfg.database.port;
           path = escapeURL cfg.database.name;
           query =
-            optionalAttrs hostIsPath { host = cfg.database.host; } // cfg.database.extraConnectionOptions;
+          optionalAttrs hostIsPath { host = cfg.database.host; } // cfg.database.extraConnectionOptions;
         }
     else if cfg.database.driver == "mysql" then
       if cfg.database.peerAuth then

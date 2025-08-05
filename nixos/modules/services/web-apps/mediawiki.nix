@@ -590,24 +590,24 @@ in
       phpEnv.MEDIAWIKI_CONFIG = "${mediawikiConfig}";
       phpPackage = php;
       settings =
-        (
-          if (cfg.webserver == "apache") then
-            {
-              "listen.owner" = config.services.httpd.user;
-              "listen.group" = config.services.httpd.group;
-            }
-          else if (cfg.webserver == "nginx") then
-            {
-              "listen.owner" = config.services.nginx.user;
-              "listen.group" = config.services.nginx.group;
-            }
-          else
-            {
-              "listen.owner" = user;
-              "listen.group" = group;
-            }
-        )
-        // cfg.poolConfig;
+      (
+        if (cfg.webserver == "apache") then
+          {
+            "listen.owner" = config.services.httpd.user;
+            "listen.group" = config.services.httpd.group;
+          }
+        else if (cfg.webserver == "nginx") then
+          {
+            "listen.owner" = config.services.nginx.user;
+            "listen.group" = config.services.nginx.group;
+          }
+        else
+          {
+            "listen.owner" = user;
+            "listen.group" = group;
+          }
+      )
+      // cfg.poolConfig;
     };
 
     services.httpd = lib.mkIf (cfg.webserver == "apache") {
@@ -704,8 +704,8 @@ in
       wantedBy = [ "multi-user.target" ];
       before = [ "phpfpm-mediawiki.service" ];
       after =
-        optional (cfg.database.type == "mysql" && cfg.database.createLocally) "mysql.service"
-        ++ optional (cfg.database.type == "postgres" && cfg.database.createLocally) "postgresql.target";
+      optional (cfg.database.type == "mysql" && cfg.database.createLocally) "mysql.service"
+      ++ optional (cfg.database.type == "postgres" && cfg.database.createLocally) "postgresql.target";
       script = ''
         if ! test -e "${stateDir}/secret.key"; then
           tr -dc A-Za-z0-9 </dev/urandom 2>/dev/null | head -c 64 > ${stateDir}/secret.key
@@ -747,12 +747,12 @@ in
     };
 
     systemd.services.httpd.after =
-      optional (
-        cfg.webserver == "apache" && cfg.database.createLocally && cfg.database.type == "mysql"
-      ) "mysql.service"
-      ++ optional (
-        cfg.webserver == "apache" && cfg.database.createLocally && cfg.database.type == "postgres"
-      ) "postgresql.target";
+    optional (
+      cfg.webserver == "apache" && cfg.database.createLocally && cfg.database.type == "mysql"
+    ) "mysql.service"
+    ++ optional (
+      cfg.webserver == "apache" && cfg.database.createLocally && cfg.database.type == "postgres"
+    ) "postgresql.target";
 
     users.users.${user} = {
       inherit group;

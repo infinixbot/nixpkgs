@@ -102,14 +102,14 @@ in
           // {
             manage = "desktop";
             start =
-              d.start
-              # literal newline to ensure d.start's last line is not appended to
-              + lib.optionalString (needBGCond d) ''
+            d.start
+            # literal newline to ensure d.start's last line is not appended to
+            + lib.optionalString (needBGCond d) ''
 
-                if [ -e $HOME/.background-image ]; then
-                  ${pkgs.feh}/bin/feh --bg-${cfg.wallpaper.mode} ${lib.optionalString cfg.wallpaper.combineScreens "--no-xinerama"} $HOME/.background-image
-                fi
-              '';
+              if [ -e $HOME/.background-image ]; then
+                ${pkgs.feh}/bin/feh --bg-${cfg.wallpaper.mode} ${lib.optionalString cfg.wallpaper.combineScreens "--no-xinerama"} $HOME/.background-image
+              fi
+            '';
           }
         );
       };

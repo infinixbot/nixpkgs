@@ -36,16 +36,16 @@ stdenv.mkDerivation (finalAttrs: {
   ++ lib.optional pythonSupport python3Packages.pythonImportsCheckHook;
   buildInputs = lib.optional stdenv.hostPlatform.isDarwin llvmPackages.openmp;
   propagatedBuildInputs =
-    lib.optionals pythonSupport [
-      python3Packages.crocoddyl
-      python3Packages.osqp
-      python3Packages.proxsuite
-      python3Packages.scipy
-    ]
-    ++ lib.optionals (!pythonSupport) [
-      crocoddyl
-      proxsuite
-    ];
+  lib.optionals pythonSupport [
+    python3Packages.crocoddyl
+    python3Packages.osqp
+    python3Packages.proxsuite
+    python3Packages.scipy
+  ]
+  ++ lib.optionals (!pythonSupport) [
+    crocoddyl
+    proxsuite
+  ];
 
   cmakeFlags = [
     (lib.cmakeBool "BUILD_PYTHON_INTERFACE" pythonSupport)

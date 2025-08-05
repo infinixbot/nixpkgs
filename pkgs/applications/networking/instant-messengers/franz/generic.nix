@@ -68,38 +68,38 @@ stdenv.mkDerivation (
       dpkg
     ];
     buildInputs =
-      extraBuildInputs
-      ++ (with xorg; [
-        libXi
-        libXcursor
-        libXdamage
-        libXrandr
-        libXcomposite
-        libXext
-        libXfixes
-        libXrender
-        libX11
-        libXtst
-        libXScrnSaver
-      ])
-      ++ [
-        libgbm
-        gtk3
-        atk
-        glib
-        pango
-        gdk-pixbuf
-        cairo
-        freetype
-        fontconfig
-        dbus
-        nss
-        nspr
-        alsa-lib
-        cups
-        expat
-        stdenv.cc.cc
-      ];
+    extraBuildInputs
+    ++ (with xorg; [
+      libXi
+      libXcursor
+      libXdamage
+      libXrandr
+      libXcomposite
+      libXext
+      libXfixes
+      libXrender
+      libX11
+      libXtst
+      libXScrnSaver
+    ])
+    ++ [
+      libgbm
+      gtk3
+      atk
+      glib
+      pango
+      gdk-pixbuf
+      cairo
+      freetype
+      fontconfig
+      dbus
+      nss
+      nspr
+      alsa-lib
+      cups
+      expat
+      stdenv.cc.cc
+    ];
     runtimeDependencies = [
       libglvnd
       (lib.getLib stdenv.cc.cc)

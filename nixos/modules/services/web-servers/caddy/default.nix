@@ -412,8 +412,8 @@ in
     systemd.services.caddy = {
       wants = map (certName: "acme-finished-${certName}.target") vhostCertNames;
       after =
-        map (certName: "acme-selfsigned-${certName}.service") vhostCertNames
-        ++ map (certName: "acme-${certName}.service") independentCertNames; # avoid loading self-signed key w/ real cert, or vice-versa
+      map (certName: "acme-selfsigned-${certName}.service") vhostCertNames
+      ++ map (certName: "acme-${certName}.service") independentCertNames; # avoid loading self-signed key w/ real cert, or vice-versa
       before = map (certName: "acme-${certName}.service") dependentCertNames;
 
       wantedBy = [ "multi-user.target" ];

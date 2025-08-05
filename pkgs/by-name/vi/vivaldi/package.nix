@@ -158,11 +158,11 @@ stdenv.mkDerivation rec {
   ++ lib.optional kerberosSupport libkrb5;
 
   libPath =
-    lib.makeLibraryPath buildInputs
-    + lib.optionalString (stdenv.hostPlatform.is64bit) (
-      ":" + lib.makeSearchPathOutput "lib" "lib64" buildInputs
-    )
-    + ":$out/opt/vivaldi/lib";
+  lib.makeLibraryPath buildInputs
+  + lib.optionalString (stdenv.hostPlatform.is64bit) (
+    ":" + lib.makeSearchPathOutput "lib" "lib64" buildInputs
+  )
+  + ":$out/opt/vivaldi/lib";
 
   buildPhase = ''
     runHook preBuild

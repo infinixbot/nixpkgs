@@ -35,7 +35,7 @@ stdenv.mkDerivation {
 
   src = fetchurl {
     url =
-      "https://github.com/tailwindlabs/tailwindcss/releases/download/v${version}/tailwindcss-" + plat;
+    "https://github.com/tailwindlabs/tailwindcss/releases/download/v${version}/tailwindcss-" + plat;
     inherit hash;
   };
 

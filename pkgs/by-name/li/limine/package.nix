@@ -72,20 +72,20 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   configureFlags =
-    lib.optionals enableAll [ "--enable-all" ]
-    ++ lib.optionals biosSupport' [ "--enable-bios" ]
-    ++ lib.optionals (buildCDs && biosSupport') [ "--enable-bios-cd" ]
-    ++ lib.optionals buildCDs [ "--enable-uefi-cd" ]
-    ++ lib.optionals pxeSupport' [ "--enable-bios-pxe" ]
-    ++ lib.concatMap uefiFlags (
-      if targets == [ ] then [ stdenv.hostPlatform.parsed.cpu.name ] else targets
-    )
-    ++ [
-      "TOOLCHAIN_FOR_TARGET=llvm"
-      # `clang` on `PATH` has to be unwrapped, but *a* wrapped clang
-      # still needs to be available
-      "CC=${lib.getExe stdenv.cc}"
-    ];
+  lib.optionals enableAll [ "--enable-all" ]
+  ++ lib.optionals biosSupport' [ "--enable-bios" ]
+  ++ lib.optionals (buildCDs && biosSupport') [ "--enable-bios-cd" ]
+  ++ lib.optionals buildCDs [ "--enable-uefi-cd" ]
+  ++ lib.optionals pxeSupport' [ "--enable-bios-pxe" ]
+  ++ lib.concatMap uefiFlags (
+    if targets == [ ] then [ stdenv.hostPlatform.parsed.cpu.name ] else targets
+  )
+  ++ [
+    "TOOLCHAIN_FOR_TARGET=llvm"
+    # `clang` on `PATH` has to be unwrapped, but *a* wrapped clang
+    # still needs to be available
+    "CC=${lib.getExe stdenv.cc}"
+  ];
 
   passthru.tests = nixosTests.limine;
 

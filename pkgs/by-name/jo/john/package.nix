@@ -88,22 +88,22 @@ stdenv.mkDerivation {
     makeWrapper
   ];
   propagatedBuildInputs =
-    # For pcap2john.py
-    (with python3Packages; [
-      dpkt
-      scapy
-      lxml
-    ])
-    ++ (with perlPackages; [
-      # For pass_gen.pl
-      DigestMD4
-      DigestSHA1
-      GetoptLong
-      # For 7z2john.pl
-      CompressRawLzma
-      # For sha-dump.pl
-      perlldap
-    ]);
+  # For pcap2john.py
+  (with python3Packages; [
+    dpkt
+    scapy
+    lxml
+  ])
+  ++ (with perlPackages; [
+    # For pass_gen.pl
+    DigestMD4
+    DigestSHA1
+    GetoptLong
+    # For 7z2john.pl
+    CompressRawLzma
+    # For sha-dump.pl
+    perlldap
+  ]);
   # TODO: Get dependencies for radius2john.pl and lion2john-alt.pl
 
   # gcc -DAC_BUILT -Wall vncpcap2john.o memdbg.o -g    -lpcap -fopenmp -o ../run/vncpcap2john

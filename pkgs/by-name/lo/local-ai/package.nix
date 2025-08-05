@@ -253,19 +253,19 @@ let
     ++ lib.optionals with_cublas [ cuda_nvcc ];
 
     buildInputs =
-      [ ]
-      ++ lib.optionals with_cublas [
-        cuda_cccl
-        cuda_cudart
-        libcublas
-        libcufft
-      ]
-      ++ lib.optionals with_clblas [
-        clblast
-        ocl-icd
-        opencl-headers
-      ]
-      ++ lib.optionals with_openblas [ openblas.dev ];
+    [ ]
+    ++ lib.optionals with_cublas [
+      cuda_cccl
+      cuda_cudart
+      libcublas
+      libcufft
+    ]
+    ++ lib.optionals with_clblas [
+      clblast
+      ocl-icd
+      opencl-headers
+    ]
+    ++ lib.optionals with_openblas [ openblas.dev ];
 
     cmakeFlags = [
       (lib.cmakeBool "WHISPER_CUDA" with_cublas)
@@ -399,19 +399,19 @@ let
     '';
 
     buildInputs =
-      [ ]
-      ++ lib.optionals with_cublas [
-        cuda_cudart
-        libcublas
-        libcufft
-      ]
-      ++ lib.optionals with_clblas [
-        clblast
-        ocl-icd
-        opencl-headers
-      ]
-      ++ lib.optionals with_openblas [ openblas.dev ]
-      ++ lib.optionals with_tts go-piper.buildInputs;
+    [ ]
+    ++ lib.optionals with_cublas [
+      cuda_cudart
+      libcublas
+      libcufft
+    ]
+    ++ lib.optionals with_clblas [
+      clblast
+      ocl-icd
+      opencl-headers
+    ]
+    ++ lib.optionals with_openblas [ openblas.dev ]
+    ++ lib.optionals with_tts go-piper.buildInputs;
 
     nativeBuildInputs = [
       protobuf
@@ -476,24 +476,24 @@ let
     postFixup =
       let
         LD_LIBRARY_PATH =
-          [ ]
-          ++ lib.optionals with_cublas [
-            # driverLink has to be first to avoid loading the stub version of libcuda.so
-            # https://github.com/NixOS/nixpkgs/issues/320145#issuecomment-2190319327
-            addDriverRunpath.driverLink
-            (lib.getLib libcublas)
-            cuda_cudart
-          ]
-          ++ lib.optionals with_clblas [
-            clblast
-            ocl-icd
-          ]
-          ++ lib.optionals with_openblas [ openblas ]
-          ++ lib.optionals with_tts [ piper-phonemize ]
-          ++ lib.optionals (with_tts && enable_upx) [
-            fmt
-            spdlog
-          ];
+        [ ]
+        ++ lib.optionals with_cublas [
+          # driverLink has to be first to avoid loading the stub version of libcuda.so
+          # https://github.com/NixOS/nixpkgs/issues/320145#issuecomment-2190319327
+          addDriverRunpath.driverLink
+          (lib.getLib libcublas)
+          cuda_cudart
+        ]
+        ++ lib.optionals with_clblas [
+          clblast
+          ocl-icd
+        ]
+        ++ lib.optionals with_openblas [ openblas ]
+        ++ lib.optionals with_tts [ piper-phonemize ]
+        ++ lib.optionals (with_tts && enable_upx) [
+          fmt
+          spdlog
+        ];
       in
       ''
         wrapProgram $out/bin/${pname} \

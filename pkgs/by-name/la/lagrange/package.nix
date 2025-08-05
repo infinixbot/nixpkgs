@@ -59,16 +59,16 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   installPhase =
-    lib.optionalString stdenv.hostPlatform.isDarwin ''
-      mkdir -p $out/Applications
-      mv Lagrange.app $out/Applications
-    ''
-    + lib.optionalString (stdenv.hostPlatform.isDarwin && enableTUI) ''
-      # https://github.com/skyjake/lagrange/issues/610
-      make install
-      install -d $out/share/lagrange
-      ln -s $out/Applications/Lagrange.app/Contents/Resources/resources.lgr $out/share/lagrange/resources.lgr
-    '';
+  lib.optionalString stdenv.hostPlatform.isDarwin ''
+    mkdir -p $out/Applications
+    mv Lagrange.app $out/Applications
+  ''
+  + lib.optionalString (stdenv.hostPlatform.isDarwin && enableTUI) ''
+    # https://github.com/skyjake/lagrange/issues/610
+    make install
+    install -d $out/share/lagrange
+    ln -s $out/Applications/Lagrange.app/Contents/Resources/resources.lgr $out/share/lagrange/resources.lgr
+  '';
 
   passthru = {
     updateScript = nix-update-script { };

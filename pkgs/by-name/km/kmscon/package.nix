@@ -58,8 +58,8 @@ stdenv.mkDerivation {
   ];
 
   env.NIX_CFLAGS_COMPILE =
-    lib.optionalString stdenv.cc.isGNU "-O "
-    + "-Wno-error=maybe-uninitialized -Wno-error=unused-result -Wno-error=implicit-function-declaration";
+  lib.optionalString stdenv.cc.isGNU "-O "
+  + "-Wno-error=maybe-uninitialized -Wno-error=unused-result -Wno-error=implicit-function-declaration";
 
   enableParallelBuilding = true;
 

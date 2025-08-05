@@ -42,24 +42,24 @@ buildGoModule (finalAttrs: {
   '';
 
   checkFlags =
-    "-skip="
-    + (lib.concatStringsSep "|" [
-      # Need network
-      "TestConsistentDatabricksSdkVersion"
-      "TestTerraformArchiveChecksums"
-      "TestExpandPipelineGlobPaths"
-      "TestRelativePathTranslationDefault"
-      "TestRelativePathTranslationOverride"
-      "TestWorkspaceVerifyProfileForHost"
-      "TestWorkspaceVerifyProfileForHost/default_config_file_with_match"
-      "TestWorkspaceResolveProfileFromHost"
-      "TestWorkspaceResolveProfileFromHost/no_config_file"
-      "TestBundleConfigureDefault"
-      # Use uv venv which doesn't work with nix
-      # https://github.com/astral-sh/uv/issues/4450
-      "TestVenvSuccess"
-      "TestPatchWheel"
-    ]);
+  "-skip="
+  + (lib.concatStringsSep "|" [
+    # Need network
+    "TestConsistentDatabricksSdkVersion"
+    "TestTerraformArchiveChecksums"
+    "TestExpandPipelineGlobPaths"
+    "TestRelativePathTranslationDefault"
+    "TestRelativePathTranslationOverride"
+    "TestWorkspaceVerifyProfileForHost"
+    "TestWorkspaceVerifyProfileForHost/default_config_file_with_match"
+    "TestWorkspaceResolveProfileFromHost"
+    "TestWorkspaceResolveProfileFromHost/no_config_file"
+    "TestBundleConfigureDefault"
+    # Use uv venv which doesn't work with nix
+    # https://github.com/astral-sh/uv/issues/4450
+    "TestVenvSuccess"
+    "TestPatchWheel"
+  ]);
 
   nativeCheckInputs = [
     gitMinimal

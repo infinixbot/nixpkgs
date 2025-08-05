@@ -35,18 +35,18 @@ stdenv.mkDerivation rec {
   ];
 
   configureFlags =
-    lib.optionals enableAMPL [
-      "--with-asl-cflags=-I${libamplsolver}/include"
-      "--with-asl-lflags=-lamplsolver"
-    ]
-    ++ lib.optionals enableMUMPS [
-      "--with-mumps-cflags=-I${mumps}/include"
-      "--with-mumps-lflags=-ldmumps"
-    ]
-    ++ lib.optionals enableSPRAL [
-      "--with-spral-cflags=-I${spral}/include"
-      "--with-spral-lflags=-lspral"
-    ];
+  lib.optionals enableAMPL [
+    "--with-asl-cflags=-I${libamplsolver}/include"
+    "--with-asl-lflags=-lamplsolver"
+  ]
+  ++ lib.optionals enableMUMPS [
+    "--with-mumps-cflags=-I${mumps}/include"
+    "--with-mumps-lflags=-ldmumps"
+  ]
+  ++ lib.optionals enableSPRAL [
+    "--with-spral-cflags=-I${spral}/include"
+    "--with-spral-lflags=-lspral"
+  ];
 
   nativeBuildInputs = [
     pkg-config

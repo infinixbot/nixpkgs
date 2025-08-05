@@ -101,16 +101,16 @@
       # enough for us, we'll need to resort to defining a "nixpkgs" flavour
       # in hadrianUserSettings and using that instead.
       transformers =
-        lib.optionals useLLVM [ "llvm" ]
-        ++ lib.optionals (!enableShared) [
-          "no_dynamic_libs"
-          "no_dynamic_ghc"
-        ]
-        ++ lib.optionals (!enableProfiledLibs) [ "no_profiled_libs" ]
-        # While split sections are now enabled by default in ghc 8.8 for windows,
-        # they seem to lead to `too many sections` errors when building base for
-        # profiling.
-        ++ lib.optionals (!stdenv.targetPlatform.isWindows) [ "split_sections" ];
+      lib.optionals useLLVM [ "llvm" ]
+      ++ lib.optionals (!enableShared) [
+        "no_dynamic_libs"
+        "no_dynamic_ghc"
+      ]
+      ++ lib.optionals (!enableProfiledLibs) [ "no_profiled_libs" ]
+      # While split sections are now enabled by default in ghc 8.8 for windows,
+      # they seem to lead to `too many sections` errors when building base for
+      # profiling.
+      ++ lib.optionals (!stdenv.targetPlatform.isWindows) [ "split_sections" ];
     in
     baseFlavour + lib.concatMapStrings (t: "+${t}") transformers,
 
@@ -338,16 +338,16 @@ let
   targetPrefix = lib.optionalString (targetPlatform != hostPlatform) "${targetPlatform.config}-";
 
   hadrianSettings =
-    # -fexternal-dynamic-refs apparently (because it's not clear from the
-    # documentation) makes the GHC RTS able to load static libraries, which may
-    # be needed for TemplateHaskell. This solution was described in
-    # https://www.tweag.io/blog/2020-09-30-bazel-static-haskell
-    lib.optionals enableRelocatedStaticLibs [
-      "*.*.ghc.*.opts += -fPIC -fexternal-dynamic-refs"
-    ]
-    ++ lib.optionals targetPlatform.useAndroidPrebuilt [
-      "*.*.ghc.c.opts += -optc-std=gnu99"
-    ];
+  # -fexternal-dynamic-refs apparently (because it's not clear from the
+  # documentation) makes the GHC RTS able to load static libraries, which may
+  # be needed for TemplateHaskell. This solution was described in
+  # https://www.tweag.io/blog/2020-09-30-bazel-static-haskell
+  lib.optionals enableRelocatedStaticLibs [
+    "*.*.ghc.*.opts += -fPIC -fexternal-dynamic-refs"
+  ]
+  ++ lib.optionals targetPlatform.useAndroidPrebuilt [
+    "*.*.ghc.c.opts += -optc-std=gnu99"
+  ];
 
   # Splicer will pull out correct variations
   libDeps =

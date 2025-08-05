@@ -222,12 +222,12 @@ in
       serviceConfig.Type = "oneshot";
 
       environment =
-        config.nix.envVars
-        // {
-          inherit (config.environment.sessionVariables) NIX_PATH;
-          HOME = "/root";
-        }
-        // config.networking.proxy.envVars;
+      config.nix.envVars
+      // {
+        inherit (config.environment.sessionVariables) NIX_PATH;
+        HOME = "/root";
+      }
+      // config.networking.proxy.envVars;
 
       path = with pkgs; [
         coreutils

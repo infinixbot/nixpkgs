@@ -57,9 +57,9 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    lib.optional mbrolaSupport mbrola
-    ++ lib.optional pcaudiolibSupport pcaudiolib
-    ++ lib.optional sonicSupport sonic;
+  lib.optional mbrolaSupport mbrola
+  ++ lib.optional pcaudiolibSupport pcaudiolib
+  ++ lib.optional sonicSupport sonic;
 
   # touch ChangeLog to avoid below error on darwin:
   # Makefile.am: error: required file './ChangeLog.md' not found

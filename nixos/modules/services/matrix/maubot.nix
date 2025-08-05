@@ -455,8 +455,8 @@ in
 
       serviceConfig = {
         ExecStart =
-          "${finalPackage}/bin/maubot --config ${cfg.extraConfigFile}"
-          + lib.optionalString (!cfg.configMutable) " --no-update";
+        "${finalPackage}/bin/maubot --config ${cfg.extraConfigFile}"
+        + lib.optionalString (!cfg.configMutable) " --no-update";
         User = "maubot";
         Group = "maubot";
         Restart = "on-failure";

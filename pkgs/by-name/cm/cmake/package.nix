@@ -44,10 +44,10 @@ assert lib.subtractLists [ "ncurses" "qt5" ] uiToolkits == [ ];
 assert isMinimalBuild -> (uiToolkits == [ ]);
 stdenv.mkDerivation (finalAttrs: {
   pname =
-    "cmake"
-    + lib.optionalString isMinimalBuild "-minimal"
-    + lib.optionalString cursesUI "-cursesUI"
-    + lib.optionalString qt5UI "-qt5UI";
+  "cmake"
+  + lib.optionalString isMinimalBuild "-minimal"
+  + lib.optionalString cursesUI "-cursesUI"
+  + lib.optionalString qt5UI "-qt5UI";
   version = "3.31.7";
 
   src = fetchurl {
@@ -95,27 +95,27 @@ stdenv.mkDerivation (finalAttrs: {
   depsBuildBuild = [ buildPackages.stdenv.cc ];
 
   nativeBuildInputs =
-    finalAttrs.setupHooks
-    ++ [
-      pkg-config
-    ]
-    ++ lib.optionals buildDocs [ texinfo ]
-    ++ lib.optionals qt5UI [ wrapQtAppsHook ];
+  finalAttrs.setupHooks
+  ++ [
+    pkg-config
+  ]
+  ++ lib.optionals buildDocs [ texinfo ]
+  ++ lib.optionals qt5UI [ wrapQtAppsHook ];
 
   buildInputs =
-    lib.optionals useSharedLibraries [
-      bzip2
-      curlMinimal
-      expat
-      libarchive
-      xz
-      zlib
-      libuv
-      rhash
-    ]
-    ++ lib.optional useOpenSSL openssl
-    ++ lib.optional cursesUI ncurses
-    ++ lib.optional qt5UI qtbase;
+  lib.optionals useSharedLibraries [
+    bzip2
+    curlMinimal
+    expat
+    libarchive
+    xz
+    zlib
+    libuv
+    rhash
+  ]
+  ++ lib.optional useOpenSSL openssl
+  ++ lib.optional cursesUI ncurses
+  ++ lib.optional qt5UI qtbase;
 
   preConfigure = ''
     fixCmakeFiles .

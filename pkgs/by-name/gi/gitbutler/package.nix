@@ -142,16 +142,16 @@ rustPlatform.buildRustPackage rec {
   };
 
   postInstall =
-    lib.optionalString stdenv.hostPlatform.isDarwin ''
-      makeBinaryWrapper $out/Applications/GitButler.app/Contents/MacOS/gitbutler-tauri $out/bin/gitbutler-tauri
-    ''
-    + lib.optionalString stdenv.hostPlatform.isLinux ''
-      desktop-file-edit \
-        --set-comment "A Git client for simultaneous branches on top of your existing workflow." \
-        --set-key="Keywords" --set-value="git;" \
-        --set-key="StartupWMClass" --set-value="GitButler" \
-        $out/share/applications/GitButler.desktop
-    '';
+  lib.optionalString stdenv.hostPlatform.isDarwin ''
+    makeBinaryWrapper $out/Applications/GitButler.app/Contents/MacOS/gitbutler-tauri $out/bin/gitbutler-tauri
+  ''
+  + lib.optionalString stdenv.hostPlatform.isLinux ''
+    desktop-file-edit \
+      --set-comment "A Git client for simultaneous branches on top of your existing workflow." \
+      --set-key="Keywords" --set-value="git;" \
+      --set-key="StartupWMClass" --set-value="GitButler" \
+      $out/share/applications/GitButler.desktop
+  '';
 
   passthru = {
     updateScript = nix-update-script {

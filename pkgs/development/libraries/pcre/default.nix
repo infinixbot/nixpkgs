@@ -19,9 +19,9 @@ assert lib.elem variant [
 
 stdenv.mkDerivation rec {
   pname =
-    "pcre"
-    + lib.optionalString (variant == "cpp") "-cpp"
-    + lib.optionalString (variant != "cpp" && variant != null) variant;
+  "pcre"
+  + lib.optionalString (variant == "cpp") "-cpp"
+  + lib.optionalString (variant != "cpp" && variant != null) variant;
   version = "8.45";
 
   src = fetchurl {

@@ -84,23 +84,23 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   postInstall =
-    lib.optionalString (buildTests || buildBenchmarks) ''
-      mkdir -p $test/bin
-      mv $out/bin/{*_test,*-validate} $test/bin
-    ''
-    + lib.optionalString buildBenchmarks ''
-      mkdir -p $benchmark/bin
-      mv $out/bin/*-bench $benchmark/bin
-    ''
-    + lib.optionalString buildSamples ''
-      mkdir -p $sample/bin
-      mv $out/bin/sgemmv $sample/bin
-      mv $out/bin/simple_gemm $sample/bin
-      mv $out/bin/simple_dlrm $sample/bin
-    ''
-    + lib.optionalString (buildTests || buildBenchmarks || buildSamples) ''
-      rm -rf $out/bin
-    '';
+  lib.optionalString (buildTests || buildBenchmarks) ''
+    mkdir -p $test/bin
+    mv $out/bin/{*_test,*-validate} $test/bin
+  ''
+  + lib.optionalString buildBenchmarks ''
+    mkdir -p $benchmark/bin
+    mv $out/bin/*-bench $benchmark/bin
+  ''
+  + lib.optionalString buildSamples ''
+    mkdir -p $sample/bin
+    mv $out/bin/sgemmv $sample/bin
+    mv $out/bin/simple_gemm $sample/bin
+    mv $out/bin/simple_dlrm $sample/bin
+  ''
+  + lib.optionalString (buildTests || buildBenchmarks || buildSamples) ''
+    rm -rf $out/bin
+  '';
 
   passthru.updateScript = rocmUpdateScript {
     name = finalAttrs.pname;

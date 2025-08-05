@@ -61,17 +61,17 @@ let
 
   # Simple to to m4 configuration scripts
   postPatch =
-    lib.optionalString ifDeps ''
-      sed -i ''$(find -name omhome.m4) -e 's|if test ! -z "$USINGPRESETBUILDDIR"|if test ! -z "$USINGPRESETBUILDDIR" -a -z "$OMHOME"|'
-    ''
-    + appendByAttr "postPatch" "\n" pkg;
+  lib.optionalString ifDeps ''
+    sed -i ''$(find -name omhome.m4) -e 's|if test ! -z "$USINGPRESETBUILDDIR"|if test ! -z "$USINGPRESETBUILDDIR" -a -z "$OMHOME"|'
+  ''
+  + appendByAttr "postPatch" "\n" pkg;
 
   # Update shebangs in the scripts before running configuration.
   preAutoreconf = "patchShebangs --build common" + appendByAttr "preAutoreconf" "\n" pkg;
 
   # Tell OpenModelica where built dependencies are located.
   configureFlags =
-    lib.optional ifDeps "--with-openmodelicahome=${joinedDeps}" ++ getAttrDef "configureFlags" [ ] pkg;
+  lib.optional ifDeps "--with-openmodelicahome=${joinedDeps}" ++ getAttrDef "configureFlags" [ ] pkg;
 
   # Our own configurePhase that accounts for omautoconf
   configurePhase = ''

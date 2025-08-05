@@ -377,10 +377,10 @@ in
             ''
           );
           ExecStart =
-            "${lib.getExe cfg.package}"
-            + " -f ${finalConfigFile}"
-            + " -p ${pidFile}"
-            + optionalString cfg.snmp.enable " --snmp";
+          "${lib.getExe cfg.package}"
+          + " -f ${finalConfigFile}"
+          + " -p ${pidFile}"
+          + optionalString cfg.snmp.enable " --snmp";
           ExecReload = "${pkgs.coreutils}/bin/kill -HUP $MAINPID";
           Restart = "always";
           RestartSec = "1s";

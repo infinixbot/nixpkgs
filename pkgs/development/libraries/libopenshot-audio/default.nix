@@ -33,24 +33,24 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs =
-    lib.optionals stdenv.hostPlatform.isLinux [
-      alsa-lib
-    ]
-    ++ (
-      if stdenv.hostPlatform.isDarwin then
-        [
-          zlib
-        ]
-      else
-        [
-          libX11
-          libXcursor
-          libXext
-          libXft
-          libXinerama
-          libXrandr
-        ]
-    );
+  lib.optionals stdenv.hostPlatform.isLinux [
+    alsa-lib
+  ]
+  ++ (
+    if stdenv.hostPlatform.isDarwin then
+      [
+        zlib
+      ]
+    else
+      [
+        libX11
+        libXcursor
+        libXext
+        libXft
+        libXinerama
+        libXrandr
+      ]
+  );
 
   strictDeps = true;
 

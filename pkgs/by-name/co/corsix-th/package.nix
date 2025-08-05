@@ -62,18 +62,18 @@ stdenv.mkDerivation (finalAttrs: {
   cmakeFlags = [ "-Wno-dev" ];
 
   postInstall =
-    lib.optionalString stdenv.hostPlatform.isLinux ''
-      wrapProgram $out/bin/corsix-th \
+  lib.optionalString stdenv.hostPlatform.isLinux ''
+    wrapProgram $out/bin/corsix-th \
+    --set LUA_PATH "$LUA_PATH" \
+    --set LUA_CPATH "$LUA_CPATH"
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    mkdir -p $out/Applications
+    mv $out/CorsixTH.app $out/Applications
+    wrapProgram $out/Applications/CorsixTH.app/Contents/MacOS/CorsixTH \
       --set LUA_PATH "$LUA_PATH" \
       --set LUA_CPATH "$LUA_CPATH"
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      mkdir -p $out/Applications
-      mv $out/CorsixTH.app $out/Applications
-      wrapProgram $out/Applications/CorsixTH.app/Contents/MacOS/CorsixTH \
-        --set LUA_PATH "$LUA_PATH" \
-        --set LUA_CPATH "$LUA_CPATH"
-    '';
+  '';
 
   passthru.updateScript = nix-update-script { };
 

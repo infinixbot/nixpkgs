@@ -59,21 +59,21 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs =
-    lib.optionals (enableOpenMP && stdenv.cc.isClang) [
-      # cmake can not find mpi if openmp is placed after mpi
-      llvmPackages.openmp
-    ]
-    ++ [
-      mpi
-      lapack
-    ]
-    ++ lib.optionals withParmetis [
-      metis
-      parmetis
-    ]
-    ++ lib.optionals stdenv.cc.isClang [
-      gfortran.cc.lib
-    ];
+  lib.optionals (enableOpenMP && stdenv.cc.isClang) [
+    # cmake can not find mpi if openmp is placed after mpi
+    llvmPackages.openmp
+  ]
+  ++ [
+    mpi
+    lapack
+  ]
+  ++ lib.optionals withParmetis [
+    metis
+    parmetis
+  ]
+  ++ lib.optionals stdenv.cc.isClang [
+    gfortran.cc.lib
+  ];
 
   propagatedBuildInputs = [ blas ];
 

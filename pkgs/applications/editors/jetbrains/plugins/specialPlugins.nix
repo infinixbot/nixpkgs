@@ -35,8 +35,8 @@
     buildPhase =
       let
         arch =
-          (if stdenv.hostPlatform.isLinux then "linux" else "mac")
-          + (if stdenv.hostPlatform.isAarch64 then "arm" else "");
+        (if stdenv.hostPlatform.isLinux then "linux" else "mac")
+        + (if stdenv.hostPlatform.isAarch64 then "arm" else "");
       in
       ''
         runHook preBuild

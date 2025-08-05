@@ -253,7 +253,7 @@ in
     security.polkit.extraConfig =
       let
         groupCheck =
-          (lib.concatStrings (map (g: "subject.isInGroup(\"${g}\") || ") cfg.IPCAllowedGroups)) + "false";
+        (lib.concatStrings (map (g: "subject.isInGroup(\"${g}\") || ") cfg.IPCAllowedGroups)) + "false";
       in
       lib.optionalString cfg.dbus.enable ''
         polkit.addRule(function(action, subject) {

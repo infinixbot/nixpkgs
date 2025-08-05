@@ -263,12 +263,12 @@ in
       script =
         let
           loadCredentials =
-            (optional (
-              cfg.settings.APP_SECRET_FILE != null
-            ) ''export APP_SECRET="$(systemd-creds cat appSecret)"'')
-            ++ (optional (
-              cfg.settings.DATABASE_URL_FILE != null
-            ) ''export DATABASE_URL="$(systemd-creds cat databaseUrl)"'');
+          (optional (
+            cfg.settings.APP_SECRET_FILE != null
+          ) ''export APP_SECRET="$(systemd-creds cat appSecret)"'')
+          ++ (optional (
+            cfg.settings.DATABASE_URL_FILE != null
+          ) ''export DATABASE_URL="$(systemd-creds cat databaseUrl)"'');
         in
         ''
           ${concatStringsSep "\n" loadCredentials}
@@ -282,10 +282,10 @@ in
         DynamicUser = true;
 
         LoadCredential =
-          (optional (cfg.settings.APP_SECRET_FILE != null) "appSecret:${cfg.settings.APP_SECRET_FILE}")
-          ++ (optional (
-            cfg.settings.DATABASE_URL_FILE != null
-          ) "databaseUrl:${cfg.settings.DATABASE_URL_FILE}");
+        (optional (cfg.settings.APP_SECRET_FILE != null) "appSecret:${cfg.settings.APP_SECRET_FILE}")
+        ++ (optional (
+          cfg.settings.DATABASE_URL_FILE != null
+        ) "databaseUrl:${cfg.settings.DATABASE_URL_FILE}");
 
         # Hardening
         CapabilityBoundingSet = "";

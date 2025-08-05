@@ -251,11 +251,11 @@ let
   packagesJson = pkgs.writeText "packages.json" (builtins.toJSON (map packageData packages));
 
   optionalArgs =
-    lib.optional (max-workers != null) "--max-workers=${max-workers}"
-    ++ lib.optional (keep-going == "true") "--keep-going"
-    ++ lib.optional (commit == "true") "--commit"
-    ++ lib.optional (skip-prompt == "true") "--skip-prompt"
-    ++ lib.optional (order != null) "--order=${order}";
+  lib.optional (max-workers != null) "--max-workers=${max-workers}"
+  ++ lib.optional (keep-going == "true") "--keep-going"
+  ++ lib.optional (commit == "true") "--commit"
+  ++ lib.optional (skip-prompt == "true") "--skip-prompt"
+  ++ lib.optional (order != null) "--order=${order}";
 
   args = [ packagesJson ] ++ optionalArgs;
 

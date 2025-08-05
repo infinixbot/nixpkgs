@@ -34,10 +34,10 @@ let
   );
 
   hookFiles =
-    mapAttrsToList (name: hook: hookFormat.generate "webhook-${name}.json" [ hook ]) cfg.hooks
-    ++ mapAttrsToList (
-      name: hook: pkgs.writeText "webhook-${name}.json.tmpl" "[${hook}]"
-    ) cfg.hooksTemplated;
+  mapAttrsToList (name: hook: hookFormat.generate "webhook-${name}.json" [ hook ]) cfg.hooks
+  ++ mapAttrsToList (
+    name: hook: pkgs.writeText "webhook-${name}.json.tmpl" "[${hook}]"
+  ) cfg.hooksTemplated;
 
 in
 {

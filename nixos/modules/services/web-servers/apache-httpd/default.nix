@@ -930,8 +930,8 @@ in
       ];
 
       environment =
-        optionalAttrs cfg.enablePHP { PHPRC = phpIni; }
-        // optionalAttrs cfg.enableMellon { LD_LIBRARY_PATH = "${pkgs.xmlsec}/lib"; };
+      optionalAttrs cfg.enablePHP { PHPRC = phpIni; }
+      // optionalAttrs cfg.enableMellon { LD_LIBRARY_PATH = "${pkgs.xmlsec}/lib"; };
 
       preStart = ''
         # Get rid of old semaphores.  These tend to accumulate across

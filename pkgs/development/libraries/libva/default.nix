@@ -67,13 +67,13 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   env =
-    lib.optionalAttrs (stdenv.cc.bintools.isLLVM && lib.versionAtLeast stdenv.cc.bintools.version "17")
-      {
-        NIX_LDFLAGS = "--undefined-version";
-      }
-    // lib.optionalAttrs (stdenv.targetPlatform.useLLVM or false) {
-      NIX_CFLAGS_COMPILE = "-DHAVE_SECURE_GETENV";
-    };
+  lib.optionalAttrs (stdenv.cc.bintools.isLLVM && lib.versionAtLeast stdenv.cc.bintools.version "17")
+    {
+      NIX_LDFLAGS = "--undefined-version";
+    }
+  // lib.optionalAttrs (stdenv.targetPlatform.useLLVM or false) {
+    NIX_CFLAGS_COMPILE = "-DHAVE_SECURE_GETENV";
+  };
 
   passthru.tests = {
     # other drivers depending on libva and selected application users.

@@ -110,9 +110,9 @@ let
         && stdenv.cc.isGNU;
 
       nativeBuildInputs =
-        lib.optional (!stdenv.hostPlatform.isWindows) makeBinaryWrapper
-        ++ [ perl ]
-        ++ lib.optionals static [ removeReferencesTo ];
+      lib.optional (!stdenv.hostPlatform.isWindows) makeBinaryWrapper
+      ++ [ perl ]
+      ++ lib.optionals static [ removeReferencesTo ];
       buildInputs = lib.optional withCryptodev cryptodev ++ lib.optional withZlib zlib;
 
       # TODO(@Ericson2314): Improve with mass rebuild
@@ -246,68 +246,68 @@ let
       enableParallelBuilding = true;
 
       postInstall =
-        (
-          if static then
-            ''
-              # OPENSSLDIR has a reference to self
-              remove-references-to -t $out $out/lib/*.a
-            ''
-          else
-            ''
-              # If we're building dynamic libraries, then don't install static
-              # libraries.
-              if [ -n "$(echo $out/lib/*.so $out/lib/*.dylib $out/lib/*.dll)" ]; then
-                  rm "$out/lib/"*.a
-              fi
+      (
+        if static then
+          ''
+            # OPENSSLDIR has a reference to self
+            remove-references-to -t $out $out/lib/*.a
+          ''
+        else
+          ''
+            # If we're building dynamic libraries, then don't install static
+            # libraries.
+            if [ -n "$(echo $out/lib/*.so $out/lib/*.dylib $out/lib/*.dll)" ]; then
+                rm "$out/lib/"*.a
+            fi
 
-              # 'etc' is a separate output on static builds only.
-              etc=$out
-            ''
-        )
-        + ''
-          mkdir -p $bin
-          mv $out/bin $bin/bin
+            # 'etc' is a separate output on static builds only.
+            etc=$out
+          ''
+      )
+      + ''
+        mkdir -p $bin
+        mv $out/bin $bin/bin
 
-        ''
-        +
-          lib.optionalString (!stdenv.hostPlatform.isWindows)
-            # makeWrapper is broken for windows cross (https://github.com/NixOS/nixpkgs/issues/120726)
-            ''
-              # c_rehash is a legacy perl script with the same functionality
-              # as `openssl rehash`
-              # this wrapper script is created to maintain backwards compatibility without
-              # depending on perl
-              makeWrapper $bin/bin/openssl $bin/bin/c_rehash \
-                --add-flags "rehash"
-            ''
-        + ''
+      ''
+      +
+        lib.optionalString (!stdenv.hostPlatform.isWindows)
+          # makeWrapper is broken for windows cross (https://github.com/NixOS/nixpkgs/issues/120726)
+          ''
+            # c_rehash is a legacy perl script with the same functionality
+            # as `openssl rehash`
+            # this wrapper script is created to maintain backwards compatibility without
+            # depending on perl
+            makeWrapper $bin/bin/openssl $bin/bin/c_rehash \
+              --add-flags "rehash"
+          ''
+      + ''
 
-          mkdir $dev
-          mv $out/include $dev/
+        mkdir $dev
+        mv $out/include $dev/
 
-          # remove dependency on Perl at runtime
-          rm -r $etc/etc/ssl/misc
+        # remove dependency on Perl at runtime
+        rm -r $etc/etc/ssl/misc
 
-          rmdir $etc/etc/ssl/{certs,private}
-        ''
-        + lib.optionalString (conf != null) ''
-          cat ${conf} > $etc/etc/ssl/openssl.cnf
-        '';
+        rmdir $etc/etc/ssl/{certs,private}
+      ''
+      + lib.optionalString (conf != null) ''
+        cat ${conf} > $etc/etc/ssl/openssl.cnf
+      '';
 
       postFixup =
-        lib.optionalString (!stdenv.hostPlatform.isWindows) ''
-          # Check to make sure the main output and the static runtime dependencies
-          # don't depend on perl
-          if grep -r '${buildPackages.perl}' $out $etc; then
-            echo "Found an erroneous dependency on perl ^^^" >&2
-            exit 1
-          fi
-        ''
-        + lib.optionalString (lib.versionAtLeast version "3.3.0") ''
-          # cleanup cmake helpers for now (for OpenSSL >= 3.3), only rely on pkg-config.
-          # pkg-config gets its paths fixed correctly
-          rm -rf $dev/lib/cmake
-        '';
+      lib.optionalString (!stdenv.hostPlatform.isWindows) ''
+        # Check to make sure the main output and the static runtime dependencies
+        # don't depend on perl
+        if grep -r '${buildPackages.perl}' $out $etc; then
+          echo "Found an erroneous dependency on perl ^^^" >&2
+          exit 1
+        fi
+      ''
+      + lib.optionalString (lib.versionAtLeast version "3.3.0") ''
+        # cleanup cmake helpers for now (for OpenSSL >= 3.3), only rely on pkg-config.
+        # pkg-config gets its paths fixed correctly
+        rm -rf $dev/lib/cmake
+      '';
 
       passthru.tests.pkg-config = testers.testMetaPkgConfig finalAttrs.finalPackage;
 

@@ -102,42 +102,42 @@ let
       attrs
       // {
         nativeBuildInputs =
-          (attrs.nativeBuildInputs or [ ])
-          ++ [
-            cmake
-            ninja
-            swift
-          ]
-          ++ lib.optionals stdenv.hostPlatform.isDarwin [ DarwinTools ];
+        (attrs.nativeBuildInputs or [ ])
+        ++ [
+          cmake
+          ninja
+          swift
+        ]
+        ++ lib.optionals stdenv.hostPlatform.isDarwin [ DarwinTools ];
 
         buildInputs = (attrs.buildInputs or [ ]) ++ [ Foundation ];
 
         postPatch =
-          (attrs.postPatch or "")
-          + lib.optionalString stdenv.hostPlatform.isDarwin ''
-            # On Darwin only, Swift uses arm64 as cpu arch.
-            if [ -e cmake/modules/SwiftSupport.cmake ]; then
-              substituteInPlace cmake/modules/SwiftSupport.cmake \
-                --replace '"aarch64" PARENT_SCOPE' '"arm64" PARENT_SCOPE'
-            fi
-          '';
+        (attrs.postPatch or "")
+        + lib.optionalString stdenv.hostPlatform.isDarwin ''
+          # On Darwin only, Swift uses arm64 as cpu arch.
+          if [ -e cmake/modules/SwiftSupport.cmake ]; then
+            substituteInPlace cmake/modules/SwiftSupport.cmake \
+              --replace '"aarch64" PARENT_SCOPE' '"arm64" PARENT_SCOPE'
+          fi
+        '';
 
         postInstall =
-          (attrs.postInstall or "")
-          + lib.optionalString stdenv.hostPlatform.isDarwin ''
-            # The install name of libraries is incorrectly set to lib/ (via our
-            # CMake setup hook) instead of lib/swift/. This'd be easily fixed by
-            # fixDarwinDylibNames, but some builds create libraries that reference
-            # eachother, and we also have to fix those references.
-            dylibs="$(find $out/lib/swift* -name '*.dylib')"
-            changes=""
-            for dylib in $dylibs; do
-              changes+=" -change $(otool -D $dylib | tail -n 1) $dylib"
-            done
-            for dylib in $dylibs; do
-              install_name_tool -id $dylib $changes $dylib
-            done
-          '';
+        (attrs.postInstall or "")
+        + lib.optionalString stdenv.hostPlatform.isDarwin ''
+          # The install name of libraries is incorrectly set to lib/ (via our
+          # CMake setup hook) instead of lib/swift/. This'd be easily fixed by
+          # fixDarwinDylibNames, but some builds create libraries that reference
+          # eachother, and we also have to fix those references.
+          dylibs="$(find $out/lib/swift* -name '*.dylib')"
+          changes=""
+          for dylib in $dylibs; do
+            changes+=" -change $(otool -D $dylib | tail -n 1) $dylib"
+          done
+          for dylib in $dylibs; do
+            install_name_tool -id $dylib $changes $dylib
+          done
+        '';
 
         cmakeFlags = (attrs.cmakeFlags or [ ]) ++ [
           # Some builds link to libraries within the same build. Make sure these
@@ -171,13 +171,13 @@ let
     src = generated.sources.swift-system;
 
     postInstall =
-      cmakeGlue.SwiftSystem
-      + lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
-        # The cmake rules apparently only use the Darwin install convention.
-        # Fix up the installation so the module can be found on non-Darwin.
-        mkdir -p $out/${swiftStaticModuleSubdir}
-        mv $out/lib/swift_static/${swiftOs}/*.swiftmodule $out/${swiftStaticModuleSubdir}/
-      '';
+    cmakeGlue.SwiftSystem
+    + lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
+      # The cmake rules apparently only use the Darwin install convention.
+      # Fix up the installation so the module can be found on non-Darwin.
+      mkdir -p $out/${swiftStaticModuleSubdir}
+      mv $out/lib/swift_static/${swiftOs}/*.swiftmodule $out/${swiftStaticModuleSubdir}/
+    '';
   };
 
   swift-collections = mkBootstrapDerivation {
@@ -192,13 +192,13 @@ let
     '';
 
     postInstall =
-      cmakeGlue.SwiftCollections
-      + lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
-        # The cmake rules apparently only use the Darwin install convention.
-        # Fix up the installation so the module can be found on non-Darwin.
-        mkdir -p $out/${swiftStaticModuleSubdir}
-        mv $out/lib/swift_static/${swiftOs}/*.swiftmodule $out/${swiftStaticModuleSubdir}/
-      '';
+    cmakeGlue.SwiftCollections
+    + lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
+      # The cmake rules apparently only use the Darwin install convention.
+      # Fix up the installation so the module can be found on non-Darwin.
+      mkdir -p $out/${swiftStaticModuleSubdir}
+      mv $out/lib/swift_static/${swiftOs}/*.swiftmodule $out/${swiftStaticModuleSubdir}/
+    '';
   };
 
   # Part of this patch fixes for glibc 2.39: glibc patch 64b1a44183a3094672ed304532bedb9acc707554
@@ -253,12 +253,12 @@ let
     ];
 
     postInstall =
-      cmakeGlue.ArgumentParser
-      + lib.optionalString stdenv.hostPlatform.isLinux ''
-        # Fix rpath so ArgumentParserToolInfo can be found.
-        patchelf --add-rpath "$out/lib/swift/${swiftOs}" \
-          $out/lib/swift/${swiftOs}/libArgumentParser.so
-      '';
+    cmakeGlue.ArgumentParser
+    + lib.optionalString stdenv.hostPlatform.isLinux ''
+      # Fix rpath so ArgumentParserToolInfo can be found.
+      patchelf --add-rpath "$out/lib/swift/${swiftOs}" \
+        $out/lib/swift/${swiftOs}/libArgumentParser.so
+    '';
   };
 
   Yams = mkBootstrapDerivation {

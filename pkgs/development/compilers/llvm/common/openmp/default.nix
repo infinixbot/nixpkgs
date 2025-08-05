@@ -54,24 +54,24 @@ stdenv.mkDerivation (
     patchFlags = if lib.versionOlder release_version "14" then [ "-p2" ] else null;
 
     patches =
-      lib.optional (lib.versionAtLeast release_version "15" && lib.versionOlder release_version "19") (
-        getVersionFile "openmp/fix-find-tool.patch"
-      )
-      ++ lib.optional (lib.versionAtLeast release_version "14" && lib.versionOlder release_version "18") (
-        getVersionFile "openmp/gnu-install-dirs.patch"
-      )
-      ++ lib.optional (lib.versionAtLeast release_version "14") (
-        getVersionFile "openmp/run-lit-directly.patch"
-      )
-      ++
-        lib.optional (lib.versionOlder release_version "14")
-          # Fix cross.
-          (
-            fetchpatch {
-              url = "https://github.com/llvm/llvm-project/commit/5e2358c781b85a18d1463fd924d2741d4ae5e42e.patch";
-              hash = "sha256-UxIlAifXnexF/MaraPW0Ut6q+sf3e7y1fMdEv1q103A=";
-            }
-          );
+    lib.optional (lib.versionAtLeast release_version "15" && lib.versionOlder release_version "19") (
+      getVersionFile "openmp/fix-find-tool.patch"
+    )
+    ++ lib.optional (lib.versionAtLeast release_version "14" && lib.versionOlder release_version "18") (
+      getVersionFile "openmp/gnu-install-dirs.patch"
+    )
+    ++ lib.optional (lib.versionAtLeast release_version "14") (
+      getVersionFile "openmp/run-lit-directly.patch"
+    )
+    ++
+      lib.optional (lib.versionOlder release_version "14")
+        # Fix cross.
+        (
+          fetchpatch {
+            url = "https://github.com/llvm/llvm-project/commit/5e2358c781b85a18d1463fd924d2741d4ae5e42e.patch";
+            hash = "sha256-UxIlAifXnexF/MaraPW0Ut6q+sf3e7y1fMdEv1q103A=";
+          }
+        );
 
     nativeBuildInputs = [
       cmake

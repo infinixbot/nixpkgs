@@ -23,10 +23,10 @@ in
 
       # this default is also what kubernetes users
       default =
-        (lib.concatStringsSep "." (
-          lib.take 3 (lib.splitString "." config.services.kubernetes.apiserver.serviceClusterIpRange)
-        ))
-        + ".254";
+      (lib.concatStringsSep "." (
+        lib.take 3 (lib.splitString "." config.services.kubernetes.apiserver.serviceClusterIpRange)
+      ))
+      + ".254";
       defaultText = lib.literalMD ''
         The `x.y.z.254` IP of
         `config.${options.services.kubernetes.apiserver.serviceClusterIpRange}`.

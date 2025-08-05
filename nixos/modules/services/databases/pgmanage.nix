@@ -192,8 +192,8 @@ in
         User = pgmanage;
         Group = pgmanage;
         ExecStart =
-          "${cfg.package}/sbin/pgmanage -c ${confFile}"
-          + lib.optionalString cfg.localOnly " --local-only=true";
+        "${cfg.package}/sbin/pgmanage -c ${confFile}"
+        + lib.optionalString cfg.localOnly " --local-only=true";
       };
     };
     users = {

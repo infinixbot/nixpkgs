@@ -118,37 +118,37 @@ stdenv.mkDerivation (finalAttrs: {
 
   # No flags to build selectively it seems...
   postPatch =
-    # Reduce configure time by preventing thousands of clang-tidy targets being added
-    # We will never call them
-    # Never build profiler
-    ''
-      substituteInPlace library/src/utility/CMakeLists.txt library/src/tensor_operation_instance/gpu/CMakeLists.txt \
-        --replace-fail clang_tidy_check '#clang_tidy_check'
-      substituteInPlace CMakeLists.txt \
-        --replace-fail "add_subdirectory(profiler)" ""
-    ''
-    # Optionally remove tests
-    + lib.optionalString (!buildTests) ''
-      substituteInPlace CMakeLists.txt \
-        --replace-fail "add_subdirectory(test)" ""
-      substituteInPlace codegen/CMakeLists.txt \
-        --replace-fail "include(ROCMTest)" ""
-    ''
-    # Optionally remove examples
-    + lib.optionalString (!buildExamples) ''
-      substituteInPlace CMakeLists.txt \
-        --replace-fail "add_subdirectory(example)" ""
-    '';
+  # Reduce configure time by preventing thousands of clang-tidy targets being added
+  # We will never call them
+  # Never build profiler
+  ''
+    substituteInPlace library/src/utility/CMakeLists.txt library/src/tensor_operation_instance/gpu/CMakeLists.txt \
+      --replace-fail clang_tidy_check '#clang_tidy_check'
+    substituteInPlace CMakeLists.txt \
+      --replace-fail "add_subdirectory(profiler)" ""
+  ''
+  # Optionally remove tests
+  + lib.optionalString (!buildTests) ''
+    substituteInPlace CMakeLists.txt \
+      --replace-fail "add_subdirectory(test)" ""
+    substituteInPlace codegen/CMakeLists.txt \
+      --replace-fail "include(ROCMTest)" ""
+  ''
+  # Optionally remove examples
+  + lib.optionalString (!buildExamples) ''
+    substituteInPlace CMakeLists.txt \
+      --replace-fail "add_subdirectory(example)" ""
+  '';
 
   postInstall =
-    lib.optionalString buildTests ''
-      mkdir -p $test/bin
-      mv $out/bin/test_* $test/bin
-    ''
-    + lib.optionalString buildExamples ''
-      mkdir -p $example/bin
-      mv $out/bin/example_* $example/bin
-    '';
+  lib.optionalString buildTests ''
+    mkdir -p $test/bin
+    mv $out/bin/test_* $test/bin
+  ''
+  + lib.optionalString buildExamples ''
+    mkdir -p $example/bin
+    mv $out/bin/example_* $example/bin
+  '';
 
   passthru.updateScript = rocmUpdateScript {
     name = finalAttrs.pname;

@@ -44,13 +44,13 @@ stdenv.mkDerivation (finalAttrs: {
       gpl3Only
     ];
     pkgConfigModules =
-      lib.optionals stdenv.hostPlatform.isDarwin [
-        "hidapi"
-      ]
-      ++ lib.optionals stdenv.hostPlatform.isLinux [
-        "hidapi-hidraw"
-        "hidapi-libusb"
-      ];
+    lib.optionals stdenv.hostPlatform.isDarwin [
+      "hidapi"
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isLinux [
+      "hidapi-hidraw"
+      "hidapi-libusb"
+    ];
     platforms = platforms.unix ++ platforms.windows;
   };
 })

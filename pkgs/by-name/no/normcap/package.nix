@@ -104,17 +104,17 @@ ps.buildPythonApplication rec {
   '';
 
   nativeCheckInputs =
-    wrapperDeps
-    ++ [
-      ps.pytestCheckHook
-      ps.pytest-cov-stub
-      ps.pytest-instafail
-      ps.pytest-qt
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      ps.pytest-xvfb
-      xorg.xvfb
-    ];
+  wrapperDeps
+  ++ [
+    ps.pytestCheckHook
+    ps.pytest-cov-stub
+    ps.pytest-instafail
+    ps.pytest-qt
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    ps.pytest-xvfb
+    xorg.xvfb
+  ];
 
   preCheck = ''
     export HOME=$(mktemp -d)

@@ -229,10 +229,10 @@ let
       # FIXME when mkChangedOptionModule supports submodules, change to that.
       # This is a workaround
       extraDomains =
-        data.extraDomainNames
-        ++ (lib.optionals (data.extraDomains != "_mkMergedOptionModule") (
-          builtins.attrNames data.extraDomains
-        ));
+      data.extraDomainNames
+      ++ (lib.optionals (data.extraDomains != "_mkMergedOptionModule") (
+        builtins.attrNames data.extraDomains
+      ));
 
       # Create hashes for cert data directories based on configuration
       # Flags are separated to avoid collisions
@@ -435,60 +435,60 @@ let
         ];
 
         serviceConfig =
-          commonServiceConfig
-          // {
-            Group = data.group;
+        commonServiceConfig
+        // {
+          Group = data.group;
 
-            # Let's Encrypt Failed Validation Limit allows 5 retries per hour, per account, hostname and hour.
-            # This avoids eating them all up if something is misconfigured upon the first try.
-            RestartSec = 15 * 60;
+          # Let's Encrypt Failed Validation Limit allows 5 retries per hour, per account, hostname and hour.
+          # This avoids eating them all up if something is misconfigured upon the first try.
+          RestartSec = 15 * 60;
 
-            # Keep in mind that these directories will be deleted if the user runs
-            # systemctl clean --what=state
-            # acme/.lego/${cert} is listed for this reason.
-            StateDirectory = [
-              "acme/${cert}"
-              "acme/.lego/${cert}"
-              "acme/.lego/${cert}/${certDir}"
-              "acme/.lego/accounts/${accountHash}"
-            ];
+          # Keep in mind that these directories will be deleted if the user runs
+          # systemctl clean --what=state
+          # acme/.lego/${cert} is listed for this reason.
+          StateDirectory = [
+            "acme/${cert}"
+            "acme/.lego/${cert}"
+            "acme/.lego/${cert}/${certDir}"
+            "acme/.lego/accounts/${accountHash}"
+          ];
 
-            ReadWritePaths = commonServiceConfig.ReadWritePaths ++ webroots;
+          ReadWritePaths = commonServiceConfig.ReadWritePaths ++ webroots;
 
-            # Needs to be space separated, but can't use a multiline string because that'll include newlines
-            BindPaths = [
-              "${accountDir}:/tmp/accounts"
-              "/var/lib/acme/${cert}:/tmp/out"
-              "/var/lib/acme/.lego/${cert}/${certDir}:/tmp/certificates"
-            ];
+          # Needs to be space separated, but can't use a multiline string because that'll include newlines
+          BindPaths = [
+            "${accountDir}:/tmp/accounts"
+            "/var/lib/acme/${cert}:/tmp/out"
+            "/var/lib/acme/.lego/${cert}/${certDir}:/tmp/certificates"
+          ];
 
-            EnvironmentFile = lib.mkIf (data.environmentFile != null) data.environmentFile;
+          EnvironmentFile = lib.mkIf (data.environmentFile != null) data.environmentFile;
 
-            Environment = lib.mapAttrsToList (k: v: ''"${k}=%d/${k}"'') data.credentialFiles;
+          Environment = lib.mapAttrsToList (k: v: ''"${k}=%d/${k}"'') data.credentialFiles;
 
-            LoadCredential = lib.mapAttrsToList (k: v: "${k}:${v}") data.credentialFiles;
+          LoadCredential = lib.mapAttrsToList (k: v: "${k}:${v}") data.credentialFiles;
 
-            # Run as root (Prefixed with +)
-            ExecStartPost =
-              "+"
-              + (pkgs.writeShellScript "acme-postrun" ''
-                cd /var/lib/acme/${lib.escapeShellArg cert}
-                if [ -e renewed ]; then
-                  rm renewed
-                  ${data.postRun}
-                  ${lib.optionalString (
-                    data.reloadServices != [ ]
-                  ) "systemctl --no-block try-reload-or-restart ${lib.escapeShellArgs data.reloadServices}"}
-                fi
-              '');
-          }
-          //
-            lib.optionalAttrs
-              (data.listenHTTP != null && lib.toInt (lib.last (lib.splitString ":" data.listenHTTP)) < 1024)
-              {
-                CapabilityBoundingSet = [ "CAP_NET_BIND_SERVICE" ];
-                AmbientCapabilities = [ "CAP_NET_BIND_SERVICE" ];
-              };
+          # Run as root (Prefixed with +)
+          ExecStartPost =
+          "+"
+          + (pkgs.writeShellScript "acme-postrun" ''
+            cd /var/lib/acme/${lib.escapeShellArg cert}
+            if [ -e renewed ]; then
+              rm renewed
+              ${data.postRun}
+              ${lib.optionalString (
+                data.reloadServices != [ ]
+              ) "systemctl --no-block try-reload-or-restart ${lib.escapeShellArgs data.reloadServices}"}
+            fi
+          '');
+        }
+        //
+          lib.optionalAttrs
+            (data.listenHTTP != null && lib.toInt (lib.last (lib.splitString ":" data.listenHTTP)) < 1024)
+            {
+              CapabilityBoundingSet = [ "CAP_NET_BIND_SERVICE" ];
+              AmbientCapabilities = [ "CAP_NET_BIND_SERVICE" ];
+            };
 
         # Working directory will be /tmp
         script = (if (lockfileName == null) then lib.id else wrapInFlock "${lockdir}${lockfileName}") ''

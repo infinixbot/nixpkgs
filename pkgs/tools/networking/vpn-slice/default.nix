@@ -25,15 +25,15 @@ buildPythonApplication rec {
   };
 
   postPatch =
-    lib.optionalString stdenv.hostPlatform.isDarwin ''
-      substituteInPlace vpn_slice/mac.py \
-        --replace-fail "'/sbin/route'" "'${unixtools.route}/bin/route'"
-    ''
-    + lib.optionalString stdenv.hostPlatform.isLinux ''
-      substituteInPlace vpn_slice/linux.py \
-        --replace-fail "'/sbin/ip'" "'${iproute2}/bin/ip'" \
-        --replace-fail "'/sbin/iptables'" "'${iptables}/bin/iptables'"
-    '';
+  lib.optionalString stdenv.hostPlatform.isDarwin ''
+    substituteInPlace vpn_slice/mac.py \
+      --replace-fail "'/sbin/route'" "'${unixtools.route}/bin/route'"
+  ''
+  + lib.optionalString stdenv.hostPlatform.isLinux ''
+    substituteInPlace vpn_slice/linux.py \
+      --replace-fail "'/sbin/ip'" "'${iproute2}/bin/ip'" \
+      --replace-fail "'/sbin/iptables'" "'${iptables}/bin/iptables'"
+  '';
 
   build-system = [
     setuptools

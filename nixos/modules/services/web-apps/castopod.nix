@@ -258,8 +258,8 @@ in
       serviceConfig = {
         StateDirectory = "castopod";
         LoadCredential =
-          lib.optional (cfg.environmentFile != null) "envfile:${cfg.environmentFile}"
-          ++ (lib.optional (cfg.database.passwordFile != null) "dbpasswordfile:${cfg.database.passwordFile}");
+        lib.optional (cfg.environmentFile != null) "envfile:${cfg.environmentFile}"
+        ++ (lib.optional (cfg.database.passwordFile != null) "dbpasswordfile:${cfg.database.passwordFile}");
         WorkingDirectory = "${cfg.package}/share/castopod";
         Type = "oneshot";
         RemainAfterExit = true;

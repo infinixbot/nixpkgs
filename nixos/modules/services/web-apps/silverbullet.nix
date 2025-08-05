@@ -105,8 +105,8 @@ in
           lib.last (lib.splitString "/" cfg.spaceDir)
         );
         ExecStart =
-          "${lib.getExe cfg.package} --port ${toString cfg.listenPort} --hostname '${cfg.listenAddress}' '${cfg.spaceDir}' "
-          + lib.concatStringsSep " " cfg.extraArgs;
+        "${lib.getExe cfg.package} --port ${toString cfg.listenPort} --hostname '${cfg.listenAddress}' '${cfg.spaceDir}' "
+        + lib.concatStringsSep " " cfg.extraArgs;
         Restart = "on-failure";
       };
     };

@@ -165,84 +165,84 @@ stdenv.mkDerivation {
   patchFlags = [ ];
 
   patches =
-    patches
-    ++ lib.optional (
-      lib.versionOlder version "1.88" && stdenv.hostPlatform.isDarwin
-    ) ./darwin-no-system-python.patch
-    ++ lib.optional (lib.versionOlder version "1.88") ./cmake-paths-173.patch
-    ++ lib.optional (lib.versionAtLeast version "1.88") ./cmake-paths-188.patch
-    ++ lib.optional (version == "1.77.0") (fetchpatch {
-      url = "https://github.com/boostorg/math/commit/7d482f6ebc356e6ec455ccb5f51a23971bf6ce5b.patch";
-      relative = "include";
-      sha256 = "sha256-KlmIbixcds6GyKYt1fx5BxDIrU7msrgDdYo9Va/KJR4=";
+  patches
+  ++ lib.optional (
+    lib.versionOlder version "1.88" && stdenv.hostPlatform.isDarwin
+  ) ./darwin-no-system-python.patch
+  ++ lib.optional (lib.versionOlder version "1.88") ./cmake-paths-173.patch
+  ++ lib.optional (lib.versionAtLeast version "1.88") ./cmake-paths-188.patch
+  ++ lib.optional (version == "1.77.0") (fetchpatch {
+    url = "https://github.com/boostorg/math/commit/7d482f6ebc356e6ec455ccb5f51a23971bf6ce5b.patch";
+    relative = "include";
+    sha256 = "sha256-KlmIbixcds6GyKYt1fx5BxDIrU7msrgDdYo9Va/KJR4=";
+  })
+  # Fixes ABI detection
+  ++ lib.optional (version == "1.83.0") (fetchpatch {
+    url = "https://github.com/boostorg/context/commit/6fa6d5c50d120e69b2d8a1c0d2256ee933e94b3b.patch";
+    stripLen = 1;
+    extraPrefix = "libs/context/";
+    sha256 = "sha256-bCfLL7bD1Rn4Ie/P3X+nIcgTkbXdCX6FW7B9lHsmVW8=";
+  })
+  # This fixes another issue regarding ill-formed constant expressions, which is a default error
+  # in clang 16 and will be a hard error in clang 17.
+  ++ lib.optional (lib.versionOlder version "1.80") (fetchpatch {
+    url = "https://github.com/boostorg/log/commit/77f1e20bd69c2e7a9e25e6a9818ae6105f7d070c.patch";
+    relative = "include";
+    hash = "sha256-6qOiGJASm33XzwoxVZfKJd7sTlQ5yd+MMFQzegXm5RI=";
+  })
+  ++ lib.optionals (lib.versionOlder version "1.81") [
+    # libc++ 15 dropped support for `std::unary_function` and `std::binary_function` in C++17+.
+    # C++17 is the default for clang 16, but clang 15 is also affected in that language mode.
+    # This patch is for Boost 1.80, but it also applies to earlier versions.
+    (fetchpatch {
+      url = "https://www.boost.org/patches/1_80_0/0005-config-libcpp15.patch";
+      hash = "sha256-ULFMzKphv70unvPZ3o4vSP/01/xbSM9a2TlIV67eXDQ=";
     })
-    # Fixes ABI detection
-    ++ lib.optional (version == "1.83.0") (fetchpatch {
-      url = "https://github.com/boostorg/context/commit/6fa6d5c50d120e69b2d8a1c0d2256ee933e94b3b.patch";
+    # This fixes another ill-formed contant expressions issue flagged by clang 16.
+    (fetchpatch {
+      url = "https://github.com/boostorg/numeric_conversion/commit/50a1eae942effb0a9b90724323ef8f2a67e7984a.patch";
+      relative = "include";
+      hash = "sha256-dq4SVgxkPJSC7Fvr59VGnXkM4Lb09kYDaBksCHo9C0s=";
+    })
+    # This fixes an issue in Python 3.11 about Py_TPFLAGS_HAVE_GC
+    (fetchpatch {
+      name = "python311-compatibility.patch";
+      url = "https://github.com/boostorg/python/commit/a218babc8daee904a83f550fb66e5cb3f1cb3013.patch";
+      hash = "sha256-IHxLtJBx0xSy7QEr8FbCPofsjcPuSYzgtPwDlx1JM+4=";
+      stripLen = 1;
+      extraPrefix = "libs/python/";
+    })
+  ]
+
+  ++ lib.optional (
+    lib.versionAtLeast version "1.81" && lib.versionOlder version "1.88" && stdenv.cc.isClang
+  ) ./fix-clang-target.patch
+  ++ lib.optional (lib.versionAtLeast version "1.86" && lib.versionOlder version "1.87") [
+    # Backport fix for NumPy 2 support.
+    (fetchpatch {
+      name = "boost-numpy-2-compatibility.patch";
+      url = "https://github.com/boostorg/python/commit/0474de0f6cc9c6e7230aeb7164af2f7e4ccf74bf.patch";
+      stripLen = 1;
+      extraPrefix = "libs/python/";
+      hash = "sha256-0IHK55JSujYcwEVOuLkwOa/iPEkdAKQlwVWR42p/X2U=";
+    })
+  ]
+  ++ lib.optional (version == "1.87.0") [
+    # Fix operator<< for shared_ptr and intrusive_ptr
+    # https://github.com/boostorg/smart_ptr/issues/115
+    (fetchpatch {
+      url = "https://github.com/boostorg/smart_ptr/commit/e7433ba54596da97cb7859455cd37ca140305a9c.patch";
+      relative = "include";
+      hash = "sha256-9JvKQOAB19wQpWLNAhuB9eL8qKqXWTQHAJIXdLYMNG8=";
+    })
+    # Fixes ABI detection on some platforms (like loongarch64)
+    (fetchpatch {
+      url = "https://github.com/boostorg/context/commit/63996e427b4470c7b99b0f4cafb94839ea3670b6.patch";
       stripLen = 1;
       extraPrefix = "libs/context/";
-      sha256 = "sha256-bCfLL7bD1Rn4Ie/P3X+nIcgTkbXdCX6FW7B9lHsmVW8=";
+      hash = "sha256-Z8uw2+4IEybqVcU25i/0XJKS16hi/+3MXUxs53ghjL0=";
     })
-    # This fixes another issue regarding ill-formed constant expressions, which is a default error
-    # in clang 16 and will be a hard error in clang 17.
-    ++ lib.optional (lib.versionOlder version "1.80") (fetchpatch {
-      url = "https://github.com/boostorg/log/commit/77f1e20bd69c2e7a9e25e6a9818ae6105f7d070c.patch";
-      relative = "include";
-      hash = "sha256-6qOiGJASm33XzwoxVZfKJd7sTlQ5yd+MMFQzegXm5RI=";
-    })
-    ++ lib.optionals (lib.versionOlder version "1.81") [
-      # libc++ 15 dropped support for `std::unary_function` and `std::binary_function` in C++17+.
-      # C++17 is the default for clang 16, but clang 15 is also affected in that language mode.
-      # This patch is for Boost 1.80, but it also applies to earlier versions.
-      (fetchpatch {
-        url = "https://www.boost.org/patches/1_80_0/0005-config-libcpp15.patch";
-        hash = "sha256-ULFMzKphv70unvPZ3o4vSP/01/xbSM9a2TlIV67eXDQ=";
-      })
-      # This fixes another ill-formed contant expressions issue flagged by clang 16.
-      (fetchpatch {
-        url = "https://github.com/boostorg/numeric_conversion/commit/50a1eae942effb0a9b90724323ef8f2a67e7984a.patch";
-        relative = "include";
-        hash = "sha256-dq4SVgxkPJSC7Fvr59VGnXkM4Lb09kYDaBksCHo9C0s=";
-      })
-      # This fixes an issue in Python 3.11 about Py_TPFLAGS_HAVE_GC
-      (fetchpatch {
-        name = "python311-compatibility.patch";
-        url = "https://github.com/boostorg/python/commit/a218babc8daee904a83f550fb66e5cb3f1cb3013.patch";
-        hash = "sha256-IHxLtJBx0xSy7QEr8FbCPofsjcPuSYzgtPwDlx1JM+4=";
-        stripLen = 1;
-        extraPrefix = "libs/python/";
-      })
-    ]
-
-    ++ lib.optional (
-      lib.versionAtLeast version "1.81" && lib.versionOlder version "1.88" && stdenv.cc.isClang
-    ) ./fix-clang-target.patch
-    ++ lib.optional (lib.versionAtLeast version "1.86" && lib.versionOlder version "1.87") [
-      # Backport fix for NumPy 2 support.
-      (fetchpatch {
-        name = "boost-numpy-2-compatibility.patch";
-        url = "https://github.com/boostorg/python/commit/0474de0f6cc9c6e7230aeb7164af2f7e4ccf74bf.patch";
-        stripLen = 1;
-        extraPrefix = "libs/python/";
-        hash = "sha256-0IHK55JSujYcwEVOuLkwOa/iPEkdAKQlwVWR42p/X2U=";
-      })
-    ]
-    ++ lib.optional (version == "1.87.0") [
-      # Fix operator<< for shared_ptr and intrusive_ptr
-      # https://github.com/boostorg/smart_ptr/issues/115
-      (fetchpatch {
-        url = "https://github.com/boostorg/smart_ptr/commit/e7433ba54596da97cb7859455cd37ca140305a9c.patch";
-        relative = "include";
-        hash = "sha256-9JvKQOAB19wQpWLNAhuB9eL8qKqXWTQHAJIXdLYMNG8=";
-      })
-      # Fixes ABI detection on some platforms (like loongarch64)
-      (fetchpatch {
-        url = "https://github.com/boostorg/context/commit/63996e427b4470c7b99b0f4cafb94839ea3670b6.patch";
-        stripLen = 1;
-        extraPrefix = "libs/context/";
-        hash = "sha256-Z8uw2+4IEybqVcU25i/0XJKS16hi/+3MXUxs53ghjL0=";
-      })
-    ];
+  ];
 
   meta = with lib; {
     homepage = "http://boost.org/";
@@ -263,51 +263,51 @@ stdenv.mkDerivation {
   };
 
   preConfigure =
-    lib.optionalString useMpi ''
-      cat << EOF >> user-config.jam
-      using mpi : ${lib.getDev mpi}/bin/mpiCC ;
-      EOF
-    ''
-    # On darwin we need to add the `$out/lib` to the libraries' rpath explicitly,
-    # otherwise the dynamic linker is unable to resolve the reference to @rpath
-    # when the boost libraries want to load each other at runtime.
-    + lib.optionalString (stdenv.hostPlatform.isDarwin && enableShared) ''
-      cat << EOF >> user-config.jam
-      using clang-darwin : : ${stdenv.cc.targetPrefix}c++
-        : <linkflags>"-rpath $out/lib/"
-          <archiver>$AR
-          <ranlib>$RANLIB
-        ;
-      EOF
-    ''
-    # b2 has trouble finding the correct compiler and tools for cross compilation
-    # since it apparently ignores $CC, $AR etc. Thus we need to set everything
-    # in user-config.jam. To keep things simple we just set everything in an
-    # uniform way for clang and gcc (which works thanks to our cc-wrapper).
-    # We pass toolset later which will make b2 invoke everything in the right
-    # way -- the other toolset in user-config.jam will be ignored.
-    + lib.optionalString (stdenv.hostPlatform != stdenv.buildPlatform) ''
-      cat << EOF >> user-config.jam
-      using gcc : cross : ${stdenv.cc.targetPrefix}c++
-        : <archiver>$AR
-          <ranlib>$RANLIB
-        ;
+  lib.optionalString useMpi ''
+    cat << EOF >> user-config.jam
+    using mpi : ${lib.getDev mpi}/bin/mpiCC ;
+    EOF
+  ''
+  # On darwin we need to add the `$out/lib` to the libraries' rpath explicitly,
+  # otherwise the dynamic linker is unable to resolve the reference to @rpath
+  # when the boost libraries want to load each other at runtime.
+  + lib.optionalString (stdenv.hostPlatform.isDarwin && enableShared) ''
+    cat << EOF >> user-config.jam
+    using clang-darwin : : ${stdenv.cc.targetPrefix}c++
+      : <linkflags>"-rpath $out/lib/"
+        <archiver>$AR
+        <ranlib>$RANLIB
+      ;
+    EOF
+  ''
+  # b2 has trouble finding the correct compiler and tools for cross compilation
+  # since it apparently ignores $CC, $AR etc. Thus we need to set everything
+  # in user-config.jam. To keep things simple we just set everything in an
+  # uniform way for clang and gcc (which works thanks to our cc-wrapper).
+  # We pass toolset later which will make b2 invoke everything in the right
+  # way -- the other toolset in user-config.jam will be ignored.
+  + lib.optionalString (stdenv.hostPlatform != stdenv.buildPlatform) ''
+    cat << EOF >> user-config.jam
+    using gcc : cross : ${stdenv.cc.targetPrefix}c++
+      : <archiver>$AR
+        <ranlib>$RANLIB
+      ;
 
-      using clang : cross : ${stdenv.cc.targetPrefix}c++
-        : <archiver>$AR
-          <ranlib>$RANLIB
-        ;
-      EOF
-    ''
-    # b2 needs to be explicitly told how to find Python when cross-compiling
-    + lib.optionalString enablePython ''
-      cat << EOF >> user-config.jam
-      using python : : ${python.pythonOnBuildForHost.interpreter}
-        : ${python}/include/python${python.pythonVersion}
-        : ${python}/lib
-        ;
-      EOF
-    '';
+    using clang : cross : ${stdenv.cc.targetPrefix}c++
+      : <archiver>$AR
+        <ranlib>$RANLIB
+      ;
+    EOF
+  ''
+  # b2 needs to be explicitly told how to find Python when cross-compiling
+  + lib.optionalString enablePython ''
+    cat << EOF >> user-config.jam
+    using python : : ${python.pythonOnBuildForHost.interpreter}
+      : ${python}/include/python${python.pythonVersion}
+      : ${python}/lib
+      ;
+    EOF
+  '';
 
   # Fix compilation to 32-bit ARM with clang in downstream packages
   # https://github.com/ned14/outcome/pull/308

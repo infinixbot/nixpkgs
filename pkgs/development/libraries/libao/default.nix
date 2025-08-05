@@ -45,12 +45,12 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    [ ]
-    ++ lib.optional usePulseAudio libpulseaudio
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      alsa-lib
-      libcap
-    ];
+  [ ]
+  ++ lib.optional usePulseAudio libpulseaudio
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    alsa-lib
+    libcap
+  ];
 
   nativeBuildInputs = [
     autoreconfHook

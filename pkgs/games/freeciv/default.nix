@@ -110,12 +110,12 @@ stdenv.mkDerivation rec {
   ++ lib.optional (!server) "--disable-server";
 
   postFixup =
-    lib.optionalString qtClient ''
-      wrapQtApp $out/bin/freeciv-qt
-    ''
-    + lib.optionalString gtkClient ''
-      wrapGApp $out/bin/freeciv-gtk3.22
-    '';
+  lib.optionalString qtClient ''
+    wrapQtApp $out/bin/freeciv-qt
+  ''
+  + lib.optionalString gtkClient ''
+    wrapGApp $out/bin/freeciv-gtk3.22
+  '';
 
   enableParallelBuilding = true;
 

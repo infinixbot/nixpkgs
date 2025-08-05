@@ -2258,45 +2258,45 @@ in
     ];
 
     warnings =
+    lib.optional
+      (
+        with config.security.pam.sshAgentAuth;
+        enable && lib.any (s: lib.hasPrefix "%h" s || lib.hasPrefix "~" s) authorizedKeysFiles
+      )
+      ''
+        security.pam.sshAgentAuth.authorizedKeysFiles contains files in the user's home directory.
+
+        Specifying user-writeable files there result in an insecure configuration:
+        a malicious process can then edit such an authorized_keys file and bypass the ssh-agent-based authentication.
+        See https://github.com/NixOS/nixpkgs/issues/31611
+      ''
+    ++
       lib.optional
         (
-          with config.security.pam.sshAgentAuth;
-          enable && lib.any (s: lib.hasPrefix "%h" s || lib.hasPrefix "~" s) authorizedKeysFiles
+          with config.security.pam.rssh;
+          enable && settings.auth_key_file or null != null && settings.authorized_keys_command or null != null
         )
         ''
-          security.pam.sshAgentAuth.authorizedKeysFiles contains files in the user's home directory.
-
-          Specifying user-writeable files there result in an insecure configuration:
-          a malicious process can then edit such an authorized_keys file and bypass the ssh-agent-based authentication.
-          See https://github.com/NixOS/nixpkgs/issues/31611
-        ''
-      ++
-        lib.optional
-          (
-            with config.security.pam.rssh;
-            enable && settings.auth_key_file or null != null && settings.authorized_keys_command or null != null
-          )
-          ''
-            security.pam.rssh.settings.auth_key_file will be ignored as
-            security.pam.rssh.settings.authorized_keys_command has been specified.
-            Explictly set the former to null to silence this warning.
-          '';
+          security.pam.rssh.settings.auth_key_file will be ignored as
+          security.pam.rssh.settings.authorized_keys_command has been specified.
+          Explictly set the former to null to silence this warning.
+        '';
 
     environment.systemPackages =
-      # Include the PAM modules in the system path mostly for the manpages.
-      [ package ]
-      ++ lib.optional config.users.ldap.enable pam_ldap
-      ++ lib.optional config.services.kanidm.enablePam config.services.kanidm.package
-      ++ lib.optional config.services.sssd.enable pkgs.sssd
-      ++ lib.optionals config.security.pam.krb5.enable [
-        pam_krb5
-        pam_ccreds
-      ]
-      ++ lib.optionals config.security.pam.enableOTPW [ pkgs.otpw ]
-      ++ lib.optionals config.security.pam.oath.enable [ pkgs.oath-toolkit ]
-      ++ lib.optionals config.security.pam.p11.enable [ pkgs.pam_p11 ]
-      ++ lib.optionals config.security.pam.enableFscrypt [ pkgs.fscrypt-experimental ]
-      ++ lib.optionals config.security.pam.u2f.enable [ pkgs.pam_u2f ];
+    # Include the PAM modules in the system path mostly for the manpages.
+    [ package ]
+    ++ lib.optional config.users.ldap.enable pam_ldap
+    ++ lib.optional config.services.kanidm.enablePam config.services.kanidm.package
+    ++ lib.optional config.services.sssd.enable pkgs.sssd
+    ++ lib.optionals config.security.pam.krb5.enable [
+      pam_krb5
+      pam_ccreds
+    ]
+    ++ lib.optionals config.security.pam.enableOTPW [ pkgs.otpw ]
+    ++ lib.optionals config.security.pam.oath.enable [ pkgs.oath-toolkit ]
+    ++ lib.optionals config.security.pam.p11.enable [ pkgs.pam_p11 ]
+    ++ lib.optionals config.security.pam.enableFscrypt [ pkgs.fscrypt-experimental ]
+    ++ lib.optionals config.security.pam.u2f.enable [ pkgs.pam_u2f ];
 
     boot.supportedFilesystems = lib.optionals config.security.pam.enableEcryptfs [ "ecryptfs" ];
 

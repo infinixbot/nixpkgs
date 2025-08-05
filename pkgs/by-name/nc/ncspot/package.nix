@@ -63,19 +63,19 @@ rustPlatform.buildRustPackage (finalAttrs: {
   buildNoDefaultFeatures = true;
 
   buildFeatures =
-    lib.optional withALSA "alsa_backend"
-    ++ lib.optional withClipboard "share_clipboard"
-    ++ lib.optional withCover "cover"
-    ++ lib.optional withCrossterm "crossterm_backend"
-    ++ lib.optional withMPRIS "mpris"
-    ++ lib.optional withNcurses "ncurses_backend"
-    ++ lib.optional withNotify "notify"
-    ++ lib.optional withPancurses "pancurses_backend"
-    ++ lib.optional withPortAudio "portaudio_backend"
-    ++ lib.optional withPulseAudio "pulseaudio_backend"
-    ++ lib.optional withRodio "rodio_backend"
-    ++ lib.optional withShareSelection "share_selection"
-    ++ lib.optional withTermion "termion_backend";
+  lib.optional withALSA "alsa_backend"
+  ++ lib.optional withClipboard "share_clipboard"
+  ++ lib.optional withCover "cover"
+  ++ lib.optional withCrossterm "crossterm_backend"
+  ++ lib.optional withMPRIS "mpris"
+  ++ lib.optional withNcurses "ncurses_backend"
+  ++ lib.optional withNotify "notify"
+  ++ lib.optional withPancurses "pancurses_backend"
+  ++ lib.optional withPortAudio "portaudio_backend"
+  ++ lib.optional withPulseAudio "pulseaudio_backend"
+  ++ lib.optional withRodio "rodio_backend"
+  ++ lib.optional withShareSelection "share_selection"
+  ++ lib.optional withTermion "termion_backend";
 
   postInstall = ''
     install -D --mode=444 $src/misc/ncspot.desktop $out/share/applications/ncspot.desktop

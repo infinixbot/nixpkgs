@@ -46,8 +46,8 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   mesonFlags =
-    lib.lists.optional (!stdenv.hostPlatform.isAarch64) "-Dneon=disabled"
-    ++ lib.lists.optional (stdenv.hostPlatform.isi686) "-Dinline-sse=false";
+  lib.lists.optional (!stdenv.hostPlatform.isAarch64) "-Dneon=disabled"
+  ++ lib.lists.optional (stdenv.hostPlatform.isi686) "-Dinline-sse=false";
 
   passthru.tests.pkg-config = testers.hasPkgConfigModules {
     package = finalAttrs.finalPackage;

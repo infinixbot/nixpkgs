@@ -238,11 +238,11 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    [ ]
-    ++ optionals unitTestsSupport [
-      coreutils
-      curl
-    ];
+  [ ]
+  ++ optionals unitTestsSupport [
+    coreutils
+    curl
+  ];
 
   NIX_LDFLAGS = [
     "-lpthread" # fixes linker errors

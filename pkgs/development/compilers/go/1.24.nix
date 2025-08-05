@@ -36,9 +36,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
   buildInputs =
-    [ ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [ stdenv.cc.libc.out ]
-    ++ lib.optionals (stdenv.hostPlatform.libc == "glibc") [ stdenv.cc.libc.static ];
+  [ ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [ stdenv.cc.libc.out ]
+  ++ lib.optionals (stdenv.hostPlatform.libc == "glibc") [ stdenv.cc.libc.static ];
 
   depsBuildTarget = lib.optional isCross targetCC;
 

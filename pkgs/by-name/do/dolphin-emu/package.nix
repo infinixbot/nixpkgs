@@ -158,15 +158,15 @@ stdenv.mkDerivation (finalAttrs: {
   doInstallCheck = true;
 
   postInstall =
-    lib.optionalString stdenv.hostPlatform.isLinux ''
-      install -D $src/Data/51-usb-device.rules $out/etc/udev/rules.d/51-usb-device.rules
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      # Only gets installed automatically if the standalone executable is used
-      mkdir -p $out/Applications
-      cp -r ./Binaries/Dolphin.app $out/Applications
-      ln -s $out/Applications/Dolphin.app/Contents/MacOS/Dolphin $out/bin
-    '';
+  lib.optionalString stdenv.hostPlatform.isLinux ''
+    install -D $src/Data/51-usb-device.rules $out/etc/udev/rules.d/51-usb-device.rules
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    # Only gets installed automatically if the standalone executable is used
+    mkdir -p $out/Applications
+    cp -r ./Binaries/Dolphin.app $out/Applications
+    ln -s $out/Applications/Dolphin.app/Contents/MacOS/Dolphin $out/bin
+  '';
 
   dontWrapGApps = true;
 

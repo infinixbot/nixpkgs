@@ -151,17 +151,17 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru = {
     tests =
-      lib.optionalAttrs enableCrossCompilation {
-        crossCompilation = callPackage ./cross-compilation-tests.nix { hare = finalAttrs.finalPackage; };
-      }
-      // lib.optionalAttrs (stdenv.buildPlatform.canExecute stdenv.hostPlatform) {
-        mimeModule = callPackage ./mime-module-test.nix { hare = finalAttrs.finalPackage; };
-      }
-      //
-        lib.optionalAttrs (enableCrossCompilation && stdenv.buildPlatform.canExecute stdenv.hostPlatform)
-          {
-            crossCompilation = callPackage ./cross-compilation-tests.nix { hare = finalAttrs.finalPackage; };
-          };
+    lib.optionalAttrs enableCrossCompilation {
+      crossCompilation = callPackage ./cross-compilation-tests.nix { hare = finalAttrs.finalPackage; };
+    }
+    // lib.optionalAttrs (stdenv.buildPlatform.canExecute stdenv.hostPlatform) {
+      mimeModule = callPackage ./mime-module-test.nix { hare = finalAttrs.finalPackage; };
+    }
+    //
+      lib.optionalAttrs (enableCrossCompilation && stdenv.buildPlatform.canExecute stdenv.hostPlatform)
+        {
+          crossCompilation = callPackage ./cross-compilation-tests.nix { hare = finalAttrs.finalPackage; };
+        };
     # To be propagated by `hareHook`.
     inherit harec qbe;
   };

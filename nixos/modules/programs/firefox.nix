@@ -316,9 +316,9 @@ in
       environment.systemPackages = [
         (cfg.package.override (old: {
           extraPrefsFiles =
-            old.extraPrefsFiles or [ ]
-            ++ cfg.autoConfigFiles
-            ++ [ (pkgs.writeText "firefox-autoconfig.js" cfg.autoConfig) ];
+          old.extraPrefsFiles or [ ]
+          ++ cfg.autoConfigFiles
+          ++ [ (pkgs.writeText "firefox-autoconfig.js" cfg.autoConfig) ];
           nativeMessagingHosts = lib.unique (
             old.nativeMessagingHosts or [ ] ++ cfg.nativeMessagingHosts.packages
           );

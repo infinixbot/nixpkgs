@@ -29,16 +29,16 @@ stdenv.mkDerivation (finalAttrs: {
   sourceRoot = lib.optionalString stdenv.hostPlatform.isDarwin ".";
 
   nativeBuildInputs =
-    lib.optionals stdenv.hostPlatform.isLinux [
-      autoPatchelfHook
-      dpkg
-      makeWrapper
-      wrapGAppsHook3
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      undmg
-      makeBinaryWrapper
-    ];
+  lib.optionals stdenv.hostPlatform.isLinux [
+    autoPatchelfHook
+    dpkg
+    makeWrapper
+    wrapGAppsHook3
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    undmg
+    makeBinaryWrapper
+  ];
 
   buildInputs = lib.optionals stdenv.hostPlatform.isLinux [
     glib-networking

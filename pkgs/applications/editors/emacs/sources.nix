@@ -49,8 +49,8 @@ let
           }
           .${variant};
         description =
-          "Extensible, customizable GNU text editor"
-          + lib.optionalString (variant == "macport") " - macport variant";
+        "Extensible, customizable GNU text editor"
+        + lib.optionalString (variant == "macport") " - macport variant";
         longDescription = ''
           GNU Emacs is an extensible, customizable text editor—and more. At its core
           is an interpreter for Emacs Lisp, a dialect of the Lisp programming

@@ -9,7 +9,7 @@
 }:
 mkDerivation rec {
   pname =
-    "drm-kmod-firmware" + lib.optionalString withAmd "-amd" + lib.optionalString withIntel "-intel";
+  "drm-kmod-firmware" + lib.optionalString withAmd "-amd" + lib.optionalString withIntel "-intel";
 
   version = "20230625_8";
 
@@ -31,11 +31,11 @@ mkDerivation rec {
   NIX_CFLAGS_COMPILE = "-fno-stack-protector";
 
   KMODS =
-    lib.optional withIntel "i915kmsfw"
-    ++ lib.optionals withAmd [
-      "amdgpukmsfw"
-      "radeonkmsfw"
-    ];
+  lib.optional withIntel "i915kmsfw"
+  ++ lib.optionals withAmd [
+    "amdgpukmsfw"
+    "radeonkmsfw"
+  ];
 
   env = sys.passthru.env;
   SYSDIR = "${sys.src}/sys";
@@ -46,9 +46,9 @@ mkDerivation rec {
     description = "GPU firmware for FreeBSD drm-kmod";
     platforms = lib.platforms.freebsd;
     license =
-      lib.optional withAmd lib.licenses.unfreeRedistributableFirmware
-      # Intel license prohibits modification. this will wrap firmware files in an ELF
-      ++ lib.optional withIntel lib.licenses.unfree;
+    lib.optional withAmd lib.licenses.unfreeRedistributableFirmware
+    # Intel license prohibits modification. this will wrap firmware files in an ELF
+    ++ lib.optional withIntel lib.licenses.unfree;
     sourceProvenance = [ lib.sourceTypes.binaryFirmware ];
   };
 }

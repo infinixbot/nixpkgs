@@ -25,7 +25,7 @@ let
   assertRemovedOption = option: message: {
     assertion = !lib.hasAttrByPath option cfg;
     message =
-      "The option `services.headscale.${lib.options.showOption option}` was removed. " + message;
+    "The option `services.headscale.${lib.options.showOption option}` was removed. " + message;
   };
 in
 {

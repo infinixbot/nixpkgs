@@ -88,8 +88,8 @@ stdenv.mkDerivation (finalAttrs: {
   # those paths. This avoids a lot of circular dependency problems with different outputs,
   # and allows splitting them cleanly.
   env.CFLAGS =
-    "-fdata-sections -ffunction-sections"
-    + (if stdenv.cc.isClang then " -flto" else " -fmerge-constants -Wl,--gc-sections");
+  "-fdata-sections -ffunction-sections"
+  + (if stdenv.cc.isClang then " -flto" else " -fmerge-constants -Wl,--gc-sections");
 
   # This flag was introduced upstream in:
   # https://github.com/postgres/postgres/commit/b6c7cfac88c47a9194d76f3d074129da3c46545a

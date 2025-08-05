@@ -91,65 +91,65 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   patches =
-    lib.optionals stdenv.hostPlatform.isDarwin [
-      ./darwin-compilation.patch
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isMusl [
-      ./quark_init_on_demand.patch
-      ./gobject_init_on_demand.patch
-    ]
-    ++ [
-      # This patch lets GLib's GDesktopAppInfo API watch and notice changes
-      # to the Nix user and system profiles.  That way, the list of available
-      # applications shown by the desktop environment is immediately updated
-      # when the user installs or removes any
-      # (see <https://issues.guix.gnu.org/35594>).
+  lib.optionals stdenv.hostPlatform.isDarwin [
+    ./darwin-compilation.patch
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isMusl [
+    ./quark_init_on_demand.patch
+    ./gobject_init_on_demand.patch
+  ]
+  ++ [
+    # This patch lets GLib's GDesktopAppInfo API watch and notice changes
+    # to the Nix user and system profiles.  That way, the list of available
+    # applications shown by the desktop environment is immediately updated
+    # when the user installs or removes any
+    # (see <https://issues.guix.gnu.org/35594>).
 
-      # It does so by monitoring /nix/var/nix/profiles (for changes to the system
-      # profile) and /nix/var/nix/profiles/per-user/USER (for changes to the user
-      # profile) as well as /etc/profiles/per-user (for chanes to the user
-      # environment profile) and crawling their share/applications sub-directory when
-      # changes happen.
-      ./glib-appinfo-watch.patch
+    # It does so by monitoring /nix/var/nix/profiles (for changes to the system
+    # profile) and /nix/var/nix/profiles/per-user/USER (for changes to the user
+    # profile) as well as /etc/profiles/per-user (for chanes to the user
+    # environment profile) and crawling their share/applications sub-directory when
+    # changes happen.
+    ./glib-appinfo-watch.patch
 
-      ./schema-override-variable.patch
+    ./schema-override-variable.patch
 
-      # Add support for Pantheon’s terminal emulator.
-      ./elementary-terminal-support.patch
+    # Add support for Pantheon’s terminal emulator.
+    ./elementary-terminal-support.patch
 
-      # GLib contains many binaries used for different purposes;
-      # we will install them to different outputs:
-      # 1. Tools for desktop environment and introspection ($bin)
-      #    * gapplication (non-darwin)
-      #    * gdbus
-      #    * gi-compile-repository
-      #    * gi-decompile-typelib
-      #    * gi-inspect-typelib
-      #    * gio
-      #    * gio-launch-desktop (symlink to $out)
-      #    * gsettings
-      # 2. Development/build tools ($dev)
-      #    * gdbus-codegen
-      #    * gio-querymodules
-      #    * glib-compile-resources
-      #    * glib-compile-schemas
-      #    * glib-genmarshal
-      #    * glib-gettextize
-      #    * glib-mkenums
-      #    * gobject-query
-      #    * gresource
-      #    * gtester
-      #    * gtester-report
-      # 3. Tools for desktop environment that cannot go to $bin due to $out depending on them ($out)
-      #    * gio-launch-desktop
-      ./split-dev-programs.patch
+    # GLib contains many binaries used for different purposes;
+    # we will install them to different outputs:
+    # 1. Tools for desktop environment and introspection ($bin)
+    #    * gapplication (non-darwin)
+    #    * gdbus
+    #    * gi-compile-repository
+    #    * gi-decompile-typelib
+    #    * gi-inspect-typelib
+    #    * gio
+    #    * gio-launch-desktop (symlink to $out)
+    #    * gsettings
+    # 2. Development/build tools ($dev)
+    #    * gdbus-codegen
+    #    * gio-querymodules
+    #    * glib-compile-resources
+    #    * glib-compile-schemas
+    #    * glib-genmarshal
+    #    * glib-gettextize
+    #    * glib-mkenums
+    #    * gobject-query
+    #    * gresource
+    #    * gtester
+    #    * gtester-report
+    # 3. Tools for desktop environment that cannot go to $bin due to $out depending on them ($out)
+    #    * gio-launch-desktop
+    ./split-dev-programs.patch
 
-      # Tell Meson to install gdb scripts next to the lib
-      # GDB only looks there and in ${gdb}/share/gdb/auto-load,
-      # and by default meson installs in to $out/share/gdb/auto-load
-      # which does not help
-      ./gdb_script.patch
-    ];
+    # Tell Meson to install gdb scripts next to the lib
+    # GDB only looks there and in ${gdb}/share/gdb/auto-load,
+    # and by default meson installs in to $out/share/gdb/auto-load
+    # which does not help
+    ./gdb_script.patch
+  ];
 
   strictDeps = true;
 

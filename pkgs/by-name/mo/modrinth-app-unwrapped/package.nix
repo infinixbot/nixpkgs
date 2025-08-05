@@ -62,18 +62,18 @@ rustPlatform.buildRustPackage (finalAttrs: {
   };
 
   postInstall =
-    lib.optionalString stdenv.hostPlatform.isDarwin ''
-      makeBinaryWrapper "$out"/Applications/Modrinth\ App.app/Contents/MacOS/Modrinth\ App "$out"/bin/ModrinthApp
-    ''
-    + lib.optionalString stdenv.hostPlatform.isLinux ''
-      desktop-file-edit \
-        --set-comment "Modrinth's game launcher" \
-        --set-key="StartupNotify" --set-value="true" \
-        --set-key="Categories" --set-value="Game;ActionGame;AdventureGame;Simulation;" \
-        --set-key="Keywords" --set-value="game;minecraft;mc;" \
-        --set-key="StartupWMClass" --set-value="ModrinthApp" \
-        $out/share/applications/Modrinth\ App.desktop
-    '';
+  lib.optionalString stdenv.hostPlatform.isDarwin ''
+    makeBinaryWrapper "$out"/Applications/Modrinth\ App.app/Contents/MacOS/Modrinth\ App "$out"/bin/ModrinthApp
+  ''
+  + lib.optionalString stdenv.hostPlatform.isLinux ''
+    desktop-file-edit \
+      --set-comment "Modrinth's game launcher" \
+      --set-key="StartupNotify" --set-value="true" \
+      --set-key="Categories" --set-value="Game;ActionGame;AdventureGame;Simulation;" \
+      --set-key="Keywords" --set-value="game;minecraft;mc;" \
+      --set-key="StartupWMClass" --set-value="ModrinthApp" \
+      $out/share/applications/Modrinth\ App.desktop
+  '';
 
   passthru = {
     updateScript = nix-update-script { };

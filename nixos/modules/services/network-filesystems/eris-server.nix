@@ -86,11 +86,11 @@ in
     systemd.services.eris-server =
       let
         cmd =
-          "${cfg.package}/bin/eris-go server"
-          + (lib.optionalString (cfg.listenCoap != null) " --coap '${cfg.listenCoap}'")
-          + (lib.optionalString (cfg.listenHttp != null) " --http '${cfg.listenHttp}'")
-          + (lib.optionalString cfg.decode " --decode")
-          + (lib.optionalString (cfg.mountpoint != null) " --mountpoint '${cfg.mountpoint}'");
+        "${cfg.package}/bin/eris-go server"
+        + (lib.optionalString (cfg.listenCoap != null) " --coap '${cfg.listenCoap}'")
+        + (lib.optionalString (cfg.listenHttp != null) " --http '${cfg.listenHttp}'")
+        + (lib.optionalString cfg.decode " --decode")
+        + (lib.optionalString (cfg.mountpoint != null) " --mountpoint '${cfg.mountpoint}'");
       in
       {
         description = "ERIS block server";

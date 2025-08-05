@@ -19,13 +19,13 @@ let
 in
 jemalloc.overrideAttrs (oldAttrs: {
   configureFlags =
-    oldAttrs.configureFlags
-    ++ [
-      "--with-private-namespace=_rjem_"
-    ]
-    ++ lib.optionals (!unprefixed') [
-      "--with-jemalloc-prefix=_rjem_"
-    ];
+  oldAttrs.configureFlags
+  ++ [
+    "--with-private-namespace=_rjem_"
+  ]
+  ++ lib.optionals (!unprefixed') [
+    "--with-jemalloc-prefix=_rjem_"
+  ];
 
   setupHook = writeText "setup-hook.sh" ''
     export JEMALLOC_OVERRIDE="@out@/lib/libjemalloc${stdenv.hostPlatform.extensions.library}"

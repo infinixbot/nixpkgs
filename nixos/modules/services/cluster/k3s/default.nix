@@ -761,31 +761,31 @@ in
 
   config = lib.mkIf cfg.enable {
     warnings =
-      (lib.optional (cfg.role != "server" && cfg.manifests != { })
-        "k3s: Auto deploying manifests are only installed on server nodes (role == server), they will be ignored by this node."
-      )
-      ++ (lib.optional (cfg.role != "server" && cfg.charts != { })
-        "k3s: Helm charts are only made available to the cluster on server nodes (role == server), they will be ignored by this node."
-      )
-      ++ (lib.optional (cfg.role != "server" && cfg.autoDeployCharts != { })
-        "k3s: Auto deploying Helm charts are only installed on server nodes (role == server), they will be ignored by this node."
-      )
-      ++ (lib.optional (duplicateManifests != [ ])
-        "k3s: The following auto deploying charts are overriden by manifests of the same name: ${toString duplicateManifests}."
-      )
-      ++ (lib.optional (duplicateCharts != [ ])
-        "k3s: The following auto deploying charts are overriden by charts of the same name: ${toString duplicateCharts}."
-      )
-      ++ (lib.optional (
-        cfg.disableAgent && cfg.images != [ ]
-      ) "k3s: Images are only imported on nodes with an enabled agent, they will be ignored by this node")
-      ++ (lib.optional (
-        cfg.role == "agent" && cfg.configPath == null && cfg.serverAddr == ""
-      ) "k3s: serverAddr or configPath (with 'server' key) should be set if role is 'agent'")
-      ++ (lib.optional
-        (cfg.role == "agent" && cfg.configPath == null && cfg.tokenFile == null && cfg.token == "")
-        "k3s: Token or tokenFile or configPath (with 'token' or 'token-file' keys) should be set if role is 'agent'"
-      );
+    (lib.optional (cfg.role != "server" && cfg.manifests != { })
+      "k3s: Auto deploying manifests are only installed on server nodes (role == server), they will be ignored by this node."
+    )
+    ++ (lib.optional (cfg.role != "server" && cfg.charts != { })
+      "k3s: Helm charts are only made available to the cluster on server nodes (role == server), they will be ignored by this node."
+    )
+    ++ (lib.optional (cfg.role != "server" && cfg.autoDeployCharts != { })
+      "k3s: Auto deploying Helm charts are only installed on server nodes (role == server), they will be ignored by this node."
+    )
+    ++ (lib.optional (duplicateManifests != [ ])
+      "k3s: The following auto deploying charts are overriden by manifests of the same name: ${toString duplicateManifests}."
+    )
+    ++ (lib.optional (duplicateCharts != [ ])
+      "k3s: The following auto deploying charts are overriden by charts of the same name: ${toString duplicateCharts}."
+    )
+    ++ (lib.optional (
+      cfg.disableAgent && cfg.images != [ ]
+    ) "k3s: Images are only imported on nodes with an enabled agent, they will be ignored by this node")
+    ++ (lib.optional (
+      cfg.role == "agent" && cfg.configPath == null && cfg.serverAddr == ""
+    ) "k3s: serverAddr or configPath (with 'server' key) should be set if role is 'agent'")
+    ++ (lib.optional
+      (cfg.role == "agent" && cfg.configPath == null && cfg.tokenFile == null && cfg.token == "")
+      "k3s: Token or tokenFile or configPath (with 'token' or 'token-file' keys) should be set if role is 'agent'"
+    );
 
     assertions = [
       {
@@ -807,10 +807,10 @@ in
         enabledManifests = lib.filterAttrs (_: v: v.enable) (cfg.autoDeployCharts // cfg.manifests);
         # Merge charts with charts contained in enabled auto deploying charts
         helmCharts =
-          (lib.concatMapAttrs (n: v: { ${n} = v.package; }) (
-            lib.filterAttrs (_: v: v.enable) cfg.autoDeployCharts
-          ))
-          // cfg.charts;
+        (lib.concatMapAttrs (n: v: { ${n} = v.package; }) (
+          lib.filterAttrs (_: v: v.enable) cfg.autoDeployCharts
+        ))
+        // cfg.charts;
         # Make a systemd-tmpfiles rule for a manifest
         mkManifestRule = manifest: {
           name = "${manifestDir}/${manifest.target}";
@@ -847,10 +847,10 @@ in
     systemd.services.k3s =
       let
         kubeletParams =
-          (lib.optionalAttrs (cfg.gracefulNodeShutdown.enable) {
-            inherit (cfg.gracefulNodeShutdown) shutdownGracePeriod shutdownGracePeriodCriticalPods;
-          })
-          // cfg.extraKubeletConfig;
+        (lib.optionalAttrs (cfg.gracefulNodeShutdown.enable) {
+          inherit (cfg.gracefulNodeShutdown) shutdownGracePeriod shutdownGracePeriodCriticalPods;
+        })
+        // cfg.extraKubeletConfig;
         kubeletConfig = (pkgs.formats.yaml { }).generate "k3s-kubelet-config" (
           {
             apiVersion = "kubelet.config.k8s.io/v1beta1";

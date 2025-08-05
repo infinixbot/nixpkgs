@@ -160,14 +160,14 @@ in
       ];
 
       environment =
-        cfg.environment
-        // {
-          inherit PGWS_DB_URI;
-          PGWS_JWT_SECRET = "@%d/jwt_secret";
-        }
-        // lib.optionalAttrs (cfg.pgpassFile != null) {
-          PGPASSFILE = "%C/postgres-websockets/pgpass";
-        };
+      cfg.environment
+      // {
+        inherit PGWS_DB_URI;
+        PGWS_JWT_SECRET = "@%d/jwt_secret";
+      }
+      // lib.optionalAttrs (cfg.pgpassFile != null) {
+        PGPASSFILE = "%C/postgres-websockets/pgpass";
+      };
 
       serviceConfig = {
         CacheDirectory = "postgres-websockets";

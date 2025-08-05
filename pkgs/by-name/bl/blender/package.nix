@@ -124,22 +124,22 @@ stdenv'.mkDerivation (finalAttrs: {
   };
 
   postPatch =
-    (lib.optionalString stdenv.hostPlatform.isDarwin ''
-      : > build_files/cmake/platform/platform_apple_xcode.cmake
-      substituteInPlace source/creator/CMakeLists.txt \
-        --replace-fail '${"$"}{LIBDIR}/python' \
-                  '${python3}' \
-        --replace-fail '${"$"}{LIBDIR}/materialx/' '${python3Packages.materialx}/'
-      substituteInPlace build_files/cmake/platform/platform_apple.cmake \
-        --replace-fail '${"$"}{LIBDIR}/brotli/lib/libbrotlicommon-static.a' \
-                  '${lib.getLib brotli}/lib/libbrotlicommon.dylib' \
-        --replace-fail '${"$"}{LIBDIR}/brotli/lib/libbrotlidec-static.a' \
-                  '${lib.getLib brotli}/lib/libbrotlidec.dylib'
-    '')
-    + (lib.optionalString hipSupport ''
-      substituteInPlace extern/hipew/src/hipew.c --replace-fail '"/opt/rocm/hip/lib/libamdhip64.so.${lib.versions.major rocmPackages.clr.version}"' '"${rocmPackages.clr}/lib/libamdhip64.so"'
-      substituteInPlace extern/hipew/src/hipew.c --replace-fail '"opt/rocm/hip/bin"' '"${rocmPackages.clr}/bin"'
-    '');
+  (lib.optionalString stdenv.hostPlatform.isDarwin ''
+    : > build_files/cmake/platform/platform_apple_xcode.cmake
+    substituteInPlace source/creator/CMakeLists.txt \
+      --replace-fail '${"$"}{LIBDIR}/python' \
+                '${python3}' \
+      --replace-fail '${"$"}{LIBDIR}/materialx/' '${python3Packages.materialx}/'
+    substituteInPlace build_files/cmake/platform/platform_apple.cmake \
+      --replace-fail '${"$"}{LIBDIR}/brotli/lib/libbrotlicommon-static.a' \
+                '${lib.getLib brotli}/lib/libbrotlicommon.dylib' \
+      --replace-fail '${"$"}{LIBDIR}/brotli/lib/libbrotlidec-static.a' \
+                '${lib.getLib brotli}/lib/libbrotlidec.dylib'
+  '')
+  + (lib.optionalString hipSupport ''
+    substituteInPlace extern/hipew/src/hipew.c --replace-fail '"/opt/rocm/hip/lib/libamdhip64.so.${lib.versions.major rocmPackages.clr.version}"' '"${rocmPackages.clr}/lib/libamdhip64.so"'
+    substituteInPlace extern/hipew/src/hipew.c --replace-fail '"opt/rocm/hip/bin"' '"${rocmPackages.clr}/bin"'
+  '');
 
   env.NIX_CFLAGS_COMPILE = "-I${python3}/include/${python3.libPrefix}";
 
@@ -321,13 +321,13 @@ stdenv'.mkDerivation (finalAttrs: {
     ++ lib.optionals openUsdSupport [ pyPkgsOpenusd ];
 
   blenderExecutable =
-    placeholder "out"
-    + (
-      if stdenv.hostPlatform.isDarwin then
-        "/Applications/Blender.app/Contents/MacOS/Blender"
-      else
-        "/bin/blender"
-    );
+  placeholder "out"
+  + (
+    if stdenv.hostPlatform.isDarwin then
+      "/Applications/Blender.app/Contents/MacOS/Blender"
+    else
+      "/bin/blender"
+  );
 
   postInstall =
     lib.optionalString stdenv.hostPlatform.isDarwin ''
@@ -345,15 +345,15 @@ stdenv'.mkDerivation (finalAttrs: {
   # Set RUNPATH so that libcuda and libnvrtc in /run/opengl-driver(-32)/lib can be
   # found. See the explanation in libglvnd.
   postFixup =
-    lib.optionalString cudaSupport ''
-      for program in $out/bin/blender $out/bin/.blender-wrapped; do
-        isELF "$program" || continue
-        addDriverRunpath "$program"
-      done
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      makeWrapper $out/Applications/Blender.app/Contents/MacOS/Blender $out/bin/blender
-    '';
+  lib.optionalString cudaSupport ''
+    for program in $out/bin/blender $out/bin/.blender-wrapped; do
+      isELF "$program" || continue
+      addDriverRunpath "$program"
+    done
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    makeWrapper $out/Applications/Blender.app/Contents/MacOS/Blender $out/bin/blender
+  '';
 
   passthru = {
     python = python3;

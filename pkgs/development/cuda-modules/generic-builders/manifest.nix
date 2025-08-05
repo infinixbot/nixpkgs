@@ -168,33 +168,33 @@ in
   ) (redistribRelease.${redistSystem} or null);
 
   postPatch =
-    # Pkg-config's setup hook expects configuration files in $out/share/pkgconfig
-    ''
-      for path in pkg-config pkgconfig; do
-        [[ -d "$path" ]] || continue
-        mkdir -p share/pkgconfig
-        mv "$path"/* share/pkgconfig/
-        rmdir "$path"
-      done
-    ''
-    # Rewrite FHS paths with store paths
-    # NOTE: output* fall back to out if the corresponding output isn't defined.
-    + ''
-      for pc in share/pkgconfig/*.pc; do
-        sed -i \
-          -e "s|^cudaroot\s*=.*\$|cudaroot=''${!outputDev}|" \
-          -e "s|^libdir\s*=.*/lib\$|libdir=''${!outputLib}/lib|" \
-          -e "s|^includedir\s*=.*/include\$|includedir=''${!outputDev}/include|" \
-          "$pc"
-      done
-    ''
-    # Generate unversioned names.
-    # E.g. cuda-11.8.pc -> cuda.pc
-    + ''
-      for pc in share/pkgconfig/*-"$majorMinorVersion.pc"; do
-        ln -s "$(basename "$pc")" "''${pc%-$majorMinorVersion.pc}".pc
-      done
-    '';
+  # Pkg-config's setup hook expects configuration files in $out/share/pkgconfig
+  ''
+    for path in pkg-config pkgconfig; do
+      [[ -d "$path" ]] || continue
+      mkdir -p share/pkgconfig
+      mv "$path"/* share/pkgconfig/
+      rmdir "$path"
+    done
+  ''
+  # Rewrite FHS paths with store paths
+  # NOTE: output* fall back to out if the corresponding output isn't defined.
+  + ''
+    for pc in share/pkgconfig/*.pc; do
+      sed -i \
+        -e "s|^cudaroot\s*=.*\$|cudaroot=''${!outputDev}|" \
+        -e "s|^libdir\s*=.*/lib\$|libdir=''${!outputLib}/lib|" \
+        -e "s|^includedir\s*=.*/include\$|includedir=''${!outputDev}/include|" \
+        "$pc"
+    done
+  ''
+  # Generate unversioned names.
+  # E.g. cuda-11.8.pc -> cuda.pc
+  + ''
+    for pc in share/pkgconfig/*-"$majorMinorVersion.pc"; do
+      ln -s "$(basename "$pc")" "''${pc%-$majorMinorVersion.pc}".pc
+    done
+  '';
 
   env.majorMinorVersion = cudaMajorMinorVersion;
 

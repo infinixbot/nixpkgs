@@ -341,22 +341,22 @@ in
     ];
 
     system.extraSystemBuilderCmds =
-      optionalString config.system.copySystemConfiguration ''
-        ln -s '${import ../../../lib/from-env.nix "NIXOS_CONFIG" <nixos-config>}' \
-          "$out/configuration.nix"
-      ''
-      + optionalString (config.system.forbiddenDependenciesRegexes != [ ]) (
-        lib.concatStringsSep "\n" (
-          map (regex: ''
-            if [[ ${regex} != "" && -n $closureInfo ]]; then
-              if forbiddenPaths="$(grep -E -- "${regex}" $closureInfo/store-paths)"; then
-                echo -e "System closure $out contains the following disallowed paths:\n$forbiddenPaths"
-                exit 1
-              fi
+    optionalString config.system.copySystemConfiguration ''
+      ln -s '${import ../../../lib/from-env.nix "NIXOS_CONFIG" <nixos-config>}' \
+        "$out/configuration.nix"
+    ''
+    + optionalString (config.system.forbiddenDependenciesRegexes != [ ]) (
+      lib.concatStringsSep "\n" (
+        map (regex: ''
+          if [[ ${regex} != "" && -n $closureInfo ]]; then
+            if forbiddenPaths="$(grep -E -- "${regex}" $closureInfo/store-paths)"; then
+              echo -e "System closure $out contains the following disallowed paths:\n$forbiddenPaths"
+              exit 1
             fi
-          '') config.system.forbiddenDependenciesRegexes
-        )
-      );
+          fi
+        '') config.system.forbiddenDependenciesRegexes
+      )
+    );
 
     system.systemBuilderArgs = {
 

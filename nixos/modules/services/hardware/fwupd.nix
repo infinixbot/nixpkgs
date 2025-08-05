@@ -49,18 +49,18 @@ let
     };
   };
   remotes =
-    (lib.foldl' (
-      configFiles: remote: configFiles // (enableRemote cfg.package remote)
-    ) { } cfg.extraRemotes)
-    // (
-      # We cannot include the file in $out and rely on filesInstalledToEtc
-      # to install it because it would create a cyclic dependency between
-      # the outputs. We also need to enable the remote,
-      # which should not be done by default.
-      lib.optionalAttrs (cfg.daemonSettings.TestDevices or false) (
-        enableRemote cfg.package.installedTests "fwupd-tests"
-      )
-    );
+  (lib.foldl' (
+    configFiles: remote: configFiles // (enableRemote cfg.package remote)
+  ) { } cfg.extraRemotes)
+  // (
+    # We cannot include the file in $out and rely on filesInstalledToEtc
+    # to install it because it would create a cyclic dependency between
+    # the outputs. We also need to enable the remote,
+    # which should not be done by default.
+    lib.optionalAttrs (cfg.daemonSettings.TestDevices or false) (
+      enableRemote cfg.package.installedTests "fwupd-tests"
+    )
+  );
 
 in
 {

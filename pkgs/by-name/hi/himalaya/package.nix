@@ -54,10 +54,10 @@ rustPlatform.buildRustPackage {
   ++ lib.optional (installManPages || installShellCompletions) installShellFiles;
 
   buildInputs =
-    [ ]
-    ++ lib.optional stdenv.hostPlatform.isDarwin apple-sdk
-    ++ lib.optional (builtins.elem "notmuch" withFeatures) notmuch
-    ++ lib.optional (builtins.elem "pgp-gpg" withFeatures) gpgme;
+  [ ]
+  ++ lib.optional stdenv.hostPlatform.isDarwin apple-sdk
+  ++ lib.optional (builtins.elem "notmuch" withFeatures) notmuch
+  ++ lib.optional (builtins.elem "pgp-gpg" withFeatures) gpgme;
 
   # most of the tests are lib side
   doCheck = false;

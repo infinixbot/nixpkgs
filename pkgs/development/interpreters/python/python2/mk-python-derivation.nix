@@ -257,10 +257,10 @@ let
         installCheckInputs = checkInputs;
 
         postFixup =
-          lib.optionalString (!dontWrapPythonPrograms) ''
-            wrapPythonPrograms
-          ''
-          + attrs.postFixup or "";
+        lib.optionalString (!dontWrapPythonPrograms) ''
+          wrapPythonPrograms
+        ''
+        + attrs.postFixup or "";
 
         # Python packages built through cross-compilation are always for the host platform.
         disallowedReferences = lib.optionals (python.stdenv.hostPlatform != python.stdenv.buildPlatform) [

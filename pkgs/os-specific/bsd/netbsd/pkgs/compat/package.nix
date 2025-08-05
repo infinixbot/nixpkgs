@@ -60,21 +60,21 @@ mkDerivation (
     # temporarily use gnuinstall for bootstrapping
     # bsdinstall will be built later
     makeFlags =
-      defaultMakeFlags
-      ++ [
-        "INSTALL=${coreutils}/bin/install"
-        "DATADIR=$(dev)/share"
-        # Can't sort object files yet
-        "LORDER=echo"
-        "TSORT=cat"
-        # Can't process man pages yet
-        "MKSHARE=no"
-      ]
-      ++ lib.optionals stdenv.hostPlatform.isDarwin [
-        # GNU objcopy produces broken .a libs which won't link into dependers.
-        # Makefiles only invoke `$OBJCOPY -x/-X`, so cctools strip works here.
-        "OBJCOPY=${cctools}/bin/strip"
-      ];
+    defaultMakeFlags
+    ++ [
+      "INSTALL=${coreutils}/bin/install"
+      "DATADIR=$(dev)/share"
+      # Can't sort object files yet
+      "LORDER=echo"
+      "TSORT=cat"
+      # Can't process man pages yet
+      "MKSHARE=no"
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      # GNU objcopy produces broken .a libs which won't link into dependers.
+      # Makefiles only invoke `$OBJCOPY -x/-X`, so cctools strip works here.
+      "OBJCOPY=${cctools}/bin/strip"
+    ];
     env.RENAME = "-D";
 
     passthru.tests = {

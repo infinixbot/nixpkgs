@@ -30,12 +30,12 @@ buildPythonPackage rec {
   nativeCheckInputs = [ pytestCheckHook ];
 
   disabledTests =
-    lib.optionals (pythonAtLeast "3.11") [
-      # AttributeError: 'tuple' object has no attribute 'shortDescription'
-      "test_basic_unittest_constructs"
-      "test_unexpected_success"
-    ]
-    ++ lib.optionals (pythonAtLeast "3.12") [ "test_xmlrunner_hold_traceback" ];
+  lib.optionals (pythonAtLeast "3.11") [
+    # AttributeError: 'tuple' object has no attribute 'shortDescription'
+    "test_basic_unittest_constructs"
+    "test_unexpected_success"
+  ]
+  ++ lib.optionals (pythonAtLeast "3.12") [ "test_xmlrunner_hold_traceback" ];
 
   pythonImportsCheck = [ "xmlrunner" ];
 

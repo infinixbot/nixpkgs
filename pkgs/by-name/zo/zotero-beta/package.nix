@@ -35,31 +35,31 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ wrapGAppsHook3 ];
 
   libPath =
-    lib.makeLibraryPath [
-      alsa-lib
-      atk
-      cairo
-      dbus-glib
-      gdk-pixbuf
-      glib
-      gtk3
-      libGL
-      xorg.libX11
-      xorg.libXcomposite
-      xorg.libXcursor
-      xorg.libXdamage
-      xorg.libXext
-      xorg.libXfixes
-      xorg.libXi
-      xorg.libXrandr
-      xorg.libXtst
-      xorg.libxcb
-      libgbm
-      pango
-      pciutils
-    ]
-    + ":"
-    + lib.makeSearchPathOutput "lib" "lib" [ stdenv.cc.cc ];
+  lib.makeLibraryPath [
+    alsa-lib
+    atk
+    cairo
+    dbus-glib
+    gdk-pixbuf
+    glib
+    gtk3
+    libGL
+    xorg.libX11
+    xorg.libXcomposite
+    xorg.libXcursor
+    xorg.libXdamage
+    xorg.libXext
+    xorg.libXfixes
+    xorg.libXi
+    xorg.libXrandr
+    xorg.libXtst
+    xorg.libxcb
+    libgbm
+    pango
+    pciutils
+  ]
+  + ":"
+  + lib.makeSearchPathOutput "lib" "lib" [ stdenv.cc.cc ];
 
   desktopItem = makeDesktopItem {
     name = "zotero";

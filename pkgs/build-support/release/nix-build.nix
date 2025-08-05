@@ -136,11 +136,11 @@ stdenv.mkDerivation (
     prePhases = [ "initPhase" ] ++ prePhases;
 
     buildInputs =
-      buildInputs
-      ++ (lib.optional doCoverageAnalysis args.makeGCOVReport)
-      ++ (lib.optional doClangAnalysis args.clang-analyzer)
-      ++ (lib.optional doCoverityAnalysis args.cov-build)
-      ++ (lib.optional doCoverityAnalysis args.xz);
+    buildInputs
+    ++ (lib.optional doCoverageAnalysis args.makeGCOVReport)
+    ++ (lib.optional doClangAnalysis args.clang-analyzer)
+    ++ (lib.optional doCoverityAnalysis args.cov-build)
+    ++ (lib.optional doCoverityAnalysis args.xz);
 
     lcovFilter = [ "${builtins.storeDir}/*" ] ++ lcovFilter;
 

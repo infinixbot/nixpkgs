@@ -97,21 +97,21 @@ let
           rebuildCountByKernel
           ;
         labels =
-          getLabels rebuildCountByKernel
-          # Sets "10.rebuild-*-stdenv" label to whether the "stdenv" attribute was changed.
-          // lib.mapAttrs' (
-            kernel: rebuilds: lib.nameValuePair "10.rebuild-${kernel}-stdenv" (lib.elem "stdenv" rebuilds)
-          ) rebuildsByKernel
-          # Set the "11.by: package-maintainer" label to whether all packages directly
-          # changed are maintained by the PR's author.
-          # (https://github.com/NixOS/ofborg/blob/df400f44502d4a4a80fa283d33f2e55a4e43ee90/ofborg/src/tagger.rs#L83-L88)
-          // {
-            "11.by: package-maintainer" =
-              maintainers ? ${githubAuthorId}
-              && lib.all (lib.flip lib.elem maintainers.${githubAuthorId}) (
-                lib.flatten (lib.attrValues maintainers)
-              );
-          };
+        getLabels rebuildCountByKernel
+        # Sets "10.rebuild-*-stdenv" label to whether the "stdenv" attribute was changed.
+        // lib.mapAttrs' (
+          kernel: rebuilds: lib.nameValuePair "10.rebuild-${kernel}-stdenv" (lib.elem "stdenv" rebuilds)
+        ) rebuildsByKernel
+        # Set the "11.by: package-maintainer" label to whether all packages directly
+        # changed are maintained by the PR's author.
+        # (https://github.com/NixOS/ofborg/blob/df400f44502d4a4a80fa283d33f2e55a4e43ee90/ofborg/src/tagger.rs#L83-L88)
+        // {
+          "11.by: package-maintainer" =
+            maintainers ? ${githubAuthorId}
+            && lib.all (lib.flip lib.elem maintainers.${githubAuthorId}) (
+              lib.flatten (lib.attrValues maintainers)
+            );
+        };
       }
     );
 

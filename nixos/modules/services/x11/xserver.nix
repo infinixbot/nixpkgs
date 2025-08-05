@@ -801,10 +801,10 @@ in
         {
           assertion = length primaryHeads < 2;
           message =
-            "Only one head is allowed to be primary in "
-            + "‘services.xserver.xrandrHeads’, but there are "
-            + "${toString (length primaryHeads)} heads set to primary: "
-            + concatMapStringsSep ", " (x: x.output) primaryHeads;
+          "Only one head is allowed to be primary in "
+          + "‘services.xserver.xrandrHeads’, but there are "
+          + "${toString (length primaryHeads)} heads set to primary: "
+          + concatMapStringsSep ", " (x: x.output) primaryHeads;
         }
       )
       {
@@ -814,38 +814,38 @@ in
     ];
 
     environment.etc =
-      (optionalAttrs cfg.exportConfiguration {
-        "X11/xorg.conf".source = "${configFile}";
-        # -xkbdir command line option does not seems to be passed to xkbcomp.
-        "X11/xkb".source = "${cfg.xkb.dir}";
-      })
-      # Needed since 1.18; see https://bugs.freedesktop.org/show_bug.cgi?id=89023#c5
-      // (
-        let
-          cfgPath = "X11/xorg.conf.d/10-evdev.conf";
-        in
-        {
-          ${cfgPath}.source = xorg.xf86inputevdev.out + "/share/" + cfgPath;
-        }
-      );
+    (optionalAttrs cfg.exportConfiguration {
+      "X11/xorg.conf".source = "${configFile}";
+      # -xkbdir command line option does not seems to be passed to xkbcomp.
+      "X11/xkb".source = "${cfg.xkb.dir}";
+    })
+    # Needed since 1.18; see https://bugs.freedesktop.org/show_bug.cgi?id=89023#c5
+    // (
+      let
+        cfgPath = "X11/xorg.conf.d/10-evdev.conf";
+      in
+      {
+        ${cfgPath}.source = xorg.xf86inputevdev.out + "/share/" + cfgPath;
+      }
+    );
 
     environment.systemPackages =
-      utils.removePackagesByName [
-        xorg.xorgserver.out
-        xorg.xrandr
-        xorg.xrdb
-        xorg.setxkbmap
-        xorg.iceauth # required for KDE applications (it's called by dcopserver)
-        xorg.xlsclients
-        xorg.xset
-        xorg.xsetroot
-        xorg.xinput
-        xorg.xprop
-        xorg.xauth
-        pkgs.xterm
-        xorg.xf86inputevdev.out # get evdev.4 man page
-      ] config.services.xserver.excludePackages
-      ++ optional (elem "virtualbox" cfg.videoDrivers) xorg.xrefresh;
+    utils.removePackagesByName [
+      xorg.xorgserver.out
+      xorg.xrandr
+      xorg.xrdb
+      xorg.setxkbmap
+      xorg.iceauth # required for KDE applications (it's called by dcopserver)
+      xorg.xlsclients
+      xorg.xset
+      xorg.xsetroot
+      xorg.xinput
+      xorg.xprop
+      xorg.xauth
+      pkgs.xterm
+      xorg.xf86inputevdev.out # get evdev.4 man page
+    ] config.services.xserver.excludePackages
+    ++ optional (elem "virtualbox" cfg.videoDrivers) xorg.xrefresh;
 
     environment.pathsToLink = [ "/share/X11" ];
 

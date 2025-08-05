@@ -66,15 +66,15 @@ rustPlatform.buildRustPackage rec {
     '';
 
   postInstall =
-    lib.optionalString stdenv.isLinux ''
-      wrapProgram $out/bin/roc \
-        --set NIX_GLIBC_PATH ${glibc.out}/lib \
-        --set NIX_LIBGCC_S_PATH ${stdenv.cc.cc.lib}/lib \
-        --prefix PATH : ${lib.makeBinPath [ stdenv.cc ]}
-    ''
-    + lib.optionalString (!stdenv.isLinux) ''
-      wrapProgram $out/bin/roc --prefix PATH : ${lib.makeBinPath [ stdenv.cc ]}
-    '';
+  lib.optionalString stdenv.isLinux ''
+    wrapProgram $out/bin/roc \
+      --set NIX_GLIBC_PATH ${glibc.out}/lib \
+      --set NIX_LIBGCC_S_PATH ${stdenv.cc.cc.lib}/lib \
+      --prefix PATH : ${lib.makeBinPath [ stdenv.cc ]}
+  ''
+  + lib.optionalString (!stdenv.isLinux) ''
+    wrapProgram $out/bin/roc --prefix PATH : ${lib.makeBinPath [ stdenv.cc ]}
+  '';
 
   nativeCheckInputs = [
     writableTmpDirAsHomeHook
@@ -83,16 +83,16 @@ rustPlatform.buildRustPackage rec {
   ];
 
   checkPhase =
-    lib.optionalString stdenv.isLinux ''
-      runHook preCheck
-      NIX_GLIBC_PATH=${glibc.out}/lib NIX_LIBGCC_S_PATH=${stdenv.cc.cc.lib}/lib cargo test --release --workspace --exclude test_mono --exclude uitest -- --skip glue_cli_tests
-      runHook postCheck
-    ''
-    + lib.optionalString (!stdenv.isLinux) ''
-      runHook preCheck
-      cargo test --release --workspace --exclude test_mono --exclude uitest -- --skip glue_cli_tests
-      runHook postCheck
-    '';
+  lib.optionalString stdenv.isLinux ''
+    runHook preCheck
+    NIX_GLIBC_PATH=${glibc.out}/lib NIX_LIBGCC_S_PATH=${stdenv.cc.cc.lib}/lib cargo test --release --workspace --exclude test_mono --exclude uitest -- --skip glue_cli_tests
+    runHook postCheck
+  ''
+  + lib.optionalString (!stdenv.isLinux) ''
+    runHook preCheck
+    cargo test --release --workspace --exclude test_mono --exclude uitest -- --skip glue_cli_tests
+    runHook postCheck
+  '';
 
   meta = {
     description = "Fast, friendly, functional programming language";

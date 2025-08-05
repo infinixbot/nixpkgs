@@ -53,11 +53,11 @@ let
     { system, phpMajor }:
     fetchurl {
       url =
-        "https://builds.r2.relay.so/v${version}/relay-v${version}-php"
-        + phpMajor
-        + "-"
-        + hashes.${system}.platform
-        + ".tar.gz";
+      "https://builds.r2.relay.so/v${version}/relay-v${version}-php"
+      + phpMajor
+      + "-"
+      + hashes.${system}.platform
+      + ".tar.gz";
       sha256 =
         hashes.${system}.hash.${phpMajor}
           or (throw "Unsupported PHP version for relay ${phpMajor} on ${system}");

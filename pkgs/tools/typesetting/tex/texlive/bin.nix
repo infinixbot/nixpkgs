@@ -297,28 +297,28 @@ rec {
     depsBuildBuild = [ buildPackages.stdenv.cc ];
 
     configureFlags =
-      common.configureFlags
-      ++ [ "--without-x" ] # disable xdvik and xpdfopen
-      ++ map (what: "--disable-${what}") [
-        "chktex"
-        "dvisvgm"
-        "dvipng" # ghostscript dependency
-        "luatex"
-        "luajittex"
-        "luahbtex"
-        "luajithbtex"
-        "mp"
-        "pmp"
-        "upmp"
-        "mf"
-        "mflua"
-        "mfluajit" # cairo would bring in X and more
-        "xetex"
-        "bibtexu"
-        "bibtex8"
-        "bibtex-x"
-        "upmendex" # ICU isn't small
-      ];
+    common.configureFlags
+    ++ [ "--without-x" ] # disable xdvik and xpdfopen
+    ++ map (what: "--disable-${what}") [
+      "chktex"
+      "dvisvgm"
+      "dvipng" # ghostscript dependency
+      "luatex"
+      "luajittex"
+      "luahbtex"
+      "luajithbtex"
+      "mp"
+      "pmp"
+      "upmp"
+      "mf"
+      "mflua"
+      "mfluajit" # cairo would bring in X and more
+      "xetex"
+      "bibtexu"
+      "bibtex8"
+      "bibtex-x"
+      "upmendex" # ICU isn't small
+    ];
 
     enableParallelBuilding = true;
 
@@ -329,24 +329,24 @@ rec {
 
     # TODO: perhaps improve texmf.cnf search locations
     postInstall =
-      # install himktables in separate output for use in cross compilation
-      ''
-        mkdir -p $dev/bin
-        cp texk/web2c/.libs/himktables $dev/bin/himktables
-      ''
-      + common.moveBins
-      # remove redundant texmf-dist (content provided by TeX Live packages)
-      + ''
-        rm -frv "$out"/share/texmf-dist
+    # install himktables in separate output for use in cross compilation
+    ''
+      mkdir -p $dev/bin
+      cp texk/web2c/.libs/himktables $dev/bin/himktables
+    ''
+    + common.moveBins
+    # remove redundant texmf-dist (content provided by TeX Live packages)
+    + ''
+      rm -frv "$out"/share/texmf-dist
 
-        mkdir -p "${placeholder "psutils"}"/share/texmf-dist/scripts/psutils
-        cp texk/psutils/{extractres.pl,includeres.pl,psjoin.pl} "${placeholder "psutils"}"/share/texmf-dist/scripts/psutils
-      ''
-      # remove broken symlinks
-      + ''
-        rm "$out"/bin/{eptex,ptex,uptex}
-        rm "${placeholder "ptex"}"/bin/{pbibtex,pdvitype,ppltotf,ptftopl}
-      '';
+      mkdir -p "${placeholder "psutils"}"/share/texmf-dist/scripts/psutils
+      cp texk/psutils/{extractres.pl,includeres.pl,psjoin.pl} "${placeholder "psutils"}"/share/texmf-dist/scripts/psutils
+    ''
+    # remove broken symlinks
+    + ''
+      rm "$out"/bin/{eptex,ptex,uptex}
+      rm "${placeholder "ptex"}"/bin/{pbibtex,pdvitype,ppltotf,ptftopl}
+    '';
 
     passthru = { inherit version buildInputs; };
 
@@ -441,45 +441,45 @@ rec {
     '';
 
     configureFlags =
-      common.configureFlags
-      ++ withSystemLibs [
-        "kpathsea"
-        "ptexenc"
-        "cairo"
-        "harfbuzz"
-        "icu"
-        "graphite2"
-      ]
-      ++
-        map (prog: "--disable-${prog}") # don't build things we already have
-          # list from texk/web2c/configure
-          (
-            [
-              "tex"
-              "ptex"
-              "eptex"
-              "uptex"
-              "euptex"
-              "aleph"
-              "hitex"
-              "pdftex"
-              "web-progs"
-              "synctex"
-            ]
-            ++ lib.optionals (!withLuaJIT) [
-              "luajittex"
-              "luajithbtex"
-              "mfluajit"
-            ]
-          )
-      # disable all packages, re-enable upmendex, web2c packages
-      ++ [
-        "--disable-all-pkgs"
-        "--enable-upmendex"
-        "--enable-web2c"
-      ]
-      # kpathsea requires specifying the kpathsea location manually
-      ++ [ "--with-kpathsea-includes=${core.dev}/include" ];
+    common.configureFlags
+    ++ withSystemLibs [
+      "kpathsea"
+      "ptexenc"
+      "cairo"
+      "harfbuzz"
+      "icu"
+      "graphite2"
+    ]
+    ++
+      map (prog: "--disable-${prog}") # don't build things we already have
+        # list from texk/web2c/configure
+        (
+          [
+            "tex"
+            "ptex"
+            "eptex"
+            "uptex"
+            "euptex"
+            "aleph"
+            "hitex"
+            "pdftex"
+            "web-progs"
+            "synctex"
+          ]
+          ++ lib.optionals (!withLuaJIT) [
+            "luajittex"
+            "luajithbtex"
+            "mfluajit"
+          ]
+        )
+    # disable all packages, re-enable upmendex, web2c packages
+    ++ [
+      "--disable-all-pkgs"
+      "--enable-upmendex"
+      "--enable-web2c"
+    ]
+    # kpathsea requires specifying the kpathsea location manually
+    ++ [ "--with-kpathsea-includes=${core.dev}/include" ];
 
     configureScript = "../configure";
 

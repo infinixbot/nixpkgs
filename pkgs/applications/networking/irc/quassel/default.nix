@@ -102,13 +102,13 @@ in
   dontWrapQtApps = true;
 
   postFixup =
-    lib.optionalString enableDaemon ''
-      wrapProgram "$out/bin/quasselcore" --suffix PATH : "${qtbase.bin}/bin"
-    ''
-    + lib.optionalString buildClient ''
-      wrapQtApp "$out/bin/quassel${lib.optionalString client "client"}" \
-        --prefix GIO_EXTRA_MODULES : "${dconf}/lib/gio/modules"
-    '';
+  lib.optionalString enableDaemon ''
+    wrapProgram "$out/bin/quasselcore" --suffix PATH : "${qtbase.bin}/bin"
+  ''
+  + lib.optionalString buildClient ''
+    wrapQtApp "$out/bin/quassel${lib.optionalString client "client"}" \
+      --prefix GIO_EXTRA_MODULES : "${dconf}/lib/gio/modules"
+  '';
 
   meta = with lib; {
     homepage = "https://quassel-irc.org/";

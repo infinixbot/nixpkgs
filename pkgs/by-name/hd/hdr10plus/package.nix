@@ -51,26 +51,26 @@ rustPlatform.buildRustPackage (finalAttrs: {
 
   # mirror Cargo flags
   cargoCBuildFlags =
-    optionals (finalAttrs.cargoBuildType != "debug") [
-      "--profile=${finalAttrs.cargoBuildType}"
-    ]
-    ++ optionals (finalAttrs.cargoBuildNoDefaultFeatures) [
-      "--no-default-features"
-    ]
-    ++ optionals (finalAttrs.cargoBuildFeatures != [ ]) [
-      "--features=${concatStringsSep "," finalAttrs.cargoBuildFeatures}"
-    ];
+  optionals (finalAttrs.cargoBuildType != "debug") [
+    "--profile=${finalAttrs.cargoBuildType}"
+  ]
+  ++ optionals (finalAttrs.cargoBuildNoDefaultFeatures) [
+    "--no-default-features"
+  ]
+  ++ optionals (finalAttrs.cargoBuildFeatures != [ ]) [
+    "--features=${concatStringsSep "," finalAttrs.cargoBuildFeatures}"
+  ];
 
   cargoCTestFlags =
-    optionals (finalAttrs.cargoCheckType != "debug") [
-      "--profile=${finalAttrs.cargoCheckType}"
-    ]
-    ++ optionals (finalAttrs.cargoCheckNoDefaultFeatures) [
-      "--no-default-features"
-    ]
-    ++ optionals (finalAttrs.cargoCheckFeatures != [ ]) [
-      "--features=${concatStringsSep "," finalAttrs.cargoCheckFeatures}"
-    ];
+  optionals (finalAttrs.cargoCheckType != "debug") [
+    "--profile=${finalAttrs.cargoCheckType}"
+  ]
+  ++ optionals (finalAttrs.cargoCheckNoDefaultFeatures) [
+    "--no-default-features"
+  ]
+  ++ optionals (finalAttrs.cargoCheckFeatures != [ ]) [
+    "--features=${concatStringsSep "," finalAttrs.cargoCheckFeatures}"
+  ];
 
   configurePhase = ''
     runHook preConfigure

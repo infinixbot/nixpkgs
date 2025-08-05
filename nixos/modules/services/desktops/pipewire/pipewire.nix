@@ -68,9 +68,9 @@ let
   configs = pkgs.buildEnv {
     name = "pipewire-configs";
     paths =
-      configPackages
-      ++ [ extraConfigPkg ]
-      ++ optionals cfg.wireplumber.enable cfg.wireplumber.configPackages;
+    configPackages
+    ++ [ extraConfigPkg ]
+    ++ optionals cfg.wireplumber.enable cfg.wireplumber.configPackages;
     pathsToLink = [ "/share/pipewire" ];
   };
 

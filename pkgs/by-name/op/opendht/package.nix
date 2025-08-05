@@ -53,13 +53,13 @@ stdenv.mkDerivation rec {
   ];
 
   cmakeFlags =
-    lib.optionals enableProxyServerAndClient [
-      "-DOPENDHT_PROXY_SERVER=ON"
-      "-DOPENDHT_PROXY_CLIENT=ON"
-    ]
-    ++ lib.optionals enablePushNotifications [
-      "-DOPENDHT_PUSH_NOTIFICATIONS=ON"
-    ];
+  lib.optionals enableProxyServerAndClient [
+    "-DOPENDHT_PROXY_SERVER=ON"
+    "-DOPENDHT_PROXY_CLIENT=ON"
+  ]
+  ++ lib.optionals enablePushNotifications [
+    "-DOPENDHT_PUSH_NOTIFICATIONS=ON"
+  ];
 
   outputs = [
     "out"

@@ -121,12 +121,12 @@ in
           ];
         };
         db_url_envs =
-          lib.optionalAttrs useUrlPath {
-            DATABASE_URL_FILE = "%d/DATABASE_URL_FILE";
-          }
-          // lib.optionalAttrs (!useUrlPath) {
-            DATABASE_URL = cfg.database.url;
-          };
+        lib.optionalAttrs useUrlPath {
+          DATABASE_URL_FILE = "%d/DATABASE_URL_FILE";
+        }
+        // lib.optionalAttrs (!useUrlPath) {
+          DATABASE_URL = cfg.database.url;
+        };
       in
       {
 

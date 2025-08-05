@@ -30,12 +30,12 @@ let
       nativeBuildInputs = lib.optionals (zip == ".zip") [ unzip ];
 
       unpackPhase =
-        lib.optionalString (zip == "") ''
-          cp $src SourceHan${Family}.ttc${zip}
-        ''
-        + lib.optionalString (zip == ".zip") ''
-          unzip $src
-        '';
+      lib.optionalString (zip == "") ''
+        cp $src SourceHan${Family}.ttc${zip}
+      ''
+      + lib.optionalString (zip == ".zip") ''
+        unzip $src
+      '';
 
       installPhase = ''
         runHook preInstall

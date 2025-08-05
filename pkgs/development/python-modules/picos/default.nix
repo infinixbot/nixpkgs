@@ -31,14 +31,14 @@ buildPythonPackage rec {
   ];
 
   postPatch =
-    lib.optionalString (pythonOlder "3.12") ''
-      substituteInPlace picos/modeling/problem.py \
-        --replace-fail "mappingproxy(OrderedDict({'x': <3×1 Real Variable: x>}))" "mappingproxy(OrderedDict([('x', <3×1 Real Variable: x>)]))"
-    ''
-    # TypeError: '<=' not supported between instances of 'ComplexAffineExpression' and 'float'
-    + lib.optionalString (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) ''
-      rm tests/ptest_quantentr.py
-    '';
+  lib.optionalString (pythonOlder "3.12") ''
+    substituteInPlace picos/modeling/problem.py \
+      --replace-fail "mappingproxy(OrderedDict({'x': <3×1 Real Variable: x>}))" "mappingproxy(OrderedDict([('x', <3×1 Real Variable: x>)]))"
+  ''
+  # TypeError: '<=' not supported between instances of 'ComplexAffineExpression' and 'float'
+  + lib.optionalString (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) ''
+    rm tests/ptest_quantentr.py
+  '';
 
   checkPhase = ''
     runHook preCheck

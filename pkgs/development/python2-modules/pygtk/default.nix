@@ -57,9 +57,9 @@ buildPythonPackage rec {
   buildPhase = "buildPhase";
 
   env.NIX_CFLAGS_COMPILE =
-    lib.optionalString stdenv.hostPlatform.isDarwin "-ObjC"
-    + lib.optionalString (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) " -lpython2.7"
-    + " -fpermissive"; # downgrade code errors to warnings
+  lib.optionalString stdenv.hostPlatform.isDarwin "-ObjC"
+  + lib.optionalString (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) " -lpython2.7"
+  + " -fpermissive"; # downgrade code errors to warnings
 
   installPhase = "installPhase";
 

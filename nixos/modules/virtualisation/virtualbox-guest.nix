@@ -25,9 +25,9 @@ let
     preStart = "${pkgs.bash}/bin/bash -c \"if [ -z $DISPLAY ]; then exit 1; fi\"";
     serviceConfig = {
       ExecStart =
-        "@${kernel.virtualboxGuestAdditions}/bin/VBoxClient"
-        + (lib.strings.optionalString verbose " --verbose")
-        + " --foreground ${serviceArgs}";
+      "@${kernel.virtualboxGuestAdditions}/bin/VBoxClient"
+      + (lib.strings.optionalString verbose " --verbose")
+      + " --foreground ${serviceArgs}";
       # Wait after a failure, hoping that the display environment is ready after waiting
       RestartSec = 2;
       Restart = "always";

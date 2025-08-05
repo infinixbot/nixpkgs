@@ -29,13 +29,13 @@ buildGoModule rec {
   };
 
   buildInputs =
-    (lib.optional (!withGoolm) olm)
-    ++ (lib.optional withGoolm stdenv.cc.cc.lib)
-    ++ [
-      # must match the version used in https://github.com/mautrix/signal/tree/main/pkg/libsignalgo
-      # see https://github.com/mautrix/signal/issues/401
-      libsignal-ffi
-    ];
+  (lib.optional (!withGoolm) olm)
+  ++ (lib.optional withGoolm stdenv.cc.cc.lib)
+  ++ [
+    # must match the version used in https://github.com/mautrix/signal/tree/main/pkg/libsignalgo
+    # see https://github.com/mautrix/signal/issues/401
+    libsignal-ffi
+  ];
 
   tags = lib.optional withGoolm "goolm";
 

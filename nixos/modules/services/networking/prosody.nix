@@ -511,14 +511,14 @@ let
   configFile =
     let
       httpDiscoItems =
-        optional (cfg.uploadHttp != null) {
-          url = cfg.uploadHttp.domain;
-          description = "HTTP upload endpoint";
-        }
-        ++ optional (cfg.httpFileShare != null) {
-          url = cfg.httpFileShare.domain;
-          description = "HTTP file share endpoint";
-        };
+      optional (cfg.uploadHttp != null) {
+        url = cfg.uploadHttp.domain;
+        description = "HTTP upload endpoint";
+      }
+      ++ optional (cfg.httpFileShare != null) {
+        url = cfg.httpFileShare.domain;
+        description = "HTTP file share endpoint";
+      };
       mucDiscoItems = builtins.foldl' (
         acc: muc:
         [

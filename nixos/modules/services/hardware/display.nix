@@ -181,22 +181,22 @@ in
   config = lib.mkMerge [
     {
       hardware.display.edid.packages =
-        lib.optional (cfg.edid.modelines != null) cfg.edid.modelines
-        ++ lib.optional (cfg.edid.linuxhw != null) cfg.edid.linuxhw;
+      lib.optional (cfg.edid.modelines != null) cfg.edid.modelines
+      ++ lib.optional (cfg.edid.linuxhw != null) cfg.edid.linuxhw;
 
       boot.kernelParams =
-        # forcing video modes
-        lib.trivial.pipe cfg.outputs [
-          (lib.attrsets.filterAttrs (_: spec: spec.mode != null))
-          (lib.mapAttrsToList (output: spec: "video=${output}:${spec.mode}"))
-        ]
-        # selecting EDID for displays
-        ++ lib.trivial.pipe cfg.outputs [
-          (lib.attrsets.filterAttrs (_: spec: spec.edid != null))
-          (lib.mapAttrsToList (output: spec: "${output}:edid/${spec.edid}"))
-          (builtins.concatStringsSep ",")
-          (p: lib.optional (p != "") "drm.edid_firmware=${p}")
-        ];
+      # forcing video modes
+      lib.trivial.pipe cfg.outputs [
+        (lib.attrsets.filterAttrs (_: spec: spec.mode != null))
+        (lib.mapAttrsToList (output: spec: "video=${output}:${spec.mode}"))
+      ]
+      # selecting EDID for displays
+      ++ lib.trivial.pipe cfg.outputs [
+        (lib.attrsets.filterAttrs (_: spec: spec.edid != null))
+        (lib.mapAttrsToList (output: spec: "${output}:edid/${spec.edid}"))
+        (builtins.concatStringsSep ",")
+        (p: lib.optional (p != "") "drm.edid_firmware=${p}")
+      ];
     }
     (lib.mkIf (cfg.edid.packages != null) {
       # services.udev implements hardware.firmware option

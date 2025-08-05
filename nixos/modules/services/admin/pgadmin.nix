@@ -240,13 +240,13 @@ in
 
     environment.etc."pgadmin/config_system.py" = {
       text =
-        lib.optionalString cfg.emailServer.enable ''
-          import os
-          with open(os.path.join(os.environ['CREDENTIALS_DIRECTORY'], 'email_password')) as f:
-            pw = f.read()
-          MAIL_PASSWORD = pw
-        ''
-        + formatPy cfg.settings;
+      lib.optionalString cfg.emailServer.enable ''
+        import os
+        with open(os.path.join(os.environ['CREDENTIALS_DIRECTORY'], 'email_password')) as f:
+          pw = f.read()
+        MAIL_PASSWORD = pw
+      ''
+      + formatPy cfg.settings;
       mode = "0600";
       user = "pgadmin";
       group = "pgadmin";

@@ -32,26 +32,26 @@ lib.makeOverridable (
     gitRepoUrl = "git://${domain}/${owner}/${repo}";
 
     fetcherArgs =
-      (
-        if useFetchGit then
-          {
-            # git9 does not support shallow fetches
-            inherit rev leaveDotGit;
-            url = gitRepoUrl;
-          }
-        else
-          {
-            url = "https://${domain}/${owner}/${repo}/${rev}/snap.tar.gz";
+    (
+      if useFetchGit then
+        {
+          # git9 does not support shallow fetches
+          inherit rev leaveDotGit;
+          url = gitRepoUrl;
+        }
+      else
+        {
+          url = "https://${domain}/${owner}/${repo}/${rev}/snap.tar.gz";
 
-            passthru = {
-              inherit gitRepoUrl;
-            };
-          }
-      )
-      // passthruAttrs
-      // {
-        inherit name;
-      };
+          passthru = {
+            inherit gitRepoUrl;
+          };
+        }
+    )
+    // passthruAttrs
+    // {
+      inherit name;
+    };
   in
 
   fetcher fetcherArgs // { inherit rev; }

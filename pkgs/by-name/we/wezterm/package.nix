@@ -104,25 +104,25 @@ rustPlatform.buildRustPackage rec {
   '';
 
   preFixup =
-    lib.optionalString stdenv.hostPlatform.isLinux ''
-      patchelf \
-        --add-needed "${libGL}/lib/libEGL.so.1" \
-        --add-needed "${vulkan-loader}/lib/libvulkan.so.1" \
-        $out/bin/wezterm-gui
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      mkdir -p "$out/Applications"
-      OUT_APP="$out/Applications/WezTerm.app"
-      cp -r assets/macos/WezTerm.app "$OUT_APP"
-      rm $OUT_APP/*.dylib
-      cp -r assets/shell-integration/* "$OUT_APP"
-      # https://github.com/wezterm/wezterm/pull/6886
-      # macOS will only recognize our application bundle
-      # if the binaries are inside of it. Move them there
-      # and create symbolic links for them in bin/.
-      mv $out/bin/{wezterm,wezterm-mux-server,wezterm-gui,strip-ansi-escapes} "$OUT_APP"
-      ln -s "$OUT_APP"/{wezterm,wezterm-mux-server,wezterm-gui,strip-ansi-escapes} "$out/bin"
-    '';
+  lib.optionalString stdenv.hostPlatform.isLinux ''
+    patchelf \
+      --add-needed "${libGL}/lib/libEGL.so.1" \
+      --add-needed "${vulkan-loader}/lib/libvulkan.so.1" \
+      $out/bin/wezterm-gui
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    mkdir -p "$out/Applications"
+    OUT_APP="$out/Applications/WezTerm.app"
+    cp -r assets/macos/WezTerm.app "$OUT_APP"
+    rm $OUT_APP/*.dylib
+    cp -r assets/shell-integration/* "$OUT_APP"
+    # https://github.com/wezterm/wezterm/pull/6886
+    # macOS will only recognize our application bundle
+    # if the binaries are inside of it. Move them there
+    # and create symbolic links for them in bin/.
+    mv $out/bin/{wezterm,wezterm-mux-server,wezterm-gui,strip-ansi-escapes} "$OUT_APP"
+    ln -s "$OUT_APP"/{wezterm,wezterm-mux-server,wezterm-gui,strip-ansi-escapes} "$out/bin"
+  '';
 
   passthru = {
     # the headless variant is useful when deploying wezterm's mux server on remote severs

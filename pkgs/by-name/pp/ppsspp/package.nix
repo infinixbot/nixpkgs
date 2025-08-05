@@ -36,10 +36,10 @@ in
 assert forceWayland -> !enableQt;
 stdenv.mkDerivation (finalAttrs: {
   pname =
-    "ppsspp"
-    + lib.optionalString enableQt "-qt"
-    + lib.optionalString (!enableQt) "-sdl"
-    + lib.optionalString forceWayland "-wayland";
+  "ppsspp"
+  + lib.optionalString enableQt "-qt"
+  + lib.optionalString (!enableQt) "-sdl"
+  + lib.optionalString forceWayland "-wayland";
   version = "1.19.3";
 
   src = fetchFromGitHub {
@@ -169,9 +169,9 @@ stdenv.mkDerivation (finalAttrs: {
   meta = {
     homepage = "https://www.ppsspp.org/";
     description =
-      "HLE Playstation Portable emulator, written in C++ ("
-      + (if enableQt then "Qt" else "SDL + headless")
-      + ")";
+    "HLE Playstation Portable emulator, written in C++ ("
+    + (if enableQt then "Qt" else "SDL + headless")
+    + ")";
     longDescription = ''
       PPSSPP is a PSP emulator, which means that it can run games and other
       software that was originally made for the Sony PSP.

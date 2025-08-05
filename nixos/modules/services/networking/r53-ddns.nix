@@ -72,9 +72,9 @@ in
       description = "r53-ddns service";
       serviceConfig = {
         ExecStart =
-          "${pkg}/bin/r53-ddns -zone-id ${cfg.zoneID} -domain ${cfg.domain}"
-          + lib.optionalString (cfg.hostname != null) " -hostname ${cfg.hostname}"
-          + lib.optionalString (cfg.ttl != null) " -ttl ${toString cfg.ttl}";
+        "${pkg}/bin/r53-ddns -zone-id ${cfg.zoneID} -domain ${cfg.domain}"
+        + lib.optionalString (cfg.hostname != null) " -hostname ${cfg.hostname}"
+        + lib.optionalString (cfg.ttl != null) " -ttl ${toString cfg.ttl}";
         EnvironmentFile = "${cfg.environmentFile}";
         DynamicUser = true;
       };

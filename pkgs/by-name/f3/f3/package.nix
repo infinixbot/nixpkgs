@@ -28,11 +28,11 @@ stdenv.mkDerivation rec {
   '';
 
   buildInputs =
-    lib.optionals stdenv.hostPlatform.isLinux [
-      systemd
-      parted
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [ argp-standalone ];
+  lib.optionals stdenv.hostPlatform.isLinux [
+    systemd
+    parted
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ argp-standalone ];
 
   buildFlags = [
     "all" # f3read, f3write

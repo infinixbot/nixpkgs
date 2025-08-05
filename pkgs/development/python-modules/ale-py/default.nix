@@ -70,19 +70,19 @@ buildPythonPackage rec {
   ];
 
   postPatch =
-    # Relax the pybind11 version
-    ''
-      substituteInPlace src/ale/python/CMakeLists.txt \
-        --replace-fail \
-          'find_package(pybind11 ''${PYBIND11_VER} QUIET)' \
-          'find_package(pybind11 QUIET)'
-    ''
-    + lib.optionalString (!withVectorEnv) ''
-      substituteInPlace setup.py \
-        --replace-fail \
-          "-DBUILD_VECTOR_LIB=ON" \
-          "-DBUILD_VECTOR_LIB=OFF"
-    '';
+  # Relax the pybind11 version
+  ''
+    substituteInPlace src/ale/python/CMakeLists.txt \
+      --replace-fail \
+        'find_package(pybind11 ''${PYBIND11_VER} QUIET)' \
+        'find_package(pybind11 QUIET)'
+  ''
+  + lib.optionalString (!withVectorEnv) ''
+    substituteInPlace setup.py \
+      --replace-fail \
+        "-DBUILD_VECTOR_LIB=ON" \
+        "-DBUILD_VECTOR_LIB=OFF"
+  '';
 
   dontUseCmakeConfigure = true;
 

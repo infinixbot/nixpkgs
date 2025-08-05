@@ -29,12 +29,12 @@ stdenv.mkDerivation (finalAttrs: {
   nativeBuildInputs = lib.optionals buildDocs [ texliveMedium ];
 
   postPatch =
-    lib.optionalString (!buildDocs) ''
-      substituteInPlace Makefile --replace "all: binaries docs" "all: binaries"
-    ''
-    + lib.optionalString (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) ''
-      substituteInPlace sysdefs.h --replace "x86_64" "aarch64"
-    '';
+  lib.optionalString (!buildDocs) ''
+    substituteInPlace Makefile --replace "all: binaries docs" "all: binaries"
+  ''
+  + lib.optionalString (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) ''
+    substituteInPlace sysdefs.h --replace "x86_64" "aarch64"
+  '';
 
   dontConfigure = true;
 

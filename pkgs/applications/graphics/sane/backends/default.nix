@@ -134,17 +134,17 @@ stdenv.mkDerivation rec {
     let
 
       compatFirmware =
-        extraFirmware
-        ++ lib.optional (gt68xxFirmware != null) {
-          src = gt68xxFirmware.fw;
-          inherit (gt68xxFirmware) name;
-          backend = "gt68xx";
-        }
-        ++ lib.optional (snapscanFirmware != null) {
-          src = snapscanFirmware;
-          name = "your-firmwarefile.bin";
-          backend = "snapscan";
-        };
+      extraFirmware
+      ++ lib.optional (gt68xxFirmware != null) {
+        src = gt68xxFirmware.fw;
+        inherit (gt68xxFirmware) name;
+        backend = "gt68xx";
+      }
+      ++ lib.optional (snapscanFirmware != null) {
+        src = snapscanFirmware;
+        name = "your-firmwarefile.bin";
+        backend = "snapscan";
+      };
 
       installFirmware = f: ''
         mkdir -p $out/share/sane/${f.backend}

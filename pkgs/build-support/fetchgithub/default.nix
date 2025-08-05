@@ -43,14 +43,14 @@ lib.makeOverridable (
     );
     baseUrl = "https://${githubBase}/${owner}/${repo}";
     newMeta =
-      meta
-      // {
-        homepage = meta.homepage or baseUrl;
-      }
-      // lib.optionalAttrs (position != null) {
-        # to indicate where derivation originates, similar to make-derivation.nix's mkDerivation
-        position = "${position.file}:${toString position.line}";
-      };
+    meta
+    // {
+      homepage = meta.homepage or baseUrl;
+    }
+    // lib.optionalAttrs (position != null) {
+      # to indicate where derivation originates, similar to make-derivation.nix's mkDerivation
+      position = "${position.file}:${toString position.line}";
+    };
     passthruAttrs = removeAttrs args [
       "owner"
       "repo"
@@ -110,50 +110,50 @@ lib.makeOverridable (
     revWithTag = if tag != null then "refs/tags/${tag}" else rev;
 
     fetcherArgs =
-      (
-        if useFetchGit then
-          {
-            inherit
-              tag
-              rev
-              deepClone
-              fetchSubmodules
-              sparseCheckout
-              fetchLFS
-              ;
-            url = gitRepoUrl;
-          }
-          // lib.optionalAttrs (leaveDotGit != null) { inherit leaveDotGit; }
-        else
-          {
-            # Use the API endpoint for private repos, as the archive URI doesn't
-            # support access with GitHub's fine-grained access tokens.
-            #
-            # Use the archive URI for non-private repos, as the API endpoint has
-            # relatively restrictive rate limits for unauthenticated users.
-            url =
-              if private then
-                let
-                  endpoint = "/repos/${owner}/${repo}/tarball/${revWithTag}";
-                in
-                if githubBase == "github.com" then
-                  "https://api.github.com${endpoint}"
-                else
-                  "https://${githubBase}/api/v3${endpoint}"
+    (
+      if useFetchGit then
+        {
+          inherit
+            tag
+            rev
+            deepClone
+            fetchSubmodules
+            sparseCheckout
+            fetchLFS
+            ;
+          url = gitRepoUrl;
+        }
+        // lib.optionalAttrs (leaveDotGit != null) { inherit leaveDotGit; }
+      else
+        {
+          # Use the API endpoint for private repos, as the archive URI doesn't
+          # support access with GitHub's fine-grained access tokens.
+          #
+          # Use the archive URI for non-private repos, as the API endpoint has
+          # relatively restrictive rate limits for unauthenticated users.
+          url =
+            if private then
+              let
+                endpoint = "/repos/${owner}/${repo}/tarball/${revWithTag}";
+              in
+              if githubBase == "github.com" then
+                "https://api.github.com${endpoint}"
               else
-                "${baseUrl}/archive/${revWithTag}.tar.gz";
-            extension = "tar.gz";
+                "https://${githubBase}/api/v3${endpoint}"
+            else
+              "${baseUrl}/archive/${revWithTag}.tar.gz";
+          extension = "tar.gz";
 
-            passthru = {
-              inherit gitRepoUrl;
-            };
-          }
-      )
-      // privateAttrs
-      // passthruAttrs
-      // {
-        inherit name;
-      };
+          passthru = {
+            inherit gitRepoUrl;
+          };
+        }
+    )
+    // privateAttrs
+    // passthruAttrs
+    // {
+      inherit name;
+    };
   in
 
   fetcher fetcherArgs

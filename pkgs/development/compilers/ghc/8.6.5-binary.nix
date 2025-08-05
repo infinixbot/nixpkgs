@@ -106,62 +106,62 @@ stdenv.mkDerivation rec {
   ${libEnvVar} = libPath;
 
   postUnpack =
-    # GHC has dtrace probes, which causes ld to try to open /usr/lib/libdtrace.dylib
-    # during linking
-    lib.optionalString stdenv.hostPlatform.isDarwin ''
-      export NIX_LDFLAGS+=" -no_dtrace_dof"
-      # not enough room in the object files for the full path to libiconv :(
-      for exe in $(find . -type f -executable); do
-        isScript $exe && continue
-        ln -fs ${libiconv}/lib/libiconv.dylib $(dirname $exe)/libiconv.dylib
-        install_name_tool -change /usr/lib/libiconv.2.dylib @executable_path/libiconv.dylib -change /usr/local/lib/gcc/6/libgcc_s.1.dylib ${gcc.cc.lib}/lib/libgcc_s.1.dylib $exe
-      done
+  # GHC has dtrace probes, which causes ld to try to open /usr/lib/libdtrace.dylib
+  # during linking
+  lib.optionalString stdenv.hostPlatform.isDarwin ''
+    export NIX_LDFLAGS+=" -no_dtrace_dof"
+    # not enough room in the object files for the full path to libiconv :(
+    for exe in $(find . -type f -executable); do
+      isScript $exe && continue
+      ln -fs ${libiconv}/lib/libiconv.dylib $(dirname $exe)/libiconv.dylib
+      install_name_tool -change /usr/lib/libiconv.2.dylib @executable_path/libiconv.dylib -change /usr/local/lib/gcc/6/libgcc_s.1.dylib ${gcc.cc.lib}/lib/libgcc_s.1.dylib $exe
+    done
+  ''
+  +
+
+    # Some scripts used during the build need to have their shebangs patched
     ''
-    +
-
-      # Some scripts used during the build need to have their shebangs patched
-      ''
-        patchShebangs ghc-${version}/utils/
-        patchShebangs ghc-${version}/configure
-        test -d ghc-${version}/inplace/bin && \
-          patchShebangs ghc-${version}/inplace/bin
-      ''
-    +
-
-      # We have to patch the GMP paths for the integer-gmp package.
-      ''
-        find . -name integer-gmp.buildinfo \
-            -exec sed -i "s@extra-lib-dirs: @extra-lib-dirs: ${gmp.out}/lib@" {} \;
-      ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      find . -name base.buildinfo \
-          -exec sed -i "s@extra-lib-dirs: @extra-lib-dirs: ${libiconv}/lib@" {} \;
+      patchShebangs ghc-${version}/utils/
+      patchShebangs ghc-${version}/configure
+      test -d ghc-${version}/inplace/bin && \
+        patchShebangs ghc-${version}/inplace/bin
     ''
-    +
-      # Rename needed libraries and binaries, fix interpreter
-      lib.optionalString stdenv.hostPlatform.isLinux ''
-        find . -type f -perm -0100 \
-            -exec patchelf \
-            --replace-needed libncurses${lib.optionalString stdenv.hostPlatform.is64bit "w"}.so.5 libncurses.so \
-            ${
-              # This isn't required for x86_64-linux where we use ncurses6
-              lib.optionalString (!useNcurses6) "--replace-needed libtinfo.so libtinfo.so.5"
-            } \
-            --interpreter ${glibcDynLinker} {} \;
+  +
 
-        sed -i "s|/usr/bin/perl|perl\x00        |" ghc-${version}/ghc/stage2/build/tmp/ghc-stage2
-        sed -i "s|/usr/bin/gcc|gcc\x00        |" ghc-${version}/ghc/stage2/build/tmp/ghc-stage2
-      ''
-    +
-      # We're kludging a glibc bindist into working with non-glibc...
-      # Here we patch up the use of `__strdup` (part of glibc binary ABI)
-      # to instead use `strdup` since musl doesn't provide __strdup
-      # (`__strdup` is defined to be an alias of `strdup` anyway[1]).
-      # [1] http://refspecs.linuxbase.org/LSB_4.0.0/LSB-Core-generic/LSB-Core-generic/baselib---strdup-1.html
-      # Use objcopy magic to make the change:
-      lib.optionalString stdenv.hostPlatform.isMusl ''
-        find ./ghc-${version}/rts -name "libHSrts*.a" -exec ''${OBJCOPY:-objcopy} --redefine-sym __strdup=strdup {} \;
-      '';
+    # We have to patch the GMP paths for the integer-gmp package.
+    ''
+      find . -name integer-gmp.buildinfo \
+          -exec sed -i "s@extra-lib-dirs: @extra-lib-dirs: ${gmp.out}/lib@" {} \;
+    ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    find . -name base.buildinfo \
+        -exec sed -i "s@extra-lib-dirs: @extra-lib-dirs: ${libiconv}/lib@" {} \;
+  ''
+  +
+    # Rename needed libraries and binaries, fix interpreter
+    lib.optionalString stdenv.hostPlatform.isLinux ''
+      find . -type f -perm -0100 \
+          -exec patchelf \
+          --replace-needed libncurses${lib.optionalString stdenv.hostPlatform.is64bit "w"}.so.5 libncurses.so \
+          ${
+            # This isn't required for x86_64-linux where we use ncurses6
+            lib.optionalString (!useNcurses6) "--replace-needed libtinfo.so libtinfo.so.5"
+          } \
+          --interpreter ${glibcDynLinker} {} \;
+
+      sed -i "s|/usr/bin/perl|perl\x00        |" ghc-${version}/ghc/stage2/build/tmp/ghc-stage2
+      sed -i "s|/usr/bin/gcc|gcc\x00        |" ghc-${version}/ghc/stage2/build/tmp/ghc-stage2
+    ''
+  +
+    # We're kludging a glibc bindist into working with non-glibc...
+    # Here we patch up the use of `__strdup` (part of glibc binary ABI)
+    # to instead use `strdup` since musl doesn't provide __strdup
+    # (`__strdup` is defined to be an alias of `strdup` anyway[1]).
+    # [1] http://refspecs.linuxbase.org/LSB_4.0.0/LSB-Core-generic/LSB-Core-generic/baselib---strdup-1.html
+    # Use objcopy magic to make the change:
+    lib.optionalString stdenv.hostPlatform.isMusl ''
+      find ./ghc-${version}/rts -name "libHSrts*.a" -exec ''${OBJCOPY:-objcopy} --redefine-sym __strdup=strdup {} \;
+    '';
 
   configurePlatforms = [ ];
   configureFlags = [
@@ -197,26 +197,26 @@ stdenv.mkDerivation rec {
   # On Linux, use patchelf to modify the executables so that they can
   # find editline/gmp.
   postFixup =
-    lib.optionalString stdenv.hostPlatform.isLinux ''
-      for p in $(find "$out" -type f -executable); do
-        if isELF "$p"; then
-          echo "Patchelfing $p"
-          patchelf --set-rpath "${libPath}:$(patchelf --print-rpath $p)" $p
-        fi
-      done
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      # not enough room in the object files for the full path to libiconv :(
-      for exe in $(find "$out" -type f -executable); do
-        isScript $exe && continue
-        ln -fs ${libiconv}/lib/libiconv.dylib $(dirname $exe)/libiconv.dylib
-        install_name_tool -change /usr/lib/libiconv.2.dylib @executable_path/libiconv.dylib -change /usr/local/lib/gcc/6/libgcc_s.1.dylib ${gcc.cc.lib}/lib/libgcc_s.1.dylib $exe
-      done
+  lib.optionalString stdenv.hostPlatform.isLinux ''
+    for p in $(find "$out" -type f -executable); do
+      if isELF "$p"; then
+        echo "Patchelfing $p"
+        patchelf --set-rpath "${libPath}:$(patchelf --print-rpath $p)" $p
+      fi
+    done
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    # not enough room in the object files for the full path to libiconv :(
+    for exe in $(find "$out" -type f -executable); do
+      isScript $exe && continue
+      ln -fs ${libiconv}/lib/libiconv.dylib $(dirname $exe)/libiconv.dylib
+      install_name_tool -change /usr/lib/libiconv.2.dylib @executable_path/libiconv.dylib -change /usr/local/lib/gcc/6/libgcc_s.1.dylib ${gcc.cc.lib}/lib/libgcc_s.1.dylib $exe
+    done
 
-      for file in $(find "$out" -name setup-config); do
-        substituteInPlace $file --replace /usr/bin/ranlib "$(type -P ranlib)"
-      done
-    '';
+    for file in $(find "$out" -name setup-config); do
+      substituteInPlace $file --replace /usr/bin/ranlib "$(type -P ranlib)"
+    done
+  '';
 
   # GHC cannot currently produce outputs that are ready for `-pie` linking.
   # Thus, disable `pie` hardening, otherwise `recompile with -fPIE` errors appear.

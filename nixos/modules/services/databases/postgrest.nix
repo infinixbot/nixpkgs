@@ -263,11 +263,11 @@ in
         CacheDirectory = "postgrest";
         CacheDirectoryMode = "0700";
         Environment =
-          lib.optional (cfg.pgpassFile != null) "PGPASSFILE=%C/postgrest/pgpass"
-          ++ lib.optional (cfg.jwtSecretFile != null) "PGRST_JWT_SECRET=@%d/jwt_secret";
+        lib.optional (cfg.pgpassFile != null) "PGPASSFILE=%C/postgrest/pgpass"
+        ++ lib.optional (cfg.jwtSecretFile != null) "PGRST_JWT_SECRET=@%d/jwt_secret";
         LoadCredential =
-          lib.optional (cfg.pgpassFile != null) "pgpass:${cfg.pgpassFile}"
-          ++ lib.optional (cfg.jwtSecretFile != null) "jwt_secret:${cfg.jwtSecretFile}";
+        lib.optional (cfg.pgpassFile != null) "pgpass:${cfg.pgpassFile}"
+        ++ lib.optional (cfg.jwtSecretFile != null) "jwt_secret:${cfg.jwtSecretFile}";
         Restart = "always";
         RuntimeDirectory = "postgrest";
         User = "postgrest";

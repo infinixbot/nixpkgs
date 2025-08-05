@@ -18,13 +18,13 @@ mkDerivation {
   path = "contrib/mtree";
   extraPaths = [ "contrib/mknod" ];
   buildInputs =
-    compatIfNeeded
-    ++ lib.optionals (!stdenv.hostPlatform.isFreeBSD) [
-      libmd'
-    ]
-    ++ [
-      libnetbsd
-    ];
+  compatIfNeeded
+  ++ lib.optionals (!stdenv.hostPlatform.isFreeBSD) [
+    libmd'
+  ]
+  ++ [
+    libnetbsd
+  ];
 
   postPatch = ''
     ln -s $BSDSRCDIR/contrib/mknod/*.c $BSDSRCDIR/contrib/mknod/*.h $BSDSRCDIR/contrib/mtree

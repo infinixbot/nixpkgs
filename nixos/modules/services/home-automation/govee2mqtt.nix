@@ -64,8 +64,8 @@ in
         ];
         EnvironmentFile = cfg.environmentFile;
         ExecStart =
-          "${lib.getExe cfg.package} serve --govee-iot-key=/var/lib/govee2mqtt/iot.key --govee-iot-cert=/var/lib/govee2mqtt/iot.cert"
-          + " --amazon-root-ca=${pkgs.cacert.unbundled}/etc/ssl/certs/Amazon_Root_CA_1:66c9fcf99bf8c0a39e2f0788a43e696365bca.crt";
+        "${lib.getExe cfg.package} serve --govee-iot-key=/var/lib/govee2mqtt/iot.key --govee-iot-cert=/var/lib/govee2mqtt/iot.cert"
+        + " --amazon-root-ca=${pkgs.cacert.unbundled}/etc/ssl/certs/Amazon_Root_CA_1:66c9fcf99bf8c0a39e2f0788a43e696365bca.crt";
         Group = cfg.group;
         Restart = "on-failure";
         StateDirectory = "govee2mqtt";

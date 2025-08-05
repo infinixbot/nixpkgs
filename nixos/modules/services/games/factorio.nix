@@ -306,19 +306,19 @@ in
       after = [ "network.target" ];
 
       preStart =
-        (toString [
-          "test -e ${stateDir}/saves/${cfg.saveName}.zip"
-          "||"
-          "${cfg.package}/bin/factorio"
-          "--config=${cfg.configFile}"
-          "--create=${mkSavePath cfg.saveName}"
-          (lib.optionalString (cfg.mods != [ ]) "--mod-directory=${modDir}")
-        ])
-        + (lib.optionalString (cfg.extraSettingsFile != null) (
-          "\necho ${lib.strings.escapeShellArg serverSettingsString}"
-          + " \"$(cat ${cfg.extraSettingsFile})\" | ${lib.getExe pkgs.jq} -s add"
-          + " > ${stateDir}/server-settings.json"
-        ));
+      (toString [
+        "test -e ${stateDir}/saves/${cfg.saveName}.zip"
+        "||"
+        "${cfg.package}/bin/factorio"
+        "--config=${cfg.configFile}"
+        "--create=${mkSavePath cfg.saveName}"
+        (lib.optionalString (cfg.mods != [ ]) "--mod-directory=${modDir}")
+      ])
+      + (lib.optionalString (cfg.extraSettingsFile != null) (
+        "\necho ${lib.strings.escapeShellArg serverSettingsString}"
+        + " \"$(cat ${cfg.extraSettingsFile})\" | ${lib.getExe pkgs.jq} -s add"
+        + " > ${stateDir}/server-settings.json"
+      ));
 
       serviceConfig = {
         Restart = "always";

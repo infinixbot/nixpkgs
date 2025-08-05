@@ -42,22 +42,22 @@ let
   xenBootBuilder = pkgs.writeShellApplication {
     name = "xenBootBuilder";
     runtimeInputs =
-      (with pkgs; [
-        binutils
-        coreutils
-        findutils
-        gawk
-        gnugrep
-        gnused
-        jq
-      ])
-      ++ optionals (cfg.efi.bootBuilderVerbosity == "info") (
-        with pkgs;
-        [
-          bat
-          diffutils
-        ]
-      );
+    (with pkgs; [
+      binutils
+      coreutils
+      findutils
+      gawk
+      gnugrep
+      gnused
+      jq
+    ])
+    ++ optionals (cfg.efi.bootBuilderVerbosity == "info") (
+      with pkgs;
+      [
+        bat
+        diffutils
+      ]
+    );
     runtimeEnv = {
       efiMountPoint = config.boot.loader.efi.efiSysMountPoint;
     };
@@ -640,20 +640,20 @@ in
     ];
 
     virtualisation.xen.bootParams =
-      optionals cfg.trace [
-        "loglvl=all"
-        "guest_loglvl=all"
-      ]
-      ++
-        optional (cfg.dom0Resources.memory != 0)
-          "dom0_mem=${toString cfg.dom0Resources.memory}M${
-            optionalString (
-              cfg.dom0Resources.memory != cfg.dom0Resources.maxMemory
-            ) ",max:${toString cfg.dom0Resources.maxMemory}M"
-          }"
-      ++ optional (
-        cfg.dom0Resources.maxVCPUs != 0
-      ) "dom0_max_vcpus=${toString cfg.dom0Resources.maxVCPUs}";
+    optionals cfg.trace [
+      "loglvl=all"
+      "guest_loglvl=all"
+    ]
+    ++
+      optional (cfg.dom0Resources.memory != 0)
+        "dom0_mem=${toString cfg.dom0Resources.memory}M${
+          optionalString (
+            cfg.dom0Resources.memory != cfg.dom0Resources.maxMemory
+          ) ",max:${toString cfg.dom0Resources.maxMemory}M"
+        }"
+    ++ optional (
+      cfg.dom0Resources.maxVCPUs != 0
+    ) "dom0_max_vcpus=${toString cfg.dom0Resources.maxVCPUs}";
 
     boot = {
       kernelModules = [
@@ -733,67 +733,67 @@ in
         cfg.qemu.package
       ];
       etc =
-        # Set up Xen Domain 0 configuration files.
-        {
-          "xen/xl.conf".source = "${cfg.package}/etc/xen/xl.conf"; # TODO: Add options to configure xl.conf declaratively. It's worth considering making a new "xl value" type, as it could be reused to produce xl.cfg (domain definition) files.
-          "xen/scripts-xen" = {
-            source = "${cfg.package}/etc/xen/scripts/*";
-            target = "xen/scripts";
-          };
-          "default/xencommons".text = ''
-            source ${cfg.package}/etc/default/xencommons
-
-            XENSTORED="${cfg.store.path}"
-            QEMU_XEN="${cfg.qemu.package}/${cfg.qemu.package.qemu-system-i386}"
-            ${optionalString cfg.trace ''
-              XENSTORED_TRACE=yes
-              XENCONSOLED_TRACE=all
-            ''}
-          '';
-          "default/xendomains".text = ''
-            source ${cfg.package}/etc/default/xendomains
-
-            ${cfg.domains.extraConfig}
-          '';
-        }
-        # The OCaml-based Xen Store Daemon requires /etc/xen/oxenstored.conf to start.
-        // optionalAttrs (cfg.store.type == "ocaml") {
-          "xen/oxenstored.conf".text = ''
-            pid-file = ${cfg.store.settings.pidFile}
-            test-eagain = ${boolToString cfg.store.settings.testEAGAIN}
-            merge-activate = ${toString cfg.store.settings.enableMerge}
-            conflict-burst-limit = ${toString cfg.store.settings.conflict.burstLimit}
-            conflict-max-history-seconds = ${toString cfg.store.settings.conflict.maxHistorySeconds}
-            conflict-rate-limit-is-aggregate = ${toString cfg.store.settings.conflict.rateLimitIsAggregate}
-            perms-activate = ${toString cfg.store.settings.perms.enable}
-            perms-watch-activate = ${toString cfg.store.settings.perms.enableWatch}
-            quota-activate = ${toString cfg.store.settings.quota.enable}
-            quota-maxentity = ${toString cfg.store.settings.quota.maxEntity}
-            quota-maxsize = ${toString cfg.store.settings.quota.maxSize}
-            quota-maxwatch = ${toString cfg.store.settings.quota.maxWatch}
-            quota-transaction = ${toString cfg.store.settings.quota.transaction}
-            quota-maxrequests = ${toString cfg.store.settings.quota.maxRequests}
-            quota-path-max = ${toString cfg.store.settings.quota.maxPath}
-            quota-maxoutstanding = ${toString cfg.store.settings.quota.maxOutstanding}
-            quota-maxwatchevents = ${toString cfg.store.settings.quota.maxWatchEvents}
-            persistent = ${boolToString cfg.store.settings.persistent}
-            xenstored-log-file = ${cfg.store.settings.xenstored.log.file}
-            xenstored-log-level = ${
-              if isNull cfg.store.settings.xenstored.log.level then
-                "null"
-              else
-                cfg.store.settings.xenstored.log.level
-            }
-            xenstored-log-nb-files = ${toString cfg.store.settings.xenstored.log.nbFiles}
-            access-log-file = ${cfg.store.settings.xenstored.accessLog.file}
-            access-log-nb-lines = ${toString cfg.store.settings.xenstored.accessLog.nbLines}
-            acesss-log-nb-chars = ${toString cfg.store.settings.xenstored.accessLog.nbChars}
-            access-log-special-ops = ${boolToString cfg.store.settings.xenstored.accessLog.specialOps}
-            ring-scan-interval = ${toString cfg.store.settings.ringScanInterval}
-            xenstored-kva = ${cfg.store.settings.xenstored.xenfs.kva}
-            xenstored-port = ${cfg.store.settings.xenstored.xenfs.port}
-          '';
+      # Set up Xen Domain 0 configuration files.
+      {
+        "xen/xl.conf".source = "${cfg.package}/etc/xen/xl.conf"; # TODO: Add options to configure xl.conf declaratively. It's worth considering making a new "xl value" type, as it could be reused to produce xl.cfg (domain definition) files.
+        "xen/scripts-xen" = {
+          source = "${cfg.package}/etc/xen/scripts/*";
+          target = "xen/scripts";
         };
+        "default/xencommons".text = ''
+          source ${cfg.package}/etc/default/xencommons
+
+          XENSTORED="${cfg.store.path}"
+          QEMU_XEN="${cfg.qemu.package}/${cfg.qemu.package.qemu-system-i386}"
+          ${optionalString cfg.trace ''
+            XENSTORED_TRACE=yes
+            XENCONSOLED_TRACE=all
+          ''}
+        '';
+        "default/xendomains".text = ''
+          source ${cfg.package}/etc/default/xendomains
+
+          ${cfg.domains.extraConfig}
+        '';
+      }
+      # The OCaml-based Xen Store Daemon requires /etc/xen/oxenstored.conf to start.
+      // optionalAttrs (cfg.store.type == "ocaml") {
+        "xen/oxenstored.conf".text = ''
+          pid-file = ${cfg.store.settings.pidFile}
+          test-eagain = ${boolToString cfg.store.settings.testEAGAIN}
+          merge-activate = ${toString cfg.store.settings.enableMerge}
+          conflict-burst-limit = ${toString cfg.store.settings.conflict.burstLimit}
+          conflict-max-history-seconds = ${toString cfg.store.settings.conflict.maxHistorySeconds}
+          conflict-rate-limit-is-aggregate = ${toString cfg.store.settings.conflict.rateLimitIsAggregate}
+          perms-activate = ${toString cfg.store.settings.perms.enable}
+          perms-watch-activate = ${toString cfg.store.settings.perms.enableWatch}
+          quota-activate = ${toString cfg.store.settings.quota.enable}
+          quota-maxentity = ${toString cfg.store.settings.quota.maxEntity}
+          quota-maxsize = ${toString cfg.store.settings.quota.maxSize}
+          quota-maxwatch = ${toString cfg.store.settings.quota.maxWatch}
+          quota-transaction = ${toString cfg.store.settings.quota.transaction}
+          quota-maxrequests = ${toString cfg.store.settings.quota.maxRequests}
+          quota-path-max = ${toString cfg.store.settings.quota.maxPath}
+          quota-maxoutstanding = ${toString cfg.store.settings.quota.maxOutstanding}
+          quota-maxwatchevents = ${toString cfg.store.settings.quota.maxWatchEvents}
+          persistent = ${boolToString cfg.store.settings.persistent}
+          xenstored-log-file = ${cfg.store.settings.xenstored.log.file}
+          xenstored-log-level = ${
+            if isNull cfg.store.settings.xenstored.log.level then
+              "null"
+            else
+              cfg.store.settings.xenstored.log.level
+          }
+          xenstored-log-nb-files = ${toString cfg.store.settings.xenstored.log.nbFiles}
+          access-log-file = ${cfg.store.settings.xenstored.accessLog.file}
+          access-log-nb-lines = ${toString cfg.store.settings.xenstored.accessLog.nbLines}
+          acesss-log-nb-chars = ${toString cfg.store.settings.xenstored.accessLog.nbChars}
+          access-log-special-ops = ${boolToString cfg.store.settings.xenstored.accessLog.specialOps}
+          ring-scan-interval = ${toString cfg.store.settings.ringScanInterval}
+          xenstored-kva = ${cfg.store.settings.xenstored.xenfs.kva}
+          xenstored-port = ${cfg.store.settings.xenstored.xenfs.port}
+        '';
+      };
     };
 
     # Xen provides udev rules.

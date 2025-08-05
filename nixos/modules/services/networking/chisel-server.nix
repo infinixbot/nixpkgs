@@ -60,16 +60,16 @@ in
 
       serviceConfig = {
         ExecStart =
-          "${pkgs.chisel}/bin/chisel server "
-          + lib.concatStringsSep " " (
-            lib.optional (cfg.host != null) "--host ${cfg.host}"
-            ++ lib.optional (cfg.port != null) "--port ${builtins.toString cfg.port}"
-            ++ lib.optional (cfg.authfile != null) "--authfile ${cfg.authfile}"
-            ++ lib.optional (cfg.keepalive != null) "--keepalive ${cfg.keepalive}"
-            ++ lib.optional (cfg.backend != null) "--backend ${cfg.backend}"
-            ++ lib.optional cfg.socks5 "--socks5"
-            ++ lib.optional cfg.reverse "--reverse"
-          );
+        "${pkgs.chisel}/bin/chisel server "
+        + lib.concatStringsSep " " (
+          lib.optional (cfg.host != null) "--host ${cfg.host}"
+          ++ lib.optional (cfg.port != null) "--port ${builtins.toString cfg.port}"
+          ++ lib.optional (cfg.authfile != null) "--authfile ${cfg.authfile}"
+          ++ lib.optional (cfg.keepalive != null) "--keepalive ${cfg.keepalive}"
+          ++ lib.optional (cfg.backend != null) "--backend ${cfg.backend}"
+          ++ lib.optional cfg.socks5 "--socks5"
+          ++ lib.optional cfg.reverse "--reverse"
+        );
 
         # Security Hardening
         # Refer to systemd.exec(5) for option descriptions.

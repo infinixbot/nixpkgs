@@ -441,13 +441,13 @@ in
         description = "Migrate davis database";
         before = [ "phpfpm-davis.service" ];
         after =
-          lib.optional mysqlLocal "mysql.service"
-          ++ lib.optional pgsqlLocal "postgresql.target"
-          ++ [ "davis-env-setup.service" ];
+        lib.optional mysqlLocal "mysql.service"
+        ++ lib.optional pgsqlLocal "postgresql.target"
+        ++ [ "davis-env-setup.service" ];
         requires =
-          lib.optional mysqlLocal "mysql.service"
-          ++ lib.optional pgsqlLocal "postgresql.target"
-          ++ [ "davis-env-setup.service" ];
+        lib.optional mysqlLocal "mysql.service"
+        ++ lib.optional pgsqlLocal "postgresql.target"
+        ++ [ "davis-env-setup.service" ];
         wantedBy = [ "multi-user.target" ];
         serviceConfig = defaultServiceConfig // {
           Type = "oneshot";

@@ -327,10 +327,10 @@ pipe
         ;
 
       preConfigure =
-        (callFile ./common/pre-configure.nix { })
-        + optionalString atLeast10 ''
-          ln -sf ${libxcrypt}/include/crypt.h libsanitizer/sanitizer_common/crypt.h
-        '';
+      (callFile ./common/pre-configure.nix { })
+      + optionalString atLeast10 ''
+        ln -sf ${libxcrypt}/include/crypt.h libsanitizer/sanitizer_common/crypt.h
+      '';
 
       dontDisableStatic = true;
 
@@ -350,12 +350,12 @@ pipe
         if atLeast11 then
           let
             target =
-              optionalString (profiledCompiler) "profiled"
-              + optionalString (
-                (lib.systems.equals targetPlatform hostPlatform)
-                && (lib.systems.equals hostPlatform buildPlatform)
-                && !disableBootstrap
-              ) "bootstrap";
+            optionalString (profiledCompiler) "profiled"
+            + optionalString (
+              (lib.systems.equals targetPlatform hostPlatform)
+              && (lib.systems.equals hostPlatform buildPlatform)
+              && !disableBootstrap
+            ) "bootstrap";
           in
           optional (target != "") target
         else
@@ -426,23 +426,23 @@ pipe
           ;
         isGNU = true;
         hardeningUnsupportedFlags =
-          optional (!atLeast11) "zerocallusedregs"
-          ++ optionals (!atLeast12) [
-            "fortify3"
-            "trivialautovarinit"
-          ]
-          ++ optionals (!atLeast13) [
-            "strictflexarrays1"
-            "strictflexarrays3"
-          ]
-          ++ optional (
-            !(targetPlatform.isLinux && targetPlatform.isx86_64 && targetPlatform.libc == "glibc")
-          ) "shadowstack"
-          ++ optional (!(targetPlatform.isLinux && targetPlatform.isAarch64)) "pacret"
-          ++ optionals (langFortran) [
-            "fortify"
-            "format"
-          ];
+        optional (!atLeast11) "zerocallusedregs"
+        ++ optionals (!atLeast12) [
+          "fortify3"
+          "trivialautovarinit"
+        ]
+        ++ optionals (!atLeast13) [
+          "strictflexarrays1"
+          "strictflexarrays3"
+        ]
+        ++ optional (
+          !(targetPlatform.isLinux && targetPlatform.isx86_64 && targetPlatform.libc == "glibc")
+        ) "shadowstack"
+        ++ optional (!(targetPlatform.isLinux && targetPlatform.isAarch64)) "pacret"
+        ++ optionals (langFortran) [
+          "fortify"
+          "format"
+        ];
       };
 
       enableParallelBuilding = true;

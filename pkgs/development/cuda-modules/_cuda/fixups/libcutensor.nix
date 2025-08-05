@@ -5,10 +5,10 @@
 }:
 finalAttrs: prevAttrs: {
   buildInputs =
-    prevAttrs.buildInputs or [ ]
-    ++ [ (lib.getLib libcublas) ]
-    # For some reason, the 1.4.x release of cuTENSOR requires the cudart library.
-    ++ lib.optionals (lib.hasPrefix "1.4" finalAttrs.version) [ (lib.getLib cuda_cudart) ];
+  prevAttrs.buildInputs or [ ]
+  ++ [ (lib.getLib libcublas) ]
+  # For some reason, the 1.4.x release of cuTENSOR requires the cudart library.
+  ++ lib.optionals (lib.hasPrefix "1.4" finalAttrs.version) [ (lib.getLib cuda_cudart) ];
   meta = prevAttrs.meta or { } // {
     description = "cuTENSOR: A High-Performance CUDA Library For Tensor Primitives";
     homepage = "https://developer.nvidia.com/cutensor";

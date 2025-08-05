@@ -20,15 +20,15 @@ let
   knownHosts = builtins.attrValues cfg.knownHosts;
 
   knownHostsText =
-    (lib.flip (lib.concatMapStringsSep "\n") knownHosts (
-      h:
-      assert h.hostNames != [ ];
-      lib.optionalString h.certAuthority "@cert-authority "
-      + builtins.concatStringsSep "," h.hostNames
-      + " "
-      + (if h.publicKey != null then h.publicKey else builtins.readFile h.publicKeyFile)
-    ))
-    + "\n";
+  (lib.flip (lib.concatMapStringsSep "\n") knownHosts (
+    h:
+    assert h.hostNames != [ ];
+    lib.optionalString h.certAuthority "@cert-authority "
+    + builtins.concatStringsSep "," h.hostNames
+    + " "
+    + (if h.publicKey != null then h.publicKey else builtins.readFile h.publicKeyFile)
+  ))
+  + "\n";
 
   knownHostsFiles = [
     "/etc/ssh/ssh_known_hosts"
@@ -379,10 +379,10 @@ in
       serviceConfig = {
         ExecStartPre = "${pkgs.coreutils}/bin/rm -f %t/ssh-agent";
         ExecStart =
-          "${cfg.package}/bin/ssh-agent "
-          + lib.optionalString (cfg.agentTimeout != null) ("-t ${cfg.agentTimeout} ")
-          + lib.optionalString (cfg.agentPKCS11Whitelist != null) ("-P ${cfg.agentPKCS11Whitelist} ")
-          + "-a %t/ssh-agent";
+        "${cfg.package}/bin/ssh-agent "
+        + lib.optionalString (cfg.agentTimeout != null) ("-t ${cfg.agentTimeout} ")
+        + lib.optionalString (cfg.agentPKCS11Whitelist != null) ("-P ${cfg.agentPKCS11Whitelist} ")
+        + "-a %t/ssh-agent";
         StandardOutput = "null";
         Type = "forking";
         Restart = "on-failure";

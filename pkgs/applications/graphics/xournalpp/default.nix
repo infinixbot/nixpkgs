@@ -52,24 +52,24 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    lib.optionals stdenv.hostPlatform.isLinux [
-      alsa-lib
-    ]
-    ++ [
-      glib
-      gsettings-desktop-schemas
-      gtk3
-      gtksourceview4
-      librsvg
-      libsndfile
-      libxml2
-      libzip
-      pcre
-      poppler
-      portaudio
-      zlib
-    ]
-    ++ lib.optional withLua lua;
+  lib.optionals stdenv.hostPlatform.isLinux [
+    alsa-lib
+  ]
+  ++ [
+    glib
+    gsettings-desktop-schemas
+    gtk3
+    gtksourceview4
+    librsvg
+    libsndfile
+    libxml2
+    libzip
+    pcre
+    poppler
+    portaudio
+    zlib
+  ]
+  ++ lib.optional withLua lua;
 
   buildFlags = [ "translations" ];
 

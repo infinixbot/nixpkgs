@@ -13,10 +13,10 @@ stdenv.mkDerivation rec {
   };
 
   configureFlags =
-    lib.optional stdenv.hostPlatform.is64bit "--enable-64bit"
-    # libantlr3c wrongly emits the abi flags -m64 and -m32 which imply x86 archs
-    # https://github.com/antlr/antlr3/issues/205
-    ++ lib.optional (!stdenv.hostPlatform.isx86) "--disable-abiflags";
+  lib.optional stdenv.hostPlatform.is64bit "--enable-64bit"
+  # libantlr3c wrongly emits the abi flags -m64 and -m32 which imply x86 archs
+  # https://github.com/antlr/antlr3/issues/205
+  ++ lib.optional (!stdenv.hostPlatform.isx86) "--disable-abiflags";
 
   meta = with lib; {
     description = "C runtime libraries of ANTLR v3";

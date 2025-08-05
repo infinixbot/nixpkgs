@@ -71,16 +71,16 @@ buildPythonPackage rec {
   dontUseCmakeConfigure = true;
 
   buildInputs =
-    (lib.optionals stdenv.cc.isClang [ llvmPackages.openmp ])
-    ++ (lib.optionals gpuSupport [
-      boost
-      ocl-icd
-      opencl-headers
-    ])
-    ++ lib.optionals cudaSupport [
-      cudaPackages.cuda_nvcc
-      cudaPackages.cuda_cudart
-    ];
+  (lib.optionals stdenv.cc.isClang [ llvmPackages.openmp ])
+  ++ (lib.optionals gpuSupport [
+    boost
+    ocl-icd
+    opencl-headers
+  ])
+  ++ lib.optionals cudaSupport [
+    cudaPackages.cuda_nvcc
+    cudaPackages.cuda_cudart
+  ];
 
   dependencies = [
     numpy
@@ -88,8 +88,8 @@ buildPythonPackage rec {
   ];
 
   pypaBuildFlags =
-    lib.optionals gpuSupport [ "--config-setting=cmake.define.USE_GPU=ON" ]
-    ++ lib.optionals cudaSupport [ "--config-setting=cmake.define.USE_CUDA=ON" ];
+  lib.optionals gpuSupport [ "--config-setting=cmake.define.USE_GPU=ON" ]
+  ++ lib.optionals cudaSupport [ "--config-setting=cmake.define.USE_CUDA=ON" ];
 
   optional-dependencies = {
     arrow = [

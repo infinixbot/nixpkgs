@@ -30,24 +30,24 @@ mkDerivation (
     patches = (args.patches or [ ]) ++ (patches.${pname} or [ ]);
 
     buildInputs =
-      args.buildInputs or [ ]
-      # Per https://doc.qt.io/qt-5/macos.html#supported-versions
-      ++ lib.optionals stdenv.hostPlatform.isDarwin [
-        apple-sdk_14
-      ];
+    args.buildInputs or [ ]
+    # Per https://doc.qt.io/qt-5/macos.html#supported-versions
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      apple-sdk_14
+    ];
 
     nativeBuildInputs =
-      (args.nativeBuildInputs or [ ])
-      ++ [
-        perl
-        qmake
-      ]
-      ++ lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [
-        pkgsHostTarget.qt5.qtbase.dev
-      ];
+    (args.nativeBuildInputs or [ ])
+    ++ [
+      perl
+      qmake
+    ]
+    ++ lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [
+      pkgsHostTarget.qt5.qtbase.dev
+    ];
     propagatedBuildInputs =
-      (lib.warnIf (args ? qtInputs) "qt5.qtModule's qtInputs argument is deprecated" args.qtInputs or [ ])
-      ++ (args.propagatedBuildInputs or [ ]);
+    (lib.warnIf (args ? qtInputs) "qt5.qtModule's qtInputs argument is deprecated" args.qtInputs or [ ])
+    ++ (args.propagatedBuildInputs or [ ]);
   }
   // lib.optionalAttrs (stdenv.buildPlatform != stdenv.hostPlatform) {
     depsBuildBuild = [ buildPackages.stdenv.cc ] ++ (args.depsBuildBuild or [ ]);

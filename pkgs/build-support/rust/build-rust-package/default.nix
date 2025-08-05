@@ -124,20 +124,20 @@ lib.extendMkDerivation {
       cargoCheckFeatures = checkFeatures;
 
       nativeBuildInputs =
-        nativeBuildInputs
-        ++ lib.optionals auditable [
-          (buildPackages.cargo-auditable-cargo-wrapper.override {
-            inherit cargo cargo-auditable;
-          })
-        ]
-        ++ [
-          cargoBuildHook
-          (if useNextest then cargoNextestHook else cargoCheckHook)
-          cargoInstallHook
-          cargoSetupHook
-          rustc
-          cargo
-        ];
+      nativeBuildInputs
+      ++ lib.optionals auditable [
+        (buildPackages.cargo-auditable-cargo-wrapper.override {
+          inherit cargo cargo-auditable;
+        })
+      ]
+      ++ [
+        cargoBuildHook
+        (if useNextest then cargoNextestHook else cargoCheckHook)
+        cargoInstallHook
+        cargoSetupHook
+        rustc
+        cargo
+      ];
 
       buildInputs = buildInputs ++ lib.optionals stdenv.hostPlatform.isMinGW [ windows.pthreads ];
 

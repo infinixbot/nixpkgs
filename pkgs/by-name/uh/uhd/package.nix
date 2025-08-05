@@ -69,26 +69,26 @@ stdenv.mkDerivation (finalAttrs: {
   # be useful if you want to build a development environment with a python
   # interpreter able to import the uhd module.
   pythonPath =
-    optionals (enablePythonApi || enableUtils) [
-      python3.pkgs.numpy
-      python3.pkgs.setuptools
-    ]
-    ++ optionals (enableUtils) [
-      python3.pkgs.requests
-      python3.pkgs.six
+  optionals (enablePythonApi || enableUtils) [
+    python3.pkgs.numpy
+    python3.pkgs.setuptools
+  ]
+  ++ optionals (enableUtils) [
+    python3.pkgs.requests
+    python3.pkgs.six
 
-      /*
-        These deps are needed for the usrp_hwd.py utility, however even if they
-        would have been added here, the utility wouldn't have worked because it
-        depends on an old python library mprpc that is not supported for Python >
-        3.8. See also report upstream:
-        https://github.com/EttusResearch/uhd/issues/744
+    /*
+      These deps are needed for the usrp_hwd.py utility, however even if they
+      would have been added here, the utility wouldn't have worked because it
+      depends on an old python library mprpc that is not supported for Python >
+      3.8. See also report upstream:
+      https://github.com/EttusResearch/uhd/issues/744
 
-        python3.pkgs.gevent
-        python3.pkgs.pyudev
-        python3.pkgs.pyroute2
-      */
-    ];
+      python3.pkgs.gevent
+      python3.pkgs.pyudev
+      python3.pkgs.pyroute2
+    */
+  ];
   passthru = {
     runtimePython = python3.withPackages (ps: finalAttrs.pythonPath);
     updateScript = [
@@ -161,18 +161,18 @@ stdenv.mkDerivation (finalAttrs: {
     python3.pkgs.wrapPython
   ];
   buildInputs =
-    finalAttrs.pythonPath
-    ++ [
-      boost
-      libusb1
-    ]
-    ++ optionals (enableExamples) [
-      ncurses
-      ncurses.dev
-    ]
-    ++ optionals (enableDpdk) [
-      dpdk
-    ];
+  finalAttrs.pythonPath
+  ++ [
+    boost
+    libusb1
+  ]
+  ++ optionals (enableExamples) [
+    ncurses
+    ncurses.dev
+  ]
+  ++ optionals (enableDpdk) [
+    dpdk
+  ];
 
   # many tests fails on darwin, according to ofborg
   doCheck = !stdenv.hostPlatform.isDarwin;

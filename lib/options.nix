@@ -330,7 +330,7 @@ rec {
       defaults
       // {
         description =
-          "The ${name'} package to use." + (if extraDescription == "" then "" else " ") + extraDescription;
+        "The ${name'} package to use." + (if extraDescription == "" then "" else " ") + extraDescription;
         type = with lib.types; (if nullable then nullOr else lib.id) package;
       }
       // optionalAttrs (example != null) {

@@ -40,15 +40,15 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    lib.optionals withGurobi [
-      gurobi
-    ]
-    ++ lib.optionals withCplex [
-      cplex
-    ]
-    ++ lib.optionals withLpsolve [
-      lp_solve
-    ];
+  lib.optionals withGurobi [
+    gurobi
+  ]
+  ++ lib.optionals withCplex [
+    cplex
+  ]
+  ++ lib.optionals withLpsolve [
+    lp_solve
+  ];
 
   cmakeFlags = [
     (lib.cmakeBool "BUILD_TESTS" doCheck)

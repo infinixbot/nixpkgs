@@ -53,15 +53,15 @@ let
 
     # These are in inverse order for first packages to override the next ones.
     paths =
-      extraPackages
-      ++ lib.optional (theme != null) ptheme
-      ++ lib.optional enableDFHack dfhack'
-      ++ lib.optional enableSoundSense soundSense
-      ++ lib.optionals enableTWBT' [
-        twbt.lib
-        twbt.art
-      ]
-      ++ [ dwarf-fortress ];
+    extraPackages
+    ++ lib.optional (theme != null) ptheme
+    ++ lib.optional enableDFHack dfhack'
+    ++ lib.optional enableSoundSense soundSense
+    ++ lib.optionals enableTWBT' [
+      twbt.lib
+      twbt.art
+    ]
+    ++ [ dwarf-fortress ];
 
     ignoreCollisions = true;
   };

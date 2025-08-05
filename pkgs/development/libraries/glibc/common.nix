@@ -203,12 +203,12 @@ stdenv.mkDerivation (
     ++ lib.optional withGd "--with-gd";
 
     makeFlags =
-      (args.makeFlags or [ ])
-      ++ [ "OBJCOPY=${stdenv.cc.targetPrefix}objcopy" ]
-      ++ lib.optionals (stdenv.cc.libc != null) [
-        "BUILD_LDFLAGS=-Wl,-rpath,${stdenv.cc.libc}/lib"
-        "OBJDUMP=${stdenv.cc.bintools.bintools}/bin/objdump"
-      ];
+    (args.makeFlags or [ ])
+    ++ [ "OBJCOPY=${stdenv.cc.targetPrefix}objcopy" ]
+    ++ lib.optionals (stdenv.cc.libc != null) [
+      "BUILD_LDFLAGS=-Wl,-rpath,${stdenv.cc.libc}/lib"
+      "OBJDUMP=${stdenv.cc.bintools.bintools}/bin/objdump"
+    ];
 
     postInstall = (args.postInstall or "") + ''
       moveToOutput bin/getent $getent

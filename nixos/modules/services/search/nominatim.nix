@@ -145,22 +145,22 @@ in
   config =
     let
       nominatimSuperUserDsn =
-        "pgsql:dbname=${cfg.database.dbname};"
-        + "user=${cfg.database.superUser}"
-        + lib.optionalString (cfg.database.extraConnectionParams != null) (
-          ";" + cfg.database.extraConnectionParams
-        );
+      "pgsql:dbname=${cfg.database.dbname};"
+      + "user=${cfg.database.superUser}"
+      + lib.optionalString (cfg.database.extraConnectionParams != null) (
+        ";" + cfg.database.extraConnectionParams
+      );
 
       nominatimApiDsn =
-        "pgsql:dbname=${cfg.database.dbname}"
-        + lib.optionalString (!localDb) (
-          ";host=${cfg.database.host};"
-          + "port=${toString cfg.database.port};"
-          + "user=${cfg.database.apiUser}"
-        )
-        + lib.optionalString (cfg.database.extraConnectionParams != null) (
-          ";" + cfg.database.extraConnectionParams
-        );
+      "pgsql:dbname=${cfg.database.dbname}"
+      + lib.optionalString (!localDb) (
+        ";host=${cfg.database.host};"
+        + "port=${toString cfg.database.port};"
+        + "user=${cfg.database.apiUser}"
+      )
+      + lib.optionalString (cfg.database.extraConnectionParams != null) (
+        ";" + cfg.database.extraConnectionParams
+      );
     in
     lib.mkIf cfg.enable {
       # CLI package

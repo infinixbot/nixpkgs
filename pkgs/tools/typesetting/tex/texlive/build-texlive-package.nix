@@ -90,16 +90,16 @@ let
 
   # containers that will be built by Hydra
   outputs =
-    lib.optional hasBinfiles "out"
-    ++ lib.optional hasRunfiles "tex"
-    ++ lib.optional hasDocfiles "texdoc"
-    ++
-      # omit building sources, since as far as we know, installing them is not common
-      # the sources will still be available under drv.texsource
-      # lib.optional hasSource "texsource" ++
-      lib.optional hasTlpkg "tlpkg"
-    ++ lib.optional hasManpages "man"
-    ++ lib.optional hasInfo "info";
+  lib.optional hasBinfiles "out"
+  ++ lib.optional hasRunfiles "tex"
+  ++ lib.optional hasDocfiles "texdoc"
+  ++
+    # omit building sources, since as far as we know, installing them is not common
+    # the sources will still be available under drv.texsource
+    # lib.optional hasSource "texsource" ++
+    lib.optional hasTlpkg "tlpkg"
+  ++ lib.optional hasManpages "man"
+  ++ lib.optional hasInfo "info";
   outputDrvs = lib.getAttrs outputs containers;
 
   passthru = {
@@ -176,13 +176,13 @@ let
 
   # fake derivation for resolving dependencies in the absence of a "tex" containers
   fakeTeX =
-    passthru
-    // {
-      inherit meta;
-      tlOutputName = "tex";
-      inherit build;
-    }
-    // outputDrvs;
+  passthru
+  // {
+    inherit meta;
+    tlOutputName = "tex";
+    inherit build;
+  }
+  // outputDrvs;
 
   containers = rec {
     tex = mkContainer "run" "tex" sha512.run;
@@ -192,77 +192,77 @@ let
 
     # bin container
     out =
-      runCommand "${name}"
-        {
-          inherit meta;
-          passthru = passthru // {
-            tlOutputName = "out";
-          };
-          # shebang interpreters
-          buildInputs =
-            let
-              outName = builtins.replaceStrings [ "-" ] [ "_" ] pname;
-            in
-            [
-              texliveBinaries.core.${outName} or null
-              texliveBinaries.${pname} or null
-              texliveBinaries.core-big.${outName} or null
-            ]
-            ++ (args.extraBuildInputs or [ ])
-            ++ [
-              bash
-              perl
-            ]
-            ++ (lib.attrVals (args.scriptExts or [ ]) extToInput);
-          nativeBuildInputs = extraNativeBuildInputs;
-          # absolute scripts folder
-          scriptsFolder = lib.optionals (hasRunfiles && tex ? outPath) (
-            map (f: tex.outPath + "/scripts/" + f) (lib.toList args.scriptsFolder or pname)
-          );
-          # binaries info
-          inherit (args) binfiles;
-          binlinks = builtins.attrNames (args.binlinks or { });
-          bintargets = builtins.attrValues (args.binlinks or { });
-          # build scripts
-          patchScripts = ./patch-scripts.sed;
-          makeBinContainers = ./make-bin-containers.sh;
-        }
-        ''
-          . "$makeBinContainers"
-          ${args.postFixup or ""}
-        ''
-      // outputDrvs;
+    runCommand "${name}"
+      {
+        inherit meta;
+        passthru = passthru // {
+          tlOutputName = "out";
+        };
+        # shebang interpreters
+        buildInputs =
+          let
+            outName = builtins.replaceStrings [ "-" ] [ "_" ] pname;
+          in
+          [
+            texliveBinaries.core.${outName} or null
+            texliveBinaries.${pname} or null
+            texliveBinaries.core-big.${outName} or null
+          ]
+          ++ (args.extraBuildInputs or [ ])
+          ++ [
+            bash
+            perl
+          ]
+          ++ (lib.attrVals (args.scriptExts or [ ]) extToInput);
+        nativeBuildInputs = extraNativeBuildInputs;
+        # absolute scripts folder
+        scriptsFolder = lib.optionals (hasRunfiles && tex ? outPath) (
+          map (f: tex.outPath + "/scripts/" + f) (lib.toList args.scriptsFolder or pname)
+        );
+        # binaries info
+        inherit (args) binfiles;
+        binlinks = builtins.attrNames (args.binlinks or { });
+        bintargets = builtins.attrValues (args.binlinks or { });
+        # build scripts
+        patchScripts = ./patch-scripts.sed;
+        makeBinContainers = ./make-bin-containers.sh;
+      }
+      ''
+        . "$makeBinContainers"
+        ${args.postFixup or ""}
+      ''
+    // outputDrvs;
 
     # build man, info containers
     man =
-      removeAttrs (runCommand "${name}-man"
-        {
-          inherit meta texdoc;
-          passthru = passthru // {
-            tlOutputName = "man";
-          };
-        }
-        ''
-          mkdir -p "$out"/share
-          ln -s {"$texdoc"/doc,"$out"/share}/man
-        ''
-      ) [ "out" ]
-      // outputDrvs;
+    removeAttrs (runCommand "${name}-man"
+      {
+        inherit meta texdoc;
+        passthru = passthru // {
+          tlOutputName = "man";
+        };
+      }
+      ''
+        mkdir -p "$out"/share
+        ln -s {"$texdoc"/doc,"$out"/share}/man
+      ''
+    ) [ "out" ]
+    // outputDrvs;
 
     info =
-      removeAttrs (runCommand "${name}-info"
-        {
-          inherit meta texdoc;
-          passthru = passthru // {
-            tlOutputName = "info";
-          };
-        }
-        ''
-          mkdir -p "$out"/share
-          ln -s {"$texdoc"/doc,"$out"/share}/info
-        ''
-      ) [ "out" ]
-      // outputDrvs;
+    removeAttrs (runCommand "${name}-info"
+      {
+        inherit meta texdoc;
+        passthru = passthru // {
+          tlOutputName = "info";
+        };
+      }
+      ''
+        mkdir -p "$out"/share
+        ln -s {"$texdoc"/doc,"$out"/share}/info
+      ''
+    ) [ "out" ]
+    // outputDrvs;
   };
 
   # multioutput derivation to be exported under texlivePackages

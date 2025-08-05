@@ -125,19 +125,19 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   configureFlags =
-    lib.optionals finalAttrs.doInstallCheck [
-      "--enable-unit"
-      "--enable-integration"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      # sys/prctl.h required
-      "--disable-tcti-cmd"
-      # uchar.h required
-      "--disable-fapi"
-      "--disable-policy"
-      # uses fallocate
-      "--disable-tcti-libtpms"
-    ];
+  lib.optionals finalAttrs.doInstallCheck [
+    "--enable-unit"
+    "--enable-integration"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    # sys/prctl.h required
+    "--disable-tcti-cmd"
+    # uchar.h required
+    "--disable-fapi"
+    "--disable-policy"
+    # uses fallocate
+    "--disable-tcti-libtpms"
+  ];
 
   postInstall = ''
     # Do not install the upstream udev rules, they rely on specific

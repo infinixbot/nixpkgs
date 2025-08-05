@@ -236,8 +236,8 @@ stdenvNoCC.mkDerivation (
         lib.optionalAttrs ((args'.runtimeId or null) == null) rec {
           dotnetRuntimeIds = map (system: dotnetCorePackages.systemToDotnetRid system) meta.platforms;
           buildInputs =
-            old.buildInputs
-            ++ lib.concatLists (lib.attrValues (lib.getAttrs dotnetRuntimeIds dotnet-sdk.targetPackages));
+          old.buildInputs
+          ++ lib.concatLists (lib.attrValues (lib.getAttrs dotnetRuntimeIds dotnet-sdk.targetPackages));
         };
     } args'' finalAttrs
   else

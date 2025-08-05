@@ -306,8 +306,8 @@ in
             d: builtins.elemAt (builtins.split "[^/]*(/.+)" d) 1
           ) cfg.settings.shares.directories;
           ReadWritePaths =
-            (lib.optional (cfg.settings.directories.incomplete != null) cfg.settings.directories.incomplete)
-            ++ (lib.optional (cfg.settings.directories.downloads != null) cfg.settings.directories.downloads);
+          (lib.optional (cfg.settings.directories.incomplete != null) cfg.settings.directories.incomplete)
+          ++ (lib.optional (cfg.settings.directories.downloads != null) cfg.settings.directories.downloads);
           LockPersonality = true;
           NoNewPrivileges = true;
           PrivateDevices = true;

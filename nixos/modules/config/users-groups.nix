@@ -585,13 +585,13 @@ let
           id = toString (getAttr idAttr (getAttr name set));
           exists = hasAttr id acc;
           newAcc =
-            acc
-            // (listToAttrs [
-              {
-                name = id;
-                value = true;
-              }
-            ]);
+          acc
+          // (listToAttrs [
+            {
+              name = id;
+              value = true;
+            }
+          ]);
         in
         if dup then
           args
@@ -1190,81 +1190,81 @@ in
       );
 
       warnings =
-        flip concatMap (attrValues cfg.users) (
-          user:
-          let
-            passwordOptions = [
-              "hashedPassword"
-              "hashedPasswordFile"
-              "password"
-            ]
-            ++ optionals cfg.mutableUsers [
-              # For immutable users, initialHashedPassword is set to hashedPassword,
-              # so using these options would always trigger the assertion.
-              "initialHashedPassword"
-              "initialPassword"
-            ];
-            unambiguousPasswordConfiguration =
-              1 >= length (filter (x: x != null) (map (flip getAttr user) passwordOptions));
-          in
-          optional (!unambiguousPasswordConfiguration) ''
-            The user '${user.name}' has multiple of the options
-            `initialHashedPassword`, `hashedPassword`, `initialPassword`, `password`
-            & `hashedPasswordFile` set to a non-null value.
+      flip concatMap (attrValues cfg.users) (
+        user:
+        let
+          passwordOptions = [
+            "hashedPassword"
+            "hashedPasswordFile"
+            "password"
+          ]
+          ++ optionals cfg.mutableUsers [
+            # For immutable users, initialHashedPassword is set to hashedPassword,
+            # so using these options would always trigger the assertion.
+            "initialHashedPassword"
+            "initialPassword"
+          ];
+          unambiguousPasswordConfiguration =
+            1 >= length (filter (x: x != null) (map (flip getAttr user) passwordOptions));
+        in
+        optional (!unambiguousPasswordConfiguration) ''
+          The user '${user.name}' has multiple of the options
+          `initialHashedPassword`, `hashedPassword`, `initialPassword`, `password`
+          & `hashedPasswordFile` set to a non-null value.
 
-            ${multiplePasswordsWarning}
-            ${overrideOrderText cfg.mutableUsers}
-            The values of these options are:
-            ${concatMapStringsSep "\n" (
-              value: "* users.users.\"${user.name}\".${value}: ${generators.toPretty { } user.${value}}"
-            ) passwordOptions}
-          ''
+          ${multiplePasswordsWarning}
+          ${overrideOrderText cfg.mutableUsers}
+          The values of these options are:
+          ${concatMapStringsSep "\n" (
+            value: "* users.users.\"${user.name}\".${value}: ${generators.toPretty { } user.${value}}"
+          ) passwordOptions}
+        ''
+      )
+      ++ filter (x: x != null) (
+        flip mapAttrsToList cfg.users (
+          _: user:
+          # This regex matches a subset of the Modular Crypto Format (MCF)[1]
+          # informal standard. Since this depends largely on the OS or the
+          # specific implementation of crypt(3) we only support the (sane)
+          # schemes implemented by glibc and BSDs. In particular the original
+          # DES hash is excluded since, having no structure, it would validate
+          # common mistakes like typing the plaintext password.
+          #
+          # [1]: https://en.wikipedia.org/wiki/Crypt_(C)
+          let
+            sep = "\\$";
+            base64 = "[a-zA-Z0-9./]+";
+            id = cryptSchemeIdPatternGroup;
+            name = "[a-z0-9-]+";
+            value = "[a-zA-Z0-9/+.-]+";
+            options = "${name}(=${value})?(,${name}=${value})*";
+            scheme = "${id}(${sep}${options})?";
+            content = "${base64}${sep}${base64}(${sep}${base64})?";
+            mcf = "^${sep}${scheme}${sep}${content}$";
+          in
+          if
+            (
+              allowsLogin user.hashedPassword
+              && user.hashedPassword != "" # login without password
+              && match mcf user.hashedPassword == null
+            )
+          then
+            ''
+              The password hash of user "${user.name}" may be invalid. You must set a
+              valid hash or the user will be locked out of their account. Please
+              check the value of option `users.users."${user.name}".hashedPassword`.''
+          else
+            null
         )
-        ++ filter (x: x != null) (
-          flip mapAttrsToList cfg.users (
-            _: user:
-            # This regex matches a subset of the Modular Crypto Format (MCF)[1]
-            # informal standard. Since this depends largely on the OS or the
-            # specific implementation of crypt(3) we only support the (sane)
-            # schemes implemented by glibc and BSDs. In particular the original
-            # DES hash is excluded since, having no structure, it would validate
-            # common mistakes like typing the plaintext password.
-            #
-            # [1]: https://en.wikipedia.org/wiki/Crypt_(C)
-            let
-              sep = "\\$";
-              base64 = "[a-zA-Z0-9./]+";
-              id = cryptSchemeIdPatternGroup;
-              name = "[a-z0-9-]+";
-              value = "[a-zA-Z0-9/+.-]+";
-              options = "${name}(=${value})?(,${name}=${value})*";
-              scheme = "${id}(${sep}${options})?";
-              content = "${base64}${sep}${base64}(${sep}${base64})?";
-              mcf = "^${sep}${scheme}${sep}${content}$";
-            in
-            if
-              (
-                allowsLogin user.hashedPassword
-                && user.hashedPassword != "" # login without password
-                && match mcf user.hashedPassword == null
-              )
-            then
-              ''
-                The password hash of user "${user.name}" may be invalid. You must set a
-                valid hash or the user will be locked out of their account. Please
-                check the value of option `users.users."${user.name}".hashedPassword`.''
-            else
-              null
-          )
-          ++ flip mapAttrsToList cfg.users (
-            name: user:
-            if user.passwordFile != null then
-              ''The option `users.users."${name}".passwordFile' has been renamed ''
-              + ''to `users.users."${name}".hashedPasswordFile'.''
-            else
-              null
-          )
-        );
+        ++ flip mapAttrsToList cfg.users (
+          name: user:
+          if user.passwordFile != null then
+            ''The option `users.users."${name}".passwordFile' has been renamed ''
+            + ''to `users.users."${name}".hashedPasswordFile'.''
+          else
+            null
+        )
+      );
     };
 
 }

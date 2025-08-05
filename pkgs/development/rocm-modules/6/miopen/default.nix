@@ -263,12 +263,12 @@ stdenv.mkDerivation (finalAttrs: {
 
   # Unfortunately, it seems like we have to call make on these manually
   postBuild =
-    lib.optionalString buildDocs ''
-      python -m sphinx -T -E -b html -d _build/doctrees -D language=en ../docs _build/html
-    ''
-    + lib.optionalString buildTests ''
-      make -j$NIX_BUILD_CORES check
-    '';
+  lib.optionalString buildDocs ''
+    python -m sphinx -T -E -b html -d _build/doctrees -D language=en ../docs _build/html
+  ''
+  + lib.optionalString buildTests ''
+    make -j$NIX_BUILD_CORES check
+  '';
 
   postInstall = ''
     rm $out/bin/install_precompiled_kernels.sh

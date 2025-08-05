@@ -27,25 +27,25 @@ let
       ];
     }).config;
   image =
-    (import ../lib/make-disk-image.nix {
-      inherit pkgs config;
-      lib = pkgs.lib;
-      format = "qcow2";
-      contents = [
-        {
-          source = pkgs.writeText "testFile" "contents";
-          target = "/testFile";
-          user = "1234";
-          group = "5678";
-          mode = "755";
-        }
-        {
-          source = ./.;
-          target = "/testDir";
-        }
-      ];
-    })
-    + "/nixos.qcow2";
+  (import ../lib/make-disk-image.nix {
+    inherit pkgs config;
+    lib = pkgs.lib;
+    format = "qcow2";
+    contents = [
+      {
+        source = pkgs.writeText "testFile" "contents";
+        target = "/testFile";
+        user = "1234";
+        group = "5678";
+        mode = "755";
+      }
+      {
+        source = ./.;
+        target = "/testDir";
+      }
+    ];
+  })
+  + "/nixos.qcow2";
 
 in
 makeEc2Test {

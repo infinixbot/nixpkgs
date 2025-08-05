@@ -60,13 +60,13 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    lib.optionals interactive [
-      runtimeShellPackage
-      readline
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      locale
-    ];
+  lib.optionals interactive [
+    runtimeShellPackage
+    readline
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    locale
+  ];
 
   configureFlags = [
     (if interactive then "--with-readline=${readline.dev}" else "--without-readline")

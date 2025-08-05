@@ -366,14 +366,14 @@ in
           after = [ "network-online.target" ]; # Checks SMTP notifier creds during startup
           wants = [ "network-online.target" ];
           environment =
-            (lib.filterAttrs (_: v: v != null) {
-              X_AUTHELIA_CONFIG_FILTERS = lib.mkIf (oidcJwksConfigFile != [ ]) "template";
-              AUTHELIA_IDENTITY_VALIDATION_RESET_PASSWORD_JWT_SECRET_FILE = instance.secrets.jwtSecretFile;
-              AUTHELIA_STORAGE_ENCRYPTION_KEY_FILE = instance.secrets.storageEncryptionKeyFile;
-              AUTHELIA_SESSION_SECRET_FILE = instance.secrets.sessionSecretFile;
-              AUTHELIA_IDENTITY_PROVIDERS_OIDC_HMAC_SECRET_FILE = instance.secrets.oidcHmacSecretFile;
-            })
-            // instance.environmentVariables;
+          (lib.filterAttrs (_: v: v != null) {
+            X_AUTHELIA_CONFIG_FILTERS = lib.mkIf (oidcJwksConfigFile != [ ]) "template";
+            AUTHELIA_IDENTITY_VALIDATION_RESET_PASSWORD_JWT_SECRET_FILE = instance.secrets.jwtSecretFile;
+            AUTHELIA_STORAGE_ENCRYPTION_KEY_FILE = instance.secrets.storageEncryptionKeyFile;
+            AUTHELIA_SESSION_SECRET_FILE = instance.secrets.sessionSecretFile;
+            AUTHELIA_IDENTITY_PROVIDERS_OIDC_HMAC_SECRET_FILE = instance.secrets.oidcHmacSecretFile;
+          })
+          // instance.environmentVariables;
 
           preStart = "${execCommand} ${configArg} validate-config";
           serviceConfig = {

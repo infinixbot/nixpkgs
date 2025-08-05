@@ -61,16 +61,16 @@ stdenv.mkDerivation rec {
   };
 
   postPatch =
-    lib.optionalString stdenv.hostPlatform.isDarwin ''
-      substituteInPlace gdb/darwin-nat.c \
-        --replace '#include "bfd/mach-o.h"' '#include "mach-o.h"'
-    ''
-    + lib.optionalString stdenv.hostPlatform.isMusl ''
-      substituteInPlace sim/erc32/erc32.c  --replace sys/fcntl.h fcntl.h
-      substituteInPlace sim/erc32/interf.c  --replace sys/fcntl.h fcntl.h
-      substituteInPlace sim/erc32/sis.c  --replace sys/fcntl.h fcntl.h
-      substituteInPlace sim/ppc/emul_unix.c --replace sys/termios.h termios.h
-    '';
+  lib.optionalString stdenv.hostPlatform.isDarwin ''
+    substituteInPlace gdb/darwin-nat.c \
+      --replace '#include "bfd/mach-o.h"' '#include "mach-o.h"'
+  ''
+  + lib.optionalString stdenv.hostPlatform.isMusl ''
+    substituteInPlace sim/erc32/erc32.c  --replace sys/fcntl.h fcntl.h
+    substituteInPlace sim/erc32/interf.c  --replace sys/fcntl.h fcntl.h
+    substituteInPlace sim/erc32/sis.c  --replace sys/fcntl.h fcntl.h
+    substituteInPlace sim/ppc/emul_unix.c --replace sys/termios.h termios.h
+  '';
 
   patches = [
     ./debug-info-from-env.patch

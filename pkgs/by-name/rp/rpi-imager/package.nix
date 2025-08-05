@@ -66,15 +66,15 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   cmakeFlags =
-    # Disable vendoring
-    [
-      (lib.cmakeBool "ENABLE_VENDORING" false)
-    ]
-    # Disable telemetry and update check.
-    ++ lib.optionals (!enableTelemetry) [
-      (lib.cmakeBool "ENABLE_CHECK_VERSION" false)
-      (lib.cmakeBool "ENABLE_TELEMETRY" false)
-    ];
+  # Disable vendoring
+  [
+    (lib.cmakeBool "ENABLE_VENDORING" false)
+  ]
+  # Disable telemetry and update check.
+  ++ lib.optionals (!enableTelemetry) [
+    (lib.cmakeBool "ENABLE_CHECK_VERSION" false)
+    (lib.cmakeBool "ENABLE_TELEMETRY" false)
+  ];
 
   qtWrapperArgs = [
     "--unset QT_QPA_PLATFORMTHEME"

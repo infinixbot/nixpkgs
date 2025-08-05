@@ -109,14 +109,14 @@ stdenv.mkDerivation (finalAttrs: {
 
   # Parmetis should be placed before scotch to avoid conflict of header file "parmetis.h"
   buildInputs =
-    lib.optional withParmetis parmetis
-    ++ lib.optional mpiSupport scalapack
-    ++ [
-      blas
-      lapack
-      metis
-      scotch
-    ];
+  lib.optional withParmetis parmetis
+  ++ lib.optional mpiSupport scalapack
+  ++ [
+    blas
+    lapack
+    metis
+    scotch
+  ];
 
   doInstallCheck = true;
 

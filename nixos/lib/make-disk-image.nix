@@ -256,14 +256,14 @@ let
   compress = lib.optionalString (format' == "qcow2-compressed") "-c";
 
   filename =
-    "${baseName}."
-    + {
-      qcow2 = "qcow2";
-      vdi = "vdi";
-      vpc = "vhd";
-      raw = "img";
-    }
-    .${format} or format;
+  "${baseName}."
+  + {
+    qcow2 = "qcow2";
+    vdi = "vdi";
+    vpc = "vhd";
+    raw = "img";
+  }
+  .${format} or format;
 
   rootPartition =
     {

@@ -38,14 +38,14 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
   configureFlags =
-    lib.optionals withGurobi [
-      "--with-gurobi-incdir=${gurobi}/include"
-      "--with-gurobi-lib=-lgurobi${gurobi.libSuffix}"
-    ]
-    ++ lib.optionals withCplex [
-      "--with-cplex-incdir=${cplex}/cplex/include/ilcplex"
-      "--with-cplex-lib=-lcplex${cplex.libSuffix}"
-    ];
+  lib.optionals withGurobi [
+    "--with-gurobi-incdir=${gurobi}/include"
+    "--with-gurobi-lib=-lgurobi${gurobi.libSuffix}"
+  ]
+  ++ lib.optionals withCplex [
+    "--with-cplex-incdir=${cplex}/cplex/include/ilcplex"
+    "--with-cplex-lib=-lcplex${cplex.libSuffix}"
+  ];
 
   NIX_LDFLAGS = lib.optionalString withCplex "-L${cplex}/cplex/bin/${cplex.libArch}";
 

@@ -283,20 +283,20 @@ in
     };
 
     openMPThreadingWorkaround =
-      lib.mkEnableOption ''
-        a workaround for document classifier timeouts.
+    lib.mkEnableOption ''
+      a workaround for document classifier timeouts.
 
-        Paperless uses OpenBLAS via scikit-learn for document classification.
+      Paperless uses OpenBLAS via scikit-learn for document classification.
 
-        The default is to use threading for OpenMP but this would cause the
-        document classifier to spin on one core seemingly indefinitely if there
-        are large amounts of classes per classification; causing it to
-        effectively never complete due to running into timeouts.
+      The default is to use threading for OpenMP but this would cause the
+      document classifier to spin on one core seemingly indefinitely if there
+      are large amounts of classes per classification; causing it to
+      effectively never complete due to running into timeouts.
 
-        This sets `OMP_NUM_THREADS` to `1` in order to mitigate the issue. See
-        https://github.com/NixOS/nixpkgs/issues/240591 for more information
-      ''
-      // lib.mkOption { default = true; };
+      This sets `OMP_NUM_THREADS` to `1` in order to mitigate the issue. See
+      https://github.com/NixOS/nixpkgs/issues/240591 for more information
+    ''
+    // lib.mkOption { default = true; };
 
     environmentFile = lib.mkOption {
       type = lib.types.nullOr lib.types.path;
@@ -492,8 +492,8 @@ in
           '';
           requires = lib.optional cfg.database.createLocally "postgresql.target";
           after =
-            lib.optional enableRedis "redis-paperless.service"
-            ++ lib.optional cfg.database.createLocally "postgresql.target";
+          lib.optional enableRedis "redis-paperless.service"
+          ++ lib.optional cfg.database.createLocally "postgresql.target";
         };
 
         systemd.services.paperless-task-queue = {

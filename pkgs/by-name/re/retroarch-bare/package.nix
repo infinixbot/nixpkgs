@@ -54,7 +54,7 @@
 
 let
   runtimeLibs =
-    lib.optional withVulkan vulkan-loader ++ lib.optional withGamemode (lib.getLib gamemode);
+  lib.optional withVulkan vulkan-loader ++ lib.optional withGamemode (lib.getLib gamemode);
 in
 stdenv.mkDerivation rec {
   pname = "retroarch-bare";
@@ -128,14 +128,14 @@ stdenv.mkDerivation rec {
   ];
 
   postInstall =
-    lib.optionalString (runtimeLibs != [ ]) ''
-      wrapProgram $out/bin/retroarch \
-        --prefix LD_LIBRARY_PATH ':' ${lib.makeLibraryPath runtimeLibs}
-    ''
-    + lib.optionalString enableNvidiaCgToolkit ''
-      wrapProgram $out/bin/retroarch-cg2glsl \
-        --prefix PATH ':' ${lib.makeBinPath [ nvidia_cg_toolkit ]}
-    '';
+  lib.optionalString (runtimeLibs != [ ]) ''
+    wrapProgram $out/bin/retroarch \
+      --prefix LD_LIBRARY_PATH ':' ${lib.makeLibraryPath runtimeLibs}
+  ''
+  + lib.optionalString enableNvidiaCgToolkit ''
+    wrapProgram $out/bin/retroarch-cg2glsl \
+      --prefix PATH ':' ${lib.makeBinPath [ nvidia_cg_toolkit ]}
+  '';
 
   preFixup = lib.optionalString (!enableNvidiaCgToolkit) ''
     rm $out/bin/retroarch-cg2glsl

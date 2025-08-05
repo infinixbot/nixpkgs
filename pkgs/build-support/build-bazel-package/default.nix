@@ -73,11 +73,11 @@ let
     };
   fBuildAttrs = fArgs // buildAttrs;
   fFetchAttrs =
-    fArgs
-    // removeAttrs fetchAttrs [
-      "hash"
-      "sha256"
-    ];
+  fArgs
+  // removeAttrs fetchAttrs [
+    "hash"
+    "sha256"
+  ];
   bazelCmd =
     {
       cmd,

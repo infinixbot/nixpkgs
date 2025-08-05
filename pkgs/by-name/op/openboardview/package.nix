@@ -58,14 +58,14 @@ stdenv.mkDerivation rec {
 
   dontWrapGApps = true;
   postFixup =
-    lib.optionalString stdenv.hostPlatform.isDarwin ''
-      mkdir -p "$out/Applications"
-      mv "$out/openboardview.app" "$out/Applications/OpenBoardView.app"
-    ''
-    + lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
-      wrapGApp "$out/bin/${pname}" \
-        --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ gtk3 ]}
-    '';
+  lib.optionalString stdenv.hostPlatform.isDarwin ''
+    mkdir -p "$out/Applications"
+    mv "$out/openboardview.app" "$out/Applications/OpenBoardView.app"
+  ''
+  + lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
+    wrapGApp "$out/bin/${pname}" \
+      --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ gtk3 ]}
+  '';
 
   passthru.updateScript = gitUpdater {
     ignoredVersions = ''.*\.90\..*'';

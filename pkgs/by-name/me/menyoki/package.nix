@@ -27,14 +27,14 @@ rustPlatform.buildRustPackage rec {
   nativeBuildInputs = [ installShellFiles ] ++ lib.optional stdenv.hostPlatform.isLinux pkg-config;
 
   buildInputs =
-    lib.optional withSixel libsixel
-    ++ lib.optionals stdenv.hostPlatform.isLinux (
-      with xorg;
-      [
-        libX11
-        libXrandr
-      ]
-    );
+  lib.optional withSixel libsixel
+  ++ lib.optionals stdenv.hostPlatform.isLinux (
+    with xorg;
+    [
+      libX11
+      libXrandr
+    ]
+  );
 
   buildNoDefaultFeatures = !withSki;
   buildFeatures = lib.optional withSixel "sixel";

@@ -79,25 +79,25 @@
   (
     o: with coq.ocamlPackages; {
       propagatedBuildInputs =
-        o.propagatedBuildInputs
-        ++ (
-          if o.version != null && lib.versions.isLe "0.1.9+8.19" o.version && o.version != "dev" then
-            [
-              camlp-streams
-              serapi
-            ]
-          else
-            [
-              cmdliner
-              ppx_deriving
-              ppx_deriving_yojson
-              ppx_import
-              ppx_sexp_conv
-              ppx_compare
-              ppx_hash
-              sexplib
-            ]
-        );
+      o.propagatedBuildInputs
+      ++ (
+        if o.version != null && lib.versions.isLe "0.1.9+8.19" o.version && o.version != "dev" then
+          [
+            camlp-streams
+            serapi
+          ]
+        else
+          [
+            cmdliner
+            ppx_deriving
+            ppx_deriving_yojson
+            ppx_import
+            ppx_sexp_conv
+            ppx_compare
+            ppx_hash
+            sexplib
+          ]
+      );
 
       patches = lib.optional (lib.versions.isEq "0.1.8" o.version) ./coq-loader.patch;
     }

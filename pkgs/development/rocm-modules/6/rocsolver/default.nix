@@ -101,17 +101,17 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   postInstall =
-    lib.optionalString buildTests ''
-      mkdir -p $test/bin
-      mv $out/bin/rocsolver-test $test/bin
-    ''
-    + lib.optionalString buildBenchmarks ''
-      mkdir -p $benchmark/bin
-      mv $out/bin/rocsolver-bench $benchmark/bin
-    ''
-    + lib.optionalString (buildTests || buildBenchmarks) ''
-      rmdir $out/bin
-    '';
+  lib.optionalString buildTests ''
+    mkdir -p $test/bin
+    mv $out/bin/rocsolver-test $test/bin
+  ''
+  + lib.optionalString buildBenchmarks ''
+    mkdir -p $benchmark/bin
+    mv $out/bin/rocsolver-bench $benchmark/bin
+  ''
+  + lib.optionalString (buildTests || buildBenchmarks) ''
+    rmdir $out/bin
+  '';
 
   passthru.updateScript = rocmUpdateScript {
     name = "rocsolver";

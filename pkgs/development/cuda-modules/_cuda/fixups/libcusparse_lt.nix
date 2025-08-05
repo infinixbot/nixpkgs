@@ -5,10 +5,10 @@
 }:
 finalAttrs: prevAttrs: {
   buildInputs =
-    prevAttrs.buildInputs or [ ]
-    ++ [ (lib.getLib libcublas) ]
-    # For some reason, the 1.4.x release of cusparselt requires the cudart library.
-    ++ lib.optionals (lib.hasPrefix "1.4" finalAttrs.version) [ (lib.getLib cuda_cudart) ];
+  prevAttrs.buildInputs or [ ]
+  ++ [ (lib.getLib libcublas) ]
+  # For some reason, the 1.4.x release of cusparselt requires the cudart library.
+  ++ lib.optionals (lib.hasPrefix "1.4" finalAttrs.version) [ (lib.getLib cuda_cudart) ];
   meta = prevAttrs.meta or { } // {
     description = "cuSPARSELt: A High-Performance CUDA Library for Sparse Matrix-Matrix Multiplication";
     homepage = "https://developer.nvidia.com/cusparselt-downloads";

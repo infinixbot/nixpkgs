@@ -99,12 +99,12 @@ stdenv.mkDerivation rec {
   ];
 
   makeFlags =
-    lib.optional withGUI "gui"
-    ++ lib.optionals withDoc [
-      "gpsbabel.pdf"
-      "gpsbabel.html"
-      "gpsbabel.org"
-    ];
+  lib.optional withGUI "gui"
+  ++ lib.optionals withDoc [
+    "gpsbabel.pdf"
+    "gpsbabel.html"
+    "gpsbabel.org"
+  ];
 
   # Floating point behavior on i686 causes nmea.test failures. Preventing
   # extended precision fixes this problem.

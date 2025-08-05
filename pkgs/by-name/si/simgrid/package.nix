@@ -116,16 +116,16 @@ stdenv.mkDerivation rec {
   '';
 
   postInstall =
-    lib.optionalString withoutBin ''
-      # remove bin from output if requested.
-      # having a specific bin output would be cleaner but it does not work currently (circular references)
-      rm -rf $out/bin
-    ''
-    + lib.optionalString buildPythonBindings ''
-      # manually install the python binding if requested.
-      mkdir -p $python/lib/python${lib.versions.majorMinor python3.version}/site-packages/
-      cp ./lib/simgrid.cpython*.so $python/lib/python${lib.versions.majorMinor python3.version}/site-packages/
-    '';
+  lib.optionalString withoutBin ''
+    # remove bin from output if requested.
+    # having a specific bin output would be cleaner but it does not work currently (circular references)
+    rm -rf $out/bin
+  ''
+  + lib.optionalString buildPythonBindings ''
+    # manually install the python binding if requested.
+    mkdir -p $python/lib/python${lib.versions.majorMinor python3.version}/site-packages/
+    cp ./lib/simgrid.cpython*.so $python/lib/python${lib.versions.majorMinor python3.version}/site-packages/
+  '';
 
   # improve debuggability if requested
   hardeningDisable = lib.optionals debug [ "fortify" ];

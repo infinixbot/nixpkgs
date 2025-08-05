@@ -252,15 +252,15 @@ in
       systemd.services.agnos = {
         serviceConfig = {
           ExecStartPre =
-            lib.optional cfg.generateKeys.enable ''
-              ${pkgs.agnos}/bin/agnos-generate-accounts-keys \
-                --no-confirm \
-                --key-size ${toString cfg.generateKeys.keySize} \
-                ${configFile}
-            ''
-            ++ lib.optional cfg.temporarilyOpenFirewall (
-              "+" + (if useNftables then nftablesSetup else iptablesSetup)
-            );
+          lib.optional cfg.generateKeys.enable ''
+            ${pkgs.agnos}/bin/agnos-generate-accounts-keys \
+              --no-confirm \
+              --key-size ${toString cfg.generateKeys.keySize} \
+              ${configFile}
+          ''
+          ++ lib.optional cfg.temporarilyOpenFirewall (
+            "+" + (if useNftables then nftablesSetup else iptablesSetup)
+          );
           ExecStopPost = lib.optional cfg.temporarilyOpenFirewall (
             "+" + (if useNftables then nftablesTeardown else iptablesTeardown)
           );

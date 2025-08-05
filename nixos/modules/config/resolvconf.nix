@@ -10,10 +10,10 @@ let
   cfg = config.networking.resolvconf;
 
   resolvconfOptions =
-    cfg.extraOptions
-    ++ lib.optional cfg.dnsSingleRequest "single-request"
-    ++ lib.optional cfg.dnsExtensionMechanism "edns0"
-    ++ lib.optional cfg.useLocalResolver "trust-ad";
+  cfg.extraOptions
+  ++ lib.optional cfg.dnsSingleRequest "single-request"
+  ++ lib.optional cfg.dnsExtensionMechanism "edns0"
+  ++ lib.optional cfg.useLocalResolver "trust-ad";
 
   configText = ''
     # This is the default, but we must set it here to prevent

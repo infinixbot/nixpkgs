@@ -32,9 +32,9 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    lib.optional alsaSupport alsa-lib
-    ++ lib.optional pulseaudioSupport libpulseaudio
-    ++ lib.optional jackSupport jack;
+  lib.optional alsaSupport alsa-lib
+  ++ lib.optional pulseaudioSupport libpulseaudio
+  ++ lib.optional jackSupport jack;
 
   cmakeFlags = [
     "-DRTAUDIO_API_ALSA=${if alsaSupport then "ON" else "OFF"}"

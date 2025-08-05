@@ -105,9 +105,9 @@ in
   config =
     let
       builderArgs =
-        "-g ${toString cfg.configurationLimit} -t ${timeoutStr}"
-        + lib.optionalString (dtCfg.name != null) " -n ${dtCfg.name}"
-        + lib.optionalString (!cfg.useGenerationDeviceTree) " -r";
+      "-g ${toString cfg.configurationLimit} -t ${timeoutStr}"
+      + lib.optionalString (dtCfg.name != null) " -n ${dtCfg.name}"
+      + lib.optionalString (!cfg.useGenerationDeviceTree) " -r";
       installBootLoader = pkgs.writeScript "install-extlinux-conf.sh" (
         ''
           #!${pkgs.runtimeShell}

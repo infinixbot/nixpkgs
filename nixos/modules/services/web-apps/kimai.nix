@@ -210,18 +210,18 @@ in
     {
 
       assertions =
-        (mapAttrsToList (hostName: cfg: {
-          assertion = cfg.database.createLocally -> cfg.database.user == user;
-          message = ''services.kimai.sites."${hostName}".database.user must be ${user} if the database is to be automatically provisioned'';
-        }) eachSite)
-        ++ (mapAttrsToList (hostName: cfg: {
-          assertion = cfg.database.createLocally -> cfg.database.passwordFile == null;
-          message = ''services.kimai.sites."${hostName}".database.passwordFile cannot be specified if services.kimai.sites."${hostName}".database.createLocally is set to true.'';
-        }) eachSite)
-        ++ (mapAttrsToList (hostName: cfg: {
-          assertion = !cfg.database.createLocally -> cfg.database.serverVersion != null;
-          message = ''services.kimai.sites."${hostName}".database.serverVersion must be specified if services.kimai.sites."${hostName}".database.createLocally is set to false.'';
-        }) eachSite);
+      (mapAttrsToList (hostName: cfg: {
+        assertion = cfg.database.createLocally -> cfg.database.user == user;
+        message = ''services.kimai.sites."${hostName}".database.user must be ${user} if the database is to be automatically provisioned'';
+      }) eachSite)
+      ++ (mapAttrsToList (hostName: cfg: {
+        assertion = cfg.database.createLocally -> cfg.database.passwordFile == null;
+        message = ''services.kimai.sites."${hostName}".database.passwordFile cannot be specified if services.kimai.sites."${hostName}".database.createLocally is set to true.'';
+      }) eachSite)
+      ++ (mapAttrsToList (hostName: cfg: {
+        assertion = !cfg.database.createLocally -> cfg.database.serverVersion != null;
+        message = ''services.kimai.sites."${hostName}".database.serverVersion must be specified if services.kimai.sites."${hostName}".database.createLocally is set to false.'';
+      }) eachSite);
 
       services.mysql = mkIf (any (v: v.database.createLocally) (attrValues eachSite)) {
         enable = true;
@@ -280,9 +280,9 @@ in
                 dbUnixSocket = if cfg.database.socket != null then "&unixSocket=${cfg.database.socket}" else "";
                 # Note: serverVersion is a shell variable. See below.
                 dbUri =
-                  "mysql://${dbUser}${dbPwd}@${dbHost}:${dbPort}"
-                  + "/${dbName}?charset=${dbCharset}"
-                  + "&serverVersion=$serverVersion${dbUnixSocket}";
+                "mysql://${dbUser}${dbPwd}@${dbHost}:${dbPort}"
+                + "/${dbName}?charset=${dbCharset}"
+                + "&serverVersion=$serverVersion${dbUnixSocket}";
               in
               ''
                 set -eu

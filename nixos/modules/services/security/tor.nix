@@ -125,8 +125,8 @@ let
           );
           config = {
             flags =
-              lib.filter (name: config.${name} == true) isolateFlags
-              ++ lib.optional (config.SessionGroup != null) "SessionGroup=${toString config.SessionGroup}";
+            lib.filter (name: config.${name} == true) isolateFlags
+            ++ lib.optional (config.SessionGroup != null) "SessionGroup=${toString config.SessionGroup}";
           };
         }
       ))
@@ -195,8 +195,8 @@ let
           config = lib.mkIf doConfig {
             # Only add flags in SOCKSPort to avoid duplicates
             flags =
-              lib.filter (name: config.${name} == true) flags
-              ++ lib.optional (config.SessionGroup != null) "SessionGroup=${toString config.SessionGroup}";
+            lib.filter (name: config.${name} == true) flags
+            ++ lib.optional (config.SessionGroup != null) "SessionGroup=${toString config.SessionGroup}";
           };
         }
       ))
@@ -1175,42 +1175,42 @@ in
     # Not sure if `cfg.relay.role == "private-bridge"` helps as tor
     # sends a lot of stats
     warnings =
-      lib.optional
-        (
-          cfg.settings.BridgeRelay
-          && lib.flatten (lib.mapAttrsToList (n: o: o.map) cfg.relay.onionServices) != [ ]
-        )
-        ''
-          Running Tor hidden services on a public relay makes the
-          presence of hidden services visible through simple statistical
-          analysis of publicly available data.
-          See https://trac.torproject.org/projects/tor/ticket/8742
+    lib.optional
+      (
+        cfg.settings.BridgeRelay
+        && lib.flatten (lib.mapAttrsToList (n: o: o.map) cfg.relay.onionServices) != [ ]
+      )
+      ''
+        Running Tor hidden services on a public relay makes the
+        presence of hidden services visible through simple statistical
+        analysis of publicly available data.
+        See https://trac.torproject.org/projects/tor/ticket/8742
 
-          You can safely ignore this warning if you don't intend to
-          actually hide your hidden services. In either case, you can
-          always create a container/VM with a separate Tor daemon instance.
-        ''
-      ++ lib.flatten (
-        lib.mapAttrsToList (
-          n: o:
-          lib.optionals (o.settings.HiddenServiceVersion == 2) [
-            (lib.optional (o.settings.HiddenServiceExportCircuitID != null) ''
-              HiddenServiceExportCircuitID is used in the HiddenService: ${n}
-              but this option is only for v3 hidden services.
-            '')
-          ]
-          ++ lib.optionals (o.settings.HiddenServiceVersion != 2) [
-            (lib.optional (o.settings.HiddenServiceAuthorizeClient != null) ''
-              HiddenServiceAuthorizeClient is used in the HiddenService: ${n}
-              but this option is only for v2 hidden services.
-            '')
-            (lib.optional (o.settings.RendPostPeriod != null) ''
-              RendPostPeriod is used in the HiddenService: ${n}
-              but this option is only for v2 hidden services.
-            '')
-          ]
-        ) cfg.relay.onionServices
-      );
+        You can safely ignore this warning if you don't intend to
+        actually hide your hidden services. In either case, you can
+        always create a container/VM with a separate Tor daemon instance.
+      ''
+    ++ lib.flatten (
+      lib.mapAttrsToList (
+        n: o:
+        lib.optionals (o.settings.HiddenServiceVersion == 2) [
+          (lib.optional (o.settings.HiddenServiceExportCircuitID != null) ''
+            HiddenServiceExportCircuitID is used in the HiddenService: ${n}
+            but this option is only for v3 hidden services.
+          '')
+        ]
+        ++ lib.optionals (o.settings.HiddenServiceVersion != 2) [
+          (lib.optional (o.settings.HiddenServiceAuthorizeClient != null) ''
+            HiddenServiceAuthorizeClient is used in the HiddenService: ${n}
+            but this option is only for v2 hidden services.
+          '')
+          (lib.optional (o.settings.RendPostPeriod != null) ''
+            RendPostPeriod is used in the HiddenService: ${n}
+            but this option is only for v2 hidden services.
+          '')
+        ]
+      ) cfg.relay.onionServices
+    );
 
     users.groups.tor.gid = config.ids.gids.tor;
     users.users.tor = {

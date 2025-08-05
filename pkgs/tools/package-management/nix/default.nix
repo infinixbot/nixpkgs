@@ -106,21 +106,21 @@ let
     selfAttributeName: pkg:
     let
       tests =
-        pkg.tests or { }
-        // import ./tests.nix {
-          inherit
-            runCommand
-            lib
-            stdenv
-            pkgs
-            pkgsi686Linux
-            pkgsStatic
-            nixosTests
-            ;
-          inherit (pkg) version src;
-          nix = pkg;
-          self_attribute_name = selfAttributeName;
-        };
+      pkg.tests or { }
+      // import ./tests.nix {
+        inherit
+          runCommand
+          lib
+          stdenv
+          pkgs
+          pkgsi686Linux
+          pkgsStatic
+          nixosTests
+          ;
+        inherit (pkg) version src;
+        nix = pkg;
+        self_attribute_name = selfAttributeName;
+      };
     in
     # preserve old pkg, including overrideSource, etc
     pkg
@@ -128,8 +128,8 @@ let
       tests = pkg.tests or { } // tests;
       passthru = pkg.passthru or { } // {
         tests =
-          lib.warn "nix.passthru.tests is deprecated. Use nix.tests instead." pkg.passthru.tests or { }
-          // tests;
+        lib.warn "nix.passthru.tests is deprecated. Use nix.tests instead." pkg.passthru.tests or { }
+        // tests;
       };
     };
 

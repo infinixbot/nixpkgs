@@ -62,9 +62,9 @@ let
     cargoRoot = if rustSupport then "rust" else null;
 
     propagatedBuildInputs =
-      lib.optional re2Support fb-re2
-      ++ lib.optional gitSupport pygit2
-      ++ lib.optional highlightSupport pygments;
+    lib.optional re2Support fb-re2
+    ++ lib.optional gitSupport pygit2
+    ++ lib.optional highlightSupport pygments;
     nativeBuildInputs = [
       makeWrapper
       gettext

@@ -14,10 +14,10 @@ let
   );
   selectedPlugins = lib.filter (pkg: pkg != gimp) (if plugins == null then allPlugins else plugins);
   extraArgs =
-    map (x: x.wrapArgs or "") selectedPlugins
-    ++ lib.optionals (gimp.majorVersion == "2.0") [
-      ''--prefix GTK_PATH : "${gnome-themes-extra}/lib/gtk-2.0"''
-    ];
+  map (x: x.wrapArgs or "") selectedPlugins
+  ++ lib.optionals (gimp.majorVersion == "2.0") [
+    ''--prefix GTK_PATH : "${gnome-themes-extra}/lib/gtk-2.0"''
+  ];
   exeVersion =
     if gimp.majorVersion == "2.0" then lib.versions.majorMinor gimp.version else gimp.majorVersion;
   majorVersion = lib.versions.major gimp.version;

@@ -118,8 +118,8 @@ stdenv.mkDerivation (finalAttrs: {
 
   meta = {
     changelog =
-      "http://cvs.schmorp.de/liblzf/Changes?pathrev=rel-"
-      + builtins.replaceStrings [ "." ] [ "_" ] finalAttrs.version;
+    "http://cvs.schmorp.de/liblzf/Changes?pathrev=rel-"
+    + builtins.replaceStrings [ "." ] [ "_" ] finalAttrs.version;
     description = "Small data compression library";
     downloadPage = "http://dist.schmorp.de/liblzf/";
     homepage = "http://software.schmorp.de/pkg/liblzf.html";

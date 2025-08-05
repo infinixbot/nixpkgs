@@ -91,14 +91,14 @@ let
   compress = lib.optionalString (format == "qcow2-compressed") "-c";
 
   filenameSuffix =
-    "."
-    + {
-      qcow2 = "qcow2";
-      vdi = "vdi";
-      vpc = "vhd";
-      raw = "img";
-    }
-    .${formatOpt} or formatOpt;
+  "."
+  + {
+    qcow2 = "qcow2";
+    vdi = "vdi";
+    vpc = "vhd";
+    raw = "img";
+  }
+  .${formatOpt} or formatOpt;
   bootFilename = "nixos.boot${filenameSuffix}";
   rootFilename = "nixos.root${filenameSuffix}";
 
@@ -267,8 +267,8 @@ let
         pkgs.runCommand name
           {
             QEMU_OPTS =
-              "-drive file=$bootDiskImage,if=virtio,cache=unsafe,werror=report"
-              + " -drive file=$rootDiskImage,if=virtio,cache=unsafe,werror=report";
+            "-drive file=$bootDiskImage,if=virtio,cache=unsafe,werror=report"
+            + " -drive file=$rootDiskImage,if=virtio,cache=unsafe,werror=report";
             inherit memSize;
             preVM = ''
               PATH=$PATH:${pkgs.qemu_kvm}/bin

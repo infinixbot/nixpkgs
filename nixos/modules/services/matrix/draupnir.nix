@@ -234,15 +234,15 @@ in
         RestartSec = "5s";
         DynamicUser = true;
         LoadCredential =
-          lib.optionals (cfg.secrets.accessToken != null) [
-            "access_token:${cfg.secrets.accessToken}"
-          ]
-          ++ lib.optionals (cfg.secrets.pantalaimon.password != null) [
-            "pantalaimon_password:${cfg.secrets.pantalaimon.password}"
-          ]
-          ++ lib.optionals (cfg.secrets.web.synapseHTTPAntispam.authorization != null) [
-            "http_antispam_authorization:${cfg.secrets.web.synapseHTTPAntispam.authorization}"
-          ];
+        lib.optionals (cfg.secrets.accessToken != null) [
+          "access_token:${cfg.secrets.accessToken}"
+        ]
+        ++ lib.optionals (cfg.secrets.pantalaimon.password != null) [
+          "pantalaimon_password:${cfg.secrets.pantalaimon.password}"
+        ]
+        ++ lib.optionals (cfg.secrets.web.synapseHTTPAntispam.authorization != null) [
+          "http_antispam_authorization:${cfg.secrets.web.synapseHTTPAntispam.authorization}"
+        ];
       };
     };
   };

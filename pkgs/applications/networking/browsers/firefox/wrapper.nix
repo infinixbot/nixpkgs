@@ -79,43 +79,43 @@ let
       allNativeMessagingHosts = builtins.map lib.getBin nativeMessagingHosts;
 
       libs =
-        lib.optionals stdenv.hostPlatform.isLinux (
-          [
-            udev
-            libva
-            libgbm
-            libnotify
-            xorg.libXScrnSaver
-            cups
-            pciutils
-            vulkan-loader
-          ]
-          ++ lib.optional (cfg.speechSynthesisSupport or true) speechd-minimal
-        )
-        ++ lib.optional pipewireSupport pipewire
-        ++ lib.optional ffmpegSupport ffmpeg
-        ++ lib.optional gssSupport libkrb5
-        ++ lib.optional useGlvnd libglvnd
-        ++ lib.optionals (cfg.enableQuakeLive or false) (
-          with xorg;
-          [
-            stdenv.cc
-            libX11
-            libXxf86dga
-            libXxf86vm
-            libXext
-            libXt
-            alsa-lib
-            zlib
-          ]
-        )
-        ++ lib.optional (config.pulseaudio or (!isDarwin)) libpulseaudio
-        ++ lib.optional alsaSupport alsa-lib
-        ++ lib.optional sndioSupport sndio
-        ++ lib.optional jackSupport libjack2
-        ++ lib.optional smartcardSupport opensc
-        ++ pkcs11Modules
-        ++ lib.optionals (!isDarwin) gtk_modules;
+      lib.optionals stdenv.hostPlatform.isLinux (
+        [
+          udev
+          libva
+          libgbm
+          libnotify
+          xorg.libXScrnSaver
+          cups
+          pciutils
+          vulkan-loader
+        ]
+        ++ lib.optional (cfg.speechSynthesisSupport or true) speechd-minimal
+      )
+      ++ lib.optional pipewireSupport pipewire
+      ++ lib.optional ffmpegSupport ffmpeg
+      ++ lib.optional gssSupport libkrb5
+      ++ lib.optional useGlvnd libglvnd
+      ++ lib.optionals (cfg.enableQuakeLive or false) (
+        with xorg;
+        [
+          stdenv.cc
+          libX11
+          libXxf86dga
+          libXxf86vm
+          libXext
+          libXt
+          alsa-lib
+          zlib
+        ]
+      )
+      ++ lib.optional (config.pulseaudio or (!isDarwin)) libpulseaudio
+      ++ lib.optional alsaSupport alsa-lib
+      ++ lib.optional sndioSupport sndio
+      ++ lib.optional jackSupport libjack2
+      ++ lib.optional smartcardSupport opensc
+      ++ pkcs11Modules
+      ++ lib.optionals (!isDarwin) gtk_modules;
       gtk_modules = [ libcanberra-gtk3 ];
 
       # Darwin does not rename bundled binaries

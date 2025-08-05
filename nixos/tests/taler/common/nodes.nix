@@ -23,20 +23,20 @@ let
       };
       security.pam.services.sshd.allowNullPassword = true;
       virtualisation.forwardPorts =
-        (lib.optionals (sshPort != 0) [
-          {
-            from = "host";
-            host.port = sshPort;
-            guest.port = 22;
-          }
-        ])
-        ++ (lib.optionals (webuiPort != 0) [
-          {
-            from = "host";
-            host.port = webuiPort;
-            guest.port = webuiPort;
-          }
-        ]);
+      (lib.optionals (sshPort != 0) [
+        {
+          from = "host";
+          host.port = sshPort;
+          guest.port = 22;
+        }
+      ])
+      ++ (lib.optionals (webuiPort != 0) [
+        {
+          from = "host";
+          host.port = webuiPort;
+          guest.port = webuiPort;
+        }
+      ]);
     } nodeSettings;
 in
 rec {

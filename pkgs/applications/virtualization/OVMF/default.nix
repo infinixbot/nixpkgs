@@ -144,24 +144,24 @@ edk2.mkDerivation projectDscPath (finalAttrs: {
   ];
 
   buildFlags =
-    # IPv6 has no reason to be disabled.
-    [ "-D NETWORK_IP6_ENABLE=TRUE" ]
-    ++ lib.optionals debug [ "-D DEBUG_ON_SERIAL_PORT=TRUE" ]
-    ++ lib.optionals sourceDebug [ "-D SOURCE_DEBUG_ENABLE=TRUE" ]
-    ++ lib.optionals secureBoot [ "-D SECURE_BOOT_ENABLE=TRUE" ]
-    ++ lib.optionals systemManagementModeRequired [ "-D SMM_REQUIRE=TRUE" ]
-    ++ lib.optionals fdSize2MB [ "-D FD_SIZE_2MB" ]
-    ++ lib.optionals fdSize4MB [ "-D FD_SIZE_4MB" ]
-    ++ lib.optionals httpSupport [
-      "-D NETWORK_HTTP_ENABLE=TRUE"
-      "-D NETWORK_HTTP_BOOT_ENABLE=TRUE"
-    ]
-    ++ lib.optionals tlsSupport [ "-D NETWORK_TLS_ENABLE=TRUE" ]
-    ++ lib.optionals tpmSupport [
-      "-D TPM_ENABLE"
-      "-D TPM2_ENABLE"
-      "-D TPM2_CONFIG_ENABLE"
-    ];
+  # IPv6 has no reason to be disabled.
+  [ "-D NETWORK_IP6_ENABLE=TRUE" ]
+  ++ lib.optionals debug [ "-D DEBUG_ON_SERIAL_PORT=TRUE" ]
+  ++ lib.optionals sourceDebug [ "-D SOURCE_DEBUG_ENABLE=TRUE" ]
+  ++ lib.optionals secureBoot [ "-D SECURE_BOOT_ENABLE=TRUE" ]
+  ++ lib.optionals systemManagementModeRequired [ "-D SMM_REQUIRE=TRUE" ]
+  ++ lib.optionals fdSize2MB [ "-D FD_SIZE_2MB" ]
+  ++ lib.optionals fdSize4MB [ "-D FD_SIZE_4MB" ]
+  ++ lib.optionals httpSupport [
+    "-D NETWORK_HTTP_ENABLE=TRUE"
+    "-D NETWORK_HTTP_BOOT_ENABLE=TRUE"
+  ]
+  ++ lib.optionals tlsSupport [ "-D NETWORK_TLS_ENABLE=TRUE" ]
+  ++ lib.optionals tpmSupport [
+    "-D TPM_ENABLE"
+    "-D TPM2_ENABLE"
+    "-D TPM2_CONFIG_ENABLE"
+  ];
 
   buildConfig = if debug then "DEBUG" else "RELEASE";
   env.NIX_CFLAGS_COMPILE = lib.optionalString stdenv.cc.isClang "-Qunused-arguments";
@@ -180,37 +180,37 @@ edk2.mkDerivation projectDscPath (finalAttrs: {
   '';
 
   postBuild =
-    lib.optionalString (stdenv.hostPlatform.isAarch || stdenv.hostPlatform.isLoongArch64) ''
-      (
-      cd ${buildPrefix}/FV
-      cp QEMU_EFI.fd ${fwPrefix}_CODE.fd
-      cp QEMU_VARS.fd ${fwPrefix}_VARS.fd
-      )
-    ''
-    + lib.optionalString stdenv.hostPlatform.isAarch ''
-      # QEMU expects 64MiB CODE and VARS files on ARM/AARCH64 architectures
-      # Truncate the firmware files to the expected size
-      truncate -s 64M ${buildPrefix}/FV/${fwPrefix}_CODE.fd
-      truncate -s 64M ${buildPrefix}/FV/${fwPrefix}_VARS.fd
-    ''
-    + lib.optionalString stdenv.hostPlatform.isRiscV ''
-      truncate -s 32M ${buildPrefix}/FV/${fwPrefix}_CODE.fd
-      truncate -s 32M ${buildPrefix}/FV/${fwPrefix}_VARS.fd
-    ''
-    + lib.optionalString msVarsTemplate ''
-      (
-      cd ${buildPrefix}
-      # locale must be set on Darwin for invocations of mtools to work correctly
-      LC_ALL=C python3 $NIX_BUILD_TOP/debian/edk2-vars-generator.py \
-        --flavor ${msVarsArgs.flavor} \
-        --enrolldefaultkeys ${msVarsArgs.archDir}/EnrollDefaultKeys.efi \
-        --shell ${msVarsArgs.archDir}/Shell.efi \
-        --code FV/${fwPrefix}_CODE.fd \
-        --vars-template FV/${fwPrefix}_VARS.fd \
-        --certificate `< $NIX_BUILD_TOP/$sourceRoot/vendor-cert-string` \
-        --out-file FV/${fwPrefix}_VARS.ms.fd
-      )
-    '';
+  lib.optionalString (stdenv.hostPlatform.isAarch || stdenv.hostPlatform.isLoongArch64) ''
+    (
+    cd ${buildPrefix}/FV
+    cp QEMU_EFI.fd ${fwPrefix}_CODE.fd
+    cp QEMU_VARS.fd ${fwPrefix}_VARS.fd
+    )
+  ''
+  + lib.optionalString stdenv.hostPlatform.isAarch ''
+    # QEMU expects 64MiB CODE and VARS files on ARM/AARCH64 architectures
+    # Truncate the firmware files to the expected size
+    truncate -s 64M ${buildPrefix}/FV/${fwPrefix}_CODE.fd
+    truncate -s 64M ${buildPrefix}/FV/${fwPrefix}_VARS.fd
+  ''
+  + lib.optionalString stdenv.hostPlatform.isRiscV ''
+    truncate -s 32M ${buildPrefix}/FV/${fwPrefix}_CODE.fd
+    truncate -s 32M ${buildPrefix}/FV/${fwPrefix}_VARS.fd
+  ''
+  + lib.optionalString msVarsTemplate ''
+    (
+    cd ${buildPrefix}
+    # locale must be set on Darwin for invocations of mtools to work correctly
+    LC_ALL=C python3 $NIX_BUILD_TOP/debian/edk2-vars-generator.py \
+      --flavor ${msVarsArgs.flavor} \
+      --enrolldefaultkeys ${msVarsArgs.archDir}/EnrollDefaultKeys.efi \
+      --shell ${msVarsArgs.archDir}/Shell.efi \
+      --code FV/${fwPrefix}_CODE.fd \
+      --vars-template FV/${fwPrefix}_VARS.fd \
+      --certificate `< $NIX_BUILD_TOP/$sourceRoot/vendor-cert-string` \
+      --out-file FV/${fwPrefix}_VARS.ms.fd
+    )
+  '';
 
   # TODO: Usage of -bios OVMF.fd is discouraged: https://lists.katacontainers.io/pipermail/kata-dev/2021-January/001650.html
   # We should remove the isx86-specific block here once we're ready to update nixpkgs to stop using that and update the

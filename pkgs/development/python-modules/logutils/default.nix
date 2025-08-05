@@ -43,13 +43,13 @@ buildPythonPackage rec {
   ];
 
   disabledTestPaths =
-    lib.optionals (stdenv.hostPlatform.isDarwin) [
-      # Exception: unable to connect to Redis server
-      "tests/test_redis.py"
-    ]
-    ++ lib.optionals (pythonAtLeast "3.13") [
-      "tests/test_dictconfig.py"
-    ];
+  lib.optionals (stdenv.hostPlatform.isDarwin) [
+    # Exception: unable to connect to Redis server
+    "tests/test_redis.py"
+  ]
+  ++ lib.optionals (pythonAtLeast "3.13") [
+    "tests/test_dictconfig.py"
+  ];
 
   pythonImportsCheck = [ "logutils" ];
 

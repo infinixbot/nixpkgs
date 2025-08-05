@@ -88,28 +88,28 @@ let
         python
         ;
       tests =
-        this.rawPackage.tests
-        // {
-          nixos = this.rawPackage.tests.nixos.passthru.override {
-            nixopsPkg = this.rawPackage;
-          };
-          commutative_addAvailablePlugins_withPlugins =
-            assert
-              (this.public.addAvailablePlugins (self: super: { inherit emptyFile; })).withPlugins (ps: [
-                emptyFile
-              ]) ==
-              # Note that this value proves that the package is not instantiated until the end, where it's valid again.
-              (this.public.withPlugins (ps: [ emptyFile ])).addAvailablePlugins (
-                self: super: { inherit emptyFile; }
-              );
-            emptyFile;
-        }
-        # Make sure we also test with a configuration that's been extended with a plugin.
-        // lib.optionalAttrs (this.selectedPlugins == [ ]) {
-          withAPlugin =
-            lib.recurseIntoAttrs
-              (this.withPlugins (ps: with ps; [ nixops-encrypted-links ])).tests;
+      this.rawPackage.tests
+      // {
+        nixos = this.rawPackage.tests.nixos.passthru.override {
+          nixopsPkg = this.rawPackage;
         };
+        commutative_addAvailablePlugins_withPlugins =
+          assert
+            (this.public.addAvailablePlugins (self: super: { inherit emptyFile; })).withPlugins (ps: [
+              emptyFile
+            ]) ==
+            # Note that this value proves that the package is not instantiated until the end, where it's valid again.
+            (this.public.withPlugins (ps: [ emptyFile ])).addAvailablePlugins (
+              self: super: { inherit emptyFile; }
+            );
+          emptyFile;
+      }
+      # Make sure we also test with a configuration that's been extended with a plugin.
+      // lib.optionalAttrs (this.selectedPlugins == [ ]) {
+        withAPlugin =
+          lib.recurseIntoAttrs
+            (this.withPlugins (ps: with ps; [ nixops-encrypted-links ])).tests;
+      };
       overrideAttrs =
         f:
         this.extend (
@@ -136,14 +136,14 @@ let
     };
 
     package =
-      lib.lazyDerivation {
-        outputs = [
-          "out"
-          "dist"
-        ];
-        derivation = this.rawPackage;
-      }
-      // this.extraPackageAttrs;
+    lib.lazyDerivation {
+      outputs = [
+        "out"
+        "dist"
+      ];
+      derivation = this.rawPackage;
+    }
+    // this.extraPackageAttrs;
 
     public = this.package;
   };

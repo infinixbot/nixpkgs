@@ -354,8 +354,8 @@ in
       ++ (optional cfg.postgresql.createLocally "postgresql.target")
       ++ (optional cfg.redis.createLocally "redis-lasuite-docs.service");
       wants =
-        (optional cfg.postgresql.createLocally "postgresql.target")
-        ++ (optional cfg.redis.createLocally "redis-lasuite-docs.service");
+      (optional cfg.postgresql.createLocally "postgresql.target")
+      ++ (optional cfg.redis.createLocally "redis-lasuite-docs.service");
       wantedBy = [ "multi-user.target" ];
 
       preStart = ''
@@ -404,8 +404,8 @@ in
       ++ (optional cfg.postgresql.createLocally "postgresql.target")
       ++ (optional cfg.redis.createLocally "redis-lasuite-docs.service");
       wants =
-        (optional cfg.postgresql.createLocally "postgresql.target")
-        ++ (optional cfg.redis.createLocally "redis-lasuite-docs.service");
+      (optional cfg.postgresql.createLocally "postgresql.target")
+      ++ (optional cfg.redis.createLocally "redis-lasuite-docs.service");
       wantedBy = [ "multi-user.target" ];
 
       environment = pythonEnvironment;

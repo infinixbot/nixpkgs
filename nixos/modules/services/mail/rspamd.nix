@@ -287,15 +287,15 @@ let
     };
 
   configOverrides =
-    (mapAttrs' (
-      n: v:
-      nameValuePair "worker-${if n == "rspamd_proxy" then "proxy" else n}.inc" {
-        text = v.extraConfig;
-      }
-    ) (filterAttrs (n: v: v.extraConfig != "") cfg.workers))
-    // (lib.optionalAttrs (cfg.extraConfig != "") {
-      "extra-config.inc".text = cfg.extraConfig;
-    });
+  (mapAttrs' (
+    n: v:
+    nameValuePair "worker-${if n == "rspamd_proxy" then "proxy" else n}.inc" {
+      text = v.extraConfig;
+    }
+  ) (filterAttrs (n: v: v.extraConfig != "") cfg.workers))
+  // (lib.optionalAttrs (cfg.extraConfig != "") {
+    "extra-config.inc".text = cfg.extraConfig;
+  });
 in
 
 {

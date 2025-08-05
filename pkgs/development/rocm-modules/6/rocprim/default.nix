@@ -41,12 +41,12 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs =
-    lib.optionals buildTests [
-      gtest
-    ]
-    ++ lib.optionals buildBenchmarks [
-      gbenchmark
-    ];
+  lib.optionals buildTests [
+    gtest
+  ]
+  ++ lib.optionals buildBenchmarks [
+    gbenchmark
+  ];
 
   cmakeFlags = [
     "-DCMAKE_BUILD_TYPE=Release"
@@ -67,18 +67,18 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   postInstall =
-    lib.optionalString buildTests ''
-      mkdir -p $test/bin
-      mv $out/bin/test_* $test/bin
-      mv $out/bin/rocprim $test/bin
-    ''
-    + lib.optionalString buildBenchmarks ''
-      mkdir -p $benchmark/bin
-      mv $out/bin/benchmark_* $benchmark/bin
-    ''
-    + lib.optionalString (buildTests || buildBenchmarks) ''
-      rmdir $out/bin
-    '';
+  lib.optionalString buildTests ''
+    mkdir -p $test/bin
+    mv $out/bin/test_* $test/bin
+    mv $out/bin/rocprim $test/bin
+  ''
+  + lib.optionalString buildBenchmarks ''
+    mkdir -p $benchmark/bin
+    mv $out/bin/benchmark_* $benchmark/bin
+  ''
+  + lib.optionalString (buildTests || buildBenchmarks) ''
+    rmdir $out/bin
+  '';
 
   passthru.updateScript = rocmUpdateScript {
     name = finalAttrs.pname;

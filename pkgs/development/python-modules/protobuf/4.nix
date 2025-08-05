@@ -29,20 +29,20 @@ buildPythonPackage {
   sourceRoot = "${protobuf.src.name}/python";
 
   patches =
-    lib.optionals (lib.versionAtLeast protobuf.version "22") [
-      # Replace the vendored abseil-cpp with nixpkgs'
-      (replaceVars ./use-nixpkgs-abseil-cpp.patch {
-        abseil_cpp_include_path = "${lib.getDev protobuf.abseil-cpp}/include";
-      })
-    ]
-    ++ lib.optionals (pythonAtLeast "3.11" && lib.versionOlder protobuf.version "22") [
-      (fetchpatch {
-        name = "support-python311.patch";
-        url = "https://github.com/protocolbuffers/protobuf/commit/2206b63c4649cf2e8a06b66c9191c8ef862ca519.diff";
-        stripLen = 1; # because sourceRoot above
-        hash = "sha256-3GaoEyZIhS3QONq8LEvJCH5TdO9PKnOgcQF0GlEiwFo=";
-      })
-    ];
+  lib.optionals (lib.versionAtLeast protobuf.version "22") [
+    # Replace the vendored abseil-cpp with nixpkgs'
+    (replaceVars ./use-nixpkgs-abseil-cpp.patch {
+      abseil_cpp_include_path = "${lib.getDev protobuf.abseil-cpp}/include";
+    })
+  ]
+  ++ lib.optionals (pythonAtLeast "3.11" && lib.versionOlder protobuf.version "22") [
+    (fetchpatch {
+      name = "support-python311.patch";
+      url = "https://github.com/protocolbuffers/protobuf/commit/2206b63c4649cf2e8a06b66c9191c8ef862ca519.diff";
+      stripLen = 1; # because sourceRoot above
+      hash = "sha256-3GaoEyZIhS3QONq8LEvJCH5TdO9PKnOgcQF0GlEiwFo=";
+    })
+  ];
 
   prePatch = ''
     if [[ "$(<../version.json)" != *'"python": "'"$version"'"'* ]]; then
@@ -86,36 +86,36 @@ buildPythonPackage {
   ++ lib.optionals (lib.versionAtLeast protobuf.version "22") [ numpy ];
 
   disabledTests =
-    lib.optionals isPyPy [
-      # error message differs
-      "testInvalidTimestamp"
-      # requires tracemalloc which pypy does not implement
-      # https://foss.heptapod.net/pypy/pypy/-/issues/3048
-      "testUnknownFieldsNoMemoryLeak"
-      # assertion is not raised for some reason
-      "testStrictUtf8Check"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.is32bit [
-      # OverflowError: timestamp out of range for platform time_t
-      "testTimezoneAwareDatetimeConversionWhereTimestampLosesPrecision"
-      "testTimezoneNaiveDatetimeConversionWhereTimestampLosesPrecision"
-    ];
+  lib.optionals isPyPy [
+    # error message differs
+    "testInvalidTimestamp"
+    # requires tracemalloc which pypy does not implement
+    # https://foss.heptapod.net/pypy/pypy/-/issues/3048
+    "testUnknownFieldsNoMemoryLeak"
+    # assertion is not raised for some reason
+    "testStrictUtf8Check"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.is32bit [
+    # OverflowError: timestamp out of range for platform time_t
+    "testTimezoneAwareDatetimeConversionWhereTimestampLosesPrecision"
+    "testTimezoneNaiveDatetimeConversionWhereTimestampLosesPrecision"
+  ];
 
   disabledTestPaths =
-    lib.optionals (lib.versionAtLeast protobuf.version "23") [
-      # The following commit (I think) added some internal test logic for Google
-      # that broke generator_test.py. There is a new proto file that setup.py is
-      # not generating into a .py file. However, adding this breaks a bunch of
-      # conflict detection in descriptor_test.py that I don't understand. So let's
-      # just disable generator_test.py for now.
-      #
-      #   https://github.com/protocolbuffers/protobuf/commit/5abab0f47e81ac085f0b2d17ec3b3a3b252a11f1
-      #
-      "google/protobuf/internal/generator_test.py"
-    ]
-    ++ lib.optionals (lib.versionAtLeast protobuf.version "25") [
-      "minimal_test.py" # ModuleNotFoundError: No module named 'google3'
-    ];
+  lib.optionals (lib.versionAtLeast protobuf.version "23") [
+    # The following commit (I think) added some internal test logic for Google
+    # that broke generator_test.py. There is a new proto file that setup.py is
+    # not generating into a .py file. However, adding this breaks a bunch of
+    # conflict detection in descriptor_test.py that I don't understand. So let's
+    # just disable generator_test.py for now.
+    #
+    #   https://github.com/protocolbuffers/protobuf/commit/5abab0f47e81ac085f0b2d17ec3b3a3b252a11f1
+    #
+    "google/protobuf/internal/generator_test.py"
+  ]
+  ++ lib.optionals (lib.versionAtLeast protobuf.version "25") [
+    "minimal_test.py" # ModuleNotFoundError: No module named 'google3'
+  ];
 
   pythonImportsCheck = [
     "google.protobuf"

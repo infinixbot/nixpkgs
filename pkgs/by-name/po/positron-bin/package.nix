@@ -68,14 +68,14 @@ stdenv.mkDerivation {
   ];
 
   nativeBuildInputs =
-    lib.optionals stdenv.hostPlatform.isLinux [
-      autoPatchelfHook
-      dpkg
-      wrapGAppsHook4
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      _7zz
-    ];
+  lib.optionals stdenv.hostPlatform.isLinux [
+    autoPatchelfHook
+    dpkg
+    wrapGAppsHook4
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    _7zz
+  ];
 
   runtimeDependencies = lib.optionals stdenv.hostPlatform.isLinux [
     # Needed to fix the "Zygote could not fork" error.

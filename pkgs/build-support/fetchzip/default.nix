@@ -56,11 +56,11 @@ fetchurl (
     # UTF-8 aware locale:
     #   https://github.com/NixOS/nixpkgs/issues/176225#issuecomment-1146617263
     nativeBuildInputs =
-      lib.optionals withUnzip [
-        unzip
-        glibcLocalesUtf8
-      ]
-      ++ nativeBuildInputs;
+    lib.optionals withUnzip [
+      unzip
+      glibcLocalesUtf8
+    ]
+    ++ nativeBuildInputs;
 
     postFetch = ''
       unpackDir="$TMPDIR/unpack"

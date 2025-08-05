@@ -32,8 +32,8 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   nativeBuildInputs =
-    (lib.optionals stdenv.hostPlatform.isLinux [ autoreconfHook ])
-    ++ (lib.optionals stdenv.hostPlatform.isDarwin [ xcbuildHook ]);
+  (lib.optionals stdenv.hostPlatform.isLinux [ autoreconfHook ])
+  ++ (lib.optionals stdenv.hostPlatform.isDarwin [ xcbuildHook ]);
 
   buildInputs = [ sqlite ];
 

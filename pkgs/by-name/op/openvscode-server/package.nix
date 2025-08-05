@@ -111,15 +111,15 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs =
-    lib.optionals (!stdenv.hostPlatform.isDarwin) [ libsecret ]
-    ++ (with xorg; [
-      libX11
-      libxkbfile
-      libkrb5
-    ])
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      cctools
-    ];
+  lib.optionals (!stdenv.hostPlatform.isDarwin) [ libsecret ]
+  ++ (with xorg; [
+    libX11
+    libxkbfile
+    libkrb5
+  ])
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    cctools
+  ];
 
   # remove all built-in extensions, as these are 3rd party extensions that
   # get downloaded from vscode marketplace

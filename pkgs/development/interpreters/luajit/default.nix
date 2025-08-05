@@ -42,17 +42,17 @@ let
   luaPackages = self.pkgs;
 
   XCFLAGS =
-    lib.optional (!enableFFI) "-DLUAJIT_DISABLE_FFI"
-    ++ lib.optional (!enableJIT) "-DLUAJIT_DISABLE_JIT"
-    ++ lib.optional enable52Compat "-DLUAJIT_ENABLE_LUA52COMPAT"
-    ++ lib.optional (!enableGC64) "-DLUAJIT_DISABLE_GC64"
-    ++ lib.optional useSystemMalloc "-DLUAJIT_USE_SYSMALLOC"
-    ++ lib.optional enableValgrindSupport "-DLUAJIT_USE_VALGRIND"
-    ++ lib.optional enableGDBJITSupport "-DLUAJIT_USE_GDBJIT"
-    ++ lib.optional enableAPICheck "-DLUAJIT_USE_APICHECK"
-    ++ lib.optional enableVMAssertions "-DLUAJIT_USE_ASSERT"
-    ++ lib.optional enableRegisterAllocationRandomization "-DLUAJIT_RANDOM_RA"
-    ++ lib.optional deterministicStringIds "-DLUAJIT_SECURITY_STRID=0";
+  lib.optional (!enableFFI) "-DLUAJIT_DISABLE_FFI"
+  ++ lib.optional (!enableJIT) "-DLUAJIT_DISABLE_JIT"
+  ++ lib.optional enable52Compat "-DLUAJIT_ENABLE_LUA52COMPAT"
+  ++ lib.optional (!enableGC64) "-DLUAJIT_DISABLE_GC64"
+  ++ lib.optional useSystemMalloc "-DLUAJIT_USE_SYSMALLOC"
+  ++ lib.optional enableValgrindSupport "-DLUAJIT_USE_VALGRIND"
+  ++ lib.optional enableGDBJITSupport "-DLUAJIT_USE_GDBJIT"
+  ++ lib.optional enableAPICheck "-DLUAJIT_USE_APICHECK"
+  ++ lib.optional enableVMAssertions "-DLUAJIT_USE_ASSERT"
+  ++ lib.optional enableRegisterAllocationRandomization "-DLUAJIT_RANDOM_RA"
+  ++ lib.optional deterministicStringIds "-DLUAJIT_SECURITY_STRID=0";
 
   # LuaJIT requires build for 32bit architectures to be build on x86 not x86_64
   # TODO support also other build architectures. The ideal way would be to use

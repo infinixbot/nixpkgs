@@ -1187,11 +1187,11 @@ in
                                   entry:
                                   let
                                     lineSuffix =
-                                      optionalString (entry.password != null) entry.password
-                                      + optionalString (entry.mac != null) "|mac=${entry.mac}"
-                                      + optionalString (entry.vlanid != null) "|vlanid=${toString entry.vlanid}"
-                                      + optionalString (entry.pk != null) "|pk=${entry.pk}"
-                                      + optionalString (entry.id != null) "|id=${entry.id}";
+                                    optionalString (entry.password != null) entry.password
+                                    + optionalString (entry.mac != null) "|mac=${entry.mac}"
+                                    + optionalString (entry.vlanid != null) "|vlanid=${toString entry.vlanid}"
+                                    + optionalString (entry.pk != null) "|pk=${entry.pk}"
+                                    + optionalString (entry.id != null) "|id=${entry.id}";
                                   in
                                   ''
                                     (

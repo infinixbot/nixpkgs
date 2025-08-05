@@ -18,13 +18,13 @@ callPackage ../nginx/generic.nix args rec {
   };
 
   configureFlags =
-    lib.optionals withAcme [
-      "--with-http_acme_module"
-      "--http-acme-client-path=/var/lib/nginx/acme"
-    ]
-    ++ lib.optionals withQuic [
-      "--with-http_v3_module"
-    ];
+  lib.optionals withAcme [
+    "--with-http_acme_module"
+    "--http-acme-client-path=/var/lib/nginx/acme"
+  ]
+  ++ lib.optionals withQuic [
+    "--with-http_v3_module"
+  ];
 
   preInstall = ''
     if [[ -e man/angie.8 ]]; then

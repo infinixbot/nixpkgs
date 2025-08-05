@@ -53,18 +53,18 @@ in
 
   config = lib.mkIf cfg.enable {
     assertions =
-      (map (user: {
-        assertion = config.users.users ? ${user};
-        message = ''
-          The user '${user}' intends to use BenchExec (via `${opt.users}`), but is not configured via `${options.users.users}`.
-        '';
-      }) (builtins.filter builtins.isString cfg.users))
-      ++ (map (id: {
-        assertion = config.users.mutableUsers;
-        message = ''
-          The user with UID '${id}' intends to use BenchExec (via `${opt.users}`), but mutable users are disabled via `${options.users.mutableUsers}`.
-        '';
-      }) (builtins.filter builtins.isInt cfg.users));
+    (map (user: {
+      assertion = config.users.users ? ${user};
+      message = ''
+        The user '${user}' intends to use BenchExec (via `${opt.users}`), but is not configured via `${options.users.users}`.
+      '';
+    }) (builtins.filter builtins.isString cfg.users))
+    ++ (map (id: {
+      assertion = config.users.mutableUsers;
+      message = ''
+        The user with UID '${id}' intends to use BenchExec (via `${opt.users}`), but mutable users are disabled via `${options.users.mutableUsers}`.
+      '';
+    }) (builtins.filter builtins.isInt cfg.users));
 
     environment.systemPackages = [ cfg.package ];
 

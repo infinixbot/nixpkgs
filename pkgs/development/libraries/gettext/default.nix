@@ -82,13 +82,13 @@ stdenv.mkDerivation rec {
     updateAutotoolsGnuConfigScriptsHook
   ];
   buildInputs =
-    lib.optionals (!stdenv.hostPlatform.isMinGW) [
-      bashNonInteractive
-    ]
-    ++ lib.optionals (!stdenv.hostPlatform.isLinux && !stdenv.hostPlatform.isCygwin) [
-      # HACK, see #10874 (and 14664)
-      libiconv
-    ];
+  lib.optionals (!stdenv.hostPlatform.isMinGW) [
+    bashNonInteractive
+  ]
+  ++ lib.optionals (!stdenv.hostPlatform.isLinux && !stdenv.hostPlatform.isCygwin) [
+    # HACK, see #10874 (and 14664)
+    libiconv
+  ];
 
   setupHooks = [
     ../../../build-support/setup-hooks/role.bash

@@ -161,18 +161,18 @@ python3Packages.buildPythonApplication {
   __darwinAllowLocalNetworking = true;
 
   disabledTestPaths =
-    disabledTestPaths
-    ++ [
-      # touches network
-      "test/plugins/test_aura.py"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      # Flaky: several tests fail randomly with:
-      # if not self._poll(timeout):
-      #   raise Empty
-      #   _queue.Empty
-      "test/plugins/test_player.py"
-    ];
+  disabledTestPaths
+  ++ [
+    # touches network
+    "test/plugins/test_aura.py"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    # Flaky: several tests fail randomly with:
+    # if not self._poll(timeout):
+    #   raise Empty
+    #   _queue.Empty
+    "test/plugins/test_player.py"
+  ];
   disabledTests = disabledTests ++ [
     # https://github.com/beetbox/beets/issues/5880
     "test_reject_different_art"

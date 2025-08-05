@@ -647,8 +647,8 @@ in
         "postgresql.target"
       ];
       reloadTriggers =
-        optionals (cfg.config != null) [ configFile ]
-        ++ optionals (cfg.lovelaceConfig != null || cfg.lovelaceConfigFile != null) [ lovelaceConfigFile ];
+      optionals (cfg.config != null) [ configFile ]
+      ++ optionals (cfg.lovelaceConfig != null || cfg.lovelaceConfigFile != null) [ lovelaceConfigFile ];
 
       preStart =
         let
@@ -879,11 +879,11 @@ in
             ++ cfg.extraArgs
           );
           ExecReload =
-            (escapeSystemdExecArgs [
-              (lib.getExe' pkgs.coreutils "kill")
-              "-HUP"
-            ])
-            + " $MAINPID";
+          (escapeSystemdExecArgs [
+            (lib.getExe' pkgs.coreutils "kill")
+            "-HUP"
+          ])
+          + " $MAINPID";
           User = "hass";
           Group = "hass";
           WorkingDirectory = cfg.configDir;

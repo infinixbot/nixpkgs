@@ -137,13 +137,13 @@ let
   # See opencv/3rdparty/ippicv/ippicv.cmake
   ippicv = {
     src =
-      fetchFromGitHub {
-        owner = "opencv";
-        repo = "opencv_3rdparty";
-        rev = "7f55c0c26be418d494615afca15218566775c725";
-        hash = "sha256-XbmS+FXUL8MAG7kawbDkb2XHG9R0DpPhiYhq/18eTnY=";
-      }
-      + "/ippicv";
+    fetchFromGitHub {
+      owner = "opencv";
+      repo = "opencv_3rdparty";
+      rev = "7f55c0c26be418d494615afca15218566775c725";
+      hash = "sha256-XbmS+FXUL8MAG7kawbDkb2XHG9R0DpPhiYhq/18eTnY=";
+    }
+    + "/ippicv";
     files =
       let
         name = platform: "ippicv_2021.10.0_${platform}_20230919_general.tgz";
@@ -310,16 +310,16 @@ effectiveStdenv.mkDerivation {
   '';
 
   preConfigure =
-    installExtraFile ade
-    + optionalString enableIpp (installExtraFiles ippicv)
-    + (optionalString buildContrib ''
-      cmakeFlagsArray+=("-DOPENCV_EXTRA_MODULES_PATH=$NIX_BUILD_TOP/source/opencv_contrib")
+  installExtraFile ade
+  + optionalString enableIpp (installExtraFiles ippicv)
+  + (optionalString buildContrib ''
+    cmakeFlagsArray+=("-DOPENCV_EXTRA_MODULES_PATH=$NIX_BUILD_TOP/source/opencv_contrib")
 
-      ${installExtraFiles vgg}
-      ${installExtraFiles boostdesc}
-      ${installExtraFiles face}
-      ${installExtraFiles wechat_qrcode}
-    '');
+    ${installExtraFiles vgg}
+    ${installExtraFiles boostdesc}
+    ${installExtraFiles face}
+    ${installExtraFiles wechat_qrcode}
+  '');
 
   postConfigure = ''
     [ -e modules/core/version_string.inc ]
@@ -545,16 +545,16 @@ effectiveStdenv.mkDerivation {
   '';
 
   preInstall =
-    optionalString (runAccuracyTests || runPerformanceTests) ''
-      mkdir $package_tests
-      cp -R $src/samples $package_tests/
-    ''
-    + optionalString runAccuracyTests ''
-      mv ./bin/*test* $package_tests/
-    ''
-    + optionalString runPerformanceTests ''
-      mv ./bin/*perf* $package_tests/
-    '';
+  optionalString (runAccuracyTests || runPerformanceTests) ''
+    mkdir $package_tests
+    cp -R $src/samples $package_tests/
+  ''
+  + optionalString runAccuracyTests ''
+    mv ./bin/*test* $package_tests/
+  ''
+  + optionalString runPerformanceTests ''
+    mv ./bin/*perf* $package_tests/
+  '';
 
   # By default $out/lib/pkgconfig/opencv4.pc looks something like this:
   #

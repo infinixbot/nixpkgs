@@ -24,7 +24,7 @@ let
       inherit unwrapped;
       paths = lib.optional (baseConfig != null) unwrapped ++ plugins';
       pythonPath =
-        lib.optional (baseConfig == null) unwrapped ++ pythonPackages python3.pkgs ++ extraPythonPackages;
+      lib.optional (baseConfig == null) unwrapped ++ pythonPackages python3.pkgs ++ extraPythonPackages;
 
       nativeBuildInputs = [ python3.pkgs.wrapPython ];
 

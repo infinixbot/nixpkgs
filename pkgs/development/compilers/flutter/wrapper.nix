@@ -119,12 +119,12 @@ let
   # Some header files and libraries are not properly located by the Flutter SDK.
   # They must be manually included.
   appStaticBuildDeps =
-    (lib.optionals supportsLinuxDesktopTarget [
-      libX11
-      xorgproto
-      zlib
-    ])
-    ++ extraLibraries;
+  (lib.optionals supportsLinuxDesktopTarget [
+    libX11
+    xorgproto
+    zlib
+  ])
+  ++ extraLibraries;
 
   # Tools used by the Flutter SDK to compile applications.
   buildTools = lib.optionals supportsLinuxDesktopTarget [
@@ -140,7 +140,7 @@ let
     appStaticBuildDeps ++ extraIncludes
   );
   linkerFlags =
-    (map (pkg: "-rpath,${lib.getOutput "lib" pkg}/lib") appRuntimeDeps) ++ extraLinkerFlags;
+  (map (pkg: "-rpath,${lib.getOutput "lib" pkg}/lib") appRuntimeDeps) ++ extraLinkerFlags;
 in
 (callPackage ./sdk-symlink.nix { }) (
   stdenv.mkDerivation {

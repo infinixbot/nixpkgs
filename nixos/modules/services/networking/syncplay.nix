@@ -318,11 +318,11 @@ in
     ];
 
     warnings =
-      optional (cfg.interfaceIpv4 != "" && cfg.ipv6Only)
-        "You have specified services.syncplay.interfaceIpv4 but IPv4 is disabled by services.syncplay.ipv6Only."
-      ++
-        optional (cfg.interfaceIpv6 != "" && cfg.ipv4Only)
-          "You have specified services.syncplay.interfaceIpv6 but IPv6 is disabled by services.syncplay.ipv4Only.";
+    optional (cfg.interfaceIpv4 != "" && cfg.ipv6Only)
+      "You have specified services.syncplay.interfaceIpv4 but IPv4 is disabled by services.syncplay.ipv6Only."
+    ++
+      optional (cfg.interfaceIpv6 != "" && cfg.ipv4Only)
+        "You have specified services.syncplay.interfaceIpv6 but IPv6 is disabled by services.syncplay.ipv4Only.";
 
     security.acme.certs = mkIf (cfg.useACMEHost != null) {
       "${cfg.useACMEHost}".reloadServices = [ "syncplay.service" ];
@@ -340,13 +340,13 @@ in
         StateDirectory = "syncplay";
         WorkingDirectory = "%S/syncplay";
         LoadCredential =
-          optional (cfg.passwordFile != null) "password:${cfg.passwordFile}"
-          ++ optional (cfg.saltFile != null) "salt:${cfg.saltFile}"
-          ++ optionals (cfg.useACMEHost != null) [
-            "cert.pem:${useACMEHostDir}/cert.pem"
-            "privkey.pem:${useACMEHostDir}/key.pem"
-            "chain.pem:${useACMEHostDir}/chain.pem"
-          ];
+        optional (cfg.passwordFile != null) "password:${cfg.passwordFile}"
+        ++ optional (cfg.saltFile != null) "salt:${cfg.saltFile}"
+        ++ optionals (cfg.useACMEHost != null) [
+          "cert.pem:${useACMEHostDir}/cert.pem"
+          "privkey.pem:${useACMEHostDir}/key.pem"
+          "chain.pem:${useACMEHostDir}/chain.pem"
+        ];
       };
 
       script = ''

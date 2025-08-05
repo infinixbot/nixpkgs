@@ -69,19 +69,19 @@ buildGoModule (finalAttrs: {
     [ "-skip=^${builtins.concatStringsSep "$|^" skippedTests}$" ];
 
   preCheck =
-    # Feed in all but the e2e tests for testing
-    # This is because subPackages above limits what is built to just what we
-    # want but also limits the tests
-    # Also avoid wasm tests on darwin due to wasmtime-go build issues
-    ''
-      getGoDirs() {
-        go list ./... | grep -v -e e2e ${lib.optionalString stdenv.hostPlatform.isDarwin "-e wasm"}
-      }
-    ''
-    # remove tests that have "too many open files"/"no space left on device" issues on darwin in hydra
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      rm v1/server/server_test.go
-    '';
+  # Feed in all but the e2e tests for testing
+  # This is because subPackages above limits what is built to just what we
+  # want but also limits the tests
+  # Also avoid wasm tests on darwin due to wasmtime-go build issues
+  ''
+    getGoDirs() {
+      go list ./... | grep -v -e e2e ${lib.optionalString stdenv.hostPlatform.isDarwin "-e wasm"}
+    }
+  ''
+  # remove tests that have "too many open files"/"no space left on device" issues on darwin in hydra
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    rm v1/server/server_test.go
+  '';
 
   postInstall = ''
     installShellCompletion --cmd opa \

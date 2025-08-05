@@ -110,16 +110,16 @@ let
           x;
 
       legacyModules =
-        optional (evalModulesArgs ? args) {
-          config = {
-            _module.args = args;
-          };
-        }
-        ++ optional (evalModulesArgs ? check) {
-          config = {
-            _module.check = mkDefault check;
-          };
+      optional (evalModulesArgs ? args) {
+        config = {
+          _module.args = args;
         };
+      }
+      ++ optional (evalModulesArgs ? check) {
+        config = {
+          _module.check = mkDefault check;
+        };
+      };
       regularModules = modules ++ legacyModules;
 
       # This internal module declare internal options under the `_module'
@@ -469,18 +469,18 @@ let
               module = module;
               modules = collectedImports.modules;
               disabled =
-                (
-                  if module.disabledModules != [ ] then
-                    [
-                      {
-                        file = module._file;
-                        disabled = module.disabledModules;
-                      }
-                    ]
-                  else
-                    [ ]
-                )
-                ++ collectedImports.disabled;
+              (
+                if module.disabledModules != [ ] then
+                  [
+                    {
+                      file = module._file;
+                      disabled = module.disabledModules;
+                    }
+                  ]
+                else
+                  [ ]
+              )
+              ++ collectedImports.disabled;
             }
           ) initialModules
         );
@@ -855,10 +855,10 @@ let
 
       # an attrset 'name' => list of unmatched definitions for 'name'
       unmatchedDefnsByName =
-        # Propagate all unmatched definitions from nested option sets
-        mapAttrs (n: v: v.unmatchedDefns) resultsByName
-        # Plus the definitions for the current prefix that don't have a matching option
-        // removeAttrs rawDefinitionsByName (attrNames matchedOptions);
+      # Propagate all unmatched definitions from nested option sets
+      mapAttrs (n: v: v.unmatchedDefns) resultsByName
+      # Plus the definitions for the current prefix that don't have a matching option
+      // removeAttrs rawDefinitionsByName (attrNames matchedOptions);
     in
     {
       inherit matchedOptions;
@@ -1005,19 +1005,19 @@ let
             # have exact declaration lines; fall back to just the file being
             # evaluated.
             declarationPositions =
-              res.declarationPositions
-              ++ (
-                if opt.pos != null then
-                  [ opt.pos ]
-                else
-                  [
-                    {
-                      file = opt._file;
-                      line = null;
-                      column = null;
-                    }
-                  ]
-              );
+            res.declarationPositions
+            ++ (
+              if opt.pos != null then
+                [ opt.pos ]
+              else
+                [
+                  {
+                    file = opt._file;
+                    line = null;
+                    column = null;
+                  }
+                ]
+            );
             options = submodules;
           }
           // typeSet
@@ -1053,11 +1053,11 @@ let
     let
       # Add in the default value for this option, if any.
       defs' =
-        (optional (opt ? default) {
-          file = head opt.declarations;
-          value = mkOptionDefault opt.default;
-        })
-        ++ defs;
+      (optional (opt ? default) {
+        file = head opt.declarations;
+        value = mkOptionDefault opt.default;
+      })
+      ++ defs;
 
       # Handle properties, check types, and merge everything together.
       res =

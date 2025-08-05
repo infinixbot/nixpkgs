@@ -182,19 +182,19 @@ stdenv.mkDerivation (finalAttrs: {
   # - Add the ffmpeg dynamic dependency
   # - Use Xwayland by default on Wayland. See https://github.com/audacity/audacity/pull/5977
   postFixup =
-    lib.optionalString stdenv.hostPlatform.isLinux ''
-      wrapProgram "$out/bin/audacity" \
-        "''${gappsWrapperArgs[@]}" \
-        --prefix LD_LIBRARY_PATH : "$out/lib/audacity":${lib.makeLibraryPath [ ffmpeg ]} \
-        --suffix AUDACITY_MODULES_PATH : "$out/lib/audacity/modules" \
-        --suffix AUDACITY_PATH : "$out/share/audacity" \
-        --set-default GDK_BACKEND x11
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      mkdir -p $out/{Applications,bin}
-      mv $out/Audacity.app $out/Applications/
-      makeWrapper $out/Applications/Audacity.app/Contents/MacOS/Audacity $out/bin/audacity
-    '';
+  lib.optionalString stdenv.hostPlatform.isLinux ''
+    wrapProgram "$out/bin/audacity" \
+      "''${gappsWrapperArgs[@]}" \
+      --prefix LD_LIBRARY_PATH : "$out/lib/audacity":${lib.makeLibraryPath [ ffmpeg ]} \
+      --suffix AUDACITY_MODULES_PATH : "$out/lib/audacity/modules" \
+      --suffix AUDACITY_PATH : "$out/share/audacity" \
+      --set-default GDK_BACKEND x11
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    mkdir -p $out/{Applications,bin}
+    mv $out/Audacity.app $out/Applications/
+    makeWrapper $out/Applications/Audacity.app/Contents/MacOS/Audacity $out/bin/audacity
+  '';
 
   meta = {
     description = "Sound editor with graphical UI";

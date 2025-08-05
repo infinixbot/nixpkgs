@@ -79,21 +79,21 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   postPatch =
-    # Tests timeout on Darwin
-    # `testtray` loads assets from a relative path, which we are patching to be absolute
-    lib.optionalString (finalAttrs.finalPackage.doCheck) ''
-      substituteInPlace test/CMakeLists.txt \
-        --replace-fail 'set(noninteractive_timeout 10)' 'set(noninteractive_timeout 30)'
+  # Tests timeout on Darwin
+  # `testtray` loads assets from a relative path, which we are patching to be absolute
+  lib.optionalString (finalAttrs.finalPackage.doCheck) ''
+    substituteInPlace test/CMakeLists.txt \
+      --replace-fail 'set(noninteractive_timeout 10)' 'set(noninteractive_timeout 30)'
 
-      substituteInPlace test/testtray.c \
-        --replace-warn '../test/' '${placeholder "installedTests"}/share/assets/'
-    ''
-    + lib.optionalString waylandSupport ''
-      substituteInPlace src/video/wayland/SDL_waylandmessagebox.c \
-        --replace-fail '"zenity"' '"${lib.getExe zenity}"'
-      substituteInPlace src/dialog/unix/SDL_zenitydialog.c \
-        --replace-fail '"zenity"' '"${lib.getExe zenity}"'
-    '';
+    substituteInPlace test/testtray.c \
+      --replace-warn '../test/' '${placeholder "installedTests"}/share/assets/'
+  ''
+  + lib.optionalString waylandSupport ''
+    substituteInPlace src/video/wayland/SDL_waylandmessagebox.c \
+      --replace-fail '"zenity"' '"${lib.getExe zenity}"'
+    substituteInPlace src/dialog/unix/SDL_zenitydialog.c \
+      --replace-fail '"zenity"' '"${lib.getExe zenity}"'
+  '';
 
   strictDeps = true;
 
@@ -105,61 +105,61 @@ stdenv.mkDerivation (finalAttrs: {
   ++ lib.optional waylandSupport wayland-scanner;
 
   buildInputs =
-    finalAttrs.dlopenBuildInputs
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      # error: 'MTLPixelFormatASTC_4x4_LDR' is unavailable: not available on macOS
-      (darwinMinVersionHook "11.0")
+  finalAttrs.dlopenBuildInputs
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    # error: 'MTLPixelFormatASTC_4x4_LDR' is unavailable: not available on macOS
+    (darwinMinVersionHook "11.0")
 
-      apple-sdk_11
-    ]
-    ++ lib.optionals ibusSupport [
-      # sdl3 only uses some constants of the ibus headers
-      # it never actually loads the library
-      # thus, it also does not have to care about gtk integration,
-      # so using ibusMinimal avoids an unnecessarily large closure here.
-      ibusMinimal
-    ]
-    ++ lib.optional waylandSupport zenity;
+    apple-sdk_11
+  ]
+  ++ lib.optionals ibusSupport [
+    # sdl3 only uses some constants of the ibus headers
+    # it never actually loads the library
+    # thus, it also does not have to care about gtk integration,
+    # so using ibusMinimal avoids an unnecessarily large closure here.
+    ibusMinimal
+  ]
+  ++ lib.optional waylandSupport zenity;
 
   dlopenBuildInputs =
-    lib.optionals stdenv.hostPlatform.isLinux [
-      libusb1
-    ]
-    ++ lib.optional (
-      stdenv.hostPlatform.isUnix && !stdenv.hostPlatform.isDarwin && traySupport
-    ) libayatana-appindicator
-    ++ lib.optional alsaSupport alsa-lib
-    ++ lib.optional dbusSupport dbus
-    ++ lib.optionals drmSupport [
-      libdrm
-      libgbm
-    ]
-    ++ lib.optional jackSupport libjack2
-    ++ lib.optional libdecorSupport libdecor
-    ++ lib.optional libudevSupport systemdLibs
-    ++ lib.optional openglSupport libGL
-    ++ lib.optional pipewireSupport pipewire
-    ++ lib.optional pulseaudioSupport libpulseaudio
-    ++ lib.optional sndioSupport sndio
-    ++ lib.optionals waylandSupport [
-      libxkbcommon
-      wayland
-    ]
-    ++ lib.optionals x11Support [
-      xorg.libX11
-      xorg.libXScrnSaver
-      xorg.libXcursor
-      xorg.libXext
-      xorg.libXfixes
-      xorg.libXi
-      xorg.libXrandr
-    ]
-    ++ [
-      vulkan-headers
-      vulkan-loader
-    ]
-    ++ lib.optional (openglSupport && !stdenv.hostPlatform.isDarwin) libGL
-    ++ lib.optional x11Support xorg.libX11;
+  lib.optionals stdenv.hostPlatform.isLinux [
+    libusb1
+  ]
+  ++ lib.optional (
+    stdenv.hostPlatform.isUnix && !stdenv.hostPlatform.isDarwin && traySupport
+  ) libayatana-appindicator
+  ++ lib.optional alsaSupport alsa-lib
+  ++ lib.optional dbusSupport dbus
+  ++ lib.optionals drmSupport [
+    libdrm
+    libgbm
+  ]
+  ++ lib.optional jackSupport libjack2
+  ++ lib.optional libdecorSupport libdecor
+  ++ lib.optional libudevSupport systemdLibs
+  ++ lib.optional openglSupport libGL
+  ++ lib.optional pipewireSupport pipewire
+  ++ lib.optional pulseaudioSupport libpulseaudio
+  ++ lib.optional sndioSupport sndio
+  ++ lib.optionals waylandSupport [
+    libxkbcommon
+    wayland
+  ]
+  ++ lib.optionals x11Support [
+    xorg.libX11
+    xorg.libXScrnSaver
+    xorg.libXcursor
+    xorg.libXext
+    xorg.libXfixes
+    xorg.libXi
+    xorg.libXrandr
+  ]
+  ++ [
+    vulkan-headers
+    vulkan-loader
+  ]
+  ++ lib.optional (openglSupport && !stdenv.hostPlatform.isDarwin) libGL
+  ++ lib.optional x11Support xorg.libX11;
 
   cmakeFlags = [
     (lib.cmakeBool "SDL_ALSA" alsaSupport)
@@ -229,21 +229,21 @@ stdenv.mkDerivation (finalAttrs: {
     });
 
     tests =
-      SDL_compat.tests
-      // sdl2-compat.tests
-      // {
-        inherit
-          SDL_compat
-          sdl2-compat
-          sdl3-image
-          sdl3-ttf
-          ;
-        pkg-config = testers.hasPkgConfigModules { package = finalAttrs.finalPackage; };
-        inherit (finalAttrs.passthru) debug-text-example;
-      }
-      // lib.optionalAttrs stdenv.hostPlatform.isLinux {
-        nixosTest = nixosTests.sdl3;
-      };
+    SDL_compat.tests
+    // sdl2-compat.tests
+    // {
+      inherit
+        SDL_compat
+        sdl2-compat
+        sdl3-image
+        sdl3-ttf
+        ;
+      pkg-config = testers.hasPkgConfigModules { package = finalAttrs.finalPackage; };
+      inherit (finalAttrs.passthru) debug-text-example;
+    }
+    // lib.optionalAttrs stdenv.hostPlatform.isLinux {
+      nixosTest = nixosTests.sdl3;
+    };
 
     updateScript = nix-update-script {
       extraArgs = [

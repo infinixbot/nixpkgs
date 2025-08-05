@@ -37,8 +37,8 @@ let
 
       meta = package.meta // {
         description =
-          package.meta.description
-          + " (FHS-wrapped, expand package details for further information when to use it)";
+        package.meta.description
+        + " (FHS-wrapped, expand package details for further information when to use it)";
         longDescription = "Use this version if you encounter an error like `Could not start dynamically linked executable` or `SyntaxError: Invalid or unexpected token` (see nixpkgs issue [391730](https://github.com/NixOS/nixpkgs/issues/391730)).";
       };
     };

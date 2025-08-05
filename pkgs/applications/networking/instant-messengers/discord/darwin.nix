@@ -72,22 +72,22 @@ stdenv.mkDerivation {
   '';
 
   postInstall =
-    lib.strings.optionalString withOpenASAR ''
-      cp -f ${openasar} $out/Applications/${desktopName}.app/Contents/Resources/app.asar
-    ''
-    + lib.strings.optionalString withVencord ''
-      mv $out/Applications/${desktopName}.app/Contents/Resources/app.asar $out/Applications/${desktopName}.app/Contents/Resources/_app.asar
-      mkdir $out/Applications/${desktopName}.app/Contents/Resources/app.asar
-      echo '{"name":"discord","main":"index.js"}' > $out/Applications/${desktopName}.app/Contents/Resources/app.asar/package.json
-      echo 'require("${vencord}/patcher.js")' > $out/Applications/${desktopName}.app/Contents/Resources/app.asar/index.js
-    ''
+  lib.strings.optionalString withOpenASAR ''
+    cp -f ${openasar} $out/Applications/${desktopName}.app/Contents/Resources/app.asar
+  ''
+  + lib.strings.optionalString withVencord ''
+    mv $out/Applications/${desktopName}.app/Contents/Resources/app.asar $out/Applications/${desktopName}.app/Contents/Resources/_app.asar
+    mkdir $out/Applications/${desktopName}.app/Contents/Resources/app.asar
+    echo '{"name":"discord","main":"index.js"}' > $out/Applications/${desktopName}.app/Contents/Resources/app.asar/package.json
+    echo 'require("${vencord}/patcher.js")' > $out/Applications/${desktopName}.app/Contents/Resources/app.asar/index.js
+  ''
 
-    + lib.strings.optionalString withMoonlight ''
-      mv $out/Applications/${desktopName}.app/Contents/Resources/app.asar $out/Applications/${desktopName}.app/Contents/Resources/_app.asar
-      mkdir $out/Applications/${desktopName}.app/Contents/Resources/app.asar
-      echo '{"name":"discord","main":"injector.js","private": true}' > $out/Applications/${desktopName}.app/Contents/Resources/app.asar/package.json
-      echo 'require("${moonlight}/injector.js").inject(require("path").join(__dirname, "../_app.asar"));' > $out/Applications/${desktopName}.app/Contents/Resources/app.asar/injector.js
-    '';
+  + lib.strings.optionalString withMoonlight ''
+    mv $out/Applications/${desktopName}.app/Contents/Resources/app.asar $out/Applications/${desktopName}.app/Contents/Resources/_app.asar
+    mkdir $out/Applications/${desktopName}.app/Contents/Resources/app.asar
+    echo '{"name":"discord","main":"injector.js","private": true}' > $out/Applications/${desktopName}.app/Contents/Resources/app.asar/package.json
+    echo 'require("${moonlight}/injector.js").inject(require("path").join(__dirname, "../_app.asar"));' > $out/Applications/${desktopName}.app/Contents/Resources/app.asar/injector.js
+  '';
 
   passthru = {
     # make it possible to run disableBreakingUpdates standalone

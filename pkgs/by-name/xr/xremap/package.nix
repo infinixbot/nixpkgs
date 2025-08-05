@@ -35,8 +35,8 @@ let
 
       meta = {
         description =
-          "Key remapper for X11 and Wayland"
-          + lib.optionalString (descriptionSuffix != "") " (${descriptionSuffix} support)";
+        "Key remapper for X11 and Wayland"
+        + lib.optionalString (descriptionSuffix != "") " (${descriptionSuffix} support)";
         homepage = "https://github.com/xremap/xremap";
         changelog = "https://github.com/xremap/xremap/blob/${src.tag}/CHANGELOG.md";
         license = lib.licenses.mit;

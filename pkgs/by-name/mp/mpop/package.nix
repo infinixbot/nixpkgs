@@ -32,10 +32,10 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    lib.optional gsaslSupport gsasl
-    ++ lib.optional idnSupport libidn
-    ++ lib.optional (sslLibrary == "gnutls") gnutls
-    ++ lib.optional (sslLibrary == "openssl") openssl;
+  lib.optional gsaslSupport gsasl
+  ++ lib.optional idnSupport libidn
+  ++ lib.optional (sslLibrary == "gnutls") gnutls
+  ++ lib.optional (sslLibrary == "openssl") openssl;
 
   configureFlags = [
     (lib.enableFeature nlsSupport "nls")

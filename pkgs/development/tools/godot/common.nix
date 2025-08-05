@@ -271,18 +271,18 @@ let
                     stripExclude = lib.optional withMono [ "*.dll" ];
 
                     runtimeDependencies =
-                      prev.runtimeDependencies or [ ]
-                      ++ map lib.getLib [
-                        alsa-lib
-                        libpulseaudio
-                        libX11
-                        libXcursor
-                        libXext
-                        libXi
-                        libXrandr
-                        udev
-                        vulkan-loader
-                      ];
+                    prev.runtimeDependencies or [ ]
+                    ++ map lib.getLib [
+                      alsa-lib
+                      libpulseaudio
+                      libX11
+                      libXcursor
+                      libXext
+                      libXi
+                      libXrandr
+                      udev
+                      vulkan-loader
+                    ];
                   });
                 }
               )).run;
@@ -417,35 +417,35 @@ let
         ];
 
         buildInputs =
-          lib.optionals (editor && withMono) dotnet-sdk.packages
-          ++ lib.optional withAlsa alsa-lib
-          ++ lib.optional (withX11 || withWayland) libxkbcommon
-          ++ lib.optionals withX11 [
-            libX11
-            libXcursor
-            libXext
-            libXfixes
-            libXi
-            libXinerama
-            libXrandr
-            libXrender
-          ]
-          ++ lib.optionals withWayland [
-            # libdecor
-            wayland
-          ]
-          ++ lib.optionals withDbus [
-            dbus
-          ]
-          ++ lib.optionals withFontconfig [
-            fontconfig
-          ]
-          ++ lib.optional withPulseaudio libpulseaudio
-          ++ lib.optionals withSpeechd [
-            speechd-minimal
-            glib
-          ]
-          ++ lib.optional withUdev udev;
+        lib.optionals (editor && withMono) dotnet-sdk.packages
+        ++ lib.optional withAlsa alsa-lib
+        ++ lib.optional (withX11 || withWayland) libxkbcommon
+        ++ lib.optionals withX11 [
+          libX11
+          libXcursor
+          libXext
+          libXfixes
+          libXi
+          libXinerama
+          libXrandr
+          libXrender
+        ]
+        ++ lib.optionals withWayland [
+          # libdecor
+          wayland
+        ]
+        ++ lib.optionals withDbus [
+          dbus
+        ]
+        ++ lib.optionals withFontconfig [
+          fontconfig
+        ]
+        ++ lib.optional withPulseaudio libpulseaudio
+        ++ lib.optionals withSpeechd [
+          speechd-minimal
+          glib
+        ]
+        ++ lib.optional withUdev udev;
 
         nativeBuildInputs = [
           installShellFiles
@@ -505,18 +505,18 @@ let
           else
             let
               template =
-                (lib.replaceStrings
-                  [ "template" ]
-                  [
-                    {
-                      linuxbsd = "linux";
-                    }
-                    .${withPlatform}
-                  ]
-                  target
-                )
-                + "."
-                + arch;
+              (lib.replaceStrings
+                [ "template" ]
+                [
+                  {
+                    linuxbsd = "linux";
+                  }
+                  .${withPlatform}
+                ]
+                target
+              )
+              + "."
+              + arch;
             in
             ''
               templates="$out"/share/godot/export_templates/${dottedVersion}
@@ -531,10 +531,10 @@ let
         passthru = {
           inherit updateScript;
           tests =
-            mkTests finalAttrs.finalPackage dotnet-sdk
-            // lib.optionalAttrs (editor && withMono) {
-              sdk-override = mkTests finalAttrs.finalPackage dotnet-sdk_alt;
-            };
+          mkTests finalAttrs.finalPackage dotnet-sdk
+          // lib.optionalAttrs (editor && withMono) {
+            sdk-override = mkTests finalAttrs.finalPackage dotnet-sdk_alt;
+          };
         }
         // lib.optionalAttrs editor {
           export-template = mkTarget "template_release";
@@ -577,8 +577,8 @@ let
             overrideFetchAttrs = old: rec {
               runtimeIds = map (system: dotnetCorePackages.systemToDotnetRid system) old.meta.platforms;
               buildInputs =
-                old.buildInputs
-                ++ lib.concatLists (lib.attrValues (lib.getAttrs runtimeIds dotnet-sdk.targetPackages));
+              old.buildInputs
+              ++ lib.concatLists (lib.attrValues (lib.getAttrs runtimeIds dotnet-sdk.targetPackages));
             };
           } attrs
         else

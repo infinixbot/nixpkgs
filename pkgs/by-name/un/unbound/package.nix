@@ -72,14 +72,14 @@ stdenv.mkDerivation (finalAttrs: {
   ]; # "dev" would only split ~20 kB
 
   nativeBuildInputs =
-    lib.optionals withMakeWrapper [ makeWrapper ]
-    ++ lib.optionals withDNSTAP [ protobufc ]
-    ++ [
-      pkg-config
-      flex
-      bison
-    ]
-    ++ lib.optionals withPythonModule [ swig ];
+  lib.optionals withMakeWrapper [ makeWrapper ]
+  ++ lib.optionals withDNSTAP [ protobufc ]
+  ++ [
+    pkg-config
+    flex
+    bison
+  ]
+  ++ lib.optionals withPythonModule [ swig ];
 
   buildInputs = [
     openssl
@@ -180,27 +180,27 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   preFixup =
-    lib.optionalString withSlimLib
-      # Build libunbound again, but only against nettle instead of openssl.
-      # This avoids gnutls.out -> unbound.lib -> lib.getLib openssl.
-      ''
-        appendToVar configureFlags "--with-nettle=${nettle.dev}"
-        appendToVar configureFlags "--with-libunbound-only"
-        configurePhase
-        buildPhase
-        if [ -n "$doCheck" ]; then
-            checkPhase
-        fi
-        installPhase
-      ''
-    # get rid of runtime dependencies on $dev outputs
-    + ''substituteInPlace "$lib/lib/libunbound.la" ''
-    + lib.concatMapStrings (
-      pkg:
-      lib.optionalString (
-        pkg ? dev
-      ) " --replace '-L${pkg.dev}/lib' '-L${pkg.out}/lib' --replace '-R${pkg.dev}/lib' '-R${pkg.out}/lib'"
-    ) (builtins.filter (p: p != null) finalAttrs.buildInputs);
+  lib.optionalString withSlimLib
+    # Build libunbound again, but only against nettle instead of openssl.
+    # This avoids gnutls.out -> unbound.lib -> lib.getLib openssl.
+    ''
+      appendToVar configureFlags "--with-nettle=${nettle.dev}"
+      appendToVar configureFlags "--with-libunbound-only"
+      configurePhase
+      buildPhase
+      if [ -n "$doCheck" ]; then
+          checkPhase
+      fi
+      installPhase
+    ''
+  # get rid of runtime dependencies on $dev outputs
+  + ''substituteInPlace "$lib/lib/libunbound.la" ''
+  + lib.concatMapStrings (
+    pkg:
+    lib.optionalString (
+      pkg ? dev
+    ) " --replace '-L${pkg.dev}/lib' '-L${pkg.out}/lib' --replace '-R${pkg.dev}/lib' '-R${pkg.out}/lib'"
+  ) (builtins.filter (p: p != null) finalAttrs.buildInputs);
 
   passthru = {
     updateScript = nix-update-script {

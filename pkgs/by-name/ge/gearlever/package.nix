@@ -34,24 +34,24 @@ python3Packages.buildPythonApplication rec {
   };
 
   postPatch =
-    # https://github.com/NixOS/nixpkgs/issues/302605
-    # But since the author only builds on flatpak, we don't expect much on it...
-    ''
-      substituteInPlace build-aux/meson/postinstall.py \
-        --replace-fail 'gtk-update-icon-cache' 'gtk4-update-icon-cache'
-    ''
-    # Use gtk4 instead of gtk3 to get smaller closure size
-    + ''
-      substituteInPlace src/providers/AppImageProvider.py \
-        --replace-fail "gtk-launch" "gtk4-launch"
-    ''
-    # We don't have `arch` in coreutils, so just return a string in advance
-    + ''
-      substituteInPlace src/AppDetails.py \
-        --replace-fail "sandbox_sh(['arch'])" '"${stdenv.hostPlatform.uname.processor}"'
-      substituteInPlace src/models/UpdateManager.py \
-        --replace-fail "terminal.sandbox_sh(['arch'])" '"${stdenv.hostPlatform.uname.processor}"'
-    '';
+  # https://github.com/NixOS/nixpkgs/issues/302605
+  # But since the author only builds on flatpak, we don't expect much on it...
+  ''
+    substituteInPlace build-aux/meson/postinstall.py \
+      --replace-fail 'gtk-update-icon-cache' 'gtk4-update-icon-cache'
+  ''
+  # Use gtk4 instead of gtk3 to get smaller closure size
+  + ''
+    substituteInPlace src/providers/AppImageProvider.py \
+      --replace-fail "gtk-launch" "gtk4-launch"
+  ''
+  # We don't have `arch` in coreutils, so just return a string in advance
+  + ''
+    substituteInPlace src/AppDetails.py \
+      --replace-fail "sandbox_sh(['arch'])" '"${stdenv.hostPlatform.uname.processor}"'
+    substituteInPlace src/models/UpdateManager.py \
+      --replace-fail "terminal.sandbox_sh(['arch'])" '"${stdenv.hostPlatform.uname.processor}"'
+  '';
 
   nativeBuildInputs = [
     meson

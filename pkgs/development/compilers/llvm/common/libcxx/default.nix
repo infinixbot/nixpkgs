@@ -34,29 +34,29 @@ let
   useLLVM = stdenv.hostPlatform.useLLVM or false;
 
   cxxabiCMakeFlags =
-    lib.optionals (lib.versionAtLeast release_version "18") [
-      (lib.cmakeBool "LIBCXXABI_USE_LLVM_UNWINDER" false)
-    ]
-    ++ lib.optionals (useLLVM && !stdenv.hostPlatform.isWasm) (
-      if lib.versionAtLeast release_version "18" then
-        [
-          (lib.cmakeFeature "LIBCXXABI_ADDITIONAL_LIBRARIES" "unwind")
-          (lib.cmakeBool "LIBCXXABI_USE_COMPILER_RT" true)
-        ]
-      else
-        [
-          (lib.cmakeBool "LIBCXXABI_USE_COMPILER_RT" true)
-          (lib.cmakeBool "LIBCXXABI_USE_LLVM_UNWINDER" true)
-        ]
-    )
-    ++ lib.optionals stdenv.hostPlatform.isWasm [
-      (lib.cmakeBool "LIBCXXABI_ENABLE_THREADS" false)
-      (lib.cmakeBool "LIBCXXABI_ENABLE_EXCEPTIONS" false)
-    ]
-    ++ lib.optionals (!enableShared || stdenv.hostPlatform.isWindows) [
-      # Required on Windows due to https://github.com/llvm/llvm-project/issues/55245
-      (lib.cmakeBool "LIBCXXABI_ENABLE_SHARED" false)
-    ];
+  lib.optionals (lib.versionAtLeast release_version "18") [
+    (lib.cmakeBool "LIBCXXABI_USE_LLVM_UNWINDER" false)
+  ]
+  ++ lib.optionals (useLLVM && !stdenv.hostPlatform.isWasm) (
+    if lib.versionAtLeast release_version "18" then
+      [
+        (lib.cmakeFeature "LIBCXXABI_ADDITIONAL_LIBRARIES" "unwind")
+        (lib.cmakeBool "LIBCXXABI_USE_COMPILER_RT" true)
+      ]
+    else
+      [
+        (lib.cmakeBool "LIBCXXABI_USE_COMPILER_RT" true)
+        (lib.cmakeBool "LIBCXXABI_USE_LLVM_UNWINDER" true)
+      ]
+  )
+  ++ lib.optionals stdenv.hostPlatform.isWasm [
+    (lib.cmakeBool "LIBCXXABI_ENABLE_THREADS" false)
+    (lib.cmakeBool "LIBCXXABI_ENABLE_EXCEPTIONS" false)
+  ]
+  ++ lib.optionals (!enableShared || stdenv.hostPlatform.isWindows) [
+    # Required on Windows due to https://github.com/llvm/llvm-project/issues/55245
+    (lib.cmakeBool "LIBCXXABI_ENABLE_SHARED" false)
+  ];
 
   cxxCMakeFlags = [
     (lib.cmakeFeature "LIBCXX_CXX_ABI" cxxabiName)
@@ -228,35 +228,35 @@ stdenv.mkDerivation (
     # libc++.so.1 and libc++abi.so or the external cxxabi. ld-wrapper doesn't
     # support linker scripts so the external cxxabi needs to be symlinked in
     postInstall =
-      lib.optionalString (cxxabi != null) ''
-        lndir ${lib.getDev cxxabi}/include $dev/include/c++/v1
-        lndir ${lib.getLib cxxabi}/lib $out/lib
-        libcxxabi=$out/lib/lib${cxxabi.libName}.a
-      ''
-      # LIBCXX_STATICALLY_LINK_ABI_IN_STATIC_LIBRARY=ON doesn't work for LLVM < 16 or
-      # external cxxabi libraries so merge libc++abi.a into libc++.a ourselves.
+    lib.optionalString (cxxabi != null) ''
+      lndir ${lib.getDev cxxabi}/include $dev/include/c++/v1
+      lndir ${lib.getLib cxxabi}/lib $out/lib
+      libcxxabi=$out/lib/lib${cxxabi.libName}.a
+    ''
+    # LIBCXX_STATICALLY_LINK_ABI_IN_STATIC_LIBRARY=ON doesn't work for LLVM < 16 or
+    # external cxxabi libraries so merge libc++abi.a into libc++.a ourselves.
 
-      # GNU binutils emits objects in LIFO order in MRI scripts so after the merge
-      # the objects are in reversed order so a second MRI script is required so the
-      # objects in the archive are listed in proper order (libc++.a, libc++abi.a)
-      + lib.optionalString (cxxabi != null || lib.versionOlder release_version "16") ''
-        libcxxabi=''${libcxxabi-$out/lib/libc++abi.a}
-        if [[ -f $out/lib/libc++.a && -e $libcxxabi ]]; then
-          $AR -M <<MRI
-            create $out/lib/libc++.a
-            addlib $out/lib/libc++.a
-            addlib $libcxxabi
-            save
-            end
-        MRI
-          $AR -M <<MRI
-            create $out/lib/libc++.a
-            addlib $out/lib/libc++.a
-            save
-            end
-        MRI
-        fi
-      '';
+    # GNU binutils emits objects in LIFO order in MRI scripts so after the merge
+    # the objects are in reversed order so a second MRI script is required so the
+    # objects in the archive are listed in proper order (libc++.a, libc++abi.a)
+    + lib.optionalString (cxxabi != null || lib.versionOlder release_version "16") ''
+      libcxxabi=''${libcxxabi-$out/lib/libc++abi.a}
+      if [[ -f $out/lib/libc++.a && -e $libcxxabi ]]; then
+        $AR -M <<MRI
+          create $out/lib/libc++.a
+          addlib $out/lib/libc++.a
+          addlib $libcxxabi
+          save
+          end
+      MRI
+        $AR -M <<MRI
+          create $out/lib/libc++.a
+          addlib $out/lib/libc++.a
+          save
+          end
+      MRI
+      fi
+    '';
 
     passthru = {
       isLLVM = true;

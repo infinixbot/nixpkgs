@@ -51,23 +51,23 @@ stdenv.mkDerivation rec {
 
   # Library only statically links by default
   postInstall =
-    lib.optionalString (!enableStatic) ''
-      rm $out/lib/libtermcap.a
+  lib.optionalString (!enableStatic) ''
+    rm $out/lib/libtermcap.a
+  ''
+  + lib.optionalString enableShared (
+    let
+      libName = "libtermcap${stdenv.hostPlatform.extensions.sharedLibrary}";
+      impLibName = "libtermcap.dll.a";
+      winImpLib = lib.optionalString stdenv.hostPlatform.isWindows "-Wl,--out-implib,${impLibName}";
+    in
     ''
-    + lib.optionalString enableShared (
-      let
-        libName = "libtermcap${stdenv.hostPlatform.extensions.sharedLibrary}";
-        impLibName = "libtermcap.dll.a";
-        winImpLib = lib.optionalString stdenv.hostPlatform.isWindows "-Wl,--out-implib,${impLibName}";
-      in
-      ''
-        ${stdenv.cc.targetPrefix}cc -shared -o ${libName} termcap.o tparam.o version.o ${winImpLib}
-        install -Dm644 ${libName} $out/lib
-      ''
-      + lib.optionalString stdenv.hostPlatform.isWindows ''
-        install -Dm644 ${impLibName} $out/lib
-      ''
-    );
+      ${stdenv.cc.targetPrefix}cc -shared -o ${libName} termcap.o tparam.o version.o ${winImpLib}
+      install -Dm644 ${libName} $out/lib
+    ''
+    + lib.optionalString stdenv.hostPlatform.isWindows ''
+      install -Dm644 ${impLibName} $out/lib
+    ''
+  );
 
   meta = {
     description = "Terminal feature database";

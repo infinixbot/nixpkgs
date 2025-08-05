@@ -57,26 +57,26 @@ stdenv.mkDerivation rec {
   ++ lib.optional libsndfileSupport libsndfile;
 
   sconsFlags =
-    lib.optionals (!stdenv.hostPlatform.isDarwin) [
-      "--build=${stdenv.buildPlatform.config}"
-      "--host=${stdenv.hostPlatform.config}"
-    ]
-    ++ [ "--prefix=${placeholder "out"}" ]
-    ++ lib.optional (!opensslSupport) "--disable-openssl"
-    ++ lib.optional (!soxSupport) "--disable-sox"
-    ++ lib.optional (!libunwindSupport) "--disable-libunwind"
-    ++ lib.optional (!pulseaudioSupport) "--disable-pulseaudio"
-    ++ lib.optional (!libsndfileSupport) "--disable-sndfile"
-    ++ lib.optional stdenv.hostPlatform.isFreeBSD "--platform=unix"
-    ++ (
-      if (!openfecSupport) then
-        [ "--disable-openfec" ]
-      else
-        [
-          "--with-libraries=${openfec}/lib"
-          "--with-openfec-includes=${openfec.dev}/include"
-        ]
-    );
+  lib.optionals (!stdenv.hostPlatform.isDarwin) [
+    "--build=${stdenv.buildPlatform.config}"
+    "--host=${stdenv.hostPlatform.config}"
+  ]
+  ++ [ "--prefix=${placeholder "out"}" ]
+  ++ lib.optional (!opensslSupport) "--disable-openssl"
+  ++ lib.optional (!soxSupport) "--disable-sox"
+  ++ lib.optional (!libunwindSupport) "--disable-libunwind"
+  ++ lib.optional (!pulseaudioSupport) "--disable-pulseaudio"
+  ++ lib.optional (!libsndfileSupport) "--disable-sndfile"
+  ++ lib.optional stdenv.hostPlatform.isFreeBSD "--platform=unix"
+  ++ (
+    if (!openfecSupport) then
+      [ "--disable-openfec" ]
+    else
+      [
+        "--with-libraries=${openfec}/lib"
+        "--with-openfec-includes=${openfec.dev}/include"
+      ]
+  );
 
   env = lib.optionalAttrs stdenv.hostPlatform.isFreeBSD {
     NIX_CFLAGS_COMPILE = "-D_XOPEN_SOURCE=700 -D__BSD_VISIBLE";

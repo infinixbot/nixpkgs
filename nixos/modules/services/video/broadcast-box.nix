@@ -36,9 +36,9 @@ let
   httpRedirect = settings.ENABLE_HTTP_REDIRECT or (settings.HTTPS_REDIRECT_PORT != null);
 
   udpPorts =
-    optional (settings.UDP_MUX_PORT != null) settings.UDP_MUX_PORT
-    ++ optional (settings.UDP_WHEP_PORT != null) settings.UDP_WHEP_PORT
-    ++ optional (settings.UDP_WHIP_PORT != null) settings.UDP_WHIP_PORT;
+  optional (settings.UDP_MUX_PORT != null) settings.UDP_MUX_PORT
+  ++ optional (settings.UDP_WHEP_PORT != null) settings.UDP_WHEP_PORT
+  ++ optional (settings.UDP_WHIP_PORT != null) settings.UDP_WHIP_PORT;
   tcpPorts = optional (settings.TCP_MUX_ADDRESS != null) tcpMuxPort;
   webPorts = [ httpPort ] ++ optional httpRedirect settings.HTTPS_REDIRECT_PORT;
 in

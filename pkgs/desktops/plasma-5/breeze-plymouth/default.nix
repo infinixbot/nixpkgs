@@ -49,12 +49,12 @@ mkDerivation {
     ./install-paths.patch
   ];
   cmakeFlags =
-    [ ]
-    ++ lib.optional (osName != null) "-DDISTRO_NAME=${osName}"
-    ++ lib.optional (osVersion != null) "-DDISTRO_VERSION=${osVersion}"
-    ++ lib.optional (logoName != null) "-DDISTRO_LOGO=${logoName}"
-    ++ lib.optional (topColor != null) "-DBACKGROUND_TOP_COLOR=${topColor}"
-    ++ lib.optional (bottomColor != null) "-DBACKGROUND_BOTTOM_COLOR=${bottomColor}";
+  [ ]
+  ++ lib.optional (osName != null) "-DDISTRO_NAME=${osName}"
+  ++ lib.optional (osVersion != null) "-DDISTRO_VERSION=${osVersion}"
+  ++ lib.optional (logoName != null) "-DDISTRO_LOGO=${logoName}"
+  ++ lib.optional (topColor != null) "-DBACKGROUND_TOP_COLOR=${topColor}"
+  ++ lib.optional (bottomColor != null) "-DBACKGROUND_BOTTOM_COLOR=${bottomColor}";
 
   postPatch = ''
     substituteInPlace cmake/FindPlymouth.cmake --subst-var out

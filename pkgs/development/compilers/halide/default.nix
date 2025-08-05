@@ -107,17 +107,17 @@ stdenv.mkDerivation (finalAttrs: {
   nativeCheckInputs = [ ctestCheckHook ];
 
   postInstall =
-    lib.optionalString pythonSupport ''
-      mkdir -p $lib/lib/${python3Packages.python.libPrefix}
-      mv -v $lib/lib/python3/site-packages $lib/lib/${python3Packages.python.libPrefix}
-      rmdir $lib/lib/python3/
-    ''
-    # Debug symbols in the runtime include references to clang, but they're not
-    # required for running the code. llvmPackages.clang increases the runtime
-    # closure by at least a GB which is a waste, so we remove references to clang.
-    + lib.optionalString (stdenv != llvmPackages.stdenv) ''
-      remove-references-to -t ${llvmPackages.clang} $lib/lib/libHalide*
-    '';
+  lib.optionalString pythonSupport ''
+    mkdir -p $lib/lib/${python3Packages.python.libPrefix}
+    mv -v $lib/lib/python3/site-packages $lib/lib/${python3Packages.python.libPrefix}
+    rmdir $lib/lib/python3/
+  ''
+  # Debug symbols in the runtime include references to clang, but they're not
+  # required for running the code. llvmPackages.clang increases the runtime
+  # closure by at least a GB which is a waste, so we remove references to clang.
+  + lib.optionalString (stdenv != llvmPackages.stdenv) ''
+    remove-references-to -t ${llvmPackages.clang} $lib/lib/libHalide*
+  '';
 
   # Note: only openblas and not atlas part of this Nix expression
   # see pkgs/development/libraries/science/math/liblapack/3.5.0.nix

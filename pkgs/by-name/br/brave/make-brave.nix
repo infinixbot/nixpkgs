@@ -145,11 +145,11 @@ let
   binpath = makeBinPath deps;
 
   enableFeatures =
-    optionals enableVideoAcceleration [
-      "VaapiVideoDecoder"
-      "VaapiVideoEncoder"
-    ]
-    ++ optional enableVulkan "Vulkan";
+  optionals enableVideoAcceleration [
+    "VaapiVideoDecoder"
+    "VaapiVideoEncoder"
+  ]
+  ++ optional enableVulkan "Vulkan";
 
   disableFeatures = [
     "OutdatedBuildDetector"
@@ -170,16 +170,16 @@ stdenv.mkDerivation {
   doInstallCheck = stdenv.hostPlatform.isLinux;
 
   nativeBuildInputs =
-    lib.optionals stdenv.hostPlatform.isLinux [
-      dpkg
-      # override doesn't preserve splicing https://github.com/NixOS/nixpkgs/issues/132651
-      # Has to use `makeShellWrapper` from `buildPackages` even though `makeShellWrapper` from the inputs is spliced because `propagatedBuildInputs` would pick the wrong one because of a different offset.
-      (buildPackages.wrapGAppsHook3.override { makeWrapper = buildPackages.makeShellWrapper; })
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      unzip
-      makeWrapper
-    ];
+  lib.optionals stdenv.hostPlatform.isLinux [
+    dpkg
+    # override doesn't preserve splicing https://github.com/NixOS/nixpkgs/issues/132651
+    # Has to use `makeShellWrapper` from `buildPackages` even though `makeShellWrapper` from the inputs is spliced because `propagatedBuildInputs` would pick the wrong one because of a different offset.
+    (buildPackages.wrapGAppsHook3.override { makeWrapper = buildPackages.makeShellWrapper; })
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    unzip
+    makeWrapper
+  ];
 
   buildInputs = lib.optionals stdenv.hostPlatform.isLinux [
     # needed for GSETTINGS_SCHEMAS_PATH
@@ -193,65 +193,65 @@ stdenv.mkDerivation {
   ];
 
   installPhase =
-    lib.optionalString stdenv.hostPlatform.isLinux ''
-      runHook preInstall
+  lib.optionalString stdenv.hostPlatform.isLinux ''
+    runHook preInstall
 
-      mkdir -p $out $out/bin
+    mkdir -p $out $out/bin
 
-      cp -R usr/share $out
-      cp -R opt/ $out/opt
+    cp -R usr/share $out
+    cp -R opt/ $out/opt
 
-      export BINARYWRAPPER=$out/opt/brave.com/brave/brave-browser
+    export BINARYWRAPPER=$out/opt/brave.com/brave/brave-browser
 
-      # Fix path to bash in $BINARYWRAPPER
-      substituteInPlace $BINARYWRAPPER \
-          --replace-fail /bin/bash ${stdenv.shell} \
-          --replace-fail 'CHROME_WRAPPER' 'WRAPPER'
+    # Fix path to bash in $BINARYWRAPPER
+    substituteInPlace $BINARYWRAPPER \
+        --replace-fail /bin/bash ${stdenv.shell} \
+        --replace-fail 'CHROME_WRAPPER' 'WRAPPER'
 
-      ln -sf $BINARYWRAPPER $out/bin/brave
+    ln -sf $BINARYWRAPPER $out/bin/brave
 
-      for exe in $out/opt/brave.com/brave/{brave,chrome_crashpad_handler}; do
-          patchelf \
-              --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
-              --set-rpath "${rpath}" $exe
-      done
+    for exe in $out/opt/brave.com/brave/{brave,chrome_crashpad_handler}; do
+        patchelf \
+            --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
+            --set-rpath "${rpath}" $exe
+    done
 
-      # Fix paths
-      substituteInPlace $out/share/applications/{brave-browser,com.brave.Browser}.desktop \
-          --replace-fail /usr/bin/brave-browser-stable $out/bin/brave
-      substituteInPlace $out/share/gnome-control-center/default-apps/brave-browser.xml \
-          --replace-fail /opt/brave.com $out/opt/brave.com
-      substituteInPlace $out/share/menu/brave-browser.menu \
-          --replace-fail /opt/brave.com $out/opt/brave.com
-      substituteInPlace $out/opt/brave.com/brave/default-app-block \
-          --replace-fail /opt/brave.com $out/opt/brave.com
+    # Fix paths
+    substituteInPlace $out/share/applications/{brave-browser,com.brave.Browser}.desktop \
+        --replace-fail /usr/bin/brave-browser-stable $out/bin/brave
+    substituteInPlace $out/share/gnome-control-center/default-apps/brave-browser.xml \
+        --replace-fail /opt/brave.com $out/opt/brave.com
+    substituteInPlace $out/share/menu/brave-browser.menu \
+        --replace-fail /opt/brave.com $out/opt/brave.com
+    substituteInPlace $out/opt/brave.com/brave/default-app-block \
+        --replace-fail /opt/brave.com $out/opt/brave.com
 
-      # Correct icons location
-      icon_sizes=("16" "24" "32" "48" "64" "128" "256")
+    # Correct icons location
+    icon_sizes=("16" "24" "32" "48" "64" "128" "256")
 
-      for icon in ''${icon_sizes[*]}
-      do
-          mkdir -p $out/share/icons/hicolor/$icon\x$icon/apps
-          ln -s $out/opt/brave.com/brave/product_logo_$icon.png $out/share/icons/hicolor/$icon\x$icon/apps/brave-browser.png
-      done
+    for icon in ''${icon_sizes[*]}
+    do
+        mkdir -p $out/share/icons/hicolor/$icon\x$icon/apps
+        ln -s $out/opt/brave.com/brave/product_logo_$icon.png $out/share/icons/hicolor/$icon\x$icon/apps/brave-browser.png
+    done
 
-      # Replace xdg-settings and xdg-mime
-      ln -sf ${xdg-utils}/bin/xdg-settings $out/opt/brave.com/brave/xdg-settings
-      ln -sf ${xdg-utils}/bin/xdg-mime $out/opt/brave.com/brave/xdg-mime
+    # Replace xdg-settings and xdg-mime
+    ln -sf ${xdg-utils}/bin/xdg-settings $out/opt/brave.com/brave/xdg-settings
+    ln -sf ${xdg-utils}/bin/xdg-mime $out/opt/brave.com/brave/xdg-mime
 
-      runHook postInstall
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      runHook preInstall
+    runHook postInstall
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    runHook preInstall
 
-      mkdir -p $out/{Applications,bin}
+    mkdir -p $out/{Applications,bin}
 
-      cp -r . "$out/Applications/Brave Browser.app"
+    cp -r . "$out/Applications/Brave Browser.app"
 
-      makeWrapper "$out/Applications/Brave Browser.app/Contents/MacOS/Brave Browser" $out/bin/brave
+    makeWrapper "$out/Applications/Brave Browser.app/Contents/MacOS/Brave Browser" $out/bin/brave
 
-      runHook postInstall
-    '';
+    runHook postInstall
+  '';
 
   preFixup = lib.optionalString stdenv.hostPlatform.isLinux ''
     # Add command line args to wrapGApp.
@@ -290,8 +290,8 @@ stdenv.mkDerivation {
     homepage = "https://brave.com/";
     description = "Privacy-oriented browser for Desktop and Laptop computers";
     changelog =
-      "https://github.com/brave/brave-browser/blob/master/CHANGELOG_DESKTOP.md#"
-      + lib.replaceStrings [ "." ] [ "" ] version;
+    "https://github.com/brave/brave-browser/blob/master/CHANGELOG_DESKTOP.md#"
+    + lib.replaceStrings [ "." ] [ "" ] version;
     longDescription = ''
       Brave browser blocks the ads and trackers that slow you down,
       chew up your bandwidth, and invade your privacy. Brave lets you

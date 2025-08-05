@@ -87,15 +87,15 @@ in
   ++ lib.optionals (hasFeature "gr-uhd") [ "share/gnuradio/examples/uhd" ]
   ++ lib.optionals (hasFeature "gr-qtgui") [ "share/gnuradio/examples/qt-gui" ];
   postInstall =
-    ""
-    # Gcc references
-    + lib.optionalString (hasFeature "gnuradio-runtime") ''
-      remove-references-to -t ${stdenv.cc} $(readlink -f $out/lib/libgnuradio-runtime${stdenv.hostPlatform.extensions.sharedLibrary})
-    ''
-    # Clang references in InstalledDir
-    + lib.optionalString (hasFeature "gnuradio-runtime" && stdenv.hostPlatform.isDarwin) ''
-      remove-references-to -t ${stdenv.cc.cc} $(readlink -f $out/lib/libgnuradio-runtime${stdenv.hostPlatform.extensions.sharedLibrary})
-    '';
+  ""
+  # Gcc references
+  + lib.optionalString (hasFeature "gnuradio-runtime") ''
+    remove-references-to -t ${stdenv.cc} $(readlink -f $out/lib/libgnuradio-runtime${stdenv.hostPlatform.extensions.sharedLibrary})
+  ''
+  # Clang references in InstalledDir
+  + lib.optionalString (hasFeature "gnuradio-runtime" && stdenv.hostPlatform.isDarwin) ''
+    remove-references-to -t ${stdenv.cc.cc} $(readlink -f $out/lib/libgnuradio-runtime${stdenv.hostPlatform.extensions.sharedLibrary})
+  '';
   # NOTE: Outputs are disabled due to upstream not using GNU InstallDIrs cmake
   # module. It's not that bad since it's a development package for most
   # purposes. If closure size needs to be reduced, features should be disabled

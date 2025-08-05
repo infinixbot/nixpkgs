@@ -103,26 +103,26 @@ let
           '';
 
           configurePhase =
-            lib.optionalString (package == "all") pkgallMake
-            + ''
-              touch ${pkgpath}/metarocq-config
-            ''
-            +
-              lib.optionalString
-                (lib.elem package [
-                  "erasure"
-                  "template-pcuic"
-                  "quotation"
-                  "safechecker-plugin"
-                  "erasure-plugin"
-                  "translations"
-                ])
-                ''
-                  echo  "-I ${template-rocq}/lib/coq/${coq.coq-version}/user-contrib/MetaRocq/Template/" > ${pkgpath}/metarocq-config
-                ''
-            + lib.optionalString (package == "single") ''
-              ./configure.sh local
-            '';
+          lib.optionalString (package == "all") pkgallMake
+          + ''
+            touch ${pkgpath}/metarocq-config
+          ''
+          +
+            lib.optionalString
+              (lib.elem package [
+                "erasure"
+                "template-pcuic"
+                "quotation"
+                "safechecker-plugin"
+                "erasure-plugin"
+                "translations"
+              ])
+              ''
+                echo  "-I ${template-rocq}/lib/coq/${coq.coq-version}/user-contrib/MetaRocq/Template/" > ${pkgpath}/metarocq-config
+              ''
+          + lib.optionalString (package == "single") ''
+            ./configure.sh local
+          '';
 
           preBuild = ''
             cd ${pkgpath}

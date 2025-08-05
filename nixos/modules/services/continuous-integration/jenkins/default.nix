@@ -171,11 +171,11 @@ in
       ++ lib.optional cfg.withCLI cfg.package;
 
       variables =
-        { }
-        // lib.optionalAttrs cfg.withCLI {
-          # Make it more convenient to use the `jenkins-cli`.
-          JENKINS_URL = jenkinsUrl;
-        };
+      { }
+      // lib.optionalAttrs cfg.withCLI {
+        # Make it more convenient to use the `jenkins-cli`.
+        JENKINS_URL = jenkinsUrl;
+      };
     };
 
     users.groups = lib.optionalAttrs (cfg.group == "jenkins") {

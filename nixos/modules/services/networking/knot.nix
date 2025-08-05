@@ -335,15 +335,15 @@ in
         let
           # https://www.knot-dns.cz/docs/3.3/singlehtml/index.html#pre-requisites
           xdpCapabilities =
-            lib.optionals (cfg.enableXDP) [
-              "CAP_NET_ADMIN"
-              "CAP_NET_RAW"
-              "CAP_SYS_ADMIN"
-              "CAP_IPC_LOCK"
-            ]
-            ++ lib.optionals (lib.versionOlder config.boot.kernelPackages.kernel.version "5.11") [
-              "CAP_SYS_RESOURCE"
-            ];
+          lib.optionals (cfg.enableXDP) [
+            "CAP_NET_ADMIN"
+            "CAP_NET_RAW"
+            "CAP_SYS_ADMIN"
+            "CAP_IPC_LOCK"
+          ]
+          ++ lib.optionals (lib.versionOlder config.boot.kernelPackages.kernel.version "5.11") [
+            "CAP_SYS_RESOURCE"
+          ];
         in
         {
           Type = "notify";

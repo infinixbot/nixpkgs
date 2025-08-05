@@ -38,11 +38,11 @@ buildPythonPackage rec {
   ];
 
   buildInputs =
-    [ ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      libjack2
-      alsa-lib
-    ];
+  [ ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    libjack2
+    alsa-lib
+  ];
 
   nativeCheckInputs = [
     tox

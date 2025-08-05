@@ -28,19 +28,19 @@ stdenv.mkDerivation (finalAttrs: {
   patches = [ ./reproducible-build-date.patch ];
 
   postPatch =
-    # patch hardcoded shell
-    ''
-      substituteInPlace \
-        sbr/arglist.c \
-        uip/mhbuildsbr.c \
-        uip/whatnowsbr.c \
-        uip/slocal.c \
-        --replace-fail '"/bin/sh"' '"${runtimeShell}"'
-    ''
-    # the "cleanup" pseudo-test makes diagnosing test failures a pain
-    + ''
-      ln -sf ${stdenv}/bin/true test/cleanup
-    '';
+  # patch hardcoded shell
+  ''
+    substituteInPlace \
+      sbr/arglist.c \
+      uip/mhbuildsbr.c \
+      uip/whatnowsbr.c \
+      uip/slocal.c \
+      --replace-fail '"/bin/sh"' '"${runtimeShell}"'
+  ''
+  # the "cleanup" pseudo-test makes diagnosing test failures a pain
+  + ''
+    ln -sf ${stdenv}/bin/true test/cleanup
+  '';
 
   nativeBuildInputs = [
     autoreconfHook

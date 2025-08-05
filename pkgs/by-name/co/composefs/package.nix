@@ -41,17 +41,17 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   postPatch =
-    # 'both_libraries' as an install target always builds both versions.
-    #  This results in double disk usage for normal builds and broken static builds,
-    #  so we replace it with the regular library target.
-    ''
-      substituteInPlace libcomposefs/meson.build \
-        --replace-fail "both_libraries" "library"
-    ''
-    + lib.optionalString installExperimentalTools ''
-      substituteInPlace tools/meson.build \
-        --replace-fail "install : false" "install : true"
-    '';
+  # 'both_libraries' as an install target always builds both versions.
+  #  This results in double disk usage for normal builds and broken static builds,
+  #  so we replace it with the regular library target.
+  ''
+    substituteInPlace libcomposefs/meson.build \
+      --replace-fail "both_libraries" "library"
+  ''
+  + lib.optionalString installExperimentalTools ''
+    substituteInPlace tools/meson.build \
+      --replace-fail "install : false" "install : true"
+  '';
 
   nativeBuildInputs = [
     meson

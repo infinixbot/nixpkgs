@@ -297,43 +297,43 @@ stdenv.mkDerivation (
     # See https://github.com/NixOS/nixpkgs/issues/49643#issuecomment-873853897
     # linux only because of https://github.com/NixOS/nixpkgs/issues/138729
     postPatch =
-      lib.optionalString stdenv.hostPlatform.isLinux ''
-        # this is a fix for "save as root" functionality
-        packed="resources/app/node_modules.asar"
-        unpacked="resources/app/node_modules"
-        asar extract "$packed" "$unpacked"
-        substituteInPlace $unpacked/@vscode/sudo-prompt/index.js \
-          --replace "/usr/bin/pkexec" "/run/wrappers/bin/pkexec" \
-          --replace "/bin/bash" "${bash}/bin/bash"
-        rm -rf "$packed"
+    lib.optionalString stdenv.hostPlatform.isLinux ''
+      # this is a fix for "save as root" functionality
+      packed="resources/app/node_modules.asar"
+      unpacked="resources/app/node_modules"
+      asar extract "$packed" "$unpacked"
+      substituteInPlace $unpacked/@vscode/sudo-prompt/index.js \
+        --replace "/usr/bin/pkexec" "/run/wrappers/bin/pkexec" \
+        --replace "/bin/bash" "${bash}/bin/bash"
+      rm -rf "$packed"
 
-        # without this symlink loading JsChardet, the library that is used for auto encoding detection when files.autoGuessEncoding is true,
-        # fails to load with: electron/js2c/renderer_init: Error: Cannot find module 'jschardet'
-        # and the window immediately closes which renders VSCode unusable
-        # see https://github.com/NixOS/nixpkgs/issues/152939 for full log
-        ln -rs "$unpacked" "$packed"
-      ''
-      + (
-        let
-          vscodeRipgrep =
-            if stdenv.hostPlatform.isDarwin then
-              if lib.versionAtLeast vscodeVersion "1.94.0" then
-                "Contents/Resources/app/node_modules/@vscode/ripgrep/bin/rg"
-              else
-                "Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep/bin/rg"
+      # without this symlink loading JsChardet, the library that is used for auto encoding detection when files.autoGuessEncoding is true,
+      # fails to load with: electron/js2c/renderer_init: Error: Cannot find module 'jschardet'
+      # and the window immediately closes which renders VSCode unusable
+      # see https://github.com/NixOS/nixpkgs/issues/152939 for full log
+      ln -rs "$unpacked" "$packed"
+    ''
+    + (
+      let
+        vscodeRipgrep =
+          if stdenv.hostPlatform.isDarwin then
+            if lib.versionAtLeast vscodeVersion "1.94.0" then
+              "Contents/Resources/app/node_modules/@vscode/ripgrep/bin/rg"
             else
-              "resources/app/node_modules/@vscode/ripgrep/bin/rg";
-        in
-        if !useVSCodeRipgrep then
-          ''
-            rm ${vscodeRipgrep}
-            ln -s ${ripgrep}/bin/rg ${vscodeRipgrep}
-          ''
-        else
-          ''
-            chmod +x ${vscodeRipgrep}
-          ''
-      );
+              "Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep/bin/rg"
+          else
+            "resources/app/node_modules/@vscode/ripgrep/bin/rg";
+      in
+      if !useVSCodeRipgrep then
+        ''
+          rm ${vscodeRipgrep}
+          ln -s ${ripgrep}/bin/rg ${vscodeRipgrep}
+        ''
+      else
+        ''
+          chmod +x ${vscodeRipgrep}
+        ''
+    );
 
     postFixup = lib.optionalString stdenv.hostPlatform.isLinux (
       ''

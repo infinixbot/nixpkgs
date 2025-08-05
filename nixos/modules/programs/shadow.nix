@@ -197,9 +197,9 @@ in
       security.loginDefs.settings.CHFN_RESTRICT = lib.mkIf (cfg.chfnRestrict != null) cfg.chfnRestrict;
 
       environment.systemPackages =
-        lib.optional config.users.mutableUsers cfg.package
-        ++ lib.optional (lib.types.shellPackage.check config.users.defaultUserShell) config.users.defaultUserShell
-        ++ lib.optional (cfg.chfnRestrict != null) pkgs.util-linux;
+      lib.optional config.users.mutableUsers cfg.package
+      ++ lib.optional (lib.types.shellPackage.check config.users.defaultUserShell) config.users.defaultUserShell
+      ++ lib.optional (cfg.chfnRestrict != null) pkgs.util-linux;
 
       environment.etc =
         # Create custom toKeyValue generator

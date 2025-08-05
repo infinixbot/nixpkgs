@@ -38,26 +38,26 @@ buildGoModule rec {
   # TODO(Profpatsch): write a test for transcoding support,
   # since it is prone to break
   postPatch =
-    lib.optionalString transcodingSupport ''
-      substituteInPlace \
-        transcode/transcode.go \
-        --replace-fail \
-          '`ffmpeg' \
-          '`${lib.getBin ffmpeg}/bin/ffmpeg'
-    ''
-    + ''
-      substituteInPlace \
-        jukebox/jukebox.go \
-        --replace-fail \
-          '"mpv"' \
-          '"${lib.getBin mpv}/bin/mpv"'
-    ''
-    + ''
-      substituteInPlace server/ctrlsubsonic/testdata/test* \
-        --replace-quiet \
-          '"audio/flac"' \
-          '"audio/x-flac"'
-    '';
+  lib.optionalString transcodingSupport ''
+    substituteInPlace \
+      transcode/transcode.go \
+      --replace-fail \
+        '`ffmpeg' \
+        '`${lib.getBin ffmpeg}/bin/ffmpeg'
+  ''
+  + ''
+    substituteInPlace \
+      jukebox/jukebox.go \
+      --replace-fail \
+        '"mpv"' \
+        '"${lib.getBin mpv}/bin/mpv"'
+  ''
+  + ''
+    substituteInPlace server/ctrlsubsonic/testdata/test* \
+      --replace-quiet \
+        '"audio/flac"' \
+        '"audio/x-flac"'
+  '';
 
   passthru = {
     tests.gonic = nixosTests.gonic;

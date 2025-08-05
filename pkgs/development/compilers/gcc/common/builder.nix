@@ -211,58 +211,58 @@ originalAttrs:
     '';
 
     preInstall =
-      # What follows is a horribly cursed hack.
-      #
-      # GCC will install its libraries to $out/lib, $out/lib32, $out/lib64,
-      # $out/$targetConfig/lib, $out/$targetConfig/lib32 or $out/$targetConfig/lib64,
-      # depending on whether it's built as native or cross, and the exact target spec.
-      #
-      # We can't predict what it's actually going to do, and we also can't just tell it
-      # to always install to lib, but we want everything to end up in lib
-      # for consistency (multilib weirdness aside).
-      #
-      # So, we create a bunch of symlinks before we run GCC's install phase,
-      # redirecting every possible directory it may want to write to to the place
-      # we actually want things to be installed.
-      # We will then nuke the symlinks in postInstall.
-      #
-      # FIXME: there must be a better way to do this.
+    # What follows is a horribly cursed hack.
+    #
+    # GCC will install its libraries to $out/lib, $out/lib32, $out/lib64,
+    # $out/$targetConfig/lib, $out/$targetConfig/lib32 or $out/$targetConfig/lib64,
+    # depending on whether it's built as native or cross, and the exact target spec.
+    #
+    # We can't predict what it's actually going to do, and we also can't just tell it
+    # to always install to lib, but we want everything to end up in lib
+    # for consistency (multilib weirdness aside).
+    #
+    # So, we create a bunch of symlinks before we run GCC's install phase,
+    # redirecting every possible directory it may want to write to to the place
+    # we actually want things to be installed.
+    # We will then nuke the symlinks in postInstall.
+    #
+    # FIXME: there must be a better way to do this.
+    ''
+      declare -ga compatibilitySymlinks=()
+
+      makeCompatibilitySymlink() {
+        declare -a outputsToLink=("$out")
+
+        if [ -n "$lib" ]; then
+          outputsToLink+=("$lib")
+        fi
+
+        for output in "''${outputsToLink[@]}"; do
+          local linkTarget="$1"
+          local linkName="$output/$2"
+
+          echo "Creating compatibility symlink: $linkTarget -> $linkName"
+
+          mkdir -p "$(dirname "$linkName")"
+          ln -s "$linkTarget" "$linkName"
+          compatibilitySymlinks+=("$linkName")
+        done
+      }
+    ''
+    +
+      # This will redirect $output/lib{32,64} to $output/lib.
+      # Multilib is special, because it creates $out/lib (for 32-bit)
+      # and $out/lib64 (for 64-bit). No other targets can have both.
+      lib.optionalString (!enableMultilib) ''
+        makeCompatibilitySymlink lib lib32
+        makeCompatibilitySymlink lib lib64
       ''
-        declare -ga compatibilitySymlinks=()
-
-        makeCompatibilitySymlink() {
-          declare -a outputsToLink=("$out")
-
-          if [ -n "$lib" ]; then
-            outputsToLink+=("$lib")
-          fi
-
-          for output in "''${outputsToLink[@]}"; do
-            local linkTarget="$1"
-            local linkName="$output/$2"
-
-            echo "Creating compatibility symlink: $linkTarget -> $linkName"
-
-            mkdir -p "$(dirname "$linkName")"
-            ln -s "$linkTarget" "$linkName"
-            compatibilitySymlinks+=("$linkName")
-          done
-        }
-      ''
-      +
-        # This will redirect $output/lib{32,64} to $output/lib.
-        # Multilib is special, because it creates $out/lib (for 32-bit)
-        # and $out/lib64 (for 64-bit). No other targets can have both.
-        lib.optionalString (!enableMultilib) ''
-          makeCompatibilitySymlink lib lib32
-          makeCompatibilitySymlink lib lib64
-        ''
-      +
-        # This will redirect $output/$targetConfig/lib{,32,64} to $output/$targetConfig/lib.
-        lib.optionalString isCross ''
-          makeCompatibilitySymlink lib $targetConfig/lib32
-          makeCompatibilitySymlink lib $targetConfig/lib64
-        '';
+    +
+      # This will redirect $output/$targetConfig/lib{,32,64} to $output/$targetConfig/lib.
+      lib.optionalString isCross ''
+        makeCompatibilitySymlink lib $targetConfig/lib32
+        makeCompatibilitySymlink lib $targetConfig/lib64
+      '';
 
     postInstall = ''
       # Clean up our compatibility symlinks (see above)

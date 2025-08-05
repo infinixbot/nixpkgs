@@ -134,11 +134,11 @@ rec {
             ;
           passAsFile = [ "text" ] ++ derivationArgs.passAsFile or [ ];
           meta =
-            lib.optionalAttrs (executable && matches != null) {
-              mainProgram = lib.head matches;
-            }
-            // meta
-            // derivationArgs.meta or { };
+          lib.optionalAttrs (executable && matches != null) {
+            mainProgram = lib.head matches;
+          }
+          // meta
+          // derivationArgs.meta or { };
           passthru = passthru // derivationArgs.passthru or { };
         }
         // removeAttrs derivationArgs [
@@ -762,10 +762,10 @@ rec {
           strictDeps = true;
           # TODO 2023-01, no backport: simplify to inherit passthru;
           passthru =
-            passthru
-            // optionalAttrs (substitutions ? passthru) (
-              warn "makeSetupHook (name = ${lib.strings.escapeNixString name}): `substitutions.passthru` is deprecated. Please set `passthru` directly." substitutions.passthru
-            );
+          passthru
+          // optionalAttrs (substitutions ? passthru) (
+            warn "makeSetupHook (name = ${lib.strings.escapeNixString name}): `substitutions.passthru` is deprecated. Please set `passthru` directly." substitutions.passthru
+          );
         }
       )
       (
@@ -1006,15 +1006,15 @@ rec {
     {
       src,
       name ?
-        (
-          if builtins.typeOf src == "path" then
-            builtins.baseNameOf src
-          else if builtins.isAttrs src && builtins.hasAttr "name" src then
-            src.name
-          else
-            throw "applyPatches: please supply a `name` argument because a default name can only be computed when the `src` is a path or is an attribute set with a `name` attribute."
-        )
-        + "-patched",
+      (
+        if builtins.typeOf src == "path" then
+          builtins.baseNameOf src
+        else if builtins.isAttrs src && builtins.hasAttr "name" src then
+          src.name
+        else
+          throw "applyPatches: please supply a `name` argument because a default name can only be computed when the `src` is a path or is an attribute set with a `name` attribute."
+      )
+      + "-patched",
       patches ? [ ],
       prePatch ? "",
       postPatch ? "",

@@ -95,11 +95,11 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   propagatedBuildInputs =
-    lib.optional withGraphite2 graphite2
-    ++ lib.optionals withIcu [
-      icu
-      harfbuzz
-    ];
+  lib.optional withGraphite2 graphite2
+  ++ lib.optionals withIcu [
+    icu
+    harfbuzz
+  ];
 
   doCheck = true;
 

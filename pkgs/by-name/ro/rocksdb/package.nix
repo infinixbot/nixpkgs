@@ -47,9 +47,9 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs =
-    lib.optional enableJemalloc jemalloc
-    ++ lib.optional enableLiburing liburing
-    ++ lib.optional stdenv.hostPlatform.isMinGW windows.pthreads;
+  lib.optional enableJemalloc jemalloc
+  ++ lib.optional enableLiburing liburing
+  ++ lib.optional stdenv.hostPlatform.isMinGW windows.pthreads;
 
   outputs = [
     "out"
@@ -82,19 +82,19 @@ stdenv.mkDerivation (finalAttrs: {
   hardeningDisable = lib.optional stdenv.hostPlatform.isWindows "format";
 
   postPatch =
-    lib.optionalString (lib.versionOlder finalAttrs.version "8") ''
-      # Fix gcc-13 build failures due to missing <cstdint> and
-      # <system_error> includes, fixed upstyream sice 8.x
-      sed -e '1i #include <cstdint>' -i db/compaction/compaction_iteration_stats.h
-      sed -e '1i #include <cstdint>' -i table/block_based/data_block_hash_index.h
-      sed -e '1i #include <cstdint>' -i util/string_util.h
-      sed -e '1i #include <cstdint>' -i include/rocksdb/utilities/checkpoint.h
-    ''
-    + lib.optionalString (lib.versionOlder finalAttrs.version "7") ''
-      # Fix gcc-13 build failures due to missing <cstdint> and
-      # <system_error> includes, fixed upstyream sice 7.x
-      sed -e '1i #include <system_error>' -i third-party/folly/folly/synchronization/detail/ProxyLockable-inl.h
-    '';
+  lib.optionalString (lib.versionOlder finalAttrs.version "8") ''
+    # Fix gcc-13 build failures due to missing <cstdint> and
+    # <system_error> includes, fixed upstyream sice 8.x
+    sed -e '1i #include <cstdint>' -i db/compaction/compaction_iteration_stats.h
+    sed -e '1i #include <cstdint>' -i table/block_based/data_block_hash_index.h
+    sed -e '1i #include <cstdint>' -i util/string_util.h
+    sed -e '1i #include <cstdint>' -i include/rocksdb/utilities/checkpoint.h
+  ''
+  + lib.optionalString (lib.versionOlder finalAttrs.version "7") ''
+    # Fix gcc-13 build failures due to missing <cstdint> and
+    # <system_error> includes, fixed upstyream sice 7.x
+    sed -e '1i #include <system_error>' -i third-party/folly/folly/synchronization/detail/ProxyLockable-inl.h
+  '';
 
   preInstall = ''
     mkdir -p $tools/bin

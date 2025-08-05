@@ -50,15 +50,15 @@ stdenv.mkDerivation rec {
   ];
 
   cmakeFlags =
-    # It's important that caffe is passed the major and minor version only because that's what
-    # boost_python expects
-    [
-      (if pythonSupport then "-Dpython_version=${python.pythonVersion}" else "-DBUILD_python=OFF")
-      "-DBLAS=open"
-      "-DCPU_ONLY=ON"
-    ]
-    ++ [ "-DUSE_LEVELDB=${toggle leveldbSupport}" ]
-    ++ [ "-DUSE_LMDB=${toggle lmdbSupport}" ];
+  # It's important that caffe is passed the major and minor version only because that's what
+  # boost_python expects
+  [
+    (if pythonSupport then "-Dpython_version=${python.pythonVersion}" else "-DBUILD_python=OFF")
+    "-DBLAS=open"
+    "-DCPU_ONLY=ON"
+  ]
+  ++ [ "-DUSE_LEVELDB=${toggle leveldbSupport}" ]
+  ++ [ "-DUSE_LMDB=${toggle lmdbSupport}" ];
 
   buildInputs = [
     boost

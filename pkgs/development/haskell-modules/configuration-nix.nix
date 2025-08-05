@@ -515,12 +515,12 @@ builtins.intersectAttrs super {
   leksah = dontCheck (
     overrideCabal (drv: {
       executableSystemDepends =
-        (drv.executableSystemDepends or [ ])
-        ++ (with pkgs; [
-          adwaita-icon-theme # Fix error: Icon 'window-close' not present in theme ...
-          wrapGAppsHook3 # Fix error: GLib-GIO-ERROR **: No GSettings schemas are installed on the system
-          gtk3 # Fix error: GLib-GIO-ERROR **: Settings schema 'org.gtk.Settings.FileChooser' is not installed
-        ]);
+      (drv.executableSystemDepends or [ ])
+      ++ (with pkgs; [
+        adwaita-icon-theme # Fix error: Icon 'window-close' not present in theme ...
+        wrapGAppsHook3 # Fix error: GLib-GIO-ERROR **: No GSettings schemas are installed on the system
+        gtk3 # Fix error: GLib-GIO-ERROR **: Settings schema 'org.gtk.Settings.FileChooser' is not installed
+      ]);
       postPatch = (drv.postPatch or "") + ''
         for f in src/IDE/Leksah.hs src/IDE/Utils/ServerConnection.hs
         do
@@ -619,16 +619,16 @@ builtins.intersectAttrs super {
   # unbounded-delays via .cabal file conditions.
   tasty = overrideCabal (drv: {
     libraryHaskellDepends =
-      (drv.libraryHaskellDepends or [ ])
-      ++
-        lib.optionals
-          (
-            !(pkgs.stdenv.hostPlatform.isAarch64 || pkgs.stdenv.hostPlatform.isx86_64)
-            || (self.ghc.isGhcjs or false)
-          )
-          [
-            self.unbounded-delays
-          ];
+    (drv.libraryHaskellDepends or [ ])
+    ++
+      lib.optionals
+        (
+          !(pkgs.stdenv.hostPlatform.isAarch64 || pkgs.stdenv.hostPlatform.isx86_64)
+          || (self.ghc.isGhcjs or false)
+        )
+        [
+          self.unbounded-delays
+        ];
   }) super.tasty;
 
   tasty-discover = overrideCabal (drv: {
@@ -1251,25 +1251,25 @@ builtins.intersectAttrs super {
       doCheck = false;
       buildTools = drv.buildTools or [ ] ++ [ pkgs.buildPackages.makeWrapper ];
       postInstall =
-        drv.postInstall or ""
-        + ''
-          wrapProgram "$out/bin/nvfetcher" --prefix 'PATH' ':' "${
-            pkgs.lib.makeBinPath [
-              pkgs.nvchecker
-              pkgs.nix # nix-prefetch-url
-              pkgs.nix-prefetch-git
-              pkgs.nix-prefetch-docker
-            ]
-          }"
-        ''
-        # Prevent erroneous references to other libraries that use Paths_ modules
-        # on aarch64-darwin. Note that references to the data outputs are not removed.
-        + lib.optionalString (with pkgs.stdenv; hostPlatform.isDarwin && hostPlatform.isAarch64) ''
-          remove-references-to -t "${self.shake.out}" "$out/bin/.nvfetcher-wrapped"
-          remove-references-to -t "${self.js-jquery.out}" "$out/bin/.nvfetcher-wrapped"
-          remove-references-to -t "${self.js-flot.out}" "$out/bin/.nvfetcher-wrapped"
-          remove-references-to -t "${self.js-dgtable.out}" "$out/bin/.nvfetcher-wrapped"
-        '';
+      drv.postInstall or ""
+      + ''
+        wrapProgram "$out/bin/nvfetcher" --prefix 'PATH' ':' "${
+          pkgs.lib.makeBinPath [
+            pkgs.nvchecker
+            pkgs.nix # nix-prefetch-url
+            pkgs.nix-prefetch-git
+            pkgs.nix-prefetch-docker
+          ]
+        }"
+      ''
+      # Prevent erroneous references to other libraries that use Paths_ modules
+      # on aarch64-darwin. Note that references to the data outputs are not removed.
+      + lib.optionalString (with pkgs.stdenv; hostPlatform.isDarwin && hostPlatform.isAarch64) ''
+        remove-references-to -t "${self.shake.out}" "$out/bin/.nvfetcher-wrapped"
+        remove-references-to -t "${self.js-jquery.out}" "$out/bin/.nvfetcher-wrapped"
+        remove-references-to -t "${self.js-flot.out}" "$out/bin/.nvfetcher-wrapped"
+        remove-references-to -t "${self.js-dgtable.out}" "$out/bin/.nvfetcher-wrapped"
+      '';
     }) super.nvfetcher
   );
 

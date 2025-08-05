@@ -108,20 +108,20 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs =
-    [ ]
-    ++ lib.optional zlibSupport zlib
-    ++ lib.optional fontconfigSupport fontconfig
-    ++ lib.optional ghostscriptSupport ghostscript
-    ++ lib.optional liblqr1Support liblqr1
-    ++ lib.optional libpngSupport libpng
-    ++ lib.optional libtiffSupport libtiff
-    ++ lib.optional libxml2Support libxml2
-    ++ lib.optional libheifSupport libheif
-    ++ lib.optional libde265Support libde265
-    ++ lib.optional djvulibreSupport djvulibre
-    ++ lib.optional openexrSupport openexr
-    ++ lib.optional librsvgSupport librsvg
-    ++ lib.optional openjpegSupport openjpeg;
+  [ ]
+  ++ lib.optional zlibSupport zlib
+  ++ lib.optional fontconfigSupport fontconfig
+  ++ lib.optional ghostscriptSupport ghostscript
+  ++ lib.optional liblqr1Support liblqr1
+  ++ lib.optional libpngSupport libpng
+  ++ lib.optional libtiffSupport libtiff
+  ++ lib.optional libxml2Support libxml2
+  ++ lib.optional libheifSupport libheif
+  ++ lib.optional libde265Support libde265
+  ++ lib.optional djvulibreSupport djvulibre
+  ++ lib.optional openexrSupport openexr
+  ++ lib.optional librsvgSupport librsvg
+  ++ lib.optional openjpegSupport openjpeg;
 
   propagatedBuildInputs = [
     fftw

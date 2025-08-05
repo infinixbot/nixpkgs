@@ -27,8 +27,8 @@ import ../make-test-python.nix (
     testScript =
       let
         mkXfsFlags =
-          lib.optionalString (lib.versionOlder kernelPackages.kernel.version "5.10") " -m bigtime=0 -m inobtcount=0 "
-          + lib.optionalString (lib.versionOlder kernelPackages.kernel.version "5.19") " -i nrext64=0 ";
+        lib.optionalString (lib.versionOlder kernelPackages.kernel.version "5.10") " -m bigtime=0 -m inobtcount=0 "
+        + lib.optionalString (lib.versionOlder kernelPackages.kernel.version "5.19") " -i nrext64=0 ";
       in
       ''
         machine.succeed("vgcreate test_vg /dev/vdb")

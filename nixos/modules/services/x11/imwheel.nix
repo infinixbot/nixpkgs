@@ -62,14 +62,14 @@ in
       partOf = [ "graphical-session.target" ];
       serviceConfig = {
         ExecStart =
-          "${pkgs.imwheel}/bin/imwheel "
-          + escapeShellArgs (
-            [
-              "--detach"
-              "--kill"
-            ]
-            ++ cfg.extraOptions
-          );
+        "${pkgs.imwheel}/bin/imwheel "
+        + escapeShellArgs (
+          [
+            "--detach"
+            "--kill"
+          ]
+          ++ cfg.extraOptions
+        );
         ExecStop = "${pkgs.procps}/bin/pkill imwheel";
         RestartSec = 3;
         Restart = "always";

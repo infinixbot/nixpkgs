@@ -56,21 +56,21 @@ stdenv.mkDerivation (
     nativeBuildInputs = [ gettext ];
 
     postConfigure =
-      # For some reason, /bin/sh on OpenIndiana leads to this at the end of the
-      # `config.status' run:
-      #   ./config.status[1401]: shift: (null): bad number
-      # (See <https://hydra.nixos.org/build/2931046/nixlog/1/raw>.)
-      # Thus, re-run it with Bash.
-      lib.optionalString stdenv.hostPlatform.isSunOS ''
-        ${stdenv.shell} config.status
-      ''
-      # ./configure erroneous decides to use weak symbols on pkgsStatic,
-      # which, together with other defines results in locking functions in
-      # src/posix-lock.c to be no-op, causing tests/t-lock.c to fail.
-      + lib.optionalString stdenv.hostPlatform.isStatic ''
-        sed '/USE_POSIX_THREADS_WEAK/ d' config.h
-        echo '#undef USE_POSIX_THREADS_WEAK' >> config.h
-      '';
+    # For some reason, /bin/sh on OpenIndiana leads to this at the end of the
+    # `config.status' run:
+    #   ./config.status[1401]: shift: (null): bad number
+    # (See <https://hydra.nixos.org/build/2931046/nixlog/1/raw>.)
+    # Thus, re-run it with Bash.
+    lib.optionalString stdenv.hostPlatform.isSunOS ''
+      ${stdenv.shell} config.status
+    ''
+    # ./configure erroneous decides to use weak symbols on pkgsStatic,
+    # which, together with other defines results in locking functions in
+    # src/posix-lock.c to be no-op, causing tests/t-lock.c to fail.
+    + lib.optionalString stdenv.hostPlatform.isStatic ''
+      sed '/USE_POSIX_THREADS_WEAK/ d' config.h
+      echo '#undef USE_POSIX_THREADS_WEAK' >> config.h
+    '';
 
     doCheck = true; # not cross
 

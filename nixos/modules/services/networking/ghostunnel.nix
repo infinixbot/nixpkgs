@@ -190,10 +190,10 @@ let
             AmbientCapabilities = [ "CAP_NET_BIND_SERVICE" ];
             DynamicUser = true;
             LoadCredential =
-              optional (config.keystore != null) "keystore:${config.keystore}"
-              ++ optional (config.cert != null) "cert:${config.cert}"
-              ++ optional (config.key != null) "key:${config.key}"
-              ++ optional (config.cacert != null) "cacert:${config.cacert}";
+            optional (config.keystore != null) "keystore:${config.keystore}"
+            ++ optional (config.cert != null) "cert:${config.cert}"
+            ++ optional (config.key != null) "key:${config.key}"
+            ++ optional (config.cacert != null) "cacert:${config.cacert}";
           };
           script = concatStringsSep " " (
             [ "${mainCfg.package}/bin/ghostunnel" ]

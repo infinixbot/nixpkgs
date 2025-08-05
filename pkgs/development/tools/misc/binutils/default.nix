@@ -47,10 +47,10 @@ let
   # There's no way to do this exhaustively, so feel free to add
   # additional targets here as required.
   allGasTargets =
-    allGasTargets'
-    ++ lib.optional (
-      targetHasGas && !lib.elem targetPlatform.config allGasTargets'
-    ) targetPlatform.config;
+  allGasTargets'
+  ++ lib.optional (
+    targetHasGas && !lib.elem targetPlatform.config allGasTargets'
+  ) targetPlatform.config;
   allGasTargets' = [
     "aarch64-unknown-linux-gnu"
     "alpha-unknown-linux-gnu"
@@ -320,20 +320,20 @@ stdenv.mkDerivation (finalAttrs: {
   # TODO(trofi): fix installation paths upstream so we could remove this
   # code and have "lib" output unconditionally.
   postInstall =
-    lib.optionalString (hostPlatform.config != targetPlatform.config) ''
-      ln -s $out/${hostPlatform.config}/${targetPlatform.config}/lib/*     $out/lib/
-      ln -s $out/${hostPlatform.config}/${targetPlatform.config}/include/* $dev/include/
-    ''
-    + lib.optionalString withAllTargets ''
-      for target in ${lib.escapeShellArgs allGasTargets}; do
-        make -C "$NIX_BUILD_TOP/build-$target/gas" -j"$NIX_BUILD_CORES" \
-          $makeFlags "''${makeFlagsArray[@]}" $installFlags "''${installFlagsArray[@]}" \
-          install-exec-bindir
-      done
-    ''
-    + lib.optionalString (withAllTargets && targetHasGas) ''
-      ln -s $out/bin/${stdenv.targetPlatform.config}-as $out/bin/as
-    '';
+  lib.optionalString (hostPlatform.config != targetPlatform.config) ''
+    ln -s $out/${hostPlatform.config}/${targetPlatform.config}/lib/*     $out/lib/
+    ln -s $out/${hostPlatform.config}/${targetPlatform.config}/include/* $dev/include/
+  ''
+  + lib.optionalString withAllTargets ''
+    for target in ${lib.escapeShellArgs allGasTargets}; do
+      make -C "$NIX_BUILD_TOP/build-$target/gas" -j"$NIX_BUILD_CORES" \
+        $makeFlags "''${makeFlagsArray[@]}" $installFlags "''${installFlagsArray[@]}" \
+        install-exec-bindir
+    done
+  ''
+  + lib.optionalString (withAllTargets && targetHasGas) ''
+    ln -s $out/bin/${stdenv.targetPlatform.config}-as $out/bin/as
+  '';
 
   passthru = {
     inherit targetPrefix;

@@ -39,9 +39,9 @@ let
   );
 
   restartTriggers =
-    [ ]
-    ++ (optionals (cfg.environmentFile != null) [ cfg.environmentFile ])
-    ++ (filter (file: builtins.typeOf file == "path") secretFiles);
+  [ ]
+  ++ (optionals (cfg.environmentFile != null) [ cfg.environmentFile ])
+  ++ (filter (file: builtins.typeOf file == "path") secretFiles);
 in
 {
   options.services.dex = {

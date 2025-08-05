@@ -23,14 +23,14 @@ let
     cfg.fooOverUDP != { } || filterAttrs (_: s: s.encapsulation.type != "6in4") cfg.sits != { };
 
   slaves =
-    concatMap (i: i.interfaces) (attrValues cfg.bonds)
-    ++ concatMap (i: i.interfaces) (attrValues cfg.bridges)
-    ++ concatMap (
-      i:
-      attrNames (
-        filterAttrs (name: config: !(config.type == "internal" || hasAttr name cfg.interfaces)) i.interfaces
-      )
-    ) (attrValues cfg.vswitches);
+  concatMap (i: i.interfaces) (attrValues cfg.bonds)
+  ++ concatMap (i: i.interfaces) (attrValues cfg.bridges)
+  ++ concatMap (
+    i:
+    attrNames (
+      filterAttrs (name: config: !(config.type == "internal" || hasAttr name cfg.interfaces)) i.interfaces
+    )
+  ) (attrValues cfg.vswitches);
 
   slaveIfs = map (i: cfg.interfaces.${i}) (filter (i: cfg.interfaces ? ${i}) slaves);
 
@@ -1680,53 +1680,53 @@ in
   config = {
 
     warnings =
-      (concatMap (i: i.warnings) interfaces)
-      ++ (lib.optional (config.systemd.network.enable && cfg.useDHCP && !cfg.useNetworkd) ''
-        The combination of `systemd.network.enable = true`, `networking.useDHCP = true` and `networking.useNetworkd = false` can cause both networkd and dhcpcd to manage the same interfaces. This can lead to loss of networking. It is recommended you choose only one of networkd (by also enabling `networking.useNetworkd`) or scripting (by disabling `systemd.network.enable`)
-      '');
+    (concatMap (i: i.warnings) interfaces)
+    ++ (lib.optional (config.systemd.network.enable && cfg.useDHCP && !cfg.useNetworkd) ''
+      The combination of `systemd.network.enable = true`, `networking.useDHCP = true` and `networking.useNetworkd = false` can cause both networkd and dhcpcd to manage the same interfaces. This can lead to loss of networking. It is recommended you choose only one of networkd (by also enabling `networking.useNetworkd`) or scripting (by disabling `systemd.network.enable`)
+    '');
 
     assertions =
-      (forEach interfaces (i: {
-        # With the linux kernel, interface name length is limited by IFNAMSIZ
-        # to 16 bytes, including the trailing null byte.
-        # See include/linux/if.h in the kernel sources
-        assertion = stringLength i.name < 16;
-        message = ''
-          The name of networking.interfaces."${i.name}" is too long, it needs to be less than 16 characters.
-        '';
-      }))
-      ++ (forEach slaveIfs (i: {
-        assertion = i.ipv4.addresses == [ ] && i.ipv6.addresses == [ ];
-        message = ''
-          The networking.interfaces."${i.name}" must not have any defined ips when it is a slave.
-        '';
-      }))
-      ++ (forEach interfaces (i: {
-        assertion = i.tempAddress != "disabled" -> cfg.enableIPv6;
-        message = ''
-          Temporary addresses are only needed when IPv6 is enabled.
-        '';
-      }))
-      ++ (forEach interfaces (i: {
-        assertion = (i.virtual && i.virtualType == "tun") -> i.macAddress == null;
-        message = ''
-          Setting a MAC Address for tun device ${i.name} isn't supported.
-        '';
-      }))
-      ++ [
-        {
-          assertion = cfg.hostId == null || (stringLength cfg.hostId == 8 && isHexString cfg.hostId);
-          message = "Invalid value given to the networking.hostId option.";
-        }
-      ];
+    (forEach interfaces (i: {
+      # With the linux kernel, interface name length is limited by IFNAMSIZ
+      # to 16 bytes, including the trailing null byte.
+      # See include/linux/if.h in the kernel sources
+      assertion = stringLength i.name < 16;
+      message = ''
+        The name of networking.interfaces."${i.name}" is too long, it needs to be less than 16 characters.
+      '';
+    }))
+    ++ (forEach slaveIfs (i: {
+      assertion = i.ipv4.addresses == [ ] && i.ipv6.addresses == [ ];
+      message = ''
+        The networking.interfaces."${i.name}" must not have any defined ips when it is a slave.
+      '';
+    }))
+    ++ (forEach interfaces (i: {
+      assertion = i.tempAddress != "disabled" -> cfg.enableIPv6;
+      message = ''
+        Temporary addresses are only needed when IPv6 is enabled.
+      '';
+    }))
+    ++ (forEach interfaces (i: {
+      assertion = (i.virtual && i.virtualType == "tun") -> i.macAddress == null;
+      message = ''
+        Setting a MAC Address for tun device ${i.name} isn't supported.
+      '';
+    }))
+    ++ [
+      {
+        assertion = cfg.hostId == null || (stringLength cfg.hostId == 8 && isHexString cfg.hostId);
+        message = "Invalid value given to the networking.hostId option.";
+      }
+    ];
 
     boot.kernelModules =
-      [ ]
-      ++ optional hasVirtuals "tun"
-      ++ optional hasSits "sit"
-      ++ optional hasGres "gre"
-      ++ optional hasBonds "bonding"
-      ++ optional hasFous "fou";
+    [ ]
+    ++ optional hasVirtuals "tun"
+    ++ optional hasSits "sit"
+    ++ optional hasGres "gre"
+    ++ optional hasBonds "bonding"
+    ++ optional hasFous "fou";
 
     boot.extraModprobeConfig =
       # This setting is intentional as it prevents default bond devices

@@ -64,17 +64,17 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   postInstall =
-    lib.optionalString buildTests ''
-      mkdir -p $test/bin
-      mv $out/bin/{test_*,*.hip} $test/bin
-    ''
-    + lib.optionalString buildBenchmarks ''
-      mkdir -p $benchmark/bin
-      mv $out/bin/benchmark_* $benchmark/bin
-    ''
-    + lib.optionalString (buildTests || buildBenchmarks) ''
-      rm -rf $out/bin
-    '';
+  lib.optionalString buildTests ''
+    mkdir -p $test/bin
+    mv $out/bin/{test_*,*.hip} $test/bin
+  ''
+  + lib.optionalString buildBenchmarks ''
+    mkdir -p $benchmark/bin
+    mv $out/bin/benchmark_* $benchmark/bin
+  ''
+  + lib.optionalString (buildTests || buildBenchmarks) ''
+    rm -rf $out/bin
+  '';
 
   passthru.updateScript = rocmUpdateScript {
     name = finalAttrs.pname;

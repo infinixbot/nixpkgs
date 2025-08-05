@@ -20,23 +20,23 @@ stdenv.mkDerivation {
   ];
 
   buildInputs =
-    (with kdePackages; [
-      qtbase
-      qtsvg
-      qt5compat
-      qtkeychain
-      qtimageformats
-    ])
-    ++ [
-      boost
-      openssl
-      libsecret
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      kdePackages.qtwayland
-      libnotify
-    ]
-    ++ lib.optional enableAvifSupport libavif;
+  (with kdePackages; [
+    qtbase
+    qtsvg
+    qt5compat
+    qtkeychain
+    qtimageformats
+  ])
+  ++ [
+    boost
+    openssl
+    libsecret
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    kdePackages.qtwayland
+    libnotify
+  ]
+  ++ lib.optional enableAvifSupport libavif;
 
   cmakeFlags = [
     (lib.cmakeBool "BUILD_WITH_QT6" true)

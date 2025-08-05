@@ -47,13 +47,13 @@ let
   cudatoolkit-joined = symlinkJoin {
     name = "cudatoolkit-joined-${cudaPackages.cudaMajorMinorVersion}";
     paths =
-      outpaths
-      ++ lib.concatMap (f: lib.map f outpaths) [
-        lib.getLib
-        lib.getDev
-        (lib.getOutput "static")
-        (lib.getOutput "stubs")
-      ];
+    outpaths
+    ++ lib.concatMap (f: lib.map f outpaths) [
+      lib.getLib
+      lib.getDev
+      (lib.getOutput "static")
+      (lib.getOutput "stubs")
+    ];
   };
 in
 buildPythonPackage rec {

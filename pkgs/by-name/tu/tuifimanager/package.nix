@@ -38,11 +38,11 @@ lib.throwIf (enableDragAndDrop && !hasDndSupport)
     ];
 
     nativeBuildInputs =
-      [ ]
-      ++ (lib.optionals enableDragAndDrop [
-        qt6.wrapQtAppsHook
-        makeWrapper
-      ]);
+    [ ]
+    ++ (lib.optionals enableDragAndDrop [
+      qt6.wrapQtAppsHook
+      makeWrapper
+    ]);
 
     propagatedBuildInputs = [
       python3.pkgs.send2trash

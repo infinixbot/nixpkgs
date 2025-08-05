@@ -71,13 +71,13 @@ stdenv.mkDerivation rec {
   '';
 
   buildPhase =
-    ''''
-    + lib.optionalString stdenv.hostPlatform.isLinux ''
-      make
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      make -f Makefile.mac tuntox
-    '';
+  ''''
+  + lib.optionalString stdenv.hostPlatform.isLinux ''
+    make
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    make -f Makefile.mac tuntox
+  '';
 
   installPhase = ''
     mkdir -p $out/bin

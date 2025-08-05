@@ -114,28 +114,28 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   postInstall =
-    lib.optionalString (!useCmakeBuild) (
-      ''
-        mkdir -p $dev $lib
-        mv $out/lib $lib/lib
-        mv $out/include $dev/include
-      ''
-      + lib.optionalString pythonBindings ''
-        mkdir -p $python/lib
-        mv $lib/lib/python* $python/lib/
-
-        # need to delete the lib folder to properly link the actual lib output
-        rm -rf $python/${python3Packages.python.sitePackages}/z3/lib
-      ''
-      + lib.optionalString javaBindings ''
-        mkdir -p $java/share/java $java/lib
-        mv $lib/lib/com.microsoft.z3.jar $java/share/java
-        mv $lib/lib/libz3java* $java/lib
-      ''
-    )
+  lib.optionalString (!useCmakeBuild) (
+    ''
+      mkdir -p $dev $lib
+      mv $out/lib $lib/lib
+      mv $out/include $dev/include
+    ''
     + lib.optionalString pythonBindings ''
-      ln -sf $lib/lib $python/${python3Packages.python.sitePackages}/z3/lib
-    '';
+      mkdir -p $python/lib
+      mv $lib/lib/python* $python/lib/
+
+      # need to delete the lib folder to properly link the actual lib output
+      rm -rf $python/${python3Packages.python.sitePackages}/z3/lib
+    ''
+    + lib.optionalString javaBindings ''
+      mkdir -p $java/share/java $java/lib
+      mv $lib/lib/com.microsoft.z3.jar $java/share/java
+      mv $lib/lib/libz3java* $java/lib
+    ''
+  )
+  + lib.optionalString pythonBindings ''
+    ln -sf $lib/lib $python/${python3Packages.python.sitePackages}/z3/lib
+  '';
 
   doInstallCheck = true;
 

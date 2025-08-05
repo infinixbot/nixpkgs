@@ -82,15 +82,15 @@ stdenv.mkDerivation rec {
   ];
 
   cmakeFlags =
-    lib.optionals (!enableOpencv) [
-      "-DENABLE_OPENCV=OFF"
-    ]
-    ++ lib.optionals enableWayland [
-      "-DENABLE_WAYLAND=ON"
-    ]
-    ++ lib.optionals (!enableX11) [
-      "-DENABLE_X11=OFF"
-    ];
+  lib.optionals (!enableOpencv) [
+    "-DENABLE_OPENCV=OFF"
+  ]
+  ++ lib.optionals enableWayland [
+    "-DENABLE_WAYLAND=ON"
+  ]
+  ++ lib.optionals (!enableX11) [
+    "-DENABLE_X11=OFF"
+  ];
 
   meta = with lib; {
     description = "Drop in replacement for ueberzug written in C++";

@@ -187,21 +187,21 @@ stdenv.mkDerivation rec {
   '';
 
   preFixup =
-    lib.optionalString (stdenv.hostPlatform.isDarwin) ''
-      install_name_tool -change @rpath/lib${executable}-c.dylib $out/lib/lib${executable}-c.dylib $out/bin/${executable}
-    ''
-    + lib.optionalString (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) ''
-      mkdir -p $out/${executable}-c/pypy/bin
-      mv $out/bin/${executable} $out/${executable}-c/pypy/bin/${executable}
-      ln -s $out/${executable}-c/pypy/bin/${executable} $out/bin/${executable}
-    ''
-    # _testcapi is compiled dynamically, into the store.
-    # This would fail if we don't do it here.
-    + lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
-      pushd /
-      $out/bin/${executable} -c "from test import support"
-      popd
-    '';
+  lib.optionalString (stdenv.hostPlatform.isDarwin) ''
+    install_name_tool -change @rpath/lib${executable}-c.dylib $out/lib/lib${executable}-c.dylib $out/bin/${executable}
+  ''
+  + lib.optionalString (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) ''
+    mkdir -p $out/${executable}-c/pypy/bin
+    mv $out/bin/${executable} $out/${executable}-c/pypy/bin/${executable}
+    ln -s $out/${executable}-c/pypy/bin/${executable} $out/bin/${executable}
+  ''
+  # _testcapi is compiled dynamically, into the store.
+  # This would fail if we don't do it here.
+  + lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
+    pushd /
+    $out/bin/${executable} -c "from test import support"
+    popd
+  '';
 
   setupHook = python-setup-hook sitePackages;
 

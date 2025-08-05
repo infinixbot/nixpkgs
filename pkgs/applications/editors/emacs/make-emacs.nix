@@ -146,58 +146,58 @@ let
 in
 mkDerivation (finalAttrs: {
   pname =
-    pname
-    + (
-      if noGui then
-        "-nox"
-      else if variant == "macport" then
-        "-macport"
-      else if withPgtk then
-        "-pgtk"
-      else if withGTK3 then
-        "-gtk3"
-      else
-        ""
-    );
+  pname
+  + (
+    if noGui then
+      "-nox"
+    else if variant == "macport" then
+      "-macport"
+    else if withPgtk then
+      "-pgtk"
+    else if withGTK3 then
+      "-gtk3"
+    else
+      ""
+  );
   inherit version;
 
   inherit src;
 
   patches =
-    patches fetchpatch
-    ++ lib.optionals withNativeCompilation [
-      (replaceVars
-        (
-          if lib.versionOlder finalAttrs.version "30" then
-            ./native-comp-driver-options.patch
-          else
-            ./native-comp-driver-options-30.patch
-        )
-        {
-          backendPath = (
-            lib.concatStringsSep " " (
-              builtins.map (x: ''"-B${x}"'') (
-                [
-                  # Paths necessary so the JIT compiler finds its libraries:
-                  "${lib.getLib libgccjit}/lib"
-                ]
-                ++ libGccJitLibraryPaths
-                ++ [
-                  # Executable paths necessary for compilation (ld, as):
-                  "${lib.getBin stdenv.cc.cc}/bin"
-                  "${lib.getBin stdenv.cc.bintools}/bin"
-                  "${lib.getBin stdenv.cc.bintools.bintools}/bin"
-                ]
-                ++ lib.optionals stdenv.hostPlatform.isDarwin [
-                  # The linker needs to know where to find libSystem on Darwin.
-                  "${apple-sdk.sdkroot}/usr/lib"
-                ]
-              )
-            )
-          );
-        }
+  patches fetchpatch
+  ++ lib.optionals withNativeCompilation [
+    (replaceVars
+      (
+        if lib.versionOlder finalAttrs.version "30" then
+          ./native-comp-driver-options.patch
+        else
+          ./native-comp-driver-options-30.patch
       )
-    ];
+      {
+        backendPath = (
+          lib.concatStringsSep " " (
+            builtins.map (x: ''"-B${x}"'') (
+              [
+                # Paths necessary so the JIT compiler finds its libraries:
+                "${lib.getLib libgccjit}/lib"
+              ]
+              ++ libGccJitLibraryPaths
+              ++ [
+                # Executable paths necessary for compilation (ld, as):
+                "${lib.getBin stdenv.cc.cc}/bin"
+                "${lib.getBin stdenv.cc.bintools}/bin"
+                "${lib.getBin stdenv.cc.bintools.bintools}/bin"
+              ]
+              ++ lib.optionals stdenv.hostPlatform.isDarwin [
+                # The linker needs to know where to find libSystem on Darwin.
+                "${apple-sdk.sdkroot}/usr/lib"
+              ]
+            )
+          )
+        );
+      }
+    )
+  ];
 
   postPatch = lib.concatStringsSep "\n" [
     (lib.optionalString srcRepo ''
@@ -418,15 +418,15 @@ mkDerivation (finalAttrs: {
   ];
 
   env =
-    lib.optionalAttrs withNativeCompilation {
-      NATIVE_FULL_AOT = "1";
-      LIBRARY_PATH = lib.concatStringsSep ":" libGccJitLibraryPaths;
-    }
-    // lib.optionalAttrs (variant == "macport") {
-      # Fixes intermittent segfaults when compiled with LLVM >= 7.0.
-      # See https://github.com/NixOS/nixpkgs/issues/127902
-      NIX_CFLAGS_COMPILE = "-include ${./macport_noescape_noop.h}";
-    };
+  lib.optionalAttrs withNativeCompilation {
+    NATIVE_FULL_AOT = "1";
+    LIBRARY_PATH = lib.concatStringsSep ":" libGccJitLibraryPaths;
+  }
+  // lib.optionalAttrs (variant == "macport") {
+    # Fixes intermittent segfaults when compiled with LLVM >= 7.0.
+    # See https://github.com/NixOS/nixpkgs/issues/127902
+    NIX_CFLAGS_COMPILE = "-include ${./macport_noescape_noop.h}";
+  };
 
   enableParallelBuilding = true;
 

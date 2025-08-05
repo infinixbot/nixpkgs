@@ -149,20 +149,20 @@ stdenv.mkDerivation rec {
 
   doCheck = true;
   preCheck =
-    lib.optionalString (!enableGUI) ''
-      # even with the nofltk patch, some changes in src/misc.cc (grep
-      # for HAVE_LIBFLTK) made it so that giac behaves differently
-      # when fltk is disabled. disable these tests for now.
-      echo > check/chk_fhan2
-      echo > check/chk_fhan9
-    ''
-    + lib.optionalString (stdenv.hostPlatform.isDarwin) ''
-      # these cover a known regression in giac, likely due to how pari state
-      # is shared between multiple giac instances (see pari.cc.old).
-      # see https://github.com/NixOS/nixpkgs/pull/264126 for more information
-      echo > check/chk_fhan4
-      echo > check/chk_fhan6
-    '';
+  lib.optionalString (!enableGUI) ''
+    # even with the nofltk patch, some changes in src/misc.cc (grep
+    # for HAVE_LIBFLTK) made it so that giac behaves differently
+    # when fltk is disabled. disable these tests for now.
+    echo > check/chk_fhan2
+    echo > check/chk_fhan9
+  ''
+  + lib.optionalString (stdenv.hostPlatform.isDarwin) ''
+    # these cover a known regression in giac, likely due to how pari state
+    # is shared between multiple giac instances (see pari.cc.old).
+    # see https://github.com/NixOS/nixpkgs/pull/264126 for more information
+    echo > check/chk_fhan4
+    echo > check/chk_fhan6
+  '';
 
   enableParallelBuilding = true;
 

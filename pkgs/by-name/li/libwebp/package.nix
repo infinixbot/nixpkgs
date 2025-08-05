@@ -56,16 +56,16 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake ];
   buildInputs =
-    [ ]
-    ++ lib.optionals openglSupport [
-      libglut
-      libGL
-      libGLU
-    ]
-    ++ lib.optionals pngSupport [ libpng ]
-    ++ lib.optionals jpegSupport [ libjpeg ]
-    ++ lib.optionals tiffSupport [ libtiff ]
-    ++ lib.optionals gifSupport [ giflib ];
+  [ ]
+  ++ lib.optionals openglSupport [
+    libglut
+    libGL
+    libGLU
+  ]
+  ++ lib.optionals pngSupport [ libpng ]
+  ++ lib.optionals jpegSupport [ libjpeg ]
+  ++ lib.optionals tiffSupport [ libtiff ]
+  ++ lib.optionals gifSupport [ giflib ];
 
   passthru.tests = {
     inherit

@@ -41,19 +41,19 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   propagatedBuildInputs =
-    # create meta package providing dist-info for python3Pacakges.catalyst that common cmake build does not do
-    lib.optional pythonSupport (
-      python3Packages.mkPythonMetaPackage {
-        inherit (finalAttrs) pname version meta;
-        dependencies =
-          with python3Packages;
-          [
-            numpy
-          ]
-          ++ lib.optional mpiSupport (mpi4py.override { inherit mpi; });
-      }
-    )
-    ++ lib.optional mpiSupport mpi;
+  # create meta package providing dist-info for python3Pacakges.catalyst that common cmake build does not do
+  lib.optional pythonSupport (
+    python3Packages.mkPythonMetaPackage {
+      inherit (finalAttrs) pname version meta;
+      dependencies =
+        with python3Packages;
+        [
+          numpy
+        ]
+        ++ lib.optional mpiSupport (mpi4py.override { inherit mpi; });
+    }
+  )
+  ++ lib.optional mpiSupport mpi;
 
   cmakeFlags = [
     (lib.cmakeFeature "CMAKE_INSTALL_BINDIR" "bin")

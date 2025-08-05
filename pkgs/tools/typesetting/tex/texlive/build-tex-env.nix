@@ -87,8 +87,8 @@ lib.fix (
           ) packages;
           keySet = p: {
             key =
-              p.pname or p.name
-              + lib.optionalString (p.outputSpecified or false) ("-" + p.tlOutputName or p.outputName or "");
+            p.pname or p.name
+            + lib.optionalString (p.outputSpecified or false) ("-" + p.tlOutputName or p.outputName or "");
             inherit p;
             tlDeps = if p ? tlDeps then ensurePkgSets p.tlDeps else (p.requiredTeXPackages or (_: [ ]) tl);
           };
@@ -263,17 +263,17 @@ lib.fix (
 
     meta = {
       description =
-        "TeX Live environment"
-        + lib.optionalString withDocs " with documentation"
-        + lib.optionalString (withDocs && withSources) " and"
-        + lib.optionalString withSources " with sources";
+      "TeX Live environment"
+      + lib.optionalString withDocs " with documentation"
+      + lib.optionalString (withDocs && withSources) " and"
+      + lib.optionalString withSources " with sources";
       platforms = lib.platforms.all;
       longDescription =
-        "Contains the following packages and their transitive dependencies:\n - "
-        + lib.concatMapStringsSep "\n - " (
-          p:
-          p.pname + (lib.optionalString (p.outputSpecified or false) " (${p.tlOutputName or p.outputName})")
-        ) (requiredTeXPackages tl);
+      "Contains the following packages and their transitive dependencies:\n - "
+      + lib.concatMapStringsSep "\n - " (
+        p:
+        p.pname + (lib.optionalString (p.outputSpecified or false) " (${p.tlOutputName or p.outputName})")
+      ) (requiredTeXPackages tl);
     };
 
     # other outputs
@@ -426,9 +426,9 @@ lib.fix (
 
         # remove fake derivations (without 'outPath') to avoid undesired build dependencies
         paths =
-          builtins.catAttrs "outPath" pkgList.bin
-          ++ lib.optionals (!__combine && __formatsOf == null) pkgList.formats
-          ++ lib.optional __combine doc;
+        builtins.catAttrs "outPath" pkgList.bin
+        ++ lib.optionals (!__combine && __formatsOf == null) pkgList.formats
+        ++ lib.optional __combine doc;
         pathsToLink = [
           "/"
           "/share/texmf-var/scripts"

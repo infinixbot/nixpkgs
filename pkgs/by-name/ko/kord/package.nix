@@ -36,8 +36,8 @@ rustPlatform.buildRustPackage rec {
   ];
 
   nativeBuildInputs =
-    lib.optionals stdenv.hostPlatform.isLinux [ pkg-config ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [ rustPlatform.bindgenHook ];
+  lib.optionals stdenv.hostPlatform.isLinux [ pkg-config ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ rustPlatform.bindgenHook ];
 
   buildInputs = lib.optionals stdenv.hostPlatform.isLinux [ alsa-lib ];
 

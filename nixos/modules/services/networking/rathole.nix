@@ -109,13 +109,13 @@ in
           configFile = settingsFormat.generate "${name}.toml" cfg.settings;
           runtimeDir = "/run/${name}";
           ratholePrestart =
-            "+"
-            + (pkgs.writeShellScript "rathole-prestart" ''
-              DYNUSER_UID=$(stat -c %u ${runtimeDir})
-              DYNUSER_GID=$(stat -c %g ${runtimeDir})
-              ${lib.getExe py-toml-merge} ${configFile} '${cfg.credentialsFile}' |
-                install -m 600 -o $DYNUSER_UID -g $DYNUSER_GID /dev/stdin ${runtimeDir}/${mergedConfigName}
-            '');
+          "+"
+          + (pkgs.writeShellScript "rathole-prestart" ''
+            DYNUSER_UID=$(stat -c %u ${runtimeDir})
+            DYNUSER_GID=$(stat -c %g ${runtimeDir})
+            ${lib.getExe py-toml-merge} ${configFile} '${cfg.credentialsFile}' |
+              install -m 600 -o $DYNUSER_UID -g $DYNUSER_GID /dev/stdin ${runtimeDir}/${mergedConfigName}
+          '');
           mergedConfigName = "merged.toml";
         in
         {

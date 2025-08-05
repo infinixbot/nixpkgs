@@ -17,16 +17,16 @@ stdenv.mkDerivation (finalAttrs: {
   version = "1.7-1-unstable-2023-10-27";
 
   buildInputs =
-    (with perlPackages; [
-      perl
-      SOAPLite
-    ])
-    ++ [ openssl ]
+  (with perlPackages; [
+    perl
+    SOAPLite
+  ])
+  ++ [ openssl ]
 
-    ++ lib.optionals withGamt [
-      gtk3
-      vte
-    ];
+  ++ lib.optionals withGamt [
+    gtk3
+    vte
+  ];
   nativeBuildInputs = [
     makeWrapper
     pkg-config

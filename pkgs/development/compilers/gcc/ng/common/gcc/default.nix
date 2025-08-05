@@ -103,40 +103,40 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   preConfigure =
-    # Don't built target libraries, because we want to build separately
-    ''
-      substituteInPlace configure \
-        --replace 'noconfigdirs=""' 'noconfigdirs="$noconfigdirs $target_libraries"'
-    ''
-    # HACK: if host and target config are the same, but the platforms are
-    # actually different we need to convince the configure script that it
-    # is in fact building a cross compiler although it doesn't believe it.
-    +
-      lib.optionalString (targetPlatform.config == hostPlatform.config && targetPlatform != hostPlatform)
-        ''
-          substituteInPlace configure --replace is_cross_compiler=no is_cross_compiler=yes
-        ''
-    # Cannot configure from src dir
-    + ''
-      cd "$buildRoot"
+  # Don't built target libraries, because we want to build separately
+  ''
+    substituteInPlace configure \
+      --replace 'noconfigdirs=""' 'noconfigdirs="$noconfigdirs $target_libraries"'
+  ''
+  # HACK: if host and target config are the same, but the platforms are
+  # actually different we need to convince the configure script that it
+  # is in fact building a cross compiler although it doesn't believe it.
+  +
+    lib.optionalString (targetPlatform.config == hostPlatform.config && targetPlatform != hostPlatform)
+      ''
+        substituteInPlace configure --replace is_cross_compiler=no is_cross_compiler=yes
+      ''
+  # Cannot configure from src dir
+  + ''
+    cd "$buildRoot"
 
-      mkdir -p "$buildRoot/libbacktrace/.libs"
-      cp ${buildGccPackages.libbacktrace}/lib/libbacktrace.a "$buildRoot/libbacktrace/.libs/libbacktrace.a"
-      cp -r ${buildGccPackages.libbacktrace}/lib/*.la "$buildRoot/libbacktrace"
-      cp -r ${buildGccPackages.libbacktrace.dev}/include/*.h "$buildRoot/libbacktrace"
+    mkdir -p "$buildRoot/libbacktrace/.libs"
+    cp ${buildGccPackages.libbacktrace}/lib/libbacktrace.a "$buildRoot/libbacktrace/.libs/libbacktrace.a"
+    cp -r ${buildGccPackages.libbacktrace}/lib/*.la "$buildRoot/libbacktrace"
+    cp -r ${buildGccPackages.libbacktrace.dev}/include/*.h "$buildRoot/libbacktrace"
 
-      mkdir -p "$buildRoot/libiberty/pic"
-      cp ${buildGccPackages.libiberty}/lib/libiberty.a "$buildRoot/libiberty"
-      cp ${buildGccPackages.libiberty}/lib/libiberty_pic.a "$buildRoot/libiberty/pic/libiberty.a"
-      touch "$buildRoot/libiberty/stamp-noasandir"
-      touch "$buildRoot/libiberty/stamp-h"
-      touch "$buildRoot/libiberty/stamp-picdir"
+    mkdir -p "$buildRoot/libiberty/pic"
+    cp ${buildGccPackages.libiberty}/lib/libiberty.a "$buildRoot/libiberty"
+    cp ${buildGccPackages.libiberty}/lib/libiberty_pic.a "$buildRoot/libiberty/pic/libiberty.a"
+    touch "$buildRoot/libiberty/stamp-noasandir"
+    touch "$buildRoot/libiberty/stamp-h"
+    touch "$buildRoot/libiberty/stamp-picdir"
 
-      mkdir -p "$buildRoot/build-${stdenv.hostPlatform.config}"
-      cp -r "$buildRoot/libiberty" "$buildRoot/build-${stdenv.hostPlatform.config}/libiberty"
+    mkdir -p "$buildRoot/build-${stdenv.hostPlatform.config}"
+    cp -r "$buildRoot/libiberty" "$buildRoot/build-${stdenv.hostPlatform.config}/libiberty"
 
-      configureScript=../$sourceRoot/configure
-    '';
+    configureScript=../$sourceRoot/configure
+  '';
 
   # Don't store the configure flags in the resulting executables.
   postConfigure = ''

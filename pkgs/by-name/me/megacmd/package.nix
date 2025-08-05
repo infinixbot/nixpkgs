@@ -56,23 +56,23 @@ stdenv.mkDerivation {
   ];
 
   buildInputs =
-    lib.optionals stdenv.hostPlatform.isLinux [ gcc-unwrapped ] # fix: ld: cannot find lib64/libstdc++fs.a
-    ++ [
-      c-ares
-      cryptopp
-      curl
-      ffmpeg
-      icu
-      libmediainfo
-      libraw
-      libsodium
-      libuv
-      libzen
-      pcre-cpp
-      readline
-      sqlite
-    ]
-    ++ lib.optionals withFreeImage [ freeimage ];
+  lib.optionals stdenv.hostPlatform.isLinux [ gcc-unwrapped ] # fix: ld: cannot find lib64/libstdc++fs.a
+  ++ [
+    c-ares
+    cryptopp
+    curl
+    ffmpeg
+    icu
+    libmediainfo
+    libraw
+    libsodium
+    libuv
+    libzen
+    pcre-cpp
+    readline
+    sqlite
+  ]
+  ++ lib.optionals withFreeImage [ freeimage ];
 
   configureFlags = [
     "--disable-examples"

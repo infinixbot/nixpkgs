@@ -51,19 +51,19 @@ stdenv.mkDerivation (finalAttrs: {
   );
 
   makeFlags =
-    lib.optionals stdenv.cc.isClang [
-      "compiler=clang"
-    ]
-    ++ (lib.optional (stdenv.buildPlatform != stdenv.hostPlatform) (
-      if stdenv.hostPlatform.isAarch64 then
-        "arch=arm64"
-      else if stdenv.hostPlatform.isx86_64 then
-        "arch=intel64"
-      else if stdenv.hostPlatform.isi686 then
-        "arch=ia32"
-      else
-        throw "Unsupported cross architecture"
-    ));
+  lib.optionals stdenv.cc.isClang [
+    "compiler=clang"
+  ]
+  ++ (lib.optional (stdenv.buildPlatform != stdenv.hostPlatform) (
+    if stdenv.hostPlatform.isAarch64 then
+      "arch=arm64"
+    else if stdenv.hostPlatform.isx86_64 then
+      "arch=intel64"
+    else if stdenv.hostPlatform.isi686 then
+      "arch=ia32"
+    else
+      throw "Unsupported cross architecture"
+  ));
 
   # Fix undefined reference errors with version script under LLVM.
   NIX_LDFLAGS = lib.optionalString (

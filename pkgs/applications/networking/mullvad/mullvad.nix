@@ -67,14 +67,14 @@ rustPlatform.buildRustPackage rec {
   ];
 
   buildInputs =
-    lib.optionals stdenv.hostPlatform.isLinux [
-      dbus.dev
-      libnftnl
-      libmnl
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      darwin.libpcap
-    ];
+  lib.optionals stdenv.hostPlatform.isLinux [
+    dbus.dev
+    libnftnl
+    libmnl
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    darwin.libpcap
+  ];
 
   postInstall = ''
     compdir=$(mktemp -d)

@@ -35,9 +35,9 @@ stdenvNoCC.mkDerivation {
   '';
 
   meta =
-    metaCommon
-    // (with lib; {
-      platforms = if isAarch64 then [ "aarch64-darwin" ] else platforms.darwin;
-      mainProgram = "losslesscut";
-    });
+  metaCommon
+  // (with lib; {
+    platforms = if isAarch64 then [ "aarch64-darwin" ] else platforms.darwin;
+    mainProgram = "losslesscut";
+  });
 }

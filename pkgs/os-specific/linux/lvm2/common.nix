@@ -34,9 +34,9 @@ assert enableDmeventd -> enableCmdlib;
 
 stdenv.mkDerivation rec {
   pname =
-    "lvm2"
-    + lib.optionalString enableDmeventd "-with-dmeventd"
-    + lib.optionalString enableVDO "-with-vdo";
+  "lvm2"
+  + lib.optionalString enableDmeventd "-with-dmeventd"
+  + lib.optionalString enableVDO "-with-vdo";
   inherit version;
 
   src = fetchurl {
@@ -134,12 +134,12 @@ stdenv.mkDerivation rec {
   doInstallCheck = true;
 
   makeFlags =
-    lib.optionals udevSupport [
-      "SYSTEMD_GENERATOR_DIR=${placeholder "out"}/lib/systemd/system-generators"
-    ]
-    ++ lib.optionals onlyLib [
-      "libdm.device-mapper"
-    ];
+  lib.optionals udevSupport [
+    "SYSTEMD_GENERATOR_DIR=${placeholder "out"}/lib/systemd/system-generators"
+  ]
+  ++ lib.optionals onlyLib [
+    "libdm.device-mapper"
+  ];
 
   enableParallelBuilding = true;
 

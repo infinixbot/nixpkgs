@@ -80,8 +80,8 @@ stdenv.mkDerivation (finalAttrs: {
   ++ lib.optionals pulseSupport [ libpulseaudio ];
 
   configureFlags =
-    lib.optionals chromecastSupport [ "--enable-chromecast" ]
-    ++ lib.optionals pulseSupport [ "--with-pulseaudio" ];
+  lib.optionals chromecastSupport [ "--enable-chromecast" ]
+  ++ lib.optionals pulseSupport [ "--with-pulseaudio" ];
 
   passthru.updateScript = nix-update-script { };
 

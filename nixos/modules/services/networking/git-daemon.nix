@@ -129,13 +129,13 @@ in
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
       script =
-        "${lib.getExe cfg.package} daemon --reuseaddr "
-        + (lib.optionalString (cfg.basePath != "") "--base-path=${cfg.basePath} ")
-        + (lib.optionalString (cfg.listenAddress != "") "--listen=${cfg.listenAddress} ")
-        + "--port=${toString cfg.port} --user=${cfg.user} --group=${cfg.group} ${cfg.options} "
-        + "--verbose "
-        + (lib.optionalString cfg.exportAll "--export-all ")
-        + lib.concatStringsSep " " cfg.repositories;
+      "${lib.getExe cfg.package} daemon --reuseaddr "
+      + (lib.optionalString (cfg.basePath != "") "--base-path=${cfg.basePath} ")
+      + (lib.optionalString (cfg.listenAddress != "") "--listen=${cfg.listenAddress} ")
+      + "--port=${toString cfg.port} --user=${cfg.user} --group=${cfg.group} ${cfg.options} "
+      + "--verbose "
+      + (lib.optionalString cfg.exportAll "--export-all ")
+      + lib.concatStringsSep " " cfg.repositories;
     };
 
   };

@@ -243,11 +243,11 @@ let
     }:
     let
       browsers =
-        lib.optionals withChromium [ "chromium" ]
-        ++ lib.optionals withChromiumHeadlessShell [ "chromium-headless-shell" ]
-        ++ lib.optionals withFirefox [ "firefox" ]
-        ++ lib.optionals withWebkit [ "webkit" ]
-        ++ lib.optionals withFfmpeg [ "ffmpeg" ];
+      lib.optionals withChromium [ "chromium" ]
+      ++ lib.optionals withChromiumHeadlessShell [ "chromium-headless-shell" ]
+      ++ lib.optionals withFirefox [ "firefox" ]
+      ++ lib.optionals withWebkit [ "webkit" ]
+      ++ lib.optionals withFfmpeg [ "ffmpeg" ];
     in
     linkFarm "playwright-browsers" (
       lib.listToAttrs (

@@ -51,13 +51,13 @@ stdenv.mkDerivation rec {
 
   env.JAVA_HOME = lib.optionalString withJava jdk17.home; # Fails at runtime without this
   env.NIX_LDFLAGS =
-    lib.optionalString withAACS "-L${libaacs}/lib -laacs"
-    + lib.optionalString withBDplus " -L${libbdplus}/lib -lbdplus";
+  lib.optionalString withAACS "-L${libaacs}/lib -laacs"
+  + lib.optionalString withBDplus " -L${libbdplus}/lib -lbdplus";
 
   configureFlags =
-    lib.optional (!withJava) "--disable-bdjava-jar"
-    ++ lib.optional (!withMetadata) "--without-libxml2"
-    ++ lib.optional (!withFonts) "--without-freetype";
+  lib.optional (!withJava) "--disable-bdjava-jar"
+  ++ lib.optional (!withMetadata) "--without-libxml2"
+  ++ lib.optional (!withFonts) "--without-freetype";
 
   meta = with lib; {
     homepage = "http://www.videolan.org/developers/libbluray.html";

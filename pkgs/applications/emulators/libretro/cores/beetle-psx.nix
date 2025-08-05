@@ -30,8 +30,8 @@ mkLibretroCore {
 
   meta = {
     description =
-      "Port of Mednafen's PSX Engine core to libretro"
-      + lib.optionalString withHw " (with hardware acceleration support)";
+    "Port of Mednafen's PSX Engine core to libretro"
+    + lib.optionalString withHw " (with hardware acceleration support)";
     homepage = "https://github.com/libretro/beetle-psx-libretro";
     license = lib.licenses.gpl2Only;
   };

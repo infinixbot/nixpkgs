@@ -96,24 +96,24 @@ stdenv.mkDerivation (finalAttrs: {
   dontWrapQtApps = true;
 
   preFixup =
-    lib.optionalString (uiPlatform == "gnome") ''
-      makeWrapperArgs+=("''${gappsWrapperArgs[@]}")
-    ''
-    + lib.optionalString (uiPlatform == "qt") ''
-      makeWrapperArgs+=("''${qtWrapperArgs[@]}")
-    ''
-    + ''
-        makeWrapperArgs+=(--prefix PATH : ${
-          lib.makeBinPath [
-            aria2
-            ffmpeg
-            yt-dlp
-          ]
-        })
+  lib.optionalString (uiPlatform == "gnome") ''
+    makeWrapperArgs+=("''${gappsWrapperArgs[@]}")
+  ''
+  + lib.optionalString (uiPlatform == "qt") ''
+    makeWrapperArgs+=("''${qtWrapperArgs[@]}")
+  ''
+  + ''
+      makeWrapperArgs+=(--prefix PATH : ${
+        lib.makeBinPath [
+          aria2
+          ffmpeg
+          yt-dlp
+        ]
+      })
 
-      wrapProgram $out/bin/org.nickvision.tubeconverter \
-        ''${makeWrapperArgs[@]}
-    '';
+    wrapProgram $out/bin/org.nickvision.tubeconverter \
+      ''${makeWrapperArgs[@]}
+  '';
 
   passthru.updateScript = nix-update-script { };
 

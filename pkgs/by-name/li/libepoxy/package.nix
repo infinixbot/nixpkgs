@@ -55,12 +55,12 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   propagatedBuildInputs =
-    lib.optionals (x11Support && !stdenv.hostPlatform.isDarwin) [
-      libGL
-    ]
-    ++ lib.optionals x11Support [
-      libX11
-    ];
+  lib.optionals (x11Support && !stdenv.hostPlatform.isDarwin) [
+    libGL
+  ]
+  ++ lib.optionals x11Support [
+    libX11
+  ];
 
   mesonFlags = [
     "-Degl=${if (x11Support && !stdenv.hostPlatform.isDarwin) then "yes" else "no"}"

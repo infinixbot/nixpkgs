@@ -41,14 +41,14 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs =
-    lib.optionals dbusSupport [
-      dbus
-    ]
-    ++ [
-      perlPackages.perl
-      pcsclite
-    ]
-    ++ lib.optional systemdSupport systemd;
+  lib.optionals dbusSupport [
+    dbus
+  ]
+  ++ [
+    perlPackages.perl
+    pcsclite
+  ]
+  ++ lib.optional systemdSupport systemd;
 
   nativeBuildInputs = [
     autoconf-archive

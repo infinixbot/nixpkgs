@@ -26,16 +26,16 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs =
-    lib.optionals stdenv.hostPlatform.isLinux [
-      acl
-      attr
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      libiconv
-    ]
-    ++ [
-      zlib
-    ];
+  lib.optionals stdenv.hostPlatform.isLinux [
+    acl
+    attr
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    libiconv
+  ]
+  ++ [
+    zlib
+  ];
 
   outputs = [
     "out"

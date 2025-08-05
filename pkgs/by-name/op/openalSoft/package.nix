@@ -37,10 +37,10 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs =
-    lib.optional alsaSupport alsa-lib
-    ++ lib.optional dbusSupport dbus
-    ++ lib.optional pipewireSupport pipewire
-    ++ lib.optional pulseSupport libpulseaudio;
+  lib.optional alsaSupport alsa-lib
+  ++ lib.optional dbusSupport dbus
+  ++ lib.optional pipewireSupport pipewire
+  ++ lib.optional pulseSupport libpulseaudio;
 
   cmakeFlags = [
     # Automatically links dependencies without having to rely on dlopen, thus

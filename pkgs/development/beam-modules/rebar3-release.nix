@@ -61,13 +61,13 @@ let
         inherit version pname;
 
         buildInputs =
-          buildInputs
-          ++ [
-            erlang
-            rebar3
-            openssl
-          ]
-          ++ beamDeps;
+        buildInputs
+        ++ [
+          erlang
+          rebar3
+          openssl
+        ]
+        ++ beamDeps;
 
         # ensure we strip any native binaries (eg. NIFs, ports)
         stripDebugList = lib.optional (releaseType == "release") "rel";

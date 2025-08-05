@@ -106,19 +106,19 @@ rustPlatform.buildRustPackage.override { stdenv = clangStdenv; } (finalAttrs: {
     '';
 
   postInstall =
-    lib.optionalString stdenv.hostPlatform.isDarwin ''
-      mkdir -p $out/Applications
-      cp -r extra/osx/Neovide.app $out/Applications
-      ln -s $out/bin $out/Applications/Neovide.app/Contents/MacOS
-    ''
-    + lib.optionalString stdenv.hostPlatform.isLinux ''
-      for n in 16x16 32x32 48x48 256x256; do
-        install -m444 -D "assets/neovide-$n.png" \
-          "$out/share/icons/hicolor/$n/apps/neovide.png"
-      done
-      install -m444 -Dt $out/share/icons/hicolor/scalable/apps assets/neovide.svg
-      install -m444 -Dt $out/share/applications assets/neovide.desktop
-    '';
+  lib.optionalString stdenv.hostPlatform.isDarwin ''
+    mkdir -p $out/Applications
+    cp -r extra/osx/Neovide.app $out/Applications
+    ln -s $out/bin $out/Applications/Neovide.app/Contents/MacOS
+  ''
+  + lib.optionalString stdenv.hostPlatform.isLinux ''
+    for n in 16x16 32x32 48x48 256x256; do
+      install -m444 -D "assets/neovide-$n.png" \
+        "$out/share/icons/hicolor/$n/apps/neovide.png"
+    done
+    install -m444 -Dt $out/share/icons/hicolor/scalable/apps assets/neovide.svg
+    install -m444 -Dt $out/share/applications assets/neovide.desktop
+  '';
 
   disallowedReferences = [ finalAttrs.SKIA_SOURCE_DIR ];
 

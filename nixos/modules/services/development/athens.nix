@@ -986,8 +986,8 @@ in
 
     networking.firewall = {
       allowedTCPPorts =
-        lib.optionals (cfg.unixSocket == null) [ cfg.port ]
-        ++ lib.optionals cfg.enablePprof [ cfg.pprofPort ];
+      lib.optionals (cfg.unixSocket == null) [ cfg.port ]
+      ++ lib.optionals cfg.enablePprof [ cfg.pprofPort ];
     };
   };
 

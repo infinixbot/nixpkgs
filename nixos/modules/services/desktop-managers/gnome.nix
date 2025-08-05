@@ -64,13 +64,13 @@ let
 
   flashbackEnabled = cfg.flashback.enableMetacity || lib.length cfg.flashback.customSessions > 0;
   flashbackWms =
-    lib.optional cfg.flashback.enableMetacity {
-      wmName = "metacity";
-      wmLabel = "Metacity";
-      wmCommand = "${pkgs.metacity}/bin/metacity";
-      enableGnomePanel = true;
-    }
-    ++ cfg.flashback.customSessions;
+  lib.optional cfg.flashback.enableMetacity {
+    wmName = "metacity";
+    wmLabel = "Metacity";
+    wmCommand = "${pkgs.metacity}/bin/metacity";
+    enableGnomePanel = true;
+  }
+  ++ cfg.flashback.customSessions;
 
   notExcluded =
     pkg: mkDefault (utils.disablePackageByName pkg config.environment.gnome.excludePackages);

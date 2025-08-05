@@ -218,17 +218,17 @@ stdenv.mkDerivation (finalAttrs: {
 
   # socket path becomes too long otherwise
   preInstallCheck =
-    lib.optionalString stdenv.hostPlatform.isDarwin ''
-      export TMPDIR=$NIX_BUILD_TOP
-    ''
-    # See https://github.com/NixOS/nix/issues/5687
-    + lib.optionalString (stdenv.hostPlatform.system == "aarch64-linux") ''
-      echo "exit 0" > tests/functional/flakes/show.sh
-    ''
-    + ''
-      # nixStatic otherwise does not find its man pages in tests.
-      export MANPATH=$man/share/man:$MANPATH
-    '';
+  lib.optionalString stdenv.hostPlatform.isDarwin ''
+    export TMPDIR=$NIX_BUILD_TOP
+  ''
+  # See https://github.com/NixOS/nix/issues/5687
+  + lib.optionalString (stdenv.hostPlatform.system == "aarch64-linux") ''
+    echo "exit 0" > tests/functional/flakes/show.sh
+  ''
+  + ''
+    # nixStatic otherwise does not find its man pages in tests.
+    export MANPATH=$man/share/man:$MANPATH
+  '';
 
   separateDebugInfo = stdenv.hostPlatform.isLinux && enableStatic;
 

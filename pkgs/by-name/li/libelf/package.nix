@@ -45,28 +45,28 @@ stdenv.mkDerivation rec {
       '';
 
   configureFlags =
-    [ ]
-    # Configure check for dynamic lib support is broken, see
-    # http://lists.uclibc.org/pipermail/uclibc-cvs/2005-August/019383.html
-    ++ lib.optional (stdenv.hostPlatform != stdenv.buildPlatform) "mr_cv_target_elf=yes"
-    # Libelf's custom NLS macros fail to determine the catalog file extension
-    # on Darwin, so disable NLS for now.
-    ++ lib.optional stdenv.hostPlatform.isDarwin "--disable-nls";
+  [ ]
+  # Configure check for dynamic lib support is broken, see
+  # http://lists.uclibc.org/pipermail/uclibc-cvs/2005-August/019383.html
+  ++ lib.optional (stdenv.hostPlatform != stdenv.buildPlatform) "mr_cv_target_elf=yes"
+  # Libelf's custom NLS macros fail to determine the catalog file extension
+  # on Darwin, so disable NLS for now.
+  ++ lib.optional stdenv.hostPlatform.isDarwin "--disable-nls";
 
   strictDeps = true;
   nativeBuildInputs =
-    (
-      if stdenv.hostPlatform.isFreeBSD then
-        [ freebsd.gencat ]
-      else if stdenv.hostPlatform.isNetBSD then
-        [ netbsd.gencat ]
-      else
-        [ gettext ]
-    )
-    # The provided `configure` script fails on clang 16 because some tests have a `main`
-    # returning an implicit `int`, which clang 16 treats as an error. Running `autoreconf` fixes
-    # the test and allows `configure` to detect clang properly.
-    ++ [ autoreconfHook ];
+  (
+    if stdenv.hostPlatform.isFreeBSD then
+      [ freebsd.gencat ]
+    else if stdenv.hostPlatform.isNetBSD then
+      [ netbsd.gencat ]
+    else
+      [ gettext ]
+  )
+  # The provided `configure` script fails on clang 16 because some tests have a `main`
+  # returning an implicit `int`, which clang 16 treats as an error. Running `autoreconf` fixes
+  # the test and allows `configure` to detect clang properly.
+  ++ [ autoreconfHook ];
 
   meta = {
     description = "ELF object file access library";

@@ -23,23 +23,23 @@
     ];
 
     postPatch =
-      # The in-kernel debugger (DDB) requires compiler flags not supported by clang, disable it
+    # The in-kernel debugger (DDB) requires compiler flags not supported by clang, disable it
+    ''
+      sed -E -i -e '/DDB/d' $BSDSRCDIR/sys/conf/GENERIC
+      sed -E -i -e '/pseudo-device\tdt/d' $BSDSRCDIR/sys/arch/amd64/conf/GENERIC
+    ''
+    +
+      # Clang flags compatibility
       ''
-        sed -E -i -e '/DDB/d' $BSDSRCDIR/sys/conf/GENERIC
-        sed -E -i -e '/pseudo-device\tdt/d' $BSDSRCDIR/sys/arch/amd64/conf/GENERIC
+        find $BSDSRCDIR -name 'Makefile*' -exec sed -E -i -e 's/-fno-ret-protector/-fno-stack-protector/g' -e 's/-nopie/-no-pie/g' {} +
+        sed -E -i -e 's_^\tinstall.*$_\tinstall bsd ''${out}/bsd_' -e s/update-link// $BSDSRCDIR/sys/arch/*/conf/Makefile.*
       ''
-      +
-        # Clang flags compatibility
-        ''
-          find $BSDSRCDIR -name 'Makefile*' -exec sed -E -i -e 's/-fno-ret-protector/-fno-stack-protector/g' -e 's/-nopie/-no-pie/g' {} +
-          sed -E -i -e 's_^\tinstall.*$_\tinstall bsd ''${out}/bsd_' -e s/update-link// $BSDSRCDIR/sys/arch/*/conf/Makefile.*
-        ''
-      +
-        # Remove randomness in build
-        ''
-          sed -E -i -e 's/^PAGE_SIZE=.*$/PAGE_SIZE=4096/g' -e '/^random_uniform/a echo 0; return 0;' $BSDSRCDIR/sys/conf/makegap.sh
-          sed -E -i -e 's/^v=.*$/v=0 u=nixpkgs h=nixpkgs t=`date -d @1`/g' $BSDSRCDIR/sys/conf/newvers.sh
-        '';
+    +
+      # Remove randomness in build
+      ''
+        sed -E -i -e 's/^PAGE_SIZE=.*$/PAGE_SIZE=4096/g' -e '/^random_uniform/a echo 0; return 0;' $BSDSRCDIR/sys/conf/makegap.sh
+        sed -E -i -e 's/^v=.*$/v=0 u=nixpkgs h=nixpkgs t=`date -d @1`/g' $BSDSRCDIR/sys/conf/newvers.sh
+      '';
 
     postConfigure = ''
       export BSDOBJDIR=$TMP/obj

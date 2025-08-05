@@ -57,13 +57,13 @@ stdenv.mkDerivation rec {
   ++ lib.optional jackaudioSupport libjack2;
 
   cmakeFlags =
-    lib.optionals (!jackaudioSupport) [
-      "-DRTAUDIO_USE_JACK=OFF"
-      "-DRTMIDI_USE_JACK=OFF"
-      "-DGO_USE_JACK=OFF"
-      "-DINSTALL_DEPEND=OFF"
-    ]
-    ++ lib.optional (!includeDemo) "-DINSTALL_DEMO=OFF";
+  lib.optionals (!jackaudioSupport) [
+    "-DRTAUDIO_USE_JACK=OFF"
+    "-DRTMIDI_USE_JACK=OFF"
+    "-DGO_USE_JACK=OFF"
+    "-DINSTALL_DEPEND=OFF"
+  ]
+  ++ lib.optional (!includeDemo) "-DINSTALL_DEMO=OFF";
 
   postInstall = lib.optionalString stdenv.hostPlatform.isDarwin ''
     mkdir -p $out/{Applications,bin,lib}

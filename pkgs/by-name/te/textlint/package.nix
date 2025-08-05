@@ -94,8 +94,8 @@ buildNpmPackage rec {
         ruleName' = lib.removePrefix "preset-" ruleName;
         pluginName = lib.removePrefix "textlint-plugin-" plugin.pname;
         args =
-          "${testFile} ${if isPreset then "--preset" else "--rule"} ${ruleName'}"
-          + lib.optionalString (plugin != null) " --plugin ${pluginName}";
+        "${testFile} ${if isPreset then "--preset" else "--rule"} ${ruleName'}"
+        + lib.optionalString (plugin != null) " --plugin ${pluginName}";
       in
       {
         "${pname}-test" =

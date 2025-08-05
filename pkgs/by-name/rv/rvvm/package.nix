@@ -36,12 +36,12 @@ stdenv.mkDerivation rec {
   };
 
   buildInputs =
-    [ ]
-    ++ lib.optionals enableSDL [ SDL2 ]
-    ++ lib.optionals enableX11 [
-      libX11
-      libXext
-    ];
+  [ ]
+  ++ lib.optionals enableSDL [ SDL2 ]
+  ++ lib.optionals enableX11 [
+    libX11
+    libXext
+  ];
 
   enableParallelBuilding = true;
 

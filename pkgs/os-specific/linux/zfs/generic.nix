@@ -114,58 +114,58 @@ let
       patches = extraPatches;
 
       postPatch =
-        optionalString buildKernel ''
-          patchShebangs scripts
-          # The arrays must remain the same length, so we repeat a flag that is
-          # already part of the command and therefore has no effect.
-          substituteInPlace ./module/os/linux/zfs/zfs_ctldir.c \
-            --replace-fail '"/usr/bin/env", "umount"' '"${util-linux}/bin/umount", "-n"' \
-            --replace-fail '"/usr/bin/env", "mount"'  '"${util-linux}/bin/mount", "-n"'
-        ''
-        + optionalString buildUser ''
-          substituteInPlace ./lib/libshare/os/linux/nfs.c --replace-fail "/usr/sbin/exportfs" "${
-            # We don't *need* python support, but we set it like this to minimize closure size:
-            # If it's disabled by default, no need to enable it, even if we have python enabled
-            # And if it's enabled by default, only change that if we explicitly disable python to remove python from the closure
-            nfs-utils.override (old: {
-              enablePython = old.enablePython or true && enablePython;
-            })
-          }/bin/exportfs"
-          substituteInPlace ./lib/libshare/smb.h        --replace-fail "/usr/bin/net"            "/run/current-system/sw/bin/net"
-          # Disable dynamic loading of libcurl
-          substituteInPlace ./config/user-libfetch.m4   --replace-fail "curl-config --built-shared" "true"
-          substituteInPlace ./config/user-systemd.m4    --replace-fail "/usr/lib/modules-load.d" "$out/etc/modules-load.d"
-          substituteInPlace ./config/zfs-build.m4       --replace-fail "\$sysconfdir/init.d"     "$out/etc/init.d" \
-                                                        --replace-fail "/etc/default"            "$out/etc/default"
-          substituteInPlace ./contrib/initramfs/Makefile.am \
-            --replace-fail "/usr/share/initramfs-tools" "$out/usr/share/initramfs-tools"
+      optionalString buildKernel ''
+        patchShebangs scripts
+        # The arrays must remain the same length, so we repeat a flag that is
+        # already part of the command and therefore has no effect.
+        substituteInPlace ./module/os/linux/zfs/zfs_ctldir.c \
+          --replace-fail '"/usr/bin/env", "umount"' '"${util-linux}/bin/umount", "-n"' \
+          --replace-fail '"/usr/bin/env", "mount"'  '"${util-linux}/bin/mount", "-n"'
+      ''
+      + optionalString buildUser ''
+        substituteInPlace ./lib/libshare/os/linux/nfs.c --replace-fail "/usr/sbin/exportfs" "${
+          # We don't *need* python support, but we set it like this to minimize closure size:
+          # If it's disabled by default, no need to enable it, even if we have python enabled
+          # And if it's enabled by default, only change that if we explicitly disable python to remove python from the closure
+          nfs-utils.override (old: {
+            enablePython = old.enablePython or true && enablePython;
+          })
+        }/bin/exportfs"
+        substituteInPlace ./lib/libshare/smb.h        --replace-fail "/usr/bin/net"            "/run/current-system/sw/bin/net"
+        # Disable dynamic loading of libcurl
+        substituteInPlace ./config/user-libfetch.m4   --replace-fail "curl-config --built-shared" "true"
+        substituteInPlace ./config/user-systemd.m4    --replace-fail "/usr/lib/modules-load.d" "$out/etc/modules-load.d"
+        substituteInPlace ./config/zfs-build.m4       --replace-fail "\$sysconfdir/init.d"     "$out/etc/init.d" \
+                                                      --replace-fail "/etc/default"            "$out/etc/default"
+        substituteInPlace ./contrib/initramfs/Makefile.am \
+          --replace-fail "/usr/share/initramfs-tools" "$out/usr/share/initramfs-tools"
 
-          substituteInPlace ./udev/vdev_id \
-            --replace-fail "PATH=/bin:/sbin:/usr/bin:/usr/sbin" \
-             "PATH=${
-               makeBinPath [
-                 coreutils
-                 gawk
-                 gnused
-                 gnugrep
-                 systemd
-               ]
-             }"
+        substituteInPlace ./udev/vdev_id \
+          --replace-fail "PATH=/bin:/sbin:/usr/bin:/usr/sbin" \
+           "PATH=${
+             makeBinPath [
+               coreutils
+               gawk
+               gnused
+               gnugrep
+               systemd
+             ]
+           }"
 
-          substituteInPlace ./config/zfs-build.m4 \
-            --replace-fail "bashcompletiondir=/etc/bash_completion.d" \
-              "bashcompletiondir=$out/share/bash-completion/completions"
+        substituteInPlace ./config/zfs-build.m4 \
+          --replace-fail "bashcompletiondir=/etc/bash_completion.d" \
+            "bashcompletiondir=$out/share/bash-completion/completions"
 
-          substituteInPlace ./cmd/arc_summary --replace-fail "/sbin/modinfo" "modinfo"
-        ''
-        + ''
-          echo 'Supported Kernel versions:'
-          grep '^Linux-' META
-          echo 'Checking kernelMinSupportedMajorMinor is correct...'
-          grep --quiet '^Linux-Minimum: *${lib.escapeRegex kernelMinSupportedMajorMinor}$' META
-          echo 'Checking kernelMaxSupportedMajorMinor is correct...'
-          grep --quiet '^Linux-Maximum: *${lib.escapeRegex kernelMaxSupportedMajorMinor}$' META
-        '';
+        substituteInPlace ./cmd/arc_summary --replace-fail "/sbin/modinfo" "modinfo"
+      ''
+      + ''
+        echo 'Supported Kernel versions:'
+        grep '^Linux-' META
+        echo 'Checking kernelMinSupportedMajorMinor is correct...'
+        grep --quiet '^Linux-Minimum: *${lib.escapeRegex kernelMinSupportedMajorMinor}$' META
+        echo 'Checking kernelMaxSupportedMajorMinor is correct...'
+        grep --quiet '^Linux-Maximum: *${lib.escapeRegex kernelMaxSupportedMajorMinor}$' META
+      '';
 
       nativeBuildInputs = [
         autoreconfHook269
@@ -177,16 +177,16 @@ let
         udevCheckHook
       ];
       buildInputs =
-        optionals buildUser [
-          zlib
-          libuuid
-          attr
-          libtirpc
-          pam
-        ]
-        ++ optional buildUser openssl
-        ++ optional buildUser curl
-        ++ optional (buildUser && enablePython) python3;
+      optionals buildUser [
+        zlib
+        libuuid
+        attr
+        libtirpc
+        pam
+      ]
+      ++ optional buildUser openssl
+      ++ optional buildUser curl
+      ++ optional (buildUser && enablePython) python3;
 
       # for zdb to get the rpath to libgcc_s, needed for pthread_cancel to work
       NIX_CFLAGS_LINK = "-lgcc_s";
@@ -252,26 +252,26 @@ let
       '';
 
       postInstall =
-        optionalString buildKernel ''
-          # Add reference that cannot be detected due to compressed kernel module
-          mkdir -p "$out/nix-support"
-          echo "${util-linux}" >> "$out/nix-support/extra-refs"
-        ''
-        + optionalString buildUser ''
-          # Remove provided services as they are buggy
-          rm $out/etc/systemd/system/zfs-import-*.service
+      optionalString buildKernel ''
+        # Add reference that cannot be detected due to compressed kernel module
+        mkdir -p "$out/nix-support"
+        echo "${util-linux}" >> "$out/nix-support/extra-refs"
+      ''
+      + optionalString buildUser ''
+        # Remove provided services as they are buggy
+        rm $out/etc/systemd/system/zfs-import-*.service
 
-          for i in $out/etc/systemd/system/*; do
-             if [ -L $i ]; then
-               continue
-             fi
-             sed -i '/zfs-import-scan.service/d' $i
-             substituteInPlace $i --replace-warn "zfs-import-cache.service" "zfs-import.target"
-          done
+        for i in $out/etc/systemd/system/*; do
+           if [ -L $i ]; then
+             continue
+           fi
+           sed -i '/zfs-import-scan.service/d' $i
+           substituteInPlace $i --replace-warn "zfs-import-cache.service" "zfs-import.target"
+        done
 
-          # Remove tests because they add a runtime dependency on gcc
-          rm -rf $out/share/zfs/zfs-tests
-        '';
+        # Remove tests because they add a runtime dependency on gcc
+        rm -rf $out/share/zfs/zfs-tests
+      '';
 
       postFixup =
         let

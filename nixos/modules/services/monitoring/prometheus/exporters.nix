@@ -46,147 +46,147 @@ let
   #  `serviceOpts.script` or `serviceOpts.serviceConfig.ExecStart`
 
   exporterOpts =
-    (genAttrs
-      [
-        "apcupsd"
-        "artifactory"
-        "bind"
-        "bird"
-        "bitcoin"
-        "blackbox"
-        "borgmatic"
-        "buildkite-agent"
-        "ecoflow"
-        "chrony"
-        "collectd"
-        "deluge"
-        "dmarc"
-        "dnsmasq"
-        "dnssec"
-        "domain"
-        "dovecot"
-        "ebpf"
-        "fastly"
-        "flow"
-        "fritz"
-        "fritzbox"
-        "frr"
-        "graphite"
-        "idrac"
-        "imap-mailstat"
-        "influxdb"
-        "ipmi"
-        "jitsi"
-        "json"
-        "junos-czerwonk"
-        "kea"
-        "keylight"
-        "klipper"
-        "knot"
-        "libvirt"
-        "lnd"
-        "mail"
-        "mailman3"
-        "mikrotik"
-        "modemmanager"
-        "mongodb"
-        "mqtt"
-        "mysqld"
-        "nats"
-        "nextcloud"
-        "nginx"
-        "nginxlog"
-        "node"
-        "node-cert"
-        "nut"
-        "nvidia-gpu"
-        "pgbouncer"
-        "php-fpm"
-        "pihole"
-        "ping"
-        "postfix"
-        "postgres"
-        "process"
-        "pve"
-        "py-air-control"
-        "rasdaemon"
-        "redis"
-        "restic"
-        "rspamd"
-        "rtl_433"
-        "sabnzbd"
-        "scaphandre"
-        "script"
-        "shelly"
-        "smartctl"
-        "smokeping"
-        "snmp"
-        "sql"
-        "statsd"
-        "surfboard"
-        "systemd"
-        "tibber"
-        "unbound"
-        "unpoller"
-        "v2ray"
-        "varnish"
-        "wireguard"
-        "zfs"
-      ]
-      (
-        name:
-        import (./. + "/exporters/${name}.nix") {
-          inherit
-            config
-            lib
-            pkgs
-            options
-            utils
-            ;
-        }
-      )
-    )
-    // (mapAttrs
-      (
-        name: params:
-        import (./. + "/exporters/${params.name}.nix") {
-          inherit
-            config
-            lib
-            pkgs
-            options
-            utils
-            ;
-          type = params.type;
-        }
-      )
-      {
-        exportarr-bazarr = {
-          name = "exportarr";
-          type = "bazarr";
-        };
-        exportarr-lidarr = {
-          name = "exportarr";
-          type = "lidarr";
-        };
-        exportarr-prowlarr = {
-          name = "exportarr";
-          type = "prowlarr";
-        };
-        exportarr-radarr = {
-          name = "exportarr";
-          type = "radarr";
-        };
-        exportarr-readarr = {
-          name = "exportarr";
-          type = "readarr";
-        };
-        exportarr-sonarr = {
-          name = "exportarr";
-          type = "sonarr";
-        };
+  (genAttrs
+    [
+      "apcupsd"
+      "artifactory"
+      "bind"
+      "bird"
+      "bitcoin"
+      "blackbox"
+      "borgmatic"
+      "buildkite-agent"
+      "ecoflow"
+      "chrony"
+      "collectd"
+      "deluge"
+      "dmarc"
+      "dnsmasq"
+      "dnssec"
+      "domain"
+      "dovecot"
+      "ebpf"
+      "fastly"
+      "flow"
+      "fritz"
+      "fritzbox"
+      "frr"
+      "graphite"
+      "idrac"
+      "imap-mailstat"
+      "influxdb"
+      "ipmi"
+      "jitsi"
+      "json"
+      "junos-czerwonk"
+      "kea"
+      "keylight"
+      "klipper"
+      "knot"
+      "libvirt"
+      "lnd"
+      "mail"
+      "mailman3"
+      "mikrotik"
+      "modemmanager"
+      "mongodb"
+      "mqtt"
+      "mysqld"
+      "nats"
+      "nextcloud"
+      "nginx"
+      "nginxlog"
+      "node"
+      "node-cert"
+      "nut"
+      "nvidia-gpu"
+      "pgbouncer"
+      "php-fpm"
+      "pihole"
+      "ping"
+      "postfix"
+      "postgres"
+      "process"
+      "pve"
+      "py-air-control"
+      "rasdaemon"
+      "redis"
+      "restic"
+      "rspamd"
+      "rtl_433"
+      "sabnzbd"
+      "scaphandre"
+      "script"
+      "shelly"
+      "smartctl"
+      "smokeping"
+      "snmp"
+      "sql"
+      "statsd"
+      "surfboard"
+      "systemd"
+      "tibber"
+      "unbound"
+      "unpoller"
+      "v2ray"
+      "varnish"
+      "wireguard"
+      "zfs"
+    ]
+    (
+      name:
+      import (./. + "/exporters/${name}.nix") {
+        inherit
+          config
+          lib
+          pkgs
+          options
+          utils
+          ;
       }
-    );
+    )
+  )
+  // (mapAttrs
+    (
+      name: params:
+      import (./. + "/exporters/${params.name}.nix") {
+        inherit
+          config
+          lib
+          pkgs
+          options
+          utils
+          ;
+        type = params.type;
+      }
+    )
+    {
+      exportarr-bazarr = {
+        name = "exportarr";
+        type = "bazarr";
+      };
+      exportarr-lidarr = {
+        name = "exportarr";
+        type = "lidarr";
+      };
+      exportarr-prowlarr = {
+        name = "exportarr";
+        type = "prowlarr";
+      };
+      exportarr-radarr = {
+        name = "exportarr";
+        type = "radarr";
+      };
+      exportarr-readarr = {
+        name = "exportarr";
+        type = "readarr";
+      };
+      exportarr-sonarr = {
+        name = "exportarr";
+        type = "sonarr";
+      };
+    }
+  );
 
   mkExporterOpts = (
     { name, port }:

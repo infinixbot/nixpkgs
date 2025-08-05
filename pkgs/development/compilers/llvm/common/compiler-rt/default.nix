@@ -75,68 +75,68 @@ stdenv.mkDerivation (finalAttrs: {
   sourceRoot = "${finalAttrs.src.name}/compiler-rt";
 
   patches =
-    lib.optional (lib.versionOlder release_version "15") (getVersionFile "compiler-rt/codesign.patch") # Revert compiler-rt commit that makes codesign mandatory
-    ++ [
-      (getVersionFile "compiler-rt/X86-support-extension.patch") # Add support for i486 i586 i686 by reusing i386 config
-      # ld-wrapper dislikes `-rpath-link //nix/store`, so we normalize away the
-      # extra `/`.
-      (getVersionFile "compiler-rt/normalize-var.patch")
-      # Fix build on armv6l
-      ./armv6-no-ldrexd-strexd.patch
-    ]
-    ++ lib.optional (lib.versions.major release_version == "12") (fetchpatch {
-      # fixes the parallel build on aarch64 darwin
-      name = "fix-symlink-race-aarch64-darwin.patch";
-      url = "https://github.com/llvm/llvm-project/commit/b31080c596246bc26d2493cfd5e07f053cf9541c.patch";
-      relative = "compiler-rt";
-      hash = "sha256-Cv2NC8402yU7QaTR6TzdH+qyWRy+tTote7KKWtKRWFQ=";
-    })
-    ++ lib.optional (
-      lib.versions.major release_version == "12"
-      || (lib.versionAtLeast release_version "14" && lib.versionOlder release_version "18")
-    ) (getVersionFile "compiler-rt/gnu-install-dirs.patch")
-    ++
-      lib.optional (lib.versionAtLeast release_version "13" && lib.versionOlder release_version "18")
-        (fetchpatch {
-          name = "cfi_startproc-after-label.patch";
-          url = "https://github.com/llvm/llvm-project/commit/7939ce39dac0078fef7183d6198598b99c652c88.patch";
-          stripLen = 1;
-          hash = "sha256-tGqXsYvUllFrPa/r/dsKVlwx5IrcJGccuR1WAtUg7/o=";
-        })
-    ++
-      lib.optional (lib.versionAtLeast release_version "13" && lib.versionOlder release_version "18")
-        # Prevent a compilation error on darwin
-        (getVersionFile "compiler-rt/darwin-targetconditionals.patch")
-    # TODO: make unconditional and remove in <15 section below. Causes rebuilds.
-    ++ lib.optionals (lib.versionAtLeast release_version "15") [
-      # See: https://github.com/NixOS/nixpkgs/pull/186575
-      ./darwin-plistbuddy-workaround.patch
-    ]
-    ++
-      lib.optional (lib.versions.major release_version == "15")
-        # See: https://github.com/NixOS/nixpkgs/pull/194634#discussion_r999829893
-        ./armv7l-15.patch
-    ++ lib.optionals (lib.versionOlder release_version "15") [
-      ./darwin-plistbuddy-workaround.patch
-      (getVersionFile "compiler-rt/armv7l.patch")
-      # Fix build on armv6l
-      ./armv6-mcr-dmb.patch
-      ./armv6-sync-ops-no-thumb.patch
-    ]
-    ++
-      lib.optionals (lib.versionAtLeast release_version "13" && lib.versionOlder release_version "18")
-        [
-          # Fix build on armv6l
-          ./armv6-scudo-no-yield.patch
-        ]
-    ++ lib.optionals (lib.versionAtLeast release_version "13") [
-      (getVersionFile "compiler-rt/armv6-scudo-libatomic.patch")
-    ]
-    ++ lib.optional (lib.versions.major release_version == "19") (fetchpatch {
-      url = "https://github.com/llvm/llvm-project/pull/99837/commits/14ae0a660a38e1feb151928a14f35ff0f4487351.patch";
-      hash = "sha256-JykABCaNNhYhZQxCvKiBn54DZ5ZguksgCHnpdwWF2no=";
-      relative = "compiler-rt";
-    });
+  lib.optional (lib.versionOlder release_version "15") (getVersionFile "compiler-rt/codesign.patch") # Revert compiler-rt commit that makes codesign mandatory
+  ++ [
+    (getVersionFile "compiler-rt/X86-support-extension.patch") # Add support for i486 i586 i686 by reusing i386 config
+    # ld-wrapper dislikes `-rpath-link //nix/store`, so we normalize away the
+    # extra `/`.
+    (getVersionFile "compiler-rt/normalize-var.patch")
+    # Fix build on armv6l
+    ./armv6-no-ldrexd-strexd.patch
+  ]
+  ++ lib.optional (lib.versions.major release_version == "12") (fetchpatch {
+    # fixes the parallel build on aarch64 darwin
+    name = "fix-symlink-race-aarch64-darwin.patch";
+    url = "https://github.com/llvm/llvm-project/commit/b31080c596246bc26d2493cfd5e07f053cf9541c.patch";
+    relative = "compiler-rt";
+    hash = "sha256-Cv2NC8402yU7QaTR6TzdH+qyWRy+tTote7KKWtKRWFQ=";
+  })
+  ++ lib.optional (
+    lib.versions.major release_version == "12"
+    || (lib.versionAtLeast release_version "14" && lib.versionOlder release_version "18")
+  ) (getVersionFile "compiler-rt/gnu-install-dirs.patch")
+  ++
+    lib.optional (lib.versionAtLeast release_version "13" && lib.versionOlder release_version "18")
+      (fetchpatch {
+        name = "cfi_startproc-after-label.patch";
+        url = "https://github.com/llvm/llvm-project/commit/7939ce39dac0078fef7183d6198598b99c652c88.patch";
+        stripLen = 1;
+        hash = "sha256-tGqXsYvUllFrPa/r/dsKVlwx5IrcJGccuR1WAtUg7/o=";
+      })
+  ++
+    lib.optional (lib.versionAtLeast release_version "13" && lib.versionOlder release_version "18")
+      # Prevent a compilation error on darwin
+      (getVersionFile "compiler-rt/darwin-targetconditionals.patch")
+  # TODO: make unconditional and remove in <15 section below. Causes rebuilds.
+  ++ lib.optionals (lib.versionAtLeast release_version "15") [
+    # See: https://github.com/NixOS/nixpkgs/pull/186575
+    ./darwin-plistbuddy-workaround.patch
+  ]
+  ++
+    lib.optional (lib.versions.major release_version == "15")
+      # See: https://github.com/NixOS/nixpkgs/pull/194634#discussion_r999829893
+      ./armv7l-15.patch
+  ++ lib.optionals (lib.versionOlder release_version "15") [
+    ./darwin-plistbuddy-workaround.patch
+    (getVersionFile "compiler-rt/armv7l.patch")
+    # Fix build on armv6l
+    ./armv6-mcr-dmb.patch
+    ./armv6-sync-ops-no-thumb.patch
+  ]
+  ++
+    lib.optionals (lib.versionAtLeast release_version "13" && lib.versionOlder release_version "18")
+      [
+        # Fix build on armv6l
+        ./armv6-scudo-no-yield.patch
+      ]
+  ++ lib.optionals (lib.versionAtLeast release_version "13") [
+    (getVersionFile "compiler-rt/armv6-scudo-libatomic.patch")
+  ]
+  ++ lib.optional (lib.versions.major release_version == "19") (fetchpatch {
+    url = "https://github.com/llvm/llvm-project/pull/99837/commits/14ae0a660a38e1feb151928a14f35ff0f4487351.patch";
+    hash = "sha256-JykABCaNNhYhZQxCvKiBn54DZ5ZguksgCHnpdwWF2no=";
+    relative = "compiler-rt";
+  });
 
   nativeBuildInputs = [
     cmake
@@ -146,8 +146,8 @@ stdenv.mkDerivation (finalAttrs: {
   ++ (lib.optional (lib.versionAtLeast release_version "15") ninja)
   ++ lib.optionals stdenv.hostPlatform.isDarwin [ jq ];
   buildInputs =
-    lib.optional (stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isRiscV) linuxHeaders
-    ++ lib.optional (stdenv.hostPlatform.isFreeBSD) freebsd.include;
+  lib.optional (stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isRiscV) linuxHeaders
+  ++ lib.optional (stdenv.hostPlatform.isFreeBSD) freebsd.include;
 
   env = {
     NIX_CFLAGS_COMPILE = toString (
@@ -252,85 +252,85 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   postPatch =
-    lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
-      substituteInPlace cmake/builtin-config-ix.cmake \
-        --replace-fail 'set(X86 i386)' 'set(X86 i386 i486 i586 i686)'
+  lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
+    substituteInPlace cmake/builtin-config-ix.cmake \
+      --replace-fail 'set(X86 i386)' 'set(X86 i386 i486 i586 i686)'
+  ''
+  + lib.optionalString (!haveLibc) (
+    (lib.optionalString (lib.versions.major release_version == "18") ''
+      substituteInPlace lib/builtins/aarch64/sme-libc-routines.c \
+        --replace-fail "<stdlib.h>" "<stddef.h>"
+    '')
+    + ''
+      substituteInPlace lib/builtins/int_util.c \
+        --replace-fail "#include <stdlib.h>" ""
     ''
-    + lib.optionalString (!haveLibc) (
-      (lib.optionalString (lib.versions.major release_version == "18") ''
-        substituteInPlace lib/builtins/aarch64/sme-libc-routines.c \
-          --replace-fail "<stdlib.h>" "<stddef.h>"
-      '')
-      + ''
-        substituteInPlace lib/builtins/int_util.c \
-          --replace-fail "#include <stdlib.h>" ""
+    + (lib.optionalString (!stdenv.hostPlatform.isFreeBSD)
+      # On FreeBSD, assert/static_assert are macros and allowing them to be implicitly declared causes link errors.
+      # see description above for why we're nuking assert.h normally but that doesn't work here.
+      # instead, we add the freebsd.include dependency explicitly
       ''
-      + (lib.optionalString (!stdenv.hostPlatform.isFreeBSD)
-        # On FreeBSD, assert/static_assert are macros and allowing them to be implicitly declared causes link errors.
-        # see description above for why we're nuking assert.h normally but that doesn't work here.
-        # instead, we add the freebsd.include dependency explicitly
-        ''
-          substituteInPlace lib/builtins/clear_cache.c \
-            --replace-fail "#include <assert.h>" ""
-          substituteInPlace lib/builtins/cpu_model${lib.optionalString (lib.versionAtLeast release_version "18") "/x86"}.c \
-            --replace-fail "#include <assert.h>" ""
-        ''
-      )
+        substituteInPlace lib/builtins/clear_cache.c \
+          --replace-fail "#include <assert.h>" ""
+        substituteInPlace lib/builtins/cpu_model${lib.optionalString (lib.versionAtLeast release_version "18") "/x86"}.c \
+          --replace-fail "#include <assert.h>" ""
+      ''
     )
-    +
-      lib.optionalString
-        (lib.versionAtLeast release_version "13" && lib.versionOlder release_version "14")
-        ''
-          # https://github.com/llvm/llvm-project/blob/llvmorg-14.0.6/libcxx/utils/merge_archives.py
-          # Seems to only be used in v13 though it's present in v12 and v14, and dropped in v15.
-          substituteInPlace ../libcxx/utils/merge_archives.py \
-            --replace-fail "import distutils.spawn" "from shutil import which as find_executable" \
-            --replace-fail "distutils.spawn." ""
-        ''
-    +
-      lib.optionalString (lib.versionAtLeast release_version "19")
-        # codesign in sigtool doesn't support the various options used by the build
-        # and is present in the bootstrap-tools. Removing find_program prevents the
-        # build from trying to use it and failing.
-        ''
-          substituteInPlace cmake/Modules/AddCompilerRT.cmake \
-            --replace-fail 'find_program(CODESIGN codesign)' ""
-        '';
+  )
+  +
+    lib.optionalString
+      (lib.versionAtLeast release_version "13" && lib.versionOlder release_version "14")
+      ''
+        # https://github.com/llvm/llvm-project/blob/llvmorg-14.0.6/libcxx/utils/merge_archives.py
+        # Seems to only be used in v13 though it's present in v12 and v14, and dropped in v15.
+        substituteInPlace ../libcxx/utils/merge_archives.py \
+          --replace-fail "import distutils.spawn" "from shutil import which as find_executable" \
+          --replace-fail "distutils.spawn." ""
+      ''
+  +
+    lib.optionalString (lib.versionAtLeast release_version "19")
+      # codesign in sigtool doesn't support the various options used by the build
+      # and is present in the bootstrap-tools. Removing find_program prevents the
+      # build from trying to use it and failing.
+      ''
+        substituteInPlace cmake/Modules/AddCompilerRT.cmake \
+          --replace-fail 'find_program(CODESIGN codesign)' ""
+      '';
 
   preConfigure =
-    lib.optionalString (lib.versionOlder release_version "16" && !haveLibc) ''
-      cmakeFlagsArray+=(-DCMAKE_C_FLAGS="-nodefaultlibs -ffreestanding")
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      cmakeFlagsArray+=(
-        "-DDARWIN_macosx_CACHED_SYSROOT=$SDKROOT"
-        "-DDARWIN_macosx_OVERRIDE_SDK_VERSION=$(jq -r .Version "$SDKROOT/SDKSettings.json")"
-      )
-    '';
+  lib.optionalString (lib.versionOlder release_version "16" && !haveLibc) ''
+    cmakeFlagsArray+=(-DCMAKE_C_FLAGS="-nodefaultlibs -ffreestanding")
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    cmakeFlagsArray+=(
+      "-DDARWIN_macosx_CACHED_SYSROOT=$SDKROOT"
+      "-DDARWIN_macosx_OVERRIDE_SDK_VERSION=$(jq -r .Version "$SDKROOT/SDKSettings.json")"
+    )
+  '';
 
   # Hack around weird upstream RPATH bug
   postInstall =
-    lib.optionalString (stdenv.hostPlatform.isDarwin) ''
-      ln -s "$out/lib"/*/* "$out/lib"
-    ''
-    + lib.optionalString (useLLVM && stdenv.hostPlatform.isLinux) ''
-      ln -s $out/lib/*/clang_rt.crtbegin-*.o $out/lib/crtbegin.o
-      ln -s $out/lib/*/clang_rt.crtend-*.o $out/lib/crtend.o
-      # Note the history of crt{begin,end}S in previous versions of llvm in nixpkg:
-      # The presence of crtbegin_shared has been added and removed; it's possible
-      # people have added/removed it to get it working on their platforms.
-      # Try each in turn for now.
-      ln -s $out/lib/*/clang_rt.crtbegin-*.o $out/lib/crtbeginS.o
-      ln -s $out/lib/*/clang_rt.crtend-*.o $out/lib/crtendS.o
-      ln -s $out/lib/*/clang_rt.crtbegin_shared-*.o $out/lib/crtbeginS.o
-      ln -s $out/lib/*/clang_rt.crtend_shared-*.o $out/lib/crtendS.o
-    ''
-    + lib.optionalString doFakeLibgcc ''
-      ln -s $out/lib/*/libclang_rt.builtins-*.a $out/lib/libgcc.a
-    ''
-    + lib.optionalString forceLinkCompilerRt ''
-      ln -s $out/lib/*/libclang_rt.builtins-*.a $out/lib/libcompiler_rt.a
-    '';
+  lib.optionalString (stdenv.hostPlatform.isDarwin) ''
+    ln -s "$out/lib"/*/* "$out/lib"
+  ''
+  + lib.optionalString (useLLVM && stdenv.hostPlatform.isLinux) ''
+    ln -s $out/lib/*/clang_rt.crtbegin-*.o $out/lib/crtbegin.o
+    ln -s $out/lib/*/clang_rt.crtend-*.o $out/lib/crtend.o
+    # Note the history of crt{begin,end}S in previous versions of llvm in nixpkg:
+    # The presence of crtbegin_shared has been added and removed; it's possible
+    # people have added/removed it to get it working on their platforms.
+    # Try each in turn for now.
+    ln -s $out/lib/*/clang_rt.crtbegin-*.o $out/lib/crtbeginS.o
+    ln -s $out/lib/*/clang_rt.crtend-*.o $out/lib/crtendS.o
+    ln -s $out/lib/*/clang_rt.crtbegin_shared-*.o $out/lib/crtbeginS.o
+    ln -s $out/lib/*/clang_rt.crtend_shared-*.o $out/lib/crtendS.o
+  ''
+  + lib.optionalString doFakeLibgcc ''
+    ln -s $out/lib/*/libclang_rt.builtins-*.a $out/lib/libgcc.a
+  ''
+  + lib.optionalString forceLinkCompilerRt ''
+    ln -s $out/lib/*/libclang_rt.builtins-*.a $out/lib/libcompiler_rt.a
+  '';
 
   meta = llvm_meta // {
     homepage = "https://compiler-rt.llvm.org/";

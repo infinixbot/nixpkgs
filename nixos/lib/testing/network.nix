@@ -96,10 +96,10 @@ let
           let
             config = nodes.${m'};
             hostnames =
-              optionalString (
-                config.networking.domain != null
-              ) "${config.networking.hostName}.${config.networking.domain} "
-              + "${config.networking.hostName}\n";
+            optionalString (
+              config.networking.domain != null
+            ) "${config.networking.hostName}.${config.networking.domain} "
+            + "${config.networking.hostName}\n";
           in
           optionalString (
             config.networking.primaryIPAddress != ""

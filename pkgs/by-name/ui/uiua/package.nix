@@ -41,8 +41,8 @@ rustPlatform.buildRustPackage (finalAttrs: {
   };
 
   nativeBuildInputs =
-    lib.optionals (webcamSupport || stdenv.hostPlatform.isDarwin) [ rustPlatform.bindgenHook ]
-    ++ lib.optionals audioSupport [ pkg-config ];
+  lib.optionals (webcamSupport || stdenv.hostPlatform.isDarwin) [ rustPlatform.bindgenHook ]
+  ++ lib.optionals audioSupport [ pkg-config ];
 
   buildInputs = [
     libffi

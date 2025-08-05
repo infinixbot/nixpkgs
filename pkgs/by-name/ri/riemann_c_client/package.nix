@@ -47,7 +47,7 @@ stdenv.mkDerivation rec {
   ++ lib.optional withJSON json_c;
 
   configureFlags =
-    [ ] ++ lib.optional withWolfSSL "--with-tls=wolfssl" ++ lib.optional withGnuTLS "--with-tls=gnutls";
+  [ ] ++ lib.optional withWolfSSL "--with-tls=wolfssl" ++ lib.optional withGnuTLS "--with-tls=gnutls";
 
   doCheck = true;
   enableParallelBuilding = true;

@@ -66,8 +66,8 @@ stdenv.mkDerivation rec {
   cmakeFlags =
     let
       resourceDir =
-        "${llvmMerged}/lib/clang/"
-        + (if lib.versionOlder clangVersion "16" then clangVersion else lib.versions.major clangVersion);
+      "${llvmMerged}/lib/clang/"
+      + (if lib.versionOlder clangVersion "16" then clangVersion else lib.versions.major clangVersion);
     in
     [
       "-DHAS_TERRA_VERSION=0"

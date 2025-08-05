@@ -401205,7 +401205,7 @@ self: {
       description = "A binding to the kqueue event library";
       license = lib.licenses.bsd3;
       platforms =
-        lib.platforms.darwin ++ lib.platforms.freebsd ++ lib.platforms.netbsd ++ lib.platforms.openbsd;
+      lib.platforms.darwin ++ lib.platforms.freebsd ++ lib.platforms.netbsd ++ lib.platforms.openbsd;
     }
   ) { };
 

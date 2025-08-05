@@ -45,15 +45,15 @@ in
 
   config = {
     boot.kernelParams =
-      lib.optionals cfg.legacySupport.enable [
-        "amdgpu.si_support=1"
-        "amdgpu.cik_support=1"
-        "radeon.si_support=0"
-        "radeon.cik_support=0"
-      ]
-      ++ lib.optionals cfg.overdrive.enable [
-        "amdgpu.ppfeaturemask=${cfg.overdrive.ppfeaturemask}"
-      ];
+    lib.optionals cfg.legacySupport.enable [
+      "amdgpu.si_support=1"
+      "amdgpu.cik_support=1"
+      "radeon.si_support=0"
+      "radeon.cik_support=0"
+    ]
+    ++ lib.optionals cfg.overdrive.enable [
+      "amdgpu.ppfeaturemask=${cfg.overdrive.ppfeaturemask}"
+    ];
 
     boot.initrd.kernelModules = lib.optionals cfg.initrd.enable [ "amdgpu" ];
 

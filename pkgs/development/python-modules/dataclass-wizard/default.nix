@@ -44,16 +44,16 @@ buildPythonPackage rec {
   ++ lib.flatten (builtins.attrValues optional-dependencies);
 
   disabledTests =
-    [ ]
-    ++ lib.optionals (pythonAtLeast "3.11") [
-      # Any/None internal changes, tests need adjusting upstream
-      "without_type_hinting"
-      "default_dict"
-      "test_frozenset"
-      "test_set"
-      "date_times_with_custom_pattern"
-      "from_dict_handles_identical_cased_json_keys"
-    ];
+  [ ]
+  ++ lib.optionals (pythonAtLeast "3.11") [
+    # Any/None internal changes, tests need adjusting upstream
+    "without_type_hinting"
+    "default_dict"
+    "test_frozenset"
+    "test_set"
+    "date_times_with_custom_pattern"
+    "from_dict_handles_identical_cased_json_keys"
+  ];
 
   pythonImportsCheck = [ "dataclass_wizard" ];
 

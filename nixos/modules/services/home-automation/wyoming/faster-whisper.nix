@@ -282,9 +282,9 @@ in
         let
           finalPackage = cfg.package.overridePythonAttrs (oldAttrs: {
             dependencies =
-              oldAttrs.dependencies
-              # for transformer model support
-              ++ optionals options.useTransformers oldAttrs.optional-dependencies.transformers;
+            oldAttrs.dependencies
+            # for transformer model support
+            ++ optionals options.useTransformers oldAttrs.optional-dependencies.transformers;
           });
         in
         nameValuePair "wyoming-faster-whisper-${server}" {

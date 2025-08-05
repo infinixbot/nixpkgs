@@ -242,84 +242,84 @@ let
         # Remove the symlinks created by symlinkJoin which we need to perform
         # extra actions upon
         postBuild =
-          lib.optionalString stdenv.hostPlatform.isLinux ''
-            rm $out/share/applications/nvim.desktop
-            substitute ${neovim-unwrapped}/share/applications/nvim.desktop $out/share/applications/nvim.desktop \
-              --replace-warn 'Name=Neovim' 'Name=Neovim wrapper'
+        lib.optionalString stdenv.hostPlatform.isLinux ''
+          rm $out/share/applications/nvim.desktop
+          substitute ${neovim-unwrapped}/share/applications/nvim.desktop $out/share/applications/nvim.desktop \
+            --replace-warn 'Name=Neovim' 'Name=Neovim wrapper'
+        ''
+        + lib.optionalString finalAttrs.withPython3 ''
+          makeWrapper ${python3Env.interpreter} $out/bin/nvim-python3 --unset PYTHONPATH --unset PYTHONSAFEPATH
+        ''
+        + lib.optionalString (finalAttrs.withRuby) ''
+          ln -s ${finalAttrs.rubyEnv}/bin/neovim-ruby-host $out/bin/nvim-ruby
+        ''
+        + lib.optionalString finalAttrs.withNodeJs ''
+          ln -s ${neovim-node-client}/bin/neovim-node-host $out/bin/nvim-node
+        ''
+        + lib.optionalString finalAttrs.withPerl ''
+          ln -s ${perlEnv}/bin/perl $out/bin/nvim-perl
+        ''
+        + lib.optionalString finalAttrs.vimAlias ''
+          ln -s $out/bin/nvim $out/bin/vim
+        ''
+        + lib.optionalString finalAttrs.viAlias ''
+          ln -s $out/bin/nvim $out/bin/vi
+        ''
+        + lib.optionalString (manifestRc != null) (
+          let
+            manifestWrapperArgs = [
+              "${neovim-unwrapped}/bin/nvim"
+              "${placeholder "out"}/bin/nvim-wrapper"
+            ]
+            ++ finalAttrs.generatedWrapperArgs;
+          in
           ''
-          + lib.optionalString finalAttrs.withPython3 ''
-            makeWrapper ${python3Env.interpreter} $out/bin/nvim-python3 --unset PYTHONPATH --unset PYTHONSAFEPATH
-          ''
-          + lib.optionalString (finalAttrs.withRuby) ''
-            ln -s ${finalAttrs.rubyEnv}/bin/neovim-ruby-host $out/bin/nvim-ruby
-          ''
-          + lib.optionalString finalAttrs.withNodeJs ''
-            ln -s ${neovim-node-client}/bin/neovim-node-host $out/bin/nvim-node
-          ''
-          + lib.optionalString finalAttrs.withPerl ''
-            ln -s ${perlEnv}/bin/perl $out/bin/nvim-perl
-          ''
-          + lib.optionalString finalAttrs.vimAlias ''
-            ln -s $out/bin/nvim $out/bin/vim
-          ''
-          + lib.optionalString finalAttrs.viAlias ''
-            ln -s $out/bin/nvim $out/bin/vi
-          ''
-          + lib.optionalString (manifestRc != null) (
-            let
-              manifestWrapperArgs = [
-                "${neovim-unwrapped}/bin/nvim"
-                "${placeholder "out"}/bin/nvim-wrapper"
-              ]
-              ++ finalAttrs.generatedWrapperArgs;
-            in
-            ''
-              echo "Generating remote plugin manifest"
-              export NVIM_RPLUGIN_MANIFEST=$out/rplugin.vim
-              makeWrapper ${lib.escapeShellArgs manifestWrapperArgs} ${wrapperArgsStr}
+            echo "Generating remote plugin manifest"
+            export NVIM_RPLUGIN_MANIFEST=$out/rplugin.vim
+            makeWrapper ${lib.escapeShellArgs manifestWrapperArgs} ${wrapperArgsStr}
 
-              # Some plugins assume that the home directory is accessible for
-              # initializing caches, temporary files, etc. Even if the plugin isn't
-              # actively used, it may throw an error as soon as Neovim is launched
-              # (e.g., inside an autoload script), causing manifest generation to
-              # fail. Therefore, let's create a fake home directory before generating
-              # the manifest, just to satisfy the needs of these plugins.
-              #
-              # See https://github.com/Yggdroot/LeaderF/blob/v1.21/autoload/lfMru.vim#L10
-              # for an example of this behavior.
-              export HOME="$(mktemp -d)"
-              # Launch neovim with a vimrc file containing only the generated plugin
-              # code. Pass various flags to disable temp file generation
-              # (swap/viminfo) and redirect errors to stderr.
-              # Only display the log on error since it will contain a few normally
-              # irrelevant messages.
-              if ! $out/bin/nvim-wrapper \
-                -u ${writeText "manifest.vim" manifestRc} \
-                -i NONE -n \
-                -V1rplugins.log \
-                +UpdateRemotePlugins +quit! > outfile 2>&1; then
-                cat outfile
-                echo -e "\nGenerating rplugin.vim failed!"
-                exit 1
-              fi
-              rm "${placeholder "out"}/bin/nvim-wrapper"
-            ''
-          )
-          + ''
-            rm $out/bin/nvim
-            touch $out/rplugin.vim
+            # Some plugins assume that the home directory is accessible for
+            # initializing caches, temporary files, etc. Even if the plugin isn't
+            # actively used, it may throw an error as soon as Neovim is launched
+            # (e.g., inside an autoload script), causing manifest generation to
+            # fail. Therefore, let's create a fake home directory before generating
+            # the manifest, just to satisfy the needs of these plugins.
+            #
+            # See https://github.com/Yggdroot/LeaderF/blob/v1.21/autoload/lfMru.vim#L10
+            # for an example of this behavior.
+            export HOME="$(mktemp -d)"
+            # Launch neovim with a vimrc file containing only the generated plugin
+            # code. Pass various flags to disable temp file generation
+            # (swap/viminfo) and redirect errors to stderr.
+            # Only display the log on error since it will contain a few normally
+            # irrelevant messages.
+            if ! $out/bin/nvim-wrapper \
+              -u ${writeText "manifest.vim" manifestRc} \
+              -i NONE -n \
+              -V1rplugins.log \
+              +UpdateRemotePlugins +quit! > outfile 2>&1; then
+              cat outfile
+              echo -e "\nGenerating rplugin.vim failed!"
+              exit 1
+            fi
+            rm "${placeholder "out"}/bin/nvim-wrapper"
+          ''
+        )
+        + ''
+          rm $out/bin/nvim
+          touch $out/rplugin.vim
 
-            echo "Looking for lua dependencies..."
-            source ${lua}/nix-support/utils.sh
+          echo "Looking for lua dependencies..."
+          source ${lua}/nix-support/utils.sh
 
-            _addToLuaPath "${finalPackdir}"
+          _addToLuaPath "${finalPackdir}"
 
-            echo "LUA_PATH towards the end of packdir: $LUA_PATH"
+          echo "LUA_PATH towards the end of packdir: $LUA_PATH"
 
-            makeWrapper ${lib.escapeShellArgs finalMakeWrapperArgs} ${wrapperArgsStr} \
-                --prefix LUA_PATH ';' "$LUA_PATH" \
-                --prefix LUA_CPATH ';' "$LUA_CPATH"
-          '';
+          makeWrapper ${lib.escapeShellArgs finalMakeWrapperArgs} ${wrapperArgsStr} \
+              --prefix LUA_PATH ';' "$LUA_PATH" \
+              --prefix LUA_CPATH ';' "$LUA_CPATH"
+        '';
 
         buildPhase = ''
           runHook preBuild

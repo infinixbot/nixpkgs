@@ -84,8 +84,8 @@ rustPlatform.buildRustPackage {
   '';
 
   checkInputs =
-    lib.optionals stdenv.hostPlatform.isDarwin [ curlMinimal ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [ openssl ];
+  lib.optionals stdenv.hostPlatform.isDarwin [ curlMinimal ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [ openssl ];
 
   passthru = {
     shellPath = "/bin/nu";

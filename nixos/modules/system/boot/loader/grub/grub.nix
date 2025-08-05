@@ -855,8 +855,8 @@ in
         {
           assertion = cfg.mirroredBoots != [ ];
           message =
-            "You must set the option ‘boot.loader.grub.devices’ or "
-            + "'boot.loader.grub.mirroredBoots' to make the system bootable.";
+          "You must set the option ‘boot.loader.grub.devices’ or "
+          + "'boot.loader.grub.mirroredBoots' to make the system bootable.";
         }
         {
           assertion =

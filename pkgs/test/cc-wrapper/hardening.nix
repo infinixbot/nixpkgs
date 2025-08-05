@@ -70,13 +70,13 @@ let
             # at this point.
             hardeningUnsupportedFlagsByTargetPlatform = _: hardeningUnsupportedFlags;
             hardeningUnsupportedFlags =
-              (
-                if stdenv.cc.cc ? hardeningUnsupportedFlagsByTargetPlatform then
-                  stdenv.cc.cc.hardeningUnsupportedFlagsByTargetPlatform stdenv.targetPlatform
-                else
-                  (stdenv.cc.cc.hardeningUnsupportedFlags or [ ])
-              )
-              ++ additionalUnsupported;
+            (
+              if stdenv.cc.cc ? hardeningUnsupportedFlagsByTargetPlatform then
+                stdenv.cc.cc.hardeningUnsupportedFlagsByTargetPlatform stdenv.targetPlatform
+              else
+                (stdenv.cc.cc.hardeningUnsupportedFlags or [ ])
+            )
+            ++ additionalUnsupported;
           } stdenv.cc.cc
         );
       };

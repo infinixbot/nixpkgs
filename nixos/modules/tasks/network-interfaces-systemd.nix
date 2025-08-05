@@ -21,17 +21,17 @@ let
   dhcpStr = useDHCP: if useDHCP == true || useDHCP == null then "yes" else "no";
 
   slaves =
-    concatLists (map (bond: bond.interfaces) (attrValues cfg.bonds))
-    ++ concatLists (map (bridge: bridge.interfaces) (attrValues cfg.bridges))
-    ++ map (sit: sit.dev) (attrValues cfg.sits)
-    ++ map (ipip: ipip.dev) (attrValues cfg.ipips)
-    ++ map (gre: gre.dev) (attrValues cfg.greTunnels)
-    ++ map (vlan: vlan.interface) (attrValues cfg.vlans)
-    # add dependency to physical or independently created vswitch member interface
-    # TODO: warn the user that any address configured on those interfaces will be useless
-    ++ concatMap (i: attrNames (filterAttrs (_: config: config.type != "internal") i.interfaces)) (
-      attrValues cfg.vswitches
-    );
+  concatLists (map (bond: bond.interfaces) (attrValues cfg.bonds))
+  ++ concatLists (map (bridge: bridge.interfaces) (attrValues cfg.bridges))
+  ++ map (sit: sit.dev) (attrValues cfg.sits)
+  ++ map (ipip: ipip.dev) (attrValues cfg.ipips)
+  ++ map (gre: gre.dev) (attrValues cfg.greTunnels)
+  ++ map (vlan: vlan.interface) (attrValues cfg.vlans)
+  # add dependency to physical or independently created vswitch member interface
+  # TODO: warn the user that any address configured on those interfaces will be useless
+  ++ concatMap (i: attrNames (filterAttrs (_: config: config.type != "internal") i.interfaces)) (
+    attrValues cfg.vswitches
+  );
 
   defaultGateways = mkMerge (
     forEach [ cfg.defaultGateway cfg.defaultGateway6 ] (
@@ -168,12 +168,12 @@ let
         );
         networkConfig.IPv6PrivacyExtensions = "kernel";
         linkConfig =
-          optionalAttrs (i.macAddress != null) {
-            MACAddress = i.macAddress;
-          }
-          // optionalAttrs (i.mtu != null) {
-            MTUBytes = toString i.mtu;
-          };
+        optionalAttrs (i.macAddress != null) {
+          MACAddress = i.macAddress;
+        }
+        // optionalAttrs (i.mtu != null) {
+          MTUBytes = toString i.mtu;
+        };
         bridgeConfig = optionalAttrs i.proxyARP {
           ProxyARP = i.proxyARP;
         };
@@ -237,7 +237,7 @@ in
         vlanNetworks
       ];
       boot.initrd.availableKernelModules =
-        optional (cfg.bridges != { }) "bridge" ++ optional (cfg.vlans != { }) "8021q";
+      optional (cfg.bridges != { }) "bridge" ++ optional (cfg.vlans != { }) "8021q";
     })
 
     (mkIf cfg.useNetworkd {
@@ -427,25 +427,25 @@ in
                   Kind = "sit";
                 };
                 tunnelConfig =
-                  (optionalAttrs (sit.remote != null) {
-                    Remote = sit.remote;
+                (optionalAttrs (sit.remote != null) {
+                  Remote = sit.remote;
+                })
+                // (optionalAttrs (sit.local != null) {
+                  Local = sit.local;
+                })
+                // (optionalAttrs (sit.ttl != null) {
+                  TTL = sit.ttl;
+                })
+                // (optionalAttrs (sit.encapsulation.type != "6in4") (
+                  {
+                    FooOverUDP = true;
+                    Encapsulation = if sit.encapsulation.type == "fou" then "FooOverUDP" else "GenericUDPEncapsulation";
+                    FOUDestinationPort = sit.encapsulation.port;
+                  }
+                  // (optionalAttrs (sit.encapsulation.sourcePort != null) {
+                    FOUSourcePort = sit.encapsulation.sourcePort;
                   })
-                  // (optionalAttrs (sit.local != null) {
-                    Local = sit.local;
-                  })
-                  // (optionalAttrs (sit.ttl != null) {
-                    TTL = sit.ttl;
-                  })
-                  // (optionalAttrs (sit.encapsulation.type != "6in4") (
-                    {
-                      FooOverUDP = true;
-                      Encapsulation = if sit.encapsulation.type == "fou" then "FooOverUDP" else "GenericUDPEncapsulation";
-                      FOUDestinationPort = sit.encapsulation.port;
-                    }
-                    // (optionalAttrs (sit.encapsulation.sourcePort != null) {
-                      FOUSourcePort = sit.encapsulation.sourcePort;
-                    })
-                  ));
+                ));
               };
               networks = mkIf (sit.dev != null) {
                 "40-${sit.dev}" = {
@@ -464,20 +464,20 @@ in
                   Kind = if ipip.encapsulation.type == "ipip" then "ipip" else "ip6tnl";
                 };
                 tunnelConfig =
-                  (optionalAttrs (ipip.remote != null) {
-                    Remote = ipip.remote;
-                  })
-                  // (optionalAttrs (ipip.local != null) {
-                    Local = ipip.local;
-                  })
-                  // (optionalAttrs (ipip.ttl != null) {
-                    TTL = ipip.ttl;
-                  })
-                  // (optionalAttrs (ipip.encapsulation.type != "ipip") {
-                    # IPv6 tunnel options
-                    Mode = if ipip.encapsulation.type == "4in6" then "ipip6" else "ip6ip6";
-                    EncapsulationLimit = ipip.encapsulation.type;
-                  });
+                (optionalAttrs (ipip.remote != null) {
+                  Remote = ipip.remote;
+                })
+                // (optionalAttrs (ipip.local != null) {
+                  Local = ipip.local;
+                })
+                // (optionalAttrs (ipip.ttl != null) {
+                  TTL = ipip.ttl;
+                })
+                // (optionalAttrs (ipip.encapsulation.type != "ipip") {
+                  # IPv6 tunnel options
+                  Mode = if ipip.encapsulation.type == "4in6" then "ipip6" else "ip6ip6";
+                  EncapsulationLimit = ipip.encapsulation.type;
+                });
               };
               networks = mkIf (ipip.dev != null) {
                 "40-${ipip.dev}" = {
@@ -496,15 +496,15 @@ in
                   Kind = gre.type;
                 };
                 tunnelConfig =
-                  (optionalAttrs (gre.remote != null) {
-                    Remote = gre.remote;
-                  })
-                  // (optionalAttrs (gre.local != null) {
-                    Local = gre.local;
-                  })
-                  // (optionalAttrs (gre.ttl != null) {
-                    TTL = gre.ttl;
-                  });
+                (optionalAttrs (gre.remote != null) {
+                  Remote = gre.remote;
+                })
+                // (optionalAttrs (gre.local != null) {
+                  Local = gre.local;
+                })
+                // (optionalAttrs (gre.ttl != null) {
+                  TTL = gre.ttl;
+                });
               };
               networks = mkIf (gre.dev != null) {
                 "40-${gre.dev}" = {

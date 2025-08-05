@@ -78,42 +78,42 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    lib.optionals (!stdenv.hostPlatform.isDarwin) [
-      libX11
-      libXinerama
-      libXrandr
-      libGLU
-      libGL
-    ]
-    ++ [
-      glib
-      libxml2
-      zlib
-    ]
-    ++ lib.optional jpegSupport libjpeg
-    ++ lib.optional exrSupport openexr
-    ++ lib.optional gifSupport giflib
-    ++ lib.optional pngSupport libpng
-    ++ lib.optional tiffSupport libtiff
-    ++ lib.optional gdalSupport gdal
-    ++ lib.optional curlSupport curl
-    ++ lib.optionals colladaSupport [
-      opencollada
-      pcre
-    ]
-    ++ lib.optional opencascadeSupport opencascade-occt
-    ++ lib.optional ffmpegSupport ffmpeg
-    ++ lib.optional nvttSupport nvidia-texture-tools
-    ++ lib.optional freetypeSupport freetype
-    ++ lib.optional svgSupport librsvg
-    ++ lib.optional pdfSupport poppler
-    ++ lib.optional vncSupport libvncserver
-    ++ lib.optional lasSupport libLAS
-    ++ lib.optional luaSupport lua
-    ++ lib.optional sdlSupport SDL2
-    ++ lib.optional restSupport asio
-    ++ lib.optionals withExamples [ fltk ]
-    ++ lib.optional (restSupport || colladaSupport) boost;
+  lib.optionals (!stdenv.hostPlatform.isDarwin) [
+    libX11
+    libXinerama
+    libXrandr
+    libGLU
+    libGL
+  ]
+  ++ [
+    glib
+    libxml2
+    zlib
+  ]
+  ++ lib.optional jpegSupport libjpeg
+  ++ lib.optional exrSupport openexr
+  ++ lib.optional gifSupport giflib
+  ++ lib.optional pngSupport libpng
+  ++ lib.optional tiffSupport libtiff
+  ++ lib.optional gdalSupport gdal
+  ++ lib.optional curlSupport curl
+  ++ lib.optionals colladaSupport [
+    opencollada
+    pcre
+  ]
+  ++ lib.optional opencascadeSupport opencascade-occt
+  ++ lib.optional ffmpegSupport ffmpeg
+  ++ lib.optional nvttSupport nvidia-texture-tools
+  ++ lib.optional freetypeSupport freetype
+  ++ lib.optional svgSupport librsvg
+  ++ lib.optional pdfSupport poppler
+  ++ lib.optional vncSupport libvncserver
+  ++ lib.optional lasSupport libLAS
+  ++ lib.optional luaSupport lua
+  ++ lib.optional sdlSupport SDL2
+  ++ lib.optional restSupport asio
+  ++ lib.optionals withExamples [ fltk ]
+  ++ lib.optional (restSupport || colladaSupport) boost;
 
   patches = [
     (fetchpatch {
@@ -134,8 +134,8 @@ stdenv.mkDerivation rec {
   ];
 
   cmakeFlags =
-    lib.optional (!withApps) "-DBUILD_OSG_APPLICATIONS=OFF"
-    ++ lib.optional withExamples "-DBUILD_OSG_EXAMPLES=ON";
+  lib.optional (!withApps) "-DBUILD_OSG_APPLICATIONS=OFF"
+  ++ lib.optional withExamples "-DBUILD_OSG_EXAMPLES=ON";
 
   meta = with lib; {
     description = "3D graphics toolkit";

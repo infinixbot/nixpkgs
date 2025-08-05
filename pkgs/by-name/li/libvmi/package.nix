@@ -62,9 +62,9 @@ stdenv.mkDerivation {
   ++ lib.optionals withVMIFS [ fuse ];
 
   configureFlags =
-    lib.optionals (!xenSupport) [ "--disable-xen" ]
-    ++ lib.optionals legacyKVM [ "--enable-kvm-legacy" ]
-    ++ lib.optionals withVMIFS [ "--enable-vmifs" ];
+  lib.optionals (!xenSupport) [ "--disable-xen" ]
+  ++ lib.optionals legacyKVM [ "--enable-kvm-legacy" ]
+  ++ lib.optionals withVMIFS [ "--enable-vmifs" ];
 
   # libvmi uses dlopen() for the xen libraries, however autoPatchelfHook doesn't work here
   postFixup = lib.optionalString xenSupport ''

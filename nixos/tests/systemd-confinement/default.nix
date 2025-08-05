@@ -112,10 +112,10 @@ import ../make-test-python.nix {
                   confinement.mode = "chroot-only";
                   # Only set if privateTmp is true to ensure that the default is false.
                   serviceConfig =
-                    serviceConfig
-                    // lib.optionalAttrs privateTmp {
-                      PrivateTmp = true;
-                    };
+                  serviceConfig
+                  // lib.optionalAttrs privateTmp {
+                    PrivateTmp = true;
+                  };
                 };
                 testScript =
                   if user == "root" then
@@ -152,10 +152,10 @@ import ../make-test-python.nix {
                 config = {
                   # Only set if privateTmp is false to ensure that the default is true.
                   serviceConfig =
-                    serviceConfig
-                    // lib.optionalAttrs (!privateTmp) {
-                      PrivateTmp = false;
-                    };
+                  serviceConfig
+                  // lib.optionalAttrs (!privateTmp) {
+                    PrivateTmp = false;
+                  };
                 };
                 testScript =
                   if user == "root" then

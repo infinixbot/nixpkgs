@@ -26,17 +26,17 @@ toPythonModule (
     ];
 
     nativeBuildInputs =
-      orig.nativeBuildInputs or [ ]
-      ++ [
-        autoreconfHook
-        setuptools
-        swig
-        numpy
-      ]
-      ++ lib.optionals (stdenv.hostPlatform == stdenv.buildPlatform) [
-        pythonImportsCheckHook
-        pythonCatchConflictsHook
-      ];
+    orig.nativeBuildInputs or [ ]
+    ++ [
+      autoreconfHook
+      setuptools
+      swig
+      numpy
+    ]
+    ++ lib.optionals (stdenv.hostPlatform == stdenv.buildPlatform) [
+      pythonImportsCheckHook
+      pythonCatchConflictsHook
+    ];
 
     buildInputs = orig.buildInputs or [ ] ++ [
       pygobject3 # makes headers available the configure script checks for

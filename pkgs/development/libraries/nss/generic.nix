@@ -232,12 +232,12 @@ stdenv.mkDerivation rec {
   passthru.updateScript = ./update.sh;
 
   passthru.tests =
-    lib.optionalAttrs (lib.versionOlder version nss_latest.version) {
-      inherit (nixosTests) firefox-esr;
-    }
-    // lib.optionalAttrs (lib.versionAtLeast version nss_latest.version) {
-      inherit (nixosTests) firefox;
-    };
+  lib.optionalAttrs (lib.versionOlder version nss_latest.version) {
+    inherit (nixosTests) firefox-esr;
+  }
+  // lib.optionalAttrs (lib.versionAtLeast version nss_latest.version) {
+    inherit (nixosTests) firefox;
+  };
 
   meta = with lib; {
     homepage = "https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS";

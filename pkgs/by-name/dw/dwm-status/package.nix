@@ -20,15 +20,15 @@
 
 let
   bins =
-    lib.optionals enableAlsaUtils [
-      alsa-utils
-      coreutils
-    ]
-    ++ lib.optionals enableNetwork [
-      dnsutils
-      iproute2
-      wirelesstools
-    ];
+  lib.optionals enableAlsaUtils [
+    alsa-utils
+    coreutils
+  ]
+  ++ lib.optionals enableNetwork [
+    dnsutils
+    iproute2
+    wirelesstools
+  ];
 in
 
 rustPlatform.buildRustPackage (finalAttrs: {

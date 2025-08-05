@@ -69,15 +69,15 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   runtimeDependencies =
-    lib.optionals withPulseaudio [
-      libpulseaudio
-    ]
-    ++ lib.optionals (withALSA || withJACK) [
-      alsa-lib
-    ]
-    ++ lib.optionals withJACK [
-      libjack2
-    ];
+  lib.optionals withPulseaudio [
+    libpulseaudio
+  ]
+  ++ lib.optionals (withALSA || withJACK) [
+    alsa-lib
+  ]
+  ++ lib.optionals withJACK [
+    libjack2
+  ];
 
   enableParallelBuilding = true;
 

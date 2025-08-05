@@ -87,14 +87,14 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   nativeBuildInputs =
-    lib.optionals stdenv.hostPlatform.isLinux [
-      copyDesktopItems
-      autoPatchelfHook
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      makeWrapper
-      undmg
-    ];
+  lib.optionals stdenv.hostPlatform.isLinux [
+    copyDesktopItems
+    autoPatchelfHook
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    makeWrapper
+    undmg
+  ];
 
   installPhase =
     let

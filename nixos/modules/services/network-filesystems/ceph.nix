@@ -443,12 +443,12 @@ in
     systemd.services =
       let
         services =
-          [ ]
-          ++ lib.optional cfg.mon.enable (makeServices "mon" cfg.mon.daemons)
-          ++ lib.optional cfg.mds.enable (makeServices "mds" cfg.mds.daemons)
-          ++ lib.optional cfg.osd.enable (makeServices "osd" cfg.osd.daemons)
-          ++ lib.optional cfg.rgw.enable (makeServices "rgw" cfg.rgw.daemons)
-          ++ lib.optional cfg.mgr.enable (makeServices "mgr" cfg.mgr.daemons);
+        [ ]
+        ++ lib.optional cfg.mon.enable (makeServices "mon" cfg.mon.daemons)
+        ++ lib.optional cfg.mds.enable (makeServices "mds" cfg.mds.daemons)
+        ++ lib.optional cfg.osd.enable (makeServices "osd" cfg.osd.daemons)
+        ++ lib.optional cfg.rgw.enable (makeServices "rgw" cfg.rgw.daemons)
+        ++ lib.optional cfg.mgr.enable (makeServices "mgr" cfg.mgr.daemons);
       in
       lib.mkMerge services;
 

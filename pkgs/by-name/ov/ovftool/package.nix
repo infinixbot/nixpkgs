@@ -51,8 +51,8 @@ let
     fetchurl {
       name = fileName;
       url =
-        (mkBaseUrl toolId)
-        + "?p_p_id=SDK_AND_TOOL_DETAILS_INSTANCE_iwlk&p_p_lifecycle=2&p_p_resource_id=documentDownloadArtifact";
+      (mkBaseUrl toolId)
+      + "?p_p_id=SDK_AND_TOOL_DETAILS_INSTANCE_iwlk&p_p_lifecycle=2&p_p_resource_id=documentDownloadArtifact";
       curlOptsList = [
         "--json"
         requestJson
@@ -227,58 +227,58 @@ stdenv.mkDerivation (final: {
   '';
 
   preFixup =
-    lib.optionalString stdenv.hostPlatform.isLinux ''
-      addAutoPatchelfSearchPath "$out/lib"
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      change_args=()
+  lib.optionalString stdenv.hostPlatform.isLinux ''
+    addAutoPatchelfSearchPath "$out/lib"
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    change_args=()
 
-      # Change relative @loader_path dylibs to absolute paths.
-      for lib in $out/lib/*.dylib; do
-        libname=$(basename $lib)
-        change_args+=(-change "@loader_path/lib/$libname" "$out/lib/$libname")
-      done
+    # Change relative @loader_path dylibs to absolute paths.
+    for lib in $out/lib/*.dylib; do
+      libname=$(basename $lib)
+      change_args+=(-change "@loader_path/lib/$libname" "$out/lib/$libname")
+    done
 
-      # Patches for ovftool binary
-      change_args+=(-change /usr/lib/libc++.1.dylib ${stdenv.cc.libcxx}/lib/libc++.1.dylib)
-      change_args+=(-change /usr/lib/libiconv.2.dylib ${libiconv}/lib/libiconv.2.dylib)
-      change_args+=(-change /usr/lib/libxml2.2.dylib ${libxml2}/lib/libxml2.2.dylib)
-      change_args+=(-change /usr/lib/libz.1.dylib ${zlib}/lib/libz.1.dylib)
-      change_args+=(-change @loader_path/lib/libcares.2.dylib ${c-ares}/lib/libcares.2.dylib)
-      change_args+=(-change @loader_path/lib/libexpat.dylib ${expat}/lib/libexpat.dylib)
-      change_args+=(-change @loader_path/lib/libicudata.60.2.dylib ${icu60}/lib/libicudata.60.2.dylib)
-      change_args+=(-change @loader_path/lib/libicuuc.60.2.dylib ${icu60}/lib/libicuuc.60.2.dylib)
-      change_args+=(-change @loader_path/lib/libxerces-c-3.2.dylib ${ovftool-xercesc}/lib/libxerces-c.dylib)
+    # Patches for ovftool binary
+    change_args+=(-change /usr/lib/libc++.1.dylib ${stdenv.cc.libcxx}/lib/libc++.1.dylib)
+    change_args+=(-change /usr/lib/libiconv.2.dylib ${libiconv}/lib/libiconv.2.dylib)
+    change_args+=(-change /usr/lib/libxml2.2.dylib ${libxml2}/lib/libxml2.2.dylib)
+    change_args+=(-change /usr/lib/libz.1.dylib ${zlib}/lib/libz.1.dylib)
+    change_args+=(-change @loader_path/lib/libcares.2.dylib ${c-ares}/lib/libcares.2.dylib)
+    change_args+=(-change @loader_path/lib/libexpat.dylib ${expat}/lib/libexpat.dylib)
+    change_args+=(-change @loader_path/lib/libicudata.60.2.dylib ${icu60}/lib/libicudata.60.2.dylib)
+    change_args+=(-change @loader_path/lib/libicuuc.60.2.dylib ${icu60}/lib/libicuuc.60.2.dylib)
+    change_args+=(-change @loader_path/lib/libxerces-c-3.2.dylib ${ovftool-xercesc}/lib/libxerces-c.dylib)
 
-      # lolwut
-      change_args+=(-change @GOBUILD_CAYMAN_CURL_ROOT@/apple_mac64/lib/libcurl.4.dylib ${curl.out}/lib/libcurl.4.dylib)
+    # lolwut
+    change_args+=(-change @GOBUILD_CAYMAN_CURL_ROOT@/apple_mac64/lib/libcurl.4.dylib ${curl.out}/lib/libcurl.4.dylib)
 
-      # Patch binary
-      install_name_tool "''${change_args[@]}" "$out/libexec/ovftool"
-      otool -L "$out/libexec/ovftool"
+    # Patch binary
+    install_name_tool "''${change_args[@]}" "$out/libexec/ovftool"
+    otool -L "$out/libexec/ovftool"
 
-      # Additional patches for ovftool dylibs
-      change_args+=(-change /usr/lib/libresolv.9.dylib ${lib.getLib darwin.libresolv}/lib/libresolv.9.dylib)
-      change_args+=(-change @loader_path/libcares.2.dylib ${c-ares}/lib/libcares.2.dylib)
-      change_args+=(-change @loader_path/libexpat.dylib ${expat}/lib/libexpat.dylib)
-      change_args+=(-change @loader_path/libicudata.60.2.dylib ${icu60}/lib/libicudata.60.2.dylib)
-      change_args+=(-change @loader_path/libicuuc.60.2.dylib ${icu60}/lib/libicuuc.60.2.dylib)
-      change_args+=(-change @loader_path/libxerces-c-3.2.dylib ${ovftool-xercesc}/lib/libxerces-c.dylib)
+    # Additional patches for ovftool dylibs
+    change_args+=(-change /usr/lib/libresolv.9.dylib ${lib.getLib darwin.libresolv}/lib/libresolv.9.dylib)
+    change_args+=(-change @loader_path/libcares.2.dylib ${c-ares}/lib/libcares.2.dylib)
+    change_args+=(-change @loader_path/libexpat.dylib ${expat}/lib/libexpat.dylib)
+    change_args+=(-change @loader_path/libicudata.60.2.dylib ${icu60}/lib/libicudata.60.2.dylib)
+    change_args+=(-change @loader_path/libicuuc.60.2.dylib ${icu60}/lib/libicuuc.60.2.dylib)
+    change_args+=(-change @loader_path/libxerces-c-3.2.dylib ${ovftool-xercesc}/lib/libxerces-c.dylib)
 
-      # Add new absolute paths for other libs to all libs
-      for lib in $out/lib/*.dylib; do
-        libname=$(basename $lib)
-        change_args+=(-change "@loader_path/$libname" "$out/lib/$libname")
-      done
+    # Add new absolute paths for other libs to all libs
+    for lib in $out/lib/*.dylib; do
+      libname=$(basename $lib)
+      change_args+=(-change "@loader_path/$libname" "$out/lib/$libname")
+    done
 
-      # Patch all libs
-      for lib in $out/lib/*.dylib; do
-        libname=$(basename $lib)
-        install_name_tool -id "$libname" "$lib"
-        install_name_tool "''${change_args[@]}" "$lib"
-        otool -L "$lib"
-      done
-    '';
+    # Patch all libs
+    for lib in $out/lib/*.dylib; do
+      libname=$(basename $lib)
+      install_name_tool -id "$libname" "$lib"
+      install_name_tool "''${change_args[@]}" "$lib"
+      otool -L "$lib"
+    done
+  '';
 
   # These paths are need for install check tests
   propagatedSandboxProfile = lib.optionalString stdenv.hostPlatform.isDarwin ''

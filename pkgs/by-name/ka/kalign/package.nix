@@ -29,10 +29,10 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   cmakeFlags =
-    # these flags are ON by default
-    lib.optional (!enableSse4_1) "-DENABLE_SSE=OFF"
-    ++ lib.optional (!enableAvx) "-DENABLE_AVX=OFF"
-    ++ lib.optional (!enableAvx2) "-DENABLE_AVX2=OFF";
+  # these flags are ON by default
+  lib.optional (!enableSse4_1) "-DENABLE_SSE=OFF"
+  ++ lib.optional (!enableAvx) "-DENABLE_AVX=OFF"
+  ++ lib.optional (!enableAvx2) "-DENABLE_AVX2=OFF";
 
   doCheck = true;
 

@@ -33,23 +33,23 @@
 }:
 let
   rlinkLibs =
-    lib.optionals stdenv.hostPlatform.isLinux [
-      (lib.getLib gcc-unwrapped)
-      fontconfig
-      libGL
-      libxkbcommon
-      vulkan-loader
-    ]
-    ++ lib.optionals withX11 [
-      libX11
-      libXcursor
-      libXi
-      libXrandr
-      libxcb
-    ]
-    ++ lib.optionals withWayland [
-      wayland
-    ];
+  lib.optionals stdenv.hostPlatform.isLinux [
+    (lib.getLib gcc-unwrapped)
+    fontconfig
+    libGL
+    libxkbcommon
+    vulkan-loader
+  ]
+  ++ lib.optionals withX11 [
+    libX11
+    libXcursor
+    libXi
+    libXrandr
+    libxcb
+  ]
+  ++ lib.optionals withWayland [
+    wayland
+  ];
 in
 rustPlatform.buildRustPackage (finalAttrs: {
   pname = "rio";
@@ -76,10 +76,10 @@ rustPlatform.buildRustPackage (finalAttrs: {
   runtimeDependencies = rlinkLibs;
 
   buildInputs =
-    rlinkLibs
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      darwin.libutil
-    ];
+  rlinkLibs
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    darwin.libutil
+  ];
 
   outputs = [
     "out"

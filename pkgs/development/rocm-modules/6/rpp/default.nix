@@ -19,15 +19,15 @@
 
 stdenv.mkDerivation (finalAttrs: {
   pname =
-    "rpp-"
-    + (
-      if (!useOpenCL && !useCPU) then
-        "hip"
-      else if (!useOpenCL && !useCPU) then
-        "opencl"
-      else
-        "cpu"
-    );
+  "rpp-"
+  + (
+    if (!useOpenCL && !useCPU) then
+      "hip"
+    else if (!useOpenCL && !useCPU) then
+      "opencl"
+    else
+      "cpu"
+  );
 
   version = "6.3.3";
 

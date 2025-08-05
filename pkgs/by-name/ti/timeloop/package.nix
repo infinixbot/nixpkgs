@@ -77,11 +77,11 @@ stdenv.mkDerivation rec {
   '';
 
   sconsFlags =
-    # will fail on clang/darwin on link without --static due to undefined extern
-    # however, will fail with static on linux as nixpkgs deps aren't static
-    lib.optional stdenv.hostPlatform.isDarwin "--static"
-    ++ lib.optional enableAccelergy "--accelergy"
-    ++ lib.optional enableISL "--with-isl";
+  # will fail on clang/darwin on link without --static due to undefined extern
+  # however, will fail with static on linux as nixpkgs deps aren't static
+  lib.optional stdenv.hostPlatform.isDarwin "--static"
+  ++ lib.optional enableAccelergy "--accelergy"
+  ++ lib.optional enableISL "--with-isl";
 
   installPhase = ''
     cp -r ./bin ./lib $out

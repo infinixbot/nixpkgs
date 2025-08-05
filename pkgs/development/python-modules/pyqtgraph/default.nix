@@ -58,16 +58,16 @@ buildPythonPackage rec {
   ];
 
   disabledTests =
-    lib.optionals (!stdenv.hostPlatform.isx86) [
-      # small precision-related differences on other architectures,
-      # upstream doesn't consider it serious.
-      # https://github.com/pyqtgraph/pyqtgraph/issues/2110
-      "test_PolyLineROI"
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isAarch64) [
-      # https://github.com/pyqtgraph/pyqtgraph/issues/2645
-      "test_rescaleData"
-    ];
+  lib.optionals (!stdenv.hostPlatform.isx86) [
+    # small precision-related differences on other architectures,
+    # upstream doesn't consider it serious.
+    # https://github.com/pyqtgraph/pyqtgraph/issues/2110
+    "test_PolyLineROI"
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isAarch64) [
+    # https://github.com/pyqtgraph/pyqtgraph/issues/2645
+    "test_rescaleData"
+  ];
 
   meta = {
     description = "Scientific Graphics and GUI Library for Python";

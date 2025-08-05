@@ -94,27 +94,27 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   postInstall =
-    lib.optionalString buildTests ''
-      mkdir -p $test/bin
-      mv $out/bin/rocalution-test $test/bin
-    ''
-    + lib.optionalString buildBenchmarks ''
-      mkdir -p $benchmark/bin
-      mv $out/bin/rocalution-bench $benchmark/bin
-    ''
-    + lib.optionalString buildSamples ''
-      mkdir -p $sample/bin
-      mv clients/staging/* $sample/bin
-      rm $sample/bin/rocalution-test || true
-      rm $sample/bin/rocalution-bench || true
+  lib.optionalString buildTests ''
+    mkdir -p $test/bin
+    mv $out/bin/rocalution-test $test/bin
+  ''
+  + lib.optionalString buildBenchmarks ''
+    mkdir -p $benchmark/bin
+    mv $out/bin/rocalution-bench $benchmark/bin
+  ''
+  + lib.optionalString buildSamples ''
+    mkdir -p $sample/bin
+    mv clients/staging/* $sample/bin
+    rm $sample/bin/rocalution-test || true
+    rm $sample/bin/rocalution-bench || true
 
-      patchelf --set-rpath \
-        $out/lib:${lib.makeLibraryPath (finalAttrs.buildInputs ++ [ clr ])} \
-        $sample/bin/*
-    ''
-    + lib.optionalString (buildTests || buildBenchmarks) ''
-      rmdir $out/bin
-    '';
+    patchelf --set-rpath \
+      $out/lib:${lib.makeLibraryPath (finalAttrs.buildInputs ++ [ clr ])} \
+      $sample/bin/*
+  ''
+  + lib.optionalString (buildTests || buildBenchmarks) ''
+    rmdir $out/bin
+  '';
 
   passthru.updateScript = rocmUpdateScript {
     name = finalAttrs.pname;

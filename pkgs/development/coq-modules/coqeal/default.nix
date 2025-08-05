@@ -68,13 +68,13 @@ let
   };
   patched-derivation1 = derivation.overrideAttrs (o: {
     propagatedBuildInputs =
-      o.propagatedBuildInputs
-      ++ lib.optional (lib.versions.isGe "1.1" o.version || o.version == "dev") mathcomp-real-closed;
+    o.propagatedBuildInputs
+    ++ lib.optional (lib.versions.isGe "1.1" o.version || o.version == "dev") mathcomp-real-closed;
   });
   patched-derivation = patched-derivation1.overrideAttrs (o: {
     propagatedBuildInputs =
-      o.propagatedBuildInputs
-      ++ lib.optional (lib.versions.isLe "2.0.3" o.version && o.version != "dev") paramcoq;
+    o.propagatedBuildInputs
+    ++ lib.optional (lib.versions.isLe "2.0.3" o.version && o.version != "dev") paramcoq;
   });
 in
 patched-derivation

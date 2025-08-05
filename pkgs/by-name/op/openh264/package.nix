@@ -60,13 +60,13 @@ stdenv.mkDerivation (finalAttrs: {
     maintainers = with lib.maintainers; [ ];
     # See meson.build
     platforms =
-      lib.platforms.windows
-      ++ lib.intersectLists (
-        lib.platforms.x86
-        ++ lib.platforms.arm
-        ++ lib.platforms.aarch64
-        ++ lib.platforms.loongarch64
-        ++ lib.platforms.riscv64
-      ) lib.platforms.unix;
+    lib.platforms.windows
+    ++ lib.intersectLists (
+      lib.platforms.x86
+      ++ lib.platforms.arm
+      ++ lib.platforms.aarch64
+      ++ lib.platforms.loongarch64
+      ++ lib.platforms.riscv64
+    ) lib.platforms.unix;
   };
 })

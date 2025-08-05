@@ -66,24 +66,24 @@ stdenv.mkDerivation {
   patches = [ ./0001-musl-rewind-pipe-workaround.patch ];
 
   buildInputs =
-    lib.optional (enableAlsa && stdenv.hostPlatform.isLinux) alsa-lib
-    ++ lib.optional enableLibao libao
-    ++ lib.optional enableLame lame
-    ++ lib.optional enableLibmad libmad
-    ++ lib.optionals enableLibogg [
-      libogg
-      libvorbis
-    ]
-    ++ lib.optional enableOpusfile opusfile
-    ++ lib.optional enableFLAC flac
-    ++ lib.optional enablePNG libpng
-    ++ lib.optional enableLibsndfile libsndfile
-    ++ lib.optional enableWavpack wavpack
-    ++ lib.optionals enableAMR [
-      amrnb
-      amrwb
-    ]
-    ++ lib.optional enableLibpulseaudio libpulseaudio;
+  lib.optional (enableAlsa && stdenv.hostPlatform.isLinux) alsa-lib
+  ++ lib.optional enableLibao libao
+  ++ lib.optional enableLame lame
+  ++ lib.optional enableLibmad libmad
+  ++ lib.optionals enableLibogg [
+    libogg
+    libvorbis
+  ]
+  ++ lib.optional enableOpusfile opusfile
+  ++ lib.optional enableFLAC flac
+  ++ lib.optional enablePNG libpng
+  ++ lib.optional enableLibsndfile libsndfile
+  ++ lib.optional enableWavpack wavpack
+  ++ lib.optionals enableAMR [
+    amrnb
+    amrwb
+  ]
+  ++ lib.optional enableLibpulseaudio libpulseaudio;
 
   enableParallelBuilding = true;
 

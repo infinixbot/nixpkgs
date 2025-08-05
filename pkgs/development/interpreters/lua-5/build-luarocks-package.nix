@@ -202,10 +202,10 @@ let
         '';
 
         postFixup =
-          lib.optionalString (!dontWrapLuaPrograms) ''
-            wrapLuaPrograms
-          ''
-          + attrs.postFixup or "";
+        lib.optionalString (!dontWrapLuaPrograms) ''
+          wrapLuaPrograms
+        ''
+        + attrs.postFixup or "";
 
         installPhase = ''
           runHook preInstall

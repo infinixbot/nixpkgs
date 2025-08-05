@@ -38,8 +38,8 @@ rustPlatform.buildRustPackage rec {
   cargoHash = "sha256-udNHlPEwTb5S1ZypIqng7JLZ6Yl1vbYwASn+DT2SOLY=";
 
   nativeBuildInputs =
-    lib.optionals (installShellCompletions || installManPages) [ installShellFiles ]
-    ++ lib.optionals withDocumentation [ mdbook ];
+  lib.optionals (installShellCompletions || installManPages) [ installShellFiles ]
+  ++ lib.optionals withDocumentation [ mdbook ];
   buildInputs = lib.optionals stdenv.hostPlatform.isDarwin [ libiconv ];
 
   preCheck = ''
@@ -83,25 +83,25 @@ rustPlatform.buildRustPackage rec {
   ];
 
   postInstall =
-    lib.optionalString withDocumentation ''
-      $out/bin/generate-book
-      rm $out/bin/generate-book
-      # No linkcheck in sandbox
-      echo 'optional = true' >> book/en/book.toml
-      mdbook build book/en
-      mkdir -p $doc/share/doc/$name
-      mv ./book/en/build/html $doc/share/doc/$name
-    ''
-    + lib.optionalString installManPages ''
-      $out/bin/just --man > ./just.1
-      installManPage ./just.1
-    ''
-    + lib.optionalString installShellCompletions ''
-      installShellCompletion --cmd just \
-        --bash <($out/bin/just --completions bash) \
-        --fish <($out/bin/just --completions fish) \
-        --zsh <($out/bin/just --completions zsh)
-    '';
+  lib.optionalString withDocumentation ''
+    $out/bin/generate-book
+    rm $out/bin/generate-book
+    # No linkcheck in sandbox
+    echo 'optional = true' >> book/en/book.toml
+    mdbook build book/en
+    mkdir -p $doc/share/doc/$name
+    mv ./book/en/build/html $doc/share/doc/$name
+  ''
+  + lib.optionalString installManPages ''
+    $out/bin/just --man > ./just.1
+    installManPage ./just.1
+  ''
+  + lib.optionalString installShellCompletions ''
+    installShellCompletion --cmd just \
+      --bash <($out/bin/just --completions bash) \
+      --fish <($out/bin/just --completions fish) \
+      --zsh <($out/bin/just --completions zsh)
+  '';
 
   setupHook = ./setup-hook.sh;
 

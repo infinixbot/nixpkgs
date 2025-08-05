@@ -52,16 +52,16 @@ buildPythonPackage rec {
   };
 
   postPatch =
-    # enable tests by fixing the location of the wormhole binary
-    ''
-      substituteInPlace src/wormhole/test/test_cli.py --replace-fail \
-        'locations = procutils.which("wormhole")' \
-        'return "${placeholder "out"}/bin/wormhole"'
-    ''
-    # fix the location of the ifconfig binary
-    + lib.optionalString stdenv.hostPlatform.isLinux ''
-      sed -i -e "s|'ifconfig'|'${net-tools}/bin/ifconfig'|" src/wormhole/ipaddrs.py
-    '';
+  # enable tests by fixing the location of the wormhole binary
+  ''
+    substituteInPlace src/wormhole/test/test_cli.py --replace-fail \
+      'locations = procutils.which("wormhole")' \
+      'return "${placeholder "out"}/bin/wormhole"'
+  ''
+  # fix the location of the ifconfig binary
+  + lib.optionalString stdenv.hostPlatform.isLinux ''
+    sed -i -e "s|'ifconfig'|'${net-tools}/bin/ifconfig'|" src/wormhole/ipaddrs.py
+  '';
 
   build-system = [
     setuptools

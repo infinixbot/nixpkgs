@@ -24,7 +24,7 @@ assert lib.assertOneOf "'withGtk' in cameractrls" withGtk [
 
 let
   mainExecutable =
-    "cameractrls" + lib.optionalString (withGtk != null) "gtk" + lib.optionalString (withGtk == 4) "4";
+  "cameractrls" + lib.optionalString (withGtk != null) "gtk" + lib.optionalString (withGtk == 4) "4";
 
   modulePath = "${placeholder "out"}/${python3Packages.python.sitePackages}/CameraCtrls";
 
@@ -64,12 +64,12 @@ python3Packages.buildPythonApplication rec {
   '';
 
   nativeBuildInputs =
-    lib.optionals (withGtk != null) [
-      desktop-file-utils
-      gobject-introspection
-    ]
-    ++ lib.optionals (withGtk == 3) [ wrapGAppsHook3 ]
-    ++ lib.optionals (withGtk == 4) [ wrapGAppsHook4 ];
+  lib.optionals (withGtk != null) [
+    desktop-file-utils
+    gobject-introspection
+  ]
+  ++ lib.optionals (withGtk == 3) [ wrapGAppsHook3 ]
+  ++ lib.optionals (withGtk == 4) [ wrapGAppsHook4 ];
 
   # Only used when withGtk != null
   dependencies = with python3Packages; [ pygobject3 ];

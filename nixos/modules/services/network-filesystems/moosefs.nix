@@ -296,7 +296,7 @@ in
             };
 
         environment.systemPackages =
-          (lib.optional cfg.client.enable pkgs.moosefs) ++ (lib.optional cfg.master.enable initTool);
+        (lib.optional cfg.client.enable pkgs.moosefs) ++ (lib.optional cfg.master.enable initTool);
 
         networking.firewall.allowedTCPPorts = lib.mkMerge [
           (lib.optionals cfg.master.openFirewall [

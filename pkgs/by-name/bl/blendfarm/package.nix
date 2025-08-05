@@ -68,13 +68,13 @@ buildDotnetModule rec {
   ];
 
   nativeBuildInputs =
-    [ ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [ autoPatchelfHook ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      bintools
-      fixDarwinDylibNames
-      darwin.autoSignDarwinBinariesHook
-    ];
+  [ ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [ autoPatchelfHook ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    bintools
+    fixDarwinDylibNames
+    darwin.autoSignDarwinBinariesHook
+  ];
 
   buildInputs = [
     (lib.getLib stdenv.cc.cc)
@@ -122,14 +122,14 @@ buildDotnetModule rec {
   makeWrapperArgs = [ "--prefix LD_LIBRARY_PATH : ${libPath}" ];
 
   postInstall =
-    lib.optionalString stdenv.hostPlatform.isLinux ''
-      mkdir -p $out/bin
-      cp -v ${blendfarm-nix}/bin/blendfarm-nix $out/bin
-      substituteInPlace $out/bin/blendfarm-nix --subst-var out
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      ln -s ${libgdiplus}/lib/libgdiplus.dylib $out/lib/blendfarm/
-    '';
+  lib.optionalString stdenv.hostPlatform.isLinux ''
+    mkdir -p $out/bin
+    cp -v ${blendfarm-nix}/bin/blendfarm-nix $out/bin
+    substituteInPlace $out/bin/blendfarm-nix --subst-var out
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    ln -s ${libgdiplus}/lib/libgdiplus.dylib $out/lib/blendfarm/
+  '';
 
   meta = with lib; {
     description = "Open-source, cross-platform, stand-alone, Network Renderer for Blender";

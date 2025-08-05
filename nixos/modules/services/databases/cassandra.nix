@@ -50,19 +50,19 @@ let
   );
 
   cassandraConfigWithAddresses =
-    cassandraConfig
-    // (
-      if cfg.listenAddress == null then
-        { listen_interface = cfg.listenInterface; }
-      else
-        { listen_address = cfg.listenAddress; }
-    )
-    // (
-      if cfg.rpcAddress == null then
-        { rpc_interface = cfg.rpcInterface; }
-      else
-        { rpc_address = cfg.rpcAddress; }
-    );
+  cassandraConfig
+  // (
+    if cfg.listenAddress == null then
+      { listen_interface = cfg.listenInterface; }
+    else
+      { listen_address = cfg.listenAddress; }
+  )
+  // (
+    if cfg.rpcAddress == null then
+      { rpc_interface = cfg.rpcInterface; }
+    else
+      { rpc_address = cfg.rpcAddress; }
+  );
 
   cassandraEtc = pkgs.stdenv.mkDerivation {
     name = "cassandra-etc";
@@ -100,19 +100,19 @@ let
   );
 
   fullJvmOptions =
-    cfg.jvmOpts
-    ++ [
-      # Historically, we don't use a log dir, whereas the upstream scripts do
-      # expect this. We override those by providing our own -Xlog:gc flag.
-      "-Xlog:gc=warning,heap*=warning,age*=warning,safepoint=warning,promotion*=warning"
-    ]
-    ++ optionals (cfg.jmxRoles != [ ]) [
-      "-Dcom.sun.management.jmxremote.authenticate=true"
-      "-Dcom.sun.management.jmxremote.password.file=${cfg.jmxRolesFile}"
-    ]
-    ++ optionals cfg.remoteJmx [
-      "-Djava.rmi.server.hostname=${cfg.rpcAddress}"
-    ];
+  cfg.jvmOpts
+  ++ [
+    # Historically, we don't use a log dir, whereas the upstream scripts do
+    # expect this. We override those by providing our own -Xlog:gc flag.
+    "-Xlog:gc=warning,heap*=warning,age*=warning,safepoint=warning,promotion*=warning"
+  ]
+  ++ optionals (cfg.jmxRoles != [ ]) [
+    "-Dcom.sun.management.jmxremote.authenticate=true"
+    "-Dcom.sun.management.jmxremote.password.file=${cfg.jmxRolesFile}"
+  ]
+  ++ optionals cfg.remoteJmx [
+    "-Djava.rmi.server.hostname=${cfg.rpcAddress}"
+  ];
 
   commonEnv = {
     # Sufficient for cassandra 2.x, 3.x

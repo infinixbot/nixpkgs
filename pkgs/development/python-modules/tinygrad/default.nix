@@ -78,51 +78,51 @@ buildPythonPackage rec {
   ];
 
   postPatch =
-    # Patch `clang` directly in the source file
-    # Use the unwrapped variant to enable the "native" features currently unavailable in the sandbox
-    ''
-      substituteInPlace tinygrad/runtime/ops_cpu.py \
-        --replace-fail "getenv(\"CC\", 'clang')" "'${lib.getExe llvmPackages.clang-unwrapped}'"
-    ''
-    + ''
-      substituteInPlace tinygrad/runtime/autogen/libc.py \
-        --replace-fail "ctypes.util.find_library('c')" "'${stdenv.cc.libc}/lib/libc.so.6'"
-    ''
-    + ''
-      substituteInPlace tinygrad/runtime/support/llvm.py \
-        --replace-fail "ctypes.util.find_library('LLVM')" "'${lib.getLib llvmPackages.llvm}/lib/libLLVM.so'"
-    ''
-    + lib.optionalString stdenv.hostPlatform.isLinux ''
-      substituteInPlace tinygrad/runtime/autogen/opencl.py \
-        --replace-fail "ctypes.util.find_library('OpenCL')" "'${ocl-icd}/lib/libOpenCL.so'"
-    ''
-    # test/test_tensor.py imports the PTX variable from the cuda_compiler.py file.
-    # This import leads to loading the libnvrtc.so library that is not substituted when cudaSupport = false.
-    # -> As a fix, we hardcode this variable to False
-    + lib.optionalString (!cudaSupport) ''
-      substituteInPlace test/test_tensor.py \
-        --replace-fail "from tinygrad.runtime.support.compiler_cuda import PTX" "PTX = False"
-    ''
-    # `cuda_fp16.h` and co. are needed at runtime to compile kernels
-    + lib.optionalString cudaSupport ''
-      substituteInPlace tinygrad/runtime/support/compiler_cuda.py \
-        --replace-fail \
-        ', "-I/usr/local/cuda/include", "-I/usr/include", "-I/opt/cuda/include/"' \
-        ', "-I${lib.getDev cudaPackages.cuda_cudart}/include/"'
-    ''
-    + lib.optionalString rocmSupport ''
-      substituteInPlace tinygrad/runtime/autogen/hip.py \
-        --replace-fail "/opt/rocm/" "${rocmPackages.clr}/"
+  # Patch `clang` directly in the source file
+  # Use the unwrapped variant to enable the "native" features currently unavailable in the sandbox
+  ''
+    substituteInPlace tinygrad/runtime/ops_cpu.py \
+      --replace-fail "getenv(\"CC\", 'clang')" "'${lib.getExe llvmPackages.clang-unwrapped}'"
+  ''
+  + ''
+    substituteInPlace tinygrad/runtime/autogen/libc.py \
+      --replace-fail "ctypes.util.find_library('c')" "'${stdenv.cc.libc}/lib/libc.so.6'"
+  ''
+  + ''
+    substituteInPlace tinygrad/runtime/support/llvm.py \
+      --replace-fail "ctypes.util.find_library('LLVM')" "'${lib.getLib llvmPackages.llvm}/lib/libLLVM.so'"
+  ''
+  + lib.optionalString stdenv.hostPlatform.isLinux ''
+    substituteInPlace tinygrad/runtime/autogen/opencl.py \
+      --replace-fail "ctypes.util.find_library('OpenCL')" "'${ocl-icd}/lib/libOpenCL.so'"
+  ''
+  # test/test_tensor.py imports the PTX variable from the cuda_compiler.py file.
+  # This import leads to loading the libnvrtc.so library that is not substituted when cudaSupport = false.
+  # -> As a fix, we hardcode this variable to False
+  + lib.optionalString (!cudaSupport) ''
+    substituteInPlace test/test_tensor.py \
+      --replace-fail "from tinygrad.runtime.support.compiler_cuda import PTX" "PTX = False"
+  ''
+  # `cuda_fp16.h` and co. are needed at runtime to compile kernels
+  + lib.optionalString cudaSupport ''
+    substituteInPlace tinygrad/runtime/support/compiler_cuda.py \
+      --replace-fail \
+      ', "-I/usr/local/cuda/include", "-I/usr/include", "-I/opt/cuda/include/"' \
+      ', "-I${lib.getDev cudaPackages.cuda_cudart}/include/"'
+  ''
+  + lib.optionalString rocmSupport ''
+    substituteInPlace tinygrad/runtime/autogen/hip.py \
+      --replace-fail "/opt/rocm/" "${rocmPackages.clr}/"
 
-      substituteInPlace tinygrad/runtime/support/compiler_hip.py \
-        --replace-fail "/opt/rocm/include" "${rocmPackages.clr}/include"
+    substituteInPlace tinygrad/runtime/support/compiler_hip.py \
+      --replace-fail "/opt/rocm/include" "${rocmPackages.clr}/include"
 
-      substituteInPlace tinygrad/runtime/support/compiler_hip.py \
-        --replace-fail "/opt/rocm/llvm" "${rocmPackages.llvm.llvm}"
+    substituteInPlace tinygrad/runtime/support/compiler_hip.py \
+      --replace-fail "/opt/rocm/llvm" "${rocmPackages.llvm.llvm}"
 
-      substituteInPlace tinygrad/runtime/autogen/comgr.py \
-        --replace-fail "/opt/rocm/" "${rocmPackages.rocm-comgr}/"
-    '';
+    substituteInPlace tinygrad/runtime/autogen/comgr.py \
+      --replace-fail "/opt/rocm/" "${rocmPackages.rocm-comgr}/"
+  '';
 
   build-system = [ setuptools ];
 

@@ -34,10 +34,10 @@ let
         ];
 
         disabledTests =
-          old.disabledTests
-          ++ lib.optionals stdenv.hostPlatform.isAarch64 [
-            "test_process_grammar_full"
-          ];
+        old.disabledTests
+        ++ lib.optionals stdenv.hostPlatform.isAarch64 [
+          "test_process_grammar_full"
+        ];
       });
     };
   };

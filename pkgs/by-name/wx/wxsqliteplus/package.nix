@@ -38,14 +38,14 @@ stdenv.mkDerivation rec {
   ];
 
   installPhase =
-    lib.optionalString stdenv.hostPlatform.isDarwin ''
-      mkdir -p $out/{Applications,bin}
-      mv wxSQLitePlus.app $out/Applications
-      makeWrapper $out/{Applications/wxSQLitePlus.app/Contents/MacOS,bin}/wxSQLitePlus
-    ''
-    + lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
-      install -Dm755 wxSQLitePlus $out/bin/wxSQLitePlus
-    '';
+  lib.optionalString stdenv.hostPlatform.isDarwin ''
+    mkdir -p $out/{Applications,bin}
+    mv wxSQLitePlus.app $out/Applications
+    makeWrapper $out/{Applications/wxSQLitePlus.app/Contents/MacOS,bin}/wxSQLitePlus
+  ''
+  + lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
+    install -Dm755 wxSQLitePlus $out/bin/wxSQLitePlus
+  '';
 
   meta = with lib; {
     description = "Simple SQLite database browser built with wxWidgets";

@@ -36,8 +36,8 @@ stdenv.mkDerivation {
   meta = with lib; {
     description = "Free Pascal Qt${qtVersion} binding library";
     homepage =
-      "https://wiki.freepascal.org/Qt${qtVersion}_Interface"
-      + lib.optionalString (qtVersion == "5") "#libqt5pas";
+    "https://wiki.freepascal.org/Qt${qtVersion}_Interface"
+    + lib.optionalString (qtVersion == "5") "#libqt5pas";
     maintainers = with maintainers; [ sikmir ];
     inherit (lazarus.meta) license platforms;
   };

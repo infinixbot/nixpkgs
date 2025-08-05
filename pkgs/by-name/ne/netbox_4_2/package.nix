@@ -31,56 +31,56 @@ py.pkgs.buildPythonApplication rec {
   ];
 
   propagatedBuildInputs =
-    (
-      with py.pkgs;
-      [
-        django
-        django-cors-headers
-        django-debug-toolbar
-        django-filter
-        django-graphiql-debug-toolbar
-        django-htmx
-        django-mptt
-        django-pglocks
-        django-prometheus
-        django-redis
-        django-rq
-        django-tables2
-        django-taggit
-        django-timezone-field
-        djangorestframework
-        drf-spectacular
-        drf-spectacular-sidecar
-        feedparser
-        jinja2
-        markdown
-        netaddr
-        nh3
-        pillow
-        psycopg
-        psycopg.optional-dependencies.c
-        psycopg.optional-dependencies.pool
-        pyyaml
-        requests
-        social-auth-core
-        social-auth-app-django
-        strawberry-graphql
-        strawberry-django
-        svgwrite
-        tablib
+  (
+    with py.pkgs;
+    [
+      django
+      django-cors-headers
+      django-debug-toolbar
+      django-filter
+      django-graphiql-debug-toolbar
+      django-htmx
+      django-mptt
+      django-pglocks
+      django-prometheus
+      django-redis
+      django-rq
+      django-tables2
+      django-taggit
+      django-timezone-field
+      djangorestframework
+      drf-spectacular
+      drf-spectacular-sidecar
+      feedparser
+      jinja2
+      markdown
+      netaddr
+      nh3
+      pillow
+      psycopg
+      psycopg.optional-dependencies.c
+      psycopg.optional-dependencies.pool
+      pyyaml
+      requests
+      social-auth-core
+      social-auth-app-django
+      strawberry-graphql
+      strawberry-django
+      svgwrite
+      tablib
 
-        # Optional dependencies, kept here for backward compatibility
+      # Optional dependencies, kept here for backward compatibility
 
-        # for the S3 data source backend
-        boto3
-        # for Git data source backend
-        dulwich
-        # for error reporting
-        sentry-sdk
-      ]
-      ++ social-auth-core.passthru.optional-dependencies.openidconnect
-    )
-    ++ extraBuildInputs;
+      # for the S3 data source backend
+      boto3
+      # for Git data source backend
+      dulwich
+      # for error reporting
+      sentry-sdk
+    ]
+    ++ social-auth-core.passthru.optional-dependencies.openidconnect
+  )
+  ++ extraBuildInputs;
 
   buildInputs = with py.pkgs; [
     mkdocs-material

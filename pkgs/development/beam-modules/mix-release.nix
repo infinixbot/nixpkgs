@@ -99,26 +99,26 @@ stdenv.mkDerivation (
   overridable
   // {
     nativeBuildInputs =
-      nativeBuildInputs
-      ++
-        # Erlang/Elixir deps
-        [
-          erlang
-          elixir
-          hex
-          git
-        ]
-      ++
-        # Mix deps
-        (builtins.attrValues mixNixDeps)
-      ++
-        # other compile-time deps
-        [
-          findutils
-          ripgrep
-          bbe
-          makeWrapper
-        ];
+    nativeBuildInputs
+    ++
+      # Erlang/Elixir deps
+      [
+        erlang
+        elixir
+        hex
+        git
+      ]
+    ++
+      # Mix deps
+      (builtins.attrValues mixNixDeps)
+    ++
+      # other compile-time deps
+      [
+        findutils
+        ripgrep
+        bbe
+        makeWrapper
+      ];
 
     buildInputs = buildInputs ++ lib.optionals (escriptBinName != null) [ erlang ];
 

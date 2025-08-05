@@ -44,7 +44,7 @@
 let
   inherit (lib) optionals;
   pythonInputs =
-    optionals enablePython (with python3.pkgs; [ numpy ]) ++ (extraPythonPackages python3.pkgs);
+  optionals enablePython (with python3.pkgs; [ numpy ]) ++ (extraPythonPackages python3.pkgs);
 
   # ITK configs for OTB requires 5.3.0 and
   # filter out gdcm, libminc from list of ITK deps as it's not needed for OTB
@@ -198,11 +198,11 @@ let
     ];
 
     propagatedBuildInputs =
-      lib.lists.filter (pkg: !(itkIsInDepsToRemove pkg)) oldArgs.propagatedBuildInputs or [ ]
-      ++ lib.optionals enableFFTW [
-        # the only missing dependency for OTB from itk propagated list if FFTW option is enabled
-        fftwFloat
-      ];
+    lib.lists.filter (pkg: !(itkIsInDepsToRemove pkg)) oldArgs.propagatedBuildInputs or [ ]
+    ++ lib.optionals enableFFTW [
+      # the only missing dependency for OTB from itk propagated list if FFTW option is enabled
+      fftwFloat
+    ];
 
   });
 

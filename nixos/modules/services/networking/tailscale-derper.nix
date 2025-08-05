@@ -96,8 +96,8 @@ in
     systemd.services.tailscale-derper = {
       serviceConfig = {
         ExecStart =
-          "${lib.getExe' cfg.package "derper"} -a :${toString cfg.port} -c /var/lib/derper/derper.key -hostname=${cfg.domain} -stun-port ${toString cfg.stunPort}"
-          + lib.optionalString cfg.verifyClients " -verify-clients";
+        "${lib.getExe' cfg.package "derper"} -a :${toString cfg.port} -c /var/lib/derper/derper.key -hostname=${cfg.domain} -stun-port ${toString cfg.stunPort}"
+        + lib.optionalString cfg.verifyClients " -verify-clients";
         DynamicUser = true;
         Restart = "always";
         RestartSec = "5sec"; # don't crash loop immediately

@@ -14,15 +14,15 @@
 
 let
   selectedExtensions =
-    extensions
-    ++ lib.optionals useDefaultExtensions [
-      # We keep this in sync with a default Mint installation
-      # Right now (only) nemo-share is missing
-      folder-color-switcher
-      nemo-emblems
-      nemo-fileroller
-      nemo-python
-    ];
+  extensions
+  ++ lib.optionals useDefaultExtensions [
+    # We keep this in sync with a default Mint installation
+    # Right now (only) nemo-share is missing
+    folder-color-switcher
+    nemo-emblems
+    nemo-fileroller
+    nemo-python
+  ];
   nemoPythonExtensionsDeps = lib.concatMap (x: x.nemoPythonExtensionDeps or [ ]) selectedExtensions;
 in
 symlinkJoin {

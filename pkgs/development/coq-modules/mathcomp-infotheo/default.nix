@@ -66,7 +66,7 @@
 }).overrideAttrs
   (o: {
     propagatedBuildInputs =
-      o.propagatedBuildInputs
-      ++ lib.optional (lib.versions.isGe "0.6.1" o.version || o.version == "dev") mathcomp-algebra-tactics
-      ++ lib.optional (lib.versions.isGe "0.7.2" o.version || o.version == "dev") interval;
+    o.propagatedBuildInputs
+    ++ lib.optional (lib.versions.isGe "0.6.1" o.version || o.version == "dev") mathcomp-algebra-tactics
+    ++ lib.optional (lib.versions.isGe "0.7.2" o.version || o.version == "dev") interval;
   })

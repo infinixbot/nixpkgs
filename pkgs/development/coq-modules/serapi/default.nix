@@ -120,42 +120,42 @@ in
         };
 
         patches =
-          lib.optional (lib.versions.isGe "8.16" version) ./sertop.patch
-          ++ (
-            if version == "8.10.0+0.7.2" then
-              [
-                ./8.10.0+0.7.2.patch
-              ]
-            else if version == "8.11.0+0.11.1" then
-              [
-                ./8.11.0+0.11.1.patch
-              ]
-            else if version == "8.12.0+0.12.1" || version == "8.13.0+0.13.0" then
-              [
-                ./8.12.0+0.12.1.patch
-              ]
-            else if version == "8.14.0+0.14.0" || version == "8.15.0+0.15.0" then
-              [
-                ./janestreet-0.15.patch
-              ]
-            else if version == "8.16.0+0.16.3" || version == "8.17.0+0.17.0" then
-              [
-                ./janestreet-0.16.patch
-              ]
-            else
-              [
-              ]
-          );
+        lib.optional (lib.versions.isGe "8.16" version) ./sertop.patch
+        ++ (
+          if version == "8.10.0+0.7.2" then
+            [
+              ./8.10.0+0.7.2.patch
+            ]
+          else if version == "8.11.0+0.11.1" then
+            [
+              ./8.11.0+0.11.1.patch
+            ]
+          else if version == "8.12.0+0.12.1" || version == "8.13.0+0.13.0" then
+            [
+              ./8.12.0+0.12.1.patch
+            ]
+          else if version == "8.14.0+0.14.0" || version == "8.15.0+0.15.0" then
+            [
+              ./janestreet-0.15.patch
+            ]
+          else if version == "8.16.0+0.16.3" || version == "8.17.0+0.17.0" then
+            [
+              ./janestreet-0.16.patch
+            ]
+          else
+            [
+            ]
+        );
 
         propagatedBuildInputs =
-          o.propagatedBuildInputs
-          ++ (with coq.ocamlPackages; [
-            ppx_deriving
-            (ppx_deriving_yojson.override { inherit ppx_deriving; })
-            (ppx_import.override { inherit ppx_deriving; })
-            yojson
-            zarith # zarith needed because of Coq
-          ]);
+        o.propagatedBuildInputs
+        ++ (with coq.ocamlPackages; [
+          ppx_deriving
+          (ppx_deriving_yojson.override { inherit ppx_deriving; })
+          (ppx_import.override { inherit ppx_deriving; })
+          yojson
+          zarith # zarith needed because of Coq
+        ]);
       }
     else
       { propagatedBuildInputs = o.propagatedBuildInputs ++ [ coq-lsp ]; }

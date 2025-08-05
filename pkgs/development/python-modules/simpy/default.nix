@@ -40,16 +40,16 @@ buildPythonPackage rec {
   ];
 
   disabledTests =
-    lib.optionals (pythonAtLeast "3.13") [
-      # Failing on python >= 3.13
-      # FAILED tests/test_exceptions.py::test_exception_chaining - AssertionError: Traceback mismatch
-      "test_exception_chaining"
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      "test_rt"
-      "test_rt_multiple_call"
-      "test_rt_slow_sim_no_error"
-    ];
+  lib.optionals (pythonAtLeast "3.13") [
+    # Failing on python >= 3.13
+    # FAILED tests/test_exceptions.py::test_exception_chaining - AssertionError: Traceback mismatch
+    "test_exception_chaining"
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    "test_rt"
+    "test_rt_multiple_call"
+    "test_rt_slow_sim_no_error"
+  ];
 
   meta = {
     downloadPage = "https://github.com/simpx/simpy";

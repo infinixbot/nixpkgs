@@ -120,8 +120,8 @@ let
       }
       {
         message =
-          "${jetsonMesssagePrefix} require hostPlatform (currently ${passthruExtra.hostNixSystem}) "
-          + "to be aarch64-linux";
+        "${jetsonMesssagePrefix} require hostPlatform (currently ${passthruExtra.hostNixSystem}) "
+        + "to be aarch64-linux";
         assertion = passthruExtra.hasJetsonCudaCapability -> passthruExtra.hostNixSystem == "aarch64-linux";
       }
       {

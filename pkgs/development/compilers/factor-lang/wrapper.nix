@@ -50,21 +50,21 @@ let
   ];
   defaultBins = optionals enableDefaults [ graphviz ];
   runtimeLibs =
-    defaultLibs
-    ++ extraLibs
-    ++ binPackages
-    ++ (lib.flatten (map (v: v.extraLibs or [ ]) extraVocabs))
-    ++ optionals guiSupport [
-      cairo
-      freealut
-      gdk-pixbuf
-      glib
-      gnome2.gtkglext
-      gtk2-x11
-      libGL
-      libGLU
-      pango
-    ];
+  defaultLibs
+  ++ extraLibs
+  ++ binPackages
+  ++ (lib.flatten (map (v: v.extraLibs or [ ]) extraVocabs))
+  ++ optionals guiSupport [
+    cairo
+    freealut
+    gdk-pixbuf
+    glib
+    gnome2.gtkglext
+    gtk2-x11
+    libGL
+    libGLU
+    pango
+  ];
   bins = binPackages ++ defaultBins ++ (lib.flatten (map (v: v.extraPaths or [ ]) extraVocabs));
   vocabTree = buildEnv {
     name = "${factor-unwrapped.pname}-vocabs";

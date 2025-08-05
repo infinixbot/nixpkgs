@@ -25,10 +25,10 @@ assert lib.warn
 stdenv.override (old: {
   mkDerivationFromStdenv = extendMkDerivationArgs old (args: {
     buildInputs =
-      args.buildInputs or [ ]
-      ++ lib.optional (darwinSdkVersion == "12.3") pkgsHostTarget.apple-sdk_12
-      ++ lib.optional (sdkVersion ? darwinMinVersion) (
-        pkgsHostTarget.darwinMinVersionHook sdkVersion.darwinMinVersion
-      );
+    args.buildInputs or [ ]
+    ++ lib.optional (darwinSdkVersion == "12.3") pkgsHostTarget.apple-sdk_12
+    ++ lib.optional (sdkVersion ? darwinMinVersion) (
+      pkgsHostTarget.darwinMinVersionHook sdkVersion.darwinMinVersion
+    );
   });
 })

@@ -66,8 +66,8 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://git.sr.ht/~grimler/Heimdall";
     license = lib.licenses.mit;
     mainProgram =
-      (if enableGUI then "heimdall-frontend" else "heimdall")
-      + lib.optionalString stdenv.hostPlatform.isWindows ".exe";
+    (if enableGUI then "heimdall-frontend" else "heimdall")
+    + lib.optionalString stdenv.hostPlatform.isWindows ".exe";
     maintainers = with lib.maintainers; [
       surfaceflinger
       timschumi

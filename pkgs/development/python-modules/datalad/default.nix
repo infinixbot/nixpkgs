@@ -79,7 +79,7 @@ buildPythonPackage rec {
   ];
 
   dependencies =
-    optional-dependencies.core ++ optional-dependencies.downloaders ++ optional-dependencies.publish;
+  optional-dependencies.core ++ optional-dependencies.downloaders ++ optional-dependencies.publish;
 
   optional-dependencies = {
     core = [

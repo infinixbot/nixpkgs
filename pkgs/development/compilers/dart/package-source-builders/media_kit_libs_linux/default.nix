@@ -21,12 +21,12 @@ stdenv.mkDerivation {
   dontBuild = true;
 
   postPatch =
-    lib.optionalString (lib.versionAtLeast version "1.2.1") ''
-      sed -i '/if(MIMALLOC_USE_STATIC_LIBS)/,/unset(MIMALLOC_USE_STATIC_LIBS CACHE)/d' linux/CMakeLists.txt
-    ''
-    + lib.optionalString (lib.versionOlder version "1.2.1") ''
-      awk -i inplace 'BEGIN {opened = 0}; /# --*[^$]*/ { print (opened ? "]===]" : "#[===["); opened = !opened }; {print $0}' linux/CMakeLists.txt
-    '';
+  lib.optionalString (lib.versionAtLeast version "1.2.1") ''
+    sed -i '/if(MIMALLOC_USE_STATIC_LIBS)/,/unset(MIMALLOC_USE_STATIC_LIBS CACHE)/d' linux/CMakeLists.txt
+  ''
+  + lib.optionalString (lib.versionOlder version "1.2.1") ''
+    awk -i inplace 'BEGIN {opened = 0}; /# --*[^$]*/ { print (opened ? "]===]" : "#[===["); opened = !opened }; {print $0}' linux/CMakeLists.txt
+  '';
 
   installPhase = ''
     runHook preInstall

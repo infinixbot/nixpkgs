@@ -224,50 +224,50 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   patches =
-    optional enableHardening ./hardened.patch
-    # Since VirtualBox 7.0.8, VBoxSDL requires SDL2, but the build framework uses SDL1
-    ++ optionals (!headless) [
-      ./fix-sdl.patch
-      # No update patch disables check for update function
-      # https://bugs.launchpad.net/ubuntu/+source/virtualbox-ose/+bug/272212
-      (fetchpatch {
-        url = "https://salsa.debian.org/pkg-virtualbox-team/virtualbox/-/raw/42a1ca1291fde365bfba140cb21a8a074aaccce2/debian/patches/16-no-update.patch";
-        hash = "sha256-qM2e4DkkpmA18Z76OUsnY1MhcGb1dT2PG68JUy6fZEE=";
-      })
-    ]
-    ++ [ ./extra_symbols.patch ]
-    # When hardening is enabled, we cannot use wrapQtApp to ensure that VirtualBoxVM sees
-    # the correct environment variables needed for Qt to work, specifically QT_PLUGIN_PATH.
-    # This is because VirtualBoxVM would detect that it is wrapped that and refuse to run,
-    # and also because it would unset QT_PLUGIN_PATH for security reasons. We work around
-    # these issues by patching the code to set QT_PLUGIN_PATH to the necessary paths,
-    # after the code that unsets it. Note that qtsvg is included so that SVG icons from
-    # the user's icon theme can be loaded.
-    ++ optional (!headless && enableHardening) (
-      replaceVars ./qt-env-vars.patch {
-        qtPluginPath = "${qtbase}/bin/${qtbase.qtPluginPrefix}:${qtsvg}/bin/${qtbase.qtPluginPrefix}:${qtwayland}/bin/${qtbase.qtPluginPrefix}";
-      }
-    )
-    # While the KVM patch should not break any other behavior if --with-kvm is not specified,
-    # we don't take any chances and only apply it if people actually want to use KVM support.
-    ++ optional enableKvm (
-      let
-        patchVboxVersion =
-          # There is no updated patch for 7.1.12 yet, but the older one still applies.
-          if finalAttrs.virtualboxVersion == "7.1.12" then "7.1.6" else finalAttrs.virtualboxVersion;
-      in
-      fetchpatch {
-        name = "virtualbox-${finalAttrs.virtualboxVersion}-kvm-dev-${finalAttrs.kvmPatchVersion}.patch";
-        url = "https://github.com/cyberus-technology/virtualbox-kvm/releases/download/dev-${finalAttrs.kvmPatchVersion}/kvm-backend-${patchVboxVersion}-dev-${finalAttrs.kvmPatchVersion}.patch";
-        hash = finalAttrs.kvmPatchHash;
-      }
-    )
-    ++ [
-      ./qt-dependency-paths.patch
-      # https://github.com/NixOS/nixpkgs/issues/123851
-      ./fix-audio-driver-loading.patch
-      ./fix-graphics-driver-loading.patch
-    ];
+  optional enableHardening ./hardened.patch
+  # Since VirtualBox 7.0.8, VBoxSDL requires SDL2, but the build framework uses SDL1
+  ++ optionals (!headless) [
+    ./fix-sdl.patch
+    # No update patch disables check for update function
+    # https://bugs.launchpad.net/ubuntu/+source/virtualbox-ose/+bug/272212
+    (fetchpatch {
+      url = "https://salsa.debian.org/pkg-virtualbox-team/virtualbox/-/raw/42a1ca1291fde365bfba140cb21a8a074aaccce2/debian/patches/16-no-update.patch";
+      hash = "sha256-qM2e4DkkpmA18Z76OUsnY1MhcGb1dT2PG68JUy6fZEE=";
+    })
+  ]
+  ++ [ ./extra_symbols.patch ]
+  # When hardening is enabled, we cannot use wrapQtApp to ensure that VirtualBoxVM sees
+  # the correct environment variables needed for Qt to work, specifically QT_PLUGIN_PATH.
+  # This is because VirtualBoxVM would detect that it is wrapped that and refuse to run,
+  # and also because it would unset QT_PLUGIN_PATH for security reasons. We work around
+  # these issues by patching the code to set QT_PLUGIN_PATH to the necessary paths,
+  # after the code that unsets it. Note that qtsvg is included so that SVG icons from
+  # the user's icon theme can be loaded.
+  ++ optional (!headless && enableHardening) (
+    replaceVars ./qt-env-vars.patch {
+      qtPluginPath = "${qtbase}/bin/${qtbase.qtPluginPrefix}:${qtsvg}/bin/${qtbase.qtPluginPrefix}:${qtwayland}/bin/${qtbase.qtPluginPrefix}";
+    }
+  )
+  # While the KVM patch should not break any other behavior if --with-kvm is not specified,
+  # we don't take any chances and only apply it if people actually want to use KVM support.
+  ++ optional enableKvm (
+    let
+      patchVboxVersion =
+        # There is no updated patch for 7.1.12 yet, but the older one still applies.
+        if finalAttrs.virtualboxVersion == "7.1.12" then "7.1.6" else finalAttrs.virtualboxVersion;
+    in
+    fetchpatch {
+      name = "virtualbox-${finalAttrs.virtualboxVersion}-kvm-dev-${finalAttrs.kvmPatchVersion}.patch";
+      url = "https://github.com/cyberus-technology/virtualbox-kvm/releases/download/dev-${finalAttrs.kvmPatchVersion}/kvm-backend-${patchVboxVersion}-dev-${finalAttrs.kvmPatchVersion}.patch";
+      hash = finalAttrs.kvmPatchHash;
+    }
+  )
+  ++ [
+    ./qt-dependency-paths.patch
+    # https://github.com/NixOS/nixpkgs/issues/123851
+    ./fix-audio-driver-loading.patch
+    ./fix-graphics-driver-loading.patch
+  ];
 
   postPatch = ''
     sed -i -e 's|/sbin/ifconfig|${net-tools}/bin/ifconfig|' \
@@ -395,14 +395,14 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   preFixup =
-    optionalString (!headless) ''
-      wrapQtApp $out/bin/VirtualBox
-    ''
-    # If hardening is disabled, wrap the VirtualBoxVM binary instead of patching
-    # the source code (see postPatch).
-    + optionalString (!headless && !enableHardening) ''
-      wrapQtApp $out/libexec/virtualbox/VirtualBoxVM
-    '';
+  optionalString (!headless) ''
+    wrapQtApp $out/bin/VirtualBox
+  ''
+  # If hardening is disabled, wrap the VirtualBoxVM binary instead of patching
+  # the source code (see postPatch).
+  + optionalString (!headless && !enableHardening) ''
+    wrapQtApp $out/libexec/virtualbox/VirtualBoxVM
+  '';
 
   passthru = {
     inherit extensionPack; # for inclusion in profile to prevent gc

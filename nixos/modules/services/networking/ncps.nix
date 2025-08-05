@@ -221,18 +221,18 @@ in
         UMask = "0066";
       };
       script =
-        (lib.optionalString (cfg.cache.dataPath != "/var/lib/ncps") ''
-          if ! test -d ${cfg.cache.dataPath}; then
-            mkdir -p ${cfg.cache.dataPath}
-            chown ncps:ncps ${cfg.cache.dataPath}
-          fi
-        '')
-        + (lib.optionalString isSqlite ''
-          if ! test -d ${dbDir}; then
-            mkdir -p ${dbDir}
-            chown ncps:ncps ${dbDir}
-          fi
-        '');
+      (lib.optionalString (cfg.cache.dataPath != "/var/lib/ncps") ''
+        if ! test -d ${cfg.cache.dataPath}; then
+          mkdir -p ${cfg.cache.dataPath}
+          chown ncps:ncps ${cfg.cache.dataPath}
+        fi
+      '')
+      + (lib.optionalString isSqlite ''
+        if ! test -d ${dbDir}; then
+          mkdir -p ${dbDir}
+          chown ncps:ncps ${dbDir}
+        fi
+      '');
       wantedBy = [ "ncps.service" ];
       before = [ "ncps.service" ];
     };

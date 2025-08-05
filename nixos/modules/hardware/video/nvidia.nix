@@ -484,53 +484,53 @@ in
           hardware.nvidia.prime.offload.enable = lib.mkDefault reverseSyncCfg.enable;
 
           services.xserver.drivers =
-            lib.optional primeEnabled {
-              name = igpuDriver;
-              display = offloadCfg.enable;
-              modules = lib.optional (igpuDriver == "amdgpu") pkgs.xorg.xf86videoamdgpu;
-              deviceSection = ''
-                BusID "${igpuBusId}"
-              ''
-              + lib.optionalString (syncCfg.enable && igpuDriver != "amdgpu") ''
-                Option "AccelMethod" "none"
-              '';
-            }
-            ++ lib.singleton {
-              name = "nvidia";
-              modules = [ nvidia_x11.bin ];
-              display = !offloadCfg.enable;
-              deviceSection = ''
-                Option "SidebandSocketPath" "/run/nvidia-xdriver/"
-              ''
-              + lib.optionalString primeEnabled ''
-                BusID "${pCfg.nvidiaBusId}"
-              ''
-              + lib.optionalString pCfg.allowExternalGpu ''
-                Option "AllowExternalGpus"
-              '';
-              screenSection = ''
-                Option "RandRRotation" "on"
-              ''
-              + lib.optionalString syncCfg.enable ''
-                Option "AllowEmptyInitialConfiguration"
-              ''
-              + lib.optionalString cfg.forceFullCompositionPipeline ''
-                Option         "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
-                Option         "AllowIndirectGLXProtocol" "off"
-                Option         "TripleBuffer" "on"
-              '';
-            };
+          lib.optional primeEnabled {
+            name = igpuDriver;
+            display = offloadCfg.enable;
+            modules = lib.optional (igpuDriver == "amdgpu") pkgs.xorg.xf86videoamdgpu;
+            deviceSection = ''
+              BusID "${igpuBusId}"
+            ''
+            + lib.optionalString (syncCfg.enable && igpuDriver != "amdgpu") ''
+              Option "AccelMethod" "none"
+            '';
+          }
+          ++ lib.singleton {
+            name = "nvidia";
+            modules = [ nvidia_x11.bin ];
+            display = !offloadCfg.enable;
+            deviceSection = ''
+              Option "SidebandSocketPath" "/run/nvidia-xdriver/"
+            ''
+            + lib.optionalString primeEnabled ''
+              BusID "${pCfg.nvidiaBusId}"
+            ''
+            + lib.optionalString pCfg.allowExternalGpu ''
+              Option "AllowExternalGpus"
+            '';
+            screenSection = ''
+              Option "RandRRotation" "on"
+            ''
+            + lib.optionalString syncCfg.enable ''
+              Option "AllowEmptyInitialConfiguration"
+            ''
+            + lib.optionalString cfg.forceFullCompositionPipeline ''
+              Option         "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
+              Option         "AllowIndirectGLXProtocol" "off"
+              Option         "TripleBuffer" "on"
+            '';
+          };
 
           services.xserver.serverLayoutSection =
-            lib.optionalString syncCfg.enable ''
-              Inactive "Device-${igpuDriver}[0]"
-            ''
-            + lib.optionalString reverseSyncCfg.enable ''
-              Inactive "Device-nvidia[0]"
-            ''
-            + lib.optionalString offloadCfg.enable ''
-              Option "AllowNVIDIAGPUScreens"
-            '';
+          lib.optionalString syncCfg.enable ''
+            Inactive "Device-${igpuDriver}[0]"
+          ''
+          + lib.optionalString reverseSyncCfg.enable ''
+            Inactive "Device-nvidia[0]"
+          ''
+          + lib.optionalString offloadCfg.enable ''
+            Option "AllowNVIDIAGPUScreens"
+          '';
 
           services.xserver.displayManager.setupCommands =
             let
@@ -563,17 +563,17 @@ in
           hardware.graphics.extraPackages = lib.optional cfg.videoAcceleration pkgs.nvidia-vaapi-driver;
 
           environment.systemPackages =
-            lib.optional cfg.nvidiaSettings nvidia_x11.settings
-            ++ lib.optional cfg.nvidiaPersistenced nvidia_x11.persistenced
-            ++ lib.optional offloadCfg.enableOffloadCmd (
-              pkgs.writeShellScriptBin cfg.prime.offload.offloadCmdMainProgram ''
-                export __NV_PRIME_RENDER_OFFLOAD=1
-                export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
-                export __GLX_VENDOR_LIBRARY_NAME=nvidia
-                export __VK_LAYER_NV_optimus=NVIDIA_only
-                exec "$@"
-              ''
-            );
+          lib.optional cfg.nvidiaSettings nvidia_x11.settings
+          ++ lib.optional cfg.nvidiaPersistenced nvidia_x11.persistenced
+          ++ lib.optional offloadCfg.enableOffloadCmd (
+            pkgs.writeShellScriptBin cfg.prime.offload.offloadCmdMainProgram ''
+              export __NV_PRIME_RENDER_OFFLOAD=1
+              export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
+              export __GLX_VENDOR_LIBRARY_NAME=nvidia
+              export __VK_LAYER_NV_optimus=NVIDIA_only
+              exec "$@"
+            ''
+          );
 
           systemd.packages = lib.optional cfg.powerManagement.enable nvidia_x11.out;
 
@@ -664,13 +664,13 @@ in
 
             # If requested enable modesetting via kernel parameters.
             kernelParams =
-              lib.optional (offloadCfg.enable || cfg.modesetting.enable) "nvidia-drm.modeset=1"
-              ++ lib.optional (
-                (offloadCfg.enable || cfg.modesetting.enable) && lib.versionAtLeast nvidia_x11.version "545"
-              ) "nvidia-drm.fbdev=1"
-              ++ lib.optional cfg.powerManagement.enable "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
-              ++ lib.optional useOpenModules "nvidia.NVreg_OpenRmEnableUnsupportedGpus=1"
-              ++ lib.optional (config.boot.kernelPackages.kernel.kernelAtLeast "6.2" && !ibtSupport) "ibt=off";
+            lib.optional (offloadCfg.enable || cfg.modesetting.enable) "nvidia-drm.modeset=1"
+            ++ lib.optional (
+              (offloadCfg.enable || cfg.modesetting.enable) && lib.versionAtLeast nvidia_x11.version "545"
+            ) "nvidia-drm.fbdev=1"
+            ++ lib.optional cfg.powerManagement.enable "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+            ++ lib.optional useOpenModules "nvidia.NVreg_OpenRmEnableUnsupportedGpus=1"
+            ++ lib.optional (config.boot.kernelPackages.kernel.kernelAtLeast "6.2" && !ibtSupport) "ibt=off";
 
             # enable finegrained power management
             extraModprobeConfig = lib.optionalString cfg.powerManagement.finegrained ''
@@ -754,8 +754,8 @@ in
           };
 
           environment.systemPackages =
-            lib.optional cfg.datacenter.enable nvidia_x11.fabricmanager
-            ++ lib.optional cfg.nvidiaPersistenced nvidia_x11.persistenced;
+          lib.optional cfg.datacenter.enable nvidia_x11.fabricmanager
+          ++ lib.optional cfg.nvidiaPersistenced nvidia_x11.persistenced;
         })
       ]
     );

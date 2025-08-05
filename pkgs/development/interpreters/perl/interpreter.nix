@@ -119,55 +119,55 @@ stdenv.mkDerivation (
     # contains the string "perl", Configure would select $out/lib.
     # Miniperl needs -lm. perl needs -lrt.
     configureFlags =
-      (
-        if crossCompiling then
+    (
+      if crossCompiling then
+        [
+          "-Dlibpth=\"\""
+          "-Dglibpth=\"\""
+          "-Ddefault_inc_excludes_dot"
+        ]
+      else
+        (
           [
-            "-Dlibpth=\"\""
-            "-Dglibpth=\"\""
-            "-Ddefault_inc_excludes_dot"
+            "-de"
+            "-Dprefix=${placeholder "out"}"
+            "-Dman1dir=${placeholder "out"}/share/man/man1"
+            "-Dman3dir=${placeholder "out"}/share/man/man3"
           ]
-        else
-          (
-            [
-              "-de"
-              "-Dprefix=${placeholder "out"}"
-              "-Dman1dir=${placeholder "out"}/share/man/man1"
-              "-Dman3dir=${placeholder "out"}/share/man/man3"
-            ]
-            ++ (
-              if (stdenv.cc.targetPrefix != "") then
-                [
-                  "-Dcc=${stdenv.cc.targetPrefix}cc"
-                  "-Dnm=${stdenv.cc.targetPrefix}nm"
-                  "-Dar=${stdenv.cc.targetPrefix}ar"
-                ]
-              else
-                [
-                  "-Dcc=cc"
-                  "-Duseshrplib"
-                ]
-            )
+          ++ (
+            if (stdenv.cc.targetPrefix != "") then
+              [
+                "-Dcc=${stdenv.cc.targetPrefix}cc"
+                "-Dnm=${stdenv.cc.targetPrefix}nm"
+                "-Dar=${stdenv.cc.targetPrefix}ar"
+              ]
+            else
+              [
+                "-Dcc=cc"
+                "-Duseshrplib"
+              ]
           )
-      )
-      ++ [
-        "-Uinstallusrbinperl"
-        "-Dinstallstyle=lib/perl5"
-        "-Dlocincpth=${libcInc}/include"
-        "-Dloclibpth=${libcLib}/lib"
-      ]
-      ++ lib.optional stdenv.hostPlatform.isStatic "-Uusedl"
-      ++ lib.optionals ((builtins.match ''5\.[0-9]*[13579]\..+'' version) != null) [
-        "-Dusedevel"
-        "-Uversiononly"
-      ]
-      ++ lib.optional stdenv.hostPlatform.isSunOS "-Dcc=gcc"
-      ++ lib.optional enableThreading "-Dusethreads"
-      ++ lib.optional (!enableCrypt) "-A clear:d_crypt_r"
-      ++ lib.optionals (stdenv.hostPlatform.isFreeBSD && crossCompiling && enableCrypt) [
-        # https://github.com/Perl/perl5/issues/22295
-        # configure cannot figure out that we have crypt automatically, but we really do
-        "-Dd_crypt"
-      ];
+        )
+    )
+    ++ [
+      "-Uinstallusrbinperl"
+      "-Dinstallstyle=lib/perl5"
+      "-Dlocincpth=${libcInc}/include"
+      "-Dloclibpth=${libcLib}/lib"
+    ]
+    ++ lib.optional stdenv.hostPlatform.isStatic "-Uusedl"
+    ++ lib.optionals ((builtins.match ''5\.[0-9]*[13579]\..+'' version) != null) [
+      "-Dusedevel"
+      "-Uversiononly"
+    ]
+    ++ lib.optional stdenv.hostPlatform.isSunOS "-Dcc=gcc"
+    ++ lib.optional enableThreading "-Dusethreads"
+    ++ lib.optional (!enableCrypt) "-A clear:d_crypt_r"
+    ++ lib.optionals (stdenv.hostPlatform.isFreeBSD && crossCompiling && enableCrypt) [
+      # https://github.com/Perl/perl5/issues/22295
+      # configure cannot figure out that we have crypt automatically, but we really do
+      "-Dd_crypt"
+    ];
 
     configureScript = lib.optionalString (!crossCompiling) "${stdenv.shell} ./Configure";
 

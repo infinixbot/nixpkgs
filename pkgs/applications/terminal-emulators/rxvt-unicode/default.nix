@@ -87,45 +87,45 @@ stdenv.mkDerivation {
   ];
 
   patches =
-    (
-      if emojiSupport then
-        [
-          # the required patches to libXft are in nixpkgs by default, see
-          # ../../../servers/x11/xorg/overrides.nix
-          (fetchPatchFromAUR {
-            name = "enable-wide-glyphs.patch";
-            package = "rxvt-unicode-truecolor-wide-glyphs";
-            rev = "69701a09c2c206233952b84bc966407f6774f1dc";
-            sha256 = "0jfcj0ahky4dxdfrhqvh1v83mblhf5nak56dk1vq3bhyifdg7ffq";
-          })
-          (fetchPatchFromAUR {
-            name = "improve-font-rendering.patch";
-            package = "rxvt-unicode-truecolor-wide-glyphs";
-            rev = "69701a09c2c206233952b84bc966407f6774f1dc";
-            sha256 = "1jj5ai2182nq912279adihi4zph1w4dvbdqa1pwacy4na6y0fz9y";
-          })
-        ]
-      else
-        [
-          ./patches/9.06-font-width.patch
-        ]
-    )
-    ++ [
-      ./patches/256-color-resources.patch
-      (fetchPatchFromAUR {
-        name = "7-bit-queries.patch";
-        package = "rxvt-unicode-truecolor-wide-glyphs";
-        rev = "61ed186890a2bf37585e4704a095be61e6504ac6";
-        sha256 = "1xpv6g3bhxq5gp40k3rp8yjp4xrw7dr2g9sfkdmj0gi3rr0myx46";
-      })
-    ]
-    ++ lib.optional (perlSupport && lib.versionAtLeast perl.version "5.38") (fetchpatch {
-      name = "perl538-locale-c.patch";
-      url = "https://github.com/exg/rxvt-unicode/commit/16634bc8dd5fc4af62faf899687dfa8f27768d15.patch";
-      excludes = [ "Changes" ];
-      sha256 = "sha256-JVqzYi3tcWIN2j5JByZSztImKqbbbB3lnfAwUXrumHM=";
+  (
+    if emojiSupport then
+      [
+        # the required patches to libXft are in nixpkgs by default, see
+        # ../../../servers/x11/xorg/overrides.nix
+        (fetchPatchFromAUR {
+          name = "enable-wide-glyphs.patch";
+          package = "rxvt-unicode-truecolor-wide-glyphs";
+          rev = "69701a09c2c206233952b84bc966407f6774f1dc";
+          sha256 = "0jfcj0ahky4dxdfrhqvh1v83mblhf5nak56dk1vq3bhyifdg7ffq";
+        })
+        (fetchPatchFromAUR {
+          name = "improve-font-rendering.patch";
+          package = "rxvt-unicode-truecolor-wide-glyphs";
+          rev = "69701a09c2c206233952b84bc966407f6774f1dc";
+          sha256 = "1jj5ai2182nq912279adihi4zph1w4dvbdqa1pwacy4na6y0fz9y";
+        })
+      ]
+    else
+      [
+        ./patches/9.06-font-width.patch
+      ]
+  )
+  ++ [
+    ./patches/256-color-resources.patch
+    (fetchPatchFromAUR {
+      name = "7-bit-queries.patch";
+      package = "rxvt-unicode-truecolor-wide-glyphs";
+      rev = "61ed186890a2bf37585e4704a095be61e6504ac6";
+      sha256 = "1xpv6g3bhxq5gp40k3rp8yjp4xrw7dr2g9sfkdmj0gi3rr0myx46";
     })
-    ++ lib.optional stdenv.hostPlatform.isDarwin ./patches/makefile-phony.patch;
+  ]
+  ++ lib.optional (perlSupport && lib.versionAtLeast perl.version "5.38") (fetchpatch {
+    name = "perl538-locale-c.patch";
+    url = "https://github.com/exg/rxvt-unicode/commit/16634bc8dd5fc4af62faf899687dfa8f27768d15.patch";
+    excludes = [ "Changes" ];
+    sha256 = "sha256-JVqzYi3tcWIN2j5JByZSztImKqbbbB3lnfAwUXrumHM=";
+  })
+  ++ lib.optional stdenv.hostPlatform.isDarwin ./patches/makefile-phony.patch;
 
   configureFlags = [
     "--with-terminfo=${placeholder "terminfo"}/share/terminfo"

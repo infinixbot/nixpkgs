@@ -177,32 +177,32 @@ let
     # Xonotic needs to find libcurl.so at runtime for map downloads
     dontPatchELF = true;
     postFixup =
-      lib.optionalString withDedicated ''
-        patchelf --add-needed ${curl.out}/lib/libcurl.so $out/bin/xonotic-dedicated
-      ''
-      + lib.optionalString withGLX ''
-        patchelf \
-            --add-needed ${curl.out}/lib/libcurl.so \
-            --add-needed ${libvorbis}/lib/libvorbisfile.so \
-            --add-needed ${libvorbis}/lib/libvorbisenc.so \
-            --add-needed ${libvorbis}/lib/libvorbis.so \
-            --add-needed ${libGL.out}/lib/libGL.so \
-            --add-needed ${freetype}/lib/libfreetype.so \
-            --add-needed ${libpng}/lib/libpng.so \
-            --add-needed ${libtheora}/lib/libtheora.so \
-            $out/bin/xonotic-glx
-      ''
-      + lib.optionalString withSDL ''
-        patchelf \
-            --add-needed ${curl.out}/lib/libcurl.so \
-            --add-needed ${libvorbis}/lib/libvorbisfile.so \
-            --add-needed ${libvorbis}/lib/libvorbisenc.so \
-            --add-needed ${libvorbis}/lib/libvorbis.so \
-            --add-needed ${freetype}/lib/libfreetype.so \
-            --add-needed ${libpng}/lib/libpng.so \
-            --add-needed ${libtheora}/lib/libtheora.so \
-            $out/bin/xonotic-sdl
-      '';
+    lib.optionalString withDedicated ''
+      patchelf --add-needed ${curl.out}/lib/libcurl.so $out/bin/xonotic-dedicated
+    ''
+    + lib.optionalString withGLX ''
+      patchelf \
+          --add-needed ${curl.out}/lib/libcurl.so \
+          --add-needed ${libvorbis}/lib/libvorbisfile.so \
+          --add-needed ${libvorbis}/lib/libvorbisenc.so \
+          --add-needed ${libvorbis}/lib/libvorbis.so \
+          --add-needed ${libGL.out}/lib/libGL.so \
+          --add-needed ${freetype}/lib/libfreetype.so \
+          --add-needed ${libpng}/lib/libpng.so \
+          --add-needed ${libtheora}/lib/libtheora.so \
+          $out/bin/xonotic-glx
+    ''
+    + lib.optionalString withSDL ''
+      patchelf \
+          --add-needed ${curl.out}/lib/libcurl.so \
+          --add-needed ${libvorbis}/lib/libvorbisfile.so \
+          --add-needed ${libvorbis}/lib/libvorbisenc.so \
+          --add-needed ${libvorbis}/lib/libvorbis.so \
+          --add-needed ${freetype}/lib/libfreetype.so \
+          --add-needed ${libpng}/lib/libpng.so \
+          --add-needed ${libtheora}/lib/libtheora.so \
+          $out/bin/xonotic-sdl
+    '';
   };
 
 in

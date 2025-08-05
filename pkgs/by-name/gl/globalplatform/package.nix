@@ -60,12 +60,12 @@ stdenv.mkDerivation (finalAttrs: {
   # The user has to specify custom plugin locations by setting LD_LIBRARY_PATH.
 
   postFixup =
-    lib.optionalString stdenv.hostPlatform.isLinux ''
-      patchelf $out/lib/libglobalplatform.so --add-rpath "$out/lib"
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      install_name_tool -add_rpath "$out/lib" "$out/lib/libglobalplatform.dylib"
-    '';
+  lib.optionalString stdenv.hostPlatform.isLinux ''
+    patchelf $out/lib/libglobalplatform.so --add-rpath "$out/lib"
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    install_name_tool -add_rpath "$out/lib" "$out/lib/libglobalplatform.dylib"
+  '';
 
   meta = {
     description = "C library + command-line for Open- / GlobalPlatform smart cards";

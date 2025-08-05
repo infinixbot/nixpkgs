@@ -196,10 +196,10 @@ in
         {
           assertion = !cfg.serviceConfig.RootDirectoryStartOnly or false;
           message =
-            "${whatOpt "RootDirectoryStartOnly"}, but right now systemd"
-            + " doesn't support restricting bind-mounts to 'ExecStart'."
-            + " Please either define a separate service or find a way to run"
-            + " commands other than ExecStart within the chroot.";
+          "${whatOpt "RootDirectoryStartOnly"}, but right now systemd"
+          + " doesn't support restricting bind-mounts to 'ExecStart'."
+          + " Please either define a separate service or find a way to run"
+          + " commands other than ExecStart within the chroot.";
         }
       ]
     ) config.systemd.services

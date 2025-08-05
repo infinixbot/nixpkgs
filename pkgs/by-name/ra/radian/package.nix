@@ -34,16 +34,16 @@ python3Packages.buildPythonApplication rec {
   ];
 
   propagatedBuildInputs =
-    (with python3Packages; [
-      lineedit
-      prompt-toolkit
-      pygments
-      rchitect
-    ])
-    ++ (with rPackages; [
-      reticulate
-      askpass
-    ]);
+  (with python3Packages; [
+    lineedit
+    prompt-toolkit
+    pygments
+    rchitect
+  ])
+  ++ (with rPackages; [
+    reticulate
+    askpass
+  ]);
 
   nativeCheckInputs =
     (with python3Packages; [

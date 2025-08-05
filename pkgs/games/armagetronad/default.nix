@@ -138,7 +138,7 @@ let
           "";
 
       minorVersion =
-        (minorVersionPart splitVersion "." 2) + (minorVersionPart versionParts "-" 1) + "-nixpkgs";
+      (minorVersionPart splitVersion "." 2) + (minorVersionPart versionParts "-" 1) + "-nixpkgs";
     in
     stdenv.mkDerivation {
       pname = mainProgram;
@@ -173,7 +173,7 @@ let
       ++ lib.optional (!dedicatedServer) "--enable-music";
 
       buildInputs =
-        lib.singleton (libxml2.override { enableHttp = true; }) ++ (resolvedParams.extraBuildInputs or [ ]);
+      lib.singleton (libxml2.override { enableHttp = true; }) ++ (resolvedParams.extraBuildInputs or [ ]);
 
       nativeBuildInputs = [
         autoconf

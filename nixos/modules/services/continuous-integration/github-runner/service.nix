@@ -63,17 +63,17 @@
         // cfg.extraEnvironment;
 
         path =
-          (with pkgs; [
-            bashInteractive
-            coreutils
-            git
-            gnutar
-            gzip
-          ])
-          ++ [
-            config.nix.package
-          ]
-          ++ cfg.extraPackages;
+        (with pkgs; [
+          bashInteractive
+          coreutils
+          git
+          gnutar
+          gzip
+        ])
+        ++ [
+          config.nix.package
+        ]
+        ++ cfg.extraPackages;
 
         serviceConfig = lib.mkMerge [
           {

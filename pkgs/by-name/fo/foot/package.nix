@@ -81,13 +81,13 @@ let
 
   # ar with lto support
   ar =
-    stdenv.cc.bintools.targetPrefix
-    + {
-      "clang" = "llvm-ar";
-      "gcc" = "gcc-ar";
-      "unknown" = "ar";
-    }
-    ."${compilerName}";
+  stdenv.cc.bintools.targetPrefix
+  + {
+    "clang" = "llvm-ar";
+    "gcc" = "gcc-ar";
+    "unknown" = "ar";
+  }
+  ."${compilerName}";
 
   # PGO only makes sense if we are not cross compiling and
   # using a compiler which foot's PGO build supports (clang or gcc)
@@ -167,21 +167,21 @@ stdenv.mkDerivation {
   # build and run binary generating PGO profiles,
   # then reconfigure to build the normal foot binary utilizing PGO
   preBuild =
-    lib.optionalString doPgo ''
-      meson configure -Db_pgo=generate
-      ninja
-      # make sure there is _some_ profiling data on all binaries
-      meson test
-      ./footclient --version
-      ./foot --version
-      ./utils/xtgettcap
-      # generate pgo data of wayland independent code
-      ./pgo ${stimuliFile} ${stimuliFile} ${stimuliFile}
-      meson configure -Db_pgo=use
-    ''
-    + lib.optionalString (doPgo && compilerName == "clang") ''
-      llvm-profdata merge default_*profraw --output=default.profdata
-    '';
+  lib.optionalString doPgo ''
+    meson configure -Db_pgo=generate
+    ninja
+    # make sure there is _some_ profiling data on all binaries
+    meson test
+    ./footclient --version
+    ./foot --version
+    ./utils/xtgettcap
+    # generate pgo data of wayland independent code
+    ./pgo ${stimuliFile} ${stimuliFile} ${stimuliFile}
+    meson configure -Db_pgo=use
+  ''
+  + lib.optionalString (doPgo && compilerName == "clang") ''
+    llvm-profdata merge default_*profraw --output=default.profdata
+  '';
 
   # Install example themes which can be added to foot.ini via the include
   # directive to a separate output to save a bit of space

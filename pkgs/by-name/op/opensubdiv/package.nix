@@ -43,24 +43,24 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs =
-    lib.optionals stdenv.hostPlatform.isUnix [
-      libGLU
-      libGL
-      # FIXME: these are not actually needed, but the configure script wants them.
-      glew
-      xorg.libX11
-      xorg.libXrandr
-      xorg.libXxf86vm
-      xorg.libXcursor
-      xorg.libXinerama
-      xorg.libXi
-    ]
-    ++ lib.optionals (openclSupport && stdenv.hostPlatform.isLinux) [
-      ocl-icd
-    ]
-    ++ lib.optionals cudaSupport [
-      cudaPackages.cuda_cudart
-    ];
+  lib.optionals stdenv.hostPlatform.isUnix [
+    libGLU
+    libGL
+    # FIXME: these are not actually needed, but the configure script wants them.
+    glew
+    xorg.libX11
+    xorg.libXrandr
+    xorg.libXxf86vm
+    xorg.libXcursor
+    xorg.libXinerama
+    xorg.libXi
+  ]
+  ++ lib.optionals (openclSupport && stdenv.hostPlatform.isLinux) [
+    ocl-icd
+  ]
+  ++ lib.optionals cudaSupport [
+    cudaPackages.cuda_cudart
+  ];
 
   patches = [
     # Prevent CMake from generating a redundant nested path like /nix/store/.../nix/store/...

@@ -86,8 +86,8 @@ stdenv.mkDerivation (finalAttrs: {
 
   # ordering of fixups is important
   postFixup =
-    (lib.optionalString needDrm drm-postFixup)
-    + (lib.optionalString nvidia "addDriverRunpath $out/bin/nvtop");
+  (lib.optionalString needDrm drm-postFixup)
+  + (lib.optionalString nvidia "addDriverRunpath $out/bin/nvtop");
 
   # https://github.com/Syllo/nvtop/commit/33ec008e26a00227a666ccb11321e9971a50daf8
   doCheck = !stdenv.hostPlatform.isDarwin;

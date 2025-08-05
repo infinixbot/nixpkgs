@@ -171,12 +171,12 @@ in
             username: opts: "passwd.hashed-password.${username}:${opts.hashedPasswordFile}"
           ) (lib.filterAttrs (_username: opts: opts.hashedPasswordFile != null) systemUsers);
           SetCredential =
-            (lib.mapAttrsToList (
-              username: opts: "passwd.hashed-password.${username}:${opts.initialHashedPassword}"
-            ) (lib.filterAttrs (_username: opts: opts.initialHashedPassword != null) systemUsers))
-            ++ (lib.mapAttrsToList (
-              username: opts: "passwd.plaintext-password.${username}:${opts.initialPassword}"
-            ) (lib.filterAttrs (_username: opts: opts.initialPassword != null) systemUsers));
+          (lib.mapAttrsToList (
+            username: opts: "passwd.hashed-password.${username}:${opts.initialHashedPassword}"
+          ) (lib.filterAttrs (_username: opts: opts.initialHashedPassword != null) systemUsers))
+          ++ (lib.mapAttrsToList (
+            username: opts: "passwd.plaintext-password.${username}:${opts.initialPassword}"
+          ) (lib.filterAttrs (_username: opts: opts.initialPassword != null) systemUsers));
         };
       };
 

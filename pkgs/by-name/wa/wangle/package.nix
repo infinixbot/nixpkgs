@@ -74,19 +74,19 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   env.GTEST_FILTER =
-    "-"
-    + lib.concatStringsSep ":" (
-      [
-        # these depend on example pem files from the folly source tree (?)
-        "SSLContextManagerTest.TestSingleClientCAFileSet"
-        "SSLContextManagerTest.TestMultipleClientCAsSet"
-      ]
-      ++ lib.optionals stdenv.hostPlatform.isDarwin [
-        # flaky
-        "BroadcastPoolTest.ThreadLocalPool"
-        "Bootstrap.UDPClientServerTest"
-      ]
-    );
+  "-"
+  + lib.concatStringsSep ":" (
+    [
+      # these depend on example pem files from the folly source tree (?)
+      "SSLContextManagerTest.TestSingleClientCAFileSet"
+      "SSLContextManagerTest.TestMultipleClientCAsSet"
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      # flaky
+      "BroadcastPoolTest.ThreadLocalPool"
+      "Bootstrap.UDPClientServerTest"
+    ]
+  );
 
   __darwinAllowLocalNetworking = true;
 

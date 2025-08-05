@@ -25,10 +25,10 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   cmakeFlags =
-    lib.optional (stdenv.hostPlatform.isStatic) "-DBUILD_SHARED_LIBS=OFF"
-    # upstream turns BUILD_TESTING=OFF by default and doesn't honor cmake's default (=ON)
-    ++ lib.optional (finalAttrs.finalPackage.doCheck) "-DBUILD_TESTING=ON"
-    ++ lib.optional withDocs "-DBUILD_DOCUMENTATION=ON";
+  lib.optional (stdenv.hostPlatform.isStatic) "-DBUILD_SHARED_LIBS=OFF"
+  # upstream turns BUILD_TESTING=OFF by default and doesn't honor cmake's default (=ON)
+  ++ lib.optional (finalAttrs.finalPackage.doCheck) "-DBUILD_TESTING=ON"
+  ++ lib.optional withDocs "-DBUILD_DOCUMENTATION=ON";
 
   outputs = [ "out" ] ++ lib.optional withDocs "doc";
 

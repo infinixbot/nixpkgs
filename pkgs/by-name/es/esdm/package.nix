@@ -76,12 +76,12 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    lib.optional (cryptoBackend == "botan" || botanRng) botan3
-    ++ lib.optional (cryptoBackend == "openssl" || openSSLRandProvider) openssl
-    ++ lib.optional selinux libselinux
-    ++ lib.optional esJitterRng jitterentropy
-    ++ lib.optional linuxDevFiles fuse3
-    ++ lib.optional esJitterRngKernel libkcapi;
+  lib.optional (cryptoBackend == "botan" || botanRng) botan3
+  ++ lib.optional (cryptoBackend == "openssl" || openSSLRandProvider) openssl
+  ++ lib.optional selinux libselinux
+  ++ lib.optional esJitterRng jitterentropy
+  ++ lib.optional linuxDevFiles fuse3
+  ++ lib.optional esJitterRngKernel libkcapi;
 
   propagatedBuildInputs = [ protobufc ];
 

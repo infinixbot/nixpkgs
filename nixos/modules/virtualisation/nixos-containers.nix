@@ -997,31 +997,31 @@ in
               nameValuePair "container@${name}" (
                 let
                   containerConfig =
-                    cfg
-                    // (optionalAttrs cfg.enableTun {
+                  cfg
+                  // (optionalAttrs cfg.enableTun {
+                    allowedDevices = cfg.allowedDevices ++ [
+                      {
+                        node = "/dev/net/tun";
+                        modifier = "rwm";
+                      }
+                    ];
+                    additionalCapabilities = cfg.additionalCapabilities ++ [ "CAP_NET_ADMIN" ];
+                  })
+                  // (optionalAttrs
+                    (
+                      !cfg.enableTun
+                      && cfg.privateNetwork
+                      && (cfg.privateUsers == "pick" || (builtins.isInt cfg.privateUsers && cfg.privateUsers > 0))
+                    )
+                    {
                       allowedDevices = cfg.allowedDevices ++ [
                         {
                           node = "/dev/net/tun";
                           modifier = "rwm";
                         }
                       ];
-                      additionalCapabilities = cfg.additionalCapabilities ++ [ "CAP_NET_ADMIN" ];
-                    })
-                    // (optionalAttrs
-                      (
-                        !cfg.enableTun
-                        && cfg.privateNetwork
-                        && (cfg.privateUsers == "pick" || (builtins.isInt cfg.privateUsers && cfg.privateUsers > 0))
-                      )
-                      {
-                        allowedDevices = cfg.allowedDevices ++ [
-                          {
-                            node = "/dev/net/tun";
-                            modifier = "rwm";
-                          }
-                        ];
-                      }
-                    );
+                    }
+                  );
                 in
                 recursiveUpdate unit {
                   preStart = preStartScript containerConfig;
@@ -1029,10 +1029,10 @@ in
                   postStart = postStartScript containerConfig;
                   serviceConfig = serviceDirectives containerConfig;
                   unitConfig.RequiresMountsFor =
-                    lib.optional (!containerConfig.ephemeral) "${stateDirectory}/%i"
-                    ++ builtins.map (d: if d.hostPath != null then d.hostPath else d.mountPoint) (
-                      builtins.attrValues cfg.bindMounts
-                    );
+                  lib.optional (!containerConfig.ephemeral) "${stateDirectory}/%i"
+                  ++ builtins.map (d: if d.hostPath != null then d.hostPath else d.mountPoint) (
+                    builtins.attrValues cfg.bindMounts
+                  );
                   environment.root =
                     if containerConfig.ephemeral then "/run/nixos-containers/%i" else "${stateDirectory}/%i";
                 }

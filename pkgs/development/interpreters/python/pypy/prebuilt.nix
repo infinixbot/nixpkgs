@@ -112,34 +112,34 @@ stdenv.mkDerivation {
   '';
 
   preFixup =
-    lib.optionalString stdenv.hostPlatform.isLinux ''
-      find $out/{lib,lib_pypy*} -name "*.so" \
-        -exec patchelf \
-          --replace-needed libtinfow.so.6 libncursesw.so.6 \
-          --replace-needed libgdbm.so.4 libgdbm_compat.so.4 {} \;
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      install_name_tool \
-        -change \
-          @rpath/lib${libPrefix}-c.dylib \
-          $out/lib/lib${libPrefix}-c.dylib \
-          $out/bin/${executable}
-      install_name_tool \
-        -change \
-          @rpath/lib${libPrefix}-c.dylib \
-          $out/lib/lib${libPrefix}-c.dylib \
-          $out/bin/${libPrefix}
-      install_name_tool \
-        -change \
-          /opt/homebrew${lib.optionalString stdenv.hostPlatform.isx86_64 "_x86_64"}/opt/tcl-tk/lib/libtcl8.6.dylib \
-          ${tcl-8_6}/lib/libtcl8.6.dylib \
-          $out/lib/${libPrefix}/_tkinter/*.so
-      install_name_tool \
-        -change \
-          /opt/homebrew${lib.optionalString stdenv.hostPlatform.isx86_64 "_x86_64"}/opt/tcl-tk/lib/libtk8.6.dylib \
-          ${tk-8_6}/lib/libtk8.6.dylib \
-          $out/lib/${libPrefix}/_tkinter/*.so
-    '';
+  lib.optionalString stdenv.hostPlatform.isLinux ''
+    find $out/{lib,lib_pypy*} -name "*.so" \
+      -exec patchelf \
+        --replace-needed libtinfow.so.6 libncursesw.so.6 \
+        --replace-needed libgdbm.so.4 libgdbm_compat.so.4 {} \;
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    install_name_tool \
+      -change \
+        @rpath/lib${libPrefix}-c.dylib \
+        $out/lib/lib${libPrefix}-c.dylib \
+        $out/bin/${executable}
+    install_name_tool \
+      -change \
+        @rpath/lib${libPrefix}-c.dylib \
+        $out/lib/lib${libPrefix}-c.dylib \
+        $out/bin/${libPrefix}
+    install_name_tool \
+      -change \
+        /opt/homebrew${lib.optionalString stdenv.hostPlatform.isx86_64 "_x86_64"}/opt/tcl-tk/lib/libtcl8.6.dylib \
+        ${tcl-8_6}/lib/libtcl8.6.dylib \
+        $out/lib/${libPrefix}/_tkinter/*.so
+    install_name_tool \
+      -change \
+        /opt/homebrew${lib.optionalString stdenv.hostPlatform.isx86_64 "_x86_64"}/opt/tcl-tk/lib/libtk8.6.dylib \
+        ${tk-8_6}/lib/libtk8.6.dylib \
+        $out/lib/${libPrefix}/_tkinter/*.so
+  '';
 
   doInstallCheck = true;
 

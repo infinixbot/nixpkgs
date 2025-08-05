@@ -68,6 +68,6 @@
 }).overrideAttrs
   (o: {
     propagatedBuildInputs =
-      o.propagatedBuildInputs
-      ++ lib.optional (lib.versions.isGt "8.19.0" o.version || o.version == "dev") coq-elpi;
+    o.propagatedBuildInputs
+    ++ lib.optional (lib.versions.isGt "8.19.0" o.version || o.version == "dev") coq-elpi;
   })

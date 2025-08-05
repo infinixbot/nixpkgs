@@ -11,13 +11,13 @@ let
   biberSource = texlive.pkgs.biber-ms.texsource;
   # missing test file
   multiscriptBltxml =
-    (fetchFromGitHub {
-      owner = "plk";
-      repo = "biber";
-      rev = "e8d056433063add7800f24589de76f89c4b64c20";
-      hash = "sha256-QnN6Iyw6iOjfTX7DLVptsfAO/QNn9vOIk5IZlI15EvQ=";
-    })
-    + "/t/tdata/multiscript.bltxml";
+  (fetchFromGitHub {
+    owner = "plk";
+    repo = "biber";
+    rev = "e8d056433063add7800f24589de76f89c4b64c20";
+    hash = "sha256-QnN6Iyw6iOjfTX7DLVptsfAO/QNn9vOIk5IZlI15EvQ=";
+  })
+  + "/t/tdata/multiscript.bltxml";
 in
 
 perlPackages.buildPerlModule {

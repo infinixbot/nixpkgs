@@ -49,21 +49,21 @@ let
           # This can only be done here because we *cannot* depend on $out
           # referring to the toplevel, except by living in the toplevel itself.
           toplevelInjector =
-            lib.escapeShellArgs [
-              "${pkgs.buildPackages.jq}/bin/jq"
-              ''
-                ."org.nixos.bootspec.v1".toplevel = $toplevel |
-                ."org.nixos.bootspec.v1".init = $init
-              ''
-              "--sort-keys"
-              "--arg"
-              "toplevel"
-              "${placeholder "out"}"
-              "--arg"
-              "init"
-              "${placeholder "out"}/init"
-            ]
-            + " < ${json}";
+          lib.escapeShellArgs [
+            "${pkgs.buildPackages.jq}/bin/jq"
+            ''
+              ."org.nixos.bootspec.v1".toplevel = $toplevel |
+              ."org.nixos.bootspec.v1".init = $init
+            ''
+            "--sort-keys"
+            "--arg"
+            "toplevel"
+            "${placeholder "out"}"
+            "--arg"
+            "init"
+            "${placeholder "out"}/init"
+          ]
+          + " < ${json}";
 
           # We slurp all specialisations and inject them as values, such that
           # `.specialisations.${name}` embeds the specialisation's bootspec

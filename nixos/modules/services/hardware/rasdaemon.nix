@@ -113,16 +113,16 @@ in
     );
 
     boot.initrd.kernelModules =
-      cfg.extraModules
-      ++ lib.optionals (cfg.testing) [
-        # edac_core and amd64_edac should get loaded automatically
-        # i7core_edac may not be, and may not be required, but should load successfully
-        "edac_core"
-        "amd64_edac"
-        "i7core_edac"
-        "mce-inject"
-        "aer-inject"
-      ];
+    cfg.extraModules
+    ++ lib.optionals (cfg.testing) [
+      # edac_core and amd64_edac should get loaded automatically
+      # i7core_edac may not be, and may not be required, but should load successfully
+      "edac_core"
+      "amd64_edac"
+      "i7core_edac"
+      "mce-inject"
+      "aer-inject"
+    ];
 
     boot.kernelPatches = lib.optionals (cfg.testing) [
       {
@@ -154,7 +154,7 @@ in
           StateDirectory = lib.optionalString (cfg.record) "rasdaemon";
 
           ExecStart =
-            "${cfg.package}/bin/rasdaemon --foreground" + lib.optionalString (cfg.record) " --record";
+          "${cfg.package}/bin/rasdaemon --foreground" + lib.optionalString (cfg.record) " --record";
           ExecStop = "${cfg.package}/bin/rasdaemon --disable";
           Restart = "on-abort";
 

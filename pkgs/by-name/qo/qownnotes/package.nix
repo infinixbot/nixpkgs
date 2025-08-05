@@ -53,30 +53,30 @@ stdenv.mkDerivation (finalAttrs: {
 
   # Install shell completion on Linux (with xvfb-run)
   postInstall =
-    lib.optionalString stdenv.hostPlatform.isLinux ''
-      installShellCompletion --cmd ${finalAttrs.appname} \
-        --bash <(xvfb-run $out/bin/${finalAttrs.appname} --completion bash) \
-        --fish <(xvfb-run $out/bin/${finalAttrs.appname} --completion fish)
-      installShellCompletion --cmd ${finalAttrs.pname} \
-        --bash <(xvfb-run $out/bin/${finalAttrs.appname} --completion bash) \
-        --fish <(xvfb-run $out/bin/${finalAttrs.appname} --completion fish)
-    ''
-    # Install shell completion on macOS
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      installShellCompletion --cmd ${finalAttrs.pname} \
-        --bash <($out/bin/${finalAttrs.appname} --completion bash) \
-        --fish <($out/bin/${finalAttrs.appname} --completion fish)
-    ''
-    # Create a lowercase symlink for Linux
-    + lib.optionalString stdenv.hostPlatform.isLinux ''
-      ln -s $out/bin/${finalAttrs.appname} $out/bin/${finalAttrs.pname}
-    ''
-    # Rename application for macOS as lowercase binary
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      # Prevent "same file" error
-      mv $out/bin/${finalAttrs.appname} $out/bin/${finalAttrs.pname}.bin
-      mv $out/bin/${finalAttrs.pname}.bin $out/bin/${finalAttrs.pname}
-    '';
+  lib.optionalString stdenv.hostPlatform.isLinux ''
+    installShellCompletion --cmd ${finalAttrs.appname} \
+      --bash <(xvfb-run $out/bin/${finalAttrs.appname} --completion bash) \
+      --fish <(xvfb-run $out/bin/${finalAttrs.appname} --completion fish)
+    installShellCompletion --cmd ${finalAttrs.pname} \
+      --bash <(xvfb-run $out/bin/${finalAttrs.appname} --completion bash) \
+      --fish <(xvfb-run $out/bin/${finalAttrs.appname} --completion fish)
+  ''
+  # Install shell completion on macOS
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    installShellCompletion --cmd ${finalAttrs.pname} \
+      --bash <($out/bin/${finalAttrs.appname} --completion bash) \
+      --fish <($out/bin/${finalAttrs.appname} --completion fish)
+  ''
+  # Create a lowercase symlink for Linux
+  + lib.optionalString stdenv.hostPlatform.isLinux ''
+    ln -s $out/bin/${finalAttrs.appname} $out/bin/${finalAttrs.pname}
+  ''
+  # Rename application for macOS as lowercase binary
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    # Prevent "same file" error
+    mv $out/bin/${finalAttrs.appname} $out/bin/${finalAttrs.pname}.bin
+    mv $out/bin/${finalAttrs.pname}.bin $out/bin/${finalAttrs.pname}
+  '';
 
   # Tests QOwnNotes using the NixOS module by launching xterm:
   passthru.tests.basic-nixos-module-functionality = nixosTests.qownnotes;

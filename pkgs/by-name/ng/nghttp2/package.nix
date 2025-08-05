@@ -64,21 +64,21 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ pkg-config ] ++ lib.optionals (enableApp) [ installShellFiles ];
 
   buildInputs =
-    lib.optionals enableApp [
-      c-aresMinimal
-      libev
-      zlib
-    ]
-    ++ lib.optionals (enableApp && !enableHttp3) [ openssl ]
-    ++ lib.optionals (enableGetAssets) [ libxml2 ]
-    ++ lib.optionals (enableHpack) [ jansson ]
-    ++ lib.optionals (enableJemalloc) [ jemalloc ]
-    ++ lib.optionals (enableHttp3) [
-      ngtcp2
-      nghttp3
-      quictls
-    ]
-    ++ lib.optionals (enablePython) [ python3 ];
+  lib.optionals enableApp [
+    c-aresMinimal
+    libev
+    zlib
+  ]
+  ++ lib.optionals (enableApp && !enableHttp3) [ openssl ]
+  ++ lib.optionals (enableGetAssets) [ libxml2 ]
+  ++ lib.optionals (enableHpack) [ jansson ]
+  ++ lib.optionals (enableJemalloc) [ jemalloc ]
+  ++ lib.optionals (enableHttp3) [
+    ngtcp2
+    nghttp3
+    quictls
+  ]
+  ++ lib.optionals (enablePython) [ python3 ];
 
   enableParallelBuilding = true;
 
@@ -105,18 +105,18 @@ stdenv.mkDerivation rec {
   '';
 
   postInstall =
-    lib.optionalString (enableApp) ''
-      installShellCompletion --bash doc/bash_completion/{h2load,nghttp,nghttpd,nghttpx}
-    ''
-    + lib.optionalString (!enableApp) ''
-      rm -r $out/bin
-    ''
-    + lib.optionalString (enablePython) ''
-      patchShebangs $out/share/nghttp2
-    ''
-    + lib.optionalString (!enablePython) ''
-      rm -r $out/share
-    '';
+  lib.optionalString (enableApp) ''
+    installShellCompletion --bash doc/bash_completion/{h2load,nghttp,nghttpd,nghttpx}
+  ''
+  + lib.optionalString (!enableApp) ''
+    rm -r $out/bin
+  ''
+  + lib.optionalString (enablePython) ''
+    patchShebangs $out/share/nghttp2
+  ''
+  + lib.optionalString (!enablePython) ''
+    rm -r $out/share
+  '';
 
   passthru.tests = {
     inherit curl libsoup_3;

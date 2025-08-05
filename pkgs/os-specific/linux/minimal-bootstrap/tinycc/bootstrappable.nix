@@ -26,18 +26,18 @@ let
     sha256 = "1a0cw9a62qc76qqn5sjmp3xrbbvsz2dxrw21lrnx9q0s74mwaxbq";
   };
   src =
-    (kaem.runCommand "tinycc-bootstrappable-${version}-source" { } ''
-      ungz --file ${tarball} --output tinycc.tar
-      mkdir -p ''${out}
-      cd ''${out}
-      untar --file ''${NIX_BUILD_TOP}/tinycc.tar
+  (kaem.runCommand "tinycc-bootstrappable-${version}-source" { } ''
+    ungz --file ${tarball} --output tinycc.tar
+    mkdir -p ''${out}
+    cd ''${out}
+    untar --file ''${NIX_BUILD_TOP}/tinycc.tar
 
-      # Patch
-      cd tinycc-${rev}
-      # Static link by default
-      replace --file libtcc.c --output libtcc.c --match-on "s->ms_extensions = 1;" --replace-with "s->ms_extensions = 1; s->static_link = 1;"
-    '')
-    + "/tinycc-${rev}";
+    # Patch
+    cd tinycc-${rev}
+    # Static link by default
+    replace --file libtcc.c --output libtcc.c --match-on "s->ms_extensions = 1;" --replace-with "s->ms_extensions = 1; s->static_link = 1;"
+  '')
+  + "/tinycc-${rev}";
 
   meta = with lib; {
     description = "Tiny C Compiler's bootstrappable fork";

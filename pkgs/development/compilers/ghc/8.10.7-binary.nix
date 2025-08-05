@@ -264,116 +264,116 @@ stdenv.mkDerivation {
   ${libEnvVar} = libPath;
 
   postUnpack =
-    # Verify our assumptions of which `libtinfo.so` (ncurses) version is used,
-    # so that we know when ghc bindists upgrade that and we need to update the
-    # version used in `libPath`.
-    lib.optionalString (binDistUsed.exePathForLibraryCheck != null)
-      # Note the `*` glob because some GHCs have a suffix when unpacked, e.g.
-      # the musl bindist has dir `ghc-VERSION-x86_64-unknown-linux/`.
-      # As a result, don't shell-quote this glob when splicing the string.
-      (
-        let
-          buildExeGlob = ''ghc-${version}*/"${binDistUsed.exePathForLibraryCheck}"'';
-        in
-        lib.concatStringsSep "\n" [
-          (''
-            shopt -u nullglob
-            echo "Checking that ghc binary exists in bindist at ${buildExeGlob}"
-            if ! test -e ${buildExeGlob}; then
-              echo >&2 "GHC binary ${binDistUsed.exePathForLibraryCheck} could not be found in the bindist build directory (at ${buildExeGlob}) for arch ${stdenv.hostPlatform.system}, please check that ghcBinDists correctly reflect the bindist dependencies!"; exit 1;
+  # Verify our assumptions of which `libtinfo.so` (ncurses) version is used,
+  # so that we know when ghc bindists upgrade that and we need to update the
+  # version used in `libPath`.
+  lib.optionalString (binDistUsed.exePathForLibraryCheck != null)
+    # Note the `*` glob because some GHCs have a suffix when unpacked, e.g.
+    # the musl bindist has dir `ghc-VERSION-x86_64-unknown-linux/`.
+    # As a result, don't shell-quote this glob when splicing the string.
+    (
+      let
+        buildExeGlob = ''ghc-${version}*/"${binDistUsed.exePathForLibraryCheck}"'';
+      in
+      lib.concatStringsSep "\n" [
+        (''
+          shopt -u nullglob
+          echo "Checking that ghc binary exists in bindist at ${buildExeGlob}"
+          if ! test -e ${buildExeGlob}; then
+            echo >&2 "GHC binary ${binDistUsed.exePathForLibraryCheck} could not be found in the bindist build directory (at ${buildExeGlob}) for arch ${stdenv.hostPlatform.system}, please check that ghcBinDists correctly reflect the bindist dependencies!"; exit 1;
+          fi
+        '')
+        (lib.concatMapStringsSep "\n" (
+          { fileToCheckFor, nixPackage }:
+          lib.optionalString (fileToCheckFor != null) ''
+            echo "Checking bindist for ${fileToCheckFor} to ensure that is still used"
+            if ! readelf -d ${buildExeGlob} | grep "${fileToCheckFor}"; then
+              echo >&2 "File ${fileToCheckFor} could not be found in ${binDistUsed.exePathForLibraryCheck} for arch ${stdenv.hostPlatform.system}, please check that ghcBinDists correctly reflect the bindist dependencies!"; exit 1;
             fi
-          '')
-          (lib.concatMapStringsSep "\n" (
-            { fileToCheckFor, nixPackage }:
-            lib.optionalString (fileToCheckFor != null) ''
-              echo "Checking bindist for ${fileToCheckFor} to ensure that is still used"
-              if ! readelf -d ${buildExeGlob} | grep "${fileToCheckFor}"; then
-                echo >&2 "File ${fileToCheckFor} could not be found in ${binDistUsed.exePathForLibraryCheck} for arch ${stdenv.hostPlatform.system}, please check that ghcBinDists correctly reflect the bindist dependencies!"; exit 1;
-              fi
 
-              echo "Checking that the nix package ${nixPackage} contains ${fileToCheckFor}"
-              if ! test -e "${lib.getLib nixPackage}/lib/${fileToCheckFor}"; then
-                echo >&2 "Nix package ${nixPackage} did not contain ${fileToCheckFor} for arch ${stdenv.hostPlatform.system}, please check that ghcBinDists correctly reflect the bindist dependencies!"; exit 1;
-              fi
-            ''
-          ) binDistUsed.archSpecificLibraries)
-        ]
-      )
-    # GHC has dtrace probes, which causes ld to try to open /usr/lib/libdtrace.dylib
-    # during linking
-    + lib.optionalString stdenv.hostPlatform.isDarwin (
-      ''
-        export NIX_LDFLAGS+=" -no_dtrace_dof"
-        # not enough room in the object files for the full path to libiconv :(
-        for exe in $(find . -type f -executable); do
-          isScript $exe && continue
-          ln -fs ${libiconv}/lib/libiconv.dylib $(dirname $exe)/libiconv.dylib
-          install_name_tool -change /usr/lib/libiconv.2.dylib @executable_path/libiconv.dylib -change /usr/local/lib/gcc/6/libgcc_s.1.dylib ${gcc.cc.lib}/lib/libgcc_s.1.dylib $exe
-      ''
-      + lib.optionalString stdenv.hostPlatform.isAarch64 ''
-        # Resign the binary and set the linker-signed flag. Ignore failures when the file is an object file.
-        # Object files don’t have signatures, so ignoring the failures is harmless.
-        rcodesign sign --code-signature-flags linker-signed $exe || true
-      ''
-      + ''
-        done
-      ''
+            echo "Checking that the nix package ${nixPackage} contains ${fileToCheckFor}"
+            if ! test -e "${lib.getLib nixPackage}/lib/${fileToCheckFor}"; then
+              echo >&2 "Nix package ${nixPackage} did not contain ${fileToCheckFor} for arch ${stdenv.hostPlatform.system}, please check that ghcBinDists correctly reflect the bindist dependencies!"; exit 1;
+            fi
+          ''
+        ) binDistUsed.archSpecificLibraries)
+      ]
     )
-    +
-
-      # Some scripts used during the build need to have their shebangs patched
-      ''
-        patchShebangs ghc-${version}/utils/
-        patchShebangs ghc-${version}/configure
-        test -d ghc-${version}/inplace/bin && \
-          patchShebangs ghc-${version}/inplace/bin
-      ''
-    +
-      # We have to patch the GMP paths for the integer-gmp package.
-      # Note that musl bindists do not contain them,
-      # see: https://gitlab.haskell.org/ghc/ghc/-/issues/20073#note_363231
-      # However, musl bindists >= 8.10.6 use `integer-simple`, not `gmp`.
-      ''
-        find . -name integer-gmp.buildinfo \
-            -exec sed -i "s@extra-lib-dirs: @extra-lib-dirs: ${gmp.out}/lib@" {} \;
-      ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      find . -name base.buildinfo \
-          -exec sed -i "s@extra-lib-dirs: @extra-lib-dirs: ${libiconv}/lib@" {} \;
+  # GHC has dtrace probes, which causes ld to try to open /usr/lib/libdtrace.dylib
+  # during linking
+  + lib.optionalString stdenv.hostPlatform.isDarwin (
     ''
-    +
-      # Some platforms do HAVE_NUMA so -lnuma requires it in library-dirs in rts/package.conf.in
-      # FFI_LIB_DIR is a good indication of places it must be needed.
-      lib.optionalString
-        (
-          lib.meta.availableOn stdenv.hostPlatform numactl
-          && builtins.any ({ nixPackage, ... }: nixPackage == numactl) binDistUsed.archSpecificLibraries
-        )
-        ''
-          find . -name package.conf.in \
-              -exec sed -i "s@FFI_LIB_DIR@FFI_LIB_DIR ${numactl.out}/lib@g" {} \;
-        ''
-    +
-      # Rename needed libraries and binaries, fix interpreter
-      lib.optionalString stdenv.hostPlatform.isLinux ''
-        find . -type f -executable -exec patchelf \
-            --interpreter ${stdenv.cc.bintools.dynamicLinker} {} \;
+      export NIX_LDFLAGS+=" -no_dtrace_dof"
+      # not enough room in the object files for the full path to libiconv :(
+      for exe in $(find . -type f -executable); do
+        isScript $exe && continue
+        ln -fs ${libiconv}/lib/libiconv.dylib $(dirname $exe)/libiconv.dylib
+        install_name_tool -change /usr/lib/libiconv.2.dylib @executable_path/libiconv.dylib -change /usr/local/lib/gcc/6/libgcc_s.1.dylib ${gcc.cc.lib}/lib/libgcc_s.1.dylib $exe
+    ''
+    + lib.optionalString stdenv.hostPlatform.isAarch64 ''
+      # Resign the binary and set the linker-signed flag. Ignore failures when the file is an object file.
+      # Object files don’t have signatures, so ignoring the failures is harmless.
+      rcodesign sign --code-signature-flags linker-signed $exe || true
+    ''
+    + ''
+      done
+    ''
+  )
+  +
+
+    # Some scripts used during the build need to have their shebangs patched
+    ''
+      patchShebangs ghc-${version}/utils/
+      patchShebangs ghc-${version}/configure
+      test -d ghc-${version}/inplace/bin && \
+        patchShebangs ghc-${version}/inplace/bin
+    ''
+  +
+    # We have to patch the GMP paths for the integer-gmp package.
+    # Note that musl bindists do not contain them,
+    # see: https://gitlab.haskell.org/ghc/ghc/-/issues/20073#note_363231
+    # However, musl bindists >= 8.10.6 use `integer-simple`, not `gmp`.
+    ''
+      find . -name integer-gmp.buildinfo \
+          -exec sed -i "s@extra-lib-dirs: @extra-lib-dirs: ${gmp.out}/lib@" {} \;
+    ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    find . -name base.buildinfo \
+        -exec sed -i "s@extra-lib-dirs: @extra-lib-dirs: ${libiconv}/lib@" {} \;
+  ''
+  +
+    # Some platforms do HAVE_NUMA so -lnuma requires it in library-dirs in rts/package.conf.in
+    # FFI_LIB_DIR is a good indication of places it must be needed.
+    lib.optionalString
+      (
+        lib.meta.availableOn stdenv.hostPlatform numactl
+        && builtins.any ({ nixPackage, ... }: nixPackage == numactl) binDistUsed.archSpecificLibraries
+      )
       ''
-    +
-      # The hadrian install Makefile uses 'xxx' as a temporary placeholder in path
-      # substitution. Which can break the build if the store path / prefix happens
-      # to contain this string. This will be fixed with 9.4 bindists.
-      # https://gitlab.haskell.org/ghc/ghc/-/issues/21402
+        find . -name package.conf.in \
+            -exec sed -i "s@FFI_LIB_DIR@FFI_LIB_DIR ${numactl.out}/lib@g" {} \;
       ''
-        # Detect hadrian Makefile by checking for the target that has the problem
-        if grep '^update_package_db' ghc-${version}*/Makefile > /dev/null; then
-          echo Hadrian bindist, applying workaround for xxx path substitution.
-          # based on https://gitlab.haskell.org/ghc/ghc/-/commit/dd5fecb0e2990b192d92f4dfd7519ecb33164fad.patch
-          substituteInPlace ghc-${version}*/Makefile --replace 'xxx' '\0xxx\0'
-        else
-          echo Not a hadrian bindist, not applying xxx path workaround.
-        fi
-      '';
+  +
+    # Rename needed libraries and binaries, fix interpreter
+    lib.optionalString stdenv.hostPlatform.isLinux ''
+      find . -type f -executable -exec patchelf \
+          --interpreter ${stdenv.cc.bintools.dynamicLinker} {} \;
+    ''
+  +
+    # The hadrian install Makefile uses 'xxx' as a temporary placeholder in path
+    # substitution. Which can break the build if the store path / prefix happens
+    # to contain this string. This will be fixed with 9.4 bindists.
+    # https://gitlab.haskell.org/ghc/ghc/-/issues/21402
+    ''
+      # Detect hadrian Makefile by checking for the target that has the problem
+      if grep '^update_package_db' ghc-${version}*/Makefile > /dev/null; then
+        echo Hadrian bindist, applying workaround for xxx path substitution.
+        # based on https://gitlab.haskell.org/ghc/ghc/-/commit/dd5fecb0e2990b192d92f4dfd7519ecb33164fad.patch
+        substituteInPlace ghc-${version}*/Makefile --replace 'xxx' '\0xxx\0'
+      else
+        echo Not a hadrian bindist, not applying xxx path workaround.
+      fi
+    '';
 
   # fix for `configure: error: Your linker is affected by binutils #16177`
   preConfigure = lib.optionalString stdenv.targetPlatform.isAarch32 "LD=ld.gold";
@@ -429,60 +429,60 @@ stdenv.mkDerivation {
   # On Linux, use patchelf to modify the executables so that they can
   # find editline/gmp.
   postFixup =
-    lib.optionalString stdenv.hostPlatform.isLinux (
-      if stdenv.hostPlatform.isAarch64 then
-        # Keep rpath as small as possible on aarch64 for patchelf#244.  All Elfs
-        # are 2 directories deep from $out/lib, so pooling symlinks there makes
-        # a short rpath.
-        ''
-          (cd $out/lib; ln -s ${ncurses6.out}/lib/libtinfo.so.6)
-          (cd $out/lib; ln -s ${gmp.out}/lib/libgmp.so.10)
-          (cd $out/lib; ln -s ${numactl.out}/lib/libnuma.so.1)
-          for p in $(find "$out/lib" -type f -name "*\.so*"); do
-            (cd $out/lib; ln -s $p)
-          done
+  lib.optionalString stdenv.hostPlatform.isLinux (
+    if stdenv.hostPlatform.isAarch64 then
+      # Keep rpath as small as possible on aarch64 for patchelf#244.  All Elfs
+      # are 2 directories deep from $out/lib, so pooling symlinks there makes
+      # a short rpath.
+      ''
+        (cd $out/lib; ln -s ${ncurses6.out}/lib/libtinfo.so.6)
+        (cd $out/lib; ln -s ${gmp.out}/lib/libgmp.so.10)
+        (cd $out/lib; ln -s ${numactl.out}/lib/libnuma.so.1)
+        for p in $(find "$out/lib" -type f -name "*\.so*"); do
+          (cd $out/lib; ln -s $p)
+        done
 
-          for p in $(find "$out/lib" -type f -executable); do
-            if isELF "$p"; then
-              echo "Patchelfing $p"
-              patchelf --set-rpath "\$ORIGIN:\$ORIGIN/../.." $p
-            fi
-          done
-        ''
-      else
-        ''
-          for p in $(find "$out" -type f -executable); do
-            if isELF "$p"; then
-              echo "Patchelfing $p"
-              patchelf --set-rpath "${libPath}:$(patchelf --print-rpath $p)" $p
-            fi
-          done
-        ''
-    )
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      # not enough room in the object files for the full path to libiconv :(
-      for exe in $(find "$out" -type f -executable); do
-        isScript $exe && continue
-        ln -fs ${libiconv}/lib/libiconv.dylib $(dirname $exe)/libiconv.dylib
-        install_name_tool -change /usr/lib/libiconv.2.dylib @executable_path/libiconv.dylib -change /usr/local/lib/gcc/6/libgcc_s.1.dylib ${gcc.cc.lib}/lib/libgcc_s.1.dylib $exe
-      done
+        for p in $(find "$out/lib" -type f -executable); do
+          if isELF "$p"; then
+            echo "Patchelfing $p"
+            patchelf --set-rpath "\$ORIGIN:\$ORIGIN/../.." $p
+          fi
+        done
+      ''
+    else
+      ''
+        for p in $(find "$out" -type f -executable); do
+          if isELF "$p"; then
+            echo "Patchelfing $p"
+            patchelf --set-rpath "${libPath}:$(patchelf --print-rpath $p)" $p
+          fi
+        done
+      ''
+  )
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    # not enough room in the object files for the full path to libiconv :(
+    for exe in $(find "$out" -type f -executable); do
+      isScript $exe && continue
+      ln -fs ${libiconv}/lib/libiconv.dylib $(dirname $exe)/libiconv.dylib
+      install_name_tool -change /usr/lib/libiconv.2.dylib @executable_path/libiconv.dylib -change /usr/local/lib/gcc/6/libgcc_s.1.dylib ${gcc.cc.lib}/lib/libgcc_s.1.dylib $exe
+    done
 
-      for file in $(find "$out" -name setup-config); do
-        substituteInPlace $file --replace /usr/bin/ranlib "$(type -P ranlib)"
-      done
-    ''
-    + lib.optionalString minimal ''
-      # Remove profiling files
-      find $out -type f -name '*.p_o' -delete
-      find $out -type f -name '*.p_hi' -delete
-      find $out -type f -name '*_p.a' -delete
-      # `-f` because e.g. musl bindist does not have this file.
-      rm -f $out/lib/ghc-*/bin/ghc-iserv-prof
-      # Hydra will redistribute this derivation, so we have to keep the docs for
-      # legal reasons (retaining the legal notices etc)
-      # As a last resort we could unpack the docs separately and symlink them in.
-      # They're in $out/share/{doc,man}.
-    '';
+    for file in $(find "$out" -name setup-config); do
+      substituteInPlace $file --replace /usr/bin/ranlib "$(type -P ranlib)"
+    done
+  ''
+  + lib.optionalString minimal ''
+    # Remove profiling files
+    find $out -type f -name '*.p_o' -delete
+    find $out -type f -name '*.p_hi' -delete
+    find $out -type f -name '*_p.a' -delete
+    # `-f` because e.g. musl bindist does not have this file.
+    rm -f $out/lib/ghc-*/bin/ghc-iserv-prof
+    # Hydra will redistribute this derivation, so we have to keep the docs for
+    # legal reasons (retaining the legal notices etc)
+    # As a last resort we could unpack the docs separately and symlink them in.
+    # They're in $out/share/{doc,man}.
+  '';
 
   # GHC cannot currently produce outputs that are ready for `-pie` linking.
   # Thus, disable `pie` hardening, otherwise `recompile with -fPIE` errors appear.

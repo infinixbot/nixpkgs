@@ -68,21 +68,21 @@ buildPythonPackage rec {
   };
 
   postPatch =
-    # relax build-dependency petsc4py
-    ''
-      substituteInPlace pyproject.toml --replace-fail \
-        "petsc4py==3.23.4" "petsc4py"
-    ''
-    + lib.optionalString stdenv.hostPlatform.isLinux ''
-      substituteInPlace firedrake/petsc.py --replace-fail \
-        'program = ["ldd"]' \
-        'program = ["${lib.getExe' pax-utils "lddtree"}"]'
-    ''
-    + lib.optionalString stdenv.hostPlatform.isDarwin ''
-      substituteInPlace firedrake/petsc.py --replace-fail \
-        'program = ["otool"' \
-        'program = ["${lib.getExe' stdenv.cc.bintools.bintools "otool"}"'
-    '';
+  # relax build-dependency petsc4py
+  ''
+    substituteInPlace pyproject.toml --replace-fail \
+      "petsc4py==3.23.4" "petsc4py"
+  ''
+  + lib.optionalString stdenv.hostPlatform.isLinux ''
+    substituteInPlace firedrake/petsc.py --replace-fail \
+      'program = ["ldd"]' \
+      'program = ["${lib.getExe' pax-utils "lddtree"}"]'
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    substituteInPlace firedrake/petsc.py --replace-fail \
+      'program = ["otool"' \
+      'program = ["${lib.getExe' stdenv.cc.bintools.bintools "otool"}"'
+  '';
 
   pythonRelaxDeps = [
     "decorator"

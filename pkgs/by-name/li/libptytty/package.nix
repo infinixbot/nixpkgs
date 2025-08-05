@@ -23,14 +23,14 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ cmake ];
 
   cmakeFlags =
-    lib.optional isStatic "-DBUILD_SHARED_LIBS=OFF"
-    ++ lib.optional (isCross || isStatic) "-DTTY_GID_SUPPORT=OFF"
-    # Musl lacks UTMP/WTMP built-in support
-    ++ lib.optionals isMusl [
-      "-DUTMP_SUPPORT=OFF"
-      "-DWTMP_SUPPORT=OFF"
-      "-DLASTLOG_SUPPORT=OFF"
-    ];
+  lib.optional isStatic "-DBUILD_SHARED_LIBS=OFF"
+  ++ lib.optional (isCross || isStatic) "-DTTY_GID_SUPPORT=OFF"
+  # Musl lacks UTMP/WTMP built-in support
+  ++ lib.optionals isMusl [
+    "-DUTMP_SUPPORT=OFF"
+    "-DWTMP_SUPPORT=OFF"
+    "-DLASTLOG_SUPPORT=OFF"
+  ];
 
   meta = with lib; {
     description = "OS independent and secure pty/tty and utmp/wtmp/lastlog";

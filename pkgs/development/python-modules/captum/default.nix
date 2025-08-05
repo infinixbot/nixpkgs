@@ -54,15 +54,15 @@ buildPythonPackage rec {
   ];
 
   disabledTestPaths =
-    lib.optionals stdenv.hostPlatform.isDarwin [
-      # These tests may fail if multiple builds run them at the same time due
-      # to hardcoded port number used for rendezvous
-      "tests/attr/test_data_parallel.py"
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) [
-      # Issue reported upstream at https://github.com/pytorch/captum/issues/1447
-      "tests/concept/test_tcav.py"
-    ];
+  lib.optionals stdenv.hostPlatform.isDarwin [
+    # These tests may fail if multiple builds run them at the same time due
+    # to hardcoded port number used for rendezvous
+    "tests/attr/test_data_parallel.py"
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) [
+    # Issue reported upstream at https://github.com/pytorch/captum/issues/1447
+    "tests/concept/test_tcav.py"
+  ];
 
   disabledTests = [
     # Failing tests

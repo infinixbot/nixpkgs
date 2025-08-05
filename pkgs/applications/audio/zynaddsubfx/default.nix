@@ -154,15 +154,15 @@ stdenv.mkDerivation rec {
   ];
 
   disabledTests =
-    # PortChecker is non-deterministic. It's fixed in the master
-    # branch, but backporting would require an update to rtosc, so
-    # we'll just disable it until the next release.
-    [ "PortChecker" ]
-    # Tests fail on aarch64
-    ++ lib.optionals stdenv.hostPlatform.isAarch64 [
-      "MessageTest"
-      "UnisonTest"
-    ];
+  # PortChecker is non-deterministic. It's fixed in the master
+  # branch, but backporting would require an update to rtosc, so
+  # we'll just disable it until the next release.
+  [ "PortChecker" ]
+  # Tests fail on aarch64
+  ++ lib.optionals stdenv.hostPlatform.isAarch64 [
+    "MessageTest"
+    "UnisonTest"
+  ];
 
   # Use Zyn-Fusion logo for zest build
   # An SVG version of the logo isn't hosted anywhere we can fetch, I

@@ -133,7 +133,7 @@ let
     );
 
   sourceBuilders =
-    callPackage ../../../development/compilers/dart/package-source-builders { } // customSourceBuilders;
+  callPackage ../../../development/compilers/dart/package-source-builders { } // customSourceBuilders;
 
   dependencySources = lib.filterAttrs (name: src: src != null) (
     builtins.mapAttrs (

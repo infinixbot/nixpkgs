@@ -24,12 +24,12 @@ rustPlatform.buildRustPackage (finalAttrs: {
   };
 
   nativeBuildInputs =
-    lib.optionals isDarwin [
-      makeBinaryWrapper
-    ]
-    ++ lib.optionals (isDarwin && isx86_64) [
-      lld
-    ];
+  lib.optionals isDarwin [
+    makeBinaryWrapper
+  ]
+  ++ lib.optionals (isDarwin && isx86_64) [
+    lld
+  ];
 
   buildInputs = [
     libsixel

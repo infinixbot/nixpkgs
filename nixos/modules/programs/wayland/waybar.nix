@@ -12,10 +12,10 @@ in
   options.programs.waybar = {
     enable = lib.mkEnableOption "waybar, a highly customizable Wayland bar for Sway and Wlroots based compositors";
     package =
-      lib.mkPackageOption pkgs "waybar" { }
-      // lib.mkOption {
-        apply = pkg: pkg.override { systemdSupport = true; };
-      };
+    lib.mkPackageOption pkgs "waybar" { }
+    // lib.mkOption {
+      apply = pkg: pkg.override { systemdSupport = true; };
+    };
     systemd.target = lib.mkOption {
       type = lib.types.str;
       description = ''

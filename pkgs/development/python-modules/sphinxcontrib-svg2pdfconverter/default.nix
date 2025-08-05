@@ -28,14 +28,14 @@ buildPythonPackage rec {
 
   # for enabled modules: provide the full path to the binary
   postPatch =
-    lib.optionalString withLibrsvg ''
-      substituteInPlace sphinxcontrib/rsvgconverter.py \
-        --replace-fail "'rsvg_converter_bin', 'rsvg-convert'" "'rsvg_converter_bin', '${lib.getExe' librsvg "rsvg-convert"}'"
-    ''
-    + lib.optionalString withInkscape ''
-      substituteInPlace sphinxcontrib/inkscapeconverter.py \
-        --replace-fail "'inkscape_converter_bin', 'inkscape'" "'inkscape_converter_bin', '${lib.getExe inkscape}'"
-    '';
+  lib.optionalString withLibrsvg ''
+    substituteInPlace sphinxcontrib/rsvgconverter.py \
+      --replace-fail "'rsvg_converter_bin', 'rsvg-convert'" "'rsvg_converter_bin', '${lib.getExe' librsvg "rsvg-convert"}'"
+  ''
+  + lib.optionalString withInkscape ''
+    substituteInPlace sphinxcontrib/inkscapeconverter.py \
+      --replace-fail "'inkscape_converter_bin', 'inkscape'" "'inkscape_converter_bin', '${lib.getExe inkscape}'"
+  '';
 
   build-system = [ setuptools ];
 
@@ -44,9 +44,9 @@ buildPythonPackage rec {
   doCheck = false; # no tests
 
   pythonImportsCheck =
-    lib.optional withCairosvg "sphinxcontrib.cairosvgconverter"
-    ++ lib.optional withInkscape "sphinxcontrib.inkscapeconverter"
-    ++ lib.optional withLibrsvg "sphinxcontrib.rsvgconverter";
+  lib.optional withCairosvg "sphinxcontrib.cairosvgconverter"
+  ++ lib.optional withInkscape "sphinxcontrib.inkscapeconverter"
+  ++ lib.optional withLibrsvg "sphinxcontrib.rsvgconverter";
 
   pythonNamespaces = [ "sphinxcontrib" ];
 

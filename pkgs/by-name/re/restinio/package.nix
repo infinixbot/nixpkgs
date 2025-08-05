@@ -85,19 +85,19 @@ stdenv.mkDerivation (finalAttrs: {
   preCheck =
     let
       disabledTests =
-        [ ]
-        ++ lib.optionals stdenv.hostPlatform.isDarwin [
-          # Tests that fail with error: 'unable to write: Operation not permitted'
-          "HTTP echo server"
-          "single_thread_connection_limiter"
-          "simple sendfile"
-          "simple sendfile with std::filesystem::path"
-          "sendfile the same file several times"
-          "sendfile 2 files"
-          "sendfile offsets_and_size"
-          "sendfile chunks"
-          "sendfile with partially-read response"
-        ];
+      [ ]
+      ++ lib.optionals stdenv.hostPlatform.isDarwin [
+        # Tests that fail with error: 'unable to write: Operation not permitted'
+        "HTTP echo server"
+        "single_thread_connection_limiter"
+        "simple sendfile"
+        "simple sendfile with std::filesystem::path"
+        "sendfile the same file several times"
+        "sendfile 2 files"
+        "sendfile offsets_and_size"
+        "sendfile chunks"
+        "sendfile with partially-read response"
+      ];
       excludeRegex = "^(${builtins.concatStringsSep "|" disabledTests})";
     in
     lib.optionalString (builtins.length disabledTests != 0) ''

@@ -52,13 +52,13 @@ stdenv.mkDerivation rec {
   __darwinAllowLocalNetworking = true; # needed for select_poll_eintr test
 
   skippedTests =
-    " -e select_poll_fd"
-    + lib.optionalString (
-      stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64
-    ) " -e ffi_callback -e float_parse -e float_parse_doubleproc"
-    + lib.optionalString (
-      stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isAarch64
-    ) " -e float_parse";
+  " -e select_poll_fd"
+  + lib.optionalString (
+    stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64
+  ) " -e ffi_callback -e float_parse -e float_parse_doubleproc"
+  + lib.optionalString (
+    stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isAarch64
+  ) " -e float_parse";
 
   checkPhase = ''
     runHook preCheck

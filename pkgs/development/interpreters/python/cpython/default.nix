@@ -316,10 +316,10 @@ stdenv.mkDerivation (finalAttrs: {
 
   inherit nativeBuildInputs;
   buildInputs =
-    lib.optionals (!stdenv.hostPlatform.isWindows) [
-      bashNonInteractive # only required for patchShebangs
-    ]
-    ++ buildInputs;
+  lib.optionals (!stdenv.hostPlatform.isWindows) [
+    bashNonInteractive # only required for patchShebangs
+  ]
+  ++ buildInputs;
 
   prePatch = optionalString stdenv.hostPlatform.isDarwin ''
     substituteInPlace configure --replace-fail '`/usr/bin/arch`' '"i386"'
@@ -418,19 +418,19 @@ stdenv.mkDerivation (finalAttrs: {
   );
 
   postPatch =
-    optionalString (!stdenv.hostPlatform.isWindows) ''
-      substituteInPlace Lib/subprocess.py \
-        --replace-fail "'/bin/sh'" "'${bashNonInteractive}/bin/sh'"
-    ''
-    + optionalString mimetypesSupport ''
-      substituteInPlace Lib/mimetypes.py \
-        --replace-fail "@mime-types@" "${mailcap}"
-    ''
-    + optionalString (pythonOlder "3.13" && x11Support && ((tclPackages.tix or null) != null)) ''
-      substituteInPlace "Lib/tkinter/tix.py" --replace-fail \
-        "os.environ.get('TIX_LIBRARY')" \
-        "os.environ.get('TIX_LIBRARY') or '${tclPackages.tix}/lib'"
-    '';
+  optionalString (!stdenv.hostPlatform.isWindows) ''
+    substituteInPlace Lib/subprocess.py \
+      --replace-fail "'/bin/sh'" "'${bashNonInteractive}/bin/sh'"
+  ''
+  + optionalString mimetypesSupport ''
+    substituteInPlace Lib/mimetypes.py \
+      --replace-fail "@mime-types@" "${mailcap}"
+  ''
+  + optionalString (pythonOlder "3.13" && x11Support && ((tclPackages.tix or null) != null)) ''
+    substituteInPlace "Lib/tkinter/tix.py" --replace-fail \
+      "os.environ.get('TIX_LIBRARY')" \
+      "os.environ.get('TIX_LIBRARY') or '${tclPackages.tix}/lib'"
+  '';
 
   env = {
     CPPFLAGS = concatStringsSep " " (map (p: "-I${getDev p}/include") buildInputs);
@@ -758,15 +758,15 @@ stdenv.mkDerivation (finalAttrs: {
   # Enforce that we don't have references to the OpenSSL -dev package, which we
   # explicitly specify in our configure flags above.
   disallowedReferences =
-    lib.optionals (openssl != null && !static && !enableFramework) [
-      openssl.dev
-    ]
-    ++ lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
-      # Ensure we don't have references to build-time packages.
-      # These typically end up in shebangs.
-      pythonOnBuildForHost
-      buildPackages.bashNonInteractive
-    ];
+  lib.optionals (openssl != null && !static && !enableFramework) [
+    openssl.dev
+  ]
+  ++ lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
+    # Ensure we don't have references to build-time packages.
+    # These typically end up in shebangs.
+    pythonOnBuildForHost
+    buildPackages.bashNonInteractive
+  ];
 
   # Optionally set allowedReferences to guarantee minimal dependencies
   # Allows python3Minimal to stay minimal and not have deps added by accident

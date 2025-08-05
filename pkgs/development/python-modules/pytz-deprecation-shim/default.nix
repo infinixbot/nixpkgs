@@ -27,8 +27,8 @@ buildPythonPackage rec {
   nativeBuildInputs = [ setuptools ];
 
   propagatedBuildInputs =
-    (lib.optionals (pythonOlder "3.6") [ python-dateutil ])
-    ++ (lib.optionals (pythonAtLeast "3.6") [ tzdata ]);
+  (lib.optionals (pythonOlder "3.6") [ python-dateutil ])
+  ++ (lib.optionals (pythonAtLeast "3.6") [ tzdata ]);
 
   nativeCheckInputs = [
     hypothesis

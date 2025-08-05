@@ -18,7 +18,7 @@ lib.makeOverridable (
   fetchpatch {
     inherit name hash;
     url =
-      "https://sources.debian.org/data/${area}/${prefix}/"
-      + "${pname}/${versionString}/debian/patches/${patch}";
+    "https://sources.debian.org/data/${area}/${prefix}/"
+    + "${pname}/${versionString}/debian/patches/${patch}";
   }
 )

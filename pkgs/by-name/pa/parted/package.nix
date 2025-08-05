@@ -53,9 +53,9 @@ stdenv.mkDerivation rec {
   ++ lib.optional (lvm2 != null) lvm2;
 
   configureFlags =
-    (if (readline != null) then [ "--with-readline" ] else [ "--without-readline" ])
-    ++ lib.optional (lvm2 == null) "--disable-device-mapper"
-    ++ lib.optional enableStatic "--enable-static";
+  (if (readline != null) then [ "--with-readline" ] else [ "--without-readline" ])
+  ++ lib.optional (lvm2 == null) "--disable-device-mapper"
+  ++ lib.optional enableStatic "--enable-static";
 
   enableParallelBuilding = true;
 

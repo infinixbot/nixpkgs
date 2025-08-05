@@ -125,9 +125,9 @@ let
 
   # Units that all Mastodon units After= and Requires= on
   commonUnits =
-    lib.optional redisActuallyCreateLocally "redis-mastodon.service"
-    ++ lib.optional databaseActuallyCreateLocally "postgresql.target"
-    ++ lib.optional cfg.automaticMigrations "mastodon-init-db.service";
+  lib.optional redisActuallyCreateLocally "redis-mastodon.service"
+  ++ lib.optional databaseActuallyCreateLocally "postgresql.target"
+  ++ lib.optional cfg.automaticMigrations "mastodon-init-db.service";
 
   envFile = pkgs.writeText "mastodon.env" (
     lib.concatMapStrings (s: s + "\n") (
@@ -933,44 +933,44 @@ in
 
         systemd.services.mastodon-init-db = lib.mkIf cfg.automaticMigrations {
           script =
-            lib.optionalString (!databaseActuallyCreateLocally) ''
-              umask 077
-              export PGPASSWORD="$(cat '${cfg.database.passwordFile}')"
-            ''
-            + ''
-              result="$(psql -t --csv -c \
-                  "select count(*) from pg_class c \
-                  join pg_namespace s on s.oid = c.relnamespace \
-                  where s.nspname not in ('pg_catalog', 'pg_toast', 'information_schema') \
-                  and s.nspname not like 'pg_temp%';")" || error_code=$?
-              if [ "''${error_code:-0}" -ne 0 ]; then
-                echo "Failure checking if database is seeded. psql gave exit code $error_code"
-                exit "$error_code"
-              fi
-              if [ "$result" -eq 0 ]; then
-                echo "Seeding database"
-                SAFETY_ASSURED=1 rails db:schema:load
-                rails db:seed
-              else
-                echo "Migrating database (this might be a noop)"
-                rails db:migrate
-              fi
-            ''
-            + lib.optionalString (!databaseActuallyCreateLocally) ''
-              unset PGPASSWORD
-            '';
+          lib.optionalString (!databaseActuallyCreateLocally) ''
+            umask 077
+            export PGPASSWORD="$(cat '${cfg.database.passwordFile}')"
+          ''
+          + ''
+            result="$(psql -t --csv -c \
+                "select count(*) from pg_class c \
+                join pg_namespace s on s.oid = c.relnamespace \
+                where s.nspname not in ('pg_catalog', 'pg_toast', 'information_schema') \
+                and s.nspname not like 'pg_temp%';")" || error_code=$?
+            if [ "''${error_code:-0}" -ne 0 ]; then
+              echo "Failure checking if database is seeded. psql gave exit code $error_code"
+              exit "$error_code"
+            fi
+            if [ "$result" -eq 0 ]; then
+              echo "Seeding database"
+              SAFETY_ASSURED=1 rails db:schema:load
+              rails db:seed
+            else
+              echo "Migrating database (this might be a noop)"
+              rails db:migrate
+            fi
+          ''
+          + lib.optionalString (!databaseActuallyCreateLocally) ''
+            unset PGPASSWORD
+          '';
           path = [
             cfg.package
             (if databaseActuallyCreateLocally then config.services.postgresql.package else pkgs.postgresql)
           ];
           environment =
-            env
-            // lib.optionalAttrs (!databaseActuallyCreateLocally) {
-              PGHOST = cfg.database.host;
-              PGPORT = toString cfg.database.port;
-              PGDATABASE = cfg.database.name;
-              PGUSER = cfg.database.user;
-            };
+          env
+          // lib.optionalAttrs (!databaseActuallyCreateLocally) {
+            PGHOST = cfg.database.host;
+            PGPORT = toString cfg.database.port;
+            PGDATABASE = cfg.database.name;
+            PGUSER = cfg.database.user;
+          };
           serviceConfig = {
             Type = "oneshot";
             EnvironmentFile = [ "/var/lib/mastodon/.secrets_env" ] ++ cfg.extraEnvFiles;
@@ -1005,13 +1005,13 @@ in
           wantedBy = [ "mastodon.target" ];
           description = "Mastodon web";
           environment =
-            env
-            // (
-              if cfg.enableUnixSocket then
-                { SOCKET = "/run/mastodon-web/web.socket"; }
-              else
-                { PORT = toString cfg.webPort; }
-            );
+          env
+          // (
+            if cfg.enableUnixSocket then
+              { SOCKET = "/run/mastodon-web/web.socket"; }
+            else
+              { PORT = toString cfg.webPort; }
+          );
           serviceConfig = {
             ExecStart = "${cfg.package}/bin/puma -C config/puma.rb";
             Restart = "always";

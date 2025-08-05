@@ -115,22 +115,22 @@ in
     i18n.inputMethod.package = fcitx5Package;
 
     i18n.inputMethod.fcitx5.addons =
-      lib.optionals (cfg.quickPhrase != { }) [
-        (pkgs.writeTextDir "share/fcitx5/data/QuickPhrase.mb" (
-          lib.concatStringsSep "\n" (
-            lib.mapAttrsToList (
-              name: value: "${name} ${builtins.replaceStrings [ "\\" "\n" ] [ "\\\\" "\\n" ] value}"
-            ) cfg.quickPhrase
-          )
-        ))
-      ]
-      ++ lib.optionals (cfg.quickPhraseFiles != { }) [
-        (pkgs.linkFarm "quickPhraseFiles" (
-          lib.mapAttrs' (
-            name: value: lib.nameValuePair ("share/fcitx5/data/quickphrase.d/${name}.mb") value
-          ) cfg.quickPhraseFiles
-        ))
-      ];
+    lib.optionals (cfg.quickPhrase != { }) [
+      (pkgs.writeTextDir "share/fcitx5/data/QuickPhrase.mb" (
+        lib.concatStringsSep "\n" (
+          lib.mapAttrsToList (
+            name: value: "${name} ${builtins.replaceStrings [ "\\" "\n" ] [ "\\\\" "\\n" ] value}"
+          ) cfg.quickPhrase
+        )
+      ))
+    ]
+    ++ lib.optionals (cfg.quickPhraseFiles != { }) [
+      (pkgs.linkFarm "quickPhraseFiles" (
+        lib.mapAttrs' (
+          name: value: lib.nameValuePair ("share/fcitx5/data/quickphrase.d/${name}.mb") value
+        ) cfg.quickPhraseFiles
+      ))
+    ];
     environment.etc =
       let
         optionalFile =

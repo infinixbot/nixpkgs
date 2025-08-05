@@ -113,25 +113,25 @@ stdenv.mkDerivation (finalAttrs: {
 
   # apply necessary nano changes from https://developer.arm.com/-/media/Files/downloads/gnu/12.2.rel1/manifest/copy_nano_libraries.sh?rev=4c50be6ccb9c4205a5262a3925317073&hash=1375A7B0A1CD0DB9B9EB0D2B574ADF66
   postInstall =
-    lib.optionalString nanoizeNewlib ''
-      mkdir -p $out${finalAttrs.passthru.incdir}/newlib-nano
-      cp $out${finalAttrs.passthru.incdir}/newlib.h $out${finalAttrs.passthru.incdir}/newlib-nano/
+  lib.optionalString nanoizeNewlib ''
+    mkdir -p $out${finalAttrs.passthru.incdir}/newlib-nano
+    cp $out${finalAttrs.passthru.incdir}/newlib.h $out${finalAttrs.passthru.incdir}/newlib-nano/
 
-      (
-        cd $out${finalAttrs.passthru.libdir}
+    (
+      cd $out${finalAttrs.passthru.libdir}
 
-        for f in librdimon.a libc.a libm.a libg.a libgloss.a; do
-          # Some libraries are only available for specific architectures.
-          # For example, librdimon.a is only available on ARM.
-          if [ -f "$f" ]; then
-            dst="''${f%%\.a}_nano.a"
-            >&2 echo "$f -> $dst"
-            cp "$f" "$dst"
-          fi
-        done
-      )
-    ''
-    + ''[ "$(find $out -type f | wc -l)" -gt 0 ] || (echo '$out is empty' 1>&2 && exit 1)'';
+      for f in librdimon.a libc.a libm.a libg.a libgloss.a; do
+        # Some libraries are only available for specific architectures.
+        # For example, librdimon.a is only available on ARM.
+        if [ -f "$f" ]; then
+          dst="''${f%%\.a}_nano.a"
+          >&2 echo "$f -> $dst"
+          cp "$f" "$dst"
+        fi
+      done
+    )
+  ''
+  + ''[ "$(find $out -type f | wc -l)" -gt 0 ] || (echo '$out is empty' 1>&2 && exit 1)'';
 
   passthru = {
     incdir = "/${stdenv.targetPlatform.config}/include";

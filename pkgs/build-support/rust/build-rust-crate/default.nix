@@ -307,9 +307,9 @@ lib.makeOverridable
         ++ (crate.nativeBuildInputs or [ ])
         ++ nativeBuildInputs_;
         buildInputs =
-          lib.optionals stdenv.hostPlatform.isDarwin [ libiconv ]
-          ++ (crate.buildInputs or [ ])
-          ++ buildInputs_;
+        lib.optionals stdenv.hostPlatform.isDarwin [ libiconv ]
+        ++ (crate.buildInputs or [ ])
+        ++ buildInputs_;
         dependencies = map lib.getLib dependencies_;
         buildDependencies = map lib.getLib buildDependencies_;
 
@@ -376,13 +376,13 @@ lib.makeOverridable
         edition = crate.edition or null;
         codegenUnits = if crate ? codegenUnits then crate.codegenUnits else defaultCodegenUnits;
         extraRustcOpts =
-          lib.optionals (crate ? extraRustcOpts) crate.extraRustcOpts
-          ++ extraRustcOpts_
-          ++ (lib.optional (edition != null) "--edition ${edition}");
+        lib.optionals (crate ? extraRustcOpts) crate.extraRustcOpts
+        ++ extraRustcOpts_
+        ++ (lib.optional (edition != null) "--edition ${edition}");
         extraRustcOptsForBuildRs =
-          lib.optionals (crate ? extraRustcOptsForBuildRs) crate.extraRustcOptsForBuildRs
-          ++ extraRustcOptsForBuildRs_
-          ++ (lib.optional (edition != null) "--edition ${edition}");
+        lib.optionals (crate ? extraRustcOptsForBuildRs) crate.extraRustcOptsForBuildRs
+        ++ extraRustcOptsForBuildRs_
+        ++ (lib.optional (edition != null) "--edition ${edition}");
 
         configurePhase = configureCrate {
           inherit

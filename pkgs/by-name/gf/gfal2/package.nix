@@ -110,20 +110,20 @@ stdenv.mkDerivation (finalAttrs: {
   );
 
   cmakeFlags =
-    (map (
-      pluginName:
-      "-DPLUGIN_${lib.toUpper pluginName}=${
-        lib.toUpper (lib.boolToString finalAttrs.passthru.enablePluginStatus.${pluginName})
-      }"
-    ) (lib.attrNames finalAttrs.passthru.enablePluginStatus))
-    ++ [ "-DSKIP_TESTS=${lib.toUpper (lib.boolToString (!finalAttrs.finalPackage.doCheck))}" ]
-    ++ lib.optionals finalAttrs.finalPackage.doCheck [ "-DGTEST_INCLUDE_DIR=${gtest.dev}/include" ]
-    ++ lib.optionals finalAttrs.passthru.enablePluginStatus.http [
-      "-DCRYPTOPP_INCLUDE_DIRS=${cryptopp.dev}/include/cryptopp"
-    ]
-    ++ lib.optionals finalAttrs.passthru.enablePluginStatus.xrootd [
-      "-DXROOTD_INCLUDE_DIR=${xrootd.dev}/include/xrootd"
-    ];
+  (map (
+    pluginName:
+    "-DPLUGIN_${lib.toUpper pluginName}=${
+      lib.toUpper (lib.boolToString finalAttrs.passthru.enablePluginStatus.${pluginName})
+    }"
+  ) (lib.attrNames finalAttrs.passthru.enablePluginStatus))
+  ++ [ "-DSKIP_TESTS=${lib.toUpper (lib.boolToString (!finalAttrs.finalPackage.doCheck))}" ]
+  ++ lib.optionals finalAttrs.finalPackage.doCheck [ "-DGTEST_INCLUDE_DIR=${gtest.dev}/include" ]
+  ++ lib.optionals finalAttrs.passthru.enablePluginStatus.http [
+    "-DCRYPTOPP_INCLUDE_DIRS=${cryptopp.dev}/include/cryptopp"
+  ]
+  ++ lib.optionals finalAttrs.passthru.enablePluginStatus.xrootd [
+    "-DXROOTD_INCLUDE_DIR=${xrootd.dev}/include/xrootd"
+  ];
 
   doCheck = stdenv.hostPlatform.isLinux;
 

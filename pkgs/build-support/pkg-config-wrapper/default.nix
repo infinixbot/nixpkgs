@@ -92,37 +92,37 @@ stdenv.mkDerivation {
   ];
 
   postFixup =
-    ##
-    ## User env support
-    ##
+  ##
+  ## User env support
+  ##
 
-    # Propagate the underling unwrapped pkg-config so that if you
-    # install the wrapper, you get anything else it might provide.
+  # Propagate the underling unwrapped pkg-config so that if you
+  # install the wrapper, you get anything else it might provide.
+  ''
+    printWords ${pkg-config} > $out/nix-support/propagated-user-env-packages
+  ''
+
+  ##
+  ## Man page and doc support
+  ##
+  + optionalString propagateDoc (
     ''
-      printWords ${pkg-config} > $out/nix-support/propagated-user-env-packages
+      ln -s ${pkg-config.man} $man
     ''
-
-    ##
-    ## Man page and doc support
-    ##
-    + optionalString propagateDoc (
-      ''
-        ln -s ${pkg-config.man} $man
-      ''
-      + optionalString (pkg-config ? doc) ''
-        ln -s ${pkg-config.doc} $doc
-      ''
-    )
-
-    + ''
-      substituteAll ${./add-flags.sh} $out/nix-support/add-flags.sh
-      substituteAll ${../wrapper-common/utils.bash} $out/nix-support/utils.bash
+    + optionalString (pkg-config ? doc) ''
+      ln -s ${pkg-config.doc} $doc
     ''
+  )
 
-    ##
-    ## Extra custom steps
-    ##
-    + extraBuildCommands;
+  + ''
+    substituteAll ${./add-flags.sh} $out/nix-support/add-flags.sh
+    substituteAll ${../wrapper-common/utils.bash} $out/nix-support/utils.bash
+  ''
+
+  ##
+  ## Extra custom steps
+  ##
+  + extraBuildCommands;
 
   env = {
     shell = getBin stdenvNoCC.shell + stdenvNoCC.shell.shellPath or "";

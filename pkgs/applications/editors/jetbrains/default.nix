@@ -52,10 +52,10 @@ let
   mkMeta = meta: fromSource: {
     inherit (meta) homepage longDescription;
     description =
-      meta.description
-      + lib.optionalString meta.isOpenSource (
-        if fromSource then " (built from source)" else " (patched binaries from jetbrains)"
-      );
+    meta.description
+    + lib.optionalString meta.isOpenSource (
+      if fromSource then " (built from source)" else " (patched binaries from jetbrains)"
+    );
     maintainers = map (x: lib.maintainers."${x}") meta.maintainers;
     teams = [ lib.teams.jetbrains ];
     license = if meta.isOpenSource then lib.licenses.asl20 else lib.licenses.unfree;
@@ -87,18 +87,18 @@ let
         jdk
         ;
       extraBuildInputs =
-        extraBuildInputs
-        ++ [ stdenv.cc.cc ]
-        ++ lib.optionals stdenv.hostPlatform.isLinux [
-          fontconfig
-          libGL
-          libX11
-        ];
+      extraBuildInputs
+      ++ [ stdenv.cc.cc ]
+      ++ lib.optionals stdenv.hostPlatform.isLinux [
+        fontconfig
+        libGL
+        libX11
+      ];
       extraWrapperArgs =
-        extraWrapperArgs
-        ++ lib.optionals (stdenv.hostPlatform.isLinux && forceWayland) [
-          ''--add-flags "\''${WAYLAND_DISPLAY:+-Dawt.toolkit.name=WLToolkit}"''
-        ];
+      extraWrapperArgs
+      ++ lib.optionals (stdenv.hostPlatform.isLinux && forceWayland) [
+        ''--add-flags "\''${WAYLAND_DISPLAY:+-Dawt.toolkit.name=WLToolkit}"''
+      ];
       src =
         if fromSource then
           communitySources."${pname}"
@@ -194,28 +194,28 @@ rec {
     (mkJetBrainsProduct {
       pname = "clion";
       extraBuildInputs =
-        lib.optionals stdenv.hostPlatform.isLinux [
-          python3
-          openssl
-          libxcrypt-legacy
-          lttng-ust_2_12
-          musl
-        ]
-        ++ lib.optionals (stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isAarch) [
-          expat
-          libxml2
-          xz
-        ];
+      lib.optionals stdenv.hostPlatform.isLinux [
+        python3
+        openssl
+        libxcrypt-legacy
+        lttng-ust_2_12
+        musl
+      ]
+      ++ lib.optionals (stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isAarch) [
+        expat
+        libxml2
+        xz
+      ];
     }).overrideAttrs
       (attrs: {
         postInstall =
-          (attrs.postInstall or "")
-          + lib.optionalString stdenv.hostPlatform.isLinux ''
-            for dir in $out/clion/plugins/clion-radler/DotFiles/linux-*; do
-              rm -rf $dir/dotnet
-              ln -s ${dotnet-sdk}/share/dotnet $dir/dotnet
-            done
-          '';
+        (attrs.postInstall or "")
+        + lib.optionalString stdenv.hostPlatform.isLinux ''
+          for dir in $out/clion/plugins/clion-radler/DotFiles/linux-*; do
+            rm -rf $dir/dotnet
+            ln -s ${dotnet-sdk}/share/dotnet $dir/dotnet
+          done
+        '';
 
         postFixup = ''
           ${attrs.postFixup or ""}
@@ -260,12 +260,12 @@ rec {
     }).overrideAttrs
       (attrs: {
         postFixup =
-          (attrs.postFixup or "")
-          + lib.optionalString stdenv.hostPlatform.isLinux ''
-            interp="$(cat $NIX_CC/nix-support/dynamic-linker)"
-            patchelf --set-interpreter $interp $out/goland/plugins/go-plugin/lib/dlv/linux/dlv
-            chmod +x $out/goland/plugins/go-plugin/lib/dlv/linux/dlv
-          '';
+        (attrs.postFixup or "")
+        + lib.optionalString stdenv.hostPlatform.isLinux ''
+          interp="$(cat $NIX_CC/nix-support/dynamic-linker)"
+          patchelf --set-interpreter $interp $out/goland/plugins/go-plugin/lib/dlv/linux/dlv
+          chmod +x $out/goland/plugins/go-plugin/lib/dlv/linux/dlv
+        '';
       });
 
   idea-community-bin = buildIdea {
@@ -338,15 +338,15 @@ rec {
     }).overrideAttrs
       (attrs: {
         postInstall =
-          (attrs.postInstall or "")
-          + lib.optionalString stdenv.hostPlatform.isLinux ''
-            ${patchSharedLibs}
+        (attrs.postInstall or "")
+        + lib.optionalString stdenv.hostPlatform.isLinux ''
+          ${patchSharedLibs}
 
-            for dir in $out/rider/lib/ReSharperHost/linux-*; do
-              rm -rf $dir/dotnet
-              ln -s ${dotnet-sdk}/share/dotnet $dir/dotnet
-            done
-          '';
+          for dir in $out/rider/lib/ReSharperHost/linux-*; do
+            rm -rf $dir/dotnet
+            ln -s ${dotnet-sdk}/share/dotnet $dir/dotnet
+          done
+        '';
       });
 
   ruby-mine = mkJetBrainsProduct {
@@ -360,16 +360,16 @@ rec {
     (mkJetBrainsProduct {
       pname = "rust-rover";
       extraBuildInputs =
-        lib.optionals stdenv.hostPlatform.isLinux [
-          python3
-          openssl
-          libxcrypt-legacy
-        ]
-        ++ lib.optionals (stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isAarch) [
-          expat
-          libxml2
-          xz
-        ];
+      lib.optionals stdenv.hostPlatform.isLinux [
+        python3
+        openssl
+        libxcrypt-legacy
+      ]
+      ++ lib.optionals (stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isAarch) [
+        expat
+        libxml2
+        xz
+      ];
     }).overrideAttrs
       (attrs: {
         postFixup = ''

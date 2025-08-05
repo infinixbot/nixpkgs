@@ -48,12 +48,12 @@ buildNpmPackage' rec {
   ];
 
   buildInputs =
-    lib.optionals stdenv.hostPlatform.isLinux [
-      udev
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      apple-sdk_12
-    ];
+  lib.optionals stdenv.hostPlatform.isLinux [
+    udev
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    apple-sdk_12
+  ];
 
   doInstallCheck = true;
   versionCheckProgram = "${placeholder "out"}/bin/balena";

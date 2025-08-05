@@ -192,7 +192,7 @@ let
               wakeupDefined = options.wakeup.isDefined;
               wakeupUCDefined = options.wakeupUnusedComponent.isDefined;
               finalValue =
-                toString config.wakeup + lib.optionalString (wakeupUCDefined && !config.wakeupUnusedComponent) "?";
+              toString config.wakeup + lib.optionalString (wakeupUCDefined && !config.wakeupUnusedComponent) "?";
             in
             if wakeupDefined then finalValue else "-";
 
@@ -309,8 +309,8 @@ let
     };
 
   headerChecks =
-    lib.concatStringsSep "\n" (map (x: "${x.pattern} ${x.action}") cfg.headerChecks)
-    + cfg.extraHeaderChecks;
+  lib.concatStringsSep "\n" (map (x: "${x.pattern} ${x.action}") cfg.headerChecks)
+  + cfg.extraHeaderChecks;
 
   aliases =
     let
@@ -930,12 +930,12 @@ in
         };
 
         users.groups =
-          lib.optionalAttrs (group == "postfix") {
-            ${group}.gid = config.ids.gids.postfix;
-          }
-          // lib.optionalAttrs (setgidGroup == "postdrop") {
-            ${setgidGroup}.gid = config.ids.gids.postdrop;
-          };
+        lib.optionalAttrs (group == "postfix") {
+          ${group}.gid = config.ids.gids.postfix;
+        }
+        // lib.optionalAttrs (setgidGroup == "postdrop") {
+          ${setgidGroup}.gid = config.ids.gids.postdrop;
+        };
 
         systemd.services.postfix-setup = {
           description = "Setup for Postfix mail server";
@@ -1024,45 +1024,45 @@ in
         };
 
         services.postfix.settings.main =
-          (lib.mapAttrs (_: v: lib.mkDefault v) {
-            compatibility_level = pkgs.postfix.version;
-            mail_owner = cfg.user;
-            default_privs = "nobody";
+        (lib.mapAttrs (_: v: lib.mkDefault v) {
+          compatibility_level = pkgs.postfix.version;
+          mail_owner = cfg.user;
+          default_privs = "nobody";
 
-            # NixOS specific locations
-            data_directory = "/var/lib/postfix/data";
-            queue_directory = "/var/lib/postfix/queue";
+          # NixOS specific locations
+          data_directory = "/var/lib/postfix/data";
+          queue_directory = "/var/lib/postfix/queue";
 
-            # Default location of everything in package
-            meta_directory = "${pkgs.postfix}/etc/postfix";
-            command_directory = "${pkgs.postfix}/bin";
-            sample_directory = "/etc/postfix";
-            newaliases_path = "${pkgs.postfix}/bin/newaliases";
-            mailq_path = "${pkgs.postfix}/bin/mailq";
-            readme_directory = false;
-            sendmail_path = "${pkgs.postfix}/bin/sendmail";
-            daemon_directory = "${pkgs.postfix}/libexec/postfix";
-            manpage_directory = "${pkgs.postfix}/share/man";
-            html_directory = "${pkgs.postfix}/share/postfix/doc/html";
-            shlib_directory = false;
-            mail_spool_directory = "/var/spool/mail/";
-            setgid_group = cfg.setgidGroup;
-          })
-          // lib.optionalAttrs haveAliases { alias_maps = [ "${cfg.aliasMapType}:/etc/postfix/aliases" ]; }
-          // lib.optionalAttrs haveTransport { transport_maps = [ "hash:/etc/postfix/transport" ]; }
-          // lib.optionalAttrs haveVirtual {
-            virtual_alias_maps = [ "${cfg.virtualMapType}:/etc/postfix/virtual" ];
-          }
-          // lib.optionalAttrs haveLocalRecipients {
-            local_recipient_maps = [
-              "hash:/etc/postfix/local_recipients"
-            ]
-            ++ lib.optional haveAliases "$alias_maps";
-          }
-          // lib.optionalAttrs (cfg.dnsBlacklists != [ ]) { smtpd_client_restrictions = clientRestrictions; }
-          // lib.optionalAttrs cfg.enableHeaderChecks {
-            header_checks = [ "regexp:/etc/postfix/header_checks" ];
-          };
+          # Default location of everything in package
+          meta_directory = "${pkgs.postfix}/etc/postfix";
+          command_directory = "${pkgs.postfix}/bin";
+          sample_directory = "/etc/postfix";
+          newaliases_path = "${pkgs.postfix}/bin/newaliases";
+          mailq_path = "${pkgs.postfix}/bin/mailq";
+          readme_directory = false;
+          sendmail_path = "${pkgs.postfix}/bin/sendmail";
+          daemon_directory = "${pkgs.postfix}/libexec/postfix";
+          manpage_directory = "${pkgs.postfix}/share/man";
+          html_directory = "${pkgs.postfix}/share/postfix/doc/html";
+          shlib_directory = false;
+          mail_spool_directory = "/var/spool/mail/";
+          setgid_group = cfg.setgidGroup;
+        })
+        // lib.optionalAttrs haveAliases { alias_maps = [ "${cfg.aliasMapType}:/etc/postfix/aliases" ]; }
+        // lib.optionalAttrs haveTransport { transport_maps = [ "hash:/etc/postfix/transport" ]; }
+        // lib.optionalAttrs haveVirtual {
+          virtual_alias_maps = [ "${cfg.virtualMapType}:/etc/postfix/virtual" ];
+        }
+        // lib.optionalAttrs haveLocalRecipients {
+          local_recipient_maps = [
+            "hash:/etc/postfix/local_recipients"
+          ]
+          ++ lib.optional haveAliases "$alias_maps";
+        }
+        // lib.optionalAttrs (cfg.dnsBlacklists != [ ]) { smtpd_client_restrictions = clientRestrictions; }
+        // lib.optionalAttrs cfg.enableHeaderChecks {
+          header_checks = [ "regexp:/etc/postfix/header_checks" ];
+        };
 
         services.postfix.settings.master = {
           pickup = {
@@ -1184,13 +1184,13 @@ in
                   || cfg.submissionsOptions.smtpd_tls_security_level == "none"
                   || cfg.submissionsOptions.smtpd_tls_security_level == "may";
                 submissionsOptions =
-                  cfg.submissionsOptions
-                  // {
-                    smtpd_tls_wrappermode = "yes";
-                  }
-                  // lib.optionalAttrs adjustSmtpTlsSecurityLevel {
-                    smtpd_tls_security_level = "encrypt";
-                  };
+                cfg.submissionsOptions
+                // {
+                  smtpd_tls_wrappermode = "yes";
+                }
+                // lib.optionalAttrs adjustSmtpTlsSecurityLevel {
+                  smtpd_tls_security_level = "encrypt";
+                };
               in
               lib.concatLists (lib.mapAttrsToList mkKeyVal submissionsOptions);
           };

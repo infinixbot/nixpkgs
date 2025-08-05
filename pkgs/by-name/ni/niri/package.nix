@@ -73,10 +73,10 @@ rustPlatform.buildRustPackage (finalAttrs: {
   ++ lib.optional (!withSystemd) eudev; # Use an alternative libudev implementation when building w/o systemd
 
   buildFeatures =
-    lib.optional withDbus "dbus"
-    ++ lib.optional withDinit "dinit"
-    ++ lib.optional withScreencastSupport "xdp-gnome-screencast"
-    ++ lib.optional withSystemd "systemd";
+  lib.optional withDbus "dbus"
+  ++ lib.optional withDinit "dinit"
+  ++ lib.optional withScreencastSupport "xdp-gnome-screencast"
+  ++ lib.optional withSystemd "systemd";
   buildNoDefaultFeatures = true;
 
   postInstall = ''

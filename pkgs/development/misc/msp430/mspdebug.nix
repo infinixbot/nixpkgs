@@ -28,8 +28,8 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
   nativeBuildInputs =
-    lib.optional stdenv.hostPlatform.isDarwin pkg-config
-    ++ lib.optional (enableMspds && stdenv.hostPlatform.isLinux) autoPatchelfHook;
+  lib.optional stdenv.hostPlatform.isDarwin pkg-config
+  ++ lib.optional (enableMspds && stdenv.hostPlatform.isLinux) autoPatchelfHook;
   buildInputs = [
     libusb-compat-0_1
   ]
