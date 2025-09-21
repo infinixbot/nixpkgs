@@ -90,7 +90,8 @@ in
   # Fix interaction of gfortran and libtool
   # Fixes the output of -v
   # See also https://github.com/nixOS/nixpkgs/commit/cc6f814a8f0e9b70ede5b24192558664fa1f98a2
-  ./gcc-12-gfortran-driving.patch)
+  ./gcc-12-gfortran-driving.patch
+)
 # Do not pass a default include dir on PowerPC+Musl
 # See https://github.com/NixOS/nixpkgs/pull/45340/commits/d6bb7d45162ac93e017cc9b665ae4836f6410710
 ++ [ ./ppc-musl.patch ]
