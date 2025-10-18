@@ -71,7 +71,7 @@ rec {
       derivationArgs ? { },
       # name of the resulting derivation
       name,
-    # TODO(@Artturin): enable strictDeps always
+      # TODO(@Artturin): enable strictDeps always
     }:
     buildCommand:
     stdenv.mkDerivation (

@@ -26,8 +26,8 @@
   withManufDb ? false,
   wireshark,
   libpcap,
-# 2D/3D graphics and graphs TODO: VPython
-# TODO: nmap, numpy
+  # 2D/3D graphics and graphs TODO: VPython
+  # TODO: nmap, numpy
 }:
 
 buildPythonPackage rec {
