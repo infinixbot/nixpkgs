@@ -270,7 +270,7 @@ in
               ui.enable = mkOption {
                 type = bool;
                 default = nixosConfig.services.netbird.ui.enable;
-                defaultText = literalExpression ''client.ui.enable'';
+                defaultText = literalExpression "client.ui.enable";
                 description = ''
                   Controls presence of `netbird-ui` wrapper for this NetBird client.
                 '';

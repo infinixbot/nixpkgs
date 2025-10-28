@@ -28,7 +28,7 @@ stdenv.mkDerivation {
     pkg-config
     readline
   ];
-  sourceRoot = ''pil21'';
+  sourceRoot = "pil21";
   preBuild = ''
     cd src
   ''
