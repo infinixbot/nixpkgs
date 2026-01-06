@@ -13,11 +13,11 @@ let
       mkValueString =
         v:
         if v == true then
-          ''true''
+          "true"
         else if v == false then
-          ''false''
+          "false"
         else if builtins.isInt v then
-          ''${builtins.toString v}''
+          "${builtins.toString v}"
         else if builtins.isPath v then
           ''"${builtins.toString v}"''
         else if builtins.isString v then
