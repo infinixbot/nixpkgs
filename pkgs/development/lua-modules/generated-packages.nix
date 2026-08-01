@@ -1372,7 +1372,7 @@ final: prev: {
         description = "javascript (ECMA19) regular expressions for lua";
         longDescription = ''
           Provides ECMAScript regular expressions for Lua 5.1, 5.2, 5.3, 5.4 and LuaJit. Uses libregexp from Fabrice Bellard's QuickJS.
-          	'';
+        '';
       };
     }
   ) { };
@@ -3129,7 +3129,7 @@ final: prev: {
           		
           		This rock is the front end DBI module. You will need one or 
           		more backend DBD drivers to use this software.
-          	'';
+        '';
       };
     }
   ) { };
@@ -3177,7 +3177,7 @@ final: prev: {
           		
           		This rock is the MySQL DBD module. You will also need the
           		base DBI module to use this software.
-          	'';
+        '';
       };
     }
   ) { };
@@ -3225,7 +3225,7 @@ final: prev: {
           		
           		This rock is the PostgreSQL DBD module. You will also need the
           		base DBI module to use this software.
-          	'';
+        '';
       };
     }
   ) { };
@@ -3273,7 +3273,7 @@ final: prev: {
           		
           		This rock is the Sqlite3 DBD module. You will also need the
           		base DBI module to use this software.
-          	'';
+        '';
       };
     }
   ) { };
@@ -3387,7 +3387,7 @@ final: prev: {
         longDescription = ''
           LuaExpat is a SAX (Simple API for XML) XML parser based on the
           		Expat library.
-          	'';
+        '';
       };
     }
   ) { };
@@ -4261,7 +4261,7 @@ final: prev: {
           		To install LuaUnit from LuaRocks, you need at least LuaRocks version 2.4.4 (due to old versions of wget being incompatible
           		with GitHub https downloading)
 
-          	'';
+        '';
       };
     }
   ) { };
@@ -4407,7 +4407,7 @@ final: prev: {
         description = "Define Neovim themes as a DSL in lua, with real-time feedback.";
         longDescription = ''
           Lush is a colorscheme creation aid, written in Lua, for Neovim.
-          	'';
+        '';
       };
     }
   ) { };
